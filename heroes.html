@@ -269,8 +269,8 @@
 
     let html = `
 <div class="hero-details-container">
+<h2 class="hero-name">${hero.name}</h2>
   <div class="hero-column left">
-    <h2>${hero.name}</h2>
     <p><strong>對應光輝：</strong>${hero.glory}</p>
     <p><strong>拜官：</strong>${hero.promotion}</p>
     <p><strong>初始：</strong>${hero.initial}</p>
@@ -282,11 +282,11 @@
     <p><strong>體質：</strong>${hero.vit}</p>
     <p><strong>敏捷：</strong>${hero.agi}</p>
     <p><strong>運氣：</strong>${hero.luk}</p>
-    <p><strong>積極度(生變前)：</strong>${hero.aggression_before}</p>
-    <p><strong>積極度(生變後)：</strong>${hero.aggression_after}</p>
   </div>
 
   <div class="hero-column right">
+    <p><strong>積極度(生變前)：</strong>${hero.aggression_before}</p>
+    <p><strong>積極度(生變後)：</strong>${hero.aggression_after}</p>
     <p><strong>裝備卡(新專)：</strong>${hero.equipment_new}</p>
     <p><strong>新專數值：</strong>${hero.equipment_new_data}</p>
     <p><strong>新專倍率：</strong>${hero.new_multiplier}</p>
