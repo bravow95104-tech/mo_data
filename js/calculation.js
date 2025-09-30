@@ -1,15 +1,15 @@
 // 計算模組的資料夾路徑
-const MODULE_PATH = "modules/calculation/";
+const MODULE_PATH = "../";
 // searchDropdown.js
 // 載入本地 heroes.json 並根據 input 搜尋更新下拉選單
 
 document.addEventListener("DOMContentLoaded", () => {
   // 支援多組 searchInput + dropdown + dataSrc
   const combos = [
-    { input: "searchInput1", dropdown: "dropdown1", dataSrc: "/data/heroes.json" },
-    { input: "searchInput2", dropdown: "dropdown2", dataSrc: "/data/heroes.json" },
-    { input: "searchInput3", dropdown: "dropdown3", dataSrc: "/data/heroes.json" },
-    { input: "searchInput4", dropdown: "dropdown4", dataSrc: "/data/heroes.json" },
+    { input: "searchInput1", dropdown: "dropdown1", dataSrc: `${MODULE_PATH}/data/heroes.json` },
+    { input: "searchInput2", dropdown: "dropdown2", dataSrc: `${MODULE_PATH}/data/heroes.json` },
+    { input: "searchInput3", dropdown: "dropdown3", dataSrc: `${MODULE_PATH}/data/heroes.json` },
+    { input: "searchInput4", dropdown: "dropdown4", dataSrc: `${MODULE_PATH}/data/heroes.json` },
   ];
 
   combos.forEach(({ input, dropdown, dataSrc }) => {
