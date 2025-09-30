@@ -117,16 +117,16 @@ nav .dropdown-toggle:hover {
 .hero-details-container {
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
   gap: 40px;
   padding: 10px 20px;
-  flex-wrap: wrap;
   max-width: 800px;
   margin: 0 auto;
 }
 
-/* 左右欄樣式 */
+/* 左右欄樣式 */---------
 .hero-column {
-  flex: 1 1 45%;
+  flex: 0 0 48%;
   min-width: 280px;
 }
 
@@ -134,22 +134,6 @@ nav .dropdown-toggle:hover {
   margin: 8px 0;
   font-size: 15px;
   line-height: 1.4;
-}
-
-
-/* 每一欄 */
-.hero-column {
-  flex: 1 1 50%;
-  min-width: 280px;
-}
-
-.hero-column p {
-  margin: 6px 0;
-}
-
-
-.hero-column p {
-  margin: 6px 0;
 }
 
 .hero-column h2 {
