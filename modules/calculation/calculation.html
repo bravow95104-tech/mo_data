@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>搜尋下拉選單</title>
+
+    <link rel="stylesheet" href="/css/styles.css" />
+    <link rel="stylesheet" href="./calculation.css" />
+    <style></style>
+  </head>
+  <body>
+    <!-- 共用導航列 -->
+    <div id="nav-placeholder"></div>
+
+    <div class="hero-card">
+      <h2>英雄數值</h2>
+
+      <div class="hero-form-col">
+        <label>英雄 </label>
+
+        <div class="search-row">
+          <div class="search-col hero-search-col">
+            <input
+              id="searchInput4"
+              type="text"
+              class="search-input"
+              placeholder="搜尋英雄..."
+              autocomplete="off"
+            />
+            <div id="dropdown4" class="custom-dropdown"></div>
+          </div>
+        </div>
+        <label>等級 </label>
+        <input type="number" class="hero-input" />
+        <label>力量 </label>
+        <input type="number" class="hero-input" />
+
+        <label>智慧 </label>
+        <input type="number" class="hero-input" />
+
+        <label>體質 </label>
+        <input type="number" class="hero-input" />
+
+        <label>敏捷 </label>
+        <input type="number" class="hero-input" />
+
+        <label>運氣 </label>
+        <input type="number" class="hero-input" />
+
+        <div class="equip-row">
+          <label>裝備卡1 </label>
+          <div class="equip-col">
+            <input type="number" class="equip-input" />
+            <div class="search-row">
+              <div class="search-col">
+                <input
+                  id="searchInput1"
+                  type="text"
+                  class="search-input"
+                  placeholder="搜尋英雄1..."
+                  autocomplete="off"
+                />
+                <div id="dropdown1" class="custom-dropdown"></div>
+              </div>
+            </div>
+          </div>
+          <div class="equip-radio-group">
+            <label
+              ><input type="radio" name="equip1-type" value="normal" checked />
+              非專卡</label
+            >
+            <label
+              ><input type="radio" name="equip1-type" value="2x" />
+              2倍專卡</label
+            >
+            <label
+              ><input type="radio" name="equip1-type" value="2.5x" />
+              2.5倍專卡</label
+            >
+          </div>
+        </div>
+        <div class="equip-row">
+          <label>裝備卡2 </label>
+          <div class="equip-col">
+            <input type="number" class="equip-input" />
+            <div class="search-row">
+              <div class="search-col">
+                <input
+                  id="searchInput2"
+                  type="text"
+                  class="search-input"
+                  placeholder="搜尋英雄2..."
+                  autocomplete="off"
+                />
+                <div id="dropdown2" class="custom-dropdown"></div>
+              </div>
+            </div>
+          </div>
+          <div class="equip-radio-group">
+            <label
+              ><input type="radio" name="equip2-type" value="normal" checked />
+              非專卡</label
+            >
+            <label
+              ><input type="radio" name="equip2-type" value="2x" />
+              2倍專卡</label
+            >
+            <label
+              ><input type="radio" name="equip2-type" value="2.5x" />
+              2.5倍專卡</label
+            >
+          </div>
+        </div>
+        <div class="equip-row">
+          <label>裝備卡3 </label>
+          <div class="equip-col">
+            <input type="number" class="equip-input" />
+            <div class="search-row">
+              <div class="search-col">
+                <input
+                  id="searchInput3"
+                  type="text"
+                  class="search-input"
+                  placeholder="搜尋英雄3..."
+                  autocomplete="off"
+                />
+                <div id="dropdown3" class="custom-dropdown"></div>
+              </div>
+            </div>
+          </div>
+          <div class="equip-radio-group">
+            <label
+              ><input type="radio" name="equip3-type" value="normal" checked />
+              非專卡</label
+            >
+            <label
+              ><input type="radio" name="equip3-type" value="2x" />
+              2倍專卡</label
+            >
+            <label
+              ><input type="radio" name="equip3-type" value="2.5x" />
+              2.5倍專卡</label
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="./calculation.js"></script>
+    <script src="/js/componentsLoader.js"></script>
+  </body>
+</html>

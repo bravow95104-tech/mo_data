@@ -3,11 +3,12 @@ body {
   background-color: white;
   margin: 0;
   padding: 0 40px; /* 左右留白 */
-  font-family: 'Microsoft JhengHei', sans-serif;
+  font-family: "Microsoft JhengHei", sans-serif;
 }
 
 /* 內容容器置中 */
-main, #content {
+main,
+#content {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
@@ -51,7 +52,7 @@ nav .dropdown-toggle:hover {
   position: absolute;
   background-color: #3399ff;
   min-width: 180px;
-  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
   z-index: 1001;
   border-radius: 4px;
   top: 100%;
@@ -123,4 +124,13 @@ nav .dropdown-toggle:hover {
   .hero-column {
     padding: 0 !important;
   }
+}
+
+.search-input {
+  padding: 6px 10px;
+  width: 100%;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
 }

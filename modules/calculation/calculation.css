@@ -1,0 +1,79 @@
+.equip-radio-group {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+.search-row {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.search-col {
+  position: relative;
+  width: 250px;
+  box-sizing: border-box;
+}
+.hero-card {
+  max-width: 500px;
+  margin: 32px 0;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px #0001;
+  padding: 24px;
+}
+.hero-card h2 {
+  margin-top: 0;
+  text-align: center;
+  color: #3399ff;
+}
+.hero-form-col {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.hero-input {
+  width: 100%;
+  box-sizing: border-box;
+  height: 30px;
+}
+.equip-row {
+  display: flex;
+  gap: 8px;
+  flex-direction: column;
+}
+.equip-col {
+  display: flex;
+  gap: 8px;
+}
+.equip-input {
+  width: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+}
+.custom-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background: #fff;
+  border: 1px solid #ccc;
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 10;
+  box-sizing: border-box;
+}
+.dropdown-item {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 6px 12px;
+  cursor: pointer;
+  background: #fff;
+}
+.dropdown-item:hover {
+  background: #f0f8ff;
+}
+
+.hero-search-col {
+  width: 100%;
+  max-width: 500px;
+}
