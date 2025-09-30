@@ -6,16 +6,17 @@
   <link rel="stylesheet" href="css/styles.css" />
   <style>
     table {
-      border-collapse: collapse;
-      width: 100%;
-      margin-top: 20px;
-    }
-    th, td {
-      border: 1px solid #ccc;
-      padding: 8px;
-      text-align: center;
-      font-size: 14px;
-    }
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 20px;
+  }
+  th, td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: center;
+    font-size: 14px;
+    white-space: normal; /* 允許換行 */
+  }
     th {
       background-color: #3399ff;
       color: white;
@@ -23,6 +24,17 @@
     tbody tr:hover {
       background-color: #f0f8ff;
     }
+	
+  thead th {
+    position: sticky;
+    top: 0;
+    background-color: #3399ff;
+    color: white;
+    z-index: 10;
+  }
+  tbody tr:hover {
+    background-color: #f0f8ff;
+  }
     /* 搜尋框樣式 */
     #search-input {
       margin-top: 10px;
@@ -32,10 +44,12 @@
       border: 1px solid #ccc;
       border-radius: 4px;
     }
+	
   </style>
-</head>
-<!-- 回到頂部按鈕 -->
+  <!-- 回到頂部按鈕 -->
 <button id="backToTop" title="回到頂部">▲</button>
+</head>
+
 
 <style>
   #backToTop {
