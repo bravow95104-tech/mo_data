@@ -172,8 +172,8 @@ document.addEventListener("DOMContentLoaded", () => {
         alert("等級必須大於等於 1");
         return;
       }
-      if (str <= 0 || int <= 0 || vit <= 0 || agi <= 0 || luk <= 0) {
-        alert("力量、智慧、體質、敏捷、運氣都必須大於 0");
+      if (str < 0 || int < 0 || vit < 0 || agi < 0 || luk < 0) {
+        alert("力量、智慧、體質、敏捷、運氣都必須大於等於 0");
         return;
       }
 
@@ -306,7 +306,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (filtered.length > 0) {
           // 判斷 input.value 是否在 heroesData（或 data）裡
           const exists = data.some(item => (item[labelKey] || "") === input.value);
-          if (!exists) {
+          if (!exists && input.value) {
             setInputValueAndTrigger(input, filtered[0][labelKey] || "");
           }
         } else {
