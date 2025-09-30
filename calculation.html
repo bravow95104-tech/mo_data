@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>搜尋下拉選單</title>
+  </head>
+  <body>
+    <div id="nav-placeholder"></div>
+
+    <div id="calculation"></div>
+    <!-- 共用導航列 -->
+
+    <div id="footer-container"></div>
+    <script src="/js/componentsLoader.js"></script>
+    <script>
+      function loadComponent(selector, url) {
+        const el = document.querySelector(selector);
+        if (el) {
+          fetch(url)
+            .then((res) => res.text())
+            .then((html) => {
+              el.innerHTML = html;
+            });
+        }
+      }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        loadComponent(
+          "#calculation",
+          "/modules/calculation/calculation.html"
+        );
+      });
+    </script>
+  </body>
+</html>
