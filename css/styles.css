@@ -86,6 +86,16 @@ nav .dropdown-toggle:hover {
   font-weight: bold;
 }
 
+/* 英雄名稱置中 */
+.hero-name {
+  text-align: center;
+  font-size: 24px;
+  color: #3399ff;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 10px;
+}
+
 /* Modal 內詳細資料分欄 */
 .hero-details-container {
   display: flex;
