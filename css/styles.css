@@ -1,30 +1,31 @@
+/* 全站基本樣式 */
 body {
   background-color: white;
   margin: 0;
+  padding: 0 40px; /* 左右留白 */
   font-family: 'Microsoft JhengHei', sans-serif;
-  padding: 0 40px; /* 左右各留 40px */
 }
 
-/* 主要內容容器 */
+/* 內容容器置中 */
 main, #content {
   max-width: 1200px;
-  margin: 0 auto;       /* 置中 */
-  padding: 0 20px;      /* 左右留白 */
+  margin: 0 auto;
+  padding: 0 20px;
 }
 
-/* 導航列 */
+/* 導航列樣式 */
 nav {
   background: #3399ff;
   color: white;
   padding: 12px 20px;
   display: flex;
   align-items: center;
-  font-family: 'Microsoft JhengHei', sans-serif;
   border-radius: 0 0 8px 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-nav a, nav .dropdown-toggle {
+nav a,
+nav .dropdown-toggle {
   color: white;
   margin-right: 20px;
   text-decoration: none;
@@ -35,11 +36,12 @@ nav a, nav .dropdown-toggle {
   cursor: pointer;
 }
 
-nav a:hover, nav .dropdown-toggle:hover {
+nav a:hover,
+nav .dropdown-toggle:hover {
   background-color: #5abaff;
 }
 
-/* Dropdown */
+/* 下拉選單 */
 .dropdown {
   position: relative;
 }
@@ -71,7 +73,7 @@ nav a:hover, nav .dropdown-toggle:hover {
   background-color: #5abaff;
 }
 
-/* 主內容區 */
+/* 主要內容區塊 */
 #content {
   padding: 30px;
   max-width: 960px;
@@ -83,6 +85,8 @@ nav a:hover, nav .dropdown-toggle:hover {
   background-color: yellow;
   font-weight: bold;
 }
+
+/* 英雄詳細 Modal 的左右分欄容器 */
 .hero-details-container {
   display: flex;
   gap: 30px;
@@ -99,9 +103,24 @@ nav a:hover, nav .dropdown-toggle:hover {
 
 .hero-column p {
   margin: 6px 0;
+  font-size: 15px;
+  line-height: 1.5;
 }
 
 .hero-column h2 {
   margin-top: 0;
   color: #3399ff;
+  font-size: 22px;
+  text-align: center;
+}
+
+/* RWD 手機優化（選配） */
+@media (max-width: 600px) {
+  .hero-details-container {
+    flex-direction: column;
+  }
+
+  .hero-column {
+    padding: 0 !important;
+  }
 }
