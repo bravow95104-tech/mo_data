@@ -34,6 +34,52 @@
     }
   </style>
 </head>
+<!-- 回到頂部按鈕 -->
+<button id="backToTop" title="回到頂部">▲</button>
+
+<style>
+  #backToTop {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    display: none; /* 預設隱藏 */
+    background-color: #3399ff;
+    color: white;
+    border: none;
+    padding: 12px 16px;
+    border-radius: 50%;
+    font-size: 18px;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+    transition: background-color 0.3s ease;
+    z-index: 1000;
+  }
+  #backToTop:hover {
+    background-color: #267acc;
+  }
+</style>
+
+<script>
+  const backToTopBtn = document.getElementById('backToTop');
+
+  // 滾動超過 200px 顯示按鈕，否則隱藏
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 200) {
+      backToTopBtn.style.display = 'block';
+    } else {
+      backToTopBtn.style.display = 'none';
+    }
+  });
+
+  // 點擊按鈕時平滑滾動回頂部
+  backToTopBtn.addEventListener('click', () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  });
+</script>
+
 <body>
 
 <nav>
