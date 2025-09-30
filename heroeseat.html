@@ -10,16 +10,7 @@
 </head>
 <body>
 
-<nav>
-  <a href="index.html" class="nav-link">首頁</a>
-  <div class="dropdown">
-    <div class="dropdown-toggle">英雄 ▼</div>
-    <div class="dropdown-content">
-      <a href="heroes.html">英雄清單</a>
-      <a href="heroeseat.html">英雄料理數值</a>
-    </div>
-  </div>
-</nav>
+<div id="nav-container"></div><!-- 這是導航列會被載入的位置 -->
 
 <div id="content">
   <!-- 目前暫時空白或簡單提示 -->
@@ -31,11 +22,19 @@
 <div id="footer-container"></div>
 
 <script>
-  fetch('footer.html')
-    .then(response => response.text())
-    .then(data => {
-      document.getElementById('footer-container').innerHTML = data;
-    });
-</script>
+    // 載入導航列
+    fetch('components/nav/nav.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('nav-container').innerHTML = data;
+      });
+
+    // 載入頁尾
+    fetch('footer.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('footer-container').innerHTML = data;
+      });
+  </script>
 </body>
 </html>
