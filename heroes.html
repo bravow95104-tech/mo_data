@@ -108,7 +108,7 @@
   </div>
 </nav>
 
-<h1>英雄清單</h1>
+<h1></h1>
 
 <!-- 搜尋框 -->
 <input type="text" id="search-input" placeholder="搜尋英雄名稱..." />
@@ -192,11 +192,24 @@
 
   // 監聽搜尋框輸入，篩選英雄名稱
   const searchInput = document.getElementById('search-input');
-  searchInput.addEventListener('input', () => {
-    const keyword = searchInput.value.trim().toLowerCase();
-    const filtered = heroesData.filter(hero => hero.name.toLowerCase().includes(keyword));
-    renderTable(filtered);
+searchInput.addEventListener('input', () => {
+  const keyword = searchInput.value.trim().toLowerCase();
+
+  const filtered = heroesData.filter(hero => {
+    const targetFields = [
+      hero.name,
+      hero.glory,
+      hero.equipment_new,
+      hero.equipment_old,
+	  hero.promotion,
+	  hero.personality
+    ].join(' ').toLowerCase();
+
+    return targetFields.includes(keyword);
   });
+
+  renderTable(filtered);
+});
 </script>
 
 </body>
