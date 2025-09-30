@@ -1,1 +1,117 @@
-heroes.html
+<!-- 假設放在 index.html / heroes.html / heroeseat.html 裡面 -->
+
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <title>遊戲資料網站</title>
+  <link rel="stylesheet" href="css/styles.css">
+  
+</head>
+<body>
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <title>英雄清單</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin-top: 20px;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 8px;
+      text-align: center;
+      font-size: 14px;
+    }
+    th {
+      background-color: #3399ff;
+      color: white;
+    }
+    tbody tr:hover {
+      background-color: #f0f8ff;
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-link">首頁</a>
+  <div class="dropdown">
+    <div class="dropdown-toggle">英雄 ▼</div>
+    <div class="dropdown-content">
+      <a href="heroes.html">英雄清單</a>
+      <a href="heroeseat.html">英雄料理數值</a>
+    </div>
+  </div>
+</nav>
+
+<h1>英雄清單</h1>
+
+<table id="heroes-table">
+  <thead>
+    <tr>
+      <th>英雄名稱</th>
+      <th>對應光輝</th>
+      <th>拜官</th>
+      <th>初始</th>
+      <th>素質</th>
+      <th>個性</th>
+      <th>屬性</th>
+      <th>力量</th>
+      <th>智慧</th>
+      <th>體質</th>
+      <th>敏捷</th>
+      <th>運氣</th>
+      <th>積極度(生變前)</th>
+      <th>積極度(生變後)</th>
+      <th>裝備卡(新專)</th>
+      <th>新專倍率</th>
+      <th>裝備卡(舊專)</th>
+      <th>天生技</th>
+      <th>生變技能</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- 英雄資料會從JS動態載入 -->
+  </tbody>
+</table>
+
+<script>
+  fetch('data/heroes.json')
+  .then(response => response.json())
+  .then(data => {
+    const tbody = document.querySelector('#heroes-table tbody');
+    data.forEach(hero => {
+      const tr = document.createElement('tr');
+
+      const fields = [
+        'name', 'glory', 'promotion', 'initial', 'traits', 'personality', 'element',
+        'str', 'int', 'vit', 'agi', 'luk',
+        'aggression_before', 'aggression_after',
+        'equipment_new', 'new_multiplier', 'equipment_old', 'innate_skill', 'transformation_skill'
+      ];
+
+      fields.forEach(field => {
+        const td = document.createElement('td');
+        td.textContent = hero[field] !== undefined ? hero[field] : '';
+        tr.appendChild(td);
+      });
+
+      tbody.appendChild(tr);
+    });
+  })
+  .catch(error => {
+    console.error('載入英雄資料錯誤:', error);
+    const tbody = document.querySelector('#heroes-table tbody');
+    tbody.innerHTML = '<tr><td colspan="19">無法載入英雄資料</td></tr>';
+  });
+</script>
+
+
+
+</body>
+</html>

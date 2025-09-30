@@ -1,16 +1,72 @@
-.hero-card {
-  background: white;
-  margin-bottom: 20px;
-  padding: 15px;
-  border-radius: 8px;
-  box-shadow: 0 0 6px rgba(0,0,0,0.1);
+body {
+  background-color: white; /* 測試用，可換掉 */
+  margin: 0;
+  font-family: 'Microsoft JhengHei', sans-serif;
 }
 
-.hero-card ul {
-  list-style: none;
-  padding: 0;
+nav {
+  background: #3399ff; /* 淺藍清爽 */
+  color: white;
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  font-family: 'Microsoft JhengHei', sans-serif;
+  border-radius: 0 0 8px 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.hero-card li {
-  padding: 4px 0;
+nav a, nav .dropdown-toggle {
+  color: white;
+  margin-right: 20px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 16px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+nav a:hover, nav .dropdown-toggle:hover {
+  background-color: #5abaff; /* 淺藍 */
+}
+
+/* Dropdown */
+.dropdown {
+  position: relative;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #3399ff; /* 與導航列相同色 */
+  min-width: 180px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+  z-index: 1001;
+  border-radius: 4px;
+  top: 100%;
+  left: 0;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown-content a {
+  display: block;
+  padding: 10px 15px;
+  color: white;
+  text-decoration: none;
+}
+
+.dropdown-content a:hover {
+  background-color: #5abaff;
+}
+
+}
+
+/* 主內容 */
+#content {
+  padding: 30px;
+  max-width: 960px;
+  margin: auto;
 }
