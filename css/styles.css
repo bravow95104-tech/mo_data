@@ -1,0 +1,16 @@
+.hero-card {
+  background: white;
+  margin-bottom: 20px;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 0 6px rgba(0,0,0,0.1);
+}
+
+.hero-card ul {
+  list-style: none;
+  padding: 0;
+}
+
+.hero-card li {
+  padding: 4px 0;
+}

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <title>英雄資料總覽</title>
+  <style>
+    body {
+      font-family: 'Microsoft JhengHei', sans-serif;
+      background-color: #f5f5f5;
+      padding: 20px;
+      max-width: 900px;
+      margin: auto;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .hero-card {
+      background: white;
+      margin-bottom: 20px;
+      padding: 15px 25px;
+      border-radius: 8px;
+      box-shadow: 0 0 6px rgba(0,0,0,0.1);
+    }
+    .hero-card h2 {
+      margin-top: 0;
+      color: #333;
+    }
+    .hero-card ul {
+      list-style: none;
+      padding: 0;
+      margin: 10px 0 0 0;
+    }
+    .hero-card li {
+      padding: 4px 0;
+      line-height: 1.4;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+  <h1>英雄資料總覽</h1>
+  <div id="hero-list">載入中...</div>
+
+  <script>
+    fetch('data/heroes.json')
+      .then(response => response.json())
+      .then(data => {
+        const container = document.getElementById('hero-list');
+        container.innerHTML = ''; // 清空載入中文字
+
+        data.forEach(hero => {
+          const card = document.createElement('div');
+          card.className = 'hero-card';
+          card.innerHTML = `
+            <h2>${hero.name}</h2>
+            <ul>
+              <li><strong>光輝：</strong> ${hero.glory}</li>
+              <li><strong>拜官：</strong> ${hero.promotion}</li>
+              <li><strong>初始：</strong> ${hero.initial}</li>
+              <li><strong>素質：</strong> ${hero.traits}</li>
+              <li><strong>個性：</strong> ${hero.personality}</li>
+              <li><strong>屬性：</strong> ${hero.element}</li>
+              <li><strong>力量：</strong> ${hero.str}</li>
+              <li><strong>智慧：</strong> ${hero.int}</li>
+              <li><strong>體質：</strong> ${hero.vit}</li>
+              <li><strong>敏捷：</strong> ${hero.agi}</li>
+              <li><strong>運氣：</strong> ${hero.luk}</li>
+              <li><strong>積極度 (生變前)：</strong> ${hero.aggression_before}</li>
+              <li><strong>積極度 (生變後)：</strong> ${hero.aggression_after}</li>
+              <li><strong>裝備卡 (新專)：</strong> ${hero.equipment_new}</li>
+              <li><strong>新專倍率：</strong> ${hero.new_multiplier}</li>
+              <li><strong>裝備卡 (舊專)：</strong> ${hero.equipment_old}</li>
+              <li><strong>天生技：</strong> ${hero.innate_skill}</li>
+              <li><strong>生變技能：</strong> ${hero.transformation_skill}</li>
+            </ul>
+          `;
+          container.appendChild(card);
+        });
+      })
+      .catch(err => {
+        document.getElementById('hero-list').innerText = '載入資料失敗，請確認 heroes.json 檔案是否存在。';
+        console.error('Error loading heroes.json:', err);
+      });
+  </script>
+</body>
+</html>
