@@ -45,18 +45,28 @@ nav .dropdown-toggle:hover {
 /* 下拉選單 */
 .dropdown {
   position: relative;
+  margin-right: 20px;
 }
+
+.dropdown-toggle {
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 16px;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
 
 .dropdown-content {
   display: none;
   position: absolute;
+  top: 100%; /* 向下對齊 */
+  left: 0;
   background-color: #3399ff;
   min-width: 180px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-  z-index: 1001;
   border-radius: 4px;
-  top: 100%;
-  left: 0;
+  z-index: 1001;
 }
 
 
