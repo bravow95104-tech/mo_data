@@ -1,61 +1,28 @@
-<!-- 假設放在 index.html / heroes.html / heroeseat.html 裡面 -->
-
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
   <meta charset="UTF-8" />
-  <title>遊戲資料網站</title>
-  <link rel="stylesheet" href="css/styles.css">
-  
-</head>
-<body>
-<!DOCTYPE html>
-<html lang="zh-Hant">
-<head>
-  <meta charset="UTF-8" />
-  <title>英雄清單</title>
-  <link rel="stylesheet" href="css/styles.css" />
+  <title>英雄搜尋範例</title>
   <style>
-    table {
-      border-collapse: collapse;
-      width: 100%;
-      margin-top: 20px;
-    }
-    th, td {
-      border: 1px solid #ccc;
-      padding: 8px;
-      text-align: center;
-      font-size: 14px;
-    }
-    th {
-      background-color: #3399ff;
-      color: white;
-    }
-    tbody tr:hover {
-      background-color: #f0f8ff;
-    }
+    body { font-family: 'Microsoft JhengHei', sans-serif; padding: 20px; }
+    input[type="text"] { padding: 6px; width: 300px; margin-bottom: 12px; font-size: 16px; }
+    table { border-collapse: collapse; width: 100%; }
+    th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+    th { background-color: #3399ff; color: white; }
+    tr:nth-child(even) { background-color: #f2f2f2; }
   </style>
 </head>
 <body>
 
-<nav>
-  <a href="index.html" class="nav-link">首頁</a>
-  <div class="dropdown">
-    <div class="dropdown-toggle">英雄 ▼</div>
-    <div class="dropdown-content">
-      <a href="heroes.html">英雄清單</a>
-      <a href="heroeseat.html">英雄料理數值</a>
-    </div>
-  </div>
-</nav>
+<h1>英雄搜尋</h1>
 
-<h1>英雄清單</h1>
+<input type="text" id="search" placeholder="請輸入英雄名稱搜尋">
 
-<table id="heroes-table">
+<table>
   <thead>
     <tr>
-      <th>英雄<br>名稱</th>
-      <th>對應<br>光輝</th>
+      <th>名稱</th>
+      <th>光輝</th>
       <th>拜官</th>
       <th>初始</th>
       <th>素質</th>
@@ -66,52 +33,77 @@
       <th>體質</th>
       <th>敏捷</th>
       <th>運氣</th>
-      <th>積極度<br>(生變前)</th>
-      <th>積極度<br>(生變後)</th>
-      <th>裝備卡<br>(新專)</th>
+      <th>積極度(生變前)</th>
+      <th>積極度(生變後)</th>
+      <th>裝備卡(新專)</th>
       <th>新專倍率</th>
-      <th>裝備卡<br>(舊專)</th>
+      <th>裝備卡(舊專)</th>
       <th>天生技</th>
-      <th>生變<br>技能</th>
+      <th>生變技能</th>
     </tr>
   </thead>
-  <tbody>
-    <!-- 英雄資料會從JS動態載入 -->
+  <tbody id="heroes-body">
+    <!-- 英雄資料列會這裡動態產生 -->
   </tbody>
 </table>
 
 <script>
-  fetch('data/heroes.json')
-  .then(response => response.json())
-  .then(data => {
-    const tbody = document.querySelector('#heroes-table tbody');
+  let heroesData = [];
+
+  function renderTable(data) {
+    const tbody = document.getElementById('heroes-body');
+    tbody.innerHTML = '';
+
+    if (data.length === 0) {
+      tbody.innerHTML = '<tr><td colspan="19" style="text-align:center;">查無資料</td></tr>';
+      return;
+    }
+
     data.forEach(hero => {
       const tr = document.createElement('tr');
-
-      const fields = [
-        'name', 'glory', 'promotion', 'initial', 'traits', 'personality', 'element',
-        'str', 'int', 'vit', 'agi', 'luk',
-        'aggression_before', 'aggression_after',
-        'equipment_new', 'new_multiplier', 'equipment_old', 'innate_skill', 'transformation_skill'
-      ];
-
-      fields.forEach(field => {
-        const td = document.createElement('td');
-        td.textContent = hero[field] !== undefined ? hero[field] : '';
-        tr.appendChild(td);
-      });
-
+      tr.innerHTML = `
+        <td>${hero.name}</td>
+        <td>${hero.glory}</td>
+        <td>${hero.promotion}</td>
+        <td>${hero.initial}</td>
+        <td>${hero.traits}</td>
+        <td>${hero.personality}</td>
+        <td>${hero.element}</td>
+        <td>${hero.str}</td>
+        <td>${hero.int}</td>
+        <td>${hero.vit}</td>
+        <td>${hero.agi}</td>
+        <td>${hero.luk}</td>
+        <td>${hero.aggression_before}</td>
+        <td>${hero.aggression_after}</td>
+        <td>${hero.equipment_new}</td>
+        <td>${hero.new_multiplier}</td>
+        <td>${hero.equipment_old}</td>
+        <td>${hero.innate_skill}</td>
+        <td>${hero.transformation_skill}</td>
+      `;
       tbody.appendChild(tr);
     });
-  })
-  .catch(error => {
-    console.error('載入英雄資料錯誤:', error);
-    const tbody = document.querySelector('#heroes-table tbody');
-    tbody.innerHTML = '<tr><td colspan="19">無法載入英雄資料</td></tr>';
+  }
+
+  fetch('data/heroes.json')
+    .then(res => res.json())
+    .then(data => {
+      heroesData = data;
+      renderTable(heroesData);
+    })
+    .catch(e => {
+      console.error('讀取資料失敗:', e);
+      const tbody = document.getElementById('heroes-body');
+      tbody.innerHTML = '<tr><td colspan="19" style="text-align:center;color:red;">讀取資料失敗</td></tr>';
+    });
+
+  document.getElementById('search').addEventListener('input', e => {
+    const keyword = e.target.value.trim().toLowerCase();
+    const filtered = heroesData.filter(hero => hero.name.toLowerCase().includes(keyword));
+    renderTable(filtered);
   });
 </script>
-
-
 
 </body>
 </html>
