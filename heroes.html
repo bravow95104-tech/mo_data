@@ -267,22 +267,36 @@
     const modalBox = document.getElementById('modalBox');
     const contentDiv = document.getElementById('modalContent');
 
-    let html = `<h2>${hero.name}</h2>`;
-    html += `<p><strong>對應光輝：</strong>${hero.glory}</p>`;
-    html += `<p><strong>拜官：</strong>${hero.promotion}</p>`;
-    html += `<p><strong>初始：</strong>${hero.initial}</p>`;
-    html += `<p><strong>素質：</strong>${hero.traits}</p>`;
-    html += `<p><strong>個性：</strong>${hero.personality}</p>`;
-    html += `<p><strong>屬性：</strong>${hero.element}</p>`;
-    html += `<p><strong>力量：</strong>${hero.str}</p>`;
-    html += `<p><strong>智慧：</strong>${hero.int}</p>`;
-    html += `<p><strong>體質：</strong>${hero.vit}</p>`;
-    html += `<p><strong>敏捷：</strong>${hero.agi}</p>`;
-    html += `<p><strong>運氣：</strong>${hero.luk}</p>`;
-    html += `<p><strong>積極度(生變前)：</strong>${hero.aggression_before}</p>`;
-    html += `<p><strong>裝備卡(新專)：</strong>${hero.equipment_new}</p>`;
-    html += `<p><strong>裝備卡(舊專)：</strong>${hero.equipment_old}</p>`;
+    let html = `
+<div class="hero-details-container">
+  <div class="hero-column left">
+    <h2>${hero.name}</h2>
+    <p><strong>對應光輝：</strong>${hero.glory}</p>
+    <p><strong>拜官：</strong>${hero.promotion}</p>
+    <p><strong>初始：</strong>${hero.initial}</p>
+    <p><strong>素質：</strong>${hero.traits}</p>
+    <p><strong>個性：</strong>${hero.personality}</p>
+    <p><strong>屬性：</strong>${hero.element}</p>
+    <p><strong>力量：</strong>${hero.str}</p>
+    <p><strong>智慧：</strong>${hero.int}</p>
+    <p><strong>體質：</strong>${hero.vit}</p>
+    <p><strong>敏捷：</strong>${hero.agi}</p>
+    <p><strong>運氣：</strong>${hero.luk}</p>
+    <p><strong>積極度(生變前)：</strong>${hero.aggression_before}</p>
+    <p><strong>積極度(生變後)：</strong>${hero.aggression_after}</p>
+  </div>
 
+  <div class="hero-column right">
+    <p><strong>裝備卡(新專)：</strong>${hero.equipment_new}</p>
+    <p><strong>新專數值：</strong>${hero.equipment_new_data}</p>
+    <p><strong>新專倍率：</strong>${hero.new_multiplier}</p>
+    <p><strong>裝備卡(舊專)：</strong>${hero.equipment_old}</p>
+    <p><strong>舊專數值：</strong>${hero.equipment_old_data}</p>
+    <p><strong>天生技：</strong>${hero.innate_skill}</p>
+    <p><strong>生變技能：</strong>${hero.transformation_skill}</p>
+  </div>
+</div>
+`;
     contentDiv.innerHTML = html;
 
     overlay.style.display = 'block';

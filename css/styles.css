@@ -83,3 +83,25 @@ nav a:hover, nav .dropdown-toggle:hover {
   background-color: yellow;
   font-weight: bold;
 }
+.hero-details-container {
+  display: flex;
+  gap: 30px;
+  padding: 20px;
+  max-width: 800px;
+  margin: auto;
+  flex-wrap: wrap;
+}
+
+.hero-column {
+  flex: 1;
+  min-width: 300px;
+}
+
+.hero-column p {
+  margin: 6px 0;
+}
+
+.hero-column h2 {
+  margin-top: 0;
+  color: #3399ff;
+}
