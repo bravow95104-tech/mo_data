@@ -5,36 +5,33 @@
   <title>英雄清單</title>
   <link rel="stylesheet" href="css/styles.css" />
   <style>
+    body {
+      font-family: 'Microsoft JhengHei', sans-serif;
+    }
+
     table {
-    border-collapse: collapse;
-    width: 100%;
-    margin-top: 20px;
-  }
-  th, td {
-    border: 1px solid #ccc;
-    padding: 8px;
-    text-align: center;
-    font-size: 14px;
-    white-space: normal; /* 允許換行 */
-  }
-    th {
+      border-collapse: collapse;
+      width: 100%;
+      margin-top: 20px;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 8px;
+      text-align: center;
+      font-size: 14px;
+      white-space: normal;
+    }
+    thead th {
+      position: sticky;
+      top: 0;
       background-color: #3399ff;
       color: white;
+      z-index: 10;
     }
     tbody tr:hover {
       background-color: #f0f8ff;
     }
-	
-  thead th {
-    position: sticky;
-    top: 0;
-    background-color: #3399ff;
-    color: white;
-    z-index: 10;
-  }
-  tbody tr:hover {
-    background-color: #f0f8ff;
-  }
+
     /* 搜尋框樣式 */
     #search-input {
       margin-top: 10px;
@@ -44,59 +41,38 @@
       border: 1px solid #ccc;
       border-radius: 4px;
     }
-	
-  </style>
 
-  <!-- 回到頂部按鈕 -->
-<button id="backToTop" title="回到頂部">▲</button>
-</head>
-
-
-<style>
-  #backToTop {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    display: none; /* 預設隱藏 */
-    background-color: #3399ff;
-    color: white;
-    border: none;
-    padding: 12px 16px;
-    border-radius: 50%;
-    font-size: 18px;
-    cursor: pointer;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-    transition: background-color 0.3s ease;
-    z-index: 1000;
-  }
-  #backToTop:hover {
-    background-color: #267acc;
-  }
-</style>
-
-<script>
-  const backToTopBtn = document.getElementById('backToTop');
-
-  // 滾動超過 200px 顯示按鈕，否則隱藏
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 200) {
-      backToTopBtn.style.display = 'block';
-    } else {
-      backToTopBtn.style.display = 'none';
+    /* 黃色高亮 */
+    .highlight {
+      background-color: yellow;
+      font-weight: bold;
     }
-  });
 
-  // 點擊按鈕時平滑滾動回頂部
-  backToTopBtn.addEventListener('click', () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
-  });
-</script>
-
+    /* 回到頂部按鈕 */
+    #backToTop {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      display: none;
+      background-color: #3399ff;
+      color: white;
+      border: none;
+      padding: 12px 16px;
+      border-radius: 50%;
+      font-size: 18px;
+      cursor: pointer;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+      transition: background-color 0.3s ease;
+      z-index: 1000;
+    }
+    #backToTop:hover {
+      background-color: #267acc;
+    }
+  </style>
+</head>
 <body>
 
+<!-- 導航列 -->
 <nav>
   <a href="index.html" class="nav-link">首頁</a>
   <div class="dropdown">
@@ -108,11 +84,12 @@
   </div>
 </nav>
 
-<h1></h1>
+<h1>英雄清單</h1>
 
 <!-- 搜尋框 -->
-<input type="text" id="search-input" placeholder="搜尋英雄名稱..." />
+<input type="text" id="search-input" placeholder="搜尋英雄名稱、光輝、裝備卡..." />
 
+<!-- 英雄表格 -->
 <table id="heroes-table">
   <thead>
     <tr>
@@ -138,53 +115,87 @@
     </tr>
   </thead>
   <tbody>
-    <!-- 英雄資料會從JS動態載入 -->
+    <!-- 資料由 JS 動態載入 -->
   </tbody>
 </table>
 
-  <!-- 留白 -->
+<!-- 留白避免按鈕遮住 -->
 <div style="height: 80px;"></div>
-<script>
-  let heroesData = []; // 全部英雄資料暫存
 
-  // 載入英雄資料並顯示
+<!-- 回到頂部按鈕 -->
+<button id="backToTop" title="回到頂部">▲</button>
+
+<!-- JavaScript -->
+<script>
+  let heroesData = [];
+
+  // 載入 JSON 資料
+  fetch('data/heroes.json')
+    .then(response => response.json())
+    .then(data => {
+      heroesData = data;
+      renderTable(heroesData);
+    })
+    .catch(error => {
+      console.error('載入英雄資料錯誤:', error);
+      const tbody = document.querySelector('#heroes-table tbody');
+      tbody.innerHTML = '<tr><td colspan="19">無法載入英雄資料</td></tr>';
+    });
+
+  // 搜尋框邏輯
+  const searchInput = document.getElementById('search-input');
+  searchInput.addEventListener('input', () => {
+    const keyword = searchInput.value.trim().toLowerCase();
+
+    const filtered = heroesData.filter(hero => {
+      const targetFields = [
+        hero.name,
+      hero.glory,
+      hero.equipment_new,
+      hero.equipment_old,
+	  hero.promotion,
+	  hero.personality,
+	  hero.traits
+      ].join(' ').toLowerCase();
+
+      return targetFields.includes(keyword);
+    });
+
+    renderTable(filtered);
+  });
+
+  // 產生表格函式（加上高亮）
   function renderTable(data) {
     const tbody = document.querySelector('#heroes-table tbody');
-    tbody.innerHTML = ''; // 清空表格
+    tbody.innerHTML = '';
 
-    if(data.length === 0){
+    const keyword = searchInput.value.trim().toLowerCase();
+
+    if (data.length === 0) {
       tbody.innerHTML = '<tr><td colspan="19">找不到符合條件的英雄</td></tr>';
       return;
     }
 
     data.forEach(hero => {
       const tr = document.createElement('tr');
-
       const fields = [
         'name', 'glory', 'promotion', 'initial', 'traits', 'personality', 'element',
         'str', 'int', 'vit', 'agi', 'luk',
         'aggression_before', 'aggression_after',
-        'equipment_new', 'new_multiplier', 'equipment_old', 'innate_skill', 'transformation_skill'
+        'equipment_new', 'new_multiplier', 'equipment_old',
+        'innate_skill', 'transformation_skill'
       ];
 
       fields.forEach(field => {
         const td = document.createElement('td');
-        const keyword = searchInput.value.trim().toLowerCase();
+        const value = hero[field] !== undefined ? String(hero[field]) : '';
 
-fields.forEach(field => {
-  const td = document.createElement('td');
-  const value = hero[field] !== undefined ? String(hero[field]) : '';
-
-  if (keyword && value.toLowerCase().includes(keyword)) {
-    // 高亮顯示符合關鍵字
-    const regex = new RegExp(`(${keyword})`, 'gi');
-    td.innerHTML = value.replace(regex, '<span class="highlight">$1</span>');
-  } else {
-    td.textContent = value;
-  }
-
-  tr.appendChild(td);
-});
+        if (keyword && value.toLowerCase().includes(keyword)) {
+          const regex = new RegExp(`(${keyword})`, 'gi');
+          td.innerHTML = value.replace(regex, '<span class="highlight">$1</span>');
+        } else {
+          td.textContent = value;
+        }
 
         tr.appendChild(td);
       });
@@ -193,40 +204,22 @@ fields.forEach(field => {
     });
   }
 
-  // 載入JSON資料
-  fetch('data/heroes.json')
-  .then(response => response.json())
-  .then(data => {
-    heroesData = data;  // 存起來以便搜尋用
-    renderTable(heroesData);
-  })
-  .catch(error => {
-    console.error('載入英雄資料錯誤:', error);
-    const tbody = document.querySelector('#heroes-table tbody');
-    tbody.innerHTML = '<tr><td colspan="19">無法載入英雄資料</td></tr>';
+  // 回到頂部按鈕邏輯
+  const backToTopBtn = document.getElementById('backToTop');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 200) {
+      backToTopBtn.style.display = 'block';
+    } else {
+      backToTopBtn.style.display = 'none';
+    }
   });
 
-  // 監聽搜尋框輸入，篩選英雄名稱
-  const searchInput = document.getElementById('search-input');
-searchInput.addEventListener('input', () => {
-  const keyword = searchInput.value.trim().toLowerCase();
-
-  const filtered = heroesData.filter(hero => {
-    const targetFields = [
-      hero.name,
-      hero.glory,
-      hero.equipment_new,
-      hero.equipment_old,
-	  hero.promotion,
-	  hero.personality,
-	  hero.traits
-    ].join(' ').toLowerCase();
-
-    return targetFields.includes(keyword);
+  backToTopBtn.addEventListener('click', () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
   });
-
-  renderTable(filtered);
-});
 </script>
 
 </body>
