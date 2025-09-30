@@ -14,6 +14,8 @@ function loadComponent(selector, url) {
 
 // 自動載入 nav（如有需要可擴充更多元件）
 document.addEventListener('DOMContentLoaded', function() {
-  loadComponent('#nav-placeholder', '../components/nav/nav.html');
-  loadComponent('#footer-container', '../components/footer/footer.html');
+  const baseURL = window.location.origin + window.location.pathname.split('/').slice(0, 3).join('/');
+
+  loadComponent('#nav-placeholder', baseURL + '/components/nav/nav.html');
+  loadComponent('#footer-container', baseURL + '/components/footer/footer.html');
 });
