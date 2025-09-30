@@ -1,15 +1,15 @@
-fetch('data/heroes.json')
-  .then(response => response.json())
-  .then(data => {
-    const container = document.getElementById('hero-list');
+fetch("data/heroes.json")
+  .then((response) => response.json())
+  .then((data) => {
+    const container = document.getElementById("hero-list");
 
-    data.forEach(hero => {
-      const card = document.createElement('div');
-      card.className = 'hero-card';
+    data.forEach((hero) => {
+      const card = document.createElement("div");
+      card.className = "hero-card";
       card.innerHTML = `
         <h2>${hero.name}</h2>
         <ul>
-		<li><strong>英雄名稱：</strong> ${hero.name}</li>
+		      <li><strong>英雄名稱：</strong> ${hero.name}</li>
           <li><strong>光輝：</strong> ${hero.glory}</li>
           <li><strong>拜官：</strong> ${hero.promotion}</li>
           <li><strong>初始：</strong> ${hero.initial}</li>
@@ -33,7 +33,8 @@ fetch('data/heroes.json')
       container.appendChild(card);
     });
   })
-  .catch(error => {
-    console.error('載入英雄資料失敗:', error);
-    document.getElementById('hero-list').innerText = '載入資料失敗，請檢查 heroes.json 是否存在。';
+  .catch((error) => {
+    console.error("載入英雄資料失敗:", error);
+    document.getElementById("hero-list").innerText =
+      "載入資料失敗，請檢查 heroes.json 是否存在。";
   });
