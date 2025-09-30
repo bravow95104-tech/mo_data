@@ -84,7 +84,7 @@
   </div>
 </nav>
 
-<h1>英雄清單</h1>
+<h1></h1>
 
 <!-- 搜尋框 -->
 <input type="text" id="search-input" placeholder="搜尋英雄名稱、光輝、裝備卡..." />
@@ -106,12 +106,9 @@
       <th>敏捷</th>
       <th>運氣</th>
       <th>積極度<br>(生變前)</th>
-      <th>積極度<br>(生變後)</th>
       <th>裝備卡<br>(新專)</th>
-      <th>新專倍率</th>
       <th>裝備卡<br>(舊專)</th>
-      <th>天生技</th>
-      <th>生變<br>技能</th>
+
     </tr>
   </thead>
   <tbody>
@@ -179,12 +176,11 @@
     data.forEach(hero => {
       const tr = document.createElement('tr');
       const fields = [
-        'name', 'glory', 'promotion', 'initial', 'traits', 'personality', 'element',
-        'str', 'int', 'vit', 'agi', 'luk',
-        'aggression_before', 'aggression_after',
-        'equipment_new', 'new_multiplier', 'equipment_old',
-        'innate_skill', 'transformation_skill'
-      ];
+  'name', 'glory', 'promotion', 'initial', 'traits', 'personality', 'element',
+  'str', 'int', 'vit', 'agi', 'luk',
+  'aggression_before', 'equipment_new', 'equipment_old'
+];
+
 
       fields.forEach(field => {
         const td = document.createElement('td');
