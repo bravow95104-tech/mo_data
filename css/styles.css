@@ -86,33 +86,30 @@ nav .dropdown-toggle:hover {
   font-weight: bold;
 }
 
-/* 英雄詳細 Modal 的左右分欄容器 */
+/* Modal 內詳細資料分欄 */
 .hero-details-container {
   display: flex;
-  gap: 30px;
-  padding: 20px;
-  max-width: 800px;
-  margin: auto;
+  flex-direction: row;
+  gap: 20px;
+  padding: 10px;
   flex-wrap: wrap;
 }
 
 .hero-column {
   flex: 1;
-  min-width: 300px;
+  min-width: 280px;
 }
 
 .hero-column p {
   margin: 6px 0;
-  font-size: 15px;
-  line-height: 1.5;
 }
 
 .hero-column h2 {
   margin-top: 0;
   color: #3399ff;
-  font-size: 22px;
   text-align: center;
 }
+
 
 /* RWD 手機優化（選配） */
 @media (max-width: 600px) {
