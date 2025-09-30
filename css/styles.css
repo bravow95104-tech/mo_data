@@ -103,7 +103,7 @@ nav .dropdown-toggle:hover {
   z-index: 2001;
 }
 
-/* 英雄名稱置中 */
+/* Modal 英雄名稱置中 */
 .hero-name {
   text-align: center;
   font-size: 24px;
@@ -113,14 +113,29 @@ nav .dropdown-toggle:hover {
   padding-bottom: 10px;
 }
 
-/* 左右欄容器 */
+/* Modal 內部兩欄橫排 */
 .hero-details-container {
   display: flex;
-  flex-direction: row;
-  gap: 20px;
-  padding: 10px;
+  justify-content: space-between;
+  gap: 40px;
+  padding: 10px 20px;
   flex-wrap: wrap;
+  max-width: 800px;
+  margin: 0 auto;
 }
+
+/* 左右欄樣式 */
+.hero-column {
+  flex: 1 1 45%;
+  min-width: 280px;
+}
+
+.hero-column p {
+  margin: 8px 0;
+  font-size: 15px;
+  line-height: 1.4;
+}
+
 
 /* 每一欄 */
 .hero-column {
