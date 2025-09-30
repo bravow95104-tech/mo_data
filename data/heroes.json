@@ -20,7 +20,9 @@
     "equipment_old": "臥龍訣卡",
     "equipment_old_data": "智慧+60",
     "innate_skill": "東風陣(封印)-群",
-    "transformation_skill": "雷鳴颶風"
+    "transformation_skill": "雷鳴颶風",
+    "magnification_new": "2.5x",
+    "magnification_old": "2x"
   },
   {
     "name": "姜子牙",
@@ -43,7 +45,9 @@
     "equipment_old": "打神鞭卡",
     "equipment_old_data": "智慧+70",
     "innate_skill": "怒水封神(冰凍)-群",
-    "transformation_skill": "怒水封神"
+    "transformation_skill": "怒水封神",
+    "magnification_new": "2x",
+    "magnification_old": "2x"
   },
   {
     "name": "左慈",
@@ -66,7 +70,9 @@
     "equipment_old": "拐子劍卡",
     "equipment_old_data": "智慧+70",
     "innate_skill": "怒水封神(冰凍)-群",
-    "transformation_skill": "涵虛沒溺陣"
+    "transformation_skill": "涵虛沒溺陣",
+    "magnification_new": "2x",
+    "magnification_old": "2x"
   },
   {
     "name": "司馬懿",
@@ -89,7 +95,9 @@
     "equipment_old": "妖神拂塵卡",
     "equipment_old_data": "智慧+40",
     "innate_skill": "紫魂蛟(單)",
-    "transformation_skill": "紫魂蛟滅宴"
+    "transformation_skill": "紫魂蛟滅宴",
+    "magnification_new": "2.5x",
+    "magnification_old": "2x"
   },
   {
     "name": "妲己",
@@ -112,7 +120,9 @@
     "equipment_old": "狐尾圍巾卡",
     "equipment_old_data": "智慧+65",
     "innate_skill": "狐尾鞭",
-    "transformation_skill": "狐尾銷魂"
+    "transformation_skill": "狐尾銷魂",
+    "magnification_new": "2.5x",
+    "magnification_old": "2x"
   },
   {
     "name": "盤古",
@@ -135,7 +145,9 @@
     "equipment_old": "開天斧卡",
     "equipment_old_data": "體質+70",
     "innate_skill": "",
-    "transformation_skill": "開闢洪荒"
+    "transformation_skill": "開闢洪荒",
+    "magnification_new": "2x",
+    "magnification_old": "2x"
   },
   {
     "name": "呂布",
@@ -158,7 +170,9 @@
     "equipment_old": "方天晝戟卡",
     "equipment_old_data": "攻擊+60",
     "innate_skill": "",
-    "transformation_skill": "橫掃"
+    "transformation_skill": "橫掃",
+    "magnification_new": "2.5x",
+    "magnification_old": "2x"
   },
   {
     "name": "國雄",
@@ -181,7 +195,9 @@
     "equipment_old": "熱血棒球卡",
     "equipment_old_data": "攻擊+50",
     "innate_skill": "",
-    "transformation_skill": "強棒打擊"
+    "transformation_skill": "強棒打擊",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "林沖",
@@ -204,7 +220,9 @@
     "equipment_old": "天雄矛卡",
     "equipment_old_data": "力量+40",
     "innate_skill": "",
-    "transformation_skill": "迅急連擊"
+    "transformation_skill": "迅急連擊",
+    "magnification_new": "2.5x",
+    "magnification_old": "2x"
   },
   {
     "name": "周瑜",
@@ -227,7 +245,9 @@
     "equipment_old": "弒仙訣卡",
     "equipment_old_data": "智慧+50",
     "innate_skill": "雷神鎖",
-    "transformation_skill": "神火雷鎖"
+    "transformation_skill": "神火雷鎖",
+    "magnification_new": "2x",
+    "magnification_old": "2x"
   },
   {
     "name": "吳用",
@@ -250,7 +270,9 @@
     "equipment_old": "勾魂銅鍊卡",
     "equipment_old_data": "命中+30",
     "innate_skill": "地轉石移(石化)-群",
-    "transformation_skill": "地轉石移"
+    "transformation_skill": "地轉石移",
+    "magnification_new": "2x",
+    "magnification_old": "2x"
   },
   {
     "name": "女媧",
@@ -273,7 +295,9 @@
     "equipment_old": "補天彩石卡",
     "equipment_old_data": "攻擊+70",
     "innate_skill": "",
-    "transformation_skill": "狙殺連擊"
+    "transformation_skill": "狙殺連擊",
+    "magnification_new": "2x",
+    "magnification_old": "2x"
   },
   {
     "name": "卞氏",
@@ -296,7 +320,9 @@
     "equipment_old": "",
     "equipment_old_data": "",
     "innate_skill": "金相召來",
-    "transformation_skill": "鋒相鉥心"
+    "transformation_skill": "鋒相鉥心",
+    "magnification_new": "",
+    "magnification_old": ""
   },
   {
     "name": "甘夫人",
@@ -319,7 +345,9 @@
     "equipment_old": "",
     "equipment_old_data": "",
     "innate_skill": "",
-    "transformation_skill": "劍閃散華"
+    "transformation_skill": "劍閃散華",
+    "magnification_new": "",
+    "magnification_old": ""
   },
   {
     "name": "潘夫人",
@@ -342,7 +370,9 @@
     "equipment_old": "",
     "equipment_old_data": "",
     "innate_skill": "纏水生成",
-    "transformation_skill": "冷冽寒霜"
+    "transformation_skill": "冷冽寒霜",
+    "magnification_new": "",
+    "magnification_old": ""
   },
   {
     "name": "神農",
@@ -365,7 +395,9 @@
     "equipment_old": "黃金稻穗卡",
     "equipment_old_data": "體質+70",
     "innate_skill": "紅沙陣(群)",
-    "transformation_skill": "土動命移陣"
+    "transformation_skill": "土動命移陣",
+    "magnification_new": "2x",
+    "magnification_old": "2x"
   },
   {
     "name": "于吉",
@@ -388,7 +420,9 @@
     "equipment_old": "祁雨招幡卡",
     "equipment_old_data": "防禦+32",
     "innate_skill": "風吼陣(群)",
-    "transformation_skill": "木雷光影陣"
+    "transformation_skill": "木雷光影陣",
+    "magnification_new": "2x",
+    "magnification_old": "2x"
   },
   {
     "name": "典韋",
@@ -411,7 +445,9 @@
     "equipment_old": "牛頭巨斧卡",
     "equipment_old_data": "力量+24",
     "innate_skill": "",
-    "transformation_skill": "迅急連擊"
+    "transformation_skill": "迅急連擊",
+    "magnification_new": "2x",
+    "magnification_old": "2x"
   },
   {
     "name": "哪吒",
@@ -434,7 +470,9 @@
     "equipment_old": "噴射滑板卡",
     "equipment_old_data": "敏捷+40",
     "innate_skill": "",
-    "transformation_skill": "狙殺連擊"
+    "transformation_skill": "狙殺連擊",
+    "magnification_new": "2.5x",
+    "magnification_old": "2x"
   },
   {
     "name": "通天教主",
@@ -457,7 +495,9 @@
     "equipment_old": "六魂旛卡",
     "equipment_old_data": "智慧+60",
     "innate_skill": "烈燄陣(群)",
-    "transformation_skill": "火台炬胤陣"
+    "transformation_skill": "火台炬胤陣",
+    "magnification_new": "2x",
+    "magnification_old": "2x"
   },
   {
     "name": "張遼",
@@ -480,7 +520,9 @@
     "equipment_old": "文遠刀卡",
     "equipment_old_data": "攻擊+50",
     "innate_skill": "",
-    "transformation_skill": "禁地劍圍"
+    "transformation_skill": "禁地劍圍",
+    "magnification_new": "2x",
+    "magnification_old": "2x"
   },
   {
     "name": "燃燈道人",
@@ -503,7 +545,9 @@
     "equipment_old": "強力探照燈卡",
     "equipment_old_data": "智慧+52",
     "innate_skill": "烈燄陣(群)",
-    "transformation_skill": "火台炬胤陣"
+    "transformation_skill": "火台炬胤陣",
+    "magnification_new": "2x",
+    "magnification_old": "2x"
   },
   {
     "name": "愛麗絲",
@@ -526,7 +570,9 @@
     "equipment_old": "天使光環卡",
     "equipment_old_data": "HP+1100",
     "innate_skill": "強化醫療(補血)",
-    "transformation_skill": "癒傷術"
+    "transformation_skill": "癒傷術",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "龍吉公主",
@@ -549,7 +595,9 @@
     "equipment_old": "霧露仙網卡",
     "equipment_old_data": "攻擊+50",
     "innate_skill": "紅水陣(群)",
-    "transformation_skill": "水袞獄傷陣"
+    "transformation_skill": "水袞獄傷陣",
+    "magnification_new": "2.5x",
+    "magnification_old": "2x"
   },
   {
     "name": "許褚",
@@ -572,7 +620,9 @@
     "equipment_old": "天地雙鎚卡",
     "equipment_old_data": "攻擊+30",
     "innate_skill": "",
-    "transformation_skill": "會心強擊"
+    "transformation_skill": "會心強擊",
+    "magnification_new": "2x",
+    "magnification_old": "2x"
   },
   {
     "name": "楊戩",
@@ -595,7 +645,9 @@
     "equipment_old": "哮天犬卡",
     "equipment_old_data": "攻擊+60",
     "innate_skill": "",
-    "transformation_skill": "會心強擊"
+    "transformation_skill": "會心強擊",
+    "magnification_new": "2x",
+    "magnification_old": "2x"
   },
   {
     "name": "公孫勝",
@@ -618,7 +670,9 @@
     "equipment_old": "太師拂塵卡",
     "equipment_old_data": "運氣+30",
     "innate_skill": "金光陣(群)",
-    "transformation_skill": "金象噬魂陣"
+    "transformation_skill": "金象噬魂陣",
+    "magnification_new": "2x",
+    "magnification_old": "2x"
   },
   {
     "name": "關羽",
@@ -641,7 +695,9 @@
     "equipment_old": "偃月刀卡",
     "equipment_old_data": "力量+40",
     "innate_skill": "",
-    "transformation_skill": "會心強擊"
+    "transformation_skill": "會心強擊",
+    "magnification_new": "2.5x",
+    "magnification_old": "2x"
   },
   {
     "name": "趙雲",
@@ -664,7 +720,9 @@
     "equipment_old": "青釭劍卡",
     "equipment_old_data": "攻擊+50",
     "innate_skill": "",
-    "transformation_skill": "蒼色星槍"
+    "transformation_skill": "蒼色星槍",
+    "magnification_new": "2x",
+    "magnification_old": "2x"
   },
   {
     "name": "伏羲",
@@ -687,7 +745,9 @@
     "equipment_old": "八卦卡",
     "equipment_old_data": "智慧+70",
     "innate_skill": "百擊刃斬符(單)",
-    "transformation_skill": "天金刃符"
+    "transformation_skill": "天金刃符",
+    "magnification_new": "2x",
+    "magnification_old": "2x"
   },
   {
     "name": "太歲寶寶",
@@ -710,7 +770,9 @@
     "equipment_old": "太歲奶瓶卡",
     "equipment_old_data": "體質+36",
     "innate_skill": "百擊刃斬符(單)",
-    "transformation_skill": "天金刃符"
+    "transformation_skill": "天金刃符",
+    "magnification_new": "#N/A",
+    "magnification_old": "2x"
   },
   {
     "name": "扈三娘",
@@ -733,7 +795,9 @@
     "equipment_old": "護體咒甲卡",
     "equipment_old_data": "防禦+20",
     "innate_skill": "",
-    "transformation_skill": "會心強擊"
+    "transformation_skill": "會心強擊",
+    "magnification_new": "2x",
+    "magnification_old": "2x"
   },
   {
     "name": "孫策",
@@ -756,7 +820,9 @@
     "equipment_old": "激神劍卡",
     "equipment_old_data": "力量+18",
     "innate_skill": "",
-    "transformation_skill": "會心強擊"
+    "transformation_skill": "會心強擊",
+    "magnification_new": "2.5x",
+    "magnification_old": "2x"
   },
   {
     "name": "聞仲",
@@ -779,7 +845,9 @@
     "equipment_old": "雌雄金鞭卡",
     "equipment_old_data": "運氣+70",
     "innate_skill": "驚魄刺刃(單)",
-    "transformation_skill": "應元雷法"
+    "transformation_skill": "應元雷法",
+    "magnification_new": "2x",
+    "magnification_old": "2x"
   },
   {
     "name": "曹操",
@@ -802,7 +870,9 @@
     "equipment_old": "孟德新書卡",
     "equipment_old_data": "HP+1200",
     "innate_skill": "轟天擊斷(單)",
-    "transformation_skill": "天土擊符"
+    "transformation_skill": "天土擊符",
+    "magnification_new": "2.5x",
+    "magnification_old": "2x"
   },
   {
     "name": "張飛",
@@ -825,7 +895,9 @@
     "equipment_old": "丈八蛇矛卡",
     "equipment_old_data": "攻擊+55",
     "innate_skill": "",
-    "transformation_skill": "會心強擊"
+    "transformation_skill": "會心強擊",
+    "magnification_new": "2x",
+    "magnification_old": "2x"
   },
   {
     "name": "天眼軍師",
@@ -848,7 +920,9 @@
     "equipment_old": "神奇魔毯卡",
     "equipment_old_data": "智慧+48",
     "innate_skill": "百擊刃斬(單)",
-    "transformation_skill": "長。打神刃"
+    "transformation_skill": "長。打神刃",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "蟠桃仙女",
@@ -871,7 +945,9 @@
     "equipment_old": "成熟蟠桃卡",
     "equipment_old_data": "HP+1250",
     "innate_skill": "癒傷術",
-    "transformation_skill": "治癒之風"
+    "transformation_skill": "治癒之風",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "虎威將軍",
@@ -894,7 +970,9 @@
     "equipment_old": "手指虎卡",
     "equipment_old_data": "攻擊+45",
     "innate_skill": "",
-    "transformation_skill": "會心強擊"
+    "transformation_skill": "會心強擊",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "宮本武藏",
@@ -917,7 +995,9 @@
     "equipment_old": "和泉守兼定卡",
     "equipment_old_data": "攻擊+77",
     "innate_skill": "",
-    "transformation_skill": "二天空明"
+    "transformation_skill": "二天空明",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "佐佐木小次郎",
@@ -940,7 +1020,9 @@
     "equipment_old": "備前長船長光卡",
     "equipment_old_data": "攻擊+77",
     "innate_skill": "",
-    "transformation_skill": "嚴流落切"
+    "transformation_skill": "嚴流落切",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "羊佗",
@@ -963,7 +1045,9 @@
     "equipment_old": "",
     "equipment_old_data": "",
     "innate_skill": "",
-    "transformation_skill": "情意綿綿拳"
+    "transformation_skill": "情意綿綿拳",
+    "magnification_new": "",
+    "magnification_old": ""
   },
   {
     "name": "玉鼎真人",
@@ -986,7 +1070,9 @@
     "equipment_old": "斬神劍卡",
     "equipment_old_data": "防禦力+25",
     "innate_skill": "裂金術(單)",
-    "transformation_skill": "金象噬魂陣"
+    "transformation_skill": "金象噬魂陣",
+    "magnification_new": "2x",
+    "magnification_old": "2x"
   },
   {
     "name": "雲霄",
@@ -1009,7 +1095,9 @@
     "equipment_old": "九曲黃河陣卡",
     "equipment_old_data": "體質+42",
     "innate_skill": "裂金術(單)",
-    "transformation_skill": "金象噬魂陣"
+    "transformation_skill": "金象噬魂陣",
+    "magnification_new": "2x",
+    "magnification_old": "2x"
   },
   {
     "name": "火靈聖母",
@@ -1032,7 +1120,9 @@
     "equipment_old": "金霞冠卡",
     "equipment_old_data": "HP+1100",
     "innate_skill": "三昧真火(單)",
-    "transformation_skill": "火台炬胤陣"
+    "transformation_skill": "火台炬胤陣",
+    "magnification_new": "2x",
+    "magnification_old": "2x"
   },
   {
     "name": "陸遜",
@@ -1055,7 +1145,9 @@
     "equipment_old": "伯言羽扇卡",
     "equipment_old_data": "智慧+30",
     "innate_skill": "寒冰術(單)",
-    "transformation_skill": "水袞獄傷陣"
+    "transformation_skill": "水袞獄傷陣",
+    "magnification_new": "2x",
+    "magnification_old": "2x"
   },
   {
     "name": "太乙真人",
@@ -1078,7 +1170,9 @@
     "equipment_old": "真人拂塵卡",
     "equipment_old_data": "HP+1000",
     "innate_skill": "三昧真火(單)",
-    "transformation_skill": "火台炬胤陣"
+    "transformation_skill": "火台炬胤陣",
+    "magnification_new": "2x",
+    "magnification_old": "2x"
   },
   {
     "name": "小護士",
@@ -1101,7 +1195,9 @@
     "equipment_old": "愛的針筒卡",
     "equipment_old_data": "體質+35",
     "innate_skill": "妙手回春(補血)",
-    "transformation_skill": "強化醫療"
+    "transformation_skill": "強化醫療",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "莉莉絲",
@@ -1124,7 +1220,9 @@
     "equipment_old": "黃金手環卡",
     "equipment_old_data": "命中值+36",
     "innate_skill": "三昧真火(單)",
-    "transformation_skill": "地獄火"
+    "transformation_skill": "地獄火",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "彩衣天女",
@@ -1147,7 +1245,9 @@
     "equipment_old": "蓮華法杖卡",
     "equipment_old_data": "智慧+27",
     "innate_skill": "五雷術(單)",
-    "transformation_skill": "木雷光影陣"
+    "transformation_skill": "木雷光影陣",
+    "magnification_new": "2x",
+    "magnification_old": "2x"
   },
   {
     "name": "荀攸",
@@ -1170,7 +1270,9 @@
     "equipment_old": "碧玉寶珠卡",
     "equipment_old_data": "HP+750",
     "innate_skill": "五雷術(單)",
-    "transformation_skill": "木雷光影陣"
+    "transformation_skill": "木雷光影陣",
+    "magnification_new": "2x",
+    "magnification_old": "2x"
   },
   {
     "name": "水滴精靈",
@@ -1193,7 +1295,9 @@
     "equipment_old": "加壓水槍卡",
     "equipment_old_data": "攻擊力+26",
     "innate_skill": "寒冰術(單)",
-    "transformation_skill": "水袞獄傷陣"
+    "transformation_skill": "水袞獄傷陣",
+    "magnification_new": "2x",
+    "magnification_old": "2x"
   },
   {
     "name": "姜維",
@@ -1216,7 +1320,9 @@
     "equipment_old": "地煞石魁卡",
     "equipment_old_data": "HP+900",
     "innate_skill": "五雷術(單)",
-    "transformation_skill": "天火召臨"
+    "transformation_skill": "天火召臨",
+    "magnification_new": "2.5x",
+    "magnification_old": "2x"
   },
   {
     "name": "胡喜媚",
@@ -1239,7 +1345,9 @@
     "equipment_old": "香蘿羽扇卡",
     "equipment_old_data": "運氣+48",
     "innate_skill": "裂金術(單)",
-    "transformation_skill": "金象噬魂陣"
+    "transformation_skill": "金象噬魂陣",
+    "magnification_new": "2x",
+    "magnification_old": "2x"
   },
   {
     "name": "魔力精靈",
@@ -1262,7 +1370,9 @@
     "equipment_old": "加壓油槍卡",
     "equipment_old_data": "HP+1000",
     "innate_skill": "破擊斷符(單)",
-    "transformation_skill": "天土擊符"
+    "transformation_skill": "天土擊符",
+    "magnification_new": "2x",
+    "magnification_old": "2x"
   },
   {
     "name": "魔禮青",
@@ -1285,7 +1395,9 @@
     "equipment_old": "青雲劍卡",
     "equipment_old_data": "攻擊+32",
     "innate_skill": "裂金術(單)",
-    "transformation_skill": "金象噬魂陣"
+    "transformation_skill": "金象噬魂陣",
+    "magnification_new": "2x",
+    "magnification_old": "2x"
   },
   {
     "name": "程昱",
@@ -1308,7 +1420,9 @@
     "equipment_old": "軍師座車卡",
     "equipment_old_data": "防禦+25",
     "innate_skill": "淩刺刃符(單)",
-    "transformation_skill": "天木刺符"
+    "transformation_skill": "天木刺符",
+    "magnification_new": "2x",
+    "magnification_old": "2x"
   },
   {
     "name": "宋江",
@@ -1331,7 +1445,9 @@
     "equipment_old": "鐵刃骨扇卡",
     "equipment_old_data": "攻擊+27",
     "innate_skill": "擊斷刺符(單)",
-    "transformation_skill": "天水斷符"
+    "transformation_skill": "天水斷符",
+    "magnification_new": "2x",
+    "magnification_old": "2x"
   },
   {
     "name": "徐庶",
@@ -1354,7 +1470,9 @@
     "equipment_old": "天罡稜鏡卡",
     "equipment_old_data": "智慧+18",
     "innate_skill": "破擊斷符(單)",
-    "transformation_skill": "天土擊符"
+    "transformation_skill": "天土擊符",
+    "magnification_new": "2.5x",
+    "magnification_old": "2x"
   },
   {
     "name": "孫權",
@@ -1377,7 +1495,9 @@
     "equipment_old": "仲謀權杖卡",
     "equipment_old_data": "體質+35",
     "innate_skill": "擊斷刺符(單)",
-    "transformation_skill": "天水斷符"
+    "transformation_skill": "天水斷符",
+    "magnification_new": "2x",
+    "magnification_old": "2x"
   },
   {
     "name": "郭嘉",
@@ -1400,7 +1520,9 @@
     "equipment_old": "河洛羅經卡",
     "equipment_old_data": "智慧+24",
     "innate_skill": "裂金術(單)",
-    "transformation_skill": "算無疑策"
+    "transformation_skill": "算無疑策",
+    "magnification_new": "2.5x",
+    "magnification_old": "2x"
   },
   {
     "name": "龐統",
@@ -1423,7 +1545,9 @@
     "equipment_old": "鳳雛訣卡",
     "equipment_old_data": "智慧+30",
     "innate_skill": "裂斬擊符(單)",
-    "transformation_skill": "天火斬符"
+    "transformation_skill": "天火斬符",
+    "magnification_new": "2.5x",
+    "magnification_old": "2x"
   },
   {
     "name": "荀彧",
@@ -1446,7 +1570,9 @@
     "equipment_old": "陽嗔聖袍卡",
     "equipment_old_data": "HP+600",
     "innate_skill": "淩刺刃符(單)",
-    "transformation_skill": "天木刺符"
+    "transformation_skill": "天木刺符",
+    "magnification_new": "2x",
+    "magnification_old": "2x"
   },
   {
     "name": "魯肅",
@@ -1469,7 +1595,9 @@
     "equipment_old": "星文劍卡",
     "equipment_old_data": "HP+800",
     "innate_skill": "淩刺刃符(單)",
-    "transformation_skill": "天木刺符"
+    "transformation_skill": "天木刺符",
+    "magnification_new": "2x",
+    "magnification_old": "2x"
   },
   {
     "name": "姬發",
@@ -1492,7 +1620,9 @@
     "equipment_old": "武王寶劍卡",
     "equipment_old_data": "智慧+28",
     "innate_skill": "擊斷刺符(單)",
-    "transformation_skill": "天金刃符"
+    "transformation_skill": "天金刃符",
+    "magnification_new": "2x",
+    "magnification_old": "2x"
   },
   {
     "name": "男僕",
@@ -1515,7 +1645,9 @@
     "equipment_old": "燕尾服卡",
     "equipment_old_data": "智慧+30",
     "innate_skill": "裂金術(單)",
-    "transformation_skill": "金象噬魂陣"
+    "transformation_skill": "金象噬魂陣",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "紂王",
@@ -1538,7 +1670,9 @@
     "equipment_old": "殷商大劍卡",
     "equipment_old_data": "力量+30",
     "innate_skill": "",
-    "transformation_skill": "會心強擊"
+    "transformation_skill": "會心強擊",
+    "magnification_new": "2x",
+    "magnification_old": "2x"
   },
   {
     "name": "黃天化",
@@ -1561,7 +1695,9 @@
     "equipment_old": "莫邪巨劍卡",
     "equipment_old_data": "攻擊+40",
     "innate_skill": "",
-    "transformation_skill": "會心強擊"
+    "transformation_skill": "會心強擊",
+    "magnification_new": "2x",
+    "magnification_old": "2x"
   },
   {
     "name": "關勝",
@@ -1584,7 +1720,9 @@
     "equipment_old": "天勇偃月卡",
     "equipment_old_data": "力量+24",
     "innate_skill": "",
-    "transformation_skill": "會心強擊"
+    "transformation_skill": "會心強擊",
+    "magnification_new": "2.5x",
+    "magnification_old": "2x"
   },
   {
     "name": "史進",
@@ -1607,7 +1745,9 @@
     "equipment_old": "天微刀卡",
     "equipment_old_data": "攻擊+35",
     "innate_skill": "",
-    "transformation_skill": "會心強擊"
+    "transformation_skill": "會心強擊",
+    "magnification_new": "2.5x",
+    "magnification_old": "2x"
   },
   {
     "name": "李逵",
@@ -1630,7 +1770,9 @@
     "equipment_old": "天殺雙斧卡",
     "equipment_old_data": "力量+24",
     "innate_skill": "",
-    "transformation_skill": "會心強擊"
+    "transformation_skill": "會心強擊",
+    "magnification_new": "2x",
+    "magnification_old": "2x"
   },
   {
     "name": "太史慈",
@@ -1653,7 +1795,9 @@
     "equipment_old": "龍形劍卡",
     "equipment_old_data": "力量+15",
     "innate_skill": "",
-    "transformation_skill": "會心強擊"
+    "transformation_skill": "會心強擊",
+    "magnification_new": "2x",
+    "magnification_old": "2x"
   },
   {
     "name": "魯智深",
@@ -1676,7 +1820,9 @@
     "equipment_old": "渾鐵禪杖卡",
     "equipment_old_data": "力量+16",
     "innate_skill": "",
-    "transformation_skill": "會心強擊"
+    "transformation_skill": "會心強擊",
+    "magnification_new": "2x",
+    "magnification_old": "2x"
   },
   {
     "name": "關銀屏",
@@ -1699,7 +1845,9 @@
     "equipment_old": "百穗銀槍卡",
     "equipment_old_data": "力量+23",
     "innate_skill": "",
-    "transformation_skill": "會心強擊"
+    "transformation_skill": "會心強擊",
+    "magnification_new": "2.5x",
+    "magnification_old": "2x"
   },
   {
     "name": "董卓",
@@ -1722,7 +1870,9 @@
     "equipment_old": "大龍袍卡",
     "equipment_old_data": "力量+22",
     "innate_skill": "",
-    "transformation_skill": "會心強擊"
+    "transformation_skill": "會心強擊",
+    "magnification_new": "2x",
+    "magnification_old": "2x"
   },
   {
     "name": "關興",
@@ -1745,7 +1895,9 @@
     "equipment_old": "真偃月刀卡",
     "equipment_old_data": "力量+20",
     "innate_skill": "",
-    "transformation_skill": "會心強擊"
+    "transformation_skill": "會心強擊",
+    "magnification_new": "2x",
+    "magnification_old": "2x"
   },
   {
     "name": "龐德",
@@ -1768,7 +1920,9 @@
     "equipment_old": "木棺卡",
     "equipment_old_data": "力量+28",
     "innate_skill": "",
-    "transformation_skill": "會心強擊"
+    "transformation_skill": "會心強擊",
+    "magnification_new": "2x",
+    "magnification_old": "2x"
   },
   {
     "name": "夏侯惇",
@@ -1791,7 +1945,9 @@
     "equipment_old": "毒蛇眼罩卡",
     "equipment_old_data": "力量+18",
     "innate_skill": "",
-    "transformation_skill": "會心強擊"
+    "transformation_skill": "會心強擊",
+    "magnification_new": "2x",
+    "magnification_old": "2x"
   },
   {
     "name": "阿魯巴巴",
@@ -1814,7 +1970,9 @@
     "equipment_old": "芝麻餅卡",
     "equipment_old_data": "體質+42",
     "innate_skill": "",
-    "transformation_skill": "會心強擊"
+    "transformation_skill": "會心強擊",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "普賢真人",
@@ -1837,7 +1995,9 @@
     "equipment_old": "長虹索卡",
     "equipment_old_data": "敏捷+26",
     "innate_skill": "",
-    "transformation_skill": "狙殺連擊"
+    "transformation_skill": "狙殺連擊",
+    "magnification_new": "2x",
+    "magnification_old": "2x"
   },
   {
     "name": "王貴人",
@@ -1860,7 +2020,9 @@
     "equipment_old": "玄音琵琶卡",
     "equipment_old_data": "智慧+46",
     "innate_skill": "",
-    "transformation_skill": "狙殺連擊"
+    "transformation_skill": "狙殺連擊",
+    "magnification_new": "2x",
+    "magnification_old": "2x"
   },
   {
     "name": "魏延",
@@ -1883,7 +2045,9 @@
     "equipment_old": "逆炎大刀卡",
     "equipment_old_data": "命中+40",
     "innate_skill": "",
-    "transformation_skill": "狙殺連擊"
+    "transformation_skill": "狙殺連擊",
+    "magnification_new": "2x",
+    "magnification_old": "2x"
   },
   {
     "name": "瓊英",
@@ -1906,7 +2070,9 @@
     "equipment_old": "矢鐵貓卡",
     "equipment_old_data": "敏捷+24",
     "innate_skill": "",
-    "transformation_skill": "狙殺連擊"
+    "transformation_skill": "狙殺連擊",
+    "magnification_new": "2x",
+    "magnification_old": "2x"
   },
   {
     "name": "雲中子",
@@ -1929,7 +2095,9 @@
     "equipment_old": "通天神火柱卡",
     "equipment_old_data": "運氣+40",
     "innate_skill": "",
-    "transformation_skill": "狙殺連擊"
+    "transformation_skill": "狙殺連擊",
+    "magnification_new": "2x",
+    "magnification_old": "2x"
   },
   {
     "name": "劉備",
@@ -1952,7 +2120,9 @@
     "equipment_old": "陰陽雙劍卡",
     "equipment_old_data": "攻擊+35",
     "innate_skill": "",
-    "transformation_skill": "狙殺連擊"
+    "transformation_skill": "狙殺連擊",
+    "magnification_new": "2.5x",
+    "magnification_old": "2x"
   },
   {
     "name": "張郃",
@@ -1975,7 +2145,9 @@
     "equipment_old": "五行珠卡",
     "equipment_old_data": "敏捷+15",
     "innate_skill": "",
-    "transformation_skill": "狙殺連擊"
+    "transformation_skill": "狙殺連擊",
+    "magnification_new": "2x",
+    "magnification_old": "2x"
   },
   {
     "name": "馬良",
@@ -1998,7 +2170,9 @@
     "equipment_old": "熾焰弓卡",
     "equipment_old_data": "敏捷+25",
     "innate_skill": "",
-    "transformation_skill": "迅急連擊"
+    "transformation_skill": "迅急連擊",
+    "magnification_new": "2x",
+    "magnification_old": "2x"
   },
   {
     "name": "花榮",
@@ -2021,7 +2195,9 @@
     "equipment_old": "天英弓卡",
     "equipment_old_data": "敏捷+20",
     "innate_skill": "",
-    "transformation_skill": "百步穿楊"
+    "transformation_skill": "百步穿楊",
+    "magnification_new": "2x",
+    "magnification_old": "2x"
   },
   {
     "name": "黃忠",
@@ -2044,7 +2220,9 @@
     "equipment_old": "穿雲弓卡",
     "equipment_old_data": "攻擊+50",
     "innate_skill": "",
-    "transformation_skill": "百步穿楊"
+    "transformation_skill": "百步穿楊",
+    "magnification_new": "2.5x",
+    "magnification_old": "2x"
   },
   {
     "name": "夏侯淵",
@@ -2067,7 +2245,9 @@
     "equipment_old": "妙才磯砲卡",
     "equipment_old_data": "攻擊+35",
     "innate_skill": "",
-    "transformation_skill": "狙殺連擊"
+    "transformation_skill": "狙殺連擊",
+    "magnification_new": "2x",
+    "magnification_old": "2x"
   },
   {
     "name": "巫毒精靈",
@@ -2090,7 +2270,9 @@
     "equipment_old": "低溫蠟燭卡",
     "equipment_old_data": "命中+36",
     "innate_skill": "",
-    "transformation_skill": "迅急連擊"
+    "transformation_skill": "迅急連擊",
+    "magnification_new": "2.5x",
+    "magnification_old": "2x"
   },
   {
     "name": "女僕",
@@ -2113,7 +2295,9 @@
     "equipment_old": "女僕服卡",
     "equipment_old_data": "攻擊+35",
     "innate_skill": "",
-    "transformation_skill": "迅急連擊"
+    "transformation_skill": "迅急連擊",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "徐晃",
@@ -2136,7 +2320,9 @@
     "equipment_old": "震雷斧卡",
     "equipment_old_data": "力量+22",
     "innate_skill": "",
-    "transformation_skill": "超能解放"
+    "transformation_skill": "超能解放",
+    "magnification_new": "2x",
+    "magnification_old": "2x"
   },
   {
     "name": "甘寧",
@@ -2159,7 +2345,9 @@
     "equipment_old": "赤血銅鈴卡",
     "equipment_old_data": "攻擊+28",
     "innate_skill": "",
-    "transformation_skill": "迅急連擊"
+    "transformation_skill": "迅急連擊",
+    "magnification_new": "2x",
+    "magnification_old": "2x"
   },
   {
     "name": "張苞",
@@ -2182,7 +2370,9 @@
     "equipment_old": "正丈八蛇矛卡",
     "equipment_old_data": "攻擊+28",
     "innate_skill": "",
-    "transformation_skill": "迅急連擊"
+    "transformation_skill": "迅急連擊",
+    "magnification_new": "2x",
+    "magnification_old": "2x"
   },
   {
     "name": "武松",
@@ -2205,7 +2395,9 @@
     "equipment_old": "天傷棍卡",
     "equipment_old_data": "力量+40",
     "innate_skill": "",
-    "transformation_skill": "迅急連擊"
+    "transformation_skill": "迅急連擊",
+    "magnification_new": "2.5x",
+    "magnification_old": "2x"
   },
   {
     "name": "華雄",
@@ -2228,7 +2420,9 @@
     "equipment_old": "伏虎雙錘卡",
     "equipment_old_data": "閃避+22",
     "innate_skill": "",
-    "transformation_skill": "厄鬼暴刃"
+    "transformation_skill": "厄鬼暴刃",
+    "magnification_new": "2.5x",
+    "magnification_old": "2x"
   },
   {
     "name": "馬超",
@@ -2251,7 +2445,9 @@
     "equipment_old": "閻龍矛卡",
     "equipment_old_data": "攻擊+35",
     "innate_skill": "",
-    "transformation_skill": "迅急連擊"
+    "transformation_skill": "迅急連擊",
+    "magnification_new": "2x",
+    "magnification_old": "2x"
   },
   {
     "name": "響馬茜",
@@ -2274,7 +2470,9 @@
     "equipment_old": "賽車保養組卡",
     "equipment_old_data": "敏捷+10",
     "innate_skill": "",
-    "transformation_skill": "迅急連擊"
+    "transformation_skill": "迅急連擊",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "君君",
@@ -2297,7 +2495,9 @@
     "equipment_old": "手裏劍卡",
     "equipment_old_data": "敏捷+20",
     "innate_skill": "",
-    "transformation_skill": "迅急連擊"
+    "transformation_skill": "迅急連擊",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "賭小兔",
@@ -2320,7 +2520,9 @@
     "equipment_old": "兔女郎套裝卡",
     "equipment_old_data": "體質+24",
     "innate_skill": "",
-    "transformation_skill": "迅急連擊"
+    "transformation_skill": "迅急連擊",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "土行孫",
@@ -2343,7 +2545,9 @@
     "equipment_old": "土龍爪卡",
     "equipment_old_data": "閃避+32",
     "innate_skill": "",
-    "transformation_skill": "狙殺連擊"
+    "transformation_skill": "狙殺連擊",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "鄧嬋玉",
@@ -2366,7 +2570,9 @@
     "equipment_old": "五光寶玉卡",
     "equipment_old_data": "敏捷+20",
     "innate_skill": "",
-    "transformation_skill": "狙殺連擊"
+    "transformation_skill": "狙殺連擊",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "趙公明",
@@ -2389,7 +2595,9 @@
     "equipment_old": "縛龍索卡",
     "equipment_old_data": "命中+40",
     "innate_skill": "",
-    "transformation_skill": "狙殺連擊"
+    "transformation_skill": "狙殺連擊",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "張清",
@@ -2412,7 +2620,9 @@
     "equipment_old": "天捷棍卡",
     "equipment_old_data": "閃避+24",
     "innate_skill": "",
-    "transformation_skill": "狙殺連擊"
+    "transformation_skill": "狙殺連擊",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "孫尚香",
@@ -2435,7 +2645,9 @@
     "equipment_old": "冥蛇劍卡",
     "equipment_old_data": "攻擊+25",
     "innate_skill": "",
-    "transformation_skill": "狙殺連擊"
+    "transformation_skill": "狙殺連擊",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "殷洪",
@@ -2458,7 +2670,9 @@
     "equipment_old": "陰陽鏡卡",
     "equipment_old_data": "HP+850",
     "innate_skill": "",
-    "transformation_skill": "狙殺連擊"
+    "transformation_skill": "狙殺連擊",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "黃月英",
@@ -2481,7 +2695,9 @@
     "equipment_old": "香包卡",
     "equipment_old_data": "運氣+10",
     "innate_skill": "",
-    "transformation_skill": "狙殺連擊"
+    "transformation_skill": "狙殺連擊",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "張順",
@@ -2504,7 +2720,9 @@
     "equipment_old": "天損寶衣卡",
     "equipment_old_data": "閃避+20",
     "innate_skill": "",
-    "transformation_skill": "狙殺連擊"
+    "transformation_skill": "狙殺連擊",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "馬忠",
@@ -2527,7 +2745,9 @@
     "equipment_old": "靛藍短弓卡",
     "equipment_old_data": "命中+14",
     "innate_skill": "",
-    "transformation_skill": "狙殺連擊"
+    "transformation_skill": "狙殺連擊",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "劉唐",
@@ -2550,7 +2770,9 @@
     "equipment_old": "天異彈卡",
     "equipment_old_data": "攻擊+15",
     "innate_skill": "",
-    "transformation_skill": "狙殺連擊"
+    "transformation_skill": "狙殺連擊",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "諸葛惠",
@@ -2573,7 +2795,9 @@
     "equipment_old": "水晶機弩卡",
     "equipment_old_data": "命中+22",
     "innate_skill": "",
-    "transformation_skill": "狙殺連擊"
+    "transformation_skill": "狙殺連擊",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "袁紹",
@@ -2596,7 +2820,9 @@
     "equipment_old": "鎖子甲卡",
     "equipment_old_data": "閃避+10",
     "innate_skill": "",
-    "transformation_skill": "狙殺連擊"
+    "transformation_skill": "狙殺連擊",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "芙蓉",
@@ -2619,7 +2845,9 @@
     "equipment_old": "滿月魔戒卡",
     "equipment_old_data": "敏捷+24",
     "innate_skill": "",
-    "transformation_skill": "狙殺連擊"
+    "transformation_skill": "狙殺連擊",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "黃巾妖鬥士",
@@ -2642,7 +2870,9 @@
     "equipment_old": "妖鬥衣卡",
     "equipment_old_data": "敏捷+10",
     "innate_skill": "",
-    "transformation_skill": "狙殺連擊"
+    "transformation_skill": "狙殺連擊",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "小玲",
@@ -2665,7 +2895,9 @@
     "equipment_old": "隨身旅行包卡",
     "equipment_old_data": "攻擊+12",
     "innate_skill": "",
-    "transformation_skill": "狙殺連擊"
+    "transformation_skill": "狙殺連擊",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "夏麗",
@@ -2688,7 +2920,9 @@
     "equipment_old": "防開岔別針卡",
     "equipment_old_data": "命中+12",
     "innate_skill": "",
-    "transformation_skill": "狙殺連擊"
+    "transformation_skill": "狙殺連擊",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "好人君",
@@ -2711,7 +2945,9 @@
     "equipment_old": "好人卡",
     "equipment_old_data": "運氣+16",
     "innate_skill": "",
-    "transformation_skill": "狙殺連擊"
+    "transformation_skill": "狙殺連擊",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "呂蒙",
@@ -2734,7 +2970,9 @@
     "equipment_old": "六韜卡",
     "equipment_old_data": "敏捷+10",
     "innate_skill": "",
-    "transformation_skill": "狙殺連擊"
+    "transformation_skill": "狙殺連擊",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "秦大夫",
@@ -2757,7 +2995,9 @@
     "equipment_old": "怪醫書典卡",
     "equipment_old_data": "運氣+25",
     "innate_skill": "",
-    "transformation_skill": "狙殺連擊"
+    "transformation_skill": "狙殺連擊",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "茶茶",
@@ -2780,7 +3020,9 @@
     "equipment_old": "驅魔蠟燭卡",
     "equipment_old_data": "閃避+18",
     "innate_skill": "",
-    "transformation_skill": "狙殺連擊"
+    "transformation_skill": "狙殺連擊",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "魔禮海",
@@ -2803,7 +3045,9 @@
     "equipment_old": "黑琵琶卡",
     "equipment_old_data": "敏捷+14",
     "innate_skill": "",
-    "transformation_skill": "狙殺連擊"
+    "transformation_skill": "狙殺連擊",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "小艾",
@@ -2826,7 +3070,9 @@
     "equipment_old": "造型電池卡",
     "equipment_old_data": "HP+500",
     "innate_skill": "",
-    "transformation_skill": "狙殺連擊"
+    "transformation_skill": "狙殺連擊",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "孫堅",
@@ -2849,7 +3095,9 @@
     "equipment_old": "文臺寶甲卡",
     "equipment_old_data": "體質+15",
     "innate_skill": "",
-    "transformation_skill": "會心強擊"
+    "transformation_skill": "會心強擊",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "李靖",
@@ -2872,7 +3120,9 @@
     "equipment_old": "鎮國寶塔卡",
     "equipment_old_data": "防禦+18",
     "innate_skill": "",
-    "transformation_skill": "會心強擊"
+    "transformation_skill": "會心強擊",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "盧俊義",
@@ -2895,7 +3145,9 @@
     "equipment_old": "天罡杖卡",
     "equipment_old_data": "命中+18",
     "innate_skill": "",
-    "transformation_skill": "會心強擊"
+    "transformation_skill": "會心強擊",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "全四郎",
@@ -2918,7 +3170,9 @@
     "equipment_old": "四郎拳譜卡",
     "equipment_old_data": "HP+750",
     "innate_skill": "",
-    "transformation_skill": "會心強擊"
+    "transformation_skill": "會心強擊",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "亞娜",
@@ -2941,7 +3195,9 @@
     "equipment_old": "手銬卡",
     "equipment_old_data": "體質+14",
     "innate_skill": "",
-    "transformation_skill": "會心強擊"
+    "transformation_skill": "會心強擊",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "秦明",
@@ -2964,7 +3220,9 @@
     "equipment_old": "天猛寶甲卡",
     "equipment_old_data": "體質+20",
     "innate_skill": "",
-    "transformation_skill": "會心強擊"
+    "transformation_skill": "會心強擊",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "晁蓋",
@@ -2987,7 +3245,9 @@
     "equipment_old": "托塔神柱卡",
     "equipment_old_data": "力量+16",
     "innate_skill": "",
-    "transformation_skill": "會心強擊"
+    "transformation_skill": "會心強擊",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "黃飛虎",
@@ -3010,7 +3270,9 @@
     "equipment_old": "精鋼巨棍卡",
     "equipment_old_data": "力量+20",
     "innate_skill": "",
-    "transformation_skill": "會心強擊"
+    "transformation_skill": "會心強擊",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "王進",
@@ -3033,7 +3295,9 @@
     "equipment_old": "御軍護甲卡",
     "equipment_old_data": "體質+36",
     "innate_skill": "",
-    "transformation_skill": "會心強擊"
+    "transformation_skill": "會心強擊",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "呼延灼",
@@ -3056,7 +3320,9 @@
     "equipment_old": "天威棍卡",
     "equipment_old_data": "力量+18",
     "innate_skill": "",
-    "transformation_skill": "會心強擊"
+    "transformation_skill": "會心強擊",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "黃蓋",
@@ -3079,7 +3345,9 @@
     "equipment_old": "蓋國天柱卡",
     "equipment_old_data": "體質+15",
     "innate_skill": "",
-    "transformation_skill": "會心強擊"
+    "transformation_skill": "會心強擊",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "孟獲",
@@ -3102,7 +3370,9 @@
     "equipment_old": "南蠻巨斧卡",
     "equipment_old_data": "體質+30",
     "innate_skill": "",
-    "transformation_skill": "會心強擊"
+    "transformation_skill": "會心強擊",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "黃巾龍鬥士",
@@ -3125,7 +3395,9 @@
     "equipment_old": "龍鬥衣卡",
     "equipment_old_data": "閃避+12",
     "innate_skill": "",
-    "transformation_skill": "會心強擊"
+    "transformation_skill": "會心強擊",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "馬岱",
@@ -3148,7 +3420,9 @@
     "equipment_old": "速風長劍卡",
     "equipment_old_data": "攻擊+36",
     "innate_skill": "",
-    "transformation_skill": "迅急連擊"
+    "transformation_skill": "迅急連擊",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "武吉",
@@ -3171,7 +3445,9 @@
     "equipment_old": "酷炫球鞋卡",
     "equipment_old_data": "敏捷+18",
     "innate_skill": "",
-    "transformation_skill": "凡人之軀 比肩神明"
+    "transformation_skill": "凡人之軀 比肩神明",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "顧大嫂",
@@ -3194,7 +3470,9 @@
     "equipment_old": "地陰書韜卡",
     "equipment_old_data": "敏捷+18",
     "innate_skill": "",
-    "transformation_skill": "迅急連擊"
+    "transformation_skill": "迅急連擊",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "孫二娘",
@@ -3217,7 +3495,9 @@
     "equipment_old": "地壯寶玉卡",
     "equipment_old_data": "體質+30",
     "innate_skill": "",
-    "transformation_skill": "迅急連擊"
+    "transformation_skill": "迅急連擊",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "張奎",
@@ -3240,7 +3520,9 @@
     "equipment_old": "獨角黑煙獸卡",
     "equipment_old_data": "閃避+28",
     "innate_skill": "",
-    "transformation_skill": "迅急連擊"
+    "transformation_skill": "迅急連擊",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "雷震子",
@@ -3263,7 +3545,9 @@
     "equipment_old": "金銀雙棍卡",
     "equipment_old_data": "攻擊+36",
     "innate_skill": "",
-    "transformation_skill": "迅急連擊"
+    "transformation_skill": "迅急連擊",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "周通",
@@ -3286,7 +3570,9 @@
     "equipment_old": "地空剪卡",
     "equipment_old_data": "敏捷+18",
     "innate_skill": "",
-    "transformation_skill": "迅急連擊"
+    "transformation_skill": "迅急連擊",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "文醜",
@@ -3309,7 +3595,9 @@
     "equipment_old": "白鬚斬刀卡",
     "equipment_old_data": "力量+12",
     "innate_skill": "",
-    "transformation_skill": "迅急連擊"
+    "transformation_skill": "迅急連擊",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "顏良",
@@ -3332,7 +3620,9 @@
     "equipment_old": "厚刃巨劍卡",
     "equipment_old_data": "敏捷+16",
     "innate_skill": "",
-    "transformation_skill": "迅急連擊"
+    "transformation_skill": "迅急連擊",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "楊志",
@@ -3355,7 +3645,9 @@
     "equipment_old": "分水剪卡",
     "equipment_old_data": "攻擊+25",
     "innate_skill": "",
-    "transformation_skill": "迅急連擊"
+    "transformation_skill": "迅急連擊",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "程普",
@@ -3378,7 +3670,9 @@
     "equipment_old": "流星鎖鏈卡",
     "equipment_old_data": "力量+14",
     "innate_skill": "",
-    "transformation_skill": "迅急連擊"
+    "transformation_skill": "迅急連擊",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "祝融",
@@ -3401,7 +3695,9 @@
     "equipment_old": "赤煞刀卡",
     "equipment_old_data": "攻擊+20",
     "innate_skill": "",
-    "transformation_skill": "狙殺連擊"
+    "transformation_skill": "狙殺連擊",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "阮小七",
@@ -3424,7 +3720,9 @@
     "equipment_old": "天敗書韜卡",
     "equipment_old_data": "閃避+22",
     "innate_skill": "",
-    "transformation_skill": "迅急連擊"
+    "transformation_skill": "迅急連擊",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "高蘭英",
@@ -3447,7 +3745,9 @@
     "equipment_old": "赤葫蘆卡",
     "equipment_old_data": "體質+32",
     "innate_skill": "",
-    "transformation_skill": "迅急連擊"
+    "transformation_skill": "迅急連擊",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "戴宗",
@@ -3470,7 +3770,9 @@
     "equipment_old": "天速剪卡",
     "equipment_old_data": "敏捷+12",
     "innate_skill": "",
-    "transformation_skill": "迅急連擊"
+    "transformation_skill": "迅急連擊",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "給我豹豹",
@@ -3493,7 +3795,9 @@
     "equipment_old": "豹女套裝卡",
     "equipment_old_data": "閃避+12",
     "innate_skill": "",
-    "transformation_skill": "迅急連擊"
+    "transformation_skill": "迅急連擊",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "周泰",
@@ -3516,7 +3820,9 @@
     "equipment_old": "神威寶甲卡",
     "equipment_old_data": "防禦+4",
     "innate_skill": "",
-    "transformation_skill": "勇捍十二傷"
+    "transformation_skill": "勇捍十二傷",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "小蘿",
@@ -3539,7 +3845,9 @@
     "equipment_old": "運動噴劑卡",
     "equipment_old_data": "敏捷+15",
     "innate_skill": "",
-    "transformation_skill": "迅急連擊"
+    "transformation_skill": "迅急連擊",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "碧霄",
@@ -3562,7 +3870,9 @@
     "equipment_old": "金蛟剪卡",
     "equipment_old_data": "攻擊+30",
     "innate_skill": "瘟黃術",
-    "transformation_skill": "木雷光影陣"
+    "transformation_skill": "木雷光影陣",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "瓊霄",
@@ -3585,7 +3895,9 @@
     "equipment_old": "混元金斗卡",
     "equipment_old_data": "運氣+30",
     "innate_skill": "渾水術",
-    "transformation_skill": "水袞獄傷陣"
+    "transformation_skill": "水袞獄傷陣",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "魏定國",
@@ -3608,7 +3920,9 @@
     "equipment_old": "地猛砲卡",
     "equipment_old_data": "攻擊+30",
     "innate_skill": "無名火",
-    "transformation_skill": "火台炬胤陣"
+    "transformation_skill": "火台炬胤陣",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "張角",
@@ -3631,7 +3945,9 @@
     "equipment_old": "八卦袍卡",
     "equipment_old_data": "智慧+10",
     "innate_skill": "刺金術",
-    "transformation_skill": "金象噬魂陣"
+    "transformation_skill": "金象噬魂陣",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "羅真人",
@@ -3654,7 +3970,9 @@
     "equipment_old": "五行道袍卡",
     "equipment_old_data": "防禦+15",
     "innate_skill": "瘟黃術",
-    "transformation_skill": "木雷光影陣"
+    "transformation_skill": "木雷光影陣",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "申公豹",
@@ -3677,7 +3995,9 @@
     "equipment_old": "雷公鞭卡",
     "equipment_old_data": "攻擊+38",
     "innate_skill": "刺金術",
-    "transformation_skill": "金象噬魂陣"
+    "transformation_skill": "金象噬魂陣",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "甄宓",
@@ -3700,7 +4020,9 @@
     "equipment_old": "鎮魔土偶卡",
     "equipment_old_data": "運氣+20",
     "innate_skill": "下毒術",
-    "transformation_skill": "水袞獄傷陣"
+    "transformation_skill": "水袞獄傷陣",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "單廷珪",
@@ -3723,7 +4045,9 @@
     "equipment_old": "地奇砲卡",
     "equipment_old_data": "攻擊+30",
     "innate_skill": "渾水術",
-    "transformation_skill": "水袞獄傷陣"
+    "transformation_skill": "水袞獄傷陣",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "張魯",
@@ -3746,7 +4070,9 @@
     "equipment_old": "太極法劍卡",
     "equipment_old_data": "智慧+23",
     "innate_skill": "渾水術",
-    "transformation_skill": "水袞獄傷陣"
+    "transformation_skill": "水袞獄傷陣",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "小倩",
@@ -3769,7 +4095,9 @@
     "equipment_old": "珠纓卡",
     "equipment_old_data": "智慧+16",
     "innate_skill": "渾水術",
-    "transformation_skill": "水袞獄傷陣"
+    "transformation_skill": "水袞獄傷陣",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "黃巾魔鬥士",
@@ -3792,7 +4120,9 @@
     "equipment_old": "魔鬥衣卡",
     "equipment_old_data": "體質+12",
     "innate_skill": "渾水術",
-    "transformation_skill": "水袞獄傷陣"
+    "transformation_skill": "水袞獄傷陣",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "張松",
@@ -3815,7 +4145,9 @@
     "equipment_old": "漢中地圖卡",
     "equipment_old_data": "智慧+18",
     "innate_skill": "走土術",
-    "transformation_skill": "天火斬符"
+    "transformation_skill": "天火斬符",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "小喬",
@@ -3838,7 +4170,9 @@
     "equipment_old": "凌月琵琶卡",
     "equipment_old_data": "防禦+9",
     "innate_skill": "斷刺符",
-    "transformation_skill": "天水斷符"
+    "transformation_skill": "天水斷符",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "楊修",
@@ -3861,7 +4195,9 @@
     "equipment_old": "靈彩頭冠卡",
     "equipment_old_data": "運氣+38",
     "innate_skill": "刃斬符",
-    "transformation_skill": "天金刃符"
+    "transformation_skill": "天金刃符",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "賈詡",
@@ -3884,7 +4220,9 @@
     "equipment_old": "文和筆卡",
     "equipment_old_data": "智慧+20",
     "innate_skill": "刃斬符",
-    "transformation_skill": "天金刃符"
+    "transformation_skill": "天金刃符",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "貂蟬",
@@ -3907,7 +4245,9 @@
     "equipment_old": "玉錦盒卡",
     "equipment_old_data": "MP+200",
     "innate_skill": "押穴術",
-    "transformation_skill": "冰封"
+    "transformation_skill": "冰封",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "法正",
@@ -3930,7 +4270,9 @@
     "equipment_old": "正字金印卡",
     "equipment_old_data": "運氣+26",
     "innate_skill": "走土術",
-    "transformation_skill": "天木刺符"
+    "transformation_skill": "天木刺符",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "大喬",
@@ -3953,7 +4295,9 @@
     "equipment_old": "幽月琵琶卡",
     "equipment_old_data": "防禦+14",
     "innate_skill": "斷刺符",
-    "transformation_skill": "天水斷符"
+    "transformation_skill": "天水斷符",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "鄧艾",
@@ -3976,7 +4320,9 @@
     "equipment_old": "天尉寶甲卡",
     "equipment_old_data": "智慧+25",
     "innate_skill": "走土術",
-    "transformation_skill": "天土擊符"
+    "transformation_skill": "天土擊符",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "卑彌呼",
@@ -3999,7 +4345,9 @@
     "equipment_old": "倭國貢品卡",
     "equipment_old_data": "智慧+28",
     "innate_skill": "下毒術",
-    "transformation_skill": "水袞獄傷陣"
+    "transformation_skill": "水袞獄傷陣",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "殷郊",
@@ -4022,7 +4370,9 @@
     "equipment_old": "番天印卡",
     "equipment_old_data": "HP+900",
     "innate_skill": "斬擊符",
-    "transformation_skill": "天火斬符"
+    "transformation_skill": "天火斬符",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "諸葛瑾",
@@ -4045,7 +4395,9 @@
     "equipment_old": "小毛驢卡",
     "equipment_old_data": "運氣+30",
     "innate_skill": "擊斷符(生變資料為空)",
-    "transformation_skill": "天火斬符"
+    "transformation_skill": "天火斬符",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "魔禮紅",
@@ -4068,7 +4420,9 @@
     "equipment_old": "混元傘卡",
     "equipment_old_data": "智慧+24",
     "innate_skill": "斷刺符",
-    "transformation_skill": "木雷光影陣"
+    "transformation_skill": "木雷光影陣",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "華陀",
@@ -4091,7 +4445,9 @@
     "equipment_old": "華陀醫典卡",
     "equipment_old_data": "體質+25",
     "innate_skill": "大羅仙術",
-    "transformation_skill": "妙手天醫"
+    "transformation_skill": "妙手天醫",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "孔融",
@@ -4114,7 +4470,9 @@
     "equipment_old": "北海水梨卡",
     "equipment_old_data": "運氣+20",
     "innate_skill": "刺金術",
-    "transformation_skill": "金象噬魂陣"
+    "transformation_skill": "金象噬魂陣",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "木鹿大王",
@@ -4137,7 +4495,9 @@
     "equipment_old": "骷髏法杖卡",
     "equipment_old_data": "HP+650",
     "innate_skill": "渾水術",
-    "transformation_skill": "水袞獄傷陣"
+    "transformation_skill": "水袞獄傷陣",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "潘金蓮",
@@ -4160,7 +4520,9 @@
     "equipment_old": "性感肚兜卡",
     "equipment_old_data": "閃避+15",
     "innate_skill": "渾水術",
-    "transformation_skill": "水袞獄傷陣"
+    "transformation_skill": "水袞獄傷陣",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "蔡文姬",
@@ -4183,7 +4545,9 @@
     "equipment_old": "夜明珠卡",
     "equipment_old_data": "運氣+5",
     "innate_skill": "瘟黃術",
-    "transformation_skill": "天火召臨"
+    "transformation_skill": "天火召臨",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "瑤池仙女",
@@ -4206,7 +4570,9 @@
     "equipment_old": "雲彩絹衣卡",
     "equipment_old_data": "閃避+5",
     "innate_skill": "渾水術",
-    "transformation_skill": "水靈招喚"
+    "transformation_skill": "水靈招喚",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "安道全",
@@ -4229,7 +4595,9 @@
     "equipment_old": "地靈醫典卡",
     "equipment_old_data": "體質+12",
     "innate_skill": "急救術",
-    "transformation_skill": "大羅仙術"
+    "transformation_skill": "大羅仙術",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "龍虎天師",
@@ -4252,7 +4620,9 @@
     "equipment_old": "天師拂塵卡",
     "equipment_old_data": "運氣+8",
     "innate_skill": "無名火",
-    "transformation_skill": "火台炬胤陣"
+    "transformation_skill": "火台炬胤陣",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "樊瑞",
@@ -4275,7 +4645,9 @@
     "equipment_old": "地默刀卡",
     "equipment_old_data": "攻擊+20",
     "innate_skill": "走土術",
-    "transformation_skill": "土動命移陣"
+    "transformation_skill": "土動命移陣",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "曹植",
@@ -4298,7 +4670,9 @@
     "equipment_old": "洛神賦卡",
     "equipment_old_data": "智慧+24",
     "innate_skill": "渾水術",
-    "transformation_skill": "火台炬胤陣"
+    "transformation_skill": "火台炬胤陣",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "張寶",
@@ -4321,7 +4695,9 @@
     "equipment_old": "伏妖葫蘆卡",
     "equipment_old_data": "智慧+5",
     "innate_skill": "瘟黃術",
-    "transformation_skill": "木雷光影陣"
+    "transformation_skill": "木雷光影陣",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "天策軍師",
@@ -4344,7 +4720,9 @@
     "equipment_old": "孫子兵法卡",
     "equipment_old_data": "智慧+2",
     "innate_skill": "刺刃符",
-    "transformation_skill": "長。打神刃"
+    "transformation_skill": "長。打神刃",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "糜夫人",
@@ -4367,7 +4745,9 @@
     "equipment_old": "昊天法袍卡",
     "equipment_old_data": "HP+300",
     "innate_skill": "刺刃符",
-    "transformation_skill": "天木刺符"
+    "transformation_skill": "天木刺符",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "張梁",
@@ -4390,7 +4770,9 @@
     "equipment_old": "八卦衣卡",
     "equipment_old_data": "運氣+20",
     "innate_skill": "斷刺符",
-    "transformation_skill": "天土擊符"
+    "transformation_skill": "天土擊符",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "西門慶",
@@ -4413,7 +4795,9 @@
     "equipment_old": "金瓶寶扇卡",
     "equipment_old_data": "運氣+11",
     "innate_skill": "斬擊符",
-    "transformation_skill": "火台炬胤陣"
+    "transformation_skill": "火台炬胤陣",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "比干",
@@ -4436,7 +4820,9 @@
     "equipment_old": "愛心卡",
     "equipment_old_data": "體質+22",
     "innate_skill": "無名火",
-    "transformation_skill": "水袞獄傷陣"
+    "transformation_skill": "水袞獄傷陣",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "田豐",
@@ -4459,7 +4845,9 @@
     "equipment_old": "奇書木杖卡",
     "equipment_old_data": "HP+450",
     "innate_skill": "刺刃符",
-    "transformation_skill": "天木刺符"
+    "transformation_skill": "天木刺符",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "柴進",
@@ -4482,7 +4870,9 @@
     "equipment_old": "天貴寶衣卡",
     "equipment_old_data": "防禦+10",
     "innate_skill": "走土術",
-    "transformation_skill": "土動命移陣"
+    "transformation_skill": "土動命移陣",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "蔣敬",
@@ -4505,7 +4895,9 @@
     "equipment_old": "七寶算盤卡",
     "equipment_old_data": "運氣+8",
     "innate_skill": "走土術",
-    "transformation_skill": "天土擊符"
+    "transformation_skill": "天土擊符",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "穆容月",
@@ -4528,7 +4920,9 @@
     "equipment_old": "玉如意卡",
     "equipment_old_data": "運氣+20",
     "innate_skill": "刺刃符",
-    "transformation_skill": "天木刺符"
+    "transformation_skill": "天木刺符",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "石秀",
@@ -4551,7 +4945,9 @@
     "equipment_old": "天慧彈卡",
     "equipment_old_data": "攻擊+15",
     "innate_skill": "無名火",
-    "transformation_skill": "火台炬胤陣"
+    "transformation_skill": "火台炬胤陣",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "朱武",
@@ -4574,7 +4970,9 @@
     "equipment_old": "地魁刀卡",
     "equipment_old_data": "攻擊+20",
     "innate_skill": "刺刃符",
-    "transformation_skill": "天木刺符"
+    "transformation_skill": "天木刺符",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "蕭讓",
@@ -4597,7 +4995,9 @@
     "equipment_old": "地文筆卡",
     "equipment_old_data": "智慧+12",
     "innate_skill": "斷刺符",
-    "transformation_skill": "天水斷符"
+    "transformation_skill": "天水斷符",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "裴宣",
@@ -4620,7 +5020,9 @@
     "equipment_old": "地正羅經卡",
     "equipment_old_data": "運氣+8",
     "innate_skill": "刃斬符",
-    "transformation_skill": "天金刃符"
+    "transformation_skill": "天金刃符",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "魔禮壽",
@@ -4643,7 +5045,9 @@
     "equipment_old": "花狐貂卡",
     "equipment_old_data": "運氣+26",
     "innate_skill": "走土術",
-    "transformation_skill": "土動命移陣"
+    "transformation_skill": "土動命移陣",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "宋徽宗",
@@ -4666,7 +5070,9 @@
     "equipment_old": "瘦金書帖卡",
     "equipment_old_data": "智慧+13",
     "innate_skill": "走土術",
-    "transformation_skill": "天土擊符"
+    "transformation_skill": "天土擊符",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "賈氏",
@@ -4689,7 +5095,9 @@
     "equipment_old": "仙女彩衣卡",
     "equipment_old_data": "閃避+22",
     "innate_skill": "",
-    "transformation_skill": "迅急連擊"
+    "transformation_skill": "迅急連擊",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "黃妃",
@@ -4712,7 +5120,9 @@
     "equipment_old": "嬪妃服飾卡",
     "equipment_old_data": "防禦+12",
     "innate_skill": "",
-    "transformation_skill": "迅急連擊"
+    "transformation_skill": "迅急連擊",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "胡車兒",
@@ -4735,7 +5145,9 @@
     "equipment_old": "無淚雙刀卡",
     "equipment_old_data": "閃避+14",
     "innate_skill": "",
-    "transformation_skill": "迅急連擊"
+    "transformation_skill": "迅急連擊",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "阮小二",
@@ -4758,7 +5170,9 @@
     "equipment_old": "天劍葫蘆卡",
     "equipment_old_data": "運氣+12",
     "innate_skill": "",
-    "transformation_skill": "迅急連擊"
+    "transformation_skill": "迅急連擊",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "袁術",
@@ -4781,7 +5195,9 @@
     "equipment_old": "傳國玉璽卡",
     "equipment_old_data": "命中+20",
     "innate_skill": "",
-    "transformation_skill": "迅急連擊"
+    "transformation_skill": "迅急連擊",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "黃巾聖鬥士",
@@ -4804,7 +5220,9 @@
     "equipment_old": "青銅聖衣卡",
     "equipment_old_data": "防禦+2",
     "innate_skill": "",
-    "transformation_skill": "迅急連擊"
+    "transformation_skill": "迅急連擊",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "鄧飛",
@@ -4827,7 +5245,9 @@
     "equipment_old": "地闔鎖鏈卡",
     "equipment_old_data": "力量+14",
     "innate_skill": "",
-    "transformation_skill": "迅急連擊"
+    "transformation_skill": "迅急連擊",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "阮小五",
@@ -4850,7 +5270,9 @@
     "equipment_old": "天罪金鈴卡",
     "equipment_old_data": "體質+14",
     "innate_skill": "",
-    "transformation_skill": "迅急連擊"
+    "transformation_skill": "迅急連擊",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "李興霸",
@@ -4873,7 +5295,9 @@
     "equipment_old": "拌黃珠卡",
     "equipment_old_data": "攻擊+15",
     "innate_skill": "",
-    "transformation_skill": "迅急連擊"
+    "transformation_skill": "迅急連擊",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "豹騎衛",
@@ -4896,7 +5320,9 @@
     "equipment_old": "豹型鎧甲卡",
     "equipment_old_data": "敏捷+12",
     "innate_skill": "",
-    "transformation_skill": "迅急連擊"
+    "transformation_skill": "迅急連擊",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "血衣衛",
@@ -4919,7 +5345,9 @@
     "equipment_old": "琉璃甲卡",
     "equipment_old_data": "防禦+6",
     "innate_skill": "",
-    "transformation_skill": "迅急連擊"
+    "transformation_skill": "迅急連擊",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "搏浪力士",
@@ -4942,7 +5370,9 @@
     "equipment_old": "伐天巨斧卡",
     "equipment_old_data": "力量+8",
     "innate_skill": "",
-    "transformation_skill": "鈍霆擊"
+    "transformation_skill": "鈍霆擊",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "程遠志",
@@ -4965,7 +5395,9 @@
     "equipment_old": "遠程子彈卡",
     "equipment_old_data": "敏捷+10",
     "innate_skill": "",
-    "transformation_skill": "狙殺連擊"
+    "transformation_skill": "狙殺連擊",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "龍騎衛",
@@ -4988,7 +5420,9 @@
     "equipment_old": "龍型鎧甲卡",
     "equipment_old_data": "防禦+10",
     "innate_skill": "",
-    "transformation_skill": "狙殺連擊"
+    "transformation_skill": "狙殺連擊",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "燕青",
@@ -5011,7 +5445,9 @@
     "equipment_old": "天巧弓卡",
     "equipment_old_data": "攻擊+20",
     "innate_skill": "",
-    "transformation_skill": "狙殺連擊"
+    "transformation_skill": "狙殺連擊",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "項充",
@@ -5034,7 +5470,9 @@
     "equipment_old": "地飛櫻槍卡",
     "equipment_old_data": "敏捷+10",
     "innate_skill": "",
-    "transformation_skill": "狙殺連擊"
+    "transformation_skill": "狙殺連擊",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "曹洪",
@@ -5057,7 +5495,9 @@
     "equipment_old": "背心皮甲卡",
     "equipment_old_data": "防禦+14",
     "innate_skill": "",
-    "transformation_skill": "狙殺連擊"
+    "transformation_skill": "狙殺連擊",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "李袞",
@@ -5080,7 +5520,9 @@
     "equipment_old": "地走櫻槍卡",
     "equipment_old_data": "攻擊+20",
     "innate_skill": "",
-    "transformation_skill": "狙殺連擊"
+    "transformation_skill": "狙殺連擊",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "曹貴人",
@@ -5103,7 +5545,9 @@
     "equipment_old": "緊身衣卡",
     "equipment_old_data": "閃避+8",
     "innate_skill": "",
-    "transformation_skill": "狙殺連擊"
+    "transformation_skill": "狙殺連擊",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "高俅",
@@ -5126,7 +5570,9 @@
     "equipment_old": "御賜足球卡",
     "equipment_old_data": "命中+18",
     "innate_skill": "",
-    "transformation_skill": "狙殺連擊"
+    "transformation_skill": "狙殺連擊",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "高友乾",
@@ -5149,7 +5595,9 @@
     "equipment_old": "混元珠卡",
     "equipment_old_data": "攻擊+14",
     "innate_skill": "",
-    "transformation_skill": "狙殺連擊"
+    "transformation_skill": "狙殺連擊",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "凌震",
@@ -5172,7 +5620,9 @@
     "equipment_old": "地軸彈卡",
     "equipment_old_data": "命中+12",
     "innate_skill": "",
-    "transformation_skill": "狙殺連擊"
+    "transformation_skill": "狙殺連擊",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "劉禪",
@@ -5195,7 +5645,9 @@
     "equipment_old": "安樂珠卡",
     "equipment_old_data": "運氣+8",
     "innate_skill": "",
-    "transformation_skill": "狙殺連擊"
+    "transformation_skill": "狙殺連擊",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "武大郎",
@@ -5218,7 +5670,9 @@
     "equipment_old": "打狗棒卡",
     "equipment_old_data": "防禦+4",
     "innate_skill": "",
-    "transformation_skill": "狙殺連擊"
+    "transformation_skill": "狙殺連擊",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "沙摩柯",
@@ -5241,7 +5695,9 @@
     "equipment_old": "蠻王戰弓卡",
     "equipment_old_data": "運氣+13",
     "innate_skill": "",
-    "transformation_skill": "狙殺連擊"
+    "transformation_skill": "狙殺連擊",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "驃騎將軍",
@@ -5264,7 +5720,9 @@
     "equipment_old": "紅纓槍卡",
     "equipment_old_data": "攻擊+5",
     "innate_skill": "",
-    "transformation_skill": "會心強擊"
+    "transformation_skill": "會心強擊",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "楊鳳兒",
@@ -5287,7 +5745,9 @@
     "equipment_old": "巾幗寶甲卡",
     "equipment_old_data": "防禦+12",
     "innate_skill": "",
-    "transformation_skill": "會心強擊"
+    "transformation_skill": "會心強擊",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "鄧九公",
@@ -5310,7 +5770,9 @@
     "equipment_old": "九公刀卡",
     "equipment_old_data": "力量+14",
     "innate_skill": "",
-    "transformation_skill": "會心強擊"
+    "transformation_skill": "會心強擊",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "虎騎衛",
@@ -5333,7 +5795,9 @@
     "equipment_old": "虎型鎧甲卡",
     "equipment_old_data": "體質+12",
     "innate_skill": "",
-    "transformation_skill": "會心強擊"
+    "transformation_skill": "會心強擊",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "董平",
@@ -5356,7 +5820,9 @@
     "equipment_old": "天立櫻槍卡",
     "equipment_old_data": "攻擊+20",
     "innate_skill": "",
-    "transformation_skill": "會心強擊"
+    "transformation_skill": "會心強擊",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "周倉",
@@ -5379,7 +5845,9 @@
     "equipment_old": "平忠大刀卡",
     "equipment_old_data": "體質+14",
     "innate_skill": "",
-    "transformation_skill": "會心強擊"
+    "transformation_skill": "會心強擊",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "王魔",
@@ -5402,7 +5870,9 @@
     "equipment_old": "開天珠卡",
     "equipment_old_data": "命中+20",
     "innate_skill": "",
-    "transformation_skill": "會心強擊"
+    "transformation_skill": "會心強擊",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "鍾會",
@@ -5425,7 +5895,9 @@
     "equipment_old": "地邪劍卡",
     "equipment_old_data": "閃避+12",
     "innate_skill": "",
-    "transformation_skill": "會心強擊"
+    "transformation_skill": "會心強擊",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "楊森",
@@ -5448,7 +5920,9 @@
     "equipment_old": "劈地珠卡",
     "equipment_old_data": "體質+20",
     "innate_skill": "",
-    "transformation_skill": "會心強擊"
+    "transformation_skill": "會心強擊",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "公孫大娘",
@@ -5471,7 +5945,9 @@
     "equipment_old": "雁翅刀卡",
     "equipment_old_data": "力量+12",
     "innate_skill": "",
-    "transformation_skill": "會心強擊"
+    "transformation_skill": "會心強擊",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "韋護",
@@ -5494,7 +5970,9 @@
     "equipment_old": "降魔杵卡",
     "equipment_old_data": "力量+12",
     "innate_skill": "",
-    "transformation_skill": "會心強擊"
+    "transformation_skill": "會心強擊",
+    "magnification_new": "",
+    "magnification_old": "2x"
   },
   {
     "name": "廖化",
@@ -5517,6 +5995,8 @@
     "equipment_old": "旋馬長刀卡",
     "equipment_old_data": "HP+450",
     "innate_skill": "",
-    "transformation_skill": "會心強擊"
+    "transformation_skill": "會心強擊",
+    "magnification_new": "",
+    "magnification_old": "2x"
   }
 ]

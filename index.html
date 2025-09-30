@@ -1,45 +1,30 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
-<head>
-  <meta charset="UTF-8" />
-  <title>遊戲資料網站</title>
-  <link rel="stylesheet" href="css/styles.css">
-</head>
-<body>
-<div id="nav-container"></div><!-- 這是導航列會被載入的位置 -->
+  <head>
+    <meta charset="UTF-8" />
+    <title>遊戲資料網站</title>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <div id="nav-placeholder"></div>
+    <!-- 這是導航列會被載入的位置 -->
 
-<!-- 主要內容 -->
-<div id="content">
-  <h1>歡迎來到天外資料網站</h1>
-    <!-- 更新紀錄區塊 -->
-  <section id="changelog">
-  <h2>📝 更新紀錄</h2>
-  <ul class="changelog-list">
-    <li>
-      <span class="date">2025-09-30</span>
-      新增英雄清單。
-    </li>
-  </ul>
-</section>
-     <!-- 其他 -->
-
-</div>
-<div id="footer-container"></div>
-
-<script>
-    // 載入導航列
-    fetch('components/nav/nav.html')
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById('nav-container').innerHTML = data;
-      });
-
-    // 載入頁尾
-    fetch('components/footer/footer.html')
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById('footer-container').innerHTML = data;
-      });
-  </script>
-</body>
+    <!-- 主要內容 -->
+    <div id="content">
+      <h1>歡迎來到天外資料網站</h1>
+      <!-- 更新紀錄區塊 -->
+      <section id="changelog">
+        <h2>📝 更新紀錄</h2>
+        <ul class="changelog-list">
+          <li>
+            <span class="date">2025-09-30</span>
+            新增英雄清單。
+          </li>
+        </ul>
+      </section>
+      <!-- 其他 -->
+    </div>
+    <div id="footer-container"></div>
+    <script src="js/componentsLoader.js"></script>
+  </body>
 </html>

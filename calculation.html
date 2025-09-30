@@ -4,33 +4,286 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>搜尋下拉選單</title>
+
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/calculation.css" />
+    <style></style>
   </head>
   <body>
-    <div id="nav-placeholder"></div>
-
-    <div id="calculation"></div>
     <!-- 共用導航列 -->
+    <div id="nav-placeholder"></div>
+    <div class="main hero-content">
+      <div class="hero-card flex-grow">
+        <h2>英雄數值</h2>
+
+        <div class="hero-form-col">
+          <div class="search-toggle-container flex">
+            <div class="search-toggle-item">
+              <label style="margin-right: 8px">搜索</label>
+              <div class="switch-toggle-group">
+                <label class="switch-toggle">
+                  <input type="checkbox" id="search-enable-switch" />
+                  <span class="slider"></span>
+                </label>
+              </div>
+            </div>
+            <div class="search-toggle-item">
+              <label>生變</label>
+              <div class="switch-toggle-group">
+                <label class="switch-toggle">
+                  <input type="checkbox" id="toggle-switch" />
+                  <span class="slider"></span>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <label>英雄 </label>
+
+          <div class="search-row">
+            <div class="search-col hero-search-col">
+              <input
+                id="searchInput4"
+                type="text"
+                class="search-input"
+                placeholder="搜尋英雄..."
+                autocomplete="off"
+                disabled
+              />
+              <div id="dropdown4" class="custom-dropdown"></div>
+            </div>
+          </div>
+          <label>等級 </label>
+          <input
+            type="number"
+            id="level"
+            class="hero-input"
+            value="0"
+            min="0"
+          />
+          <label>力量 </label>
+          <input
+            type="number"
+            id="strength"
+            class="hero-input"
+            value="0"
+            min="0"
+          />
+          <label>智慧 </label>
+          <input
+            type="number"
+            id="intelligence"
+            class="hero-input"
+            value="0"
+            min="0"
+          />
+          <label>體質 </label>
+          <input
+            type="number"
+            id="constitution"
+            class="hero-input"
+            value="0"
+            min="0"
+          />
+          <label>敏捷 </label>
+          <input
+            type="number"
+            id="agility"
+            class="hero-input"
+            value="0"
+            min="0"
+          />
+          <label>運氣 </label>
+          <input type="number" id="luck" class="hero-input" value="0" min="0" />
+
+          <div class="equip-row">
+            <label>裝備卡1 </label>
+            <div class="equip-col">
+              <input
+                type="number"
+                id="equipment1"
+                class="equip-input"
+                value="0"
+                min="0"
+              />
+              <div class="search-row">
+                <div class="search-col">
+                  <input
+                    id="searchInput1"
+                    type="text"
+                    class="search-input"
+                    placeholder="搜尋裝備卡..."
+                    autocomplete="off"
+                    disabled
+                  />
+                  <div id="dropdown1" class="custom-dropdown"></div>
+                </div>
+              </div>
+            </div>
+            <div class="equip-radio-group">
+              <label
+                ><input
+                  type="radio"
+                  name="equip1-type"
+                  value="normal"
+                  checked
+                  disabled
+                />
+                非專卡</label
+              >
+              <label
+                ><input type="radio" name="equip1-type" value="2x" disabled />
+                2倍專卡</label
+              >
+              <label
+                ><input type="radio" name="equip1-type" value="2.5x" disabled />
+                2.5倍專卡</label
+              >
+            </div>
+          </div>
+          <div class="equip-row">
+            <label>裝備卡2 </label>
+            <div class="equip-col">
+              <input
+                type="number"
+                id="equipment2"
+                class="equip-input"
+                value="0"
+                min="0"
+              />
+              <div class="search-row">
+                <div class="search-col">
+                  <input
+                    id="searchInput2"
+                    type="text"
+                    class="search-input"
+                    placeholder="搜尋裝備卡..."
+                    autocomplete="off"
+                    disabled
+                  />
+                  <div id="dropdown2" class="custom-dropdown"></div>
+                </div>
+              </div>
+            </div>
+            <div class="equip-radio-group">
+              <label
+                ><input
+                  type="radio"
+                  name="equip2-type"
+                  value="normal"
+                  checked
+                  disabled
+                />
+                非專卡</label
+              >
+              <label
+                ><input type="radio" name="equip2-type" value="2x" disabled />
+                2倍專卡</label
+              >
+              <label
+                ><input type="radio" name="equip2-type" value="2.5x" disabled />
+                2.5倍專卡</label
+              >
+            </div>
+          </div>
+          <div class="equip-row">
+            <label>裝備卡3 </label>
+            <div class="equip-col">
+              <input
+                type="number"
+                id="equipment3"
+                class="equip-input"
+                value="0"
+                min="0"
+              />
+              <div class="search-row">
+                <div class="search-col">
+                  <input
+                    id="searchInput3"
+                    type="text"
+                    class="search-input"
+                    placeholder="搜尋裝備卡..."
+                    autocomplete="off"
+                    disabled
+                  />
+                  <div id="dropdown3" class="custom-dropdown"></div>
+                </div>
+              </div>
+            </div>
+            <div class="equip-radio-group">
+              <label
+                ><input
+                  type="radio"
+                  name="equip3-type"
+                  value="normal"
+                  checked
+                  disabled
+                />
+                非專卡</label
+              >
+              <label
+                ><input type="radio" name="equip3-type" value="2x" disabled />
+                2倍專卡</label
+              >
+              <label
+                ><input type="radio" name="equip3-type" value="2.5x" disabled />
+                2.5倍專卡</label
+              >
+            </div>
+          </div>
+        </div>
+        <button id="calculate-btn" class="calc-btn" type="button">計算</button>
+      </div>
+
+      <div class="flex-grow">
+        <div class="hero-card">
+          <h2>計算結果</h2>
+          <div class="hero-form-col">
+            <label>英雄 LV40 屬性點總和 </label>
+            <input
+              type="number"
+              id="total-attribute-points"
+              class="hero-input"
+              disabled
+            />
+            <label>目前等級屬性點上限 </label>
+            <input
+              type="number"
+              id="current-level-cap"
+              class="hero-input"
+              disabled
+            />
+
+            <label>目前等級屬性點總和 </label>
+            <input
+              type="number"
+              id="current-level-total"
+              class="hero-input"
+              disabled
+            />
+
+            <label>目前等級剩下可食用點數 </label>
+            <input
+              type="number"
+              id="current-level-remaining"
+              class="hero-input"
+              disabled
+            />
+            <label>英雄此生剩下可食用點數 </label>
+            <input
+              type="number"
+              id="hero-remaining"
+              class="hero-input"
+              disabled
+            />
+          </div>
+        </div>
+      </div>
+    </div>
 
     <div id="footer-container"></div>
-    <script src="/js/componentsLoader.js"></script>
-    <script>
-      function loadComponent(selector, url) {
-        const el = document.querySelector(selector);
-        if (el) {
-          fetch(url)
-            .then((res) => res.text())
-            .then((html) => {
-              el.innerHTML = html;
-            });
-        }
-      }
+    <script src="js/componentsLoader.js"></script>
 
-      document.addEventListener("DOMContentLoaded", function () {
-        loadComponent(
-          "#calculation",
-          "/modules/calculation/calculation.html"
-        );
-      });
-    </script>
+    <script src="js/calculation.js"></script>
   </body>
 </html>
