@@ -17,7 +17,7 @@
     </div>
   </div>
 </nav>
-<!-- 導航列 -->
+
 <!-- 主要內容 -->
 <div id="content">
   <h1>歡迎來到天外資料網站</h1>
@@ -31,9 +31,17 @@
     </li>
   </ul>
 </section>
-     <!-- 更新紀錄區塊 -->
+     <!-- 其他 -->
 
 </div>
+<div id="footer-container"></div>
 
+<script>
+  fetch('footer.html')
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById('footer-container').innerHTML = data;
+    });
+</script>
 </body>
 </html>
