@@ -70,3 +70,8 @@ nav a:hover, nav .dropdown-toggle:hover {
   max-width: 960px;
   margin: auto;
 }
+
+.highlight {
+  background-color: yellow;
+  font-weight: bold;
+}

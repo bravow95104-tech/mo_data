@@ -169,7 +169,23 @@
 
       fields.forEach(field => {
         const td = document.createElement('td');
-        td.textContent = hero[field] !== undefined ? hero[field] : '';
+        const keyword = searchInput.value.trim().toLowerCase();
+
+fields.forEach(field => {
+  const td = document.createElement('td');
+  const value = hero[field] !== undefined ? String(hero[field]) : '';
+
+  if (keyword && value.toLowerCase().includes(keyword)) {
+    // 高亮顯示符合關鍵字
+    const regex = new RegExp(`(${keyword})`, 'gi');
+    td.innerHTML = value.replace(regex, '<span class="highlight">$1</span>');
+  } else {
+    td.textContent = value;
+  }
+
+  tr.appendChild(td);
+});
+
         tr.appendChild(td);
       });
 
