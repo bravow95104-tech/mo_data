@@ -58,11 +58,7 @@ nav .dropdown-toggle:hover {
   top: 100%;
   left: 0;
 }
-/* 第二個 dropdown 的內容往右移 100%（父寬度） */
-nav .dropdown:nth-of-type(2) .dropdown-content {
-  left: 100%;
-  top: 0;
-}
+
 
 .dropdown:hover .dropdown-content {
   display: block;
