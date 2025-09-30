@@ -16,6 +16,8 @@ function loadComponent(selector, url) {
 document.addEventListener("DOMContentLoaded", function () {
   const repoName = window.location.pathname.split("/")[1]; // 只取 repo 名
   const baseURL = `${window.location.origin}/${repoName}`;
+  // const baseURL = ``;
+
 
   loadComponent("#nav-placeholder", baseURL + "/components/nav/nav.html");
   loadComponent(
