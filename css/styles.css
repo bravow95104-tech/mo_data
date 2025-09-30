@@ -1,11 +1,20 @@
 body {
-  background-color: white; /* 測試用，可換掉 */
+  background-color: white;
   margin: 0;
   font-family: 'Microsoft JhengHei', sans-serif;
+  padding: 0 40px; /* 左右各留 40px */
 }
 
+/* 主要內容容器 */
+main, #content {
+  max-width: 1200px;
+  margin: 0 auto;       /* 置中 */
+  padding: 0 20px;      /* 左右留白 */
+}
+
+/* 導航列 */
 nav {
-  background: #3399ff; /* 淺藍清爽 */
+  background: #3399ff;
   color: white;
   padding: 12px 20px;
   display: flex;
@@ -27,7 +36,7 @@ nav a, nav .dropdown-toggle {
 }
 
 nav a:hover, nav .dropdown-toggle:hover {
-  background-color: #5abaff; /* 淺藍 */
+  background-color: #5abaff;
 }
 
 /* Dropdown */
@@ -38,7 +47,7 @@ nav a:hover, nav .dropdown-toggle:hover {
 .dropdown-content {
   display: none;
   position: absolute;
-  background-color: #3399ff; /* 與導航列相同色 */
+  background-color: #3399ff;
   min-width: 180px;
   box-shadow: 0 8px 16px rgba(0,0,0,0.2);
   z-index: 1001;
@@ -62,15 +71,14 @@ nav a:hover, nav .dropdown-toggle:hover {
   background-color: #5abaff;
 }
 
-}
-
-/* 主內容 */
+/* 主內容區 */
 #content {
   padding: 30px;
   max-width: 960px;
   margin: auto;
 }
 
+/* 搜尋時高亮文字 */
 .highlight {
   background-color: yellow;
   font-weight: bold;
