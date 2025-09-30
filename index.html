@@ -1,19 +1,47 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
-  <head>
-    <meta charset="UTF-8" />
-    <title>遊戲資料網站</title>
-    <link rel="stylesheet" href="css/styles.css" />
-  </head>
-  <body>
-    <!-- 共用導航列 -->
-    <div id="nav-placeholder"></div>
-
-    <div id="content">
-      <h1>歡迎來到天外資料網站</h1>
-      <p>請點選上方導航列的選項來瀏覽各種遊戲資料。</p>
+<head>
+  <meta charset="UTF-8" />
+  <title>遊戲資料網站</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<!-- 導航列 -->
+<nav>
+  <a href="index.html" class="nav-link">首頁</a>
+  <div class="dropdown">
+    <div class="dropdown-toggle">英雄 ▼</div>
+    <div class="dropdown-content">
+      <a href="heroes.html">英雄清單</a>
+      <a href="heroeseat.html">英雄料理數值</a>
     </div>
+  </div>
+</nav>
 
-    <script src="js/componentsLoader.js"></script>
-  </body>
+<!-- 主要內容 -->
+<div id="content">
+  <h1>歡迎來到天外資料網站</h1>
+    <!-- 更新紀錄區塊 -->
+  <section id="changelog">
+  <h2>📝 更新紀錄</h2>
+  <ul class="changelog-list">
+    <li>
+      <span class="date">2025-09-30</span>
+      新增英雄清單。
+    </li>
+  </ul>
+</section>
+     <!-- 其他 -->
+
+</div>
+<div id="footer-container"></div>
+
+<script>
+  fetch('footer.html')
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById('footer-container').innerHTML = data;
+    });
+</script>
+</body>
 </html>

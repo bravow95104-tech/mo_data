@@ -87,33 +87,62 @@ nav .dropdown-toggle:hover {
   font-weight: bold;
 }
 
-/* 英雄詳細 Modal 的左右分欄容器 */
-.hero-details-container {
-  display: flex;
-  gap: 30px;
-  padding: 20px;
+/* Modal 視窗框 */
+#modalBox {
+  display: none;
+  position: fixed;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  border-radius: 8px;
+  padding: 20px 30px;
   max-width: 800px;
-  margin: auto;
-  flex-wrap: wrap;
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  z-index: 2001;
 }
 
+/* Modal 英雄名稱置中 */
+.hero-name {
+  text-align: center;
+  font-size: 24px;
+  color: #3399ff;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 10px;
+}
+
+/* Modal 內部兩欄橫排 */
+.hero-details-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 40px;
+  padding: 10px 20px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* 左右欄樣式 */---------
 .hero-column {
-  flex: 1;
-  min-width: 300px;
+  flex: 0 0 48%;
+  min-width: 280px;
 }
 
 .hero-column p {
-  margin: 6px 0;
+  margin: 8px 0;
   font-size: 15px;
-  line-height: 1.5;
+  line-height: 1.4;
 }
 
 .hero-column h2 {
   margin-top: 0;
   color: #3399ff;
-  font-size: 22px;
   text-align: center;
 }
+
 
 /* RWD 手機優化（選配） */
 @media (max-width: 600px) {
