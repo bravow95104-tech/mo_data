@@ -112,8 +112,8 @@ nav .dropdown:nth-of-type(2) .dropdown-content {
 
 /* 主要內容區塊 */
 #content {
-  padding: 30px;
-  max-width: 960px;
+  padding: 30px 40px;
+  max-width: 900px;
   margin: auto;
 }
 
