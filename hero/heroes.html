@@ -133,6 +133,41 @@
   <label for="searchInput" class="quick-search-label">快速搜尋</label>
   <input type="text" id="searchInput" placeholder="搜尋英雄名稱、光輝、裝備卡...">
 </div>
+<!-- 快速搜尋 -->
+<div id="filterContainer" class="accordion">
+  <h3 class="accordion-header">快速搜尋條件 ▾</h3>
+  <div class="accordion-content">
+    
+    <!-- 拜官 -->
+    <div class="filter-group">
+      <span class="filter-title">拜官：</span>
+      <button class="filter-btn" data-category="拜官" data-value="武者">武者</button>
+      <button class="filter-btn" data-category="拜官" data-value="響馬">響馬</button>
+      <button class="filter-btn" data-category="拜官" data-value="仙士">仙士</button>
+      <button class="filter-btn" data-category="拜官" data-value="策士">策士</button>
+      <button class="filter-btn" data-category="拜官" data-value="工匠">工匠</button>
+    </div>
+
+    <!-- 個性 -->
+    <div class="filter-group">
+      <span class="filter-title">個性：</span>
+      <button class="filter-btn" data-category="個性" data-value="掃蕩">掃蕩</button>
+      <button class="filter-btn" data-category="個性" data-value="護衛">護衛</button>
+      <button class="filter-btn" data-category="個性" data-value="掠陣">掠陣</button>
+      <button class="filter-btn" data-category="個性" data-value="巡邏">巡邏</button>
+      <button class="filter-btn" data-category="個性" data-value="巡狩">巡狩</button>
+      <button class="filter-btn" data-category="個性" data-value="誘敵">誘敵</button>
+      <button class="filter-btn" data-category="個性" data-value="狙擊">狙擊</button>
+      <button class="filter-btn" data-category="個性" data-value="固守">固守</button>
+    </div>
+
+    <!-- 清除篩選 -->
+    <div class="filter-actions">
+      <button id="clearFilters" class="clear-btn">清除篩選</button>
+    </div>
+  </div>
+</div>
+
 <!-- 英雄表格 -->
 <table id="heroes-table">
   <thead>

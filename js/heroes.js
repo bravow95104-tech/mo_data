@@ -38,3 +38,13 @@ fetch("data/heroes.json")
     document.getElementById("hero-list").innerText =
       "載入資料失敗，請檢查 heroes.json 是否存在。";
   });
+
+document.addEventListener("DOMContentLoaded", () => {
+  // Accordion 功能
+  const accordion = document.querySelector(".accordion");
+  const header = accordion.querySelector(".accordion-header");
+
+  header.addEventListener("click", () => {
+    accordion.classList.toggle("collapsed");
+  });
+});
