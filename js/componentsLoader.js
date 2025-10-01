@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // const baseURL = ``;
 
 
-  loadComponent("#nav-placeholder", baseURL + "/components/nav/nav.html");
+  loadComponent("#nav-container", baseURL + "/components/nav/nav.html");
   loadComponent(
     "#footer-container",
     baseURL + "/components/footer/footer.html"
