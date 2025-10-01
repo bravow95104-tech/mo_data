@@ -2,13 +2,10 @@
 body {
   background-color: white;
   margin: 0;
-  /* padding: 0 40px; 左右留白 */
+  padding: 0 40px; /* 🔹全站左右留 40px */
   font-family: "Microsoft JhengHei", sans-serif;
 }
 
-.main {
-  padding: 0 40px; /* 左右留白 */
-}
 /* 內容容器置中 */
 main,
 #content {
