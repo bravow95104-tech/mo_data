@@ -176,7 +176,7 @@
   let heroesData = [];
 
   // 載入 JSON 資料
-  fetch('/data/heroes.json')
+  fetch('/mo_data/data/heroes.json')
     .then(response => response.json())
     .then(data => {
       heroesData = data;
@@ -326,14 +326,14 @@
 
 <script>
     // 載入導航列
-    fetch('../components/nav/nav.html')
+    fetch('/mo_data/components/nav/nav.html')
       .then(response => response.text())
       .then(data => {
         document.getElementById('nav-container').innerHTML = data;
       });
 
     // 載入頁尾
-    fetch('../components/footer/footer.html')
+    fetch('/mo_data/components/footer/footer.html')
       .then(response => response.text())
       .then(data => {
         document.getElementById('footer-container').innerHTML = data;
