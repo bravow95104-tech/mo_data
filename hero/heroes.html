@@ -324,20 +324,6 @@
 </script>
 <div id="footer-container"></div>
 
-<script>
-    // 載入導航列
-    fetch('/mo_data/components/nav/nav.html')
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById('nav-container').innerHTML = data;
-      });
-
-    // 載入頁尾
-    fetch('/mo_data/components/footer/footer.html')
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById('footer-container').innerHTML = data;
-      });
-  </script>
+<script src="/mo_data/js/componentsLoader.js"></script>
 </body>
 </html>
