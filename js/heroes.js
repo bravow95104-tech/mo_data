@@ -182,8 +182,14 @@ document.getElementById('clearFilters').addEventListener('click', () => {
   document.querySelectorAll('.filter-btn').forEach(btn => {
     btn.classList.remove('active-filter');
   });
+
+    // 移除所有高亮
+  document.querySelectorAll('.highlight').forEach(el => {
+    const parent = el.parentNode;
+    parent.replaceChild(document.createTextNode(el.textContent), el);
+    parent.normalize();
+  });
 });
-  
   // Accordion 展開／收合
 document.querySelectorAll('.accordion-header').forEach(header => {
   header.addEventListener('click', () => {
