@@ -79,19 +79,18 @@ document.querySelectorAll('.filter-btn').forEach(btn => {
 
 // 清除篩選
 document.getElementById('clearFilters').addEventListener('click', () => {
-  renderHeroes(filtered);
-  searchInput.value = '';
+  renderHeroes(heroesData); // 回到全部
 });
-// Accordion 收合
-  document.querySelectorAll(".accordion").forEach((acc) => {
-    acc.addEventListener("click", function () {
-      this.classList.toggle("active");
 
-      let panel = this.nextElementSibling;
-      if (panel.style.maxHeight) {
-        panel.style.maxHeight = null;
-      } else {
-        panel.style.maxHeight = panel.scrollHeight + "px";
-      }
-    });
+// Accordion 收合
+document.querySelectorAll(".accordion").forEach((acc) => {
+  acc.addEventListener("click", function () {
+    this.classList.toggle("active");
+    let panel = this.nextElementSibling;
+    if (panel.style.maxHeight) {
+      panel.style.maxHeight = null;
+    } else {
+      panel.style.maxHeight = panel.scrollHeight + "px";
+    }
   });
+});
