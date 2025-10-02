@@ -259,3 +259,10 @@ nav .dropdown:nth-of-type(2) .dropdown-content {
   content: "▾"; /* 展開箭頭 */
   float: right;
 }
+
+.filter-btn.active-filter {  /* 快速搜尋黃底 */
+  background-color: yellow;
+  color: black;
+  font-weight: bold;
+  border: 2px solid #ccc;
+}
