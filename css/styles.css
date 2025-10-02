@@ -2,13 +2,10 @@
 body {
   background-color: white;
   margin: 0;
-  /* padding: 0 40px; 左右留白 */
+  padding: 0 40px; /* 🔹全站左右留 40px */
   font-family: "Microsoft JhengHei", sans-serif;
 }
 
-.main {
-  padding: 0 40px; /* 左右留白 */
-}
 /* 內容容器置中 */
 main,
 #content {
@@ -220,4 +217,45 @@ nav .dropdown:nth-of-type(2) .dropdown-content {
 
 .flex {
   display: flex;
+}
+/* 快速搜尋樣式 */
+.accordion {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  background: #fafafa;
+}
+
+.accordion-header {
+  margin: 0;
+  padding: 12px 16px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  background: #f0f0f0;
+  border-radius: 8px 8px 0 0;
+  user-select: none;
+  transition: background 0.3s;
+}
+
+.accordion-header:hover {
+  background: #e0e0e0;
+}
+
+.accordion-content {
+  padding: 12px 16px;
+  display: block; /* 預設展開 */
+}
+
+.accordion.collapsed .accordion-content {
+  display: none; /* 收合 */
+}
+
+.accordion.collapsed .accordion-header::after {
+  content: "▸"; /* 收合箭頭 */
+}
+
+.accordion-header::after {
+  content: "▾"; /* 展開箭頭 */
+  float: right;
 }
