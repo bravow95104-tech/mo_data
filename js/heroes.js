@@ -63,9 +63,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
       // heroes.json 裡的欄位 key 對應
       const mapping = {
-        "拜官": "promotion",
-        "個性": "personality",
-        "素質": "traits"
+        "拜官": "hero.promotion",
+        "個性": "hero.personality",
+        "素質": "hero.traits"
       };
 
       const key = mapping[type];
@@ -81,3 +81,20 @@ document.addEventListener("DOMContentLoaded", function () {
     renderHeroes(heroesData);
   });
 });
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  // 綁定 accordion 點擊事件
+  document.querySelectorAll(".accordion").forEach((acc) => {
+    acc.addEventListener("click", function () {
+      this.classList.toggle("active");
+
+      let panel = this.nextElementSibling;
+      if (panel.style.maxHeight) {
+        panel.style.maxHeight = null;
+      } else {
+        panel.style.maxHeight = panel.scrollHeight + "px";
+      }
+    });
+  });
+});
+</script>
