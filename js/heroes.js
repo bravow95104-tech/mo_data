@@ -1,5 +1,4 @@
-<!-- JavaScript -->
-<script>
+
 document.addEventListener("DOMContentLoaded", () => {
   let heroesData = [];
 
@@ -168,4 +167,3 @@ document.addEventListener("DOMContentLoaded", () => {
     renderTable(heroesData);
     searchInput.value = '';
   });
-</script>
