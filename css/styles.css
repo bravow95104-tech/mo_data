@@ -114,12 +114,6 @@ nav .dropdown:nth-of-type(2) .dropdown-content {
   margin: auto;
 }
 
-/* 搜尋時高亮文字 */
-.highlight {
-  background-color: yellow;
-  font-weight: bold;
-}
-
 /* Modal 視窗框 */
 #modalBox {
   display: none;
@@ -260,9 +254,4 @@ nav .dropdown:nth-of-type(2) .dropdown-content {
   float: right;
 }
 
-.filter-btn.active-filter {  /* 快速搜尋黃底 */
-  background-color: yellow;
-  color: black;
-  font-weight: bold;
-  border: 2px solid #ccc;
-}
+
