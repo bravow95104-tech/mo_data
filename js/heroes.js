@@ -82,10 +82,7 @@ document.getElementById('clearFilters').addEventListener('click', () => {
   renderHeroes(filtered);
   searchInput.value = '';
 });
-
-
-document.addEventListener("DOMContentLoaded", function () {
-  // 綁定 accordion 點擊事件
+// Accordion 收合
   document.querySelectorAll(".accordion").forEach((acc) => {
     acc.addEventListener("click", function () {
       this.classList.toggle("active");
@@ -98,5 +95,3 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
   });
-});
-</script>
