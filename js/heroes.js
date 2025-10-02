@@ -73,13 +73,13 @@ document.querySelectorAll('.filter-btn').forEach(btn => {
       return true;
     });
 
-    renderTable(filtered);
+    renderHeroes(filtered);
   });
 });
 
 // 清除篩選
 document.getElementById('clearFilters').addEventListener('click', () => {
-  renderTable(heroesData);
+  renderHeroes(filtered);
   searchInput.value = '';
 });
 
