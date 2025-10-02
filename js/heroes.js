@@ -53,7 +53,7 @@ fetch("data/heroes.json")
     document.getElementById("hero-list").innerText =
       "載入資料失敗，請檢查 heroes.json 是否存在。";
   });
-
+<script>
 // 綁定快速搜尋按鈕
 document.querySelectorAll('.filter-btn').forEach(btn => {
   btn.addEventListener('click', () => {
@@ -83,7 +83,7 @@ document.getElementById('clearFilters').addEventListener('click', () => {
   searchInput.value = '';
 });
 
-<script>
+
 document.addEventListener("DOMContentLoaded", function () {
   // 綁定 accordion 點擊事件
   document.querySelectorAll(".accordion").forEach((acc) => {
