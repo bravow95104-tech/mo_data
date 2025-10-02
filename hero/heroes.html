@@ -134,45 +134,38 @@
   <input type="text" id="searchInput" placeholder="搜尋英雄名稱、光輝、裝備卡...">
 </div>
 <br>
-<!-- 快速搜尋 -->
 <div id="filterContainer" class="accordion">
   <h3 class="accordion-header">快速搜尋條件 ▾</h3>
   <div class="accordion-content">
-    
-  <!-- 拜官 -->
-  <div class="filter-group">
-    <span class="filter-label">拜官：</span>
-    <button class="filter-btn" data-type="拜官" data-value="武者">武者</button>
-    <button class="filter-btn" data-type="拜官" data-value="響馬">響馬</button>
-    <button class="filter-btn" data-type="拜官" data-value="仙士">仙士</button>
-    <button class="filter-btn" data-type="拜官" data-value="策士">策士</button>
-    <button class="filter-btn" data-type="拜官" data-value="工匠">工匠</button>
-  </div>
-<br>
-  <!-- 個性 -->
-  <div class="filter-group">
-    <span class="filter-label">個性：</span>
-    <button class="filter-btn" data-type="個性" data-value="掃蕩">掃蕩</button>
-    <button class="filter-btn" data-type="個性" data-value="護衛">護衛</button>
-    <button class="filter-btn" data-type="個性" data-value="掠陣">掠陣</button>
-    <button class="filter-btn" data-type="個性" data-value="巡邏">巡邏</button>
-    <button class="filter-btn" data-type="個性" data-value="巡狩">巡狩</button>
-    <button class="filter-btn" data-type="個性" data-value="誘敵">誘敵</button>
-    <button class="filter-btn" data-type="個性" data-value="狙擊">狙擊</button>
-    <button class="filter-btn" data-type="個性" data-value="固守">固守</button>
-  </div>
-<br>
-  <!-- 素質 -->
-  <div class="filter-group">
-    <span class="filter-label">素質：</span>
-    <button class="filter-btn" data-type="素質" data-value="750">750</button>
-    <button class="filter-btn" data-type="素質" data-value="770">770</button>
-    <button class="filter-btn" data-type="素質" data-value="870">870</button>
-    <button class="filter-btn" data-type="素質" data-value="950">950</button>
-    <button class="filter-btn" data-type="素質" data-value="1020">1020</button>
-  </div>
-<h1></h1>
-    <!-- 清除篩選 -->
+    <div class="filter-group">
+      <span class="filter-label">拜官：</span>
+      <button class="filter-btn" data-type="promotion" data-value="武者">武者</button>
+      <button class="filter-btn" data-type="promotion" data-value="響馬">響馬</button>
+      <button class="filter-btn" data-type="promotion" data-value="仙士">仙士</button>
+      <button class="filter-btn" data-type="promotion" data-value="策士">策士</button>
+      <button class="filter-btn" data-type="promotion" data-value="工匠">工匠</button>
+    </div>
+    <br>
+    <div class="filter-group">
+      <span class="filter-label">個性：</span>
+      <button class="filter-btn" data-type="personality" data-value="掃蕩">掃蕩</button>
+      <button class="filter-btn" data-type="personality" data-value="護衛">護衛</button>
+      <button class="filter-btn" data-type="personality" data-value="掠陣">掠陣</button>
+      <button class="filter-btn" data-type="personality" data-value="巡邏">巡邏</button>
+      <button class="filter-btn" data-type="personality" data-value="巡狩">巡狩</button>
+      <button class="filter-btn" data-type="personality" data-value="誘敵">誘敵</button>
+      <button class="filter-btn" data-type="personality" data-value="狙擊">狙擊</button>
+      <button class="filter-btn" data-type="personality" data-value="固守">固守</button>
+    </div>
+    <br>
+    <div class="filter-group">
+      <span class="filter-label">素質：</span>
+      <button class="filter-btn" data-type="traits" data-value="750">750</button>
+      <button class="filter-btn" data-type="traits" data-value="770">770</button>
+      <button class="filter-btn" data-type="traits" data-value="870">870</button>
+      <button class="filter-btn" data-type="traits" data-value="950">950</button>
+      <button class="filter-btn" data-type="traits" data-value="1020">1020</button>
+    </div>
     <div class="filter-actions">
       <button id="clearFilters" class="clear-btn">清除篩選</button>
     </div>
@@ -367,6 +360,25 @@
       top: 0,
       behavior: 'smooth'
     });
+  });
+  // 🔽 把快速搜尋事件放這裡 
+   document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const type = btn.dataset.type;
+      const value = btn.dataset.value;
+      const filtered = heroesData.filter(hero => {
+        if (type === "promotion") return hero.promotion === value;
+        if (type === "personality") return hero.personality === value;
+        if (type === "traits") return String(hero.traits) === String(value);
+        return true;
+      });
+      renderTable(filtered);
+    });
+  });
+
+  document.getElementById('clearFilters').addEventListener('click', () => {
+    renderTable(heroesData);
+    searchInput.value = '';
   });
 </script>
     <div id="footer-container"></div><!-- 這是頁尾會被載入的位置 -->
