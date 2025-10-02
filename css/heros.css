@@ -108,8 +108,9 @@ tbody tr:hover {
 }
 .filter-btn:hover,
 .filter-btn.active {
-  background: #3399ff;
-  color: #fff;
+  background: #fff9c0;   /* 柔和亮黃色 */
+  color: #b8860b;
+  border: 1.5px solid #ffe066;
 }
 
 /* 清除篩選按鈕 */
