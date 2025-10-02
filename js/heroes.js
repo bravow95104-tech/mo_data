@@ -54,33 +54,35 @@ fetch("data/heroes.json")
       "載入資料失敗，請檢查 heroes.json 是否存在。";
   });
 
-// 綁定快速搜尋
-document.addEventListener("DOMContentLoaded", function () {
-  document.querySelectorAll(".filter-btn").forEach((btn) => {
-    btn.addEventListener("click", function () {
-      const type = this.dataset.type;   // e.g. "拜官" or "個性" or "素質"
-      const value = this.dataset.value; // e.g. "武者" or "掃蕩" or "750"
+// 綁定快速搜尋按鈕
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const type = btn.dataset.type;   // 例：拜官、個性、素質
+    const value = btn.dataset.value; // 例：武者、掃蕩、750
 
-      // heroes.json 裡的欄位 key 對應
-      const mapping = {
-        "拜官": "hero.promotion",
-        "個性": "hero.personality",
-        "素質": "hero.traits"
-      };
-
-      const key = mapping[type];
-      if (!key) return;
-
-      const filtered = heroesData.filter(hero => hero[key] == value);
-      renderHeroes(filtered);
+    const filtered = heroesData.filter(hero => {
+      if (type === "拜官") {
+        return hero.promotion === value;
+      }
+      if (type === "個性") {
+        return hero.personality === value;
+      }
+      if (type === "素質") {
+        return hero.traits === value;
+      }
+      return true;
     });
-  });
 
-  // 重置按鈕
-  document.getElementById("resetFilters").addEventListener("click", function () {
-    renderHeroes(heroesData);
+    renderTable(filtered);
   });
 });
+
+// 清除篩選
+document.getElementById('clearFilters').addEventListener('click', () => {
+  renderTable(heroesData);
+  searchInput.value = '';
+});
+
 <script>
 document.addEventListener("DOMContentLoaded", function () {
   // 綁定 accordion 點擊事件
