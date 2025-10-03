@@ -1,25 +1,330 @@
-<!-- 假設放在 index.html / heroes.html / heroeseat.html 裡面 -->
-
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
   <meta charset="UTF-8" />
   <title>遊戲資料網站</title>
   <link rel="stylesheet" href="/mo_data/css/styles.css" />
-  
+  <link rel="stylesheet" href="/mo_data/css/heromeal.css" />
 </head>
 <body>
 
 <div id="nav-container"></div><!-- 這是導航列會被載入的位置 -->
-    <script src="/mo_data/js/componentsLoader.js"></script>
+<script src="/mo_data/js/componentsLoader.js"></script>
 
-<div id="content">
-  <!-- 目前暫時空白或簡單提示 -->
-  <h1>這是 <span id="page-title">英雄料理數值</span></h1>
-  <p>目前沒有其他內容。</p>
+
+<!-- 英雄拜官料理表格 -->
+<div class="meal-table-container">
+  <table class="meal-table">
+    <thead>
+        <tr>
+        <th colspan="5">英雄料理拜官材料</th>
+      </tr>
+      <tr>
+        <th>英雄拜官</th>
+        <th>材料一</th>
+        <th>數量</th>
+        <th>材料二</th>
+        <th>數量</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>武者</td>
+        <td>獸之水晶</td>
+        <td>5個</td>
+        <td>野山人蔘</td>
+        <td>5個</td>
+      </tr>
+      <tr>
+        <td>仙士</td>
+        <td>聖之水晶</td>
+        <td>5個</td>
+        <td>天山雪蓮</td>
+        <td>5個</td>
+      </tr>
+      <tr>
+        <td>策士</td>
+        <td>魔之水晶</td>
+        <td>5個</td>
+        <td>冬蟲夏草</td>
+        <td>5個</td>
+      </tr>
+      <tr>
+        <td>響馬</td>
+        <td>妖之水晶</td>
+        <td>5個</td>
+        <td>千年靈芝</td>
+        <td>5個</td>
+      </tr>
+      <tr>
+        <td>工匠</td>
+        <td>魂之水晶</td>
+        <td>5個</td>
+        <td>曼陀羅根</td>
+        <td>5個</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<!-- 1020卡/950卡 數值表 -->
+<div class="card-table-container">
+  <table class="card-table">
+    <thead>
+      <tr>
+        <th colspan="2">1020卡：</th>
+        <th colspan="2">放入龍蝦醬汁</th>
+      </tr>
+      <tr>
+        <th>等級</th>
+        <th>數值</th>
+        <th>等級</th>
+        <th>數值</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>21-30</td><td>24-36</td>
+        <td>21-30</td><td>-</td>
+      </tr>
+      <tr>
+        <td>31-40</td><td>30-46</td>
+        <td>31-40</td><td>-</td>
+      </tr>
+      <tr>
+        <td>41-50</td><td>38-58</td>
+        <td>41-50</td><td>-</td>
+      </tr>
+      <tr>
+        <td>51-60</td><td>50-70</td>
+        <td>51-60</td><td>-</td>
+      </tr>
+      <tr>
+        <td>61-70</td><td>60-88</td>
+        <td>61-70</td><td>-</td>
+      </tr>
+      <tr>
+        <td>71-80</td><td>75-105</td>
+        <td>71-80</td><td>-</td>
+      </tr>
+      <tr>
+        <td>81-90</td><td>90-126</td>
+        <td>81-90</td><td>-</td>
+      </tr>
+      <tr>
+        <td>91-100</td><td>105-151</td>
+        <td>91-100</td><td>-</td>
+      </tr>
+    </tbody>
+  </table>
 </div>
 
-
-    <div id="footer-container"></div><!-- 這是頁尾會被載入的位置 -->
+<div class="card-table-container">
+  <table class="card-table" >
+    <thead>
+      <tr>
+        <th colspan="2">950卡：</th>
+        <th colspan="2">950卡：放入龍蝦醬汁(0蝦)</th>
+      </tr>
+      <tr>
+        <th>等級</th>
+        <th>數值</th>
+        <th>等級</th>
+        <th>數值</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>01-30</td><td>7-13</td>
+        <td>01-30</td><td>17-32</td>
+      </tr>
+      <tr>
+        <td>31-40</td><td>8-16</td>
+        <td>21-30</td><td>20-40</td>
+      </tr>
+      <tr>
+        <td>41-50</td><td>12-20</td>
+        <td>31-40</td><td>30-50</td>
+      </tr>
+      <tr>
+        <td>51-60</td><td>15-25</td>
+        <td>41-50</td><td>37-62</td>
+      </tr>
+      <tr>
+        <td>61-70</td><td>18-30</td>
+        <td>51-60</td><td>45-75</td>
+      </tr>
+      <tr>
+        <td>71-80</td><td>24-36</td>
+        <td>61-70</td><td>60-90</td>
+      </tr>
+      <tr>
+        <td>81-90</td><td>30-46</td>
+        <td>71-80</td><td>75-110</td>
+      </tr>
+      <tr>
+        <td>91-100</td><td>40-60</td>
+        <td>81-90</td><td>100~150</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<!-- 870卡 / 870卡(1蝦) 數值表 -->
+<div class="card-table-container">
+  <table class="card-table">
+    <thead>
+      <tr>
+        <th colspan="2">870卡</th>
+        <th colspan="2">放入龍蝦醬汁(1蝦)</th>
+      </tr>
+      <tr>
+        <th>等級</th>
+        <th>數值</th>
+        <th>等級</th>
+        <th>數值</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>01-30</td><td>6~18</td>
+        <td>01-30</td><td>9~9</td>
+      </tr>
+      <tr>
+        <td>21-30</td><td>12~24</td>
+        <td>21-30</td><td>9~28</td>
+      </tr>
+      <tr>
+        <td>41-50</td><td>12~36</td>
+        <td>41-50</td><td>13~36</td>
+      </tr>
+      <tr>
+        <td>51-60</td><td>18~42</td>
+        <td>51-60</td><td>19~57</td>
+      </tr>
+      <tr>
+        <td>61-70</td><td>28~66</td>
+        <td>61-70</td><td>28~66</td>
+      </tr>
+      <tr>
+        <td>71-80</td><td>42~78</td>
+        <td>71-80</td><td>38~76</td>
+      </tr>
+      <tr>
+        <td>81-90</td><td>60~108</td>
+        <td>81-90</td><td>57~95</td>
+      </tr>
+      <tr>
+        <td>91-100</td><td>90~150</td>
+        <td>91-100</td><td>76~152</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<!-- 770卡 / 770卡(2蝦) 數值表 -->
+<div class="card-table-container">
+  <table class="card-table">
+    <thead>
+      <tr>
+        <th colspan="2">770卡</th>
+        <th colspan="2">放入龍蝦醬汁(2蝦)</th>
+      </tr>
+      <tr>
+        <th>等級</th>
+        <th>數值</th>
+        <th>等級</th>
+        <th>數值</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>01-10</td><td>1-1</td>
+        <td>01-30</td><td>9~9</td>
+      </tr>
+      <tr>
+        <td>11-20</td><td>1-1</td>
+        <td>21-30</td><td>9~28</td>
+      </tr>
+      <tr>
+        <td>21-30</td><td>1-1</td>
+        <td>41-50</td><td>13~36</td>
+      </tr>
+      <tr>
+        <td>31-40</td><td>1-3</td>
+        <td>51-60</td><td>19~57</td>
+      </tr>
+      <tr>
+        <td>41-50</td><td>2-4</td>
+        <td>61-70</td><td>28~66</td>
+      </tr>
+      <tr>
+        <td>51-60</td><td>2-6</td>
+        <td>71-80</td><td>38~76</td>
+      </tr>
+      <tr>
+        <td>61-70</td><td>3-7</td>
+        <td>81-90</td><td>57~95</td>
+      </tr>
+      <tr>
+        <td>71-80</td><td>4-8</td>
+        <td>91-100</td><td>76~152</td>
+      </tr>
+      <tr>
+        <td>81-90</td><td>6-10</td>
+        <td></td><td></td>
+      </tr>
+      <tr>
+        <td>91-100</td><td>8-16</td>
+        <td></td><td></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<!-- 750卡 / 750卡(3蝦) 數值表 -->
+<div class="card-table-container">
+  <table class="card-table">
+    <thead>
+      <tr>
+        <th colspan="2">750卡</th>
+        <th colspan="2">放入龍蝦醬汁(3蝦)</th>
+      </tr>
+      <tr>
+        <th>等級</th>
+        <th>數值</th>
+        <th>等級</th>
+        <th>數值</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>01-40</td><td>1-1</td>
+        <td>01-40</td><td>11~11</td>
+      </tr>
+      <tr>
+        <td>41-50</td><td>1-3</td>
+        <td>41-50</td><td>11~34</td>
+      </tr>
+      <tr>
+        <td>51-60</td><td>2-4</td>
+        <td>51-60</td><td>23~46</td>
+      </tr>
+      <tr>
+        <td>61-70</td><td>2-6</td>
+        <td>61-70</td><td>23~69</td>
+      </tr>
+      <tr>
+        <td>71-80</td><td>3-7</td>
+        <td>71-80</td><td>34~80</td>
+      </tr>
+      <tr>
+        <td>81-90</td><td>5-9</td>
+        <td>81-90</td><td>57~103</td>
+      </tr>
+      <tr>
+        <td>91-100</td><td>7-13</td>
+        <td>91-100</td><td>80~149</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div id="footer-container"></div><!-- 這是頁尾會被載入的位置 -->
 </body>
 </html>

@@ -150,24 +150,46 @@ document.addEventListener("DOMContentLoaded", () => {
   });
   // 快速搜尋事件放這裡 
    document.querySelectorAll('.filter-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const type = btn.dataset.type;
-      const value = btn.dataset.value;
-      const filtered = heroesData.filter(hero => {
-        if (type === "promotion") return hero.promotion === value;
-        if (type === "personality") return hero.personality === value;
-        if (type === "traits") return String(hero.traits) === String(value);
-        return true;
-      });
-      renderTable(filtered);
+  btn.addEventListener('click', () => {
+    const type = btn.dataset.type;
+    const value = btn.dataset.value;
+
+    // 先清除同類型按鈕的 active 樣式
+    document.querySelectorAll(`.filter-btn[data-type="${type}"]`).forEach(b => {
+      b.classList.remove('active-filter');
     });
+
+    // 幫點選的按鈕加上 active 樣式
+    btn.classList.add('active-filter');
+
+    // 執行篩選
+    const filtered = heroesData.filter(hero => {
+      if (type === "promotion") return hero.promotion === value;
+      if (type === "personality") return hero.personality === value;
+      if (type === "traits") return String(hero.traits) === String(value);
+      return true;
+    });
+
+    renderTable(filtered);
+  });
+});
+
+document.getElementById('clearFilters').addEventListener('click', () => {
+  renderTable(heroesData);
+  searchInput.value = '';
+
+  // 清除所有 active-filter 樣式
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.classList.remove('active-filter');
   });
 
-  document.getElementById('clearFilters').addEventListener('click', () => {
-    renderTable(heroesData);
-    searchInput.value = '';
+    // 移除所有高亮
+  document.querySelectorAll('.highlight').forEach(el => {
+    const parent = el.parentNode;
+    parent.replaceChild(document.createTextNode(el.textContent), el);
+    parent.normalize();
   });
-  
+});
   // Accordion 展開／收合
 document.querySelectorAll('.accordion-header').forEach(header => {
   header.addEventListener('click', () => {

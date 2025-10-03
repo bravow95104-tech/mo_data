@@ -1,0 +1,97 @@
+/* 全域背景與標題 */
+h1 {
+  text-align: center;
+  color: #267acc;
+  margin-top: 36px;
+  letter-spacing: 2px;
+  font-size: 2rem;
+  font-weight: bold;
+  text-shadow: 0 2px 8px #e3f2fd;
+}
+
+/* 表格外框容器 */
+.meal-table-container,
+.card-table-container {
+  margin: 36px auto 48px auto;
+  max-width: 800px;
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 4px 24px rgba(51,153,255,0.10);
+  padding: 32px 18px 24px 18px;
+  overflow-x: auto;
+}
+
+/* 表格共用樣式 */
+.meal-table,
+.card-table {
+  border-collapse: collapse;
+  width: 100%;
+  background: #fafdff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(51,153,255,0.07);
+  margin-bottom: 24px;
+  font-family: 'Microsoft JhengHei', 'Segoe UI', Arial, sans-serif;
+}
+
+/* 表格欄位共用樣式 */
+.meal-table th, .meal-table td,
+.card-table th, .card-table td {
+  border: 1px solid #cbe6ff;
+  padding: 14px 16px;
+  text-align: center;
+  font-size: 16px;
+  transition: background 0.2s;
+  vertical-align: middle;
+  background-clip: padding-box;
+}
+
+/* 表頭共用樣式 */
+.meal-table thead th,
+.card-table thead th {
+  background: #e3f2fd;   /* 單一淡藍色 */
+  color: #267acc;
+  font-weight: bold;
+  font-size: 17px;
+  letter-spacing: 1px;
+  border-bottom: 2.5px solid #b3d8ff;
+}
+
+/* 偶數列底色 */
+.meal-table tbody tr:nth-child(even),
+.card-table tbody tr:nth-child(even) {
+  background: #f4faff;
+}
+
+/* 滑鼠移上高亮 */
+.meal-table tbody tr:hover,
+.card-table tbody tr:hover {
+  background: #fff9c0;
+  transition: background 0.2s;
+}
+
+
+/* RWD 手機優化 */
+@media (max-width: 600px) {
+  .meal-table-container,
+  .card-table-container {
+    padding: 10px 2px;
+    max-width: 100%;
+  }
+  .meal-table th, .meal-table td,
+  .card-table th, .card-table td {
+    padding: 8px 4px;
+    font-size: 13px;
+  }
+  h1 {
+    font-size: 1.2rem;
+  }
+}
+
+/* 表格標題加強 */
+.meal-table-container > table:before,
+.card-table-container > table:before {
+  content: '';
+  display: block;
+  height: 0;
+}
