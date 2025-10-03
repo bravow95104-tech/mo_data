@@ -19,7 +19,7 @@ th, td {
 thead th {
   position: sticky;
   top: 0;
-  background-color: #3399ff;
+  background-color: #1976d2;
   color: white;
   z-index: 10;
 }
