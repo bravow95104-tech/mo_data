@@ -54,6 +54,7 @@ tbody tr:hover {
   border-radius: 3px;
   padding: 2px 4px;
 }
+
 /* 黃色高亮（高亮） */
 .highlight2 {
   background-color: #fff9c0;
@@ -61,6 +62,7 @@ tbody tr:hover {
   border-radius: 3px;
   padding: 2px 4px;
 }
+
 /* 回到頂部按鈕 */
 #backToTop {
   position: fixed;
@@ -224,7 +226,7 @@ tbody tr:hover {
 
 /* 左右欄樣式 */
 .hero-column {
-  flex: 1 1 48%;             /* 彈性成長，基底寬度48% */
+  flex: 0 0 48%;             /* 彈性成長，基底寬度48% */
   min-width: 280px;          /* 最小寬度限制，避免太小擠壓 */
   box-sizing: border-box;    /* 包含 padding、border */
   background-color: #f9f9f9; /* 可選：輕微背景色區分 */
