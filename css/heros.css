@@ -1,8 +1,3 @@
-/* 全域字型 */
-body {
-  font-family: 'Microsoft JhengHei', sans-serif;
-}
-
 /* 表格樣式 */
 table {
   border-collapse: collapse;
@@ -28,14 +23,28 @@ tbody tr:hover {
   cursor: pointer;
 }
 
-/* 搜尋框樣式 */
 #searchInput {
-  margin-top: 10px;
   padding: 6px 10px;
-  width: 250px;
+  width: 100%;
   font-size: 14px;
   border: 1px solid #ccc;
   border-radius: 4px;
+  box-sizing: border-box;
+  max-width: 250px; /* 限制寬度 */
+}
+
+.quick-search-label {
+  font-weight: 600;
+  margin-right: 8px;
+  font-size: 16px;
+  color: #3399ff;
+  vertical-align: middle;
+}
+
+#searchContainer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 /* 黃色高亮（柔和） */
@@ -183,6 +192,6 @@ tbody tr:hover {
 thead th {
   position: sticky;
   top: 60px; /* nav 高度 */
-  background-color: #3399ff;
+  background-color: #1976d2;
   z-index: 10;
 }
