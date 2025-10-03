@@ -156,12 +156,6 @@ tbody tr:hover {
   z-index: 2000;
 }
 
-/* 主要內容區塊 */
-#content {
-  padding: 30px 40px;
-  max-width: 900px;
-  margin: auto;
-}
 
 /* Modal 內容框 */
 #modalBox {

@@ -91,7 +91,12 @@ nav .dropdown-toggle:hover {
   background-color: #5abaff;
 }
 
-
+/* 主要內容區塊 */
+#content {
+  padding: 30px 40px;
+  max-width: 900px;
+  margin: auto;
+}
 
 /* RWD 手機優化（選配） */
 @media (max-width: 600px) {
