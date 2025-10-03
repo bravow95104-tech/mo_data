@@ -1,0 +1,38 @@
+
+.meal-table-container {
+  margin: 32px 0;
+  overflow-x: auto;
+}
+.meal-table {
+  border-collapse: collapse;
+  width: 100%;
+  background: #fafdff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(51,153,255,0.07);
+}
+.meal-table th, .meal-table td {
+  border: 1px solid #cbe6ff;
+  padding: 12px 16px;
+  text-align: center;
+  font-size: 15px;
+}
+.meal-table thead th {
+  background: #e3f2fd;
+  color: #267acc;
+  font-weight: bold;
+  font-size: 16px;
+}
+.meal-table tbody tr:nth-child(even) {
+  background: #f4faff;
+}
+.meal-table tbody tr:hover {
+  background: #fff9c0;
+  transition: background 0.2s;
+}
+@media (max-width: 600px) {
+  .meal-table th, .meal-table td {
+    padding: 8px 6px;
+    font-size: 13px;
+  }
+}
