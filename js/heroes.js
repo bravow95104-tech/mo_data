@@ -151,7 +151,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 // 快速搜尋事件（多條件交集篩選）
-document.querySelectorAll('.filter-btn').forEach(btn => {
+document.querySelectorAll('.filter-btn.active').forEach(btn => {
   btn.addEventListener('click', () => {
     const type = btn.dataset.type;
     const value = btn.dataset.value;
