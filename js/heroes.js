@@ -150,31 +150,46 @@ document.addEventListener("DOMContentLoaded", () => {
       behavior: 'smooth'
     });
   });
-  // 快速搜尋事件放這裡 
-   document.querySelectorAll('.filter-btn').forEach(btn => {
+// 快速搜尋事件（多條件交集篩選）
+document.querySelectorAll('.filter-btn').forEach(btn => {
   btn.addEventListener('click', () => {
     const type = btn.dataset.type;
     const value = btn.dataset.value;
 
-    // 先清除同類型按鈕的 active 樣式
+    // 清除同類型按鈕的 active 樣式
     document.querySelectorAll(`.filter-btn[data-type="${type}"]`).forEach(b => {
       b.classList.remove('active-filter');
     });
 
-    // 幫點選的按鈕加上 active 樣式
+    // 加上這個按鈕的 active 樣式
     btn.classList.add('active-filter');
 
-    // 執行篩選
+    // 取得所有當前被啟用的 filter 值
+    const filters = {
+      promotion: null,
+      personality: null,
+      traits: null
+    };
+
+    document.querySelectorAll('.filter-btn.active-filter').forEach(activeBtn => {
+      const t = activeBtn.dataset.type;
+      const v = activeBtn.dataset.value;
+      filters[t] = v;
+    });
+
+    // 執行多條件篩選
     const filtered = heroesData.filter(hero => {
-      if (type === "promotion") return hero.promotion === value;
-      if (type === "personality") return hero.personality === value;
-      if (type === "traits") return String(hero.traits) === String(value);
-      return true;
+      const matchPromotion = !filters.promotion || hero.promotion === filters.promotion;
+      const matchPersonality = !filters.personality || hero.personality === filters.personality;
+      const matchTraits = !filters.traits || String(hero.traits) === String(filters.traits);
+
+      return matchPromotion && matchPersonality && matchTraits;
     });
 
     renderTable(filtered);
   });
 });
+
 
 document.getElementById('clearFilters').addEventListener('click', () => {
   renderTable(heroesData);
