@@ -1,105 +1,146 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
-<head>
-  <meta charset="UTF-8" />
-  <title>英雄清單</title>
-  <link rel="stylesheet" href="/mo_data/css/styles.css" />
-<link rel="stylesheet" href="/mo_data/css/heros.css" />
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <title>英雄清單</title>
+    <link rel="stylesheet" href="/mo_data/css/styles.css" />
+    <link rel="stylesheet" href="/mo_data/css/heros.css" />
+  </head>
+  <body>
+    <div id="nav-container"></div>
+    <!-- 這是導航列會被載入的位置 -->
 
-<div id="nav-container"></div><!-- 這是導航列會被載入的位置 -->
+    <h1></h1>
+
+    <!-- 搜尋框 -->
+    <div id="searchContainer">
+      <label for="searchInput" class="quick-search-label">快速搜尋</label>
+      <input
+        type="text"
+        id="searchInput"
+        placeholder="搜尋英雄名稱、光輝、裝備卡..."
+      />
+    </div>
+    <br />
+    <!-- 快速搜尋 -->
+    <div id="filterContainer" class="accordion">
+      <h3 class="accordion-header">快速搜尋條件 ▾</h3>
+      <div class="accordion-content">
+        <div class="filter-group">
+          <span class="filter-label">拜官：</span>
+          <button class="filter-btn" data-type="promotion" data-value="武者">
+            武者
+          </button>
+          <button class="filter-btn" data-type="promotion" data-value="響馬">
+            響馬
+          </button>
+          <button class="filter-btn" data-type="promotion" data-value="仙士">
+            仙士
+          </button>
+          <button class="filter-btn" data-type="promotion" data-value="策士">
+            策士
+          </button>
+          <button class="filter-btn" data-type="promotion" data-value="工匠">
+            工匠
+          </button>
+        </div>
+        <br />
+        <div class="filter-group">
+          <span class="filter-label">個性：</span>
+          <button class="filter-btn" data-type="personality" data-value="掃蕩">
+            掃蕩
+          </button>
+          <button class="filter-btn" data-type="personality" data-value="護衛">
+            護衛
+          </button>
+          <button class="filter-btn" data-type="personality" data-value="掠陣">
+            掠陣
+          </button>
+          <button class="filter-btn" data-type="personality" data-value="巡邏">
+            巡邏
+          </button>
+          <button class="filter-btn" data-type="personality" data-value="巡狩">
+            巡狩
+          </button>
+          <button class="filter-btn" data-type="personality" data-value="誘敵">
+            誘敵
+          </button>
+          <button class="filter-btn" data-type="personality" data-value="狙擊">
+            狙擊
+          </button>
+          <button class="filter-btn" data-type="personality" data-value="固守">
+            固守
+          </button>
+        </div>
+        <br />
+        <div class="filter-group">
+          <span class="filter-label">素質：</span>
+          <button class="filter-btn" data-type="traits" data-value="750">
+            750
+          </button>
+          <button class="filter-btn" data-type="traits" data-value="770">
+            770
+          </button>
+          <button class="filter-btn" data-type="traits" data-value="870">
+            870
+          </button>
+          <button class="filter-btn" data-type="traits" data-value="950">
+            950
+          </button>
+          <button class="filter-btn" data-type="traits" data-value="1020">
+            1020
+          </button>
+        </div>
+        <div class="filter-actions">
+          <button id="clearFilters" class="clear-btn">清除篩選</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 英雄表格 -->
+    <table id="heroes-table">
+      <thead>
+        <tr>
+          <th>英雄<br />名稱</th>
+          <th>對應<br />光輝</th>
+          <th>拜官</th>
+          <th>初始</th>
+          <th>素質</th>
+          <th>個性</th>
+          <th>屬性</th>
+          <th>力量</th>
+          <th>智慧</th>
+          <th>體質</th>
+          <th>敏捷</th>
+          <th>運氣</th>
+          <th>積極度<br />(生變前)</th>
+          <th>裝備卡<br />(新專)</th>
+          <th>裝備卡<br />(舊專)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- 資料由 JS 動態載入 -->
+      </tbody>
+    </table>
+
+    <!-- 留白避免按鈕遮住 -->
+    <div style="height: 80px"></div>
+
+    <!-- 回到頂部按鈕 -->
+    <button id="backToTop" title="回到頂部">▲</button>
+
+    <!-- Modal HTML -->
+    <div id="modalOverlay"></div>
+    <div id="modalBox">
+      <span class="close-btn">&times;</span>
+      <div id="modalContent"></div>
+    </div>
+
+    <!-- JavaScript -->
+
+    <div id="footer-container"></div>
+    <!-- 這是頁尾會被載入的位置 -->
+    <script src="/mo_data/js/heroes.js"></script>
     <script src="/mo_data/js/componentsLoader.js"></script>
-
-<h1></h1>
-
-<!-- 搜尋框 -->
-<div id="searchContainer">
-  <label for="searchInput" class="quick-search-label">快速搜尋</label>
-  <input type="text" id="searchInput" placeholder="搜尋英雄名稱、光輝、裝備卡...">
-</div>
-<br>
-<!-- 快速搜尋 -->
-<div id="filterContainer" class="accordion">
-  <h3 class="accordion-header">快速搜尋條件 ▾</h3>
-  <div class="accordion-content">
-    <div class="filter-group">
-      <span class="filter-label">拜官：</span>
-      <button class="filter-btn" data-type="promotion" data-value="武者">武者</button>
-      <button class="filter-btn" data-type="promotion" data-value="響馬">響馬</button>
-      <button class="filter-btn" data-type="promotion" data-value="仙士">仙士</button>
-      <button class="filter-btn" data-type="promotion" data-value="策士">策士</button>
-      <button class="filter-btn" data-type="promotion" data-value="工匠">工匠</button>
-    </div>
-    <br>
-    <div class="filter-group">
-      <span class="filter-label">個性：</span>
-      <button class="filter-btn" data-type="personality" data-value="掃蕩">掃蕩</button>
-      <button class="filter-btn" data-type="personality" data-value="護衛">護衛</button>
-      <button class="filter-btn" data-type="personality" data-value="掠陣">掠陣</button>
-      <button class="filter-btn" data-type="personality" data-value="巡邏">巡邏</button>
-      <button class="filter-btn" data-type="personality" data-value="巡狩">巡狩</button>
-      <button class="filter-btn" data-type="personality" data-value="誘敵">誘敵</button>
-      <button class="filter-btn" data-type="personality" data-value="狙擊">狙擊</button>
-      <button class="filter-btn" data-type="personality" data-value="固守">固守</button>
-    </div>
-    <br>
-    <div class="filter-group">
-      <span class="filter-label">素質：</span>
-      <button class="filter-btn" data-type="traits" data-value="750">750</button>
-      <button class="filter-btn" data-type="traits" data-value="770">770</button>
-      <button class="filter-btn" data-type="traits" data-value="870">870</button>
-      <button class="filter-btn" data-type="traits" data-value="950">950</button>
-      <button class="filter-btn" data-type="traits" data-value="1020">1020</button>
-    </div>
-    <div class="filter-actions">
-      <button id="clearFilters" class="clear-btn">清除篩選</button>
-    </div>
-  </div>
-</div>
-
-<!-- 英雄表格 -->
-<table id="heroes-table">
-  <thead>
-    <tr>
-      <th>英雄<br>名稱</th>
-      <th>對應<br>光輝</th>
-      <th>拜官</th>
-      <th>初始</th>
-      <th>素質</th>
-      <th>個性</th>
-      <th>屬性</th>
-      <th>力量</th>
-      <th>智慧</th>
-      <th>體質</th>
-      <th>敏捷</th>
-      <th>運氣</th>
-      <th>積極度<br>(生變前)</th>
-      <th>裝備卡<br>(新專)</th>
-      <th>裝備卡<br>(舊專)</th>
-    </tr>
-  </thead>
-  <tbody>
-    <!-- 資料由 JS 動態載入 -->
-  </tbody>
-</table>
-
-<!-- 留白避免按鈕遮住 -->
-<div style="height: 80px;"></div>
-
-<!-- 回到頂部按鈕 -->
-<button id="backToTop" title="回到頂部">▲</button>
-
-<!-- Modal HTML -->
-<div id="modalOverlay"></div>
-<div id="modalBox">
-  <span class="close-btn">&times;</span>
-  <div id="modalContent"></div>
-</div>
-
-<!-- JavaScript -->
-
-<div id="footer-container"></div><!-- 這是頁尾會被載入的位置 -->
-<script src="/mo_data/js/heroes.js"></script>
-</body>
+  </body>
 </html>
