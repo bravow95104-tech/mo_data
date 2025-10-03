@@ -191,7 +191,7 @@ tbody tr:hover {
 /* 調整 table header sticky 時，避免蓋到 nav */
 thead th {
   position: sticky;
-  top: 60px; /* nav 高度 */
+  top: 0px; /* nav 高度 */
   background-color: #1976d2;
   z-index: 10;
 }

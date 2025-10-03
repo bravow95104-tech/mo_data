@@ -63,7 +63,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (keyword && value.toLowerCase().includes(keyword)) {
           const regex = new RegExp(`(${keyword})`, 'gi');
-          td.innerHTML = value.replace(regex, '<span class="highlight">$1</span>');
+          td.innerHTML = value.replace(regex, '<span class="highlight2">$1</span>');
         } else {
           td.textContent = value;
         }
