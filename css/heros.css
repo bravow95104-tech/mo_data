@@ -204,34 +204,44 @@ tbody tr:hover {
   padding-bottom: 10px;
 }
 
-/* Modal 內部兩欄橫排 */
+/* Modal 內部兩欄橫排容器 */
 .hero-details-container {
   display: flex;
   justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 40px;
+  flex-wrap: wrap;           /* 視窗小時自動換行 */
+  gap: 24px;                 /* 欄間距稍微調小，避免寬度過大 */
   padding: 10px 20px;
-  max-width: 800px;
+  max-width: 800px;          /* Modal 最大寬度 */
   margin: 0 auto;
+  box-sizing: border-box;
 }
 
 /* 左右欄樣式 */
 .hero-column {
-  flex: 1 1 calc(50% - 10px);
-  min-width: 280px;
+  flex: 1 1 48%;             /* 彈性成長，基底寬度48% */
+  min-width: 280px;          /* 最小寬度限制，避免太小擠壓 */
+  box-sizing: border-box;    /* 包含 padding、border */
+  background-color: #f9f9f9; /* 可選：輕微背景色區分 */
+  padding: 10px 15px;
+  border-radius: 6px;        /* 可選：圓角讓框框好看 */
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
 }
 
+/* 文字調整 */
 .hero-column p {
   margin: 8px 0;
   font-size: 15px;
   line-height: 1.4;
+  color: #333;
 }
 
 .hero-column h2 {
   margin-top: 0;
   color: #3399ff;
   text-align: center;
+  font-weight: 600;
 }
+
 /* 調整 table header sticky 時，避免蓋到 nav */
 thead th {
   position: sticky;
