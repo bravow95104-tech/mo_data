@@ -178,3 +178,11 @@ tbody tr:hover {
 #modalBox .close-btn:hover {
   color: #3399ff;
 }
+
+/* 調整 table header sticky 時，避免蓋到 nav */
+thead th {
+  position: sticky;
+  top: 60px; /* nav 高度 */
+  background-color: #3399ff;
+  z-index: 10;
+}

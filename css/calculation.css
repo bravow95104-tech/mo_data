@@ -18,7 +18,10 @@
 .slider {
   position: absolute;
   cursor: pointer;
-  top: 0; left: 0; right: 0; bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   background: #e3f1ff;
   border-radius: 20px;
   transition: background 0.3s;
@@ -33,7 +36,7 @@
   bottom: 3px;
   background: #3399ff;
   border-radius: 50%;
-  transition: transform 0.3s cubic-bezier(.4,2,.6,1), background 0.3s;
+  transition: transform 0.3s cubic-bezier(0.4, 2, 0.6, 1), background 0.3s;
 }
 .switch-toggle input:checked + .slider {
   background: #b3e0ff;
@@ -95,7 +98,7 @@
   border-radius: 50%;
   transform: scale(0);
   animation: ripple-effect 0.5s linear;
-  background-color: rgba(255,255,255,0.5);
+  background-color: rgba(255, 255, 255, 0.5);
   pointer-events: none;
 }
 @keyframes ripple-effect {
@@ -134,10 +137,11 @@
   display: flex;
   gap: 24px;
   flex-wrap: wrap;
+  width: 100%;
 }
 .search-col {
   position: relative;
-  width: 250px;
+  width: 100%;
   box-sizing: border-box;
 }
 .hero-card {
@@ -147,6 +151,7 @@
   border-radius: 8px;
   box-shadow: 0 2px 8px #0001;
   padding: 24px;
+  background-color: white;
 }
 .hero-card h2 {
   margin-top: 0;
@@ -171,11 +176,13 @@
 .equip-col {
   display: flex;
   gap: 8px;
+  flex-wrap: wrap;
 }
 .equip-input {
-  width: 50%;
+  width: 100%;
   display: inline-block;
   box-sizing: border-box;
+  height: 30px;
 }
 .custom-dropdown {
   position: absolute;
@@ -216,9 +223,48 @@
 .hero-content {
   gap: 12px;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
 }
 
 .search-toggle-container {
   gap: 12px;
+}
+
+.hero-content .hero-item {
+  flex: 1 1 500px; /* grow, shrink, basis */
+  min-width: 0; /* 防止內容撐破 */
+  box-sizing: border-box;
+
+}
+@media (max-width: 768px) {
+    .hero-card {
+    width: calc(100% - 46px);
+    padding: 12px;
+  }
+  .hero-content {
+    flex-direction: column;
+  }
+    .hero-content .hero-item {
+      display: flex;
+  justify-content: center;
+  }
+}
+
+@media (max-width: 576px) {
+  .hero-card {
+    width: calc(100% - 46px);
+    padding: 12px;
+  }
+  .hero-content {
+    flex-direction: column;
+    padding: 0;
+    margin: 0;
+  }
+  .main {
+    padding: 10px;
+  }
+  .hero-content .hero-item {
+      display: flex;
+  justify-content: center;
+  }
 }

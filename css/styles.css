@@ -29,13 +29,7 @@ nav {
   z-index: 1000; /* 高於 table 的 z-index */
 }
 
-/* 調整 table header sticky 時，避免蓋到 nav */
-thead th {
-  position: sticky;
-  top: 60px; /* nav 高度 */
-  background-color: #3399ff;
-  z-index: 10;
-}
+
 
 /* 若 nav 高度變動，可調整 top 值 */
 /* 導航列樣式 */
