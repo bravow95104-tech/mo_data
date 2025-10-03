@@ -1,38 +1,62 @@
-/* 英雄料理表格美化 */
-.meal-table-container {
-  margin: 32px 0;
-  overflow-x: auto;
-}
-.meal-table {
-  border-collapse: collapse;
-  width: 100%;
-  background: #fafdff;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 2px 12px rgba(51,153,255,0.07);
-}
-.meal-table th, .meal-table td {
-  border: 1px solid #cbe6ff;
-  padding: 12px 16px;
-  text-align: center;
-  font-size: 15px;
-}
-.meal-table thead th {
-  background: #e3f2fd;
-  color: #267acc;
-  font-weight: bold;
-  font-size: 16px;
-}
-.meal-table tbody tr:nth-child(even) {
-  background: #f4faff;
-}
-.meal-table tbody tr:hover {
-  background: #fff9c0;
-  transition: background 0.2s;
-}
-@media (max-width: 600px) {
-  .meal-table th, .meal-table td {
-    padding: 8px 6px;
-    font-size: 13px;
-  }
-}
+    body {
+      background: #f4f8fb;
+    }
+    h1 {
+      text-align: center;
+      color: #267acc;
+      margin-top: 36px;
+      letter-spacing: 2px;
+      font-size: 2rem;
+      font-weight: bold;
+      text-shadow: 0 2px 8px #e3f2fd;
+    }
+    .meal-table-container {
+      margin: 36px auto 48px auto;
+      max-width: 700px;
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 4px 24px rgba(51,153,255,0.10);
+      padding: 32px 18px 24px 18px;
+    }
+    .meal-table {
+      border-collapse: collapse;
+      width: 100%;
+      background: #fafdff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 12px rgba(51,153,255,0.07);
+    }
+    .meal-table th, .meal-table td {
+      border: 1px solid #cbe6ff;
+      padding: 14px 16px;
+      text-align: center;
+      font-size: 16px;
+      transition: background 0.2s;
+    }
+    .meal-table thead th {
+      background: #e3f2fd;
+      color: #267acc;
+      font-weight: bold;
+      font-size: 17px;
+      letter-spacing: 1px;
+    }
+    .meal-table tbody tr:nth-child(even) {
+      background: #f4faff;
+    }
+    .meal-table tbody tr:hover {
+      background: #fff9c0;
+      transition: background 0.2s;
+    }
+    @media (max-width: 600px) {
+      .meal-table-container {
+        padding: 10px 2px;
+        max-width: 100%;
+      }
+      .meal-table th, .meal-table td {
+        padding: 8px 4px;
+        font-size: 13px;
+      }
+      h1 {
+        font-size: 1.2rem;
+      }
+    }
