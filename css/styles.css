@@ -30,11 +30,8 @@ nav {
 }
 
 
-
 /* 若 nav 高度變動，可調整 top 值 */
 /* 導航列樣式 */
-
-
 nav a,
 nav .dropdown-toggle {
   color: white;
@@ -66,7 +63,6 @@ nav .dropdown-toggle:hover {
   border-radius: 4px;
 }
 
-
 .dropdown-content {
   display: none;
   position: absolute;
@@ -79,8 +75,6 @@ nav .dropdown-toggle:hover {
   top: 100%;
   left: 0;
 }
-
-
 
 .dropdown:hover .dropdown-content {
   display: block;
@@ -160,7 +154,6 @@ nav .dropdown-toggle:hover {
   text-align: center;
 }
 
-
 /* RWD 手機優化（選配） */
 @media (max-width: 600px) {
   .hero-details-container {
@@ -172,8 +165,6 @@ nav .dropdown-toggle:hover {
   }
 }
 
-
-
 .flex-grow {
   flex-grow: 1;
 }
@@ -181,46 +172,3 @@ nav .dropdown-toggle:hover {
 .flex {
   display: flex;
 }
-/* 快速搜尋樣式 */
-.accordion {
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  margin-bottom: 20px;
-  background: #fafafa;
-}
-
-.accordion-header {
-  margin: 0;
-  padding: 12px 16px;
-  cursor: pointer;
-  font-size: 16px;
-  font-weight: bold;
-  background: #f0f0f0;
-  border-radius: 8px 8px 0 0;
-  user-select: none;
-  transition: background 0.3s;
-}
-
-.accordion-header:hover {
-  background: #e0e0e0;
-}
-
-.accordion-content {
-  padding: 12px 16px;
-  display: block; /* 預設展開 */
-}
-
-.accordion.collapsed .accordion-content {
-  display: none; /* 收合 */
-}
-
-.accordion.collapsed .accordion-header::after {
-  content: "▸"; /* 收合箭頭 */
-}
-
-.accordion-header::after {
-  content: "▾"; /* 展開箭頭 */
-  float: right;
-}
-
-
