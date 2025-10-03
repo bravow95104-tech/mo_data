@@ -151,33 +151,33 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 // 快速搜尋事件（多條件交集篩選）
-document.querySelectorAll('.filter-btn.active').forEach(btn => {
+document.querySelectorAll('.filter-btn').forEach(btn => {
   btn.addEventListener('click', () => {
     const type = btn.dataset.type;
     const value = btn.dataset.value;
 
     // 清除同類型按鈕的 active 樣式
     document.querySelectorAll(`.filter-btn[data-type="${type}"]`).forEach(b => {
-      b.classList.remove('active-filter');
+      b.classList.remove('active');
     });
 
-    // 加上這個按鈕的 active 樣式
-    btn.classList.add('active-filter');
+    // 加上被點擊按鈕的 active 樣式
+    btn.classList.add('active');
 
-    // 取得所有當前被啟用的 filter 值
+    // 收集所有 active 的篩選條件
     const filters = {
       promotion: null,
       personality: null,
       traits: null
     };
 
-    document.querySelectorAll('.filter-btn.active-filter').forEach(activeBtn => {
+    document.querySelectorAll('.filter-btn.active').forEach(activeBtn => {
       const t = activeBtn.dataset.type;
       const v = activeBtn.dataset.value;
       filters[t] = v;
     });
 
-    // 執行多條件篩選
+    // 執行多條件交集篩選
     const filtered = heroesData.filter(hero => {
       const matchPromotion = !filters.promotion || hero.promotion === filters.promotion;
       const matchPersonality = !filters.personality || hero.personality === filters.personality;
@@ -190,18 +190,18 @@ document.querySelectorAll('.filter-btn.active').forEach(btn => {
   });
 });
 
-
+// 清除所有篩選按鈕與搜尋框
 document.getElementById('clearFilters').addEventListener('click', () => {
   renderTable(heroesData);
   searchInput.value = '';
 
-  // 清除所有 active-filter 樣式
+  // 清除所有 active 樣式
   document.querySelectorAll('.filter-btn').forEach(btn => {
-    btn.classList.remove('active-filter');
+    btn.classList.remove('active');
   });
 
-    // 移除所有高亮
-  document.querySelectorAll('.highlight').forEach(el => {
+  // 移除搜尋高亮
+  document.querySelectorAll('.highlight, .highlight2').forEach(el => {
     const parent = el.parentNode;
     parent.replaceChild(document.createTextNode(el.textContent), el);
     parent.normalize();

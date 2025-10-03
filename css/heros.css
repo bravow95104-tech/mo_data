@@ -215,7 +215,7 @@ tbody tr:hover {
   margin: 0 auto;
 }
 
-/* 左右欄樣式 */---------
+/* 左右欄樣式 */
 .hero-column {
   flex: 0 0 48%;
   min-width: 280px;
