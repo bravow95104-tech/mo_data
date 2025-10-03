@@ -121,6 +121,7 @@ tbody tr:hover {
   font-size: 14px;
   transition: background 0.2s, color 0.2s;
 }
+
 .filter-btn:hover,
 .filter-btn.active {
   background: #fff9c0;   /* 柔和亮黃色 */
@@ -140,6 +141,7 @@ tbody tr:hover {
   font-size: 14px;
   transition: background 0.2s, color 0.2s;
 }
+
 .clear-btn:hover {
   background: #ffc107;
   color: #fff;
@@ -156,7 +158,6 @@ tbody tr:hover {
   z-index: 2000;
 }
 
-
 /* Modal 內容框 */
 #modalBox {
   display: none;
@@ -172,6 +173,7 @@ tbody tr:hover {
   box-shadow: 0 4px 12px rgba(0,0,0,0.3);
   z-index: 2001;
 }
+
 #modalBox h2 {
   margin-top: 0;
   margin-bottom: 15px;
@@ -179,10 +181,12 @@ tbody tr:hover {
   color: #3399ff;
   text-align: center;
 }
+
 #modalBox p {
   margin: 6px 0;
   font-size: 16px;
 }
+
 #modalBox .close-btn {
   position: absolute;
   top: 10px; right: 15px;
@@ -191,9 +195,11 @@ tbody tr:hover {
   cursor: pointer;
   font-weight: bold;
 }
+
 #modalBox .close-btn:hover {
   color: #3399ff;
 }
+
 /* Modal 英雄名稱置中 */
 .hero-name {
   text-align: center;
@@ -225,6 +231,17 @@ tbody tr:hover {
   padding: 10px 15px;
   border-radius: 6px;        /* 可選：圓角讓框框好看 */
   box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+}
+
+.modalContent {
+  padding: 20px;
+  font-size: 16px;
+  color: #333;
+  max-height: 70vh;         /* 限制最大高度 */
+  overflow-y: auto;         /* 內容超出時垂直出現捲軸 */
+  line-height: 1.5;
+  background-color: #fff;
+  border-radius: 6px;
 }
 
 /* 文字調整 */
