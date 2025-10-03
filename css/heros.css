@@ -14,37 +14,23 @@ th, td {
 thead th {
   position: sticky;
   top: 0;
-  background-color: #1976d2;
+  background-color: #3399ff;
   color: white;
   z-index: 10;
 }
 tbody tr:hover {
-  background-color: #fff9c0;
+  background-color: #f0f8ff;
   cursor: pointer;
 }
 
+/* 搜尋框樣式 */
 #searchInput {
+  margin-top: 10px;
   padding: 6px 10px;
-  width: 100%;
+  width: 250px;
   font-size: 14px;
   border: 1px solid #ccc;
   border-radius: 4px;
-  box-sizing: border-box;
-  max-width: 250px; /* 限制寬度 */
-}
-
-.quick-search-label {
-  font-weight: 600;
-  margin-right: 8px;
-  font-size: 16px;
-  color: #3399ff;
-  vertical-align: middle;
-}
-
-#searchContainer {
-  display: flex;
-  align-items: center;
-  gap: 8px;
 }
 
 /* 黃色高亮（柔和） */
@@ -54,6 +40,7 @@ tbody tr:hover {
   border-radius: 3px;
   padding: 2px 4px;
 }
+
 /* 黃色高亮（高亮） */
 .highlight2 {
   background-color: #fff9c0;
@@ -61,6 +48,7 @@ tbody tr:hover {
   border-radius: 3px;
   padding: 2px 4px;
 }
+
 /* 回到頂部按鈕 */
 #backToTop {
   position: fixed;
@@ -121,7 +109,6 @@ tbody tr:hover {
   font-size: 14px;
   transition: background 0.2s, color 0.2s;
 }
-
 .filter-btn:hover,
 .filter-btn.active {
   background: #fff9c0;   /* 柔和亮黃色 */
@@ -141,7 +128,6 @@ tbody tr:hover {
   font-size: 14px;
   transition: background 0.2s, color 0.2s;
 }
-
 .clear-btn:hover {
   background: #ffc107;
   color: #fff;
@@ -173,7 +159,6 @@ tbody tr:hover {
   box-shadow: 0 4px 12px rgba(0,0,0,0.3);
   z-index: 2001;
 }
-
 #modalBox h2 {
   margin-top: 0;
   margin-bottom: 15px;
@@ -181,12 +166,10 @@ tbody tr:hover {
   color: #3399ff;
   text-align: center;
 }
-
 #modalBox p {
   margin: 6px 0;
   font-size: 16px;
 }
-
 #modalBox .close-btn {
   position: absolute;
   top: 10px; right: 15px;
@@ -195,78 +178,17 @@ tbody tr:hover {
   cursor: pointer;
   font-weight: bold;
 }
-
 #modalBox .close-btn:hover {
   color: #3399ff;
-}
-
-/* Modal 英雄名稱置中 */
-.hero-name {
-  text-align: center;
-  font-size: 24px;
-  color: #3399ff;
-  margin-bottom: 20px;
-  border-bottom: 1px solid #ddd;
-  padding-bottom: 10px;
-}
-
-/* Modal 內部兩欄橫排容器 */
-.hero-details-container {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;           /* 視窗小時自動換行 */
-  gap: 24px;                 /* 欄間距稍微調小，避免寬度過大 */
-  padding: 10px 20px;
-  max-width: 800px;          /* Modal 最大寬度 */
-  margin: 0 auto;
-  box-sizing: border-box;
-}
-
-/* 左右欄樣式 */
-.hero-column {
-  flex: 1 1 48%;             /* 彈性成長，基底寬度48% */
-  min-width: 280px;          /* 最小寬度限制，避免太小擠壓 */
-  box-sizing: border-box;    /* 包含 padding、border */
-  background-color: #f9f9f9; /* 可選：輕微背景色區分 */
-  padding: 10px 15px;
-  border-radius: 6px;        /* 可選：圓角讓框框好看 */
-  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
-}
-
-.modalContent {
-  padding: 20px;
-  font-size: 16px;
-  color: #333;
-  max-height: 70vh;         /* 限制最大高度 */
-  overflow-y: auto;         /* 內容超出時垂直出現捲軸 */
-  line-height: 1.5;
-  background-color: #fff;
-  border-radius: 6px;
-}
-
-/* 文字調整 */
-.hero-column p {
-  margin: 8px 0;
-  font-size: 15px;
-  line-height: 1.4;
-  color: #333;
-}
-
-.hero-column h2 {
-  margin-top: 0;
-  color: #3399ff;
-  text-align: center;
-  font-weight: 600;
 }
 
 /* 調整 table header sticky 時，避免蓋到 nav */
 thead th {
   position: sticky;
   top: 0px; /* nav 高度 */
-  background-color: #1976d2;
+  background-color: #3399ff;
   z-index: 10;
 }
-
 /* 快速搜尋樣式 */
 .accordion {
   border: 1px solid #ddd;
