@@ -1,7 +1,15 @@
 document.addEventListener("DOMContentLoaded", () => {
-  fetch("/mo_data/json/equip-combo.json") // 你的 JSON 路徑
-    .then(res => res.json())
-    .then(data => initComboPage(data));
+  fetch("/mo_data/json/equip-combo.json")
+    .then(res => {
+      if (!res.ok) throw new Error("載入 equip-combo.json 失敗");
+      return res.json();
+    })
+    .then(data => initComboPage(data))
+    .catch(err => {
+      console.error("❌ JSON 載入失敗：", err);
+      const comboList = document.getElementById("comboList");
+      if (comboList) comboList.innerHTML = "<p style='color:red;text-align:center;'>無法載入資料</p>";
+    });
 });
 
 function initComboPage(data) {
@@ -12,42 +20,59 @@ function initComboPage(data) {
 
   let activeFilters = [];
 
-  // === 渲染卡片 ===
   function renderList() {
-    const searchText = searchInput.value.toLowerCase();
+    const searchText = searchInput.value.trim().toLowerCase();
 
     const filtered = data.filter(item => {
+      const skill = (item.skillName || "").toLowerCase();
+      const job = (item.class || "").toLowerCase();
+      const skillType = (item.classSkill || "").toLowerCase();
+      const cat = (item.category || "").toLowerCase();
+
       const matchSearch =
-        item.skillName.toLowerCase().includes(searchText) ||
-        item.class.toLowerCase().includes(searchText) ||
-        item.category.toLowerCase().includes(searchText);
+        searchText === "" ||
+        skill.includes(searchText) ||
+        job.includes(searchText) ||
+        skillType.includes(searchText) ||
+        cat.includes(searchText);
 
       const matchFilter =
         activeFilters.length === 0 ||
-        activeFilters.some(f => item.class.includes(f));
+        activeFilters.some(f => job.includes(f));
 
       return matchSearch && matchFilter;
     });
 
     comboList.innerHTML = "";
 
+    if (filtered.length === 0) {
+      comboList.innerHTML = `<p style="text-align:center;color:#777;">查無符合條件的資料</p>`;
+      return;
+    }
+
     filtered.forEach(item => {
       const card = document.createElement("div");
       card.className = "combo-card";
       card.innerHTML = `
-        <div class="combo-title">${item.skillName}</div>
-        <div class="combo-category">${item.category}</div>
+        <div class="combo-header">
+          <div><strong>${item.classSkill || "—"}</strong></div>
+          <div>${item.skillName || "—"}</div>
+          <div class="combo-class">${item.class || "—"}</div>
+        </div>
+        <hr>
         <div class="combo-details">
-          <p><strong>職業：</strong>${item.class}</p>
-          <p><strong>職業技能：</strong>${item.classSkill}</p>
-          <p><strong>裝備類型：</strong>${item.equipmentType}</p>
-          <p><strong>組合方式：</strong>${item.combinationMethod}</p>
-          <p><strong>描述：</strong>${item.description || "—"}</p>
+          <p><strong>職業：</strong>${item.class || "—"}</p>
+          <p><strong>裝備部位：</strong>${item.equipmentType || "—"}</p>
+          <p><strong>文片組合：</strong>${item.combinationMethod || "—"}</p>
+          <p><strong>說明：</strong>${item.description || "—"}</p>
         </div>
       `;
-      card.addEventListener("click", () =>
-        card.classList.toggle("active")
-      );
+
+      // 點擊展開／收合
+      card.addEventListener("click", () => {
+        card.classList.toggle("active");
+      });
+
       comboList.appendChild(card);
     });
   }
@@ -55,7 +80,7 @@ function initComboPage(data) {
   // === 搜尋事件 ===
   searchInput.addEventListener("input", renderList);
 
-  // === 篩選按鈕事件 ===
+  // === 篩選事件 ===
   filterBtns.forEach(btn => {
     btn.addEventListener("click", () => {
       const value = btn.dataset.value;
@@ -74,6 +99,7 @@ function initComboPage(data) {
   clearBtn.addEventListener("click", () => {
     activeFilters = [];
     filterBtns.forEach(b => b.classList.remove("active"));
+    searchInput.value = "";
     renderList();
   });
 
