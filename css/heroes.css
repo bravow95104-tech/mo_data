@@ -223,6 +223,7 @@ tbody tr:hover {
   line-height: 1.5;
   background-color: #fff;
   border-radius: 6px;
+  box-sizing: border-box;
 }
 
 /* 文字調整 */
