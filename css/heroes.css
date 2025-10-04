@@ -209,7 +209,7 @@ tbody tr:hover {
   box-shadow: 0 1px 4px rgba(0,0,0,0.1);
 }
 
-.modalContent {
+#modalContent {
   padding: 20px;
   font-size: 16px;
   color: #333;
