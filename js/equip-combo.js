@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-  fetch("./json/equip-combo.json") // ✅ 改相對路徑
+  fetch("/mo_data/data/equip-combo.json") // ✅ 改相對路徑
     .then(res => {
       if (!res.ok) throw new Error("載入 equip-combo.json 失敗");
       return res.json();
