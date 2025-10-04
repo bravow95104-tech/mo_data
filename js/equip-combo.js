@@ -41,9 +41,10 @@ function initComboPage(data) {
         skillType.includes(searchText) ||
         cat.includes(searchText);
 
-      const matchFilter =
-        activeFilters.length === 0 ||
-        activeFilters.some(f => job.includes(f));
+const matchFilter =
+  activeFilters.length === 0 ||
+  activeFilters.some(f => job.includes(f) || job.includes("全職業"));
+
 
       return matchSearch && matchFilter;
     });
