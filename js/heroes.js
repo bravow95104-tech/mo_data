@@ -150,40 +150,39 @@ document.addEventListener("DOMContentLoaded", () => {
       behavior: 'smooth'
     });
   });
-// 快速搜尋事件（多條件交集篩選）
+// 快速搜尋事件（多選條件 + 交集篩選）
 document.querySelectorAll('.filter-btn').forEach(btn => {
   btn.addEventListener('click', () => {
-    const type = btn.dataset.type;
+    const type = btn.dataset.type;        // "promotion" / "personality" / "traits"
     const value = btn.dataset.value;
 
-    // 清除同類型按鈕的 active 樣式
-    document.querySelectorAll(`.filter-btn[data-type="${type}"]`).forEach(b => {
-      b.classList.remove('active');
-    });
+    // 切換這個按鈕的 active 狀態（點一下選、再點一次取消）
+    btn.classList.toggle('active');
 
-    // 加上被點擊按鈕的 active 樣式
-    btn.classList.add('active');
-
-    // 收集所有 active 的篩選條件
+    // 收集目前每個分類被選到的條件（數組）
     const filters = {
-      promotion: null,
-      personality: null,
-      traits: null
+      promotion: [],
+      personality: [],
+      traits: []
     };
 
     document.querySelectorAll('.filter-btn.active').forEach(activeBtn => {
       const t = activeBtn.dataset.type;
       const v = activeBtn.dataset.value;
-      filters[t] = v;
+      // 把 v 加到對應分類的陣列（避免重複）
+      if (!filters[t].includes(v)) {
+        filters[t].push(v);
+      }
     });
 
-    // 執行多條件交集篩選
+    // 篩選：符合交集條件
     const filtered = heroesData.filter(hero => {
-      const matchPromotion = !filters.promotion || hero.promotion === filters.promotion;
-      const matchPersonality = !filters.personality || hero.personality === filters.personality;
-      const matchTraits = !filters.traits || String(hero.traits) === String(filters.traits);
+      // 如果該分類有選條件的話，要在該分類的條件陣列中有匹配
+      const okPromotion = filters.promotion.length === 0 || filters.promotion.includes(hero.promotion);
+      const okPersonality = filters.personality.length === 0 || filters.personality.includes(hero.personality);
+      const okTraits = filters.traits.length === 0 || filters.traits.includes(String(hero.traits));
 
-      return matchPromotion && matchPersonality && matchTraits;
+      return okPromotion && okPersonality && okTraits;
     });
 
     renderTable(filtered);
@@ -200,13 +199,15 @@ document.getElementById('clearFilters').addEventListener('click', () => {
     btn.classList.remove('active');
   });
 
-  // 移除搜尋高亮
+  // 移除搜尋高亮（如果有用到）
+// 這裡你原本有處理 highlight / highlight2，可以保留
   document.querySelectorAll('.highlight, .highlight2').forEach(el => {
     const parent = el.parentNode;
     parent.replaceChild(document.createTextNode(el.textContent), el);
     parent.normalize();
   });
 });
+
   // Accordion 展開／收合
 document.querySelectorAll('.accordion-header').forEach(header => {
   header.addEventListener('click', () => {
