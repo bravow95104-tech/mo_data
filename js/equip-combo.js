@@ -1,14 +1,19 @@
 document.addEventListener("DOMContentLoaded", () => {
-  fetch("/mo_data/json/equip-combo.json")
+  fetch("/mo_data/data/equip-combo.json") // ✅ 改相對路徑
     .then(res => {
       if (!res.ok) throw new Error("載入 equip-combo.json 失敗");
       return res.json();
     })
-    .then(data => initComboPage(data))
+    .then(json => {
+      const data = Array.isArray(json) ? json : json.data; // ✅ 處理包外層 data
+      initComboPage(data);
+    })
     .catch(err => {
       console.error("❌ JSON 載入失敗：", err);
       const comboList = document.getElementById("comboList");
-      if (comboList) comboList.innerHTML = "<p style='color:red;text-align:center;'>無法載入資料</p>";
+      if (comboList)
+        comboList.innerHTML =
+          "<p style='color:red;text-align:center;'>無法載入資料</p>";
     });
 });
 
@@ -46,7 +51,8 @@ function initComboPage(data) {
     comboList.innerHTML = "";
 
     if (filtered.length === 0) {
-      comboList.innerHTML = `<p style="text-align:center;color:#777;">查無符合條件的資料</p>`;
+      comboList.innerHTML =
+        `<p style="text-align:center;color:#777;">查無符合條件的資料</p>`;
       return;
     }
 
@@ -54,12 +60,8 @@ function initComboPage(data) {
       const card = document.createElement("div");
       card.className = "combo-card";
       card.innerHTML = `
-        <div class="combo-header">
-          <div><strong>${item.classSkill || "—"}</strong></div>
-          <div>${item.skillName || "—"}</div>
-          <div class="combo-class">${item.class || "—"}</div>
-        </div>
-        <hr>
+        <div class="combo-title">${item.classSkill || "—"}</div>
+        <div class="combo-category">${item.skillName || "—"} ｜ ${item.class || "—"}</div>
         <div class="combo-details">
           <p><strong>職業：</strong>${item.class || "—"}</p>
           <p><strong>裝備部位：</strong>${item.equipmentType || "—"}</p>
@@ -68,19 +70,16 @@ function initComboPage(data) {
         </div>
       `;
 
-      // 點擊展開／收合
-      card.addEventListener("click", () => {
-        card.classList.toggle("active");
-      });
+      card.addEventListener("click", () =>
+        card.classList.toggle("active")
+      );
 
       comboList.appendChild(card);
     });
   }
 
-  // === 搜尋事件 ===
   searchInput.addEventListener("input", renderList);
 
-  // === 篩選事件 ===
   filterBtns.forEach(btn => {
     btn.addEventListener("click", () => {
       const value = btn.dataset.value;
@@ -95,7 +94,6 @@ function initComboPage(data) {
     });
   });
 
-  // === 清除篩選 ===
   clearBtn.addEventListener("click", () => {
     activeFilters = [];
     filterBtns.forEach(b => b.classList.remove("active"));
