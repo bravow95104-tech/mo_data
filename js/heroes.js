@@ -96,7 +96,7 @@ document.addEventListener("DOMContentLoaded", () => {
     <p><strong>素質：</strong>${hero.traits}</p>
     <p><strong>個性：</strong>${hero.personality}</p>
     <p><strong>屬性：</strong>${hero.element}</p>
-    <p><strong>力量：</strong>${hero.str}</p>
+    <p class="section-gap"><strong>力量：</strong>${hero.str}</p>
     <p><strong>智慧：</strong>${hero.int}</p>
     <p><strong>體質：</strong>${hero.vit}</p>
     <p><strong>敏捷：</strong>${hero.agi}</p>
