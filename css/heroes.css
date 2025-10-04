@@ -192,7 +192,7 @@ tbody tr:hover {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;           /* 視窗小時自動換行 */
-  gap: 24px;                 /* 欄間距稍微調小，避免寬度過大 */
+  gap: 12px;                 /* 欄間距稍微調小，避免寬度過大 */
   padding: 10px 10px;
   max-width: 800px;          /* Modal 最大寬度 */
   margin: 0 auto;
