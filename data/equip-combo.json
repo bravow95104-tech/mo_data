@@ -1000,7 +1000,7 @@
   },
   {
     "category": "特殊",
-    "class": "全職業",
+    "class": "劍客、武神、霸王、術士、血魔、仙術士、風水師、天師、尊者、藥師、醫仙、蠱醫、巧匠、機關匠、夜行者",
     "classSkill": "",
     "skillName": "鋼鐵Lv1",
     "equipmentType": "不限位置",
@@ -1009,7 +1009,7 @@
   },
   {
     "category": "特殊",
-    "class": "全職業",
+    "class": "劍客、武神、霸王、術士、血魔、仙術士、風水師、天師、尊者、藥師、醫仙、蠱醫、巧匠、機關匠、夜行者",
     "classSkill": "",
     "skillName": "鋼鐵Lv2",
     "equipmentType": "不限位置",
@@ -1018,7 +1018,7 @@
   },
   {
     "category": "特殊",
-    "class": "全職業",
+    "class": "劍客、武神、霸王、術士、血魔、仙術士、風水師、天師、尊者、藥師、醫仙、蠱醫、巧匠、機關匠、夜行者",
     "classSkill": "",
     "skillName": "鋼鐵Lv3",
     "equipmentType": "不限位置",
@@ -1027,7 +1027,7 @@
   },
   {
     "category": "特殊",
-    "class": "全職業",
+    "class": "劍客、武神、霸王、術士、血魔、仙術士、風水師、天師、尊者、藥師、醫仙、蠱醫、巧匠、機關匠、夜行者",
     "classSkill": "",
     "skillName": "祕法Lv1",
     "equipmentType": "不限位置",
@@ -1036,7 +1036,7 @@
   },
   {
     "category": "特殊",
-    "class": "全職業",
+    "class": "劍客、武神、霸王、術士、血魔、仙術士、風水師、天師、尊者、藥師、醫仙、蠱醫、巧匠、機關匠、夜行者",
     "classSkill": "",
     "skillName": "祕法Lv2",
     "equipmentType": "不限位置",
@@ -1045,7 +1045,7 @@
   },
   {
     "category": "特殊",
-    "class": "全職業",
+    "class": "劍客、武神、霸王、術士、血魔、仙術士、風水師、天師、尊者、藥師、醫仙、蠱醫、巧匠、機關匠、夜行者",
     "classSkill": "",
     "skillName": "祕法Lv3",
     "equipmentType": "不限位置",
@@ -1054,7 +1054,7 @@
   },
   {
     "category": "特殊",
-    "class": "全職業",
+    "class": "劍客、武神、霸王、術士、血魔、仙術士、風水師、天師、尊者、藥師、醫仙、蠱醫、巧匠、機關匠、夜行者",
     "classSkill": "",
     "skillName": "童話Lv1",
     "equipmentType": "不限位置",
@@ -1063,7 +1063,7 @@
   },
   {
     "category": "特殊",
-    "class": "全職業",
+    "class": "劍客、武神、霸王、術士、血魔、仙術士、風水師、天師、尊者、藥師、醫仙、蠱醫、巧匠、機關匠、夜行者",
     "classSkill": "",
     "skillName": "彩虹",
     "equipmentType": "坐騎",
@@ -1072,7 +1072,7 @@
   },
   {
     "category": "特殊",
-    "class": "全職業",
+    "class": "劍客、武神、霸王、術士、血魔、仙術士、風水師、天師、尊者、藥師、醫仙、蠱醫、巧匠、機關匠、夜行者",
     "classSkill": "",
     "skillName": "夢境Lv1",
     "equipmentType": "武器",
@@ -1081,201 +1081,201 @@
   },
   {
     "category": "特殊",
-    "class": "全職業",
+    "class": "劍客、武神、霸王、術士、血魔、仙術士、風水師、天師、尊者、藥師、醫仙、蠱醫、巧匠、機關匠、夜行者",
     "classSkill": "",
     "skillName": "堅硬Lv1",
     "equipmentType": "不限位置",
     "combinationMethod": "右弼、天馬、天馬、擎羊、擎羊",
-    "description": ""
+    "description": "法術防禦增加(少量)"
   },
   {
     "category": "特殊",
-    "class": "全職業",
+    "class": "劍客、武神、霸王、術士、血魔、仙術士、風水師、天師、尊者、藥師、醫仙、蠱醫、巧匠、機關匠、夜行者",
     "classSkill": "",
     "skillName": "堅硬Lv2",
     "equipmentType": "不限位置",
     "combinationMethod": "文昌、陀羅、鈴、天相",
-    "description": ""
+    "description": "法術防禦增加(中量)"
   },
   {
     "category": "特殊",
-    "class": "全職業",
+    "class": "劍客、武神、霸王、術士、血魔、仙術士、風水師、天師、尊者、藥師、醫仙、蠱醫、巧匠、機關匠、夜行者",
     "classSkill": "",
     "skillName": "堅硬Lv3",
     "equipmentType": "不限位置",
     "combinationMethod": "祿存、火、天魁、廉貞、天府、天梁",
-    "description": ""
+    "description": "法術防禦增加(大量)"
   },
   {
     "category": "特殊",
-    "class": "全職業",
+    "class": "劍客、武神、霸王、術士、血魔、仙術士、風水師、天師、尊者、藥師、醫仙、蠱醫、巧匠、機關匠、夜行者",
     "classSkill": "",
     "skillName": "快馬",
     "equipmentType": "坐騎",
     "combinationMethod": "右弼、右弼、文昌、文曲、天鉞、天府、天府、七殺",
-    "description": ""
+    "description": "增加移動速度至1(原有1以上則無法增加)"
   },
   {
     "category": "特殊",
-    "class": "全職業",
+    "class": "劍客、武神、霸王、術士、血魔、仙術士、風水師、天師、尊者、藥師、醫仙、蠱醫、巧匠、機關匠、夜行者",
     "classSkill": "",
     "skillName": "好快好快竹馬",
     "equipmentType": "坐騎",
     "combinationMethod": "祿存、天馬、天魁、地劫、紫微、天同、太陰、破軍",
-    "description": ""
+    "description": "增加移動速度至2(原有2以上則無法增加)"
   },
   {
     "category": "特殊",
-    "class": "全職業",
+    "class": "劍客、武神、霸王、術士、血魔、仙術士、風水師、天師、尊者、藥師、醫仙、蠱醫、巧匠、機關匠、夜行者",
     "classSkill": "",
     "skillName": "節約",
     "equipmentType": "眼睛",
     "combinationMethod": "右弼、文曲、天馬、陀羅、鈴、天魁",
-    "description": ""
+    "description": "技能MP使用降低(少量)(少量)"
   },
   {
     "category": "特殊",
-    "class": "全職業",
+    "class": "劍客、武神、霸王、術士、血魔、仙術士、風水師、天師、尊者、藥師、醫仙、蠱醫、巧匠、機關匠、夜行者",
     "classSkill": "",
     "skillName": "節約",
     "equipmentType": "嘴巴",
     "combinationMethod": "右弼、文曲、天馬、陀羅、鈴、天鉞",
-    "description": ""
+    "description": "技能MP使用降低(少量)(少量)"
   },
   {
     "category": "特殊",
-    "class": "全職業",
+    "class": "劍客、武神、霸王、術士、血魔、仙術士、風水師、天師、尊者、藥師、醫仙、蠱醫、巧匠、機關匠、夜行者",
     "classSkill": "",
     "skillName": "節約",
     "equipmentType": "坐騎",
     "combinationMethod": "右弼、文曲、天馬、陀羅、鈴、地空",
-    "description": ""
+    "description": "技能MP使用降低(少量)(少量)"
   },
   {
     "category": "特殊",
-    "class": "全職業",
+    "class": "劍客、武神、霸王、術士、血魔、仙術士、風水師、天師、尊者、藥師、醫仙、蠱醫、巧匠、機關匠、夜行者",
     "classSkill": "",
     "skillName": "小惡犬",
     "equipmentType": "坐騎",
     "combinationMethod": "擎羊、火、鈴、地空、貪狼、天相",
-    "description": ""
+    "description": "遇敵率+30~+50%"
   },
   {
     "category": "特殊",
-    "class": "全職業",
+    "class": "劍客、武神、霸王、術士、血魔、仙術士、風水師、天師、尊者、藥師、醫仙、蠱醫、巧匠、機關匠、夜行者",
     "classSkill": "",
     "skillName": "輕裝",
     "equipmentType": "盔甲",
     "combinationMethod": "文昌、天馬、火、天鉞、天梁",
-    "description": ""
+    "description": "普通攻擊速度增加(少量)"
   },
   {
     "category": "特殊",
-    "class": "全職業",
+    "class": "劍客、武神、霸王、術士、血魔、仙術士、風水師、天師、尊者、藥師、醫仙、蠱醫、巧匠、機關匠、夜行者",
     "classSkill": "",
     "skillName": "我劍如風",
     "equipmentType": "武器(限定軟劍)",
     "combinationMethod": "左輔、左輔、左輔、左輔、祿存、陀羅、陀羅、火、廉貞、破軍",
-    "description": ""
+    "description": "普通攻擊速度增加(中量)"
   },
   {
     "category": "特殊",
-    "class": "全職業",
+    "class": "劍客、武神、霸王、術士、血魔、仙術士、風水師、天師、尊者、藥師、醫仙、蠱醫、巧匠、機關匠、夜行者",
     "classSkill": "",
     "skillName": "口富",
     "equipmentType": "眼睛",
     "combinationMethod": "擎羊、火、天魁、地空、天同、破軍",
-    "description": ""
+    "description": "金錢掉落增加"
   },
   {
     "category": "特殊",
-    "class": "全職業",
+    "class": "劍客、武神、霸王、術士、血魔、仙術士、風水師、天師、尊者、藥師、醫仙、蠱醫、巧匠、機關匠、夜行者",
     "classSkill": "",
     "skillName": "口福",
     "equipmentType": "眼睛",
     "combinationMethod": "右弼、文昌、地空、地劫、太陰、貪狼、天相",
-    "description": ""
+    "description": "掉落寶物增加"
   },
   {
     "category": "特殊",
-    "class": "全職業",
+    "class": "劍客、武神、霸王、術士、血魔、仙術士、風水師、天師、尊者、藥師、醫仙、蠱醫、巧匠、機關匠、夜行者",
     "classSkill": "",
     "skillName": "藍染工作帽",
     "equipmentType": "頭盔",
     "combinationMethod": "地空、廉貞、天府、巨門、天相",
-    "description": ""
+    "description": "增加工作成功率(依照裝備等級計算增加數值)"
   },
   {
     "category": "特殊",
-    "class": "全職業",
+    "class": "劍客、武神、霸王、術士、血魔、仙術士、風水師、天師、尊者、藥師、醫仙、蠱醫、巧匠、機關匠、夜行者",
     "classSkill": "",
     "skillName": "金裂減降",
     "equipmentType": "盔甲",
     "combinationMethod": "祿存、天馬、陀羅、廉貞、太陰、天梁、破軍",
-    "description": ""
+    "description": "受到金行技能傷害減少(少量)"
   },
   {
     "category": "特殊",
-    "class": "全職業",
+    "class": "劍客、武神、霸王、術士、血魔、仙術士、風水師、天師、尊者、藥師、醫仙、蠱醫、巧匠、機關匠、夜行者",
     "classSkill": "",
     "skillName": "觸電減降",
     "equipmentType": "盔甲",
     "combinationMethod": "天馬、陀羅、擎羊、天府、貪狼、天相、破軍",
-    "description": ""
+    "description": "受到木行技能傷害減少(少量)"
   },
   {
     "category": "特殊",
-    "class": "全職業",
+    "class": "劍客、武神、霸王、術士、血魔、仙術士、風水師、天師、尊者、藥師、醫仙、蠱醫、巧匠、機關匠、夜行者",
     "classSkill": "",
     "skillName": "潮濕減降",
     "equipmentType": "盔甲",
     "combinationMethod": "文昌、擎羊、火、天同、巨門、七殺、破軍",
-    "description": ""
+    "description": "受到水行技能傷害減少(少量)"
   },
   {
     "category": "特殊",
-    "class": "全職業",
+    "class": "劍客、武神、霸王、術士、血魔、仙術士、風水師、天師、尊者、藥師、醫仙、蠱醫、巧匠、機關匠、夜行者",
     "classSkill": "",
     "skillName": "灼燒減降",
     "equipmentType": "盔甲",
     "combinationMethod": "文曲、祿存、火、太陰、巨門、天梁、破軍",
-    "description": ""
+    "description": "受到火行技能傷害減少(少量)"
   },
   {
     "category": "特殊",
-    "class": "全職業",
+    "class": "劍客、武神、霸王、術士、血魔、仙術士、風水師、天師、尊者、藥師、醫仙、蠱醫、巧匠、機關匠、夜行者",
     "classSkill": "",
     "skillName": "乾裂減降",
     "equipmentType": "盔甲",
     "combinationMethod": "祿存、擎羊、火、天府、太陰、天相、破軍",
-    "description": ""
+    "description": "受到土行技能傷害減少(少量)"
   },
   {
     "category": "特殊",
-    "class": "全職業",
+    "class": "劍客、武神、霸王、術士、血魔、仙術士、風水師、天師、尊者、藥師、醫仙、蠱醫、巧匠、機關匠、夜行者",
     "classSkill": "",
     "skillName": "護主",
     "equipmentType": "坐騎",
     "combinationMethod": "天鉞、地劫、紫微、貪狼、破軍",
-    "description": ""
+    "description": "受技能傷害減少"
   },
   {
     "category": "特殊",
-    "class": "全職業",
+    "class": "劍客、武神、霸王、術士、血魔、仙術士、風水師、天師、尊者、藥師、醫仙、蠱醫、巧匠、機關匠、夜行者",
     "classSkill": "",
     "skillName": "甘霖",
     "equipmentType": "武器",
     "combinationMethod": "祿存、陀羅、陀羅、天魁、地劫",
-    "description": ""
+    "description": "技能恢復效果增加(少量)"
   },
   {
     "category": "特殊",
-    "class": "全職業",
+    "class": "劍客、武神、霸王、術士、血魔、仙術士、風水師、天師、尊者、藥師、醫仙、蠱醫、巧匠、機關匠、夜行者",
     "classSkill": "",
     "skillName": "治癒",
     "equipmentType": "武器",
     "combinationMethod": "天馬、火、鈴、天鉞、地空、巨門",
-    "description": ""
+    "description": "技能恢復效果增加(中量)"
   },
   {
     "category": "特殊",
@@ -1284,7 +1284,7 @@
     "skillName": "逆體勇壯",
     "equipmentType": "武器",
     "combinationMethod": "文昌、祿存、陀羅、火、天魁",
-    "description": ""
+    "description": "增加物理強度，依照裝備洞數加倍"
   },
   {
     "category": "特殊",
@@ -1293,7 +1293,7 @@
     "skillName": "逆向術法",
     "equipmentType": "武器",
     "combinationMethod": "文曲、祿存、擎羊、陀羅、天魁",
-    "description": ""
+    "description": "增加法術強度，依照裝備洞數加倍"
   },
   {
     "category": "特殊",
@@ -1302,7 +1302,7 @@
     "skillName": "逆體勇壯Lv2",
     "equipmentType": "武器",
     "combinationMethod": "鈴、天鉞、天鉞、貪狼、天梁、破軍",
-    "description": ""
+    "description": "增加物理強度，依照裝備洞數加倍"
   },
   {
     "category": "特殊",
@@ -1311,7 +1311,7 @@
     "skillName": "逆向術法Lv2",
     "equipmentType": "武器",
     "combinationMethod": "鈴、天鉞、天鉞、太陰、七殺、破軍",
-    "description": ""
+    "description": "增加法術強度，依照裝備洞數加倍"
   },
   {
     "category": "特殊",
@@ -1320,7 +1320,7 @@
     "skillName": "逆體勇壯Lv3",
     "equipmentType": "武器",
     "combinationMethod": "天鉞、地劫、天同、天府、貪狼、巨門、天相、七殺",
-    "description": ""
+    "description": "增加物理強度，依照裝備洞數加倍"
   },
   {
     "category": "特殊",
@@ -1329,7 +1329,7 @@
     "skillName": "逆向術法Lv3",
     "equipmentType": "武器",
     "combinationMethod": "地空、地劫、太陽、廉貞、天府、天府、天相、天梁",
-    "description": ""
+    "description": "增加法術強度，依照裝備洞數加倍"
   },
   {
     "category": "特殊",
@@ -1338,52 +1338,52 @@
     "skillName": "武兵步伐〥",
     "equipmentType": "鞋子(超合金限定)",
     "combinationMethod": "天魁、天鉞、地空、太陽、天府、天府、貪狼、貪狼、天相、天相",
-    "description": ""
+    "description": "進入戰鬥時，賦予強兵戰姿效果，\n該狀態之下造成傷害提升"
   },
   {
     "category": "特殊",
-    "class": "全職業",
+    "class": "劍客、武神、霸王、術士、血魔、仙術士、風水師、天師、尊者、藥師、醫仙、蠱醫、巧匠、機關匠、夜行者",
     "classSkill": "",
     "skillName": "清流",
     "equipmentType": "眼睛",
     "combinationMethod": "陀羅、火、火、天魁、天鉞、天府",
-    "description": ""
+    "description": "技能恢復效果增加(中量)"
   },
   {
     "category": "特殊",
-    "class": "全職業",
+    "class": "劍客、武神、霸王、術士、血魔、仙術士、風水師、天師、尊者、藥師、醫仙、蠱醫、巧匠、機關匠、夜行者",
     "classSkill": "",
     "skillName": "舒緩",
     "equipmentType": "嘴巴",
     "combinationMethod": "陀羅、陀羅、火、天魁、天鉞、天府",
-    "description": ""
+    "description": "技能恢復效果增加(中量)"
   },
   {
     "category": "特殊",
-    "class": "全職業",
+    "class": "劍客、武神、霸王、術士、血魔、仙術士、風水師、天師、尊者、藥師、醫仙、蠱醫、巧匠、機關匠、夜行者",
     "classSkill": "",
     "skillName": "熱動〥",
     "equipmentType": "眼睛",
     "combinationMethod": "陀羅、陀羅、陀羅、地劫、地劫、武曲、武曲、天相、七殺",
-    "description": ""
+    "description": "施展技能有機率減少冷卻時間"
   },
   {
     "category": "特殊",
-    "class": "全職業",
+    "class": "劍客、武神、霸王、術士、血魔、仙術士、風水師、天師、尊者、藥師、醫仙、蠱醫、巧匠、機關匠、夜行者",
     "classSkill": "",
     "skillName": "剋行〥",
     "equipmentType": "嘴巴",
     "combinationMethod": "左輔、天魁、紫微、天同、巨門、天梁、破軍",
-    "description": ""
+    "description": "技能擊中時，自身五行相剋對方將提升傷害"
   },
   {
     "category": "特殊",
-    "class": "全職業",
+    "class": "劍客、武神、霸王、術士、血魔、仙術士、風水師、天師、尊者、藥師、醫仙、蠱醫、巧匠、機關匠、夜行者",
     "classSkill": "",
     "skillName": "逆生〥",
     "equipmentType": "頭盔",
     "combinationMethod": "天鉞、天鉞、地劫、武曲、天相、天相、天相",
-    "description": ""
+    "description": "技能生效時，依戰場五行能提升傷害"
   },
   {
     "category": "特殊",
@@ -1392,7 +1392,7 @@
     "skillName": "水靈〥",
     "equipmentType": "頭盔(限制布、絲材質)",
     "combinationMethod": "天鉞、地劫、廉貞、天府、天府、貪狼",
-    "description": ""
+    "description": "水行技能傷害增加"
   },
   {
     "category": "特殊",
@@ -1401,7 +1401,7 @@
     "skillName": "火靈〥",
     "equipmentType": "頭盔(限制布、絲材質)",
     "combinationMethod": "地空、地劫、廉貞、天府、天府、天相",
-    "description": ""
+    "description": "火行技能傷害增加"
   },
   {
     "category": "特殊",
@@ -1410,7 +1410,7 @@
     "skillName": "土靈〥",
     "equipmentType": "頭盔(限制布、絲材質)",
     "combinationMethod": "火、地空、廉貞、天府、天府、天梁",
-    "description": ""
+    "description": "土行技能傷害增加"
   },
   {
     "category": "特殊",
@@ -1419,7 +1419,7 @@
     "skillName": "金靈〥",
     "equipmentType": "頭盔(限制布、絲材質)",
     "combinationMethod": "鈴、天鉞、廉貞、天府、天府、太陰",
-    "description": ""
+    "description": "金行技能傷害增加"
   },
   {
     "category": "特殊",
@@ -1428,7 +1428,7 @@
     "skillName": "木靈〥",
     "equipmentType": "頭盔(限制布、絲材質)",
     "combinationMethod": "鈴、天魁、廉貞、天府、天府、七殺",
-    "description": ""
+    "description": "木行技能傷害增加"
   },
   {
     "category": "特殊",
@@ -1437,7 +1437,7 @@
     "skillName": "藥毒〥",
     "equipmentType": "頭盔(限制布、絲材質)",
     "combinationMethod": "祿存、火、地劫、巨門、天梁、破軍",
-    "description": ""
+    "description": "若裝備者為醫仙，法術傷害技能增加"
   },
   {
     "category": "特殊",
@@ -1446,74 +1446,74 @@
     "skillName": "強壯的教授〥",
     "equipmentType": "頭盔(限制布、絲材質)",
     "combinationMethod": "右弼、擎羊、鈴、鈴、武曲、七殺、七殺、七殺",
-    "description": ""
+    "description": "若裝備者為藥師系，物理傷害技能增加"
   },
   {
     "category": "特殊",
-    "class": "全職業",
+    "class": "劍客、武神、霸王、術士、血魔、仙術士、風水師、天師、尊者、藥師、醫仙、蠱醫、巧匠、機關匠、夜行者",
     "classSkill": "",
     "skillName": "堅忍",
     "equipmentType": "頭盔",
     "combinationMethod": "鈴、鈴、貪狼、貪狼、巨門",
-    "description": ""
+    "description": "受法術傷害減少"
   },
   {
     "category": "特殊",
-    "class": "全職業",
+    "class": "劍客、武神、霸王、術士、血魔、仙術士、風水師、天師、尊者、藥師、醫仙、蠱醫、巧匠、機關匠、夜行者",
     "classSkill": "",
     "skillName": "古代",
     "equipmentType": "眼睛",
     "combinationMethod": "天魁、地空、天同、巨門、天梁",
-    "description": ""
+    "description": "技能命中值增加"
   },
   {
     "category": "特殊",
-    "class": "全職業",
+    "class": "劍客、武神、霸王、術士、血魔、仙術士、風水師、天師、尊者、藥師、醫仙、蠱醫、巧匠、機關匠、夜行者",
     "classSkill": "",
     "skillName": "古老",
     "equipmentType": "嘴巴",
     "combinationMethod": "天魁、天鉞、廉貞、貪狼、天相",
-    "description": ""
+    "description": "技能命中值增加"
   },
   {
     "category": "特殊",
-    "class": "全職業",
+    "class": "劍客、武神、霸王、術士、血魔、仙術士、風水師、天師、尊者、藥師、醫仙、蠱醫、巧匠、機關匠、夜行者",
     "classSkill": "",
     "skillName": "衝動",
     "equipmentType": "頭盔",
     "combinationMethod": "陀羅、地劫、武曲、天府、巨門、巨門",
-    "description": ""
+    "description": "物理技能傷害增加"
   },
   {
     "category": "特殊",
-    "class": "全職業",
+    "class": "劍客、武神、霸王、術士、血魔、仙術士、風水師、天師、尊者、藥師、醫仙、蠱醫、巧匠、機關匠、夜行者",
     "classSkill": "",
     "skillName": "衝擊",
     "equipmentType": "頭盔",
     "combinationMethod": "火、地空、武曲、太陰、貪狼、貪狼",
-    "description": ""
+    "description": "法術技能傷害增加"
   },
   {
     "category": "特殊",
-    "class": "全職業",
+    "class": "劍客、武神、霸王、術士、血魔、仙術士、風水師、天師、尊者、藥師、醫仙、蠱醫、巧匠、機關匠、夜行者",
     "classSkill": "",
     "skillName": "迴避硬皮",
     "equipmentType": "鞋子(硬皮限定)",
     "combinationMethod": "右弼、陀羅、地劫、武曲、武曲、天梁",
-    "description": ""
+    "description": "技能迴避值增加(少量)"
   },
   {
     "category": "特殊",
-    "class": "全職業",
+    "class": "劍客、武神、霸王、術士、血魔、仙術士、風水師、天師、尊者、藥師、醫仙、蠱醫、巧匠、機關匠、夜行者",
     "classSkill": "",
     "skillName": "迴避合金",
     "equipmentType": "鞋子(超合金限定)",
     "combinationMethod": "文昌、陀羅、地劫、太陽、太陽、七殺",
-    "description": ""
+    "description": "技能迴避值增加(中量)"
   },
   {
     "category": "特殊",
-    "class": "全職業",
+    "class": "劍客、武神、霸王、術士、血魔、仙術士、風水師、天師、尊者、藥師、醫仙、蠱醫、巧匠、機關匠、夜行者",
     "classSkill": "",
     "skillName": "雷電法杖〥",
     "equipmentType": "武器-限定2洞",
@@ -1522,7 +1522,7 @@
   },
   {
     "category": "特殊",
-    "class": "全職業",
+    "class": "劍客、武神、霸王、術士、血魔、仙術士、風水師、天師、尊者、藥師、醫仙、蠱醫、巧匠、機關匠、夜行者",
     "classSkill": "",
     "skillName": "厚重的",
     "equipmentType": "身體-限定1洞",
@@ -1576,7 +1576,7 @@
   },
   {
     "category": "特殊",
-    "class": "全職業",
+    "class": "劍客、武神、霸王、術士、血魔、仙術士、風水師、天師、尊者、藥師、醫仙、蠱醫、巧匠、機關匠、夜行者",
     "classSkill": "",
     "skillName": "無型",
     "equipmentType": "身體-限定1洞",
@@ -1585,7 +1585,7 @@
   },
   {
     "category": "特殊",
-    "class": "全職業",
+    "class": "劍客、武神、霸王、術士、血魔、仙術士、風水師、天師、尊者、藥師、醫仙、蠱醫、巧匠、機關匠、夜行者",
     "classSkill": "",
     "skillName": "銳利〥",
     "equipmentType": "眼部",
@@ -1594,7 +1594,7 @@
   },
   {
     "category": "特殊",
-    "class": "全職業",
+    "class": "劍客、武神、霸王、術士、血魔、仙術士、風水師、天師、尊者、藥師、醫仙、蠱醫、巧匠、機關匠、夜行者",
     "classSkill": "",
     "skillName": "踏步迴避〥",
     "equipmentType": "腳部",
@@ -1603,7 +1603,7 @@
   },
   {
     "category": "特殊",
-    "class": "全職業",
+    "class": "劍客、武神、霸王、術士、血魔、仙術士、風水師、天師、尊者、藥師、醫仙、蠱醫、巧匠、機關匠、夜行者",
     "classSkill": "",
     "skillName": "省能〥",
     "equipmentType": "嘴巴",
@@ -1612,7 +1612,7 @@
   },
   {
     "category": "特殊",
-    "class": "全職業",
+    "class": "劍客、武神、霸王、術士、血魔、仙術士、風水師、天師、尊者、藥師、醫仙、蠱醫、巧匠、機關匠、夜行者",
     "classSkill": "",
     "skillName": "頑強〥",
     "equipmentType": "頭部-限定1洞",
@@ -1621,7 +1621,7 @@
   },
   {
     "category": "特殊",
-    "class": "全職業",
+    "class": "劍客、武神、霸王、術士、血魔、仙術士、風水師、天師、尊者、藥師、醫仙、蠱醫、巧匠、機關匠、夜行者",
     "classSkill": "",
     "skillName": "風火輪鞋〥",
     "equipmentType": "腳部",
@@ -1630,7 +1630,7 @@
   },
   {
     "category": "特殊",
-    "class": "全職業",
+    "class": "劍客、武神、霸王、術士、血魔、仙術士、風水師、天師、尊者、藥師、醫仙、蠱醫、巧匠、機關匠、夜行者",
     "classSkill": "",
     "skillName": "熾焰焚身〥",
     "equipmentType": "頭部-限定1洞",
@@ -1639,7 +1639,7 @@
   },
   {
     "category": "特殊",
-    "class": "全職業",
+    "class": "劍客、武神、霸王、術士、血魔、仙術士、風水師、天師、尊者、藥師、醫仙、蠱醫、巧匠、機關匠、夜行者",
     "classSkill": "",
     "skillName": "輔助瞄準〥",
     "equipmentType": "眼部",
@@ -1702,7 +1702,7 @@
   },
   {
     "category": "特殊",
-    "class": "全職業",
+    "class": "劍客、武神、霸王、術士、血魔、仙術士、風水師、天師、尊者、藥師、醫仙、蠱醫、巧匠、機關匠、夜行者",
     "classSkill": "",
     "skillName": "緊急治療〥",
     "equipmentType": "頭部",
@@ -1711,7 +1711,7 @@
   },
   {
     "category": "特殊",
-    "class": "全職業",
+    "class": "劍客、武神、霸王、術士、血魔、仙術士、風水師、天師、尊者、藥師、醫仙、蠱醫、巧匠、機關匠、夜行者",
     "classSkill": "",
     "skillName": "猛然看見的〥",
     "equipmentType": "眼部",
@@ -1720,7 +1720,7 @@
   },
   {
     "category": "特殊",
-    "class": "全職業",
+    "class": "劍客、武神、霸王、術士、血魔、仙術士、風水師、天師、尊者、藥師、醫仙、蠱醫、巧匠、機關匠、夜行者",
     "classSkill": "",
     "skillName": "反動雷擊〥",
     "equipmentType": "頭部",
@@ -1729,7 +1729,7 @@
   },
   {
     "category": "特殊",
-    "class": "全職業",
+    "class": "劍客、武神、霸王、術士、血魔、仙術士、風水師、天師、尊者、藥師、醫仙、蠱醫、巧匠、機關匠、夜行者",
     "classSkill": "",
     "skillName": "溜目看的〥",
     "equipmentType": "嘴巴",
@@ -1738,7 +1738,7 @@
   },
   {
     "category": "特殊",
-    "class": "全職業",
+    "class": "劍客、武神、霸王、術士、血魔、仙術士、風水師、天師、尊者、藥師、醫仙、蠱醫、巧匠、機關匠、夜行者",
     "classSkill": "",
     "skillName": "猛砸落地〥",
     "equipmentType": "身體-限定2洞",
@@ -1747,7 +1747,7 @@
   },
   {
     "category": "特殊",
-    "class": "全職業",
+    "class": "劍客、武神、霸王、術士、血魔、仙術士、風水師、天師、尊者、藥師、醫仙、蠱醫、巧匠、機關匠、夜行者",
     "classSkill": "",
     "skillName": "待命常備〥",
     "equipmentType": "武器",
@@ -1756,7 +1756,7 @@
   },
   {
     "category": "特殊",
-    "class": "全職業",
+    "class": "劍客、武神、霸王、術士、血魔、仙術士、風水師、天師、尊者、藥師、醫仙、蠱醫、巧匠、機關匠、夜行者",
     "classSkill": "",
     "skillName": "童話LV2",
     "equipmentType": "嘴巴",
@@ -1765,7 +1765,7 @@
   },
   {
     "category": "特殊",
-    "class": "全職業",
+    "class": "劍客、武神、霸王、術士、血魔、仙術士、風水師、天師、尊者、藥師、醫仙、蠱醫、巧匠、機關匠、夜行者",
     "classSkill": "",
     "skillName": "童話LV3",
     "equipmentType": "嘴巴",
@@ -1774,7 +1774,7 @@
   },
   {
     "category": "特殊",
-    "class": "全職業",
+    "class": "劍客、武神、霸王、術士、血魔、仙術士、風水師、天師、尊者、藥師、醫仙、蠱醫、巧匠、機關匠、夜行者",
     "classSkill": "",
     "skillName": "背水一戰〥",
     "equipmentType": "嘴巴",
@@ -1783,7 +1783,7 @@
   },
   {
     "category": "特殊",
-    "class": "全職業",
+    "class": "劍客、武神、霸王、術士、血魔、仙術士、風水師、天師、尊者、藥師、醫仙、蠱醫、巧匠、機關匠、夜行者",
     "classSkill": "",
     "skillName": "流動",
     "equipmentType": "腳部",
@@ -1792,7 +1792,7 @@
   },
   {
     "category": "特殊",
-    "class": "全職業",
+    "class": "劍客、武神、霸王、術士、血魔、仙術士、風水師、天師、尊者、藥師、醫仙、蠱醫、巧匠、機關匠、夜行者",
     "classSkill": "",
     "skillName": "生命湧動",
     "equipmentType": "腳部",
@@ -1801,7 +1801,7 @@
   },
   {
     "category": "特殊",
-    "class": "全職業",
+    "class": "劍客、武神、霸王、術士、血魔、仙術士、風水師、天師、尊者、藥師、醫仙、蠱醫、巧匠、機關匠、夜行者",
     "classSkill": "",
     "skillName": "魔法湧動",
     "equipmentType": "腳部",
@@ -1810,7 +1810,7 @@
   },
   {
     "category": "特殊",
-    "class": "全職業",
+    "class": "劍客、武神、霸王、術士、血魔、仙術士、風水師、天師、尊者、藥師、醫仙、蠱醫、巧匠、機關匠、夜行者",
     "classSkill": "",
     "skillName": "透支",
     "equipmentType": "腳部",
@@ -1819,7 +1819,7 @@
   },
   {
     "category": "特殊",
-    "class": "全職業",
+    "class": "劍客、武神、霸王、術士、血魔、仙術士、風水師、天師、尊者、藥師、醫仙、蠱醫、巧匠、機關匠、夜行者",
     "classSkill": "",
     "skillName": "閃電鞭",
     "equipmentType": "腳部",
@@ -1828,7 +1828,7 @@
   },
   {
     "category": "特殊",
-    "class": "全職業",
+    "class": "劍客、武神、霸王、術士、血魔、仙術士、風水師、天師、尊者、藥師、醫仙、蠱醫、巧匠、機關匠、夜行者",
     "classSkill": "",
     "skillName": "狡猾",
     "equipmentType": "眼部",
@@ -1837,7 +1837,7 @@
   },
   {
     "category": "特殊",
-    "class": "全職業",
+    "class": "劍客、武神、霸王、術士、血魔、仙術士、風水師、天師、尊者、藥師、醫仙、蠱醫、巧匠、機關匠、夜行者",
     "classSkill": "",
     "skillName": "見切〥",
     "equipmentType": "武器",
@@ -1846,7 +1846,7 @@
   },
   {
     "category": "特殊",
-    "class": "全職業",
+    "class": "劍客、武神、霸王、術士、血魔、仙術士、風水師、天師、尊者、藥師、醫仙、蠱醫、巧匠、機關匠、夜行者",
     "classSkill": "",
     "skillName": "頑強抵抗〥",
     "equipmentType": "眼部",
@@ -1855,7 +1855,7 @@
   },
   {
     "category": "特殊",
-    "class": "全職業",
+    "class": "劍客、武神、霸王、術士、血魔、仙術士、風水師、天師、尊者、藥師、醫仙、蠱醫、巧匠、機關匠、夜行者",
     "classSkill": "",
     "skillName": "夢境LV2",
     "equipmentType": "武器",
@@ -1864,7 +1864,7 @@
   },
   {
     "category": "特殊",
-    "class": "全職業",
+    "class": "劍客、武神、霸王、術士、血魔、仙術士、風水師、天師、尊者、藥師、醫仙、蠱醫、巧匠、機關匠、夜行者",
     "classSkill": "",
     "skillName": "夢境LV3",
     "equipmentType": "武器",
@@ -1963,7 +1963,7 @@
   },
   {
     "category": "特殊",
-    "class": "全職業",
+    "class": "劍客、武神、霸王、術士、血魔、仙術士、風水師、天師、尊者、藥師、醫仙、蠱醫、巧匠、機關匠、夜行者",
     "classSkill": "",
     "skillName": "嗜血",
     "equipmentType": "武器",
@@ -1972,7 +1972,7 @@
   },
   {
     "category": "特殊",
-    "class": "全職業",
+    "class": "劍客、武神、霸王、術士、血魔、仙術士、風水師、天師、尊者、藥師、醫仙、蠱醫、巧匠、機關匠、夜行者",
     "classSkill": "",
     "skillName": "幸運一閃",
     "equipmentType": "共用",
@@ -1981,7 +1981,7 @@
   },
   {
     "category": "特殊",
-    "class": "全職業",
+    "class": "劍客、武神、霸王、術士、血魔、仙術士、風水師、天師、尊者、藥師、醫仙、蠱醫、巧匠、機關匠、夜行者",
     "classSkill": "",
     "skillName": "抵抗LV1",
     "equipmentType": "共用",
@@ -1990,7 +1990,7 @@
   },
   {
     "category": "特殊",
-    "class": "全職業",
+    "class": "劍客、武神、霸王、術士、血魔、仙術士、風水師、天師、尊者、藥師、醫仙、蠱醫、巧匠、機關匠、夜行者",
     "classSkill": "",
     "skillName": "抵抗LV2",
     "equipmentType": "共用",
@@ -1999,7 +1999,7 @@
   },
   {
     "category": "特殊",
-    "class": "全職業",
+    "class": "劍客、武神、霸王、術士、血魔、仙術士、風水師、天師、尊者、藥師、醫仙、蠱醫、巧匠、機關匠、夜行者",
     "classSkill": "",
     "skillName": "抵抗LV3",
     "equipmentType": "共用",
@@ -2116,7 +2116,7 @@
   },
   {
     "category": "特殊",
-    "class": "全職業",
+    "class": "劍客、武神、霸王、術士、血魔、仙術士、風水師、天師、尊者、藥師、醫仙、蠱醫、巧匠、機關匠、夜行者",
     "classSkill": "",
     "skillName": "疾風驟雨(通用職)",
     "equipmentType": "盔甲",
