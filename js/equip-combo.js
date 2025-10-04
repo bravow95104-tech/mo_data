@@ -1,21 +1,18 @@
 document.addEventListener("DOMContentLoaded", () => {
-  fetch("/mo_data/json/equip-combo.json") // ← 改成你的 JSON 檔名
+  fetch("/mo_data/json/equip-combo.json") // 你的 JSON 路徑
     .then(res => res.json())
     .then(data => initComboPage(data));
 });
 
 function initComboPage(data) {
-  const comboList = document.createElement("div");
-  comboList.id = "comboList";
-  comboList.classList.add("combo-list");
-  document.body.insertBefore(comboList, document.getElementById("backToTop"));
-
+  const comboList = document.getElementById("comboList");
   const searchInput = document.getElementById("searchInput");
   const filterBtns = document.querySelectorAll(".filter-btn");
   const clearBtn = document.getElementById("clearFilters");
 
   let activeFilters = [];
 
+  // === 渲染卡片 ===
   function renderList() {
     const searchText = searchInput.value.toLowerCase();
 
@@ -23,8 +20,7 @@ function initComboPage(data) {
       const matchSearch =
         item.skillName.toLowerCase().includes(searchText) ||
         item.class.toLowerCase().includes(searchText) ||
-        item.category.toLowerCase().includes(searchText) ||
-        item.equipmentType.toLowerCase().includes(searchText);
+        item.category.toLowerCase().includes(searchText);
 
       const matchFilter =
         activeFilters.length === 0 ||
@@ -34,11 +30,6 @@ function initComboPage(data) {
     });
 
     comboList.innerHTML = "";
-
-    if (filtered.length === 0) {
-      comboList.innerHTML = "<p>找不到符合條件的資料。</p>";
-      return;
-    }
 
     filtered.forEach(item => {
       const card = document.createElement("div");
@@ -61,10 +52,10 @@ function initComboPage(data) {
     });
   }
 
-  // 🔍 即時搜尋
+  // === 搜尋事件 ===
   searchInput.addEventListener("input", renderList);
 
-  // ⚡ 多條件篩選
+  // === 篩選按鈕事件 ===
   filterBtns.forEach(btn => {
     btn.addEventListener("click", () => {
       const value = btn.dataset.value;
@@ -79,7 +70,7 @@ function initComboPage(data) {
     });
   });
 
-  // ❌ 清除篩選
+  // === 清除篩選 ===
   clearBtn.addEventListener("click", () => {
     activeFilters = [];
     filterBtns.forEach(b => b.classList.remove("active"));
