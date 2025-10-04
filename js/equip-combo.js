@@ -58,10 +58,10 @@ function initComboPage(data) {
 
     filtered.forEach(item => {
       const card = document.createElement("div");
-      card.className = "combo-card";
+      card.className = "combo-card active"; // 預設展開
       card.innerHTML = `
         <div class="combo-title">${item.skillName || "—"}</div>
-        <div class="combo-category"><strong>技能名稱：</strong>${item.classSkill || "—"}</div>
+        <div class="combo-category"><strong>職業技能：</strong>${item.classSkill || "—"}</div>
         <div class="combo-details">
           <p><strong>職業：</strong>${item.class || "—"}</p>
           <p><strong>裝備部位：</strong>${item.equipmentType || "—"}</p>
