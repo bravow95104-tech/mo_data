@@ -11,13 +11,7 @@ th, td {
   font-size: 14px;
   white-space: normal;
 }
-thead th {
-  position: sticky;
-  top: 0;
-  background-color: #1976d2;
-  color: white;
-  z-index: 10;
-}
+
 tbody tr:hover {
   background-color: #fff9c0;
   cursor: pointer;
@@ -82,26 +76,6 @@ tbody tr:hover {
 }
 #backToTop:hover {
   background-color: #267acc;
-}
-
-/* 快速搜尋條件區塊 */
-.accordion {
-  background: #f5faff;
-  border: 1px solid #b3d8ff;
-  border-radius: 6px;
-  margin-bottom: 18px;
-  padding: 12px 18px;
-  box-shadow: 0 2px 6px rgba(51,153,255,0.06);
-}
-.accordion-header {
-  font-weight: bold;
-  font-size: 16px;
-  color: #267acc;
-  cursor: pointer;
-  margin-bottom: 8px;
-}
-.accordion-content {
-  margin-top: 6px;
 }
 
 /* 篩選標籤 */
@@ -268,6 +242,7 @@ thead th {
   top: 0px; /* nav 高度 */
   background-color: #1976d2;
   z-index: 10;
+  color: white;
 }
 
 /* 快速搜尋樣式 */
