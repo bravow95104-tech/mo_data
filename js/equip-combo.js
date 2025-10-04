@@ -69,11 +69,6 @@ function initComboPage(data) {
           <p><strong>說明：</strong>${item.description || "—"}</p>
         </div>
       `;
-
-      card.addEventListener("click", () =>
-        card.classList.toggle("active")
-      );
-
       comboList.appendChild(card);
     });
   }
