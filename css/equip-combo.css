@@ -199,3 +199,8 @@
   text-align: center;
   font-weight: 600;
 }
+.combo-card:hover {
+  background-color: #fff9c0; /* 黃色，可以改成你喜歡的色碼 */
+  cursor: pointer;           /* 滑鼠變手指，更明顯 */
+  transition: background 0.2s;
+}
