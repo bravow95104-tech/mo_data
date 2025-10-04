@@ -286,3 +286,8 @@ thead th {
   content: "▾"; /* 展開箭頭 */
   float: right;
 }
+
+/* box內的距離 */
+.section-gap {
+  margin-top: 16px; /* 或你想要的距離 */
+}

@@ -106,14 +106,12 @@ document.addEventListener("DOMContentLoaded", () => {
   <div class="hero-column right">
     <p><strong>積極度(生變前)：</strong>${hero.aggression_before}</p>
     <p><strong>積極度(生變後)：</strong>${hero.aggression_after}</p>
-    <br>
-    <p><strong>裝備卡(新專)：</strong>${hero.equipment_new}</p>
+    <p class="section-gap"><strong>裝備卡(新專)：</strong>${hero.equipment_new}</p>
     <p><strong>新專數值：</strong>${hero.equipment_new_data}</p>
     <p><strong>新專倍率：</strong>${hero.new_multiplier}</p>
     <p><strong>裝備卡(舊專)：</strong>${hero.equipment_old}</p>
     <p><strong>舊專數值：</strong>${hero.equipment_old_data}</p>
-    <br>
-    <p><strong>天生技：</strong>${hero.innate_skill}</p>
+    <p class="section-gap"><strong>天生技：</strong>${hero.innate_skill}</p>
     <p><strong>生變技能：</strong>${hero.transformation_skill}</p>
   </div>
 </div>
@@ -150,6 +148,7 @@ document.addEventListener("DOMContentLoaded", () => {
       behavior: 'smooth'
     });
   });
+
 // 快速搜尋事件（多選條件 + 交集篩選）
 document.querySelectorAll('.filter-btn').forEach(btn => {
   btn.addEventListener('click', () => {
