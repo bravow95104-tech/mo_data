@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-  fetch("/mo_data/json/combos.json") // 你的 JSON 路徑
+  fetch("/mo_data/json/equip-combo.json") // 你的 JSON 路徑
     .then(res => res.json())
     .then(data => initComboPage(data));
 });
