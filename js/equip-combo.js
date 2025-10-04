@@ -61,7 +61,7 @@ function initComboPage(data) {
       card.className = "combo-card";
       card.innerHTML = `
         <div class="combo-title">${item.skillName || "—"}</div>
-        <div class="combo-category">${item.classSkill || "—"}</div>
+        <div class="combo-category"><strong>技能名稱：</strong>${item.classSkill || "—"}</div>
         <div class="combo-details">
           <p><strong>職業：</strong>${item.class || "—"}</p>
           <p><strong>裝備部位：</strong>${item.equipmentType || "—"}</p>
