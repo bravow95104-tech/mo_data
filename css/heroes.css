@@ -198,7 +198,6 @@ tbody tr:hover {
   max-width: 600px;          /* Modal 最大寬度 */
   margin: 0 auto;
   box-sizing: border-box;
-     border: 1px solid red; /*記得刪除*/
 }
 
 /* 左右欄樣式 */
@@ -207,10 +206,10 @@ tbody tr:hover {
   min-width: 200px;          /* 最小寬度限制，避免太小擠壓 */
   box-sizing: border-box;    /* 包含 padding、border */
   background-color: #f9f9f9; /* 可選：輕微背景色區分 */
-  padding: 10px 10px;
+  padding: 20px 20px;
   border-radius: 6px;        /* 可選：圓角讓框框好看 */
   box-shadow: 0 1px 4px rgba(0,0,0,0.1);
-    border: 1px solid blue; /*記得刪除*/
+
 }
 
 #modalContent {
