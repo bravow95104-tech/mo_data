@@ -194,6 +194,8 @@ tbody tr:hover {
   flex-wrap: wrap;           /* 視窗小時自動換行 */
   gap: 4px;                 /* 欄間距稍微調小，避免寬度過大 */
   padding: 5px;
+  width: auto;
+  max-width: 600px;          /* Modal 最大寬度 */
   margin: 0 auto;
   box-sizing: border-box;
      border: 1px solid red; /*記得刪除*/
