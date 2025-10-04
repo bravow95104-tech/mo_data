@@ -136,6 +136,7 @@ tbody tr:hover {
 
 /* Modal 內容框 */
 #modalBox {
+  width: 700px; 
   display: none;
   position: fixed;
   top: 50%; left: 50%;
@@ -192,10 +193,11 @@ tbody tr:hover {
   justify-content: space-between;
   flex-wrap: wrap;           /* 視窗小時自動換行 */
   gap: 24px;                 /* 欄間距稍微調小，避免寬度過大 */
-  padding: 10px 20px;
+  padding: 10px 10px;
   max-width: 800px;          /* Modal 最大寬度 */
   margin: 0 auto;
   box-sizing: border-box;
+     border: 1px solid blue; /*記得刪除*/
 }
 
 /* 左右欄樣式 */
@@ -204,9 +206,10 @@ tbody tr:hover {
   min-width: 280px;          /* 最小寬度限制，避免太小擠壓 */
   box-sizing: border-box;    /* 包含 padding、border */
   background-color: #f9f9f9; /* 可選：輕微背景色區分 */
-  padding: 10px 15px;
+  padding: 10px 10px;
   border-radius: 6px;        /* 可選：圓角讓框框好看 */
   box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+    border: 1px solid blue; /*記得刪除*/
 }
 
 #modalContent {
