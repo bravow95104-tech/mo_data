@@ -203,7 +203,7 @@ tbody tr:hover {
 /* 左右欄樣式 */
 .hero-column {
   flex: 0 0 40%;             /* 彈性成長，基底寬度48% */
-  min-width: 280px;          /* 最小寬度限制，避免太小擠壓 */
+  min-width: 200px;          /* 最小寬度限制，避免太小擠壓 */
   box-sizing: border-box;    /* 包含 padding、border */
   background-color: #f9f9f9; /* 可選：輕微背景色區分 */
   padding: 10px 10px;
