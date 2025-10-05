@@ -136,6 +136,7 @@ nav .dropdown-toggle:hover {
 #backToTop:hover {
   background-color: #267acc;
 }
+/* 更新日誌 */
 #changelog {
   max-width: 600px;
   margin: 40px auto;

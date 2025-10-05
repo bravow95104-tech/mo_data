@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const tbody = document.querySelector("#card-equip-table tbody");
       tbody.innerHTML = "<tr><td colspan='6'>無法載入資料</td></tr>";
     });
-});
+
 
 function initCardTable(data) {
   const searchInput = document.getElementById("searchInput");
@@ -193,4 +193,5 @@ document.querySelectorAll('.accordion-header').forEach(header => {
       top: 0,
       behavior: 'smooth'
     });
+  });
   });
