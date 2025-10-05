@@ -1,0 +1,18 @@
+/* 表格樣式 */
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-top: 20px;
+}
+th, td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: center;
+  font-size: 14px;
+  white-space: normal;
+}
+
+tbody tr:hover {
+  background-color: #fff9c0;
+  cursor: pointer;
+}
