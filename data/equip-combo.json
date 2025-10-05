@@ -597,7 +597,7 @@
     "equipmentType": "盔甲",
     "combinationMethod": "文昌、祿存、擎羊、天機、武曲",
     "description": "系列技能冷卻時間減少(-S)",
-    "commonly": "ture"
+    "commonly": "true"
   },
   {
     "category": "系列技能冷卻時間減少(-S)",
@@ -787,7 +787,7 @@
     "equipmentType": "盔甲",
     "combinationMethod": "左輔、右弼、祿存、紫微、天機",
     "description": "系列技能施展時間減少(-S)",
-    "commonly": "ture"
+    "commonly": "true"
   },
   {
     "category": "系列技能施展時間減少(-S)",
@@ -937,7 +937,7 @@
     "equipmentType": "盔甲",
     "combinationMethod": "文昌、祿存、天馬、天機、武曲",
     "description": "系列技能施展時間減少(-S)",
-    "commonly": "ture"
+    "commonly": "true"
   },
   {
     "category": "系列技能施展時間減少(-S)",
@@ -1037,7 +1037,7 @@
     "equipmentType": "盔甲",
     "combinationMethod": "文曲、天馬、陀羅、太陽、武曲",
     "description": "系列技能施展時間減少(-S)",
-    "commonly": "ture"
+    "commonly": "true"
   },
   {
     "category": "系列技能施展時間減少(-S)",
@@ -1067,7 +1067,7 @@
     "equipmentType": "盔甲",
     "combinationMethod": "文曲、天馬、擎羊、天機、太陽",
     "description": "系列技能施展時間減少(-S)",
-    "commonly": "ture"
+    "commonly": "true"
   },
   {
     "category": "系列技能施展時間減少(-S)",
@@ -1087,7 +1087,7 @@
     "equipmentType": "盔甲",
     "combinationMethod": "左輔、文曲、天馬、天機、太陽",
     "description": "系列技能施展時間減少(-S)",
-    "commonly": "ture"
+    "commonly": "true"
   },
   {
     "category": "系列技能施展時間減少(-S)",
@@ -1137,7 +1137,7 @@
     "equipmentType": "不限位置",
     "combinationMethod": "文昌、祿存、擎羊、天機、太陽、武曲",
     "description": "物理強度",
-    "commonly": "ture"
+    "commonly": "true"
   },
   {
     "category": "特殊",
@@ -1167,7 +1167,7 @@
     "equipmentType": "不限位置",
     "combinationMethod": "文昌、祿存、天馬、紫微、太陽、武曲",
     "description": "法術強度",
-    "commonly": "ture"
+    "commonly": "true"
   },
   {
     "category": "特殊",
@@ -1247,7 +1247,7 @@
     "equipmentType": "坐騎",
     "combinationMethod": "祿存、天馬、天魁、地劫、紫微、天同、太陰、破軍",
     "description": "增加移動速度至2(原有2以上則無法增加)",
-    "commonly": "ture"
+    "commonly": "true"
   },
   {
     "category": "特殊",
@@ -1467,7 +1467,7 @@
     "equipmentType": "武器",
     "combinationMethod": "天鉞、地劫、天同、天府、貪狼、巨門、天相、七殺",
     "description": "增加物理強度，依照裝備洞數加倍",
-    "commonly": "ture"
+    "commonly": "true"
   },
   {
     "category": "特殊",
@@ -1477,7 +1477,7 @@
     "equipmentType": "武器",
     "combinationMethod": "地空、地劫、太陽、廉貞、天府、天府、天相、天梁",
     "description": "增加法術強度，依照裝備洞數加倍",
-    "commonly": "ture"
+    "commonly": "true"
   },
   {
     "category": "特殊",
@@ -1537,7 +1537,7 @@
     "equipmentType": "頭盔",
     "combinationMethod": "天鉞、天鉞、地劫、武曲、天相、天相、天相",
     "description": "技能生效時，依戰場五行能提升傷害",
-    "commonly": "ture"
+    "commonly": "true"
   },
   {
     "category": "特殊",
@@ -2077,7 +2077,7 @@
     "equipmentType": "武器",
     "combinationMethod": "地劫、紫微、紫微、天機、天機、天府、天梁、天梁",
     "description": "技能傷害增加 10~20%。限定武器部位。(+%)",
-    "commonly": "ture"
+    "commonly": "true"
   },
   {
     "category": "特殊",
@@ -2227,7 +2227,7 @@
     "equipmentType": "共用",
     "combinationMethod": "陀羅、天鉞、地劫、天機、紫微、紫微、武曲、天梁",
     "description": "防禦力增加 10~300。共用部位。",
-    "commonly": "ture"
+    "commonly": "true"
   },
   {
     "category": "特殊",
@@ -2237,7 +2237,7 @@
     "equipmentType": "武器",
     "combinationMethod": "文昌、天魁、地劫、武曲、太陰、破軍",
     "description": "霸槍法系列技能傷害增加 8%~24%。限定武器部位。(+%)",
-    "commonly": "ture"
+    "commonly": "true"
   },
   {
     "category": "特殊",
@@ -2247,7 +2247,7 @@
     "equipmentType": "武器",
     "combinationMethod": "文昌、天鉞、地空、武曲、天府、破軍",
     "description": "斬刀技系列技能傷害增加 8%~24%。限定武器部位。(+%)",
-    "commonly": "ture"
+    "commonly": "true"
   },
   {
     "category": "特殊",
@@ -2257,7 +2257,7 @@
     "equipmentType": "武器",
     "combinationMethod": "文昌、天魁、地劫、太陽、天府、破軍",
     "description": "機關術系列技能傷害增加 8%~24%。限定武器部位。(+%)",
-    "commonly": "ture"
+    "commonly": "true"
   },
   {
     "category": "特殊",
@@ -2267,7 +2267,7 @@
     "equipmentType": "武器",
     "combinationMethod": "文昌、天鉞、地空、天同、天府、破軍",
     "description": "裝甲術系列技能傷害增加 8%~24%。限定武器部位。(+%)",
-    "commonly": "ture"
+    "commonly": "true"
   },
   {
     "category": "特殊",
@@ -2277,7 +2277,7 @@
     "equipmentType": "武器",
     "combinationMethod": "文昌、天魁、地劫、太陽、太陰、破軍",
     "description": "神射術系列技能傷害增加 8%~24%。限定武器部位。(+%)",
-    "commonly": "ture"
+    "commonly": "true"
   },
   {
     "category": "特殊",
@@ -2287,7 +2287,7 @@
     "equipmentType": "武器",
     "combinationMethod": "文昌、天鉞、地空、天機、太陰、破軍",
     "description": "暗殺術系列技能傷害增加 8%~24%。限定武器部位。(+%)",
-    "commonly": "ture"
+    "commonly": "true"
   },
   {
     "category": "特殊",
@@ -2297,7 +2297,7 @@
     "equipmentType": "武器",
     "combinationMethod": "文曲、天魁、地劫、天機、天府、破軍",
     "description": "符打術系列技能傷害增加 8%~24%。限定武器部位。(+%)",
-    "commonly": "ture"
+    "commonly": "true"
   },
   {
     "category": "特殊",
@@ -2307,7 +2307,7 @@
     "equipmentType": "武器",
     "combinationMethod": "文曲、天鉞、地空、廉貞、太陰、破軍",
     "description": "蠱毒術系列技能傷害增加 8%~24%。限定武器部位。(+%)",
-    "commonly": "ture"
+    "commonly": "true"
   },
   {
     "category": "特殊",
@@ -2317,7 +2317,7 @@
     "equipmentType": "武器",
     "combinationMethod": "文曲、天魁、地劫、廉貞、太陰、破軍",
     "description": "毒霧術系列技能傷害增加 8%~24%。限定武器部位。(+%)",
-    "commonly": "ture"
+    "commonly": "true"
   },
   {
     "category": "特殊",
@@ -2327,7 +2327,7 @@
     "equipmentType": "武器",
     "combinationMethod": "文曲、天鉞、地空、紫微、太陰、破軍",
     "description": "活祭系列技能傷害增加 8%~24%。限定武器部位。(+%)",
-    "commonly": "ture"
+    "commonly": "true"
   },
   {
     "category": "特殊",
@@ -2337,7 +2337,7 @@
     "equipmentType": "武器",
     "combinationMethod": "文曲、天魁、地劫、紫微、太陰、破軍",
     "description": "血魔術系列技能傷害增加 8%~24%。限定武器部位。(+%)",
-    "commonly": "ture"
+    "commonly": "true"
   },
   {
     "category": "特殊",
@@ -2347,7 +2347,7 @@
     "equipmentType": "武器",
     "combinationMethod": "文曲、天鉞、地空、天同、天府、破軍",
     "description": "靈行術系列技能傷害增加 8%~24%。限定武器部位。(+%)",
-    "commonly": "ture"
+    "commonly": "true"
   },
   {
     "category": "特殊",
@@ -2357,6 +2357,6 @@
     "equipmentType": "盔甲",
     "combinationMethod": "文昌、陀羅、天鉞、地空、地劫、紫微、天機、太陽、武曲、天同、太陰、天梁",
     "description": "通用職業降低 CD6%~18% 秒。限定盔甲部位。",
-    "commonly": "ture"
+    "commonly": "true"
   }
 ]
