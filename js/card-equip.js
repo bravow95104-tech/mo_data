@@ -30,6 +30,13 @@ document.addEventListener("DOMContentLoaded", () => {
       behavior: 'smooth'
     });
   });
+  // Accordion 展開／收合
+  document.querySelectorAll('.accordion-header').forEach(header => {
+  header.addEventListener('click', () => {
+    const accordion = header.parentElement;
+    accordion.classList.toggle('collapsed');
+  });
+});
 
 function initCardTable(data) {
   const searchInput = document.getElementById("searchInput");
@@ -186,12 +193,5 @@ function initCardTable(data) {
 
   renderTable();
 
-  // Accordion 展開／收合
-  document.querySelectorAll('.accordion-header').forEach(header => {
-  header.addEventListener('click', () => {
-    const accordion = header.parentElement;
-    accordion.classList.toggle('collapsed');
-  });
-});
 
   });
