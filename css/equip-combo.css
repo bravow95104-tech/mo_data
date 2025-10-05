@@ -78,15 +78,18 @@
   box-sizing: border-box;
 }
 
-.accordion {/*快速搜尋條件框*/
+/*快速搜尋條件框*/
+.accordion {
   background: #f5faff;
-  border: 1px solid #b3d8ff;
+  border: 1px solid #b3d8ff;/*框限顏色*/
   border-radius: 6px;
   margin: 0 20px 20px;
   padding: 12px 18px;
-  box-shadow: 0 2px 6px rgba(51,153,255,0.06);
+  box-shadow: 0 2px 6px #b3d8ff;
 }
-.accordion-header {/*快速搜尋條件標題*/
+
+/*快速搜尋條件標題*/
+.accordion-header {
   font-weight: bold;
   font-size: 16px;
   color: #267acc;
