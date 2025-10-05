@@ -104,11 +104,13 @@ filterBtns.forEach(btn => {
 });
 
 clearBtn.addEventListener("click", () => {
-  activeFilters = { promotion: [], commonly: [] };
-  filterBtns.forEach(b => b.classList.remove("active"));
+  activeFilters = { promotion: [], commonly: [], category: [] };
+  filterBtns.forEach(btn => btn.classList.remove("active"));
   searchInput.value = "";
+  console.log("清除篩選", activeFilters);
   renderList();
 });
+
 
   renderList();
 }
