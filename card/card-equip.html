@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <title>裝備卡</title>
+    <link rel="stylesheet" href="/mo_data/css/styles.css" />
+    <link rel="stylesheet" href="/mo_data/css/equip-combo.css" />
+  </head>
+  <body>
+    <div id="nav-container"></div>
+    <!-- 這是導航列會被載入的位置 -->
+
+    <h1></h1>
+
+    <!-- 搜尋框 -->
+    <div id="searchContainer">
+      <label for="searchInput" class="quick-search-label">快速搜尋</label>
+      <input
+        type="text"
+        id="searchInput"
+        placeholder="搜尋名稱、英雄..."
+      />
+    </div>
+    <br />
+    <!-- 快速條件搜尋 -->
+    <div id="filterContainer" class="accordion">
+      <h3 class="accordion-header">快速搜尋條件(可多條件搜尋) ▾</h3>
+      <div class="accordion-content">
+        <div class="filter-group">
+          <div class="filter-row">
+          <span class="filter-label">屬性：</span>
+          <div class="filter-btns">
+          <button class="filter-btn" data-type="card_property" data-value="力量">力量</button>
+          <button class="filter-btn" data-type="card_property" data-value="智慧">智慧</button>
+          <button class="filter-btn" data-type="card_property" data-value="體質">體質</button>
+          <button class="filter-btn" data-type="card_property" data-value="敏捷">敏捷</button>
+          <button class="filter-btn" data-type="card_property" data-value="運氣">運氣</button>
+          <button class="filter-btn" data-type="card_property" data-value="閃避值">閃避值</button>
+          <button class="filter-btn" data-type="card_property" data-value="防禦力">防禦力</button>
+        </div>
+        </div>
+        </div>
+        <br />
+        <div class="filter-group">
+      <div class="filter-row">
+        <span class="filter-label">倍率：</span>
+        <div class="filter-btns">
+          <button class="filter-btn" data-type="nemultiplier" data-value="2.5倍">2.5倍</button>
+          <button class="filter-btn" data-type="nemultiplier" data-value="2倍">2倍</button>
+        </div>
+      </div>
+    </div>
+        <br />
+      <div class="filter-group">
+      <div class="filter-row">
+        <span class="filter-label">其他：</span>
+        <div class="filter-btns">
+          <button class="filter-btn" data-type="new_old" data-value="新專">新專</button>
+          <button class="filter-btn" data-type="new_old" data-value="舊專">舊專</button>
+        </div>
+      </div>
+    </div>
+        <br />
+        <div class="filter-actions">
+          <button id="clearFilters" class="clear-btn">清除篩選</button>
+</div>
+        </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 英雄表格 -->
+    <table id="card-equip-table">
+      <thead>
+        <tr>
+          <th>專卡名稱</th>
+          <th>等級</th>
+          <th>屬性</th>
+          <th>數值</th>
+          <th>倍率</th>
+          <th>專屬英雄</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- 資料由 JS 動態載入 -->
+      </tbody>
+    </table>
+
+    <!-- 留白避免按鈕遮住 -->
+    <div style="height: 80px"></div>
+
+    <!-- 回到頂部按鈕 -->
+    <button id="backToTop" title="回到頂部">▲</button>
+
+    <!-- Modal HTML -->
+    <div id="modalOverlay"></div>
+    <div id="modalBox">
+      <span class="close-btn">&times;</span>
+      <div id="modalContent"></div>
+    </div>
+
+    <!-- JavaScript -->
+
+    <div id="footer-container"></div>
+    <!-- 這是頁尾會被載入的位置 -->
+    <script src="/mo_data/js/card-equip.js"></script>
+    <script src="/mo_data/js/componentsLoader.js"></script>
+    
+  </body>
+</html>
