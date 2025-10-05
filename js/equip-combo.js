@@ -46,12 +46,8 @@ function initComboPage(data) {
 const matchFilter =
   activeFilters.length === 0 ||
   activeFilters.some(f => job.includes(f) || job.includes("全職業"));
-// 常用篩選
-    const matchCommonly =
-      activeFilters.commonly.length === 0 ||
-      (activeFilters.commonly.includes("true") && item.commonly === "true");
 
-      return matchSearch && matchFilter && matchCommonly;
+      return matchSearch && matchFilter;
     });
 
     comboList.innerHTML = "";
