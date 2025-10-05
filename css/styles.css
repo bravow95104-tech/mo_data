@@ -136,3 +136,55 @@ nav .dropdown-toggle:hover {
 #backToTop:hover {
   background-color: #267acc;
 }
+#changelog {
+  max-width: 600px;
+  margin: 40px auto;
+  background: white;
+  border-radius: 10px;
+  padding: 20px 30px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+#changelog h2 {
+  font-size: 1.6rem;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #3399ff;
+  padding-bottom: 8px;
+  color: #267acc;
+}
+
+.changelog-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.changelog-list li {
+  display: flex;
+  align-items: flex-start;
+  padding: 12px 0;
+  border-bottom: 1px solid #e1e7ef;
+  font-size: 1rem;
+  color: #333;
+  line-height: 1.5;
+}
+
+.changelog-list li:last-child {
+  border-bottom: none;
+}
+
+.changelog-list .date {
+  flex-shrink: 0;
+  width: 110px;
+  background-color: #3399ff;
+  color: white;
+  font-family: "Courier New", Courier, monospace;
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 4px 8px;
+  border-radius: 6px;
+  text-align: center;
+  margin-right: 20px;
+  user-select: none;
+  box-shadow: 0 2px 8px rgba(51, 153, 255, 0.3);
+}
