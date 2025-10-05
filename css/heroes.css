@@ -263,14 +263,14 @@ thead th {
   cursor: pointer;
   font-size: 16px;
   font-weight: bold;
-  background: #f0f0f0;
+  background: #f5faff;
   border-radius: 8px 8px 0 0;
   user-select: none;
   transition: background 0.3s;
 }
 
 .accordion-header:hover {
-  background: #e0e0e0;
+  background: #f5faff;
 }
 
 .accordion-content {

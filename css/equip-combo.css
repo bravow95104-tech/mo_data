@@ -85,7 +85,7 @@
   border-radius: 6px;
   margin: 0 20px 20px;
   padding: 12px 18px;
-  box-shadow: 0 2px 6px #b3d8ff;
+ box-shadow: 0 2px 6px rgba(51,153,255,0.06);/*陰影*/
 }
 
 /*快速搜尋條件標題*/
