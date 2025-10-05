@@ -120,8 +120,7 @@ const matchFilter =
     // Accordion 展開／收合
 document.querySelectorAll('.accordion-header').forEach(header => {
   header.addEventListener('click', () => {
-    header.classList.toggle('active');
-    const content = header.nextElementSibling;
-    content.style.display = content.style.display === 'none' ? 'block' : 'none';
+    const accordion = header.parentElement;
+    accordion.classList.toggle('collapsed');
   });
 });

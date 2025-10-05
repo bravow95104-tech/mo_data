@@ -16,7 +16,7 @@ tbody tr:hover {
   background-color: #fff9c0;
   cursor: pointer;
 }
-
+/*快速搜尋*/
 #searchInput {
   padding: 6px 10px;
   width: 100%;
@@ -26,7 +26,7 @@ tbody tr:hover {
   box-sizing: border-box;
   max-width: 250px; /* 限制寬度 */
 }
-
+/*快速搜尋*/
 .quick-search-label {
   font-weight: 600;
   margin-right: 8px;
@@ -268,10 +268,6 @@ thead th {
   border-radius: 8px 8px 0 0;
   user-select: none;
   transition: background 0.3s;
-}
-
-.accordion-header:hover {
-  background: #f5faff;
 }
 
 .accordion-header:hover {
