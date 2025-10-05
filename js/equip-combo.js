@@ -33,6 +33,7 @@ function initComboPage(data) {
       const job = (item.class || "").toLowerCase();
       const skillType = (item.classSkill || "").toLowerCase();
       const cat = (item.category || "").toLowerCase();
+      const equipmentType = (item.equipmentType || "").toLowerCase();
 
       const matchSearch =
         searchText === "" ||
@@ -40,6 +41,7 @@ function initComboPage(data) {
         job.includes(searchText) ||
         skillType.includes(searchText) ||
         cat.includes(searchText);
+        equipmentType.includes(searchText);
 
 const matchFilter =
   activeFilters.length === 0 ||
@@ -115,3 +117,11 @@ const matchFilter =
       behavior: 'smooth'
     });
   });
+    // Accordion 展開／收合
+document.querySelectorAll('.accordion-header').forEach(header => {
+  header.addEventListener('click', () => {
+    header.classList.toggle('active');
+    const content = header.nextElementSibling;
+    content.style.display = content.style.display === 'none' ? 'block' : 'none';
+  });
+});
