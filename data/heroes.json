@@ -314,15 +314,15 @@
     "luk": 152,
     "aggression_before": 10,
     "aggression_after": 12,
-    "equipment_new": "",
-    "equipment_new_data": "",
-    "new_multiplier": "",
+    "equipment_new": "倡玉笛卡",
+    "equipment_new_data": "智慧+60",
+    "new_multiplier": "2.5倍",
     "equipment_old": "",
     "equipment_old_data": "",
     "innate_skill": "金相召來",
     "transformation_skill": "鋒相鉥心",
-    "magnification_new": "",
-    "magnification_old": ""
+    "magnification_new": "2.5x",
+    "magnification_old": "2x"
   },
   {
     "name": "甘夫人",
@@ -339,15 +339,15 @@
     "luk": 203,
     "aggression_before": 5,
     "aggression_after": 8,
-    "equipment_new": "",
-    "equipment_new_data": "",
-    "new_multiplier": "",
+    "equipment_new": "甘梅玉人卡",
+    "equipment_new_data": "力量+60",
+    "new_multiplier": "2.5倍",
     "equipment_old": "",
     "equipment_old_data": "",
     "innate_skill": "",
     "transformation_skill": "劍閃散華",
-    "magnification_new": "",
-    "magnification_old": ""
+    "magnification_new": "2.5x",
+    "magnification_old": "2x"
   },
   {
     "name": "潘夫人",
@@ -364,15 +364,15 @@
     "luk": 197,
     "aggression_before": 10,
     "aggression_after": 12,
-    "equipment_new": "",
-    "equipment_new_data": "",
-    "new_multiplier": "",
+    "equipment_new": "神女之扇卡",
+    "equipment_new_data": "智慧+60",
+    "new_multiplier": "2.5倍",
     "equipment_old": "",
     "equipment_old_data": "",
     "innate_skill": "纏水生成",
     "transformation_skill": "冷冽寒霜",
-    "magnification_new": "",
-    "magnification_old": ""
+    "magnification_new": "2.5x",
+    "magnification_old": "2x"
   },
   {
     "name": "神農",
@@ -1047,7 +1047,7 @@
     "innate_skill": "",
     "transformation_skill": "情意綿綿拳",
     "magnification_new": "",
-    "magnification_old": ""
+    "magnification_old": "2x"
   },
   {
     "name": "玉鼎真人",
