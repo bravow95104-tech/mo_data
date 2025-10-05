@@ -14,7 +14,22 @@ document.addEventListener("DOMContentLoaded", () => {
       const tbody = document.querySelector("#card-equip-table tbody");
       tbody.innerHTML = "<tr><td colspan='6'>無法載入資料</td></tr>";
     });
+  // 回到頂部按鈕邏輯
+  const backToTopBtn = document.getElementById('backToTop');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 200) {
+      backToTopBtn.style.display = 'block';
+    } else {
+      backToTopBtn.style.display = 'none';
+    }
+  });
 
+  backToTopBtn.addEventListener('click', () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  });
 
 function initCardTable(data) {
   const searchInput = document.getElementById("searchInput");
@@ -172,26 +187,11 @@ function initCardTable(data) {
   renderTable();
 
   // Accordion 展開／收合
-document.querySelectorAll('.accordion-header').forEach(header => {
+  document.querySelectorAll('.accordion-header').forEach(header => {
   header.addEventListener('click', () => {
     const accordion = header.parentElement;
     accordion.classList.toggle('collapsed');
   });
 });
-  // 回到頂部按鈕邏輯
-  const backToTopBtn = document.getElementById('backToTop');
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 200) {
-      backToTopBtn.style.display = 'block';
-    } else {
-      backToTopBtn.style.display = 'none';
-    }
-  });
 
-  backToTopBtn.addEventListener('click', () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
-  });
   });
