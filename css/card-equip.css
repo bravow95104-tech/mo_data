@@ -72,8 +72,6 @@ thead th {
   color: #267acc;
   margin-right: 8px;
 }
-
-/* 篩選按鈕 */
 .filter-btn {
   background: #e6f0ff;
   border: 1px solid #3399ff;
@@ -83,14 +81,35 @@ thead th {
   margin: 2px 4px 2px 0;
   cursor: pointer;
   font-size: 14px;
+  width: 80px;
+  text-align: center;
   transition: background 0.2s, color 0.2s;
 }
-
 .filter-btn:hover,
 .filter-btn.active {
-  background: #fff9c0;   /* 柔和亮黃色 */
+  background: #fff9c0;
   color: #b8860b;
   border: 1.5px solid #ffe066;
+}
+.filter-row {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 8px;
+  align-items: start;
+  margin-bottom: 12px;
+}
+
+.filter-label {
+  font-weight: bold;
+  color: #267acc;
+  padding-top: 4px;
+  white-space: nowrap;
+}
+
+.filter-btns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
 }
 
 /* 清除篩選按鈕 */
