@@ -23,7 +23,7 @@ function initComboPage(data) {
   const filterBtns = document.querySelectorAll(".filter-btn");
   const clearBtn = document.getElementById("clearFilters");
 
-  let activeFilters = { promotion: [], commonly: [] };
+  let activeFilters = { promotion: [], commonly: [], category: [] };
 
   function renderList() {
     const searchText = searchInput.value.trim().toLowerCase();
