@@ -17,6 +17,14 @@ tbody tr:hover {
   cursor: pointer;
 }
 
+/* 調整 table header sticky 時，避免蓋到 nav */
+thead th {
+  position: sticky;
+  top: 0px; /* nav 高度 */
+  background-color: #1976d2;
+  z-index: 10;
+  color: white;
+}
 /*快速搜尋*/
 #searchInput {
   padding: 6px 10px;
