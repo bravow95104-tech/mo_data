@@ -144,6 +144,26 @@
   color: #b8860b;
   border: 1.5px solid #ffe066;
 }
+.filter-row {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 8px;
+  align-items: start;
+  margin-bottom: 12px;
+}
+
+.filter-label {
+  font-weight: bold;
+  color: #267acc;
+  padding-top: 4px;
+  white-space: nowrap;
+}
+
+.filter-btns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
 .clear-btn {
   background: #ffefc0;
   border: 1px solid #ffc107;
