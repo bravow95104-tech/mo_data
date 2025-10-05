@@ -23,7 +23,7 @@ function initComboPage(data) {
   const filterBtns = document.querySelectorAll(".filter-btn");
   const clearBtn = document.getElementById("clearFilters");
 
-  let activeFilters = [];
+  let activeFilters = { promotion: [], commonly: [] };
 
   function renderList() {
     const searchText = searchInput.value.trim().toLowerCase();
@@ -44,10 +44,13 @@ function initComboPage(data) {
         equipmentType.includes(searchText);
 // 職業篩選
 const matchFilter =
-  activeFilters.length === 0 ||
-  activeFilters.some(f => job.includes(f) || job.includes("全職業"));
+  activeFilters.promotion.length === 0 ||
+  activeFilters.promotion.some(f => job.includes(f) || job.includes("全職業"));
+const matchCommonly =
+  activeFilters.commonly.length === 0 ||
+  (activeFilters.commonly.includes("true") && item.commonly === "true");
 
-      return matchSearch && matchFilter;
+      return matchSearch && matchFilter && matchCommonly;
     });
 
     comboList.innerHTML = "";
@@ -77,26 +80,28 @@ const matchFilter =
 
   searchInput.addEventListener("input", renderList);
 
-  filterBtns.forEach(btn => {
-    btn.addEventListener("click", () => {
-      const value = btn.dataset.value;
-      btn.classList.toggle("active");
+filterBtns.forEach(btn => {
+  btn.addEventListener("click", () => {
+    const type = btn.dataset.type;   // 取得 data-type
+    const value = btn.dataset.value;
 
-      if (btn.classList.contains("active")) {
-        activeFilters.push(value);
-      } else {
-        activeFilters = activeFilters.filter(f => f !== value);
-      }
-      renderList();
-    });
-  });
+    btn.classList.toggle("active");
 
-  clearBtn.addEventListener("click", () => {
-    activeFilters = [];
-    filterBtns.forEach(b => b.classList.remove("active"));
-    searchInput.value = "";
+    if (btn.classList.contains("active")) {
+      activeFilters[type].push(value);
+    } else {
+      activeFilters[type] = activeFilters[type].filter(f => f !== value);
+    }
     renderList();
   });
+});
+
+clearBtn.addEventListener("click", () => {
+  activeFilters = { promotion: [], commonly: [] };
+  filterBtns.forEach(b => b.classList.remove("active"));
+  searchInput.value = "";
+  renderList();
+});
 
   renderList();
 }
