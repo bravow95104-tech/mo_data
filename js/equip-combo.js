@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-  fetch("/mo_data/data/equip-combo.json") // ✅ 改相對路徑
+  fetch("/mo_data/data/equip-combo.json") // 相對路徑
     .then(res => {
       if (!res.ok) throw new Error("載入 equip-combo.json 失敗");
       return res.json();
@@ -34,7 +34,7 @@ function initComboPage(data) {
       const skillType = (item.classSkill || "").toLowerCase();
       const cat = (item.category || "").toLowerCase();
       const equipmentType = (item.equipmentType || "").toLowerCase();
-
+// 搜尋文字條件
       const matchSearch =
         searchText === "" ||
         skill.includes(searchText) ||
@@ -42,13 +42,16 @@ function initComboPage(data) {
         skillType.includes(searchText) ||
         cat.includes(searchText);
         equipmentType.includes(searchText);
-
+// 職業篩選
 const matchFilter =
   activeFilters.length === 0 ||
   activeFilters.some(f => job.includes(f) || job.includes("全職業"));
+// 常用篩選
+    const matchCommonly =
+      activeFilters.commonly.length === 0 ||
+      (activeFilters.commonly.includes("true") && item.commonly === "true");
 
-
-      return matchSearch && matchFilter;
+      return matchSearch && matchFilter && matchCommonly;
     });
 
     comboList.innerHTML = "";
