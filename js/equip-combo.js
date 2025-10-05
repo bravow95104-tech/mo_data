@@ -55,7 +55,7 @@ const matchFilter =
 // commonly 篩選
 const matchCommonly =
   activeFilters.commonly.length === 0 ||
-  (activeFilters.commonly.includes("TRUE") && item.commonly === "TRUE");
+  (activeFilters.commonly.includes("true") && item.commonly === "true");
 
       return matchSearch && matchFilter && matchCommonly && matchCategory;
     });
@@ -102,7 +102,7 @@ filterBtns.forEach(btn => {
     renderList();
   });
 });
-
+//清除篩選
 clearBtn.addEventListener("click", () => {
   activeFilters = { promotion: [], commonly: [], category: [] };
   filterBtns.forEach(btn => btn.classList.remove("active"));
