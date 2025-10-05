@@ -258,6 +258,7 @@ thead th {
 }
 
 .accordion-header {
+  color: #267acc;
   margin: 0;
   padding: 12px 16px;
   cursor: pointer;
