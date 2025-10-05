@@ -251,10 +251,10 @@ thead th {
 
 /* 快速搜尋樣式 */
 .accordion {
-  border: 1px solid #ddd;
+  border: 1px solid #b3d8ff;
   border-radius: 8px;
   margin-bottom: 20px;
-  background: #fafafa;
+  background: #b3d8ff;
 }
 
 .accordion-header {
