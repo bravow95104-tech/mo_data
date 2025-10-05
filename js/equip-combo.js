@@ -46,9 +46,16 @@ function initComboPage(data) {
 const matchFilter =
   activeFilters.promotion.length === 0 ||
   activeFilters.promotion.some(f => job.includes(f) || job.includes("全職業"));
+  
+    // category 篩選
+    const matchCategory =
+      activeFilters.category.length === 0 ||
+      activeFilters.category.some(f => cat.includes(f.toLowerCase()));
+
+// commonly 篩選
 const matchCommonly =
   activeFilters.commonly.length === 0 ||
-  (activeFilters.commonly.includes("true") && item.commonly === "true");
+  (activeFilters.commonly.includes("TRUE") && item.commonly === "TRUE");
 
       return matchSearch && matchFilter && matchCommonly;
     });
