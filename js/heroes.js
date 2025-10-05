@@ -162,7 +162,8 @@ document.querySelectorAll('.filter-btn').forEach(btn => {
     const filters = {
       promotion: [],
       personality: [],
-      traits: []
+      traits: [],
+      new_multiplier: []
     };
 
     document.querySelectorAll('.filter-btn.active').forEach(activeBtn => {
