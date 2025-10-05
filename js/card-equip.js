@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-  fetch("/mo_data/data/card-equip.json")
+  fetch("/mo_data/data/card.json")
     .then(res => {
       if (!res.ok) throw new Error("載入 card-equip.json 失敗");
       return res.json();
