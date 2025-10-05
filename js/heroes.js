@@ -181,9 +181,7 @@ document.querySelectorAll('.filter-btn').forEach(btn => {
       const okPromotion = filters.promotion.length === 0 || filters.promotion.includes(hero.promotion);
       const okPersonality = filters.personality.length === 0 || filters.personality.includes(hero.personality);
       const okTraits = filters.traits.length === 0 || filters.traits.includes(String(hero.traits));
-      const oknew_multiplier = filters.new_multiplier.length === 0 || filters.new_multiplier.includes(String(new_multiplier));
-
-
+      const oknew_multiplier = filters.new_multiplier.length === 0 || filters.new_multiplier.includes(hero.new_multiplier);
 
       return okPromotion && okPersonality && okTraits && oknew_multiplier;
     });
