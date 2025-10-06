@@ -125,4 +125,11 @@ document.addEventListener("DOMContentLoaded", () => {
     populateDatalists(data); // 呼叫產生下拉選單
     renderTable(data);       // 初始渲染表格
   }
+  const clearFiltersBtn = document.getElementById("clearFilters");
+clearFiltersBtn.addEventListener("click", () => {
+  searchFirst.value = "";
+  searchSecond.value = "";
+  searchThird.value = "";
+  applyFilters();
+});
 });
