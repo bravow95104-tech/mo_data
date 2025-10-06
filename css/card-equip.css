@@ -36,6 +36,36 @@ thead th {
   max-width: 250px; /* 限制寬度 */
 }
 /*快速搜尋*/
+#searchFirst {
+  padding: 6px 10px;
+  width: 100%;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  max-width: 250px; /* 限制寬度 */
+}
+/*快速搜尋*/
+#searchSecond {
+  padding: 6px 10px;
+  width: 100%;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  max-width: 250px; /* 限制寬度 */
+}
+/*快速搜尋*/
+#searchThird {
+  padding: 6px 10px;
+  width: 100%;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  max-width: 250px; /* 限制寬度 */
+}
+/*快速搜尋*/
 .quick-search-label {
   font-weight: 600;
   margin-right: 8px;
