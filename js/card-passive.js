@@ -65,8 +65,6 @@ function initCardTable(data) {
         item.card_id,
         item.card_lv,
         item.card_class,
-        item.MP_ordinary,
-        item.MP_flashcards,
         item.directions,
       ];
 
@@ -100,9 +98,6 @@ function initCardTable(data) {
         (item.card_class && item.card_class.toLowerCase().includes(keyword)) ||
         (item.directions && item.directions.toLowerCase().includes(keyword));
 
-      const matchCardClass =
-        activeFilters.card_class.length === 0 ||
-        activeFilters.card_class.includes(item.card_class);
 
       return matchSearch && matchCardClass;
     });
