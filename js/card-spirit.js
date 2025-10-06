@@ -28,6 +28,34 @@ document.addEventListener("DOMContentLoaded", () => {
     const searchSecond = document.getElementById("searchSecond");
     const searchThird = document.getElementById("searchThird");
 
+    // 新增：填充下拉選單
+    function populateDatalists(data) {
+      const uniqueFirst = new Set();
+      const uniqueSecond = new Set();
+      const uniqueThird = new Set();
+
+      data.forEach(item => {
+        if (item.property_first) uniqueFirst.add(item.property_first);
+        if (item.property_second) uniqueSecond.add(item.property_second);
+        if (item.property_third) uniqueThird.add(item.property_third);
+      });
+
+      function fillDatalist(id, items) {
+        const datalist = document.getElementById(id);
+        if (!datalist) return;
+        datalist.innerHTML = "";
+        Array.from(items).sort().forEach(value => {
+          const option = document.createElement("option");
+          option.value = value;
+          datalist.appendChild(option);
+        });
+      }
+
+      fillDatalist("propertyFirstList", uniqueFirst);
+      fillDatalist("propertySecondList", uniqueSecond);
+      fillDatalist("propertyThirdList", uniqueThird);
+    }
+
     function renderTable(filteredData) {
       const tbody = document.querySelector("#card-equip-table tbody");
       tbody.innerHTML = "";
@@ -76,8 +104,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const filtered = data.filter(item => {
         const matchFirst = !keywordFirst || (item.property_first || "").toLowerCase().includes(keywordFirst);
-        const matchSecond = !keywordSecond || (  (item.property_second || "").toLowerCase().includes(keywordSecond) ||  (item.property_second || "").includes("隨機"));
-        const matchThird = !keywordThird || (  (item.property_third || "").toLowerCase().includes(keywordThird) ||  (item.property_third || "").includes("隨機"));
+        const matchSecond = !keywordSecond ||
+          (item.property_second || "").toLowerCase().includes(keywordSecond) ||
+          (item.property_second || "").toLowerCase().includes("隨機");
+        const matchThird = !keywordThird ||
+          (item.property_third || "").toLowerCase().includes(keywordThird) ||
+          (item.property_third || "").toLowerCase().includes("隨機");
 
         return matchFirst && matchSecond && matchThird;
       });
@@ -85,10 +117,12 @@ document.addEventListener("DOMContentLoaded", () => {
       renderTable(filtered);
     }
 
+    // 綁定輸入事件（輸入或選擇下拉選項都會觸發）
     [searchFirst, searchSecond, searchThird].forEach(input => {
       input.addEventListener("input", applyFilters);
     });
 
-    renderTable(data);
+    populateDatalists(data); // 呼叫產生下拉選單
+    renderTable(data);       // 初始渲染表格
   }
 });
