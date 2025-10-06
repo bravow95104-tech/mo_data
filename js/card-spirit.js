@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
+  // 載入 JSON 資料
   fetch("/mo_data/data/card.json")
     .then(res => {
       if (!res.ok) throw new Error("載入 card.json 失敗");
@@ -15,6 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
       tbody.innerHTML = "<tr><td colspan='5'>無法載入資料</td></tr>";
     });
 
+  // 回到頂部按鈕邏輯
   const backToTopBtn = document.getElementById('backToTop');
   window.addEventListener('scroll', () => {
     backToTopBtn.style.display = window.scrollY > 200 ? 'block' : 'none';
@@ -23,12 +25,14 @@ document.addEventListener("DOMContentLoaded", () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 
+  // 初始化表格與搜尋功能
   function initCardTable(data) {
     const searchFirst = document.getElementById("searchFirst");
     const searchSecond = document.getElementById("searchSecond");
     const searchThird = document.getElementById("searchThird");
+    const clearFiltersBtn = document.getElementById("clearFilters");
 
-    // 新增：填充下拉選單
+    // 填充 datalist 選項
     function populateDatalists(data) {
       const uniqueFirst = new Set();
       const uniqueSecond = new Set();
@@ -56,6 +60,7 @@ document.addEventListener("DOMContentLoaded", () => {
       fillDatalist("propertyThirdList", uniqueThird);
     }
 
+    // 渲染表格內容
     function renderTable(filteredData) {
       const tbody = document.querySelector("#card-equip-table tbody");
       tbody.innerHTML = "";
@@ -79,7 +84,7 @@ document.addEventListener("DOMContentLoaded", () => {
         fields.forEach((value, index) => {
           const td = document.createElement("td");
           let text = String(value || "");
-          const keyword = [searchFirst.value, searchSecond.value, searchThird.value][index - 2]; // index 2~4 對應屬性
+          const keyword = [searchFirst.value, searchSecond.value, searchThird.value][index - 2];
           if (index >= 2 && keyword) {
             const regex = new RegExp(`(${keyword})`, "gi");
             td.innerHTML = text.replace(regex, "<span class='highlight2'>$1</span>");
@@ -97,6 +102,7 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     }
 
+    // 篩選邏輯
     function applyFilters() {
       const keywordFirst = searchFirst.value.trim().toLowerCase();
       const keywordSecond = searchSecond.value.trim().toLowerCase();
@@ -117,19 +123,21 @@ document.addEventListener("DOMContentLoaded", () => {
       renderTable(filtered);
     }
 
-    // 綁定輸入事件（輸入或選擇下拉選項都會觸發）
+    // 綁定輸入事件：輸入或選擇時篩選
     [searchFirst, searchSecond, searchThird].forEach(input => {
       input.addEventListener("input", applyFilters);
     });
 
-    populateDatalists(data); // 呼叫產生下拉選單
-    renderTable(data);       // 初始渲染表格
+    // 清除篩選按鈕事件
+    clearFiltersBtn.addEventListener("click", () => {
+      searchFirst.value = "";
+      searchSecond.value = "";
+      searchThird.value = "";
+      applyFilters();
+    });
+
+    // 初始化選單與表格
+    populateDatalists(data);
+    renderTable(data);
   }
-  const clearFiltersBtn = document.getElementById("clearFilters");
-clearFiltersBtn.addEventListener("click", () => {
-  searchFirst.value = "";
-  searchSecond.value = "";
-  searchThird.value = "";
-  applyFilters();
-});
 });
