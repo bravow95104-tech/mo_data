@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const searchThird = document.getElementById("searchThird");
     const clearFiltersBtn = document.getElementById("clearFilters");
 
-    // 填充 datalist 選項
+    // 填充 datalist 選項，並拆開「、」拆字串去重
     function populateDatalists(data) {
       const uniqueFirst = new Set();
       const uniqueSecond = new Set();
@@ -40,8 +40,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
       data.forEach(item => {
         if (item.property_first) uniqueFirst.add(item.property_first);
-        if (item.property_second) uniqueSecond.add(item.property_second);
-        if (item.property_third) uniqueThird.add(item.property_third);
+
+        if (item.property_second) {
+          item.property_second.split("、").forEach(val => {
+            const v = val.trim();
+            if (v) uniqueSecond.add(v);
+          });
+        }
+
+        if (item.property_third) {
+          item.property_third.split("、").forEach(val => {
+            const v = val.trim();
+            if (v) uniqueThird.add(v);
+          });
+        }
       });
 
       function fillDatalist(id, items) {
