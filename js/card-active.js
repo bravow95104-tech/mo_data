@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   fetch("/mo_data/data/card.json")
     .then(res => {
-      if (!res.ok) throw new Error("載入 card-equip.json 失敗");
+      if (!res.ok) throw new Error("載入 card.json 失敗");
       return res.json();
     })
     .then(json => {
@@ -44,9 +44,7 @@ function initCardTable(data) {
   const filterBtns = document.querySelectorAll(".filter-btn");
 
   let activeFilters = {
-    card_property: [],
-    nemultiplier: [],
-    new_old: [],
+    card_class: [],
   };
 
   function renderTable(filteredData) {
@@ -56,7 +54,7 @@ function initCardTable(data) {
     const keyword = searchInput.value.trim().toLowerCase();
 
     if (filteredData.length === 0) {
-      tbody.innerHTML = "<tr><td colspan='6'>找不到符合條件的裝備卡</td></tr>";
+      tbody.innerHTML = "<tr><td colspan='6'>找不到符合條件的技能卡</td></tr>";
       return;
     }
 
@@ -92,29 +90,21 @@ function initCardTable(data) {
     });
   }
 
-  function applyFilters() {
+   function applyFilters() {
     const keyword = searchInput.value.trim().toLowerCase();
 
     const filtered = data.filter(item => {
       const matchSearch =
-        keyword === "" ||
-        String(item.card_id || "").toLowerCase().includes(keyword) ||
-        String(item.hero_name || "").toLowerCase().includes(keyword) ||
-        String(item.card_property || "").toLowerCase().includes(keyword);
+        !keyword ||
+        (item.card_id && item.card_id.toLowerCase().includes(keyword)) ||
+        (item.card_class && item.card_class.toLowerCase().includes(keyword)) ||
+        (item.directions && item.directions.toLowerCase().includes(keyword));
 
-      const matchProperty =
-        activeFilters.card_property.length === 0 ||
-        activeFilters.card_property.includes(item.card_property);
+      const matchCardClass =
+        activeFilters.card_class.length === 0 ||
+        activeFilters.card_class.includes(item.card_class);
 
-      const matchMultiplier =
-        activeFilters.nemultiplier.length === 0 ||
-        activeFilters.nemultiplier.includes(item.nemultiplier);
-
-      const matchNewOld =
-        activeFilters.new_old.length === 0 ||
-        activeFilters.new_old.includes(item.new_old);
-
-      return matchSearch && matchProperty && matchMultiplier && matchNewOld;
+      return matchSearch && matchCardClass;
     });
 
     renderTable(filtered);
@@ -138,11 +128,7 @@ function initCardTable(data) {
   });
 
   clearBtn.addEventListener("click", () => {
-    activeFilters = {
-      card_property: [],
-      nemultiplier: [],
-      new_old: [],
-    };
+    activeFilters = { card_class: [] };
     filterBtns.forEach(b => b.classList.remove("active"));
     searchInput.value = "";
     applyFilters();
@@ -192,4 +178,6 @@ function initCardTable(data) {
   });
 
   renderTable();
+
+
   });

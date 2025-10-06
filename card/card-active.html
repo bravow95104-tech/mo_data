@@ -2,7 +2,7 @@
 <html lang="zh-Hant">
   <head>
     <meta charset="UTF-8" />
-    <title>主動技能卡</title>
+    <title>裝備卡</title>
     <link rel="stylesheet" href="/mo_data/css/styles.css" />
     <link rel="stylesheet" href="/mo_data/css/card-equip.css" />
   </head>
@@ -18,10 +18,33 @@
       <input
         type="text"
         id="searchInput"
-        placeholder="搜尋名稱..."
+        placeholder="搜尋卡片名稱、拜官..."
       />
     </div>
     <br />
+    <!-- 快速條件搜尋 -->
+    <div id="filterContainer" class="accordion">
+      <h3 class="accordion-header">快速搜尋條件(可多條件搜尋) ▾</h3>
+      <div class="accordion-content">
+        <div class="filter-group">
+          <div class="filter-row">
+          <span class="filter-label">拜官：</span>
+          <div class="filter-btns">
+          <button class="filter-btn" data-type="card_class" data-value="武者">武者</button>
+          <button class="filter-btn" data-type="card_class" data-value="響馬">響馬</button>
+          <button class="filter-btn" data-type="card_class" data-value="仙士">仙士</button>
+          <button class="filter-btn" data-type="card_class" data-value="策士">策士</button>
+          <button class="filter-btn" data-type="card_class" data-value="工匠">工匠</button>
+          <button class="filter-btn" data-type="card_class" data-value="通用">通用</button>
+        </div>
+        </div>
+        </div>
+        <br/>
+        <div class="filter-actions">
+          <button id="clearFilters" class="clear-btn">清除篩選</button>
+</div>
+        </div>
+        </div>
       </div>
     </div>
 
@@ -32,7 +55,7 @@
         <tr>
           <th>卡片名稱</th>
           <th>等級</th>
-          <th>職業</th>
+          <th>拜官</th>
           <th>普卡MP</th>
           <th>閃卡MP</th>
           <th>說明</th>
