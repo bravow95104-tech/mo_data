@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <title>靈具卡 - 天外資料網</title>
+    <link rel="stylesheet" href="/mo_data/css/styles.css" />
+    <link rel="stylesheet" href="/mo_data/css/card-equip.css" />
+  </head>
+  <body>
+    <div id="nav-container"></div>
+
+    <h1>靈具卡</h1>
+
+    <!-- 三個搜尋框 -->
+    <div id="searchContainer">
+      <label>快速搜尋屬性：</label>
+      <input type="text" id="searchFirst" class="search-box" placeholder="搜尋第一屬性" />
+      <input type="text" id="searchSecond" class="search-box" placeholder="搜尋第二屬性" />
+      <input type="text" id="searchThird" class="search-box" placeholder="搜尋第三屬性" />
+    </div>
+
+    <!-- 表格 -->
+    <table id="card-equip-table">
+      <thead>
+        <tr>
+          <th>專卡名稱</th>
+          <th>等級</th>
+          <th>第一屬性</th>
+          <th>第二屬性</th>
+          <th>第三屬性</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- 資料由 JS 載入 -->
+      </tbody>
+    </table>
+
+    <div style="height: 80px"></div>
+
+    <button id="backToTop" title="回到頂部">▲</button>
+
+    <div id="footer-container"></div>
+
+    <script src="/mo_data/js/card-spirit.js"></script>
+    <script src="/mo_data/js/componentsLoader.js"></script>
+  </body>
+</html>
