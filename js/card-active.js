@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
     })
     .then(json => {
       const data = Array.isArray(json) ? json : json.data;
-      const filteredData = data.filter(d => d.type === "裝備卡");
+      const filteredData = data.filter(d => d.type === "主動技能卡");
       initCardTable(filteredData);
     })
     .catch(err => {

@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
     })
     .then(json => {
       const data = Array.isArray(json) ? json : json.data;
-      const filteredData = data.filter(d => d.type === "主動技能卡");
+      const filteredData = data.filter(d => d.type === "裝備卡");
       initCardTable(filteredData);
     })
     .catch(err => {
@@ -56,7 +56,7 @@ function initCardTable(data) {
     const keyword = searchInput.value.trim().toLowerCase();
 
     if (filteredData.length === 0) {
-      tbody.innerHTML = "<tr><td colspan='6'>找不到符合條件的裝備卡</td></tr>";
+      tbody.innerHTML = "<tr><td colspan='6'>找不到符合條件的技能卡</td></tr>";
       return;
     }
 
