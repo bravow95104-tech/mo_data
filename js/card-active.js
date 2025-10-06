@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
     })
     .then(json => {
       const data = Array.isArray(json) ? json : json.data;
-      const filteredData = data.filter(d => d.type === "主動技能卡");
+      const filteredData = data.filter(d => d.type === "裝備卡");
       initCardTable(filteredData);
     })
     .catch(err => {
@@ -66,10 +66,10 @@ function initCardTable(data) {
       const fields = [
         item.card_id,
         item.card_lv,
-        item.card_property,
-        item.card_data,
-        item.nemultiplier,
-        item.hero_name,
+        item.card_class,
+        item.MP_ordinary,
+        item.MP_flashcards,
+        item.directions,
       ];
 
       fields.forEach(value => {
