@@ -76,8 +76,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const filtered = data.filter(item => {
         const matchFirst = !keywordFirst || (item.property_first || "").toLowerCase().includes(keywordFirst);
-        const matchSecond = !keywordSecond || (item.property_second || "").toLowerCase().includes(keywordSecond);
-        const matchThird = !keywordThird || (item.property_third || "").toLowerCase().includes(keywordThird);
+        const matchSecond = !keywordSecond || (  (item.property_second || "").toLowerCase().includes(keywordSecond) ||  (item.property_second || "").includes("隨機"));
+        const matchThird = !keywordThird || (  (item.property_third || "").toLowerCase().includes(keywordThird) ||  (item.property_third || "").includes("隨機"));
+
         return matchFirst && matchSecond && matchThird;
       });
 
