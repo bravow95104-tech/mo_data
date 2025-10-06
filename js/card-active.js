@@ -192,6 +192,4 @@ function initCardTable(data) {
   });
 
   renderTable();
-
-
   });
