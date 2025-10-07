@@ -1,164 +1,181 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>星曜任務總覽</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>星曜任務列表</title>
 <style>
 body {
-  font-family: "微軟正黑體", sans-serif;
-  background: #f8f9fb;
-  padding: 20px;
+  font-family: "Microsoft JhengHei", sans-serif;
+  background-color: #f7faff;
+  margin: 0;
+  padding: 0;
+  color: #333;
 }
-h1 {
-  text-align: center;
-  color: #2b6dad;
-  margin-bottom: 10px;
-}
-#chapterButtons {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 8px;
-  margin-bottom: 20px;
-}
-.chapter-btn {
-  background: #e2eff9;
-  border: 1px solid #7fb3e0;
-  border-radius: 6px;
-  padding: 8px 14px;
-  cursor: pointer;
-  color: #2b6dad;
+
+/* 頁面標題 */
+header {
+  background-color: #3399ff;
+  color: white;
+  padding: 14px 20px;
+  font-size: 22px;
   font-weight: bold;
-  transition: all 0.2s;
 }
-.chapter-btn:hover {
-  background: #d3e7f7;
-}
-.chapter-btn.active {
-  background: #2b6dad;
-  color: white;
-}
-.mission-card {
-  background: #fff;
-  border: 1px solid #ddd;
+
+/* 主題容器 */
+.star-section {
+  background: white;
   border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-  padding: 16px 20px;
-  margin-bottom: 20px;
+  margin: 20px auto;
+  padding: 16px 22px;
+  max-width: 900px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
-.mission-title {
-  background: #5ba1d5;
-  color: white;
-  padding: 8px 12px;
-  border-radius: 4px;
+
+/* 主題標題按鈕 */
+.star-header {
+  background: #eef6ff;
+  border: 1px solid #6ab7ff;
+  border-radius: 6px;
+  padding: 10px 16px;
+  color: #267acc;
+  font-weight: bold;
   font-size: 18px;
-  margin-bottom: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
 }
+
+.star-header:hover {
+  background: #fff6b0;
+  border-color: #ffd84d;
+  color: #b8860b;
+}
+
+/* 展開內容 */
+.star-content {
+  display: none;
+  margin-top: 12px;
+  border-top: 1px solid #ccc;
+  padding-top: 12px;
+}
+
+/* 任務卡片 */
+.mission-card {
+  background: #f9fcff;
+  border: 1px solid #b3d8ff;
+  border-radius: 6px;
+  padding: 12px 16px;
+  margin-bottom: 12px;
+}
+
+.mission-card h3 {
+  margin: 0 0 8px;
+  color: #3399ff;
+}
+
+/* 小標題表格 */
 .mission-table {
   width: 100%;
   border-collapse: collapse;
+  margin-top: 8px;
 }
 .mission-table td {
-  padding: 6px 8px;
+  padding: 6px 10px;
+  border-bottom: 1px solid #eee;
   vertical-align: top;
 }
-.mission-table td:first-child {
-  width: 120px;
-  font-weight: bold;
-  color: #357abd;
+
+/* 藍色篩選按鈕 */
+.filter-btn {
+  background: #eef6ff;
+  border: 1px solid #6ab7ff;
+  color: #267acc;
+  border-radius: 6px;
+  padding: 6px 14px;
+  margin: 3px 4px;
+  cursor: pointer;
+  font-size: 14px;
+  text-align: center;
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
 }
-.process {
-  white-space: pre-line;
-  line-height: 1.6em;
-}
-.hidden {
-  display: none;
+.filter-btn:hover,
+.filter-btn.active {
+  background: #fff6b0;
+  color: #b8860b;
+  border: 1.5px solid #ffd84d;
+  box-shadow: 0 0 6px rgba(255, 220, 80, 0.6);
 }
 </style>
 </head>
 <body>
-  <h1>🌟 星曜任務總覽</h1>
 
-  <div id="chapterButtons">載入中...</div>
-  <div id="missionContainer"></div>
+<header>星曜任務總覽</header>
 
-  <script>
-  document.addEventListener("DOMContentLoaded", () => {
-    fetch("/mo_data/data/star_quest.json")
-      .then(res => {
-        if (!res.ok) throw new Error("載入失敗");
-        return res.json();
-      })
-      .then(data => initMissions(data))
-      .catch(err => {
-        document.getElementById("missionContainer").innerHTML = `<p style="color:red;">❌ 無法載入資料 (${err.message})</p>`;
-      });
+<div id="starContainer"></div>
+
+<script>
+// 假設你的 JSON 在 /mo_data/data/star_tasks.json
+fetch("/mo_data/data/star_tasks.json")
+  .then(res => res.json())
+  .then(data => initStarTasks(data))
+  .catch(err => {
+    console.error("❌ JSON 載入失敗：", err);
+    document.getElementById("starContainer").innerHTML = "<p>無法載入任務資料</p>";
   });
 
-  function initMissions(data) {
-    const container = document.getElementById("missionContainer");
-    const buttons = document.getElementById("chapterButtons");
-    container.innerHTML = "";
-    buttons.innerHTML = "";
+function initStarTasks(data) {
+  const container = document.getElementById("starContainer");
 
-    // 依星曜任務分組
-    const groups = {};
-    data.forEach(m => {
-      if (!groups[m.star]) groups[m.star] = [];
-      groups[m.star].push(m);
+  // 依 "star" 分組
+  const grouped = {};
+  data.forEach(task => {
+    if (!grouped[task.star]) grouped[task.star] = [];
+    grouped[task.star].push(task);
+  });
+
+  // 建立每個主題區塊
+  Object.keys(grouped).forEach(starName => {
+    const section = document.createElement("div");
+    section.className = "star-section";
+
+    const header = document.createElement("div");
+    header.className = "star-header";
+    header.textContent = starName;
+
+    const content = document.createElement("div");
+    content.className = "star-content";
+
+    // 每個主題內的小任務
+    grouped[starName].forEach(task => {
+      const card = document.createElement("div");
+      card.className = "mission-card";
+      card.innerHTML = `
+        <h3>${task.star_q}</h3>
+        <table class="mission-table">
+          <tr><td><strong>任務地區：</strong></td><td>${task.strat || "-"}</td></tr>
+          <tr><td><strong>任務條件：</strong></td><td>${task.restriction || "-"}</td></tr>
+          <tr><td><strong>任務流程：</strong></td><td>${task.process.replace(/\n/g, "<br>")}</td></tr>
+          <tr><td><strong>任務獎勵：</strong></td><td>${task.award || "-"}</td></tr>
+          ${task.remark ? `<tr><td><strong>備註：</strong></td><td>${task.remark}</td></tr>` : ""}
+        </table>
+      `;
+      content.appendChild(card);
     });
 
-    // 建立章節按鈕
-    let first = true;
-    Object.keys(groups).forEach(chapter => {
-      const btn = document.createElement("button");
-      btn.className = "chapter-btn";
-      btn.textContent = chapter;
-      if (first) btn.classList.add("active");
-      btn.addEventListener("click", () => {
-        document.querySelectorAll(".chapter-btn").forEach(b => b.classList.remove("active"));
-        btn.classList.add("active");
-        showChapter(chapter);
-      });
-      buttons.appendChild(btn);
-      first = false;
+    // 點主題展開/收合
+    header.addEventListener("click", () => {
+      const open = content.style.display === "block";
+      document.querySelectorAll(".star-content").forEach(c => (c.style.display = "none"));
+      content.style.display = open ? "none" : "block";
     });
 
-    // 建立章節內容
-    for (const [chapter, missions] of Object.entries(groups)) {
-      const chapterDiv = document.createElement("div");
-      chapterDiv.className = "chapter-section";
-      chapterDiv.dataset.chapter = chapter;
-      chapterDiv.innerHTML = `<h2 style="color:#2b6dad;">${chapter}</h2>`;
-      missions.forEach(m => {
-        const card = document.createElement("div");
-        card.className = "mission-card";
-        card.innerHTML = `
-          <div class="mission-title">${m.star_q}</div>
-          <table class="mission-table">
-            <tr><td>任務條件：</td><td>${m.restriction || "無"}</td></tr>
-            <tr><td>任務起點：</td><td>${m.strat || "未知"}</td></tr>
-            <tr><td>任務獎勵：</td><td>${m.award || "—"}</td></tr>
-            <tr><td>任務材料：</td><td>${m.material || "—"}</td></tr>
-            <tr><td>任務流程：</td><td class="process">${m.process || ""}</td></tr>
-            <tr><td>備註：</td><td>${m.remark || ""}</td></tr>
-          </table>
-        `;
-        chapterDiv.appendChild(card);
-      });
-      container.appendChild(chapterDiv);
-    }
+    section.appendChild(header);
+    section.appendChild(content);
+    container.appendChild(section);
+  });
+}
+</script>
 
-    // 顯示第一章
-    showChapter(Object.keys(groups)[0]);
-  }
-
-  function showChapter(chapter) {
-    document.querySelectorAll(".chapter-section").forEach(div => {
-      div.classList.toggle("hidden", div.dataset.chapter !== chapter);
-    });
-  }
-  </script>
 </body>
 </html>
