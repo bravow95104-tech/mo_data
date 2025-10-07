@@ -1,4 +1,4 @@
-// 讀取任務資料
+// ✅ 載入任務資料
 fetch("/mo_data/data/star_quest.json")
   .then(res => res.json())
   .then(data => initStarTasks(data))
@@ -7,39 +7,47 @@ fetch("/mo_data/data/star_quest.json")
     document.getElementById("starContainer").innerHTML = "<p>無法載入任務資料</p>";
   });
 
-// 回到頂部按鈕
-const backToTopBtn = document.getElementById('backToTop');
-window.addEventListener('scroll', () => {
-  backToTopBtn.style.display = window.scrollY > 200 ? 'block' : 'none';
-});
-backToTopBtn.addEventListener('click', () => {
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-});
-
-// 主程式
+// ✅ 初始化任務資料與分頁
 function initStarTasks(data) {
   const container = document.getElementById("starContainer");
 
-  // 依星曜分組
+  // 建立分頁按鈕容器
+  const tabBar = document.createElement("div");
+  tabBar.className = "star-tabs";
+  container.appendChild(tabBar);
+
+  // 分組任務
   const grouped = {};
   data.forEach(task => {
     if (!grouped[task.star]) grouped[task.star] = [];
     grouped[task.star].push(task);
   });
 
-  // 建立每個星曜任務區塊
-  Object.keys(grouped).forEach(starName => {
-    const section = document.createElement("div");
-    section.className = "star-section";
+  // 內容容器
+  const contentContainer = document.createElement("div");
+  contentContainer.className = "tab-contents";
+  container.appendChild(contentContainer);
 
-    const header = document.createElement("div");
-    header.className = "star-header";
-    header.textContent = starName;
+  let firstTab = true;
 
-    const content = document.createElement("div");
-    content.className = "star-content";
+  Object.keys(grouped).forEach((starName, index) => {
+    const tabId = `tab-${index}`;
 
-    // 小任務
+    // 分頁按鈕
+    const tabBtn = document.createElement("button");
+    tabBtn.className = "tab-btn";
+    if (firstTab) tabBtn.classList.add("active");
+    tabBtn.textContent = starName;
+    tabBtn.dataset.target = tabId;
+    tabBar.appendChild(tabBtn);
+
+    // 任務內容區塊
+    const tabContent = document.createElement("div");
+    tabContent.className = "tab-content";
+    tabContent.id = tabId;
+    if (firstTab) tabContent.classList.add("active");
+
+    // 小任務卡片
     grouped[starName].forEach(task => {
       const card = document.createElement("div");
       card.className = "mission-card";
@@ -48,22 +56,42 @@ function initStarTasks(data) {
         <table class="mission-table">
           <tr><td><strong>任務地區：</strong></td><td>${task.strat || "-"}</td></tr>
           <tr><td><strong>任務條件：</strong></td><td>${task.restriction || "-"}</td></tr>
-          <tr><td><strong>任務流程：</strong></td><td>${task.process.replace(/\n/g, "<br>")}</td></tr>
+          <tr><td><strong>任務流程：</strong></td><td>${(task.process || "").replace(/\n/g, "<br>")}</td></tr>
           <tr><td><strong>任務獎勵：</strong></td><td>${task.award || "-"}</td></tr>
           ${task.remark ? `<tr><td><strong>備註：</strong></td><td>${task.remark}</td></tr>` : ""}
         </table>
       `;
-      content.appendChild(card);
+      tabContent.appendChild(card);
     });
 
-    header.addEventListener("click", () => {
-      const open = content.style.display === "block";
-      document.querySelectorAll(".star-content").forEach(c => (c.style.display = "none"));
-      content.style.display = open ? "none" : "block";
-    });
+    contentContainer.appendChild(tabContent);
+    firstTab = false;
+  });
 
-    section.appendChild(header);
-    section.appendChild(content);
-    container.appendChild(section);
+  // 分頁切換邏輯
+  document.querySelectorAll(".tab-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const target = btn.dataset.target;
+
+      document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
+      document.querySelectorAll(".tab-content").forEach(c => c.classList.remove("active"));
+
+      btn.classList.add("active");
+      document.getElementById(target).classList.add("active");
+    });
   });
 }
+
+// ✅ 回到頂部按鈕邏輯
+const backToTopBtn = document.getElementById('backToTop');
+
+window.addEventListener('scroll', () => {
+  backToTopBtn.style.display = window.scrollY > 200 ? 'block' : 'none';
+});
+
+backToTopBtn.addEventListener('click', () => {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
+});
