@@ -1,21 +1,3 @@
-/* 全站樣式 */
-body {
-  font-family: "Microsoft JhengHei", sans-serif;
-  background-color: #f7faff;
-  margin: 0;
-  padding: 0;
-  color: #333;
-}
-
-/* 頁面標題 */
-header {
-  background-color: #3399ff;
-  color: white;
-  padding: 14px 20px;
-  font-size: 22px;
-  font-weight: bold;
-}
-
 /* 分頁按鈕列 */
 .star-tabs {
   display: flex;
