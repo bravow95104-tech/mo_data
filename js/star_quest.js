@@ -58,7 +58,7 @@ function initStarTasks(data) {
           <tr><td><p><strong>準備道具：</strong></p></td><td>${task.material || "-"}</td></tr>
           <tr><td><p><strong>任務條件：</strong></p></td><td>${task.restriction || "-"}</td></tr>
           <tr><td><p><strong>任務流程：</strong></p></td><td>${(task.process || "").replace(/\n/g, "<br>")}</td></tr>
-          <tr><td><p><strong>任務獎勵：</strong></p></td><td>${task.award || "-"}.replace(/\n/g, "<br>")}</td></tr>
+          <tr><td><p><strong>任務獎勵：</strong></p></td><td>${(task.award || "-").replace(/\n/g, "<br>")}</td></tr>
           ${task.remark ? `<tr><td><p><strong>備註：</strong></p></td><td>${task.remark}</td></tr>` : ""}
         </table>
       `;
