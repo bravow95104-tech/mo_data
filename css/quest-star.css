@@ -87,26 +87,3 @@ header {
   border-bottom: 1px solid #eee;
   vertical-align: top;
 }
-
-/* 回到頂部按鈕 */
-#backToTop {
-  display: none;
-  position: fixed;
-  bottom: 40px;
-  right: 20px;
-  z-index: 999;
-  background-color: #3399ff;
-  color: white;
-  border: none;
-  border-radius: 50%;
-  width: 36px;
-  height: 36px;
-  font-size: 18px;
-  cursor: pointer;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-  transition: background-color 0.2s;
-}
-
-#backToTop:hover {
-  background-color: #267acc;
-}
