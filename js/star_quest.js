@@ -54,11 +54,11 @@ function initStarTasks(data) {
       card.innerHTML = `
         <h3>${task.star_q}</h3>
         <table class="mission-table">
-          <tr><p><strong>任務地區：</strong></p><td>${task.strat || "-"}</td></tr>
-          <tr><p><strong>任務條件：</strong></p><td>${task.restriction || "-"}</td></tr>
-          <tr><p><strong>任務流程：</strong></p><td>${(task.process || "").replace(/\n/g, "<br>")}</td></tr>
-          <tr><p><strong>任務獎勵：</strong></p><td>${task.award || "-"}</td></tr>
-          ${task.remark ? `<tr><p><strong>備註：</strong></p><td>${task.remark}</td></tr>` : ""}
+          <tr><td><p><strong>任務地區：</strong></p></td><td>${task.strat || "-"}</td></tr>
+          <tr><td><p><strong>任務條件：</strong></p></td><td>${task.restriction || "-"}</td></tr>
+          <tr><td><p><strong>任務流程：</strong></p></td><td>${(task.process || "").replace(/\n/g, "<br>")}</td></tr>
+          <tr><td><p><strong>任務獎勵：</strong></p></td><td>${task.award || "-"}</td></tr>
+          ${task.remark ? `<tr><td><p><strong>備註：</strong></p></td><td>${task.remark}</td></tr>` : ""}
         </table>
       `;
       tabContent.appendChild(card);
