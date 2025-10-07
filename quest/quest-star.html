@@ -1,181 +1,20 @@
-<!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>星曜任務列表</title>
-<style>
-body {
-  font-family: "Microsoft JhengHei", sans-serif;
-  background-color: #f7faff;
-  margin: 0;
-  padding: 0;
-  color: #333;
-}
-
-/* 頁面標題 */
-header {
-  background-color: #3399ff;
-  color: white;
-  padding: 14px 20px;
-  font-size: 22px;
-  font-weight: bold;
-}
-
-/* 主題容器 */
-.star-section {
-  background: white;
-  border-radius: 8px;
-  margin: 20px auto;
-  padding: 16px 22px;
-  max-width: 900px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-}
-
-/* 主題標題按鈕 */
-.star-header {
-  background: #eef6ff;
-  border: 1px solid #6ab7ff;
-  border-radius: 6px;
-  padding: 10px 16px;
-  color: #267acc;
-  font-weight: bold;
-  font-size: 18px;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.star-header:hover {
-  background: #fff6b0;
-  border-color: #ffd84d;
-  color: #b8860b;
-}
-
-/* 展開內容 */
-.star-content {
-  display: none;
-  margin-top: 12px;
-  border-top: 1px solid #ccc;
-  padding-top: 12px;
-}
-
-/* 任務卡片 */
-.mission-card {
-  background: #f9fcff;
-  border: 1px solid #b3d8ff;
-  border-radius: 6px;
-  padding: 12px 16px;
-  margin-bottom: 12px;
-}
-
-.mission-card h3 {
-  margin: 0 0 8px;
-  color: #3399ff;
-}
-
-/* 小標題表格 */
-.mission-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 8px;
-}
-.mission-table td {
-  padding: 6px 10px;
-  border-bottom: 1px solid #eee;
-  vertical-align: top;
-}
-
-/* 藍色篩選按鈕 */
-.filter-btn {
-  background: #eef6ff;
-  border: 1px solid #6ab7ff;
-  color: #267acc;
-  border-radius: 6px;
-  padding: 6px 14px;
-  margin: 3px 4px;
-  cursor: pointer;
-  font-size: 14px;
-  text-align: center;
-  transition: all 0.2s ease;
-  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
-}
-.filter-btn:hover,
-.filter-btn.active {
-  background: #fff6b0;
-  color: #b8860b;
-  border: 1.5px solid #ffd84d;
-  box-shadow: 0 0 6px rgba(255, 220, 80, 0.6);
-}
-</style>
+<title>星曜任務-天外資料網</title>
+<link rel="stylesheet" href="/mo_data/css/styles.css" />
+<link rel="stylesheet" href="/mo_data/css/quest-star.css" />
 </head>
 <body>
-
+<div id="nav-container"></div><!-- 這是導航列會被載入的位置 -->
+    <script src="/mo_data/js/componentsLoader.js"></script>
 <header>星曜任務總覽</header>
 
 <div id="starContainer"></div>
-
-<script>
-// 假設你的 JSON 在 /mo_data/data/star_tasks.json
-fetch("/mo_data/data/star_tasks.json")
-  .then(res => res.json())
-  .then(data => initStarTasks(data))
-  .catch(err => {
-    console.error("❌ JSON 載入失敗：", err);
-    document.getElementById("starContainer").innerHTML = "<p>無法載入任務資料</p>";
-  });
-
-function initStarTasks(data) {
-  const container = document.getElementById("starContainer");
-
-  // 依 "star" 分組
-  const grouped = {};
-  data.forEach(task => {
-    if (!grouped[task.star]) grouped[task.star] = [];
-    grouped[task.star].push(task);
-  });
-
-  // 建立每個主題區塊
-  Object.keys(grouped).forEach(starName => {
-    const section = document.createElement("div");
-    section.className = "star-section";
-
-    const header = document.createElement("div");
-    header.className = "star-header";
-    header.textContent = starName;
-
-    const content = document.createElement("div");
-    content.className = "star-content";
-
-    // 每個主題內的小任務
-    grouped[starName].forEach(task => {
-      const card = document.createElement("div");
-      card.className = "mission-card";
-      card.innerHTML = `
-        <h3>${task.star_q}</h3>
-        <table class="mission-table">
-          <tr><td><strong>任務地區：</strong></td><td>${task.strat || "-"}</td></tr>
-          <tr><td><strong>任務條件：</strong></td><td>${task.restriction || "-"}</td></tr>
-          <tr><td><strong>任務流程：</strong></td><td>${task.process.replace(/\n/g, "<br>")}</td></tr>
-          <tr><td><strong>任務獎勵：</strong></td><td>${task.award || "-"}</td></tr>
-          ${task.remark ? `<tr><td><strong>備註：</strong></td><td>${task.remark}</td></tr>` : ""}
-        </table>
-      `;
-      content.appendChild(card);
-    });
-
-    // 點主題展開/收合
-    header.addEventListener("click", () => {
-      const open = content.style.display === "block";
-      document.querySelectorAll(".star-content").forEach(c => (c.style.display = "none"));
-      content.style.display = open ? "none" : "block";
-    });
-
-    section.appendChild(header);
-    section.appendChild(content);
-    container.appendChild(section);
-  });
-}
-</script>
-
+<!-- 回到頂部按鈕 -->
+    <button id="backToTop" title="回到頂部">▲</button>
+    <script src="/mo_data/js/star_quest.js"></script>
+<div id="footer-container"></div><!-- 這是頁尾會被載入的位置 -->
 </body>
 </html>
