@@ -43,6 +43,7 @@
 }
 
 .mission-card h3 {
+  padding: 6px 10px;
   margin: 0 0 8px;
   color: #3399ff;
 }
@@ -54,9 +55,15 @@
   margin-top: 8px;
 }
 
-.mission-table td {
+.mission-table p {
   padding: 6px 10px;
   white-space: nowrap;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.mission-table td {
+  padding: 6px 10px;
   border-bottom: 1px solid #eee;
   vertical-align: top;
 }
