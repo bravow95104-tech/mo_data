@@ -85,7 +85,7 @@ h1 {
 
   <script>
   document.addEventListener("DOMContentLoaded", () => {
-    fetch("/mo_data/data/star_mission.json")
+    fetch("/mo_data/data/star_quest.json")
       .then(res => {
         if (!res.ok) throw new Error("載入失敗");
         return res.json();
