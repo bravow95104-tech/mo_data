@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>星曜任務總覽</title>
+<style>
+body {
+  font-family: "微軟正黑體", sans-serif;
+  background: #f8f9fb;
+  padding: 20px;
+}
+h1 {
+  text-align: center;
+  color: #2b6dad;
+  margin-bottom: 10px;
+}
+#chapterButtons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+.chapter-btn {
+  background: #e2eff9;
+  border: 1px solid #7fb3e0;
+  border-radius: 6px;
+  padding: 8px 14px;
+  cursor: pointer;
+  color: #2b6dad;
+  font-weight: bold;
+  transition: all 0.2s;
+}
+.chapter-btn:hover {
+  background: #d3e7f7;
+}
+.chapter-btn.active {
+  background: #2b6dad;
+  color: white;
+}
+.mission-card {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  padding: 16px 20px;
+  margin-bottom: 20px;
+}
+.mission-title {
+  background: #5ba1d5;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+.mission-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.mission-table td {
+  padding: 6px 8px;
+  vertical-align: top;
+}
+.mission-table td:first-child {
+  width: 120px;
+  font-weight: bold;
+  color: #357abd;
+}
+.process {
+  white-space: pre-line;
+  line-height: 1.6em;
+}
+.hidden {
+  display: none;
+}
+</style>
+</head>
+<body>
+  <h1>🌟 星曜任務總覽</h1>
+
+  <div id="chapterButtons">載入中...</div>
+  <div id="missionContainer"></div>
+
+  <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    fetch("/mo_data/data/star_mission.json")
+      .then(res => {
+        if (!res.ok) throw new Error("載入失敗");
+        return res.json();
+      })
+      .then(data => initMissions(data))
+      .catch(err => {
+        document.getElementById("missionContainer").innerHTML = `<p style="color:red;">❌ 無法載入資料 (${err.message})</p>`;
+      });
+  });
+
+  function initMissions(data) {
+    const container = document.getElementById("missionContainer");
+    const buttons = document.getElementById("chapterButtons");
+    container.innerHTML = "";
+    buttons.innerHTML = "";
+
+    // 依星曜任務分組
+    const groups = {};
+    data.forEach(m => {
+      if (!groups[m.star]) groups[m.star] = [];
+      groups[m.star].push(m);
+    });
+
+    // 建立章節按鈕
+    let first = true;
+    Object.keys(groups).forEach(chapter => {
+      const btn = document.createElement("button");
+      btn.className = "chapter-btn";
+      btn.textContent = chapter;
+      if (first) btn.classList.add("active");
+      btn.addEventListener("click", () => {
+        document.querySelectorAll(".chapter-btn").forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        showChapter(chapter);
+      });
+      buttons.appendChild(btn);
+      first = false;
+    });
+
+    // 建立章節內容
+    for (const [chapter, missions] of Object.entries(groups)) {
+      const chapterDiv = document.createElement("div");
+      chapterDiv.className = "chapter-section";
+      chapterDiv.dataset.chapter = chapter;
+      chapterDiv.innerHTML = `<h2 style="color:#2b6dad;">${chapter}</h2>`;
+      missions.forEach(m => {
+        const card = document.createElement("div");
+        card.className = "mission-card";
+        card.innerHTML = `
+          <div class="mission-title">${m.star_q}</div>
+          <table class="mission-table">
+            <tr><td>任務條件：</td><td>${m.restriction || "無"}</td></tr>
+            <tr><td>任務起點：</td><td>${m.strat || "未知"}</td></tr>
+            <tr><td>任務獎勵：</td><td>${m.award || "—"}</td></tr>
+            <tr><td>任務材料：</td><td>${m.material || "—"}</td></tr>
+            <tr><td>任務流程：</td><td class="process">${m.process || ""}</td></tr>
+            <tr><td>備註：</td><td>${m.remark || ""}</td></tr>
+          </table>
+        `;
+        chapterDiv.appendChild(card);
+      });
+      container.appendChild(chapterDiv);
+    }
+
+    // 顯示第一章
+    showChapter(Object.keys(groups)[0]);
+  }
+
+  function showChapter(chapter) {
+    document.querySelectorAll(".chapter-section").forEach(div => {
+      div.classList.toggle("hidden", div.dataset.chapter !== chapter);
+    });
+  }
+  </script>
+</body>
+</html>
