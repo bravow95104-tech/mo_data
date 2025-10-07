@@ -58,10 +58,10 @@
 .mission-table p {
   padding: 6px 10px;
   white-space: nowrap;
-
+  vertical-align: top;
 }
 
 .mission-table td {
   padding: 6px 10px;
-
+  vertical-align: top;
 }
