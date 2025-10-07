@@ -79,24 +79,43 @@ header {
 }
 
 /* 篩選按鈕樣式 */
-.filter-btn {
-  background: #eef6ff;
-  border: 1px solid #6ab7ff;
+.filter-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #f7faff;
+  border-bottom: 2px solid #d0e4ff;
+  padding: 10px 16px;
+  margin-bottom: 16px;
+}
+
+.filter-label {
+  font-weight: bold;
   color: #267acc;
-  border-radius: 6px;
-  padding: 6px 14px;
-  margin: 3px 4px;
+  white-space: nowrap;
+}
+
+.filter-btns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.filter-btn {
+  background: #e6f0ff;
+  border: 1px solid #3399ff;
+  color: #267acc;
+  border-radius: 4px;
+  padding: 4px 10px;
   cursor: pointer;
   font-size: 14px;
   text-align: center;
-  transition: all 0.2s ease;
-  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+  transition: background 0.2s, color 0.2s, border 0.2s;
 }
 
 .filter-btn:hover,
 .filter-btn.active {
-  background: #fff6b0;
+  background: #fff3b0;
   color: #b8860b;
-  border: 1.5px solid #ffd84d;
-  box-shadow: 0 0 6px rgba(255, 220, 80, 0.6);
+  border: 1.5px solid #ffd24d;
 }
