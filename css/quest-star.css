@@ -66,7 +66,7 @@ header {
   color: #3399ff;
 }
 
-/* 任務表格 */
+/* 小標題表格 */
 .mission-table {
   width: 100%;
   border-collapse: collapse;
@@ -78,44 +78,24 @@ header {
   vertical-align: top;
 }
 
-/* 篩選按鈕樣式 */
-.filter-container {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  background: #f7faff;
-  border-bottom: 2px solid #d0e4ff;
-  padding: 10px 16px;
-  margin-bottom: 16px;
-}
-
-.filter-label {
-  font-weight: bold;
-  color: #267acc;
-  white-space: nowrap;
-}
-
-.filter-btns {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-}
-
+/* 藍色篩選按鈕 */
 .filter-btn {
-  background: #e6f0ff;
-  border: 1px solid #3399ff;
+  background: #eef6ff;
+  border: 1px solid #6ab7ff;
   color: #267acc;
-  border-radius: 4px;
-  padding: 4px 10px;
+  border-radius: 6px;
+  padding: 6px 14px;
+  margin: 3px 4px;
   cursor: pointer;
   font-size: 14px;
   text-align: center;
-  transition: background 0.2s, color 0.2s, border 0.2s;
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
 }
-
 .filter-btn:hover,
 .filter-btn.active {
-  background: #fff3b0;
+  background: #fff6b0;
   color: #b8860b;
-  border: 1.5px solid #ffd24d;
+  border: 1.5px solid #ffd84d;
+  box-shadow: 0 0 6px rgba(255, 220, 80, 0.6);
 }
