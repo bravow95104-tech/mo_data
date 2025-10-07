@@ -1,4 +1,4 @@
-// 假設你的 JSON 在 /mo_data/data/star_quest.json
+// 讀取任務資料
 fetch("/mo_data/data/star_quest.json")
   .then(res => res.json())
   .then(data => initStarTasks(data))
@@ -6,33 +6,28 @@ fetch("/mo_data/data/star_quest.json")
     console.error("❌ JSON 載入失敗：", err);
     document.getElementById("starContainer").innerHTML = "<p>無法載入任務資料</p>";
   });
-  // 回到頂部按鈕邏輯
-  const backToTopBtn = document.getElementById('backToTop');
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 200) {
-      backToTopBtn.style.display = 'block';
-    } else {
-      backToTopBtn.style.display = 'none';
-    }
-  });
 
-  backToTopBtn.addEventListener('click', () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
-  });
+// 回到頂部按鈕
+const backToTopBtn = document.getElementById('backToTop');
+window.addEventListener('scroll', () => {
+  backToTopBtn.style.display = window.scrollY > 200 ? 'block' : 'none';
+});
+backToTopBtn.addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+// 主程式
 function initStarTasks(data) {
   const container = document.getElementById("starContainer");
 
-  // 依 "star" 分組
+  // 依星曜分組
   const grouped = {};
   data.forEach(task => {
     if (!grouped[task.star]) grouped[task.star] = [];
     grouped[task.star].push(task);
   });
 
-  // 建立每個主題區塊
+  // 建立每個星曜任務區塊
   Object.keys(grouped).forEach(starName => {
     const section = document.createElement("div");
     section.className = "star-section";
@@ -44,7 +39,7 @@ function initStarTasks(data) {
     const content = document.createElement("div");
     content.className = "star-content";
 
-    // 每個主題內的小任務
+    // 小任務
     grouped[starName].forEach(task => {
       const card = document.createElement("div");
       card.className = "mission-card";
@@ -61,7 +56,6 @@ function initStarTasks(data) {
       content.appendChild(card);
     });
 
-    // 點主題展開/收合
     header.addEventListener("click", () => {
       const open = content.style.display === "block";
       document.querySelectorAll(".star-content").forEach(c => (c.style.display = "none"));
