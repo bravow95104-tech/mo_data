@@ -1,5 +1,5 @@
 // ✅ 載入任務資料
-fetch("/mo_data/data/star_quest.json")
+fetch("/mo_data/data/quest-job.json")
   .then(res => res.json())
   .then(data => initStarTasks(data))
   .catch(err => {
