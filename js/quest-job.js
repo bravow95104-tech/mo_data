@@ -11,11 +11,6 @@ fetch("/mo_data/data/quest-job.json")
 function initStarTasks(data) {
   const container = document.getElementById("starContainer");
 
-  // 建立分頁按鈕容器
-  const tabBar = document.createElement("div");
-  tabBar.className = "star-tabs";
-  container.appendChild(tabBar);
-
   // 分組任務
   const grouped = {};
   data.forEach(task => {
@@ -67,18 +62,6 @@ function initStarTasks(data) {
     firstTab = false;
   });
 
-  // 分頁切換邏輯
-  document.querySelectorAll(".tab-btn").forEach(btn => {
-    btn.addEventListener("click", () => {
-      const target = btn.dataset.target;
-
-      document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
-      document.querySelectorAll(".tab-content").forEach(c => c.classList.remove("active"));
-
-      btn.classList.add("active");
-      document.getElementById(target).classList.add("active");
-    });
-  });
 }
 
   // 回到頂部按鈕邏輯
