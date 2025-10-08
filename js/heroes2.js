@@ -96,9 +96,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const imgHTML = `
       <div class="hero-images">
         <img src="${frontImg}" alt="${hero.name} 正面"
-          onerror="this.src='/mo_data/images/no_image.jpg';" />
+          onerror="this.src='/mo_data/pic/heroes/no_image.jpg';" />
         <img src="${backImg}" alt="${hero.name} 反面"
-          onerror="this.src='/mo_data/images/no_image.jpg';" />
+          onerror="this.src='/mo_data/pic/heroes/no_image.jpg';" />
       </div>`;
 
     // Modal 內容
