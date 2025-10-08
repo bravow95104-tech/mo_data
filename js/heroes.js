@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
     renderTable(filtered);
   });
 
-  // 產生表格函式（加上高亮與點擊事件）
+  // 產生表格函式
   function renderTable(data) {
     const tbody = document.querySelector('#heroes-table tbody');
     tbody.innerHTML = '';
@@ -70,7 +70,7 @@ document.addEventListener("DOMContentLoaded", () => {
         tr.appendChild(td);
       });
 
-      // 加入點擊事件：點擊該列顯示詳細 Modal
+      // 點擊列 → 顯示詳細視窗
       tr.addEventListener('click', () => {
         showDetailModal(hero);
       });
@@ -79,49 +79,68 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // 顯示 Modal
+  // === Modal ===
   function showDetailModal(hero) {
     const overlay = document.getElementById('modalOverlay');
     const modalBox = document.getElementById('modalBox');
     const contentDiv = document.getElementById('modalContent');
 
-    let html = `
-	<h2 class="hero-name">${hero.name}</h2>
-<div class="hero-details-container">
-  <div class="hero-column left">
-    <p><strong>對應光輝：</strong>${hero.glory}</p>
-    <p><strong>拜官：</strong>${hero.promotion}</p>
-    <p><strong>初始：</strong>${hero.initial}</p>
-    <p><strong>素質：</strong>${hero.traits}</p>
-    <p><strong>個性：</strong>${hero.personality}</p>
-    <p><strong>屬性：</strong>${hero.element}</p>
-    <p class="section-gap"><strong>力量：</strong>${hero.str}</p>
-    <p><strong>智慧：</strong>${hero.int}</p>
-    <p><strong>體質：</strong>${hero.vit}</p>
-    <p><strong>敏捷：</strong>${hero.agi}</p>
-    <p><strong>運氣：</strong>${hero.luk}</p>
-  </div>
+    // 英雄名稱安全化（移除特殊字元避免檔案路徑錯誤）
+    const safeName = hero.name.replace(/[^\w\u4e00-\u9fa5]/g, '');
 
-  <div class="hero-column right">
-    <p><strong>積極度(生變前)：</strong>${hero.aggression_before}</p>
-    <p><strong>積極度(生變後)：</strong>${hero.aggression_after}</p>
-    <p class="section-gap"><strong>裝備卡(新專)：</strong>${hero.equipment_new}</p>
-    <p><strong>新專數值：</strong>${hero.equipment_new_data}</p>
-    <p><strong>新專倍率：</strong>${hero.new_multiplier}</p>
-    <p><strong>裝備卡(舊專)：</strong>${hero.equipment_old}</p>
-    <p><strong>舊專數值：</strong>${hero.equipment_old_data}</p>
-    <p class="section-gap"><strong>天生技：</strong>${hero.innate_skill}</p>
-    <p><strong>生變技能：</strong>${hero.transformation_skill}</p>
-  </div>
-</div>
-`;
+    // 組合圖片路徑
+    const frontImg = `/mo_data/pic/heroes/${safeName}_正.jpg`;
+    const backImg = `/mo_data/pic/heroes/${safeName}_反.jpg`;
+
+    // 插入圖片區塊
+    const imgHTML = `
+      <div class="hero-images">
+        <img src="${frontImg}" alt="${hero.name} 正面"
+          onerror="this.src='/mo_data/pic/heroes/no_image.jpg';" />
+        <img src="${backImg}" alt="${hero.name} 反面"
+          onerror="this.src='/mo_data/pic/heroes/no_image.jpg';" />
+      </div>`;
+
+    // Modal 內容
+    let html = `
+      <h2 class="hero-name">${hero.name}</h2>
+      ${imgHTML}
+      <div class="hero-details-container">
+        <div class="hero-column left">
+          <p><strong>對應光輝：</strong>${hero.glory}</p>
+          <p><strong>拜官：</strong>${hero.promotion}</p>
+          <p><strong>初始：</strong>${hero.initial}</p>
+          <p><strong>素質：</strong>${hero.traits}</p>
+          <p><strong>個性：</strong>${hero.personality}</p>
+          <p><strong>屬性：</strong>${hero.element}</p>
+          <p class="section-gap"><strong>力量：</strong>${hero.str}</p>
+          <p><strong>智慧：</strong>${hero.int}</p>
+          <p><strong>體質：</strong>${hero.vit}</p>
+          <p><strong>敏捷：</strong>${hero.agi}</p>
+          <p><strong>運氣：</strong>${hero.luk}</p>
+        </div>
+
+        <div class="hero-column right">
+          <p><strong>積極度(生變前)：</strong>${hero.aggression_before}</p>
+          <p><strong>積極度(生變後)：</strong>${hero.aggression_after}</p>
+          <p class="section-gap"><strong>裝備卡(新專)：</strong>${hero.equipment_new}</p>
+          <p><strong>新專數值：</strong>${hero.equipment_new_data}</p>
+          <p><strong>新專倍率：</strong>${hero.new_multiplier}</p>
+          <p><strong>裝備卡(舊專)：</strong>${hero.equipment_old}</p>
+          <p><strong>舊專數值：</strong>${hero.equipment_old_data}</p>
+          <p class="section-gap"><strong>天生技：</strong>${hero.innate_skill}</p>
+          <p><strong>生變技能：</strong>${hero.transformation_skill}</p>
+        </div>
+      </div>
+    `;
+
     contentDiv.innerHTML = html;
 
     overlay.style.display = 'block';
     modalBox.style.display = 'block';
   }
 
-  // 關閉 Modal
+  // === 關閉 Modal ===
   const closeBtn = document.querySelector('#modalBox .close-btn');
   closeBtn.addEventListener('click', closeModal);
   document.getElementById('modalOverlay').addEventListener('click', closeModal);
@@ -131,7 +150,7 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById('modalBox').style.display = 'none';
   }
 
-  // 回到頂部按鈕邏輯
+  // === 回到頂部按鈕 ===
   const backToTopBtn = document.getElementById('backToTop');
   window.addEventListener('scroll', () => {
     if (window.scrollY > 200) {
@@ -148,71 +167,57 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-// 快速搜尋事件（多選條件 + 交集篩選）
-document.querySelectorAll('.filter-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    const type = btn.dataset.type;        // "promotion" / "personality" / "traits"
-    const value = btn.dataset.value;
-
-    // 切換這個按鈕的 active 狀態（點一下選、再點一次取消）
-    btn.classList.toggle('active');
-
-    // 收集目前每個分類被選到的條件（數組）
-    const filters = {
-      promotion: [],
-      personality: [],
-      traits: [],
-      new_multiplier: []
-    };
-
-    document.querySelectorAll('.filter-btn.active').forEach(activeBtn => {
-      const t = activeBtn.dataset.type;
-      const v = activeBtn.dataset.value;
-      // 把 v 加到對應分類的陣列（避免重複）
-      if (!filters[t].includes(v)) {
-        filters[t].push(v);
-      }
-    });
-
-    // 篩選：符合交集條件
-    const filtered = heroesData.filter(hero => {
-      // 如果該分類有選條件的話，要在該分類的條件陣列中有匹配
-      const okPromotion = filters.promotion.length === 0 || filters.promotion.includes(hero.promotion);
-      const okPersonality = filters.personality.length === 0 || filters.personality.includes(hero.personality);
-      const okTraits = filters.traits.length === 0 || filters.traits.includes(String(hero.traits));
-      const oknew_multiplier = filters.new_multiplier.length === 0 || filters.new_multiplier.includes(hero.new_multiplier);
-
-      return okPromotion && okPersonality && okTraits && oknew_multiplier;
-    });
-
-    renderTable(filtered);
-  });
-});
-
-// 清除所有篩選按鈕與搜尋框
-document.getElementById('clearFilters').addEventListener('click', () => {
-  renderTable(heroesData);
-  searchInput.value = '';
-
-  // 清除所有 active 樣式
+  // === 篩選按鈕 ===
   document.querySelectorAll('.filter-btn').forEach(btn => {
-    btn.classList.remove('active');
+    btn.addEventListener('click', () => {
+      const type = btn.dataset.type;
+      const value = btn.dataset.value;
+      btn.classList.toggle('active');
+
+      const filters = {
+        promotion: [],
+        personality: [],
+        traits: [],
+        new_multiplier: []
+      };
+
+      document.querySelectorAll('.filter-btn.active').forEach(activeBtn => {
+        const t = activeBtn.dataset.type;
+        const v = activeBtn.dataset.value;
+        if (!filters[t].includes(v)) filters[t].push(v);
+      });
+
+      const filtered = heroesData.filter(hero => {
+        const okPromotion = filters.promotion.length === 0 || filters.promotion.includes(hero.promotion);
+        const okPersonality = filters.personality.length === 0 || filters.personality.includes(hero.personality);
+        const okTraits = filters.traits.length === 0 || filters.traits.includes(String(hero.traits));
+        const oknew_multiplier = filters.new_multiplier.length === 0 || filters.new_multiplier.includes(hero.new_multiplier);
+        return okPromotion && okPersonality && okTraits && oknew_multiplier;
+      });
+
+      renderTable(filtered);
+    });
   });
 
-  // 移除搜尋高亮（如果有用到）
-// 這裡你原本有處理 highlight / highlight2，可以保留
-  document.querySelectorAll('.highlight, .highlight2').forEach(el => {
-    const parent = el.parentNode;
-    parent.replaceChild(document.createTextNode(el.textContent), el);
-    parent.normalize();
+  // 清除篩選
+  document.getElementById('clearFilters').addEventListener('click', () => {
+    renderTable(heroesData);
+    searchInput.value = '';
+    document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+
+    // 移除搜尋高亮
+    document.querySelectorAll('.highlight, .highlight2').forEach(el => {
+      const parent = el.parentNode;
+      parent.replaceChild(document.createTextNode(el.textContent), el);
+      parent.normalize();
+    });
   });
-});
 
   // Accordion 展開／收合
-document.querySelectorAll('.accordion-header').forEach(header => {
-  header.addEventListener('click', () => {
-    const accordion = header.parentElement;
-    accordion.classList.toggle('collapsed');
+  document.querySelectorAll('.accordion-header').forEach(header => {
+    header.addEventListener('click', () => {
+      const accordion = header.parentElement;
+      accordion.classList.toggle('collapsed');
+    });
   });
-});
 });
