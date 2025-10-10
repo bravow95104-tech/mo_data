@@ -61,7 +61,12 @@
   vertical-align: top;
 }
 
-.mission-table td {
+.mission-table td,
+.mission-table th {
+  word-wrap: break-word;
+  word-break: break-all;
+  white-space: normal;
   padding: 6px 10px;
   border-bottom: 1px solid #eee;
+  vertical-align: top;
 }
