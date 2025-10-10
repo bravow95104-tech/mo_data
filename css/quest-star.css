@@ -57,7 +57,7 @@
 
 .mission-table p {
   padding: 6px 10px;
-  white-space: nowrap;
+  white-space: normal;
   vertical-align: top;
 }
 
