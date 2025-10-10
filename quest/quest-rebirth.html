@@ -1,26 +1,28 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>轉生任務 | MoData</title>
-  <link rel="stylesheet" href="/mo_data/css/style.css">
-  <link rel="stylesheet" href="/mo_data/css/quest-star.css" />
+  <link rel="stylesheet" href="/mo_data/css/style.css" />
 </head>
 <body>
+<div id="nav-container"></div>
+  <script src="/mo_data/js/componentsLoader.js"></script>
   <div class="main-container">
-
+    
     <!-- 頁面標題 -->
     <div class="section-title">
       <h2>轉生任務</h2>
     </div>
 
-    <!-- 第一部分：轉生需求 -->
+    <!-- 轉生需求 -->
     <div class="mission-card">
       <h3>轉生需求</h3>
       <p>
-        一隻角色共有三次轉生的機會，當玩家角色等級到達100級後，可藉由完成一連串的轉生任務，
-        獲得轉生的資格。轉生後還可以再轉生，等每個角色轉滿三次後，轉生的條件會越來越嚴苛。
+        一隻角色共有三次轉生的機會，當玩家角色等級到達100級後，
+        可藉由完成一連串的轉生任務，獲得轉生的資格。轉生後還可以再轉生，
+        每個角色最多可轉生三次，轉生的條件會越來越嚴苛。
       </p>
 
       <table class="mission-table">
@@ -53,41 +55,42 @@
           </tr>
           <tr>
             <td>信物</td>
-            <td>六種工作特產各500個</td>
-            <td>六種工作特產各1000個</td>
-            <td>六種工作特產各1500個</td>
+            <td>六種工作特產各 500 個</td>
+            <td>六種工作特產各 1000 個</td>
+            <td>六種工作特產各 1500 個</td>
           </tr>
           <tr>
             <td>100級產物</td>
-            <td>六種100級產物各500個</td>
-            <td>六種100級產物各1000個</td>
-            <td>六種100級產物各1500個</td>
+            <td>六種 100 級產物各 500 個</td>
+            <td>六種 100 級產物各 1000 個</td>
+            <td>六種 100 級產物各 1500 個</td>
           </tr>
           <tr>
             <td>武力</td>
-            <td>打贏真‧武門修羅 (Lv90)</td>
-            <td>打贏真‧武門修羅 (Lv95)</td>
-            <td>打贏真‧武門修羅 (Lv100)</td>
+            <td>打贏 真‧武門修羅 (Lv90)</td>
+            <td>打贏 真‧武門修羅 (Lv95)</td>
+            <td>打贏 真‧武門修羅 (Lv100)</td>
           </tr>
         </tbody>
       </table>
     </div>
 
-    <!-- 第二部分：任務流程 -->
+    <!-- 任務流程 -->
     <div class="mission-card">
       <h3>任務流程</h3>
 
-      <h4>步驟一</h4>
+      <p><strong>步驟一：</strong></p>
       <p>
         當玩家達成轉生需求後，到遼城之泉找到蓮華仙子（32，71）對話，說明想要轉生的意願。<br>
         蓮華仙子會向你說明轉生的條件，並要求玩家找到五位「可憐的乞丐」，幫助他們以證明你的善良。
       </p>
 
-      <h4>步驟二</h4>
+      <p><strong>步驟二：</strong></p>
       <p>
         到京城、邯鄲、川蜀、昌邑、梁山等五地，分別找到五位「可憐的乞丐」，施捨他們一點錢。<br>
-        五個可憐的乞丐坐標如下：
+        五個可憐的乞丐位置如下：
       </p>
+
       <ul>
         <li>京城</li>
         <li>邯鄲</li>
@@ -102,7 +105,9 @@
   <!-- 回到頂部按鈕 -->
   <button id="backToTop" title="回到頂部">▲</button>
 
+  <!-- ✅ JS -->
   <script src="/mo_data/js/quest-job.js"></script>
+
   <div id="footer-container"></div>
 </body>
 </html>
