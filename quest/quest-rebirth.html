@@ -4,7 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>轉生任務 | MoData</title>
-  <link rel="stylesheet" href="/mo_data/css/style.css" />
+  <!-- ✅ CSS -->
+  <link rel="stylesheet" href="/mo_data/css/styles.css" />
   <link rel="stylesheet" href="/mo_data/css/quest-star.css" />
 </head>
 <body>
@@ -91,14 +92,54 @@
       </p>
 
       <table class="mission-table">
+        <thead>
+          <tr>
+            <th>地區</th>
+            <th>座標</th>
+          </tr>
+        </thead>
         <tbody>
-          <tr><td><p>京城</p></td></tr>
-          <tr><td><p>邯鄲</p></td></tr>
-          <tr><td><p>川蜀</p></td></tr>
-          <tr><td><p>昌邑</p></td></tr>
-          <tr><td><p>梁山</p></td></tr>
+          <tr>
+            <td><p>京城座標</p></td>
+            <td><p>京城花園左下角﹝16，175﹞</p></td>
+          </tr>
+          <tr>
+            <td><p>川都座標</p></td>
+            <td><p>在錢莊後方的房子裡﹝87，206﹞</p></td>
+          </tr>
+          <tr>
+            <td><p>郡業座標</p></td>
+            <td><p>往藥廬方向去的城門那﹝17，257﹞</p></td>
+          </tr>
+          <tr>
+            <td><p>昌碇座標</p></td>
+            <td><p>在防具舖後方﹝75，177﹞</p></td>
+          </tr>
+          <tr>
+            <td><p>梁山座標</p></td>
+            <td><p>往賭場的方向進去﹝23,203﹞</p></td>
+          </tr>
         </tbody>
       </table>
+<table class="mission-table">
+        <thead>
+          <tr>
+            <th>條件</th>
+            <th>第一次轉生</th>
+            <th>第二次轉生</th>
+            <th>第三次轉生</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><p>京城座標</p></td>
+            <td><p>各20萬</p></td>
+            <td><p>各40萬</p></td>
+            <td><p>各60萬</p></td>
+          </tr>
+        </tbody>
+      </table>
+      <p>完成後，回去遺跡之泉找蓮華仙子對話。</p>
     </div>
   </div>
 
@@ -106,7 +147,8 @@
   <button id="backToTop" title="回到頂部">▲</button>
 
   <!-- ✅ JS -->
-  <script src="/mo_data/js/quest-job.js"></script>
+  <script src="/mo_data/js/star_quest.js"></script>
+
   <div id="footer-container"></div>
 </body>
 </html>
