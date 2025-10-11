@@ -105,7 +105,7 @@ document.addEventListener("DOMContentLoaded", () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 
-  // === 篩選按鈕 ===
+// === 篩選按鈕 ===
 document.querySelectorAll('.filter-btn').forEach(btn => {
   btn.addEventListener('click', () => {
     // 切換 active 樣式
@@ -122,8 +122,12 @@ document.querySelectorAll('.filter-btn').forEach(btn => {
       if (type === "personality") return hero.sort === value;
       return true; // 預設全顯示
     });
+
+    // ✅ 關鍵：要呼叫 renderTable() 才會更新畫面
+    renderTable(filtered);
   });
-    });
+});
+
 
   // === 清除篩選 ===
   document.getElementById('clearFilters').addEventListener('click', () => {
