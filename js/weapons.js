@@ -52,10 +52,10 @@ document.addEventListener("DOMContentLoaded", () => {
       const imgTd = document.createElement('td');
       if (hero.name) {
         const img = document.createElement('img');
-        img.src = `/mo_data/pic/weapons/${hero.name}.png`;
+        img.src = `/mo_data/pic/weapons/${hero.name}.jpg`;
         img.alt = hero.name;
-        img.style.width = '50px';
-        img.style.height = '50px';
+        img.style.width = '40px';
+        img.style.height = '40px';
         img.style.objectFit = 'contain';
         img.onerror = () => {
           imgTd.textContent = '—'; // 若圖片不存在顯示—
@@ -122,8 +122,8 @@ document.addEventListener("DOMContentLoaded", () => {
       });
 
       const filtered = heroesData.filter(hero => {
-        const okPromotion = filters.promotion.length === 0 || filters.promotion.includes(hero.promotion);
-        const okPersonality = filters.personality.length === 0 || filters.personality.includes(hero.personality);
+        const okPromotion = filters.promotion.length === 0 || filters.promotion.includes(hero.sort);
+        const okPersonality = filters.personality.length === 0 || filters.personality.includes(hero.sort);
         return okPromotion && okPersonality;
       });
 
