@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <title>武器 | MoData</title>
+    <link rel="stylesheet" href="/mo_data/css/styles.css" />
+    <link rel="stylesheet" href="/mo_data/css/weapons.css" />
+  </head>
+  <body>
+    <div id="nav-container"></div>
+    <!-- 這是導航列會被載入的位置 -->
+
+    <h1></h1>
+
+    <!-- 搜尋框 -->
+    <div id="searchContainer">
+      <label for="searchInput" class="quick-search-label">快速搜尋</label>
+      <input
+        type="text"
+        id="searchInput"
+        placeholder="搜尋名稱..."
+      />
+    </div>
+    <br />
+    <!-- 快速搜尋 -->
+    <div id="filterContainer" class="accordion">
+      <h3 class="accordion-header">快速搜尋條件(可多條件搜尋) ▾</h3>
+      <div class="accordion-content">
+        <div class="filter-group">
+          <span class="filter-label">基礎職業：</span>
+          <button class="filter-btn" data-type="promotion" data-value="刀類">刀類</button>
+          <button class="filter-btn" data-type="promotion" data-value="劍類">劍類</button>
+          <button class="filter-btn" data-type="promotion" data-value="拂塵">拂塵</button>
+          <button class="filter-btn" data-type="promotion" data-value="招幡">招幡</button>
+          <button class="filter-btn" data-type="promotion" data-value="藥鋤">藥鋤</button>
+          <button class="filter-btn" data-type="promotion" data-value="弩弓">弩弓</button>
+          <button class="filter-btn" data-type="promotion" data-value="弩箭">弩箭</button>
+          <button class="filter-btn" data-type="promotion" data-value="符紙">符紙</button>
+        </div>
+        <br />
+        <div class="filter-group">
+          <span class="filter-label">進階職業：</span>
+          <button class="filter-btn" data-type="personality" data-value="大刀">
+            大刀
+          </button>
+          <button class="filter-btn" data-type="personality" data-value="長戟">
+            長戟
+          </button>
+          <button class="filter-btn" data-type="personality" data-value="長鞭">
+            長鞭
+          </button>
+          <button class="filter-btn" data-type="personality" data-value="軟劍">
+            軟劍
+          </button>
+          <button class="filter-btn" data-type="personality" data-value="長棍">
+            長棍
+          </button>
+          <button class="filter-btn" data-type="personality" data-value="禪杖">
+            禪杖
+          </button>
+          <button class="filter-btn" data-type="personality" data-value="竹簡">
+            竹簡
+          </button>
+          <button class="filter-btn" data-type="personality" data-value="葫蘆">
+            葫蘆
+          </button>
+          <button class="filter-btn" data-type="personality" data-value="火箭筒">
+            火箭筒
+          </button>
+          <button class="filter-btn" data-type="personality" data-value="大型十字弩">
+            大型十字弩
+          </button>
+          <button class="filter-btn" data-type="personality" data-value="大型弩箭">
+            大型弩箭
+          </button>
+          <button class="filter-btn" data-type="personality" data-value="火炮彈藥">
+            火炮彈藥
+          </button>
+          <button class="filter-btn" data-type="personality" data-value="符紙">
+            符紙
+          </button>
+        </div>
+        <br />
+        <div class="filter-actions">
+          <button id="clearFilters" class="clear-btn">清除篩選</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 英雄表格 -->
+    <table id="heroes-table">
+      <thead>
+        <tr>
+          <th>圖示</th>
+          <th>名稱</th>
+          <th>等級</th>
+          <th>攻擊</th>
+          <th>命中</th>
+          <th>耐用度</th>
+          <th>材料1</th>
+          <th>材料2</th>
+          <th>材料3</th>
+          <th>材料4</th>
+          <th>材料5</th>
+          <th>說明</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- 資料由 JS 動態載入 -->
+      </tbody>
+    </table>
+
+    <!-- 留白避免按鈕遮住 -->
+    <div style="height: 80px"></div>
+
+    <!-- 回到頂部按鈕 -->
+    <button id="backToTop" title="回到頂部">▲</button>
+
+    <!-- Modal HTML -->
+    <div id="modalOverlay"></div>
+    <div id="modalBox">
+      <span class="close-btn">&times;</span>
+      <div id="modalContent"></div>
+    </div>
+
+    <!-- JavaScript -->
+
+    <div id="footer-container"></div>
+    <!-- 這是頁尾會被載入的位置 -->
+    <script src="/mo_data/js/weapons.js"></script>
+    <script src="/mo_data/js/componentsLoader.js"></script>
+    
+  </body>
+</html>
