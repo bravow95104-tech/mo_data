@@ -5,8 +5,8 @@ document.addEventListener("DOMContentLoaded", () => {
   fetch('/mo_data/data/weapons.json')
     .then(response => response.json())
     .then(data => {
-      // ✅ 預先篩出 class = "裝備"
-      heroesData = data.filter(item => item.class === "裝備");
+      // ✅ 預先篩出 class = "防具"
+      heroesData = data.filter(item => item.class === "防具");
       renderTable(heroesData);
     })
     .catch(error => {
