@@ -10,9 +10,9 @@ document.addEventListener("DOMContentLoaded", () => {
       renderTable(heroesData);
     })
     .catch(error => {
-      console.error('載入武器資料錯誤:', error);
+      console.error('載入防具資料錯誤:', error);
       const tbody = document.querySelector('#heroes-table tbody');
-      tbody.innerHTML = '<tr><td colspan="15">無法載入武器資料</td></tr>';
+      tbody.innerHTML = '<tr><td colspan="15">無法載入防具資料</td></tr>';
     });
 
   // === 搜尋框 ===

@@ -106,30 +106,24 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // === 篩選按鈕 ===
-  document.querySelectorAll('.filter-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      btn.classList.toggle('active');
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    // 切換 active 樣式
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
 
-      const filters = {
-        promotion: [],
-        personality: []
-      };
+    // 取得目前點擊的條件
+    const type = btn.dataset.type;
+    const value = btn.dataset.value;
 
-      document.querySelectorAll('.filter-btn.active').forEach(activeBtn => {
-        const t = activeBtn.dataset.type;
-        const v = activeBtn.dataset.value;
-        if (!filters[t].includes(v)) filters[t].push(v);
-      });
-
-      const filtered = heroesData.filter(hero => {
-        const okPromotion = filters.promotion.length === 0 || filters.promotion.includes(hero.sort);
-        const okPersonality = filters.personality.length === 0 || filters.personality.includes(hero.sort);
-        return okPromotion && okPersonality;
-      });
-
-      renderTable(filtered);
+    // 篩選資料
+    const filtered = heroesData.filter(hero => {
+      if (type === "promotion") return hero.sort === value;
+      if (type === "personality") return hero.sort === value;
+      return true; // 預設全顯示
     });
   });
+    });
 
   // === 清除篩選 ===
   document.getElementById('clearFilters').addEventListener('click', () => {
