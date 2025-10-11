@@ -68,7 +68,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       // === 其他欄位 ===
       const fields = [
-        'name', 'lv', 'Property1', 'Property2', 'Durability',
+        'item', 'lv', 'Property1', 'Property2', 'Durability',
         'material1', 'material2', 'material3', 'material4', 'material5', 'illustrate'
       ];
 
