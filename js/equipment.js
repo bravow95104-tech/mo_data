@@ -52,7 +52,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const imgTd = document.createElement('td');
       if (hero.item) {
         const img = document.createElement('img');
-        img.src = `/mo_data/pic/weapons/${hero.item}.jpg`;
+        img.src = `/mo_data/pic/equipment/${hero.item}.jpg`;
         img.alt = hero.item;
         img.style.width = '40px';
         img.style.height = '40px';
