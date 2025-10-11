@@ -48,12 +48,12 @@ document.addEventListener("DOMContentLoaded", () => {
     data.forEach(hero => {
       const tr = document.createElement('tr');
 
-      // === 第一格：根據 name 自動載入圖片 ===
+      // === 第一格：根據 item 自動載入圖片 ===
       const imgTd = document.createElement('td');
-      if (hero.name) {
+      if (hero.item) {
         const img = document.createElement('img');
-        img.src = `/mo_data/pic/weapons/${hero.name}.jpg`;
-        img.alt = hero.name;
+        img.src = `/mo_data/pic/weapons/${hero.item}.jpg`;
+        img.alt = hero.item;
         img.style.width = '40px';
         img.style.height = '40px';
         img.style.objectFit = 'contain';
