@@ -34,67 +34,62 @@ document.addEventListener("DOMContentLoaded", () => {
     renderTable(filtered);
   });
 
-  // === 產生表格 ===
-  function renderTable(data) {
-    const tbody = document.querySelector('#heroes-table tbody');
-    tbody.innerHTML = '';
+// === 產生表格 ===
+function renderTable(data) {
+  const tbody = document.querySelector('#heroes-table tbody');
+  tbody.innerHTML = '';
 
-    const keyword = searchInput.value.trim().toLowerCase();
+  const keyword = searchInput.value.trim().toLowerCase();
 
-    if (data.length === 0) {
-      tbody.innerHTML = '<tr><td colspan="15">找不到符合條件的藥品</td></tr>';
-      return;
-    }
-
-    data.forEach(hero => {
-      const tr = document.createElement('tr');
-
-      // === 第一格：根據 item 自動載入圖片 ===
-      const imgTd = document.createElement('td');
-      if (hero.item) {
-        const img = document.createElement('img');
-        img.src = `/mo_data/pic/medicine/${hero.item}.jpg`;
-        img.alt = hero.item;
-        img.style.width = '40px';
-        img.style.height = '40px';
-        img.style.objectFit = 'contain';
-        img.onerror = () => {
-          imgTd.textContent = '—'; // 若圖片不存在顯示—
-        };
-        imgTd.appendChild(img);
-      } else {
-        imgTd.textContent = '—';
-      }
-      tr.appendChild(imgTd);
-
-      // === 其他欄位 ===
-      const fields = [
-        'item', 'lv',
-        'material1', 'material2', 'material3', 'material4', 'material5', 'illustrate'
-      ];
-
-      fields.forEach(field => {
-        const td = document.createElement('td');
-        const value = hero[field] !== undefined ? String(hero[field]) : '';
-
-        if (keyword && value.toLowerCase().includes(keyword)) {
-          const regex = new RegExp(`(${keyword})`, 'gi');
-          td.innerHTML = value.replace(regex, '<span class="highlight2">$1</span>');
-        } else {
-          td.textContent = value;
-        }
-
-        tr.appendChild(td);
-      });
-
-      // === 點擊列顯示詳細資料 ===
-      tr.addEventListener('click', () => {
-        showDetailModal(hero);
-      });
-
-      tbody.appendChild(tr);
-    });
+  if (data.length === 0) {
+    tbody.innerHTML = '<tr><td colspan="15">找不到符合條件的藥品</td></tr>';
+    return;
   }
+
+  data.forEach(hero => {
+    const tr = document.createElement('tr');
+
+    // === 第一格：圖片 ===
+    const imgTd = document.createElement('td');
+    if (hero.item) {
+      const img = document.createElement('img');
+      img.src = `/mo_data/pic/medicine/${hero.item}.jpg`;
+      img.alt = hero.item;
+      img.style.width = '40px';
+      img.style.height = '40px';
+      img.style.objectFit = 'contain';
+      img.onerror = () => (imgTd.textContent = '—');
+      imgTd.appendChild(img);
+    } else {
+      imgTd.textContent = '—';
+    }
+    tr.appendChild(imgTd);
+
+    // === 其他欄位（不包含 job）===
+    const fields = [
+      'item', 'lv',
+      'material1', 'material2', 'material3', 'material4', 'material5', 'illustrate'
+    ];
+
+    fields.forEach(field => {
+      const td = document.createElement('td');
+      const value = hero[field] !== undefined ? String(hero[field]) : '';
+
+      if (keyword && value.toLowerCase().includes(keyword)) {
+        const regex = new RegExp(`(${keyword})`, 'gi');
+        td.innerHTML = value.replace(regex, '<span class="highlight2">$1</span>');
+      } else {
+        td.textContent = value;
+      }
+
+      tr.appendChild(td);
+    });
+
+    tr.addEventListener('click', () => showDetailModal(hero));
+    tbody.appendChild(tr);
+  });
+}
+
 
   // === 回到頂部按鈕 ===
   const backToTopBtn = document.getElementById('backToTop');
