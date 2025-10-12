@@ -22,6 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const filtered = heroesData.filter(hero => {
       const targetFields = [
+        hero.job,
         hero.item,
         hero.sort,
         hero.lv,
@@ -119,7 +120,6 @@ document.querySelectorAll('.filter-btn').forEach(btn => {
     // 篩選資料
     const filtered = heroesData.filter(hero => {
       if (type === "promotion") return hero.sort === value;
-      if (type === "personality") return hero.sort === value;
       return true; // 預設全顯示
     });
 
