@@ -55,7 +55,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let filtered = heroesData.filter(hero => {
       // ✅ 篩選按鈕條件
       if (activeFilter) {
-        if (activeFilter.type === "promotion" || activeFilter.type === "personality") {
+        if (activeFilter.type === "promotion" || activeFilter.type === "personality" || activeFilter.type === "job") {
           if (hero.sort !== activeFilter.value) return false;
         }
       }
