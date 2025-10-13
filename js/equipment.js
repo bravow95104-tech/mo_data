@@ -109,39 +109,49 @@ document.addEventListener("DOMContentLoaded", () => {
 // === 篩選按鈕 ===
 document.querySelectorAll('.filter-btn').forEach(btn => {
   btn.addEventListener('click', () => {
-    // 切換 active 樣式
-    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    // 單選：同類型的按鈕只允許一個 active
+    const type = btn.dataset.type;
+    document.querySelectorAll(`.filter-btn[data-type="${type}"]`).forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
 
-    // 取得目前點擊的條件
-    const type = btn.dataset.type;
-    const value = btn.dataset.value;
+    // 取得所有啟用的篩選條件
+    const filters = {
+      promotion: null,
+      personality: null,
+      job: null
+    };
+
+    document.querySelectorAll('.filter-btn.active').forEach(activeBtn => {
+      const t = activeBtn.dataset.type;
+      const v = activeBtn.dataset.value;
+      filters[t] = v;
+    });
 
     // 篩選資料
     const filtered = heroesData.filter(hero => {
-      if (type === "promotion") return hero.sort === value;
-      if (type === "personality") return hero.sort === value;
-      return true; // 預設全顯示
+      const okPromotion = !filters.promotion || hero.sort === filters.promotion;
+      const okPersonality = !filters.personality || hero.sort === filters.personality;
+      const okJob = !filters.job || hero.job === filters.job;
+      return okPromotion && okPersonality && okJob;
     });
 
-    // 更新表格
     renderTable(filtered);
   });
-  });
+});
 
-  // === 清除篩選 ===
-  document.getElementById('clearFilters').addEventListener('click', () => {
-    renderTable(heroesData);
-    searchInput.value = '';
-    document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+// === 清除篩選 ===
+document.getElementById('clearFilters').addEventListener('click', () => {
+  renderTable(heroesData);
+  searchInput.value = '';
+  document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
 
-    // 移除搜尋高亮
-    document.querySelectorAll('.highlight, .highlight2').forEach(el => {
-      const parent = el.parentNode;
-      parent.replaceChild(document.createTextNode(el.textContent), el);
-      parent.normalize();
-    });
+  // 移除搜尋高亮
+  document.querySelectorAll('.highlight, .highlight2').forEach(el => {
+    const parent = el.parentNode;
+    parent.replaceChild(document.createTextNode(el.textContent), el);
+    parent.normalize();
   });
+});
 
   // === Accordion 展開／收合 ===
   document.querySelectorAll('.accordion-header').forEach(header => {
