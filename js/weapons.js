@@ -116,12 +116,13 @@ document.addEventListener("DOMContentLoaded", () => {
       fields.forEach(field => {
         const td = document.createElement('td');
         const value = hero[field] !== undefined ? String(hero[field]) : '';
+        const htmlValue = value.replace(/\n/g, '<br>');
 
         if (keyword && value.toLowerCase().includes(keyword)) {
           const regex = new RegExp(`(${keyword})`, 'gi');
           td.innerHTML = value.replace(regex, '<span class="highlight2">$1</span>');
         } else {
-          td.textContent = value;
+          td.innerHTML = htmlValue;
         }
 
         tr.appendChild(td);
