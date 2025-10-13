@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const keyword = searchInput.value.trim().toLowerCase();
 
     if (data.length === 0) {
-      tbody.innerHTML = '<tr><td colspan="15">找不到符合條件的武器</td></tr>';
+      tbody.innerHTML = '<tr><td colspan="15">找不到符合條件的防具</td></tr>';
       return;
     }
 
@@ -106,33 +106,26 @@ document.addEventListener("DOMContentLoaded", () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 
-// === 篩選按鈕 ===
+// === 篩選按鈕（全域單一篩選模式） ===
 document.querySelectorAll('.filter-btn').forEach(btn => {
   btn.addEventListener('click', () => {
-    // 單選：同類型的按鈕只允許一個 active
-    const type = btn.dataset.type;
-    document.querySelectorAll(`.filter-btn[data-type="${type}"]`).forEach(b => b.classList.remove('active'));
+
+    // 🔹 清除所有按鈕的 active 樣式
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+
+    // 🔹 設定目前這顆為 active
     btn.classList.add('active');
 
-    // 取得所有啟用的篩選條件
-    const filters = {
-      promotion: null,
-      personality: null,
-      job: null
-    };
+    // 🔹 取得目前的篩選條件
+    const type = btn.dataset.type;
+    const value = btn.dataset.value;
 
-    document.querySelectorAll('.filter-btn.active').forEach(activeBtn => {
-      const t = activeBtn.dataset.type;
-      const v = activeBtn.dataset.value;
-      filters[t] = v;
-    });
-
-    // 篩選資料
+    // 🔹 根據不同類型篩選
     const filtered = heroesData.filter(hero => {
-      const okPromotion = !filters.promotion || hero.sort === filters.promotion;
-      const okPersonality = !filters.personality || hero.sort === filters.personality;
-      const okJob = !filters.job || hero.job === filters.job;
-      return okPromotion && okPersonality && okJob;
+      if (type === "promotion") return hero.sort === value;
+      if (type === "personality") return hero.sort === value;
+      if (type === "job") return hero.job === value;
+      return true;
     });
 
     renderTable(filtered);
@@ -152,6 +145,7 @@ document.getElementById('clearFilters').addEventListener('click', () => {
     parent.normalize();
   });
 });
+
 
   // === Accordion 展開／收合 ===
   document.querySelectorAll('.accordion-header').forEach(header => {
