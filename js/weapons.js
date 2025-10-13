@@ -55,8 +55,16 @@ document.addEventListener("DOMContentLoaded", () => {
     let filtered = heroesData.filter(hero => {
       // ✅ 篩選按鈕條件
       if (activeFilter) {
-        if (activeFilter.type === "promotion" || activeFilter.type === "personality" || activeFilter.type === "job") {
-          if (hero.sort !== activeFilter.value) return false;
+        const { type, value } = activeFilter;
+
+        // promotion / personality 比對 hero.sort
+        if (type === "promotion" || type === "personality") {
+          if (hero.sort !== value) return false;
+        }
+
+        // ✅ job 比對 hero.job
+        if (type === "job") {
+          if (hero.job !== value) return false;
         }
       }
 
@@ -65,7 +73,8 @@ document.addEventListener("DOMContentLoaded", () => {
         const targetFields = [
           hero.item,
           hero.sort,
-          hero.lv
+          hero.lv,
+          hero.job
         ].join(' ').toLowerCase();
         if (!targetFields.includes(keyword)) return false;
       }
