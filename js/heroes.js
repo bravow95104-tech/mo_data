@@ -134,8 +134,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
         
         <div class="hero-column-details">
-          <p><strong>光輝掉落：</strong>${hero.aggression_before}</p>
-
+          <p><strong>光輝掉落(掉落較多)：</strong>${hero.fall_high}</p>
+          <p class="section-gap"><strong>光輝掉落(掉落較低)：</strong>${hero.fall_low}</p>
         </div>
       </div>
     `;

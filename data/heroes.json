@@ -22,7 +22,9 @@
     "innate_skill": "東風陣(封印)-群",
     "transformation_skill": "雷鳴颶風",
     "magnification_new": "2.5x",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "烈焰秘境",
+    "fall_low": "迷茫古墳、虎臂水洞"
   },
   {
     "name": "姜子牙",
@@ -47,7 +49,9 @@
     "innate_skill": "怒水封神(冰凍)-群",
     "transformation_skill": "怒水封神",
     "magnification_new": "2x",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "崑崙山、真修洞",
+    "fall_low": "烈焰秘境"
   },
   {
     "name": "左慈",
@@ -72,7 +76,9 @@
     "innate_skill": "怒水封神(冰凍)-群",
     "transformation_skill": "涵虛沒溺陣",
     "magnification_new": "2x",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "鬼煞洞",
+    "fall_low": "羅煞洞-第五層"
   },
   {
     "name": "司馬懿",
@@ -97,7 +103,9 @@
     "innate_skill": "紫魂蛟(單)",
     "transformation_skill": "紫魂蛟滅宴",
     "magnification_new": "2.5x",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "陽燧山",
+    "fall_low": "妖邪迷宮"
   },
   {
     "name": "妲己",
@@ -122,7 +130,9 @@
     "innate_skill": "狐尾鞭",
     "transformation_skill": "狐尾銷魂",
     "magnification_new": "2.5x",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "幽納原野2",
+    "fall_low": "羅煞洞-第五層"
   },
   {
     "name": "盤古",
@@ -147,7 +157,9 @@
     "innate_skill": "",
     "transformation_skill": "開闢洪荒",
     "magnification_new": "2x",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "惡龍秘窟4層、盤古旛陣、金嗷洞三樓",
+    "fall_low": "墨家名穴"
   },
   {
     "name": "呂布",
@@ -172,7 +184,9 @@
     "innate_skill": "",
     "transformation_skill": "橫掃",
     "magnification_new": "2.5x",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "烈焰秘境",
+    "fall_low": "羅煞洞-第四層"
   },
   {
     "name": "國雄",
@@ -197,7 +211,9 @@
     "innate_skill": "",
     "transformation_skill": "強棒打擊",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "奔雷嶺、夕之朝雲、幻之烏雲、大漩渦、華山、泰山、天山",
+    "fall_low": "西桑耶沙漠、東桑耶沙漠、南桑耶沙漠"
   },
   {
     "name": "林沖",
@@ -222,7 +238,9 @@
     "innate_skill": "",
     "transformation_skill": "迅急連擊",
     "magnification_new": "2.5x",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "修羅洞",
+    "fall_low": "烈焰山"
   },
   {
     "name": "周瑜",
@@ -247,7 +265,9 @@
     "innate_skill": "雷神鎖",
     "transformation_skill": "神火雷鎖",
     "magnification_new": "2x",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "臥虎高原、荒骨高原、匯星高原、月鏡湖、北邙山、巨門關、迷蹤列島、蓬萊仙島、伏龍洞、天煞洞第1層、天煞洞第2層",
+    "fall_low": "陽燧山"
   },
   {
     "name": "吳用",
@@ -272,7 +292,9 @@
     "innate_skill": "地轉石移(石化)-群",
     "transformation_skill": "地轉石移",
     "magnification_new": "2x",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "惡龍秘窟4層、盤古旛陣、金嗷洞三樓",
+    "fall_low": "飛煞洞、地下墳場"
   },
   {
     "name": "女媧",
@@ -297,7 +319,9 @@
     "innate_skill": "",
     "transformation_skill": "狙殺連擊",
     "magnification_new": "2x",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "妖邪迷宮",
+    "fall_low": "惡龍秘窟1層、惡龍秘窟2層、惡龍秘窟3層"
   },
   {
     "name": "卞氏",
@@ -322,7 +346,9 @@
     "innate_skill": "金相召來",
     "transformation_skill": "鋒相鉥心",
     "magnification_new": "2.5x",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "-",
+    "fall_low": "虎臂水洞、寧虎林"
   },
   {
     "name": "甘夫人",
@@ -347,7 +373,9 @@
     "innate_skill": "",
     "transformation_skill": "劍閃散華",
     "magnification_new": "2.5x",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "-",
+    "fall_low": "虎臂水洞、寧虎林"
   },
   {
     "name": "潘夫人",
@@ -372,7 +400,9 @@
     "innate_skill": "纏水生成",
     "transformation_skill": "冷冽寒霜",
     "magnification_new": "2.5x",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "-",
+    "fall_low": "虎臂水洞、寧虎林"
   },
   {
     "name": "神農",
@@ -397,7 +427,9 @@
     "innate_skill": "紅沙陣(群)",
     "transformation_skill": "土動命移陣",
     "magnification_new": "2x",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "幽納原野1",
+    "fall_low": "崑崙山、真修洞"
   },
   {
     "name": "于吉",
@@ -422,7 +454,9 @@
     "innate_skill": "風吼陣(群)",
     "transformation_skill": "木雷光影陣",
     "magnification_new": "2x",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "幽納原野2",
+    "fall_low": "金嗷洞一樓、金嗷洞二樓"
   },
   {
     "name": "典韋",
@@ -447,7 +481,9 @@
     "innate_skill": "",
     "transformation_skill": "迅急連擊",
     "magnification_new": "2x",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "奔雷嶺、夕之朝雲、幻之烏雲、大漩渦、華山、泰山、天山",
+    "fall_low": "藏玄洞"
   },
   {
     "name": "哪吒",
@@ -472,7 +508,9 @@
     "innate_skill": "",
     "transformation_skill": "狙殺連擊",
     "magnification_new": "2.5x",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "西桑耶沙漠、東桑耶沙漠、南桑耶沙漠",
+    "fall_low": "羅煞洞-第四層"
   },
   {
     "name": "通天教主",
@@ -497,7 +535,9 @@
     "innate_skill": "烈燄陣(群)",
     "transformation_skill": "火台炬胤陣",
     "magnification_new": "2x",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "陽燧山",
+    "fall_low": "皇陵"
   },
   {
     "name": "張遼",
@@ -522,7 +562,9 @@
     "innate_skill": "",
     "transformation_skill": "禁地劍圍",
     "magnification_new": "2x",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "烈焰山",
+    "fall_low": "奔雷嶺、夕之朝雲、幻之烏雲、大漩渦、華山、泰山、天山"
   },
   {
     "name": "燃燈道人",
@@ -547,7 +589,9 @@
     "innate_skill": "烈燄陣(群)",
     "transformation_skill": "火台炬胤陣",
     "magnification_new": "2x",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "妖邪迷宮",
+    "fall_low": "烈焰秘境"
   },
   {
     "name": "愛麗絲",
@@ -572,7 +616,9 @@
     "innate_skill": "強化醫療(補血)",
     "transformation_skill": "癒傷術",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "金嗷洞一樓、金嗷洞二樓",
+    "fall_low": "飛煞洞、地下墳場"
   },
   {
     "name": "龍吉公主",
@@ -597,7 +643,9 @@
     "innate_skill": "紅水陣(群)",
     "transformation_skill": "水袞獄傷陣",
     "magnification_new": "2.5x",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "皇陵",
+    "fall_low": "陽燧山"
   },
   {
     "name": "許褚",
@@ -622,7 +670,9 @@
     "innate_skill": "",
     "transformation_skill": "會心強擊",
     "magnification_new": "2x",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "羅煞洞-第四層",
+    "fall_low": "烈焰秘境"
   },
   {
     "name": "楊戩",
@@ -647,7 +697,9 @@
     "innate_skill": "",
     "transformation_skill": "會心強擊",
     "magnification_new": "2x",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "玄日峰、玄日岩",
+    "fall_low": "陽燧山"
   },
   {
     "name": "公孫勝",
@@ -672,7 +724,9 @@
     "innate_skill": "金光陣(群)",
     "transformation_skill": "金象噬魂陣",
     "magnification_new": "2x",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "金嗷洞一樓、金嗷洞二樓",
+    "fall_low": "玄日洞"
   },
   {
     "name": "關羽",
@@ -697,7 +751,9 @@
     "innate_skill": "",
     "transformation_skill": "會心強擊",
     "magnification_new": "2.5x",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "烈焰山",
+    "fall_low": "皇陵"
   },
   {
     "name": "趙雲",
@@ -722,7 +778,9 @@
     "innate_skill": "",
     "transformation_skill": "蒼色星槍",
     "magnification_new": "2x",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "迷茫古墳、虎臂水洞",
+    "fall_low": "奔雷嶺、夕之朝雲、幻之烏雲、大漩渦、華山、泰山、天山"
   },
   {
     "name": "伏羲",
@@ -747,7 +805,9 @@
     "innate_skill": "百擊刃斬符(單)",
     "transformation_skill": "天金刃符",
     "magnification_new": "2x",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "羅煞洞-第五層",
+    "fall_low": "迷茫古墳、虎臂水洞"
   },
   {
     "name": "太歲寶寶",
@@ -772,7 +832,9 @@
     "innate_skill": "百擊刃斬符(單)",
     "transformation_skill": "天金刃符",
     "magnification_new": "#N/A",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "妖邪迷宮",
+    "fall_low": "末日京城、地牢、水牢、火牢、死牢"
   },
   {
     "name": "扈三娘",
@@ -797,7 +859,9 @@
     "innate_skill": "",
     "transformation_skill": "會心強擊",
     "magnification_new": "2x",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "修羅洞",
+    "fall_low": "羅煞洞-第一層、羅煞洞-第二層、羅煞洞-第三層"
   },
   {
     "name": "孫策",
@@ -822,7 +886,9 @@
     "innate_skill": "",
     "transformation_skill": "會心強擊",
     "magnification_new": "2.5x",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "飛煞洞、地下墳場",
+    "fall_low": "鬼煞洞"
   },
   {
     "name": "聞仲",
@@ -847,7 +913,9 @@
     "innate_skill": "驚魄刺刃(單)",
     "transformation_skill": "應元雷法",
     "magnification_new": "2x",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "惡龍秘窟1層、惡龍秘窟2層、惡龍秘窟3層",
+    "fall_low": "奔雷嶺、夕之朝雲、幻之烏雲、大漩渦、華山、泰山、天山"
   },
   {
     "name": "曹操",
@@ -872,7 +940,9 @@
     "innate_skill": "轟天擊斷(單)",
     "transformation_skill": "天土擊符",
     "magnification_new": "2.5x",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "惡龍秘窟4層、盤古旛陣、金嗷洞三樓",
+    "fall_low": "修羅洞"
   },
   {
     "name": "張飛",
@@ -897,7 +967,9 @@
     "innate_skill": "",
     "transformation_skill": "會心強擊",
     "magnification_new": "2x",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "沰水道、銀沙河、地下通道、赤松林、飛鶴山、可汗沙漠、天朝山、池底洞窟、東海龍宮、龍宮大殿、靈山、峨嵋山",
+    "fall_low": "惡龍秘窟1層、惡龍秘窟2層、惡龍秘窟3層"
   },
   {
     "name": "天眼軍師",
@@ -922,7 +994,9 @@
     "innate_skill": "百擊刃斬(單)",
     "transformation_skill": "長。打神刃",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "惡龍秘窟1層、惡龍秘窟2層、惡龍秘窟3層",
+    "fall_low": "末日京城、地牢、水牢、火牢、死牢"
   },
   {
     "name": "蟠桃仙女",
@@ -947,7 +1021,9 @@
     "innate_skill": "癒傷術",
     "transformation_skill": "治癒之風",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "幽納原野1",
+    "fall_low": "修羅洞"
   },
   {
     "name": "虎威將軍",
@@ -959,7 +1035,7 @@
     "element": "火",
     "str": 70,
     "int": 38,
-    "vit": 53,
+    "vit": 52,
     "agi": 45,
     "luk": 42,
     "aggression_before": 4,
@@ -972,11 +1048,13 @@
     "innate_skill": "",
     "transformation_skill": "會心強擊",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "迷茫古墳、虎臂水洞",
+    "fall_low": "崑崙山、真修洞"
   },
   {
     "name": "宮本武藏",
-    "glory": "二天一刀之徵",
+    "glory": "二天一流之徵",
     "promotion": "武者",
     "initial": 46,
     "traits": 950,
@@ -997,7 +1075,9 @@
     "innate_skill": "",
     "transformation_skill": "二天空明",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "烈焰秘境",
+    "fall_low": "金嗷洞一樓、金嗷洞二樓"
   },
   {
     "name": "佐佐木小次郎",
@@ -1022,7 +1102,9 @@
     "innate_skill": "",
     "transformation_skill": "嚴流落切",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "幽納原野2",
+    "fall_low": "地下水道"
   },
   {
     "name": "羊佗",
@@ -1047,7 +1129,9 @@
     "innate_skill": "",
     "transformation_skill": "情意綿綿拳",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "活動",
+    "fall_low": "活動"
   },
   {
     "name": "玉鼎真人",
@@ -1072,7 +1156,9 @@
     "innate_skill": "裂金術(單)",
     "transformation_skill": "金象噬魂陣",
     "magnification_new": "2x",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "崑崙山、真修洞",
+    "fall_low": "地下水道"
   },
   {
     "name": "雲霄",
@@ -1097,7 +1183,9 @@
     "innate_skill": "裂金術(單)",
     "transformation_skill": "金象噬魂陣",
     "magnification_new": "2x",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "羅煞洞-第四層",
+    "fall_low": "幽冥深淵、垃圾場第一層、垃圾場第二層"
   },
   {
     "name": "火靈聖母",
@@ -1122,7 +1210,9 @@
     "innate_skill": "三昧真火(單)",
     "transformation_skill": "火台炬胤陣",
     "magnification_new": "2x",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "陽燧山",
+    "fall_low": "飛煞洞、地下墳場"
   },
   {
     "name": "陸遜",
@@ -1147,7 +1237,9 @@
     "innate_skill": "寒冰術(單)",
     "transformation_skill": "水袞獄傷陣",
     "magnification_new": "2x",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "烈焰秘境",
+    "fall_low": "崑崙山、真修洞"
   },
   {
     "name": "太乙真人",
@@ -1172,7 +1264,9 @@
     "innate_skill": "三昧真火(單)",
     "transformation_skill": "火台炬胤陣",
     "magnification_new": "2x",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "西桑耶沙漠、東桑耶沙漠、南桑耶沙漠",
+    "fall_low": "玄日洞"
   },
   {
     "name": "小護士",
@@ -1197,7 +1291,9 @@
     "innate_skill": "妙手回春(補血)",
     "transformation_skill": "強化醫療",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "藏玄洞",
+    "fall_low": "幽納原野2"
   },
   {
     "name": "莉莉絲",
@@ -1222,7 +1318,9 @@
     "innate_skill": "三昧真火(單)",
     "transformation_skill": "地獄火",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "幽冥深淵、垃圾場第一層、垃圾場第二層",
+    "fall_low": "陽燧山"
   },
   {
     "name": "彩衣天女",
@@ -1247,7 +1345,9 @@
     "innate_skill": "五雷術(單)",
     "transformation_skill": "木雷光影陣",
     "magnification_new": "2x",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "修羅洞",
+    "fall_low": "玄日洞"
   },
   {
     "name": "荀攸",
@@ -1272,7 +1372,9 @@
     "innate_skill": "五雷術(單)",
     "transformation_skill": "木雷光影陣",
     "magnification_new": "2x",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "地下水道",
+    "fall_low": "沰水道、銀沙河、地下通道、赤松林、飛鶴山、可汗沙漠、天朝山、池底洞窟、東海龍宮、龍宮大殿、靈山、峨嵋山"
   },
   {
     "name": "水滴精靈",
@@ -1297,7 +1399,9 @@
     "innate_skill": "寒冰術(單)",
     "transformation_skill": "水袞獄傷陣",
     "magnification_new": "2x",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "玉虛宮、寂靜死海",
+    "fall_low": "陽燧山"
   },
   {
     "name": "姜維",
@@ -1322,7 +1426,9 @@
     "innate_skill": "五雷術(單)",
     "transformation_skill": "天火召臨",
     "magnification_new": "2.5x",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "金嗷洞一樓、金嗷洞二樓",
+    "fall_low": "飛煞洞、地下墳場"
   },
   {
     "name": "胡喜媚",
@@ -1347,7 +1453,9 @@
     "innate_skill": "裂金術(單)",
     "transformation_skill": "金象噬魂陣",
     "magnification_new": "2x",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "奔雷嶺、夕之朝雲、幻之烏雲、大漩渦、華山、泰山、天山",
+    "fall_low": "幽冥深淵、垃圾場第一層、垃圾場第二層"
   },
   {
     "name": "魔力精靈",
@@ -1372,7 +1480,9 @@
     "innate_skill": "破擊斷符(單)",
     "transformation_skill": "天土擊符",
     "magnification_new": "2x",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "皇陵",
+    "fall_low": "幽冥深淵、垃圾場第一層、垃圾場第二層"
   },
   {
     "name": "魔禮青",
@@ -1397,7 +1507,9 @@
     "innate_skill": "裂金術(單)",
     "transformation_skill": "金象噬魂陣",
     "magnification_new": "2x",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "崑崙山、真修洞",
+    "fall_low": "妖邪洞、幽納古林"
   },
   {
     "name": "程昱",
@@ -1422,7 +1534,9 @@
     "innate_skill": "淩刺刃符(單)",
     "transformation_skill": "天木刺符",
     "magnification_new": "2x",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "羅煞洞-第一層、羅煞洞-第二層、羅煞洞-第三層",
+    "fall_low": "奔雷嶺、夕之朝雲、幻之烏雲、大漩渦、華山、泰山、天山"
   },
   {
     "name": "宋江",
@@ -1447,7 +1561,9 @@
     "innate_skill": "擊斷刺符(單)",
     "transformation_skill": "天水斷符",
     "magnification_new": "2x",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "迷茫古墳、虎臂水洞",
+    "fall_low": "金嗷洞一樓、金嗷洞二樓"
   },
   {
     "name": "徐庶",
@@ -1472,7 +1588,9 @@
     "innate_skill": "破擊斷符(單)",
     "transformation_skill": "天土擊符",
     "magnification_new": "2.5x",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "鬼煞洞",
+    "fall_low": "沰水道、銀沙河、地下通道、赤松林、飛鶴山、可汗沙漠、天朝山、池底洞窟、東海龍宮、龍宮大殿、靈山、峨嵋山"
   },
   {
     "name": "孫權",
@@ -1497,7 +1615,9 @@
     "innate_skill": "擊斷刺符(單)",
     "transformation_skill": "天水斷符",
     "magnification_new": "2x",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "妖邪洞、幽納古林",
+    "fall_low": "飛煞洞、地下墳場"
   },
   {
     "name": "郭嘉",
@@ -1522,7 +1642,9 @@
     "innate_skill": "裂金術(單)",
     "transformation_skill": "算無疑策",
     "magnification_new": "2.5x",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "鬼煞洞",
+    "fall_low": "妖邪洞、幽納古林"
   },
   {
     "name": "龐統",
@@ -1547,7 +1669,9 @@
     "innate_skill": "裂斬擊符(單)",
     "transformation_skill": "天火斬符",
     "magnification_new": "2.5x",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "妖邪洞、幽納古林",
+    "fall_low": "惡龍秘窟1層、惡龍秘窟2層、惡龍秘窟3層"
   },
   {
     "name": "荀彧",
@@ -1572,7 +1696,9 @@
     "innate_skill": "淩刺刃符(單)",
     "transformation_skill": "天木刺符",
     "magnification_new": "2x",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "翠竹林、潛龍潭、蕈菇林、琅琊山、滄之雲海",
+    "fall_low": "皇陵"
   },
   {
     "name": "魯肅",
@@ -1597,7 +1723,9 @@
     "innate_skill": "淩刺刃符(單)",
     "transformation_skill": "天木刺符",
     "magnification_new": "2x",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "玉虛宮、寂靜死海",
+    "fall_low": "妖邪洞、幽納古林"
   },
   {
     "name": "姬發",
@@ -1622,7 +1750,9 @@
     "innate_skill": "擊斷刺符(單)",
     "transformation_skill": "天金刃符",
     "magnification_new": "2x",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "沰水道、銀沙河、地下通道、赤松林、飛鶴山、可汗沙漠、天朝山、池底洞窟、東海龍宮、龍宮大殿、靈山、峨嵋山",
+    "fall_low": "奔雷嶺、夕之朝雲、幻之烏雲、大漩渦、華山、泰山、天山"
   },
   {
     "name": "男僕",
@@ -1647,7 +1777,9 @@
     "innate_skill": "裂金術(單)",
     "transformation_skill": "金象噬魂陣",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "迷茫古墳、虎臂水洞",
+    "fall_low": "幽冥深淵、垃圾場第一層、垃圾場第二層"
   },
   {
     "name": "紂王",
@@ -1672,7 +1804,9 @@
     "innate_skill": "",
     "transformation_skill": "會心強擊",
     "magnification_new": "2x",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "陽燧山",
+    "fall_low": "鬼煞洞"
   },
   {
     "name": "黃天化",
@@ -1697,7 +1831,9 @@
     "innate_skill": "",
     "transformation_skill": "會心強擊",
     "magnification_new": "2x",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "玄日峰、玄日岩",
+    "fall_low": "鬼煞洞"
   },
   {
     "name": "關勝",
@@ -1722,7 +1858,9 @@
     "innate_skill": "",
     "transformation_skill": "會心強擊",
     "magnification_new": "2.5x",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "羅煞洞-第一層、羅煞洞-第二層、羅煞洞-第三層",
+    "fall_low": "幽冥深淵、垃圾場第一層、垃圾場第二層"
   },
   {
     "name": "史進",
@@ -1747,7 +1885,9 @@
     "innate_skill": "",
     "transformation_skill": "會心強擊",
     "magnification_new": "2.5x",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "西桑耶沙漠、東桑耶沙漠、南桑耶沙漠",
+    "fall_low": "陽燧山"
   },
   {
     "name": "李逵",
@@ -1772,7 +1912,9 @@
     "innate_skill": "",
     "transformation_skill": "會心強擊",
     "magnification_new": "2x",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "墨家名穴",
+    "fall_low": "飛煞洞、地下墳場"
   },
   {
     "name": "太史慈",
@@ -1797,7 +1939,9 @@
     "innate_skill": "",
     "transformation_skill": "會心強擊",
     "magnification_new": "2x",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "玄日洞",
+    "fall_low": "惡龍秘窟4層、盤古旛陣、金嗷洞三樓"
   },
   {
     "name": "魯智深",
@@ -1822,7 +1966,9 @@
     "innate_skill": "",
     "transformation_skill": "會心強擊",
     "magnification_new": "2x",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "末日京城、地牢、水牢、火牢、死牢",
+    "fall_low": "玄日洞"
   },
   {
     "name": "關銀屏",
@@ -1847,7 +1993,9 @@
     "innate_skill": "",
     "transformation_skill": "會心強擊",
     "magnification_new": "2.5x",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "墨家名穴",
+    "fall_low": "陽燧山"
   },
   {
     "name": "董卓",
@@ -1872,7 +2020,9 @@
     "innate_skill": "",
     "transformation_skill": "會心強擊",
     "magnification_new": "2x",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "迷茫古墳、虎臂水洞",
+    "fall_low": "陽燧山"
   },
   {
     "name": "關興",
@@ -1897,7 +2047,9 @@
     "innate_skill": "",
     "transformation_skill": "會心強擊",
     "magnification_new": "2x",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "末日京城、地牢、水牢、火牢、死牢",
+    "fall_low": "奔雷嶺、夕之朝雲、幻之烏雲、大漩渦、華山、泰山、天山"
   },
   {
     "name": "龐德",
@@ -1922,7 +2074,9 @@
     "innate_skill": "",
     "transformation_skill": "會心強擊",
     "magnification_new": "2x",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "烈焰秘境",
+    "fall_low": "修羅洞"
   },
   {
     "name": "夏侯惇",
@@ -1947,7 +2101,9 @@
     "innate_skill": "",
     "transformation_skill": "會心強擊",
     "magnification_new": "2x",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "玄日洞",
+    "fall_low": "烈焰山"
   },
   {
     "name": "阿魯巴巴",
@@ -1972,7 +2128,9 @@
     "innate_skill": "",
     "transformation_skill": "會心強擊",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "奔雷嶺、夕之朝雲、幻之烏雲、大漩渦、華山、泰山、天山",
+    "fall_low": "惡龍秘窟4層、盤古旛陣、金嗷洞三樓"
   },
   {
     "name": "普賢真人",
@@ -1997,7 +2155,9 @@
     "innate_skill": "",
     "transformation_skill": "狙殺連擊",
     "magnification_new": "2x",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "玄日洞",
+    "fall_low": "幽冥深淵、垃圾場第一層、垃圾場第二層"
   },
   {
     "name": "王貴人",
@@ -2022,7 +2182,9 @@
     "innate_skill": "",
     "transformation_skill": "狙殺連擊",
     "magnification_new": "2x",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "陽燧山",
+    "fall_low": "幽冥深淵、垃圾場第一層、垃圾場第二層"
   },
   {
     "name": "魏延",
@@ -2047,7 +2209,9 @@
     "innate_skill": "",
     "transformation_skill": "狙殺連擊",
     "magnification_new": "2x",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "惡龍秘窟1層、惡龍秘窟2層、惡龍秘窟3層",
+    "fall_low": "修羅洞"
   },
   {
     "name": "瓊英",
@@ -2072,7 +2236,9 @@
     "innate_skill": "",
     "transformation_skill": "狙殺連擊",
     "magnification_new": "2x",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "玉虛宮、寂靜死海",
+    "fall_low": "葬心塚、同心林、祈願湖、哭腸崖"
   },
   {
     "name": "雲中子",
@@ -2097,7 +2263,9 @@
     "innate_skill": "",
     "transformation_skill": "狙殺連擊",
     "magnification_new": "2x",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "陽燧山",
+    "fall_low": "琉球仙島、玄冥煉獄"
   },
   {
     "name": "劉備",
@@ -2122,7 +2290,9 @@
     "innate_skill": "",
     "transformation_skill": "狙殺連擊",
     "magnification_new": "2.5x",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "末日京城、地牢、水牢、火牢、死牢",
+    "fall_low": "幽冥深淵、垃圾場第一層、垃圾場第二層"
   },
   {
     "name": "張郃",
@@ -2147,7 +2317,9 @@
     "innate_skill": "",
     "transformation_skill": "狙殺連擊",
     "magnification_new": "2x",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "玄日峰、玄日岩",
+    "fall_low": "玄日洞"
   },
   {
     "name": "馬良",
@@ -2172,7 +2344,9 @@
     "innate_skill": "",
     "transformation_skill": "迅急連擊",
     "magnification_new": "2x",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "翠竹林、潛龍潭、蕈菇林、琅琊山、滄之雲海",
+    "fall_low": "墨家名穴"
   },
   {
     "name": "花榮",
@@ -2197,7 +2371,9 @@
     "innate_skill": "",
     "transformation_skill": "百步穿楊",
     "magnification_new": "2x",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "幽納原野2",
+    "fall_low": "修羅洞"
   },
   {
     "name": "黃忠",
@@ -2222,7 +2398,9 @@
     "innate_skill": "",
     "transformation_skill": "百步穿楊",
     "magnification_new": "2.5x",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "地下水道",
+    "fall_low": "玄日洞"
   },
   {
     "name": "夏侯淵",
@@ -2247,7 +2425,9 @@
     "innate_skill": "",
     "transformation_skill": "狙殺連擊",
     "magnification_new": "2x",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "幽冥深淵、垃圾場第一層、垃圾場第二層",
+    "fall_low": "琉球仙島、玄冥煉獄"
   },
   {
     "name": "巫毒精靈",
@@ -2272,7 +2452,9 @@
     "innate_skill": "",
     "transformation_skill": "迅急連擊",
     "magnification_new": "2.5x",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "鬼煞洞",
+    "fall_low": "藏玄洞"
   },
   {
     "name": "女僕",
@@ -2297,7 +2479,9 @@
     "innate_skill": "",
     "transformation_skill": "迅急連擊",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "迷茫古墳、虎臂水洞",
+    "fall_low": "羅煞洞-第一層、羅煞洞-第二層、羅煞洞-第三層"
   },
   {
     "name": "徐晃",
@@ -2322,7 +2506,9 @@
     "innate_skill": "",
     "transformation_skill": "超能解放",
     "magnification_new": "2x",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "妖邪迷宮",
+    "fall_low": "金嗷洞一樓、金嗷洞二樓"
   },
   {
     "name": "甘寧",
@@ -2347,7 +2533,9 @@
     "innate_skill": "",
     "transformation_skill": "迅急連擊",
     "magnification_new": "2x",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "地下水道",
+    "fall_low": "玄日峰、玄日岩"
   },
   {
     "name": "張苞",
@@ -2372,7 +2560,9 @@
     "innate_skill": "",
     "transformation_skill": "迅急連擊",
     "magnification_new": "2x",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "沰水道、銀沙河、地下通道、赤松林、飛鶴山、可汗沙漠、天朝山、池底洞窟、東海龍宮、龍宮大殿、靈山、峨嵋山",
+    "fall_low": "玉虛宮、寂靜死海"
   },
   {
     "name": "武松",
@@ -2397,7 +2587,9 @@
     "innate_skill": "",
     "transformation_skill": "迅急連擊",
     "magnification_new": "2.5x",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "玄日洞",
+    "fall_low": "羅煞洞-第一層、羅煞洞-第二層、羅煞洞-第三層"
   },
   {
     "name": "華雄",
@@ -2422,7 +2614,9 @@
     "innate_skill": "",
     "transformation_skill": "厄鬼暴刃",
     "magnification_new": "2.5x",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "幽納原野1",
+    "fall_low": "陽燧山"
   },
   {
     "name": "馬超",
@@ -2447,7 +2641,9 @@
     "innate_skill": "",
     "transformation_skill": "迅急連擊",
     "magnification_new": "2x",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "妖邪洞、幽納古林",
+    "fall_low": "西桑耶沙漠、東桑耶沙漠、南桑耶沙漠"
   },
   {
     "name": "響馬茜",
@@ -2472,7 +2668,9 @@
     "innate_skill": "",
     "transformation_skill": "迅急連擊",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "幽納原野2",
+    "fall_low": "妖邪迷宮"
   },
   {
     "name": "君君",
@@ -2497,7 +2695,9 @@
     "innate_skill": "",
     "transformation_skill": "迅急連擊",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "臥虎高原、荒骨高原、匯星高原、月鏡湖、北邙山、巨門關、迷蹤列島、蓬萊仙島、伏龍洞、天煞洞第1層、天煞洞第2層",
+    "fall_low": "玉虛宮、寂靜死海"
   },
   {
     "name": "賭小兔",
@@ -2522,7 +2722,9 @@
     "innate_skill": "",
     "transformation_skill": "迅急連擊",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "妖邪洞、幽納古林",
+    "fall_low": "鬼煞洞"
   },
   {
     "name": "土行孫",
@@ -2547,7 +2749,9 @@
     "innate_skill": "",
     "transformation_skill": "狙殺連擊",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "幽納原野1",
+    "fall_low": "玉虛宮、寂靜死海"
   },
   {
     "name": "鄧嬋玉",
@@ -2572,7 +2776,9 @@
     "innate_skill": "",
     "transformation_skill": "狙殺連擊",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "羅煞洞-第五層",
+    "fall_low": "奔雷嶺、夕之朝雲、幻之烏雲、大漩渦、華山、泰山、天山"
   },
   {
     "name": "趙公明",
@@ -2597,7 +2803,9 @@
     "innate_skill": "",
     "transformation_skill": "狙殺連擊",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "金嗷洞一樓、金嗷洞二樓",
+    "fall_low": "皇陵"
   },
   {
     "name": "張清",
@@ -2622,7 +2830,9 @@
     "innate_skill": "",
     "transformation_skill": "狙殺連擊",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "修羅洞",
+    "fall_low": "妖邪洞、幽納古林"
   },
   {
     "name": "孫尚香",
@@ -2647,7 +2857,9 @@
     "innate_skill": "",
     "transformation_skill": "狙殺連擊",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "鬼煞洞",
+    "fall_low": "羅煞洞-第五層"
   },
   {
     "name": "殷洪",
@@ -2672,7 +2884,9 @@
     "innate_skill": "",
     "transformation_skill": "狙殺連擊",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "墨家名穴",
+    "fall_low": "幽冥深淵、垃圾場第一層、垃圾場第二層"
   },
   {
     "name": "黃月英",
@@ -2697,7 +2911,9 @@
     "innate_skill": "",
     "transformation_skill": "狙殺連擊",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "翠竹林、潛龍潭、蕈菇林、琅琊山、滄之雲海",
+    "fall_low": "烈焰山"
   },
   {
     "name": "張順",
@@ -2722,7 +2938,9 @@
     "innate_skill": "",
     "transformation_skill": "狙殺連擊",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "鬼煞洞",
+    "fall_low": "玄日峰、玄日岩"
   },
   {
     "name": "馬忠",
@@ -2747,7 +2965,9 @@
     "innate_skill": "",
     "transformation_skill": "狙殺連擊",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "-",
+    "fall_low": "妖邪洞、幽納古林"
   },
   {
     "name": "劉唐",
@@ -2772,7 +2992,9 @@
     "innate_skill": "",
     "transformation_skill": "狙殺連擊",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "墨家名穴",
+    "fall_low": "妖邪洞、幽納古林"
   },
   {
     "name": "諸葛惠",
@@ -2797,7 +3019,9 @@
     "innate_skill": "",
     "transformation_skill": "狙殺連擊",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "惡龍秘窟1層、惡龍秘窟2層、惡龍秘窟3層",
+    "fall_low": "臥虎高原、荒骨高原、匯星高原、月鏡湖、北邙山、巨門關、迷蹤列島、蓬萊仙島、伏龍洞、天煞洞第1層、天煞洞第2層"
   },
   {
     "name": "袁紹",
@@ -2822,7 +3046,9 @@
     "innate_skill": "",
     "transformation_skill": "狙殺連擊",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "飛煞洞、地下墳場",
+    "fall_low": "玄日峰、玄日岩"
   },
   {
     "name": "芙蓉",
@@ -2847,7 +3073,9 @@
     "innate_skill": "",
     "transformation_skill": "狙殺連擊",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "藏玄洞",
+    "fall_low": "皇陵"
   },
   {
     "name": "黃巾妖鬥士",
@@ -2872,7 +3100,9 @@
     "innate_skill": "",
     "transformation_skill": "狙殺連擊",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "西桑耶沙漠、東桑耶沙漠、南桑耶沙漠",
+    "fall_low": "鬼煞洞"
   },
   {
     "name": "小玲",
@@ -2897,7 +3127,9 @@
     "innate_skill": "",
     "transformation_skill": "狙殺連擊",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "金嗷洞一樓、金嗷洞二樓",
+    "fall_low": "玉虛宮、寂靜死海"
   },
   {
     "name": "夏麗",
@@ -2922,7 +3154,9 @@
     "innate_skill": "",
     "transformation_skill": "狙殺連擊",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "西桑耶沙漠、東桑耶沙漠、南桑耶沙漠",
+    "fall_low": "葬心塚、同心林、祈願湖、哭腸崖"
   },
   {
     "name": "好人君",
@@ -2947,7 +3181,9 @@
     "innate_skill": "",
     "transformation_skill": "狙殺連擊",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "沰水道、銀沙河、地下通道、赤松林、飛鶴山、可汗沙漠、天朝山、池底洞窟、東海龍宮、龍宮大殿、靈山、峨嵋山",
+    "fall_low": "-"
   },
   {
     "name": "呂蒙",
@@ -2972,7 +3208,9 @@
     "innate_skill": "",
     "transformation_skill": "狙殺連擊",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "地下水道",
+    "fall_low": "幽冥深淵、垃圾場第一層、垃圾場第二層"
   },
   {
     "name": "秦大夫",
@@ -2997,7 +3235,9 @@
     "innate_skill": "",
     "transformation_skill": "狙殺連擊",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "羅煞洞-第五層",
+    "fall_low": "崑崙山、真修洞"
   },
   {
     "name": "茶茶",
@@ -3022,7 +3262,9 @@
     "innate_skill": "",
     "transformation_skill": "狙殺連擊",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "陽燧山",
+    "fall_low": "沰水道、銀沙河、地下通道、赤松林、飛鶴山、可汗沙漠、天朝山、池底洞窟、東海龍宮、龍宮大殿、靈山、峨嵋山"
   },
   {
     "name": "魔禮海",
@@ -3047,7 +3289,9 @@
     "innate_skill": "",
     "transformation_skill": "狙殺連擊",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "崑崙山、真修洞",
+    "fall_low": "西桑耶沙漠、東桑耶沙漠、南桑耶沙漠"
   },
   {
     "name": "小艾",
@@ -3072,7 +3316,9 @@
     "innate_skill": "",
     "transformation_skill": "狙殺連擊",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "墨家名穴",
+    "fall_low": "玉虛宮、寂靜死海"
   },
   {
     "name": "孫堅",
@@ -3097,7 +3343,9 @@
     "innate_skill": "",
     "transformation_skill": "會心強擊",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "羅煞洞-第一層、羅煞洞-第二層、羅煞洞-第三層",
+    "fall_low": "鬼煞洞"
   },
   {
     "name": "李靖",
@@ -3122,7 +3370,9 @@
     "innate_skill": "",
     "transformation_skill": "會心強擊",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "玄日峰、玄日岩",
+    "fall_low": "葬心塚、同心林、祈願湖、哭腸崖"
   },
   {
     "name": "盧俊義",
@@ -3147,7 +3397,9 @@
     "innate_skill": "",
     "transformation_skill": "會心強擊",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "臥虎高原、荒骨高原、匯星高原、月鏡湖、北邙山、巨門關、迷蹤列島、蓬萊仙島、伏龍洞、天煞洞第1層、天煞洞第2層",
+    "fall_low": "奔雷嶺、夕之朝雲、幻之烏雲、大漩渦、華山、泰山、天山"
   },
   {
     "name": "全四郎",
@@ -3172,7 +3424,9 @@
     "innate_skill": "",
     "transformation_skill": "會心強擊",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "葬心塚、同心林、祈願湖、哭腸崖",
+    "fall_low": "惡龍秘窟4層、盤古旛陣、金嗷洞三樓"
   },
   {
     "name": "亞娜",
@@ -3197,7 +3451,9 @@
     "innate_skill": "",
     "transformation_skill": "會心強擊",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "飛煞洞、地下墳場",
+    "fall_low": "崑崙山、真修洞"
   },
   {
     "name": "秦明",
@@ -3222,7 +3478,9 @@
     "innate_skill": "",
     "transformation_skill": "會心強擊",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "-",
+    "fall_low": "藏玄洞"
   },
   {
     "name": "晁蓋",
@@ -3247,7 +3505,9 @@
     "innate_skill": "",
     "transformation_skill": "會心強擊",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "幽冥深淵、垃圾場第一層、垃圾場第二層",
+    "fall_low": "玄日洞"
   },
   {
     "name": "黃飛虎",
@@ -3272,7 +3532,9 @@
     "innate_skill": "",
     "transformation_skill": "會心強擊",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "藏玄洞",
+    "fall_low": "幽冥深淵、垃圾場第一層、垃圾場第二層"
   },
   {
     "name": "王進",
@@ -3297,7 +3559,9 @@
     "innate_skill": "",
     "transformation_skill": "會心強擊",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "墨家名穴",
+    "fall_low": "金嗷洞一樓、金嗷洞二樓"
   },
   {
     "name": "呼延灼",
@@ -3322,7 +3586,9 @@
     "innate_skill": "",
     "transformation_skill": "會心強擊",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "玄日洞",
+    "fall_low": "妖邪洞、幽納古林"
   },
   {
     "name": "黃蓋",
@@ -3347,7 +3613,9 @@
     "innate_skill": "",
     "transformation_skill": "會心強擊",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "藏玄洞",
+    "fall_low": "崑崙山、真修洞"
   },
   {
     "name": "孟獲",
@@ -3372,7 +3640,9 @@
     "innate_skill": "",
     "transformation_skill": "會心強擊",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "地下水道",
+    "fall_low": "迷茫古墳、虎臂水洞"
   },
   {
     "name": "黃巾龍鬥士",
@@ -3397,7 +3667,9 @@
     "innate_skill": "",
     "transformation_skill": "會心強擊",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "臥虎高原、荒骨高原、匯星高原、月鏡湖、北邙山、巨門關、迷蹤列島、蓬萊仙島、伏龍洞、天煞洞第1層、天煞洞第2層",
+    "fall_low": "惡龍秘窟1層、惡龍秘窟2層、惡龍秘窟3層"
   },
   {
     "name": "馬岱",
@@ -3422,7 +3694,9 @@
     "innate_skill": "",
     "transformation_skill": "迅急連擊",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "幽冥深淵、垃圾場第一層、垃圾場第二層",
+    "fall_low": "羅煞洞-第四層"
   },
   {
     "name": "武吉",
@@ -3447,7 +3721,9 @@
     "innate_skill": "",
     "transformation_skill": "凡人之軀 比肩神明",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "沰水道、銀沙河、地下通道、赤松林、飛鶴山、可汗沙漠、天朝山、池底洞窟、東海龍宮、龍宮大殿、靈山、峨嵋山",
+    "fall_low": "玄日洞"
   },
   {
     "name": "顧大嫂",
@@ -3472,7 +3748,9 @@
     "innate_skill": "",
     "transformation_skill": "迅急連擊",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "惡龍秘窟4層、盤古旛陣、金嗷洞三樓",
+    "fall_low": "妖邪洞、幽納古林"
   },
   {
     "name": "孫二娘",
@@ -3497,7 +3775,9 @@
     "innate_skill": "",
     "transformation_skill": "迅急連擊",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "臥虎高原、荒骨高原、匯星高原、月鏡湖、北邙山、巨門關、迷蹤列島、蓬萊仙島、伏龍洞、天煞洞第1層、天煞洞第2層",
+    "fall_low": "末日京城、地牢、水牢、火牢、死牢"
   },
   {
     "name": "張奎",
@@ -3522,7 +3802,9 @@
     "innate_skill": "",
     "transformation_skill": "迅急連擊",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "崑崙山、真修洞",
+    "fall_low": "皇陵"
   },
   {
     "name": "雷震子",
@@ -3547,7 +3829,9 @@
     "innate_skill": "",
     "transformation_skill": "迅急連擊",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "西桑耶沙漠、東桑耶沙漠、南桑耶沙漠",
+    "fall_low": "羅煞洞-第一層、羅煞洞-第二層、羅煞洞-第三層"
   },
   {
     "name": "周通",
@@ -3572,7 +3856,9 @@
     "innate_skill": "",
     "transformation_skill": "迅急連擊",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "迷茫古墳、虎臂水洞",
+    "fall_low": "玉虛宮、寂靜死海"
   },
   {
     "name": "文醜",
@@ -3597,7 +3883,9 @@
     "innate_skill": "",
     "transformation_skill": "迅急連擊",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "羅煞洞-第一層、羅煞洞-第二層、羅煞洞-第三層",
+    "fall_low": "玄日峰、玄日岩"
   },
   {
     "name": "顏良",
@@ -3622,7 +3910,9 @@
     "innate_skill": "",
     "transformation_skill": "迅急連擊",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "飛煞洞、地下墳場",
+    "fall_low": "幽冥深淵、垃圾場第一層、垃圾場第二層"
   },
   {
     "name": "楊志",
@@ -3647,7 +3937,9 @@
     "innate_skill": "",
     "transformation_skill": "迅急連擊",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "皇陵",
+    "fall_low": "羅煞洞-第一層、羅煞洞-第二層、羅煞洞-第三層"
   },
   {
     "name": "程普",
@@ -3672,7 +3964,9 @@
     "innate_skill": "",
     "transformation_skill": "迅急連擊",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "奔雷嶺、夕之朝雲、幻之烏雲、大漩渦、華山、泰山、天山",
+    "fall_low": "沰水道、銀沙河、地下通道、赤松林、飛鶴山、可汗沙漠、天朝山、池底洞窟、東海龍宮、龍宮大殿、靈山、峨嵋山"
   },
   {
     "name": "祝融",
@@ -3697,7 +3991,9 @@
     "innate_skill": "",
     "transformation_skill": "狙殺連擊",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "飛煞洞、地下墳場",
+    "fall_low": "皇陵"
   },
   {
     "name": "阮小七",
@@ -3722,7 +4018,9 @@
     "innate_skill": "",
     "transformation_skill": "迅急連擊",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "飛煞洞、地下墳場",
+    "fall_low": "金嗷洞一樓、金嗷洞二樓"
   },
   {
     "name": "高蘭英",
@@ -3747,7 +4045,9 @@
     "innate_skill": "",
     "transformation_skill": "迅急連擊",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "玄日洞",
+    "fall_low": "幽納原野1"
   },
   {
     "name": "戴宗",
@@ -3772,7 +4072,9 @@
     "innate_skill": "",
     "transformation_skill": "迅急連擊",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "羅煞洞-第一層、羅煞洞-第二層、羅煞洞-第三層",
+    "fall_low": "地下水道"
   },
   {
     "name": "給我豹豹",
@@ -3797,7 +4099,9 @@
     "innate_skill": "",
     "transformation_skill": "迅急連擊",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "葬心塚、同心林、祈願湖、哭腸崖",
+    "fall_low": "羅煞洞-第一層、羅煞洞-第二層、羅煞洞-第三層"
   },
   {
     "name": "周泰",
@@ -3822,7 +4126,9 @@
     "innate_skill": "",
     "transformation_skill": "勇捍十二傷",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "玄日峰、玄日岩",
+    "fall_low": "妖邪洞、幽納古林"
   },
   {
     "name": "小蘿",
@@ -3847,7 +4153,9 @@
     "innate_skill": "",
     "transformation_skill": "迅急連擊",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "皇陵",
+    "fall_low": "琉球仙島、玄冥煉獄"
   },
   {
     "name": "碧霄",
@@ -3872,7 +4180,9 @@
     "innate_skill": "瘟黃術",
     "transformation_skill": "木雷光影陣",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "羅煞洞-第一層、羅煞洞-第二層、羅煞洞-第三層",
+    "fall_low": "玉虛宮、寂靜死海"
   },
   {
     "name": "瓊霄",
@@ -3897,7 +4207,9 @@
     "innate_skill": "渾水術",
     "transformation_skill": "水袞獄傷陣",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "皇陵",
+    "fall_low": "飛煞洞、地下墳場"
   },
   {
     "name": "魏定國",
@@ -3922,7 +4234,9 @@
     "innate_skill": "無名火",
     "transformation_skill": "火台炬胤陣",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "-",
+    "fall_low": "妖邪洞、幽納古林"
   },
   {
     "name": "張角",
@@ -3947,7 +4261,9 @@
     "innate_skill": "刺金術",
     "transformation_skill": "金象噬魂陣",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "青葉村、地煞洞第1層、地煞洞第2層、東都道",
+    "fall_low": "幽冥深淵、垃圾場第一層、垃圾場第二層"
   },
   {
     "name": "羅真人",
@@ -3972,7 +4288,9 @@
     "innate_skill": "瘟黃術",
     "transformation_skill": "木雷光影陣",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "修羅洞",
+    "fall_low": "幽冥深淵、垃圾場第一層、垃圾場第二層"
   },
   {
     "name": "申公豹",
@@ -3997,7 +4315,9 @@
     "innate_skill": "刺金術",
     "transformation_skill": "金象噬魂陣",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "皇陵",
+    "fall_low": "西桑耶沙漠、東桑耶沙漠、南桑耶沙漠"
   },
   {
     "name": "甄宓",
@@ -4022,7 +4342,9 @@
     "innate_skill": "下毒術",
     "transformation_skill": "水袞獄傷陣",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "地下水道",
+    "fall_low": "西桑耶沙漠、東桑耶沙漠、南桑耶沙漠"
   },
   {
     "name": "單廷珪",
@@ -4047,7 +4369,9 @@
     "innate_skill": "渾水術",
     "transformation_skill": "水袞獄傷陣",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "藏玄洞",
+    "fall_low": "玄日洞"
   },
   {
     "name": "張魯",
@@ -4072,7 +4396,9 @@
     "innate_skill": "渾水術",
     "transformation_skill": "水袞獄傷陣",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "末日京城、地牢、水牢、火牢、死牢",
+    "fall_low": "修羅洞"
   },
   {
     "name": "小倩",
@@ -4097,7 +4423,9 @@
     "innate_skill": "渾水術",
     "transformation_skill": "水袞獄傷陣",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "奔雷嶺、夕之朝雲、幻之烏雲、大漩渦、華山、泰山、天山",
+    "fall_low": "玄日峰、玄日岩"
   },
   {
     "name": "黃巾魔鬥士",
@@ -4122,7 +4450,9 @@
     "innate_skill": "渾水術",
     "transformation_skill": "水袞獄傷陣",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "東門關、南門關、西門關、北門關、杏花谷、碧沙湖、北都道、西都道、南都道",
+    "fall_low": "沰水道、銀沙河、地下通道、赤松林、飛鶴山、可汗沙漠、天朝山、池底洞窟、東海龍宮、龍宮大殿、靈山、峨嵋山"
   },
   {
     "name": "張松",
@@ -4147,7 +4477,9 @@
     "innate_skill": "走土術",
     "transformation_skill": "天火斬符",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "東門關、南門關、西門關、北門關、杏花谷、碧沙湖、北都道、西都道、南都道",
+    "fall_low": "藏玄洞"
   },
   {
     "name": "小喬",
@@ -4172,7 +4504,9 @@
     "innate_skill": "斷刺符",
     "transformation_skill": "天水斷符",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "翠竹林、潛龍潭、蕈菇林、琅琊山、滄之雲海",
+    "fall_low": "藏玄洞"
   },
   {
     "name": "楊修",
@@ -4197,7 +4531,9 @@
     "innate_skill": "刃斬符",
     "transformation_skill": "天金刃符",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "烈焰山",
+    "fall_low": "翠竹林、潛龍潭、蕈菇林、琅琊山、滄之雲海"
   },
   {
     "name": "賈詡",
@@ -4222,7 +4558,9 @@
     "innate_skill": "刃斬符",
     "transformation_skill": "天金刃符",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "飛煞洞、地下墳場",
+    "fall_low": "沰水道、銀沙河、地下通道、赤松林、飛鶴山、可汗沙漠、天朝山、池底洞窟、東海龍宮、龍宮大殿、靈山、峨嵋山"
   },
   {
     "name": "貂蟬",
@@ -4247,7 +4585,9 @@
     "innate_skill": "押穴術",
     "transformation_skill": "冰封",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "烈焰山",
+    "fall_low": "皇陵"
   },
   {
     "name": "法正",
@@ -4272,7 +4612,9 @@
     "innate_skill": "走土術",
     "transformation_skill": "天木刺符",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "地下水道",
+    "fall_low": "陽燧山"
   },
   {
     "name": "大喬",
@@ -4297,7 +4639,9 @@
     "innate_skill": "斷刺符",
     "transformation_skill": "天水斷符",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "妖邪迷宮",
+    "fall_low": "奔雷嶺、夕之朝雲、幻之烏雲、大漩渦、華山、泰山、天山"
   },
   {
     "name": "鄧艾",
@@ -4322,7 +4666,9 @@
     "innate_skill": "走土術",
     "transformation_skill": "天土擊符",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "幽冥深淵、垃圾場第一層、垃圾場第二層",
+    "fall_low": "地下水道"
   },
   {
     "name": "卑彌呼",
@@ -4347,7 +4693,9 @@
     "innate_skill": "下毒術",
     "transformation_skill": "水袞獄傷陣",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "末日京城、地牢、水牢、火牢、死牢",
+    "fall_low": "羅煞洞-第一層、羅煞洞-第二層、羅煞洞-第三層"
   },
   {
     "name": "殷郊",
@@ -4372,7 +4720,9 @@
     "innate_skill": "斬擊符",
     "transformation_skill": "天火斬符",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "惡龍秘窟1層、惡龍秘窟2層、惡龍秘窟3層",
+    "fall_low": "飛煞洞、地下墳場"
   },
   {
     "name": "諸葛瑾",
@@ -4397,7 +4747,9 @@
     "innate_skill": "擊斷符(生變資料為空)",
     "transformation_skill": "天火斬符",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "幽納古林",
+    "fall_low": "玄日洞"
   },
   {
     "name": "魔禮紅",
@@ -4422,7 +4774,9 @@
     "innate_skill": "斷刺符",
     "transformation_skill": "木雷光影陣",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "崑崙山、真修洞",
+    "fall_low": "葬心塚、同心林、祈願湖、哭腸崖"
   },
   {
     "name": "華陀",
@@ -4447,7 +4801,9 @@
     "innate_skill": "大羅仙術",
     "transformation_skill": "妙手天醫",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "迷茫古墳、虎臂水洞",
+    "fall_low": "皇陵"
   },
   {
     "name": "孔融",
@@ -4472,7 +4828,9 @@
     "innate_skill": "刺金術",
     "transformation_skill": "金象噬魂陣",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "羅煞洞-第一層、羅煞洞-第二層、羅煞洞-第三層",
+    "fall_low": "沰水道、銀沙河、地下通道、赤松林、飛鶴山、可汗沙漠、天朝山、池底洞窟、東海龍宮、龍宮大殿、靈山、峨嵋山"
   },
   {
     "name": "木鹿大王",
@@ -4497,7 +4855,9 @@
     "innate_skill": "渾水術",
     "transformation_skill": "水袞獄傷陣",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "藏玄洞",
+    "fall_low": "修羅洞"
   },
   {
     "name": "潘金蓮",
@@ -4522,7 +4882,9 @@
     "innate_skill": "渾水術",
     "transformation_skill": "水袞獄傷陣",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "幽納古林",
+    "fall_low": "修羅洞"
   },
   {
     "name": "蔡文姬",
@@ -4547,7 +4909,9 @@
     "innate_skill": "瘟黃術",
     "transformation_skill": "天火召臨",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "惡龍秘窟4層、盤古旛陣、金嗷洞三樓",
+    "fall_low": "烈焰山"
   },
   {
     "name": "瑤池仙女",
@@ -4572,7 +4936,9 @@
     "innate_skill": "渾水術",
     "transformation_skill": "水靈招喚",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "活動",
+    "fall_low": "活動"
   },
   {
     "name": "安道全",
@@ -4597,7 +4963,9 @@
     "innate_skill": "急救術",
     "transformation_skill": "大羅仙術",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "妖邪洞、幽納古林",
+    "fall_low": "陽燧山"
   },
   {
     "name": "龍虎天師",
@@ -4622,7 +4990,9 @@
     "innate_skill": "無名火",
     "transformation_skill": "火台炬胤陣",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "烈焰山",
+    "fall_low": "修羅洞"
   },
   {
     "name": "樊瑞",
@@ -4647,7 +5017,9 @@
     "innate_skill": "走土術",
     "transformation_skill": "土動命移陣",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "幽冥深淵、垃圾場第一層、垃圾場第二層",
+    "fall_low": "琉球仙島、玄冥煉獄"
   },
   {
     "name": "曹植",
@@ -4672,7 +5044,9 @@
     "innate_skill": "渾水術",
     "transformation_skill": "火台炬胤陣",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "玉虛宮、寂靜死海",
+    "fall_low": "末日京城、地牢、水牢、火牢、死牢"
   },
   {
     "name": "張寶",
@@ -4697,7 +5071,9 @@
     "innate_skill": "瘟黃術",
     "transformation_skill": "木雷光影陣",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "玉虛宮、寂靜死海",
+    "fall_low": "幽冥深淵、垃圾場第一層、垃圾場第二層"
   },
   {
     "name": "天策軍師",
@@ -4722,7 +5098,9 @@
     "innate_skill": "刺刃符",
     "transformation_skill": "長。打神刃",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "活動",
+    "fall_low": "活動"
   },
   {
     "name": "糜夫人",
@@ -4747,7 +5125,9 @@
     "innate_skill": "刺刃符",
     "transformation_skill": "天木刺符",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "羅煞洞-第一層、羅煞洞-第二層、羅煞洞-第三層",
+    "fall_low": "妖邪洞、幽納古林"
   },
   {
     "name": "張梁",
@@ -4772,7 +5152,9 @@
     "innate_skill": "斷刺符",
     "transformation_skill": "天土擊符",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "沰水道、銀沙河、地下通道、赤松林、飛鶴山、可汗沙漠、天朝山、池底洞窟、東海龍宮、龍宮大殿、靈山、峨嵋山",
+    "fall_low": "皇陵"
   },
   {
     "name": "西門慶",
@@ -4797,7 +5179,9 @@
     "innate_skill": "斬擊符",
     "transformation_skill": "火台炬胤陣",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "琉球仙島、玄冥煉獄",
+    "fall_low": "沰水道、銀沙河、地下通道、赤松林、飛鶴山、可汗沙漠、天朝山、池底洞窟、東海龍宮、龍宮大殿、靈山、峨嵋山"
   },
   {
     "name": "比干",
@@ -4822,7 +5206,9 @@
     "innate_skill": "無名火",
     "transformation_skill": "水袞獄傷陣",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "葬心塚、同心林、祈願湖、哭腸崖",
+    "fall_low": "陽燧山"
   },
   {
     "name": "田豐",
@@ -4847,7 +5233,9 @@
     "innate_skill": "刺刃符",
     "transformation_skill": "天木刺符",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "翠竹林、潛龍潭、蕈菇林、琅琊山、滄之雲海",
+    "fall_low": "地下水道"
   },
   {
     "name": "柴進",
@@ -4872,7 +5260,9 @@
     "innate_skill": "走土術",
     "transformation_skill": "土動命移陣",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "玄日洞",
+    "fall_low": "墨家名穴"
   },
   {
     "name": "蔣敬",
@@ -4897,7 +5287,9 @@
     "innate_skill": "走土術",
     "transformation_skill": "天土擊符",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "沰水道、銀沙河、地下通道、赤松林、飛鶴山、可汗沙漠、天朝山、池底洞窟、東海龍宮、龍宮大殿、靈山、峨嵋山",
+    "fall_low": "妖邪洞、幽納古林"
   },
   {
     "name": "穆容月",
@@ -4922,7 +5314,9 @@
     "innate_skill": "刺刃符",
     "transformation_skill": "天木刺符",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "烈焰山",
+    "fall_low": "迷茫古墳、虎臂水洞"
   },
   {
     "name": "石秀",
@@ -4947,7 +5341,9 @@
     "innate_skill": "無名火",
     "transformation_skill": "火台炬胤陣",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "臥虎高原、荒骨高原、匯星高原、月鏡湖、北邙山、巨門關、迷蹤列島、蓬萊仙島、伏龍洞、天煞洞第1層、天煞洞第2層",
+    "fall_low": "妖邪洞、幽納古林"
   },
   {
     "name": "朱武",
@@ -4972,7 +5368,9 @@
     "innate_skill": "刺刃符",
     "transformation_skill": "天木刺符",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "修羅洞",
+    "fall_low": "葬心塚、同心林、祈願湖、哭腸崖"
   },
   {
     "name": "蕭讓",
@@ -4997,7 +5395,9 @@
     "innate_skill": "斷刺符",
     "transformation_skill": "天水斷符",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "烈焰山",
+    "fall_low": "妖邪洞、幽納古林"
   },
   {
     "name": "裴宣",
@@ -5022,7 +5422,9 @@
     "innate_skill": "刃斬符",
     "transformation_skill": "天金刃符",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "玄日峰、玄日岩",
+    "fall_low": "末日京城、地牢、水牢、火牢、死牢"
   },
   {
     "name": "魔禮壽",
@@ -5047,7 +5449,9 @@
     "innate_skill": "走土術",
     "transformation_skill": "土動命移陣",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "崑崙山、真修洞",
+    "fall_low": "玄日峰、玄日岩"
   },
   {
     "name": "宋徽宗",
@@ -5072,7 +5476,9 @@
     "innate_skill": "走土術",
     "transformation_skill": "天土擊符",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "琉球仙島、玄冥煉獄",
+    "fall_low": "地下水道"
   },
   {
     "name": "賈氏",
@@ -5097,7 +5503,9 @@
     "innate_skill": "",
     "transformation_skill": "迅急連擊",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "玄日洞",
+    "fall_low": "琉球仙島、玄冥煉獄"
   },
   {
     "name": "黃妃",
@@ -5122,7 +5530,9 @@
     "innate_skill": "",
     "transformation_skill": "迅急連擊",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "玄日洞",
+    "fall_low": "崑崙山、真修洞"
   },
   {
     "name": "胡車兒",
@@ -5147,7 +5557,9 @@
     "innate_skill": "",
     "transformation_skill": "迅急連擊",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "惡龍秘窟1層、惡龍秘窟2層、惡龍秘窟3層",
+    "fall_low": "地下水道"
   },
   {
     "name": "阮小二",
@@ -5172,7 +5584,9 @@
     "innate_skill": "",
     "transformation_skill": "迅急連擊",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "臥虎高原、荒骨高原、匯星高原、月鏡湖、北邙山、巨門關、迷蹤列島、蓬萊仙島、伏龍洞、天煞洞第1層、天煞洞第2層",
+    "fall_low": "鬼煞洞"
   },
   {
     "name": "袁術",
@@ -5197,7 +5611,9 @@
     "innate_skill": "",
     "transformation_skill": "迅急連擊",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "羅煞洞-第四層",
+    "fall_low": "藏玄洞"
   },
   {
     "name": "黃巾聖鬥士",
@@ -5222,7 +5638,9 @@
     "innate_skill": "",
     "transformation_skill": "迅急連擊",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "青葉村、地煞洞第1層、地煞洞第2層、東都道",
+    "fall_low": "葬心塚、同心林、祈願湖、哭腸崖"
   },
   {
     "name": "鄧飛",
@@ -5247,7 +5665,9 @@
     "innate_skill": "",
     "transformation_skill": "迅急連擊",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "惡龍秘窟4層、盤古旛陣、金嗷洞三樓",
+    "fall_low": "奔雷嶺、夕之朝雲、幻之烏雲、大漩渦、華山、泰山、天山"
   },
   {
     "name": "阮小五",
@@ -5272,7 +5692,9 @@
     "innate_skill": "",
     "transformation_skill": "迅急連擊",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "修羅洞",
+    "fall_low": "崑崙山、真修洞"
   },
   {
     "name": "李興霸",
@@ -5297,7 +5719,9 @@
     "innate_skill": "",
     "transformation_skill": "迅急連擊",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "琉球仙島、玄冥煉獄",
+    "fall_low": "幽冥深淵、垃圾場第一層、垃圾場第二層"
   },
   {
     "name": "豹騎衛",
@@ -5322,7 +5746,9 @@
     "innate_skill": "",
     "transformation_skill": "迅急連擊",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "東門關、南門關、西門關、北門關、杏花谷、碧沙湖、北都道、西都道、南都道",
+    "fall_low": "玄日洞"
   },
   {
     "name": "血衣衛",
@@ -5347,7 +5773,9 @@
     "innate_skill": "",
     "transformation_skill": "迅急連擊",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "翠竹林、潛龍潭、蕈菇林、琅琊山、滄之雲海",
+    "fall_low": "迷茫古墳、虎臂水洞"
   },
   {
     "name": "搏浪力士",
@@ -5372,7 +5800,9 @@
     "innate_skill": "",
     "transformation_skill": "鈍霆擊",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "修羅洞",
+    "fall_low": "琉球仙島、玄冥煉獄"
   },
   {
     "name": "程遠志",
@@ -5397,7 +5827,9 @@
     "innate_skill": "",
     "transformation_skill": "狙殺連擊",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "末日京城、地牢、水牢、火牢、死牢",
+    "fall_low": "地下水道"
   },
   {
     "name": "龍騎衛",
@@ -5422,7 +5854,9 @@
     "innate_skill": "",
     "transformation_skill": "狙殺連擊",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "幽冥深淵、垃圾場第一層、垃圾場第二層",
+    "fall_low": "西桑耶沙漠、東桑耶沙漠、南桑耶沙漠"
   },
   {
     "name": "燕青",
@@ -5447,7 +5881,9 @@
     "innate_skill": "",
     "transformation_skill": "狙殺連擊",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "沰水道、銀沙河、地下通道、赤松林、飛鶴山、可汗沙漠、天朝山、池底洞窟、東海龍宮、龍宮大殿、靈山、峨嵋山",
+    "fall_low": "鬼煞洞"
   },
   {
     "name": "項充",
@@ -5472,7 +5908,9 @@
     "innate_skill": "",
     "transformation_skill": "狙殺連擊",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "東門關、南門關、西門關、北門關、杏花谷、碧沙湖、北都道、西都道、南都道",
+    "fall_low": "沰水道、銀沙河、地下通道、赤松林、飛鶴山、可汗沙漠、天朝山、池底洞窟、東海龍宮、龍宮大殿、靈山、峨嵋山"
   },
   {
     "name": "曹洪",
@@ -5497,7 +5935,9 @@
     "innate_skill": "",
     "transformation_skill": "狙殺連擊",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "幽納古林",
+    "fall_low": "藏玄洞"
   },
   {
     "name": "李袞",
@@ -5522,7 +5962,9 @@
     "innate_skill": "",
     "transformation_skill": "狙殺連擊",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "藏玄洞",
+    "fall_low": "妖邪洞、幽納古林"
   },
   {
     "name": "曹貴人",
@@ -5547,7 +5989,9 @@
     "innate_skill": "",
     "transformation_skill": "狙殺連擊",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "青葉村、地煞洞第1層、地煞洞第2層、東都道",
+    "fall_low": "玄日峰、玄日岩"
   },
   {
     "name": "高俅",
@@ -5572,7 +6016,9 @@
     "innate_skill": "",
     "transformation_skill": "狙殺連擊",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "琉球仙島、玄冥煉獄",
+    "fall_low": "葬心塚、同心林、祈願湖、哭腸崖"
   },
   {
     "name": "高友乾",
@@ -5597,7 +6043,9 @@
     "innate_skill": "",
     "transformation_skill": "狙殺連擊",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "琉球仙島、玄冥煉獄",
+    "fall_low": "幽冥深淵、垃圾場第一層、垃圾場第二層"
   },
   {
     "name": "凌震",
@@ -5622,7 +6070,9 @@
     "innate_skill": "",
     "transformation_skill": "狙殺連擊",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "羅煞洞-第五層",
+    "fall_low": "藏玄洞"
   },
   {
     "name": "劉禪",
@@ -5647,7 +6097,9 @@
     "innate_skill": "",
     "transformation_skill": "狙殺連擊",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "青葉村、地煞洞第1層、地煞洞第2層、東都道",
+    "fall_low": "妖邪洞、幽納古林"
   },
   {
     "name": "武大郎",
@@ -5672,7 +6124,9 @@
     "innate_skill": "",
     "transformation_skill": "狙殺連擊",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "奔雷嶺、夕之朝雲、幻之烏雲、大漩渦、華山、泰山、天山",
+    "fall_low": "妖邪洞、幽納古林"
   },
   {
     "name": "沙摩柯",
@@ -5697,7 +6151,9 @@
     "innate_skill": "",
     "transformation_skill": "狙殺連擊",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "玄日洞",
+    "fall_low": "西桑耶沙漠、東桑耶沙漠、南桑耶沙漠"
   },
   {
     "name": "驃騎將軍",
@@ -5722,7 +6178,9 @@
     "innate_skill": "",
     "transformation_skill": "會心強擊",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "活動",
+    "fall_low": "活動"
   },
   {
     "name": "楊鳳兒",
@@ -5747,7 +6205,9 @@
     "innate_skill": "",
     "transformation_skill": "會心強擊",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "藏玄洞",
+    "fall_low": "陽燧山"
   },
   {
     "name": "鄧九公",
@@ -5772,7 +6232,9 @@
     "innate_skill": "",
     "transformation_skill": "會心強擊",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "妖邪洞、幽納古林",
+    "fall_low": "飛煞洞、地下墳場"
   },
   {
     "name": "虎騎衛",
@@ -5797,7 +6259,9 @@
     "innate_skill": "",
     "transformation_skill": "會心強擊",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "東門關、南門關、西門關、北門關、杏花谷、碧沙湖、北都道、西都道、南都道",
+    "fall_low": "沰水道、銀沙河、地下通道、赤松林、飛鶴山、可汗沙漠、天朝山、池底洞窟、東海龍宮、龍宮大殿、靈山、峨嵋山"
   },
   {
     "name": "董平",
@@ -5822,7 +6286,9 @@
     "innate_skill": "",
     "transformation_skill": "會心強擊",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "惡龍秘窟1層、惡龍秘窟2層、惡龍秘窟3層",
+    "fall_low": "幽納古林"
   },
   {
     "name": "周倉",
@@ -5847,7 +6313,9 @@
     "innate_skill": "",
     "transformation_skill": "會心強擊",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "皇陵",
+    "fall_low": "沰水道、銀沙河、地下通道、赤松林、飛鶴山、可汗沙漠、天朝山、池底洞窟、東海龍宮、龍宮大殿、靈山、峨嵋山"
   },
   {
     "name": "王魔",
@@ -5872,7 +6340,9 @@
     "innate_skill": "",
     "transformation_skill": "會心強擊",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "琉球仙島、玄冥煉獄",
+    "fall_low": "幽冥深淵、垃圾場第一層、垃圾場第二層"
   },
   {
     "name": "鍾會",
@@ -5897,7 +6367,9 @@
     "innate_skill": "",
     "transformation_skill": "會心強擊",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "青葉村、地煞洞第1層、地煞洞第2層、東都道",
+    "fall_low": "奔雷嶺、夕之朝雲、幻之烏雲、大漩渦、華山、泰山、天山"
   },
   {
     "name": "楊森",
@@ -5922,7 +6394,9 @@
     "innate_skill": "",
     "transformation_skill": "會心強擊",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "琉球仙島、玄冥煉獄",
+    "fall_low": "幽冥深淵、垃圾場第一層、垃圾場第二層"
   },
   {
     "name": "公孫大娘",
@@ -5947,7 +6421,9 @@
     "innate_skill": "",
     "transformation_skill": "會心強擊",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "妖邪洞、幽納古林",
+    "fall_low": "玄日峰、玄日岩"
   },
   {
     "name": "韋護",
@@ -5972,7 +6448,9 @@
     "innate_skill": "",
     "transformation_skill": "會心強擊",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "沰水道、銀沙河、地下通道、赤松林、飛鶴山、可汗沙漠、天朝山、池底洞窟、東海龍宮、龍宮大殿、靈山、峨嵋山",
+    "fall_low": "玄日峰、玄日岩"
   },
   {
     "name": "廖化",
@@ -5997,6 +6475,8 @@
     "innate_skill": "",
     "transformation_skill": "會心強擊",
     "magnification_new": "",
-    "magnification_old": "2x"
+    "magnification_old": "2x",
+    "fall_high": "幽納古林",
+    "fall_low": "地下水道"
   }
 ]
