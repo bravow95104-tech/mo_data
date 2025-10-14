@@ -13,6 +13,7 @@ main,
   margin: 0 auto;
   padding: 0 20px;
 }
+
 /* 導航列固定在最上方，並保持層級高於 table header */
 nav {
   position: sticky; /* 或 fixed，如果想要一直停留在視窗頂部 */

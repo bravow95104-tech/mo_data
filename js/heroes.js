@@ -126,10 +126,16 @@ document.addEventListener("DOMContentLoaded", () => {
           <p class="section-gap"><strong>裝備卡(新專)：</strong>${hero.equipment_new}</p>
           <p><strong>新專數值：</strong>${hero.equipment_new_data}</p>
           <p><strong>新專倍率：</strong>${hero.new_multiplier}</p>
-          <p><strong>裝備卡(舊專)：</strong>${hero.equipment_old}</p>
+          <p class="section-gap"><strong>裝備卡(舊專)：</strong>${hero.equipment_old}</p>
           <p><strong>舊專數值：</strong>${hero.equipment_old_data}</p>
           <p class="section-gap"><strong>天生技：</strong>${hero.innate_skill}</p>
           <p><strong>生變技能：</strong>${hero.transformation_skill}</p>
+        </div>
+
+        
+        <div class="hero-column-details">
+          <p><strong>光輝掉落：</strong>${hero.aggression_before}</p>
+
         </div>
       </div>
     `;
