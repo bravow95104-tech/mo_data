@@ -4,6 +4,10 @@ document.addEventListener("DOMContentLoaded", () => {
   // === 載入 JSON 資料 ===
   fetch('/mo_data/data/works.json')
     .then(response => response.json())
+    .then(data => {
+      heroesData = data; // ✅ 儲存資料
+      renderTable(heroesData); // ✅ 一開始顯示
+    })
     .catch(error => {
       console.error('載入工作資料錯誤:', error);
       const tbody = document.querySelector('#heroes-table tbody');
