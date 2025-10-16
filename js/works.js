@@ -50,10 +50,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
       // === 第一格：根據 item 自動載入圖片 ===
       const imgTd = document.createElement('td');
-      if (hero.item) {
+      if (hero.name) {
         const img = document.createElement('img');
-        img.src = `/mo_data/pic/works/${hero.item}.jpg`;
-        img.alt = hero.item;
+        img.src = `/mo_data/pic/works/${hero.name}.jpg`;
+        img.alt = hero.name;
         img.style.width = '40px';
         img.style.height = '40px';
         img.style.objectFit = 'contain';
