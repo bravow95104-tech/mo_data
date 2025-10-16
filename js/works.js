@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
     .then(response => response.json())
     .then(data => {
       heroesData = data; // ✅ 儲存資料
-      renderTable(heroesData); // ✅ 一開始顯示
+      renderTable(heroesData); // ✅ 初次載入顯示
     })
     .catch(error => {
       console.error('載入工作資料錯誤:', error);
@@ -48,16 +48,17 @@ document.addEventListener("DOMContentLoaded", () => {
     data.forEach(hero => {
       const tr = document.createElement('tr');
 
-      // === 第一格：根據 item 自動載入圖片 ===
+      // === 第一格：根據 name 自動載入圖片 ===
       const imgTd = document.createElement('td');
       if (hero.name) {
         const img = document.createElement('img');
-        img.src = `/mo_data/pic/works/${hero.name}.jpg`;
+        img.src = `/mo_data/pic/works/${hero.name.replace(/[\\\/:*?"<>|]/g, '')}.jpg`;
         img.alt = hero.name;
         img.style.width = '40px';
         img.style.height = '40px';
         img.style.objectFit = 'contain';
         img.onerror = () => {
+          img.style.display = 'none';
           imgTd.textContent = '—'; // 若圖片不存在顯示—
         };
         imgTd.appendChild(img);
@@ -71,9 +72,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
       fields.forEach(field => {
         const td = document.createElement('td');
-        const value = hero[field] !== undefined ? String(hero[field]) : '';
+        const value = hero[field] ? String(hero[field]) : '';
         const htmlValue = value.replace(/\n/g, '<br>'); // ✅ 支援換行
 
+        // ✅ 搜尋關鍵字高亮
         if (keyword && value.toLowerCase().includes(keyword)) {
           const regex = new RegExp(`(${keyword})`, 'gi');
           td.innerHTML = htmlValue.replace(regex, '<span class="highlight2">$1</span>');
@@ -101,12 +103,14 @@ document.addEventListener("DOMContentLoaded", () => {
   // === 篩選按鈕（全域單一篩選模式） ===
   document.querySelectorAll('.filter-btn').forEach(btn => {
     btn.addEventListener('click', () => {
+      // 移除舊的 active 樣式
       document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
 
       const type = btn.dataset.type;
       const value = btn.dataset.value;
 
+      // ✅ 篩選邏輯
       const filtered = heroesData.filter(hero => {
         if (type === "promotion") return hero.type === value;
         return true;
@@ -122,7 +126,7 @@ document.addEventListener("DOMContentLoaded", () => {
     searchInput.value = '';
     document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
 
-    // 移除搜尋高亮
+    // ✅ 移除搜尋高亮
     document.querySelectorAll('.highlight, .highlight2').forEach(el => {
       const parent = el.parentNode;
       parent.replaceChild(document.createTextNode(el.textContent), el);
