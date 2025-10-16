@@ -67,28 +67,21 @@ document.addEventListener("DOMContentLoaded", () => {
       tr.appendChild(imgTd);
 
       // === 其他欄位 ===
-      const fields = [
-        'type', 'lv', 'name', 'area'
-      ];
+      const fields = ['type', 'lv', 'name', 'area'];
 
       fields.forEach(field => {
         const td = document.createElement('td');
         const value = hero[field] !== undefined ? String(hero[field]) : '';
-        const htmlValue = value.replace(/\n/g, '<br>');
+        const htmlValue = value.replace(/\n/g, '<br>'); // ✅ 支援換行
 
         if (keyword && value.toLowerCase().includes(keyword)) {
           const regex = new RegExp(`(${keyword})`, 'gi');
-          td.innerHTML = value.replace(regex, '<span class="highlight2">$1</span>');
+          td.innerHTML = htmlValue.replace(regex, '<span class="highlight2">$1</span>');
         } else {
           td.innerHTML = htmlValue;
         }
 
         tr.appendChild(td);
-      });
-
-      // === 點擊列顯示詳細資料 ===
-      tr.addEventListener('click', () => {
-        showDetailModal(hero);
       });
 
       tbody.appendChild(tr);
@@ -105,44 +98,37 @@ document.addEventListener("DOMContentLoaded", () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 
-// === 篩選按鈕（全域單一篩選模式） ===
-document.querySelectorAll('.filter-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
+  // === 篩選按鈕（全域單一篩選模式） ===
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
 
-    // 🔹 清除所有按鈕的 active 樣式
-    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      const type = btn.dataset.type;
+      const value = btn.dataset.value;
 
-    // 🔹 設定目前這顆為 active
-    btn.classList.add('active');
+      const filtered = heroesData.filter(hero => {
+        if (type === "promotion") return hero.type === value;
+        return true;
+      });
 
-    // 🔹 取得目前的篩選條件
-    const type = btn.dataset.type;
-    const value = btn.dataset.value;
-
-    // 🔹 根據不同類型篩選
-    const filtered = heroesData.filter(hero => {
-      if (type === "promotion") return hero.type === value;
-      return true;
+      renderTable(filtered);
     });
-
-    renderTable(filtered);
   });
-});
 
-// === 清除篩選 ===
-document.getElementById('clearFilters').addEventListener('click', () => {
-  renderTable(heroesData);
-  searchInput.value = '';
-  document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+  // === 清除篩選 ===
+  document.getElementById('clearFilters').addEventListener('click', () => {
+    renderTable(heroesData);
+    searchInput.value = '';
+    document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
 
-  // 移除搜尋高亮
-  document.querySelectorAll('.highlight, .highlight2').forEach(el => {
-    const parent = el.parentNode;
-    parent.replaceChild(document.createTextNode(el.textContent), el);
-    parent.normalize();
+    // 移除搜尋高亮
+    document.querySelectorAll('.highlight, .highlight2').forEach(el => {
+      const parent = el.parentNode;
+      parent.replaceChild(document.createTextNode(el.textContent), el);
+      parent.normalize();
+    });
   });
-});
-
 
   // === Accordion 展開／收合 ===
   document.querySelectorAll('.accordion-header').forEach(header => {
