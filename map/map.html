@@ -74,7 +74,39 @@
       <h1></h1>
 
       <section id="maparea">
-        <h2>一般地圖（點擊圖片可放大，放大後可滾輪縮放與拖曳）</h2>
+        <h2>一般地圖</h2>
+        <label for="zoomToggle">
+          <img
+            class="thumbnail"
+            src="/mo_data/pic/map/map.png"
+            alt="遊戲地圖縮略圖"
+          />
+        </label>
+        <input type="checkbox" id="zoomToggle" />
+
+        <div
+          class="lightbox"
+          id="lightbox"
+          onclick="if(event.target.id==='lightbox'){document.getElementById('zoomToggle').checked=false; resetTransform();}"
+        >
+          <img
+            id="zoomedImage"
+            src="/mo_data/pic/map/map.png"
+            alt="遊戲地圖放大圖"
+            draggable="false"
+          />
+        </div>
+        <p class="map-tip" style="text-align:center;">
+          點擊圖片可放大，放大後可用滑鼠滾輪縮放與拖曳，點擊背景關閉
+        </p>
+      </section>
+    </div>
+
+    <div id="content2">
+      <h1></h1>
+
+      <section id="maparea">
+        <h2>仙界地圖</h2>
         <label for="zoomToggle">
           <img
             class="thumbnail"
