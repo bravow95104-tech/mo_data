@@ -35,16 +35,27 @@
   const img = container.querySelector('img');
 
   let isDragging = false;
-  let startX, startY, offsetX = 0, offsetY = 0;
+  let startX, startY;
+  let offsetX = 0, offsetY = 0;
+  let scale = 1; // 初始縮放比例
+  const minScale = 0.5;
+  const maxScale = 3;
 
+  // 更新圖片變形樣式
+  const updateTransform = () => {
+    img.style.transform = `translate(${offsetX}px, ${offsetY}px) scale(${scale})`;
+  };
+
+  // 圖片置中
   const centerImage = () => {
     const containerRect = container.getBoundingClientRect();
     const imgRect = img.getBoundingClientRect();
     offsetX = (containerRect.width - img.width) / 2;
     offsetY = (containerRect.height - img.height) / 2;
-    img.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
+    updateTransform();
   };
 
+  // 拖曳功能
   container.addEventListener('mousedown', (e) => {
     isDragging = true;
     container.style.cursor = 'grabbing';
@@ -59,25 +70,34 @@
 
   window.addEventListener('mousemove', (e) => {
     if (!isDragging) return;
-
-    const containerRect = container.getBoundingClientRect();
-
     offsetX = e.clientX - startX;
     offsetY = e.clientY - startY;
+    updateTransform();
+  });
 
-    const minOffsetX = containerRect.width - img.width;
-    const minOffsetY = containerRect.height - img.height;
-    const maxOffsetX = 0;
-    const maxOffsetY = 0;
+  // 滾輪縮放功能
+  container.addEventListener('wheel', (e) => {
+    e.preventDefault(); // 防止頁面捲動
 
-    offsetX = Math.min(maxOffsetX, Math.max(minOffsetX, offsetX));
-    offsetY = Math.min(maxOffsetY, Math.max(minOffsetY, offsetY));
+    const rect = container.getBoundingClientRect();
+    const mouseX = e.clientX - rect.left;
+    const mouseY = e.clientY - rect.top;
 
-    img.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
+    const prevScale = scale;
+    const scaleAmount = e.deltaY < 0 ? 1.1 : 0.9;
+    scale *= scaleAmount;
+    scale = Math.min(maxScale, Math.max(minScale, scale));
+
+    // 調整 offset 使縮放中心對齊滑鼠位置
+    offsetX -= (mouseX - offsetX) * (scaleAmount - 1);
+    offsetY -= (mouseY - offsetY) * (scaleAmount - 1);
+
+    updateTransform();
   });
 
   window.addEventListener('load', centerImage);
 </script>
+
 
 
     <div id="footer-container"></div><!-- 這是頁尾會被載入的位置 -->
