@@ -35,6 +35,7 @@
         align-items: center;
         cursor: zoom-out;
         z-index: 9999;
+        overflow: hidden;
       }
 
       /* checkbox選中時顯示 */
@@ -50,6 +51,12 @@
         border-radius: 10px;
         transition: transform 0.2s ease;
         cursor: grab;
+        user-select: none;
+      }
+
+      /* 拖曳時 cursor */
+      .lightbox img.dragging {
+        cursor: grabbing;
       }
 
       /* 置中h2 */
@@ -67,7 +74,7 @@
       <h1></h1>
 
       <section id="maparea">
-        <h2>一般地圖（點擊圖片可放大，放大後可滾輪縮放）</h2>
+        <h2>一般地圖（點擊圖片可放大，放大後可滾輪縮放與拖曳）</h2>
         <label for="zoomToggle">
           <img
             class="thumbnail"
@@ -80,7 +87,7 @@
         <div
           class="lightbox"
           id="lightbox"
-          onclick="if(event.target.id==='lightbox'){document.getElementById('zoomToggle').checked=false; resetScale();}"
+          onclick="if(event.target.id==='lightbox'){document.getElementById('zoomToggle').checked=false; resetTransform();}"
         >
           <img
             id="zoomedImage"
@@ -90,7 +97,7 @@
           />
         </div>
         <p class="map-tip" style="text-align:center;">
-          點擊圖片可放大，放大後可用滑鼠滾輪縮放，點擊背景關閉
+          點擊圖片可放大，放大後可用滑鼠滾輪縮放與拖曳，點擊背景關閉
         </p>
       </section>
     </div>
@@ -103,24 +110,72 @@
       const minScale = 0.5;
       const maxScale = 5;
 
-      function resetScale() {
+      let isDragging = false;
+      let startX = 0;
+      let startY = 0;
+      let translateX = 0;
+      let translateY = 0;
+
+      function updateTransform() {
+        zoomedImage.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
+      }
+
+      function resetTransform() {
         scale = 1;
-        zoomedImage.style.transform = `scale(${scale})`;
+        translateX = 0;
+        translateY = 0;
+        updateTransform();
       }
 
       // 滾輪縮放
       document.getElementById('lightbox').addEventListener('wheel', (e) => {
         e.preventDefault();
         const scaleAmount = e.deltaY < 0 ? 1.1 : 0.9;
+        const prevScale = scale;
         scale *= scaleAmount;
         scale = Math.min(maxScale, Math.max(minScale, scale));
-        zoomedImage.style.transform = `scale(${scale})`;
+
+        // 計算滑鼠相對圖片的偏移量，讓縮放時中心對齊滑鼠位置
+        const rect = zoomedImage.getBoundingClientRect();
+        const offsetX = e.clientX - rect.left;
+        const offsetY = e.clientY - rect.top;
+
+        // 調整 translateX, translateY 讓圖片縮放時不會跳動
+        translateX -= (offsetX - translateX) * (scale / prevScale - 1);
+        translateY -= (offsetY - translateY) * (scale / prevScale - 1);
+
+        updateTransform();
       });
 
-      // 進入放大時重置縮放比例
+      // 拖曳開始
+      zoomedImage.addEventListener('mousedown', (e) => {
+        e.preventDefault();
+        isDragging = true;
+        startX = e.clientX - translateX;
+        startY = e.clientY - translateY;
+        zoomedImage.classList.add('dragging');
+      });
+
+      // 拖曳中
+      window.addEventListener('mousemove', (e) => {
+        if (!isDragging) return;
+        translateX = e.clientX - startX;
+        translateY = e.clientY - startY;
+        updateTransform();
+      });
+
+      // 拖曳結束
+      window.addEventListener('mouseup', () => {
+        if (isDragging) {
+          isDragging = false;
+          zoomedImage.classList.remove('dragging');
+        }
+      });
+
+      // 進入放大時重置縮放及位置
       document.getElementById('zoomToggle').addEventListener('change', (e) => {
-        if(e.target.checked){
-          resetScale();
+        if (e.target.checked) {
+          resetTransform();
         }
       });
     </script>
