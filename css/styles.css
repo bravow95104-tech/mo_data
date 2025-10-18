@@ -104,19 +104,10 @@ nav .dropdown-toggle:hover {
   background-color: #267acc;
 }
 
-/* 頂部區塊（全寬） */
-#full-banner {
-  background: white;
-  padding: 30px 40px;
-  border-radius: 10px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-  margin-bottom: 40px;
-}
-
 /* ✅ 內容與側邊欄容器 */
 #content-wrapper {
   display: flex;
-  align-items: stretch; /* ✅ 讓左右兩邊一樣高 */
+  /*align-items: stretch;  ✅ 讓左右兩邊一樣高 */
   justify-content: flex-start;
   max-width: 1200px;
   margin: 0 auto;
