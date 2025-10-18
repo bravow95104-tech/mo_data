@@ -141,6 +141,42 @@ nav .dropdown-toggle:hover {
   padding-bottom: 8px;
   color: #267acc;
 }
+.sidebar-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar-list li {
+  display: flex;
+  align-items: flex-start;
+  padding: 12px 0;
+  border-bottom: 1px solid #e1e7ef;
+  font-size: 1rem;
+  color: #333;
+  line-height: 1.5;
+}
+
+.sidebar-list li:last-child {
+  border-bottom: none;
+}
+
+.sidebar-list .date {
+  flex-shrink: 0;
+  width: 110px;
+  background-color: #3399ff;
+  color: white;
+  font-family: "Courier New", Courier, monospace;
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 4px 8px;
+  border-radius: 6px;
+  text-align: center;
+  margin-right: 20px;
+  user-select: none;
+  box-shadow: 0 2px 8px rgba(51, 153, 255, 0.3);
+}
+
 
 /* ✅ 更新日誌區塊 */
 #changelog {
