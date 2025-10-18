@@ -127,7 +127,7 @@ nav .dropdown-toggle:hover {
 
 /* ✅ 右側側邊欄 */
 #sidebar {
-  flex: 280px;
+  flex: 0.7;
   background: white;
   padding: 30px 40px;
   border-radius: 10px;
