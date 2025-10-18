@@ -5,22 +5,153 @@
     <title>地圖 | MoData</title>
     <link rel="stylesheet" href="/mo_data/css/styles.css" />
     <link rel="stylesheet" href="/mo_data/css/map.css" />
+    <style>
+      /* === 外框 === */
+      #maparea {
+        max-width: 900px;
+        margin: 40px auto;
+        background: white;
+        border-radius: 10px;
+        padding: 20px 30px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      }
 
+      #maparea h2 {
+        font-size: 1.6rem;
+        margin-bottom: 20px;
+        border-bottom: 2px solid #3399ff;
+        padding-bottom: 8px;
+        color: #267acc;
+        text-align: center;
+      }
+
+      /* === 地圖容器 === */
+      .map-container {
+        width: 100%;
+        height: 600px;
+        overflow: hidden;
+        position: relative;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        cursor: grab;
+        background-color: #f0f0f0;
+      }
+
+      .map-container:active {
+        cursor: grabbing;
+      }
+
+      /* === 地圖圖片 === */
+      .map-image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        transform-origin: center center;
+        transition: transform 0.05s linear;
+        user-select: none;
+        -webkit-user-drag: none;
+      }
+
+      /* 小提示 */
+      .map-tip {
+        text-align: center;
+        font-size: 0.9rem;
+        color: #666;
+        margin-top: 8px;
+      }
+    </style>
   </head>
+
   <body>
-    <div id="nav-container"></div><!-- 這是導航列會被載入的位置 -->
+    <div id="nav-container"></div>
     <script src="/mo_data/js/componentsLoader.js"></script>
-    <!-- 主要內容 -->
+
     <div id="content">
       <h1></h1>
-      <!-- 更新紀錄區塊 -->
-<section id="maparea">
 
-<img src="/mo_data/pic/map/map.png" alt="遊戲地圖" />
-</section>
-      <!-- 其他 -->
+      <section id="maparea">
+        <h2>🗺️ 遊戲地圖（可縮放與拖曳）</h2>
+        <div class="map-container" id="mapContainer">
+          <img
+            id="mapImage"
+            src="/mo_data/pic/map/map.png"
+            alt="遊戲地圖"
+            class="map-image"
+          />
+        </div>
+        <p class="map-tip">滑鼠滾輪縮放，拖曳可移動地圖</p>
+      </section>
     </div>
-    
+
+    <div id="footer-container"></div>
+
+    <script>
+      const mapImg = document.getElementById("mapImage");
+      const mapContainer = document.getElementById("mapContainer");
+
+      // === 初始狀態 ===
+      let scale = 1;
+      let posX = 0;
+      let posY = 0;
+      let isDragging = false;
+      let startX, startY;
+
+      // === 滾輪縮放 ===
+      mapContainer.addEventListener("wheel", (e) => {
+        e.preventDefault();
+        const zoomSpeed = 0.1;
+        const delta = e.deltaY > 0 ? -zoomSpeed : zoomSpeed;
+
+        scale = Math.min(Math.max(scale + delta, 0.5), 4); // 限制縮放範圍 0.5~4
+        updateTransform();
+      });
+
+      // === 拖曳地圖 ===
+      mapContainer.addEventListener("mousedown", (e) => {
+        isDragging = true;
+        startX = e.clientX - posX;
+        startY = e.clientY - posY;
+        mapContainer.style.cursor = "grabbing";
+      });
+
+      document.addEventListener("mouseup", () => {
+        isDragging = false;
+        mapContainer.style.cursor = "grab";
+      });
+
+      document.addEventListener("mousemove", (e) => {
+        if (!isDragging) return;
+        posX = e.clientX - startX;
+        posY = e.clientY - startY;
+        updateTransform();
+      });
+
+      // === 手機支援觸控拖曳 ===
+      mapContainer.addEventListener("touchstart", (e) => {
+        if (e.touches.length === 1) {
+          isDragging = true;
+          startX = e.touches[0].clientX - posX;
+          startY = e.touches[0].clientY - posY;
+        }
+      });
+
+      mapContainer.addEventListener("touchmove", (e) => {
+        if (isDragging && e.touches.length === 1) {
+          posX = e.touches[0].clientX - startX;
+          posY = e.touches[0].clientY - startY;
+          updateTransform();
+        }
+      });
+
+      mapContainer.addEventListener("touchend", () => {
+        isDragging = false;
+      });
+
+      // === 更新地圖變換 ===
+      function updateTransform() {
+        mapImg.style.transform = `translate(${posX}px, ${posY}px) scale(${scale})`;
+      }
+    </script>
     <div id="footer-container"></div><!-- 這是頁尾會被載入的位置 -->
   </body>
 </html>
