@@ -5,6 +5,55 @@
     <title>地圖 | MoData</title>
     <link rel="stylesheet" href="/mo_data/css/styles.css" />
     <link rel="stylesheet" href="/mo_data/css/map.css" />
+    <style>
+      /* 縮略圖 */
+      .thumbnail {
+        max-width: 400px;
+        cursor: pointer;
+        transition: transform 0.3s ease;
+        display: block;
+        margin: 0 auto;
+      }
+      .thumbnail:hover {
+        transform: scale(1.05);
+      }
+
+      /* 隱藏checkbox */
+      #zoomToggle {
+        display: none;
+      }
+
+      /* 放大視窗 */
+      .lightbox {
+        position: fixed;
+        top: 0; left: 0;
+        width: 100vw; height: 100vh;
+        background: rgba(0, 0, 0, 0.8);
+        display: none;
+        justify-content: center;
+        align-items: center;
+        cursor: zoom-out;
+        z-index: 9999;
+      }
+
+      /* checkbox選中時顯示 */
+      #zoomToggle:checked + .lightbox {
+        display: flex;
+      }
+
+      /* 放大圖 */
+      .lightbox img {
+        max-width: 90%;
+        max-height: 90%;
+        box-shadow: 0 0 30px rgba(255, 255, 255, 0.6);
+        border-radius: 10px;
+      }
+
+      /* 置中h2 */
+      #maparea h2 {
+        text-align: center;
+      }
+    </style>
   </head>
 
   <body>
@@ -15,91 +64,25 @@
       <h1></h1>
 
       <section id="maparea">
-        <h2>一般地圖（可縮放與拖曳）</h2>
-        <div class="map-container" id="mapContainer">
+        <h2>一般地圖（點擊圖片可放大）</h2>
+        <label for="zoomToggle">
           <img
-            id="mapImage"
+            class="thumbnail"
             src="/mo_data/pic/map/map.png"
-            alt="遊戲地圖"
-            class="map-image"
+            alt="遊戲地圖縮略圖"
           />
+        </label>
+        <input type="checkbox" id="zoomToggle" />
+
+        <div class="lightbox" onclick="document.getElementById('zoomToggle').checked=false;">
+          <img src="/mo_data/pic/map/map.png" alt="遊戲地圖放大圖" />
         </div>
-        <p class="map-tip">滑鼠滾輪縮放，拖曳可移動地圖</p>
+        <p class="map-tip" style="text-align:center;">
+          點擊圖片可放大，點擊放大區域關閉
+        </p>
       </section>
     </div>
 
     <div id="footer-container"></div>
-
-<script>
-  const container = document.getElementById('mapContainer');
-  const img = container.querySelector('img');
-
-  let isDragging = false;
-  let startX, startY;
-  let offsetX = 0, offsetY = 0;
-  let scale = 1; // 初始縮放比例
-  const minScale = 0.5;
-  const maxScale = 3;
-
-  // 更新圖片變形樣式
-  const updateTransform = () => {
-    img.style.transform = `translate(${offsetX}px, ${offsetY}px) scale(${scale})`;
-  };
-
-  // 圖片置中
-  const centerImage = () => {
-    const containerRect = container.getBoundingClientRect();
-    const imgRect = img.getBoundingClientRect();
-    offsetX = (containerRect.width - img.width) / 2;
-    offsetY = (containerRect.height - img.height) / 2;
-    updateTransform();
-  };
-
-  // 拖曳功能
-  container.addEventListener('mousedown', (e) => {
-    isDragging = true;
-    container.style.cursor = 'grabbing';
-    startX = e.clientX - offsetX;
-    startY = e.clientY - offsetY;
-  });
-
-  window.addEventListener('mouseup', () => {
-    isDragging = false;
-    container.style.cursor = 'grab';
-  });
-
-  window.addEventListener('mousemove', (e) => {
-    if (!isDragging) return;
-    offsetX = e.clientX - startX;
-    offsetY = e.clientY - startY;
-    updateTransform();
-  });
-
-  // 滾輪縮放功能
-  container.addEventListener('wheel', (e) => {
-    e.preventDefault(); // 防止頁面捲動
-
-    const rect = container.getBoundingClientRect();
-    const mouseX = e.clientX - rect.left;
-    const mouseY = e.clientY - rect.top;
-
-    const prevScale = scale;
-    const scaleAmount = e.deltaY < 0 ? 1.1 : 0.9;
-    scale *= scaleAmount;
-    scale = Math.min(maxScale, Math.max(minScale, scale));
-
-    // 調整 offset 使縮放中心對齊滑鼠位置
-    offsetX -= (mouseX - offsetX) * (scaleAmount - 1);
-    offsetY -= (mouseY - offsetY) * (scaleAmount - 1);
-
-    updateTransform();
-  });
-
-  window.addEventListener('load', centerImage);
-</script>
-
-
-
-    <div id="footer-container"></div><!-- 這是頁尾會被載入的位置 -->
   </body>
 </html>
