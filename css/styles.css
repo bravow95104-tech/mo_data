@@ -6,8 +6,6 @@ body {
   font-family: "Microsoft JhengHei", sans-serif;
 }
 
-
-
 /* 導航列固定在最上方，並保持層級高於 table header */
 nav {
   position: sticky; /* 或 fixed，如果想要一直停留在視窗頂部 */
@@ -23,7 +21,6 @@ nav {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   z-index: 1000; /* 高於 table 的 z-index */
 }
-
 
 /* 若 nav 高度變動，可調整 top 值 */
 /* 導航列樣式 */
@@ -86,66 +83,6 @@ nav .dropdown-toggle:hover {
   background-color: #5abaff;
 }
 
-#content-wrapper {
-  display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 30px 40px;
-  gap: 40px; /* 左右間距 */
-}
-
-/* 主要內容區塊 */
-#content {
-  padding: 30px 40px;
-  max-width: 900px;
-  margin: auto;
-  flex: 1;
-}
-
-/* 右邊側欄 */
-#sidebar {
-  width: 280px;
-  background-color: #ffffff;
-  padding: 20px 25px;
-  border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
-  height: fit-content;
-}
-#sidebar h2 {
-  font-size: 1.6rem;
-  margin-bottom: 20px;
-  border-bottom: 2px solid #3399ff;
-  padding-bottom: 8px;
-  color: #267acc;
-}
-
-/* 內容容器置中 */
-main,
-#content {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
-}
-/* RWD 手機優化（選配） */
-@media (max-width: 600px) {
-  .hero-details-container {
-    flex-direction: column;
-  }
-
-  .hero-column {
-    padding: 0 !important;
-  }
-}
-
-.flex-grow {
-  flex-grow: 1;
-}
-
-.flex {
-  display: flex;
-}
 /* 回到頂部按鈕 */
 #backToTop {
   position: fixed;
@@ -167,8 +104,48 @@ main,
   background-color: #267acc;
 }
 
+/* ✅ 內容與側邊欄容器 */
+#content-wrapper {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 30px 40px;
+  gap: 40px;
+}
 
-/* 更新日誌 */
+/* ✅ 左側主內容 */
+#content {
+  flex: 1;
+  background: white;
+  padding: 30px 40px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  max-width: 800px;
+}
+
+/* ✅ 右側側邊欄 */
+#sidebar {
+  width: 280px;
+  background-color: #ffffff;
+  padding: 30px 25px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  height: fit-content;
+  position: sticky;
+  top: 100px;
+}
+
+#sidebar h2 {
+  font-size: 1.4rem;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #3399ff;
+  padding-bottom: 8px;
+  color: #267acc;
+}
+
+/* ✅ 更新日誌區塊 */
 #changelog {
   max-width: 600px;
   margin: 40px auto;
@@ -222,3 +199,21 @@ main,
   box-shadow: 0 2px 8px rgba(51, 153, 255, 0.3);
 }
 
+
+/* ✅ 手機版：上下排列 */
+@media (max-width: 768px) {
+  #content-wrapper {
+    flex-direction: column;
+    padding: 20px;
+  }
+
+  #content {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  #sidebar {
+    width: 100%;
+    position: static;
+    margin-top: 20px;
+  }}
