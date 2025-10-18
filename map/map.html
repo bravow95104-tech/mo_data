@@ -8,7 +8,8 @@
     <style>
       /* 縮略圖 */
       .thumbnail {
-        max-width: 90%;
+        max-width: 600px;
+        width: 90%;
         cursor: pointer;
         transition: transform 0.3s ease;
         display: block;
@@ -47,6 +48,8 @@
         max-height: 90%;
         box-shadow: 0 0 30px rgba(255, 255, 255, 0.6);
         border-radius: 10px;
+        transition: transform 0.2s ease;
+        cursor: grab;
       }
 
       /* 置中h2 */
@@ -64,7 +67,7 @@
       <h1></h1>
 
       <section id="maparea">
-        <h2>一般地圖（點擊圖片可放大）</h2>
+        <h2>一般地圖（點擊圖片可放大，放大後可滾輪縮放）</h2>
         <label for="zoomToggle">
           <img
             class="thumbnail"
@@ -74,15 +77,52 @@
         </label>
         <input type="checkbox" id="zoomToggle" />
 
-        <div class="lightbox" onclick="document.getElementById('zoomToggle').checked=false;">
-          <img src="/mo_data/pic/map/map.png" alt="遊戲地圖放大圖" />
+        <div
+          class="lightbox"
+          id="lightbox"
+          onclick="if(event.target.id==='lightbox'){document.getElementById('zoomToggle').checked=false; resetScale();}"
+        >
+          <img
+            id="zoomedImage"
+            src="/mo_data/pic/map/map.png"
+            alt="遊戲地圖放大圖"
+            draggable="false"
+          />
         </div>
         <p class="map-tip" style="text-align:center;">
-          點擊圖片可放大，點擊放大區域關閉
+          點擊圖片可放大，放大後可用滑鼠滾輪縮放，點擊背景關閉
         </p>
       </section>
     </div>
 
     <div id="footer-container"></div>
+
+    <script>
+      const zoomedImage = document.getElementById('zoomedImage');
+      let scale = 1;
+      const minScale = 0.5;
+      const maxScale = 5;
+
+      function resetScale() {
+        scale = 1;
+        zoomedImage.style.transform = `scale(${scale})`;
+      }
+
+      // 滾輪縮放
+      document.getElementById('lightbox').addEventListener('wheel', (e) => {
+        e.preventDefault();
+        const scaleAmount = e.deltaY < 0 ? 1.1 : 0.9;
+        scale *= scaleAmount;
+        scale = Math.min(maxScale, Math.max(minScale, scale));
+        zoomedImage.style.transform = `scale(${scale})`;
+      });
+
+      // 進入放大時重置縮放比例
+      document.getElementById('zoomToggle').addEventListener('change', (e) => {
+        if(e.target.checked){
+          resetScale();
+        }
+      });
+    </script>
   </body>
 </html>
