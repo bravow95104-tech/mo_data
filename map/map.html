@@ -30,73 +30,58 @@
 
     <div id="footer-container"></div>
 
-    <script>
-      const mapImg = document.getElementById("mapImage");
-      const mapContainer = document.getElementById("mapContainer");
+<script>
+  const container = document.querySelector('.map-drag-container');
+  const img = container.querySelector('img');
 
-      // === 初始狀態 ===
-      let scale = 1;
-      let posX = 0;
-      let posY = 0;
-      let isDragging = false;
-      let startX, startY;
+  let isDragging = false;
+  let startX, startY, offsetX = 0, offsetY = 0;
 
-      // === 滾輪縮放 ===
-      mapContainer.addEventListener("wheel", (e) => {
-        e.preventDefault();
-        const zoomSpeed = 0.1;
-        const delta = e.deltaY > 0 ? -zoomSpeed : zoomSpeed;
+  // 初始化圖片位置在中間
+  const centerImage = () => {
+    const containerRect = container.getBoundingClientRect();
+    const imgRect = img.getBoundingClientRect();
+    offsetX = (containerRect.width - imgRect.width) / 2;
+    offsetY = (containerRect.height - imgRect.height) / 2;
+    img.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
+  };
 
-        scale = Math.min(Math.max(scale + delta, 0.5), 4); // 限制縮放範圍 0.5~4
-        updateTransform();
-      });
+  container.addEventListener('mousedown', (e) => {
+    isDragging = true;
+    container.style.cursor = 'grabbing';
+    startX = e.clientX - offsetX;
+    startY = e.clientY - offsetY;
+  });
 
-      // === 拖曳地圖 ===
-      mapContainer.addEventListener("mousedown", (e) => {
-        isDragging = true;
-        startX = e.clientX - posX;
-        startY = e.clientY - posY;
-        mapContainer.style.cursor = "grabbing";
-      });
+  window.addEventListener('mouseup', () => {
+    isDragging = false;
+    container.style.cursor = 'grab';
+  });
 
-      document.addEventListener("mouseup", () => {
-        isDragging = false;
-        mapContainer.style.cursor = "grab";
-      });
+  window.addEventListener('mousemove', (e) => {
+    if (!isDragging) return;
+    const containerRect = container.getBoundingClientRect();
+    const imgRect = img.getBoundingClientRect();
 
-      document.addEventListener("mousemove", (e) => {
-        if (!isDragging) return;
-        posX = e.clientX - startX;
-        posY = e.clientY - startY;
-        updateTransform();
-      });
+    offsetX = e.clientX - startX;
+    offsetY = e.clientY - startY;
 
-      // === 手機支援觸控拖曳 ===
-      mapContainer.addEventListener("touchstart", (e) => {
-        if (e.touches.length === 1) {
-          isDragging = true;
-          startX = e.touches[0].clientX - posX;
-          startY = e.touches[0].clientY - posY;
-        }
-      });
+    // 限制邊界：不讓地圖移出容器
+    const maxOffsetX = 0;
+    const maxOffsetY = 0;
+    const minOffsetX = containerRect.width - img.width;
+    const minOffsetY = containerRect.height - img.height;
 
-      mapContainer.addEventListener("touchmove", (e) => {
-        if (isDragging && e.touches.length === 1) {
-          posX = e.touches[0].clientX - startX;
-          posY = e.touches[0].clientY - startY;
-          updateTransform();
-        }
-      });
+    offsetX = Math.min(maxOffsetX, Math.max(minOffsetX, offsetX));
+    offsetY = Math.min(maxOffsetY, Math.max(minOffsetY, offsetY));
 
-      mapContainer.addEventListener("touchend", () => {
-        isDragging = false;
-      });
+    img.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
+  });
 
-      // === 更新地圖變換 ===
-      function updateTransform() {
-        mapImg.style.transform = `translate(${posX}px, ${posY}px) scale(${scale})`;
-      }
-    </script>
+  // 頁面載入時置中地圖
+  window.addEventListener('load', centerImage);
+</script>
+
     <div id="footer-container"></div><!-- 這是頁尾會被載入的位置 -->
   </body>
 </html>
