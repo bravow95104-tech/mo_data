@@ -74,12 +74,56 @@
       color: #ddd;
       margin-bottom: 40px;
     }
+  .legend {
+    margin-top: 20px;
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    font-size: 1rem;
+    color: #333;
+  }
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .color-box {
+    width: 24px;
+    height: 24px;
+    border-radius: 4px;
+    display: inline-block;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  }
+  .village {
+    background-color: #FFA500; /* 橘色 */
+  }
+  .cave {
+    background-color: #000000; /* 黑色 */
+  }
+  .sacred {
+    background-color: #3399FF; /* 藍色 */
+  }
   </style>
 </head>
 <body>
   <div id="nav-container"></div>
   <script src="/mo_data/js/componentsLoader.js"></script>
-
+<section id="maparea">
+<div class="legend">
+    <div class="legend-item">
+      <span class="color-box village"></span>
+      <span>村莊</span>
+    </div>
+    <div class="legend-item">
+      <span class="color-box cave"></span>
+      <span>洞窟</span>
+    </div>
+    <div class="legend-item">
+      <span class="color-box sacred"></span>
+      <span>需要破邪護符</span>
+    </div>
+  </div>
+</section>
   <section id="maparea">
     <h2>一般地圖</h2>
     <label for="zoomToggle1">
