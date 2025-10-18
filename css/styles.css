@@ -107,7 +107,7 @@ nav .dropdown-toggle:hover {
 /* ✅ 內容與側邊欄容器 */
 #content-wrapper {
   display: flex;
-  align-items: flex-start;
+  align-items: stretch; /* ✅ 讓左右兩邊一樣高 */
   justify-content: flex-start;
   max-width: 1200px;
   margin: 0 auto;
