@@ -11,7 +11,7 @@
     <div id="nav-container"></div>
     <script src="/mo_data/js/componentsLoader.js"></script>
 
-    <div id="content">
+    <div id="content2">
       <h1></h1>
 
       <section id="maparea">
@@ -31,18 +31,17 @@
     <div id="footer-container"></div>
 
 <script>
-  const container = document.querySelector('.map-drag-container');
+  const container = document.getElementById('mapContainer');
   const img = container.querySelector('img');
 
   let isDragging = false;
   let startX, startY, offsetX = 0, offsetY = 0;
 
-  // 初始化圖片位置在中間
   const centerImage = () => {
     const containerRect = container.getBoundingClientRect();
     const imgRect = img.getBoundingClientRect();
-    offsetX = (containerRect.width - imgRect.width) / 2;
-    offsetY = (containerRect.height - imgRect.height) / 2;
+    offsetX = (containerRect.width - img.width) / 2;
+    offsetY = (containerRect.height - img.height) / 2;
     img.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
   };
 
@@ -60,17 +59,16 @@
 
   window.addEventListener('mousemove', (e) => {
     if (!isDragging) return;
+
     const containerRect = container.getBoundingClientRect();
-    const imgRect = img.getBoundingClientRect();
 
     offsetX = e.clientX - startX;
     offsetY = e.clientY - startY;
 
-    // 限制邊界：不讓地圖移出容器
-    const maxOffsetX = 0;
-    const maxOffsetY = 0;
     const minOffsetX = containerRect.width - img.width;
     const minOffsetY = containerRect.height - img.height;
+    const maxOffsetX = 0;
+    const maxOffsetY = 0;
 
     offsetX = Math.min(maxOffsetX, Math.max(minOffsetX, offsetX));
     offsetY = Math.min(maxOffsetY, Math.max(minOffsetY, offsetY));
@@ -78,9 +76,9 @@
     img.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
   });
 
-  // 頁面載入時置中地圖
   window.addEventListener('load', centerImage);
 </script>
+
 
     <div id="footer-container"></div><!-- 這是頁尾會被載入的位置 -->
   </body>
