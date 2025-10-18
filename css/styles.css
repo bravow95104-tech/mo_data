@@ -6,13 +6,7 @@ body {
   font-family: "Microsoft JhengHei", sans-serif;
 }
 
-/* 內容容器置中 */
-main,
-#content {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
-}
+
 
 /* 導航列固定在最上方，並保持層級高於 table header */
 nav {
@@ -92,13 +86,43 @@ nav .dropdown-toggle:hover {
   background-color: #5abaff;
 }
 
+#content-wrapper {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 30px 40px;
+  gap: 40px; /* 左右間距 */
+}
+
 /* 主要內容區塊 */
 #content {
   padding: 30px 40px;
   max-width: 900px;
   margin: auto;
+  flex: 1;
 }
 
+/* 右邊側欄 */
+#sidebar {
+  width: 280px;
+  background-color: #ffffff;
+  padding: 20px 25px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  position: sticky;
+  top: 100px;
+  height: fit-content;
+}
+
+/* 內容容器置中 */
+main,
+#content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
 /* RWD 手機優化（選配） */
 @media (max-width: 600px) {
   .hero-details-container {
@@ -137,6 +161,8 @@ nav .dropdown-toggle:hover {
 #backToTop:hover {
   background-color: #267acc;
 }
+
+
 /* 更新日誌 */
 #changelog {
   max-width: 600px;
