@@ -127,13 +127,12 @@ nav .dropdown-toggle:hover {
 
 /* ✅ 右側側邊欄 */
 #sidebar {
-  width: 280px;
-  background-color: #ffffff;
-  padding: 30px 25px;
+  flex: 1;
+  background: white;
+  padding: 30px 40px;
   border-radius: 10px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-  height: fit-content;
-  top: 100px;
+  max-width: 800px;
 }
 
 #sidebar h2 {
