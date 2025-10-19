@@ -92,13 +92,13 @@ function initCardTable(data) {
     });
   }
   // === Modal ===
-  function showDetailModal(hero) {
+  function showDetailModal(item) {
     const overlay = document.getElementById('modalOverlay');
     const modalBox = document.getElementById('modalBox');
     const contentDiv = document.getElementById('modalContent');
 
     // 英雄名稱安全化（移除特殊字元避免檔案路徑錯誤）
-    const safeName = hero.name.replace(/[^\w\u4e00-\u9fa5]/g, '');
+    const safeName = item.card_id.replace(/[^\w\u4e00-\u9fa5]/g, '');
 
     // Modal 內容
     let html = `
