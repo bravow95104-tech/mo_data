@@ -261,3 +261,113 @@ thead th {
   background: #ffc107;
   color: #fff;
 }
+
+/* Modal 遮罩 */
+#modalOverlay {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 2000;
+}
+
+/* Modal 內容框 */
+#modalBox {
+  width: 90vw;
+  display: none;
+  position: fixed;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  border-radius: 8px;
+  padding: 10px 5px;
+  max-width: 650px;
+  max-height: 80vh;
+  overflow-y: auto;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  z-index: 2001;
+}
+
+#modalBox h2 {
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-size: 24px;
+  color: #3399ff;
+  text-align: center;
+}
+
+#modalBox p {
+  margin: 6px 0;
+  font-size: 16px;
+}
+
+#modalBox .close-btn {
+  position: absolute;
+  top: 10px; right: 15px;
+  font-size: 28px;
+  color: #666;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+#modalBox .close-btn:hover {
+  color: #3399ff;
+}
+
+/* Modal 英雄名稱置中 */
+.hero-name {
+  text-align: center;
+  font-size: 24px;
+  color: #3399ff;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 10px;
+}
+
+/* Modal 內部兩欄橫排容器 */
+.hero-details-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;           /* 視窗小時自動換行 */
+  gap: 20px;                 /* 兩灰色區塊間距 */
+  padding: 5px;
+  width: auto;
+  max-width: 600px;          /* Modal 最大寬度 */
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+/* 左右欄樣式 */
+.hero-column {
+  flex: 0 0 40%;             /* 彈性成長，基底寬度48% */
+  min-width: 250px;          /* 最小寬度限制，避免太小擠壓 */
+  box-sizing: border-box;    /* 包含 padding、border */
+  background-color: #f9f9f9; /* 可選：輕微背景色區分 */
+  padding: 20px 20px;
+  border-radius: 6px;        /* 可選：圓角讓框框好看 */
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+}
+/* 下欄樣式 */
+.hero-column-details {
+  flex: 0 0 90%;             /* 彈性成長，基底寬度48% */
+  min-width: 250px;          /* 最小寬度限制，避免太小擠壓 */
+  box-sizing: border-box;    /* 包含 padding、border */
+  background-color: #f9f9f9; /* 可選：輕微背景色區分 */
+  padding: 20px 20px;
+  border-radius: 6px;        /* 可選：圓角讓框框好看 */
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+}
+#modalContent {
+  padding: 10px;
+  font-size: 16px;
+  color: #333;
+  max-height: 70vh;         /* 限制最大高度 */
+  width: 100%;
+  overflow-y: auto;         /* 內容超出時垂直出現捲軸 */
+  line-height: 1.5;
+  background-color: #fff;
+  border-radius: 6px;
+  box-sizing: border-box;
+}
