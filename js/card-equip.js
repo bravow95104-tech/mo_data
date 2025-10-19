@@ -91,7 +91,49 @@ function initCardTable(data) {
       tbody.appendChild(tr);
     });
   }
+  // === Modal ===
+  function showDetailModal(hero) {
+    const overlay = document.getElementById('modalOverlay');
+    const modalBox = document.getElementById('modalBox');
+    const contentDiv = document.getElementById('modalContent');
 
+    // 英雄名稱安全化（移除特殊字元避免檔案路徑錯誤）
+    const safeName = hero.name.replace(/[^\w\u4e00-\u9fa5]/g, '');
+
+    // Modal 內容
+    let html = `
+      <h2 class="hero-name">${item.card_id}</h2>
+      <div class="hero-details-container">
+        <div class="hero-column left">
+          <img src="/mo_data/pic/card-equip/${safeName}.jpg" alt="${item.card_id}" class="hero-image" />
+        </div>
+
+        <div class="hero-column right">
+          <p><strong>專卡名稱：</strong>${item.card_id}</p>
+          <p><strong>等級：</strong>${item.card_lv}</p>
+          <p><strong>屬性：</strong>${ item.card_property} <strong>+</strong>${item.card_data}</p>
+          <p><strong>倍率：</strong>${item.nemultiplier}</p>
+          <p><strong>專屬英雄：</strong>${item.hero_name}</p>
+        </div>
+
+      </div>
+    `;
+
+    contentDiv.innerHTML = html;
+
+    overlay.style.display = 'block';
+    modalBox.style.display = 'block';
+  }
+
+    // === 關閉 Modal ===
+  const closeBtn = document.querySelector('#modalBox .close-btn');
+  closeBtn.addEventListener('click', closeModal);
+  document.getElementById('modalOverlay').addEventListener('click', closeModal);
+
+  function closeModal() {
+    document.getElementById('modalOverlay').style.display = 'none';
+    document.getElementById('modalBox').style.display = 'none';
+  }
   function applyFilters() {
     const keyword = searchInput.value.trim().toLowerCase();
 
