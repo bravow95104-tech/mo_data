@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   fetch("/mo_data/data/card.json")
     .then(res => {
-      if (!res.ok) throw new Error("載入 card-equip.json 失敗");
+      if (!res.ok) throw new Error("載入 card.json 失敗");
       return res.json();
     })
     .then(json => {
@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
       tbody.innerHTML = "<tr><td colspan='6'>無法載入資料</td></tr>";
     });
 
-  // 回到頂部按鈕邏輯 (可保留或移除)
+  // 回到頂部按鈕邏輯
   const backToTopBtn = document.getElementById('backToTop');
   window.addEventListener('scroll', () => {
     backToTopBtn.style.display = window.scrollY > 200 ? 'block' : 'none';
@@ -24,14 +24,13 @@ document.addEventListener("DOMContentLoaded", () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 
-  // Accordion 展開／收合 (可保留或移除)
+  // Accordion 展開／收合
   document.querySelectorAll('.accordion-header').forEach(header => {
     header.addEventListener('click', () => {
       header.parentElement.classList.toggle('collapsed');
     });
   });
 });
-
 
 function initCardTable(data) {
   const searchInput = document.getElementById("searchInput");
@@ -76,8 +75,10 @@ function initCardTable(data) {
         }
         tr.appendChild(td);
       });
-// 點擊列 → 顯示詳細視窗
-      tr.addEventListener("click", () => showDetailModal(item));
+
+      // 移除點擊事件，不開啟 Modal
+      // tr.addEventListener("click", () => showDetailModal(item));
+
       tbody.appendChild(tr);
     });
   }
@@ -110,8 +111,7 @@ function initCardTable(data) {
     renderTable(filtered);
   }
 
-
-  // 綁定篩選按鈕事件
+  // 篩選按鈕事件
   filterBtns.forEach(btn => {
     btn.addEventListener("click", () => {
       const type = btn.dataset.type;
@@ -129,7 +129,7 @@ function initCardTable(data) {
     });
   });
 
-  // 綁定清除篩選按鈕
+  // 清除篩選按鈕事件
   clearBtn.addEventListener("click", () => {
     activeFilters = {
       card_property: [],
@@ -141,14 +141,9 @@ function initCardTable(data) {
     applyFilters();
   });
 
-  // 搜尋輸入框事件
+  // 搜尋框輸入事件
   searchInput.addEventListener("input", applyFilters);
 
-  // 綁定 Modal 關閉事件
-  const closeBtn = document.querySelector('#modalBox .close-btn');
-  closeBtn.addEventListener('click', closeModal);
-  document.getElementById('modalOverlay').addEventListener('click', closeModal);
-
-  // 頁面載入時先渲染完整表格
+  // 頁面載入時渲染完整資料表
   renderTable(data);
 }
