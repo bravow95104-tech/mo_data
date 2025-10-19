@@ -125,10 +125,10 @@ function initCardTable(data) {
         </div>
         <div class="hero-column right" style="flex:1;">
           <p><strong>專卡名稱：</strong>${item.card_id}</p>
-          <p><strong>等級：</strong>${item.card_lv}</p>
+          <p class="section-gap"><strong>等級：</strong>${item.card_lv}</p>
           <p><strong>屬性：</strong>${item.card_property} <strong>+</strong> ${item.card_data}</p>
           <p><strong>倍率：</strong>${item.nemultiplier}</p>
-          <p><strong>專屬英雄：</strong>${item.hero_name}</p>
+          <p class="section-gap"><strong>專屬英雄：</strong>${item.hero_name}</p>
         </div>
       </div>
     `;
