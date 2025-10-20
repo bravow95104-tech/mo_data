@@ -76,9 +76,7 @@ function initCardTable(data) {
         tr.appendChild(td);
       });
 
-      // 移除點擊事件，不開啟 Modal
-      // tr.addEventListener("click", () => showDetailModal(item));
-
+      tr.addEventListener("click", () => showDetailModal(item));
       tbody.appendChild(tr);
     });
   }
@@ -109,6 +107,40 @@ function initCardTable(data) {
     });
 
     renderTable(filtered);
+  }
+
+  function showDetailModal(item) {
+    const overlay = document.getElementById('modalOverlay');
+    const modalBox = document.getElementById('modalBox');
+    const contentDiv = document.getElementById('modalContent');
+
+    // 處理 card_id 讓檔名安全（移除特殊字元）
+    const safeName = item.card_id.replace(/[^\w\u4e00-\u9fa5]/g, '');
+
+    const html = `
+      <h2 class="hero-name">${item.card_id}</h2>
+      <div class="hero-details-container" style="display:flex; gap: 20px;">
+        <div class="hero-column left" style="flex:1;">
+          <img src="/mo_data/pic/card-equip/${safeName}.jpg" alt="${item.card_id}" class="hero-image" style="width:100%; height:auto;" />
+        </div>
+        <div class="hero-column right" style="flex:1;">
+          <p><strong>專卡名稱：</strong>${item.card_id}</p>
+          <p class="section-gap"><strong>等級：</strong>${item.card_lv}</p>
+          <p><strong>屬性：</strong>${item.card_property} <strong>+</strong> ${item.card_data}</p>
+          <p><strong>倍率：</strong>${item.nemultiplier}</p>
+          <p class="section-gap"><strong>專屬英雄：</strong>${item.hero_name}</p>
+        </div>
+      </div>
+    `;
+
+    contentDiv.innerHTML = html;
+    overlay.style.display = 'block';
+    modalBox.style.display = 'block';
+  }
+
+  function closeModal() {
+    document.getElementById('modalOverlay').style.display = 'none';
+    document.getElementById('modalBox').style.display = 'none';
   }
 
   // 篩選按鈕事件
@@ -143,6 +175,11 @@ function initCardTable(data) {
 
   // 搜尋框輸入事件
   searchInput.addEventListener("input", applyFilters);
+
+  // 綁定 Modal 關閉事件
+  const closeBtn = document.querySelector('#modalBox .close-btn');
+  closeBtn.addEventListener('click', closeModal);
+  document.getElementById('modalOverlay').addEventListener('click', closeModal);
 
   // 頁面載入時渲染完整資料表
   renderTable(data);

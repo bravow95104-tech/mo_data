@@ -116,22 +116,32 @@ function initCardTable(data) {
 
     // 處理 card_id 讓檔名安全（移除特殊字元）
     const safeName = item.card_id.replace(/[^\w\u4e00-\u9fa5]/g, '');
+    const safeProp = item.card_property.replace(/[^\w\u4e00-\u9fa5]/g, '');
+      // 嘗試先載入「名稱_屬性.jpg」，失敗 fallback 成「名稱.jpg」
+  const imageFileName = `${safeName}_${safeProp}.jpg`;
+  const fallbackFileName = `${safeName}.jpg`;
 
-    const html = `
-      <h2 class="hero-name">${item.card_id}</h2>
-      <div class="hero-details-container" style="display:flex; gap: 20px;">
-        <div class="hero-column left" style="flex:1;">
-          <img src="/mo_data/pic/card-equip/${safeName}.jpg" alt="${item.card_id}" class="hero-image" style="width:100%; height:auto;" />
-        </div>
-        <div class="hero-column right" style="flex:1;">
-          <p><strong>專卡名稱：</strong>${item.card_id}</p>
-          <p class="section-gap"><strong>等級：</strong>${item.card_lv}</p>
-          <p><strong>屬性：</strong>${item.card_property} <strong>+</strong> ${item.card_data}</p>
-          <p><strong>倍率：</strong>${item.nemultiplier}</p>
-          <p class="section-gap"><strong>專屬英雄：</strong>${item.hero_name}</p>
-        </div>
+const html = `
+    <h2 class="hero-name">${item.card_id}</h2>
+    <div class="hero-details-container" style="display:flex; gap: 20px;">
+      <div class="hero-column left" style="flex:1;">
+        <img 
+          src="/mo_data/pic/card-equip/${imageFileName}" 
+          alt="${item.card_id}" 
+          class="hero-image" 
+          style="width:100%; height:auto;" 
+          onerror="this.onerror=null; this.src='/mo_data/pic/card-equip/${fallbackFileName}';"
+        />
       </div>
-    `;
+      <div class="hero-column right" style="flex:1;">
+        <p><strong>專卡名稱：</strong>${item.card_id}</p>
+        <p class="section-gap"><strong>等級：</strong>${item.card_lv}</p>
+        <p><strong>屬性：</strong>${item.card_property} <strong>+</strong> ${item.card_data}</p>
+        <p><strong>倍率：</strong>${item.nemultiplier}</p>
+        <p class="section-gap"><strong>專屬英雄：</strong>${item.hero_name}</p>
+      </div>
+    </div>
+  `;
 
     contentDiv.innerHTML = html;
     overlay.style.display = 'block';
