@@ -230,7 +230,21 @@ nav .dropdown-toggle:hover {
   user-select: none;
   box-shadow: 0 2px 8px rgba(51, 153, 255, 0.3);
 }
-
+.changelog-list .tips {
+  flex-shrink: 0;
+  width: 110px;
+  background-color: #41bb4b;
+  color: white;
+  font-family: "Courier New", Courier, monospace;
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 4px 8px;
+  border-radius: 6px;
+  text-align: center;
+  margin-right: 20px;
+  user-select: none;
+  box-shadow: 0 2px 8px rgba(51, 153, 255, 0.3);
+}
 
 /* ✅ 手機版：上下排列 */
 @media (max-width: 768px) {
