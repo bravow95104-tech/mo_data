@@ -48,29 +48,24 @@ document.addEventListener("DOMContentLoaded", () => {
     data.forEach(hero => {
       const tr = document.createElement('tr');
 
- // === 圖片 ===
-const safeName = hero.name.replace(/[^\w\u4e00-\u9fa5]/g, '');
-const basePath = `/mo_data/pic/works/${safeName}`;
-const extensions = ['.png', '.bmp', '.jpg'];
-let attempt = 0;
-
-const img = document.createElement('img');
-img.src = basePath + extensions[attempt];
-img.alt = hero.name;
-img.style.width = '40px';
-img.style.height = '40px';
-img.style.objectFit = 'contain';
-
-img.onerror = () => {
-  attempt++;
-  if (attempt < extensions.length) {
-    img.src = basePath + extensions[attempt];
-  } else {
-    imgTd.textContent = '—';
-  }
-};
-
-imgTd.appendChild(img);
+      // === 第一格：根據 name 自動載入圖片 ===
+      const imgTd = document.createElement('td');
+      if (hero.name) {
+        const img = document.createElement('img');
+        img.src = `/mo_data/pic/works/${hero.name.replace(/[\\\/:*?"<>|]/g, '')}.jpg`;
+        img.alt = hero.name;
+        img.style.width = '40px';
+        img.style.height = '40px';
+        img.style.objectFit = 'contain';
+        img.onerror = () => {
+          img.style.display = 'none';
+          imgTd.textContent = '—'; // 若圖片不存在顯示—
+        };
+        imgTd.appendChild(img);
+      } else {
+        imgTd.textContent = '—';
+      }
+      tr.appendChild(imgTd);
 
       // === 其他欄位 ===
       const fields = ['type', 'lv', 'name', 'area'];
