@@ -97,8 +97,7 @@ document.addEventListener("DOMContentLoaded", () => {
     img.alt = altText;
     img.style.objectFit = 'contain';
     img.style.maxWidth = '100%';
-    img.style.width = '150px';
-    img.style.height = 'auto';
+
 
     function tryNext() {
       img.src = basePath + extensions[attempt];
