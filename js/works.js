@@ -49,35 +49,28 @@ document.addEventListener("DOMContentLoaded", () => {
       const tr = document.createElement('tr');
 
  // === 圖片 ===
-const imgTd = document.createElement('td');
-if (hero.item) {
-  const img = document.createElement('img');
-  const basePath = `/mo_data/pic/works/${hero.item}`;
-  const extensions = ['.png', '.bpm', '.jpg']; // 嘗試的副檔名順序
-  let attempt = 0;
+const safeName = hero.name.replace(/[^\w\u4e00-\u9fa5]/g, '');
+const basePath = `/mo_data/pic/works/${safeName}`;
+const extensions = ['.png', '.bmp', '.jpg'];
+let attempt = 0;
 
-  // 設定初始 src
-  img.src = basePath + extensions[attempt];
-  img.alt = hero.item;
-  img.style.width = '40px';
-  img.style.height = '40px';
-  img.style.objectFit = 'contain';
+const img = document.createElement('img');
+img.src = basePath + extensions[attempt];
+img.alt = hero.name;
+img.style.width = '40px';
+img.style.height = '40px';
+img.style.objectFit = 'contain';
 
-  // 當圖片錯誤時嘗試下一個副檔名
-  img.onerror = () => {
-    attempt++;
-    if (attempt < extensions.length) {
-      img.src = basePath + extensions[attempt];
-    } else {
-      imgTd.textContent = '—'; // 全部失敗則顯示破圖
-    }
-  };
+img.onerror = () => {
+  attempt++;
+  if (attempt < extensions.length) {
+    img.src = basePath + extensions[attempt];
+  } else {
+    imgTd.textContent = '—';
+  }
+};
 
-  imgTd.appendChild(img);
-} else {
-  imgTd.textContent = '—';
-}
-tr.appendChild(imgTd);
+imgTd.appendChild(img);
 
       // === 其他欄位 ===
       const fields = ['type', 'lv', 'name', 'area'];
