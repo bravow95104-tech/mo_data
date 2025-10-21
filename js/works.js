@@ -50,22 +50,39 @@ document.addEventListener("DOMContentLoaded", () => {
 
       // === 第一格：根據 name 自動載入圖片 ===
       const imgTd = document.createElement('td');
-      if (hero.name) {
-        const img = document.createElement('img');
-        img.src = `/mo_data/pic/works/${hero.name.replace(/[\\\/:*?"<>|]/g, '')}.jpg`;
-        img.alt = hero.name;
-        img.style.width = '40px';
-        img.style.height = '40px';
-        img.style.objectFit = 'contain';
-        img.onerror = () => {
-          img.style.display = 'none';
-          imgTd.textContent = '—'; // 若圖片不存在顯示—
-        };
-        imgTd.appendChild(img);
+
+if (hero.name) {
+  const safeName = hero.name.replace(/[\\\/:*?"<>|]/g, ''); // 清除非法字元
+  const extensions = ['.png', '.bmp', '.jpg'];
+  let attempt = 0;
+
+  const img = document.createElement('img');
+  img.alt = hero.name;
+  img.style.width = '40px';
+  img.style.height = '40px';
+  img.style.objectFit = 'contain';
+
+  // 嘗試載入圖片的函式
+  function tryLoad() {
+    img.src = `/mo_data/pic/works/${safeName}${extensions[attempt]}`;
+    img.onerror = () => {
+      attempt++;
+      if (attempt < extensions.length) {
+        tryLoad(); // 嘗試下一個副檔名
       } else {
-        imgTd.textContent = '—';
+        imgTd.textContent = '—'; // 全部失敗則顯示破圖符號
       }
-      tr.appendChild(imgTd);
+    };
+  }
+
+  tryLoad(); // 開始第一次嘗試
+  imgTd.appendChild(img);
+} else {
+  imgTd.textContent = '—';
+}
+
+tr.appendChild(imgTd);
+
 
       // === 其他欄位 ===
       const fields = ['type', 'lv', 'name', 'area'];
