@@ -81,70 +81,106 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // === Modal ===
   function showDetailModal(hero) {
-    const overlay = document.getElementById('modalOverlay');
-    const modalBox = document.getElementById('modalBox');
-    const contentDiv = document.getElementById('modalContent');
+  const overlay = document.getElementById('modalOverlay');
+  const modalBox = document.getElementById('modalBox');
+  const contentDiv = document.getElementById('modalContent');
 
-    // 英雄名稱安全化（移除特殊字元避免檔案路徑錯誤）
-    const safeName = hero.name.replace(/[^\w\u4e00-\u9fa5]/g, '');
+  // 安全檔名：移除特殊字元
+  const safeName = hero.name.replace(/[^\w\u4e00-\u9fa5]/g, '');
 
-    // 組合圖片路徑
-    const frontImg = `/mo_data/pic/heroes/${safeName}_正.jpg`;
-    const backImg = `/mo_data/pic/heroes/${safeName}_反.jpg`;
+  // 圖片載入函式（依序嘗試 .png → .bmp → .jpg）
+  function createImageWithFallbacks(basePath, altText) {
+    const extensions = ['.png', '.bmp', '.jpg'];
+    let attempt = 0;
 
-    // 插入圖片區塊
-    const imgHTML = `
-      <div class="hero-images">
-        <img src="${frontImg}" alt="${hero.name} 正面"
-          onerror="this.src='/mo_data/pic/heroes/no_image.jpg';" />
-        <img src="${backImg}" alt="${hero.name} 反面"
-          onerror="this.src='/mo_data/pic/heroes/no_image.jpg';" />
-      </div>`;
+    const img = document.createElement('img');
+    img.alt = altText;
+    img.style.objectFit = 'contain';
+    img.style.maxWidth = '100%';
+    img.style.width = '150px';
+    img.style.height = 'auto';
 
-    // Modal 內容
-    let html = `
-      <h2 class="hero-name">${hero.name}</h2>
-      ${imgHTML}
-      <div class="hero-details-container">
-        <div class="hero-column left">
-          <p><strong>對應光輝：</strong>${hero.glory}</p>
-          <p><strong>拜官：</strong>${hero.promotion}</p>
-          <p><strong>初始：</strong>${hero.initial}</p>
-          <p><strong>素質：</strong>${hero.traits}</p>
-          <p><strong>個性：</strong>${hero.personality}</p>
-          <p><strong>屬性：</strong>${hero.element}</p>
-          <p class="section-gap"><strong>力量：</strong>${hero.str}</p>
-          <p><strong>智慧：</strong>${hero.int}</p>
-          <p><strong>體質：</strong>${hero.vit}</p>
-          <p><strong>敏捷：</strong>${hero.agi}</p>
-          <p><strong>運氣：</strong>${hero.luk}</p>
-        </div>
+    function tryNext() {
+      img.src = basePath + extensions[attempt];
+      img.onerror = () => {
+        attempt++;
+        if (attempt < extensions.length) {
+          tryNext();
+        } else {
+          img.src = '/mo_data/pic/heroes/no_image.jpg'; // 全部失敗用預設圖
+        }
+      };
+    }
 
-        <div class="hero-column right">
-          <p><strong>積極度(生變前)：</strong>${hero.aggression_before}</p>
-          <p><strong>積極度(生變後)：</strong>${hero.aggression_after}</p>
-          <p class="section-gap"><strong>裝備卡(新專)：</strong>${hero.equipment_new}</p>
-          <p><strong>新專數值：</strong>${hero.equipment_new_data}</p>
-          <p><strong>新專倍率：</strong>${hero.new_multiplier}</p>
-          <p class="section-gap"><strong>裝備卡(舊專)：</strong>${hero.equipment_old}</p>
-          <p><strong>舊專數值：</strong>${hero.equipment_old_data}</p>
-          <p class="section-gap"><strong>天生技：</strong>${hero.innate_skill}</p>
-          <p><strong>生變技能：</strong>${hero.transformation_skill}</p>
-        </div>
-
-        
-        <div class="hero-column-details">
-          <p><strong>光輝掉落(掉落較多)：</strong>${hero.fall_high}</p>
-          <p class="section-gap"><strong>光輝掉落(掉落較低)：</strong>${hero.fall_low}</p>
-        </div>
-      </div>
-    `;
-
-    contentDiv.innerHTML = html;
-
-    overlay.style.display = 'block';
-    modalBox.style.display = 'block';
+    tryNext();
+    return img;
   }
+
+  // 前後圖片的 base path
+  const baseFront = `/mo_data/pic/heroes/${safeName}_正`;
+  const baseBack = `/mo_data/pic/heroes/${safeName}_反`;
+
+  // 建立圖片元素
+  const frontImage = createImageWithFallbacks(baseFront, `${hero.name} 正面`);
+  const backImage = createImageWithFallbacks(baseBack, `${hero.name} 反面`);
+
+  // 包圖片的容器
+  const imgContainer = document.createElement('div');
+  imgContainer.className = 'hero-images';
+  imgContainer.style.display = 'flex';
+  imgContainer.style.gap = '10px';
+  imgContainer.style.marginBottom = '20px';
+  imgContainer.appendChild(frontImage);
+  imgContainer.appendChild(backImage);
+
+  // === Modal 主內容 ===
+  contentDiv.innerHTML = `
+    <h2 class="hero-name">${hero.name}</h2>
+  `;
+  contentDiv.appendChild(imgContainer); // 插入圖片容器
+
+  const detailHTML = `
+    <div class="hero-details-container">
+      <div class="hero-column left">
+        <p><strong>對應光輝：</strong>${hero.glory}</p>
+        <p><strong>拜官：</strong>${hero.promotion}</p>
+        <p><strong>初始：</strong>${hero.initial}</p>
+        <p><strong>素質：</strong>${hero.traits}</p>
+        <p><strong>個性：</strong>${hero.personality}</p>
+        <p><strong>屬性：</strong>${hero.element}</p>
+        <p class="section-gap"><strong>力量：</strong>${hero.str}</p>
+        <p><strong>智慧：</strong>${hero.int}</p>
+        <p><strong>體質：</strong>${hero.vit}</p>
+        <p><strong>敏捷：</strong>${hero.agi}</p>
+        <p><strong>運氣：</strong>${hero.luk}</p>
+      </div>
+
+      <div class="hero-column right">
+        <p><strong>積極度(生變前)：</strong>${hero.aggression_before}</p>
+        <p><strong>積極度(生變後)：</strong>${hero.aggression_after}</p>
+        <p class="section-gap"><strong>裝備卡(新專)：</strong>${hero.equipment_new}</p>
+        <p><strong>新專數值：</strong>${hero.equipment_new_data}</p>
+        <p><strong>新專倍率：</strong>${hero.new_multiplier}</p>
+        <p class="section-gap"><strong>裝備卡(舊專)：</strong>${hero.equipment_old}</p>
+        <p><strong>舊專數值：</strong>${hero.equipment_old_data}</p>
+        <p class="section-gap"><strong>天生技：</strong>${hero.innate_skill}</p>
+        <p><strong>生變技能：</strong>${hero.transformation_skill}</p>
+      </div>
+
+      <div class="hero-column-details">
+        <p><strong>光輝掉落(掉落較多)：</strong>${hero.fall_high}</p>
+        <p class="section-gap"><strong>光輝掉落(掉落較低)：</strong>${hero.fall_low}</p>
+      </div>
+    </div>
+  `;
+
+  contentDiv.insertAdjacentHTML('beforeend', detailHTML);
+
+  // 顯示 modal
+  overlay.style.display = 'block';
+  modalBox.style.display = 'block';
+}
+
 
   // === 關閉 Modal ===
   const closeBtn = document.querySelector('#modalBox .close-btn');
