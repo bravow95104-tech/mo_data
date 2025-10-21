@@ -100,21 +100,36 @@ document.addEventListener("DOMContentLoaded", () => {
     data.forEach(hero => {
       const tr = document.createElement('tr');
 
-      // === 圖片 ===
-      const imgTd = document.createElement('td');
-      if (hero.item) {
-        const img = document.createElement('img');
-        img.src = `/mo_data/pic/weapons/${hero.item}.jpg`;
-        img.alt = hero.item;
-        img.style.width = '40px';
-        img.style.height = '40px';
-        img.style.objectFit = 'contain';
-        img.onerror = () => (imgTd.textContent = '—');
-        imgTd.appendChild(img);
-      } else {
-        imgTd.textContent = '—';
-      }
-      tr.appendChild(imgTd);
+// === 圖片 ===
+const imgTd = document.createElement('td');
+if (hero.item) {
+  const img = document.createElement('img');
+  const basePath = `/mo_data/pic/weapons/${hero.item}`;
+  const extensions = ['.png', '.bpm', '.jpg']; // 嘗試的副檔名順序
+  let attempt = 0;
+
+  // 設定初始 src
+  img.src = basePath + extensions[attempt];
+  img.alt = hero.item;
+  img.style.width = '40px';
+  img.style.height = '40px';
+  img.style.objectFit = 'contain';
+
+  // 當圖片錯誤時嘗試下一個副檔名
+  img.onerror = () => {
+    attempt++;
+    if (attempt < extensions.length) {
+      img.src = basePath + extensions[attempt];
+    } else {
+      imgTd.textContent = '—'; // 全部失敗則顯示破圖
+    }
+  };
+
+  imgTd.appendChild(img);
+} else {
+  imgTd.textContent = '—';
+}
+tr.appendChild(imgTd);
 
       // === 其他欄位 ===
       const fields = [
