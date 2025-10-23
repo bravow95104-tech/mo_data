@@ -4,27 +4,132 @@
     <meta charset="UTF-8" />
     <title>MoData</title>
     <link rel="stylesheet" href="/mo_data/css/styles.css" />
-
+    <link rel="stylesheet" href="/mo_data/css/calculation.css" />
+    <link rel="stylesheet" href="/mo_data/css/heromeal.css" />
   </head>
   <body>
-    <div id="nav-container"></div><!-- 這是導航列會被載入的位置 -->
-    <script src="/mo_data/js/componentsLoader.js"></script>
-    <!-- 主要內容 -->
-    <div id="content">
-      <h1></h1>
-      <!-- 更新紀錄區塊 -->
-<section id="changelog">
-  <h2>📝 更新日誌</h2>
-  <ul class="changelog-list">
-    <li>
-      <span class="date">還不知道要放甚麼....</span>
-      給建議
-    </li>
-  </ul>
-</section>
-      <!-- 其他 -->
+    <div id="nav-container"></div>
+    <!-- 這是導航列會被載入的位置 -->
+    <div class="main hero-content">
+      <div class="hero-item">
+        <div class="hero-card">
+          <h2>裝備數值</h2>
+
+          <div class="hero-form-col">
+            <div class="search-toggle-container flex">
+              <div class="search-toggle-item">
+                <label style="margin-right: 8px">已加工</label>
+                <div class="switch-toggle-group">
+                  <label class="switch-toggle">
+                    <input type="checkbox" id="search-enable-switch" />
+                    <span class="slider"></span>
+                  </label>
+                </div>
+              </div>
+              <div class="search-toggle-item">
+                <label>已精煉</label>
+                <div class="switch-toggle-group">
+                  <label class="switch-toggle">
+                    <input type="checkbox" id="toggle-switch" />
+                    <span class="slider"></span>
+                  </label>
+                </div>
+              </div>
+              <div class="search-toggle-item">
+                <label>依字首</label>
+                <div class="switch-toggle-group">
+                  <label class="switch-toggle">
+                    <input type="checkbox" id="toggle-prefix-switch" />
+                    <span class="slider"></span>
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <label>防禦力/攻擊力 </label>
+            <input
+              type="number"
+              id="main-stat"
+              class="hero-input"
+              min="0"
+              value="0"
+            />
+            <label>閃避/命中 </label>
+            <input
+              type="number"
+              id="sub-stat"
+              class="hero-input"
+              min="0"
+              value="0"
+            />
+
+            <label>加工等級(0-9) </label>
+            <input
+              type="number"
+              id="process-level"
+              class="hero-input"
+              min="0"
+              max="9"
+              disabled
+            />
+            <label>精煉等級(0-20) </label>
+            <input
+              type="number"
+              id="refine-level"
+              class="hero-input"
+              min="0"
+              max="20"
+              disabled
+            />
+
+            <label>類型</label>
+
+            <div class="search-row">
+              <div class="search-col hero-search-col">
+                <input
+                  id="searchInput1"
+                  type="text"
+                  class="search-input"
+                  placeholder="搜尋..."
+                  autocomplete="off"
+                />
+                <div id="dropdown1" class="custom-dropdown"></div>
+              </div>
+            </div>
+
+            <label>字首</label>
+
+            <div class="search-row">
+              <div class="search-col hero-search-col">
+                <input
+                  id="searchInput2"
+                  type="text"
+                  class="search-input"
+                  placeholder="搜尋..."
+                  autocomplete="off"
+                />
+                <div id="dropdown2" class="custom-dropdown"></div>
+              </div>
+            </div>
+          </div>
+          <button id="calculate-btn" class="calc-btn" type="button">
+            計算
+          </button>
+        </div>
+      </div>
+
+      <div class="hero-item">
+        <div class="hero-card">
+          <h2>計算結果</h2>
+          <div id="result" class="result"></div>
+        </div>
+      </div>
     </div>
-    
-    <div id="footer-container"></div><!-- 這是頁尾會被載入的位置 -->
+
+    <div id="footer-container"></div>
+    <!-- 這是頁尾會被載入的位置 -->
+
+    <script src="/mo_data/js/componentsLoader.js"></script>
+    <script src="/mo_data/js/refine.js"></script>
   </body>
 </html>
