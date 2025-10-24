@@ -406,7 +406,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!dropdown2) return;
     dropdown2.innerHTML = "";
     if (list.length) {
-      setupDropdown("searchInput2", "dropdown2", [...list], "id", "name");
+      setupDropdown("searchInput2", "dropdown2", list, "id", "name");
     }
   }
 
@@ -467,22 +467,22 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // 失焦時，若尚未選擇且不在 heroesData 才自動選第一筆，否則不動作
-    input.addEventListener("blur", () => {
-      setTimeout(() => {
-        if (filtered.length > 0) {
-          // 判斷 input.value 是否在 heroesData（或 data）裡
-          const exists = data.some(
-            (item) => (item[labelKey] || "") === input.value
-          );
-          if (!exists && input.value) {
-            setInputValueAndTrigger(input, filtered[0][labelKey] || "");
-          }
-        } else {
-          setInputValueAndTrigger(input, "");
-        }
-        hideDropdown();
-      }, 120);
-    });
+    // input.addEventListener("blur", () => {
+    //   setTimeout(() => {
+    //     if (filtered.length > 0) {
+    //       // 判斷 input.value 是否在 heroesData（或 data）裡
+    //       const exists = data.some(
+    //         (item) => (item[labelKey] || "") === input.value
+    //       );
+    //       if (!exists && input.value) {
+    //         setInputValueAndTrigger(input, filtered[0][labelKey] || "");
+    //       }
+    //     } else {
+    //       setInputValueAndTrigger(input, "");
+    //     }
+    //     hideDropdown();
+    //   }, 120);
+    // });
 
     document.addEventListener("mousedown", (e) => {
       if (!input.contains(e.target) && !dropdown.contains(e.target)) {
@@ -502,8 +502,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
       list.forEach((item) => {
         const dropdownItem = document.createElement("div");
-        dropdownItem.textContent = item?.name || "";
-        console.log(item);
+        dropdownItem.textContent = item[labelKey] || "";
         dropdownItem.className = "dropdown-item";
         dropdownItem.addEventListener("mousedown", function (e) {
           e.preventDefault();
@@ -511,7 +510,7 @@ document.addEventListener("DOMContentLoaded", () => {
           input.dataset.ratea = item.rateA || 1;
           input.dataset.rateb = item.rateB || 1;
 
-          setInputValueAndTrigger(input, item?.name || "");
+          setInputValueAndTrigger(input, item[labelKey] || "");
           // 選取後讓 input 失去焦點，避免保留 focus 狀態
           try {
             input.blur();
