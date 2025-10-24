@@ -502,7 +502,8 @@ document.addEventListener("DOMContentLoaded", () => {
       }
       list.forEach((item) => {
         const dropdownItem = document.createElement("div");
-        dropdownItem.textContent = item[labelKey] || "";
+        dropdownItem.textContent = item?.name || "";
+        console.log(item);
         dropdownItem.className = "dropdown-item";
         dropdownItem.addEventListener("mousedown", function (e) {
           e.preventDefault();
@@ -510,7 +511,7 @@ document.addEventListener("DOMContentLoaded", () => {
           input.dataset.ratea = item.rateA || 1;
           input.dataset.rateb = item.rateB || 1;
 
-          setInputValueAndTrigger(input, item[labelKey] || "");
+          setInputValueAndTrigger(input, item?.name || "");
           // 選取後讓 input 失去焦點，避免保留 focus 狀態
           try {
             input.blur();
