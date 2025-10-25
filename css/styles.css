@@ -176,6 +176,7 @@ nav .dropdown-toggle:hover {
   margin-right: 20px;
   user-select: none;
   box-shadow: 0 2px 8px rgba(51, 153, 255, 0.3);
+  border: 1px solid #1c7ed6;
 }
 .sidebar-list .date2 {
   flex-shrink: 0;
@@ -191,6 +192,7 @@ nav .dropdown-toggle:hover {
   margin-right: 20px;
   user-select: none;
   box-shadow: 0 2px 8px rgba(51, 153, 255, 0.3);
+  border: 1px solid #a3d0ff;
 }
 
 /* ✅ 更新日誌區塊 */
