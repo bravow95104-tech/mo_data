@@ -41,6 +41,7 @@ nav .dropdown-toggle:hover {
   background-color: #5abaff;
 }
 
+
 /* 下拉選單 */
 .dropdown {
   position: relative;
@@ -81,6 +82,23 @@ nav .dropdown-toggle:hover {
 
 .dropdown-content a:hover {
   background-color: #5abaff;
+}
+
+
+site-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #3399ff;
+  color: white;
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center; /* 置中內容 */
+  border-radius: 8px 8px 0 0;
+  box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
 }
 
 /* 回到頂部按鈕 */
