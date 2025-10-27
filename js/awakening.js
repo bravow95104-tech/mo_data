@@ -22,7 +22,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const filtered = heroesData.filter(hero => {
       const targetFields = [
         hero.skill_name,
-        hero.probability,
         hero.heros
       ].join(' ').toLowerCase();
 

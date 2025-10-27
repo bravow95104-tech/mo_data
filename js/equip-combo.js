@@ -40,7 +40,7 @@ function initComboPage(data) {
         skill.includes(searchText) ||
         job.includes(searchText) ||
         skillType.includes(searchText) ||
-        cat.includes(searchText);
+        cat.includes(searchText) ||
         equipmentType.includes(searchText);
 // 職業篩選
 const matchFilter =
@@ -55,7 +55,8 @@ const matchFilter =
 // commonly 篩選
 const matchCommonly =
   activeFilters.commonly.length === 0 ||
-  (activeFilters.commonly.includes("TRUE") && item.commonly === "TRUE");
+  (activeFilters.commonly.some(f => f.toLowerCase() === "true") &&
+   String(item.commonly).toLowerCase() === "true");
 
       return matchSearch && matchFilter && matchCommonly && matchCategory;
     });
