@@ -6,7 +6,7 @@ let heroesData = [];
 function setInputValueAndTrigger(input, value) {
   input.value = value || "";
 
-  const event = new Event("change", { bubbles: true }); // or 'input'
+  const event = new Event('change', { bubbles: true }); // or 'input'
   input.dispatchEvent(event);
 }
 // 裝備卡下拉選單選擇後自動比對英雄資料並選擇 radio
@@ -78,10 +78,8 @@ document.addEventListener("DOMContentLoaded", () => {
     [0, 1, 2].forEach((i) => {
       const equipInput = searchInputs[i];
       if (equipInput) {
-        equipInput.disabled =
-          !enabled || !(heroInput && heroInput.value.trim());
-        if (!enabled || !(heroInput && heroInput.value.trim()))
-          equipInput.value = "";
+        equipInput.disabled = !enabled || !(heroInput && heroInput.value.trim());
+        if (!enabled || !(heroInput && heroInput.value.trim())) equipInput.value = "";
       }
     });
     // radio 反向控制
@@ -307,9 +305,7 @@ document.addEventListener("DOMContentLoaded", () => {
       setTimeout(() => {
         if (filtered.length > 0) {
           // 判斷 input.value 是否在 heroesData（或 data）裡
-          const exists = data.some(
-            (item) => (item[labelKey] || "") === input.value
-          );
+          const exists = data.some(item => (item[labelKey] || "") === input.value);
           if (!exists && input.value) {
             setInputValueAndTrigger(input, filtered[0][labelKey] || "");
           }
@@ -344,12 +340,6 @@ document.addEventListener("DOMContentLoaded", () => {
           e.preventDefault();
           // input.value = item[labelKey] || "";
           setInputValueAndTrigger(input, item[labelKey] || "");
-          // 選取後讓 input 失去焦點，避免保留 focus 狀態
-          try {
-            input.blur();
-          } catch (err) {
-            /* ignore */
-          }
           hideDropdown();
         });
         dropdown.appendChild(dropdownItem);
@@ -376,14 +366,9 @@ document.addEventListener("DOMContentLoaded", () => {
         dropdown.style.bottom = "auto";
         dropdown.style.transform = "none";
       }
-      // 顯示時加上邊框
-      dropdown.style.border = "1px solid #ccc";
-      dropdown.style.borderTop = "none";
     }
     function hideDropdown() {
       dropdown.style.display = "none";
-      // 隱藏時移除邊框，回復到 CSS 的預設
-      dropdown.style.border = "";
     }
   }
 });

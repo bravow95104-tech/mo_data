@@ -55,7 +55,7 @@ const matchFilter =
 // commonly 篩選
 const matchCommonly =
   activeFilters.commonly.length === 0 ||
-  (activeFilters.commonly.includes("true") && item.commonly === "true");
+  (activeFilters.commonly.includes("TRUE") && item.commonly === "TRUE");
 
       return matchSearch && matchFilter && matchCommonly && matchCategory;
     });
