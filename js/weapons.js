@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   let heroesData = [];
   let activeFilter = null; // ✅ 記錄目前篩選條件
+  let searchTimer = null;  // ✅ 搜尋防抖用
 
   // === 載入 JSON 資料 ===
   fetch('/mo_data/data/weapons.json')
@@ -18,15 +19,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const searchInput = document.getElementById('searchInput');
 
-  // === 搜尋框 ===
+  // === 搜尋框（防抖動版） ===
   searchInput.addEventListener('input', () => {
-    applyFilters();
+    clearTimeout(searchTimer);
+    searchTimer = setTimeout(() => {
+      applyFilters();
+    }, 200); // ✅ 等使用者停 0.2 秒再觸發搜尋
   });
 
   // === 篩選按鈕 ===
   document.querySelectorAll('.filter-btn').forEach(btn => {
     btn.addEventListener('click', () => {
-      // 切換 active 樣式
+      // 清除所有 active 樣式
       document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
 
@@ -52,7 +56,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function applyFilters() {
     const keyword = searchInput.value.trim().toLowerCase();
 
-    let filtered = heroesData.filter(hero => {
+    const filtered = heroesData.filter(hero => {
       // ✅ 篩選按鈕條件
       if (activeFilter) {
         const { type, value } = activeFilter;
@@ -97,39 +101,51 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
+    // ✅ 使用 DocumentFragment 減少重排，避免抖動
+    const fragment = document.createDocumentFragment();
+
     data.forEach(hero => {
       const tr = document.createElement('tr');
 
-// === 圖片 ===
-const imgTd = document.createElement('td');
-if (hero.item) {
-  const img = document.createElement('img');
-  const basePath = `/mo_data/pic/weapons/${hero.item}`;
-  const extensions = ['.png', '.bpm', '.jpg']; // 嘗試的副檔名順序
-  let attempt = 0;
+      // === 圖片欄 ===
+      const imgTd = document.createElement('td');
+      imgTd.style.width = '50px';
+      imgTd.style.height = '50px';
+      imgTd.style.textAlign = 'center';
+      imgTd.style.verticalAlign = 'middle';
 
-  // 設定初始 src
-  img.src = basePath + extensions[attempt];
-  img.alt = hero.item;
-  img.style.width = '40px';
-  img.style.height = '40px';
-  img.style.objectFit = 'contain';
+      if (hero.item) {
+        const img = document.createElement('img');
+        const basePath = `/mo_data/pic/weapons/${hero.item}`;
+        const extensions = ['.png', '.bmp', '.jpg']; // ✅ 修正拼錯 .bpm → .bmp
+        let attempt = 0;
 
-  // 當圖片錯誤時嘗試下一個副檔名
-  img.onerror = () => {
-    attempt++;
-    if (attempt < extensions.length) {
-      img.src = basePath + extensions[attempt];
-    } else {
-      imgTd.textContent = '—'; // 全部失敗則顯示破圖
-    }
-  };
+        // 設定初始 src
+        img.src = basePath + extensions[attempt];
+        img.alt = hero.item;
+        img.style.width = '40px';
+        img.style.height = '40px';
+        img.style.objectFit = 'contain';
+        img.style.display = 'block';
+        img.style.margin = '0 auto';
+        img.style.backgroundColor = '#f8f8f8';
+        img.style.borderRadius = '4px';
 
-  imgTd.appendChild(img);
-} else {
-  imgTd.textContent = '—';
-}
-tr.appendChild(imgTd);
+        // 當圖片錯誤時嘗試下一個副檔名
+        img.onerror = () => {
+          attempt++;
+          if (attempt < extensions.length) {
+            img.src = basePath + extensions[attempt];
+          } else {
+            imgTd.textContent = '—'; // 全部失敗則顯示破圖
+          }
+        };
+
+        imgTd.appendChild(img);
+      } else {
+        imgTd.textContent = '—';
+      }
+      tr.appendChild(imgTd);
 
       // === 其他欄位 ===
       const fields = [
@@ -142,9 +158,10 @@ tr.appendChild(imgTd);
         const value = hero[field] !== undefined ? String(hero[field]) : '';
         const htmlValue = value.replace(/\n/g, '<br>');
 
+        // ✅ 搜尋關鍵字高亮
         if (keyword && value.toLowerCase().includes(keyword)) {
           const regex = new RegExp(`(${keyword})`, 'gi');
-          td.innerHTML = value.replace(regex, '<span class="highlight2">$1</span>');
+          td.innerHTML = htmlValue.replace(regex, '<span class="highlight2">$1</span>');
         } else {
           td.innerHTML = htmlValue;
         }
@@ -153,8 +170,11 @@ tr.appendChild(imgTd);
       });
 
       tr.addEventListener('click', () => showDetailModal(hero));
-      tbody.appendChild(tr);
+      fragment.appendChild(tr);
     });
+
+    // ✅ 一次性插入，減少畫面閃爍
+    tbody.appendChild(fragment);
   }
 
   // === 回到頂部按鈕 ===
