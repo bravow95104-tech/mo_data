@@ -60,6 +60,14 @@
   white-space: nowrap;
   vertical-align: top;
 }
+/* 左欄（表頭）設定：不換行 + 固定寬度 */
+.mission-table tr td:first-child {
+  width: 120px;
+  white-space: nowrap;  /* ✅ 不換行 */
+  font-weight: bold;
+  background-color: #f8fbff;
+  vertical-align: top;
+}
 
 .mission-table td,
 .mission-table th {

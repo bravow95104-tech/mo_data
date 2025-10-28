@@ -39,14 +39,21 @@ function initStarTasks(data) {
       const card = document.createElement("div");
       card.className = "mission-card";
       card.innerHTML = `
-        <h3>${task.star_q}</h3>
-        <table class="mission-table">
-          <tr><td><p><strong>任務條件：</strong></p></td><td>${task.restriction || "-"}</td></tr>
-          <tr><td><p><strong>任務流程：</strong></p></td><td>${(task.process || "").replace(/\n/g, "<br>")}</td></tr>
-          <tr><td><p><strong>任務獎勵：</strong></p></td><td>${(task.award || "-").replace(/\n/g, "<br>")}</td></tr>
-          ${task.remark ? `<tr><td><p><strong>備註：</strong></p></td><td>${task.remark}</td></tr>` : ""}
-        </table>
-      `;
+  <h3>${task.star_q}</h3>
+  <div class="mission-info">
+    <div class="label">任務條件：</div>
+    <div class="value">${task.restriction || "-"}</div>
+
+    <div class="label">任務流程：</div>
+    <div class="value">${(task.process || "").replace(/\n/g, "<br>")}</div>
+
+    <div class="label">任務獎勵：</div>
+    <div class="value">${(task.award || "-").replace(/\n/g, "<br>")}</div>
+
+    ${task.remark ? `<div class="label">備註：</div><div class="value">${task.remark}</div>` : ""}
+  </div>
+`;
+
       tabContent.appendChild(card);
     });
 
