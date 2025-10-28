@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   let heroesData = [];
   let activeFilter = null; // 🔹記錄目前的篩選條件
+  let searchTimer = null;  // ✅ 防抖用變數
 
   // === 載入 JSON 資料 ===
   fetch('/mo_data/data/weapons.json')
@@ -16,18 +17,20 @@ document.addEventListener("DOMContentLoaded", () => {
       tbody.innerHTML = '<tr><td colspan="15">無法載入藥品資料</td></tr>';
     });
 
-  // === 搜尋框 ===
   const searchInput = document.getElementById('searchInput');
-  searchInput.addEventListener('input', applyFilters);
+
+  // === 搜尋框（防抖動版）===
+  searchInput.addEventListener('input', () => {
+    clearTimeout(searchTimer);
+    searchTimer = setTimeout(() => applyFilters(), 200); // ✅ 停止輸入 0.2 秒後再篩選
+  });
 
   // === 篩選按鈕 ===
   document.querySelectorAll('.filter-btn').forEach(btn => {
     btn.addEventListener('click', () => {
-      // 切換 active 樣式（單選）
       document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
 
-      // 更新目前篩選條件
       const type = btn.dataset.type;
       const value = btn.dataset.value;
       activeFilter = { type, value };
@@ -44,7 +47,7 @@ document.addEventListener("DOMContentLoaded", () => {
     renderTable(heroesData);
   });
 
-  // === 綜合篩選 ===
+  // === 綜合篩選（搜尋 + 篩選）===
   function applyFilters() {
     const keyword = searchInput.value.trim().toLowerCase();
 
@@ -69,7 +72,7 @@ document.addEventListener("DOMContentLoaded", () => {
     renderTable(filtered);
   }
 
-  // === 產生表格 ===
+  // === 產生表格（防閃爍版）===
   function renderTable(data) {
     const tbody = document.querySelector('#heroes-table tbody');
     tbody.innerHTML = '';
@@ -81,41 +84,51 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
+    // ✅ 使用 DocumentFragment 減少畫面重繪
+    const fragment = document.createDocumentFragment();
+
     data.forEach(hero => {
       const tr = document.createElement('tr');
 
-// === 圖片 ===
-const imgTd = document.createElement('td');
-if (hero.item) {
-  const img = document.createElement('img');
-  const basePath = `/mo_data/pic/medicine/${hero.item}`;
-  const extensions = ['.png', '.bpm', '.jpg']; // 嘗試的副檔名順序
-  let attempt = 0;
+      // === 圖片 ===
+      const imgTd = document.createElement('td');
+      imgTd.style.width = '50px';
+      imgTd.style.height = '50px';
+      imgTd.style.textAlign = 'center';
+      imgTd.style.verticalAlign = 'middle';
 
-  // 設定初始 src
-  img.src = basePath + extensions[attempt];
-  img.alt = hero.item;
-  img.style.width = '40px';
-  img.style.height = '40px';
-  img.style.objectFit = 'contain';
+      if (hero.item) {
+        const img = document.createElement('img');
+        const basePath = `/mo_data/pic/medicine/${hero.item}`;
+        const extensions = ['.png', '.jpg', '.bmp'];
+        let attempt = 0;
 
-  // 當圖片錯誤時嘗試下一個副檔名
-  img.onerror = () => {
-    attempt++;
-    if (attempt < extensions.length) {
-      img.src = basePath + extensions[attempt];
-    } else {
-      imgTd.textContent = '—'; // 全部失敗則顯示破圖
-    }
-  };
+        img.src = basePath + extensions[attempt];
+        img.alt = hero.item;
+        img.style.width = '40px';
+        img.style.height = '40px';
+        img.style.objectFit = 'contain';
+        img.style.display = 'block';
+        img.style.margin = '0 auto';
+        img.style.borderRadius = '4px';
+        img.style.backgroundColor = '#f9f9f9';
 
-  imgTd.appendChild(img);
-} else {
-  imgTd.textContent = '—';
-}
-tr.appendChild(imgTd);
+        img.onerror = () => {
+          attempt++;
+          if (attempt < extensions.length) {
+            img.src = basePath + extensions[attempt];
+          } else {
+            imgTd.textContent = '—';
+          }
+        };
 
-      // === 其他欄位（不包含 job）===
+        imgTd.appendChild(img);
+      } else {
+        imgTd.textContent = '—';
+      }
+      tr.appendChild(imgTd);
+
+      // === 其他欄位 ===
       const fields = [
         'item', 'lv',
         'material1', 'material2', 'material3', 'material4', 'material5', 'illustrate'
@@ -124,20 +137,26 @@ tr.appendChild(imgTd);
       fields.forEach(field => {
         const td = document.createElement('td');
         const value = hero[field] !== undefined ? String(hero[field]) : '';
+        const htmlValue = value.replace(/\n/g, '<br>');
 
         if (keyword && value.toLowerCase().includes(keyword)) {
           const regex = new RegExp(`(${keyword})`, 'gi');
-          td.innerHTML = value.replace(regex, '<span class="highlight2">$1</span>');
+          td.innerHTML = htmlValue.replace(regex, '<span class="highlight2">$1</span>');
         } else {
-          td.textContent = value;
+          td.innerHTML = htmlValue;
         }
 
         tr.appendChild(td);
       });
 
+      // === 點擊列顯示詳細資料 ===
       tr.addEventListener('click', () => showDetailModal(hero));
-      tbody.appendChild(tr);
+
+      fragment.appendChild(tr);
     });
+
+    // ✅ 一次性插入所有列
+    tbody.appendChild(fragment);
   }
 
   // === 回到頂部按鈕 ===
