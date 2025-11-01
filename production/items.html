@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <title>藥品 | MoData</title>
+    <link rel="stylesheet" href="/mo_data/css/styles.css" />
+    <link rel="stylesheet" href="/mo_data/css/weapons.css" />
+  </head>
+  <body>
+    <div id="nav-container"></div>
+    <!-- 這是導航列會被載入的位置 -->
+
+    <h1></h1>
+
+    <!-- 搜尋框 -->
+    <div id="searchContainer">
+      <label for="searchInput" class="quick-search-label">快速搜尋</label>
+      <input
+        type="text"
+        id="searchInput"
+        placeholder="搜尋名稱..."
+      />
+    </div>
+    <br />
+
+
+    <!-- 英雄表格 -->
+    <table id="heroes-table">
+      <thead>
+        <tr>
+          <th>圖示</th>
+          <th>名稱</th>
+          <th>說明</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- 資料由 JS 動態載入 -->
+      </tbody>
+    </table>
+
+    <!-- 留白避免按鈕遮住 -->
+    <div style="height: 80px"></div>
+
+    <!-- 回到頂部按鈕 -->
+    <button id="backToTop" title="回到頂部">▲</button>
+
+    <!-- Modal HTML -->
+    <div id="modalOverlay"></div>
+    <div id="modalBox">
+      <span class="close-btn">&times;</span>
+      <div id="modalContent"></div>
+    </div>
+
+    <!-- JavaScript -->
+
+    <div id="footer-container"></div>
+    <!-- 這是頁尾會被載入的位置 -->
+    <script src="/mo_data/js/items.js"></script>
+    <script src="/mo_data/js/componentsLoader.js"></script>
+    
+  </body>
+</html>
