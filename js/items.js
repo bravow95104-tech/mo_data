@@ -146,9 +146,6 @@ fetch('/mo_data/data/items.json')
         tr.appendChild(td);
       });
 
-      // === 點擊列顯示詳細資料 ===
-      tr.addEventListener('click', () => showDetailModal(hero));
-
       fragment.appendChild(tr);
     });
 
@@ -165,12 +162,4 @@ fetch('/mo_data/data/items.json')
   backToTopBtn.addEventListener('click', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
-
-  // === Accordion 展開／收合 ===
-  document.querySelectorAll('.accordion-header').forEach(header => {
-    header.addEventListener('click', () => {
-      const accordion = header.parentElement;
-      accordion.classList.toggle('collapsed');
     });
-  });
-});
