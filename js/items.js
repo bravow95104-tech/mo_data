@@ -25,27 +25,6 @@ fetch('/mo_data/data/items.json')
     searchTimer = setTimeout(() => applyFilters(), 200); // ✅ 停止輸入 0.2 秒後再篩選
   });
 
-  // === 篩選按鈕 ===
-  document.querySelectorAll('.filter-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-
-      const type = btn.dataset.type;
-      const value = btn.dataset.value;
-      activeFilter = { type, value };
-
-      applyFilters();
-    });
-  });
-
-  // === 清除篩選 ===
-  document.getElementById('clearFilters').addEventListener('click', () => {
-    searchInput.value = '';
-    activeFilter = null;
-    document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
-    renderTable(heroesData);
-  });
 
   // === 綜合篩選（搜尋 + 篩選）===
   function applyFilters() {
@@ -58,11 +37,6 @@ fetch('/mo_data/data/items.json')
         hero.illustrate,
       ].join(' ').toLowerCase();
       const matchesKeyword = targetFields.includes(keyword);
-
-      // 🔹 篩選條件
-      const matchesFilter = !activeFilter || (
-        activeFilter.type === "promotion" && hero.items === activeFilter.value
-      );
 
       return matchesKeyword && matchesFilter;
     });
