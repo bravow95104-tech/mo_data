@@ -27,22 +27,20 @@ fetch('/mo_data/data/items.json')
 
 
   // === 綜合篩選（搜尋 + 篩選）===
-  function applyFilters() {
-    const keyword = searchInput.value.trim().toLowerCase();
+function applyFilters() {
+  const keyword = searchInput.value.trim().toLowerCase();
 
-    const filtered = heroesData.filter(hero => {
-      // 🔹 搜尋條件
-      const targetFields = [
-        hero.items,
-        hero.illustrate,
-      ].join(' ').toLowerCase();
-      const matchesKeyword = targetFields.includes(keyword);
+  const filtered = heroesData.filter(hero => {
+    const targetFields = [
+      hero.items,
+      hero.illustrate,
+    ].join(' ').toLowerCase();
+    return targetFields.includes(keyword);
+  });
 
-      return matchesKeyword && matchesFilter;
-    });
+  renderTable(filtered);
+}
 
-    renderTable(filtered);
-  }
 
   // === 產生表格（防閃爍版）===
   function renderTable(data) {
@@ -76,7 +74,7 @@ fetch('/mo_data/data/items.json')
         let attempt = 0;
 
         img.src = basePath + extensions[attempt];
-        img.alt = hero.item;
+        img.alt = hero.items;
         img.style.width = '40px';
         img.style.height = '40px';
         img.style.objectFit = 'contain';
