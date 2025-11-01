@@ -71,7 +71,7 @@ fetch('/mo_data/data/items.json')
 
       if (hero.items) {
         const img = document.createElement('img');
-        const basePath = `/mo_data/pic/items/${hero.item}`;
+        const basePath = `/mo_data/pic/items/${hero.items}`;
         const extensions = ['.png', '.jpg', '.bmp'];
         let attempt = 0;
 
