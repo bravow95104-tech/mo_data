@@ -69,7 +69,7 @@ fetch('/mo_data/data/items.json')
       imgTd.style.textAlign = 'center';
       imgTd.style.verticalAlign = 'middle';
 
-      if (hero.item) {
+      if (hero.items) {
         const img = document.createElement('img');
         const basePath = `/mo_data/pic/items/${hero.item}`;
         const extensions = ['.png', '.jpg', '.bmp'];
