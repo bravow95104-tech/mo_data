@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   let heroesData = [];
-  let searchTimer = null; // ✅ 防抖用變數
+  let searchTimer = null;
+  let activeFilter = null; // ✅ 記錄目前篩選條件
 
   // === 載入 JSON 資料 ===
   fetch('/mo_data/data/weapons.json')
@@ -18,25 +19,69 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const searchInput = document.getElementById('searchInput');
 
-  // === 搜尋框（防抖動版）===
+  // === 搜尋框（防抖動 + 同步篩選）===
   searchInput.addEventListener('input', () => {
     clearTimeout(searchTimer);
     searchTimer = setTimeout(() => {
-      const keyword = searchInput.value.trim().toLowerCase();
-
-      const filtered = heroesData.filter(hero => {
-        const targetFields = [
-          hero.item,
-          hero.sort,
-          hero.lv,
-        ].join(' ').toLowerCase();
-
-        return targetFields.includes(keyword);
-      });
-
-      renderTable(filtered);
-    }, 200); // ✅ 等使用者停止輸入 0.2 秒再搜尋
+      applyFilters(); // ✅ 呼叫統一的篩選函式
+    }, 200);
   });
+
+  // === 篩選按鈕（單一選擇模式） ===
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      activeFilter = { type: btn.dataset.type, value: btn.dataset.value };
+      applyFilters(); // ✅ 同步搜尋與篩選
+    });
+  });
+
+  // === 清除篩選 ===
+  document.getElementById('clearFilters').addEventListener('click', () => {
+    activeFilter = null; // ✅ 清除條件
+    searchInput.value = '';
+    document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+    renderTable(heroesData);
+
+    // ✅ 清除搜尋高亮
+    document.querySelectorAll('.highlight, .highlight2').forEach(el => {
+      const parent = el.parentNode;
+      parent.replaceChild(document.createTextNode(el.textContent), el);
+      parent.normalize();
+    });
+  });
+
+  // === 統一篩選函式：同時依據搜尋 + 篩選 ===
+  function applyFilters() {
+    const keyword = searchInput.value.trim().toLowerCase();
+
+    const filtered = heroesData.filter(hero => {
+      // ✅ 關鍵字搜尋
+      const targetFields = [
+        hero.item,
+        hero.sort,
+        hero.lv,
+      ].join(' ').toLowerCase();
+      const matchKeyword = keyword ? targetFields.includes(keyword) : true;
+
+      // ✅ 篩選條件
+      let matchFilter = true;
+      if (activeFilter) {
+        const { type, value } = activeFilter;
+        if (type === "promotion" || type === "personality") {
+          matchFilter = hero.sort === value;
+        } else if (type === "job") {
+          matchFilter = hero.job === value;
+        }
+      }
+
+      return matchKeyword && matchFilter;
+    });
+
+    renderTable(filtered);
+  }
 
   // === 產生表格 ===
   function renderTable(data) {
@@ -50,7 +95,6 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    // ✅ 使用 DocumentFragment 減少重排，防止閃爍
     const fragment = document.createDocumentFragment();
 
     data.forEach(hero => {
@@ -124,7 +168,6 @@ document.addEventListener("DOMContentLoaded", () => {
       fragment.appendChild(tr);
     });
 
-    // ✅ 一次性插入，減少畫面閃爍
     tbody.appendChild(fragment);
   }
 
@@ -136,40 +179,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   backToTopBtn.addEventListener('click', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
-
-  // === 篩選按鈕（單一篩選模式） ===
-  document.querySelectorAll('.filter-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-
-      const type = btn.dataset.type;
-      const value = btn.dataset.value;
-
-      const filtered = heroesData.filter(hero => {
-        if (type === "promotion") return hero.sort === value;
-        if (type === "personality") return hero.sort === value;
-        if (type === "job") return hero.job === value;
-        return true;
-      });
-
-      renderTable(filtered);
-    });
-  });
-
-  // === 清除篩選 ===
-  document.getElementById('clearFilters').addEventListener('click', () => {
-    renderTable(heroesData);
-    searchInput.value = '';
-    document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
-
-    // 移除搜尋高亮
-    document.querySelectorAll('.highlight, .highlight2').forEach(el => {
-      const parent = el.parentNode;
-      parent.replaceChild(document.createTextNode(el.textContent), el);
-      parent.normalize();
-    });
   });
 
   // === Accordion 展開／收合 ===
