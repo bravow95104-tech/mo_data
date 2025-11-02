@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   let heroesData = [];
-  let searchTimer;
+  let searchTimer = null;
+  let activeFilter = null; // ✅ 紀錄目前篩選條件（單一模式）
 
   // === 載入 JSON 資料 ===
   fetch('/mo_data/data/weapons.json')
@@ -16,23 +17,67 @@ document.addEventListener("DOMContentLoaded", () => {
       tbody.innerHTML = '<tr><td colspan="15">無法載入飾品資料</td></tr>';
     });
 
-  // === 搜尋框 ===
+  // === 搜尋框（防抖動 + 同時篩選）===
   const searchInput = document.getElementById('searchInput');
   searchInput.addEventListener('input', () => {
     clearTimeout(searchTimer);
     searchTimer = setTimeout(() => {
-      const keyword = searchInput.value.trim().toLowerCase();
-      const filtered = heroesData.filter(hero => {
-        const targetFields = [
-          hero.item,
-          hero.sort,
-          hero.lv,
-        ].join(' ').toLowerCase();
-        return targetFields.includes(keyword);
-      });
-      renderTable(filtered);
-    }, 200); // ✅ 防抖：等使用者停 0.2 秒再篩選
+      applyFilters(); // ✅ 同步篩選
+    }, 200);
   });
+
+  // === 篩選按鈕（單一選擇模式） ===
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      // 清除其他 active 樣式
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      // 記錄目前篩選條件
+      activeFilter = { type: btn.dataset.type, value: btn.dataset.value };
+
+      applyFilters(); // ✅ 同步搜尋 + 篩選
+    });
+  });
+
+  // === 清除篩選 ===
+  document.getElementById('clearFilters').addEventListener('click', () => {
+    activeFilter = null;
+    searchInput.value = '';
+    document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+    renderTable(heroesData);
+
+    // 移除搜尋高亮
+    document.querySelectorAll('.highlight, .highlight2').forEach(el => {
+      const parent = el.parentNode;
+      parent.replaceChild(document.createTextNode(el.textContent), el);
+      parent.normalize();
+    });
+  });
+
+  // === 統一篩選函式（搜尋 + 篩選） ===
+  function applyFilters() {
+    const keyword = searchInput.value.trim().toLowerCase();
+
+    const filtered = heroesData.filter(hero => {
+      // ✅ 搜尋條件
+      const targetFields = [hero.item, hero.sort, hero.lv].join(' ').toLowerCase();
+      const matchKeyword = keyword ? targetFields.includes(keyword) : true;
+
+      // ✅ 篩選條件
+      let matchFilter = true;
+      if (activeFilter) {
+        const { type, value } = activeFilter;
+        if (type === "promotion") {
+          matchFilter = hero.sort === value;
+        }
+      }
+
+      return matchKeyword && matchFilter;
+    });
+
+    renderTable(filtered);
+  }
 
   // === 產生表格 ===
   function renderTable(data) {
@@ -46,7 +91,6 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    // ✅ 使用 DocumentFragment 減少 DOM 重排
     const fragment = document.createDocumentFragment();
 
     data.forEach(hero => {
@@ -62,10 +106,9 @@ document.addEventListener("DOMContentLoaded", () => {
       if (hero.item) {
         const img = document.createElement('img');
         const basePath = `/mo_data/pic/accessories/${hero.item}`;
-        const extensions = ['.png', '.bmp', '.jpg']; // ✅ 修正拼錯 bpm → bmp
+        const extensions = ['.png', '.bmp', '.jpg'];
         let attempt = 0;
 
-        // 設定初始 src
         img.src = basePath + extensions[attempt];
         img.alt = hero.item;
         img.style.width = '40px';
@@ -76,13 +119,12 @@ document.addEventListener("DOMContentLoaded", () => {
         img.style.backgroundColor = '#f9f9f9';
         img.style.borderRadius = '4px';
 
-        // ✅ 圖片失敗時嘗試下一個副檔名
         img.onerror = () => {
           attempt++;
           if (attempt < extensions.length) {
             img.src = basePath + extensions[attempt];
           } else {
-            imgTd.textContent = '—'; // 全部失敗則顯示破圖
+            imgTd.textContent = '—';
           }
         };
 
@@ -120,7 +162,6 @@ document.addEventListener("DOMContentLoaded", () => {
       fragment.appendChild(tr);
     });
 
-    // ✅ 一次性插入表格，避免重排閃爍
     tbody.appendChild(fragment);
   }
 
@@ -131,39 +172,6 @@ document.addEventListener("DOMContentLoaded", () => {
   });
   backToTopBtn.addEventListener('click', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
-
-  // === 篩選按鈕（全域單一篩選模式） ===
-  document.querySelectorAll('.filter-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      // 清除所有 active 樣式
-      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-
-      const type = btn.dataset.type;
-      const value = btn.dataset.value;
-
-      const filtered = heroesData.filter(hero => {
-        if (type === "promotion") return hero.sort === value;
-        return true;
-      });
-
-      renderTable(filtered);
-    });
-  });
-
-  // === 清除篩選 ===
-  document.getElementById('clearFilters').addEventListener('click', () => {
-    searchInput.value = '';
-    document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
-    renderTable(heroesData);
-
-    // 移除搜尋高亮
-    document.querySelectorAll('.highlight, .highlight2').forEach(el => {
-      const parent = el.parentNode;
-      parent.replaceChild(document.createTextNode(el.textContent), el);
-      parent.normalize();
-    });
   });
 
   // === Accordion 展開／收合 ===
