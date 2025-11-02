@@ -3,29 +3,39 @@ body {
   background-color: #f4f8fb;
   margin: 0;
   padding: 0 40px; /* 🔹全站左右留 40px */
+  padding-top: 60px;
   font-family: "Microsoft JhengHei", sans-serif;
 }
 
 /* 導航列固定在最上方，並保持層級高於 table header */
-nav {
-  position: sticky; /* 或 fixed，如果想要一直停留在視窗頂部 */
+/* === 導覽列容器 === */
+#nav-container nav {
+  position: fixed;             /* 固定在頂部 */
   top: 0;
   left: 0;
+  right: 0;
   width: 100%;
   background: #3399ff;
-  color: white;
+  color: #fff;
   padding: 12px 20px;
   display: flex;
   align-items: center;
   border-radius: 0 0 8px 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  z-index: 1000; /* 高於 table 的 z-index */
+  z-index: 1000;
+
+  /* === 動畫控制 === */
+  transform: translateY(-100%);
+  transition: transform 0.3s ease;
 }
 
-/* 若 nav 高度變動，可調整 top 值 */
-/* 導航列樣式 */
-nav a,
-nav .dropdown-toggle {
+#nav-container nav.visible {
+  transform: translateY(0);
+}
+
+/* === 導覽列內部連結樣式 === */
+#nav-container nav a,
+#nav-container nav .dropdown-toggle {
   color: white;
   margin-right: 20px;
   text-decoration: none;
@@ -36,26 +46,11 @@ nav .dropdown-toggle {
   cursor: pointer;
 }
 
-nav a:hover,
-nav .dropdown-toggle:hover {
+#nav-container nav a:hover,
+#nav-container nav .dropdown-toggle:hover {
   background-color: #5abaff;
 }
 
-#nav-container nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  background: #3399ff;
-  color: #fff;
-  z-index: 1000;
-  transform: translateY(-100%);
-  transition: transform 0.3s ease;
-}
-
-#nav-container nav.visible {
-  transform: translateY(0);
-}
 
 /* 下拉選單 */
 .dropdown {
