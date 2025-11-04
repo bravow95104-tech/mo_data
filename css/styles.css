@@ -3,7 +3,7 @@ body {
   background-color: #f4f8fb;
   margin: 0;
   padding: 0 40px; /* 🔹全站左右留 40px */
-  padding-top: 60px;
+  padding-top: 80px;
   font-family: "Microsoft JhengHei", sans-serif;
 }
 
@@ -23,6 +23,7 @@ body {
   border-radius: 0 0 8px 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   z-index: 1000;
+  padding: 0 40px; /* 🔹全站左右留 40px */
 
   /* === 動畫控制 === */
   transform: translateY(-100%);
