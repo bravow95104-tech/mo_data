@@ -9,6 +9,7 @@
   cursor: pointer;
   font-weight: bold;
   transition: 0.2s;
+  margin-right: 8px; /* ✅ 右邊留一點距離 */
 }
 
 .tab-btn:hover,
