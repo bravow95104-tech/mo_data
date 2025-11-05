@@ -109,28 +109,52 @@ function initCardTable(data) {
     renderTable(filtered);
   }
 
-  function showDetailModal(item) {
-    const overlay = document.getElementById('modalOverlay');
-    const modalBox = document.getElementById('modalBox');
-    const contentDiv = document.getElementById('modalContent');
+function showDetailModal(item) {
+  const overlay = document.getElementById('modalOverlay');
+  const modalBox = document.getElementById('modalBox');
+  const contentDiv = document.getElementById('modalContent');
 
-    // 處理 card_id 讓檔名安全（移除特殊字元）
-    const safeName = item.card_id.replace(/[^\w\u4e00-\u9fa5]/g, '');
-    const safeProp = item.card_property.replace(/[^\w\u4e00-\u9fa5]/g, '');
-      // 嘗試先載入「名稱_屬性.jpg」，失敗 fallback 成「名稱.jpg」
-  const imageFileName = `${safeName}_${safeProp}.jpg`;
-  const fallbackFileName = `${safeName}.jpg`;
+  // 處理 card_id 讓檔名安全（移除特殊字元）
+  const safeName = item.card_id.replace(/[^\w\u4e00-\u9fa5]/g, '');
+  const safeProp = item.card_property.replace(/[^\w\u4e00-\u9fa5]/g, '');
 
-const html = `
+  // 優先 PNG，其次 JPG
+  const imageFileNamePng = `${safeName}_${safeProp}.png`;
+  const fallbackPng = `${safeName}.png`;
+  const imageFileNameJpg = `${safeName}_${safeProp}.jpg`;
+  const fallbackJpg = `${safeName}.jpg`;
+
+  const html = `
     <h2 class="hero-name">${item.card_id}</h2>
     <div class="hero-details-container" style="display:flex; gap: 20px;">
       <div class="hero-column left" style="flex:1;">
         <img 
-          src="/mo_data/pic/card-equip/${imageFileName}" 
+          src="/mo_data/pic/card-equip/${imageFileNamePng}" 
           alt="${item.card_id}" 
           class="hero-image" 
           style="width:100%; height:auto;" 
-          onerror="this.onerror=null; this.src='/mo_data/pic/card-equip/${fallbackFileName}';"
+          onerror="
+            this.onerror=null;
+            // 依序嘗試 PNG → JPG
+            const candidates = [
+              '/mo_data/pic/card-equip/${fallbackPng}',
+              '/mo_data/pic/card-equip/${imageFileNameJpg}',
+              '/mo_data/pic/card-equip/${fallbackJpg}'
+            ];
+            const next = candidates.shift();
+            const tryNext = () => {
+              if (candidates.length > 0) {
+                const img = new Image();
+                const n = candidates.shift();
+                img.onload = () => this.src = n;
+                img.onerror = tryNext;
+                img.src = n;
+              } else {
+                this.src = '/mo_data/pic/no-image.png'; // 最後 fallback
+              }
+            };
+            tryNext();
+          "
         />
       </div>
       <div class="hero-column right" style="flex:1;">
@@ -143,10 +167,10 @@ const html = `
     </div>
   `;
 
-    contentDiv.innerHTML = html;
-    overlay.style.display = 'block';
-    modalBox.style.display = 'block';
-  }
+  contentDiv.innerHTML = html;
+  overlay.style.display = 'block';
+  modalBox.style.display = 'block';
+}
 
   function closeModal() {
     document.getElementById('modalOverlay').style.display = 'none';
