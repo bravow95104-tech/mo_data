@@ -128,12 +128,17 @@ function showDetailModal(item) {
   img.style.height = 'auto';
   img.style.objectFit = 'contain';
 
-  // 準備候選圖片路徑（png -> jpg）
+  // 編碼檔名但保留 _ 和 .
+  function encodeFileName(name) {
+    return name.replace(/[^\w.-]/g, encodeURIComponent);
+  }
+
+  // 候選圖片路徑
   const imageCandidates = [
-    `/mo_data/pic/card-equip/${encodeURIComponent(item.card_id)}_${encodeURIComponent(item.card_property)}.png`,
-    `/mo_data/pic/card-equip/${encodeURIComponent(item.card_id)}.png`,
-    `/mo_data/pic/card-equip/${encodeURIComponent(item.card_id)}_${encodeURIComponent(item.card_property)}.jpg`,
-    `/mo_data/pic/card-equip/${encodeURIComponent(item.card_id)}.jpg`,
+    `/mo_data/pic/card-equip/${encodeFileName(item.card_id)}_${encodeFileName(item.card_property)}.png`,
+    `/mo_data/pic/card-equip/${encodeFileName(item.card_id)}.png`,
+    `/mo_data/pic/card-equip/${encodeFileName(item.card_id)}_${encodeFileName(item.card_property)}.jpg`,
+    `/mo_data/pic/card-equip/${encodeFileName(item.card_id)}.jpg`,
   ];
 
   let index = 0;
@@ -180,7 +185,6 @@ function showDetailModal(item) {
   overlay.style.display = 'block';
   modalBox.style.display = 'block';
 }
-
 
   // === 關閉 Modal ===
   function closeModal() {
