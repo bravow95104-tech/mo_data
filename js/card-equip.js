@@ -129,9 +129,9 @@ function showDetailModal(item) {
   img.style.objectFit = 'contain';
 
   // 編碼檔名但保留 _ 和 .
-  function encodeFileName(name) {
-    return name.replace(/[^\w.-]/g, encodeURIComponent);
-  }
+function encodeFileName(name) {
+  return name.replace(/[^\w.-]/g, c => encodeURIComponent(c));
+}
 
   // 候選圖片路徑
   const imageCandidates = [
