@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
+  // 載入 JSON
   fetch("/mo_data/data/card.json")
     .then(res => {
       if (!res.ok) throw new Error("載入 card.json 失敗");
@@ -15,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
       tbody.innerHTML = "<tr><td colspan='6'>無法載入資料</td></tr>";
     });
 
-  // 回到頂部按鈕邏輯
+  // === 回到頂部按鈕 ===
   const backToTopBtn = document.getElementById('backToTop');
   window.addEventListener('scroll', () => {
     backToTopBtn.style.display = window.scrollY > 200 ? 'block' : 'none';
@@ -24,7 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 
-  // Accordion 展開／收合
+  // === Accordion 展開／收合 ===
   document.querySelectorAll('.accordion-header').forEach(header => {
     header.addEventListener('click', () => {
       header.parentElement.classList.toggle('collapsed');
@@ -33,7 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-
+// === 初始化卡片表格 ===
 function initCardTable(data) {
   const searchInput = document.getElementById("searchInput");
   const clearBtn = document.getElementById("clearFilters");
@@ -42,16 +43,17 @@ function initCardTable(data) {
 
   let activeFilters = {
     card_property: [],
-    nemultiplier: [],
+    multiplier: [],
     new_old: [],
   };
 
+  // === 表格渲染 ===
   function renderTable(filteredData) {
     tbody.innerHTML = "";
     const keyword = searchInput.value.trim().toLowerCase();
 
     if (filteredData.length === 0) {
-      tbody.innerHTML = "<tr><td colspan='6'>找不到符合條件的技能卡</td></tr>";
+      tbody.innerHTML = "<tr><td colspan='6'>找不到符合條件的裝備卡</td></tr>";
       return;
     }
 
@@ -62,7 +64,7 @@ function initCardTable(data) {
         item.card_lv,
         item.card_property,
         item.card_data,
-        item.nemultiplier,
+        item.multiplier || item.nemultiplier, // 兼容舊欄位名稱
         item.hero_name,
       ];
 
@@ -83,6 +85,7 @@ function initCardTable(data) {
     });
   }
 
+  // === 篩選邏輯 ===
   function applyFilters() {
     const keyword = searchInput.value.trim().toLowerCase();
 
@@ -98,8 +101,8 @@ function initCardTable(data) {
         activeFilters.card_property.includes(item.card_property);
 
       const matchMultiplier =
-        activeFilters.nemultiplier.length === 0 ||
-        activeFilters.nemultiplier.includes(item.nemultiplier);
+        activeFilters.multiplier.length === 0 ||
+        activeFilters.multiplier.includes(item.multiplier || item.nemultiplier);
 
       const matchNewOld =
         activeFilters.new_old.length === 0 ||
@@ -111,94 +114,92 @@ function initCardTable(data) {
     renderTable(filtered);
   }
 
-  // ====== 更新後的 Modal 顯示邏輯 ======
-function showDetailModal(item) {
-  const overlay = document.getElementById('modalOverlay');
-  const modalBox = document.getElementById('modalBox');
-  const contentDiv = document.getElementById('modalContent');
+  // === Modal 顯示 ===
+  function showDetailModal(item) {
+    const overlay = document.getElementById('modalOverlay');
+    const modalBox = document.getElementById('modalBox');
+    const contentDiv = document.getElementById('modalContent');
 
-  const img = document.createElement('img');
-  img.alt = item.card_id;
-  img.className = 'hero-image';
-  img.style.width = '100%';
-  img.style.height = 'auto';
+    const safeName = item.card_id.replace(/[^\w\u4e00-\u9fa5]/g, '');
+    const img = document.createElement('img');
+    img.alt = item.card_id;
+    img.className = 'hero-image';
+    img.style.width = '100%';
+    img.style.height = 'auto';
+    img.style.objectFit = 'contain';
 
-  // 候選圖片路徑（優先順序）
-  const imageCandidates = [
-    `/mo_data/pic/card-equip/${item.card_id}_${item.card_property}.png`,
-    `/mo_data/pic/card-equip/${item.card_id}.png`,
-    `/mo_data/pic/card-equip/${item.card_id}_${item.card_property}.jpg`,
-    `/mo_data/pic/card-equip/${item.card_id}.jpg`,
-  ];
+    // 多格式圖片路徑
+    const imageCandidates = [
+      `/mo_data/pic/card-equip/${item.card_id}_${item.card_property}`,
+      `/mo_data/pic/card-equip/${item.card_id}`,
+    ];
 
-  let index = 0;
+    const extensions = ['.png', '.bmp', '.jpg'];
+    let attempt = 0;
 
-  // ✅ 改進版圖片載入邏輯（支援中文檔名）
-  const tryLoadImage = () => {
-    if (index >= imageCandidates.length) {
-      console.warn('❌ 所有圖片載入失敗，顯示 no-image.png');
-      img.src = '/mo_data/pic/no-image.png';
-      return;
+    // 嘗試多種副檔名
+    function tryNext() {
+      if (attempt >= imageCandidates.length * extensions.length) {
+        console.warn('❌ 所有圖片載入失敗，顯示預設圖');
+        img.src = '/mo_data/pic/no-image.png';
+        return;
+      }
+
+      const pathIndex = Math.floor(attempt / extensions.length);
+      const extIndex = attempt % extensions.length;
+      const candidate = imageCandidates[pathIndex] + extensions[extIndex];
+      const needEncoding = /[^\w\-./]/.test(candidate);
+      const safePath = needEncoding ? encodeURI(candidate) : candidate;
+
+      const testImg = new Image();
+      testImg.onload = () => (img.src = safePath);
+      testImg.onerror = () => {
+        attempt++;
+        tryNext();
+      };
+      testImg.src = safePath;
     }
+    tryNext();
 
-    const path = imageCandidates[index];
-
-    // ✅ 僅在路徑中有中文或特殊符號時使用 encodeURI
-    const needEncoding = /[^\w\-./]/.test(path);
-    const safePath = needEncoding ? encodeURI(path) : path;
-
-    const testImg = new Image();
-    testImg.onload = () => {
-      console.log(`✅ 成功載入：${safePath}`);
-      img.src = safePath;
-    };
-    testImg.onerror = () => {
-      console.warn(`⚠️ 載入失敗：${safePath}`);
-      index++;
-      tryLoadImage(); // 嘗試下一張
-    };
-    testImg.src = safePath;
-  };
-
-  tryLoadImage();
-
-  // 組出 Modal 內容
-  const html = `
-    <h2 class="hero-name">${item.card_id}</h2>
-    <div class="hero-details-container" style="display:flex; gap: 20px;">
-      <div class="hero-column left" style="flex:1;"></div>
-      <div class="hero-column right" style="flex:1;">
-        <p><strong>專卡名稱：</strong>${item.card_id}</p>
-        <p class="section-gap"><strong>等級：</strong>${item.card_lv}</p>
-        <p><strong>屬性：</strong>${item.card_property} <strong>+</strong> ${item.card_data}</p>
-        <p><strong>倍率：</strong>${item.nemultiplier}</p>
-        <p class="section-gap"><strong>專屬英雄：</strong>${item.hero_name}</p>
+    // === Modal HTML ===
+    const html = `
+      <h2 class="hero-name">${item.card_id}</h2>
+      <div class="hero-details-container" style="display:flex; gap: 20px;">
+        <div class="hero-column left" style="flex:1;"></div>
+        <div class="hero-column right" style="flex:1;">
+          <p><strong>專卡名稱：</strong>${item.card_id}</p>
+          <p><strong>等級：</strong>${item.card_lv}</p>
+          <p><strong>屬性：</strong>${item.card_property} + ${item.card_data}</p>
+          <p><strong>倍率：</strong>${item.multiplier || item.nemultiplier}</p>
+          <p><strong>專屬英雄：</strong>${item.hero_name}</p>
+        </div>
       </div>
-    </div>
-  `;
+    `;
 
-  contentDiv.innerHTML = html;
-  contentDiv.querySelector('.hero-column.left').appendChild(img);
+    contentDiv.innerHTML = html;
+    contentDiv.querySelector('.hero-column.left').appendChild(img);
 
-  overlay.style.display = 'block';
-  modalBox.style.display = 'block';
-}
+    overlay.style.display = 'block';
+    modalBox.style.display = 'block';
+  }
 
-
-  // ====== Modal 關閉邏輯 ======
+  // === 關閉 Modal ===
   function closeModal() {
     document.getElementById('modalOverlay').style.display = 'none';
     document.getElementById('modalBox').style.display = 'none';
   }
 
-  // 篩選按鈕事件
+  const closeBtn = document.querySelector('#modalBox .close-btn');
+  closeBtn.addEventListener('click', closeModal);
+  document.getElementById('modalOverlay').addEventListener('click', closeModal);
+
+  // === 篩選按鈕 ===
   filterBtns.forEach(btn => {
     btn.addEventListener("click", () => {
       const type = btn.dataset.type;
       const value = btn.dataset.value;
 
       btn.classList.toggle("active");
-
       if (btn.classList.contains("active")) {
         activeFilters[type].push(value);
       } else {
@@ -209,26 +210,17 @@ function showDetailModal(item) {
     });
   });
 
-  // 清除篩選按鈕事件
+  // === 清除篩選 ===
   clearBtn.addEventListener("click", () => {
-    activeFilters = {
-      card_property: [],
-      nemultiplier: [],
-      new_old: [],
-    };
+    activeFilters = { card_property: [], multiplier: [], new_old: [] };
     filterBtns.forEach(b => b.classList.remove("active"));
     searchInput.value = "";
     applyFilters();
   });
 
-  // 搜尋框輸入事件
+  // === 搜尋框 ===
   searchInput.addEventListener("input", applyFilters);
 
-  // 綁定 Modal 關閉事件
-  const closeBtn = document.querySelector('#modalBox .close-btn');
-  closeBtn.addEventListener('click', closeModal);
-  document.getElementById('modalOverlay').addEventListener('click', closeModal);
-
-  // 頁面載入時渲染完整資料表
+  // 頁面載入後先渲染
   renderTable(data);
 }
