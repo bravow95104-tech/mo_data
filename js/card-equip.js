@@ -137,8 +137,7 @@ function encodeFileName(name) {
   const imageCandidates = [
     `/mo_data/pic/card-equip/${encodeFileName(item.card_id)}_${encodeFileName(item.card_property)}.png`,
     `/mo_data/pic/card-equip/${encodeFileName(item.card_id)}.png`,
-    `/mo_data/pic/card-equip/${encodeFileName(item.card_id)}_${encodeFileName(item.card_property)}.jpg`,
-    `/mo_data/pic/card-equip/${encodeFileName(item.card_id)}.jpg`,
+
   ];
 
   let index = 0;
