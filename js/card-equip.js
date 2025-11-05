@@ -139,12 +139,10 @@ function initCardTable(data) {
 
     // 嘗試多種副檔名
     function tryNext() {
-      if (attempt >= imageCandidates.length * extensions.length) {
-        console.warn('❌ 所有圖片載入失敗，顯示預設圖');
-        img.src = '/mo_data/pic/no-image.png';
-        return;
-      }
-
+      if (index >= imageCandidates.length) {
+  console.warn('❌ 所有圖片載入失敗');
+  return; // 不設 src，就會是空白
+}
       const pathIndex = Math.floor(attempt / extensions.length);
       const extIndex = attempt % extensions.length;
       const candidate = imageCandidates[pathIndex] + extensions[extIndex];
