@@ -32,6 +32,8 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+
+
 function initCardTable(data) {
   const searchInput = document.getElementById("searchInput");
   const clearBtn = document.getElementById("clearFilters");
@@ -109,86 +111,84 @@ function initCardTable(data) {
     renderTable(filtered);
   }
 
-function showDetailModal(item) {
-  const overlay = document.getElementById('modalOverlay');
-  const modalBox = document.getElementById('modalBox');
-  const contentDiv = document.getElementById('modalContent');
+  // ====== 更新後的 Modal 顯示邏輯 ======
+  function showDetailModal(item) {
+    const overlay = document.getElementById('modalOverlay');
+    const modalBox = document.getElementById('modalBox');
+    const contentDiv = document.getElementById('modalContent');
 
-  // 檔名安全處理
-  const safeName = item.card_id.replace(/[^\w\u4e00-\u9fa5]/g, '');
-  const safeProp = item.card_property.replace(/[^\w\u4e00-\u9fa5]/g, '');
+    // 檔名安全處理（去掉特殊字元）
+    const safeName = item.card_id.replace(/[^\w\u4e00-\u9fa5]/g, '');
+    const safeProp = item.card_property.replace(/[^\w\u4e00-\u9fa5]/g, '');
 
-  // 依優先順序列出所有候選圖片
-  const imageCandidates = [
-    `/mo_data/pic/card-equip/${safeName}_${safeProp}.png`,
-    `/mo_data/pic/card-equip/${safeName}.png`,
-    `/mo_data/pic/card-equip/${safeName}_${safeProp}.jpg`,
-    `/mo_data/pic/card-equip/${safeName}.jpg`,
-  ];
+    // 候選圖片（自動測試 png / PNG / jpg / JPG）
+    const imageCandidates = [
+      `/mo_data/pic/card-equip/${safeName}_${safeProp}.png`,
+      `/mo_data/pic/card-equip/${safeName}_${safeProp}.PNG`,
+      `/mo_data/pic/card-equip/${safeName}.png`,
+      `/mo_data/pic/card-equip/${safeName}.PNG`,
+      `/mo_data/pic/card-equip/${safeName}_${safeProp}.jpg`,
+      `/mo_data/pic/card-equip/${safeName}_${safeProp}.JPG`,
+      `/mo_data/pic/card-equip/${safeName}.jpg`,
+      `/mo_data/pic/card-equip/${safeName}.JPG`,
+    ];
 
-  const img = document.createElement('img');
-  img.alt = item.card_id;
-  img.className = 'hero-image';
-  img.style.width = '100%';
-  img.style.height = 'auto';
+    const img = document.createElement('img');
+    img.alt = item.card_id;
+    img.className = 'hero-image';
+    img.style.width = '100%';
+    img.style.height = 'auto';
 
-  // 嘗試依序載入每個圖片
-  let index = 0;
+    let index = 0;
 
-  const tryLoadImage = () => {
-    if (index >= imageCandidates.length) {
-      console.warn('❌ 所有圖片都載入失敗，顯示 no-image.png');
-      img.src = '/mo_data/pic/no-image.png';
-      return;
-    }
+    const tryLoadImage = () => {
+      if (index >= imageCandidates.length) {
+        console.warn('❌ 所有圖片都載入失敗，顯示 no-image.png');
+        img.src = '/mo_data/pic/no-image.png';
+        return;
+      }
 
-    const path = imageCandidates[index];
-    const encodedPath = encodeURI(path); // 防止中文檔名問題
+      const path = imageCandidates[index];
+      const encodedPath = encodeURI(path); // 中文檔名處理
+      console.log(`🔍 嘗試載入第 ${index + 1} 張圖片：${encodedPath}`);
 
-    console.log(`🔍 嘗試載入第 ${index + 1} 張圖片：${encodedPath}`);
-
-    // 建立一個暫時 Image 物件測試能否載入
-    const testImg = new Image();
-    testImg.onload = () => {
-      console.log(`✅ 成功載入：${encodedPath}`);
-      img.src = encodedPath;
+      const testImg = new Image();
+      testImg.onload = () => {
+        console.log(`✅ 成功載入：${encodedPath}`);
+        img.src = encodedPath;
+      };
+      testImg.onerror = () => {
+        console.warn(`⚠️ 載入失敗：${encodedPath}`);
+        index++;
+        tryLoadImage();
+      };
+      testImg.src = encodedPath;
     };
-    testImg.onerror = () => {
-      console.warn(`⚠️ 載入失敗：${encodedPath}`);
-      index++;
-      tryLoadImage(); // 嘗試下一張
-    };
-    testImg.src = encodedPath;
-  };
 
-  tryLoadImage();
+    tryLoadImage();
 
-  // 組出內容
-  const html = `
-    <h2 class="hero-name">${item.card_id}</h2>
-    <div class="hero-details-container" style="display:flex; gap: 20px;">
-      <div class="hero-column left" style="flex:1;"></div>
-      <div class="hero-column right" style="flex:1;">
-        <p><strong>專卡名稱：</strong>${item.card_id}</p>
-        <p class="section-gap"><strong>等級：</strong>${item.card_lv}</p>
-        <p><strong>屬性：</strong>${item.card_property} <strong>+</strong> ${item.card_data}</p>
-        <p><strong>倍率：</strong>${item.nemultiplier}</p>
-        <p class="section-gap"><strong>專屬英雄：</strong>${item.hero_name}</p>
+    // 組出 Modal 內容
+    const html = `
+      <h2 class="hero-name">${item.card_id}</h2>
+      <div class="hero-details-container" style="display:flex; gap: 20px;">
+        <div class="hero-column left" style="flex:1;"></div>
+        <div class="hero-column right" style="flex:1;">
+          <p><strong>專卡名稱：</strong>${item.card_id}</p>
+          <p class="section-gap"><strong>等級：</strong>${item.card_lv}</p>
+          <p><strong>屬性：</strong>${item.card_property} <strong>+</strong> ${item.card_data}</p>
+          <p><strong>倍率：</strong>${item.nemultiplier}</p>
+          <p class="section-gap"><strong>專屬英雄：</strong>${item.hero_name}</p>
+        </div>
       </div>
-    </div>
-  `;
+    `;
 
-  // 放入 DOM
-  contentDiv.innerHTML = html;
-  contentDiv.querySelector('.hero-column.left').appendChild(img);
+    contentDiv.innerHTML = html;
+    contentDiv.querySelector('.hero-column.left').appendChild(img);
 
-  // 顯示 Modal
-  overlay.style.display = 'block';
-  modalBox.style.display = 'block';
-}
-
-
-
+    overlay.style.display = 'block';
+    modalBox.style.display = 'block';
+  }
+  // ====== Modal 關閉邏輯 ======
   function closeModal() {
     document.getElementById('modalOverlay').style.display = 'none';
     document.getElementById('modalBox').style.display = 'none';
