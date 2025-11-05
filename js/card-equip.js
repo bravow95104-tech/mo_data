@@ -146,7 +146,6 @@ function encodeFileName(name) {
   const tryLoadImage = () => {
     if (index >= imageCandidates.length) {
       console.warn('❌ 所有圖片載入失敗，顯示預設圖');
-      img.src = '/mo_data/pic/no-image.png';
       return;
     }
 
