@@ -150,7 +150,7 @@ function showDetailModal(item) {
                 img.onerror = tryNext;
                 img.src = n;
               } else {
-                this.src = '/mo_data/pic/no-image.png'; // 最後 fallback
+                this.src = '/mo_data/pic/no-image.png';
               }
             };
             tryNext();
