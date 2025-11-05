@@ -134,31 +134,32 @@ function showDetailModal(item) {
   let index = 0;
 
   // 嘗試載入每張圖片
-  const tryLoadImage = () => {
-    if (index >= imageCandidates.length) {
-      console.warn('❌ 所有圖片載入失敗，顯示 no-image.png');
-      img.src = '/mo_data/pic/no-image.png';
-      return;
-    }
+const tryLoadImage = () => {
+  if (index >= imageCandidates.length) {
+    console.warn('❌ 所有圖片載入失敗，顯示 no-image.png');
+    img.src = '/mo_data/pic/no-image.png';
+    return;
+  }
 
-    const path = imageCandidates[index];
-    // 中文與特殊字元正確編碼
-    const encodedPath = path.split('/').map(encodeURIComponent).join('/');
+  const path = imageCandidates[index];
 
-    const testImg = new Image();
-    testImg.onload = () => {
-      console.log(`✅ 成功載入：${encodedPath}`);
-      img.src = encodedPath;
-    };
-    testImg.onerror = () => {
-      console.warn(`⚠️ 載入失敗：${encodedPath}`);
-      index++;
-      tryLoadImage(); // 嘗試下一張
-    };
-    testImg.src = encodedPath;
+  // ✅ 只在有中文或特殊字元時，進行 encodeURI（保留 /）
+  const needEncoding = /[^\w\-./]/.test(path);
+  const safePath = needEncoding ? encodeURI(path) : path;
+
+  const testImg = new Image();
+  testImg.onload = () => {
+    console.log(`✅ 成功載入：${safePath}`);
+    img.src = safePath;
   };
+  testImg.onerror = () => {
+    console.warn(`⚠️ 載入失敗：${safePath}`);
+    index++;
+    tryLoadImage();
+  };
+  testImg.src = safePath;
+};
 
-  tryLoadImage();
 
   // 組出 Modal 內容
   const html = `
