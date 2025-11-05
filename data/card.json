@@ -1,7 +1,7 @@
 [
   {
     "type": "裝備卡",
-    "new_old": "新專",
+    "new_old": "馬卡",
     "card_id": "姜子牙(四不相)",
     "card_property": "HP",
     "card_data": 1300,
@@ -18,7 +18,7 @@
   },
   {
     "type": "裝備卡",
-    "new_old": "新專",
+    "new_old": "馬卡",
     "card_id": "妲己(桃花馬)",
     "card_property": "MP",
     "card_data": 1300,
@@ -35,7 +35,7 @@
   },
   {
     "type": "裝備卡",
-    "new_old": "新專",
+    "new_old": "馬卡",
     "card_id": "黃飛虎(五色神牛)",
     "card_property": "運氣",
     "card_data": 180,
@@ -52,7 +52,7 @@
   },
   {
     "type": "裝備卡",
-    "new_old": "新專",
+    "new_old": "馬卡",
     "card_id": "孫權坐騎(快航)",
     "card_property": "智慧",
     "card_data": 180,
@@ -69,7 +69,7 @@
   },
   {
     "type": "裝備卡",
-    "new_old": "新專",
+    "new_old": "馬卡",
     "card_id": "趙雲坐騎(夜照玉狮子)",
     "card_property": "力量",
     "card_data": 180,
@@ -86,7 +86,7 @@
   },
   {
     "type": "裝備卡",
-    "new_old": "新專",
+    "new_old": "馬卡",
     "card_id": "馬超坐騎(裡飛沙)",
     "card_property": "敏捷",
     "card_data": 180,
