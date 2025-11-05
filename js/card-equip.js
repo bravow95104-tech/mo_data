@@ -130,7 +130,7 @@ function showDetailModal(item) {
 
   // 編碼檔名但保留 _ 和 .
 function encodeFileName(name) {
-  return name.replace(/[^\w\u4e00-\u9fa5]/g, '');
+  return name.replace(/[^\w\u4e00-\u9fa5()]/g, '');
 }
 
   // 候選圖片路徑
