@@ -114,49 +114,45 @@ function showDetailModal(item) {
   const modalBox = document.getElementById('modalBox');
   const contentDiv = document.getElementById('modalContent');
 
-  // 處理 card_id 讓檔名安全（移除特殊字元）
+  // 處理檔名安全
   const safeName = item.card_id.replace(/[^\w\u4e00-\u9fa5]/g, '');
   const safeProp = item.card_property.replace(/[^\w\u4e00-\u9fa5]/g, '');
 
-  // 優先 PNG，其次 JPG
-  const imageFileNamePng = `${safeName}_${safeProp}.png`;
-  const fallbackPng = `${safeName}.png`;
-  const imageFileNameJpg = `${safeName}_${safeProp}.jpg`;
-  const fallbackJpg = `${safeName}.jpg`;
+  // 嘗試載入的圖片清單（依優先順序）
+  const imageCandidates = [
+    `/mo_data/pic/card-equip/${safeName}_${safeProp}.png`,
+    `/mo_data/pic/card-equip/${safeName}.png`,
+    `/mo_data/pic/card-equip/${safeName}_${safeProp}.jpg`,
+    `/mo_data/pic/card-equip/${safeName}.jpg`,
+  ];
 
+  // 建立 <img> 元素
+  const img = document.createElement('img');
+  img.alt = item.card_id;
+  img.className = 'hero-image';
+  img.style.width = '100%';
+  img.style.height = 'auto';
+
+  // 用遞迴方式嘗試載入圖片
+  let index = 0;
+  const tryLoadImage = () => {
+    if (index >= imageCandidates.length) {
+      img.src = '/mo_data/pic/no-image.png'; // 最後 fallback
+      return;
+    }
+    img.src = imageCandidates[index];
+    img.onerror = () => {
+      index++;
+      tryLoadImage();
+    };
+  };
+  tryLoadImage();
+
+  // 建立 HTML 結構
   const html = `
     <h2 class="hero-name">${item.card_id}</h2>
     <div class="hero-details-container" style="display:flex; gap: 20px;">
-      <div class="hero-column left" style="flex:1;">
-        <img 
-          src="/mo_data/pic/card-equip/${imageFileNamePng}" 
-          alt="${item.card_id}" 
-          class="hero-image" 
-          style="width:100%; height:auto;" 
-          onerror="
-            this.onerror=null;
-            // 依序嘗試 PNG → JPG
-            const candidates = [
-              '/mo_data/pic/card-equip/${fallbackPng}',
-              '/mo_data/pic/card-equip/${imageFileNameJpg}',
-              '/mo_data/pic/card-equip/${fallbackJpg}'
-            ];
-            const next = candidates.shift();
-            const tryNext = () => {
-              if (candidates.length > 0) {
-                const img = new Image();
-                const n = candidates.shift();
-                img.onload = () => this.src = n;
-                img.onerror = tryNext;
-                img.src = n;
-              } else {
-                this.src = '/mo_data/pic/no-image.png';
-              }
-            };
-            tryNext();
-          "
-        />
-      </div>
+      <div class="hero-column left" style="flex:1;"></div>
       <div class="hero-column right" style="flex:1;">
         <p><strong>專卡名稱：</strong>${item.card_id}</p>
         <p class="section-gap"><strong>等級：</strong>${item.card_lv}</p>
@@ -167,10 +163,15 @@ function showDetailModal(item) {
     </div>
   `;
 
+  // 塞入內容
   contentDiv.innerHTML = html;
+  contentDiv.querySelector('.hero-column.left').appendChild(img);
+
+  // 顯示 Modal
   overlay.style.display = 'block';
   modalBox.style.display = 'block';
 }
+
 
   function closeModal() {
     document.getElementById('modalOverlay').style.display = 'none';
