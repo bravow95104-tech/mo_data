@@ -123,6 +123,8 @@ function initCardTable(data) {
 
     // 候選圖片（自動測試 png / PNG / jpg / JPG）
     const imageCandidates = [
+      `/mo_data/pic/card-equip/${item.card_id}_${item.card_property}.png`,
+      `/mo_data/pic/card-equip/${item.card_id}.png`,
       `/mo_data/pic/card-equip/${safeName}_${safeProp}.png`,
       `/mo_data/pic/card-equip/${safeName}_${safeProp}.PNG`,
       `/mo_data/pic/card-equip/${safeName}.png`,
