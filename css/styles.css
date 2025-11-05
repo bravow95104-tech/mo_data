@@ -136,6 +136,21 @@ body {
   max-width: 800px;
 }
 
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.sidebar-header h2 {
+  font-size: 1.4rem;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #3399ff;
+  padding-bottom: 8px;
+  color: #267acc;
+}
+
 /* ✅ 右側側邊欄 */
 #sidebar {
   flex: 0.7;
