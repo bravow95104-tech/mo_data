@@ -114,11 +114,11 @@ function showDetailModal(item) {
   const modalBox = document.getElementById('modalBox');
   const contentDiv = document.getElementById('modalContent');
 
-  // 處理檔名安全
+  // 檔名安全處理
   const safeName = item.card_id.replace(/[^\w\u4e00-\u9fa5]/g, '');
   const safeProp = item.card_property.replace(/[^\w\u4e00-\u9fa5]/g, '');
 
-  // 嘗試載入的圖片清單（依優先順序）
+  // 依優先順序列出所有候選圖片
   const imageCandidates = [
     `/mo_data/pic/card-equip/${safeName}_${safeProp}.png`,
     `/mo_data/pic/card-equip/${safeName}.png`,
@@ -126,29 +126,44 @@ function showDetailModal(item) {
     `/mo_data/pic/card-equip/${safeName}.jpg`,
   ];
 
-  // 建立 <img> 元素
   const img = document.createElement('img');
   img.alt = item.card_id;
   img.className = 'hero-image';
   img.style.width = '100%';
   img.style.height = 'auto';
 
-  // 用遞迴方式嘗試載入圖片
+  // 嘗試依序載入每個圖片
   let index = 0;
+
   const tryLoadImage = () => {
     if (index >= imageCandidates.length) {
-      img.src = '/mo_data/pic/no-image.png'; // 最後 fallback
+      console.warn('❌ 所有圖片都載入失敗，顯示 no-image.png');
+      img.src = '/mo_data/pic/no-image.png';
       return;
     }
-    img.src = imageCandidates[index];
-    img.onerror = () => {
-      index++;
-      tryLoadImage();
+
+    const path = imageCandidates[index];
+    const encodedPath = encodeURI(path); // 防止中文檔名問題
+
+    console.log(`🔍 嘗試載入第 ${index + 1} 張圖片：${encodedPath}`);
+
+    // 建立一個暫時 Image 物件測試能否載入
+    const testImg = new Image();
+    testImg.onload = () => {
+      console.log(`✅ 成功載入：${encodedPath}`);
+      img.src = encodedPath;
     };
+    testImg.onerror = () => {
+      console.warn(`⚠️ 載入失敗：${encodedPath}`);
+      index++;
+      tryLoadImage(); // 嘗試下一張
+    };
+    testImg.src = encodedPath;
   };
+
   tryLoadImage();
 
-  // 建立 HTML 結構
+  // 組出內容
   const html = `
     <h2 class="hero-name">${item.card_id}</h2>
     <div class="hero-details-container" style="display:flex; gap: 20px;">
@@ -163,7 +178,7 @@ function showDetailModal(item) {
     </div>
   `;
 
-  // 塞入內容
+  // 放入 DOM
   contentDiv.innerHTML = html;
   contentDiv.querySelector('.hero-column.left').appendChild(img);
 
@@ -171,6 +186,7 @@ function showDetailModal(item) {
   overlay.style.display = 'block';
   modalBox.style.display = 'block';
 }
+
 
 
   function closeModal() {
