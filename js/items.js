@@ -124,5 +124,12 @@ function applyFilters() {
     // ✅ 一次性插入所有列
     tbody.appendChild(fragment);
   }
-
+  // === 清除篩選 ===
+  document.getElementById('clearFilters').addEventListener('click', () => {
+    searchInput.value = '';
+    activeFilter = null;
+    document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+    renderTable(heroesData);
+  });
+  
     });
