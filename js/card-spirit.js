@@ -173,7 +173,6 @@ function showDetailModal(item) {
   img.alt = item.card_id || "card-image";
   img.src = `/mo_data/pic/card-spirit/${encodeFileName(item.card_id)}.png`;
   img.onerror = () => {
-    img.src = "/mo_data/pic/default.png"; // 如果圖片不存在，顯示預設圖
   };
 
   // 建立整體結構
