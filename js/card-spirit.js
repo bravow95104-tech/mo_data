@@ -107,7 +107,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
         tr.addEventListener("click", () => {
-          showDetailModal?.(item);
+          showDetailModal(item);
         });
 
         tbody.appendChild(tr);
@@ -148,6 +148,11 @@ document.addEventListener("DOMContentLoaded", () => {
       applyFilters();
     });
 
+  // === 檔名過濾：保留中文、數字、英文、底線、括號 ===
+  function encodeFileName(name) {
+    return name.replace(/[^\w\u4e00-\u9fa5()]/g, '');
+  }
+  
 // === Modal 顯示 ===
 function showDetailModal(item) {
   const overlay = document.getElementById('modalOverlay');
@@ -170,10 +175,7 @@ function showDetailModal(item) {
   img.style.height = "auto";
   img.style.objectFit = "contain";
 
-  // === 檔名過濾：保留中文、數字、英文、底線、括號 ===
-  function encodeFileName(name) {
-    return name.replace(/[^\w\u4e00-\u9fa5()]/g, '');
-  }
+
 
   // === 嘗試載入圖片 ===
   const imagePath = `/mo_data/pic/card-spirit/${encodeFileName(item.card_id)}.png`;
