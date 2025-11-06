@@ -275,7 +275,7 @@ thead th {
 
 /* Modal 內容框 */
 #modalBox {
-  width: 90vw;
+  width: 80vw;
   display: none;
   position: fixed;
   top: 50%; left: 50%;
@@ -283,7 +283,7 @@ thead th {
   background: white;
   border-radius: 8px;
   padding: 10px 5px;
-  max-width: 650px;
+  max-width: 400px;
   max-height: 80vh;
   overflow-y: auto;
   box-shadow: 0 4px 12px rgba(0,0,0,0.3);
