@@ -28,6 +28,68 @@ document.addEventListener("DOMContentLoaded", () => {
   function initCardTable(data) {
     const searchInput = document.getElementById("searchInput");
 
+    // === 檔名過濾：保留中文、數字、英文、底線、括號 ===
+    function encodeFileName(name) {
+      return name.replace(/[^\w\u4e00-\u9fa5()]/g, '');
+    }
+
+    // === Modal 顯示 ===
+    function showDetailModal(item) {
+      const overlay = document.getElementById('modalOverlay');
+      const modalBox = document.getElementById('modalBox');
+      const contentDiv = document.getElementById('modalContent');
+
+      if (!overlay || !modalBox || !contentDiv) {
+        console.error("❌ 找不到 Modal 元素");
+        return;
+      }
+
+      // 清空舊內容
+      contentDiv.innerHTML = "";
+
+      // 建立圖片元素
+      const img = document.createElement("img");
+      img.className = "hero-image";
+      img.alt = item.card_id || "card-image";
+      img.src = `/mo_data/pic/card-passive/${encodeFileName(item.card_id)}.png`;
+      img.onerror = () => {
+
+      };
+
+      // 建立整體結構
+      const html = `
+        <div class="hero-details-container">
+          <div class="hero-column">
+            <h2 class="hero-name">${item.card_id}</h2>
+          </div>
+          <div class="hero-column" id="imgContainer"></div>
+        </div>
+      `;
+
+      // 插入 HTML
+      contentDiv.innerHTML = html;
+
+      // 將圖片插入第二欄
+      const imgContainer = contentDiv.querySelector("#imgContainer");
+      if (imgContainer) imgContainer.appendChild(img);
+
+      // 顯示 Modal
+      overlay.style.display = 'block';
+      modalBox.style.display = 'block';
+    }
+
+    // === 關閉 Modal ===
+    function closeModal() {
+      document.getElementById('modalOverlay').style.display = 'none';
+      document.getElementById('modalBox').style.display = 'none';
+    }
+
+    const closeBtn = document.querySelector('#modalBox .close-btn');
+    if (closeBtn) closeBtn.addEventListener('click', closeModal);
+    const overlay = document.getElementById('modalOverlay');
+    if (overlay) overlay.addEventListener('click', closeModal);
+
+    // === 渲染表格 ===
     function renderTable(filteredData) {
       const tbody = document.querySelector("#card-equip-table tbody");
       tbody.innerHTML = "";
@@ -60,11 +122,16 @@ document.addEventListener("DOMContentLoaded", () => {
           tr.appendChild(td);
         });
 
+        // 點擊列開啟 Modal
+        tr.addEventListener("click", () => {
+          showDetailModal(item);
+        });
+
         tbody.appendChild(tr);
       });
     }
 
-    // 即時搜尋
+    // === 搜尋事件 ===
     searchInput.addEventListener("input", () => {
       const keyword = searchInput.value.trim().toLowerCase();
       const filtered = data.filter(item =>
@@ -76,7 +143,7 @@ document.addEventListener("DOMContentLoaded", () => {
       renderTable(filtered);
     });
 
-    // 清除搜尋（若有清除按鈕）
+    // === 清除搜尋（若有按鈕） ===
     const clearBtn = document.getElementById("clearFilters");
     if (clearBtn) {
       clearBtn.addEventListener("click", () => {
@@ -85,7 +152,7 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     }
 
-    // 初始載入全部資料
+    // === 初始載入全部資料 ===
     renderTable(data);
   }
 });
