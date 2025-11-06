@@ -148,6 +148,65 @@ document.addEventListener("DOMContentLoaded", () => {
       applyFilters();
     });
 
+// === Modal 顯示 ===
+function showDetailModal(item) {
+  const overlay = document.getElementById('modalOverlay');
+  const modalBox = document.getElementById('modalBox');
+  const contentDiv = document.getElementById('modalContent');
+
+  if (!overlay || !modalBox || !contentDiv) {
+    console.error("❌ 找不到 Modal 元素");
+    return;
+  }
+
+  // 清空內容
+  contentDiv.innerHTML = "";
+
+  // 建立圖片元素
+  const img = document.createElement("img");
+  img.alt = item.card_id || "card-image";
+  img.className = "hero-image";
+  img.style.width = "100%";
+  img.style.height = "auto";
+  img.style.objectFit = "contain";
+
+  // === 檔名過濾：保留中文、數字、英文、底線、括號 ===
+  function encodeFileName(name) {
+    return name.replace(/[^\w\u4e00-\u9fa5()]/g, '');
+  }
+
+  // === 嘗試載入圖片 ===
+  const imagePath = `/mo_data/pic/card-spirit/${encodeFileName(item.card_id)}.png`;
+
+
+  const testImg = new Image();
+  testImg.onload = () => {
+    img.src = imagePath;
+  };
+  testImg.onerror = () => {
+    console.warn("⚠️ 找不到圖片，顯示預設圖:", imagePath);
+  };
+  testImg.src = imagePath;
+
+  // 放入內容區
+  contentDiv.appendChild(img);
+
+  // 顯示 Modal
+  overlay.style.display = "block";
+  modalBox.style.display = "block";
+}
+
+
+  // === 關閉 Modal ===
+  function closeModal() {
+    document.getElementById('modalOverlay').style.display = 'none';
+    document.getElementById('modalBox').style.display = 'none';
+  }
+
+  const closeBtn = document.querySelector('#modalBox .close-btn');
+  closeBtn.addEventListener('click', closeModal);
+  document.getElementById('modalOverlay').addEventListener('click', closeModal);
+
     // 初始化選單與表格
     populateDatalists(data);
     renderTable(data);
