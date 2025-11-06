@@ -192,22 +192,6 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById('modalBox').style.display = 'none';
   }
 
-  // === 回到頂部按鈕 ===
-  const backToTopBtn = document.getElementById('backToTop');
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 200) {
-      backToTopBtn.style.display = 'block';
-    } else {
-      backToTopBtn.style.display = 'none';
-    }
-  });
-
-  backToTopBtn.addEventListener('click', () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
-  });
 
   // === 篩選按鈕 ===
   document.querySelectorAll('.filter-btn').forEach(btn => {

@@ -15,14 +15,6 @@ document.addEventListener("DOMContentLoaded", () => {
       tbody.innerHTML = "<tr><td colspan='6'>無法載入資料</td></tr>";
     });
 
-  // 回到頂部按鈕邏輯
-  const backToTopBtn = document.getElementById("backToTop");
-  window.addEventListener("scroll", () => {
-    backToTopBtn.style.display = window.scrollY > 200 ? "block" : "none";
-  });
-  backToTopBtn.addEventListener("click", () =>
-    window.scrollTo({ top: 0, behavior: "smooth" })
-  );
 
   // Accordion 展開／收合
   document.querySelectorAll(".accordion-header").forEach(header => {
