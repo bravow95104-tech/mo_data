@@ -1,0 +1,383 @@
+/* 表格樣式 */
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-top: 20px;
+}
+th, td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: center;
+  font-size: 14px;
+  white-space: normal;
+}
+
+tbody tr:hover {
+  background-color: #fff9c0;
+  cursor: pointer;
+}
+
+/* 調整 table header sticky 時，避免蓋到 nav */
+thead th {
+  position: sticky;
+  top: 0px; /* nav 高度 */
+  background-color: #1976d2;
+  z-index: 10;
+  color: white;
+}
+/*快速搜尋*/
+#searchInput {
+  padding: 6px 10px;
+  width: 100%;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  max-width: 250px; /* 限制寬度 */
+}
+/*快速搜尋*/
+#searchFirst {
+  padding: 6px 10px;
+  width: 100%;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  max-width: 250px; /* 限制寬度 */
+}
+/*快速搜尋*/
+#searchSecond {
+  padding: 6px 10px;
+  width: 100%;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  max-width: 250px; /* 限制寬度 */
+}
+/*快速搜尋*/
+#searchThird {
+  padding: 6px 10px;
+  width: 100%;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  max-width: 250px; /* 限制寬度 */
+}
+/*快速搜尋*/
+.quick-search-label {
+  font-weight: 600;
+  margin-right: 8px;
+  font-size: 16px;
+  color: #3399ff;
+  vertical-align: middle;
+}
+
+#searchContainer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* 黃色高亮（柔和） */
+.highlight {
+  background-color: #fff9c0;
+  font-weight: bold;
+  border-radius: 3px;
+  padding: 2px 4px;
+}
+
+/* 黃色高亮（高亮） */
+.highlight2 {
+  background-color: #fff9c0;
+  font-weight: bold;
+  border-radius: 3px;
+  padding: 2px 4px;
+}
+
+/* 篩選標籤 */
+.filter-label {
+  font-weight: bold;
+  color: #267acc;
+  margin-right: 8px;
+}
+.filter-btn {
+  background: #e6f0ff;
+  border: 1px solid #3399ff;
+  color: #267acc;
+  border-radius: 4px;
+  padding: 4px 12px;
+  margin: 2px 4px 2px 0;
+  cursor: pointer;
+  font-size: 14px;
+  width: 80px;
+  text-align: center;
+  transition: background 0.2s, color 0.2s;
+}
+.filter-btn:hover,
+.filter-btn.active {
+  background: #fff9c0;
+  color: #b8860b;
+  border: 1.5px solid #ffe066;
+}
+.filter-row {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 8px;
+  align-items: start;
+  margin-bottom: 12px;
+}
+
+.filter-label {
+  font-weight: bold;
+  color: #267acc;
+  padding-top: 4px;
+  white-space: nowrap;
+}
+
+.filter-btns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+/* 清除篩選按鈕 */
+.clear-btn {
+  background: #ffefc0;
+  border: 1px solid #ffc107;
+  color: #b8860b;
+  border-radius: 4px;
+  padding: 4px 12px;
+  margin-top: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.clear-btn:hover {
+  background: #ffc107;
+  color: #fff;
+}
+/* 快速搜尋樣式 */
+.accordion {
+  border: 1px solid #b3d8ff;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  background: #f5faff;
+}
+
+.accordion-header {
+  color: #267acc;
+  margin: 0;
+  padding: 12px 16px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  background: #f5faff;
+  border-radius: 8px 8px 0 0;
+  user-select: none;
+  transition: background 0.3s;
+}
+
+.accordion-header:hover {
+  background: #b3d8ff;
+}
+
+.accordion-content {
+  padding: 12px 16px;
+    margin-top: 6px;
+  display: block; /* 預設展開 */
+}
+
+.accordion.collapsed .accordion-content {
+  display: none; /* 收合 */
+}
+
+.accordion.collapsed .accordion-header::after {
+  content: "▸"; /* 收合箭頭 */
+}
+
+.accordion-header::after {
+  content: "▾"; /* 展開箭頭 */
+  float: right;
+}
+
+.filter-label {
+  font-weight: bold;
+  color: #267acc;
+  margin-right: 8px;
+}
+.filter-btn {
+  background: #e6f0ff;
+  border: 1px solid #3399ff;
+  color: #267acc;
+  border-radius: 4px;
+  padding: 4px 12px;
+  margin: 2px 4px 2px 0;
+  cursor: pointer;
+  font-size: 14px;
+  width: 80px;
+  text-align: center;
+  transition: background 0.2s, color 0.2s;
+}
+.filter-btn:hover,
+.filter-btn.active {
+  background: #fff9c0;
+  color: #b8860b;
+  border: 1.5px solid #ffe066;
+}
+.filter-row {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 8px;
+  align-items: start;
+  margin-bottom: 12px;
+}
+
+.filter-label {
+  font-weight: bold;
+  color: #267acc;
+  padding-top: 4px;
+  white-space: nowrap;
+}
+
+.filter-btns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.clear-btn {
+  background: #ffefc0;
+  border: 1px solid #ffc107;
+  color: #b8860b;
+  border-radius: 4px;
+  padding: 4px 12px;
+  margin-top: 8px;
+  cursor: pointer;
+  font-size: 14px;
+}
+.clear-btn:hover {
+  background: #ffc107;
+  color: #fff;
+}
+
+/* Modal 遮罩 */
+#modalOverlay {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 2000;
+}
+
+/* Modal 內容框 */
+#modalBox {
+  width: 90vw;
+  display: none;
+  position: fixed;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  border-radius: 8px;
+  padding: 10px 5px;
+  max-width: 650px;
+  max-height: 80vh;
+  overflow-y: auto;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  z-index: 2001;
+}
+
+#modalBox h2 {
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-size: 24px;
+  color: #3399ff;
+  text-align: center;
+}
+
+#modalBox p {
+  margin: 6px 0;
+  font-size: 16px;
+}
+
+#modalBox .close-btn {
+  position: absolute;
+  top: 10px; right: 15px;
+  font-size: 28px;
+  color: #666;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+#modalBox .close-btn:hover {
+  color: #3399ff;
+}
+
+/* Modal 英雄名稱置中 */
+.hero-name {
+  text-align: center;
+  font-size: 24px;
+  color: #3399ff;
+  margin-bottom: 15px;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 8px;
+}
+
+/* Modal 容器：上下排列 */
+.hero-details-container {
+  display: flex;
+  flex-direction: column; /* 改為垂直方向排列 */
+  align-items: center;    /* 內容置中 */
+  justify-content: flex-start;
+  gap: 15px;              /* 名稱與圖片間距 */
+  padding: 10px;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+/* 單一內容區塊 */
+.hero-column {
+  width: 100%;
+  text-align: center;
+  background-color: transparent; /* 移除背景框 */
+  box-shadow: none;
+  padding: 0;
+  border-radius: 0;
+}
+
+/* 圖片樣式 */
+.hero-image {
+  display: block;
+  margin: 0 auto;
+  max-width: 226px;
+  max-height: 318px;
+  object-fit: contain;
+}
+
+/* 下欄樣式 */
+.hero-column-details {
+  flex: 0 0 90%;             /* 彈性成長，基底寬度48% */
+  min-width: 250px;          /* 最小寬度限制，避免太小擠壓 */
+  box-sizing: border-box;    /* 包含 padding、border */
+  background-color: #f9f9f9; /* 可選：輕微背景色區分 */
+  padding: 20px 20px;
+  border-radius: 6px;        /* 可選：圓角讓框框好看 */
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+}
+#modalContent {
+  padding: 10px;
+  font-size: 16px;
+  color: #333;
+  max-height: 70vh;         /* 限制最大高度 */
+  width: 100%;
+  overflow-y: auto;         /* 內容超出時垂直出現捲軸 */
+  line-height: 1.5;
+  background-color: #fff;
+  border-radius: 6px;
+  box-sizing: border-box;
+}

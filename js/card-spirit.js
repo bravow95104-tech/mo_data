@@ -152,7 +152,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function encodeFileName(name) {
     return name.replace(/[^\w\u4e00-\u9fa5()]/g, '');
   }
-  
+
 // === Modal 顯示 ===
 function showDetailModal(item) {
   const overlay = document.getElementById('modalOverlay');
@@ -164,39 +164,40 @@ function showDetailModal(item) {
     return;
   }
 
-  // 清空內容
+  // 清空舊內容
   contentDiv.innerHTML = "";
 
   // 建立圖片元素
   const img = document.createElement("img");
-  img.alt = item.card_id || "card-image";
   img.className = "hero-image";
-  img.style.width = "100%";
-  img.style.height = "auto";
-  img.style.objectFit = "contain";
-
-
-
-  // === 嘗試載入圖片 ===
-  const imagePath = `/mo_data/pic/card-spirit/${encodeFileName(item.card_id)}.png`;
-
-
-  const testImg = new Image();
-  testImg.onload = () => {
-    img.src = imagePath;
+  img.alt = item.card_id || "card-image";
+  img.src = `/mo_data/pic/card-spirit/${encodeFileName(item.card_id)}.png`;
+  img.onerror = () => {
+    img.src = "/mo_data/pic/default.png"; // 如果圖片不存在，顯示預設圖
   };
-  testImg.onerror = () => {
-    console.warn("⚠️ 找不到圖片，顯示預設圖:", imagePath);
-  };
-  testImg.src = imagePath;
 
-  // 放入內容區
-  contentDiv.appendChild(img);
+  // 建立整體結構
+  const html = `
+    <div class="hero-details-container">
+      <div class="hero-column">
+        <h2 class="hero-name">${item.card_id}</h2>
+      </div>
+      <div class="hero-column" id="imgContainer"></div>
+    </div>
+  `;
+
+  // 插入 HTML
+  contentDiv.innerHTML = html;
+
+  // 將圖片插入第二欄
+  const imgContainer = contentDiv.querySelector("#imgContainer");
+  if (imgContainer) imgContainer.appendChild(img);
 
   // 顯示 Modal
-  overlay.style.display = "block";
-  modalBox.style.display = "block";
+  overlay.style.display = 'block';
+  modalBox.style.display = 'block';
 }
+
 
 
   // === 關閉 Modal ===
