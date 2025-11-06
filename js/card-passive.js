@@ -20,13 +20,11 @@ document.addEventListener("DOMContentLoaded", () => {
   window.addEventListener('scroll', () => {
     backToTopBtn.style.display = window.scrollY > 200 ? 'block' : 'none';
   });
-
   backToTopBtn.addEventListener('click', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 
-  // Accordion 不再需要，已刪除
-
+  // 初始化表格
   function initCardTable(data) {
     const searchInput = document.getElementById("searchInput");
 
@@ -62,31 +60,32 @@ document.addEventListener("DOMContentLoaded", () => {
           tr.appendChild(td);
         });
 
-        // 可加上詳細資訊事件（可選）
-        // tr.addEventListener("click", () => {
-        //   showDetailModal(item);
-        // });
-
         tbody.appendChild(tr);
       });
     }
 
-    // 搜尋文字輸入時即時篩選
+    // 即時搜尋
     searchInput.addEventListener("input", () => {
       const keyword = searchInput.value.trim().toLowerCase();
-      const filtered = data.filter(item => {
-        return (
-          !keyword ||
-          (item.card_id && item.card_id.toLowerCase().includes(keyword)) ||
-          (item.card_class && item.card_class.toLowerCase().includes(keyword)) ||
-          (item.directions && item.directions.toLowerCase().includes(keyword))
-        );
-      });
-
+      const filtered = data.filter(item =>
+        !keyword ||
+        (item.card_id && item.card_id.toLowerCase().includes(keyword)) ||
+        (item.card_class && item.card_class.toLowerCase().includes(keyword)) ||
+        (item.directions && item.directions.toLowerCase().includes(keyword))
+      );
       renderTable(filtered);
     });
 
-    // 初始渲染
+    // 清除搜尋（若有清除按鈕）
+    const clearBtn = document.getElementById("clearFilters");
+    if (clearBtn) {
+      clearBtn.addEventListener("click", () => {
+        searchInput.value = "";
+        renderTable(data);
+      });
+    }
+
+    // 初始載入全部資料
     renderTable(data);
   }
 });
