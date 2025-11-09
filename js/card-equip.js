@@ -8,6 +8,11 @@ document.addEventListener("DOMContentLoaded", () => {
     .then(json => {
       const data = Array.isArray(json) ? json : json.data;
       const filteredData = data.filter(d => d.type === "裝備卡");
+
+      // ✅ 預載所有圖片（放在這裡）
+      preloadCardImages(filteredData);
+
+      // ✅ 初始化表格
       initCardTable(filteredData);
     })
     .catch(err => {
@@ -16,7 +21,19 @@ document.addEventListener("DOMContentLoaded", () => {
       tbody.innerHTML = "<tr><td colspan='6'>無法載入資料</td></tr>";
     });
 
-
+  // === 預載所有圖片 ===
+  function preloadCardImages(data) {
+    data.forEach(item => {
+      const paths = [
+        `/mo_data/pic/card-equip/${item.card_id}_${item.card_property}.png`,
+        `/mo_data/pic/card-equip/${item.card_id}.png`,
+      ];
+      paths.forEach(path => {
+        const img = new Image();
+        img.src = path;
+      });
+    });
+  }
 
   // === Accordion 展開／收合 ===
   document.querySelectorAll('.accordion-header').forEach(header => {
@@ -25,6 +42,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
+
 
 
 // === 初始化卡片表格 ===
