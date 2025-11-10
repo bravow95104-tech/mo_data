@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-  fetch("/mo_data/data/equip-combo.json") // 相對路徑
+  fetch("/mo_data/data/equip-combo.json") // 相對路徑載入 JSON
     .then(res => {
       if (!res.ok) throw new Error("載入 equip-combo.json 失敗");
       return res.json();
@@ -23,68 +23,82 @@ function initComboPage(data) {
   const filterBtns = document.querySelectorAll(".filter-btn");
   const clearBtn = document.getElementById("clearFilters");
 
-  let activeFilters = { promotion: [], commonly: [], category: [], equipmentType1: [], equipmentType2: [] };
+  // ✅ 加入 equipmentType1 篩選陣列
+  let activeFilters = { promotion: [], commonly: [], category: [], equipmentType1: [] };
 
   function renderList() {
     const searchText = searchInput.value.trim().toLowerCase();
 
     const filtered = data.filter(item => {
+      // 將可能為 undefined 的欄位安全轉小寫
       const skill = (item.skillName || "").toLowerCase();
       const job = (item.class || "").toLowerCase();
       const skillType = (item.classSkill || "").toLowerCase();
       const cat = (item.category || "").toLowerCase();
-      const equipmentType1 = (item.equipmentType1 || "").toLowerCase();
-      const equipmentType2 = (item.equipmentType2 || "").toLowerCase();
-// 搜尋文字條件
+      const equip1 = (item.equipmentType1 || "").toLowerCase();
+      const equip2 = (item.equipmentType2 || "").toLowerCase();
+
+      // 🔍 搜尋條件
       const matchSearch =
-        searchText === "" ||
+        !searchText ||
         skill.includes(searchText) ||
         job.includes(searchText) ||
         skillType.includes(searchText) ||
         cat.includes(searchText) ||
-        equipmentType1.includes(searchText) ||
-        equipmentType2.includes(searchText);
-// 職業篩選
-const matchFilter =
-  activeFilters.promotion.length === 0 ||
-  activeFilters.promotion.some(f => job.includes(f) || job.includes("全職業"));
+        equip1.includes(searchText) ||
+        equip2.includes(searchText);
 
-    // category 篩選
-    const matchCategory =
-      activeFilters.category.length === 0 ||
-      activeFilters.category.some(f => cat.includes(f.toLowerCase()));
+      // 🧩 職業篩選
+      const matchFilter =
+        activeFilters.promotion.length === 0 ||
+        activeFilters.promotion.some(f => job.includes(f) || job.includes("全職業"));
 
-       // category 篩選
-    const equipmenttype1 =
-      activeFilters.equipmenttype1.length === 0 ||
-      activeFilters.equipmenttype1.some(f => equipmenttype1.includes(f.toLowerCase()));
+      // 📂 類別篩選
+      const matchCategory =
+        activeFilters.category.length === 0 ||
+        activeFilters.category.some(f => cat.includes(f.toLowerCase()));
 
-// commonly 篩選
-const matchCommonly =
-  activeFilters.commonly.length === 0 ||
-  (activeFilters.commonly.some(f => f.toLowerCase() === "true") &&
-   String(item.commonly).toLowerCase() === "true");
+      // ⚙️ 裝備部位篩選
+      const matchEquipType =
+        activeFilters.equipmentType1.length === 0 ||
+        activeFilters.equipmentType1.some(f =>
+          equip1.includes(f.toLowerCase()) || equip2.includes(f.toLowerCase())
+        );
 
-      return matchSearch && matchFilter && matchCommonly && matchCategory && equipmenttype1;
+      // ⭐ 常用篩選
+      const matchCommonly =
+        activeFilters.commonly.length === 0 ||
+        (activeFilters.commonly.some(f => f.toLowerCase() === "true") &&
+         String(item.commonly).toLowerCase() === "true");
+
+      // ✅ 全部條件通過才顯示
+      return matchSearch && matchFilter && matchCommonly && matchCategory && matchEquipType;
     });
 
+    // 清空列表
     comboList.innerHTML = "";
 
+    // 無結果
     if (filtered.length === 0) {
-      comboList.innerHTML =
-        `<p style="text-align:center;color:#777;">查無符合條件的資料</p>`;
+      comboList.innerHTML = `<p style="text-align:center;color:#777;">查無符合條件的資料</p>`;
       return;
     }
 
+    // 渲染結果卡片
     filtered.forEach(item => {
       const card = document.createElement("div");
       card.className = "combo-card active"; // 預設展開
+
+      // ✅ 改進裝備部位顯示（自動跳過空值）
+      const equipDisplay =
+        [item.equipmentType1, item.equipmentType2].filter(Boolean).join(" / ") || "—";
+
       card.innerHTML = `
-        <div class="combo-title">${item.skillName || "—"}</div>
+        <div class="combo-title accordion-header">${item.skillName || "—"}</div>
         <div class="combo-category"><strong>職業技能：</strong>${item.classSkill || "—"}</div>
         <div class="combo-details">
           <p><strong>職業：</strong>${item.class || "—"}</p>
-          <p><strong>裝備部位：</strong>${item.equipmentType1 || "—"} - ${item.equipmentType2 || "—"}</p>
+          <p><strong>裝備部位：</strong>${equipDisplay}</p>
           <p><strong>文片組合：</strong>${item.combinationMethod || "—"}</p>
           <p><strong>說明：</strong>${item.description || "—"}</p>
         </div>
@@ -93,40 +107,42 @@ const matchCommonly =
     });
   }
 
+  // 🔍 即時搜尋
   searchInput.addEventListener("input", renderList);
 
-filterBtns.forEach(btn => {
-  btn.addEventListener("click", () => {
-    const type = btn.dataset.type;   // 取得 data-type
-    const value = btn.dataset.value;
+  // 🎯 篩選按鈕
+  filterBtns.forEach(btn => {
+    btn.addEventListener("click", () => {
+      const type = btn.dataset.type;   // 取得 data-type
+      const value = btn.dataset.value;
 
-    btn.classList.toggle("active");
+      btn.classList.toggle("active");
 
-    if (btn.classList.contains("active")) {
-      activeFilters[type].push(value);
-    } else {
-      activeFilters[type] = activeFilters[type].filter(f => f !== value);
-    }
+      if (btn.classList.contains("active")) {
+        activeFilters[type].push(value);
+      } else {
+        activeFilters[type] = activeFilters[type].filter(f => f !== value);
+      }
+      renderList();
+    });
+  });
+
+  // ❌ 清除篩選
+  clearBtn.addEventListener("click", () => {
+    activeFilters = { promotion: [], commonly: [], category: [], equipmentType1: [] };
+    filterBtns.forEach(btn => btn.classList.remove("active"));
+    searchInput.value = "";
+    console.log("✅ 清除篩選", activeFilters);
     renderList();
   });
-});
-//清除篩選
-clearBtn.addEventListener("click", () => {
-  activeFilters = { promotion: [], commonly: [], category: [] };
-  filterBtns.forEach(btn => btn.classList.remove("active"));
-  searchInput.value = "";
-  console.log("清除篩選", activeFilters);
+
+  // 🪄 初始化渲染
   renderList();
-});
 
-
-  renderList();
-}
-
-    // Accordion 展開／收合
-document.querySelectorAll('.accordion-header').forEach(header => {
-  header.addEventListener('click', () => {
-    const accordion = header.parentElement;
-    accordion.classList.toggle('collapsed');
+  // 📂 Accordion 展開／收合（事件代理避免漏綁）
+  comboList.addEventListener("click", e => {
+    if (e.target.classList.contains("accordion-header")) {
+      e.target.parentElement.classList.toggle("collapsed");
+    }
   });
-});
+}
