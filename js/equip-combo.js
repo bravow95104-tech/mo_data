@@ -94,7 +94,7 @@ function initComboPage(data) {
         [item.equipmentType1, item.equipmentType2].filter(Boolean).join(" / ") || "—";
 
       card.innerHTML = `
-        <div class="combo-title accordion-header">${item.skillName || "—"}</div>
+        <div class="combo-title">${item.skillName || "—"}</div>
         <div class="combo-category"><strong>職業技能：</strong>${item.classSkill || "—"}</div>
         <div class="combo-details">
           <p><strong>職業：</strong>${item.class || "—"}</p>
