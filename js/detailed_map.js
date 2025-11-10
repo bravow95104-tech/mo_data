@@ -124,7 +124,8 @@ document.addEventListener("DOMContentLoaded", () => {
     contentDiv.innerHTML = `
       <h2 class="map-name">${map.name || map.mapid || "未知地圖"}</h2>
     `;
-    contentDiv.appendChild(imgContainer);
+
+    contentDiv.querySelector('.hero-column-details').appendChild(imgContainer);
 
     const detailHTML = `
       <div class="hero-column-details">
