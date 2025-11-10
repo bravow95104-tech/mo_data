@@ -83,40 +83,39 @@ document.addEventListener("DOMContentLoaded", () => {
     const safeName = map.name ? map.name.replace(/[^\w\u4e00-\u9fa5]/g, "") : "unknown";
 
     // 建立可回退圖片
-    function createImageWithFallbacks(basePath, altText) {
-      const extensions = [".png", ".bmp", ".jpg"];
-      let attempt = 0;
+function createImageWithFallbacks(basePath, altText) {
+  const extensions = [".png", ".bmp", ".jpg"];
+  let attempt = 0;
 
-      const img = document.createElement("img");
-      img.alt = altText;
-      img.style.objectFit = "contain";
-      img.style.maxWidth = "100%";
+  const img = document.createElement("img");
+  img.alt = altText;
+  img.style.objectFit = "contain";
+  img.style.maxWidth = "100%";
 
-      function tryNext() {
-        img.src = basePath + extensions[attempt];
-        img.onerror = () => {
-          attempt++;
-          if (attempt < extensions.length) {
-            tryNext();
-          } else {
-            img.src = "/mo_data/pic/map/no_image.jpg"; // 全部失敗時用預設圖
-          }
-        };
+  function tryNext() {
+    img.src = basePath + extensions[attempt];
+    img.onerror = () => {
+      attempt++;
+      if (attempt < extensions.length) {
+        tryNext(); // 試下一個副檔名
+      } else {
+        img.remove(); // ❌ 全部失敗就不顯示圖片
       }
+    };
+  }
 
-      tryNext();
-      return img;
-    }
+  tryNext();
+  return img;
+}
 
     const baseFront = `/mo_data/pic/map/${safeName}`;
-    const frontImage = createImageWithFallbacks(baseFront, `${map.name} 地圖`);
-
+const frontImage = createImageWithFallbacks(baseFront, `${map.name || map.mapid} 地圖`);
+imgContainer.appendChild(frontImage);
     const imgContainer = document.createElement("div");
     imgContainer.className = "map-images";
     imgContainer.style.display = "flex";
     imgContainer.style.gap = "10px";
     imgContainer.style.marginBottom = "20px";
-    imgContainer.appendChild(frontImage);
 
     // Modal 主內容
     contentDiv.innerHTML = `
@@ -125,7 +124,8 @@ document.addEventListener("DOMContentLoaded", () => {
     contentDiv.appendChild(imgContainer);
 
     const detailHTML = `
-      <div class="map-details">
+
+      <div class="hero-details-container" style="display:flex; gap: 20px;">
         <p><strong>垃圾：</strong>${map.drop_rubbish || "—"}</p>
         <p><strong>光輝掉落（掉落較多）：</strong>${map.drop_glory_high || "—"}</p>
         <p class="section-gap"><strong>光輝掉落（掉落較低）：</strong>${map.drop_glory_low || "—"}</p>
