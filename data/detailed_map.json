@@ -1,0 +1,1343 @@
+[
+  {
+    "mapid": "青葉村",
+    "maplv": "",
+    "monster": "",
+    "area": "京城",
+    "drop_rubbish": "",
+    "drop_glory_high": "大賢之光輝、聖鬥之光輝、鐘會之光輝、曹貴人之光輝、安樂之光輝",
+    "drop_glory_low": ""
+  },
+  {
+    "mapid": "飛煞洞",
+    "maplv": "",
+    "monster": "",
+    "area": "京城",
+    "drop_rubbish": "",
+    "drop_glory_high": "毒士之光輝、警花之光、袁紹之光輝、小霸王之光輝、祝融之光輝、顏良之光輝、阮小七之光輝",
+    "drop_glory_low": "孫權之光輝、青龍星之光、瓊霄之光輝、火府星之光、麒麟之光輝、天使之光、李逵之光輝、執年歲君之徵、智多星之光輝"
+  },
+  {
+    "mapid": "京城",
+    "maplv": "",
+    "monster": "",
+    "area": "京城",
+    "drop_rubbish": "",
+    "drop_glory_high": "",
+    "drop_glory_low": ""
+  },
+  {
+    "mapid": "東都道",
+    "maplv": "",
+    "monster": "",
+    "area": "京城",
+    "drop_rubbish": "",
+    "drop_glory_high": "大賢之光輝、聖鬥之光輝、鐘會之光輝、曹貴人之光輝、安樂之光輝",
+    "drop_glory_low": ""
+  },
+  {
+    "mapid": "南都道",
+    "maplv": "",
+    "monster": "",
+    "area": "京城",
+    "drop_rubbish": "",
+    "drop_glory_high": "張松之光輝、項充之光輝、豹騎之勇、虎騎之勇、魔鬥之勇",
+    "drop_glory_low": ""
+  },
+  {
+    "mapid": "西都道",
+    "maplv": "",
+    "monster": "",
+    "area": "京城",
+    "drop_rubbish": "",
+    "drop_glory_high": "張松之光輝、項充之光輝、豹騎之勇、虎騎之勇、魔鬥之勇",
+    "drop_glory_low": ""
+  },
+  {
+    "mapid": "北都道",
+    "maplv": "",
+    "monster": "",
+    "area": "京城",
+    "drop_rubbish": "",
+    "drop_glory_high": "張松之光輝、項充之光輝、豹騎之勇、虎騎之勇、魔鬥之勇",
+    "drop_glory_low": ""
+  },
+  {
+    "mapid": "東門關",
+    "maplv": "",
+    "monster": "",
+    "area": "京城",
+    "drop_rubbish": "",
+    "drop_glory_high": "張松之光輝、項充之光輝、豹騎之勇、虎騎之勇、魔鬥之勇",
+    "drop_glory_low": ""
+  },
+  {
+    "mapid": "南門關",
+    "maplv": "",
+    "monster": "",
+    "area": "京城",
+    "drop_rubbish": "",
+    "drop_glory_high": "張松之光輝、項充之光輝、豹騎之勇、虎騎之勇、魔鬥之勇",
+    "drop_glory_low": ""
+  },
+  {
+    "mapid": "北門關",
+    "maplv": "",
+    "monster": "",
+    "area": "京城",
+    "drop_rubbish": "",
+    "drop_glory_high": "張松之光輝、項充之光輝、豹騎之勇、虎騎之勇、魔鬥之勇",
+    "drop_glory_low": ""
+  },
+  {
+    "mapid": "齊山密穴",
+    "maplv": "",
+    "monster": "",
+    "area": "",
+    "drop_rubbish": "",
+    "drop_glory_high": "",
+    "drop_glory_low": ""
+  },
+  {
+    "mapid": "回春谷入口",
+    "maplv": "",
+    "monster": "",
+    "area": "京城",
+    "drop_rubbish": "",
+    "drop_glory_high": "",
+    "drop_glory_low": ""
+  },
+  {
+    "mapid": "回春谷",
+    "maplv": "",
+    "monster": "",
+    "area": "京城",
+    "drop_rubbish": "",
+    "drop_glory_high": "",
+    "drop_glory_low": ""
+  },
+  {
+    "mapid": "碧沙湖",
+    "maplv": "",
+    "monster": "",
+    "area": "京城",
+    "drop_rubbish": "",
+    "drop_glory_high": "張松之光輝、項充之光輝、豹騎之勇、虎騎之勇、魔鬥之勇",
+    "drop_glory_low": ""
+  },
+  {
+    "mapid": "杏花谷",
+    "maplv": "",
+    "monster": "",
+    "area": "京城",
+    "drop_rubbish": "",
+    "drop_glory_high": "張松之光輝、項充之光輝、豹騎之勇、虎騎之勇、魔鬥之勇",
+    "drop_glory_low": ""
+  },
+  {
+    "mapid": "伏龍洞",
+    "maplv": "",
+    "monster": "",
+    "area": "京城",
+    "drop_rubbish": "",
+    "drop_glory_high": "周郎之光輝、孫二娘之光輝、盧俊義之光輝、阮小二之光輝、石秀之光輝、忍者之光、龍鬥之勇",
+    "drop_glory_low": "諸葛惠之光輝"
+  },
+  {
+    "mapid": "地煞洞第1層",
+    "maplv": "",
+    "monster": "",
+    "area": "京城",
+    "drop_rubbish": "",
+    "drop_glory_high": "大賢之光輝、聖鬥之光輝、鐘會之光輝、曹貴人之光輝、安樂之光輝",
+    "drop_glory_low": ""
+  },
+  {
+    "mapid": "地煞洞第2層",
+    "maplv": "",
+    "monster": "",
+    "area": "京城",
+    "drop_rubbish": "",
+    "drop_glory_high": "大賢之光輝、聖鬥之光輝、鐘會之光輝、曹貴人之光輝、安樂之光輝",
+    "drop_glory_low": ""
+  },
+  {
+    "mapid": "天煞洞第1層",
+    "maplv": "",
+    "monster": "",
+    "area": "京城",
+    "drop_rubbish": "",
+    "drop_glory_high": "周郎之光輝、孫二娘之光輝、盧俊義之光輝、阮小二之光輝、石秀之光輝、忍者之光、龍鬥之勇",
+    "drop_glory_low": "諸葛惠之光輝"
+  },
+  {
+    "mapid": "天煞洞第2層",
+    "maplv": "",
+    "monster": "",
+    "area": "京城",
+    "drop_rubbish": "",
+    "drop_glory_high": "周郎之光輝、孫二娘之光輝、盧俊義之光輝、阮小二之光輝、石秀之光輝、忍者之光、龍鬥之勇",
+    "drop_glory_low": "諸葛惠之光輝"
+  },
+  {
+    "mapid": "匯星高原",
+    "maplv": "",
+    "monster": "",
+    "area": "京城",
+    "drop_rubbish": "",
+    "drop_glory_high": "周郎之光輝、孫二娘之光輝、盧俊義之光輝、阮小二之光輝、石秀之光輝、忍者之光、龍鬥之勇",
+    "drop_glory_low": "諸葛惠之光輝"
+  },
+  {
+    "mapid": "末日京城",
+    "maplv": "",
+    "monster": "",
+    "area": "京城",
+    "drop_rubbish": "",
+    "drop_glory_high": "關興之光輝、張魯之光輝、程遠志之光輝、劉備之光輝、魯智深之光輝、倭王之光輝",
+    "drop_glory_low": "孫二娘之光輝、曹植之光輝、裴宣之光輝、天眼之光輝、太歲之光"
+  },
+  {
+    "mapid": "地牢",
+    "maplv": "",
+    "monster": "",
+    "area": "京城",
+    "drop_rubbish": "",
+    "drop_glory_high": "關興之光輝、張魯之光輝、程遠志之光輝、劉備之光輝、魯智深之光輝、倭王之光輝",
+    "drop_glory_low": "孫二娘之光輝、曹植之光輝、裴宣之光輝、天眼之光輝、太歲之光"
+  },
+  {
+    "mapid": "水牢",
+    "maplv": "",
+    "monster": "",
+    "area": "京城",
+    "drop_rubbish": "",
+    "drop_glory_high": "關興之光輝、張魯之光輝、程遠志之光輝、劉備之光輝、魯智深之光輝、倭王之光輝",
+    "drop_glory_low": "孫二娘之光輝、曹植之光輝、裴宣之光輝、天眼之光輝、太歲之光"
+  },
+  {
+    "mapid": "火牢",
+    "maplv": "",
+    "monster": "",
+    "area": "京城",
+    "drop_rubbish": "",
+    "drop_glory_high": "關興之光輝、張魯之光輝、程遠志之光輝、劉備之光輝、魯智深之光輝、倭王之光輝",
+    "drop_glory_low": "孫二娘之光輝、曹植之光輝、裴宣之光輝、天眼之光輝、太歲之光"
+  },
+  {
+    "mapid": "死牢",
+    "maplv": "",
+    "monster": "",
+    "area": "京城",
+    "drop_rubbish": "",
+    "drop_glory_high": "關興之光輝、張魯之光輝、程遠志之光輝、劉備之光輝、魯智深之光輝、倭王之光輝",
+    "drop_glory_low": "孫二娘之光輝、曹植之光輝、裴宣之光輝、天眼之光輝、太歲之光"
+  },
+  {
+    "mapid": "七星壇",
+    "maplv": "",
+    "monster": "",
+    "area": "京城、川都",
+    "drop_rubbish": "",
+    "drop_glory_high": "",
+    "drop_glory_low": ""
+  },
+  {
+    "mapid": "郡業",
+    "maplv": "",
+    "monster": "",
+    "area": "郡業",
+    "drop_rubbish": "",
+    "drop_glory_high": "",
+    "drop_glory_low": ""
+  },
+  {
+    "mapid": "月鏡湖",
+    "maplv": "",
+    "monster": "",
+    "area": "郡業",
+    "drop_rubbish": "",
+    "drop_glory_high": "周郎之光輝、孫二娘之光輝、盧俊義之光輝、阮小二之光輝、石秀之光輝、忍者之光、龍鬥之勇",
+    "drop_glory_low": "諸葛惠之光輝"
+  },
+  {
+    "mapid": "潛龍潭",
+    "maplv": "",
+    "monster": "",
+    "area": "郡業",
+    "drop_rubbish": "",
+    "drop_glory_high": "田豐之光輝、錦衣之光輝、王佐之光輝、黃月英之光輝、馬良之光輝、小喬之光輝",
+    "drop_glory_low": "楊修之光輝"
+  },
+  {
+    "mapid": "沰水道",
+    "maplv": "",
+    "monster": "",
+    "area": "郡業",
+    "drop_rubbish": "",
+    "drop_glory_high": "人公之光輝、益德之光輝、張苞之光輝、蔣敬之光輝、燕青之光輝、好人卡象徵、姬發之光輝、武吉之光輝、韋馱天之光",
+    "drop_glory_low": "項充之光輝、虎騎之勇、魔鬥之勇、程普之光輝、西門慶之光輝、荀攸之光輝、徐庶之光輝、周倉之光輝、茶茶之光輝、孔融之光輝、毒士之光輝"
+  },
+  {
+    "mapid": "銀沙河",
+    "maplv": "",
+    "monster": "",
+    "area": "郡業",
+    "drop_rubbish": "",
+    "drop_glory_high": "人公之光輝、益德之光輝、張苞之光輝、蔣敬之光輝、燕青之光輝、好人卡象徵、姬發之光輝、武吉之光輝、韋馱天之光",
+    "drop_glory_low": "項充之光輝、虎騎之勇、魔鬥之勇、程普之光輝、西門慶之光輝、荀攸之光輝、徐庶之光輝、周倉之光輝、茶茶之光輝、孔融之光輝、毒士之光輝"
+  },
+  {
+    "mapid": "地下水道",
+    "maplv": "",
+    "monster": "",
+    "area": "郡業",
+    "drop_rubbish": "",
+    "drop_glory_high": "荀攸之光輝、甘寧之光輝、甄洛之光輝、南蠻王之光輝、黃忠之光輝、法正之光輝、呂虎威之光輝",
+    "drop_glory_low": "田豐之光輝、斬仙之光、宋徽宗之光輝、廖化之光輝、鄧艾之光輝、戴宗之光輝、程遠志之光輝、胡車兒之光輝、巖流秘劍之徵"
+  },
+  {
+    "mapid": "南揚湖",
+    "maplv": "",
+    "monster": "",
+    "area": "郡業",
+    "drop_rubbish": "",
+    "drop_glory_high": "",
+    "drop_glory_low": ""
+  },
+  {
+    "mapid": "虎臂水洞1樓",
+    "maplv": "",
+    "monster": "",
+    "area": "郡業",
+    "drop_rubbish": "",
+    "drop_glory_high": "周通之光輝、虎威之光輝、子龍之光輝、神醫之光輝、男僕之光輝、太師之光輝、宋江之光輝、女僕之光輝",
+    "drop_glory_low": "錦衣之光輝、南蠻王之光輝、穆容之光輝、羲皇之光、臥龍之光輝、武宣光輝、昭烈光輝、潘淑光輝"
+  },
+  {
+    "mapid": "虎臂水洞2樓",
+    "maplv": "",
+    "monster": "",
+    "area": "郡業",
+    "drop_rubbish": "",
+    "drop_glory_high": "周通之光輝、虎威之光輝、子龍之光輝、神醫之光輝、男僕之光輝、太師之光輝、宋江之光輝、女僕之光輝",
+    "drop_glory_low": "錦衣之光輝、南蠻王之光輝、穆容之光輝、羲皇之光、臥龍之光輝、武宣光輝、昭烈光輝、潘淑光輝"
+  },
+  {
+    "mapid": "地下通道",
+    "maplv": "",
+    "monster": "",
+    "area": "",
+    "drop_rubbish": "",
+    "drop_glory_high": "人公之光輝、益德之光輝、張苞之光輝、蔣敬之光輝、燕青之光輝、好人卡象徵、姬發之光輝、武吉之光輝、韋馱天之光",
+    "drop_glory_low": "項充之光輝、虎騎之勇、魔鬥之勇、程普之光輝、西門慶之光輝、荀攸之光輝、徐庶之光輝、周倉之光輝、茶茶之光輝、孔融之光輝、毒士之光輝"
+  },
+  {
+    "mapid": "寧虎林",
+    "maplv": "",
+    "monster": "",
+    "area": "",
+    "drop_rubbish": "",
+    "drop_glory_high": "",
+    "drop_glory_low": "武宣光輝、昭烈光輝、潘淑光輝"
+  },
+  {
+    "mapid": "幽納古林",
+    "maplv": "",
+    "monster": "",
+    "area": "",
+    "drop_rubbish": "",
+    "drop_glory_high": "劍器之光輝、馬超之光輝、曹洪之光輝、廖化之光輝、諸葛瑾之光輝、潘金蓮之光輝、鳳雛之光輝、孫權之光輝、安道全之光輝、兔女郎之光、青龍星之光",
+    "drop_glory_low": "安樂之光輝、石秀之光輝、蔣敬之光輝、魯肅之光輝、增長之光、周泰之光輝、武大郎之光輝、董平之光輝、馬忠之光輝、魏定國之光輝、張清之光輝、奉孝之光輝、呼延灼之光輝、糜夫人之光輝、李袞之光輝、劉唐之光輝、蕭讓之光輝、顧大嫂之光輝"
+  },
+  {
+    "mapid": "幽納原野1",
+    "maplv": "",
+    "monster": "",
+    "area": "",
+    "drop_rubbish": "",
+    "drop_glory_high": "土府星之光、藥王之光、蟠桃之光輝、惡鬼之光輝",
+    "drop_glory_low": "桃花星之光"
+  },
+  {
+    "mapid": "幽納原野2",
+    "maplv": "",
+    "monster": "",
+    "area": "",
+    "drop_rubbish": "",
+    "drop_glory_high": "花榮之光輝、巖流秘劍之徵、于吉之光輝、響馬茜之光輝、九尾狐之徵",
+    "drop_glory_low": "白衣之光輝"
+  },
+  {
+    "mapid": "幽納洞窟1F-2F",
+    "maplv": "",
+    "monster": "",
+    "area": "",
+    "drop_rubbish": "",
+    "drop_glory_high": "",
+    "drop_glory_low": ""
+  },
+  {
+    "mapid": "蒼龍洞",
+    "maplv": "",
+    "monster": "",
+    "area": "",
+    "drop_rubbish": "",
+    "drop_glory_high": "",
+    "drop_glory_low": ""
+  },
+  {
+    "mapid": "江河鎮",
+    "maplv": "",
+    "monster": "",
+    "area": "",
+    "drop_rubbish": "",
+    "drop_glory_high": "",
+    "drop_glory_low": ""
+  },
+  {
+    "mapid": "濯足澗1F-2F",
+    "maplv": "",
+    "monster": "",
+    "area": "",
+    "drop_rubbish": "",
+    "drop_glory_high": "",
+    "drop_glory_low": ""
+  },
+  {
+    "mapid": "瑤琳仙境1F-3F",
+    "maplv": "",
+    "monster": "",
+    "area": "",
+    "drop_rubbish": "",
+    "drop_glory_high": "",
+    "drop_glory_low": ""
+  },
+  {
+    "mapid": "川都",
+    "maplv": "",
+    "monster": "",
+    "area": "川都",
+    "drop_rubbish": "",
+    "drop_glory_high": "",
+    "drop_glory_low": ""
+  },
+  {
+    "mapid": "西門關",
+    "maplv": "",
+    "monster": "",
+    "area": "川都",
+    "drop_rubbish": "",
+    "drop_glory_high": "張松之光輝、項充之光輝、豹騎之勇、虎騎之勇、魔鬥之勇",
+    "drop_glory_low": ""
+  },
+  {
+    "mapid": "迷茫古墳",
+    "maplv": "",
+    "monster": "",
+    "area": "",
+    "drop_rubbish": "",
+    "drop_glory_high": "周通之光輝、虎威之光輝、子龍之光輝、神醫之光輝、男僕之光輝、太師之光輝、宋江之光輝、女僕之光輝",
+    "drop_glory_low": "錦衣之光輝、南蠻王之光輝、穆容之光輝、羲皇之光、臥龍之光輝"
+  },
+  {
+    "mapid": "臥虎高原",
+    "maplv": "",
+    "monster": "",
+    "area": "川都",
+    "drop_rubbish": "",
+    "drop_glory_high": "周郎之光輝、孫二娘之光輝、盧俊義之光輝、阮小二之光輝、石秀之光輝、忍者之光、龍鬥之勇",
+    "drop_glory_low": "諸葛惠之光輝"
+  },
+  {
+    "mapid": "妖邪洞初殿",
+    "maplv": "",
+    "monster": "",
+    "area": "川都",
+    "drop_rubbish": "",
+    "drop_glory_high": "劍器之光輝、馬超之光輝、鳳雛之光輝、孫權之光輝、安道全之光輝、兔女郎之光、青龍星之光",
+    "drop_glory_low": "安樂之光輝、石秀之光輝、蔣敬之光輝、魯肅之光輝、增長之光、周泰之光輝、武大郎之光輝、馬忠之光輝、魏定國之光輝、張清之光輝、奉孝之光輝、呼延灼之光輝、糜夫人之光輝、李袞之光輝、劉唐之光輝、蕭讓之光輝、顧大嫂之光輝"
+  },
+  {
+    "mapid": "妖邪洞惑殿",
+    "maplv": "",
+    "monster": "",
+    "area": "川都",
+    "drop_rubbish": "",
+    "drop_glory_high": "劍器之光輝、馬超之光輝、鳳雛之光輝、孫權之光輝、安道全之光輝、兔女郎之光、青龍星之光",
+    "drop_glory_low": "安樂之光輝、石秀之光輝、蔣敬之光輝、魯肅之光輝、增長之光、周泰之光輝、武大郎之光輝、馬忠之光輝、魏定國之光輝、張清之光輝、奉孝之光輝、呼延灼之光輝、糜夫人之光輝、李袞之光輝、劉唐之光輝、蕭讓之光輝、顧大嫂之光輝"
+  },
+  {
+    "mapid": "妖邪洞迷殿",
+    "maplv": "",
+    "monster": "",
+    "area": "川都",
+    "drop_rubbish": "",
+    "drop_glory_high": "劍器之光輝、馬超之光輝、鳳雛之光輝、孫權之光輝、安道全之光輝、兔女郎之光、青龍星之光",
+    "drop_glory_low": "安樂之光輝、石秀之光輝、蔣敬之光輝、魯肅之光輝、增長之光、周泰之光輝、武大郎之光輝、馬忠之光輝、魏定國之光輝、張清之光輝、奉孝之光輝、呼延灼之光輝、糜夫人之光輝、李袞之光輝、劉唐之光輝、蕭讓之光輝、顧大嫂之光輝"
+  },
+  {
+    "mapid": "妖邪洞鎖殿",
+    "maplv": "",
+    "monster": "",
+    "area": "川都",
+    "drop_rubbish": "",
+    "drop_glory_high": "劍器之光輝、馬超之光輝、鳳雛之光輝、孫權之光輝、安道全之光輝、兔女郎之光、青龍星之光",
+    "drop_glory_low": "安樂之光輝、石秀之光輝、蔣敬之光輝、魯肅之光輝、增長之光、周泰之光輝、武大郎之光輝、馬忠之光輝、魏定國之光輝、張清之光輝、奉孝之光輝、呼延灼之光輝、糜夫人之光輝、李袞之光輝、劉唐之光輝、蕭讓之光輝、顧大嫂之光輝"
+  },
+  {
+    "mapid": "妖邪洞犧殿",
+    "maplv": "",
+    "monster": "",
+    "area": "川都",
+    "drop_rubbish": "",
+    "drop_glory_high": "",
+    "drop_glory_low": ""
+  },
+  {
+    "mapid": "地下墳場",
+    "maplv": "",
+    "monster": "",
+    "area": "",
+    "drop_rubbish": "",
+    "drop_glory_high": "毒士之光輝、警花之光、袁紹之光輝、小霸王之光輝、祝融之光輝、顏良之光輝、阮小七之光輝",
+    "drop_glory_low": "孫權之光輝、青龍星之光、瓊霄之光輝、火府星之光、麒麟之光輝、天使之光、李逵之光輝、執年歲君之徵、智多星之光輝"
+  },
+  {
+    "mapid": "荒骨高原",
+    "maplv": "",
+    "monster": "",
+    "area": "川都",
+    "drop_rubbish": "",
+    "drop_glory_high": "周郎之光輝、孫二娘之光輝、盧俊義之光輝、阮小二之光輝、石秀之光輝、忍者之光、龍鬥之勇",
+    "drop_glory_low": "諸葛惠之光輝"
+  },
+  {
+    "mapid": "巨門關",
+    "maplv": "",
+    "monster": "",
+    "area": "川都",
+    "drop_rubbish": "",
+    "drop_glory_high": "周郎之光輝、孫二娘之光輝、盧俊義之光輝、阮小二之光輝、石秀之光輝、忍者之光、龍鬥之勇",
+    "drop_glory_low": "諸葛惠之光輝"
+  },
+  {
+    "mapid": "可汗沙漠",
+    "maplv": "",
+    "monster": "",
+    "area": "川都",
+    "drop_rubbish": "",
+    "drop_glory_high": "人公之光輝、益德之光輝、張苞之光輝、蔣敬之光輝、燕青之光輝、好人卡象徵、姬發之光輝、武吉之光輝、韋馱天之光",
+    "drop_glory_low": "項充之光輝、虎騎之勇、魔鬥之勇、程普之光輝、西門慶之光輝、荀攸之光輝、徐庶之光輝、周倉之光輝、茶茶之光輝、孔融之光輝、毒士之光輝"
+  },
+  {
+    "mapid": "陽燧山",
+    "maplv": "",
+    "monster": "",
+    "area": "川都",
+    "drop_rubbish": "",
+    "drop_glory_high": "茶茶之光輝、雲中子光輝、天喜之光、通天玉晨之徵、玉琵琶之徵、司馬懿之光輝、火府星之光",
+    "drop_glory_low": "周郎之光輝、水靈之光、二郎之徵、史進之光輝、文曲之光、安道全之光輝、法正之光輝、紅鸞星之光、惡魔之光輝、楊鳳兒之光輝、關銀屏之光輝、太師之光輝、惡鬼之光輝"
+  },
+  {
+    "mapid": "烈焰山徑",
+    "maplv": "",
+    "monster": "",
+    "area": "",
+    "drop_rubbish": "",
+    "drop_glory_high": "楊修之光輝、張遼之光輝、蕭讓之光輝、天師道之光輝、貂蟬之光輝、雲長之光輝、穆容之光輝",
+    "drop_glory_low": "黃月英之光輝、林沖之光輝、夏侯惇之光輝、昭姬之光輝"
+  },
+  {
+    "mapid": "烈焰山腳",
+    "maplv": "",
+    "monster": "",
+    "area": "",
+    "drop_rubbish": "",
+    "drop_glory_high": "楊修之光輝、張遼之光輝、蕭讓之光輝、天師道之光輝、貂蟬之光輝、雲長之光輝、穆容之光輝",
+    "drop_glory_low": "黃月英之光輝、林沖之光輝、夏侯惇之光輝、昭姬之光輝"
+  },
+  {
+    "mapid": "烈焰山谷",
+    "maplv": "",
+    "monster": "",
+    "area": "",
+    "drop_rubbish": "",
+    "drop_glory_high": "楊修之光輝、張遼之光輝、蕭讓之光輝、天師道之光輝、貂蟬之光輝、雲長之光輝、穆容之光輝",
+    "drop_glory_low": "黃月英之光輝、林沖之光輝、夏侯惇之光輝、昭姬之光輝"
+  },
+  {
+    "mapid": "烈焰山峰",
+    "maplv": "",
+    "monster": "",
+    "area": "",
+    "drop_rubbish": "",
+    "drop_glory_high": "楊修之光輝、張遼之光輝、蕭讓之光輝、天師道之光輝、貂蟬之光輝、雲長之光輝、穆容之光輝",
+    "drop_glory_low": "黃月英之光輝、林沖之光輝、夏侯惇之光輝、昭姬之光輝"
+  },
+  {
+    "mapid": "烈焰秘境",
+    "maplv": "",
+    "monster": "",
+    "area": "",
+    "drop_rubbish": "",
+    "drop_glory_high": "陸遜之光輝、龐德之光輝、二天一流之徵、臥龍之光輝、無雙的威光",
+    "drop_glory_low": "太公望之光輝、虎癡之光輝、古佛之徵"
+  },
+  {
+    "mapid": "昌碇",
+    "maplv": "",
+    "monster": "",
+    "area": "昌碇",
+    "drop_rubbish": "",
+    "drop_glory_high": "",
+    "drop_glory_low": ""
+  },
+  {
+    "mapid": "皇陵",
+    "maplv": "",
+    "monster": "",
+    "area": "昌碇",
+    "drop_rubbish": "",
+    "drop_glory_high": "周倉之光輝、分水之光輝、小蘿之光輝、楊志之光輝、魔精之光、紅鸞星之光、瓊霄之光輝",
+    "drop_glory_low": "王佐之光輝、人公之光輝、七殺星之光、通天玉晨之徵、金龍如意之徵、芙蓉之光輝、祝融之光輝、貂蟬之光輝、雲長之光輝、神醫之光輝"
+  },
+  {
+    "mapid": "玄冥煉獄",
+    "maplv": "",
+    "monster": "",
+    "area": "",
+    "drop_rubbish": "",
+    "drop_glory_high": "西門慶之光輝、高俅之光輝、宋徽宗之光輝、四聖大元帥錄",
+    "drop_glory_low": "搏浪之光輝、小蘿之光輝、夏侯淵之光輝、樊瑞之光輝、雲中子光輝、貌端星之光"
+  },
+  {
+    "mapid": "鬼煞洞",
+    "maplv": "",
+    "monster": "",
+    "area": "昌碇",
+    "drop_rubbish": "",
+    "drop_glory_high": "徐庶之光輝、張順之光輝、奉孝之光輝、雅帝之光輝、孫尚香之光輝、巫毒之光",
+    "drop_glory_low": "阮小二之光輝、燕青之光輝、炳靈公之光、妖鬥之勇、兔女郎之光、天喜之光、江東猛虎之光輝、小霸王之光輝"
+  },
+  {
+    "mapid": "北邙山",
+    "maplv": "",
+    "monster": "",
+    "area": "昌碇",
+    "drop_rubbish": "",
+    "drop_glory_high": "周郎之光輝、孫二娘之光輝、盧俊義之光輝、阮小二之光輝、石秀之光輝、忍者之光、龍鬥之勇",
+    "drop_glory_low": "諸葛惠之光輝"
+  },
+  {
+    "mapid": "北山靈泉",
+    "maplv": "",
+    "monster": "",
+    "area": "昌碇",
+    "drop_rubbish": "",
+    "drop_glory_high": "",
+    "drop_glory_low": ""
+  },
+  {
+    "mapid": "琅琊山",
+    "maplv": "",
+    "monster": "",
+    "area": "昌碇",
+    "drop_rubbish": "",
+    "drop_glory_high": "田豐之光輝、錦衣之光輝、王佐之光輝、黃月英之光輝、馬良之光輝、小喬之光輝",
+    "drop_glory_low": "楊修之光輝"
+  },
+  {
+    "mapid": "天菊山",
+    "maplv": "",
+    "monster": "",
+    "area": "昌碇",
+    "drop_rubbish": "",
+    "drop_glory_high": "",
+    "drop_glory_low": ""
+  },
+  {
+    "mapid": "飛鶴山",
+    "maplv": "",
+    "monster": "",
+    "area": "昌碇",
+    "drop_rubbish": "",
+    "drop_glory_high": "人公之光輝、益德之光輝、張苞之光輝、蔣敬之光輝、燕青之光輝、好人卡象徵、姬發之光輝、武吉之光輝、韋馱天之光",
+    "drop_glory_low": "項充之光輝、虎騎之勇、魔鬥之勇、程普之光輝、西門慶之光輝、荀攸之光輝、徐庶之光輝、周倉之光輝、茶茶之光輝、孔融之光輝、毒士之光輝"
+  },
+  {
+    "mapid": "赤羽村",
+    "maplv": "",
+    "monster": "",
+    "area": "昌碇",
+    "drop_rubbish": "",
+    "drop_glory_high": "",
+    "drop_glory_low": ""
+  },
+  {
+    "mapid": "葬心塚",
+    "maplv": "",
+    "monster": "",
+    "area": "昌碇",
+    "drop_rubbish": "",
+    "drop_glory_high": "救世主之光、獵豹之光輝、文曲之光",
+    "drop_glory_low": "聖鬥之光輝、瓊英之光輝、多聞之光、托塔之光輝、夏麗之光輝、高俅之光輝、朱武之光輝"
+  },
+  {
+    "mapid": "祈願湖",
+    "maplv": "",
+    "monster": "",
+    "area": "昌碇",
+    "drop_rubbish": "",
+    "drop_glory_high": "救世主之光、獵豹之光輝、文曲之光",
+    "drop_glory_low": "聖鬥之光輝、瓊英之光輝、多聞之光、托塔之光輝、夏麗之光輝、高俅之光輝、朱武之光輝"
+  },
+  {
+    "mapid": "同心林",
+    "maplv": "",
+    "monster": "",
+    "area": "昌碇",
+    "drop_rubbish": "",
+    "drop_glory_high": "救世主之光、獵豹之光輝、文曲之光",
+    "drop_glory_low": "聖鬥之光輝、瓊英之光輝、多聞之光、托塔之光輝、夏麗之光輝、高俅之光輝、朱武之光輝"
+  },
+  {
+    "mapid": "哭腸崖",
+    "maplv": "",
+    "monster": "",
+    "area": "昌碇",
+    "drop_rubbish": "",
+    "drop_glory_high": "救世主之光、獵豹之光輝、文曲之光",
+    "drop_glory_low": "聖鬥之光輝、瓊英之光輝、多聞之光、托塔之光輝、夏麗之光輝、高俅之光輝、朱武之光輝"
+  },
+  {
+    "mapid": "藏玄洞一層",
+    "maplv": "",
+    "monster": "",
+    "area": "昌碇",
+    "drop_rubbish": "",
+    "drop_glory_high": "黃蓋之光輝、李袞之光輝、木鹿之光輝、芙蓉之光輝、天齊仁之光、楊鳳兒之光輝、單廷珪之光輝、白衣之光輝",
+    "drop_glory_low": ""
+  },
+  {
+    "mapid": "藏玄洞二層",
+    "maplv": "",
+    "monster": "",
+    "area": "昌碇",
+    "drop_rubbish": "",
+    "drop_glory_high": "黃蓋之光輝、李袞之光輝、木鹿之光輝、芙蓉之光輝、天齊仁之光、楊鳳兒之光輝、單廷珪之光輝、白衣之光輝",
+    "drop_glory_low": ""
+  },
+  {
+    "mapid": "藏玄洞三層",
+    "maplv": "",
+    "monster": "",
+    "area": "昌碇",
+    "drop_rubbish": "",
+    "drop_glory_high": "黃蓋之光輝、李袞之光輝、木鹿之光輝、芙蓉之光輝、天齊仁之光、楊鳳兒之光輝、單廷珪之光輝、白衣之光輝",
+    "drop_glory_low": ""
+  },
+  {
+    "mapid": "藏玄洞四層",
+    "maplv": "",
+    "monster": "",
+    "area": "昌碇",
+    "drop_rubbish": "",
+    "drop_glory_high": "黃蓋之光輝、李袞之光輝、木鹿之光輝、芙蓉之光輝、天齊仁之光、楊鳳兒之光輝、單廷珪之光輝、白衣之光輝",
+    "drop_glory_low": ""
+  },
+  {
+    "mapid": "藏玄洞五層",
+    "maplv": "",
+    "monster": "",
+    "area": "昌碇",
+    "drop_rubbish": "",
+    "drop_glory_high": "黃蓋之光輝、李袞之光輝、木鹿之光輝、芙蓉之光輝、天齊仁之光、楊鳳兒之光輝、單廷珪之光輝、白衣之光輝",
+    "drop_glory_low": ""
+  },
+  {
+    "mapid": "藏玄洞六層",
+    "maplv": "",
+    "monster": "",
+    "area": "昌碇",
+    "drop_rubbish": "",
+    "drop_glory_high": "黃蓋之光輝、李袞之光輝、木鹿之光輝、芙蓉之光輝、天齊仁之光、楊鳳兒之光輝、單廷珪之光輝、白衣之光輝",
+    "drop_glory_low": ""
+  },
+  {
+    "mapid": "藏玄洞七層",
+    "maplv": "",
+    "monster": "",
+    "area": "昌碇",
+    "drop_rubbish": "",
+    "drop_glory_high": "黃蓋之光輝、李袞之光輝、木鹿之光輝、芙蓉之光輝、天齊仁之光、楊鳳兒之光輝、單廷珪之光輝、白衣之光輝",
+    "drop_glory_low": ""
+  },
+  {
+    "mapid": "梁山",
+    "maplv": "",
+    "monster": "",
+    "area": "梁山",
+    "drop_rubbish": "",
+    "drop_glory_high": "",
+    "drop_glory_low": ""
+  },
+  {
+    "mapid": "蕈菇林",
+    "maplv": "",
+    "monster": "",
+    "area": "梁山",
+    "drop_rubbish": "",
+    "drop_glory_high": "田豐之光輝、錦衣之光輝、王佐之光輝、黃月英之光輝、馬良之光輝、小喬之光輝",
+    "drop_glory_low": "楊修之光輝"
+  },
+  {
+    "mapid": "翠竹林",
+    "maplv": "",
+    "monster": "",
+    "area": "梁山",
+    "drop_rubbish": "",
+    "drop_glory_high": "田豐之光輝、錦衣之光輝、王佐之光輝、黃月英之光輝、馬良之光輝、小喬之光輝",
+    "drop_glory_low": "楊修之光輝"
+  },
+  {
+    "mapid": "赤松林",
+    "maplv": "",
+    "monster": "",
+    "area": "梁山",
+    "drop_rubbish": "",
+    "drop_glory_high": "人公之光輝、益德之光輝、張苞之光輝、蔣敬之光輝、燕青之光輝、好人卡象徵、姬發之光輝、武吉之光輝、韋馱天之光",
+    "drop_glory_low": "項充之光輝、虎騎之勇、魔鬥之勇、程普之光輝、西門慶之光輝、荀攸之光輝、徐庶之光輝、周倉之光輝、茶茶之光輝、孔融之光輝、毒士之光輝"
+  },
+  {
+    "mapid": "修羅洞",
+    "maplv": "",
+    "monster": "",
+    "area": "梁山",
+    "drop_rubbish": "",
+    "drop_glory_high": "阮小五之光輝、朱武之光輝、搏浪之光輝、張清之光輝、彩衣之光輝、林沖之光輝、扈三娘之光輝、羅真人之光輝",
+    "drop_glory_low": "潘金蓮之光輝、木鹿之光輝、張魯之光輝、天師道之光輝、魏延之光輝、孟德之光輝、蟠桃之光輝、花榮之光輝、龐德之光輝"
+  },
+  {
+    "mapid": "琉球仙島",
+    "maplv": "",
+    "monster": "",
+    "area": "",
+    "drop_rubbish": "",
+    "drop_glory_high": "西門慶之光輝、高俅之光輝、宋徽宗之光輝、四聖大元帥錄",
+    "drop_glory_low": "搏浪之光輝、小蘿之光輝、夏侯淵之光輝、樊瑞之光輝、雲中子光輝、貌端星之光"
+  },
+  {
+    "mapid": "雲海村",
+    "maplv": "",
+    "monster": "",
+    "area": "",
+    "drop_rubbish": "",
+    "drop_glory_high": "",
+    "drop_glory_low": ""
+  },
+  {
+    "mapid": "滄之雲海",
+    "maplv": "",
+    "monster": "",
+    "area": "",
+    "drop_rubbish": "",
+    "drop_glory_high": "田豐之光輝、錦衣之光輝、王佐之光輝、黃月英之光輝、馬良之光輝、小喬之光輝",
+    "drop_glory_low": "楊修之光輝"
+  },
+  {
+    "mapid": "工作區",
+    "maplv": "",
+    "monster": "",
+    "area": "",
+    "drop_rubbish": "",
+    "drop_glory_high": "",
+    "drop_glory_low": ""
+  },
+  {
+    "mapid": "崑崙山",
+    "maplv": "",
+    "monster": "",
+    "area": "",
+    "drop_rubbish": "",
+    "drop_glory_high": "太公望之光輝、七殺星之光、斬仙之光、增長之光、多聞之光、持國之光、廣目之光",
+    "drop_glory_low": "阮小五之光輝、地后星之光、黃蓋之光輝、警花之光、虎威之光輝、藥王之光、秘醫之跡、陸遜之光輝"
+  },
+  {
+    "mapid": "真修洞",
+    "maplv": "",
+    "monster": "",
+    "area": "",
+    "drop_rubbish": "",
+    "drop_glory_high": "太公望之光輝、七殺星之光、斬仙之光、增長之光、多聞之光、持國之光、廣目之光",
+    "drop_glory_low": "阮小五之光輝、地后星之光、黃蓋之光輝、警花之光、虎威之光輝、藥王之光、秘醫之跡、陸遜之光輝"
+  },
+  {
+    "mapid": "玉虛宮",
+    "maplv": "",
+    "monster": "",
+    "area": "",
+    "drop_rubbish": "",
+    "drop_glory_high": "地公之光輝、曹植之光輝、魯肅之光輝、瓊英之光輝、水靈之光",
+    "drop_glory_low": "忍者之光、張苞之光輝、小玲之光輝、碧霄之光輝、小艾之光輝、周通之光輝、土府星之光"
+  },
+  {
+    "mapid": "雲霄洞",
+    "maplv": "",
+    "monster": "",
+    "area": "",
+    "drop_rubbish": "",
+    "drop_glory_high": "",
+    "drop_glory_low": ""
+  },
+  {
+    "mapid": "夕之朝雲",
+    "maplv": "",
+    "monster": "",
+    "area": "",
+    "drop_rubbish": "",
+    "drop_glory_high": "程普之光輝、小倩之光輝、古之惡來光輝、武大郎之光輝、熱血之證、阿魯巴巴之光輝、九頭雉之徵",
+    "drop_glory_low": "鐘會之光輝、盧俊義之光輝、姬發之光輝、程昱之光輝、關興之光輝、張遼之光輝、子龍之光輝、雷聲普化之徵、鄧飛之光輝、大喬之光輝、六合星之光"
+  },
+  {
+    "mapid": "玄日峰",
+    "maplv": "",
+    "monster": "",
+    "area": "",
+    "drop_rubbish": "",
+    "drop_glory_high": "張郃之光輝、周泰之光輝、裴宣之光輝、托塔之光輝、二郎之徵、炳靈公之光",
+    "drop_glory_low": "曹貴人之光輝、韋馱天之光、廣目之光、小倩之光輝、劍器之光輝、甘寧之光輝、張順之光輝、文醜之光輝、袁紹之光輝"
+  },
+  {
+    "mapid": "玄日崖",
+    "maplv": "",
+    "monster": "",
+    "area": "",
+    "drop_rubbish": "",
+    "drop_glory_high": "",
+    "drop_glory_low": ""
+  },
+  {
+    "mapid": "玄日洞上層",
+    "maplv": "",
+    "monster": "",
+    "area": "",
+    "drop_rubbish": "",
+    "drop_glory_high": "地后星之光、沙摩柯之光輝、貌端星之光、呼延灼之光輝、普賢之光、夏侯惇之光輝、太史慈之光輝、武松之光輝、柴進之光輝、桃花星之光",
+    "drop_glory_low": "豹騎之勇、武吉之光輝、張郃之光輝、救苦天尊之跡、諸葛瑾之光輝、彩衣之光輝、黃忠之光輝、晁蓋之光輝、一清之光輝、單廷珪之光輝、魯智深之光輝"
+  },
+  {
+    "mapid": "玄日洞下層",
+    "maplv": "",
+    "monster": "",
+    "area": "",
+    "drop_rubbish": "",
+    "drop_glory_high": "地后星之光、沙摩柯之光輝、貌端星之光、呼延灼之光輝、普賢之光、夏侯惇之光輝、太史慈之光輝、武松之光輝、柴進之光輝、桃花星之光",
+    "drop_glory_low": "豹騎之勇、武吉之光輝、張郃之光輝、救苦天尊之跡、諸葛瑾之光輝、彩衣之光輝、黃忠之光輝、晁蓋之光輝、一清之光輝、單廷珪之光輝、魯智深之光輝"
+  },
+  {
+    "mapid": "玄日岩",
+    "maplv": "",
+    "monster": "",
+    "area": "",
+    "drop_rubbish": "",
+    "drop_glory_high": "張郃之光輝、周泰之光輝、裴宣之光輝、托塔之光輝、二郎之徵、炳靈公之光",
+    "drop_glory_low": "曹貴人之光輝、韋馱天之光、廣目之光、小倩之光輝、劍器之光輝、甘寧之光輝、張順之光輝、文醜之光輝、袁紹之光輝"
+  },
+  {
+    "mapid": "妖邪迷宮",
+    "maplv": "",
+    "monster": "",
+    "area": "",
+    "drop_rubbish": "",
+    "drop_glory_high": "大喬之光輝、徐晃之光輝、太歲之光、媧皇之光、古佛之徵",
+    "drop_glory_low": "司馬懿之光輝、響馬茜之光輝"
+  },
+  {
+    "mapid": "墨家名穴",
+    "maplv": "",
+    "monster": "",
+    "area": "",
+    "drop_rubbish": "",
+    "drop_glory_high": "小艾之光輝、劉唐之光輝、五穀星之光、關銀屏之光輝、王進之光輝、李逵之光輝",
+    "drop_glory_low": "馬良之光輝、柴進之光輝、原初粉塵"
+  },
+  {
+    "mapid": "金光洞",
+    "maplv": "",
+    "monster": "",
+    "area": "",
+    "drop_rubbish": "",
+    "drop_glory_high": "",
+    "drop_glory_low": ""
+  },
+  {
+    "mapid": "幻之烏雲",
+    "maplv": "",
+    "monster": "",
+    "area": "",
+    "drop_rubbish": "",
+    "drop_glory_high": "程普之光輝、小倩之光輝、古之惡來光輝、武大郎之光輝、熱血之證、阿魯巴巴之光輝、九頭雉之徵",
+    "drop_glory_low": "鐘會之光輝、盧俊義之光輝、姬發之光輝、程昱之光輝、關興之光輝、張遼之光輝、子龍之光輝、雷聲普化之徵、鄧飛之光輝、大喬之光輝、六合星之光"
+  },
+  {
+    "mapid": "奔雷嶺",
+    "maplv": "",
+    "monster": "",
+    "area": "",
+    "drop_rubbish": "",
+    "drop_glory_high": "程普之光輝、小倩之光輝、古之惡來光輝、武大郎之光輝、熱血之證、阿魯巴巴之光輝、九頭雉之徵",
+    "drop_glory_low": "鐘會之光輝、盧俊義之光輝、姬發之光輝、程昱之光輝、關興之光輝、張遼之光輝、子龍之光輝、雷聲普化之徵、鄧飛之光輝、大喬之光輝、六合星之光"
+  },
+  {
+    "mapid": "幽冥深淵",
+    "maplv": "",
+    "monster": "",
+    "area": "",
+    "drop_rubbish": "",
+    "drop_glory_high": "龍騎之勇、夏侯淵之光輝、樊瑞之光輝、鄧艾之光輝、馬岱之光輝、晁蓋之光輝、惡魔之光輝",
+    "drop_glory_low": "大賢之光輝、地公之光輝、九頭雉之徵、四聖大元帥錄、羅真人之光輝、呂虎威之光輝、魔精之光、玉琵琶之徵、普賢之光、關勝之光輝、天齊仁之光、顏良之光輝、劉備之光輝、五穀星之光、男僕之光輝、雲霄之光輝"
+  },
+  {
+    "mapid": "盤古旛陣",
+    "maplv": "",
+    "monster": "",
+    "area": "",
+    "drop_rubbish": "",
+    "drop_glory_high": "鄧飛之光輝、顧大嫂之光輝、孟德之光輝、智多星之光輝、原初粉塵、昭姬之光輝",
+    "drop_glory_low": "阿魯巴巴之光輝、救世主之光、太史慈之光輝"
+  },
+  {
+    "mapid": "桑耶市集",
+    "maplv": "",
+    "monster": "",
+    "area": "桑耶市集",
+    "drop_rubbish": "",
+    "drop_glory_high": "",
+    "drop_glory_low": ""
+  },
+  {
+    "mapid": "遺跡之泉",
+    "maplv": "",
+    "monster": "",
+    "area": "桑耶市集",
+    "drop_rubbish": "",
+    "drop_glory_high": "",
+    "drop_glory_low": ""
+  },
+  {
+    "mapid": "東桑耶沙漠",
+    "maplv": "",
+    "monster": "",
+    "area": "桑耶市集",
+    "drop_rubbish": "",
+    "drop_glory_high": "史進之光輝、夏麗之光輝、妖鬥之勇、三太子之光輝、風雷之光輝、救苦天尊之跡",
+    "drop_glory_low": "持國之光、熱血之證、馬超之光輝、甄洛之光輝、分水之光輝、龍騎之勇、沙摩柯之光輝"
+  },
+  {
+    "mapid": "西桑耶沙漠",
+    "maplv": "",
+    "monster": "",
+    "area": "桑耶市集",
+    "drop_rubbish": "",
+    "drop_glory_high": "史進之光輝、夏麗之光輝、妖鬥之勇、三太子之光輝、風雷之光輝、救苦天尊之跡",
+    "drop_glory_low": "持國之光、熱血之證、馬超之光輝、甄洛之光輝、分水之光輝、龍騎之勇、沙摩柯之光輝"
+  },
+  {
+    "mapid": "南桑耶沙漠",
+    "maplv": "",
+    "monster": "",
+    "area": "桑耶市集",
+    "drop_rubbish": "",
+    "drop_glory_high": "史進之光輝、夏麗之光輝、妖鬥之勇、三太子之光輝、風雷之光輝、救苦天尊之跡",
+    "drop_glory_low": "持國之光、熱血之證、馬超之光輝、甄洛之光輝、分水之光輝、龍騎之勇、沙摩柯之光輝"
+  },
+  {
+    "mapid": "羅煞洞-第一層",
+    "maplv": "",
+    "monster": "",
+    "area": "桑耶市集",
+    "drop_rubbish": "",
+    "drop_glory_high": "孔融之光輝、碧霄之光輝、文醜之光輝、程昱之光輝、糜夫人之光輝、戴宗之光輝、江東猛虎之光輝、關勝之光輝",
+    "drop_glory_low": "風雷之光輝、獵豹之光輝、扈三娘之光輝、楊志之光輝、武松之光輝、倭王之光輝、女僕之光輝"
+  },
+  {
+    "mapid": "羅煞洞-第二層",
+    "maplv": "",
+    "monster": "",
+    "area": "桑耶市集",
+    "drop_rubbish": "",
+    "drop_glory_high": "孔融之光輝、碧霄之光輝、文醜之光輝、程昱之光輝、糜夫人之光輝、戴宗之光輝、江東猛虎之光輝、關勝之光輝",
+    "drop_glory_low": "風雷之光輝、獵豹之光輝、扈三娘之光輝、楊志之光輝、武松之光輝、倭王之光輝、女僕之光輝"
+  },
+  {
+    "mapid": "羅煞洞-第三層",
+    "maplv": "",
+    "monster": "",
+    "area": "桑耶市集",
+    "drop_rubbish": "",
+    "drop_glory_high": "孔融之光輝、碧霄之光輝、文醜之光輝、程昱之光輝、糜夫人之光輝、戴宗之光輝、江東猛虎之光輝、關勝之光輝",
+    "drop_glory_low": "風雷之光輝、獵豹之光輝、扈三娘之光輝、楊志之光輝、武松之光輝、倭王之光輝、女僕之光輝"
+  },
+  {
+    "mapid": "羅煞洞-第四層",
+    "maplv": "",
+    "monster": "",
+    "area": "桑耶市集",
+    "drop_rubbish": "",
+    "drop_glory_high": "雲霄之光輝、袁術之光輝、虎癡之光輝",
+    "drop_glory_low": "三太子之光輝、馬岱之光輝、無雙的威光"
+  },
+  {
+    "mapid": "羅煞洞-第五層",
+    "maplv": "",
+    "monster": "",
+    "area": "桑耶市集",
+    "drop_rubbish": "",
+    "drop_glory_high": "秘醫之跡、六合星之光、凌震之光輝、羲皇之光",
+    "drop_glory_low": "雅帝之光輝、孫尚香之光輝、九尾狐之徵"
+  },
+  {
+    "mapid": "迷蹤列島",
+    "maplv": "",
+    "monster": "",
+    "area": "海界",
+    "drop_rubbish": "",
+    "drop_glory_high": "周郎之光輝、孫二娘之光輝、盧俊義之光輝、阮小二之光輝、石秀之光輝、忍者之光、龍鬥之勇",
+    "drop_glory_low": "諸葛惠之光輝"
+  },
+  {
+    "mapid": "蓬萊仙島",
+    "maplv": "",
+    "monster": "",
+    "area": "海界",
+    "drop_rubbish": "",
+    "drop_glory_high": "周郎之光輝、孫二娘之光輝、盧俊義之光輝、阮小二之光輝、石秀之光輝、忍者之光、龍鬥之勇",
+    "drop_glory_low": "諸葛惠之光輝"
+  },
+  {
+    "mapid": "蓬萊秘境",
+    "maplv": "",
+    "monster": "",
+    "area": "海界",
+    "drop_rubbish": "",
+    "drop_glory_high": "",
+    "drop_glory_low": ""
+  },
+  {
+    "mapid": "巨岩村",
+    "maplv": "",
+    "monster": "",
+    "area": "海界",
+    "drop_rubbish": "",
+    "drop_glory_high": "",
+    "drop_glory_low": ""
+  },
+  {
+    "mapid": "東海龍宮",
+    "maplv": "",
+    "monster": "",
+    "area": "海界",
+    "drop_rubbish": "",
+    "drop_glory_high": "人公之光輝、益德之光輝、張苞之光輝、蔣敬之光輝、燕青之光輝、好人卡象徵、姬發之光輝、武吉之光輝、韋馱天之光",
+    "drop_glory_low": "項充之光輝、虎騎之勇、魔鬥之勇、程普之光輝、西門慶之光輝、荀攸之光輝、徐庶之光輝、周倉之光輝、茶茶之光輝、孔融之光輝、毒士之光輝"
+  },
+  {
+    "mapid": "寂靜死海",
+    "maplv": "",
+    "monster": "",
+    "area": "海界",
+    "drop_rubbish": "",
+    "drop_glory_high": "地公之光輝、曹植之光輝、魯肅之光輝、瓊英之光輝、水靈之光",
+    "drop_glory_low": "忍者之光、張苞之光輝、小玲之光輝、碧霄之光輝、小艾之光輝、周通之光輝、土府星之光"
+  },
+  {
+    "mapid": "寒冰洞",
+    "maplv": "",
+    "monster": "",
+    "area": "海界",
+    "drop_rubbish": "",
+    "drop_glory_high": "",
+    "drop_glory_low": ""
+  },
+  {
+    "mapid": "大漩渦",
+    "maplv": "",
+    "monster": "",
+    "area": "海界",
+    "drop_rubbish": "",
+    "drop_glory_high": "程普之光輝、小倩之光輝、古之惡來光輝、武大郎之光輝、熱血之證、阿魯巴巴之光輝、九頭雉之徵",
+    "drop_glory_low": "鐘會之光輝、盧俊義之光輝、姬發之光輝、程昱之光輝、關興之光輝、張遼之光輝、子龍之光輝、雷聲普化之徵、鄧飛之光輝、大喬之光輝、六合星之光"
+  },
+  {
+    "mapid": "惡龍秘窟1層",
+    "maplv": "",
+    "monster": "",
+    "area": "海界",
+    "drop_rubbish": "",
+    "drop_glory_high": "諸葛惠之光輝、雷聲普化之徵、董平之光輝、魏延之光輝、胡車兒之光輝、執年歲君之徵、天眼之光輝",
+    "drop_glory_low": "龍鬥之勇、益德之光輝、鳳雛之光輝、媧皇之光"
+  },
+  {
+    "mapid": "惡龍秘窟2層",
+    "maplv": "",
+    "monster": "",
+    "area": "海界",
+    "drop_rubbish": "",
+    "drop_glory_high": "諸葛惠之光輝、雷聲普化之徵、董平之光輝、魏延之光輝、胡車兒之光輝、執年歲君之徵、天眼之光輝",
+    "drop_glory_low": "龍鬥之勇、益德之光輝、鳳雛之光輝、媧皇之光"
+  },
+  {
+    "mapid": "惡龍秘窟3層",
+    "maplv": "",
+    "monster": "",
+    "area": "海界",
+    "drop_rubbish": "",
+    "drop_glory_high": "諸葛惠之光輝、雷聲普化之徵、董平之光輝、魏延之光輝、胡車兒之光輝、執年歲君之徵、天眼之光輝",
+    "drop_glory_low": "龍鬥之勇、益德之光輝、鳳雛之光輝、媧皇之光"
+  },
+  {
+    "mapid": "惡龍秘窟4層",
+    "maplv": "",
+    "monster": "",
+    "area": "海界",
+    "drop_rubbish": "",
+    "drop_glory_high": "鄧飛之光輝、顧大嫂之光輝、孟德之光輝、智多星之光輝、原初粉塵、昭姬之光輝",
+    "drop_glory_low": "阿魯巴巴之光輝、救世主之光、太史慈之光輝"
+  },
+  {
+    "mapid": "峨嵋山",
+    "maplv": "",
+    "monster": "",
+    "area": "",
+    "drop_rubbish": "",
+    "drop_glory_high": "人公之光輝、益德之光輝、張苞之光輝、蔣敬之光輝、燕青之光輝、好人卡象徵、姬發之光輝、武吉之光輝、韋馱天之光",
+    "drop_glory_low": "項充之光輝、虎騎之勇、魔鬥之勇、程普之光輝、西門慶之光輝、荀攸之光輝、徐庶之光輝、周倉之光輝、茶茶之光輝、孔融之光輝、毒士之光輝"
+  },
+  {
+    "mapid": "華山",
+    "maplv": "",
+    "monster": "",
+    "area": "",
+    "drop_rubbish": "",
+    "drop_glory_high": "程普之光輝、小倩之光輝、古之惡來光輝、武大郎之光輝、熱血之證、阿魯巴巴之光輝、九頭雉之徵",
+    "drop_glory_low": "鐘會之光輝、盧俊義之光輝、姬發之光輝、程昱之光輝、關興之光輝、張遼之光輝、子龍之光輝、雷聲普化之徵、鄧飛之光輝、大喬之光輝、六合星之光"
+  },
+  {
+    "mapid": "靈山",
+    "maplv": "",
+    "monster": "",
+    "area": "",
+    "drop_rubbish": "",
+    "drop_glory_high": "人公之光輝、益德之光輝、張苞之光輝、蔣敬之光輝、燕青之光輝、好人卡象徵、姬發之光輝、武吉之光輝、韋馱天之光",
+    "drop_glory_low": "項充之光輝、虎騎之勇、魔鬥之勇、程普之光輝、西門慶之光輝、荀攸之光輝、徐庶之光輝、周倉之光輝、茶茶之光輝、孔融之光輝、毒士之光輝"
+  },
+  {
+    "mapid": "天山",
+    "maplv": "",
+    "monster": "",
+    "area": "",
+    "drop_rubbish": "",
+    "drop_glory_high": "程普之光輝、小倩之光輝、古之惡來光輝、武大郎之光輝、熱血之證、阿魯巴巴之光輝、九頭雉之徵",
+    "drop_glory_low": "鐘會之光輝、盧俊義之光輝、姬發之光輝、程昱之光輝、關興之光輝、張遼之光輝、子龍之光輝、雷聲普化之徵、鄧飛之光輝、大喬之光輝、六合星之光"
+  },
+  {
+    "mapid": "泰山",
+    "maplv": "",
+    "monster": "",
+    "area": "",
+    "drop_rubbish": "",
+    "drop_glory_high": "程普之光輝、小倩之光輝、古之惡來光輝、武大郎之光輝、熱血之證、阿魯巴巴之光輝、九頭雉之徵",
+    "drop_glory_low": "鐘會之光輝、盧俊義之光輝、姬發之光輝、程昱之光輝、關興之光輝、張遼之光輝、子龍之光輝、雷聲普化之徵、鄧飛之光輝、大喬之光輝、六合星之光"
+  },
+  {
+    "mapid": "瑤池仙境",
+    "maplv": "",
+    "monster": "",
+    "area": "",
+    "drop_rubbish": "",
+    "drop_glory_high": "",
+    "drop_glory_low": ""
+  },
+  {
+    "mapid": "池底洞窟",
+    "maplv": "",
+    "monster": "",
+    "area": "",
+    "drop_rubbish": "",
+    "drop_glory_high": "人公之光輝、益德之光輝、張苞之光輝、蔣敬之光輝、燕青之光輝、好人卡象徵、姬發之光輝、武吉之光輝、韋馱天之光",
+    "drop_glory_low": "項充之光輝、虎騎之勇、魔鬥之勇、程普之光輝、西門慶之光輝、荀攸之光輝、徐庶之光輝、周倉之光輝、茶茶之光輝、孔融之光輝、毒士之光輝"
+  },
+  {
+    "mapid": "雷爵村",
+    "maplv": "",
+    "monster": "",
+    "area": "",
+    "drop_rubbish": "",
+    "drop_glory_high": "",
+    "drop_glory_low": ""
+  },
+  {
+    "mapid": "金嗷洞一樓",
+    "maplv": "",
+    "monster": "",
+    "area": "",
+    "drop_rubbish": "",
+    "drop_glory_high": "小玲之光輝、金龍如意之徵、一清之光輝、麒麟之光輝、天使之光",
+    "drop_glory_low": "阮小七之光輝、王進之光輝、宋江之光輝、于吉之光輝、徐晃之光輝、二天一流之徵"
+  },
+  {
+    "mapid": "金嗷洞二樓",
+    "maplv": "",
+    "monster": "",
+    "area": "",
+    "drop_rubbish": "",
+    "drop_glory_high": "小玲之光輝、金龍如意之徵、一清之光輝、麒麟之光輝、天使之光",
+    "drop_glory_low": "阮小七之光輝、王進之光輝、宋江之光輝、于吉之光輝、徐晃之光輝、二天一流之徵"
+  },
+  {
+    "mapid": "金嗷洞三樓",
+    "maplv": "",
+    "monster": "",
+    "area": "",
+    "drop_rubbish": "",
+    "drop_glory_high": "鄧飛之光輝、顧大嫂之光輝、孟德之光輝、智多星之光輝、原初粉塵、昭姬之光輝",
+    "drop_glory_low": "阿魯巴巴之光輝、救世主之光、太史慈之光輝"
+  },
+  {
+    "mapid": "垃圾場第一層",
+    "maplv": "",
+    "monster": "",
+    "area": "",
+    "drop_rubbish": "",
+    "drop_glory_high": "龍騎之勇、夏侯淵之光輝、樊瑞之光輝、鄧艾之光輝、馬岱之光輝、晁蓋之光輝、惡魔之光輝",
+    "drop_glory_low": "大賢之光輝、地公之光輝、九頭雉之徵、四聖大元帥錄、羅真人之光輝、呂虎威之光輝、魔精之光、玉琵琶之徵、普賢之光、關勝之光輝、天齊仁之光、顏良之光輝、劉備之光輝、五穀星之光、男僕之光輝、雲霄之光輝"
+  },
+  {
+    "mapid": "垃圾場第二層",
+    "maplv": "",
+    "monster": "",
+    "area": "",
+    "drop_rubbish": "",
+    "drop_glory_high": "龍騎之勇、夏侯淵之光輝、樊瑞之光輝、鄧艾之光輝、馬岱之光輝、晁蓋之光輝、惡魔之光輝",
+    "drop_glory_low": "大賢之光輝、地公之光輝、九頭雉之徵、四聖大元帥錄、羅真人之光輝、呂虎威之光輝、魔精之光、玉琵琶之徵、普賢之光、關勝之光輝、天齊仁之光、顏良之光輝、劉備之光輝、五穀星之光、男僕之光輝、雲霄之光輝"
+  },
+  {
+    "mapid": "龍宮大殿",
+    "maplv": "",
+    "monster": "",
+    "area": "",
+    "drop_rubbish": "",
+    "drop_glory_high": "人公之光輝、益德之光輝、張苞之光輝、蔣敬之光輝、燕青之光輝、好人卡象徵、姬發之光輝、武吉之光輝、韋馱天之光",
+    "drop_glory_low": "項充之光輝、虎騎之勇、魔鬥之勇、程普之光輝、西門慶之光輝、荀攸之光輝、徐庶之光輝、周倉之光輝、茶茶之光輝、孔融之光輝、毒士之光輝"
+  },
+  {
+    "mapid": "天朝山",
+    "maplv": "",
+    "monster": "",
+    "area": "",
+    "drop_rubbish": "",
+    "drop_glory_high": "人公之光輝、益德之光輝、張苞之光輝、蔣敬之光輝、燕青之光輝、好人卡象徵、姬發之光輝、武吉之光輝、韋馱天之光",
+    "drop_glory_low": "項充之光輝、虎騎之勇、魔鬥之勇、程普之光輝、西門慶之光輝、荀攸之光輝、徐庶之光輝、周倉之光輝、茶茶之光輝、孔融之光輝、毒士之光輝"
+  }
+]
