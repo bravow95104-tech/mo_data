@@ -126,6 +126,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const detailHTML = `
       <div class="map-details">
+        <p><strong>垃圾：</strong>${map.drop_rubbish || "—"}</p>
         <p><strong>光輝掉落（掉落較多）：</strong>${map.drop_glory_high || "—"}</p>
         <p class="section-gap"><strong>光輝掉落（掉落較低）：</strong>${map.drop_glory_low || "—"}</p>
         <p class="section-gap"><strong>光輝掉落（玩家提供）：</strong>${map.player || "—"}</p>
