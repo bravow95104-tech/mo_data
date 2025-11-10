@@ -124,8 +124,7 @@ document.addEventListener("DOMContentLoaded", () => {
     contentDiv.innerHTML = `
       <h2 class="map-name">${map.name || map.mapid || "未知地圖"}</h2>
     `;
-
-    contentDiv.querySelector('.hero-column-details').appendChild(imgContainer);
+    contentDiv.appendChild(imgContainer);
 
     const detailHTML = `
       <div class="hero-column-details">
@@ -137,6 +136,7 @@ document.addEventListener("DOMContentLoaded", () => {
     `;
 
     contentDiv.insertAdjacentHTML("beforeend", detailHTML);
+    contentDiv.querySelector('.hero-column-details').appendChild(imgContainer);
 
     overlay.style.display = "block";
     modalBox.style.display = "block";
