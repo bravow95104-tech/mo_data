@@ -82,7 +82,7 @@ document.addEventListener("DOMContentLoaded", () => {
     contentDiv.innerHTML = ""; // ✅ 每次清空舊內容
 
     // 安全檔名
-    const safeName = map.name ? map.name.replace(/[^\w\u4e00-\u9fa5]/g, "") : "unknown";
+    const safeName = (map.mapid || map.name || "unknown").replace(/[^\w\u4e00-\u9fa5]/g, "");
 
     // 建立可回退圖片
     function createImageWithFallbacks(basePath, altText) {
@@ -111,7 +111,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     const baseFront = `/mo_data/pic/map/${safeName}`;
-    const frontImage = createImageWithFallbacks(baseFront, `${map.name} 地圖`);
+    const frontImage = createImageWithFallbacks(baseFront, `${map.mapid || map.name} 地圖`);
 
     const imgContainer = document.createElement("div");
     imgContainer.className = "map-images";
