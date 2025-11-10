@@ -99,7 +99,7 @@ document.addEventListener("DOMContentLoaded", () => {
           if (attempt < extensions.length) {
             tryNext();
           } else {
-            img.src = "/mo_data/pic/maps/no_image.jpg"; // 全部失敗時用預設圖
+            img.src = "/mo_data/pic/map/no_image.jpg"; // 全部失敗時用預設圖
           }
         };
       }
@@ -108,7 +108,7 @@ document.addEventListener("DOMContentLoaded", () => {
       return img;
     }
 
-    const baseFront = `/mo_data/pic/maps/${safeName}`;
+    const baseFront = `/mo_data/pic/map/${safeName}`;
     const frontImage = createImageWithFallbacks(baseFront, `${map.name} 地圖`);
 
     const imgContainer = document.createElement("div");
