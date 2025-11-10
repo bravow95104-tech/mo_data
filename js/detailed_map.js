@@ -127,7 +127,7 @@ document.addEventListener("DOMContentLoaded", () => {
     contentDiv.appendChild(imgContainer);
 
     const detailHTML = `
-      <div class="map-details">
+      <div class="hero-column-details">
         <p><strong>垃圾：</strong>${map.drop_rubbish || "—"}</p>
         <p><strong>光輝掉落（掉落較多）：</strong>${map.drop_glory_high || "—"}</p>
         <p class="section-gap"><strong>光輝掉落（掉落較低）：</strong>${map.drop_glory_low || "—"}</p>
