@@ -23,7 +23,7 @@ function initComboPage(data) {
   const filterBtns = document.querySelectorAll(".filter-btn");
   const clearBtn = document.getElementById("clearFilters");
 
-  let activeFilters = { promotion: [], commonly: [], category: [] };
+  let activeFilters = { promotion: [], commonly: [], category: [], equipmentType1: [], equipmentType2: [] };
 
   function renderList() {
     const searchText = searchInput.value.trim().toLowerCase();
@@ -33,7 +33,8 @@ function initComboPage(data) {
       const job = (item.class || "").toLowerCase();
       const skillType = (item.classSkill || "").toLowerCase();
       const cat = (item.category || "").toLowerCase();
-      const equipmentType = (item.equipmentType || "").toLowerCase();
+      const equipmentType1 = (item.equipmentType1 || "").toLowerCase();
+      const equipmentType2 = (item.equipmentType2 || "").toLowerCase();
 // 搜尋文字條件
       const matchSearch =
         searchText === "" ||
@@ -41,7 +42,8 @@ function initComboPage(data) {
         job.includes(searchText) ||
         skillType.includes(searchText) ||
         cat.includes(searchText) ||
-        equipmentType.includes(searchText);
+        equipmentType1.includes(searchText) ||
+        equipmentType2.includes(searchText);
 // 職業篩選
 const matchFilter =
   activeFilters.promotion.length === 0 ||
@@ -52,13 +54,18 @@ const matchFilter =
       activeFilters.category.length === 0 ||
       activeFilters.category.some(f => cat.includes(f.toLowerCase()));
 
+       // category 篩選
+    const equipmenttype1 =
+      activeFilters.equipmenttype1.length === 0 ||
+      activeFilters.equipmenttype1.some(f => equipmenttype1.includes(f.toLowerCase()));
+
 // commonly 篩選
 const matchCommonly =
   activeFilters.commonly.length === 0 ||
   (activeFilters.commonly.some(f => f.toLowerCase() === "true") &&
    String(item.commonly).toLowerCase() === "true");
 
-      return matchSearch && matchFilter && matchCommonly && matchCategory;
+      return matchSearch && matchFilter && matchCommonly && matchCategory && equipmenttype1;
     });
 
     comboList.innerHTML = "";
@@ -77,7 +84,7 @@ const matchCommonly =
         <div class="combo-category"><strong>職業技能：</strong>${item.classSkill || "—"}</div>
         <div class="combo-details">
           <p><strong>職業：</strong>${item.class || "—"}</p>
-          <p><strong>裝備部位：</strong>${item.equipmentType || "—"}</p>
+          <p><strong>裝備部位：</strong>${item.equipmentType1 || "—"} - ${item.equipmentType2 || "—"}</p>
           <p><strong>文片組合：</strong>${item.combinationMethod || "—"}</p>
           <p><strong>說明：</strong>${item.description || "—"}</p>
         </div>

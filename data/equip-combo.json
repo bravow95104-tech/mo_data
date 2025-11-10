@@ -4,7 +4,8 @@
     "class": "劍客、武神、霸王",
     "classSkill": "武技",
     "skillName": "嗜血",
-    "equipmentType": "武器",
+    "equipmentType1": "武器",
+    "equipmentType2": "",
     "combinationMethod": "左輔、右弼、文昌、紫微、天機",
     "description": "系列技能傷害增加(+%)",
     "commonly": ""
@@ -14,7 +15,8 @@
     "class": "巧匠、夜行者、機關匠",
     "classSkill": "箭技",
     "skillName": "穿楊箭",
-    "equipmentType": "武器",
+    "equipmentType1": "武器",
+    "equipmentType2": "",
     "combinationMethod": "左輔、右弼、陀羅、紫微、天機",
     "description": "系列技能傷害增加(+%)",
     "commonly": ""
@@ -24,7 +26,8 @@
     "class": "巧匠、夜行者、機關匠",
     "classSkill": "體技",
     "skillName": "大力黃金腳",
-    "equipmentType": "武器",
+    "equipmentType1": "武器",
+    "equipmentType2": "",
     "combinationMethod": "左輔、文昌、天馬、紫微、天機",
     "description": "系列技能傷害增加(+%)",
     "commonly": ""
@@ -34,7 +37,8 @@
     "class": "風水師、天師、尊者",
     "classSkill": "咒術",
     "skillName": "咒殺",
-    "equipmentType": "武器",
+    "equipmentType1": "武器",
+    "equipmentType2": "",
     "combinationMethod": "左輔、文曲、祿存、紫微、天機",
     "description": "系列技能傷害增加(+%)",
     "commonly": ""
@@ -44,7 +48,8 @@
     "class": "術士、血魔、仙術士",
     "classSkill": "金",
     "skillName": "金坷垃",
-    "equipmentType": "武器",
+    "equipmentType1": "武器",
+    "equipmentType2": "",
     "combinationMethod": "右弼、文昌、文曲、紫微、太陽",
     "description": "系列技能傷害增加(+%)",
     "commonly": ""
@@ -54,7 +59,8 @@
     "class": "術士、血魔、仙術士",
     "classSkill": "木",
     "skillName": "木力士",
-    "equipmentType": "武器",
+    "equipmentType1": "武器",
+    "equipmentType2": "",
     "combinationMethod": "右弼、文昌、擎羊、紫微、太陽",
     "description": "系列技能傷害增加(+%)",
     "commonly": ""
@@ -64,7 +70,8 @@
     "class": "術士、血魔、仙術士",
     "classSkill": "水",
     "skillName": "斷水流",
-    "equipmentType": "武器",
+    "equipmentType1": "武器",
+    "equipmentType2": "",
     "combinationMethod": "右弼、文曲、天馬、紫微、太陽",
     "description": "系列技能傷害增加(+%)",
     "commonly": ""
@@ -74,7 +81,8 @@
     "class": "術士、血魔、仙術士",
     "classSkill": "火",
     "skillName": "不境之火",
-    "equipmentType": "武器",
+    "equipmentType1": "武器",
+    "equipmentType2": "",
     "combinationMethod": "右弼、祿存、天馬、紫微、太陽",
     "description": "系列技能傷害增加(+%)",
     "commonly": ""
@@ -84,7 +92,8 @@
     "class": "術士、血魔、仙術士",
     "classSkill": "土",
     "skillName": "地動",
-    "equipmentType": "武器",
+    "equipmentType1": "武器",
+    "equipmentType2": "",
     "combinationMethod": "右弼、天馬、擎羊、紫微、太陽",
     "description": "系列技能傷害增加(+%)",
     "commonly": ""
@@ -94,7 +103,8 @@
     "class": "藥師、醫仙、蠱醫",
     "classSkill": "霧擊",
     "skillName": "散霧",
-    "equipmentType": "武器",
+    "equipmentType1": "武器",
+    "equipmentType2": "",
     "combinationMethod": "左輔、祿存、擎羊、紫微、武曲",
     "description": "系列技能傷害增加(+%)",
     "commonly": ""
@@ -104,7 +114,8 @@
     "class": "霸王",
     "classSkill": "霸槍法",
     "skillName": "霸王之勇",
-    "equipmentType": "武器",
+    "equipmentType1": "武器",
+    "equipmentType2": "",
     "combinationMethod": "祿存、天馬、陀羅、天機、武曲",
     "description": "系列技能傷害增加(+%)",
     "commonly": ""
@@ -114,7 +125,8 @@
     "class": "武神、霸王",
     "classSkill": "御武術",
     "skillName": "騎乘",
-    "equipmentType": "武器",
+    "equipmentType1": "武器",
+    "equipmentType2": "",
     "combinationMethod": "文曲、天馬、擎羊、天機、武曲",
     "description": "系列技能傷害增加(+%)",
     "commonly": ""
@@ -124,7 +136,8 @@
     "class": "武神",
     "classSkill": "斬刀技",
     "skillName": "大刀一剁",
-    "equipmentType": "武器",
+    "equipmentType1": "武器",
+    "equipmentType2": "",
     "combinationMethod": "文昌、天馬、擎羊、天機、武曲",
     "description": "系列技能傷害增加(+%)",
     "commonly": ""
@@ -134,7 +147,8 @@
     "class": "機關匠",
     "classSkill": "機關術",
     "skillName": "四靈之術",
-    "equipmentType": "武器",
+    "equipmentType1": "武器",
+    "equipmentType2": "",
     "combinationMethod": "文昌、文曲、陀羅、天機、武曲",
     "description": "系列技能傷害增加(+%)",
     "commonly": ""
@@ -144,7 +158,8 @@
     "class": "機關匠",
     "classSkill": "裝甲術",
     "skillName": "金鐘罩",
-    "equipmentType": "武器",
+    "equipmentType1": "武器",
+    "equipmentType2": "",
     "combinationMethod": "右弼、擎羊、陀羅、天機、武曲",
     "description": "系列技能傷害增加(+%)",
     "commonly": ""
@@ -154,7 +169,8 @@
     "class": "夜行者、機關匠",
     "classSkill": "神射術",
     "skillName": "弓道",
-    "equipmentType": "武器",
+    "equipmentType1": "武器",
+    "equipmentType2": "",
     "combinationMethod": "右弼、祿存、天馬、天機、武曲",
     "description": "系列技能傷害增加(+%)",
     "commonly": ""
@@ -164,7 +180,8 @@
     "class": "夜行者",
     "classSkill": "暗殺術",
     "skillName": "撲殺",
-    "equipmentType": "武器",
+    "equipmentType1": "武器",
+    "equipmentType2": "",
     "combinationMethod": "右弼、文曲、祿存、天機、武曲",
     "description": "系列技能傷害增加(+%)",
     "commonly": ""
@@ -174,7 +191,8 @@
     "class": "天師、尊者",
     "classSkill": "符打術",
     "skillName": "懲戒",
-    "equipmentType": "武器",
+    "equipmentType1": "武器",
+    "equipmentType2": "",
     "combinationMethod": "左輔、天馬、陀羅、紫微、武曲",
     "description": "系列技能傷害增加(+%)",
     "commonly": ""
@@ -184,7 +202,8 @@
     "class": "蠱醫",
     "classSkill": "蠱毒術",
     "skillName": "猛毒",
-    "equipmentType": "武器",
+    "equipmentType1": "武器",
+    "equipmentType2": "",
     "combinationMethod": "右弼、文曲、祿存、天機、太陽",
     "description": "系列技能傷害增加(+%)",
     "commonly": ""
@@ -194,7 +213,8 @@
     "class": "蠱醫",
     "classSkill": "毒霧術",
     "skillName": "腐蝕",
-    "equipmentType": "武器",
+    "equipmentType1": "武器",
+    "equipmentType2": "",
     "combinationMethod": "文昌、文曲、擎羊、天機、太陽",
     "description": "系列技能傷害增加(+%)",
     "commonly": ""
@@ -204,7 +224,8 @@
     "class": "血魔",
     "classSkill": "活祭",
     "skillName": "魁儡",
-    "equipmentType": "武器",
+    "equipmentType1": "武器",
+    "equipmentType2": "",
     "combinationMethod": "文曲、祿存、天馬、天機、太陽",
     "description": "系列技能傷害增加(+%)",
     "commonly": ""
@@ -214,7 +235,8 @@
     "class": "血魔",
     "classSkill": "血魔術",
     "skillName": "惡魔奉獻",
-    "equipmentType": "武器",
+    "equipmentType1": "武器",
+    "equipmentType2": "",
     "combinationMethod": "左輔、天馬、擎羊、天機、太陽",
     "description": "系列技能傷害增加(+%)",
     "commonly": ""
@@ -224,7 +246,8 @@
     "class": "血魔、仙術士",
     "classSkill": "靈行術",
     "skillName": "靈魂奔跑",
-    "equipmentType": "武器",
+    "equipmentType1": "武器",
+    "equipmentType2": "",
     "combinationMethod": "左輔、文昌、擎羊、天機、太陽",
     "description": "系列技能傷害增加(+%)",
     "commonly": ""
@@ -234,7 +257,8 @@
     "class": "仙術士",
     "classSkill": "法寶",
     "skillName": "空間",
-    "equipmentType": "武器",
+    "equipmentType1": "武器",
+    "equipmentType2": "",
     "combinationMethod": "左輔、右弼、祿存、天機、太陽",
     "description": "系列技能傷害增加(+%)",
     "commonly": ""
@@ -244,7 +268,8 @@
     "class": "劍客、武神、霸王",
     "classSkill": "武技",
     "skillName": "斬殺魄力",
-    "equipmentType": "盔甲",
+    "equipmentType1": "盔甲",
+    "equipmentType2": "",
     "combinationMethod": "左輔、右弼、文曲、紫微、天機",
     "description": "系列技能冷卻時間減少(-%s)",
     "commonly": ""
@@ -254,7 +279,8 @@
     "class": "巧匠、夜行者、機關匠",
     "classSkill": "箭技",
     "skillName": "精準目標",
-    "equipmentType": "盔甲",
+    "equipmentType1": "盔甲",
+    "equipmentType2": "",
     "combinationMethod": "左輔、文昌、文曲、紫微、天機",
     "description": "系列技能冷卻時間減少(-%s)",
     "commonly": ""
@@ -264,7 +290,8 @@
     "class": "術士、血魔、仙術士",
     "classSkill": "金",
     "skillName": "金石在",
-    "equipmentType": "盔甲",
+    "equipmentType1": "盔甲",
+    "equipmentType2": "",
     "combinationMethod": "右弼、文昌、祿存、紫微、太陽",
     "description": "系列技能冷卻時間減少(-%s)",
     "commonly": ""
@@ -274,7 +301,8 @@
     "class": "術士、血魔、仙術士",
     "classSkill": "木",
     "skillName": "鐵木辛",
-    "equipmentType": "盔甲",
+    "equipmentType1": "盔甲",
+    "equipmentType2": "",
     "combinationMethod": "右弼、文昌、陀羅、紫微、太陽",
     "description": "系列技能冷卻時間減少(-%s)",
     "commonly": ""
@@ -284,7 +312,8 @@
     "class": "術士、血魔、仙術士",
     "classSkill": "水",
     "skillName": "水幕",
-    "equipmentType": "盔甲",
+    "equipmentType1": "盔甲",
+    "equipmentType2": "",
     "combinationMethod": "右弼、文曲、擎羊、紫微、太陽",
     "description": "系列技能冷卻時間減少(-%s)",
     "commonly": ""
@@ -294,7 +323,8 @@
     "class": "術士、血魔、仙術士",
     "classSkill": "火",
     "skillName": "燒毀",
-    "equipmentType": "盔甲",
+    "equipmentType1": "盔甲",
+    "equipmentType2": "",
     "combinationMethod": "右弼、祿存、擎羊、紫微、太陽",
     "description": "系列技能冷卻時間減少(-%s)",
     "commonly": ""
@@ -304,7 +334,8 @@
     "class": "術士、血魔、仙術士",
     "classSkill": "土",
     "skillName": "大地衰弱",
-    "equipmentType": "盔甲",
+    "equipmentType1": "盔甲",
+    "equipmentType2": "",
     "combinationMethod": "右弼、天馬、陀羅、紫微、太陽",
     "description": "系列技能冷卻時間減少(-%s)",
     "commonly": ""
@@ -314,7 +345,8 @@
     "class": "藥師、醫仙、蠱醫",
     "classSkill": "回復",
     "skillName": "療育",
-    "equipmentType": "盔甲",
+    "equipmentType1": "盔甲",
+    "equipmentType2": "",
     "combinationMethod": "左輔、文曲、陀羅、紫微、武曲",
     "description": "系列技能冷卻時間減少(-%s)",
     "commonly": ""
@@ -324,7 +356,8 @@
     "class": "藥師、醫仙、蠱醫",
     "classSkill": "霧擊",
     "skillName": "霧裡看花",
-    "equipmentType": "盔甲",
+    "equipmentType1": "盔甲",
+    "equipmentType2": "",
     "combinationMethod": "左輔、祿存、陀羅、紫微、武曲",
     "description": "系列技能冷卻時間減少(-%s)",
     "commonly": ""
@@ -334,7 +367,8 @@
     "class": "霸王",
     "classSkill": "兵法學",
     "skillName": "孫子兵法",
-    "equipmentType": "盔甲",
+    "equipmentType1": "盔甲",
+    "equipmentType2": "",
     "combinationMethod": "天馬、擎羊、陀羅、天機、武曲",
     "description": "系列技能冷卻時間減少(-%s)",
     "commonly": ""
@@ -344,7 +378,8 @@
     "class": "霸王",
     "classSkill": "霸槍法",
     "skillName": "快戰",
-    "equipmentType": "盔甲",
+    "equipmentType1": "盔甲",
+    "equipmentType2": "",
     "combinationMethod": "祿存、天馬、擎羊、天機、武曲",
     "description": "系列技能冷卻時間減少(-%s)",
     "commonly": ""
@@ -354,7 +389,8 @@
     "class": "武神、霸王",
     "classSkill": "御武術",
     "skillName": "駕馬",
-    "equipmentType": "盔甲",
+    "equipmentType1": "盔甲",
+    "equipmentType2": "",
     "combinationMethod": "文曲、祿存、陀羅、天機、武曲",
     "description": "系列技能冷卻時間減少(-%s)",
     "commonly": ""
@@ -364,7 +400,8 @@
     "class": "武神",
     "classSkill": "神武術",
     "skillName": "神體",
-    "equipmentType": "盔甲",
+    "equipmentType1": "盔甲",
+    "equipmentType2": "",
     "combinationMethod": "文曲、祿存、天馬、天機、武曲",
     "description": "系列技能冷卻時間減少(-%s)",
     "commonly": ""
@@ -374,7 +411,8 @@
     "class": "武神",
     "classSkill": "斬刀技",
     "skillName": "緩刀",
-    "equipmentType": "盔甲",
+    "equipmentType1": "盔甲",
+    "equipmentType2": "",
     "combinationMethod": "文昌、祿存、陀羅、天機、武曲",
     "description": "系列技能冷卻時間減少(-%s)",
     "commonly": ""
@@ -384,7 +422,8 @@
     "class": "機關匠",
     "classSkill": "機關術",
     "skillName": "齒輪傳動",
-    "equipmentType": "盔甲",
+    "equipmentType1": "盔甲",
+    "equipmentType2": "",
     "combinationMethod": "文昌、文曲、擎羊、天機、武曲",
     "description": "系列技能冷卻時間減少(-%s)",
     "commonly": ""
@@ -394,7 +433,8 @@
     "class": "機關匠",
     "classSkill": "裝甲術",
     "skillName": "護體",
-    "equipmentType": "盔甲",
+    "equipmentType1": "盔甲",
+    "equipmentType2": "",
     "combinationMethod": "右弼、天馬、陀羅、天機、武曲",
     "description": "系列技能冷卻時間減少(-%s)",
     "commonly": ""
@@ -404,7 +444,8 @@
     "class": "夜行者、機關匠",
     "classSkill": "神射術",
     "skillName": "緩弓",
-    "equipmentType": "盔甲",
+    "equipmentType1": "盔甲",
+    "equipmentType2": "",
     "combinationMethod": "右弼、文曲、陀羅、天機、武曲",
     "description": "系列技能冷卻時間減少(-%s)",
     "commonly": ""
@@ -414,7 +455,8 @@
     "class": "夜行者",
     "classSkill": "暗殺術",
     "skillName": "遁於無形",
-    "equipmentType": "盔甲",
+    "equipmentType1": "盔甲",
+    "equipmentType2": "",
     "combinationMethod": "右弼、文昌、陀羅、天機、武曲",
     "description": "系列技能冷卻時間減少(-%s)",
     "commonly": ""
@@ -424,7 +466,8 @@
     "class": "天師",
     "classSkill": "天壇術",
     "skillName": "府祭",
-    "equipmentType": "盔甲",
+    "equipmentType1": "盔甲",
+    "equipmentType2": "",
     "combinationMethod": "左輔、右弼、天馬、太陽、武曲",
     "description": "系列技能冷卻時間減少(-%s)",
     "commonly": ""
@@ -434,7 +477,8 @@
     "class": "天師",
     "classSkill": "遁甲學",
     "skillName": "八門",
-    "equipmentType": "盔甲",
+    "equipmentType1": "盔甲",
+    "equipmentType2": "",
     "combinationMethod": "左輔、天馬、陀羅、天機、武曲",
     "description": "系列技能冷卻時間減少(-%s)",
     "commonly": ""
@@ -444,7 +488,8 @@
     "class": "尊者",
     "classSkill": "元武術",
     "skillName": "元氣道",
-    "equipmentType": "盔甲",
+    "equipmentType1": "盔甲",
+    "equipmentType2": "",
     "combinationMethod": "文昌、文曲、祿存、太陽、武曲",
     "description": "系列技能冷卻時間減少(-%s)",
     "commonly": ""
@@ -454,7 +499,8 @@
     "class": "尊者",
     "classSkill": "真道學",
     "skillName": "道家神學",
-    "equipmentType": "盔甲",
+    "equipmentType1": "盔甲",
+    "equipmentType2": "",
     "combinationMethod": "文昌、文曲、陀羅、太陽、武曲",
     "description": "系列技能冷卻時間減少(-%s)",
     "commonly": ""
@@ -464,7 +510,8 @@
     "class": "醫仙",
     "classSkill": "秘藥學",
     "skillName": "黃耆湯",
-    "equipmentType": "盔甲",
+    "equipmentType1": "盔甲",
+    "equipmentType2": "",
     "combinationMethod": "文昌、祿存、陀羅、太陽、武曲",
     "description": "系列技能冷卻時間減少(-%s)",
     "commonly": ""
@@ -474,7 +521,8 @@
     "class": "醫仙",
     "classSkill": "經絡學",
     "skillName": "手三陽經",
-    "equipmentType": "盔甲",
+    "equipmentType1": "盔甲",
+    "equipmentType2": "",
     "combinationMethod": "文昌、擎羊、陀羅、太陽、武曲",
     "description": "系列技能冷卻時間減少(-%s)",
     "commonly": ""
@@ -484,7 +532,8 @@
     "class": "醫仙、蠱醫",
     "classSkill": "天醫術",
     "skillName": "傷寒雜病論",
-    "equipmentType": "盔甲",
+    "equipmentType1": "盔甲",
+    "equipmentType2": "",
     "combinationMethod": "文曲、祿存、陀羅、太陽、武曲",
     "description": "系列技能冷卻時間減少(-%s)",
     "commonly": ""
@@ -494,7 +543,8 @@
     "class": "蠱醫",
     "classSkill": "蠱毒術",
     "skillName": "烈毒",
-    "equipmentType": "盔甲",
+    "equipmentType1": "盔甲",
+    "equipmentType2": "",
     "combinationMethod": "右弼、文曲、天馬、天機、太陽",
     "description": "系列技能冷卻時間減少(-%s)",
     "commonly": ""
@@ -504,7 +554,8 @@
     "class": "蠱醫",
     "classSkill": "毒霧術",
     "skillName": "衰退",
-    "equipmentType": "盔甲",
+    "equipmentType1": "盔甲",
+    "equipmentType2": "",
     "combinationMethod": "文昌、文曲、陀羅、天機、太陽",
     "description": "系列技能冷卻時間減少(-%s)",
     "commonly": ""
@@ -514,7 +565,8 @@
     "class": "血魔",
     "classSkill": "活祭",
     "skillName": "崩壞",
-    "equipmentType": "盔甲",
+    "equipmentType1": "盔甲",
+    "equipmentType2": "",
     "combinationMethod": "文曲、祿存、擎羊、天機、太陽",
     "description": "系列技能冷卻時間減少(-%s)",
     "commonly": ""
@@ -524,7 +576,8 @@
     "class": "血魔",
     "classSkill": "血魔術",
     "skillName": "人性奉獻",
-    "equipmentType": "盔甲",
+    "equipmentType1": "盔甲",
+    "equipmentType2": "",
     "combinationMethod": "左輔、天馬、陀羅、天機、太陽",
     "description": "系列技能冷卻時間減少(-%s)",
     "commonly": ""
@@ -534,7 +587,8 @@
     "class": "血魔、仙術士",
     "classSkill": "靈行術",
     "skillName": "靈魂之怒",
-    "equipmentType": "盔甲",
+    "equipmentType1": "盔甲",
+    "equipmentType2": "",
     "combinationMethod": "左輔、文昌、陀羅、天機、太陽",
     "description": "系列技能冷卻時間減少(-%s)",
     "commonly": ""
@@ -544,7 +598,8 @@
     "class": "仙術士",
     "classSkill": "法寶",
     "skillName": "靈寶",
-    "equipmentType": "盔甲",
+    "equipmentType1": "盔甲",
+    "equipmentType2": "",
     "combinationMethod": "火、天鉞、天馬、太陽、武曲",
     "description": "系列技能冷卻時間減少(-%s)",
     "commonly": ""
@@ -554,7 +609,8 @@
     "class": "仙術士",
     "classSkill": "仙靈術",
     "skillName": "詩魂",
-    "equipmentType": "盔甲",
+    "equipmentType1": "盔甲",
+    "equipmentType2": "",
     "combinationMethod": "文曲、擎羊、陀羅、太陽、武曲",
     "description": "系列技能冷卻時間減少(-%s)",
     "commonly": ""
@@ -564,7 +620,8 @@
     "class": "霸王",
     "classSkill": "兵法學",
     "skillName": "兵家至聖",
-    "equipmentType": "盔甲",
+    "equipmentType1": "盔甲",
+    "equipmentType2": "",
     "combinationMethod": "祿存、擎羊、陀羅、天機、武曲",
     "description": "系列技能冷卻時間減少(-S)",
     "commonly": ""
@@ -574,7 +631,8 @@
     "class": "霸王",
     "classSkill": "霸槍法",
     "skillName": "快槍",
-    "equipmentType": "盔甲",
+    "equipmentType1": "盔甲",
+    "equipmentType2": "",
     "combinationMethod": "文曲、擎羊、陀羅、天機、武曲",
     "description": "系列技能冷卻時間減少(-S)",
     "commonly": ""
@@ -584,7 +642,8 @@
     "class": "武神",
     "classSkill": "神武術",
     "skillName": "神行",
-    "equipmentType": "盔甲",
+    "equipmentType1": "盔甲",
+    "equipmentType2": "",
     "combinationMethod": "文昌、擎羊、陀羅、天機、武曲",
     "description": "系列技能冷卻時間減少(-S)",
     "commonly": ""
@@ -594,7 +653,8 @@
     "class": "武神",
     "classSkill": "斬刀技",
     "skillName": "快刀",
-    "equipmentType": "盔甲",
+    "equipmentType1": "盔甲",
+    "equipmentType2": "",
     "combinationMethod": "文昌、祿存、擎羊、天機、武曲",
     "description": "系列技能冷卻時間減少(-S)",
     "commonly": "TRUE"
@@ -604,7 +664,8 @@
     "class": "機關匠",
     "classSkill": "機關術",
     "skillName": "卯榫結構",
-    "equipmentType": "盔甲",
+    "equipmentType1": "盔甲",
+    "equipmentType2": "",
     "combinationMethod": "文昌、文曲、天馬、天機、武曲",
     "description": "系列技能冷卻時間減少(-S)",
     "commonly": ""
@@ -614,7 +675,8 @@
     "class": "機關匠",
     "classSkill": "裝甲術",
     "skillName": "加速裝置",
-    "equipmentType": "盔甲",
+    "equipmentType1": "盔甲",
+    "equipmentType2": "",
     "combinationMethod": "右弼、天馬、擎羊、天機、武曲",
     "description": "系列技能冷卻時間減少(-S)",
     "commonly": ""
@@ -624,7 +686,8 @@
     "class": "夜行者、機關匠",
     "classSkill": "神射術",
     "skillName": "速弓",
-    "equipmentType": "盔甲",
+    "equipmentType1": "盔甲",
+    "equipmentType2": "",
     "combinationMethod": "右弼、文曲、擎羊、天機、武曲",
     "description": "系列技能冷卻時間減少(-S)",
     "commonly": ""
@@ -634,7 +697,8 @@
     "class": "夜行者",
     "classSkill": "暗殺術",
     "skillName": "神乎其技",
-    "equipmentType": "盔甲",
+    "equipmentType1": "盔甲",
+    "equipmentType2": "",
     "combinationMethod": "右弼、文昌、擎羊、天機、武曲",
     "description": "系列技能冷卻時間減少(-S)",
     "commonly": ""
@@ -644,7 +708,8 @@
     "class": "天師",
     "classSkill": "天壇術",
     "skillName": "再祭",
-    "equipmentType": "盔甲",
+    "equipmentType1": "盔甲",
+    "equipmentType2": "",
     "combinationMethod": "右弼、文昌、文曲、天機、武曲",
     "description": "系列技能冷卻時間減少(-S)",
     "commonly": ""
@@ -654,7 +719,8 @@
     "class": "天師",
     "classSkill": "遁甲學",
     "skillName": "奇門",
-    "equipmentType": "盔甲",
+    "equipmentType1": "盔甲",
+    "equipmentType2": "",
     "combinationMethod": "左輔、天馬、擎羊、天機、武曲",
     "description": "系列技能冷卻時間減少(-S)",
     "commonly": ""
@@ -664,7 +730,8 @@
     "class": "尊者",
     "classSkill": "元武術",
     "skillName": "動力學",
-    "equipmentType": "盔甲",
+    "equipmentType1": "盔甲",
+    "equipmentType2": "",
     "combinationMethod": "文昌、文曲、天馬、太陽、武曲",
     "description": "系列技能冷卻時間減少(-S)",
     "commonly": ""
@@ -674,7 +741,8 @@
     "class": "尊者",
     "classSkill": "真道學",
     "skillName": "真理",
-    "equipmentType": "盔甲",
+    "equipmentType1": "盔甲",
+    "equipmentType2": "",
     "combinationMethod": "文昌、祿存、天馬、太陽、武曲",
     "description": "系列技能冷卻時間減少(-S)",
     "commonly": ""
@@ -684,7 +752,8 @@
     "class": "醫仙",
     "classSkill": "秘藥學",
     "skillName": "異界藥材",
-    "equipmentType": "盔甲",
+    "equipmentType1": "盔甲",
+    "equipmentType2": "",
     "combinationMethod": "文昌、天馬、擎羊、太陽、武曲",
     "description": "系列技能冷卻時間減少(-S)",
     "commonly": ""
@@ -694,7 +763,8 @@
     "class": "醫仙",
     "classSkill": "經絡學",
     "skillName": "足之三陽經",
-    "equipmentType": "盔甲",
+    "equipmentType1": "盔甲",
+    "equipmentType2": "",
     "combinationMethod": "文曲、祿存、天馬、太陽、武曲",
     "description": "系列技能冷卻時間減少(-S)",
     "commonly": ""
@@ -704,7 +774,8 @@
     "class": "醫仙、蠱醫",
     "classSkill": "天醫術",
     "skillName": "針灸甲乙經",
-    "equipmentType": "盔甲",
+    "equipmentType1": "盔甲",
+    "equipmentType2": "",
     "combinationMethod": "文曲、天馬、擎羊、太陽、武曲",
     "description": "系列技能冷卻時間減少(-S)",
     "commonly": ""
@@ -714,7 +785,8 @@
     "class": "蠱醫",
     "classSkill": "蠱毒術",
     "skillName": "厄毒",
-    "equipmentType": "盔甲",
+    "equipmentType1": "盔甲",
+    "equipmentType2": "",
     "combinationMethod": "右弼、文曲、擎羊、天機、太陽",
     "description": "系列技能冷卻時間減少(-S)",
     "commonly": ""
@@ -724,7 +796,8 @@
     "class": "蠱醫",
     "classSkill": "毒霧術",
     "skillName": "瘟疫",
-    "equipmentType": "盔甲",
+    "equipmentType1": "盔甲",
+    "equipmentType2": "",
     "combinationMethod": "文昌、祿存、天馬、天機、太陽",
     "description": "系列技能冷卻時間減少(-S)",
     "commonly": ""
@@ -734,7 +807,8 @@
     "class": "血魔",
     "classSkill": "活祭",
     "skillName": "裂變",
-    "equipmentType": "盔甲",
+    "equipmentType1": "盔甲",
+    "equipmentType2": "",
     "combinationMethod": "文曲、祿存、陀羅、天機、太陽",
     "description": "系列技能冷卻時間減少(-S)",
     "commonly": ""
@@ -744,7 +818,8 @@
     "class": "血魔",
     "classSkill": "血魔術",
     "skillName": "無機物奉獻",
-    "equipmentType": "盔甲",
+    "equipmentType1": "盔甲",
+    "equipmentType2": "",
     "combinationMethod": "左輔、擎羊、陀羅、天機、太陽",
     "description": "系列技能冷卻時間減少(-S)",
     "commonly": ""
@@ -754,7 +829,8 @@
     "class": "血魔、仙術士",
     "classSkill": "靈行術",
     "skillName": "靈體之善",
-    "equipmentType": "盔甲",
+    "equipmentType1": "盔甲",
+    "equipmentType2": "",
     "combinationMethod": "左輔、文曲、祿存、天機、太陽",
     "description": "系列技能冷卻時間減少(-S)",
     "commonly": ""
@@ -764,7 +840,8 @@
     "class": "仙術士",
     "classSkill": "法寶",
     "skillName": "法器",
-    "equipmentType": "盔甲",
+    "equipmentType1": "盔甲",
+    "equipmentType2": "",
     "combinationMethod": "左輔、右弼、天馬、天機、太陽",
     "description": "系列技能冷卻時間減少(-S)",
     "commonly": ""
@@ -774,7 +851,8 @@
     "class": "仙術士",
     "classSkill": "仙靈術",
     "skillName": "畫仙",
-    "equipmentType": "盔甲",
+    "equipmentType1": "盔甲",
+    "equipmentType2": "",
     "combinationMethod": "祿存、天馬、擎羊、太陽、武曲",
     "description": "系列技能冷卻時間減少(-S)",
     "commonly": ""
@@ -784,7 +862,8 @@
     "class": "劍客、武神、霸王",
     "classSkill": "武技",
     "skillName": "劍舞",
-    "equipmentType": "盔甲",
+    "equipmentType1": "盔甲",
+    "equipmentType2": "",
     "combinationMethod": "左輔、右弼、祿存、紫微、天機",
     "description": "系列技能施展時間減少(-S)",
     "commonly": "TRUE"
@@ -794,7 +873,8 @@
     "class": "巧匠、夜行者、機關匠",
     "classSkill": "箭技",
     "skillName": "元氣箭氣",
-    "equipmentType": "盔甲",
+    "equipmentType1": "盔甲",
+    "equipmentType2": "",
     "combinationMethod": "左輔、文昌、祿存、紫微、天機",
     "description": "系列技能施展時間減少(-S)",
     "commonly": ""
@@ -804,7 +884,8 @@
     "class": "巧匠、夜行者、機關匠",
     "classSkill": "體技",
     "skillName": "飛踢",
-    "equipmentType": "盔甲",
+    "equipmentType1": "盔甲",
+    "equipmentType2": "",
     "combinationMethod": "左輔、文昌、擎羊、紫微、天機",
     "description": "系列技能施展時間減少(-S)",
     "commonly": ""
@@ -814,7 +895,8 @@
     "class": "風水師、天師、尊者",
     "classSkill": "五行",
     "skillName": "信念",
-    "equipmentType": "盔甲",
+    "equipmentType1": "盔甲",
+    "equipmentType2": "",
     "combinationMethod": "左輔、文昌、陀羅、紫微、天機",
     "description": "系列技能施展時間減少(-S)",
     "commonly": ""
@@ -824,7 +906,8 @@
     "class": "風水師、天師、尊者",
     "classSkill": "咒術",
     "skillName": "衰弱",
-    "equipmentType": "盔甲",
+    "equipmentType1": "盔甲",
+    "equipmentType2": "",
     "combinationMethod": "左輔、文曲、擎羊、紫微、天機",
     "description": "系列技能施展時間減少(-S)",
     "commonly": ""
@@ -834,7 +917,8 @@
     "class": "術士、血魔、仙術士",
     "classSkill": "金",
     "skillName": "金石快",
-    "equipmentType": "盔甲",
+    "equipmentType1": "盔甲",
+    "equipmentType2": "",
     "combinationMethod": "右弼、文昌、天馬、紫微、太陽",
     "description": "系列技能施展時間減少(-S)",
     "commonly": ""
@@ -844,7 +928,8 @@
     "class": "術士、血魔、仙術士",
     "classSkill": "木",
     "skillName": "阿里神木",
-    "equipmentType": "盔甲",
+    "equipmentType1": "盔甲",
+    "equipmentType2": "",
     "combinationMethod": "右弼、文曲、祿存、紫微、太陽",
     "description": "系列技能施展時間減少(-S)",
     "commonly": ""
@@ -854,7 +939,8 @@
     "class": "術士、血魔、仙術士",
     "classSkill": "水",
     "skillName": "流水",
-    "equipmentType": "盔甲",
+    "equipmentType1": "盔甲",
+    "equipmentType2": "",
     "combinationMethod": "右弼、文曲、陀羅、紫微、太陽",
     "description": "系列技能施展時間減少(-S)",
     "commonly": ""
@@ -864,7 +950,8 @@
     "class": "術士、血魔、仙術士",
     "classSkill": "火",
     "skillName": "本生燈焰",
-    "equipmentType": "盔甲",
+    "equipmentType1": "盔甲",
+    "equipmentType2": "",
     "combinationMethod": "右弼、祿存、陀羅、紫微、太陽",
     "description": "系列技能施展時間減少(-S)",
     "commonly": ""
@@ -874,7 +961,8 @@
     "class": "術士、血魔、仙術士",
     "classSkill": "土",
     "skillName": "大地的祝福",
-    "equipmentType": "盔甲",
+    "equipmentType1": "盔甲",
+    "equipmentType2": "",
     "combinationMethod": "右弼、擎羊、陀羅、紫微、太陽",
     "description": "系列技能施展時間減少(-S)",
     "commonly": ""
@@ -884,7 +972,8 @@
     "class": "藥師、醫仙、蠱醫",
     "classSkill": "回復",
     "skillName": "刻刻",
-    "equipmentType": "盔甲",
+    "equipmentType1": "盔甲",
+    "equipmentType2": "",
     "combinationMethod": "左輔、祿存、天馬、紫微、武曲",
     "description": "系列技能施展時間減少(-S)",
     "commonly": ""
@@ -894,7 +983,8 @@
     "class": "藥師、醫仙、蠱醫",
     "classSkill": "霧擊",
     "skillName": "散霧",
-    "equipmentType": "盔甲",
+    "equipmentType1": "盔甲",
+    "equipmentType2": "",
     "combinationMethod": "左輔、天馬、擎羊、紫微、武曲",
     "description": "系列技能施展時間減少(-S)",
     "commonly": ""
@@ -904,7 +994,8 @@
     "class": "霸王",
     "classSkill": "霸槍法",
     "skillName": "神武一槍",
-    "equipmentType": "盔甲",
+    "equipmentType1": "盔甲",
+    "equipmentType2": "",
     "combinationMethod": "文曲、天馬、陀羅、天機、武曲",
     "description": "系列技能施展時間減少(-S)",
     "commonly": ""
@@ -914,7 +1005,8 @@
     "class": "武神、霸王",
     "classSkill": "御武術",
     "skillName": "踏雪",
-    "equipmentType": "盔甲",
+    "equipmentType1": "盔甲",
+    "equipmentType2": "",
     "combinationMethod": "文曲、祿存、擎羊、天機、武曲",
     "description": "系列技能施展時間減少(-S)",
     "commonly": ""
@@ -924,7 +1016,8 @@
     "class": "武神",
     "classSkill": "神武術",
     "skillName": "武鬥乾坤",
-    "equipmentType": "盔甲",
+    "equipmentType1": "盔甲",
+    "equipmentType2": "",
     "combinationMethod": "文昌、天馬、陀羅、天機、武曲",
     "description": "系列技能施展時間減少(-S)",
     "commonly": ""
@@ -934,7 +1027,8 @@
     "class": "武神",
     "classSkill": "斬刀技",
     "skillName": "裂刀",
-    "equipmentType": "盔甲",
+    "equipmentType1": "盔甲",
+    "equipmentType2": "",
     "combinationMethod": "文昌、祿存、天馬、天機、武曲",
     "description": "系列技能施展時間減少(-S)",
     "commonly": "TRUE"
@@ -944,7 +1038,8 @@
     "class": "機關匠",
     "classSkill": "機關術",
     "skillName": "擺件系統",
-    "equipmentType": "盔甲",
+    "equipmentType1": "盔甲",
+    "equipmentType2": "",
     "combinationMethod": "文昌、文曲、祿存、天機、武曲",
     "description": "系列技能施展時間減少(-S)",
     "commonly": ""
@@ -954,7 +1049,8 @@
     "class": "機關匠",
     "classSkill": "裝甲術",
     "skillName": "動力裝置",
-    "equipmentType": "盔甲",
+    "equipmentType1": "盔甲",
+    "equipmentType2": "",
     "combinationMethod": "右弼、祿存、陀羅、天機、武曲",
     "description": "系列技能施展時間減少(-S)",
     "commonly": ""
@@ -964,7 +1060,8 @@
     "class": "夜行者、機關匠",
     "classSkill": "神射術",
     "skillName": "裂弓",
-    "equipmentType": "盔甲",
+    "equipmentType1": "盔甲",
+    "equipmentType2": "",
     "combinationMethod": "右弼、文曲、天馬、天機、武曲",
     "description": "系列技能施展時間減少(-S)",
     "commonly": ""
@@ -974,7 +1071,8 @@
     "class": "夜行者",
     "classSkill": "暗殺術",
     "skillName": "暗影迷蹤",
-    "equipmentType": "盔甲",
+    "equipmentType1": "盔甲",
+    "equipmentType2": "",
     "combinationMethod": "右弼、文昌、天馬、天機、武曲",
     "description": "系列技能施展時間減少(-S)",
     "commonly": ""
@@ -984,7 +1082,8 @@
     "class": "天師",
     "classSkill": "天壇術",
     "skillName": "速祭",
-    "equipmentType": "盔甲",
+    "equipmentType1": "盔甲",
+    "equipmentType2": "",
     "combinationMethod": "左輔、擎羊、陀羅、天機、武曲",
     "description": "系列技能施展時間減少(-S)",
     "commonly": ""
@@ -994,7 +1093,8 @@
     "class": "尊者",
     "classSkill": "元武術",
     "skillName": "宗氏庇護",
-    "equipmentType": "盔甲",
+    "equipmentType1": "盔甲",
+    "equipmentType2": "",
     "combinationMethod": "文昌、文曲、擎羊、太陽、武曲",
     "description": "系列技能施展時間減少(-S)",
     "commonly": ""
@@ -1004,7 +1104,8 @@
     "class": "尊者",
     "classSkill": "真道學",
     "skillName": "黃帝內經",
-    "equipmentType": "盔甲",
+    "equipmentType1": "盔甲",
+    "equipmentType2": "",
     "combinationMethod": "文昌、祿存、擎羊、太陽、武曲",
     "description": "系列技能施展時間減少(-S)",
     "commonly": ""
@@ -1014,7 +1115,8 @@
     "class": "醫仙",
     "classSkill": "秘藥學",
     "skillName": "精良密藥",
-    "equipmentType": "盔甲",
+    "equipmentType1": "盔甲",
+    "equipmentType2": "",
     "combinationMethod": "文昌、天馬、陀羅、太陽、武曲",
     "description": "系列技能施展時間減少(-S)",
     "commonly": ""
@@ -1024,7 +1126,8 @@
     "class": "醫仙",
     "classSkill": "經絡學",
     "skillName": "奇經八詠",
-    "equipmentType": "盔甲",
+    "equipmentType1": "盔甲",
+    "equipmentType2": "",
     "combinationMethod": "文曲、祿存、擎羊、太陽、武曲",
     "description": "系列技能施展時間減少(-S)",
     "commonly": ""
@@ -1034,7 +1137,8 @@
     "class": "醫仙、蠱醫",
     "classSkill": "天醫術",
     "skillName": "本草綱目",
-    "equipmentType": "盔甲",
+    "equipmentType1": "盔甲",
+    "equipmentType2": "",
     "combinationMethod": "文曲、天馬、陀羅、太陽、武曲",
     "description": "系列技能施展時間減少(-S)",
     "commonly": "TRUE"
@@ -1044,7 +1148,8 @@
     "class": "蠱醫",
     "classSkill": "蠱毒術",
     "skillName": "災禍",
-    "equipmentType": "盔甲",
+    "equipmentType1": "盔甲",
+    "equipmentType2": "",
     "combinationMethod": "右弼、文曲、陀羅、天機、太陽",
     "description": "系列技能施展時間減少(-S)",
     "commonly": ""
@@ -1054,7 +1159,8 @@
     "class": "蠱醫",
     "classSkill": "毒霧術",
     "skillName": "敗血症",
-    "equipmentType": "盔甲",
+    "equipmentType1": "盔甲",
+    "equipmentType2": "",
     "combinationMethod": "文昌、祿存、擎羊、天機、太陽",
     "description": "系列技能施展時間減少(-S)",
     "commonly": ""
@@ -1064,7 +1170,8 @@
     "class": "血魔",
     "classSkill": "活祭",
     "skillName": "解放",
-    "equipmentType": "盔甲",
+    "equipmentType1": "盔甲",
+    "equipmentType2": "",
     "combinationMethod": "文曲、天馬、擎羊、天機、太陽",
     "description": "系列技能施展時間減少(-S)",
     "commonly": "TRUE"
@@ -1074,7 +1181,8 @@
     "class": "血魔",
     "classSkill": "血魔術",
     "skillName": "哥布林奉獻",
-    "equipmentType": "盔甲",
+    "equipmentType1": "盔甲",
+    "equipmentType2": "",
     "combinationMethod": "右弼、文昌、文曲、天機、太陽",
     "description": "系列技能施展時間減少(-S)",
     "commonly": ""
@@ -1084,7 +1192,8 @@
     "class": "血魔、仙術士",
     "classSkill": "靈行術",
     "skillName": "魂體之奔",
-    "equipmentType": "盔甲",
+    "equipmentType1": "盔甲",
+    "equipmentType2": "",
     "combinationMethod": "左輔、文曲、天馬、天機、太陽",
     "description": "系列技能施展時間減少(-S)",
     "commonly": "TRUE"
@@ -1094,7 +1203,8 @@
     "class": "仙術士",
     "classSkill": "法寶",
     "skillName": "珍品",
-    "equipmentType": "盔甲",
+    "equipmentType1": "盔甲",
+    "equipmentType2": "",
     "combinationMethod": "左輔、右弼、陀羅、天機、太陽",
     "description": "系列技能施展時間減少(-S)",
     "commonly": ""
@@ -1104,7 +1214,8 @@
     "class": "仙術士",
     "classSkill": "仙靈術",
     "skillName": "詞靈",
-    "equipmentType": "盔甲",
+    "equipmentType1": "盔甲",
+    "equipmentType2": "",
     "combinationMethod": "祿存、天馬、陀羅、太陽、武曲",
     "description": "系列技能施展時間減少(-S)",
     "commonly": ""
@@ -1114,7 +1225,8 @@
     "class": "全職業",
     "classSkill": "",
     "skillName": "鋼鐵Lv1",
-    "equipmentType": "不限位置",
+    "equipmentType1": "不限位置",
+    "equipmentType2": "",
     "combinationMethod": "文昌、祿存、擎羊、陀羅",
     "description": "物理強度",
     "commonly": ""
@@ -1124,7 +1236,8 @@
     "class": "全職業",
     "classSkill": "",
     "skillName": "鋼鐵Lv2",
-    "equipmentType": "不限位置",
+    "equipmentType1": "不限位置",
+    "equipmentType2": "",
     "combinationMethod": "文昌、祿存、擎羊、天機",
     "description": "物理強度",
     "commonly": ""
@@ -1134,7 +1247,8 @@
     "class": "全職業",
     "classSkill": "",
     "skillName": "鋼鐵Lv3",
-    "equipmentType": "不限位置",
+    "equipmentType1": "不限位置",
+    "equipmentType2": "",
     "combinationMethod": "文昌、祿存、擎羊、天機、太陽、武曲",
     "description": "物理強度",
     "commonly": "TRUE"
@@ -1144,7 +1258,8 @@
     "class": "全職業",
     "classSkill": "",
     "skillName": "祕法Lv1",
-    "equipmentType": "不限位置",
+    "equipmentType1": "不限位置",
+    "equipmentType2": "",
     "combinationMethod": "文昌、祿存、天馬、擎羊",
     "description": "法術強度",
     "commonly": ""
@@ -1154,7 +1269,8 @@
     "class": "全職業",
     "classSkill": "",
     "skillName": "祕法Lv2",
-    "equipmentType": "不限位置",
+    "equipmentType1": "不限位置",
+    "equipmentType2": "",
     "combinationMethod": "文昌、祿存、天馬、紫微",
     "description": "法術強度",
     "commonly": ""
@@ -1164,7 +1280,8 @@
     "class": "全職業",
     "classSkill": "",
     "skillName": "祕法Lv3",
-    "equipmentType": "不限位置",
+    "equipmentType1": "不限位置",
+    "equipmentType2": "",
     "combinationMethod": "文昌、祿存、天馬、紫微、太陽、武曲",
     "description": "法術強度",
     "commonly": "TRUE"
@@ -1174,7 +1291,8 @@
     "class": "全職業",
     "classSkill": "",
     "skillName": "童話Lv1",
-    "equipmentType": "不限位置",
+    "equipmentType1": "不限位置",
+    "equipmentType2": "",
     "combinationMethod": "左輔、左輔、左輔、文曲、文曲、祿存",
     "description": "掉寶率增加 ?~?%。限定嘴巴部位。",
     "commonly": ""
@@ -1184,7 +1302,8 @@
     "class": "全職業",
     "classSkill": "",
     "skillName": "彩虹",
-    "equipmentType": "坐騎",
+    "equipmentType1": "坐騎",
+    "equipmentType2": "",
     "combinationMethod": "左輔、左輔、右弼、右弼",
     "description": "遇敵率",
     "commonly": ""
@@ -1194,7 +1313,8 @@
     "class": "全職業",
     "classSkill": "",
     "skillName": "夢境Lv1",
-    "equipmentType": "武器",
+    "equipmentType1": "武器",
+    "equipmentType2": "",
     "combinationMethod": "右弼、右弼、文昌、文昌、文曲、祿存、天馬",
     "description": "技能傷害增加 ?~?%。限定武器部位。(+%)",
     "commonly": ""
@@ -1204,7 +1324,8 @@
     "class": "全職業",
     "classSkill": "",
     "skillName": "堅硬Lv1",
-    "equipmentType": "不限位置",
+    "equipmentType1": "不限位置",
+    "equipmentType2": "",
     "combinationMethod": "右弼、天馬、天馬、擎羊、擎羊",
     "description": "法術防禦增加(少量)",
     "commonly": ""
@@ -1214,7 +1335,8 @@
     "class": "全職業",
     "classSkill": "",
     "skillName": "堅硬Lv2",
-    "equipmentType": "不限位置",
+    "equipmentType1": "不限位置",
+    "equipmentType2": "",
     "combinationMethod": "文昌、陀羅、鈴、天相",
     "description": "法術防禦增加(中量)",
     "commonly": ""
@@ -1224,7 +1346,8 @@
     "class": "全職業",
     "classSkill": "",
     "skillName": "堅硬Lv3",
-    "equipmentType": "不限位置",
+    "equipmentType1": "不限位置",
+    "equipmentType2": "",
     "combinationMethod": "祿存、火、天魁、廉貞、天府、天梁",
     "description": "法術防禦增加(大量)",
     "commonly": ""
@@ -1234,7 +1357,8 @@
     "class": "全職業",
     "classSkill": "",
     "skillName": "快馬",
-    "equipmentType": "坐騎",
+    "equipmentType1": "坐騎",
+    "equipmentType2": "",
     "combinationMethod": "右弼、右弼、文昌、文曲、天鉞、天府、天府、七殺",
     "description": "增加移動速度至1(原有1以上則無法增加)",
     "commonly": ""
@@ -1244,7 +1368,8 @@
     "class": "全職業",
     "classSkill": "",
     "skillName": "好快好快竹馬",
-    "equipmentType": "坐騎",
+    "equipmentType1": "坐騎",
+    "equipmentType2": "",
     "combinationMethod": "祿存、天馬、天魁、地劫、紫微、天同、太陰、破軍",
     "description": "增加移動速度至2(原有2以上則無法增加)",
     "commonly": "TRUE"
@@ -1254,7 +1379,8 @@
     "class": "全職業",
     "classSkill": "",
     "skillName": "節約",
-    "equipmentType": "眼睛",
+    "equipmentType1": "眼睛",
+    "equipmentType2": "",
     "combinationMethod": "右弼、文曲、天馬、陀羅、鈴、天魁",
     "description": "技能MP使用降低(少量)(少量)",
     "commonly": ""
@@ -1264,7 +1390,8 @@
     "class": "全職業",
     "classSkill": "",
     "skillName": "節約",
-    "equipmentType": "嘴巴",
+    "equipmentType1": "嘴巴",
+    "equipmentType2": "",
     "combinationMethod": "右弼、文曲、天馬、陀羅、鈴、天鉞",
     "description": "技能MP使用降低(少量)(少量)",
     "commonly": ""
@@ -1274,7 +1401,8 @@
     "class": "全職業",
     "classSkill": "",
     "skillName": "節約",
-    "equipmentType": "坐騎",
+    "equipmentType1": "坐騎",
+    "equipmentType2": "",
     "combinationMethod": "右弼、文曲、天馬、陀羅、鈴、地空",
     "description": "技能MP使用降低(少量)(少量)",
     "commonly": ""
@@ -1284,7 +1412,8 @@
     "class": "全職業",
     "classSkill": "",
     "skillName": "小惡犬",
-    "equipmentType": "坐騎",
+    "equipmentType1": "坐騎",
+    "equipmentType2": "",
     "combinationMethod": "擎羊、火、鈴、地空、貪狼、天相",
     "description": "遇敵率+30%~+50%",
     "commonly": ""
@@ -1294,7 +1423,8 @@
     "class": "全職業",
     "classSkill": "",
     "skillName": "輕裝",
-    "equipmentType": "盔甲",
+    "equipmentType1": "盔甲",
+    "equipmentType2": "",
     "combinationMethod": "文昌、天馬、火、天鉞、天梁",
     "description": "普通攻擊速度增加(少量)",
     "commonly": ""
@@ -1304,7 +1434,8 @@
     "class": "全職業",
     "classSkill": "",
     "skillName": "我劍如風",
-    "equipmentType": "武器(限定軟劍)",
+    "equipmentType1": "武器",
+    "equipmentType2": "(限定軟劍)",
     "combinationMethod": "左輔、左輔、左輔、左輔、祿存、陀羅、陀羅、火、廉貞、破軍",
     "description": "普通攻擊速度增加(中量)",
     "commonly": ""
@@ -1314,7 +1445,8 @@
     "class": "全職業",
     "classSkill": "",
     "skillName": "口富",
-    "equipmentType": "眼睛",
+    "equipmentType1": "眼睛",
+    "equipmentType2": "",
     "combinationMethod": "擎羊、火、天魁、地空、天同、破軍",
     "description": "金錢掉落增加",
     "commonly": ""
@@ -1324,7 +1456,8 @@
     "class": "全職業",
     "classSkill": "",
     "skillName": "口福",
-    "equipmentType": "眼睛",
+    "equipmentType1": "眼睛",
+    "equipmentType2": "",
     "combinationMethod": "右弼、文昌、地空、地劫、太陰、貪狼、天相",
     "description": "掉落寶物增加",
     "commonly": ""
@@ -1334,7 +1467,8 @@
     "class": "全職業",
     "classSkill": "",
     "skillName": "藍染工作帽",
-    "equipmentType": "頭盔",
+    "equipmentType1": "頭盔",
+    "equipmentType2": "",
     "combinationMethod": "地空、廉貞、天府、巨門、天相",
     "description": "增加工作成功率(依照裝備等級計算增加數值)",
     "commonly": ""
@@ -1344,7 +1478,8 @@
     "class": "全職業",
     "classSkill": "",
     "skillName": "金裂減降",
-    "equipmentType": "盔甲",
+    "equipmentType1": "盔甲",
+    "equipmentType2": "",
     "combinationMethod": "祿存、天馬、陀羅、廉貞、太陰、天梁、破軍",
     "description": "受到金行技能傷害減少(少量)",
     "commonly": ""
@@ -1354,7 +1489,8 @@
     "class": "全職業",
     "classSkill": "",
     "skillName": "觸電減降",
-    "equipmentType": "盔甲",
+    "equipmentType1": "盔甲",
+    "equipmentType2": "",
     "combinationMethod": "天馬、陀羅、擎羊、天府、貪狼、天相、破軍",
     "description": "受到木行技能傷害減少(少量)",
     "commonly": ""
@@ -1364,7 +1500,8 @@
     "class": "全職業",
     "classSkill": "",
     "skillName": "潮濕減降",
-    "equipmentType": "盔甲",
+    "equipmentType1": "盔甲",
+    "equipmentType2": "",
     "combinationMethod": "文昌、擎羊、火、天同、巨門、七殺、破軍",
     "description": "受到水行技能傷害減少(少量)",
     "commonly": ""
@@ -1374,7 +1511,8 @@
     "class": "全職業",
     "classSkill": "",
     "skillName": "灼燒減降",
-    "equipmentType": "盔甲",
+    "equipmentType1": "盔甲",
+    "equipmentType2": "",
     "combinationMethod": "文曲、祿存、火、太陰、巨門、天梁、破軍",
     "description": "受到火行技能傷害減少(少量)",
     "commonly": ""
@@ -1384,7 +1522,8 @@
     "class": "全職業",
     "classSkill": "",
     "skillName": "乾裂減降",
-    "equipmentType": "盔甲",
+    "equipmentType1": "盔甲",
+    "equipmentType2": "",
     "combinationMethod": "祿存、擎羊、火、天府、太陰、天相、破軍",
     "description": "受到土行技能傷害減少(少量)",
     "commonly": ""
@@ -1394,7 +1533,8 @@
     "class": "全職業",
     "classSkill": "",
     "skillName": "護主",
-    "equipmentType": "坐騎",
+    "equipmentType1": "坐騎",
+    "equipmentType2": "",
     "combinationMethod": "天鉞、地劫、紫微、貪狼、破軍",
     "description": "受技能傷害減少",
     "commonly": ""
@@ -1404,7 +1544,8 @@
     "class": "全職業",
     "classSkill": "",
     "skillName": "甘霖",
-    "equipmentType": "武器",
+    "equipmentType1": "武器",
+    "equipmentType2": "",
     "combinationMethod": "祿存、陀羅、陀羅、天魁、地劫",
     "description": "技能恢復效果增加(少量)",
     "commonly": ""
@@ -1414,7 +1555,8 @@
     "class": "全職業",
     "classSkill": "",
     "skillName": "治癒",
-    "equipmentType": "武器",
+    "equipmentType1": "武器",
+    "equipmentType2": "",
     "combinationMethod": "天馬、火、鈴、天鉞、地空、巨門",
     "description": "技能恢復效果增加(中量)",
     "commonly": ""
@@ -1424,7 +1566,8 @@
     "class": "劍客、武神、霸王、巧匠、機關匠、夜行者",
     "classSkill": "",
     "skillName": "逆體勇壯",
-    "equipmentType": "武器",
+    "equipmentType1": "武器",
+    "equipmentType2": "",
     "combinationMethod": "文昌、祿存、陀羅、火、天魁",
     "description": "增加物理強度，依照裝備洞數加倍",
     "commonly": ""
@@ -1434,7 +1577,8 @@
     "class": "術士、血魔、仙術士、風水師、天師、尊者、藥師、醫仙、蠱醫",
     "classSkill": "",
     "skillName": "逆向術法",
-    "equipmentType": "武器",
+    "equipmentType1": "武器",
+    "equipmentType2": "",
     "combinationMethod": "文曲、祿存、擎羊、陀羅、天魁",
     "description": "增加法術強度，依照裝備洞數加倍",
     "commonly": ""
@@ -1444,7 +1588,8 @@
     "class": "劍客、武神、霸王、巧匠、機關匠、夜行者",
     "classSkill": "",
     "skillName": "逆體勇壯Lv2",
-    "equipmentType": "武器",
+    "equipmentType1": "武器",
+    "equipmentType2": "",
     "combinationMethod": "鈴、天鉞、天鉞、貪狼、天梁、破軍",
     "description": "增加物理強度，依照裝備洞數加倍",
     "commonly": ""
@@ -1454,7 +1599,8 @@
     "class": "術士、血魔、仙術士、風水師、天師、尊者、藥師、醫仙、蠱醫",
     "classSkill": "",
     "skillName": "逆向術法Lv2",
-    "equipmentType": "武器",
+    "equipmentType1": "武器",
+    "equipmentType2": "",
     "combinationMethod": "鈴、天鉞、天鉞、太陰、七殺、破軍",
     "description": "增加法術強度，依照裝備洞數加倍",
     "commonly": ""
@@ -1464,7 +1610,8 @@
     "class": "劍客、武神、霸王、巧匠、機關匠、夜行者",
     "classSkill": "",
     "skillName": "逆體勇壯Lv3",
-    "equipmentType": "武器",
+    "equipmentType1": "武器",
+    "equipmentType2": "",
     "combinationMethod": "天鉞、地劫、天同、天府、貪狼、巨門、天相、七殺",
     "description": "增加物理強度，依照裝備洞數加倍",
     "commonly": "TRUE"
@@ -1474,7 +1621,8 @@
     "class": "術士、血魔、仙術士、風水師、天師、尊者、藥師、醫仙、蠱醫",
     "classSkill": "",
     "skillName": "逆向術法Lv3",
-    "equipmentType": "武器",
+    "equipmentType1": "武器",
+    "equipmentType2": "",
     "combinationMethod": "地空、地劫、太陽、廉貞、天府、天府、天相、天梁",
     "description": "增加法術強度，依照裝備洞數加倍",
     "commonly": "TRUE"
@@ -1484,7 +1632,8 @@
     "class": "武神、霸王",
     "classSkill": "",
     "skillName": "武兵步伐〥",
-    "equipmentType": "鞋子(超合金限定)",
+    "equipmentType1": "鞋子",
+    "equipmentType2": "(超合金限定)",
     "combinationMethod": "天魁、天鉞、地空、太陽、天府、天府、貪狼、貪狼、天相、天相",
     "description": "進入戰鬥時，賦予強兵戰姿效果，該狀態之下造成傷害提升",
     "commonly": ""
@@ -1494,7 +1643,8 @@
     "class": "全職業",
     "classSkill": "",
     "skillName": "清流",
-    "equipmentType": "眼睛",
+    "equipmentType1": "眼睛",
+    "equipmentType2": "",
     "combinationMethod": "陀羅、火、火、天魁、天鉞、天府",
     "description": "技能恢復效果增加(中量)",
     "commonly": ""
@@ -1504,7 +1654,8 @@
     "class": "全職業",
     "classSkill": "",
     "skillName": "舒緩",
-    "equipmentType": "嘴巴",
+    "equipmentType1": "嘴巴",
+    "equipmentType2": "",
     "combinationMethod": "陀羅、陀羅、火、天魁、天鉞、天府",
     "description": "技能恢復效果增加(中量)",
     "commonly": ""
@@ -1514,7 +1665,8 @@
     "class": "全職業",
     "classSkill": "",
     "skillName": "熱動〥",
-    "equipmentType": "眼睛",
+    "equipmentType1": "眼睛",
+    "equipmentType2": "",
     "combinationMethod": "陀羅、陀羅、陀羅、地劫、地劫、武曲、武曲、天相、七殺",
     "description": "施展技能有機率減少冷卻時間",
     "commonly": ""
@@ -1524,7 +1676,8 @@
     "class": "全職業",
     "classSkill": "",
     "skillName": "剋行〥",
-    "equipmentType": "嘴巴",
+    "equipmentType1": "嘴巴",
+    "equipmentType2": "",
     "combinationMethod": "左輔、天魁、紫微、天同、巨門、天梁、破軍",
     "description": "技能擊中時，自身五行相剋對方將提升傷害",
     "commonly": ""
@@ -1534,7 +1687,8 @@
     "class": "全職業",
     "classSkill": "",
     "skillName": "逆生〥",
-    "equipmentType": "頭盔",
+    "equipmentType1": "頭盔",
+    "equipmentType2": "",
     "combinationMethod": "天鉞、天鉞、地劫、武曲、天相、天相、天相",
     "description": "技能生效時，依戰場五行能提升傷害",
     "commonly": "TRUE"
@@ -1544,7 +1698,8 @@
     "class": "術士、血魔、仙術士、風水師、天師、尊者、藥師、醫仙、蠱醫",
     "classSkill": "",
     "skillName": "水靈〥",
-    "equipmentType": "頭盔(限制布、絲材質)",
+    "equipmentType1": "頭盔",
+    "equipmentType2": "",
     "combinationMethod": "天鉞、地劫、廉貞、天府、天府、貪狼",
     "description": "水行技能傷害增加",
     "commonly": ""
@@ -1554,7 +1709,8 @@
     "class": "術士、血魔、仙術士、風水師、天師、尊者、藥師、醫仙、蠱醫",
     "classSkill": "",
     "skillName": "火靈〥",
-    "equipmentType": "頭盔(限制布、絲材質)",
+    "equipmentType1": "頭盔",
+    "equipmentType2": "(限制布、絲材質)",
     "combinationMethod": "地空、地劫、廉貞、天府、天府、天相",
     "description": "火行技能傷害增加",
     "commonly": ""
@@ -1564,7 +1720,8 @@
     "class": "術士、血魔、仙術士、風水師、天師、尊者、藥師、醫仙、蠱醫",
     "classSkill": "",
     "skillName": "土靈〥",
-    "equipmentType": "頭盔(限制布、絲材質)",
+    "equipmentType1": "頭盔",
+    "equipmentType2": "",
     "combinationMethod": "火、地空、廉貞、天府、天府、天梁",
     "description": "土行技能傷害增加",
     "commonly": ""
@@ -1574,7 +1731,8 @@
     "class": "術士、血魔、仙術士、風水師、天師、尊者、藥師、醫仙、蠱醫",
     "classSkill": "",
     "skillName": "金靈〥",
-    "equipmentType": "頭盔(限制布、絲材質)",
+    "equipmentType1": "頭盔",
+    "equipmentType2": "",
     "combinationMethod": "鈴、天鉞、廉貞、天府、天府、太陰",
     "description": "金行技能傷害增加",
     "commonly": ""
@@ -1584,7 +1742,8 @@
     "class": "術士、血魔、仙術士、風水師、天師、尊者、藥師、醫仙、蠱醫",
     "classSkill": "",
     "skillName": "木靈〥",
-    "equipmentType": "頭盔(限制布、絲材質)",
+    "equipmentType1": "頭盔",
+    "equipmentType2": "",
     "combinationMethod": "鈴、天魁、廉貞、天府、天府、七殺",
     "description": "木行技能傷害增加",
     "commonly": ""
@@ -1594,7 +1753,8 @@
     "class": "術士、血魔、仙術士、風水師、天師、尊者、藥師、醫仙、蠱醫",
     "classSkill": "",
     "skillName": "藥毒〥",
-    "equipmentType": "頭盔(限制布、絲材質)",
+    "equipmentType1": "頭盔",
+    "equipmentType2": "",
     "combinationMethod": "祿存、火、地劫、巨門、天梁、破軍",
     "description": "若裝備者為醫仙，法術傷害技能增加",
     "commonly": ""
@@ -1604,7 +1764,8 @@
     "class": "術士、血魔、仙術士、風水師、天師、尊者、藥師、醫仙、蠱醫",
     "classSkill": "",
     "skillName": "強壯的教授〥",
-    "equipmentType": "頭盔(限制布、絲材質)",
+    "equipmentType1": "頭盔",
+    "equipmentType2": "",
     "combinationMethod": "右弼、擎羊、鈴、鈴、武曲、七殺、七殺、七殺",
     "description": "若裝備者為藥師系，物理傷害技能增加",
     "commonly": ""
@@ -1614,7 +1775,8 @@
     "class": "全職業",
     "classSkill": "",
     "skillName": "堅忍",
-    "equipmentType": "頭盔",
+    "equipmentType1": "頭盔",
+    "equipmentType2": "",
     "combinationMethod": "鈴、鈴、貪狼、貪狼、巨門",
     "description": "受法術傷害減少",
     "commonly": ""
@@ -1624,7 +1786,8 @@
     "class": "全職業",
     "classSkill": "",
     "skillName": "古代",
-    "equipmentType": "眼睛",
+    "equipmentType1": "眼睛",
+    "equipmentType2": "",
     "combinationMethod": "天魁、地空、天同、巨門、天梁",
     "description": "技能命中值增加",
     "commonly": ""
@@ -1634,7 +1797,8 @@
     "class": "全職業",
     "classSkill": "",
     "skillName": "古老",
-    "equipmentType": "嘴巴",
+    "equipmentType1": "嘴巴",
+    "equipmentType2": "",
     "combinationMethod": "天魁、天鉞、廉貞、貪狼、天相",
     "description": "技能命中值增加",
     "commonly": ""
@@ -1644,7 +1808,8 @@
     "class": "全職業",
     "classSkill": "",
     "skillName": "衝動",
-    "equipmentType": "頭盔",
+    "equipmentType1": "頭盔",
+    "equipmentType2": "",
     "combinationMethod": "陀羅、地劫、武曲、天府、巨門、巨門",
     "description": "物理技能傷害增加",
     "commonly": ""
@@ -1654,7 +1819,8 @@
     "class": "全職業",
     "classSkill": "",
     "skillName": "衝擊",
-    "equipmentType": "頭盔",
+    "equipmentType1": "頭盔",
+    "equipmentType2": "",
     "combinationMethod": "火、地空、武曲、太陰、貪狼、貪狼",
     "description": "法術技能傷害增加",
     "commonly": ""
@@ -1664,7 +1830,8 @@
     "class": "全職業",
     "classSkill": "",
     "skillName": "迴避硬皮",
-    "equipmentType": "鞋子(硬皮限定)",
+    "equipmentType1": "鞋子",
+    "equipmentType2": "(硬皮限定)",
     "combinationMethod": "右弼、陀羅、地劫、武曲、武曲、天梁",
     "description": "技能迴避值增加(少量)",
     "commonly": ""
@@ -1674,7 +1841,8 @@
     "class": "全職業",
     "classSkill": "",
     "skillName": "迴避合金",
-    "equipmentType": "鞋子(超合金限定)",
+    "equipmentType1": "鞋子",
+    "equipmentType2": "(超合金限定)",
     "combinationMethod": "文昌、陀羅、地劫、太陽、太陽、七殺",
     "description": "技能迴避值增加(中量)",
     "commonly": ""
@@ -1684,7 +1852,8 @@
     "class": "全職業",
     "classSkill": "",
     "skillName": "雷電法杖〥",
-    "equipmentType": "武器-限定2洞",
+    "equipmentType1": "武器",
+    "equipmentType2": "限定2洞",
     "combinationMethod": "左輔、火、地空、地劫、天機、天機、武曲、天府、天府、太陰、破軍、破軍",
     "description": "普通攻擊有 10% 機率打出禁咒殺神刃 (打神刃符)，限定武器2洞裝備。",
     "commonly": ""
@@ -1694,7 +1863,8 @@
     "class": "全職業",
     "classSkill": "",
     "skillName": "厚重的",
-    "equipmentType": "身體-限定1洞",
+    "equipmentType1": "盔甲",
+    "equipmentType2": "限定1洞",
     "combinationMethod": "擎羊、火、天魁、天鉞、太陰、巨門",
     "description": "受到技能傷害 -8~-12%，限定身體1洞裝備。",
     "commonly": ""
@@ -1704,7 +1874,8 @@
     "class": "術士、血魔、仙術士",
     "classSkill": "",
     "skillName": "堂皇",
-    "equipmentType": "身體-限定1洞",
+    "equipmentType1": "盔甲",
+    "equipmentType2": "限定1洞",
     "combinationMethod": "文昌、祿存、陀羅、火、巨門、天梁",
     "description": "受到金行技能傷害 -18~33%。限定身體1洞裝備。",
     "commonly": ""
@@ -1714,7 +1885,8 @@
     "class": "術士、血魔、仙術士",
     "classSkill": "",
     "skillName": "環繞物",
-    "equipmentType": "身體-限定1洞",
+    "equipmentType1": "盔甲",
+    "equipmentType2": "限定1洞",
     "combinationMethod": "文昌、祿存、擎羊、火、巨門、天梁",
     "description": "受到木行技能傷害 -18~33%。限定身體1洞裝備。",
     "commonly": ""
@@ -1724,7 +1896,8 @@
     "class": "術士、血魔、仙術士",
     "classSkill": "",
     "skillName": "如流動狀",
-    "equipmentType": "身體-限定1洞",
+    "equipmentType1": "盔甲",
+    "equipmentType2": "限定1洞",
     "combinationMethod": "文昌、天馬、擎羊、火、巨門、天梁",
     "description": "受到水行技能傷害 -18~33%。限定身體1洞裝備。",
     "commonly": ""
@@ -1734,7 +1907,8 @@
     "class": "術士、血魔、仙術士",
     "classSkill": "",
     "skillName": "變化之",
-    "equipmentType": "身體-限定1洞",
+    "equipmentType1": "盔甲",
+    "equipmentType2": "限定1洞",
     "combinationMethod": "文昌、擎羊、擎羊、火、巨門、天梁",
     "description": "受到火行技能傷害 -18~33%。限定身體1洞裝備。",
     "commonly": ""
@@ -1744,7 +1918,8 @@
     "class": "術士、血魔、仙術士",
     "classSkill": "",
     "skillName": "豐壤",
-    "equipmentType": "身體-限定1洞",
+    "equipmentType1": "盔甲",
+    "equipmentType2": "限定1洞",
     "combinationMethod": "文昌、天馬、陀羅、火、巨門、天梁",
     "description": "受到土行技能傷害 -18~33%。限定身體1洞裝備。",
     "commonly": ""
@@ -1754,7 +1929,8 @@
     "class": "全職業",
     "classSkill": "",
     "skillName": "無型",
-    "equipmentType": "身體-限定1洞",
+    "equipmentType1": "盔甲",
+    "equipmentType2": "限定1洞",
     "combinationMethod": "文昌、陀羅、陀羅、火、巨門、天相",
     "description": "受到無行技能傷害 -15~25%。限定身體1洞裝備。",
     "commonly": ""
@@ -1764,7 +1940,8 @@
     "class": "全職業",
     "classSkill": "",
     "skillName": "銳利〥",
-    "equipmentType": "眼部",
+    "equipmentType1": "眼睛",
+    "equipmentType2": "",
     "combinationMethod": "天馬、鈴、天魁、貪狼、天相、破軍",
     "description": "施展技能時，有 10% 機率在 7 秒內提高技能命中 6%。限定眼部部位。",
     "commonly": ""
@@ -1774,7 +1951,8 @@
     "class": "全職業",
     "classSkill": "",
     "skillName": "踏步迴避〥",
-    "equipmentType": "腳部",
+    "equipmentType1": "鞋子",
+    "equipmentType2": "",
     "combinationMethod": "擎羊、擎羊、擎羊、地空、武曲、武曲、天相",
     "description": "受到傷害時 12% 機率發動，在 6 秒內提高 15% 迴避/閃避，限定腳部1洞裝備。",
     "commonly": ""
@@ -1784,7 +1962,8 @@
     "class": "全職業",
     "classSkill": "",
     "skillName": "省能〥",
-    "equipmentType": "嘴巴",
+    "equipmentType1": "嘴巴",
+    "equipmentType2": "",
     "combinationMethod": "左輔、左輔、陀羅、陀羅、貪狼、七殺",
     "description": "施展技能時，有 20% 機率在 5 秒內減少技能消耗 30%，限定嘴巴部位。",
     "commonly": ""
@@ -1794,7 +1973,8 @@
     "class": "全職業",
     "classSkill": "",
     "skillName": "頑強〥",
-    "equipmentType": "頭部-限定1洞",
+    "equipmentType1": "頭盔",
+    "equipmentType2": "限定1洞",
     "combinationMethod": "火、貪狼、巨門、七殺、破軍",
     "description": "普通攻擊有 22% 機率回復生命50，限定頭部1洞裝備。",
     "commonly": ""
@@ -1804,7 +1984,8 @@
     "class": "全職業",
     "classSkill": "",
     "skillName": "風火輪鞋〥",
-    "equipmentType": "腳部",
+    "equipmentType1": "鞋子",
+    "equipmentType2": "",
     "combinationMethod": "左輔、火、火、火、火、地劫、太陽",
     "description": "受到傷害時有 17% 機率，對自身附加火輪咒 9 秒，限定腳部裝備。",
     "commonly": ""
@@ -1814,7 +1995,8 @@
     "class": "全職業",
     "classSkill": "",
     "skillName": "熾焰焚身〥",
-    "equipmentType": "頭部-限定1洞",
+    "equipmentType1": "頭盔",
+    "equipmentType2": "限定1洞",
     "combinationMethod": "祿存、火、火、火、太陽、破軍",
     "description": "限術士系生效，受到傷害時，有 20% 機率附加赤焰甲Lv5。卸除裝備時會移除赤焰甲狀態。限定頭部1洞裝備。",
     "commonly": ""
@@ -1824,7 +2006,8 @@
     "class": "全職業",
     "classSkill": "",
     "skillName": "輔助瞄準〥",
-    "equipmentType": "眼部",
+    "equipmentType1": "眼睛",
+    "equipmentType2": "",
     "combinationMethod": "文昌、鈴、天府、天相",
     "description": "施展單體攻擊技生效時，8 秒內技能命中 +100，限定眼部部位。",
     "commonly": ""
@@ -1834,7 +2017,8 @@
     "class": "血魔、仙術士",
     "classSkill": "靈行術",
     "skillName": "唱咒加強〥",
-    "equipmentType": "嘴巴",
+    "equipmentType1": "嘴巴",
+    "equipmentType2": "",
     "combinationMethod": "右弼、天魁、太陽、廉貞、廉貞、天府",
     "description": "對【靈行術】增加冷卻 12%+4 秒、增加施法 1 秒、技能傷害 +13%，限定嘴巴部位。",
     "commonly": ""
@@ -1844,7 +2028,8 @@
     "class": "劍客、武神、霸王",
     "classSkill": "霸槍法、武技",
     "skillName": "招式大喝〥",
-    "equipmentType": "嘴巴",
+    "equipmentType1": "嘴巴",
+    "equipmentType2": "",
     "combinationMethod": "文昌、地劫、武曲、武曲、巨門、破軍、破軍",
     "description": "對【霸槍法】、【武技】增加施法1秒、增加冷卻 10%+5 秒、技能傷害 +21%，限定嘴巴部位。",
     "commonly": ""
@@ -1854,7 +2039,8 @@
     "class": "天師、尊者",
     "classSkill": "符打術",
     "skillName": "默念默背之〥",
-    "equipmentType": "嘴巴",
+    "equipmentType1": "嘴巴",
+    "equipmentType2": "",
     "combinationMethod": "祿存、火、紫微、太陽、天同、太陰、破軍",
     "description": "對【符打術】減少施法 1 秒、減少冷卻 2 秒、技能傷害 -33%，限定嘴巴部位。",
     "commonly": ""
@@ -1864,7 +2050,8 @@
     "class": "天師、尊者",
     "classSkill": "符打術",
     "skillName": "燃燒符咒者〥",
-    "equipmentType": "嘴巴",
+    "equipmentType1": "嘴巴",
+    "equipmentType2": "",
     "combinationMethod": "祿存、火、天機、太陽、廉貞、天府、破軍",
     "description": "對【符打術】增加施法 1 秒、增加冷卻 1 秒、技能傷害 +10%，限定嘴巴部位。",
     "commonly": ""
@@ -1874,7 +2061,8 @@
     "class": "蠱醫",
     "classSkill": "毒霧術",
     "skillName": "添墨的〥",
-    "equipmentType": "嘴巴",
+    "equipmentType1": "嘴巴",
+    "equipmentType2": "",
     "combinationMethod": "文曲、地劫、紫微、天府、貪狼、天相、天梁",
     "description": "對【毒霧術】增加冷卻 20%+5 秒、技能傷害 +15%，限定嘴巴部位。",
     "commonly": ""
@@ -1884,7 +2072,8 @@
     "class": "血魔、仙術士",
     "classSkill": "靈行術",
     "skillName": "生靈注視的〥",
-    "equipmentType": "頭部-限定1洞",
+    "equipmentType1": "頭盔",
+    "equipmentType2": "限定1洞",
     "combinationMethod": "祿存、天魁、紫微、天機、天機、天同、天同、破軍",
     "description": "施展靈行術生效時，有 15% 機率附加 9 秒「靈法變化」。卸除裝備時會移除狀態。靈法變化：每 3 秒會減少一次剩餘冷卻大於 3 秒的靈行術 3 秒。限定頭部1洞裝備。",
     "commonly": ""
@@ -1894,7 +2083,8 @@
     "class": "全職業",
     "classSkill": "",
     "skillName": "緊急治療〥",
-    "equipmentType": "頭部",
+    "equipmentType1": "頭盔",
+    "equipmentType2": "",
     "combinationMethod": "文曲、祿存、陀羅、陀羅、紫微、廉貞",
     "description": "受到傷害時，有 5% 機率對自己施展急救術 Lv3，限定頭部裝備。",
     "commonly": ""
@@ -1904,7 +2094,8 @@
     "class": "全職業",
     "classSkill": "",
     "skillName": "猛然看見的〥",
-    "equipmentType": "眼部",
+    "equipmentType1": "頭盔",
+    "equipmentType2": "",
     "combinationMethod": "擎羊、火、天鉞、地劫、天同、天相、天梁",
     "description": "施展技能時，有 5% 機率對自身附加天眼開 Lv1，限定眼部部位。",
     "commonly": ""
@@ -1914,7 +2105,8 @@
     "class": "全職業",
     "classSkill": "",
     "skillName": "反動雷擊〥",
-    "equipmentType": "頭部",
+    "equipmentType1": "頭盔",
+    "equipmentType2": "",
     "combinationMethod": "祿存、火、地劫、太陽、天府、太陰",
     "description": "受到傷害時，有 6% 機率對來源施展五雷術 Lv5，限定頭部裝備。",
     "commonly": ""
@@ -1924,7 +2116,8 @@
     "class": "全職業",
     "classSkill": "",
     "skillName": "溜目看的〥",
-    "equipmentType": "嘴巴",
+    "equipmentType1": "嘴巴",
+    "equipmentType2": "",
     "combinationMethod": "天馬、天馬、擎羊、陀羅、天鉞、地空、地劫",
     "description": "施展技能時，有 10% 機率回復法力(lv)，限定嘴巴部位。",
     "commonly": ""
@@ -1934,7 +2127,8 @@
     "class": "全職業",
     "classSkill": "",
     "skillName": "猛砸落地〥",
-    "equipmentType": "身體-限定2洞",
+    "equipmentType1": "盔甲",
+    "equipmentType2": "限定2洞",
     "combinationMethod": "地劫、紫微、太陽、七殺、破軍、破軍、破軍",
     "description": "受到傷害時，有 3% 機率對來源施放修羅烈焰，限定身體2洞裝備。",
     "commonly": ""
@@ -1944,7 +2138,8 @@
     "class": "全職業",
     "classSkill": "",
     "skillName": "待命常備〥",
-    "equipmentType": "武器",
+    "equipmentType1": "武器",
+    "equipmentType2": "",
     "combinationMethod": "左輔、左輔、擎羊、天鉞、天相、天梁",
     "description": "進入戰場時，發動一次大羅仙術 Lv3，限定武器部位。",
     "commonly": ""
@@ -1954,7 +2149,8 @@
     "class": "全職業",
     "classSkill": "",
     "skillName": "童話LV2",
-    "equipmentType": "嘴巴",
+    "equipmentType1": "嘴巴",
+    "equipmentType2": "",
     "combinationMethod": "擎羊、地空、紫微、天機、天府、天府、貪狼、貪狼",
     "description": "掉寶率增加 12~16%。限定嘴巴部位。",
     "commonly": ""
@@ -1964,7 +2160,8 @@
     "class": "全職業",
     "classSkill": "",
     "skillName": "童話LV3",
-    "equipmentType": "嘴巴",
+    "equipmentType1": "嘴巴",
+    "equipmentType2": "",
     "combinationMethod": "鈴、地空、紫微、紫微、天機、天府、天相、破軍",
     "description": "掉寶率增加 16~20%。限定嘴巴部位。",
     "commonly": ""
@@ -1974,7 +2171,8 @@
     "class": "全職業",
     "classSkill": "",
     "skillName": "背水一戰〥",
-    "equipmentType": "嘴巴",
+    "equipmentType1": "嘴巴",
+    "equipmentType2": "",
     "combinationMethod": "文曲、祿存、祿存、陀羅、武曲、武曲、紫微、廉貞",
     "description": "血量低於5%時，施展技能有50%機率使傷害增高為200%，限定嘴巴部位。",
     "commonly": ""
@@ -1984,7 +2182,8 @@
     "class": "全職業",
     "classSkill": "",
     "skillName": "流動",
-    "equipmentType": "腳部",
+    "equipmentType1": "鞋子",
+    "equipmentType2": "",
     "combinationMethod": "天馬、天馬、天魁、天鉞、天鉞、天機、天同、天相",
     "description": "閃避率增加 10~80。限定腳部部位。",
     "commonly": ""
@@ -1994,7 +2193,8 @@
     "class": "全職業",
     "classSkill": "",
     "skillName": "生命湧動",
-    "equipmentType": "腳部",
+    "equipmentType1": "鞋子",
+    "equipmentType2": "",
     "combinationMethod": "天魁、天魁、天鉞、天鉞、天機、天機、太陽、天相",
     "description": "HP 增加 200~2400。限定腳部部位。",
     "commonly": ""
@@ -2004,7 +2204,8 @@
     "class": "全職業",
     "classSkill": "",
     "skillName": "魔法湧動",
-    "equipmentType": "腳部",
+    "equipmentType1": "鞋子",
+    "equipmentType2": "",
     "combinationMethod": "文昌、文昌、地空、地空、貪狼、天相、紫微、紫微",
     "description": "Mp 增加 100~1200。限定腳部部位。",
     "commonly": ""
@@ -2014,7 +2215,8 @@
     "class": "全職業",
     "classSkill": "",
     "skillName": "透支",
-    "equipmentType": "腳部",
+    "equipmentType1": "鞋子",
+    "equipmentType2": "",
     "combinationMethod": "祿存、祿存、火、鈴、廉貞、廉貞、天梁、天梁",
     "description": "技能法力消耗 5~35%。限定腳部部位。",
     "commonly": ""
@@ -2024,7 +2226,8 @@
     "class": "全職業",
     "classSkill": "",
     "skillName": "閃電鞭",
-    "equipmentType": "腳部",
+    "equipmentType1": "鞋子",
+    "equipmentType2": "",
     "combinationMethod": "火、火、地劫、擎羊、武曲、武曲、七殺、七殺",
     "description": "攻擊速度 +1~3。限定腳部部位。",
     "commonly": ""
@@ -2034,7 +2237,8 @@
     "class": "全職業",
     "classSkill": "",
     "skillName": "狡猾",
-    "equipmentType": "眼部",
+    "equipmentType1": "眼睛",
+    "equipmentType2": "",
     "combinationMethod": "陀羅、紫微、太陽、太陽、天同、天同、破軍、破軍",
     "description": "閃避率 10~80。限定眼部部位。",
     "commonly": ""
@@ -2044,7 +2248,8 @@
     "class": "全職業",
     "classSkill": "",
     "skillName": "見切〥",
-    "equipmentType": "武器",
+    "equipmentType1": "武器",
+    "equipmentType2": "",
     "combinationMethod": "火、地劫、地劫、天機、天機、紫微、巨門、天相",
     "description": "技能命中時，有 5% 機率增加攻擊速度 +1~+2，限定武器部位。",
     "commonly": ""
@@ -2054,7 +2259,8 @@
     "class": "全職業",
     "classSkill": "",
     "skillName": "頑強抵抗〥",
-    "equipmentType": "眼部",
+    "equipmentType1": "眼睛",
+    "equipmentType2": "",
     "combinationMethod": "陀羅、陀羅、天鉞、地空、地空、天機、太陽、太陽",
     "description": "血量剩餘 15% 時，可獲得一次補充 2000HP，CD 1 分鐘，限定眼部部位。",
     "commonly": ""
@@ -2064,7 +2270,8 @@
     "class": "全職業",
     "classSkill": "",
     "skillName": "夢境LV2",
-    "equipmentType": "武器",
+    "equipmentType1": "武器",
+    "equipmentType2": "",
     "combinationMethod": "天鉞、天鉞、紫微、天機、天機、太陽、天府、天梁",
     "description": "技能傷害增加 5~10%。限定武器部位。(+%)",
     "commonly": ""
@@ -2074,7 +2281,8 @@
     "class": "全職業",
     "classSkill": "",
     "skillName": "夢境LV3",
-    "equipmentType": "武器",
+    "equipmentType1": "武器",
+    "equipmentType2": "",
     "combinationMethod": "地劫、紫微、紫微、天機、天機、天府、天梁、天梁",
     "description": "技能傷害增加 10~20%。限定武器部位。(+%)",
     "commonly": "TRUE"
@@ -2084,7 +2292,8 @@
     "class": "劍客",
     "classSkill": "武技",
     "skillName": "豪技猛擊",
-    "equipmentType": "武器刀劍",
+    "equipmentType1": "武器",
+    "equipmentType2": "刀劍",
     "combinationMethod": "文昌、天馬、天鉞、天鉞、紫微、太陽、武曲、太陰",
     "description": "【武技】傷害 +10~30%。限定武器刀劍部位。(+%)",
     "commonly": ""
@@ -2094,7 +2303,8 @@
     "class": "巧匠",
     "classSkill": "箭技",
     "skillName": "強弩鋒芒",
-    "equipmentType": "武器弩弓",
+    "equipmentType1": "武器",
+    "equipmentType2": "弩弓",
     "combinationMethod": "地劫、擎羊、天鉞、天鉞、紫微、天機、武曲、武曲",
     "description": "【箭技】傷害 +10~30%。限定武器弩弓部位。(+%)",
     "commonly": ""
@@ -2104,7 +2314,8 @@
     "class": "巧匠",
     "classSkill": "體技",
     "skillName": "連踢帶打",
-    "equipmentType": "武器弩弓",
+    "equipmentType1": "武器",
+    "equipmentType2": "弩弓",
     "combinationMethod": "左輔、文曲、天魁、天魁、紫微、太陽、武曲、巨門",
     "description": "【體技】傷害 +10~30%。限定武器弩弓部位。(+%)",
     "commonly": ""
@@ -2114,7 +2325,8 @@
     "class": "風水師",
     "classSkill": "咒術",
     "skillName": "符採彪炳",
-    "equipmentType": "武器招幡",
+    "equipmentType1": "武器",
+    "equipmentType2": "招幡",
     "combinationMethod": "右弼、天馬、天魁、天魁、紫微、天機、武曲、武曲",
     "description": "【咒術】傷害 +10~30%。限定武器招幡部位。(+%)",
     "commonly": ""
@@ -2124,7 +2336,8 @@
     "class": "術士",
     "classSkill": "金",
     "skillName": "錯彩鑲金",
-    "equipmentType": "武器拂塵",
+    "equipmentType1": "武器",
+    "equipmentType2": "拂塵",
     "combinationMethod": "祿存、地劫、天鉞、天魁、紫微、紫微、武曲、天同",
     "description": "【金】傷害 +10~30%。限定武器拂塵部位。(+%)",
     "commonly": ""
@@ -2134,7 +2347,8 @@
     "class": "術士",
     "classSkill": "木",
     "skillName": "古木蔽天",
-    "equipmentType": "武器拂塵",
+    "equipmentType1": "武器",
+    "equipmentType2": "拂塵",
     "combinationMethod": "鈴、右弼、天鉞、天魁、紫微、巨門、武曲、七殺",
     "description": "【木】傷害 +10~30%。限定武器拂塵部位。(+%)",
     "commonly": ""
@@ -2144,7 +2358,8 @@
     "class": "術士",
     "classSkill": "土",
     "skillName": "瓦解土崩",
-    "equipmentType": "武器拂塵",
+    "equipmentType1": "武器",
+    "equipmentType2": "拂塵",
     "combinationMethod": "右弼、天同、天鉞、天魁、紫微、巨門、武曲、廉貞",
     "description": "【土】傷害 +10~30%。限定武器拂塵部位。(+%)",
     "commonly": ""
@@ -2154,7 +2369,8 @@
     "class": "術士",
     "classSkill": "水",
     "skillName": "水天一色",
-    "equipmentType": "武器拂塵",
+    "equipmentType1": "武器",
+    "equipmentType2": "拂塵",
     "combinationMethod": "文昌、太陰、天鉞、天魁、紫微、巨門、武曲、貪狼",
     "description": "【水】傷害 +10~30%。限定武器拂塵部位。(+%)",
     "commonly": ""
@@ -2164,7 +2380,8 @@
     "class": "術士",
     "classSkill": "火",
     "skillName": "燎原之火",
-    "equipmentType": "武器拂塵",
+    "equipmentType1": "武器",
+    "equipmentType2": "拂塵",
     "combinationMethod": "地空、天馬、天鉞、天魁、紫微、巨門、武曲、破軍",
     "description": "【火】傷害 +10~30%。限定武器拂塵部位。(+%)",
     "commonly": ""
@@ -2174,7 +2391,8 @@
     "class": "藥師、醫仙、蠱醫",
     "classSkill": "霧擊",
     "skillName": "煙霏露結",
-    "equipmentType": "武器藥鋤",
+    "equipmentType1": "武器",
+    "equipmentType2": "藥鋤",
     "combinationMethod": "天魁、天鉞、紫微、太陽、太陽、廉貞、廉貞、天相",
     "description": "【霧擊】傷害 +10~30%。限定武器藥鋤部位。(+%)",
     "commonly": ""
@@ -2184,7 +2402,8 @@
     "class": "全職業",
     "classSkill": "",
     "skillName": "嗜血",
-    "equipmentType": "武器",
+    "equipmentType1": "武器",
+    "equipmentType2": "",
     "combinationMethod": "擎羊、天魁、天魁、紫微、紫微、天機、太陰、太陰",
     "description": "技能傷害擊中怪物，有 5% 機率，補血 3000HP，CD 2 分鐘。限定武器部位。",
     "commonly": ""
@@ -2194,7 +2413,8 @@
     "class": "全職業",
     "classSkill": "",
     "skillName": "幸運一閃",
-    "equipmentType": "共用",
+    "equipmentType1": "不限位置",
+    "equipmentType2": "",
     "combinationMethod": "天馬、鈴、鈴、地空、天機、天機、太陽、太陽",
     "description": "技能迴避 10~80。共用部位。",
     "commonly": ""
@@ -2204,7 +2424,8 @@
     "class": "全職業",
     "classSkill": "",
     "skillName": "抵抗LV1",
-    "equipmentType": "共用",
+    "equipmentType1": "不限位置",
+    "equipmentType2": "",
     "combinationMethod": "左輔、文昌、天同、廉貞、天梁",
     "description": "防禦力增加 10~50。共用部位。",
     "commonly": ""
@@ -2214,7 +2435,8 @@
     "class": "全職業",
     "classSkill": "",
     "skillName": "抵抗LV2",
-    "equipmentType": "共用",
+    "equipmentType1": "不限位置",
+    "equipmentType2": "",
     "combinationMethod": "左輔、文昌、太陽、天機、武曲、武曲、",
     "description": "防禦力增加 10~100。共用部位。",
     "commonly": ""
@@ -2224,7 +2446,8 @@
     "class": "全職業",
     "classSkill": "",
     "skillName": "抵抗LV3",
-    "equipmentType": "共用",
+    "equipmentType1": "不限位置",
+    "equipmentType2": "",
     "combinationMethod": "陀羅、天鉞、地劫、天機、紫微、紫微、武曲、天梁",
     "description": "防禦力增加 10~300。共用部位。",
     "commonly": "TRUE"
@@ -2234,7 +2457,8 @@
     "class": "霸王",
     "classSkill": "霸槍法",
     "skillName": "驍勇強悍(霸槍法)",
-    "equipmentType": "武器",
+    "equipmentType1": "武器",
+    "equipmentType2": "",
     "combinationMethod": "文昌、天魁、地劫、武曲、太陰、破軍",
     "description": "霸槍法系列技能傷害增加 8%~24%。限定武器部位。(+%)",
     "commonly": "TRUE"
@@ -2244,7 +2468,8 @@
     "class": "武神",
     "classSkill": "斬刀技",
     "skillName": "精絕寒光(斬刀技)",
-    "equipmentType": "武器",
+    "equipmentType1": "武器",
+    "equipmentType2": "",
     "combinationMethod": "文昌、天鉞、地空、武曲、天府、破軍",
     "description": "斬刀技系列技能傷害增加 8%~24%。限定武器部位。(+%)",
     "commonly": "TRUE"
@@ -2254,7 +2479,8 @@
     "class": "機關匠",
     "classSkill": "機關術",
     "skillName": "鏤月裁雲(機關術)",
-    "equipmentType": "武器",
+    "equipmentType1": "武器",
+    "equipmentType2": "",
     "combinationMethod": "文昌、天魁、地劫、太陽、天府、破軍",
     "description": "機關術系列技能傷害增加 8%~24%。限定武器部位。(+%)",
     "commonly": "TRUE"
@@ -2264,7 +2490,8 @@
     "class": "機關匠",
     "classSkill": "裝甲術",
     "skillName": "被堅執銳(裝甲術)",
-    "equipmentType": "武器",
+    "equipmentType1": "武器",
+    "equipmentType2": "",
     "combinationMethod": "文昌、天鉞、地空、天同、天府、破軍",
     "description": "裝甲術系列技能傷害增加 8%~24%。限定武器部位。(+%)",
     "commonly": "TRUE"
@@ -2274,7 +2501,8 @@
     "class": "夜行者、機關匠",
     "classSkill": "神射術",
     "skillName": "矢無虛發(神射術)",
-    "equipmentType": "武器",
+    "equipmentType1": "武器",
+    "equipmentType2": "",
     "combinationMethod": "文昌、天魁、地劫、太陽、太陰、破軍",
     "description": "神射術系列技能傷害增加 8%~24%。限定武器部位。(+%)",
     "commonly": "TRUE"
@@ -2284,7 +2512,8 @@
     "class": "夜行者",
     "classSkill": "暗殺術",
     "skillName": "無形無影(暗殺術)",
-    "equipmentType": "武器",
+    "equipmentType1": "武器",
+    "equipmentType2": "",
     "combinationMethod": "文昌、天鉞、地空、天機、太陰、破軍",
     "description": "暗殺術系列技能傷害增加 8%~24%。限定武器部位。(+%)",
     "commonly": "TRUE"
@@ -2294,7 +2523,8 @@
     "class": "天師、尊者",
     "classSkill": "符打術",
     "skillName": "知幾其神(符打術)",
-    "equipmentType": "武器",
+    "equipmentType1": "武器",
+    "equipmentType2": "",
     "combinationMethod": "文曲、天魁、地劫、天機、天府、破軍",
     "description": "符打術系列技能傷害增加 8%~24%。限定武器部位。(+%)",
     "commonly": "TRUE"
@@ -2304,7 +2534,8 @@
     "class": "蠱醫",
     "classSkill": "蠱毒術",
     "skillName": "椎心蝕骨(蠱毒術)",
-    "equipmentType": "武器",
+    "equipmentType1": "武器",
+    "equipmentType2": "",
     "combinationMethod": "文曲、天鉞、地空、廉貞、太陰、破軍",
     "description": "蠱毒術系列技能傷害增加 8%~24%。限定武器部位。(+%)",
     "commonly": "TRUE"
@@ -2314,7 +2545,8 @@
     "class": "蠱醫",
     "classSkill": "毒霧術",
     "skillName": "狼猛蜂毒(毒霧術)",
-    "equipmentType": "武器",
+    "equipmentType1": "武器",
+    "equipmentType2": "",
     "combinationMethod": "文曲、天魁、地劫、廉貞、太陰、破軍",
     "description": "毒霧術系列技能傷害增加 8%~24%。限定武器部位。(+%)",
     "commonly": "TRUE"
@@ -2324,7 +2556,8 @@
     "class": "血魔",
     "classSkill": "活祭",
     "skillName": "伏維尚饗(活祭)",
-    "equipmentType": "武器",
+    "equipmentType1": "武器",
+    "equipmentType2": "",
     "combinationMethod": "文曲、天鉞、地空、紫微、太陰、破軍",
     "description": "活祭系列技能傷害增加 8%~24%。限定武器部位。(+%)",
     "commonly": "TRUE"
@@ -2334,7 +2567,8 @@
     "class": "血魔",
     "classSkill": "血魔術",
     "skillName": "誅盡殺絕(血魔術)",
-    "equipmentType": "武器",
+    "equipmentType1": "武器",
+    "equipmentType2": "",
     "combinationMethod": "文曲、天魁、地劫、紫微、太陰、破軍",
     "description": "血魔術系列技能傷害增加 8%~24%。限定武器部位。(+%)",
     "commonly": "TRUE"
@@ -2344,7 +2578,8 @@
     "class": "血魔、仙術士",
     "classSkill": "靈行術",
     "skillName": "八門五花(靈行術)",
-    "equipmentType": "武器",
+    "equipmentType1": "武器",
+    "equipmentType2": "",
     "combinationMethod": "文曲、天鉞、地空、天同、天府、破軍",
     "description": "靈行術系列技能傷害增加 8%~24%。限定武器部位。(+%)",
     "commonly": "TRUE"
@@ -2354,7 +2589,8 @@
     "class": "全職業",
     "classSkill": "",
     "skillName": "疾風驟雨(通用職)",
-    "equipmentType": "盔甲",
+    "equipmentType1": "盔甲",
+    "equipmentType2": "",
     "combinationMethod": "文昌、陀羅、天鉞、地空、地劫、紫微、天機、太陽、武曲、天同、太陰、天梁",
     "description": "通用職業降低 CD6%~18% 秒。限定盔甲部位。",
     "commonly": "TRUE"
@@ -2364,7 +2600,8 @@
     "class": "機關匠、夜行者、武神、霸王",
     "classSkill": "",
     "skillName": "凌波微步",
-    "equipmentType": "鞋子",
+    "equipmentType1": "鞋子",
+    "equipmentType2": "",
     "combinationMethod": "擎羊、火、天魁、地空、囚牛、睚眥",
     "description": "技能迴避值+4~8%",
     "commonly": ""
@@ -2374,7 +2611,8 @@
     "class": "全職業",
     "classSkill": "",
     "skillName": "強運",
-    "equipmentType": "坐騎",
+    "equipmentType1": "坐騎",
+    "equipmentType2": "",
     "combinationMethod": "右弼、文昌、地空、地劫、嘲風、蒲牢、狻猊",
     "description": "掉寶率+20~25%",
     "commonly": ""
@@ -2384,7 +2622,8 @@
     "class": "全職業",
     "classSkill": "",
     "skillName": "武術真意",
-    "equipmentType": "頭盔",
+    "equipmentType1": "頭盔",
+    "equipmentType2": "",
     "combinationMethod": "陀羅、地劫、武曲、蒲牢、狻猊、贔屭",
     "description": "物理技能傷害增加2~4%",
     "commonly": ""
@@ -2394,7 +2633,8 @@
     "class": "全職業",
     "classSkill": "",
     "skillName": "法術真意",
-    "equipmentType": "頭盔",
+    "equipmentType1": "頭盔",
+    "equipmentType2": "",
     "combinationMethod": "火、地空、武曲、狴犴、饕餮、椒圖",
     "description": "法術技能傷害增加2~4%",
     "commonly": ""
@@ -2404,7 +2644,8 @@
     "class": "全職業",
     "classSkill": "",
     "skillName": "奧義",
-    "equipmentType": "武器",
+    "equipmentType1": "武器",
+    "equipmentType2": "",
     "combinationMethod": "擎羊、陀羅、火、太陽、武曲、囚牛、狻猊、椒圖",
     "description": "技能傷害增加4~6%",
     "commonly": ""
@@ -2414,7 +2655,8 @@
     "class": "全職業",
     "classSkill": "",
     "skillName": "堅毅",
-    "equipmentType": "頭盔",
+    "equipmentType1": "頭盔",
+    "equipmentType2": "",
     "combinationMethod": "鈴、鈴、螭首、螭吻",
     "description": "受法術傷害-5~7%",
     "commonly": ""
@@ -2424,7 +2666,8 @@
     "class": "全職業",
     "classSkill": "",
     "skillName": "厚實",
-    "equipmentType": "身體-限定1洞",
+    "equipmentType1": "盔甲",
+    "equipmentType2": "限定1洞",
     "combinationMethod": "擎羊、火、天魁、天鉞、負屭、貔貅",
     "description": "受技能傷害-10~-14%",
     "commonly": ""
@@ -2434,7 +2677,8 @@
     "class": "全職業",
     "classSkill": "",
     "skillName": "專注〥",
-    "equipmentType": "眼部",
+    "equipmentType1": "眼睛",
+    "equipmentType2": "",
     "combinationMethod": "祿存、天馬、擎羊、貪狼、囚牛、睚眥",
     "description": "施展技能時，有15%機率在7秒內提高技能命中10%",
     "commonly": ""
@@ -2444,7 +2688,8 @@
     "class": "全職業",
     "classSkill": "",
     "skillName": "一觸即避〥",
-    "equipmentType": "鞋子",
+    "equipmentType1": "鞋子",
+    "equipmentType2": "",
     "combinationMethod": "天馬、天馬、天馬、地空、武曲、囚牛、睚眥",
     "description": "受到技能傷害時15%機率發動，在7秒內提高20%迴避及閃避",
     "commonly": ""
@@ -2454,7 +2699,8 @@
     "class": "全職業",
     "classSkill": "",
     "skillName": "回天詠唱〥",
-    "equipmentType": "嘴巴",
+    "equipmentType1": "嘴巴",
+    "equipmentType2": "",
     "combinationMethod": "擎羊、擎羊、擎羊、陀羅、天鉞、囚牛、蒲牢、狴犴",
     "description": "施展技能時，有5%機率回復10%生命",
     "commonly": ""
@@ -2464,7 +2710,8 @@
     "class": "全職業",
     "classSkill": "",
     "skillName": "技能凝鍊〥",
-    "equipmentType": "眼部",
+    "equipmentType1": "眼睛",
+    "equipmentType2": "",
     "combinationMethod": "陀羅、陀羅、陀羅、地劫、地劫、武曲、睚眥、狻猊、饕餮",
     "description": "施展技能有50%機率減少CD1秒或10%(取最大)",
     "commonly": ""
@@ -2474,7 +2721,8 @@
     "class": "全職業",
     "classSkill": "",
     "skillName": "越挫越勇〥",
-    "equipmentType": "頭盔",
+    "equipmentType1": "頭盔",
+    "equipmentType2": "",
     "combinationMethod": "火、火、火、地劫、地劫、武曲、嘲風、贔屭、椒圖",
     "description": "施展技能時，若處於中毒燃燒遲緩或冰凍狀態，技能傷害增加3%~5%",
     "commonly": ""
