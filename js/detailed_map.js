@@ -120,27 +120,28 @@ document.addEventListener("DOMContentLoaded", () => {
     imgContainer.style.marginBottom = "20px";
     imgContainer.appendChild(frontImage);
 
-    // Modal 主內容
-    contentDiv.innerHTML = `
-      <h2 class="map-name">${map.name || map.mapid || "未知地圖"}</h2>
-    `;
-    contentDiv.querySelector('.hero-column-details').appendChild(imgContainer);
-    
-    const detailHTML = `
-      <div class="hero-column-details">
-        <p><strong>垃圾：</strong>${map.drop_rubbish || "—"}</p>
-        <p><strong>光輝掉落（掉落較多）：</strong>${map.drop_glory_high || "—"}</p>
-        <p class="section-gap"><strong>光輝掉落（掉落較低）：</strong>${map.drop_glory_low || "—"}</p>
-        <p class="section-gap"><strong>光輝掉落（玩家提供）：</strong>${map.player || "—"}</p>
-      </div>
-    `;
+// Modal 主內容
+contentDiv.innerHTML = `
+  <h2 class="map-name">${map.name || map.mapid || "未知地圖"}</h2>
+  <div class="hero-column-details"></div>
+`;
 
+// 取得 hero-column-details 容器
+const detailsDiv = contentDiv.querySelector('.hero-column-details');
 
-    contentDiv.insertAdjacentHTML("beforeend", detailHTML);
-    
+// 插入圖片
+detailsDiv.appendChild(imgContainer);
 
-    overlay.style.display = "block";
-    modalBox.style.display = "block";
+// 插入文字內容
+detailsDiv.insertAdjacentHTML("beforeend", `
+  <p><strong>垃圾：</strong>${map.drop_rubbish || "—"}</p>
+  <p><strong>光輝掉落（掉落較多）：</strong>${map.drop_glory_high || "—"}</p>
+  <p class="section-gap"><strong>光輝掉落（掉落較低）：</strong>${map.drop_glory_low || "—"}</p>
+  <p class="section-gap"><strong>光輝掉落（玩家提供）：</strong>${map.player || "—"}</p>
+`);
+
+overlay.style.display = "block";
+modalBox.style.display = "block";
   }
 
   // 關閉 Modal
