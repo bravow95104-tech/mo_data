@@ -124,8 +124,8 @@ document.addEventListener("DOMContentLoaded", () => {
     contentDiv.innerHTML = `
       <h2 class="map-name">${map.name || map.mapid || "未知地圖"}</h2>
     `;
-    contentDiv.appendChild(imgContainer);
-
+    contentDiv.querySelector('.hero-column-details').appendChild(imgContainer);
+    
     const detailHTML = `
       <div class="hero-column-details">
         <p><strong>垃圾：</strong>${map.drop_rubbish || "—"}</p>
@@ -135,8 +135,9 @@ document.addEventListener("DOMContentLoaded", () => {
       </div>
     `;
 
+
     contentDiv.insertAdjacentHTML("beforeend", detailHTML);
-    contentDiv.querySelector('.hero-column-details').appendChild(imgContainer);
+    
 
     overlay.style.display = "block";
     modalBox.style.display = "block";
