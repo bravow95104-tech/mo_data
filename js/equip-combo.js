@@ -87,7 +87,6 @@ function initComboPage(data) {
     // 渲染結果卡片
     filtered.forEach(item => {
       const card = document.createElement("div");
-      card.className = "combo-card active"; // 預設展開
 
       // ✅ 改進裝備部位顯示（自動跳過空值）
       const equipDisplay =
