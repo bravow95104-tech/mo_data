@@ -75,72 +75,71 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // === Modal ===
   function showDetailModal(map) {
-  const overlay = document.getElementById("modalOverlay");
-  const modalBox = document.getElementById("modalBox");
-  const contentDiv = document.getElementById("modalContent");
+    const overlay = document.getElementById("modalOverlay");
+    const modalBox = document.getElementById("modalBox");
+    const contentDiv = document.getElementById("modalContent");
 
-  // 每次開新 modal 前先清空舊內容
-  contentDiv.innerHTML = "";
+    contentDiv.innerHTML = ""; // ✅ 每次清空舊內容
 
-  // 安全檔名
-  const safeName = map.name ? map.name.replace(/[^\w\u4e00-\u9fa5]/g, "") : "unknown";
+    // 安全檔名
+    const safeName = map.name ? map.name.replace(/[^\w\u4e00-\u9fa5]/g, "") : "unknown";
 
-  // 建立可回退圖片
-  function createImageWithFallbacks(basePath, altText) {
-    const extensions = [".png", ".bmp", ".jpg"];
-    let attempt = 0;
+    // 建立可回退圖片
+    function createImageWithFallbacks(basePath, altText) {
+      const extensions = [".png", ".bmp", ".jpg"];
+      let attempt = 0;
 
-    const img = document.createElement("img");
-    img.alt = altText;
-    img.style.objectFit = "contain";
-    img.style.maxWidth = "100%";
+      const img = document.createElement("img");
+      img.alt = altText;
+      img.style.objectFit = "contain";
+      img.style.maxWidth = "100%";
 
-    function tryNext() {
-      img.src = basePath + extensions[attempt];
-      img.onerror = () => {
-        attempt++;
-        if (attempt < extensions.length) {
-          tryNext(); // 試下一個副檔名
-        } else {
-          img.remove(); // ❌ 全部失敗就不顯示圖片
-        }
-      };
+      function tryNext() {
+        img.src = basePath + extensions[attempt];
+        img.onerror = () => {
+          attempt++;
+          if (attempt < extensions.length) {
+            tryNext();
+          } else {
+            img.src = "/mo_data/pic/map/no_image.jpg"; // 全部失敗時用預設圖
+          }
+        };
+      }
+
+      tryNext();
+      return img;
     }
 
-    tryNext();
-    return img;
+    const baseFront = `/mo_data/pic/map/${safeName}`;
+    const frontImage = createImageWithFallbacks(baseFront, `${map.name} 地圖`);
+
+    const imgContainer = document.createElement("div");
+    imgContainer.className = "map-images";
+    imgContainer.style.display = "flex";
+    imgContainer.style.gap = "10px";
+    imgContainer.style.marginBottom = "20px";
+    imgContainer.appendChild(frontImage);
+
+    // Modal 主內容
+    contentDiv.innerHTML = `
+      <h2 class="map-name">${map.name || map.mapid || "未知地圖"}</h2>
+    `;
+    contentDiv.appendChild(imgContainer);
+
+    const detailHTML = `
+      <div class="map-details">
+        <p><strong>垃圾：</strong>${map.drop_rubbish || "—"}</p>
+        <p><strong>光輝掉落（掉落較多）：</strong>${map.drop_glory_high || "—"}</p>
+        <p class="section-gap"><strong>光輝掉落（掉落較低）：</strong>${map.drop_glory_low || "—"}</p>
+        <p class="section-gap"><strong>光輝掉落（玩家提供）：</strong>${map.player || "—"}</p>
+      </div>
+    `;
+
+    contentDiv.insertAdjacentHTML("beforeend", detailHTML);
+
+    overlay.style.display = "block";
+    modalBox.style.display = "block";
   }
-
-  // === 建立圖片 ===
-  const baseFront = `/mo_data/pic/map/${safeName}`;
-  const imgContainer = document.createElement("div");
-  imgContainer.className = "map-images";
-  imgContainer.style.display = "flex";
-  imgContainer.style.gap = "10px";
-  imgContainer.style.marginBottom = "20px";
-
-  const frontImage = createImageWithFallbacks(baseFront, `${map.name || map.mapid} 地圖`);
-  imgContainer.appendChild(frontImage);
-
-  // === Modal 主內容 ===
-  const titleHTML = `<h2 class="map-name">${map.name || map.mapid || "未知地圖"}</h2>`;
-  contentDiv.insertAdjacentHTML("beforeend", titleHTML);
-  contentDiv.appendChild(imgContainer);
-
-  const detailHTML = `
-    <div class="hero-details-container" style="display:flex; gap: 20px;">
-      <p><strong>垃圾：</strong>${map.drop_rubbish || "—"}</p>
-      <p><strong>光輝掉落（掉落較多）：</strong>${map.drop_glory_high || "—"}</p>
-      <p class="section-gap"><strong>光輝掉落（掉落較低）：</strong>${map.drop_glory_low || "—"}</p>
-      <p class="section-gap"><strong>光輝掉落（玩家提供）：</strong>${map.player || "—"}</p>
-    </div>
-  `;
-  contentDiv.insertAdjacentHTML("beforeend", detailHTML);
-
-  overlay.style.display = "block";
-  modalBox.style.display = "block";
-}
-
 
   // 關閉 Modal
   const closeBtn = document.querySelector("#modalBox .close-btn");
