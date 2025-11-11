@@ -50,6 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const fields = [
           item.card_id,
           item.card_lv,
+          item.card_property,
           item.card_class,
           item.card_mp,
           item.MP_ordinary,
