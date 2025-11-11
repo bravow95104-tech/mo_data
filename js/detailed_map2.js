@@ -67,9 +67,8 @@ function initCardTable(data) {
       const tr = document.createElement("tr");
       const fields = [
         item.mapid,
-        item.drop_rubbish,
-        item.drop_glory_high,
-        item.drop_glory_low,
+        item.maplv,
+
       ];
 
       fields.forEach(value => {
@@ -128,13 +127,13 @@ function initCardTable(data) {
     const contentDiv = document.getElementById("modalContent");
 
     const img = new Image();
-    img.alt = item.card_id;
+    img.alt = item.mapid;
     img.className = "hero-image";
     img.style.width = "100%";
     img.style.height = "auto";
     img.style.objectFit = "contain";
 
-    const path = `/mo_data/pic/map/${encodeURIComponent(item.card_id)}.png`;
+    const path = `/mo_data/pic/map/${encodeURIComponent(item.mapid)}.png`;
 
     try {
       await new Promise((resolve, reject) => {
@@ -148,16 +147,15 @@ function initCardTable(data) {
     }
 
     const html = `
-      <h2 class="hero-name">${item.card_id}</h2>
+      <h2 class="hero-name">${item.mapid}</h2>
       <div class="hero-details-container" style="display:flex; gap: 20px;">
         <div class="hero-column left" style="flex:1;"></div>
-        <div class="hero-column right" style="flex:1;">
-          <p><strong>專卡名稱：</strong>${item.card_id}</p>
-          <p class="section-gap"><strong>等級：</strong>${item.card_lv}</p>
-          <p><strong>屬性：</strong>${item.card_property} <strong>+</strong> ${item.card_data}</p>
-          <p><strong>倍率：</strong>${item.nemultiplier}</p>
-          <p class="section-gap"><strong>專屬英雄：</strong>${item.hero_name}</p>
-        </div>
+      </div>
+
+      <div class="hero-column-details">
+        <p><strong>光輝掉落(掉落較多)：</strong>${item.drop_glory_high}</p>
+        <p class="section-gap"><strong>光輝掉落(掉落較低)：</strong>${item.drop_glory_low}</p>
+        <p class="section-gap"><strong>光輝掉落(玩家提供)：</strong>-</p>
       </div>
     `;
 
