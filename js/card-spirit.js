@@ -18,6 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // 初始化表格與搜尋功能
   function initCardTable(data) {
+    const searchName = document.getElementById("search");  // 新增的名稱搜尋框
     const searchFirst = document.getElementById("searchFirst");
     const searchSecond = document.getElementById("searchSecond");
     const searchThird = document.getElementById("searchThird");
@@ -28,6 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const uniqueFirst = new Set();
       const uniqueSecond = new Set();
       const uniqueThird = new Set();
+      const uniqueNames = new Set(); // 新增一个 Set 用来存储卡片名称
 
       data.forEach(item => {
         if (item.property_first) uniqueFirst.add(item.property_first);
@@ -45,6 +47,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (v) uniqueThird.add(v);
           });
         }
+        if (item.card_id) uniqueNames.add(item.card_id);  // 将 card_id 添加到 uniqueNames
       });
 
       function fillDatalist(id, items) {
@@ -61,6 +64,7 @@ document.addEventListener("DOMContentLoaded", () => {
       fillDatalist("propertyFirstList", uniqueFirst);
       fillDatalist("propertySecondList", uniqueSecond);
       fillDatalist("propertyThirdList", uniqueThird);
+      fillDatalist("property", uniqueNames);  // 用 card_id 填充到 datalist 中
     }
 
     // 渲染表格內容
@@ -110,6 +114,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const keywordFirst = searchFirst.value.trim().toLowerCase();
       const keywordSecond = searchSecond.value.trim().toLowerCase();
       const keywordThird = searchThird.value.trim().toLowerCase();
+      const keywordName = searchName.value.trim().toLowerCase();  // 搜索卡片名称（card_id）
 
       const filtered = data.filter(item => {
         const matchFirst = !keywordFirst || (item.property_first || "").toLowerCase().includes(keywordFirst);
@@ -120,7 +125,9 @@ document.addEventListener("DOMContentLoaded", () => {
           (item.property_third || "").toLowerCase().includes(keywordThird) ||
           (item.property_third || "").toLowerCase().includes("隨機");
 
-        return matchFirst && matchSecond && matchThird;
+        const matchName = !keywordName || (item.card_id || "").toLowerCase().includes(keywordName);  // 过滤 card_id
+
+        return matchFirst && matchSecond && matchThird && matchName;
       });
 
       renderTable(filtered);
@@ -136,6 +143,7 @@ document.addEventListener("DOMContentLoaded", () => {
       searchFirst.value = "";
       searchSecond.value = "";
       searchThird.value = "";
+      searchName.value = "";  // 清除名称搜索框
       applyFilters();
     });
 
