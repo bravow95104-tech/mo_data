@@ -18,10 +18,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // 初始化表格與搜尋功能
   function initCardTable(data) {
-    const searchName = document.getElementById("searchInput1");  // 新增的名稱搜尋框
     const searchFirst = document.getElementById("searchFirst");
     const searchSecond = document.getElementById("searchSecond");
     const searchThird = document.getElementById("searchThird");
+    const searchName = document.getElementById("searchInput1");  // 定義名稱搜尋框
     const clearFiltersBtn = document.getElementById("clearFilters");
 
     // 填充 datalist 選項，並拆開「、」拆字串去重
@@ -62,7 +62,6 @@ document.addEventListener("DOMContentLoaded", () => {
       fillDatalist("propertyFirstList", uniqueFirst);
       fillDatalist("propertySecondList", uniqueSecond);
       fillDatalist("propertyThirdList", uniqueThird);
-    
     }
 
     // 渲染表格內容
@@ -112,7 +111,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const keywordFirst = searchFirst.value.trim().toLowerCase();
       const keywordSecond = searchSecond.value.trim().toLowerCase();
       const keywordThird = searchThird.value.trim().toLowerCase();
-
+      const keywordName = searchName.value.trim().toLowerCase();  // 搜索卡片名稱（card_id）
 
       const filtered = data.filter(item => {
         const matchFirst = !keywordFirst || (item.property_first || "").toLowerCase().includes(keywordFirst);
@@ -122,16 +121,16 @@ document.addEventListener("DOMContentLoaded", () => {
         const matchThird = !keywordThird ||
           (item.property_third || "").toLowerCase().includes(keywordThird) ||
           (item.property_third || "").toLowerCase().includes("隨機");
+        const matchName = !keywordName || (item.card_id || "").toLowerCase().includes(keywordName);
 
-        
-        return matchFirst && matchSecond && matchThird ;
+        return matchFirst && matchSecond && matchThird && matchName;
       });
 
       renderTable(filtered);
     }
 
     // 綁定輸入事件：輸入或選擇時篩選
-    [searchFirst, searchSecond, searchThird].forEach(input => {
+    [searchFirst, searchSecond, searchThird, searchName].forEach(input => {
       input.addEventListener("input", applyFilters);
     });
 
@@ -144,56 +143,58 @@ document.addEventListener("DOMContentLoaded", () => {
       applyFilters();
     });
 
+    // 初始化選單與表格
+    populateDatalists(data);  // 在渲染表格之前填充 datalist
+    renderTable(data);        // 渲染表格
+  }
+
   // === 檔名過濾：保留中文、數字、英文、底線、括號 ===
   function encodeFileName(name) {
     return name.replace(/[^\w\u4e00-\u9fa5()]/g, '');
   }
 
-// === Modal 顯示 ===
-function showDetailModal(item) {
-  const overlay = document.getElementById('modalOverlay');
-  const modalBox = document.getElementById('modalBox');
-  const contentDiv = document.getElementById('modalContent');
+  // === Modal 顯示 ===
+  function showDetailModal(item) {
+    const overlay = document.getElementById('modalOverlay');
+    const modalBox = document.getElementById('modalBox');
+    const contentDiv = document.getElementById('modalContent');
 
-  if (!overlay || !modalBox || !contentDiv) {
-    console.error("❌ 找不到 Modal 元素");
-    return;
-  }
+    if (!overlay || !modalBox || !contentDiv) {
+      console.error("❌ 找不到 Modal 元素");
+      return;
+    }
 
-  // 清空舊內容
-  contentDiv.innerHTML = "";
+    // 清空舊內容
+    contentDiv.innerHTML = "";
 
-  // 建立圖片元素
-  const img = document.createElement("img");
-  img.className = "hero-image";
-  img.alt = item.card_id || "card-image";
-  img.src = `/mo_data/pic/card-spirit/${encodeFileName(item.card_id)}.png`;
-  img.onerror = () => {
-  };
+    // 建立圖片元素
+    const img = document.createElement("img");
+    img.className = "hero-image";
+    img.alt = item.card_id || "card-image";
+    img.src = `/mo_data/pic/card-spirit/${encodeFileName(item.card_id)}.png`;
+    img.onerror = () => {};
 
-  // 建立整體結構
-  const html = `
-    <div class="hero-details-container">
-      <div class="hero-column">
-        <h2 class="hero-name">${item.card_id}</h2>
+    // 建立整體結構
+    const html = `
+      <div class="hero-details-container">
+        <div class="hero-column">
+          <h2 class="hero-name">${item.card_id}</h2>
+        </div>
+        <div class="hero-column" id="imgContainer"></div>
       </div>
-      <div class="hero-column" id="imgContainer"></div>
-    </div>
-  `;
+    `;
 
-  // 插入 HTML
-  contentDiv.innerHTML = html;
+    // 插入 HTML
+    contentDiv.innerHTML = html;
 
-  // 將圖片插入第二欄
-  const imgContainer = contentDiv.querySelector("#imgContainer");
-  if (imgContainer) imgContainer.appendChild(img);
+    // 將圖片插入第二欄
+    const imgContainer = contentDiv.querySelector("#imgContainer");
+    if (imgContainer) imgContainer.appendChild(img);
 
-  // 顯示 Modal
-  overlay.style.display = 'block';
-  modalBox.style.display = 'block';
-}
-
-
+    // 顯示 Modal
+    overlay.style.display = 'block';
+    modalBox.style.display = 'block';
+  }
 
   // === 關閉 Modal ===
   function closeModal() {
@@ -204,9 +205,4 @@ function showDetailModal(item) {
   const closeBtn = document.querySelector('#modalBox .close-btn');
   closeBtn.addEventListener('click', closeModal);
   document.getElementById('modalOverlay').addEventListener('click', closeModal);
-
-    // 初始化選單與表格
-    populateDatalists(data);
-    renderTable(data);
-  }
 });
