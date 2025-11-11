@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
     })
     .catch(err => {
       console.error("❌ JSON 載入失敗：", err);
-      const tbody = document.querySelector("#card-equip-table tbody");
+      const tbody = document.querySelector("#map-table tbody");
       if (tbody)
         tbody.innerHTML = "<tr><td colspan='6'>無法載入資料</td></tr>";
     });
@@ -44,7 +44,7 @@ function initCardTable(data) {
   const searchInput = document.getElementById("searchInput");
   const clearBtn = document.getElementById("clearFilters");
   const filterBtns = document.querySelectorAll(".filter-btn");
-  const tbody = document.querySelector("#card-equip-table tbody");
+  const tbody = document.querySelector("#map-table tbody");
 
   let activeFilters = {
     mapid: [],
