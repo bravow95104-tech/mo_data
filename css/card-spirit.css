@@ -36,6 +36,16 @@ thead th {
   max-width: 250px; /* 限制寬度 */
 }
 /*快速搜尋*/
+#searchInput1 {
+  padding: 6px 10px;
+  width: 100%;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  max-width: 250px; /* 限制寬度 */
+}
+/*快速搜尋*/
 #searchFirst {
   padding: 6px 10px;
   width: 100%;
