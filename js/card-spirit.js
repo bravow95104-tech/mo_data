@@ -21,10 +21,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const searchFirst = document.getElementById("searchFirst");
     const searchSecond = document.getElementById("searchSecond");
     const searchThird = document.getElementById("searchThird");
-    const searchName = document.getElementById("searchInput1");  // 定義名稱搜尋框
+    const searchName = document.getElementById("searchInput1"); // 名稱搜尋框
     const clearFiltersBtn = document.getElementById("clearFilters");
 
-    // 填充 datalist 選項，並拆開「、」拆字串去重
+    // 填充 datalist 選項
     function populateDatalists(data) {
       const uniqueFirst = new Set();
       const uniqueSecond = new Set();
@@ -64,7 +64,7 @@ document.addEventListener("DOMContentLoaded", () => {
       fillDatalist("propertyThirdList", uniqueThird);
     }
 
-    // 渲染表格內容
+    // 渲染表格內容（包含高亮顯示）
     function renderTable(filteredData) {
       const tbody = document.querySelector("#card-equip-table tbody");
       tbody.innerHTML = "";
@@ -78,23 +78,32 @@ document.addEventListener("DOMContentLoaded", () => {
         const tr = document.createElement("tr");
 
         const fields = [
-          item.card_id,
-          item.card_lv,
-          item.property_first,
-          item.property_second,
-          item.property_third,
+          item.card_id,           // 名稱
+          item.card_lv,           // 等級
+          item.property_first,    // 第一屬性
+          item.property_second,   // 第二屬性
+          item.property_third,    // 第三屬性
         ];
 
         fields.forEach((value, index) => {
           const td = document.createElement("td");
           let text = String(value || "");
-          const keyword = [searchFirst.value, searchSecond.value, searchThird.value, searchName.value][index - 2];
-          if (index >= 2 && keyword) {
+          let keyword = "";
+
+          // 🔍 對應不同欄位的搜尋框
+          if (index === 0) keyword = searchName.value.trim();
+          else if (index === 2) keyword = searchFirst.value.trim();
+          else if (index === 3) keyword = searchSecond.value.trim();
+          else if (index === 4) keyword = searchThird.value.trim();
+
+          // ✅ 有輸入關鍵字時高亮顯示
+          if (keyword) {
             const regex = new RegExp(`(${keyword})`, "gi");
             td.innerHTML = text.replace(regex, "<span class='highlight2'>$1</span>");
           } else {
             td.textContent = text;
           }
+
           tr.appendChild(td);
         });
 
@@ -111,7 +120,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const keywordFirst = searchFirst.value.trim().toLowerCase();
       const keywordSecond = searchSecond.value.trim().toLowerCase();
       const keywordThird = searchThird.value.trim().toLowerCase();
-      const keywordName = searchName.value.trim().toLowerCase();  // 搜索卡片名稱（card_id）
+      const keywordName = searchName.value.trim().toLowerCase();
 
       const filtered = data.filter(item => {
         const matchFirst = !keywordFirst || (item.property_first || "").toLowerCase().includes(keywordFirst);
@@ -129,23 +138,23 @@ document.addEventListener("DOMContentLoaded", () => {
       renderTable(filtered);
     }
 
-    // 綁定輸入事件：輸入或選擇時篩選
+    // 綁定輸入事件
     [searchFirst, searchSecond, searchThird, searchName].forEach(input => {
       input.addEventListener("input", applyFilters);
     });
 
-    // 清除篩選按鈕事件
+    // 清除篩選按鈕
     clearFiltersBtn.addEventListener("click", () => {
       searchFirst.value = "";
       searchSecond.value = "";
       searchThird.value = "";
-      searchName.value = "";  // 清除名称搜索框
+      searchName.value = "";
       applyFilters();
     });
 
-    // 初始化選單與表格
-    populateDatalists(data);  // 在渲染表格之前填充 datalist
-    renderTable(data);        // 渲染表格
+    // 初始化
+    populateDatalists(data);
+    renderTable(data);
   }
 
   // === 檔名過濾：保留中文、數字、英文、底線、括號 ===
@@ -164,17 +173,14 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    // 清空舊內容
     contentDiv.innerHTML = "";
 
-    // 建立圖片元素
     const img = document.createElement("img");
     img.className = "hero-image";
     img.alt = item.card_id || "card-image";
     img.src = `/mo_data/pic/card-spirit/${encodeFileName(item.card_id)}.png`;
     img.onerror = () => {};
 
-    // 建立整體結構
     const html = `
       <div class="hero-details-container">
         <div class="hero-column">
@@ -184,14 +190,11 @@ document.addEventListener("DOMContentLoaded", () => {
       </div>
     `;
 
-    // 插入 HTML
     contentDiv.innerHTML = html;
 
-    // 將圖片插入第二欄
     const imgContainer = contentDiv.querySelector("#imgContainer");
     if (imgContainer) imgContainer.appendChild(img);
 
-    // 顯示 Modal
     overlay.style.display = 'block';
     modalBox.style.display = 'block';
   }
