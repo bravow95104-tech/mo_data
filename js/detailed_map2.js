@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
 function preloadCardImages(data) {
   data.forEach(item => {
     const img = new Image();
-    img.src = `/mo_data/pic/map/${encodeURIComponent(item.card_id)}.png`;
+    img.src = `/mo_data/pic/map/${encodeURIComponent(item.card_id)}.jpg`;
   });
 }
 
@@ -148,19 +148,18 @@ function initCardTable(data) {
 
     const html = `
       <h2 class="hero-name">${item.mapid}</h2>
-      <div class="hero-details-container" style="display:flex; gap: 20px;">
-        
-      </div>
-      <br />
+        <div class="hero-column-details" style="flex:1;"></div>
+    </br>
       <div class="hero-column-details">
-        <p><strong>光輝掉落(掉落較多)：</strong>${item.drop_glory_high}</p>
-        <p class="section-gap"><strong>光輝掉落(掉落較低)：</strong>${item.drop_glory_low}</p>
+        <p><strong>垃圾掉落：</strong>${item.drop_rubbish}</p>
+        <p class="section-gap"><strong>光輝掉落(掉落較多)：</strong><span>${item.drop_glory_high}</span></p>
+        <p class="section-gap"><strong>光輝掉落(掉落較低)：</strong><span>${item.drop_glory_low}</span></p>
         <p class="section-gap"><strong>光輝掉落(玩家提供)：</strong>-</p>
       </div>
     `;
 
     contentDiv.innerHTML = html;
-    contentDiv.querySelector(".hero-column.left").appendChild(img);
+    contentDiv.querySelector(".hero-column-details").appendChild(img);
 
     overlay.style.display = "block";
     modalBox.style.display = "block";

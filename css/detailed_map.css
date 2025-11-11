@@ -183,7 +183,7 @@ tbody tr:hover {
   font-size: 24px;
   color: #3399ff;
   margin-bottom: 20px;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #ddd !important;
   padding-bottom: 10px;
 }
 
@@ -220,6 +220,20 @@ tbody tr:hover {
   border-radius: 6px;        /* 可選：圓角讓框框好看 */
   box-shadow: 0 1px 4px rgba(0,0,0,0.1);
 }
+.hero-column-details p {
+  display: flex;            /* 使用 Flex */
+  margin: 8px 0;
+  line-height: 1.5;
+}
+.hero-column-details p strong {
+  flex: 0 0 160px;          /* 固定標題寬度，冒號對齊 */
+  font-weight: bold;
+}
+
+.hero-column-details p span {
+  flex: 1 1 auto;           /* 剩餘空間自動填滿，換行對齊 */
+}
+
 #modalContent {
   padding: 10px;
   font-size: 16px;
