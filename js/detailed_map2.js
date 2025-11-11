@@ -133,7 +133,7 @@ function initCardTable(data) {
     img.style.height = "auto";
     img.style.objectFit = "contain";
 
-    const path = `/mo_data/pic/map/${encodeURIComponent(item.mapid)}.png`;
+    const path = `/mo_data/pic/map/${item.mapid}.jpg`;
 
     try {
       await new Promise((resolve, reject) => {
