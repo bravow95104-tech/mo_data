@@ -47,9 +47,10 @@ function initCardTable(data) {
   const tbody = document.querySelector("#card-equip-table tbody");
 
   let activeFilters = {
-    card_property: [],
-    multiplier: [],
-    new_old: [],
+    mapid: [],
+    drop_rubbish: [],
+    drop_glory_high: [],
+    drop_glory_low: [],
   };
 
   // === 表格渲染 ===
@@ -66,10 +67,9 @@ function initCardTable(data) {
       const tr = document.createElement("tr");
       const fields = [
         item.mapid,
-        item.traits,
+        item.drop_rubbish,
         item.drop_glory_high,
         item.drop_glory_low,
-        item.player
       ];
 
       fields.forEach(value => {
