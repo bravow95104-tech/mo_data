@@ -149,9 +149,9 @@ function initCardTable(data) {
     const html = `
       <h2 class="hero-name">${item.mapid}</h2>
       <div class="hero-details-container" style="display:flex; gap: 20px;">
-        <div class="hero-column left" style="flex:1;"></div>
+        
       </div>
-
+      <br />
       <div class="hero-column-details">
         <p><strong>光輝掉落(掉落較多)：</strong>${item.drop_glory_high}</p>
         <p class="section-gap"><strong>光輝掉落(掉落較低)：</strong>${item.drop_glory_low}</p>
