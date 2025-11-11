@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // 初始化表格與搜尋功能
   function initCardTable(data) {
-    const searchName = document.getElementById("search");  // 新增的名稱搜尋框
+    const searchName = document.getElementById("searchInput1");  // 新增的名稱搜尋框
     const searchFirst = document.getElementById("searchFirst");
     const searchSecond = document.getElementById("searchSecond");
     const searchThird = document.getElementById("searchThird");
