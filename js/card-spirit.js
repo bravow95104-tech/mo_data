@@ -88,7 +88,7 @@ document.addEventListener("DOMContentLoaded", () => {
         fields.forEach((value, index) => {
           const td = document.createElement("td");
           let text = String(value || "");
-          const keyword = [searchFirst.value, searchSecond.value, searchThird.value][index - 2];
+          const keyword = [searchFirst.value, searchSecond.value, searchThird.value, searchName.value][index - 2];
           if (index >= 2 && keyword) {
             const regex = new RegExp(`(${keyword})`, "gi");
             td.innerHTML = text.replace(regex, "<span class='highlight2'>$1</span>");
