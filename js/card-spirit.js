@@ -112,7 +112,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const keywordFirst = searchFirst.value.trim().toLowerCase();
       const keywordSecond = searchSecond.value.trim().toLowerCase();
       const keywordThird = searchThird.value.trim().toLowerCase();
-      const keywordName = searchName.value.trim().toLowerCase();  // 搜索卡片名称（card_id）
+
 
       const filtered = data.filter(item => {
         const matchFirst = !keywordFirst || (item.property_first || "").toLowerCase().includes(keywordFirst);
@@ -123,9 +123,8 @@ document.addEventListener("DOMContentLoaded", () => {
           (item.property_third || "").toLowerCase().includes(keywordThird) ||
           (item.property_third || "").toLowerCase().includes("隨機");
 
-        const matchName = !keywordName || (item.card_id || "").toLowerCase().includes(keywordName);  // 过滤 card_id
-
-        return matchFirst && matchSecond && matchThird && matchName;
+        
+        return matchFirst && matchSecond && matchThird ;
       });
 
       renderTable(filtered);
