@@ -29,7 +29,6 @@ document.addEventListener("DOMContentLoaded", () => {
       const uniqueFirst = new Set();
       const uniqueSecond = new Set();
       const uniqueThird = new Set();
-      const uniqueNames = new Set(); // 新增一个 Set 用来存储卡片名称
 
       data.forEach(item => {
         if (item.property_first) uniqueFirst.add(item.property_first);
@@ -47,7 +46,6 @@ document.addEventListener("DOMContentLoaded", () => {
             if (v) uniqueThird.add(v);
           });
         }
-        if (item.card_id) uniqueNames.add(item.card_id);  // 将 card_id 添加到 uniqueNames
       });
 
       function fillDatalist(id, items) {
@@ -64,7 +62,7 @@ document.addEventListener("DOMContentLoaded", () => {
       fillDatalist("propertyFirstList", uniqueFirst);
       fillDatalist("propertySecondList", uniqueSecond);
       fillDatalist("propertyThirdList", uniqueThird);
-      fillDatalist("property", uniqueNames);  // 用 card_id 填充到 datalist 中
+    
     }
 
     // 渲染表格內容
