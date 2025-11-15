@@ -274,9 +274,12 @@ body {
 }
 
 /* 資料提供 */
+.info-wrapper {
+  display: flex;
+  justify-content: flex-end; /* 向右 */
+}
+
 .Information  {
-  top: 90px;             /* 距離上方 */
-  right: 40px;           /* 貼齊右邊 */
   background: #ffefc0;
   border: 1px solid #ffc107;
   color: #b8860b;
