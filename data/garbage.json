@@ -1,0 +1,674 @@
+[
+  {
+    "class": "第一類",
+    "name": "奇怪的草菇",
+    "family": "1 / 2 / 5",
+    "renown": "1 / 2 / 5",
+    "contribute": "1 / 1 / 2"
+  },
+  {
+    "class": "第一類",
+    "name": "男人的胸毛",
+    "family": "1 / 2 / 5",
+    "renown": "1 / 2 / 5",
+    "contribute": "1 / 1 / 2"
+  },
+  {
+    "class": "第一類",
+    "name": "蛇膽",
+    "family": "1 / 2 / 5",
+    "renown": "1 / 2 / 5",
+    "contribute": "1 / 1 / 2"
+  },
+  {
+    "class": "第一類",
+    "name": "狐狸尾巴",
+    "family": "1 / 2 / 5",
+    "renown": "1 / 2 / 5",
+    "contribute": "1 / 1 / 2"
+  },
+  {
+    "class": "第一類",
+    "name": "鴨羽毛",
+    "family": "1 / 2 / 5",
+    "renown": "1 / 2 / 5",
+    "contribute": "1 / 1 / 2"
+  },
+  {
+    "class": "第一類",
+    "name": "火蟻",
+    "family": "1 / 2 / 5",
+    "renown": "1 / 2 / 5",
+    "contribute": "1 / 1 / 2"
+  },
+  {
+    "class": "第二類",
+    "name": "老鼠尾巴",
+    "family": "2 / 5 / 7",
+    "renown": "2 / 5 / 7",
+    "contribute": "1 / 2 / 3"
+  },
+  {
+    "class": "第三類",
+    "name": "蚊子的翅膀",
+    "family": "3 / 6 / 10",
+    "renown": "3 / 6 / 10",
+    "contribute": "1 / 2 / 5"
+  },
+  {
+    "class": "第三類",
+    "name": "老鼠大便",
+    "family": "3 / 6 / 10",
+    "renown": "3 / 6 / 10",
+    "contribute": "1 / 2 / 5"
+  },
+  {
+    "class": "第三類",
+    "name": "玻璃彈珠",
+    "family": "3 / 6 / 10",
+    "renown": "3 / 6 / 10",
+    "contribute": "1 / 2 / 5"
+  },
+  {
+    "class": "第三類",
+    "name": "向日葵",
+    "family": "3 / 6 / 10",
+    "renown": "3 / 6 / 10",
+    "contribute": "1 / 2 / 5"
+  },
+  {
+    "class": "第三類",
+    "name": "蚌殼",
+    "family": "3 / 6 / 10",
+    "renown": "3 / 6 / 10",
+    "contribute": "1 / 2 / 5"
+  },
+  {
+    "class": "第三類",
+    "name": "魚骨頭",
+    "family": "3 / 6 / 10",
+    "renown": "3 / 6 / 10",
+    "contribute": "1 / 2 / 5"
+  },
+  {
+    "class": "第四類",
+    "name": "烏鴉蛋",
+    "family": "5 / 10 / 15",
+    "renown": "5 / 10 / 15",
+    "contribute": "2 / 5 / 7"
+  },
+  {
+    "class": "第四類",
+    "name": "貓頭鷹的爪子",
+    "family": "5 / 10 / 15",
+    "renown": "5 / 10 / 15",
+    "contribute": "2 / 5 / 7"
+  },
+  {
+    "class": "第四類",
+    "name": "假髮",
+    "family": "5 / 10 / 15",
+    "renown": "5 / 10 / 15",
+    "contribute": "2 / 5 / 7"
+  },
+  {
+    "class": "第四類",
+    "name": "蛇皮",
+    "family": "5 / 10 / 15",
+    "renown": "5 / 10 / 15",
+    "contribute": "2 / 5 / 7"
+  },
+  {
+    "class": "第四類",
+    "name": "破鏡子",
+    "family": "5 / 10 / 15",
+    "renown": "5 / 10 / 15",
+    "contribute": "2 / 5 / 7"
+  },
+  {
+    "class": "第四類",
+    "name": "蟲卵",
+    "family": "5 / 10 / 15",
+    "renown": "5 / 10 / 15",
+    "contribute": "2 / 5 / 7"
+  },
+  {
+    "class": "第四類",
+    "name": "笑假面",
+    "family": "5 / 10 / 15",
+    "renown": "5 / 10 / 15",
+    "contribute": "2 / 5 / 7"
+  },
+  {
+    "class": "第四類",
+    "name": "浴巾",
+    "family": "5 / 10 / 15",
+    "renown": "5 / 10 / 15",
+    "contribute": "2 / 5 / 7"
+  },
+  {
+    "class": "第五類",
+    "name": "花盆",
+    "family": "7 /15 / 22",
+    "renown": "7 /15 / 22",
+    "contribute": "3 / 7 / 10"
+  },
+  {
+    "class": "第五類",
+    "name": "玩具弓箭",
+    "family": "7 /15 / 22",
+    "renown": "7 /15 / 22",
+    "contribute": "3 / 7 / 10"
+  },
+  {
+    "class": "第五類",
+    "name": "漁網",
+    "family": "7 /15 / 22",
+    "renown": "7 /15 / 22",
+    "contribute": "3 / 7 / 10"
+  },
+  {
+    "class": "第五類",
+    "name": "釣竿",
+    "family": "7 /15 / 22",
+    "renown": "7 /15 / 22",
+    "contribute": "3 / 7 / 10"
+  },
+  {
+    "class": "第五類",
+    "name": "水賊的頭巾",
+    "family": "7 /15 / 22",
+    "renown": "7 /15 / 22",
+    "contribute": "3 / 7 / 10"
+  },
+  {
+    "class": "第五類",
+    "name": "四臂猿的毛髮",
+    "family": "7 /15 / 22",
+    "renown": "7 /15 / 22",
+    "contribute": "3 / 7 / 10"
+  },
+  {
+    "class": "第五類",
+    "name": "翹鬍子",
+    "family": "7 /15 / 22",
+    "renown": "7 /15 / 22",
+    "contribute": "3 / 7 / 10"
+  },
+  {
+    "class": "第五類",
+    "name": "黃金中指",
+    "family": "7 /15 / 22",
+    "renown": "7 /15 / 22",
+    "contribute": "3 / 7 / 10"
+  },
+  {
+    "class": "第五類",
+    "name": "女水賊的髮釵",
+    "family": "7 /15 / 22",
+    "renown": "7 /15 / 22",
+    "contribute": "3 / 7 / 10"
+  },
+  {
+    "class": "第五類",
+    "name": "海豹皮",
+    "family": "7 /15 / 22",
+    "renown": "7 /15 / 22",
+    "contribute": "3 / 7 / 10"
+  },
+  {
+    "class": "第五類",
+    "name": "玩具眼球",
+    "family": "7 /15 / 22",
+    "renown": "7 /15 / 22",
+    "contribute": "3 / 7 / 10"
+  },
+  {
+    "class": "第五類",
+    "name": "恐龍化石",
+    "family": "7 /15 / 22",
+    "renown": "7 /15 / 22",
+    "contribute": "3 / 7 / 10"
+  },
+  {
+    "class": "第六類",
+    "name": "斷刀",
+    "family": "10 / 20 / 30",
+    "renown": "10 / 20 / 30",
+    "contribute": "5 / 10 / 15"
+  },
+  {
+    "class": "第六類",
+    "name": "白額虎皮",
+    "family": "10 / 20 / 30",
+    "renown": "10 / 20 / 30",
+    "contribute": "5 / 10 / 15"
+  },
+  {
+    "class": "第六類",
+    "name": "迴力鏢",
+    "family": "10 / 20 / 30",
+    "renown": "10 / 20 / 30",
+    "contribute": "5 / 10 / 15"
+  },
+  {
+    "class": "第六類",
+    "name": "墨汁",
+    "family": "10 / 20 / 30",
+    "renown": "10 / 20 / 30",
+    "contribute": "5 / 10 / 15"
+  },
+  {
+    "class": "第六類",
+    "name": "八卦",
+    "family": "10 / 20 / 30",
+    "renown": "10 / 20 / 30",
+    "contribute": "5 / 10 / 15"
+  },
+  {
+    "class": "第六類",
+    "name": "船槳",
+    "family": "10 / 20 / 30",
+    "renown": "10 / 20 / 30",
+    "contribute": "5 / 10 / 15"
+  },
+  {
+    "class": "第六類",
+    "name": "香菇牛仔帽",
+    "family": "10 / 20 / 30",
+    "renown": "10 / 20 / 30",
+    "contribute": "5 / 10 / 15"
+  },
+  {
+    "class": "第六類",
+    "name": "兔子頭",
+    "family": "10 / 20 / 30",
+    "renown": "10 / 20 / 30",
+    "contribute": "5 / 10 / 15"
+  },
+  {
+    "class": "第六類",
+    "name": "鬼火",
+    "family": "10 / 20 / 30",
+    "renown": "10 / 20 / 30",
+    "contribute": "5 / 10 / 15"
+  },
+  {
+    "class": "第六類",
+    "name": "座墊",
+    "family": "10 / 20 / 30",
+    "renown": "10 / 20 / 30",
+    "contribute": "5 / 10 / 15"
+  },
+  {
+    "class": "第六類",
+    "name": "狼牙棒",
+    "family": "10 / 20 / 30",
+    "renown": "10 / 20 / 30",
+    "contribute": "5 / 10 / 15"
+  },
+  {
+    "class": "第六類",
+    "name": "琥珀化石",
+    "family": "10 / 20 / 30",
+    "renown": "10 / 20 / 30",
+    "contribute": "5 / 10 / 15"
+  },
+  {
+    "class": "第六類",
+    "name": "補丁的褲子",
+    "family": "10 / 20 / 30",
+    "renown": "10 / 20 / 30",
+    "contribute": "5 / 10 / 15"
+  },
+  {
+    "class": "第六類",
+    "name": "蟻獅的角",
+    "family": "10 / 20 / 30",
+    "renown": "10 / 20 / 30",
+    "contribute": "5 / 10 / 15"
+  },
+  {
+    "class": "第六類",
+    "name": "碧血石",
+    "family": "10 / 20 / 30",
+    "renown": "10 / 20 / 30",
+    "contribute": "5 / 10 / 15"
+  },
+  {
+    "class": "第七類",
+    "name": "龜殼",
+    "family": "15 / 30 / 45",
+    "renown": "15 / 30 / 45",
+    "contribute": "7 / 14 / 21"
+  },
+  {
+    "class": "第七類",
+    "name": "海妖的豎琴",
+    "family": "15 / 30 / 45",
+    "renown": "15 / 30 / 45",
+    "contribute": "7 / 14 / 21"
+  },
+  {
+    "class": "第七類",
+    "name": "刺蝟皮",
+    "family": "15 / 30 / 45",
+    "renown": "15 / 30 / 45",
+    "contribute": "7 / 14 / 21"
+  },
+  {
+    "class": "第七類",
+    "name": "骷髏頭",
+    "family": "15 / 30 / 45",
+    "renown": "15 / 30 / 45",
+    "contribute": "7 / 14 / 21"
+  },
+  {
+    "class": "第七類",
+    "name": "香港腳",
+    "family": "15 / 30 / 45",
+    "renown": "15 / 30 / 45",
+    "contribute": "7 / 14 / 21"
+  },
+  {
+    "class": "第七類",
+    "name": "魚叉",
+    "family": "15 / 30 / 45",
+    "renown": "15 / 30 / 45",
+    "contribute": "7 / 14 / 21"
+  },
+  {
+    "class": "第七類",
+    "name": "龍鱗",
+    "family": "15 / 30 / 45",
+    "renown": "15 / 30 / 45",
+    "contribute": "7 / 14 / 21"
+  },
+  {
+    "class": "第七類",
+    "name": "雞爪",
+    "family": "15 / 30 / 45",
+    "renown": "15 / 30 / 45",
+    "contribute": "7 / 14 / 21"
+  },
+  {
+    "class": "第七類",
+    "name": "木乃伊繃帶",
+    "family": "15 / 30 / 45",
+    "renown": "15 / 30 / 45",
+    "contribute": "7 / 14 / 21"
+  },
+  {
+    "class": "第七類",
+    "name": "鱷魚皮包",
+    "family": "15 / 30 / 45",
+    "renown": "15 / 30 / 45",
+    "contribute": "7 / 14 / 21"
+  },
+  {
+    "class": "第七類",
+    "name": "大酒罈",
+    "family": "15 / 30 / 45",
+    "renown": "15 / 30 / 45",
+    "contribute": "7 / 14 / 21"
+  },
+  {
+    "class": "第八類",
+    "name": "屖牛角",
+    "family": "20 / 40 / 60",
+    "renown": "20 / 40 / 60",
+    "contribute": "10 / 20 / 30"
+  },
+  {
+    "class": "第八類",
+    "name": "獅子的尾巴",
+    "family": "20 / 40 / 60",
+    "renown": "20 / 40 / 60",
+    "contribute": "10 / 20 / 30"
+  },
+  {
+    "class": "第八類",
+    "name": "虎牙",
+    "family": "20 / 40 / 60",
+    "renown": "20 / 40 / 60",
+    "contribute": "10 / 20 / 30"
+  },
+  {
+    "class": "第八類",
+    "name": "針筒",
+    "family": "20 / 40 / 60",
+    "renown": "20 / 40 / 60",
+    "contribute": "10 / 20 / 30"
+  },
+  {
+    "class": "第八類",
+    "name": "鯊魚背鰭",
+    "family": "20 / 40 / 60",
+    "renown": "20 / 40 / 60",
+    "contribute": "10 / 20 / 30"
+  },
+  {
+    "class": "第八類",
+    "name": "蠻族的長矛",
+    "family": "20 / 40 / 60",
+    "renown": "20 / 40 / 60",
+    "contribute": "10 / 20 / 30"
+  },
+  {
+    "class": "第八類",
+    "name": "橡膠舌頭",
+    "family": "20 / 40 / 60",
+    "renown": "20 / 40 / 60",
+    "contribute": "10 / 20 / 30"
+  },
+  {
+    "class": "第八類",
+    "name": "四葉幸運草",
+    "family": "20 / 40 / 60",
+    "renown": "20 / 40 / 60",
+    "contribute": "10 / 20 / 30"
+  },
+  {
+    "class": "第八類",
+    "name": "豹紋比基尼",
+    "family": "20 / 40 / 60",
+    "renown": "20 / 40 / 60",
+    "contribute": "10 / 20 / 30"
+  },
+  {
+    "class": "第八類",
+    "name": "女用黑色網襪",
+    "family": "20 / 40 / 60",
+    "renown": "20 / 40 / 60",
+    "contribute": "10 / 20 / 30"
+  },
+  {
+    "class": "第八類",
+    "name": "僧人的耳環",
+    "family": "20 / 40 / 60",
+    "renown": "20 / 40 / 60",
+    "contribute": "10 / 20 / 30"
+  },
+  {
+    "class": "第八類",
+    "name": "石獅印章",
+    "family": "20 / 40 / 60",
+    "renown": "20 / 40 / 60",
+    "contribute": "10 / 20 / 30"
+  },
+  {
+    "class": "第八類",
+    "name": "鬼角",
+    "family": "20 / 40 / 60",
+    "renown": "20 / 40 / 60",
+    "contribute": "10 / 20 / 30"
+  },
+  {
+    "class": "第八類",
+    "name": "花瓣",
+    "family": "20 / 40 / 60",
+    "renown": "20 / 40 / 60",
+    "contribute": "10 / 20 / 30"
+  },
+  {
+    "class": "第九類",
+    "name": "長指甲",
+    "family": "25 / 50 / 75",
+    "renown": "25 / 50 / 75",
+    "contribute": "12 / 24 / 36"
+  },
+  {
+    "class": "第九類",
+    "name": "三角圍巾",
+    "family": "25 / 50 / 75",
+    "renown": "25 / 50 / 75",
+    "contribute": "12 / 24 / 36"
+  },
+  {
+    "class": "第九類",
+    "name": "法師鈴鐺",
+    "family": "25 / 50 / 75",
+    "renown": "25 / 50 / 75",
+    "contribute": "12 / 24 / 36"
+  },
+  {
+    "class": "第九類",
+    "name": "盔甲碎片",
+    "family": "25 / 50 / 75",
+    "renown": "25 / 50 / 75",
+    "contribute": "12 / 24 / 36"
+  },
+  {
+    "class": "第九類",
+    "name": "牛舌餅",
+    "family": "25 / 50 / 75",
+    "renown": "25 / 50 / 75",
+    "contribute": "12 / 24 / 36"
+  },
+  {
+    "class": "第九類",
+    "name": "口紅",
+    "family": "25 / 50 / 75",
+    "renown": "25 / 50 / 75",
+    "contribute": "12 / 24 / 36"
+  },
+  {
+    "class": "第十類",
+    "name": "幽靈氣球",
+    "family": "30 / 60 / 90",
+    "renown": "30 / 60 / 90",
+    "contribute": "15 / 30 / 45"
+  },
+  {
+    "class": "第十類",
+    "name": "愛的唇印",
+    "family": "30 / 60 / 90",
+    "renown": "30 / 60 / 90",
+    "contribute": "15 / 30 / 45"
+  },
+  {
+    "class": "第十類",
+    "name": "蕈菇徽章",
+    "family": "30 / 60 / 90",
+    "renown": "30 / 60 / 90",
+    "contribute": "15 / 30 / 45"
+  },
+  {
+    "class": "第十類",
+    "name": "太鼓",
+    "family": "30 / 60 / 90",
+    "renown": "30 / 60 / 90",
+    "contribute": "15 / 30 / 45"
+  },
+  {
+    "class": "第十類",
+    "name": "天王內衣",
+    "family": "30 / 60 / 90",
+    "renown": "30 / 60 / 90",
+    "contribute": "15 / 30 / 45"
+  },
+  {
+    "class": "第十類",
+    "name": "木魚",
+    "family": "30 / 60 / 90",
+    "renown": "30 / 60 / 90",
+    "contribute": "15 / 30 / 45"
+  },
+  {
+    "class": "第十類",
+    "name": "石怪模型",
+    "family": "30 / 60 / 90",
+    "renown": "30 / 60 / 90",
+    "contribute": "15 / 30 / 45"
+  },
+  {
+    "class": "第十類",
+    "name": "螺絲釘",
+    "family": "30 / 60 / 90",
+    "renown": "30 / 60 / 90",
+    "contribute": "15 / 30 / 45"
+  },
+  {
+    "class": "第十類",
+    "name": "破碎的眼鏡",
+    "family": "30 / 60 / 90",
+    "renown": "30 / 60 / 90",
+    "contribute": "15 / 30 / 45"
+  },
+  {
+    "class": "第十類",
+    "name": "假牙",
+    "family": "30 / 60 / 90",
+    "renown": "30 / 60 / 90",
+    "contribute": "15 / 30 / 45"
+  },
+  {
+    "class": "第十類",
+    "name": "蠟燭",
+    "family": "30 / 60 / 90",
+    "renown": "30 / 60 / 90",
+    "contribute": "15 / 30 / 45"
+  },
+  {
+    "class": "第十類",
+    "name": "大象雕像",
+    "family": "30 / 60 / 90",
+    "renown": "30 / 60 / 90",
+    "contribute": "15 / 30 / 45"
+  },
+  {
+    "class": "第十類",
+    "name": "綱彈標記",
+    "family": "30 / 60 / 90",
+    "renown": "30 / 60 / 90",
+    "contribute": "15 / 30 / 45"
+  },
+  {
+    "class": "第十類",
+    "name": "泳褲",
+    "family": "30 / 60 / 90",
+    "renown": "30 / 60 / 90",
+    "contribute": "15 / 30 / 45"
+  },
+  {
+    "class": "第十類",
+    "name": "娃娃的眼淚",
+    "family": "30 / 60 / 90",
+    "renown": "30 / 60 / 90",
+    "contribute": "15 / 30 / 45"
+  },
+  {
+    "class": "超級類",
+    "name": "仙女圖",
+    "family": "35 / 70 /105",
+    "renown": "35 / 70 /105",
+    "contribute": "17 / 34 / 51"
+  },
+  {
+    "class": "超級類",
+    "name": "虎王簽名本",
+    "family": "35 / 70 /105",
+    "renown": "35 / 70 /105",
+    "contribute": "17 / 34 / 51"
+  }
+]
