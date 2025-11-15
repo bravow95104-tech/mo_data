@@ -123,6 +123,25 @@ tbody tr:hover {
   color: #fff;
 }
 
+/* 清除篩選按鈕 */
+.Information  {
+  background: #ffefc0;
+  border: 1px solid #ffc107;
+  color: #b8860b;
+  border-radius: 4px;
+  padding: 4px 12px;
+  margin-top: 8px;
+  cursor: default;
+  font-size: 14px;
+  transition: background 0.2s, color 0.2s;
+  white-space: nowrap;
+}
+
+.Information:hover {
+  background: #ffc107;
+  color: #fff;
+}
+
 /* Modal 遮罩 */
 #modalOverlay {
   display: none;
