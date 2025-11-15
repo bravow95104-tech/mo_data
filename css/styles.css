@@ -136,21 +136,6 @@ body {
   max-width: 800px;
 }
 
-.sidebar-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 10px;
-}
-
-.sidebar-header h2 {
-  font-size: 1.4rem;
-  margin-bottom: 20px;
-  border-bottom: 2px solid #3399ff;
-  padding-bottom: 8px;
-  color: #267acc;
-}
-
 /* ✅ 右側側邊欄 */
 #sidebar {
   flex: 0.7;
@@ -286,6 +271,20 @@ body {
   margin-right: 20px;
   user-select: none;
   box-shadow: 0 2px 8px rgba(51, 153, 255, 0.3);
+}
+
+/* 資料提供 */
+.Information  {
+  top: 90px;             /* 距離上方 */
+  right: 40px;           /* 貼齊右邊 */
+  background: #ffefc0;
+  border: 1px solid #ffc107;
+  color: #b8860b;
+  border-radius: 6px;
+  padding: 8px 14px;
+  font-size: 14px;
+  cursor: default;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
 }
 
 /* ✅ 手機版：上下排列 */

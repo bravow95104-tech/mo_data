@@ -123,20 +123,7 @@ tbody tr:hover {
   color: #fff;
 }
 
-/* 清除篩選按鈕 */
-.Information  {
-  position: fixed;       /* 固定在螢幕上 */
-  top: 90px;             /* 距離上方 */
-  right: 20px;           /* 貼齊右邊 */
-  background: #ffefc0;
-  border: 1px solid #ffc107;
-  color: #b8860b;
-  border-radius: 6px;
-  padding: 8px 14px;
-  font-size: 14px;
-  cursor: default;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-}
+
 
 /* Modal 遮罩 */
 #modalOverlay {
