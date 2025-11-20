@@ -322,16 +322,53 @@ body {
     gap: 15px; /* 選單間距 */
 }
 
-/* === 手機版樣式 (寬度小於 768px) === */
+/* === 手機版調整：全站與內容區塊 === */
 @media (max-width: 768px) {
-    /* 1. 顯示漢堡按鈕 */
+    /* 調整 body 內邊距，讓內容在手機上不會太擠 */
+    body {
+        padding: 0 15px; 
+        padding-top: 55px; /* 配合導航列高度 */
+    }
+
+    /* 讓左右內容變成垂直堆疊 */
+    #content-wrapper {
+        flex-direction: column;
+        padding: 20px 0; /* 移除左右邊距，讓內容頂到 body 的 padding */
+        gap: 20px;
+    }
+
+    #content, #sidebar {
+        max-width: 100%;
+        width: 100%;
+        padding: 20px; /* 調整內邊距 */
+    }
+    
+    /* 讓更新日誌的 li 內容垂直排列 */
+    .changelog-list li, .sidebar-list li {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .changelog-list .date, .changelog-list .tips, .sidebar-list .date, .sidebar-list .date2 {
+        margin-bottom: 8px; /* 垂直間距 */
+        margin-right: 0;
+        width: 100%; /* 讓日期/Tips 橫向撐滿 */
+        text-align: left;
+        padding: 6px 10px;
+    }
+    
+    /* === 漢堡選單樣式 (藍色系風格統一) === */
+
+    /* 1. 手機版導航頭部 (顏色統一) */
     .nav-mobile-header {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 10px 20px;
-        background-color: #333; /* 導航列背景色 */
+        /* 沿用桌機主色 */
+        background-color: #3399ff; 
         color: white;
+        /* 左右 padding 與桌機一致 */
+        padding: 12px 40px; 
         width: 100%;
     }
 
@@ -347,19 +384,21 @@ body {
         color: white;
         text-decoration: none;
         font-weight: bold;
-        font-size: 18px;
+        font-size: 16px;
     }
 
-    /* 2. 修改選單容器，變成垂直排列並預設隱藏 */
+    /* 2. 選單容器 */
     .nav-menu {
-        display: none; /* 預設隱藏 */
+        display: none; 
         flex-direction: column;
-        background-color: #444; /* 下拉選單背景 */
+        /* 沿用桌機主色 */
+        background-color: #3399ff; 
         width: 100%;
-        position: absolute;
-        top: 50px; /* 接在 Header 下方，視情況調整 */
+        position: absolute; 
+        /* 讓選單剛好接在 header 下方 */
+        top: 100%; 
         left: 0;
-        z-index: 1000;
+        z-index: 999; 
     }
 
     /* 當被加上 .active 類別時顯示 */
@@ -367,35 +406,51 @@ body {
         display: flex;
     }
 
-    /* 3. 調整下拉選單樣式 (變成點擊展開或直接列出來) */
+    /* 3. 調整連結與下拉切換按鈕 */
     .dropdown, .nav-link {
         width: 100%;
         text-align: left;
-        border-bottom: 1px solid #555;
-    }
-
-    .dropdown-toggle {
-        padding: 15px 20px;
-        display: block;
-        width: 100%;
-    }
-
-    /* 手機版隱藏桌機專用的首頁鈕(因為上面已經有了) */
-    .desktop-only {
-        display: none;
+        /* 使用淺藍色分隔線 */
+        border-bottom: 1px solid #5abaff; 
     }
     
-    /* 讓下拉內容在手機上相對定位，避免蓋住其他東西 */
-    .dropdown-content {
-        position: static; /* 不再是 absolute */
+    /* 讓連結和切換按鈕有左右內縮 */
+    .dropdown-toggle, .nav-menu a {
+        padding: 15px 40px; 
+        display: block;
         width: 100%;
-        background-color: #555;
-        display: none; /* 預設收起 */
+        margin-right: 0; /* 移除桌機的橫向間距 */
+    }
+
+    /* 統一 Hover 效果 */
+    .dropdown-toggle:hover, .nav-menu a:hover {
+        background-color: #5abaff; 
+    }
+
+    /* 4. 下拉內容樣式 (子選單) */
+    .dropdown-content {
+        position: static; 
+        width: 100%;
+        /* 使用 Hover 的淺藍色作為子選單背景 */
+        background-color: #5abaff; 
+        box-shadow: none; /* 移除陰影 */
+        border-radius: 0;
+        display: none; 
+    }
+    
+    /* 子選單連結內縮 */
+    .dropdown-content a {
+        padding: 10px 60px; 
     }
     
     /* 手機版點選(hover)時展開子選單 */
     .dropdown:hover .dropdown-content,
     .dropdown:focus-within .dropdown-content {
         display: block;
+    }
+    
+    /* 隱藏桌機專用連結 */
+    .desktop-only {
+        display: none !important;
     }
 }
