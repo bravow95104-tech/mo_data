@@ -325,8 +325,9 @@ body {
 
     #content, #sidebar {
         max-width: 100%;
-        width: 100%;
-        padding: 10px; 
+        width: 95%;
+        padding: 20px; 
+        margin: 0 auto; /* ✅ 讓區塊在螢幕中央顯示 */
     }
     
     /* 內容區塊細節修正 (合併重複的項目) */
