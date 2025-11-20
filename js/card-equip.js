@@ -185,6 +185,8 @@ function encodeFileName(name) {
         <p><strong>屬性：</strong>${item.card_property} <strong>+</strong> ${item.card_data}</p>
         <p><strong>倍率：</strong>${item.nemultiplier}</p>
         <p class="section-gap"><strong>專屬英雄：</strong>${item.hero_name}</p>
+        <hr style="border: 0; border-top: 1px solid #ddd; margin: 10px 0;">
+        <p class="section-gap"><strong>掉落地圖：</strong>${item.drop}</p>
       </div>
     </div>
   `;
