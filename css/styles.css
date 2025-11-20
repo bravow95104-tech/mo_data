@@ -338,26 +338,17 @@ body {
     .changelog-list .date, .changelog-list .tips, .sidebar-list .date, .sidebar-list .date2 {
         margin-bottom: 8px; 
         margin-right: 0;
-        width: 100%; 
-        text-align: left;
+        width: auto; /* ✅ 修正點 1: 讓寬度貼合內容 */
+        display: inline-block; /* ✅ 修正點 2: 讓其具有 inline-block 特性 */
+        text-align: center; /* ✅ 修正點 3: 讓標籤文字置中 */
         padding: 6px 10px;
     }
-    
-    /* ✅ 修正側邊欄連結寬度：讓它貼合文字內容 */
-    .sidebar-list li a {
-        display: inline-block; 
-        width: auto;
-        margin-left: 0;
-    }
-    
-    /* 🎯 最終修正：強制側邊欄連結寬度貼合內容 */
-    .sidebar-list li a.date2 {
-        display: inline-block !important; /* 確保是行內區塊 */
-        width: auto !important; /* 強制覆蓋 width: 100% */
-        margin-left: 0;
-        /* box-sizing: content-box; (可選，但更保險) */
-    }
-
+    /* 新增：確保側邊欄 li 內容的自動寬度生效 */
+.sidebar-list li {
+    display: block; /* 讓父層 li 不再是 flex 容器，避免干擾子元素寬度 */
+    padding-bottom: 0; /* 移除底部間距，因為子元素現在有 margin-bottom */
+}
+ 
     /* === 漢堡選單樣式 (風格統一) === */
     /* ... (導覽列相關樣式保持不變，因為已經過多輪優化) ... */
 
