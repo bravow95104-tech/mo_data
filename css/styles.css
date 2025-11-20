@@ -46,7 +46,7 @@ body {
 .nav-menu {
     display: flex; /* 讓裡面的連結水平排列 */
     align-items: center;
-    gap: 15px; /* 選單間距 */
+    gap: 10px; /* 選單間距 */
     padding: 0; /* 移除重複的 padding */
 }
 
@@ -54,7 +54,7 @@ body {
 #nav-container nav a,
 #nav-container nav .dropdown-toggle {
     color: white;
-    margin-right: 20px;
+    margin-right: 10px;
     text-decoration: none;
     font-weight: 600;
     font-size: 16px;
