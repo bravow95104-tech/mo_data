@@ -345,22 +345,45 @@ body {
     
     /* === 漢堡選單樣式 (風格統一) === */
     
-    /* 📌 1. 顯示手機版 Header (覆寫桌機的 display: none) */
+    /* 📌 1. 顯示手機版 Header (修正 MoData 位置) */
     .nav-mobile-header {
         display: flex;
-        justify-content: space-between;
+        /* 修正點：從 space-between 改為 flex-start，讓元素靠左對齊 */
+        justify-content: flex-start; 
         align-items: center;
+        /* 在按鈕和連結之間增加間距 */
+        gap: 20px; 
         background-color: #3399ff; 
         color: white;
         padding: 12px 40px; 
         width: 100%;
-        /* 確保它在 fixed 導航列內水平排列 */
         position: static; 
     }
     
-    /* 📌 2. 選單容器 (垂直堆疊並隱藏) */
+    /* 📌 修正 2: 漢堡按鈕樣式 */
+    .hamburger-btn {
+        /* 修正點：加入 appearance: none; 來強制重置瀏覽器預設按鈕外觀 */
+        appearance: none;
+        -webkit-appearance: none; /* 針對 Safari 瀏覽器 */
+        background: none;
+        border: none; 
+        color: white;
+        font-size: 24px;
+        cursor: pointer;
+        padding: 0; /* 確保沒有預設 padding */
+        line-height: 1;
+    }
+
+    .mobile-home-link {
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 16px;
+    }
+    
+    /* 2. 選單容器 (垂直堆疊並隱藏) */
     .nav-menu {
-        display: none; /* 預設隱藏 */
+        display: none; 
         flex-direction: column;
         background-color: #3399ff; 
         width: 100%;
@@ -368,7 +391,6 @@ body {
         top: 100%; 
         left: 0;
         z-index: 999; 
-        /* 移除桌機的 margin/padding，避免衝突 */
         margin: 0;
         padding: 0;
     }
@@ -378,7 +400,7 @@ body {
         display: flex;
     }
 
-    /* 📌 3. 調整連結與下拉切換按鈕 (垂直間距修正) */
+    /* 3. 調整連結與下拉切換按鈕 (垂直間距修正) */
     .dropdown, .nav-link {
         width: 100%;
         text-align: left;
@@ -386,7 +408,6 @@ body {
     }
     
     .dropdown-toggle, .nav-menu a {
-        /* 修正垂直間距和左右邊距 */
         padding: 8px 40px; 
         display: block;
         width: 100%;
@@ -400,7 +421,7 @@ body {
 
     /* 4. 下拉內容樣式 (子選單) */
     .dropdown-content {
-        position: static; /* 垂直堆疊 */
+        position: static; 
         width: 100%;
         background-color: #5abaff; 
         box-shadow: none; 
