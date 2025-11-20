@@ -10,7 +10,7 @@ function loadComponent(selector, url) {
    .then(html => {
     el.innerHTML = html;
    })
-  .catch(err => console.error(`❌ 載入 ${url} 失敗:`, err));
+   .catch(err => console.error(`❌ 載入 ${url} 失敗:`, err));
 }
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -39,65 +39,79 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 
-// === 導覽列滾動、滑鼠顯示控制 與 漢堡選單邏輯 (已合併) ===
+// === 導覽列滾動、滑鼠顯示控制 與 漢堡選單邏輯 (修正衝突版) ===
 function initNavbarBehavior() {
-  // 只宣告和檢查一次
-  const navbar = document.querySelector("#nav-container nav");
-  if (!navbar) return;
+    const navbar = document.querySelector("#nav-container nav");
+    if (!navbar) return;
 
-  // --- 滾動與滑鼠顯示控制邏輯 ---
-  let lastScrollY = window.scrollY;
-  let isMouseNearTop = false;
+    // ✅ 將變數宣告移到頂部，讓所有邏輯都能使用
+    const hamburgerBtn = document.getElementById("hamburger-btn");
+    const navMenu = document.getElementById("nav-menu");
+    
+    let lastScrollY = window.scrollY;
+    let isMouseNearTop = false;
 
-  // 初始狀態顯示
-  navbar.classList.add("visible");
+    // 初始狀態顯示
+    navbar.classList.add("visible");
 
-  // 滑鼠靠近頂部顯示導覽列
-  document.addEventListener("mousemove", e => {
-    isMouseNearTop = e.clientY < 80;
-    updateNavbarVisibility();
-  });
+    // --- 輔助函式：檢查選單是否開啟 (手機模式) ---
+    function isMobileMenuOpen() {
+        return navMenu && navMenu.classList.contains("active");
+    }
 
-  // 滾動控制顯示／隱藏
-  window.addEventListener("scroll", () => {
-    const currentY = window.scrollY;
+    // 滑鼠靠近頂部顯示導覽列
+    document.addEventListener("mousemove", e => {
+        isMouseNearTop = e.clientY < 80;
+        updateNavbarVisibility();
+    });
 
-    if (currentY < 100) {
-      navbar.classList.add("visible");
-    } else if (currentY > lastScrollY && !isMouseNearTop) {
-      navbar.classList.remove("visible");
-    } else {
-      navbar.classList.add("visible");
-    }
+    // 滾動控制顯示／隱藏
+    window.addEventListener("scroll", () => {
+        const currentY = window.scrollY;
 
-    lastScrollY = currentY;
-  });
+        // 📌 核心修正：判斷是否該隱藏導覽列
+        // 只有在向下滾動、滑鼠不在頂部 且 【手機選單沒有開啟】時，才隱藏
+        const shouldHide = currentY > lastScrollY && !isMouseNearTop && !isMobileMenuOpen();
+        
+        if (currentY < 100) {
+            navbar.classList.add("visible");
+        } else if (shouldHide) {
+            navbar.classList.remove("visible");
+        } else {
+            navbar.classList.add("visible");
+        }
 
-  function updateNavbarVisibility() {
-    if (isMouseNearTop) {
-      navbar.classList.add("visible");
-    } else if (window.scrollY > 100) {
-      navbar.classList.remove("visible");
-    }
-  }
-  
-  // --- 漢堡選單控制邏輯 (新增) ---
-  const hamburgerBtn = document.getElementById("hamburger-btn");
-  const navMenu = document.getElementById("nav-menu");
+        lastScrollY = currentY;
+    });
 
-  if (hamburgerBtn && navMenu) {
-    hamburgerBtn.addEventListener("click", (e) => {
-      // 阻止冒泡，避免點擊按鈕時觸發其他事件
-      e.stopPropagation();
-      // 切換 active class
-      navMenu.classList.toggle("active");
-    });
+    function updateNavbarVisibility() {
+        // 這裡也要檢查選單是否開啟，如果選單是開的，就不應該被關閉
+        if (isMobileMenuOpen()) {
+            navbar.classList.add("visible");
+            return;
+        }
 
-    // (選填) 點擊選單外的區域時關閉選單
-    document.addEventListener("click", (e) => {
-      if (!navMenu.contains(e.target) && !hamburgerBtn.contains(e.target)) {
-        navMenu.classList.remove("active");
-      }
-    });
-  }
+        if (isMouseNearTop) {
+            navbar.classList.add("visible");
+        } else if (window.scrollY > 100) {
+            navbar.classList.remove("visible");
+        }
+    }
+    
+    // --- 漢堡選單控制邏輯 ---
+    if (hamburgerBtn && navMenu) {
+        hamburgerBtn.addEventListener("click", (e) => {
+            e.stopPropagation();
+            navMenu.classList.toggle("active");
+            // 當選單開啟或關閉時，強制讓 Navbar 顯示，防止被滾動邏輯立即隱藏
+            navbar.classList.add("visible"); 
+        });
+
+        // 點擊選單外的區域時關閉選單
+        document.addEventListener("click", (e) => {
+            if (isMobileMenuOpen() && !navMenu.contains(e.target) && !hamburgerBtn.contains(e.target)) {
+                navMenu.classList.remove("active");
+            }
+        });
+    }
 }
