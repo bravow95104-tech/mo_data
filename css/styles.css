@@ -329,7 +329,7 @@ body {
         padding: 20px; 
     }
     
-    /* 內容區塊細節修正 */
+    /* 內容區塊細節修正 (合併重複的項目) */
     .changelog-list li, .sidebar-list li {
         flex-direction: column;
         align-items: flex-start;
@@ -343,15 +343,20 @@ body {
         padding: 6px 10px;
     }
     
+    /* ✅ 修正側邊欄連結寬度：讓它貼合文字內容 */
+    .sidebar-list li a {
+        display: inline-block; 
+        width: auto;
+        margin-left: 0;
+    }
+
     /* === 漢堡選單樣式 (風格統一) === */
-    
-    /* 📌 1. 顯示手機版 Header (修正 MoData 位置) */
+    /* ... (導覽列相關樣式保持不變，因為已經過多輪優化) ... */
+
     .nav-mobile-header {
         display: flex;
-        /* 修正點：從 space-between 改為 flex-start，讓元素靠左對齊 */
         justify-content: flex-start; 
         align-items: center;
-        /* 在按鈕和連結之間增加間距 */
         gap: 20px; 
         background-color: #3399ff; 
         color: white;
@@ -360,17 +365,15 @@ body {
         position: static; 
     }
     
-    /* 📌 修正 2: 漢堡按鈕樣式 */
     .hamburger-btn {
-        /* 修正點：加入 appearance: none; 來強制重置瀏覽器預設按鈕外觀 */
         appearance: none;
-        -webkit-appearance: none; /* 針對 Safari 瀏覽器 */
+        -webkit-appearance: none; 
         background: none;
         border: none; 
         color: white;
         font-size: 24px;
         cursor: pointer;
-        padding: 0; /* 確保沒有預設 padding */
+        padding: 0; 
         line-height: 1;
     }
 
