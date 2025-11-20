@@ -408,7 +408,7 @@ body {
     }
     
     .dropdown-toggle, .nav-menu a {
-        padding: 8px 40px; 
+        padding: 8px 50px; 
         display: block;
         width: 100%;
         margin-right: 0; 
@@ -431,7 +431,7 @@ body {
     
     /* 子選單連結內縮 */
     .dropdown-content a {
-        padding: 8px 60px; 
+        padding: 8px 70px; 
     }
     
     /* 手機版點選(hover)時展開子選單 */
