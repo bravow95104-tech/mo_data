@@ -9,8 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const data = Array.isArray(json) ? json : json.data;
       const filteredData = data.filter(d => d.type === "裝備卡");
 
-      // ✅ 預載所有圖片（放在這裡）
-      preloadCardImages(filteredData);
+
 
       // ✅ 初始化表格
       initCardTable(filteredData);
@@ -21,19 +20,6 @@ document.addEventListener("DOMContentLoaded", () => {
       tbody.innerHTML = "<tr><td colspan='6'>無法載入資料</td></tr>";
     });
 
-  // === 預載所有圖片 ===
-  function preloadCardImages(data) {
-    data.forEach(item => {
-      const paths = [
-        `/mo_data/pic/card-equip/${item.card_id}_${item.card_property}.png`,
-        `/mo_data/pic/card-equip/${item.card_id}.png`,
-      ];
-      paths.forEach(path => {
-        const img = new Image();
-        img.src = path;
-      });
-    });
-  }
 
   // === Accordion 展開／收合 ===
   document.querySelectorAll('.accordion-header').forEach(header => {
@@ -139,10 +125,6 @@ function showDetailModal(item) {
   img.style.height = 'auto';
   img.style.objectFit = 'contain';
 
-  // 編碼檔名但保留 _ 和. 。
-function encodeFileName(name) {
-  return name;  //name.replace(/[^\w\u4e00-\u9fa5().-]/g, '');
-}
 
   // 候選圖片路徑
   const imageCandidates = [
@@ -185,8 +167,8 @@ function encodeFileName(name) {
         <p><strong>屬性：</strong>${item.card_property} <strong>+</strong> ${item.card_data}</p>
         <p><strong>倍率：</strong>${item.nemultiplier}</p>
         <p class="section-gap"><strong>專屬英雄：</strong>${item.hero_name}</p>
-        <hr style="border: 0; border-top: 1px solid #ddd; margin: 10px 0;">
-        <p class="section-gap"><strong>掉落地圖：</strong>${item.drop}</p>
+        <hr style="margin: 20px 0; border: 0; border-top: 1px solid #ddd; ">
+        <p class="section-gap"><strong>掉落地圖：</strong>${item.drop || '未知'}</p>
       </div>
     </div>
   `;
