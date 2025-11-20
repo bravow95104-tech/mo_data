@@ -307,3 +307,95 @@ body {
     position: static;
     margin-top: 20px;
   }}
+
+  /* === 漢堡選單樣式 === */
+
+/* 預設隱藏漢堡按鈕與手機標題 (桌機版不顯示) */
+.nav-mobile-header {
+    display: none; 
+}
+
+/* 確保選單橫向排列 (桌機版) */
+.nav-menu {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* 選單間距 */
+}
+
+/* === 手機版樣式 (寬度小於 768px) === */
+@media (max-width: 768px) {
+    /* 1. 顯示漢堡按鈕 */
+    .nav-mobile-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 20px;
+        background-color: #333; /* 導航列背景色 */
+        color: white;
+        width: 100%;
+    }
+
+    .hamburger-btn {
+        background: none;
+        border: none;
+        color: white;
+        font-size: 24px;
+        cursor: pointer;
+    }
+
+    .mobile-home-link {
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 18px;
+    }
+
+    /* 2. 修改選單容器，變成垂直排列並預設隱藏 */
+    .nav-menu {
+        display: none; /* 預設隱藏 */
+        flex-direction: column;
+        background-color: #444; /* 下拉選單背景 */
+        width: 100%;
+        position: absolute;
+        top: 50px; /* 接在 Header 下方，視情況調整 */
+        left: 0;
+        z-index: 1000;
+    }
+
+    /* 當被加上 .active 類別時顯示 */
+    .nav-menu.active {
+        display: flex;
+    }
+
+    /* 3. 調整下拉選單樣式 (變成點擊展開或直接列出來) */
+    .dropdown, .nav-link {
+        width: 100%;
+        text-align: left;
+        border-bottom: 1px solid #555;
+    }
+
+    .dropdown-toggle {
+        padding: 15px 20px;
+        display: block;
+        width: 100%;
+    }
+
+    /* 手機版隱藏桌機專用的首頁鈕(因為上面已經有了) */
+    .desktop-only {
+        display: none;
+    }
+    
+    /* 讓下拉內容在手機上相對定位，避免蓋住其他東西 */
+    .dropdown-content {
+        position: static; /* 不再是 absolute */
+        width: 100%;
+        background-color: #555;
+        display: none; /* 預設收起 */
+    }
+    
+    /* 手機版點選(hover)時展開子選單 */
+    .dropdown:hover .dropdown-content,
+    .dropdown:focus-within .dropdown-content {
+        display: block;
+    }
+}
