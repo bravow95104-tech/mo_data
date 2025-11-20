@@ -1,309 +1,426 @@
 /* 全站基本樣式 */
 body {
-  background-color: #f4f8fb;
-  margin: 0;
-  padding: 0 40px; /* 🔹全站左右留 40px */
-  padding-top: 65px;
-  font-family: "Microsoft JhengHei", sans-serif;
+    background-color: #f4f8fb;
+    margin: 0;
+    padding: 0 40px; /* 🔹全站左右留 40px */
+    padding-top: 65px;
+    font-family: "Microsoft JhengHei", sans-serif;
 }
 
 /* 導航列固定在最上方，並保持層級高於 table header */
-/* === 導覽列容器 === */
+/* === 導覽列容器 (修正：保留 Flex 和 Padding) === */
 #nav-container nav {
-  position: fixed;             /* 固定在頂部 */
-  top: 0;
-  left: 0;
-  right: 0;
-  width: 100%;
-  background: #3399ff;
-  color: #fff;
-  padding: 12px 40px;
-  display: flex;
-  align-items: center;
-  border-radius: 0 0 8px 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  z-index: 1000;
+    position: fixed; 
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    background: #3399ff; /* 主背景色 */
+    color: #fff;
+    /* 📌 依要求保留：設定導覽列的上下邊距和左右邊距 */
+    padding: 12px 40px; 
+    /* 📌 依要求保留：設定為 Flex，讓 .nav-mobile-header 和 .nav-menu 水平排列 */
+    display: flex;
+    align-items: center; 
+    
+    border-radius: 0 0 8px 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
 
-  /* === 動畫控制 === */
-  transform: translateY(-100%);
-  transition: transform 0.3s ease;
+    /* === 動畫控制 === */
+    transform: translateY(-100%);
+    transition: transform 0.3s ease;
 }
 
 #nav-container nav.visible {
-  transform: translateY(0);
+    transform: translateY(0);
 }
 
-/* === 導覽列內部連結樣式 === */
+/* 📌 確保手機 Header 在桌機上隱藏 */
+.nav-mobile-header {
+    display: none; 
+}
+
+/* 📌 核心修正：桌機版導覽列內容 (水平排列) */
+/* 由於父層 #nav-container nav 已經設定 padding，這裡移除重複的 padding */
+.nav-menu {
+    display: flex; /* 讓裡面的連結水平排列 */
+    align-items: center;
+    gap: 15px; /* 選單間距 */
+    padding: 0; /* 移除重複的 padding */
+}
+
+/* === 導覽列內部連結樣式 (適用於桌機) === */
 #nav-container nav a,
 #nav-container nav .dropdown-toggle {
-  color: white;
-  margin-right: 20px;
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 16px;
-  padding: 8px 16px;
-  border-radius: 4px;
-  cursor: pointer;
+    color: white;
+    margin-right: 20px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 16px;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
 }
 
 #nav-container nav a:hover,
 #nav-container nav .dropdown-toggle:hover {
-  background-color: #5abaff;
+    background-color: #5abaff;
 }
 
 
 /* 下拉選單 */
 .dropdown {
-  position: relative;
-  margin-right: 20px;
+    position: relative;
+    margin-right: 20px;
 }
 
 .dropdown-toggle {
-  cursor: pointer;
-  font-weight: 600;
-  font-size: 16px;
-  padding: 4px 8px;
-  border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 16px;
+    padding: 4px 8px;
+    border-radius: 4px;
 }
 
 .dropdown-content {
-  display: none;
-  position: absolute;
-  top: 100%; /* 向下對齊 */
-  left: 0;
-  background-color: #3399ff;
-  min-width: 180px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-  border-radius: 4px;
-  top: 100%;
-  left: 0;
+    display: none;
+    position: absolute;
+    top: 100%; 
+    left: 0;
+    background-color: #3399ff;
+    min-width: 180px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+    top: 100%;
+    left: 0;
 }
 
 .dropdown:hover .dropdown-content {
-  display: block;
+    display: block;
 }
 
 .dropdown-content a {
-  display: block;
-  padding: 10px 15px;
-  color: white;
-  text-decoration: none;
+    display: block;
+    padding: 10px 15px;
+    color: white;
+    text-decoration: none;
 }
 
 .dropdown-content a:hover {
-  background-color: #5abaff;
+    background-color: #5abaff;
 }
 
 /* 回到頂部按鈕 */
 #backToTop {
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
-  display: none;
-  background-color: #3399ff;
-  color: white;
-  border: none;
-  padding: 12px 16px;
-  border-radius: 50%;
-  font-size: 18px;
-  cursor: pointer;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-  transition: background-color 0.3s ease;
-  z-index: 1000;
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    display: none;
+    background-color: #3399ff;
+    color: white;
+    border: none;
+    padding: 12px 16px;
+    border-radius: 50%;
+    font-size: 18px;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+    transition: background-color 0.3s ease;
+    z-index: 1000;
 }
 #backToTop:hover {
-  background-color: #267acc;
+    background-color: #267acc;
 }
 
 /* ✅ 內容與側邊欄容器 */
 #content-wrapper {
-  display: flex;
-  align-items: flex-start;  /*✅ 讓左右兩邊一樣高 */
-  justify-content: flex-start;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 30px 40px;
-  gap: 40px;
+    display: flex;
+    align-items: flex-start; 
+    justify-content: flex-start;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 30px 40px;
+    gap: 40px;
 }
 
 /* ✅ 左側主內容 */
 #content {
-  flex: 1;
-  background: white;
-  padding: 30px 40px;
-  border-radius: 10px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-  max-width: 800px;
+    flex: 1;
+    background: white;
+    padding: 30px 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    max-width: 800px;
 }
 
 /* ✅ 右側側邊欄 */
 #sidebar {
-  flex: 0.7;
-  background: white;
-  padding: 30px 40px;
-  border-radius: 10px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    flex: 0.7;
+    background: white;
+    padding: 30px 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
 }
 
 #sidebar h2 {
-  font-size: 1.4rem;
-  margin-bottom: 20px;
-  border-bottom: 2px solid #3399ff;
-  padding-bottom: 8px;
-  color: #267acc;
+    font-size: 1.4rem;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #3399ff;
+    padding-bottom: 8px;
+    color: #267acc;
 }
 .sidebar-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
 .sidebar-list li {
-  display: flex;
-  align-items: flex-start;
-  padding: 12px 0;
-  border-bottom: 1px solid #e1e7ef;
-  font-size: 1rem;
-  color: #333;
-  line-height: 1.5;
+    display: flex;
+    align-items: flex-start;
+    padding: 12px 0;
+    border-bottom: 1px solid #e1e7ef;
+    font-size: 1rem;
+    color: #333;
+    line-height: 1.5;
 }
 
 .sidebar-list li:last-child {
-  border-bottom: none;
+    border-bottom: none;
 }
 
 .sidebar-list .date {
-  flex-shrink: 0;
-  width: 110px;
-  background-color: #3399ff;
-  color: white;
-  font-family: "Courier New", Courier, monospace;
-  font-weight: 600;
-  font-size: 0.9rem;
-  padding: 4px 8px;
-  border-radius: 6px;
-  text-align: center;
-  margin-right: 20px;
-  user-select: none;
-  box-shadow: 0 2px 8px rgba(51, 153, 255, 0.3);
-  border: 1px solid #1c7ed6;
+    flex-shrink: 0;
+    width: 110px;
+    background-color: #3399ff;
+    color: white;
+    font-family: "Courier New", Courier, monospace;
+    font-weight: 600;
+    font-size: 0.9rem;
+    padding: 4px 8px;
+    border-radius: 6px;
+    text-align: center;
+    margin-right: 20px;
+    user-select: none;
+    box-shadow: 0 2px 8px rgba(51, 153, 255, 0.3);
+    border: 1px solid #1c7ed6;
 }
 .sidebar-list .date2 {
-  flex-shrink: 0;
-  width: 110px;
-  background-color: #5aa9ff;
-  color: white;
-  font-family: "Courier New", Courier, monospace;
-  font-weight: 600;
-  font-size: 0.9rem;
-  padding: 4px 8px;
-  border-radius: 6px;
-  text-align: center;
-  margin-right: 20px;
-  user-select: none;
-  box-shadow: 0 2px 8px rgba(51, 153, 255, 0.3);
-  border: 1px solid #a3d0ff;
+    flex-shrink: 0;
+    width: 110px;
+    background-color: #5aa9ff;
+    color: white;
+    font-family: "Courier New", Courier, monospace;
+    font-weight: 600;
+    font-size: 0.9rem;
+    padding: 4px 8px;
+    border-radius: 6px;
+    text-align: center;
+    margin-right: 20px;
+    user-select: none;
+    box-shadow: 0 2px 8px rgba(51, 153, 255, 0.3);
+    border: 1px solid #a3d0ff;
 }
 
 /* ✅ 更新日誌區塊 */
 #changelog {
-  flex: 1;
-  background: white;
-  padding: 30px 40px;
-  border-radius: 10px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    flex: 1;
+    background: white;
+    padding: 30px 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
 }
 
 #changelog h2 {
-  font-size: 1.6rem;
-  margin-bottom: 20px;
-  border-bottom: 2px solid #3399ff;
-  padding-bottom: 8px;
-  color: #267acc;
+    font-size: 1.6rem;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #3399ff;
+    padding-bottom: 8px;
+    color: #267acc;
 }
 
 .changelog-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
 .changelog-list li {
-  display: flex;
-  align-items: flex-start;
-  padding: 12px 0;
-  border-bottom: 1px solid #e1e7ef;
-  font-size: 1rem;
-  color: #333;
-  line-height: 1.5;
+    display: flex;
+    align-items: flex-start;
+    padding: 12px 0;
+    border-bottom: 1px solid #e1e7ef;
+    font-size: 1rem;
+    color: #333;
+    line-height: 1.5;
 }
 
 .changelog-list li:last-child {
-  border-bottom: none;
+    border-bottom: none;
 }
 
 .changelog-list .date {
-  flex-shrink: 0;
-  width: 110px;
-  background-color: #3399ff;
-  color: white;
-  font-family: "Courier New", Courier, monospace;
-  font-weight: 600;
-  font-size: 0.9rem;
-  padding: 4px 8px;
-  border-radius: 6px;
-  text-align: center;
-  margin-right: 20px;
-  user-select: none;
-  box-shadow: 0 2px 8px rgba(51, 153, 255, 0.3);
+    flex-shrink: 0;
+    width: 110px;
+    background-color: #3399ff;
+    color: white;
+    font-family: "Courier New", Courier, monospace;
+    font-weight: 600;
+    font-size: 0.9rem;
+    padding: 4px 8px;
+    border-radius: 6px;
+    text-align: center;
+    margin-right: 20px;
+    user-select: none;
+    box-shadow: 0 2px 8px rgba(51, 153, 255, 0.3);
 }
 .changelog-list .tips {
-  flex-shrink: 0;
-  width: 110px;
-  background-color: #41bb4b;
-  color: white;
-  font-family: "Courier New", Courier, monospace;
-  font-weight: 600;
-  font-size: 0.9rem;
-  padding: 4px 8px;
-  border-radius: 6px;
-  text-align: center;
-  margin-right: 20px;
-  user-select: none;
-  box-shadow: 0 2px 8px rgba(51, 153, 255, 0.3);
+    flex-shrink: 0;
+    width: 110px;
+    background-color: #41bb4b;
+    color: white;
+    font-family: "Courier New", Courier, monospace;
+    font-weight: 600;
+    font-size: 0.9rem;
+    padding: 4px 8px;
+    border-radius: 6px;
+    text-align: center;
+    margin-right: 20px;
+    user-select: none;
+    box-shadow: 0 2px 8px rgba(51, 153, 255, 0.3);
 }
 
 /* 資料提供 */
 .info-wrapper {
-  display: flex;
-  justify-content: flex-end; /* 向右 */
+    display: flex;
+    justify-content: flex-end; 
 }
 
-.Information  {
-  background: #ffefc0;
-  border: 1px solid #ffc107;
-  color: #b8860b;
-  border-radius: 6px;
-  padding: 8px 14px;
-  font-size: 14px;
-  cursor: default;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+.Information {
+    background: #ffefc0;
+    border: 1px solid #ffc107;
+    color: #b8860b;
+    border-radius: 6px;
+    padding: 8px 14px;
+    font-size: 14px;
+    cursor: default;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
 }
 
-/* ✅ 手機版：上下排列 */
+
+/* === 手機版調整：全站與導航列 (Media Query) === */
 @media (max-width: 768px) {
-  #content-wrapper {
-    flex-direction: column;
-    padding: 20px;
-  }
+    /* 調整 body 內邊距，讓內容在手機上不會太擠 */
+    body {
+        padding: 0 15px; 
+        padding-top: 55px; 
+    }
 
-  #content {
-    max-width: 100%;
-    width: 100%;
-  }
+    /* 讓左右內容變成垂直堆疊 */
+    #content-wrapper {
+        flex-direction: column;
+        padding: 20px 0; 
+        gap: 20px;
+    }
 
-  #sidebar {
-    width: 100%;
-    position: static;
-    margin-top: 20px;
-  }}
+    #content, #sidebar {
+        max-width: 100%;
+        width: 100%;
+        padding: 20px; 
+    }
+    
+    /* 內容區塊細節修正 */
+    .changelog-list li, .sidebar-list li {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .changelog-list .date, .changelog-list .tips, .sidebar-list .date, .sidebar-list .date2 {
+        margin-bottom: 8px; 
+        margin-right: 0;
+        width: 100%; 
+        text-align: left;
+        padding: 6px 10px;
+    }
+    
+    /* === 漢堡選單樣式 (風格統一) === */
+    
+    /* 📌 1. 顯示手機版 Header (覆寫桌機的 display: none) */
+    .nav-mobile-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #3399ff; 
+        color: white;
+        padding: 12px 40px; 
+        width: 100%;
+        /* 確保它在 fixed 導航列內水平排列 */
+        position: static; 
+    }
+    
+    /* 📌 2. 選單容器 (垂直堆疊並隱藏) */
+    .nav-menu {
+        display: none; /* 預設隱藏 */
+        flex-direction: column;
+        background-color: #3399ff; 
+        width: 100%;
+        position: absolute; 
+        top: 100%; 
+        left: 0;
+        z-index: 999; 
+        /* 移除桌機的 margin/padding，避免衝突 */
+        margin: 0;
+        padding: 0;
+    }
+
+    /* 當被加上 .active 類別時顯示 */
+    .nav-menu.active {
+        display: flex;
+    }
+
+    /* 📌 3. 調整連結與下拉切換按鈕 (垂直間距修正) */
+    .dropdown, .nav-link {
+        width: 100%;
+        text-align: left;
+        border-bottom: 1px solid #5abaff; 
+    }
+    
+    .dropdown-toggle, .nav-menu a {
+        /* 修正垂直間距和左右邊距 */
+        padding: 8px 40px; 
+        display: block;
+        width: 100%;
+        margin-right: 0; 
+    }
+
+    /* 統一 Hover 效果 */
+    .dropdown-toggle:hover, .nav-menu a:hover {
+        background-color: #5abaff; 
+    }
+
+    /* 4. 下拉內容樣式 (子選單) */
+    .dropdown-content {
+        position: static; /* 垂直堆疊 */
+        width: 100%;
+        background-color: #5abaff; 
+        box-shadow: none; 
+        border-radius: 0;
+        display: none; 
+    }
+    
+    /* 子選單連結內縮 */
+    .dropdown-content a {
+        padding: 8px 60px; 
+    }
+    
+    /* 手機版點選(hover)時展開子選單 */
+    .dropdown:hover .dropdown-content,
+    .dropdown:focus-within .dropdown-content {
+        display: block;
+    }
+    
+    /* 隱藏桌機專用連結 */
+    .desktop-only {
+        display: none !important;
+    }
+}
