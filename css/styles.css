@@ -2,20 +2,22 @@
 body {
     background-color: #f4f8fb;
     margin: 0;
-    padding: 0 40px; /* 🔹全站左右留 40px */
-    padding-top: 65px;
+    /* 🚀 關鍵修復 1：合併計算導航列高度 (約 44px) + 導航列 padding (12px*2) + 內容間距 (30px) */
+    /* 44px (導航列內容高度) + 12px*2 (導航列 padding) = 68px (導航列總高) */
+    /* 我們將 body 頂部留出 68px (導航列總高) + 30px (內容間距) = 98px */
+    padding: 98px 40px 0 40px; 
     font-family: "Microsoft JhengHei", sans-serif;
 }
 
-/* 導航列固定在最上方，並保持層級高於 table header */
-/* === 導覽列容器 (修正：保留 Flex 和 Padding) === */
+/* 導航列固定在最上方 */
+/* === 導覽列容器 (保持原狀) === */
 #nav-container nav {
     position: fixed; 
     top: 0;
     left: 0;
     right: 0;
     width: 100%;
-    background: #3399ff; /* 主背景色 */
+    background: #3399ff;
     color: #fff;
     padding: 12px 40px; 
     display: flex;
@@ -23,7 +25,6 @@ body {
     border-radius: 0 0 8px 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     z-index: 1000;
-
     /* === 動畫控制 === */
     transform: translateY(-100%);
     transition: transform 0.3s ease;
@@ -39,12 +40,11 @@ body {
 }
 
 /* 📌 核心修正：桌機版導覽列內容 (水平排列) */
-/* 由於父層 #nav-container nav 已經設定 padding，這裡移除重複的 padding */
 .nav-menu {
-    display: flex; /* 讓裡面的連結水平排列 */
+    display: flex;
     align-items: center;
     gap: 10px; /* 選單間距 */
-    padding: 0; /* 移除重複的 padding */
+    padding: 0; 
 }
 
 /* === 導覽列內部連結樣式 (適用於桌機) === */
@@ -55,7 +55,7 @@ body {
     text-decoration: none;
     font-weight: 600;
     font-size: 16px;
-    padding: 8px 12px;
+    padding: 8px 14px; /* 🚀 統一主連結/切換按鈕的 padding */
     border-radius: 4px;
     cursor: pointer;
 }
@@ -69,16 +69,12 @@ body {
 /* 下拉選單 */
 .dropdown {
     position: relative;
-    margin-right: 20px;
+    /* 🚀 優化 2：Dropdown 區塊的右邊距應由 nav .dropdown-toggle 上的 margin-right: 10px 來控制，這裡保留 20px 讓整體間距更大 */
+    margin-right: 20px; 
 }
 
-.dropdown-toggle {
-    cursor: pointer;
-    font-weight: 600;
-    font-size: 16px;
-    padding: 4px 8px;
-    border-radius: 4px;
-}
+/* 🚀 關鍵修復 2：刪除獨立的 .dropdown-toggle 樣式，避免被高權重選擇器覆蓋產生混亂 */
+/* .dropdown-toggle { ... 已刪除 ... } */
 
 .dropdown-content {
     display: none;
@@ -86,11 +82,9 @@ body {
     top: 100%; 
     left: 0;
     background-color: #3399ff;
-    min-width: 150px;
+    min-width: 150px; /* 縮小後的寬度 */
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     border-radius: 4px;
-    top: 100%;
-    left: 0;
 }
 
 .dropdown:hover .dropdown-content {
@@ -136,7 +130,9 @@ body {
     justify-content: flex-start;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 30px 0;
+    /* 🚀 關鍵修復 3：上 padding/margin 設為 0，間距已在 body 上統一設定 */
+    padding: 0; 
+    margin-top: 0; 
     gap: 40px;
 }
 
@@ -144,7 +140,7 @@ body {
 #content {
     flex: 1;
     background: white;
-    padding: 30px 40px;
+    padding: 30px 30px; /* 內部 padding 調整為 30px */
     border-radius: 10px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
     max-width: 800px;
@@ -154,7 +150,7 @@ body {
 #sidebar {
     flex: 0.7;
     background: white;
-    padding: 30px 40px;
+    padding: 30px 30px; /* 內部 padding 調整為 30px */
     border-radius: 10px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
 }
@@ -186,7 +182,8 @@ body {
     border-bottom: none;
 }
 
-.sidebar-list .date {
+/* 內容區塊的日期標籤樣式 (保持不變) */
+.sidebar-list .date, .sidebar-list .date2 {
     flex-shrink: 0;
     width: 110px;
     background-color: #3399ff;
@@ -203,27 +200,15 @@ body {
     border: 1px solid #1c7ed6;
 }
 .sidebar-list .date2 {
-    flex-shrink: 0;
-    width: 110px;
     background-color: #5aa9ff;
-    color: white;
-    font-family: "Courier New", Courier, monospace;
-    font-weight: 600;
-    font-size: 0.9rem;
-    padding: 4px 8px;
-    border-radius: 6px;
-    text-align: center;
-    margin-right: 20px;
-    user-select: none;
-    box-shadow: 0 2px 8px rgba(51, 153, 255, 0.3);
     border: 1px solid #a3d0ff;
 }
 
-/* ✅ 更新日誌區塊 */
+/* ✅ 更新日誌區塊 (保持一致性調整) */
 #changelog {
     flex: 1;
     background: white;
-    padding: 30px 40px;
+    padding: 30px 30px; 
     border-radius: 10px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
 }
@@ -256,7 +241,8 @@ body {
     border-bottom: none;
 }
 
-.changelog-list .date {
+/* changelog 的日期標籤樣式 (保持不變) */
+.changelog-list .date, .changelog-list .tips {
     flex-shrink: 0;
     width: 110px;
     background-color: #3399ff;
@@ -272,19 +258,7 @@ body {
     box-shadow: 0 2px 8px rgba(51, 153, 255, 0.3);
 }
 .changelog-list .tips {
-    flex-shrink: 0;
-    width: 110px;
     background-color: #41bb4b;
-    color: white;
-    font-family: "Courier New", Courier, monospace;
-    font-weight: 600;
-    font-size: 0.9rem;
-    padding: 4px 8px;
-    border-radius: 6px;
-    text-align: center;
-    margin-right: 20px;
-    user-select: none;
-    box-shadow: 0 2px 8px rgba(51, 153, 255, 0.3);
 }
 
 /* 資料提供 */
@@ -309,14 +283,14 @@ body {
 @media (max-width: 768px) {
     /* 調整 body 內邊距，讓內容在手機上不會太擠 */
     body {
-        padding: 0 15px; 
-        padding-top: 55px; 
+        /* 🚀 關鍵修復 4：手機版也採用統一計算 padding-top */
+        padding: 55px 15px 0 15px; /* 導航列較小 (55px) + 左右 15px */
     }
 
     /* 讓左右內容變成垂直堆疊 */
     #content-wrapper {
         flex-direction: column;
-        padding: 20px 0; 
+        padding: 20px 0; /* 手機版使用 padding 20px 0 */
         gap: 20px;
     }
 
@@ -324,10 +298,10 @@ body {
         max-width: 100%;
         width: 95%;
         padding: 20px; 
-        margin: 0 auto; /* ✅ 讓區塊在螢幕中央顯示 */
+        margin: 0 auto; 
     }
     
-    /* 內容區塊細節修正 (合併重複的項目) */
+    /* 內容區塊細節修正 (保持不變) */
     .changelog-list li, .sidebar-list li {
         flex-direction: column;
         align-items: flex-start;
@@ -336,20 +310,17 @@ body {
     .changelog-list .date, .changelog-list .tips, .sidebar-list .date, .sidebar-list .date2 {
         margin-bottom: 8px; 
         margin-right: 0;
-        width: auto; /* ✅ 修正點 1: 讓寬度貼合內容 */
-        display: inline-block; /* ✅ 修正點 2: 讓其具有 inline-block 特性 */
-        text-align: center; /* ✅ 修正點 3: 讓標籤文字置中 */
+        width: auto; 
+        display: inline-block; 
+        text-align: center; 
         padding: 6px 10px;
     }
-    /* 新增：確保側邊欄 li 內容的自動寬度生效 */
-.sidebar-list li {
-    display: block; /* 讓父層 li 不再是 flex 容器，避免干擾子元素寬度 */
-    padding-bottom: 0; /* 移除底部間距，因為子元素現在有 margin-bottom */
-}
- 
-    /* === 漢堡選單樣式 (風格統一) === */
-    /* ... (導覽列相關樣式保持不變，因為已經過多輪優化) ... */
-
+    .sidebar-list li {
+        display: block; 
+        padding-bottom: 0; 
+    }
+    
+    /* === 漢堡選單樣式 (保持不變) === */
     .nav-mobile-header {
         display: flex;
         justify-content: flex-start; 
