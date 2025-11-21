@@ -1,0 +1,17 @@
+{
+  "nodes": [
+    {"id": "哭靈墓", "label": "哭靈墓", "color": {"background": "black", "border": "black"}, "font": {"color": "white"}},
+    {"id": "妖狐洞窟 (14)", "label": "妖狐洞窟 (14)", "color": "black", "font": {"color": "white"}},
+    {"id": "同心林", "label": "同心林"},
+    {"id": "地下戰場", "label": "地下戰場", "color": "#3399FF", "font": {"color": "white"}},
+    {"id": "妖狐曲廊道", "label": "妖狐曲廊道", "color": "black", "font": {"color": "white"}},
+    {"id": "赤影湖", "label": "赤影湖"}
+  ],
+  "edges": [
+    {"from": "哭靈墓", "to": "妖狐洞窟 (14)", "arrows": "to"},
+    {"from": "哭靈墓", "to": "同心林", "arrows": "to"},
+    {"from": "妖狐洞窟 (14)", "to": "地下戰場", "arrows": "to"},
+    {"from": "妖狐洞窟 (14)", "to": "妖狐曲廊道", "arrows": "to"},
+    {"from": "同心林", "to": "赤影湖", "arrows": "to"}
+  ]
+}
