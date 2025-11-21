@@ -129,7 +129,7 @@ function initCardTable(data) {
     const img = new Image();
     img.alt = item.mapid;
     img.className = "hero-image";
-    img.style.width = "100%";
+    img.style.width = "auto";
     img.style.height = "auto";
     img.style.objectFit = "contain";
 

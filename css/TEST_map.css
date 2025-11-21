@@ -1,0 +1,154 @@
+@charset "UTF-8";
+
+/* 基礎設置 - 改為白色系，並推下內容 70px */
+body { 
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+    margin: 0; 
+    padding: 70px 0 0 0; /* 增加頂部內距，推下內容 */
+    background-color: #f8f8f8; /* 淺灰背景，接近星曜任務的 body */
+    color: #333; /* 深色文字 */
+}
+
+/* 導航列區塊：全寬固定在頂部 */
+#header-nav {
+    position: fixed; 
+    top: 0;
+    left: 0;
+    z-index: 1000; 
+    width: 100%;
+    background-color: #ffffff; /* 白色導航欄背景 */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* 淺陰影 */
+}
+
+/* 導航列內容：居中對齊 */
+.tabs-container {
+    max-width: 1200px;
+    margin: 0 auto; 
+    padding: 0 20px;
+}
+
+/* 主內容區塊 */
+.content-wrapper {
+    max-width: 1200px; 
+    margin: 20px auto; 
+    background-color: #ffffff; /* 內容區塊為白色 */
+    border-radius: 8px; /* 柔和圓角 */
+    padding: 20px; 
+    min-height: 700px; 
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1); /* 輕微陰影 */
+}
+
+h1 { 
+    text-align: center; 
+    color: #333; 
+    margin-bottom: 30px; 
+}
+
+/* Tabs 導航樣式 */
+.tabs { 
+    display: flex; 
+    flex-wrap: wrap; 
+    border-bottom: 2px solid #e0e0e0; /* 底部淺細線 */
+}
+
+.tab-button {
+    background-color: transparent; 
+    border: none; 
+    padding: 15px 20px; 
+    cursor: pointer;
+    font-size: 1rem; 
+    color: #666; /* 導航文字顏色 */
+    transition: all 0.2s ease; 
+    border-bottom: 3px solid transparent; 
+    margin-bottom: -2px; 
+}
+
+/* 懸停狀態：藍色系 */
+.tab-button:hover { 
+    color: #267acc; 
+    background-color: #f0f8ff; 
+    border-color: #6ab7ff; 
+}
+
+/* 活躍狀態：黃色系 (星曜任務風格) */
+.tab-button.active {
+    color: #b8860b; 
+    font-weight: bold; 
+    border-color: #ffd84d; 
+    background-color: #fff6b0; 
+}
+
+/* Tab 內容區塊 */
+.tab-content { 
+    display: none; 
+    padding: 20px 0; 
+}
+.tab-content.active { 
+    display: block; 
+}
+
+/* 地圖圖片外框樣式 */
+.map-image-wrapper {
+    text-align: center; 
+    padding: 15px;
+    border-radius: 8px;
+    background-color: #f9fcff; /* 類似 mission-card */
+    border: 1px solid #b3d8ff; /* 類似 mission-card */
+}
+
+.map-image-wrapper img {
+    max-width: 100%;
+    height: auto;
+    display: block; 
+    margin: 0 auto; 
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+/* ------------------ Modal (彈窗) 樣式 ------------------ */
+#modalOverlay { 
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
+    background: rgba(0, 0, 0, 0.7); 
+    z-index: 9998; 
+    display: none; 
+}
+
+#modalBox { 
+    position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); 
+    background: #ffffff; 
+    padding: 20px; 
+    border-radius: 10px; 
+    z-index: 9999; 
+    max-width: 600px; width: 90%; 
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.3); 
+    display: none; 
+    color: #333; 
+}
+
+#modalBox .close-btn { 
+    position: absolute; top: 10px; right: 20px; 
+    font-size: 30px; cursor: pointer; color: #aaa; 
+}
+
+.hero-column-details { 
+    display: flex; gap: 20px; align-items: flex-start; margin-top: 15px; 
+}
+.hero-image { 
+    max-width: 50%; height: auto; object-fit: contain; border-radius: 8px; 
+}
+.hero-name { 
+    color: #3399ff; /* 彈窗標題藍色 */
+    margin-top: 0; padding-bottom: 10px; border-bottom: 1px solid #eee; 
+}
+.section-gap { 
+    margin-top: 10px; 
+}
+
+/* RWD 調整 */
+@media (max-width: 768px) {
+    .tab-button { padding: 10px 10px; font-size: 0.9rem; }
+    .tabs { justify-content: space-around; } 
+    .hero-column-details { flex-direction: column; }
+    .hero-image { max-width: 100%; }
+    #modalBox { max-width: 95%; padding: 15px; }
+}

@@ -2,141 +2,16 @@
 <html lang="zh-Hant">
 <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>分區地圖 | MoData</title>
     
     <link rel="stylesheet" href="/mo_data/css/styles.css" />
     <link rel="stylesheet" href="/mo_data/css/detailed_map.css" />
-    
-    <style>
-        /* 基礎設置 - 改為白色系，並推下內容 70px */
-        body { 
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-            margin: 0; 
-            padding: 70px 0 0 0; /* 增加頂部內距，推下內容 */
-            background-color: #f8f8f8; /* 淺灰背景，接近您星曜任務的 body */
-            color: #333; /* 深色文字 */
-        }
-        
-        /* 導航列區塊：全寬固定在頂部 */
-        #header-nav {
-            position: fixed; 
-            top: 0;
-            left: 0;
-            z-index: 1000; 
-            width: 100%;
-            background-color: #ffffff; /* 白色導航欄背景，符合您的明亮風格 */
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* 淺陰影 */
-        }
-        
-        /* 導航列內容：居中對齊 */
-        .tabs-container {
-            max-width: 1200px;
-            margin: 0 auto; 
-            padding: 0 20px;
-        }
 
-        /* 主內容區塊 */
-        .content-wrapper {
-            max-width: 1200px; 
-            margin: 20px auto; 
-            background-color: #ffffff; /* 內容區塊為白色，符合您星曜任務的 .tab-content */
-            border-radius: 8px; /* 柔和圓角 */
-            padding: 20px; 
-            min-height: 700px; 
-            box-shadow: 0 2px 6px rgba(0,0,0,0.1); /* 輕微陰影，與您星曜任務的 .tab-content 相同 */
-        }
-        
-        h1 { 
-            text-align: center; 
-            color: #333; /* 主標題顏色 */
-            margin-bottom: 30px; 
-            /* 考慮使用您星曜任務的 h3 顏色如果它更適合作為頁面主標題 #3399ff */
-        }
-
-        /* Tabs 導航樣式 (保留我的結構，但套用您的顏色和 Hover/Active 效果) */
-        .tabs { 
-            display: flex; 
-            flex-wrap: wrap; 
-            border-bottom: 2px solid #e0e0e0; /* 底部淺細線，取代深色線 */
-        }
-        .tab-button {
-            background-color: transparent; /* 保持透明 */
-            border: none; 
-            padding: 15px 20px; 
-            cursor: pointer;
-            font-size: 1rem; 
-            color: #666; /* 導航文字顏色 */
-            transition: all 0.2s ease; /* 調整過渡時間以匹配您的風格 */
-            border-bottom: 3px solid transparent; 
-            margin-bottom: -2px; 
-        }
-        .tab-button:hover { 
-            color: #267acc; /* 懸停時使用您星曜任務的藍色系 */
-            background-color: #f0f8ff; /* 淺藍色懸停背景 */
-            border-color: #6ab7ff; /* 懸停時的藍色邊框 */
-        }
-        .tab-button.active {
-            color: #b8860b; /* 活躍時使用您星曜任務的黃色系 */
-            font-weight: bold; 
-            border-color: #ffd84d; /* 活躍時的黃色邊框 */
-            background-color: #fff6b0; /* 活躍時的黃色背景 */
-        }
-
-        /* Tab 內容區塊 */
-        .tab-content { display: none; padding: 20px 0; } /* padding 配合 content-wrapper */
-        .tab-content.active { display: block; }
-        
-        /* 地圖圖片樣式 */
-        .map-image-wrapper {
-            text-align: center; 
-            padding: 15px;
-            border-radius: 8px;
-            background-color: #f9fcff; /* 地圖區塊背景色，與您的 .mission-card 類似 */
-            border: 1px solid #b3d8ff; /* 與您的 .mission-card 邊框類似 */
-        }
-        .map-image-wrapper img {
-            max-width: 100%;
-            height: auto;
-            display: block; 
-            margin: 0 auto; 
-            border-radius: 5px; /* 圖片圓角 */
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05); /* 輕微陰影 */
-        }
-
-        /* ------------------ Modal 樣式 (維持高對比以確保可讀性) ------------------ */
-        #modalOverlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.7); z-index: 9998; display: none; }
-        #modalBox { 
-            position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); 
-            background: #ffffff; /* Modal 背景 */
-            padding: 20px; border-radius: 10px; z-index: 9999; 
-            max-width: 600px; width: 90%; 
-            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.3); /* Modal 陰影 */
-            color: #333; 
-        }
-        #modalBox .close-btn { 
-            position: absolute; top: 10px; right: 20px; 
-            font-size: 30px; cursor: pointer; color: #aaa; 
-        }
-        
-        .hero-column-details { display: flex; gap: 20px; align-items: flex-start; margin-top: 15px; }
-        .hero-image { max-width: 50%; height: auto; object-fit: contain; border-radius: 8px; }
-        .hero-name { color: #3399ff; /* Modal 標題顏色可以沿用藍色系 */
-                      margin-top: 0; padding-bottom: 10px; border-bottom: 1px solid #eee; }
-        .section-gap { margin-top: 10px; }
-
-        /* RWD 調整 */
-        @media (max-width: 768px) {
-            .tab-button { padding: 10px 10px; font-size: 0.9rem; }
-            .tabs { justify-content: space-around; } 
-            .hero-column-details { flex-direction: column; }
-            .hero-image { max-width: 100%; }
-            #modalBox { max-width: 95%; padding: 15px; }
-        }
-    </style>
+    <link rel="stylesheet" href="/mo_data/css/TEST_map.css" />
 </head>
 <body>
-    <div id="nav-container"></div>
-  <script src="/mo_data/js/componentsLoader.js"></script>
+    
     <div id="header-nav">
         <div class="tabs-container">
             <div class="tabs">
@@ -172,7 +47,7 @@
                 <map name="map_jingcheng">
                     <area shape="rect" coords="10,10,80,40" alt="京城東門" title="京城東門" onclick="openMapDetail('京城東門')" />
                     <area shape="rect" coords="100,60,180,90" alt="京城西市" title="京城西市" onclick="openMapDetail('京城西市')" />
-                    </map>
+                </map>
             </div>
         </div>
         
@@ -233,89 +108,9 @@
         <div id="modalContent"></div>
     </div>
     
-    <script>
-        let mapData = []; 
+    <div id="footer-container"></div>
+    <script src="/mo_data/js/componentsLoader.js"></script>
 
-        document.addEventListener("DOMContentLoaded", () => {
-            // === 1. 載入詳細資料 JSON ===
-            fetch("/mo_data/data/detailed_maptest.json")
-                .then(res => {
-                    if (!res.ok) throw new Error("載入 detailed_maptest.json 失敗");
-                    return res.json();
-                })
-                .then(json => {
-                    mapData = Array.isArray(json) ? json : json.data;
-                    console.log("✅ 地圖詳細資料載入完成:", mapData.length, "筆");
-                })
-                .catch(err => {
-                    console.error("❌ 詳細資料 JSON 載入失敗：", err);
-                    alert("地圖詳細資料載入失敗，點擊功能可能無法運作。");
-                });
-
-            // === 2. Tab 切換邏輯 ===
-            const tabButtons = document.querySelectorAll('.tab-button');
-            const tabContents = document.querySelectorAll('.tab-content');
-
-            tabButtons.forEach(button => {
-                button.addEventListener('click', () => {
-                    tabButtons.forEach(btn => btn.classList.remove('active'));
-                    tabContents.forEach(content => content.classList.remove('active'));
-
-                    button.classList.add('active');
-                    const targetTabId = button.dataset.tab;
-                    document.getElementById(targetTabId).classList.add('active');
-                });
-            });
-
-            // === 3. Modal 關閉邏輯 ===
-            const closeModal = () => {
-                document.getElementById("modalOverlay").style.display = "none";
-                document.getElementById("modalBox").style.display = "none";
-            };
-            const closeBtn = document.querySelector("#modalBox .close-btn");
-            if (closeBtn) closeBtn.addEventListener("click", closeModal);
-            document.getElementById("modalOverlay").addEventListener("click", closeModal);
-        });
-
-        // === 4. 彈窗內容填充函數 (showDetailModal 延用) ===
-        function showDetailModal(item) {
-            const modalContent = document.getElementById("modalContent");
-            modalContent.innerHTML = `
-                <h2 class="hero-name" style="color: #3399ff;">${item.mapid || 'N/A'}</h2> 
-                <div class="hero-column-details">
-                    <div>
-                        <p><strong>等級:</strong> ${item.maplv || 'N/A'}</p>
-                        <p><strong>垃圾掉落:</strong> ${item.drop_rubbish || 'N/A'}</p>
-                        <p class="section-gap"><strong>光輝掉落(掉落較多)：</strong><span>${item.drop_glory_high || 'N/A'}</span></p>
-                        <p class="section-gap"><strong>光輝掉落(掉落較低)：</strong><span>${item.drop_glory_low || 'N/A'}</span></p>
-                        <p class="section-gap"><strong>光輝掉落(玩家提供)：</strong>-</p>
-                    </div>
-                    ${item.image ? `<img src="${item.image}" alt="${item.mapid}" class="hero-image" />` : ''}
-                </div>
-            `;
-            document.getElementById("modalOverlay").style.display = "block";
-            document.getElementById("modalBox").style.display = "block";
-        }
-
-        // === 5. Image Map 點擊觸發函數 (openMapDetail 延用) ===
-        function openMapDetail(mapId) {
-            if (!mapData || mapData.length === 0) {
-                console.error("地圖資料 (mapData) 尚未載入。");
-                alert("資料尚未準備好，請稍候再試。");
-                return;
-            }
-
-            const item = mapData.find(i => i.mapid === mapId);
-
-            if (item) {
-                showDetailModal(item);
-            } else {
-                console.warn(`未找到 mapId: ${mapId} 的詳細資料。`);
-                alert(`地圖區域 [${mapId}] 尚未有詳細資訊。`);
-            }
-        }
-    </script>
-
-    <div id="footer-container"></div> <script src="/mo_data/js/componentsLoader.js"></script>
+    <script src="/mo_data/js/TEST_map.js"></script>
 </body>
 </html>
