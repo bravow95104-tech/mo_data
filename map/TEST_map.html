@@ -8,26 +8,30 @@
     <link rel="stylesheet" href="/mo_data/css/detailed_map.css" />
     
     <style>
-        /* 基礎設置 */
+        /* 基礎設置 - 改為白色系，並推下內容 70px */
         body { 
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
             margin: 0; 
-            padding: 0; 
-            background-color: #1a1a1a; /* 更深的背景色 */
-            color: #eee; 
+            padding: 70px 0 0 0; /* 📌 增加頂部內距，推下內容 */
+            background-color: #f8f8f8; /* 淺灰背景 */
+            color: #333; /* 深色文字 */
         }
         
-        /* 導航列區塊：全寬置頂 */
+        /* 導航列區塊：全寬固定在頂部 */
         #header-nav {
+            position: fixed; /* 📌 固定位置 */
+            top: 0;
+            left: 0;
+            z-index: 1000; /* 確保在最上層 */
             width: 100%;
-            background-color: #222; /* 導航欄的背景色 */
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+            background-color: #ffffff; /* 白色導航欄背景 */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* 淺陰影 */
         }
         
         /* 導航列內容：居中對齊 */
         .tabs-container {
             max-width: 1200px;
-            margin: 0 auto; /* 居中 */
+            margin: 0 auto; 
             padding: 0 20px;
         }
 
@@ -35,19 +39,20 @@
         .content-wrapper {
             max-width: 1200px; 
             margin: 20px auto; 
-            background-color: #2a2a2a; /* 主內容區的背景色 */
+            background-color: #ffffff; /* 內容區塊為白色 */
             border-radius: 8px; 
             padding: 20px; 
             min-height: 700px; 
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.05); /* 輕微陰影 */
         }
         
-        h1 { text-align: center; color: #fff; margin-bottom: 30px; }
+        h1 { text-align: center; color: #333; margin-bottom: 30px; }
 
         /* Tabs 導航樣式 */
         .tabs { 
             display: flex; 
             flex-wrap: wrap; 
-            border-bottom: 2px solid #3a3a3a; /* 底部細線 */
+            border-bottom: 2px solid #e0e0e0; /* 底部淺細線 */
         }
         .tab-button {
             background-color: transparent; 
@@ -55,14 +60,14 @@
             padding: 15px 20px; 
             cursor: pointer;
             font-size: 1rem; 
-            color: #ddd; 
+            color: #666; /* 導航文字顏色 */
             transition: all 0.3s ease;
             border-bottom: 3px solid transparent; 
             margin-bottom: -2px; 
         }
         .tab-button:hover { 
-            color: #fff; 
-            background-color: #333; 
+            color: #333; 
+            background-color: #f5f5f5; /* 懸停淺灰背景 */
         }
         .tab-button.active {
             color: #00bcd4; /* 青色高亮 */
@@ -79,7 +84,7 @@
             text-align: center; 
             padding: 15px;
             border-radius: 8px;
-            background-color: #333; 
+            background-color: #e0e0e0; /* 地圖區塊淺灰背景 */
         }
         .map-image-wrapper img {
             max-width: 100%;
@@ -89,7 +94,7 @@
             border-radius: 5px;
         }
 
-        /* ------------------ Modal 樣式 (保持不變) ------------------ */
+        /* ------------------ Modal 樣式 (保持與先前功能一致，顏色對比度高) ------------------ */
         #modalOverlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.85); z-index: 9998; display: none; }
         #modalBox { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: #fff; padding: 20px; border-radius: 10px; z-index: 9999; max-width: 600px; width: 90%; box-shadow: 0 5px 25px rgba(0, 0, 0, 0.8); display: none; color: #333; }
         #modalBox .close-btn { position: absolute; top: 10px; right: 20px; font-size: 30px; cursor: pointer; color: #aaa; }
@@ -110,8 +115,7 @@
     </style>
 </head>
 <body>
-    <div id="nav-container"></div>
-    <!-- 這是導航列會被載入的位置 -->
+    
     <div id="header-nav">
         <div class="tabs-container">
             <div class="tabs">
@@ -291,8 +295,6 @@
             }
         }
     </script>
-
-    <!-- 這是頁尾會被載入的位置 -->
 
     <script src="/mo_data/js/componentsLoader.js"></script>
 </body>
