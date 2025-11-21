@@ -2,164 +2,159 @@
 <html lang="zh-Hant">
 <head>
     <meta charset="UTF-8" />
-    <title>地圖測試 | MoData</title>
-    <link rel="stylesheet" href="/mo_data/css/styles.css" />
-    <link rel="stylesheet" href="/mo_data/css/map.css" />
+    <title>分區地圖 | MoData</title>
     <style>
-        /* ------------------ 原始 CSS & 調整 ------------------ */
-        /* 縮略圖 */
-        .thumbnail {
-            width: 90%;
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 0; background-color: #222; color: #eee; }
+        .container { max-width: 1200px; margin: 20px auto; background-color: #333; border-radius: 8px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4); padding: 20px; }
+        h1 { text-align: center; color: #fff; margin-bottom: 30px; }
+
+        /* Tabs 導航樣式 */
+        .tabs { display: flex; flex-wrap: wrap; border-bottom: 2px solid #555; margin-bottom: 20px; }
+        .tab-button {
+            background-color: transparent; border: none; padding: 12px 20px; cursor: pointer;
+            font-size: 1rem; color: #bbb; transition: all 0.3s ease;
+            border-bottom: 2px solid transparent; margin-bottom: -2px; /* 避免邊框重疊 */
+        }
+        .tab-button:hover { color: #fff; background-color: #444; }
+        .tab-button.active {
+            color: #fff; font-weight: bold; background-color: #444;
+            border-color: #007bff; /* 藍色高亮 */
+        }
+
+        /* Tab 內容區塊 */
+        .tab-content { display: none; padding: 20px 0; }
+        .tab-content.active { display: block; }
+        
+        /* 地圖圖片樣式 */
+        .map-image-wrapper {
+            text-align: center; /* 讓圖片置中 */
+            background-color: #444; /* 地圖背景色 */
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: inset 0 0 8px rgba(0,0,0,0.3);
+        }
+        .map-image-wrapper img {
+            max-width: 100%;
             height: auto;
-            cursor: pointer;
-            transition: transform 0.3s ease;
-            display: block;
-            margin: 0 auto 20px auto;
-        }
-        .thumbnail:hover {
-            transform: scale(1.05);
-        }
-
-        /* 隱藏checkbox */
-        .zoomToggle {
-            display: none;
-        }
-
-        /* 放大視窗 (Lightbox) */
-        .lightbox {
-            position: fixed; top: 0; left: 0;
-            width: 100vw; height: 100vh;
-            background: rgba(0,0,0,0.8);
-            display: none; justify-content: center; align-items: center;
-            cursor: zoom-out; z-index: 9999;
-            overflow: hidden; touch-action: none;
-        }
-        /* checkbox選中時顯示 */
-        .zoomToggle:checked + .lightbox {
-            display: flex;
-        }
-
-        /* 📌 新增：地圖互動容器，作為縮放/拖曳的目標 */
-        .map-interactive-container {
-            position: relative; /* 成為熱區的定位基準 */
-            max-width: 90%;
-            max-height: 90%;
-            /* 讓容器也能接收拖曳 cursor */
-            transition: transform 0.2s ease; 
-        }
-
-        /* 放大圖 */
-        .lightbox img.zoomedImage {
-            width: 100%; height: 100%;
-            box-shadow: 0 0 30px rgba(255,255,255,0.6);
-            border-radius: 10px;
-            cursor: grab;
-            user-select: none;
-            touch-action: none;
-        }
-        /* 拖曳時 cursor */
-        .map-interactive-container.dragging {
-            cursor: grabbing;
-        }
-
-        /* 其他原有樣式 (圖例、標題等) */
-        section h2 { text-align: center; margin-bottom: 8px; }
-        .map-tip { text-align: center; font-size: 0.9rem; color: #ddd; margin-bottom: 40px; }
-        .legend { margin-top: 20px; display: flex; gap: 20px; justify-content: center; font-size: 1rem; color: #333; }
-        .legend-item { display: flex; align-items: center; gap: 8px; }
-        .color-box { width: 24px; height: 24px; border-radius: 4px; display: inline-block; box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); }
-        .village { background-color: #FFA500; }
-        .cave { background-color: #000000; }
-        .sacred { background-color: #3399FF; }
-        
-        /* ------------------ 📌 熱區 CSS ------------------ */
-        .map-hotspot {
-            position: absolute;
-            /* 測試時顯示，部署時可將 opacity 設為 0 */
-            background-color: rgba(255, 0, 0, 0.3); 
-            border: 2px solid rgba(255, 255, 255, 0.5); 
+            display: block; /* 移除圖片底部空間 */
+            margin: 0 auto; /* 置中 */
             border-radius: 5px;
-            cursor: pointer;
-            z-index: 10000;
-            opacity: 1; 
-            transition: background-color 0.2s;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
         }
-        .map-hotspot:hover {
-            background-color: rgba(0, 255, 255, 0.5);
-            opacity: 1;
-        }
-        
-        /* ------------------ Modal 樣式 (您的結構) ------------------ */
+
+        /* ------------------ Modal 樣式 (延用您原有的結構) ------------------ */
         #modalOverlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.7); z-index: 9998; display: none; }
         #modalBox { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; padding: 20px; border-radius: 10px; z-index: 9999; max-width: 600px; width: 90%; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5); display: none; color: #333; }
         #modalBox .close-btn { position: absolute; top: 10px; right: 20px; font-size: 30px; cursor: pointer; color: #aaa; }
         
-        /* 為了容納圖片和文字，調整彈窗內容為兩欄 (Flex) */
         .hero-column-details { display: flex; gap: 20px; align-items: flex-start; margin-top: 15px; }
         .hero-image { max-width: 50%; height: auto; object-fit: contain; border-radius: 8px; }
         .hero-name { color: #333; margin-top: 0; padding-bottom: 10px; border-bottom: 1px solid #eee; }
         .section-gap { margin-top: 10px; }
+
+        /* RWD 調整 */
+        @media (max-width: 768px) {
+            .tab-button { padding: 10px 15px; font-size: 0.9rem; }
+            .hero-column-details { flex-direction: column; }
+            .hero-image { max-width: 100%; }
+            #modalBox { max-width: 95%; padding: 15px; }
+        }
     </style>
 </head>
 <body>
-    <div id="nav-container"></div>
-    <script src="/mo_data/js/componentsLoader.js"></script>
+    <div class="container">
+        <h1>遊戲區域地圖</h1>
 
-    <section class="map-section">
-        <div class="legend">
-            <div class="legend-item"><span class="color-box village"></span><span>村莊</span></div>
-            <div class="legend-item"><span class="color-box cave"></span><span>洞窟</span></div>
-            <div class="legend-item"><span class="color-box sacred"></span><span>需要破邪護符</span></div>
+        <div class="tabs">
+            <button class="tab-button active" data-tab="tab-all">大地圖</button>
+            <button class="tab-button" data-tab="tab-jingcheng">京城區域</button>
+            <button class="tab-button" data-tab="tab-junye">郡業區域</button>
+            <button class="tab-button" data-tab="tab-chuandu">川都區域</button>
+            <button class="tab-button" data-tab="tab-liangshan">梁山區域</button>
+            <button class="tab-button" data-tab="tab-changding">昌碇區域</button>
+            <button class="tab-button" data-tab="tab-sangye">桑耶市集</button>
+            <button class="tab-button" data-tab="tab-juanyan">巨岩村</button>
+            <button class="tab-button" data-tab="tab-xianjie">仙界</button> 
         </div>
-    </section>
 
-    <section class="map-section">
-        <h2>一般地圖</h2>
-        <label for="zoomToggle1">
-            <img class="thumbnail" src="/mo_data/pic/map/map.png" alt="遊戲地圖縮略圖" />
-        </label>
-        <input type="checkbox" id="zoomToggle1" class="zoomToggle" />
+        <div id="tab-all" class="tab-content active">
+            <div class="map-image-wrapper">
+                <img src="/mo_data/pic/map/flow_all.png" usemap="#map_flow_all" alt="大地圖總覽" />
+                <map name="map_flow_all">
+                    <area shape="rect" coords="50,50,150,150" alt="京城區域總覽" title="京城區域總覽" onclick="openMapDetail('京城')" />
+                    <area shape="rect" coords="200,100,300,200" alt="郡業區域總覽" title="郡業區域總覽" onclick="openMapDetail('郡業')" />
+                    </map>
+            </div>
+        </div>
+
+        <div id="tab-jingcheng" class="tab-content">
+            <div class="map-image-wrapper">
+                <img src="/mo_data/pic/map/jingcheng_map.png" usemap="#map_jingcheng" alt="京城區域地圖" />
+                <map name="map_jingcheng">
+                    <area shape="rect" coords="10,10,80,40" alt="京城東門" title="京城東門" onclick="openMapDetail('京城東門')" />
+                    <area shape="rect" coords="100,60,180,90" alt="京城西市" title="京城西市" onclick="openMapDetail('京城西市')" />
+                </map>
+            </div>
+        </div>
         
-        <div class="lightbox" data-for="zoomToggle1" onclick="if(event.target.classList.contains('lightbox')) closeLightbox('zoomToggle1')">
-            
-            <div class="map-interactive-container" data-for="zoomToggle1"> 
-                <img class="zoomedImage" src="/mo_data/pic/map/map.png" alt="遊戲地圖放大圖" draggable="false" data-for="zoomToggle1" />
-                
-                <button class="map-hotspot" 
-                        style="left: 9.5%; top: 19.5%; width: 5%; height: 5%;"
-                        data-map-id="A村莊" 
-                        title="A村莊"></button>
-                        
-                <button class="map-hotspot" 
-                        style="left: 44%; top: 59%; width: 4%; height: 8%;"
-                        data-map-id="B洞窟"
-                        title="B洞窟"></button>
-                        
-                <button class="map-hotspot" 
-                        style="left: 70%; top: 30%; width: 8%; height: 6%;"
-                        data-map-id="C區域"
-                        title="C區域"></button>
+        <div id="tab-junye" class="tab-content">
+            <div class="map-image-wrapper">
+                <img src="/mo_data/pic/map/junye_map.png" usemap="#map_junye" alt="郡業區域地圖" />
+                <map name="map_junye">
+                    </map>
             </div>
         </div>
-        <p class="map-tip">點擊圖片可放大，放大後可用滑鼠滾輪縮放與拖曳，點擊背景關閉。點擊地圖上的紅色熱區可顯示地點詳情。</p>
-    </section>
 
-    <section class="map-section">
-        <h2>仙界地圖</h2>
-        <label for="zoomToggle2">
-            <img class="thumbnail" src="/mo_data/pic/map/map-1.png" alt="仙界地圖縮略圖" />
-        </label>
-        <input type="checkbox" id="zoomToggle2" class="zoomToggle" />
-        <div class="lightbox" data-for="zoomToggle2" onclick="if(event.target.classList.contains('lightbox')) closeLightbox('zoomToggle2')">
-            <div class="map-interactive-container" data-for="zoomToggle2">
-                <img class="zoomedImage" src="/mo_data/pic/map/map-1.png" alt="仙界地圖放大圖" draggable="false" data-for="zoomToggle2" />
+        <div id="tab-chuandu" class="tab-content">
+            <div class="map-image-wrapper">
+                <img src="/mo_data/pic/map/chuandu_map.png" usemap="#map_chuandu" alt="川都區域地圖" />
+                <map name="map_chuandu">
+                    </map>
             </div>
         </div>
-        <p class="map-tip">點擊圖片可放大，放大後可用滑鼠滾輪縮放與拖曳，點擊背景關閉</p>
-    </section>
-    
-    <div id="footer-container"></div>
-    
+        
+        <div id="tab-liangshan" class="tab-content">
+            <div class="map-image-wrapper">
+                <img src="/mo_data/pic/map/liangshan_map.png" usemap="#map_liangshan" alt="梁山區域地圖" />
+                <map name="map_liangshan">
+                    </map>
+            </div>
+        </div>
+        
+        <div id="tab-changding" class="tab-content">
+            <div class="map-image-wrapper">
+                <img src="/mo_data/pic/map/changding_map.png" usemap="#map_changding" alt="昌碇區域地圖" />
+                <map name="map_changding">
+                    </map>
+            </div>
+        </div>
+        
+        <div id="tab-sangye" class="tab-content">
+            <div class="map-image-wrapper">
+                <img src="/mo_data/pic/map/sangye_map.png" usemap="#map_sangye" alt="桑耶市集地圖" />
+                <map name="map_sangye">
+                    </map>
+            </div>
+        </div>
+        
+        <div id="tab-juanyan" class="tab-content">
+            <div class="map-image-wrapper">
+                <img src="/mo_data/pic/map/juanyan_map.png" usemap="#map_juanyan" alt="巨岩村地圖" />
+                <map name="map_juanyan">
+                    </map>
+            </div>
+        </div>
+
+        <div id="tab-xianjie" class="tab-content">
+            <div class="map-image-wrapper">
+                <img src="/mo_data/pic/map/xianjie_map.png" usemap="#map_xianjie" alt="仙界地圖" />
+                <map name="map_xianjie">
+                    </map>
+            </div>
+        </div>
+
+    </div>
+
     <div id="modalOverlay"></div>
     <div id="modalBox">
         <span class="close-btn">&times;</span>
@@ -168,36 +163,44 @@
     </div>
 
     <script>
-        // ----------------------------------------------------
-        // 📌 MODAL / JSON 處理相關變數 (地圖資料)
-        // ----------------------------------------------------
-        let mapData = []; 
+        let mapData = []; // 儲存 detailed_maptest.json 的詳細資料
 
+        // 載入 JSON 資料並設定 Tab 切換事件
         document.addEventListener("DOMContentLoaded", () => {
-            // === 載入 JSON 資料 ===
+            // === 1. 載入詳細資料 JSON ===
             fetch("/mo_data/data/detailed_maptest.json")
                 .then(res => {
-                    if (!res.ok) throw new Error("載入 detailed_map.json 失敗");
+                    if (!res.ok) throw new Error("載入 detailed_maptest.json 失敗");
                     return res.json();
                 })
                 .then(json => {
-                    mapData = Array.isArray(json) ? json : json.data; 
-                    preloadCardImages(mapData);
-                    initMapHotspots(mapData); // 📌 綁定熱區事件
+                    // 假設 JSON 結構可能是陣列或包含 data 鍵的物件
+                    mapData = Array.isArray(json) ? json : json.data;
+                    console.log("✅ 地圖詳細資料載入完成:", mapData.length, "筆");
                 })
                 .catch(err => {
-                    console.error("❌ JSON 載入失敗：", err);
-                    alert("地圖詳細資料載入失敗，無法啟用熱區點擊功能。請檢查 detailed_map.json。");
+                    console.error("❌ 詳細資料 JSON 載入失敗：", err);
+                    alert("地圖詳細資料載入失敗，點擊功能可能無法運作。");
                 });
-            
-            // ... (其他 DOMContentLoaded 事件保持不變) ...
-            document.addEventListener("click", e => {
-                if (e.target.classList.contains("accordion-header")) {
-                    e.target.parentElement.classList.toggle("collapsed");
-                }
+
+            // === 2. Tab 切換邏輯 ===
+            const tabButtons = document.querySelectorAll('.tab-button');
+            const tabContents = document.querySelectorAll('.tab-content');
+
+            tabButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // 移除所有按鈕和內容區塊的 active 狀態
+                    tabButtons.forEach(btn => btn.classList.remove('active'));
+                    tabContents.forEach(content => content.classList.remove('active'));
+
+                    // 為當前點擊的按鈕和對應的內容區塊添加 active 狀態
+                    button.classList.add('active');
+                    const targetTabId = button.dataset.tab;
+                    document.getElementById(targetTabId).classList.add('active');
+                });
             });
-            
-            // === 關閉 Modal (載入後綁定) ===
+
+            // === 3. Modal 關閉邏輯 (延用) ===
             const closeModal = () => {
                 document.getElementById("modalOverlay").style.display = "none";
                 document.getElementById("modalBox").style.display = "none";
@@ -207,260 +210,45 @@
             document.getElementById("modalOverlay").addEventListener("click", closeModal);
         });
 
-        // === 預載卡圖 (使用 mapid 載入圖片) ===
-        function preloadCardImages(data) {
-            data.forEach(item => {
-                const img = new Image();
-                img.src = `/mo_data/pic/map/${encodeURIComponent(item.mapid)}.jpg`;
-            });
-        }
-
-        // 📌 核心函數：初始化地圖熱區點擊事件
-        function initMapHotspots(data) {
-            document.querySelectorAll('.map-hotspot').forEach(hotspot => {
-                hotspot.addEventListener('click', (e) => {
-                    // 阻止點擊事件向上傳播到 lightbox，避免關閉
-                    e.stopPropagation(); 
-                    
-                    const mapId = e.target.dataset.mapId;
-                    
-                    // 根據 data-map-id 尋找 JSON 中對應的資料
-                    const item = data.find(i => i.mapid === mapId); 
-                    
-                    if (item) {
-                        showDetailModal(item);
-                    } else {
-                        alert(`找不到 ID 為 "${mapId}" 的地圖資料。請檢查 JSON 檔案。`);
-                        console.warn(`找不到 ID 為 ${mapId} 的地圖資料`);
-                    }
-                });
-            });
-        }
-
-        // === Modal 顯示 (使用您提供的內容，調整圖片排版) ===
-        async function showDetailModal(item) {
-            const overlay = document.getElementById("modalOverlay");
-            const modalBox = document.getElementById("modalBox");
-            const contentDiv = document.getElementById("modalContent");
-
-            const img = new Image();
-            img.alt = item.mapid;
-            img.className = "hero-image";
-            img.style.width = "auto";
-            img.style.height = "auto";
-            img.style.objectFit = "contain";
-
-            const path = `/mo_data/pic/map/${item.mapid}.jpg`;
-
-            try {
-                await new Promise((resolve, reject) => {
-                    img.onload = resolve;
-                    img.onerror = reject;
-                    img.src = path;
-                });
-            } catch {
-                console.warn(`圖片載入失敗 (${path})，使用預設圖`);
-                img.src = "/mo_data/pic/default.png";
-            }
-
-            // 📌 核心 HTML 內容：將圖片和文字分兩欄顯示
-            const html = `
-                <h2 class="hero-name">${item.mapid}</h2>
+        // === 4. 彈窗內容填充函數 (showDetailModal 延用) ===
+        function showDetailModal(item) {
+            const modalContent = document.getElementById("modalContent");
+            // 這裡使用 backtick (`) 方便寫多行 HTML
+            modalContent.innerHTML = `
+                <h2 class="hero-name">${item.name} (${item.mapid})</h2>
                 <div class="hero-column-details">
-                    <div style="flex:1;"></div> 
-                    
-                    <div style="flex:1;">
-                         <p><strong>等級：</strong>${item.maplv}</p>
-                         <p><strong>垃圾掉落：</strong>${item.drop_rubbish}</p>
-                         <p class="section-gap"><strong>光輝掉落(掉落較多)：</strong><span>${item.drop_glory_high}</span></p>
-                         <p class="section-gap"><strong>光輝掉落(掉落較低)：</strong><span>${item.drop_glory_low}</span></p>
-                         <p class="section-gap"><strong>光輝掉落(玩家提供)：</strong>-</p>
+                    <div>
+                        <p><strong>類型:</strong> ${item.type || 'N/A'}</p>
+                        <p><strong>描述:</strong> ${item.description || '無描述'}</p>
+                        <p><strong>功能:</strong> ${item.functions ? item.functions.join(', ') : '無'}</p>
+                        <div class="section-gap">
+                            <p><strong>傳送點:</strong> ${item.teleports ? item.teleports.join(' → ') : '無'}</p>
+                        </div>
                     </div>
+                    ${item.image ? `<img src="${item.image}" alt="${item.name}" class="hero-image" />` : ''}
                 </div>
             `;
-            
-            contentDiv.innerHTML = html;
-            
-            // 將載入的圖片插入到左側容器中
-            const imgContainer = contentDiv.querySelector(".hero-column-details > div:first-child");
-            if(imgContainer) {
-                 imgContainer.appendChild(img);
+            document.getElementById("modalOverlay").style.display = "block";
+            document.getElementById("modalBox").style.display = "block";
+        }
+
+        // === 5. Image Map 點擊觸發函數 (openMapDetail 延用) ===
+        function openMapDetail(mapId) {
+            if (!mapData || mapData.length === 0) {
+                console.error("地圖資料 (mapData) 尚未載入。");
+                alert("資料尚未準備好，請稍候再試。");
+                return;
             }
 
-            overlay.style.display = "block";
-            modalBox.style.display = "block";
+            const item = mapData.find(i => i.mapid === mapId);
+
+            if (item) {
+                showDetailModal(item);
+            } else {
+                console.warn(`未找到 mapId: ${mapId} 的詳細資料。`);
+                alert(`地圖區域 [${mapId}] 尚未有詳細資訊。`);
+            }
         }
-        
-        // ----------------------------------------------------
-        // 📌 原始地圖拖曳/縮放邏輯 (已修改為對 .map-interactive-container 進行操作)
-        // ----------------------------------------------------
-        const imagesState = {};
-
-        document.querySelectorAll('.zoomToggle').forEach(checkbox => {
-            const id = checkbox.id;
-            imagesState[id] = { scale: 1, translateX: 0, translateY: 0, isDragging: false, startX: 0, startY: 0, lastTouchDistance: null, lastTouchCenter: null };
-            checkbox.addEventListener('change', e => {
-                if (e.target.checked) resetTransform(id);
-            });
-        });
-
-        function getInteractiveContainer(id) {
-            return document.querySelector(`.map-interactive-container[data-for="${id}"]`);
-        }
-        
-        function resetTransform(id) {
-            const state = imagesState[id];
-            state.scale = 1; state.translateX = 0; state.translateY = 0; 
-            state.lastTouchDistance = null; state.lastTouchCenter = null;
-            updateTransform(id);
-        }
-
-        function updateTransform(id) {
-            const state = imagesState[id];
-            const container = getInteractiveContainer(id);
-            container.style.transform = `translate(${state.translateX}px, ${state.translateY}px) scale(${state.scale})`;
-        }
-
-        function closeLightbox(id) {
-            document.getElementById(id).checked = false;
-            resetTransform(id);
-        }
-
-        function getDistance(touches) {
-            const [touch1, touch2] = touches;
-            return Math.hypot(touch2.clientX - touch1.clientX, touch2.clientY - touch1.clientY);
-        }
-
-        function getCenter(touches) {
-            const [touch1, touch2] = touches;
-            return { x: (touch1.clientX + touch2.clientX) / 2, y: (touch1.clientY + touch2.clientY) / 2 };
-        }
-
-        document.querySelectorAll('.map-interactive-container').forEach(container => {
-            const id = container.dataset.for;
-            const state = imagesState[id];
-
-            // 滾輪縮放 (綁定在 lightbox 上)
-            container.parentElement.addEventListener('wheel', e => {
-                e.preventDefault();
-                const scaleAmount = e.deltaY < 0 ? 1.1 : 0.9;
-                const prevScale = state.scale;
-                state.scale *= scaleAmount;
-                state.scale = Math.min(5, Math.max(0.5, state.scale));
-
-                const rect = container.getBoundingClientRect();
-                const offsetX = e.clientX - rect.left;
-                const offsetY = e.clientY - rect.top;
-
-                state.translateX -= (offsetX / prevScale - offsetX / state.scale) * prevScale; 
-                state.translateY -= (offsetY / prevScale - offsetY / state.scale) * prevScale; 
-
-                updateTransform(id);
-            });
-
-            // 滑鼠拖曳開始
-            container.addEventListener('mousedown', e => {
-                e.preventDefault();
-                if (state.scale > 1) { 
-                    state.isDragging = true;
-                    state.startX = e.clientX - state.translateX;
-                    state.startY = e.clientY - state.translateY;
-                    container.classList.add('dragging'); 
-                }
-            });
-
-            // 滑鼠拖曳中 (綁定在 window 上)
-            window.addEventListener('mousemove', e => {
-                if (!state.isDragging) return;
-                state.translateX = e.clientX - state.startX;
-                state.translateY = e.clientY - state.startY;
-                updateTransform(id);
-            });
-
-            // 滑鼠拖曳結束 (綁定在 window 上)
-            window.addEventListener('mouseup', e => {
-                if (state.isDragging) {
-                    state.isDragging = false;
-                    container.classList.remove('dragging');
-                }
-            });
-
-            // 觸控開始
-            container.addEventListener('touchstart', e => {
-                if (document.getElementById(id).checked) e.preventDefault();
-                
-                if (e.touches.length === 1) {
-                    if (state.scale > 1) { 
-                        state.isDragging = true;
-                        const touch = e.touches[0];
-                        state.startX = touch.clientX - state.translateX;
-                        state.startY = touch.clientY - state.translateY;
-                        container.classList.add('dragging');
-                    }
-                } else if (e.touches.length === 2) {
-                    state.isDragging = false;
-                    state.lastTouchDistance = getDistance(e.touches);
-                    state.lastTouchCenter = getCenter(e.touches);
-                }
-            }, { passive: false });
-
-            // 觸控移動
-            container.addEventListener('touchmove', e => {
-                if (document.getElementById(id).checked) e.preventDefault();
-                
-                if (e.touches.length === 1 && state.isDragging) {
-                    const touch = e.touches[0];
-                    state.translateX = touch.clientX - state.startX;
-                    state.translateY = touch.clientY - state.startY;
-                    updateTransform(id);
-                } else if (e.touches.length === 2) {
-                    const newDistance = getDistance(e.touches);
-                    const newCenter = getCenter(e.touches);
-
-                    if (state.lastTouchDistance) {
-                        const scaleChange = newDistance / state.lastTouchDistance;
-                        const prevScale = state.scale;
-                        state.scale *= scaleChange;
-                        state.scale = Math.min(5, Math.max(0.5, state.scale));
-
-                        const rect = container.getBoundingClientRect();
-                        const offsetX = state.lastTouchCenter.x - rect.left;
-                        const offsetY = state.lastTouchCenter.y - rect.top;
-
-                        state.translateX -= (offsetX / prevScale - offsetX / state.scale) * prevScale; 
-                        state.translateY -= (offsetY / prevScale - offsetY / state.scale) * prevScale; 
-
-                        const dx = newCenter.x - state.lastTouchCenter.x;
-                        const dy = newCenter.y - state.lastTouchCenter.y;
-                        state.translateX += dx;
-                        state.translateY += dy;
-
-                        updateTransform(id);
-                    }
-
-                    state.lastTouchDistance = newDistance;
-                    state.lastTouchCenter = newCenter;
-                }
-            }, { passive: false });
-
-            // 觸控結束
-            container.addEventListener('touchend', e => {
-                 if (e.touches.length === 0) {
-                    state.isDragging = false;
-                    state.lastTouchDistance = null;
-                    state.lastTouchCenter = null;
-                    container.classList.remove('dragging');
-                } else if (e.touches.length === 1 && state.scale > 1) {
-                    const touch = e.touches[0];
-                    state.isDragging = true;
-                    state.startX = touch.clientX - state.translateX;
-                    state.startY = touch.clientY - state.translateY;
-                    container.classList.add('dragging');
-                    state.lastTouchDistance = null;
-                    state.lastTouchCenter = null;
-                }
-            }, { passive: false });
-        });
     </script>
 </body>
 </html>
