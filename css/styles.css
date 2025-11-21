@@ -17,9 +17,7 @@ body {
     width: 100%;
     background: #3399ff; /* 主背景色 */
     color: #fff;
-    /* 📌 依要求保留：設定導覽列的上下邊距和左右邊距 */
     padding: 12px 40px; 
-    /* 📌 依要求保留：設定為 Flex，讓 .nav-mobile-header 和 .nav-menu 水平排列 */
     display: flex;
     align-items: center;
     border-radius: 0 0 8px 8px;
@@ -57,7 +55,7 @@ body {
     text-decoration: none;
     font-weight: 600;
     font-size: 16px;
-    padding: 8px 16px;
+    padding: 8px 14px;
     border-radius: 4px;
     cursor: pointer;
 }
