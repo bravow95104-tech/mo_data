@@ -21,8 +21,7 @@ body {
     padding: 12px 40px; 
     /* 📌 依要求保留：設定為 Flex，讓 .nav-mobile-header 和 .nav-menu 水平排列 */
     display: flex;
-    align-items: center; 
-    
+    align-items: center;
     border-radius: 0 0 8px 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     z-index: 1000;
@@ -139,7 +138,7 @@ body {
     justify-content: flex-start;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 30px 40px;
+    padding: 30px 0;
     gap: 40px;
 }
 
