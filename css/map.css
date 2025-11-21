@@ -113,19 +113,12 @@ h1 {
     background: #ffffff; 
     border-radius: 10px; 
     z-index: 9999; 
-    
     max-width: 600px; 
     width: 90%; 
     max-height: 90vh; /* 限制總高度 */
-    
-    /* ❌ 移除 Flexbox 相關設定 */
     display: none; /* JS 控制顯示 */
-    /* flex-direction: column; */
-    
-    /* ✅ 讓整個 Modal Box 滾動 */
     padding: 20px; /* 恢復 Box 的內邊距 */
     overflow-y: auto; 
-    
     box-shadow: 0 5px 25px rgba(0, 0, 0, 0.3); 
 }
 
@@ -134,11 +127,9 @@ h1 {
     display: flex;
     justify-content: space-between; /* 標題靠左，X 按鈕靠右 */
     align-items: center; 
-    
     /* 移除 padding，由 modalBox 提供 */
     padding: 0; 
     margin-bottom: 15px; /* 在標題底部增加間隔 */
-    
     border-bottom: 1px solid #eee; 
 }
 
@@ -149,6 +140,7 @@ h1 {
     border: none;
     font-size: 1.5rem;
     color: #3399ff;
+    text-align: center;
 }
 
 #modalBox .close-btn {
@@ -166,13 +158,16 @@ h1 {
 
 /* ❌ 內容區塊樣式 (移除內部滾動設定) */
 #modalContent {
-    /* 移除 overflow-y: auto; */
-    overflow-y: visible; 
-    padding: 0; /* 移除 padding，由 modalBox 提供 */
-    
-    /* 移除滾動軸美化設定 */
-    scrollbar-width: auto;
-    scrollbar-color: auto;
+  padding: 10px;
+  font-size: 16px;
+  color: #333;
+  max-height: 70vh;         /* 限制最大高度 */
+  width: 100%;
+  overflow-y: auto;         /* 內容超出時垂直出現捲軸 */
+  line-height: 1.5;
+  background-color: #fff;
+  border-radius: 6px;
+  box-sizing: border-box;
 }
 
 #modalContent::-webkit-scrollbar { width: auto; }
@@ -182,8 +177,13 @@ h1 {
 
 /* 彈窗內容元素樣式 */
 .hero-column-details { 
-    display: flex; gap: 20px; align-items: flex-start; 
-    margin-top: 15px; 
+  flex: 0 0 90%;             /* 彈性成長，基底寬度48% */
+  min-width: 250px;          /* 最小寬度限制，避免太小擠壓 */
+  box-sizing: border-box;    /* 包含 padding、border */
+  background-color: #f9f9f9; /* 可選：輕微背景色區分 */
+  padding: 20px 20px;
+  border-radius: 6px;        /* 可選：圓角讓框框好看 */
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
 }
 .hero-image { 
     max-width: 100%; 
@@ -193,12 +193,16 @@ h1 {
     display: block;
     margin: 0 auto;
 }
-.hero-name { 
-    color: #3399ff; 
-    margin-top: 0; padding-bottom: 10px; border-bottom: 1px solid #eee; 
+.hero-name {
+  text-align: center;
+  font-size: 24px;
+  color: #3399ff;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #ddd !important;
+  padding-bottom: 10px;
 }
 .section-gap { 
-    margin-top: 10px; 
+    margin-top: 16px !important; /* 顯著的段落開頭距離，加強效果 */
 }
 
 /* ... 7. RWD 調整保持不變 ... */
