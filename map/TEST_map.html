@@ -12,19 +12,19 @@
         body { 
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
             margin: 0; 
-            padding: 70px 0 0 0; /* 📌 增加頂部內距，推下內容 */
-            background-color: #f8f8f8; /* 淺灰背景 */
+            padding: 70px 0 0 0; /* 增加頂部內距，推下內容 */
+            background-color: #f8f8f8; /* 淺灰背景，接近您星曜任務的 body */
             color: #333; /* 深色文字 */
         }
         
         /* 導航列區塊：全寬固定在頂部 */
         #header-nav {
-            position: fixed; /* 📌 固定位置 */
+            position: fixed; 
             top: 0;
             left: 0;
-            z-index: 1000; /* 確保在最上層 */
+            z-index: 1000; 
             width: 100%;
-            background-color: #ffffff; /* 白色導航欄背景 */
+            background-color: #ffffff; /* 白色導航欄背景，符合您的明亮風格 */
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* 淺陰影 */
         }
         
@@ -39,44 +39,51 @@
         .content-wrapper {
             max-width: 1200px; 
             margin: 20px auto; 
-            background-color: #ffffff; /* 內容區塊為白色 */
-            border-radius: 8px; 
+            background-color: #ffffff; /* 內容區塊為白色，符合您星曜任務的 .tab-content */
+            border-radius: 8px; /* 柔和圓角 */
             padding: 20px; 
             min-height: 700px; 
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.05); /* 輕微陰影 */
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1); /* 輕微陰影，與您星曜任務的 .tab-content 相同 */
         }
         
-        h1 { text-align: center; color: #333; margin-bottom: 30px; }
+        h1 { 
+            text-align: center; 
+            color: #333; /* 主標題顏色 */
+            margin-bottom: 30px; 
+            /* 考慮使用您星曜任務的 h3 顏色如果它更適合作為頁面主標題 #3399ff */
+        }
 
-        /* Tabs 導航樣式 */
+        /* Tabs 導航樣式 (保留我的結構，但套用您的顏色和 Hover/Active 效果) */
         .tabs { 
             display: flex; 
             flex-wrap: wrap; 
-            border-bottom: 2px solid #e0e0e0; /* 底部淺細線 */
+            border-bottom: 2px solid #e0e0e0; /* 底部淺細線，取代深色線 */
         }
         .tab-button {
-            background-color: transparent; 
+            background-color: transparent; /* 保持透明 */
             border: none; 
             padding: 15px 20px; 
             cursor: pointer;
             font-size: 1rem; 
             color: #666; /* 導航文字顏色 */
-            transition: all 0.3s ease;
+            transition: all 0.2s ease; /* 調整過渡時間以匹配您的風格 */
             border-bottom: 3px solid transparent; 
             margin-bottom: -2px; 
         }
         .tab-button:hover { 
-            color: #333; 
-            background-color: #f5f5f5; /* 懸停淺灰背景 */
+            color: #267acc; /* 懸停時使用您星曜任務的藍色系 */
+            background-color: #f0f8ff; /* 淺藍色懸停背景 */
+            border-color: #6ab7ff; /* 懸停時的藍色邊框 */
         }
         .tab-button.active {
-            color: #00bcd4; /* 青色高亮 */
+            color: #b8860b; /* 活躍時使用您星曜任務的黃色系 */
             font-weight: bold; 
-            border-color: #00bcd4; 
+            border-color: #ffd84d; /* 活躍時的黃色邊框 */
+            background-color: #fff6b0; /* 活躍時的黃色背景 */
         }
 
         /* Tab 內容區塊 */
-        .tab-content { display: none; padding: 20px 0; }
+        .tab-content { display: none; padding: 20px 0; } /* padding 配合 content-wrapper */
         .tab-content.active { display: block; }
         
         /* 地圖圖片樣式 */
@@ -84,24 +91,37 @@
             text-align: center; 
             padding: 15px;
             border-radius: 8px;
-            background-color: #e0e0e0; /* 地圖區塊淺灰背景 */
+            background-color: #f9fcff; /* 地圖區塊背景色，與您的 .mission-card 類似 */
+            border: 1px solid #b3d8ff; /* 與您的 .mission-card 邊框類似 */
         }
         .map-image-wrapper img {
             max-width: 100%;
             height: auto;
             display: block; 
             margin: 0 auto; 
-            border-radius: 5px;
+            border-radius: 5px; /* 圖片圓角 */
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05); /* 輕微陰影 */
         }
 
-        /* ------------------ Modal 樣式 (保持與先前功能一致，顏色對比度高) ------------------ */
-        #modalOverlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.85); z-index: 9998; display: none; }
-        #modalBox { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: #fff; padding: 20px; border-radius: 10px; z-index: 9999; max-width: 600px; width: 90%; box-shadow: 0 5px 25px rgba(0, 0, 0, 0.8); display: none; color: #333; }
-        #modalBox .close-btn { position: absolute; top: 10px; right: 20px; font-size: 30px; cursor: pointer; color: #aaa; }
+        /* ------------------ Modal 樣式 (維持高對比以確保可讀性) ------------------ */
+        #modalOverlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.7); z-index: 9998; display: none; }
+        #modalBox { 
+            position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); 
+            background: #ffffff; /* Modal 背景 */
+            padding: 20px; border-radius: 10px; z-index: 9999; 
+            max-width: 600px; width: 90%; 
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.3); /* Modal 陰影 */
+            color: #333; 
+        }
+        #modalBox .close-btn { 
+            position: absolute; top: 10px; right: 20px; 
+            font-size: 30px; cursor: pointer; color: #aaa; 
+        }
         
         .hero-column-details { display: flex; gap: 20px; align-items: flex-start; margin-top: 15px; }
         .hero-image { max-width: 50%; height: auto; object-fit: contain; border-radius: 8px; }
-        .hero-name { color: #333; margin-top: 0; padding-bottom: 10px; border-bottom: 1px solid #eee; }
+        .hero-name { color: #3399ff; /* Modal 標題顏色可以沿用藍色系 */
+                      margin-top: 0; padding-bottom: 10px; border-bottom: 1px solid #eee; }
         .section-gap { margin-top: 10px; }
 
         /* RWD 調整 */
@@ -259,9 +279,8 @@
         // === 4. 彈窗內容填充函數 (showDetailModal 延用) ===
         function showDetailModal(item) {
             const modalContent = document.getElementById("modalContent");
-            // 使用反引號 (`) 方便寫多行 HTML
             modalContent.innerHTML = `
-                <h2 class="hero-name">${item.mapid || 'N/A'}</h2>
+                <h2 class="hero-name" style="color: #3399ff;">${item.mapid || 'N/A'}</h2> 
                 <div class="hero-column-details">
                     <div>
                         <p><strong>等級:</strong> ${item.maplv || 'N/A'}</p>
@@ -296,6 +315,6 @@
         }
     </script>
 
-    <script src="/mo_data/js/componentsLoader.js"></script>
+    <div id="footer-container"></div> <script src="/mo_data/js/componentsLoader.js"></script>
 </body>
 </html>
