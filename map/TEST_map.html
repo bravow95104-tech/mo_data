@@ -175,7 +175,7 @@
 
         document.addEventListener("DOMContentLoaded", () => {
             // === 載入 JSON 資料 ===
-            fetch("/mo_data/data/detailed_map.json")
+            fetch("/mo_data/data/detailed_maptest.json")
                 .then(res => {
                     if (!res.ok) throw new Error("載入 detailed_map.json 失敗");
                     return res.json();
