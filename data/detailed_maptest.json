@@ -1,0 +1,23 @@
+[
+  {
+    "mapid": "A村莊",
+    "maplv": "1~10級",
+    "drop_rubbish": "雜物、石頭",
+    "drop_glory_high": "木材",
+    "drop_glory_low": "藥草"
+  },
+  {
+    "mapid": "B洞窟",
+    "maplv": "30~40級",
+    "drop_rubbish": "破舊的甲冑、生鏽的劍",
+    "drop_glory_high": "稀有金屬",
+    "drop_glory_low": "礦石"
+  },
+  {
+    "mapid": "C區域",
+    "maplv": "50~60級",
+    "drop_rubbish": "腐爛的布、灰燼",
+    "drop_glory_high": "靈魂碎片",
+    "drop_glory_low": "魔法粉塵"
+  }
+]
