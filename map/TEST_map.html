@@ -3,22 +3,71 @@
 <head>
     <meta charset="UTF-8" />
     <title>分區地圖 | MoData</title>
+    
+    <link rel="stylesheet" href="/mo_data/css/styles.css" />
+    <link rel="stylesheet" href="/mo_data/css/detailed_map.css" />
+    
     <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 0; background-color: #222; color: #eee; }
-        .container { max-width: 1200px; margin: 20px auto; background-color: #333; border-radius: 8px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4); padding: 20px; }
+        /* 基礎設置 */
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            margin: 0; 
+            padding: 0; 
+            background-color: #1a1a1a; /* 更深的背景色 */
+            color: #eee; 
+        }
+        
+        /* 導航列區塊：全寬置頂 */
+        #header-nav {
+            width: 100%;
+            background-color: #222; /* 導航欄的背景色 */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+        }
+        
+        /* 導航列內容：居中對齊 */
+        .tabs-container {
+            max-width: 1200px;
+            margin: 0 auto; /* 居中 */
+            padding: 0 20px;
+        }
+
+        /* 主內容區塊 */
+        .content-wrapper {
+            max-width: 1200px; 
+            margin: 20px auto; 
+            background-color: #2a2a2a; /* 主內容區的背景色 */
+            border-radius: 8px; 
+            padding: 20px; 
+            min-height: 700px; 
+        }
+        
         h1 { text-align: center; color: #fff; margin-bottom: 30px; }
 
         /* Tabs 導航樣式 */
-        .tabs { display: flex; flex-wrap: wrap; border-bottom: 2px solid #555; margin-bottom: 20px; }
-        .tab-button {
-            background-color: transparent; border: none; padding: 12px 20px; cursor: pointer;
-            font-size: 1rem; color: #bbb; transition: all 0.3s ease;
-            border-bottom: 2px solid transparent; margin-bottom: -2px; /* 避免邊框重疊 */
+        .tabs { 
+            display: flex; 
+            flex-wrap: wrap; 
+            border-bottom: 2px solid #3a3a3a; /* 底部細線 */
         }
-        .tab-button:hover { color: #fff; background-color: #444; }
+        .tab-button {
+            background-color: transparent; 
+            border: none; 
+            padding: 15px 20px; 
+            cursor: pointer;
+            font-size: 1rem; 
+            color: #ddd; 
+            transition: all 0.3s ease;
+            border-bottom: 3px solid transparent; 
+            margin-bottom: -2px; 
+        }
+        .tab-button:hover { 
+            color: #fff; 
+            background-color: #333; 
+        }
         .tab-button.active {
-            color: #fff; font-weight: bold; background-color: #444;
-            border-color: #007bff; /* 藍色高亮 */
+            color: #00bcd4; /* 青色高亮 */
+            font-weight: bold; 
+            border-color: #00bcd4; 
         }
 
         /* Tab 內容區塊 */
@@ -27,24 +76,22 @@
         
         /* 地圖圖片樣式 */
         .map-image-wrapper {
-            text-align: center; /* 讓圖片置中 */
-            background-color: #444; /* 地圖背景色 */
+            text-align: center; 
             padding: 15px;
             border-radius: 8px;
-            box-shadow: inset 0 0 8px rgba(0,0,0,0.3);
+            background-color: #333; 
         }
         .map-image-wrapper img {
             max-width: 100%;
             height: auto;
-            display: block; /* 移除圖片底部空間 */
-            margin: 0 auto; /* 置中 */
+            display: block; 
+            margin: 0 auto; 
             border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
         }
 
-        /* ------------------ Modal 樣式 (延用您原有的結構) ------------------ */
-        #modalOverlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.7); z-index: 9998; display: none; }
-        #modalBox { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; padding: 20px; border-radius: 10px; z-index: 9999; max-width: 600px; width: 90%; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5); display: none; color: #333; }
+        /* ------------------ Modal 樣式 (保持不變) ------------------ */
+        #modalOverlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.85); z-index: 9998; display: none; }
+        #modalBox { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: #fff; padding: 20px; border-radius: 10px; z-index: 9999; max-width: 600px; width: 90%; box-shadow: 0 5px 25px rgba(0, 0, 0, 0.8); display: none; color: #333; }
         #modalBox .close-btn { position: absolute; top: 10px; right: 20px; font-size: 30px; cursor: pointer; color: #aaa; }
         
         .hero-column-details { display: flex; gap: 20px; align-items: flex-start; margin-top: 15px; }
@@ -54,7 +101,8 @@
 
         /* RWD 調整 */
         @media (max-width: 768px) {
-            .tab-button { padding: 10px 15px; font-size: 0.9rem; }
+            .tab-button { padding: 10px 10px; font-size: 0.9rem; }
+            .tabs { justify-content: space-around; } 
             .hero-column-details { flex-direction: column; }
             .hero-image { max-width: 100%; }
             #modalBox { max-width: 95%; padding: 15px; }
@@ -62,20 +110,25 @@
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>遊戲區域地圖</h1>
-
-        <div class="tabs">
-            <button class="tab-button active" data-tab="tab-all">大地圖</button>
-            <button class="tab-button" data-tab="tab-jingcheng">京城區域</button>
-            <button class="tab-button" data-tab="tab-junye">郡業區域</button>
-            <button class="tab-button" data-tab="tab-chuandu">川都區域</button>
-            <button class="tab-button" data-tab="tab-liangshan">梁山區域</button>
-            <button class="tab-button" data-tab="tab-changding">昌碇區域</button>
-            <button class="tab-button" data-tab="tab-sangye">桑耶市集</button>
-            <button class="tab-button" data-tab="tab-juanyan">巨岩村</button>
-            <button class="tab-button" data-tab="tab-xianjie">仙界</button> 
+    
+    <div id="header-nav">
+        <div class="tabs-container">
+            <div class="tabs">
+                <button class="tab-button active" data-tab="tab-all">大地圖</button>
+                <button class="tab-button" data-tab="tab-jingcheng">京城區域</button>
+                <button class="tab-button" data-tab="tab-junye">郡業區域</button>
+                <button class="tab-button" data-tab="tab-chuandu">川都區域</button>
+                <button class="tab-button" data-tab="tab-liangshan">梁山區域</button>
+                <button class="tab-button" data-tab="tab-changding">昌碇區域</button>
+                <button class="tab-button" data-tab="tab-sangye">桑耶市集</button>
+                <button class="tab-button" data-tab="tab-juanyan">巨岩村</button>
+                <button class="tab-button" data-tab="tab-xianjie">仙界</button> 
+            </div>
         </div>
+    </div>
+
+    <div class="content-wrapper">
+        <h1 style="margin-top: 0;">遊戲區域地圖</h1>
 
         <div id="tab-all" class="tab-content active">
             <div class="map-image-wrapper">
@@ -93,79 +146,70 @@
                 <map name="map_jingcheng">
                     <area shape="rect" coords="10,10,80,40" alt="京城東門" title="京城東門" onclick="openMapDetail('京城東門')" />
                     <area shape="rect" coords="100,60,180,90" alt="京城西市" title="京城西市" onclick="openMapDetail('京城西市')" />
-                </map>
+                    </map>
             </div>
         </div>
         
         <div id="tab-junye" class="tab-content">
             <div class="map-image-wrapper">
                 <img src="/mo_data/pic/map/junye_map.png" usemap="#map_junye" alt="郡業區域地圖" />
-                <map name="map_junye">
-                    </map>
+                <map name="map_junye"> </map>
             </div>
         </div>
 
         <div id="tab-chuandu" class="tab-content">
             <div class="map-image-wrapper">
                 <img src="/mo_data/pic/map/chuandu_map.png" usemap="#map_chuandu" alt="川都區域地圖" />
-                <map name="map_chuandu">
-                    </map>
+                <map name="map_chuandu"> </map>
             </div>
         </div>
         
         <div id="tab-liangshan" class="tab-content">
             <div class="map-image-wrapper">
                 <img src="/mo_data/pic/map/liangshan_map.png" usemap="#map_liangshan" alt="梁山區域地圖" />
-                <map name="map_liangshan">
-                    </map>
+                <map name="map_liangshan"> </map>
             </div>
         </div>
         
         <div id="tab-changding" class="tab-content">
             <div class="map-image-wrapper">
                 <img src="/mo_data/pic/map/changding_map.png" usemap="#map_changding" alt="昌碇區域地圖" />
-                <map name="map_changding">
-                    </map>
+                <map name="map_changding"> </map>
             </div>
         </div>
         
         <div id="tab-sangye" class="tab-content">
             <div class="map-image-wrapper">
                 <img src="/mo_data/pic/map/sangye_map.png" usemap="#map_sangye" alt="桑耶市集地圖" />
-                <map name="map_sangye">
-                    </map>
+                <map name="map_sangye"> </map>
             </div>
         </div>
         
         <div id="tab-juanyan" class="tab-content">
             <div class="map-image-wrapper">
                 <img src="/mo_data/pic/map/juanyan_map.png" usemap="#map_juanyan" alt="巨岩村地圖" />
-                <map name="map_juanyan">
-                    </map>
+                <map name="map_juanyan"> </map>
             </div>
         </div>
 
         <div id="tab-xianjie" class="tab-content">
             <div class="map-image-wrapper">
                 <img src="/mo_data/pic/map/xianjie_map.png" usemap="#map_xianjie" alt="仙界地圖" />
-                <map name="map_xianjie">
-                    </map>
+                <map name="map_xianjie"> </map>
             </div>
         </div>
 
     </div>
-
+    
     <div id="modalOverlay"></div>
     <div id="modalBox">
         <span class="close-btn">&times;</span>
-        <div id="modalContent">
-            </div>
+        <div id="modalContent"></div>
     </div>
-
+    
     <script>
-        let mapData = []; // 儲存 detailed_maptest.json 的詳細資料
+        let mapData = []; 
 
-        // 載入 JSON 資料並設定 Tab 切換事件
         document.addEventListener("DOMContentLoaded", () => {
             // === 1. 載入詳細資料 JSON ===
             fetch("/mo_data/data/detailed_maptest.json")
@@ -174,7 +218,6 @@
                     return res.json();
                 })
                 .then(json => {
-                    // 假設 JSON 結構可能是陣列或包含 data 鍵的物件
                     mapData = Array.isArray(json) ? json : json.data;
                     console.log("✅ 地圖詳細資料載入完成:", mapData.length, "筆");
                 })
@@ -189,18 +232,16 @@
 
             tabButtons.forEach(button => {
                 button.addEventListener('click', () => {
-                    // 移除所有按鈕和內容區塊的 active 狀態
                     tabButtons.forEach(btn => btn.classList.remove('active'));
                     tabContents.forEach(content => content.classList.remove('active'));
 
-                    // 為當前點擊的按鈕和對應的內容區塊添加 active 狀態
                     button.classList.add('active');
                     const targetTabId = button.dataset.tab;
                     document.getElementById(targetTabId).classList.add('active');
                 });
             });
 
-            // === 3. Modal 關閉邏輯 (延用) ===
+            // === 3. Modal 關閉邏輯 ===
             const closeModal = () => {
                 document.getElementById("modalOverlay").style.display = "none";
                 document.getElementById("modalBox").style.display = "none";
@@ -213,19 +254,18 @@
         // === 4. 彈窗內容填充函數 (showDetailModal 延用) ===
         function showDetailModal(item) {
             const modalContent = document.getElementById("modalContent");
-            // 這裡使用 backtick (`) 方便寫多行 HTML
+            // 使用反引號 (`) 方便寫多行 HTML
             modalContent.innerHTML = `
-                <h2 class="hero-name">${item.name} (${item.mapid})</h2>
+                <h2 class="hero-name">${item.mapid || 'N/A'}</h2>
                 <div class="hero-column-details">
                     <div>
-                        <p><strong>類型:</strong> ${item.type || 'N/A'}</p>
-                        <p><strong>描述:</strong> ${item.description || '無描述'}</p>
-                        <p><strong>功能:</strong> ${item.functions ? item.functions.join(', ') : '無'}</p>
-                        <div class="section-gap">
-                            <p><strong>傳送點:</strong> ${item.teleports ? item.teleports.join(' → ') : '無'}</p>
-                        </div>
+                        <p><strong>等級:</strong> ${item.maplv || 'N/A'}</p>
+                        <p><strong>垃圾掉落:</strong> ${item.drop_rubbish || 'N/A'}</p>
+                        <p class="section-gap"><strong>光輝掉落(掉落較多)：</strong><span>${item.drop_glory_high || 'N/A'}</span></p>
+                        <p class="section-gap"><strong>光輝掉落(掉落較低)：</strong><span>${item.drop_glory_low || 'N/A'}</span></p>
+                        <p class="section-gap"><strong>光輝掉落(玩家提供)：</strong>-</p>
                     </div>
-                    ${item.image ? `<img src="${item.image}" alt="${item.name}" class="hero-image" />` : ''}
+                    ${item.image ? `<img src="${item.image}" alt="${item.mapid}" class="hero-image" />` : ''}
                 </div>
             `;
             document.getElementById("modalOverlay").style.display = "block";
