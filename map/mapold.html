@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <title>地圖 | MoData</title>
+  <link rel="stylesheet" href="/mo_data/css/styles.css" />
+  <link rel="stylesheet" href="/mo_data/css/map.css" />
+  <style>
+    /* 縮略圖 */
+    .thumbnail {
+      width: 90%;
+      height: auto;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+      display: block;
+      margin: 0 auto 20px auto;
+    }
+    .thumbnail:hover {
+      transform: scale(1.05);
+    }
+
+    /* 隱藏checkbox */
+    .zoomToggle {
+      display: none;
+    }
+
+    /* 放大視窗 */
+    .lightbox {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      background: rgba(0,0,0,0.8);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      cursor: zoom-out;
+      z-index: 9999;
+      overflow: hidden;
+      touch-action: none; /* 阻止預設觸控行為 */
+    }
+
+    /* checkbox選中時顯示 */
+    .zoomToggle:checked + .lightbox {
+      display: flex;
+    }
+
+    /* 放大圖 */
+    .lightbox img {
+      max-width: 90%;
+      max-height: 90%;
+      box-shadow: 0 0 30px rgba(255,255,255,0.6);
+      border-radius: 10px;
+      transition: transform 0.2s ease;
+      cursor: grab;
+      user-select: none;
+      touch-action: none;
+    }
+
+    /* 拖曳時 cursor */
+    .lightbox img.dragging {
+      cursor: grabbing;
+    }
+
+    /* 置中標題 */
+    section h2 {
+      text-align: center;
+      margin-bottom: 8px;
+    }
+
+    /* 小提示文字 */
+    .map-tip {
+      text-align: center;
+      font-size: 0.9rem;
+      color: #ddd;
+      margin-bottom: 40px;
+    }
+  .legend {
+    margin-top: 20px;
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    font-size: 1rem;
+    color: #333;
+  }
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .color-box {
+    width: 24px;
+    height: 24px;
+    border-radius: 4px;
+    display: inline-block;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  }
+  .village {
+    background-color: #FFA500; /* 橘色 */
+  }
+  .cave {
+    background-color: #000000; /* 黑色 */
+  }
+  .sacred {
+    background-color: #3399FF; /* 藍色 */
+  }
+  </style>
+</head>
+<body>
+  <div id="nav-container"></div>
+  <script src="/mo_data/js/componentsLoader.js"></script>
+<section id="maparea">
+<div class="legend">
+    <div class="legend-item">
+      <span class="color-box village"></span>
+      <span>村莊</span>
+    </div>
+    <div class="legend-item">
+      <span class="color-box cave"></span>
+      <span>洞窟</span>
+    </div>
+    <div class="legend-item">
+      <span class="color-box sacred"></span>
+      <span>需要破邪護符</span>
+    </div>
+  </div>
+</section>
+  <section id="maparea">
+    <h2>一般地圖</h2>
+    <label for="zoomToggle1">
+      <img class="thumbnail" src="/mo_data/pic/map/map.png" alt="遊戲地圖縮略圖" />
+    </label>
+    <input type="checkbox" id="zoomToggle1" class="zoomToggle" />
+    <div class="lightbox" data-for="zoomToggle1" onclick="if(event.target.classList.contains('lightbox')) closeLightbox('zoomToggle1')">
+      <img class="zoomedImage" src="/mo_data/pic/map/map.png" alt="遊戲地圖放大圖" draggable="false" data-for="zoomToggle1" />
+    </div>
+    <p class="map-tip">點擊圖片可放大，放大後可用滑鼠滾輪縮放與拖曳，點擊背景關閉</p>
+  </section>
+
+  <section id="maparea">
+    <h2>仙界地圖</h2>
+    <label for="zoomToggle2">
+      <img class="thumbnail" src="/mo_data/pic/map/map-1.png" alt="遊戲地圖縮略圖" />
+    </label>
+    <input type="checkbox" id="zoomToggle2" class="zoomToggle" />
+    <div class="lightbox" data-for="zoomToggle2" onclick="if(event.target.classList.contains('lightbox')) closeLightbox('zoomToggle2')">
+      <img class="zoomedImage" src="/mo_data/pic/map/map-1.png" alt="遊戲地圖放大圖" draggable="false" data-for="zoomToggle2" />
+    </div>
+    <p class="map-tip">點擊圖片可放大，放大後可用滑鼠滾輪縮放與拖曳，點擊背景關閉</p>
+  </section>
+<div id="footer-container"></div>
+<script>
+  const imagesState = {};
+
+  // 初始化所有地圖狀態
+  document.querySelectorAll('.zoomToggle').forEach(checkbox => {
+    const id = checkbox.id;
+    imagesState[id] = {
+      scale: 1,
+      translateX: 0,
+      translateY: 0,
+      isDragging: false,
+      startX: 0,
+      startY: 0,
+      lastTouchDistance: null,
+      lastTouchCenter: null
+    };
+
+    checkbox.addEventListener('change', e => {
+      if (e.target.checked) {
+        resetTransform(id);
+      }
+    });
+  });
+
+  function getLightbox(id) {
+    return document.querySelector(`.lightbox[data-for="${id}"]`);
+  }
+  function getZoomedImage(id) {
+    return document.querySelector(`.zoomedImage[data-for="${id}"]`);
+  }
+
+  function resetTransform(id) {
+    const state = imagesState[id];
+    state.scale = 1;
+    state.translateX = 0;
+    state.translateY = 0;
+    state.lastTouchDistance = null;
+    state.lastTouchCenter = null;
+    updateTransform(id);
+  }
+
+  function updateTransform(id) {
+    const state = imagesState[id];
+    const img = getZoomedImage(id);
+    img.style.transform = `translate(${state.translateX}px, ${state.translateY}px) scale(${state.scale})`;
+  }
+
+  function closeLightbox(id) {
+    document.getElementById(id).checked = false;
+    resetTransform(id);
+  }
+
+  function getDistance(touches) {
+    const [touch1, touch2] = touches;
+    const dx = touch2.clientX - touch1.clientX;
+    const dy = touch2.clientY - touch1.clientY;
+    return Math.hypot(dx, dy);
+  }
+
+  function getCenter(touches) {
+    const [touch1, touch2] = touches;
+    return {
+      x: (touch1.clientX + touch2.clientX) / 2,
+      y: (touch1.clientY + touch2.clientY) / 2
+    };
+  }
+
+  document.querySelectorAll('.zoomedImage').forEach(img => {
+    const id = img.dataset.for;
+    const state = imagesState[id];
+
+    // 滾輪縮放
+    img.parentElement.addEventListener('wheel', e => {
+      e.preventDefault();
+      const scaleAmount = e.deltaY < 0 ? 1.1 : 0.9;
+      const prevScale = state.scale;
+      state.scale *= scaleAmount;
+      state.scale = Math.min(5, Math.max(0.5, state.scale));
+
+      const rect = img.getBoundingClientRect();
+      const offsetX = e.clientX - rect.left;
+      const offsetY = e.clientY - rect.top;
+
+      state.translateX -= (offsetX - state.translateX) * (state.scale / prevScale - 1);
+      state.translateY -= (offsetY - state.translateY) * (state.scale / prevScale - 1);
+
+      updateTransform(id);
+    });
+
+    // 滑鼠拖曳開始
+    img.addEventListener('mousedown', e => {
+      e.preventDefault();
+      state.isDragging = true;
+      state.startX = e.clientX - state.translateX;
+      state.startY = e.clientY - state.translateY;
+      img.classList.add('dragging');
+    });
+
+    // 滑鼠拖曳中
+    window.addEventListener('mousemove', e => {
+      if (!state.isDragging) return;
+      state.translateX = e.clientX - state.startX;
+      state.translateY = e.clientY - state.startY;
+      updateTransform(id);
+    });
+
+    // 滑鼠拖曳結束
+    window.addEventListener('mouseup', e => {
+      if (state.isDragging) {
+        state.isDragging = false;
+        img.classList.remove('dragging');
+      }
+    });
+
+    // 觸控開始
+    img.addEventListener('touchstart', e => {
+      e.preventDefault();
+      if (e.touches.length === 1) {
+        state.isDragging = true;
+        const touch = e.touches[0];
+        state.startX = touch.clientX - state.translateX;
+        state.startY = touch.clientY - state.translateY;
+        img.classList.add('dragging');
+      } else if (e.touches.length === 2) {
+        state.isDragging = false;
+        state.lastTouchDistance = getDistance(e.touches);
+        state.lastTouchCenter = getCenter(e.touches);
+      }
+    }, { passive: false });
+
+    // 觸控移動
+    img.addEventListener('touchmove', e => {
+      e.preventDefault();
+      if (e.touches.length === 1 && state.isDragging) {
+        const touch = e.touches[0];
+        state.translateX = touch.clientX - state.startX;
+        state.translateY = touch.clientY - state.startY;
+        updateTransform(id);
+      } else if (e.touches.length === 2) {
+        const newDistance = getDistance(e.touches);
+        const newCenter = getCenter(e.touches);
+
+        if (state.lastTouchDistance) {
+          const scaleChange = newDistance / state.lastTouchDistance;
+          const prevScale = state.scale;
+          state.scale *= scaleChange;
+          state.scale = Math.min(5, Math.max(0.5, state.scale));
+
+          const rect = img.getBoundingClientRect();
+          const offsetX = state.lastTouchCenter.x - rect.left;
+          const offsetY = state.lastTouchCenter.y - rect.top;
+
+          state.translateX -= (offsetX - state.translateX) * (state.scale / prevScale - 1);
+          state.translateY -= (offsetY - state.translateY) * (state.scale / prevScale - 1);
+
+          // 平移圖片跟著雙指中心移動
+          const dx = newCenter.x - state.lastTouchCenter.x;
+          const dy = newCenter.y - state.lastTouchCenter.y;
+          state.translateX += dx;
+          state.translateY += dy;
+
+          updateTransform(id);
+        }
+
+        state.lastTouchDistance = newDistance;
+        state.lastTouchCenter = newCenter;
+      }
+    }, { passive: false });
+
+    // 觸控結束
+    img.addEventListener('touchend', e => {
+      if (e.touches.length === 0) {
+        state.isDragging = false;
+        state.lastTouchDistance = null;
+        state.lastTouchCenter = null;
+        img.classList.remove('dragging');
+      } else if (e.touches.length === 1) {
+        // 如果剩下一指，恢復拖曳模式
+        const touch = e.touches[0];
+        state.isDragging = true;
+        state.startX = touch.clientX - state.translateX;
+        state.startY = touch.clientY - state.translateY;
+        img.classList.add('dragging');
+        state.lastTouchDistance = null;
+        state.lastTouchCenter = null;
+      }
+    }, { passive: false });
+  });
+</script>
+
+</body>
+</html>

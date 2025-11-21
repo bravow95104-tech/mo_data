@@ -1,0 +1,71 @@
+.maparea-image {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.maparea-image img {
+  max-width: 95%;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+#content2 {
+  max-width: none; /* 移除寬度限制 */
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+
+      /* === 外框 === */
+      #maparea {
+        max-width: 95%;
+        margin: 40px auto;
+        background: white;
+        border-radius: 10px;
+        padding: 20px 30px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      #maparea h2 {
+        font-size: 1.6rem;
+        margin-bottom: 20px;
+        border-bottom: 2px solid #3399ff;
+        padding-bottom: 8px;
+        color: #267acc;
+        text-align: center;
+      }
+
+      /* === 地圖容器 === */
+      .map-container {
+        width: 100%;
+        height: 600px;
+        overflow: hidden;
+        position: relative;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        cursor: grab;
+        background-color: #f0f0f0;
+      }
+
+      .map-container:active {
+        cursor: grabbing;
+      }
+
+      /* === 地圖圖片 === */
+      .map-image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        transform-origin: center center;
+        transition: transform 0.05s linear;
+        user-select: none;
+        -webkit-user-drag: none;
+      }
+
+      /* 小提示 */
+      .map-tip {
+        text-align: center;
+        font-size: 0.9rem;
+        color: #666;
+        margin-top: 8px;
+      }

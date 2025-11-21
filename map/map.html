@@ -1,342 +1,136 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-  <meta charset="UTF-8" />
-  <title>地圖 | MoData</title>
-  <link rel="stylesheet" href="/mo_data/css/styles.css" />
-  <link rel="stylesheet" href="/mo_data/css/map.css" />
-  <style>
-    /* 縮略圖 */
-    .thumbnail {
-      width: 90%;
-      height: auto;
-      cursor: pointer;
-      transition: transform 0.3s ease;
-      display: block;
-      margin: 0 auto 20px auto;
-    }
-    .thumbnail:hover {
-      transform: scale(1.05);
-    }
-
-    /* 隱藏checkbox */
-    .zoomToggle {
-      display: none;
-    }
-
-    /* 放大視窗 */
-    .lightbox {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100vw; height: 100vh;
-      background: rgba(0,0,0,0.8);
-      display: none;
-      justify-content: center;
-      align-items: center;
-      cursor: zoom-out;
-      z-index: 9999;
-      overflow: hidden;
-      touch-action: none; /* 阻止預設觸控行為 */
-    }
-
-    /* checkbox選中時顯示 */
-    .zoomToggle:checked + .lightbox {
-      display: flex;
-    }
-
-    /* 放大圖 */
-    .lightbox img {
-      max-width: 90%;
-      max-height: 90%;
-      box-shadow: 0 0 30px rgba(255,255,255,0.6);
-      border-radius: 10px;
-      transition: transform 0.2s ease;
-      cursor: grab;
-      user-select: none;
-      touch-action: none;
-    }
-
-    /* 拖曳時 cursor */
-    .lightbox img.dragging {
-      cursor: grabbing;
-    }
-
-    /* 置中標題 */
-    section h2 {
-      text-align: center;
-      margin-bottom: 8px;
-    }
-
-    /* 小提示文字 */
-    .map-tip {
-      text-align: center;
-      font-size: 0.9rem;
-      color: #ddd;
-      margin-bottom: 40px;
-    }
-  .legend {
-    margin-top: 20px;
-    display: flex;
-    gap: 20px;
-    justify-content: center;
-    font-size: 1rem;
-    color: #333;
-  }
-  .legend-item {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  .color-box {
-    width: 24px;
-    height: 24px;
-    border-radius: 4px;
-    display: inline-block;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-  }
-  .village {
-    background-color: #FFA500; /* 橘色 */
-  }
-  .cave {
-    background-color: #000000; /* 黑色 */
-  }
-  .sacred {
-    background-color: #3399FF; /* 藍色 */
-  }
-  </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>遊戲地圖(測試版) | MoData</title>
+    
+    <link rel="stylesheet" href="/mo_data/css/styles.css" />
+    <link rel="stylesheet" href="/mo_data/css/detailed_map.css" />
+    <link rel="stylesheet" href="/mo_data/css/map.css" />
 </head>
 <body>
-  <div id="nav-container"></div>
+    <div id="nav-container"></div>
   <script src="/mo_data/js/componentsLoader.js"></script>
-<section id="maparea">
-<div class="legend">
-    <div class="legend-item">
-      <span class="color-box village"></span>
-      <span>村莊</span>
+    <div id="header-nav">
+        <div class="tabs-container">
+            <div class="tabs">
+                <button class="tab-button active" data-tab="tab-all">世界地圖</button>
+                <button class="tab-button" data-tab="tab-jingcheng">京城區域</button>
+                <button class="tab-button" data-tab="tab-junye">郡業區域</button>
+                <button class="tab-button" data-tab="tab-chuandu">川都區域</button>
+                <button class="tab-button" data-tab="tab-liangshan">梁山區域</button>
+                <button class="tab-button" data-tab="tab-changding">昌碇區域</button>
+                <button class="tab-button" data-tab="tab-sangye">桑耶市集</button>
+                <button class="tab-button" data-tab="tab-juanyan">巨岩村</button>
+                <button class="tab-button" data-tab="tab-xianjie">仙界</button> 
+            </div>
+        </div>
     </div>
-    <div class="legend-item">
-      <span class="color-box cave"></span>
-      <span>洞窟</span>
+
+    <div class="content-wrapper">
+
+        <div id="tab-all" class="tab-content active">
+            <div class="map-image-wrapper">
+                <img src="/mo_data/pic/map/flow_all.png" alt="世界地圖" />
+            </div>
+        </div>
+
+        <div id="tab-jingcheng" class="tab-content">
+            <div class="map-image-wrapper">
+                <img src="/mo_data/pic/map/area/京城區域.png" usemap="#map_jingcheng" alt="京城區域地圖" />
+                <map name="map_jingcheng">
+                    <area shape="rect" coords="24,64,124,84" alt="七星壇" title="七星壇" onclick="openMapDetail('七星壇')" />
+                    <area shape="rect" coords="24,107,124,127" alt="匯星高原" title="匯星高原" onclick="openMapDetail('匯星高原')" />
+                    <area shape="rect" coords="23,317,123,337" alt="伏龍洞" title="伏龍洞" onclick="openMapDetail('伏龍洞')" />
+                    <area shape="rect" coords="148,65,248,85" alt="杏花谷" title="杏花谷" onclick="openMapDetail('杏花谷')" />
+                    <area shape="rect" coords="149,107,249,127" alt="西都道" title="西都道" onclick="openMapDetail('西都道')" />
+                    <area shape="rect" coords="148,316,248,336" alt="碧沙湖" title="碧沙湖" onclick="openMapDetail('碧沙湖')" />
+                    <area shape="rect" coords="273,23,373,43" alt="齊山密穴" title="齊山密穴" onclick="openMapDetail('齊山密穴')" />
+                    <area shape="rect" coords="273,149,373,169" alt="地牢" title="地牢" onclick="openMapDetail('地牢')" />
+                    <area shape="rect" coords="272,192,372,212" alt="水牢" title="水牢" onclick="openMapDetail('水牢')" />
+                    <area shape="rect" coords="272,234,372,254" alt="火牢" title="火牢" onclick="openMapDetail('火牢')" />
+                    <area shape="rect" coords="271,275,371,295" alt="死牢" title="死牢" onclick="openMapDetail('死牢')" />
+                    <area shape="rect" coords="271,359,371,379" alt="天煞洞第1層" title="天煞洞第1層" onclick="openMapDetail('天煞洞第1層')" />
+                    <area shape="rect" coords="272,402,372,422" alt="天煞洞第2層" title="天煞洞第2層" onclick="openMapDetail('天煞洞第2層')" />
+                    <area shape="rect" coords="396,22,496,42" alt="北門關" title="北門關" onclick="openMapDetail('北門關')" />
+                    <area shape="rect" coords="396,64,496,84" alt="北都道" title="北都道" onclick="openMapDetail('北都道')" />
+                    <area shape="rect" coords="394,107,494,127" alt="京城" title="京城" onclick="openMapDetail('京城')" />
+                    <area shape="rect" coords="396,317,496,337" alt="南都道" title="南都道" onclick="openMapDetail('南都道')" />
+                    <area shape="rect" coords="396,421,496,441" alt="南門關" title="南門關" onclick="openMapDetail('南門關')" />
+                    <area shape="rect" coords="521,22,621,42" alt="回春谷入口" title="回春谷入口" onclick="openMapDetail('回春谷入口')" />
+                    <area shape="rect" coords="519,108,619,128" alt="東都道" title="東都道" onclick="openMapDetail('東都道')" />
+                    <area shape="rect" coords="519,149,619,169" alt="青葉村" title="青葉村" onclick="openMapDetail('青葉村')" />
+                    <area shape="rect" coords="520,191,620,211" alt="飛煞洞窟" title="飛煞洞窟" onclick="openMapDetail('飛煞洞窟')" />
+                    <area shape="rect" coords="644,24,744,44" alt="回春谷" title="回春谷" onclick="openMapDetail('回春谷')" />
+                    <area shape="rect" coords="643,106,743,126" alt="東門關" title="東門關" onclick="openMapDetail('東門關')" />
+                    <area shape="rect" coords="645,149,745,169" alt="地煞洞第1層" title="地煞洞第1層" onclick="openMapDetail('地煞洞第1層')" />
+                    <area shape="rect" coords="643,191,743,211" alt="地煞洞第2層" title="地煞洞第2層" onclick="openMapDetail('地煞洞第2層')" />
+                </map>
+            </div>
+        </div>
+        
+        <div id="tab-junye" class="tab-content">
+            <div class="map-image-wrapper">
+                <img src="/mo_data/pic/map/area/郡業區域.png" usemap="#map_junye" alt="郡業區域地圖" />
+                <map name="map_junye"> </map>
+            </div>
+        </div>
+
+        <div id="tab-chuandu" class="tab-content">
+            <div class="map-image-wrapper">
+                <img src="/mo_data/pic/map/area/川都區域.png" usemap="#map_chuandu" alt="川都區域地圖" />
+                <map name="map_chuandu"> </map>
+            </div>
+        </div>
+        
+        <div id="tab-liangshan" class="tab-content">
+            <div class="map-image-wrapper">
+                <img src="/mo_data/pic/map/area/梁山區域.png" usemap="#map_liangshan" alt="梁山區域地圖" />
+                <map name="map_liangshan"> </map>
+            </div>
+        </div>
+        
+        <div id="tab-changding" class="tab-content">
+            <div class="map-image-wrapper">
+                <img src="/mo_data/pic/map/area/昌碇區域.png" usemap="#map_changding" alt="昌碇區域地圖" />
+                <map name="map_changding"> </map>
+            </div>
+        </div>
+        
+        <div id="tab-sangye" class="tab-content">
+            <div class="map-image-wrapper">
+                <img src="/mo_data/pic/map/area/桑耶市集.png" usemap="#map_sangye" alt="桑耶市集地圖" />
+                <map name="map_sangye"> </map>
+            </div>
+        </div>
+        
+        <div id="tab-juanyan" class="tab-content">
+            <div class="map-image-wrapper">
+                <img src="/mo_data/pic/map/area/巨岩村.png" usemap="#map_juanyan" alt="巨岩村地圖" />
+                <map name="map_juanyan"> </map>
+            </div>
+        </div>
+
+        <div id="tab-xianjie" class="tab-content">
+            <div class="map-image-wrapper">
+                <img src="/mo_data/pic/map/area/仙界.png" usemap="#map_xianjie" alt="仙界地圖" />
+                <map name="map_xianjie"> </map>
+            </div>
+        </div>
+
     </div>
-    <div class="legend-item">
-      <span class="color-box sacred"></span>
-      <span>需要破邪護符</span>
+    
+    <!-- Modal HTML -->
+    <div id="modalOverlay"></div>
+    <div id="modalBox">
+      <span class="close-btn">&times;</span>
+      <div id="modalContent"></div>
     </div>
-  </div>
-</section>
-  <section id="maparea">
-    <h2>一般地圖</h2>
-    <label for="zoomToggle1">
-      <img class="thumbnail" src="/mo_data/pic/map/map.png" alt="遊戲地圖縮略圖" />
-    </label>
-    <input type="checkbox" id="zoomToggle1" class="zoomToggle" />
-    <div class="lightbox" data-for="zoomToggle1" onclick="if(event.target.classList.contains('lightbox')) closeLightbox('zoomToggle1')">
-      <img class="zoomedImage" src="/mo_data/pic/map/map.png" alt="遊戲地圖放大圖" draggable="false" data-for="zoomToggle1" />
-    </div>
-    <p class="map-tip">點擊圖片可放大，放大後可用滑鼠滾輪縮放與拖曳，點擊背景關閉</p>
-  </section>
+    
+    <div id="footer-container"></div>
+    <script src="/mo_data/js/componentsLoader.js"></script>
 
-  <section id="maparea">
-    <h2>仙界地圖</h2>
-    <label for="zoomToggle2">
-      <img class="thumbnail" src="/mo_data/pic/map/map-1.png" alt="遊戲地圖縮略圖" />
-    </label>
-    <input type="checkbox" id="zoomToggle2" class="zoomToggle" />
-    <div class="lightbox" data-for="zoomToggle2" onclick="if(event.target.classList.contains('lightbox')) closeLightbox('zoomToggle2')">
-      <img class="zoomedImage" src="/mo_data/pic/map/map-1.png" alt="遊戲地圖放大圖" draggable="false" data-for="zoomToggle2" />
-    </div>
-    <p class="map-tip">點擊圖片可放大，放大後可用滑鼠滾輪縮放與拖曳，點擊背景關閉</p>
-  </section>
-<div id="footer-container"></div>
-<script>
-  const imagesState = {};
-
-  // 初始化所有地圖狀態
-  document.querySelectorAll('.zoomToggle').forEach(checkbox => {
-    const id = checkbox.id;
-    imagesState[id] = {
-      scale: 1,
-      translateX: 0,
-      translateY: 0,
-      isDragging: false,
-      startX: 0,
-      startY: 0,
-      lastTouchDistance: null,
-      lastTouchCenter: null
-    };
-
-    checkbox.addEventListener('change', e => {
-      if (e.target.checked) {
-        resetTransform(id);
-      }
-    });
-  });
-
-  function getLightbox(id) {
-    return document.querySelector(`.lightbox[data-for="${id}"]`);
-  }
-  function getZoomedImage(id) {
-    return document.querySelector(`.zoomedImage[data-for="${id}"]`);
-  }
-
-  function resetTransform(id) {
-    const state = imagesState[id];
-    state.scale = 1;
-    state.translateX = 0;
-    state.translateY = 0;
-    state.lastTouchDistance = null;
-    state.lastTouchCenter = null;
-    updateTransform(id);
-  }
-
-  function updateTransform(id) {
-    const state = imagesState[id];
-    const img = getZoomedImage(id);
-    img.style.transform = `translate(${state.translateX}px, ${state.translateY}px) scale(${state.scale})`;
-  }
-
-  function closeLightbox(id) {
-    document.getElementById(id).checked = false;
-    resetTransform(id);
-  }
-
-  function getDistance(touches) {
-    const [touch1, touch2] = touches;
-    const dx = touch2.clientX - touch1.clientX;
-    const dy = touch2.clientY - touch1.clientY;
-    return Math.hypot(dx, dy);
-  }
-
-  function getCenter(touches) {
-    const [touch1, touch2] = touches;
-    return {
-      x: (touch1.clientX + touch2.clientX) / 2,
-      y: (touch1.clientY + touch2.clientY) / 2
-    };
-  }
-
-  document.querySelectorAll('.zoomedImage').forEach(img => {
-    const id = img.dataset.for;
-    const state = imagesState[id];
-
-    // 滾輪縮放
-    img.parentElement.addEventListener('wheel', e => {
-      e.preventDefault();
-      const scaleAmount = e.deltaY < 0 ? 1.1 : 0.9;
-      const prevScale = state.scale;
-      state.scale *= scaleAmount;
-      state.scale = Math.min(5, Math.max(0.5, state.scale));
-
-      const rect = img.getBoundingClientRect();
-      const offsetX = e.clientX - rect.left;
-      const offsetY = e.clientY - rect.top;
-
-      state.translateX -= (offsetX - state.translateX) * (state.scale / prevScale - 1);
-      state.translateY -= (offsetY - state.translateY) * (state.scale / prevScale - 1);
-
-      updateTransform(id);
-    });
-
-    // 滑鼠拖曳開始
-    img.addEventListener('mousedown', e => {
-      e.preventDefault();
-      state.isDragging = true;
-      state.startX = e.clientX - state.translateX;
-      state.startY = e.clientY - state.translateY;
-      img.classList.add('dragging');
-    });
-
-    // 滑鼠拖曳中
-    window.addEventListener('mousemove', e => {
-      if (!state.isDragging) return;
-      state.translateX = e.clientX - state.startX;
-      state.translateY = e.clientY - state.startY;
-      updateTransform(id);
-    });
-
-    // 滑鼠拖曳結束
-    window.addEventListener('mouseup', e => {
-      if (state.isDragging) {
-        state.isDragging = false;
-        img.classList.remove('dragging');
-      }
-    });
-
-    // 觸控開始
-    img.addEventListener('touchstart', e => {
-      e.preventDefault();
-      if (e.touches.length === 1) {
-        state.isDragging = true;
-        const touch = e.touches[0];
-        state.startX = touch.clientX - state.translateX;
-        state.startY = touch.clientY - state.translateY;
-        img.classList.add('dragging');
-      } else if (e.touches.length === 2) {
-        state.isDragging = false;
-        state.lastTouchDistance = getDistance(e.touches);
-        state.lastTouchCenter = getCenter(e.touches);
-      }
-    }, { passive: false });
-
-    // 觸控移動
-    img.addEventListener('touchmove', e => {
-      e.preventDefault();
-      if (e.touches.length === 1 && state.isDragging) {
-        const touch = e.touches[0];
-        state.translateX = touch.clientX - state.startX;
-        state.translateY = touch.clientY - state.startY;
-        updateTransform(id);
-      } else if (e.touches.length === 2) {
-        const newDistance = getDistance(e.touches);
-        const newCenter = getCenter(e.touches);
-
-        if (state.lastTouchDistance) {
-          const scaleChange = newDistance / state.lastTouchDistance;
-          const prevScale = state.scale;
-          state.scale *= scaleChange;
-          state.scale = Math.min(5, Math.max(0.5, state.scale));
-
-          const rect = img.getBoundingClientRect();
-          const offsetX = state.lastTouchCenter.x - rect.left;
-          const offsetY = state.lastTouchCenter.y - rect.top;
-
-          state.translateX -= (offsetX - state.translateX) * (state.scale / prevScale - 1);
-          state.translateY -= (offsetY - state.translateY) * (state.scale / prevScale - 1);
-
-          // 平移圖片跟著雙指中心移動
-          const dx = newCenter.x - state.lastTouchCenter.x;
-          const dy = newCenter.y - state.lastTouchCenter.y;
-          state.translateX += dx;
-          state.translateY += dy;
-
-          updateTransform(id);
-        }
-
-        state.lastTouchDistance = newDistance;
-        state.lastTouchCenter = newCenter;
-      }
-    }, { passive: false });
-
-    // 觸控結束
-    img.addEventListener('touchend', e => {
-      if (e.touches.length === 0) {
-        state.isDragging = false;
-        state.lastTouchDistance = null;
-        state.lastTouchCenter = null;
-        img.classList.remove('dragging');
-      } else if (e.touches.length === 1) {
-        // 如果剩下一指，恢復拖曳模式
-        const touch = e.touches[0];
-        state.isDragging = true;
-        state.startX = touch.clientX - state.translateX;
-        state.startY = touch.clientY - state.translateY;
-        img.classList.add('dragging');
-        state.lastTouchDistance = null;
-        state.lastTouchCenter = null;
-      }
-    }, { passive: false });
-  });
-</script>
-
+    <script src="/mo_data/js/TEST_map.js"></script>
 </body>
 </html>

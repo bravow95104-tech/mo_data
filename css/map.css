@@ -1,71 +1,225 @@
-.maparea-image {
-  margin-top: 10px;
-  text-align: center;
+@charset "UTF-8";
+
+
+/* ================================================= */
+/* 2. 導航列區塊 (頁籤) - 不固定在頂部 */
+/* ================================================= */
+#header-nav {
+    /* ✅ 修正：移除 position: fixed，改為相對定位，讓它跟隨頁面捲動 */
+    position: relative; 
+    width: 100%;
+    background-color: transparent; 
+    box-shadow: none; 
+    
+    /* 增加上邊距，與固定在頂部的主導航列拉開距離 */
+    margin-top: 20px;
+    margin-bottom: 0px;
+    z-index: 1; 
 }
 
-.maparea-image img {
-  max-width: 95%;
-  border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-}
-#content2 {
-  max-width: none; /* 移除寬度限制 */
-  width: 100%;
-  padding: 0;
-  margin: 0;
+/* 導航列內容容器 (確保頁籤不會超出最大寬度) */
+.tabs-container {
+    max-width: 1200px;
+    margin: 0 auto; 
+    padding: 0 0px;
 }
 
+/* 3. 主內容區塊 */
+.content-wrapper {
+    max-width: 1200px; 
+    margin: 0 auto 20px auto; 
+    background-color: #ffffff; 
+    /* 圓角：讓 Tab 區塊看起來像卡片頭部，內容區塊像卡片本體 */
+    border-radius: 0 0 8px 8px; 
+    padding: 20px; 
+    min-height: 700px; 
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1); 
+}
 
-      /* === 外框 === */
-      #maparea {
-        max-width: 95%;
-        margin: 40px auto;
-        background: white;
-        border-radius: 10px;
-        padding: 20px 30px;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-      }
+h1 { 
+    text-align: center; 
+    color: #333; 
+    margin-bottom: 30px; 
+}
 
-      #maparea h2 {
-        font-size: 1.6rem;
-        margin-bottom: 20px;
-        border-bottom: 2px solid #3399ff;
-        padding-bottom: 8px;
-        color: #267acc;
-        text-align: center;
-      }
+/* 4. Tabs 導航樣式 */
+.tabs { 
+    display: flex; 
+    flex-wrap: wrap; 
+    background-color: #ffffff;
+    border-radius: 8px 8px 0 0; 
+    border-bottom: 1px solid #e0e0e0; 
+    padding: 0 10px; 
+}
 
-      /* === 地圖容器 === */
-      .map-container {
-        width: 100%;
-        height: 600px;
-        overflow: hidden;
-        position: relative;
-        border-radius: 10px;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-        cursor: grab;
-        background-color: #f0f0f0;
-      }
+.tab-button {
+    background-color: transparent; 
+    border: none; 
+    padding: 15px 20px; 
+    cursor: pointer;
+    font-size: 1rem; 
+    color: #666; 
+    transition: all 0.2s ease; 
+    border-bottom: 3px solid transparent; 
+    margin-bottom: -1px; 
+}
 
-      .map-container:active {
-        cursor: grabbing;
-      }
+.tab-button:hover { 
+    color: #267acc; 
+    background-color: #f0f8ff; 
+}
 
-      /* === 地圖圖片 === */
-      .map-image {
-        position: absolute;
-        top: 0;
-        left: 0;
-        transform-origin: center center;
-        transition: transform 0.05s linear;
-        user-select: none;
-        -webkit-user-drag: none;
-      }
+.tab-button.active {
+    color: #b8860b; 
+    font-weight: bold; 
+    border-bottom: 3px solid #ffd84d; 
+    background-color: transparent; 
+}
 
-      /* 小提示 */
-      .map-tip {
-        text-align: center;
-        font-size: 0.9rem;
-        color: #666;
-        margin-top: 8px;
-      }
+/* 5. Tab 內容與圖片區塊 */
+.tab-content { display: none; padding: 20px 0; }
+.tab-content.active { display: block; }
+
+.map-image-wrapper {
+    text-align: center; 
+    padding: 15px;
+    border-radius: 8px;
+    background-color: #f9fcff; 
+    border: 1px solid #b3d8ff; 
+}
+
+.map-image-wrapper img {
+    max-width: 100%;
+    height: auto;
+    display: block; 
+    margin: 0 auto; 
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+/* ================================================= */
+/* 6. Modal (彈窗) 樣式 - 整個彈窗滾動 (標題會跟著捲走) */
+/* ================================================= */
+
+#modalOverlay { 
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
+    background: rgba(0, 0, 0, 0.7); 
+    z-index: 9998; 
+    display: none; 
+}
+
+#modalBox { 
+    position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); 
+    background: #ffffff; 
+    border-radius: 10px; 
+    z-index: 9999; 
+    
+    max-width: 600px; 
+    width: 90%; 
+    max-height: 90vh; /* 限制總高度 */
+    
+    /* ❌ 移除 Flexbox 相關設定 */
+    display: none; /* JS 控制顯示 */
+    /* flex-direction: column; */
+    
+    /* ✅ 讓整個 Modal Box 滾動 */
+    padding: 20px; /* 恢復 Box 的內邊距 */
+    overflow-y: auto; 
+    
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.3); 
+}
+
+/* ✅ 標題列樣式 (現在會跟著滾動) */
+.modal-header {
+    display: flex;
+    justify-content: space-between; /* 標題靠左，X 按鈕靠右 */
+    align-items: center; 
+    
+    /* 移除 padding，由 modalBox 提供 */
+    padding: 0; 
+    margin-bottom: 15px; /* 在標題底部增加間隔 */
+    
+    border-bottom: 1px solid #eee; 
+}
+
+/* 標題樣式 */
+#modalTitle {
+    margin: 0;
+    padding: 0;
+    border: none;
+    font-size: 1.5rem;
+    color: #3399ff;
+}
+
+#modalBox .close-btn {
+  position: absolute;
+  top: 10px; right: 15px;
+  font-size: 28px;
+  color: #666;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+#modalBox .close-btn:hover {
+  color: #3399ff;
+}
+
+/* ❌ 內容區塊樣式 (移除內部滾動設定) */
+#modalContent {
+    /* 移除 overflow-y: auto; */
+    overflow-y: visible; 
+    padding: 0; /* 移除 padding，由 modalBox 提供 */
+    
+    /* 移除滾動軸美化設定 */
+    scrollbar-width: auto;
+    scrollbar-color: auto;
+}
+
+#modalContent::-webkit-scrollbar { width: auto; }
+#modalContent::-webkit-scrollbar-track { background: auto; }
+#modalContent::-webkit-scrollbar-thumb { background-color: auto; border-radius: auto; }
+
+
+/* 彈窗內容元素樣式 */
+.hero-column-details { 
+    display: flex; gap: 20px; align-items: flex-start; 
+    margin-top: 15px; 
+}
+.hero-image { 
+    max-width: 100%; 
+    height: auto; 
+    object-fit: contain; 
+    border-radius: 8px; 
+    display: block;
+    margin: 0 auto;
+}
+.hero-name { 
+    color: #3399ff; 
+    margin-top: 0; padding-bottom: 10px; border-bottom: 1px solid #eee; 
+}
+.section-gap { 
+    margin-top: 10px; 
+}
+
+/* ... 7. RWD 調整保持不變 ... */
+
+/* ================================================= */
+/* 7. RWD 調整 */
+/* ================================================= */
+@media (max-width: 768px) {
+    /* ✅ 修正：手機版 body padding 恢復到全站的 15px */
+    body {
+        padding: 55px 15px 0 15px;
+    }
+    
+    .tab-button { padding: 10px 10px; font-size: 0.9rem; }
+    .tabs { justify-content: space-around; } 
+    .hero-column-details { flex-direction: column; }
+    
+    /* 手機版微調間距 */
+    .content-wrapper { margin-top: 0; }
+    #header-nav { margin-top: 10px; }
+    
+    /* 彈窗微調 */
+    #modalBox { max-width: 95%; }
+}
