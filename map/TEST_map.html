@@ -15,7 +15,7 @@
     <div id="header-nav">
         <div class="tabs-container">
             <div class="tabs">
-                <button class="tab-button active" data-tab="tab-all">大地圖</button>
+                <button class="tab-button active" data-tab="tab-all">世界地圖</button>
                 <button class="tab-button" data-tab="tab-jingcheng">京城區域</button>
                 <button class="tab-button" data-tab="tab-junye">郡業區域</button>
                 <button class="tab-button" data-tab="tab-chuandu">川都區域</button>
@@ -32,17 +32,13 @@
 
         <div id="tab-all" class="tab-content active">
             <div class="map-image-wrapper">
-                <img src="/mo_data/pic/map/test/flow_all.png" usemap="#map_flow_all" alt="大地圖總覽" />
-                <map name="map_flow_all">
-                    <area shape="rect" coords="50,50,150,150" alt="京城區域總覽" title="京城區域總覽" onclick="openMapDetail('京城')" />
-                    <area shape="rect" coords="200,100,300,200" alt="郡業區域總覽" title="郡業區域總覽" onclick="openMapDetail('郡業')" />
-                    </map>
+                <img src="/mo_data/pic/map/test/flow_all.png" alt="世界地圖" />
             </div>
         </div>
 
         <div id="tab-jingcheng" class="tab-content">
             <div class="map-image-wrapper">
-                <img src="/mo_data/pic/map/test/jingcheng_map.png" usemap="#map_jingcheng" alt="京城區域地圖" />
+                <img src="/mo_data/pic/map/test/京城區域.png" usemap="#map_jingcheng" alt="京城區域地圖" />
                 <map name="map_jingcheng">
                     <area shape="rect" coords="10,10,80,40" alt="京城東門" title="京城東門" onclick="openMapDetail('京城東門')" />
                     <area shape="rect" coords="100,60,180,90" alt="京城西市" title="京城西市" onclick="openMapDetail('京城西市')" />
