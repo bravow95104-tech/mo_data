@@ -4,9 +4,9 @@ let mapData = [];
 document.addEventListener("DOMContentLoaded", () => {
     // === 1. 載入詳細資料 JSON ===
     // 請確認這個 JSON 檔案路徑是否正確
-    fetch("/mo_data/data/detailed_maptest.json")
+    fetch("/mo_data/data/detailed_map.json")
         .then(res => {
-            if (!res.ok) throw new Error("載入 detailed_maptest.json 失敗");
+            if (!res.ok) throw new Error("載入 detailed_map.json 失敗");
             return res.json();
         })
         .then(json => {
