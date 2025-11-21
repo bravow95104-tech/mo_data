@@ -62,7 +62,11 @@ function showDetailModal(item) {
     const modalContent = document.getElementById("modalContent");
     if (!modalContent) return;
 
-    // 使用反引號 (`) 方便寫多行 HTML
+    // 🚀 自動組裝圖片路徑：
+    // 假設圖片檔名跟 mapid 一模一樣，且都是 .jpg
+    // 如果您的圖片是 .png，請將下方的 .jpg 改為 .png
+    const autoImagePath = `/mo_data/pic/map/${item.mapid}.jpg`;
+
     modalContent.innerHTML = `
         <h2 class="hero-name">${item.mapid || 'N/A'}</h2>
         <div class="hero-column-details">
@@ -73,7 +77,11 @@ function showDetailModal(item) {
                 <p class="section-gap"><strong>光輝掉落(掉落較低)：</strong><span>${item.drop_glory_low || 'N/A'}</span></p>
                 <p class="section-gap"><strong>光輝掉落(玩家提供)：</strong>-</p>
             </div>
-            ${item.image ? `<img src="${item.image}" alt="${item.mapid}" class="hero-image" />` : ''}
+            
+            <img src="${autoImagePath}" 
+                 alt="${item.mapid}" 
+                 class="hero-image" 
+                 onerror="this.style.display='none'" />
         </div>
     `;
     
