@@ -1,41 +1,38 @@
 @charset "UTF-8";
 
-/* 基礎設置 - 改為白色系，並推下內容 70px */
-body { 
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-    margin: 0; 
-    padding: 70px 0 0 0; /* 增加頂部內距，推下內容 */
-    background-color: #f8f8f8; /* 淺灰背景，接近星曜任務的 body */
-    color: #333; /* 深色文字 */
-}
 
-/* 導航列區塊：全寬固定在頂部 */
+/* 2. 導航列區塊 (頁籤) */
 #header-nav {
-    position: fixed; 
-    top: 0;
-    left: 0;
-    z-index: 1000; 
+    /* 🚀 修改：移除 position: fixed，改為相對定位或靜態 */
+    position: relative; 
     width: 100%;
-    background-color: #ffffff; /* 白色導航欄背景 */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* 淺陰影 */
+    background-color: transparent; /* 背景改透明或白色皆可，視設計而定 */
+    /* 移除 box-shadow，讓它看起來更像內容的一部分 */
+    box-shadow: none; 
+    
+    /* 增加一點上邊距，與主導航列拉開距離 */
+    margin-top: 20px;
+    margin-bottom: 0px;
+    z-index: 1; /* 不需要很高的 z-index */
 }
 
-/* 導航列內容：居中對齊 */
+/* 導航列內容容器 */
 .tabs-container {
     max-width: 1200px;
     margin: 0 auto; 
     padding: 0 20px;
+    /* 這裡不需要額外背景色，讓 tabs 看起來像浮在頁面上 */
 }
 
-/* 主內容區塊 */
+/* 3. 主內容區塊 */
 .content-wrapper {
     max-width: 1200px; 
-    margin: 20px auto; 
-    background-color: #ffffff; /* 內容區塊為白色 */
-    border-radius: 8px; /* 柔和圓角 */
+    margin: 0 auto 20px auto; /* 上邊距改為 0，因為 header-nav 已經有 margin */
+    background-color: #ffffff; 
+    border-radius: 0 0 8px 8px; /* 上方直角，下方圓角 (看起來跟 Tab 連在一起) */
     padding: 20px; 
     min-height: 700px; 
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1); /* 輕微陰影 */
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1); 
 }
 
 h1 { 
@@ -44,11 +41,15 @@ h1 {
     margin-bottom: 30px; 
 }
 
-/* Tabs 導航樣式 */
+/* 4. Tabs 導航樣式 */
 .tabs { 
     display: flex; 
     flex-wrap: wrap; 
-    border-bottom: 2px solid #e0e0e0; /* 底部淺細線 */
+    /* 🚀 修改：給 Tab 區域加一個白色背景和圓角，讓它看起來像卡片頭部 */
+    background-color: #ffffff;
+    border-radius: 8px 8px 0 0; /* 上方圓角 */
+    border-bottom: 1px solid #e0e0e0; 
+    padding: 0 10px; /* 左右留點空隙 */
 }
 
 .tab-button {
@@ -57,28 +58,27 @@ h1 {
     padding: 15px 20px; 
     cursor: pointer;
     font-size: 1rem; 
-    color: #666; /* 導航文字顏色 */
+    color: #666; 
     transition: all 0.2s ease; 
     border-bottom: 3px solid transparent; 
-    margin-bottom: -2px; 
+    margin-bottom: -1px; /* 讓 active 的邊框蓋過底線 */
 }
 
-/* 懸停狀態：藍色系 */
+/* 懸停狀態 */
 .tab-button:hover { 
     color: #267acc; 
     background-color: #f0f8ff; 
-    border-color: #6ab7ff; 
 }
 
-/* 活躍狀態：黃色系 (星曜任務風格) */
+/* 活躍狀態 */
 .tab-button.active {
     color: #b8860b; 
     font-weight: bold; 
-    border-color: #ffd84d; 
-    background-color: #fff6b0; 
+    border-bottom: 3px solid #ffd84d; /* 底部邊框顏色 */
+    background-color: transparent; /* 移除背景色，讓它看起來更像標準 Tab */
 }
 
-/* Tab 內容區塊 */
+/* 5. Tab 內容區塊 */
 .tab-content { 
     display: none; 
     padding: 20px 0; 
@@ -92,8 +92,8 @@ h1 {
     text-align: center; 
     padding: 15px;
     border-radius: 8px;
-    background-color: #f9fcff; /* 類似 mission-card */
-    border: 1px solid #b3d8ff; /* 類似 mission-card */
+    background-color: #f9fcff; 
+    border: 1px solid #b3d8ff; 
 }
 
 .map-image-wrapper img {
@@ -137,7 +137,7 @@ h1 {
     max-width: 50%; height: auto; object-fit: contain; border-radius: 8px; 
 }
 .hero-name { 
-    color: #3399ff; /* 彈窗標題藍色 */
+    color: #3399ff; 
     margin-top: 0; padding-bottom: 10px; border-bottom: 1px solid #eee; 
 }
 .section-gap { 
@@ -151,4 +151,8 @@ h1 {
     .hero-column-details { flex-direction: column; }
     .hero-image { max-width: 100%; }
     #modalBox { max-width: 95%; padding: 15px; }
+    
+    /* 手機版微調間距 */
+    .content-wrapper { margin-top: 0; }
+    #header-nav { margin-top: 10px; }
 }
