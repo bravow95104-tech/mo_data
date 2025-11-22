@@ -158,9 +158,6 @@ h1 {
   padding: 10px;
   font-size: 16px;
   color: #333;
-  max-height: 70vh;         /* 限制最大高度 */
-  width: 100%;
-  overflow-y: auto;         /* 內容超出時垂直出現捲軸 */
   line-height: 1.5;
   background-color: #fff;
   border-radius: 6px;
@@ -176,16 +173,18 @@ h1 {
 
 /* 彈窗內容元素樣式 */
 .hero-column-details { 
-  flex: 0 0 90%;             /* 彈性成長，基底寬度48% */
-  min-width: 250px;          /* 最小寬度限制，避免太小擠壓 */
-  box-sizing: border-box;    /* 包含 padding、border */
-  background-color: #f9f9f9; /* 可選：輕微背景色區分 */
-  padding: 20px 20px;
-  border-radius: 6px;        /* 可選：圓角讓框框好看 */
+
+  flex: none; /* 移除 flex 影響 */
+  min-width: auto; /* 移除最小寬度限制 */
+  width: 100%; /* 確保內容佔滿可用寬度 */
+  box-sizing: border-box;
+  background-color: #f9f9f9; 
+  padding: 20px; /* 內邊距保持，讓內容區塊有內縮效果 */
+  border-radius: 6px;
   box-shadow: 0 1px 4px rgba(0,0,0,0.1);
 }
 .hero-image { 
-    max-width: calc(100% - 2px); /* 🚀 關鍵：限制圖片最大不超過 Modal 寬度 */
+    max-width: 100%; /* 🚀 關鍵：限制圖片最大不超過 Modal 寬度 */
     height: auto;    /* 🚀 關鍵：讓高度自動調整以保持原始比例 */
     object-fit: contain; 
     border-radius: 8px; 
