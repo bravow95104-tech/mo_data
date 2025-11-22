@@ -166,7 +166,9 @@ h1 {
   border-radius: 6px;
   box-sizing: border-box;
 }
-
+#modalBox, #modalContent, .hero-image, .modal-header {
+    box-sizing: border-box;
+}
 #modalContent::-webkit-scrollbar { width: auto; }
 #modalContent::-webkit-scrollbar-track { background: auto; }
 #modalContent::-webkit-scrollbar-thumb { background-color: auto; border-radius: auto; }
@@ -183,7 +185,7 @@ h1 {
   box-shadow: 0 1px 4px rgba(0,0,0,0.1);
 }
 .hero-image { 
-    max-width: 100%; /* 🚀 關鍵：限制圖片最大不超過 Modal 寬度 */
+    max-width: calc(100% - 2px); /* 🚀 關鍵：限制圖片最大不超過 Modal 寬度 */
     height: auto;    /* 🚀 關鍵：讓高度自動調整以保持原始比例 */
     object-fit: contain; 
     border-radius: 8px; 
