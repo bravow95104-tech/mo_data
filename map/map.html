@@ -21,14 +21,13 @@
                 <button class="tab-button" data-tab="tab-liangshan">梁山區域</button>
                 <button class="tab-button" data-tab="tab-changding">昌碇區域</button>
                 <button class="tab-button" data-tab="tab-sangye">桑耶市集</button>
-                <button class="tab-button" data-tab="tab-juanyan">巨岩村</button>
+                <button class="tab-button" data-tab="tab-juanyan">巨岩村(海界)</button>
                 <button class="tab-button" data-tab="tab-xianjie">仙界</button> 
             </div>
         </div>
     </div>
 
     <div class="content-wrapper">
-
         <div id="tab-all" class="tab-content active">
             <div class="map-image-wrapper">
                 <img src="/mo_data/pic/map/area/flow_all.png" alt="世界地圖" />
@@ -72,49 +71,203 @@
         <div id="tab-junye" class="tab-content">
             <div class="map-image-wrapper">
                 <img src="/mo_data/pic/map/area/郡業區域.png" usemap="#map_junye" alt="郡業區域地圖" />
-                <map name="map_junye"> </map>
+                <map name="map_junye"> 
+                    <area shape="rect" coords="23,273,124,296" alt="地下通道" title="地下通道" onclick="openMapDetail('地下通道')" />
+                    <area shape="rect" coords="23,315,124,338" alt="寧虎林" title="寧虎林" onclick="openMapDetail('寧虎林')" />
+                    <area shape="rect" coords="148,21,249,44" alt="南門關" title="南門關" onclick="openMapDetail('南門關')" />
+                    <area shape="rect" coords="148,104,249,127" alt="月鏡湖" title="月鏡湖" onclick="openMapDetail('月鏡湖')" />
+                    <area shape="rect" coords="148,189,249,212" alt="郡業" title="郡業" onclick="openMapDetail('郡業')" />
+                    <area shape="rect" coords="147,231,248,254" alt="拓水道" title="拓水道" onclick="openMapDetail('拓水道')" />
+                    <area shape="rect" coords="149,272,250,295" alt="銀沙河" title="銀沙河" onclick="openMapDetail('銀沙河')" />
+                    <area shape="rect" coords="147,357,248,380" alt="瑤琳仙境1F" title="瑤琳仙境1F" onclick="openMapDetail('瑤琳仙境1F')" />
+                    <area shape="rect" coords="148,399,249,422" alt="瑤琳仙境2F" title="瑤琳仙境2F" onclick="openMapDetail('瑤琳仙境2F')" />
+                    <area shape="rect" coords="147,441,248,464" alt="瑤琳仙境3F" title="瑤琳仙境3F" onclick="openMapDetail('瑤琳仙境3F')" />
+                    <area shape="rect" coords="272,63,373,86" alt="蒼龍洞" title="蒼龍洞" onclick="openMapDetail('蒼龍洞')" />
+                    <area shape="rect" coords="271,104,372,127" alt="潛龍潭" title="潛龍潭" onclick="openMapDetail('潛龍潭')" />
+                    <area shape="rect" coords="270,188,371,211" alt="南揚湖" title="南揚湖" onclick="openMapDetail('南揚湖')" />
+                    <area shape="rect" coords="271,273,372,296" alt="濯足澗1F" title="濯足澗1F" onclick="openMapDetail('濯足澗1F')" />
+                    <area shape="rect" coords="272,314,373,337" alt="濯足澗2F" title="濯足澗2F" onclick="openMapDetail('濯足澗2F')" />
+                    <area shape="rect" coords="270,356,371,379" alt="江河鎮" title="江河鎮" onclick="openMapDetail('江河鎮')" />
+                    <area shape="rect" coords="395,84,496,107" alt="迷蹤列島" title="迷蹤列島" onclick="openMapDetail('迷蹤列島')" />
+                    <area shape="rect" coords="396,188,497,211" alt="虎臂水洞1F" title="虎臂水洞1F" onclick="openMapDetail('虎臂水洞1F')" />
+                    <area shape="rect" coords="395,230,496,253" alt="虎臂水洞2F" title="虎臂水洞2F" onclick="openMapDetail('虎臂水洞2F')" />
+                </map>
             </div>
         </div>
 
         <div id="tab-chuandu" class="tab-content">
             <div class="map-image-wrapper">
                 <img src="/mo_data/pic/map/area/川都區域.png" usemap="#map_chuandu" alt="川都區域地圖" />
-                <map name="map_chuandu"> </map>
+                <map name="map_chuandu"> 
+                    <area shape="rect" coords="24,64,124,84" alt="烈焰秘境2" title="烈焰秘境2" onclick="openMapDetail('烈焰秘境2')" />
+                    <area shape="rect" coords="24,64,124,84" alt="烈焰秘境1" title="烈焰秘境1" onclick="openMapDetail('烈焰秘境1')" />
+                    <area shape="rect" coords="24,64,124,84" alt="烈焰山峰" title="烈焰山峰" onclick="openMapDetail('烈焰山峰')" />
+                    <area shape="rect" coords="24,64,124,84" alt="烈焰山谷3" title="烈焰山谷3" onclick="openMapDetail('烈焰山谷3')" />
+                    <area shape="rect" coords="24,64,124,84" alt="烈焰山谷2" title="烈焰山谷2" onclick="openMapDetail('烈焰山谷2')" />
+                    <area shape="rect" coords="24,64,124,84" alt="烈焰山谷1" title="烈焰山谷1" onclick="openMapDetail('烈焰山谷1')" />
+                    <area shape="rect" coords="24,64,124,84" alt="地下墳場" title="地下墳場" onclick="openMapDetail('地下墳場')" />
+                    <area shape="rect" coords="24,64,124,84" alt="陽隧山" title="陽隧山" onclick="openMapDetail('陽隧山')" />
+                    <area shape="rect" coords="24,64,124,84" alt="可汗沙漠" title="可汗沙漠" onclick="openMapDetail('可汗沙漠')" />
+                    <area shape="rect" coords="24,64,124,84" alt="烈焰山腳" title="烈焰山腳" onclick="openMapDetail('烈焰山腳')" />
+                    <area shape="rect" coords="24,64,124,84" alt="妖邪洞犧殿" title="妖邪洞犧殿" onclick="openMapDetail('妖邪洞犧殿')" />
+                    <area shape="rect" coords="24,64,124,84" alt="妖邪洞曲腸道" title="妖邪洞曲腸道" onclick="openMapDetail('妖邪洞曲腸道')" />
+                    <area shape="rect" coords="24,64,124,84" alt="巨門關" title="巨門關" onclick="openMapDetail('巨門關')" />
+                    <area shape="rect" coords="24,64,124,84" alt="烈焰山徑" title="烈焰山徑" onclick="openMapDetail('烈焰山徑')" />
+                    <area shape="rect" coords="24,64,124,84" alt="妖邪洞鎖殿" title="妖邪洞鎖殿" onclick="openMapDetail('妖邪洞鎖殿')" />
+                    <area shape="rect" coords="24,64,124,84" alt="妖邪洞迷殿" title="妖邪洞迷殿" onclick="openMapDetail('妖邪洞迷殿')" />
+                    <area shape="rect" coords="24,64,124,84" alt="妖邪洞惑殿" title="妖邪洞惑殿" onclick="openMapDetail('妖邪洞惑殿')" />
+                    <area shape="rect" coords="24,64,124,84" alt="妖邪洞初殿" title="妖邪洞初殿" onclick="openMapDetail('妖邪洞初殿')" />
+                    <area shape="rect" coords="24,64,124,84" alt="臥虎高原" title="臥虎高原" onclick="openMapDetail('臥虎高原')" />
+                    <area shape="rect" coords="24,64,124,84" alt="川都" title="川都" onclick="openMapDetail('川都')" />
+                    <area shape="rect" coords="24,64,124,84" alt="荒古高原" title="荒古高原" onclick="openMapDetail('荒古高原')" />
+                    <area shape="rect" coords="24,64,124,84" alt="東桑耶沙漠" title="東桑耶沙漠" onclick="openMapDetail('東桑耶沙漠')" />
+                    <area shape="rect" coords="24,64,124,84" alt="峨嵋山" title="峨嵋山" onclick="openMapDetail('峨嵋山')" />
+                    <area shape="rect" coords="24,64,124,84" alt="雲海村" title="雲海村" onclick="openMapDetail('雲海村')" />
+                    <area shape="rect" coords="24,64,124,84" alt="西門關" title="西門關" onclick="openMapDetail('西門關')" />
+                    <area shape="rect" coords="24,64,124,84" alt="迷茫古墳" title="迷茫古墳" onclick="openMapDetail('迷茫古墳')" />
+                </map>
             </div>
         </div>
         
         <div id="tab-liangshan" class="tab-content">
             <div class="map-image-wrapper">
                 <img src="/mo_data/pic/map/area/梁山區域.png" usemap="#map_liangshan" alt="梁山區域地圖" />
-                <map name="map_liangshan"> </map>
+                <map name="map_liangshan"> 
+                    <area shape="rect" coords="24,274,124,295" alt="東門關" title="東門關" onclick="openMapDetail('東門關')" />
+                    <area shape="rect" coords="24,316,124,337" alt="迷蹤列島" title="迷蹤列島" onclick="openMapDetail('迷蹤列島')" />
+                    <area shape="rect" coords="148,273,248,294" alt="梁山" title="梁山" onclick="openMapDetail('梁山')" />
+                    <area shape="rect" coords="272,148,372,169" alt="赤松林" title="赤松林" onclick="openMapDetail('赤松林')" />
+                    <area shape="rect" coords="271,190,371,211" alt="翠竹林" title="翠竹林" onclick="openMapDetail('翠竹林')" />
+                    <area shape="rect" coords="272,231,372,252" alt="蕈菇林" title="蕈菇林" onclick="openMapDetail('蕈菇林')" />
+                    <area shape="rect" coords="397,148,497,169" alt="修羅洞_入口" title="修羅洞_入口" onclick="openMapDetail('修羅洞_入口')" />
+                    <area shape="rect" coords="397,190,497,211" alt="琉球仙境" title="琉球仙境" onclick="openMapDetail('琉球仙境')" />
+                    <area shape="rect" coords="397,105,497,126" alt="修羅洞_迷惘" title="修羅洞_迷惘" onclick="openMapDetail('修羅洞_迷惘')" />
+                    <area shape="rect" coords="396,64,496,85" alt="修羅洞_狂亂" title="修羅洞_狂亂" onclick="openMapDetail('修羅洞_狂亂')" />
+                    <area shape="rect" coords="397,21,497,42" alt="修羅洞_煉獄" title="修羅洞_煉獄" onclick="openMapDetail('修羅洞_煉獄')" />
+                </map>
             </div>
         </div>
         
         <div id="tab-changding" class="tab-content">
             <div class="map-image-wrapper">
                 <img src="/mo_data/pic/map/area/昌碇區域.png" usemap="#map_changding" alt="昌碇區域地圖" />
-                <map name="map_changding"> </map>
+                <map name="map_changding"> 
+                    <area shape="rect" coords="24,273,125,294" alt="同心林" title="同心林" onclick="openMapDetail('同心林')" />
+                    <area shape="rect" coords="24,315,125,336" alt="祈願湖" title="祈願湖" onclick="openMapDetail('祈願湖')" />
+                    <area shape="rect" coords="23,358,124,379" alt="皇陵" title="皇陵" onclick="openMapDetail('皇陵')" />
+                    <area shape="rect" coords="147,232,248,253" alt="哭腸崖" title="哭腸崖" onclick="openMapDetail('哭腸崖')" />
+                    <area shape="rect" coords="147,274,248,295" alt="葬心塚" title="葬心塚" onclick="openMapDetail('葬心塚')" />
+                    <area shape="rect" coords="147,315,248,336" alt="赤羽村" title="赤羽村" onclick="openMapDetail('赤羽村')" />
+                    <area shape="rect" coords="147,357,248,378" alt="天朝山" title="天朝山" onclick="openMapDetail('天朝山')" />
+                    <area shape="rect" coords="272,22,373,43" alt="藏玄洞第七層" title="藏玄洞第七層" onclick="openMapDetail('藏玄洞第七層')" />
+                    <area shape="rect" coords="271,64,372,85" alt="藏玄洞第六層" title="藏玄洞第六層" onclick="openMapDetail('藏玄洞第六層')" />
+                    <area shape="rect" coords="272,105,373,126" alt="藏玄洞第五層" title="藏玄洞第五層" onclick="openMapDetail('藏玄洞第五層')" />
+                    <area shape="rect" coords="271,147,372,168" alt="藏玄洞第四層" title="藏玄洞第四層" onclick="openMapDetail('藏玄洞第四層')" />
+                    <area shape="rect" coords="272,190,373,211" alt="藏玄洞第三層" title="藏玄洞第三層" onclick="openMapDetail('藏玄洞第三層')" />
+                    <area shape="rect" coords="272,231,373,252" alt="藏玄洞第二層" title="藏玄洞第二層" onclick="openMapDetail('藏玄洞第二層')" />
+                    <area shape="rect" coords="271,273,372,294" alt="藏玄洞第一層" title="藏玄洞第一層" onclick="openMapDetail('藏玄洞第一層')" />
+                    <area shape="rect" coords="271,357,372,378" alt="昌碇" title="昌碇" onclick="openMapDetail('昌碇')" />
+                    <area shape="rect" coords="396,273,497,294" alt="玄冥煉獄" title="玄冥煉獄" onclick="openMapDetail('玄冥煉獄')" />
+                    <area shape="rect" coords="395,315,496,336" alt="飛鶴山" title="飛鶴山" onclick="openMapDetail('飛鶴山')" />
+                    <area shape="rect" coords="395,356,496,377" alt="北邙山" title="北邙山" onclick="openMapDetail('北邙山')" />
+                    <area shape="rect" coords="395,398,496,419" alt="北門關" title="北門關" onclick="openMapDetail('北門關')" />
+                    <area shape="rect" coords="519,232,620,253" alt="鬼煞洞第三層" title="鬼煞洞第三層" onclick="openMapDetail('鬼煞洞第三層')" />
+                    <area shape="rect" coords="519,273,620,294" alt="鬼煞洞第二層" title="鬼煞洞第二層" onclick="openMapDetail('鬼煞洞第二層')" />
+                    <area shape="rect" coords="520,315,621,336" alt="鬼煞洞第一層" title="鬼煞洞第一層" onclick="openMapDetail('鬼煞洞第一層')" />
+                    <area shape="rect" coords="520,358,621,379" alt="北山靈泉" title="北山靈泉" onclick="openMapDetail('北山靈泉')" />
+                    <area shape="rect" coords="643,357,744,378" alt="瑯琊山" title="瑯琊山" onclick="openMapDetail('瑯琊山')" />
+                </map>
             </div>
         </div>
         
         <div id="tab-sangye" class="tab-content">
             <div class="map-image-wrapper">
                 <img src="/mo_data/pic/map/area/桑耶市集.png" usemap="#map_sangye" alt="桑耶市集地圖" />
-                <map name="map_sangye"> </map>
+                <map name="map_sangye"> 
+                    <area shape="rect" coords="23,21,125,43" alt="羅煞洞-第五層" title="羅煞洞-第五層" onclick="openMapDetail('羅煞洞-第五層')" />
+                    <area shape="rect" coords="23,62,125,84" alt="羅煞洞-第四層" title="羅煞洞-第四層" onclick="openMapDetail('羅煞洞-第四層')" />
+                    <area shape="rect" coords="23,104,125,126" alt="羅煞洞-第三層" title="羅煞洞-第三層" onclick="openMapDetail('羅煞洞-第三層')" />
+                    <area shape="rect" coords="23,148,125,170" alt="羅煞洞-第二層" title="羅煞洞-第二層" onclick="openMapDetail('羅煞洞-第二層')" />
+                    <area shape="rect" coords="24,189,126,211" alt="羅煞洞-第一層" title="羅煞洞-第一層" onclick="openMapDetail('羅煞洞-第一層')" />
+                    <area shape="rect" coords="147,189,249,211" alt="西桑耶沙漠" title="西桑耶沙漠" onclick="openMapDetail('西桑耶沙漠')" />
+                    <area shape="rect" coords="270,189,372,211" alt="桑耶市集" title="桑耶市集" onclick="openMapDetail('桑耶市集')" />
+                    <area shape="rect" coords="272,231,374,253" alt="南桑耶沙漠" title="南桑耶沙漠" onclick="openMapDetail('南桑耶沙漠')" />
+                    <area shape="rect" coords="272,274,374,296" alt="遺跡之泉" title="遺跡之泉" onclick="openMapDetail('遺跡之泉')" />
+                    <area shape="rect" coords="395,147,497,169" alt="荒古高原" title="荒古高原" onclick="openMapDetail('荒古高原')" />
+                    <area shape="rect" coords="394,188,496,210" alt="東桑耶沙漠" title="東桑耶沙漠" onclick="openMapDetail('東桑耶沙漠')" />
+                </map>
             </div>
         </div>
         
         <div id="tab-juanyan" class="tab-content">
             <div class="map-image-wrapper">
                 <img src="/mo_data/pic/map/area/巨岩村.png" usemap="#map_juanyan" alt="巨岩村地圖" />
-                <map name="map_juanyan"> </map>
+                <map name="map_juanyan"> 
+                    <area shape="rect" coords="24,148,124,169" alt="梁山" title="梁山" onclick="openMapDetail('梁山')" />
+                    <area shape="rect" coords="25,231,125,252" alt="郡業" title="郡業" onclick="openMapDetail('郡業')" />
+                    <area shape="rect" coords="149,22,249,43" alt="幽納洞窟2F" title="幽納洞窟2F" onclick="openMapDetail('幽納洞窟2F')" />
+                    <area shape="rect" coords="149,63,249,84" alt="幽納洞窟1F" title="幽納洞窟1F" onclick="openMapDetail('幽納洞窟1F')" />
+                    <area shape="rect" coords="148,105,248,126" alt="幽納原野" title="幽納原野" onclick="openMapDetail('幽納原野')" />
+                    <area shape="rect" coords="147,147,247,168" alt="幽納古林" title="幽納古林" onclick="openMapDetail('幽納古林')" />
+                    <area shape="rect" coords="149,189,249,210" alt="迷蹤列島" title="迷蹤列島" onclick="openMapDetail('迷蹤列島')" />
+                    <area shape="rect" coords="272,230,372,251" alt="蓬萊仙島" title="蓬萊仙島" onclick="openMapDetail('蓬萊仙島')" />
+                    <area shape="rect" coords="271,315,371,336" alt="寒冰洞" title="寒冰洞" onclick="openMapDetail('寒冰洞')" />
+                    <area shape="rect" coords="396,191,496,212" alt="巨岩村" title="巨岩村" onclick="openMapDetail('巨岩村')" />
+                    <area shape="rect" coords="396,230,496,251" alt="蓬萊秘境" title="蓬萊秘境" onclick="openMapDetail('蓬萊秘境')" />
+                    <area shape="rect" coords="395,272,495,293" alt="東海龍宮" title="東海龍宮" onclick="openMapDetail('東海龍宮')" />
+                    <area shape="rect" coords="395,315,495,336" alt="大漩渦" title="大漩渦" onclick="openMapDetail('大漩渦')" />
+                    <area shape="rect" coords="520,274,620,295" alt="寂靜死海" title="寂靜死海" onclick="openMapDetail('寂靜死海')" />
+                    <area shape="rect" coords="519,316,619,337" alt="惡龍秘窟第1層" title="惡龍秘窟第1層" onclick="openMapDetail('惡龍秘窟第1層')" />
+                    <area shape="rect" coords="520,357,620,378" alt="惡龍秘窟第2層" title="惡龍秘窟第2層" onclick="openMapDetail('惡龍秘窟第2層')" />
+                    <area shape="rect" coords="519,399,619,420" alt="惡龍秘窟第3層" title="惡龍秘窟第3層" onclick="openMapDetail('惡龍秘窟第3層')" />
+                    <area shape="rect" coords="521,442,621,463" alt="惡龍秘窟第4層" title="惡龍秘窟第4層" onclick="openMapDetail('惡龍秘窟第4層')" />
+                </map>
             </div>
         </div>
 
         <div id="tab-xianjie" class="tab-content">
             <div class="map-image-wrapper">
                 <img src="/mo_data/pic/map/area/仙界.png" usemap="#map_xianjie" alt="仙界地圖" />
-                <map name="map_xianjie"> </map>
+                <map name="map_xianjie"> 
+                    <area shape="rect" coords="24,64,124,83" alt="玉虛宮" title="玉虛宮" onclick="openMapDetail('玉虛宮')" />
+                    <area shape="rect" coords="25,108,125,127" alt="真修洞第六層" title="真修洞第六層" onclick="openMapDetail('真修洞6F')" />
+                    <area shape="rect" coords="24,148,124,167" alt="真修洞第五層" title="真修洞第五層" onclick="openMapDetail('真修洞5F')" />
+                    <area shape="rect" coords="24,191,124,210" alt="真修洞第四層" title="真修洞第四層" onclick="openMapDetail('真修洞4F')" />
+                    <area shape="rect" coords="24,233,124,252" alt="真修洞第三層" title="真修洞第三層" onclick="openMapDetail('真修洞3F')" />
+                    <area shape="rect" coords="24,274,124,293" alt="玄日崖" title="玄日崖" onclick="openMapDetail('玄日崖')" />
+                    <area shape="rect" coords="23,316,123,335" alt="金光洞" title="金光洞" onclick="openMapDetail('金光洞')" />
+                    <area shape="rect" coords="148,85,248,104" alt="垃圾場第二層" title="垃圾場第二層" onclick="openMapDetail('垃圾場第二層')" />
+                    <area shape="rect" coords="148,233,248,252" alt="真修洞第二層" title="真修洞第二層" onclick="openMapDetail('真修洞第二層')" />
+                    <area shape="rect" coords="149,274,249,293" alt="玄日峰" title="玄日峰" onclick="openMapDetail('玄日峰')" />
+                    <area shape="rect" coords="147,316,247,335" alt="玄日洞上層" title="玄日洞上層" onclick="openMapDetail('玄日洞上層')" />
+                    <area shape="rect" coords="147,359,247,378" alt="玄日洞下層" title="玄日洞下層" onclick="openMapDetail('玄日洞下層')" />
+                    <area shape="rect" coords="148,400,248,419" alt="妖邪迷宮" title="妖邪迷宮" onclick="openMapDetail('妖邪迷宮')" />
+                    <area shape="rect" coords="271,85,371,104" alt="垃圾場第一層" title="垃圾場第一層" onclick="openMapDetail('垃圾場第一層')" />
+                    <area shape="rect" coords="271,233,371,252" alt="真修洞第一層" title="真修洞第一層" onclick="openMapDetail('真修洞第一層')" />
+                    <area shape="rect" coords="273,274,373,293" alt="夕之朝雲" title="夕之朝雲" onclick="openMapDetail('夕之朝雲')" />
+                    <area shape="rect" coords="271,359,371,378" alt="墨家名穴" title="墨家名穴" onclick="openMapDetail('墨家名穴')" />
+                    <area shape="rect" coords="396,23,496,42" alt="池底洞窟" title="池底洞窟" onclick="openMapDetail('池底洞窟')" />
+                    <area shape="rect" coords="395,86,495,105" alt="雷爵村" title="雷爵村" onclick="openMapDetail('雷爵村')" />
+                    <area shape="rect" coords="395,149,495,168" alt="金敖洞一樓" title="金敖洞一樓" onclick="openMapDetail('金敖洞一樓')" />
+                    <area shape="rect" coords="396,191,496,210" alt="雲霄洞" title="雲霄洞" onclick="openMapDetail('雲霄洞')" />
+                    <area shape="rect" coords="396,233,496,252" alt="崑崙山" title="崑崙山" onclick="openMapDetail('崑崙山')" />
+                    <area shape="rect" coords="396,275,496,294" alt="滄之雲海" title="滄之雲海" onclick="openMapDetail('滄之雲海')" />
+                    <area shape="rect" coords="396,316,496,335" alt="工作區" title="工作區" onclick="openMapDetail('工作區')" />
+                    <area shape="rect" coords="519,22,619,41" alt="瑤池仙境" title="瑤池仙境" onclick="openMapDetail('瑤池仙境')" />
+                    <area shape="rect" coords="520,64,620,83" alt="天山" title="天山" onclick="openMapDetail('天山')" />
+                    <area shape="rect" coords="520,106,620,125" alt="靈山" title="靈山" onclick="openMapDetail('靈山')" />
+                    <area shape="rect" coords="519,148,619,167" alt="泰山" title="泰山" onclick="openMapDetail('泰山')" />
+                    <area shape="rect" coords="521,191,621,210" alt="華山" title="華山" onclick="openMapDetail('華山')" />
+                    <area shape="rect" coords="519,232,619,251" alt="峨嵋山" title="峨嵋山" onclick="openMapDetail('峨嵋山')" />
+                    <area shape="rect" coords="519,275,619,294" alt="雲海村" title="雲海村" onclick="openMapDetail('雲海村')" />
+                    <area shape="rect" coords="519,316,619,335" alt="幻之烏雲" title="幻之烏雲" onclick="openMapDetail('幻之烏雲')" />
+                    <area shape="rect" coords="520,359,620,378" alt="幽冥深淵" title="幽冥深淵" onclick="openMapDetail('幽冥深淵')" />
+                    <area shape="rect" coords="644,275,744,294" alt="川都" title="川都" onclick="openMapDetail('川都')" />
+                    <area shape="rect" coords="644,317,744,336" alt="奔雷嶺" title="奔雷嶺" onclick="openMapDetail('奔雷嶺')" />
+                    <area shape="rect" coords="643,358,743,377" alt="盤古旛陣" title="盤古旛陣" onclick="openMapDetail('盤古旛陣')" />
+                    <area shape="rect" coords="149,148,249,167" alt="金敖洞三樓" title="金敖洞三樓" onclick="openMapDetail('金敖洞三樓')" />
+                    <area shape="rect" coords="271,148,371,167" alt="金敖洞二樓" title="金敖洞二樓" onclick="openMapDetail('金敖洞二樓')" />
+                </map>
             </div>
         </div>
 
