@@ -66,9 +66,8 @@ function showDetailModal(item) {
         <h2 class="hero-name">${item.mapid || 'N/A'}</h2>
         
         <img src="${autoImagePath}" 
-             alt="${item.mapid || '地圖圖片'}" 
-             class="hero-image" 
-             style="width: 100%; max-width: 100%; height: auto; object-fit: contain; display: block; margin: 0 auto 20px auto; border-radius: 8px;"
+             alt="${item.mapid || '地圖圖片'}" 
+             class="hero-image" 
              onerror="this.style.display='none'" />
 
         <div class="hero-column-details">

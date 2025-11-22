@@ -183,12 +183,12 @@ h1 {
   box-shadow: 0 1px 4px rgba(0,0,0,0.1);
 }
 .hero-image { 
-    max-width: 100%; 
-    height: auto; 
+    max-width: 100%; /* 🚀 關鍵：限制圖片最大不超過 Modal 寬度 */
+    height: auto;    /* 🚀 關鍵：讓高度自動調整以保持原始比例 */
     object-fit: contain; 
     border-radius: 8px; 
     display: block;
-    margin: 0 auto;
+    margin: 0 auto 20px auto; /* 確保圖片居中，並在底部留出間距 */
 }
 .hero-name {
   text-align: center;
