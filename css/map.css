@@ -187,8 +187,8 @@ h1 {
   height: auto;
   object-fit: contain; 
   border-radius: 8px; 
-  display: block;
-  margin: 0 auto 20px auto; /* 確保圖片居中，並在底部留出間距 */
+  display: block !important;
+  margin: 0 auto 20px auto !important;/* 確保圖片居中，並在底部留出間距 */
 }
 .hero-name {
   text-align: center;
@@ -200,6 +200,26 @@ h1 {
 }
 .section-gap { 
     margin-top: 16px !important; /* 顯著的段落開頭距離，加強效果 */
+}
+.section-gap p {
+    display: flex; /* 讓 P 標籤成為 Flex 容器 */
+    flex-wrap: wrap; /* 內容可以換行 */
+}
+
+.section-gap p strong {
+    /* 確保標籤部分有固定寬度，或至少不會壓縮 */
+    flex-shrink: 0; 
+    margin-right: 5px; /* 與內容間的間隔 */
+}
+
+.section-gap p .value {
+    /* 讓內容部分自動佔據剩餘空間，並在需要時換行 */
+    flex-grow: 1; 
+    flex-basis: 0; /* 確保在 flex-wrap 時能正確計算寬度 */
+    min-width: 0; /* 允許內容縮小 */
+    /* 確保文字不會因為換行而縮進 */
+    white-space: normal; 
+    word-break: break-all; /* 長單字也強制換行 */
 }
 
 /* ... 7. RWD 調整保持不變 ... */

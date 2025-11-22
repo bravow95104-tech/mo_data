@@ -59,35 +59,32 @@ function showDetailModal(item) {
     const modalContent = document.getElementById("modalContent");
     if (!modalContent) return;
 
-    // 圖片路徑 (建議使用絕對路徑 /mo_data/... 以避免層級錯誤)
     const autoImagePath = `/mo_data/pic/map/${item.mapid}.jpg`;
 
     modalContent.innerHTML = `
         <h2 class="hero-name">${item.mapid || 'N/A'}</h2>
-        
         <img src="${autoImagePath}" 
-             alt="${item.mapid || '地圖圖片'}" 
-             class="hero-image" 
-             onerror="this.style.display='none'" />
-
+             alt="${item.mapid || '地圖圖片'}" 
+             class="hero-image" 
+   onerror="this.style.display='none'" />
         <div class="hero-column-details">
             <div style="width: 100%;">
                 <p><strong>垃圾掉落:</strong> ${item.drop_rubbish || 'N/A'}</p>
                 <div class="section-gap">
-                    <p><strong>光輝掉落(掉落較多)：</strong><span>${item.drop_glory_high || 'N/A'}</span></p>
+                <p><strong>光輝掉落(掉落較多)：</strong><span class="value">${item.drop_glory_high || 'N/A'}</span></p>
                 </div>
                 <div class="section-gap">
-                    <p><strong>光輝掉落(掉落較低)：</strong><span>${item.drop_glory_low || 'N/A'}</span></p>
+                <p><strong>光輝掉落(掉落較低)：</strong><span class="value">${item.drop_glory_low || 'N/A'}</span></p>
                 </div>
                 <div class="section-gap">
-                    <p><strong>光輝掉落(玩家提供)：</strong>-</p>
+                <p><strong>光輝掉落(玩家提供)：</strong><span class="value">-</span></p>
                 </div>
             </div>
         </div>
-    `;
+  `;
     
-    document.getElementById("modalOverlay").style.display = "block";
-    document.getElementById("modalBox").style.display = "block";
+  document.getElementById("modalOverlay").style.display = "block";
+  document.getElementById("modalBox").style.display = "block";
 }
 
 // === 5. Image Map 點擊觸發函數 (全域函數，供 HTML onclick 調用) ===
@@ -97,12 +94,9 @@ function openMapDetail(mapId) {
         alert("資料尚未準備好，請稍候再試。");
         return;
     }
-
     const item = mapData.find(i => i.mapid === mapId);
-
     if (item) {
         showDetailModal(item);
-    } else {
-        
+    } else { 
     }
 }
