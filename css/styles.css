@@ -277,7 +277,14 @@ body {
     cursor: default;
     box-shadow: 0 2px 6px rgba(0,0,0,0.15);
 }
-
+/*注意資料*/
+.date h3 {
+    font-size: 1.4rem;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #3399ff;
+    padding-bottom: 8px;
+    color: #267acc;
+}
 
 /* === 手機版調整：全站與導航列 (Media Query) === */
 @media (max-width: 768px) {
