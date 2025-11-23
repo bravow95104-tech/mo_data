@@ -279,9 +279,8 @@ body {
 }
 /*注意資料*/
 h3.search-tip {
-    font-size: 1.4rem;
+    font-size: 1.0rem;
     margin-bottom: 20px;
-    border-bottom: 2px solid #3399ff;
     padding-bottom: 8px;
     color: #267acc;
 }
