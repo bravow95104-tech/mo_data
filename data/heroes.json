@@ -635,7 +635,7 @@
     "fall_high": "妖邪迷宮",
     "fall_low": "烈焰秘境",
     "player": "",
-    "playerdata": "妖邪迷宮(海貓)"
+    "playerdata": ""
   },
   {
     "name": "愛麗絲",
@@ -1231,7 +1231,7 @@
     "agi": 189,
     "luk": 158,
     "aggression_before": 8,
-    "aggression_after": "",
+    "aggression_after": 10,
     "equipment_new": "陷仙劍卡",
     "equipment_new_data": "智慧+50",
     "new_multiplier": "2倍",
@@ -1244,7 +1244,7 @@
     "fall_high": "崑崙山、真修洞",
     "fall_low": "地下水道",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "雲霄",
@@ -1260,7 +1260,7 @@
     "agi": 162,
     "luk": 186,
     "aggression_before": 8,
-    "aggression_after": "",
+    "aggression_after": 10,
     "equipment_new": "金蛟剪卡",
     "equipment_new_data": "智慧+50",
     "new_multiplier": "2倍",
@@ -1273,7 +1273,7 @@
     "fall_high": "羅煞洞-第四層",
     "fall_low": "幽冥深淵、垃圾場第一層、垃圾場第二層",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "火靈聖母",
@@ -1289,7 +1289,7 @@
     "agi": 139,
     "luk": 132,
     "aggression_before": 7,
-    "aggression_after": "",
+    "aggression_after": 10,
     "equipment_new": "金眼駝卡",
     "equipment_new_data": "智慧+50",
     "new_multiplier": "2倍",
@@ -1302,7 +1302,7 @@
     "fall_high": "陽燧山",
     "fall_low": "飛煞洞、地下墳場",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "陸遜",
@@ -1318,7 +1318,7 @@
     "agi": 164,
     "luk": 118,
     "aggression_before": 9,
-    "aggression_after": "",
+    "aggression_after": 10,
     "equipment_new": "伯言秘卷卡",
     "equipment_new_data": "運氣+50",
     "new_multiplier": "2倍",
@@ -1331,7 +1331,7 @@
     "fall_high": "烈焰秘境",
     "fall_low": "崑崙山、真修洞",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "太乙真人",
@@ -1347,7 +1347,7 @@
     "agi": 138,
     "luk": 116,
     "aggression_before": 8,
-    "aggression_after": "",
+    "aggression_after": 9,
     "equipment_new": "柳枝淨水卡",
     "equipment_new_data": "閃避值+28",
     "new_multiplier": "2倍",
@@ -1360,7 +1360,7 @@
     "fall_high": "西桑耶沙漠、東桑耶沙漠、南桑耶沙漠",
     "fall_low": "玄日洞",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "小護士",
@@ -1376,7 +1376,7 @@
     "agi": 130,
     "luk": 120,
     "aggression_before": 8,
-    "aggression_after": "",
+    "aggression_after": 11,
     "equipment_new": "",
     "equipment_new_data": "",
     "new_multiplier": "",
@@ -1389,7 +1389,7 @@
     "fall_high": "藏玄洞",
     "fall_low": "幽納原野2",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "莉莉絲",
@@ -1418,7 +1418,7 @@
     "fall_high": "幽冥深淵、垃圾場第一層、垃圾場第二層",
     "fall_low": "陽燧山",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "彩衣天女",
@@ -1434,7 +1434,7 @@
     "agi": 140,
     "luk": 150,
     "aggression_before": 7,
-    "aggression_after": "",
+    "aggression_after": 10,
     "equipment_new": "仙界彩衣卡",
     "equipment_new_data": "防禦力+28",
     "new_multiplier": "2倍",
@@ -1447,7 +1447,7 @@
     "fall_high": "修羅洞",
     "fall_low": "玄日洞",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "荀攸",
@@ -1463,7 +1463,7 @@
     "agi": 150,
     "luk": 130,
     "aggression_before": 7,
-    "aggression_after": "",
+    "aggression_after": 9,
     "equipment_new": "公達秘卷卡",
     "equipment_new_data": "敏捷+50",
     "new_multiplier": "2倍",
@@ -1476,7 +1476,7 @@
     "fall_high": "地下水道",
     "fall_low": "沰水道、銀沙河、地下通道、赤松林、飛鶴山、可汗沙漠、天朝山、池底洞窟、東海龍宮、龍宮大殿、靈山、峨嵋山",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "水滴精靈",
@@ -1492,7 +1492,7 @@
     "agi": 130,
     "luk": 100,
     "aggression_before": 8,
-    "aggression_after": "",
+    "aggression_after": 9,
     "equipment_new": "水滴芭蕉葉卡",
     "equipment_new_data": "智慧+50",
     "new_multiplier": "2倍",
@@ -1505,7 +1505,7 @@
     "fall_high": "玉虛宮、寂靜死海",
     "fall_low": "陽燧山",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "姜維",
@@ -1534,7 +1534,7 @@
     "fall_high": "金嗷洞一樓、金嗷洞二樓",
     "fall_low": "飛煞洞、地下墳場",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "胡喜媚",
@@ -1563,7 +1563,7 @@
     "fall_high": "奔雷嶺、夕之朝雲、幻之烏雲、大漩渦、華山、泰山、天山",
     "fall_low": "幽冥深淵、垃圾場第一層、垃圾場第二層",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "魔力精靈",
@@ -1579,7 +1579,7 @@
     "agi": 115,
     "luk": 150,
     "aggression_before": 7,
-    "aggression_after": "",
+    "aggression_after": 9,
     "equipment_new": "魔力芭蕉葉卡",
     "equipment_new_data": "智慧+50",
     "new_multiplier": "2倍",
@@ -1592,7 +1592,7 @@
     "fall_high": "皇陵",
     "fall_low": "幽冥深淵、垃圾場第一層、垃圾場第二層",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "魔禮青",
@@ -1608,7 +1608,7 @@
     "agi": 125,
     "luk": 98,
     "aggression_before": 6,
-    "aggression_after": "",
+    "aggression_after": 8,
     "equipment_new": "白玉金剛鐲卡",
     "equipment_new_data": "智慧+50",
     "new_multiplier": "2倍",
@@ -1621,7 +1621,7 @@
     "fall_high": "崑崙山、真修洞",
     "fall_low": "妖邪洞、幽納古林",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "程昱",
@@ -1650,7 +1650,7 @@
     "fall_high": "羅煞洞-第一層、羅煞洞-第二層、羅煞洞-第三層",
     "fall_low": "奔雷嶺、夕之朝雲、幻之烏雲、大漩渦、華山、泰山、天山",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "宋江",
@@ -1666,7 +1666,7 @@
     "agi": 101,
     "luk": 118,
     "aggression_before": 7,
-    "aggression_after": "",
+    "aggression_after": 9,
     "equipment_new": "梁山披風卡",
     "equipment_new_data": "防禦力+28",
     "new_multiplier": "2倍",
@@ -1679,7 +1679,7 @@
     "fall_high": "迷茫古墳、虎臂水洞",
     "fall_low": "金嗷洞一樓、金嗷洞二樓",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "徐庶",
@@ -1695,7 +1695,7 @@
     "agi": 109,
     "luk": 142,
     "aggression_before": 7,
-    "aggression_after": "",
+    "aggression_after": 10,
     "equipment_new": "元直兵法卡",
     "equipment_new_data": "運氣+50",
     "new_multiplier": "2.5倍",
@@ -1708,7 +1708,7 @@
     "fall_high": "鬼煞洞",
     "fall_low": "沰水道、銀沙河、地下通道、赤松林、飛鶴山、可汗沙漠、天朝山、池底洞窟、東海龍宮、龍宮大殿、靈山、峨嵋山",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "孫權",
@@ -1724,7 +1724,7 @@
     "agi": 102,
     "luk": 126,
     "aggression_before": 7,
-    "aggression_after": "",
+    "aggression_after": 9,
     "equipment_new": "六柄寶劍卡",
     "equipment_new_data": "閃避值+28",
     "new_multiplier": "2倍",
@@ -1737,7 +1737,7 @@
     "fall_high": "妖邪洞、幽納古林",
     "fall_low": "飛煞洞、地下墳場",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "郭嘉",
@@ -1766,7 +1766,7 @@
     "fall_high": "鬼煞洞",
     "fall_low": "妖邪洞、幽納古林",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "龐統",
@@ -1782,7 +1782,7 @@
     "agi": 139,
     "luk": 142,
     "aggression_before": 8,
-    "aggression_after": "",
+    "aggression_after": 12,
     "equipment_new": "士元毛筆卡",
     "equipment_new_data": "智慧+50",
     "new_multiplier": "2.5倍",
@@ -1795,7 +1795,7 @@
     "fall_high": "妖邪洞、幽納古林",
     "fall_low": "惡龍秘窟1層、惡龍秘窟2層、惡龍秘窟3層",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "荀彧",
@@ -1811,7 +1811,7 @@
     "agi": 79,
     "luk": 102,
     "aggression_before": 7,
-    "aggression_after": "",
+    "aggression_after": 9,
     "equipment_new": "文若兵法卡",
     "equipment_new_data": "智慧+50",
     "new_multiplier": "2倍",
@@ -1824,7 +1824,7 @@
     "fall_high": "翠竹林、潛龍潭、蕈菇林、琅琊山、滄之雲海",
     "fall_low": "皇陵",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "魯肅",
@@ -1840,7 +1840,7 @@
     "agi": 115,
     "luk": 150,
     "aggression_before": 7,
-    "aggression_after": "",
+    "aggression_after": 9,
     "equipment_new": "子敬秘卷卡",
     "equipment_new_data": "閃避值+28",
     "new_multiplier": "2倍",
@@ -1853,7 +1853,7 @@
     "fall_high": "玉虛宮、寂靜死海",
     "fall_low": "妖邪洞、幽納古林",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "姬發",
@@ -1882,7 +1882,7 @@
     "fall_high": "沰水道、銀沙河、地下通道、赤松林、飛鶴山、可汗沙漠、天朝山、池底洞窟、東海龍宮、龍宮大殿、靈山、峨嵋山",
     "fall_low": "奔雷嶺、夕之朝雲、幻之烏雲、大漩渦、華山、泰山、天山",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "男僕",
@@ -1898,7 +1898,7 @@
     "agi": 100,
     "luk": 120,
     "aggression_before": 7,
-    "aggression_after": "",
+    "aggression_after": 10,
     "equipment_new": "",
     "equipment_new_data": "",
     "new_multiplier": "",
@@ -1911,7 +1911,7 @@
     "fall_high": "迷茫古墳、虎臂水洞",
     "fall_low": "幽冥深淵、垃圾場第一層、垃圾場第二層",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "紂王",
@@ -1940,7 +1940,7 @@
     "fall_high": "陽燧山",
     "fall_low": "鬼煞洞",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "黃天化",
@@ -1969,7 +1969,7 @@
     "fall_high": "玄日峰、玄日岩",
     "fall_low": "鬼煞洞",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "關勝",
@@ -1985,7 +1985,7 @@
     "agi": 144,
     "luk": 106,
     "aggression_before": 4,
-    "aggression_after": "",
+    "aggression_after": 7,
     "equipment_new": "偃月戰靴卡",
     "equipment_new_data": "敏捷+50",
     "new_multiplier": "2.5倍",
@@ -1998,7 +1998,7 @@
     "fall_high": "羅煞洞-第一層、羅煞洞-第二層、羅煞洞-第三層",
     "fall_low": "幽冥深淵、垃圾場第一層、垃圾場第二層",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "史進",
@@ -2014,7 +2014,7 @@
     "agi": 98,
     "luk": 62,
     "aggression_before": 4,
-    "aggression_after": "",
+    "aggression_after": 6,
     "equipment_new": "青龍紋身卡",
     "equipment_new_data": "力量+50",
     "new_multiplier": "2.5倍",
@@ -2027,7 +2027,7 @@
     "fall_high": "西桑耶沙漠、東桑耶沙漠、南桑耶沙漠",
     "fall_low": "陽燧山",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "李逵",
@@ -2043,7 +2043,7 @@
     "agi": 101,
     "luk": 134,
     "aggression_before": 4,
-    "aggression_after": "",
+    "aggression_after": 6,
     "equipment_new": "兩柄板斧卡",
     "equipment_new_data": "敏捷+50",
     "new_multiplier": "2倍",
@@ -2056,7 +2056,7 @@
     "fall_high": "墨家名穴",
     "fall_low": "飛煞洞、地下墳場",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "太史慈",
@@ -2072,7 +2072,7 @@
     "agi": 112,
     "luk": 58,
     "aggression_before": 4,
-    "aggression_after": "",
+    "aggression_after": 6,
     "equipment_new": "赤紅盔甲卡",
     "equipment_new_data": "敏捷+50",
     "new_multiplier": "2倍",
@@ -2085,7 +2085,7 @@
     "fall_high": "玄日洞",
     "fall_low": "惡龍秘窟4層、盤古旛陣、金嗷洞三樓",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "魯智深",
@@ -2101,7 +2101,7 @@
     "agi": 74,
     "luk": 136,
     "aggression_before": 5,
-    "aggression_after": "",
+    "aggression_after": 7,
     "equipment_new": "智深法袍卡",
     "equipment_new_data": "防禦力+28",
     "new_multiplier": "2倍",
@@ -2114,7 +2114,7 @@
     "fall_high": "末日京城、地牢、水牢、火牢、死牢",
     "fall_low": "玄日洞",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "關銀屏",
@@ -2130,7 +2130,7 @@
     "agi": 114,
     "luk": 108,
     "aggression_before": 3,
-    "aggression_after": "",
+    "aggression_after": 6,
     "equipment_new": "狼牙棒卡",
     "equipment_new_data": "力量+50",
     "new_multiplier": "2.5倍",
@@ -2143,7 +2143,7 @@
     "fall_high": "墨家名穴",
     "fall_low": "陽燧山",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "董卓",
@@ -2159,7 +2159,7 @@
     "agi": 115,
     "luk": 110,
     "aggression_before": 4,
-    "aggression_after": "",
+    "aggression_after": 7,
     "equipment_new": "護心鏡卡",
     "equipment_new_data": "防禦力+28",
     "new_multiplier": "2倍",
@@ -2172,7 +2172,7 @@
     "fall_high": "迷茫古墳、虎臂水洞",
     "fall_low": "陽燧山",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "關興",
@@ -2201,7 +2201,7 @@
     "fall_high": "末日京城、地牢、水牢、火牢、死牢",
     "fall_low": "奔雷嶺、夕之朝雲、幻之烏雲、大漩渦、華山、泰山、天山",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "龐德",
@@ -2217,7 +2217,7 @@
     "agi": 153,
     "luk": 133,
     "aggression_before": 4,
-    "aggression_after": "",
+    "aggression_after": 7,
     "equipment_new": "截頭大刀卡",
     "equipment_new_data": "防禦力+28",
     "new_multiplier": "2倍",
@@ -2230,7 +2230,7 @@
     "fall_high": "烈焰秘境",
     "fall_low": "修羅洞",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "夏侯惇",
@@ -2246,7 +2246,7 @@
     "agi": 122,
     "luk": 78,
     "aggression_before": 3,
-    "aggression_after": "",
+    "aggression_after": 8,
     "equipment_new": "皇家鎖甲卡",
     "equipment_new_data": "防禦力+28",
     "new_multiplier": "2倍",
@@ -2259,7 +2259,7 @@
     "fall_high": "玄日洞",
     "fall_low": "烈焰山",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "阿魯巴巴",
@@ -2288,7 +2288,7 @@
     "fall_high": "奔雷嶺、夕之朝雲、幻之烏雲、大漩渦、華山、泰山、天山",
     "fall_low": "惡龍秘窟4層、盤古旛陣、金嗷洞三樓",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "普賢真人",
@@ -2304,7 +2304,7 @@
     "agi": 293,
     "luk": 323,
     "aggression_before": 6,
-    "aggression_after": "",
+    "aggression_after": 7,
     "equipment_new": "吳鉤劍卡",
     "equipment_new_data": "力量+50",
     "new_multiplier": "2倍",
@@ -2317,7 +2317,7 @@
     "fall_high": "玄日洞",
     "fall_low": "幽冥深淵、垃圾場第一層、垃圾場第二層",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "王貴人",
@@ -2346,7 +2346,7 @@
     "fall_high": "陽燧山",
     "fall_low": "幽冥深淵、垃圾場第一層、垃圾場第二層",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "魏延",
@@ -2362,7 +2362,7 @@
     "agi": 170,
     "luk": 210,
     "aggression_before": 6,
-    "aggression_after": "",
+    "aggression_after": 9,
     "equipment_new": "文長戰甲卡",
     "equipment_new_data": "力量+50",
     "new_multiplier": "2倍",
@@ -2375,7 +2375,7 @@
     "fall_high": "惡龍秘窟1層、惡龍秘窟2層、惡龍秘窟3層",
     "fall_low": "修羅洞",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "瓊英",
@@ -2404,7 +2404,7 @@
     "fall_high": "玉虛宮、寂靜死海",
     "fall_low": "葬心塚、同心林、祈願湖、哭腸崖",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "雲中子",
@@ -2420,7 +2420,7 @@
     "agi": 303,
     "luk": 312,
     "aggression_before": 6,
-    "aggression_after": "",
+    "aggression_after": 7,
     "equipment_new": "水火花籃卡",
     "equipment_new_data": "敏捷+50",
     "new_multiplier": "2倍",
@@ -2433,7 +2433,7 @@
     "fall_high": "陽燧山",
     "fall_low": "琉球仙島、玄冥煉獄",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "劉備",
@@ -2449,7 +2449,7 @@
     "agi": 98,
     "luk": 95,
     "aggression_before": 5,
-    "aggression_after": "",
+    "aggression_after": 8,
     "equipment_new": "雙股劍卡",
     "equipment_new_data": "運氣+50",
     "new_multiplier": "2.5倍",
@@ -2462,7 +2462,7 @@
     "fall_high": "末日京城、地牢、水牢、火牢、死牢",
     "fall_low": "幽冥深淵、垃圾場第一層、垃圾場第二層",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "張郃",
@@ -2491,7 +2491,7 @@
     "fall_high": "玄日峰、玄日岩",
     "fall_low": "玄日洞",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "馬良",
@@ -2507,7 +2507,7 @@
     "agi": 150,
     "luk": 135,
     "aggression_before": 6,
-    "aggression_after": "",
+    "aggression_after": 7,
     "equipment_new": "季常毛筆卡",
     "equipment_new_data": "閃避值+28",
     "new_multiplier": "2倍",
@@ -2520,7 +2520,7 @@
     "fall_high": "翠竹林、潛龍潭、蕈菇林、琅琊山、滄之雲海",
     "fall_low": "墨家名穴",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "花榮",
@@ -2536,7 +2536,7 @@
     "agi": 144,
     "luk": 165,
     "aggression_before": 6,
-    "aggression_after": "",
+    "aggression_after": 7,
     "equipment_new": "小李廣護身符卡",
     "equipment_new_data": "運氣+50",
     "new_multiplier": "2倍",
@@ -2549,7 +2549,7 @@
     "fall_high": "幽納原野2",
     "fall_low": "修羅洞",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "黃忠",
@@ -2578,7 +2578,7 @@
     "fall_high": "地下水道",
     "fall_low": "玄日洞",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "夏侯淵",
@@ -2594,7 +2594,7 @@
     "agi": 156,
     "luk": 180,
     "aggression_before": 3,
-    "aggression_after": "",
+    "aggression_after": 6,
     "equipment_new": "妙才戰靴卡",
     "equipment_new_data": "閃避值+28",
     "new_multiplier": "2倍",
@@ -2607,7 +2607,7 @@
     "fall_high": "幽冥深淵、垃圾場第一層、垃圾場第二層",
     "fall_low": "琉球仙島、玄冥煉獄",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "巫毒精靈",
@@ -2623,7 +2623,7 @@
     "agi": 186,
     "luk": 200,
     "aggression_before": 4,
-    "aggression_after": "",
+    "aggression_after": 8,
     "equipment_new": "巫毒芭蕉葉卡",
     "equipment_new_data": "運氣+50",
     "new_multiplier": "2.5倍",
@@ -2636,7 +2636,7 @@
     "fall_high": "鬼煞洞",
     "fall_low": "藏玄洞",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "女僕",
@@ -2665,7 +2665,7 @@
     "fall_high": "迷茫古墳、虎臂水洞",
     "fall_low": "羅煞洞-第一層、羅煞洞-第二層、羅煞洞-第三層",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "徐晃",
@@ -2681,7 +2681,7 @@
     "agi": 145,
     "luk": 145,
     "aggression_before": 4,
-    "aggression_after": "",
+    "aggression_after": 6,
     "equipment_new": "金背開山斧卡",
     "equipment_new_data": "閃避值+28",
     "new_multiplier": "2倍",
@@ -2694,7 +2694,7 @@
     "fall_high": "妖邪迷宮",
     "fall_low": "金嗷洞一樓、金嗷洞二樓",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "甘寧",
@@ -2710,7 +2710,7 @@
     "agi": 170,
     "luk": 160,
     "aggression_before": 4,
-    "aggression_after": "",
+    "aggression_after": 7,
     "equipment_new": "興霸雙戟卡",
     "equipment_new_data": "閃避值+28",
     "new_multiplier": "2倍",
@@ -2723,7 +2723,7 @@
     "fall_high": "地下水道",
     "fall_low": "玄日峰、玄日岩",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "張苞",
@@ -2752,7 +2752,7 @@
     "fall_high": "沰水道、銀沙河、地下通道、赤松林、飛鶴山、可汗沙漠、天朝山、池底洞窟、東海龍宮、龍宮大殿、靈山、峨嵋山",
     "fall_low": "玉虛宮、寂靜死海",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "武松",
@@ -2768,7 +2768,7 @@
     "agi": 150,
     "luk": 155,
     "aggression_before": 6,
-    "aggression_after": "",
+    "aggression_after": 8,
     "equipment_new": "虎型雙刀卡",
     "equipment_new_data": "力量+50",
     "new_multiplier": "2.5倍",
@@ -2781,7 +2781,7 @@
     "fall_high": "玄日洞",
     "fall_low": "羅煞洞-第一層、羅煞洞-第二層、羅煞洞-第三層",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "華雄",
@@ -2810,7 +2810,7 @@
     "fall_high": "幽納原野1",
     "fall_low": "陽燧山",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "馬超",
@@ -2826,7 +2826,7 @@
     "agi": 160,
     "luk": 140,
     "aggression_before": 5,
-    "aggression_after": "",
+    "aggression_after": 7,
     "equipment_new": "虎頭湛金槍卡",
     "equipment_new_data": "敏捷+50",
     "new_multiplier": "2倍",
@@ -2839,7 +2839,7 @@
     "fall_high": "妖邪洞、幽納古林",
     "fall_low": "西桑耶沙漠、東桑耶沙漠、南桑耶沙漠",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "響馬茜",
@@ -2855,7 +2855,7 @@
     "agi": 146,
     "luk": 120,
     "aggression_before": 4,
-    "aggression_after": "",
+    "aggression_after": 7,
     "equipment_new": "",
     "equipment_new_data": "",
     "new_multiplier": "",
@@ -2868,7 +2868,7 @@
     "fall_high": "幽納原野2",
     "fall_low": "妖邪迷宮",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "君君",
@@ -2884,7 +2884,7 @@
     "agi": 170,
     "luk": 170,
     "aggression_before": 3,
-    "aggression_after": "",
+    "aggression_after": 7,
     "equipment_new": "",
     "equipment_new_data": "",
     "new_multiplier": "",
@@ -2897,7 +2897,7 @@
     "fall_high": "臥虎高原、荒骨高原、匯星高原、月鏡湖、北邙山、巨門關、迷蹤列島、蓬萊仙島、伏龍洞、天煞洞第1層、天煞洞第2層",
     "fall_low": "玉虛宮、寂靜死海",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "賭小兔",
@@ -2926,7 +2926,7 @@
     "fall_high": "妖邪洞、幽納古林",
     "fall_low": "鬼煞洞",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "土行孫",
@@ -2942,7 +2942,7 @@
     "agi": 238,
     "luk": 212,
     "aggression_before": 5,
-    "aggression_after": "",
+    "aggression_after": 6,
     "equipment_new": "",
     "equipment_new_data": "",
     "new_multiplier": "",
@@ -2955,7 +2955,7 @@
     "fall_high": "幽納原野1",
     "fall_low": "玉虛宮、寂靜死海",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "鄧嬋玉",
@@ -2984,7 +2984,7 @@
     "fall_high": "羅煞洞-第五層",
     "fall_low": "奔雷嶺、夕之朝雲、幻之烏雲、大漩渦、華山、泰山、天山",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "趙公明",
@@ -3000,7 +3000,7 @@
     "agi": 150,
     "luk": 185,
     "aggression_before": 3,
-    "aggression_after": "",
+    "aggression_after": 5,
     "equipment_new": "",
     "equipment_new_data": "",
     "new_multiplier": "",
@@ -3013,7 +3013,7 @@
     "fall_high": "金嗷洞一樓、金嗷洞二樓",
     "fall_low": "皇陵",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "張清",
@@ -3029,7 +3029,7 @@
     "agi": 126,
     "luk": 155,
     "aggression_before": 5,
-    "aggression_after": "",
+    "aggression_after": 7,
     "equipment_new": "",
     "equipment_new_data": "",
     "new_multiplier": "",
@@ -3042,7 +3042,7 @@
     "fall_high": "修羅洞",
     "fall_low": "妖邪洞、幽納古林",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "孫尚香",
@@ -3058,7 +3058,7 @@
     "agi": 170,
     "luk": 210,
     "aggression_before": 7,
-    "aggression_after": "",
+    "aggression_after": 8,
     "equipment_new": "",
     "equipment_new_data": "",
     "new_multiplier": "",
@@ -3071,7 +3071,7 @@
     "fall_high": "鬼煞洞",
     "fall_low": "羅煞洞-第五層",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "殷洪",
@@ -3087,7 +3087,7 @@
     "agi": 176,
     "luk": 202,
     "aggression_before": 5,
-    "aggression_after": "",
+    "aggression_after": 6,
     "equipment_new": "",
     "equipment_new_data": "",
     "new_multiplier": "",
@@ -3100,7 +3100,7 @@
     "fall_high": "墨家名穴",
     "fall_low": "幽冥深淵、垃圾場第一層、垃圾場第二層",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "黃月英",
@@ -3129,7 +3129,7 @@
     "fall_high": "翠竹林、潛龍潭、蕈菇林、琅琊山、滄之雲海",
     "fall_low": "烈焰山",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "張順",
@@ -3145,7 +3145,7 @@
     "agi": 102,
     "luk": 125,
     "aggression_before": 5,
-    "aggression_after": "",
+    "aggression_after": 7,
     "equipment_new": "",
     "equipment_new_data": "",
     "new_multiplier": "",
@@ -3158,7 +3158,7 @@
     "fall_high": "鬼煞洞",
     "fall_low": "玄日峰、玄日岩",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "馬忠",
@@ -3174,7 +3174,7 @@
     "agi": 94,
     "luk": 115,
     "aggression_before": 3,
-    "aggression_after": "",
+    "aggression_after": 6,
     "equipment_new": "",
     "equipment_new_data": "",
     "new_multiplier": "",
@@ -3187,7 +3187,7 @@
     "fall_high": "-",
     "fall_low": "妖邪洞、幽納古林",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "劉唐",
@@ -3203,7 +3203,7 @@
     "agi": 90,
     "luk": 110,
     "aggression_before": 4,
-    "aggression_after": "",
+    "aggression_after": 6,
     "equipment_new": "",
     "equipment_new_data": "",
     "new_multiplier": "",
@@ -3216,7 +3216,7 @@
     "fall_high": "墨家名穴",
     "fall_low": "妖邪洞、幽納古林",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "諸葛惠",
@@ -3232,7 +3232,7 @@
     "agi": 120,
     "luk": 106,
     "aggression_before": 4,
-    "aggression_after": "",
+    "aggression_after": 8,
     "equipment_new": "",
     "equipment_new_data": "",
     "new_multiplier": "",
@@ -3245,7 +3245,7 @@
     "fall_high": "惡龍秘窟1層、惡龍秘窟2層、惡龍秘窟3層",
     "fall_low": "臥虎高原、荒骨高原、匯星高原、月鏡湖、北邙山、巨門關、迷蹤列島、蓬萊仙島、伏龍洞、天煞洞第1層、天煞洞第2層",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "袁紹",
@@ -3274,7 +3274,7 @@
     "fall_high": "飛煞洞、地下墳場",
     "fall_low": "玄日峰、玄日岩",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "芙蓉",
@@ -3303,7 +3303,7 @@
     "fall_high": "藏玄洞",
     "fall_low": "皇陵",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "黃巾妖鬥士",
@@ -3319,7 +3319,7 @@
     "agi": 18,
     "luk": 20,
     "aggression_before": 4,
-    "aggression_after": "",
+    "aggression_after": 7,
     "equipment_new": "",
     "equipment_new_data": "",
     "new_multiplier": "",
@@ -3332,7 +3332,7 @@
     "fall_high": "西桑耶沙漠、東桑耶沙漠、南桑耶沙漠",
     "fall_low": "鬼煞洞",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "小玲",
@@ -3348,7 +3348,7 @@
     "agi": 80,
     "luk": 68,
     "aggression_before": 4,
-    "aggression_after": "",
+    "aggression_after": 7,
     "equipment_new": "",
     "equipment_new_data": "",
     "new_multiplier": "",
@@ -3361,7 +3361,7 @@
     "fall_high": "金嗷洞一樓、金嗷洞二樓",
     "fall_low": "玉虛宮、寂靜死海",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "夏麗",
@@ -3377,7 +3377,7 @@
     "agi": 66,
     "luk": 62,
     "aggression_before": 4,
-    "aggression_after": "",
+    "aggression_after": 7,
     "equipment_new": "",
     "equipment_new_data": "",
     "new_multiplier": "",
@@ -3390,7 +3390,7 @@
     "fall_high": "西桑耶沙漠、東桑耶沙漠、南桑耶沙漠",
     "fall_low": "葬心塚、同心林、祈願湖、哭腸崖",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "好人君",
@@ -3419,7 +3419,7 @@
     "fall_high": "沰水道、銀沙河、地下通道、赤松林、飛鶴山、可汗沙漠、天朝山、池底洞窟、東海龍宮、龍宮大殿、靈山、峨嵋山",
     "fall_low": "-",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "呂蒙",
@@ -3435,7 +3435,7 @@
     "agi": 90,
     "luk": 110,
     "aggression_before": 5,
-    "aggression_after": "",
+    "aggression_after": 9,
     "equipment_new": "",
     "equipment_new_data": "",
     "new_multiplier": "",
@@ -3448,7 +3448,7 @@
     "fall_high": "地下水道",
     "fall_low": "幽冥深淵、垃圾場第一層、垃圾場第二層",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "秦大夫",
@@ -3464,7 +3464,7 @@
     "agi": 88,
     "luk": 109,
     "aggression_before": 5,
-    "aggression_after": "",
+    "aggression_after": 10,
     "equipment_new": "",
     "equipment_new_data": "",
     "new_multiplier": "",
@@ -3477,7 +3477,7 @@
     "fall_high": "羅煞洞-第五層",
     "fall_low": "崑崙山、真修洞",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "茶茶",
@@ -3506,7 +3506,7 @@
     "fall_high": "陽燧山",
     "fall_low": "沰水道、銀沙河、地下通道、赤松林、飛鶴山、可汗沙漠、天朝山、池底洞窟、東海龍宮、龍宮大殿、靈山、峨嵋山",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "魔禮海",
@@ -3522,7 +3522,7 @@
     "agi": 133,
     "luk": 112,
     "aggression_before": 4,
-    "aggression_after": "",
+    "aggression_after": 6,
     "equipment_new": "",
     "equipment_new_data": "",
     "new_multiplier": "",
@@ -3535,7 +3535,7 @@
     "fall_high": "崑崙山、真修洞",
     "fall_low": "西桑耶沙漠、東桑耶沙漠、南桑耶沙漠",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "小艾",
@@ -3551,7 +3551,7 @@
     "agi": 90,
     "luk": 95,
     "aggression_before": 4,
-    "aggression_after": "",
+    "aggression_after": 6,
     "equipment_new": "",
     "equipment_new_data": "",
     "new_multiplier": "",
@@ -3564,7 +3564,7 @@
     "fall_high": "墨家名穴",
     "fall_low": "玉虛宮、寂靜死海",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "孫堅",
@@ -3580,7 +3580,7 @@
     "agi": 58,
     "luk": 42,
     "aggression_before": 3,
-    "aggression_after": "",
+    "aggression_after": 6,
     "equipment_new": "",
     "equipment_new_data": "",
     "new_multiplier": "",
@@ -3593,7 +3593,7 @@
     "fall_high": "羅煞洞-第一層、羅煞洞-第二層、羅煞洞-第三層",
     "fall_low": "鬼煞洞",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "李靖",
@@ -3609,7 +3609,7 @@
     "agi": 124,
     "luk": 86,
     "aggression_before": 2,
-    "aggression_after": "",
+    "aggression_after": 8,
     "equipment_new": "",
     "equipment_new_data": "",
     "new_multiplier": "",
@@ -3622,7 +3622,7 @@
     "fall_high": "玄日峰、玄日岩",
     "fall_low": "葬心塚、同心林、祈願湖、哭腸崖",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "盧俊義",
@@ -3638,7 +3638,7 @@
     "agi": 61,
     "luk": 44,
     "aggression_before": 5,
-    "aggression_after": "",
+    "aggression_after": 7,
     "equipment_new": "",
     "equipment_new_data": "",
     "new_multiplier": "",
@@ -3651,7 +3651,7 @@
     "fall_high": "臥虎高原、荒骨高原、匯星高原、月鏡湖、北邙山、巨門關、迷蹤列島、蓬萊仙島、伏龍洞、天煞洞第1層、天煞洞第2層",
     "fall_low": "奔雷嶺、夕之朝雲、幻之烏雲、大漩渦、華山、泰山、天山",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "全四郎",
@@ -3667,7 +3667,7 @@
     "agi": 70,
     "luk": 50,
     "aggression_before": 3,
-    "aggression_after": "",
+    "aggression_after": 8,
     "equipment_new": "",
     "equipment_new_data": "",
     "new_multiplier": "",
@@ -3680,7 +3680,7 @@
     "fall_high": "葬心塚、同心林、祈願湖、哭腸崖",
     "fall_low": "惡龍秘窟4層、盤古旛陣、金嗷洞三樓",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "亞娜",
@@ -3696,7 +3696,7 @@
     "agi": 75,
     "luk": 45,
     "aggression_before": 2,
-    "aggression_after": "",
+    "aggression_after": 7,
     "equipment_new": "",
     "equipment_new_data": "",
     "new_multiplier": "",
@@ -3709,7 +3709,7 @@
     "fall_high": "飛煞洞、地下墳場",
     "fall_low": "崑崙山、真修洞",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "秦明",
@@ -3725,7 +3725,7 @@
     "agi": 64,
     "luk": 46,
     "aggression_before": 3,
-    "aggression_after": "",
+    "aggression_after": 6,
     "equipment_new": "",
     "equipment_new_data": "",
     "new_multiplier": "",
@@ -3738,7 +3738,7 @@
     "fall_high": "-",
     "fall_low": "藏玄洞",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "晁蓋",
@@ -3767,7 +3767,7 @@
     "fall_high": "幽冥深淵、垃圾場第一層、垃圾場第二層",
     "fall_low": "玄日洞",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "黃飛虎",
@@ -3783,7 +3783,7 @@
     "agi": 121,
     "luk": 84,
     "aggression_before": 3,
-    "aggression_after": "",
+    "aggression_after": 7,
     "equipment_new": "",
     "equipment_new_data": "",
     "new_multiplier": "",
@@ -3796,7 +3796,7 @@
     "fall_high": "藏玄洞",
     "fall_low": "幽冥深淵、垃圾場第一層、垃圾場第二層",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "王進",
@@ -3812,7 +3812,7 @@
     "agi": 109,
     "luk": 76,
     "aggression_before": 2,
-    "aggression_after": "",
+    "aggression_after": 6,
     "equipment_new": "",
     "equipment_new_data": "",
     "new_multiplier": "",
@@ -3825,7 +3825,7 @@
     "fall_high": "墨家名穴",
     "fall_low": "金嗷洞一樓、金嗷洞二樓",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "呼延灼",
@@ -3841,7 +3841,7 @@
     "agi": 70,
     "luk": 56,
     "aggression_before": 3,
-    "aggression_after": "",
+    "aggression_after": 6,
     "equipment_new": "",
     "equipment_new_data": "",
     "new_multiplier": "",
@@ -3854,7 +3854,7 @@
     "fall_high": "玄日洞",
     "fall_low": "妖邪洞、幽納古林",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "黃蓋",
@@ -3883,7 +3883,7 @@
     "fall_high": "藏玄洞",
     "fall_low": "崑崙山、真修洞",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "孟獲",
@@ -3899,7 +3899,7 @@
     "agi": 115,
     "luk": 80,
     "aggression_before": 3,
-    "aggression_after": "",
+    "aggression_after": 7,
     "equipment_new": "",
     "equipment_new_data": "",
     "new_multiplier": "",
@@ -3912,7 +3912,7 @@
     "fall_high": "地下水道",
     "fall_low": "迷茫古墳、虎臂水洞",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "黃巾龍鬥士",
@@ -3928,7 +3928,7 @@
     "agi": 38,
     "luk": 22,
     "aggression_before": 2,
-    "aggression_after": "",
+    "aggression_after": 8,
     "equipment_new": "",
     "equipment_new_data": "",
     "new_multiplier": "",
@@ -3941,7 +3941,7 @@
     "fall_high": "臥虎高原、荒骨高原、匯星高原、月鏡湖、北邙山、巨門關、迷蹤列島、蓬萊仙島、伏龍洞、天煞洞第1層、天煞洞第2層",
     "fall_low": "惡龍秘窟1層、惡龍秘窟2層、惡龍秘窟3層",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "馬岱",
@@ -3957,7 +3957,7 @@
     "agi": 200,
     "luk": 200,
     "aggression_before": 4,
-    "aggression_after": "",
+    "aggression_after": 7,
     "equipment_new": "",
     "equipment_new_data": "",
     "new_multiplier": "",
@@ -3970,7 +3970,7 @@
     "fall_high": "幽冥深淵、垃圾場第一層、垃圾場第二層",
     "fall_low": "羅煞洞-第四層",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "武吉",
@@ -3999,7 +3999,7 @@
     "fall_high": "沰水道、銀沙河、地下通道、赤松林、飛鶴山、可汗沙漠、天朝山、池底洞窟、東海龍宮、龍宮大殿、靈山、峨嵋山",
     "fall_low": "玄日洞",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "顧大嫂",
@@ -4015,7 +4015,7 @@
     "agi": 180,
     "luk": 160,
     "aggression_before": 4,
-    "aggression_after": "",
+    "aggression_after": 7,
     "equipment_new": "",
     "equipment_new_data": "",
     "new_multiplier": "",
@@ -4028,7 +4028,7 @@
     "fall_high": "惡龍秘窟4層、盤古旛陣、金嗷洞三樓",
     "fall_low": "妖邪洞、幽納古林",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "孫二娘",
@@ -4044,7 +4044,7 @@
     "agi": 155,
     "luk": 150,
     "aggression_before": 4,
-    "aggression_after": "",
+    "aggression_after": 7,
     "equipment_new": "",
     "equipment_new_data": "",
     "new_multiplier": "",
@@ -4057,7 +4057,7 @@
     "fall_high": "臥虎高原、荒骨高原、匯星高原、月鏡湖、北邙山、巨門關、迷蹤列島、蓬萊仙島、伏龍洞、天煞洞第1層、天煞洞第2層",
     "fall_low": "末日京城、地牢、水牢、火牢、死牢",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "張奎",
@@ -4073,7 +4073,7 @@
     "agi": 192,
     "luk": 198,
     "aggression_before": 4,
-    "aggression_after": "",
+    "aggression_after": 6,
     "equipment_new": "",
     "equipment_new_data": "",
     "new_multiplier": "",
@@ -4086,7 +4086,7 @@
     "fall_high": "崑崙山、真修洞",
     "fall_low": "皇陵",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "雷震子",
@@ -4115,7 +4115,7 @@
     "fall_high": "西桑耶沙漠、東桑耶沙漠、南桑耶沙漠",
     "fall_low": "羅煞洞-第一層、羅煞洞-第二層、羅煞洞-第三層",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "周通",
@@ -4144,7 +4144,7 @@
     "fall_high": "迷茫古墳、虎臂水洞",
     "fall_low": "玉虛宮、寂靜死海",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "文醜",
@@ -4160,7 +4160,7 @@
     "agi": 145,
     "luk": 145,
     "aggression_before": 4,
-    "aggression_after": "",
+    "aggression_after": 7,
     "equipment_new": "",
     "equipment_new_data": "",
     "new_multiplier": "",
@@ -4173,7 +4173,7 @@
     "fall_high": "羅煞洞-第一層、羅煞洞-第二層、羅煞洞-第三層",
     "fall_low": "玄日峰、玄日岩",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "顏良",
@@ -4189,7 +4189,7 @@
     "agi": 140,
     "luk": 140,
     "aggression_before": 4,
-    "aggression_after": "",
+    "aggression_after": 7,
     "equipment_new": "",
     "equipment_new_data": "",
     "new_multiplier": "",
@@ -4202,7 +4202,7 @@
     "fall_high": "飛煞洞、地下墳場",
     "fall_low": "幽冥深淵、垃圾場第一層、垃圾場第二層",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "楊志",
@@ -4218,7 +4218,7 @@
     "agi": 130,
     "luk": 105,
     "aggression_before": 4,
-    "aggression_after": "",
+    "aggression_after": 6,
     "equipment_new": "",
     "equipment_new_data": "",
     "new_multiplier": "",
@@ -4231,7 +4231,7 @@
     "fall_high": "皇陵",
     "fall_low": "羅煞洞-第一層、羅煞洞-第二層、羅煞洞-第三層",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "程普",
@@ -4260,7 +4260,7 @@
     "fall_high": "奔雷嶺、夕之朝雲、幻之烏雲、大漩渦、華山、泰山、天山",
     "fall_low": "沰水道、銀沙河、地下通道、赤松林、飛鶴山、可汗沙漠、天朝山、池底洞窟、東海龍宮、龍宮大殿、靈山、峨嵋山",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "祝融",
@@ -4276,7 +4276,7 @@
     "agi": 100,
     "luk": 100,
     "aggression_before": 3,
-    "aggression_after": "",
+    "aggression_after": 9,
     "equipment_new": "",
     "equipment_new_data": "",
     "new_multiplier": "",
@@ -4289,7 +4289,7 @@
     "fall_high": "飛煞洞、地下墳場",
     "fall_low": "皇陵",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "阮小七",
@@ -4305,7 +4305,7 @@
     "agi": 140,
     "luk": 140,
     "aggression_before": 3,
-    "aggression_after": "",
+    "aggression_after": 7,
     "equipment_new": "",
     "equipment_new_data": "",
     "new_multiplier": "",
@@ -4318,7 +4318,7 @@
     "fall_high": "飛煞洞、地下墳場",
     "fall_low": "金嗷洞一樓、金嗷洞二樓",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "高蘭英",
@@ -4347,7 +4347,7 @@
     "fall_high": "玄日洞",
     "fall_low": "幽納原野1",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "戴宗",
@@ -4363,7 +4363,7 @@
     "agi": 105,
     "luk": 105,
     "aggression_before": 3,
-    "aggression_after": "",
+    "aggression_after": 6,
     "equipment_new": "",
     "equipment_new_data": "",
     "new_multiplier": "",
@@ -4376,7 +4376,7 @@
     "fall_high": "羅煞洞-第一層、羅煞洞-第二層、羅煞洞-第三層",
     "fall_low": "地下水道",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "給我豹豹",
@@ -4392,7 +4392,7 @@
     "agi": 72,
     "luk": 59,
     "aggression_before": 4,
-    "aggression_after": "",
+    "aggression_after": 6,
     "equipment_new": "",
     "equipment_new_data": "",
     "new_multiplier": "",
@@ -4405,7 +4405,7 @@
     "fall_high": "葬心塚、同心林、祈願湖、哭腸崖",
     "fall_low": "羅煞洞-第一層、羅煞洞-第二層、羅煞洞-第三層",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "周泰",
@@ -4421,7 +4421,7 @@
     "agi": 120,
     "luk": 120,
     "aggression_before": 3,
-    "aggression_after": "",
+    "aggression_after": 6,
     "equipment_new": "",
     "equipment_new_data": "",
     "new_multiplier": "",
@@ -4434,7 +4434,7 @@
     "fall_high": "玄日峰、玄日岩",
     "fall_low": "妖邪洞、幽納古林",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "小蘿",
@@ -4450,7 +4450,7 @@
     "agi": 100,
     "luk": 100,
     "aggression_before": 3,
-    "aggression_after": "",
+    "aggression_after": 6,
     "equipment_new": "",
     "equipment_new_data": "",
     "new_multiplier": "",
@@ -4463,7 +4463,7 @@
     "fall_high": "皇陵",
     "fall_low": "琉球仙島、玄冥煉獄",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "碧霄",
@@ -4479,7 +4479,7 @@
     "agi": 168,
     "luk": 138,
     "aggression_before": 7,
-    "aggression_after": "",
+    "aggression_after": 10,
     "equipment_new": "",
     "equipment_new_data": "",
     "new_multiplier": "",
@@ -4492,7 +4492,7 @@
     "fall_high": "羅煞洞-第一層、羅煞洞-第二層、羅煞洞-第三層",
     "fall_low": "玉虛宮、寂靜死海",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "瓊霄",
@@ -4508,7 +4508,7 @@
     "agi": 136,
     "luk": 114,
     "aggression_before": 7,
-    "aggression_after": "",
+    "aggression_after": 10,
     "equipment_new": "",
     "equipment_new_data": "",
     "new_multiplier": "",
@@ -4521,7 +4521,7 @@
     "fall_high": "皇陵",
     "fall_low": "飛煞洞、地下墳場",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "魏定國",
@@ -4537,7 +4537,7 @@
     "agi": 108,
     "luk": 96,
     "aggression_before": 6,
-    "aggression_after": "",
+    "aggression_after": 7,
     "equipment_new": "",
     "equipment_new_data": "",
     "new_multiplier": "",
@@ -4550,7 +4550,7 @@
     "fall_high": "-",
     "fall_low": "妖邪洞、幽納古林",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "張角",
@@ -4566,7 +4566,7 @@
     "agi": 58,
     "luk": 46,
     "aggression_before": 6,
-    "aggression_after": "",
+    "aggression_after": 10,
     "equipment_new": "",
     "equipment_new_data": "",
     "new_multiplier": "",
@@ -4579,7 +4579,7 @@
     "fall_high": "青葉村、地煞洞第1層、地煞洞第2層、東都道",
     "fall_low": "幽冥深淵、垃圾場第一層、垃圾場第二層",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "羅真人",
@@ -4595,7 +4595,7 @@
     "agi": 106,
     "luk": 82,
     "aggression_before": 6,
-    "aggression_after": "",
+    "aggression_after": 10,
     "equipment_new": "",
     "equipment_new_data": "",
     "new_multiplier": "",
@@ -4608,7 +4608,7 @@
     "fall_high": "修羅洞",
     "fall_low": "幽冥深淵、垃圾場第一層、垃圾場第二層",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "申公豹",
@@ -4624,7 +4624,7 @@
     "agi": 146,
     "luk": 112,
     "aggression_before": 6,
-    "aggression_after": "",
+    "aggression_after": 10,
     "equipment_new": "",
     "equipment_new_data": "",
     "new_multiplier": "",
@@ -4637,7 +4637,7 @@
     "fall_high": "皇陵",
     "fall_low": "西桑耶沙漠、東桑耶沙漠、南桑耶沙漠",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "甄宓",
@@ -4653,7 +4653,7 @@
     "agi": 130,
     "luk": 100,
     "aggression_before": 8,
-    "aggression_after": "",
+    "aggression_after": 10,
     "equipment_new": "",
     "equipment_new_data": "",
     "new_multiplier": "",
@@ -4666,7 +4666,7 @@
     "fall_high": "地下水道",
     "fall_low": "西桑耶沙漠、東桑耶沙漠、南桑耶沙漠",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "單廷珪",
@@ -4682,7 +4682,7 @@
     "agi": 118,
     "luk": 96,
     "aggression_before": 6,
-    "aggression_after": "",
+    "aggression_after": 8,
     "equipment_new": "",
     "equipment_new_data": "",
     "new_multiplier": "",
@@ -4695,7 +4695,7 @@
     "fall_high": "藏玄洞",
     "fall_low": "玄日洞",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "張魯",
@@ -4711,7 +4711,7 @@
     "agi": 122,
     "luk": 94,
     "aggression_before": 7,
-    "aggression_after": "",
+    "aggression_after": 10,
     "equipment_new": "",
     "equipment_new_data": "",
     "new_multiplier": "",
@@ -4724,7 +4724,7 @@
     "fall_high": "末日京城、地牢、水牢、火牢、死牢",
     "fall_low": "修羅洞",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "小倩",
@@ -4740,7 +4740,7 @@
     "agi": 90,
     "luk": 70,
     "aggression_before": 5,
-    "aggression_after": "",
+    "aggression_after": 9,
     "equipment_new": "",
     "equipment_new_data": "",
     "new_multiplier": "",
@@ -4753,7 +4753,7 @@
     "fall_high": "奔雷嶺、夕之朝雲、幻之烏雲、大漩渦、華山、泰山、天山",
     "fall_low": "玄日峰、玄日岩",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "黃巾魔鬥士",
@@ -4769,7 +4769,7 @@
     "agi": 26,
     "luk": 22,
     "aggression_before": 5,
-    "aggression_after": "",
+    "aggression_after": 9,
     "equipment_new": "",
     "equipment_new_data": "",
     "new_multiplier": "",
@@ -4782,7 +4782,7 @@
     "fall_high": "東門關、南門關、西門關、北門關、杏花谷、碧沙湖、北都道、西都道、南都道",
     "fall_low": "沰水道、銀沙河、地下通道、赤松林、飛鶴山、可汗沙漠、天朝山、池底洞窟、東海龍宮、龍宮大殿、靈山、峨嵋山",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "張松",
@@ -4798,7 +4798,7 @@
     "agi": 52,
     "luk": 66,
     "aggression_before": 3,
-    "aggression_after": "",
+    "aggression_after": 8,
     "equipment_new": "",
     "equipment_new_data": "",
     "new_multiplier": "",
@@ -4811,7 +4811,7 @@
     "fall_high": "東門關、南門關、西門關、北門關、杏花谷、碧沙湖、北都道、西都道、南都道",
     "fall_low": "藏玄洞",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "小喬",
@@ -4827,7 +4827,7 @@
     "agi": 94,
     "luk": 122,
     "aggression_before": 6,
-    "aggression_after": "",
+    "aggression_after": 9,
     "equipment_new": "",
     "equipment_new_data": "",
     "new_multiplier": "",
@@ -4840,7 +4840,7 @@
     "fall_high": "翠竹林、潛龍潭、蕈菇林、琅琊山、滄之雲海",
     "fall_low": "藏玄洞",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "楊修",
@@ -4856,7 +4856,7 @@
     "agi": 94,
     "luk": 122,
     "aggression_before": 6,
-    "aggression_after": "",
+    "aggression_after": 9,
     "equipment_new": "",
     "equipment_new_data": "",
     "new_multiplier": "",
@@ -4869,7 +4869,7 @@
     "fall_high": "烈焰山",
     "fall_low": "翠竹林、潛龍潭、蕈菇林、琅琊山、滄之雲海",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "賈詡",
@@ -4885,7 +4885,7 @@
     "agi": 79,
     "luk": 102,
     "aggression_before": 5,
-    "aggression_after": "",
+    "aggression_after": 10,
     "equipment_new": "",
     "equipment_new_data": "",
     "new_multiplier": "",
@@ -4898,7 +4898,7 @@
     "fall_high": "飛煞洞、地下墳場",
     "fall_low": "沰水道、銀沙河、地下通道、赤松林、飛鶴山、可汗沙漠、天朝山、池底洞窟、東海龍宮、龍宮大殿、靈山、峨嵋山",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "貂蟬",
@@ -4914,7 +4914,7 @@
     "agi": 103,
     "luk": 134,
     "aggression_before": 3,
-    "aggression_after": "",
+    "aggression_after": 10,
     "equipment_new": "",
     "equipment_new_data": "",
     "new_multiplier": "",
@@ -4927,7 +4927,7 @@
     "fall_high": "烈焰山",
     "fall_low": "皇陵",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "法正",
@@ -4943,7 +4943,7 @@
     "agi": 103,
     "luk": 134,
     "aggression_before": 5,
-    "aggression_after": "",
+    "aggression_after": 9,
     "equipment_new": "",
     "equipment_new_data": "",
     "new_multiplier": "",
@@ -4956,7 +4956,7 @@
     "fall_high": "地下水道",
     "fall_low": "陽燧山",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "大喬",
@@ -4972,7 +4972,7 @@
     "agi": 106,
     "luk": 138,
     "aggression_before": 6,
-    "aggression_after": "",
+    "aggression_after": 9,
     "equipment_new": "",
     "equipment_new_data": "",
     "new_multiplier": "",
@@ -4985,7 +4985,7 @@
     "fall_high": "妖邪迷宮",
     "fall_low": "奔雷嶺、夕之朝雲、幻之烏雲、大漩渦、華山、泰山、天山",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "鄧艾",
@@ -5001,7 +5001,7 @@
     "agi": 91,
     "luk": 118,
     "aggression_before": 6,
-    "aggression_after": "",
+    "aggression_after": 9,
     "equipment_new": "",
     "equipment_new_data": "",
     "new_multiplier": "",
@@ -5014,7 +5014,7 @@
     "fall_high": "幽冥深淵、垃圾場第一層、垃圾場第二層",
     "fall_low": "地下水道",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "卑彌呼",
@@ -5043,7 +5043,7 @@
     "fall_high": "末日京城、地牢、水牢、火牢、死牢",
     "fall_low": "羅煞洞-第一層、羅煞洞-第二層、羅煞洞-第三層",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "殷郊",
@@ -5059,7 +5059,7 @@
     "agi": 122,
     "luk": 189,
     "aggression_before": 5,
-    "aggression_after": "",
+    "aggression_after": 8,
     "equipment_new": "",
     "equipment_new_data": "",
     "new_multiplier": "",
@@ -5072,7 +5072,7 @@
     "fall_high": "惡龍秘窟1層、惡龍秘窟2層、惡龍秘窟3層",
     "fall_low": "飛煞洞、地下墳場",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "諸葛瑾",
@@ -5101,7 +5101,7 @@
     "fall_high": "幽納古林",
     "fall_low": "玄日洞",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "魔禮紅",
@@ -5130,7 +5130,7 @@
     "fall_high": "崑崙山、真修洞",
     "fall_low": "葬心塚、同心林、祈願湖、哭腸崖",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "華陀",
@@ -5159,7 +5159,7 @@
     "fall_high": "迷茫古墳、虎臂水洞",
     "fall_low": "皇陵",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "孔融",
@@ -5175,7 +5175,7 @@
     "agi": 94,
     "luk": 60,
     "aggression_before": 6,
-    "aggression_after": "",
+    "aggression_after": 9,
     "equipment_new": "",
     "equipment_new_data": "",
     "new_multiplier": "",
@@ -5188,7 +5188,7 @@
     "fall_high": "羅煞洞-第一層、羅煞洞-第二層、羅煞洞-第三層",
     "fall_low": "沰水道、銀沙河、地下通道、赤松林、飛鶴山、可汗沙漠、天朝山、池底洞窟、東海龍宮、龍宮大殿、靈山、峨嵋山",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "木鹿大王",
@@ -5204,7 +5204,7 @@
     "agi": 90,
     "luk": 65,
     "aggression_before": 5,
-    "aggression_after": "",
+    "aggression_after": 9,
     "equipment_new": "",
     "equipment_new_data": "",
     "new_multiplier": "",
@@ -5217,7 +5217,7 @@
     "fall_high": "藏玄洞",
     "fall_low": "修羅洞",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "潘金蓮",
@@ -5233,7 +5233,7 @@
     "agi": 89,
     "luk": 63,
     "aggression_before": 5,
-    "aggression_after": "",
+    "aggression_after": 8,
     "equipment_new": "",
     "equipment_new_data": "",
     "new_multiplier": "",
@@ -5246,7 +5246,7 @@
     "fall_high": "幽納古林",
     "fall_low": "修羅洞",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "蔡文姬",
@@ -5275,7 +5275,7 @@
     "fall_high": "惡龍秘窟4層、盤古旛陣、金嗷洞三樓",
     "fall_low": "烈焰山",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "瑤池仙女",
@@ -5304,7 +5304,7 @@
     "fall_high": "活動",
     "fall_low": "活動",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "安道全",
@@ -5320,7 +5320,7 @@
     "agi": 34,
     "luk": 29,
     "aggression_before": 5,
-    "aggression_after": "",
+    "aggression_after": 9,
     "equipment_new": "",
     "equipment_new_data": "",
     "new_multiplier": "",
@@ -5333,7 +5333,7 @@
     "fall_high": "妖邪洞、幽納古林",
     "fall_low": "陽燧山",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "龍虎天師",
@@ -5349,7 +5349,7 @@
     "agi": 70,
     "luk": 55,
     "aggression_before": 6,
-    "aggression_after": "",
+    "aggression_after": 9,
     "equipment_new": "",
     "equipment_new_data": "",
     "new_multiplier": "",
@@ -5362,7 +5362,7 @@
     "fall_high": "烈焰山",
     "fall_low": "修羅洞",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "樊瑞",
@@ -5378,7 +5378,7 @@
     "agi": 68,
     "luk": 61,
     "aggression_before": 6,
-    "aggression_after": "",
+    "aggression_after": 9,
     "equipment_new": "",
     "equipment_new_data": "",
     "new_multiplier": "",
@@ -5391,7 +5391,7 @@
     "fall_high": "幽冥深淵、垃圾場第一層、垃圾場第二層",
     "fall_low": "琉球仙島、玄冥煉獄",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "曹植",
@@ -5420,7 +5420,7 @@
     "fall_high": "玉虛宮、寂靜死海",
     "fall_low": "末日京城、地牢、水牢、火牢、死牢",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "張寶",
@@ -5436,7 +5436,7 @@
     "agi": 102,
     "luk": 79,
     "aggression_before": 5,
-    "aggression_after": "",
+    "aggression_after": 10,
     "equipment_new": "",
     "equipment_new_data": "",
     "new_multiplier": "",
@@ -5449,7 +5449,7 @@
     "fall_high": "玉虛宮、寂靜死海",
     "fall_low": "幽冥深淵、垃圾場第一層、垃圾場第二層",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "天策軍師",
@@ -5478,7 +5478,7 @@
     "fall_high": "活動",
     "fall_low": "活動",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "糜夫人",
@@ -5494,7 +5494,7 @@
     "agi": 127,
     "luk": 166,
     "aggression_before": 5,
-    "aggression_after": "",
+    "aggression_after": 8,
     "equipment_new": "",
     "equipment_new_data": "",
     "new_multiplier": "",
@@ -5507,7 +5507,7 @@
     "fall_high": "羅煞洞-第一層、羅煞洞-第二層、羅煞洞-第三層",
     "fall_low": "妖邪洞、幽納古林",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "張梁",
@@ -5523,7 +5523,7 @@
     "agi": 73,
     "luk": 94,
     "aggression_before": 4,
-    "aggression_after": "",
+    "aggression_after": 10,
     "equipment_new": "",
     "equipment_new_data": "",
     "new_multiplier": "",
@@ -5536,7 +5536,7 @@
     "fall_high": "沰水道、銀沙河、地下通道、赤松林、飛鶴山、可汗沙漠、天朝山、池底洞窟、東海龍宮、龍宮大殿、靈山、峨嵋山",
     "fall_low": "皇陵",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "西門慶",
@@ -5552,7 +5552,7 @@
     "agi": 46,
     "luk": 53,
     "aggression_before": 5,
-    "aggression_after": "",
+    "aggression_after": 7,
     "equipment_new": "",
     "equipment_new_data": "",
     "new_multiplier": "",
@@ -5565,7 +5565,7 @@
     "fall_high": "琉球仙島、玄冥煉獄",
     "fall_low": "沰水道、銀沙河、地下通道、赤松林、飛鶴山、可汗沙漠、天朝山、池底洞窟、東海龍宮、龍宮大殿、靈山、峨嵋山",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "比干",
@@ -5581,7 +5581,7 @@
     "agi": 77,
     "luk": 101,
     "aggression_before": 5,
-    "aggression_after": "",
+    "aggression_after": 8,
     "equipment_new": "",
     "equipment_new_data": "",
     "new_multiplier": "",
@@ -5594,7 +5594,7 @@
     "fall_high": "葬心塚、同心林、祈願湖、哭腸崖",
     "fall_low": "陽燧山",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "田豐",
@@ -5623,7 +5623,7 @@
     "fall_high": "翠竹林、潛龍潭、蕈菇林、琅琊山、滄之雲海",
     "fall_low": "地下水道",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "柴進",
@@ -5639,7 +5639,7 @@
     "agi": 61,
     "luk": 80,
     "aggression_before": 4,
-    "aggression_after": "",
+    "aggression_after": 6,
     "equipment_new": "",
     "equipment_new_data": "",
     "new_multiplier": "",
@@ -5652,7 +5652,7 @@
     "fall_high": "玄日洞",
     "fall_low": "墨家名穴",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "蔣敬",
@@ -5668,7 +5668,7 @@
     "agi": 67,
     "luk": 86,
     "aggression_before": 5,
-    "aggression_after": "",
+    "aggression_after": 8,
     "equipment_new": "",
     "equipment_new_data": "",
     "new_multiplier": "",
@@ -5681,7 +5681,7 @@
     "fall_high": "沰水道、銀沙河、地下通道、赤松林、飛鶴山、可汗沙漠、天朝山、池底洞窟、東海龍宮、龍宮大殿、靈山、峨嵋山",
     "fall_low": "妖邪洞、幽納古林",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "穆容月",
@@ -5697,7 +5697,7 @@
     "agi": 67,
     "luk": 86,
     "aggression_before": 6,
-    "aggression_after": "",
+    "aggression_after": 9,
     "equipment_new": "",
     "equipment_new_data": "",
     "new_multiplier": "",
@@ -5710,7 +5710,7 @@
     "fall_high": "烈焰山",
     "fall_low": "迷茫古墳、虎臂水洞",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "石秀",
@@ -5726,7 +5726,7 @@
     "agi": 70,
     "luk": 90,
     "aggression_before": 4,
-    "aggression_after": "",
+    "aggression_after": 8,
     "equipment_new": "",
     "equipment_new_data": "",
     "new_multiplier": "",
@@ -5739,7 +5739,7 @@
     "fall_high": "臥虎高原、荒骨高原、匯星高原、月鏡湖、北邙山、巨門關、迷蹤列島、蓬萊仙島、伏龍洞、天煞洞第1層、天煞洞第2層",
     "fall_low": "妖邪洞、幽納古林",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "朱武",
@@ -5755,7 +5755,7 @@
     "agi": 29,
     "luk": 18,
     "aggression_before": 4,
-    "aggression_after": "",
+    "aggression_after": 8,
     "equipment_new": "",
     "equipment_new_data": "",
     "new_multiplier": "",
@@ -5768,7 +5768,7 @@
     "fall_high": "修羅洞",
     "fall_low": "葬心塚、同心林、祈願湖、哭腸崖",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "蕭讓",
@@ -5784,7 +5784,7 @@
     "agi": 32,
     "luk": 40,
     "aggression_before": 4,
-    "aggression_after": "",
+    "aggression_after": 9,
     "equipment_new": "",
     "equipment_new_data": "",
     "new_multiplier": "",
@@ -5797,7 +5797,7 @@
     "fall_high": "烈焰山",
     "fall_low": "妖邪洞、幽納古林",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "裴宣",
@@ -5813,7 +5813,7 @@
     "agi": 52,
     "luk": 66,
     "aggression_before": 5,
-    "aggression_after": "",
+    "aggression_after": 8,
     "equipment_new": "",
     "equipment_new_data": "",
     "new_multiplier": "",
@@ -5826,7 +5826,7 @@
     "fall_high": "玄日峰、玄日岩",
     "fall_low": "末日京城、地牢、水牢、火牢、死牢",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "魔禮壽",
@@ -5842,7 +5842,7 @@
     "agi": 73,
     "luk": 39,
     "aggression_before": 4,
-    "aggression_after": "",
+    "aggression_after": 8,
     "equipment_new": "",
     "equipment_new_data": "",
     "new_multiplier": "",
@@ -5855,7 +5855,7 @@
     "fall_high": "崑崙山、真修洞",
     "fall_low": "玄日峰、玄日岩",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "宋徽宗",
@@ -5871,7 +5871,7 @@
     "agi": 70,
     "luk": 80,
     "aggression_before": 5,
-    "aggression_after": "",
+    "aggression_after": 9,
     "equipment_new": "",
     "equipment_new_data": "",
     "new_multiplier": "",
@@ -5884,7 +5884,7 @@
     "fall_high": "琉球仙島、玄冥煉獄",
     "fall_low": "地下水道",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "賈氏",
@@ -5900,7 +5900,7 @@
     "agi": 159,
     "luk": 127,
     "aggression_before": 3,
-    "aggression_after": "",
+    "aggression_after": 8,
     "equipment_new": "",
     "equipment_new_data": "",
     "new_multiplier": "",
@@ -5913,7 +5913,7 @@
     "fall_high": "玄日洞",
     "fall_low": "琉球仙島、玄冥煉獄",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "黃妃",
@@ -5929,7 +5929,7 @@
     "agi": 129,
     "luk": 105,
     "aggression_before": 3,
-    "aggression_after": "",
+    "aggression_after": 8,
     "equipment_new": "",
     "equipment_new_data": "",
     "new_multiplier": "",
@@ -5942,7 +5942,7 @@
     "fall_high": "玄日洞",
     "fall_low": "崑崙山、真修洞",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "胡車兒",
@@ -5958,7 +5958,7 @@
     "agi": 80,
     "luk": 70,
     "aggression_before": 2,
-    "aggression_after": "",
+    "aggression_after": 8,
     "equipment_new": "",
     "equipment_new_data": "",
     "new_multiplier": "",
@@ -5971,7 +5971,7 @@
     "fall_high": "惡龍秘窟1層、惡龍秘窟2層、惡龍秘窟3層",
     "fall_low": "地下水道",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "阮小二",
@@ -5987,7 +5987,7 @@
     "agi": 74,
     "luk": 60,
     "aggression_before": 2,
-    "aggression_after": "",
+    "aggression_after": 7,
     "equipment_new": "",
     "equipment_new_data": "",
     "new_multiplier": "",
@@ -6000,7 +6000,7 @@
     "fall_high": "臥虎高原、荒骨高原、匯星高原、月鏡湖、北邙山、巨門關、迷蹤列島、蓬萊仙島、伏龍洞、天煞洞第1層、天煞洞第2層",
     "fall_low": "鬼煞洞",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "袁術",
@@ -6016,7 +6016,7 @@
     "agi": 105,
     "luk": 96,
     "aggression_before": 2,
-    "aggression_after": "",
+    "aggression_after": 6,
     "equipment_new": "",
     "equipment_new_data": "",
     "new_multiplier": "",
@@ -6029,7 +6029,7 @@
     "fall_high": "羅煞洞-第四層",
     "fall_low": "藏玄洞",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "黃巾聖鬥士",
@@ -6045,7 +6045,7 @@
     "agi": 30,
     "luk": 30,
     "aggression_before": 2,
-    "aggression_after": "",
+    "aggression_after": 6,
     "equipment_new": "",
     "equipment_new_data": "",
     "new_multiplier": "",
@@ -6058,7 +6058,7 @@
     "fall_high": "青葉村、地煞洞第1層、地煞洞第2層、東都道",
     "fall_low": "葬心塚、同心林、祈願湖、哭腸崖",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "鄧飛",
@@ -6074,7 +6074,7 @@
     "agi": 70,
     "luk": 70,
     "aggression_before": 2,
-    "aggression_after": "",
+    "aggression_after": 6,
     "equipment_new": "",
     "equipment_new_data": "",
     "new_multiplier": "",
@@ -6087,7 +6087,7 @@
     "fall_high": "惡龍秘窟4層、盤古旛陣、金嗷洞三樓",
     "fall_low": "奔雷嶺、夕之朝雲、幻之烏雲、大漩渦、華山、泰山、天山",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "阮小五",
@@ -6103,7 +6103,7 @@
     "agi": 95,
     "luk": 90,
     "aggression_before": 2,
-    "aggression_after": "",
+    "aggression_after": 7,
     "equipment_new": "",
     "equipment_new_data": "",
     "new_multiplier": "",
@@ -6116,7 +6116,7 @@
     "fall_high": "修羅洞",
     "fall_low": "崑崙山、真修洞",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "李興霸",
@@ -6132,7 +6132,7 @@
     "agi": 82,
     "luk": 62,
     "aggression_before": 3,
-    "aggression_after": "",
+    "aggression_after": 7,
     "equipment_new": "",
     "equipment_new_data": "",
     "new_multiplier": "",
@@ -6145,7 +6145,7 @@
     "fall_high": "琉球仙島、玄冥煉獄",
     "fall_low": "幽冥深淵、垃圾場第一層、垃圾場第二層",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "豹騎衛",
@@ -6161,7 +6161,7 @@
     "agi": 75,
     "luk": 70,
     "aggression_before": 3,
-    "aggression_after": "",
+    "aggression_after": 7,
     "equipment_new": "",
     "equipment_new_data": "",
     "new_multiplier": "",
@@ -6174,7 +6174,7 @@
     "fall_high": "東門關、南門關、西門關、北門關、杏花谷、碧沙湖、北都道、西都道、南都道",
     "fall_low": "玄日洞",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "血衣衛",
@@ -6203,7 +6203,7 @@
     "fall_high": "翠竹林、潛龍潭、蕈菇林、琅琊山、滄之雲海",
     "fall_low": "迷茫古墳、虎臂水洞",
     "player": "",
-    "playerdata": "轉運站-茜小菲"
+    "playerdata": "轉運站-茜小菲、孤傲天翔"
   },
   {
     "name": "搏浪力士",
@@ -6232,7 +6232,7 @@
     "fall_high": "修羅洞",
     "fall_low": "琉球仙島、玄冥煉獄",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "程遠志",
@@ -6248,7 +6248,7 @@
     "agi": 106,
     "luk": 155,
     "aggression_before": 3,
-    "aggression_after": "",
+    "aggression_after": 6,
     "equipment_new": "",
     "equipment_new_data": "",
     "new_multiplier": "",
@@ -6261,7 +6261,7 @@
     "fall_high": "末日京城、地牢、水牢、火牢、死牢",
     "fall_low": "地下水道",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "龍騎衛",
@@ -6277,7 +6277,7 @@
     "agi": 82,
     "luk": 80,
     "aggression_before": 4,
-    "aggression_after": "",
+    "aggression_after": 8,
     "equipment_new": "",
     "equipment_new_data": "",
     "new_multiplier": "",
@@ -6290,7 +6290,7 @@
     "fall_high": "幽冥深淵、垃圾場第一層、垃圾場第二層",
     "fall_low": "西桑耶沙漠、東桑耶沙漠、南桑耶沙漠",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "燕青",
@@ -6306,7 +6306,7 @@
     "agi": 66,
     "luk": 70,
     "aggression_before": 4,
-    "aggression_after": "",
+    "aggression_after": 8,
     "equipment_new": "",
     "equipment_new_data": "",
     "new_multiplier": "",
@@ -6319,7 +6319,7 @@
     "fall_high": "沰水道、銀沙河、地下通道、赤松林、飛鶴山、可汗沙漠、天朝山、池底洞窟、東海龍宮、龍宮大殿、靈山、峨嵋山",
     "fall_low": "鬼煞洞",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "項充",
@@ -6335,7 +6335,7 @@
     "agi": 57,
     "luk": 70,
     "aggression_before": 4,
-    "aggression_after": "",
+    "aggression_after": 6,
     "equipment_new": "",
     "equipment_new_data": "",
     "new_multiplier": "",
@@ -6348,7 +6348,7 @@
     "fall_high": "東門關、南門關、西門關、北門關、杏花谷、碧沙湖、北都道、西都道、南都道",
     "fall_low": "沰水道、銀沙河、地下通道、赤松林、飛鶴山、可汗沙漠、天朝山、池底洞窟、東海龍宮、龍宮大殿、靈山、峨嵋山",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "曹洪",
@@ -6364,7 +6364,7 @@
     "agi": 105,
     "luk": 135,
     "aggression_before": 3,
-    "aggression_after": "",
+    "aggression_after": 7,
     "equipment_new": "",
     "equipment_new_data": "",
     "new_multiplier": "",
@@ -6377,7 +6377,7 @@
     "fall_high": "幽納古林",
     "fall_low": "藏玄洞",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "李袞",
@@ -6393,7 +6393,7 @@
     "agi": 53,
     "luk": 60,
     "aggression_before": 4,
-    "aggression_after": "",
+    "aggression_after": 7,
     "equipment_new": "",
     "equipment_new_data": "",
     "new_multiplier": "",
@@ -6406,7 +6406,7 @@
     "fall_high": "藏玄洞",
     "fall_low": "妖邪洞、幽納古林",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "曹貴人",
@@ -6422,7 +6422,7 @@
     "agi": 52,
     "luk": 75,
     "aggression_before": 4,
-    "aggression_after": "",
+    "aggression_after": 7,
     "equipment_new": "",
     "equipment_new_data": "",
     "new_multiplier": "",
@@ -6435,7 +6435,7 @@
     "fall_high": "青葉村、地煞洞第1層、地煞洞第2層、東都道",
     "fall_low": "玄日峰、玄日岩",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "高俅",
@@ -6451,7 +6451,7 @@
     "agi": 99,
     "luk": 135,
     "aggression_before": 4,
-    "aggression_after": "",
+    "aggression_after": 6,
     "equipment_new": "",
     "equipment_new_data": "",
     "new_multiplier": "",
@@ -6464,7 +6464,7 @@
     "fall_high": "琉球仙島、玄冥煉獄",
     "fall_low": "葬心塚、同心林、祈願湖、哭腸崖",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "高友乾",
@@ -6480,7 +6480,7 @@
     "agi": 95,
     "luk": 75,
     "aggression_before": 4,
-    "aggression_after": "",
+    "aggression_after": 6,
     "equipment_new": "",
     "equipment_new_data": "",
     "new_multiplier": "",
@@ -6493,7 +6493,7 @@
     "fall_high": "琉球仙島、玄冥煉獄",
     "fall_low": "幽冥深淵、垃圾場第一層、垃圾場第二層",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "凌震",
@@ -6522,7 +6522,7 @@
     "fall_high": "羅煞洞-第五層",
     "fall_low": "藏玄洞",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "劉禪",
@@ -6538,7 +6538,7 @@
     "agi": 16,
     "luk": 30,
     "aggression_before": 3,
-    "aggression_after": "",
+    "aggression_after": 9,
     "equipment_new": "",
     "equipment_new_data": "",
     "new_multiplier": "",
@@ -6551,7 +6551,7 @@
     "fall_high": "青葉村、地煞洞第1層、地煞洞第2層、東都道",
     "fall_low": "妖邪洞、幽納古林",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "武大郎",
@@ -6567,7 +6567,7 @@
     "agi": 34,
     "luk": 31,
     "aggression_before": 3,
-    "aggression_after": "",
+    "aggression_after": 8,
     "equipment_new": "",
     "equipment_new_data": "",
     "new_multiplier": "",
@@ -6580,7 +6580,7 @@
     "fall_high": "奔雷嶺、夕之朝雲、幻之烏雲、大漩渦、華山、泰山、天山",
     "fall_low": "妖邪洞、幽納古林",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "沙摩柯",
@@ -6596,7 +6596,7 @@
     "agi": 90,
     "luk": 97,
     "aggression_before": 3,
-    "aggression_after": "",
+    "aggression_after": 7,
     "equipment_new": "",
     "equipment_new_data": "",
     "new_multiplier": "",
@@ -6609,7 +6609,7 @@
     "fall_high": "玄日洞",
     "fall_low": "西桑耶沙漠、東桑耶沙漠、南桑耶沙漠",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "驃騎將軍",
@@ -6638,7 +6638,7 @@
     "fall_high": "活動",
     "fall_low": "活動",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "楊鳳兒",
@@ -6654,7 +6654,7 @@
     "agi": 91,
     "luk": 64,
     "aggression_before": 2,
-    "aggression_after": "",
+    "aggression_after": 7,
     "equipment_new": "",
     "equipment_new_data": "",
     "new_multiplier": "",
@@ -6667,7 +6667,7 @@
     "fall_high": "藏玄洞",
     "fall_low": "陽燧山",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "鄧九公",
@@ -6683,7 +6683,7 @@
     "agi": 66,
     "luk": 51,
     "aggression_before": 2,
-    "aggression_after": "",
+    "aggression_after": 6,
     "equipment_new": "",
     "equipment_new_data": "",
     "new_multiplier": "",
@@ -6696,7 +6696,7 @@
     "fall_high": "妖邪洞、幽納古林",
     "fall_low": "飛煞洞、地下墳場",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "虎騎衛",
@@ -6712,7 +6712,7 @@
     "agi": 54,
     "luk": 35,
     "aggression_before": 2,
-    "aggression_after": "",
+    "aggression_after": 8,
     "equipment_new": "",
     "equipment_new_data": "",
     "new_multiplier": "",
@@ -6725,7 +6725,7 @@
     "fall_high": "東門關、南門關、西門關、北門關、杏花谷、碧沙湖、北都道、西都道、南都道",
     "fall_low": "沰水道、銀沙河、地下通道、赤松林、飛鶴山、可汗沙漠、天朝山、池底洞窟、東海龍宮、龍宮大殿、靈山、峨嵋山",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "董平",
@@ -6741,7 +6741,7 @@
     "agi": 32,
     "luk": 33,
     "aggression_before": 2,
-    "aggression_after": "",
+    "aggression_after": 7,
     "equipment_new": "",
     "equipment_new_data": "",
     "new_multiplier": "",
@@ -6754,7 +6754,7 @@
     "fall_high": "惡龍秘窟1層、惡龍秘窟2層、惡龍秘窟3層",
     "fall_low": "幽納古林",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "周倉",
@@ -6770,7 +6770,7 @@
     "agi": 50,
     "luk": 35,
     "aggression_before": 2,
-    "aggression_after": "",
+    "aggression_after": 6,
     "equipment_new": "",
     "equipment_new_data": "",
     "new_multiplier": "",
@@ -6783,7 +6783,7 @@
     "fall_high": "皇陵",
     "fall_low": "沰水道、銀沙河、地下通道、赤松林、飛鶴山、可汗沙漠、天朝山、池底洞窟、東海龍宮、龍宮大殿、靈山、峨嵋山",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "王魔",
@@ -6799,7 +6799,7 @@
     "agi": 103,
     "luk": 53,
     "aggression_before": 2,
-    "aggression_after": "",
+    "aggression_after": 7,
     "equipment_new": "",
     "equipment_new_data": "",
     "new_multiplier": "",
@@ -6812,7 +6812,7 @@
     "fall_high": "琉球仙島、玄冥煉獄",
     "fall_low": "幽冥深淵、垃圾場第一層、垃圾場第二層",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "鍾會",
@@ -6828,7 +6828,7 @@
     "agi": 46,
     "luk": 34,
     "aggression_before": 1,
-    "aggression_after": "",
+    "aggression_after": 6,
     "equipment_new": "",
     "equipment_new_data": "",
     "new_multiplier": "",
@@ -6841,7 +6841,7 @@
     "fall_high": "青葉村、地煞洞第1層、地煞洞第2層、東都道",
     "fall_low": "奔雷嶺、夕之朝雲、幻之烏雲、大漩渦、華山、泰山、天山",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "楊森",
@@ -6857,7 +6857,7 @@
     "agi": 88,
     "luk": 47,
     "aggression_before": 1,
-    "aggression_after": "",
+    "aggression_after": 6,
     "equipment_new": "",
     "equipment_new_data": "",
     "new_multiplier": "",
@@ -6870,7 +6870,7 @@
     "fall_high": "琉球仙島、玄冥煉獄",
     "fall_low": "幽冥深淵、垃圾場第一層、垃圾場第二層",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "公孫大娘",
@@ -6886,7 +6886,7 @@
     "agi": 61,
     "luk": 44,
     "aggression_before": 2,
-    "aggression_after": "",
+    "aggression_after": 7,
     "equipment_new": "",
     "equipment_new_data": "",
     "new_multiplier": "",
@@ -6899,7 +6899,7 @@
     "fall_high": "妖邪洞、幽納古林",
     "fall_low": "玄日峰、玄日岩",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "韋護",
@@ -6915,7 +6915,7 @@
     "agi": 102,
     "luk": 48,
     "aggression_before": 2,
-    "aggression_after": "",
+    "aggression_after": 6,
     "equipment_new": "",
     "equipment_new_data": "",
     "new_multiplier": "",
@@ -6928,7 +6928,7 @@
     "fall_high": "沰水道、銀沙河、地下通道、赤松林、飛鶴山、可汗沙漠、天朝山、池底洞窟、東海龍宮、龍宮大殿、靈山、峨嵋山",
     "fall_low": "玄日峰、玄日岩",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   },
   {
     "name": "廖化",
@@ -6957,6 +6957,6 @@
     "fall_high": "幽納古林",
     "fall_low": "地下水道",
     "player": "",
-    "playerdata": ""
+    "playerdata": "轉運站-孤傲天翔"
   }
 ]
