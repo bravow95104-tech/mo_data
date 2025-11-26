@@ -67,14 +67,18 @@ function showDetailModal(item) {
    
    // 🚀 新增：根據條件構建 approach HTML 字串
    let approachHTML = '';
-   if (isCave) {
-   // 如果是洞窟，才顯示走法區塊
-   approachHTML = `
-   <div class="hero-approach">
-   <p class="pre-formatted-text"><strong>走法：</strong>${item.approach || '無資料'}</p>
-   </div>
-   `;
-   }
+if (isCave) {
+    // 移除 <strong>，並給 <p> 加上 flex-container class
+    // 新增 <span class="approach-label"> 包含標題
+    approachHTML = `
+        <div class="hero-approach">
+            <p class="approach-line-wrap pre-formatted-text">
+                <span class="approach-label">走法：</span>
+                <span class="approach-content">${item.approach || '無資料'}</span>
+            </p>
+        </div>
+    `;
+}
    // 如果不是洞窟，approachHTML 保持為空字串 ('')，HTML 中就不會出現該區塊。
 
    modalContent.innerHTML = `
