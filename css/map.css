@@ -243,6 +243,9 @@ h1 {
   border-radius: 6px;        /* 可選：圓角讓框框好看 */
   box-shadow: 0 1px 4px rgba(0,0,0,0.1);
 }
+.pre-formatted-text {
+    white-space: pre-wrap;
+}
 
 /* ... 7. RWD 調整保持不變 ... */
 
