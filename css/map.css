@@ -257,6 +257,7 @@ h1 {
     /* 確保標籤不換行，且不會被內容擠壓 */
     flex-shrink: 0; 
     white-space: nowrap; 
+    font-weight: bold;
 }
 
 /* 走法內容區塊 */
