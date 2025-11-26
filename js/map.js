@@ -71,7 +71,7 @@ function showDetailModal(item) {
    // 如果是洞窟，才顯示走法區塊
    approachHTML = `
    <div class="hero-approach">
-   <p><strong>走法：</strong>${item.approach || '無資料'}</p>
+   <p class="pre-formatted-text"><strong>走法：</strong>${item.approach || '無資料'}</p>
    </div>
    `;
    }
@@ -84,7 +84,9 @@ function showDetailModal(item) {
    class="hero-image" 
    onerror="this.style.display='none'" />
    
-   ${approachHTML}   <div class="hero-defdodge">
+   ${approachHTML}   
+   
+   <div class="hero-defdodge">
    <p><strong>防禦：</strong>${item.def || 'N/A'}<strong>　　閃避：</strong>${item.dodge || 'N/A'}</p>
    </div>
    
