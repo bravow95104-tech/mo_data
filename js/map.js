@@ -56,35 +56,56 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // === 4. 彈窗內容填充函數 ===
 function showDetailModal(item) {
-    const modalContent = document.getElementById("modalContent");
+   const modalContent = document.getElementById("modalContent");
     if (!modalContent) return;
 
-    const autoImagePath = `/mo_data/pic/map/${item.mapid}.jpg`;
+   const autoImagePath = `/mo_data/pic/map/${item.mapid}.jpg`;
 
-    modalContent.innerHTML = `
-        <h2 class="hero-name">${item.mapid || 'N/A'}</h2>
-        <img src="${autoImagePath}" 
-             alt="${item.mapid || '地圖圖片'}" 
-             class="hero-image" 
+   // 🚀 新增：判斷是否為「洞窟」的條件變數
+   // 假設 AREA 欄位對應到 item.area，且其值為字串
+   const isCave = item.area && item.area.includes('洞窟'); 
+   
+   // 🚀 新增：根據條件構建 approach HTML 字串
+   let approachHTML = '';
+   if (isCave) {
+   // 如果是洞窟，才顯示走法區塊
+   approachHTML = `
+   <div class="hero-approach">
+   <p><strong>走法：</strong>${item.approach || '無資料'}</p>
+   </div>
+   `;
+   }
+   // 如果不是洞窟，approachHTML 保持為空字串 ('')，HTML 中就不會出現該區塊。
+
+   modalContent.innerHTML = `
+   <h2 class="hero-name">${item.mapid || 'N/A'}</h2>
+   <img src="${autoImagePath}" 
+   alt="${item.mapid || '地圖圖片'}" 
+   class="hero-image" 
    onerror="this.style.display='none'" />
-        <div class="hero-column-details">
-            <div style="width: 100%;">
-                <p><strong>垃圾掉落:</strong> ${item.drop_rubbish || 'N/A'}</p>
-                <div class="section-gap">
-                <p><strong>光輝掉落(掉落較多)：</strong><span class="value">${item.drop_glory_high || 'N/A'}</span></p>
-                </div>
-                <div class="section-gap">
-                <p><strong>光輝掉落(掉落較低)：</strong><span class="value">${item.drop_glory_low || 'N/A'}</span></p>
-                </div>
-                <div class="section-gap">
-                <p><strong>光輝掉落(玩家提供)：</strong><span class="value">-</span></p>
-                </div>
-            </div>
-        </div>
-  `;
-    
-  document.getElementById("modalOverlay").style.display = "block";
-  document.getElementById("modalBox").style.display = "block";
+   
+   ${approachHTML}   <div class="hero-defdodge">
+   <p><strong>防禦：</strong>${item.def || 'N/A'}<strong>　　閃避：</strong>${item.dodge || 'N/A'}</p>
+   </div>
+   
+   <div class="hero-column-details">
+   <div style="width: 100%;">
+   <p><strong>垃圾掉落:</strong> ${item.drop_rubbish || 'N/A'}</p>
+   <div class="section-gap">
+   <p><strong>光輝掉落(掉落較多)：</strong><span class="value">${item.drop_glory_high || 'N/A'}</span></p>
+   </div>
+   <div class="section-gap">
+   <p><strong>光輝掉落(掉落較低)：</strong><span class="value">${item.drop_glory_low || 'N/A'}</span></p>
+   </div>
+   <div class="section-gap">
+   <p><strong>光輝掉落(玩家提供)：</strong><span class="value">-</span></p>
+   </div>
+   </div>
+   </div>
+   `;
+   
+   document.getElementById("modalOverlay").style.display = "block";
+   document.getElementById("modalBox").style.display = "block";
 }
 
 // === 5. Image Map 點擊觸發函數 (全域函數，供 HTML onclick 調用) ===
