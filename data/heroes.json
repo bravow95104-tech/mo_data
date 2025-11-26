@@ -25,6 +25,7 @@
     "magnification_old": "2x",
     "fall_high": "烈焰秘境",
     "fall_low": "迷茫古墳、虎臂水洞",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -53,6 +54,7 @@
     "magnification_old": "2x",
     "fall_high": "崑崙山、真修洞",
     "fall_low": "烈焰秘境",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -81,6 +83,7 @@
     "magnification_old": "2x",
     "fall_high": "鬼煞洞",
     "fall_low": "羅煞洞-第五層",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -109,6 +112,7 @@
     "magnification_old": "2x",
     "fall_high": "陽燧山",
     "fall_low": "妖邪迷宮",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -137,6 +141,7 @@
     "magnification_old": "2x",
     "fall_high": "幽納原野2",
     "fall_low": "羅煞洞-第五層",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -165,6 +170,7 @@
     "magnification_old": "2x",
     "fall_high": "惡龍秘窟4層、盤古旛陣、金嗷洞三樓",
     "fall_low": "墨家名穴",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -193,6 +199,7 @@
     "magnification_old": "2x",
     "fall_high": "烈焰秘境",
     "fall_low": "羅煞洞-第四層",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -221,6 +228,7 @@
     "magnification_old": "2x",
     "fall_high": "奔雷嶺、夕之朝雲、幻之烏雲、大漩渦、華山、泰山、天山",
     "fall_low": "西桑耶沙漠、東桑耶沙漠、南桑耶沙漠",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -249,6 +257,7 @@
     "magnification_old": "2x",
     "fall_high": "修羅洞",
     "fall_low": "烈焰山",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -277,6 +286,7 @@
     "magnification_old": "2x",
     "fall_high": "臥虎高原、荒骨高原、匯星高原、月鏡湖、北邙山、巨門關、迷蹤列島、蓬萊仙島、伏龍洞、天煞洞第1層、天煞洞第2層",
     "fall_low": "陽燧山",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -305,6 +315,7 @@
     "magnification_old": "2x",
     "fall_high": "惡龍秘窟4層、盤古旛陣、金嗷洞三樓",
     "fall_low": "飛煞洞、地下墳場",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -333,6 +344,7 @@
     "magnification_old": "2x",
     "fall_high": "妖邪迷宮",
     "fall_low": "惡龍秘窟1層、惡龍秘窟2層、惡龍秘窟3層",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -361,6 +373,7 @@
     "magnification_old": "2x",
     "fall_high": "-",
     "fall_low": "虎臂水洞、寧虎林",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -389,6 +402,7 @@
     "magnification_old": "2x",
     "fall_high": "-",
     "fall_low": "虎臂水洞、寧虎林",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -417,6 +431,7 @@
     "magnification_old": "2x",
     "fall_high": "-",
     "fall_low": "虎臂水洞、寧虎林",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -445,6 +460,7 @@
     "magnification_old": "2x",
     "fall_high": "幽納原野1",
     "fall_low": "崑崙山、真修洞",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -473,6 +489,7 @@
     "magnification_old": "2x",
     "fall_high": "幽納原野2",
     "fall_low": "金嗷洞一樓、金嗷洞二樓",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -501,6 +518,7 @@
     "magnification_old": "2x",
     "fall_high": "奔雷嶺、夕之朝雲、幻之烏雲、大漩渦、華山、泰山、天山",
     "fall_low": "藏玄洞",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -529,6 +547,7 @@
     "magnification_old": "2x",
     "fall_high": "西桑耶沙漠、東桑耶沙漠、南桑耶沙漠",
     "fall_low": "羅煞洞-第四層",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -557,6 +576,7 @@
     "magnification_old": "2x",
     "fall_high": "陽燧山",
     "fall_low": "皇陵",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -585,6 +605,7 @@
     "magnification_old": "2x",
     "fall_high": "烈焰山",
     "fall_low": "奔雷嶺、夕之朝雲、幻之烏雲、大漩渦、華山、泰山、天山",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -613,6 +634,7 @@
     "magnification_old": "2x",
     "fall_high": "妖邪迷宮",
     "fall_low": "烈焰秘境",
+    "player": "",
     "playerdata": "妖邪迷宮(海貓)"
   },
   {
@@ -641,6 +663,7 @@
     "magnification_old": "2x",
     "fall_high": "金嗷洞一樓、金嗷洞二樓",
     "fall_low": "飛煞洞、地下墳場",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -669,6 +692,7 @@
     "magnification_old": "2x",
     "fall_high": "皇陵",
     "fall_low": "陽燧山",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -697,6 +721,7 @@
     "magnification_old": "2x",
     "fall_high": "羅煞洞-第四層",
     "fall_low": "烈焰秘境",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -725,6 +750,7 @@
     "magnification_old": "2x",
     "fall_high": "玄日峰、玄日岩",
     "fall_low": "陽燧山",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -753,6 +779,7 @@
     "magnification_old": "2x",
     "fall_high": "金嗷洞一樓、金嗷洞二樓",
     "fall_low": "玄日洞",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -781,6 +808,7 @@
     "magnification_old": "2x",
     "fall_high": "烈焰山",
     "fall_low": "皇陵",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -809,6 +837,7 @@
     "magnification_old": "2x",
     "fall_high": "迷茫古墳、虎臂水洞",
     "fall_low": "奔雷嶺、夕之朝雲、幻之烏雲、大漩渦、華山、泰山、天山",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -837,6 +866,7 @@
     "magnification_old": "2x",
     "fall_high": "羅煞洞-第五層",
     "fall_low": "迷茫古墳、虎臂水洞",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -865,6 +895,7 @@
     "magnification_old": "2x",
     "fall_high": "妖邪迷宮",
     "fall_low": "末日京城、地牢、水牢、火牢、死牢",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -893,6 +924,7 @@
     "magnification_old": "2x",
     "fall_high": "修羅洞",
     "fall_low": "羅煞洞-第一層、羅煞洞-第二層、羅煞洞-第三層",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -921,6 +953,7 @@
     "magnification_old": "2x",
     "fall_high": "飛煞洞、地下墳場",
     "fall_low": "鬼煞洞",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -949,6 +982,7 @@
     "magnification_old": "2x",
     "fall_high": "惡龍秘窟1層、惡龍秘窟2層、惡龍秘窟3層",
     "fall_low": "奔雷嶺、夕之朝雲、幻之烏雲、大漩渦、華山、泰山、天山",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -977,6 +1011,7 @@
     "magnification_old": "2x",
     "fall_high": "惡龍秘窟4層、盤古旛陣、金嗷洞三樓",
     "fall_low": "修羅洞",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -1005,6 +1040,7 @@
     "magnification_old": "2x",
     "fall_high": "沰水道、銀沙河、地下通道、赤松林、飛鶴山、可汗沙漠、天朝山、池底洞窟、東海龍宮、龍宮大殿、靈山、峨嵋山",
     "fall_low": "惡龍秘窟1層、惡龍秘窟2層、惡龍秘窟3層",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -1033,6 +1069,7 @@
     "magnification_old": "2x",
     "fall_high": "惡龍秘窟1層、惡龍秘窟2層、惡龍秘窟3層",
     "fall_low": "末日京城、地牢、水牢、火牢、死牢",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -1061,6 +1098,7 @@
     "magnification_old": "2x",
     "fall_high": "幽納原野1",
     "fall_low": "修羅洞",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -1089,6 +1127,7 @@
     "magnification_old": "2x",
     "fall_high": "迷茫古墳、虎臂水洞",
     "fall_low": "崑崙山、真修洞",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -1117,6 +1156,7 @@
     "magnification_old": "2x",
     "fall_high": "烈焰秘境",
     "fall_low": "金嗷洞一樓、金嗷洞二樓",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -1145,6 +1185,7 @@
     "magnification_old": "2x",
     "fall_high": "幽納原野2",
     "fall_low": "地下水道",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -1173,6 +1214,7 @@
     "magnification_old": "2x",
     "fall_high": "活動",
     "fall_low": "活動",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -1201,6 +1243,7 @@
     "magnification_old": "2x",
     "fall_high": "崑崙山、真修洞",
     "fall_low": "地下水道",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -1229,6 +1272,7 @@
     "magnification_old": "2x",
     "fall_high": "羅煞洞-第四層",
     "fall_low": "幽冥深淵、垃圾場第一層、垃圾場第二層",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -1257,6 +1301,7 @@
     "magnification_old": "2x",
     "fall_high": "陽燧山",
     "fall_low": "飛煞洞、地下墳場",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -1285,6 +1330,7 @@
     "magnification_old": "2x",
     "fall_high": "烈焰秘境",
     "fall_low": "崑崙山、真修洞",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -1313,6 +1359,7 @@
     "magnification_old": "2x",
     "fall_high": "西桑耶沙漠、東桑耶沙漠、南桑耶沙漠",
     "fall_low": "玄日洞",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -1341,6 +1388,7 @@
     "magnification_old": "2x",
     "fall_high": "藏玄洞",
     "fall_low": "幽納原野2",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -1369,6 +1417,7 @@
     "magnification_old": "2x",
     "fall_high": "幽冥深淵、垃圾場第一層、垃圾場第二層",
     "fall_low": "陽燧山",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -1397,6 +1446,7 @@
     "magnification_old": "2x",
     "fall_high": "修羅洞",
     "fall_low": "玄日洞",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -1425,6 +1475,7 @@
     "magnification_old": "2x",
     "fall_high": "地下水道",
     "fall_low": "沰水道、銀沙河、地下通道、赤松林、飛鶴山、可汗沙漠、天朝山、池底洞窟、東海龍宮、龍宮大殿、靈山、峨嵋山",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -1453,6 +1504,7 @@
     "magnification_old": "2x",
     "fall_high": "玉虛宮、寂靜死海",
     "fall_low": "陽燧山",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -1481,6 +1533,7 @@
     "magnification_old": "2x",
     "fall_high": "金嗷洞一樓、金嗷洞二樓",
     "fall_low": "飛煞洞、地下墳場",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -1509,6 +1562,7 @@
     "magnification_old": "2x",
     "fall_high": "奔雷嶺、夕之朝雲、幻之烏雲、大漩渦、華山、泰山、天山",
     "fall_low": "幽冥深淵、垃圾場第一層、垃圾場第二層",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -1537,6 +1591,7 @@
     "magnification_old": "2x",
     "fall_high": "皇陵",
     "fall_low": "幽冥深淵、垃圾場第一層、垃圾場第二層",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -1565,6 +1620,7 @@
     "magnification_old": "2x",
     "fall_high": "崑崙山、真修洞",
     "fall_low": "妖邪洞、幽納古林",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -1593,6 +1649,7 @@
     "magnification_old": "2x",
     "fall_high": "羅煞洞-第一層、羅煞洞-第二層、羅煞洞-第三層",
     "fall_low": "奔雷嶺、夕之朝雲、幻之烏雲、大漩渦、華山、泰山、天山",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -1621,6 +1678,7 @@
     "magnification_old": "2x",
     "fall_high": "迷茫古墳、虎臂水洞",
     "fall_low": "金嗷洞一樓、金嗷洞二樓",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -1649,6 +1707,7 @@
     "magnification_old": "2x",
     "fall_high": "鬼煞洞",
     "fall_low": "沰水道、銀沙河、地下通道、赤松林、飛鶴山、可汗沙漠、天朝山、池底洞窟、東海龍宮、龍宮大殿、靈山、峨嵋山",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -1677,6 +1736,7 @@
     "magnification_old": "2x",
     "fall_high": "妖邪洞、幽納古林",
     "fall_low": "飛煞洞、地下墳場",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -1705,6 +1765,7 @@
     "magnification_old": "2x",
     "fall_high": "鬼煞洞",
     "fall_low": "妖邪洞、幽納古林",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -1733,6 +1794,7 @@
     "magnification_old": "2x",
     "fall_high": "妖邪洞、幽納古林",
     "fall_low": "惡龍秘窟1層、惡龍秘窟2層、惡龍秘窟3層",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -1761,6 +1823,7 @@
     "magnification_old": "2x",
     "fall_high": "翠竹林、潛龍潭、蕈菇林、琅琊山、滄之雲海",
     "fall_low": "皇陵",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -1789,6 +1852,7 @@
     "magnification_old": "2x",
     "fall_high": "玉虛宮、寂靜死海",
     "fall_low": "妖邪洞、幽納古林",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -1817,6 +1881,7 @@
     "magnification_old": "2x",
     "fall_high": "沰水道、銀沙河、地下通道、赤松林、飛鶴山、可汗沙漠、天朝山、池底洞窟、東海龍宮、龍宮大殿、靈山、峨嵋山",
     "fall_low": "奔雷嶺、夕之朝雲、幻之烏雲、大漩渦、華山、泰山、天山",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -1845,6 +1910,7 @@
     "magnification_old": "2x",
     "fall_high": "迷茫古墳、虎臂水洞",
     "fall_low": "幽冥深淵、垃圾場第一層、垃圾場第二層",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -1873,6 +1939,7 @@
     "magnification_old": "2x",
     "fall_high": "陽燧山",
     "fall_low": "鬼煞洞",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -1901,6 +1968,7 @@
     "magnification_old": "2x",
     "fall_high": "玄日峰、玄日岩",
     "fall_low": "鬼煞洞",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -1929,6 +1997,7 @@
     "magnification_old": "2x",
     "fall_high": "羅煞洞-第一層、羅煞洞-第二層、羅煞洞-第三層",
     "fall_low": "幽冥深淵、垃圾場第一層、垃圾場第二層",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -1957,6 +2026,7 @@
     "magnification_old": "2x",
     "fall_high": "西桑耶沙漠、東桑耶沙漠、南桑耶沙漠",
     "fall_low": "陽燧山",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -1985,6 +2055,7 @@
     "magnification_old": "2x",
     "fall_high": "墨家名穴",
     "fall_low": "飛煞洞、地下墳場",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -2013,6 +2084,7 @@
     "magnification_old": "2x",
     "fall_high": "玄日洞",
     "fall_low": "惡龍秘窟4層、盤古旛陣、金嗷洞三樓",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -2041,6 +2113,7 @@
     "magnification_old": "2x",
     "fall_high": "末日京城、地牢、水牢、火牢、死牢",
     "fall_low": "玄日洞",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -2069,6 +2142,7 @@
     "magnification_old": "2x",
     "fall_high": "墨家名穴",
     "fall_low": "陽燧山",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -2097,6 +2171,7 @@
     "magnification_old": "2x",
     "fall_high": "迷茫古墳、虎臂水洞",
     "fall_low": "陽燧山",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -2125,6 +2200,7 @@
     "magnification_old": "2x",
     "fall_high": "末日京城、地牢、水牢、火牢、死牢",
     "fall_low": "奔雷嶺、夕之朝雲、幻之烏雲、大漩渦、華山、泰山、天山",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -2153,6 +2229,7 @@
     "magnification_old": "2x",
     "fall_high": "烈焰秘境",
     "fall_low": "修羅洞",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -2181,6 +2258,7 @@
     "magnification_old": "2x",
     "fall_high": "玄日洞",
     "fall_low": "烈焰山",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -2209,6 +2287,7 @@
     "magnification_old": "2x",
     "fall_high": "奔雷嶺、夕之朝雲、幻之烏雲、大漩渦、華山、泰山、天山",
     "fall_low": "惡龍秘窟4層、盤古旛陣、金嗷洞三樓",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -2237,6 +2316,7 @@
     "magnification_old": "2x",
     "fall_high": "玄日洞",
     "fall_low": "幽冥深淵、垃圾場第一層、垃圾場第二層",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -2265,6 +2345,7 @@
     "magnification_old": "2x",
     "fall_high": "陽燧山",
     "fall_low": "幽冥深淵、垃圾場第一層、垃圾場第二層",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -2293,6 +2374,7 @@
     "magnification_old": "2x",
     "fall_high": "惡龍秘窟1層、惡龍秘窟2層、惡龍秘窟3層",
     "fall_low": "修羅洞",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -2321,6 +2403,7 @@
     "magnification_old": "2x",
     "fall_high": "玉虛宮、寂靜死海",
     "fall_low": "葬心塚、同心林、祈願湖、哭腸崖",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -2349,6 +2432,7 @@
     "magnification_old": "2x",
     "fall_high": "陽燧山",
     "fall_low": "琉球仙島、玄冥煉獄",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -2377,6 +2461,7 @@
     "magnification_old": "2x",
     "fall_high": "末日京城、地牢、水牢、火牢、死牢",
     "fall_low": "幽冥深淵、垃圾場第一層、垃圾場第二層",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -2405,6 +2490,7 @@
     "magnification_old": "2x",
     "fall_high": "玄日峰、玄日岩",
     "fall_low": "玄日洞",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -2433,6 +2519,7 @@
     "magnification_old": "2x",
     "fall_high": "翠竹林、潛龍潭、蕈菇林、琅琊山、滄之雲海",
     "fall_low": "墨家名穴",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -2461,6 +2548,7 @@
     "magnification_old": "2x",
     "fall_high": "幽納原野2",
     "fall_low": "修羅洞",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -2489,6 +2577,7 @@
     "magnification_old": "2x",
     "fall_high": "地下水道",
     "fall_low": "玄日洞",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -2517,6 +2606,7 @@
     "magnification_old": "2x",
     "fall_high": "幽冥深淵、垃圾場第一層、垃圾場第二層",
     "fall_low": "琉球仙島、玄冥煉獄",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -2545,6 +2635,7 @@
     "magnification_old": "2x",
     "fall_high": "鬼煞洞",
     "fall_low": "藏玄洞",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -2573,6 +2664,7 @@
     "magnification_old": "2x",
     "fall_high": "迷茫古墳、虎臂水洞",
     "fall_low": "羅煞洞-第一層、羅煞洞-第二層、羅煞洞-第三層",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -2601,6 +2693,7 @@
     "magnification_old": "2x",
     "fall_high": "妖邪迷宮",
     "fall_low": "金嗷洞一樓、金嗷洞二樓",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -2629,6 +2722,7 @@
     "magnification_old": "2x",
     "fall_high": "地下水道",
     "fall_low": "玄日峰、玄日岩",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -2657,6 +2751,7 @@
     "magnification_old": "2x",
     "fall_high": "沰水道、銀沙河、地下通道、赤松林、飛鶴山、可汗沙漠、天朝山、池底洞窟、東海龍宮、龍宮大殿、靈山、峨嵋山",
     "fall_low": "玉虛宮、寂靜死海",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -2685,6 +2780,7 @@
     "magnification_old": "2x",
     "fall_high": "玄日洞",
     "fall_low": "羅煞洞-第一層、羅煞洞-第二層、羅煞洞-第三層",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -2713,6 +2809,7 @@
     "magnification_old": "2x",
     "fall_high": "幽納原野1",
     "fall_low": "陽燧山",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -2741,6 +2838,7 @@
     "magnification_old": "2x",
     "fall_high": "妖邪洞、幽納古林",
     "fall_low": "西桑耶沙漠、東桑耶沙漠、南桑耶沙漠",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -2769,6 +2867,7 @@
     "magnification_old": "2x",
     "fall_high": "幽納原野2",
     "fall_low": "妖邪迷宮",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -2797,6 +2896,7 @@
     "magnification_old": "2x",
     "fall_high": "臥虎高原、荒骨高原、匯星高原、月鏡湖、北邙山、巨門關、迷蹤列島、蓬萊仙島、伏龍洞、天煞洞第1層、天煞洞第2層",
     "fall_low": "玉虛宮、寂靜死海",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -2825,6 +2925,7 @@
     "magnification_old": "2x",
     "fall_high": "妖邪洞、幽納古林",
     "fall_low": "鬼煞洞",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -2853,6 +2954,7 @@
     "magnification_old": "2x",
     "fall_high": "幽納原野1",
     "fall_low": "玉虛宮、寂靜死海",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -2881,6 +2983,7 @@
     "magnification_old": "2x",
     "fall_high": "羅煞洞-第五層",
     "fall_low": "奔雷嶺、夕之朝雲、幻之烏雲、大漩渦、華山、泰山、天山",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -2909,6 +3012,7 @@
     "magnification_old": "2x",
     "fall_high": "金嗷洞一樓、金嗷洞二樓",
     "fall_low": "皇陵",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -2937,6 +3041,7 @@
     "magnification_old": "2x",
     "fall_high": "修羅洞",
     "fall_low": "妖邪洞、幽納古林",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -2965,6 +3070,7 @@
     "magnification_old": "2x",
     "fall_high": "鬼煞洞",
     "fall_low": "羅煞洞-第五層",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -2993,6 +3099,7 @@
     "magnification_old": "2x",
     "fall_high": "墨家名穴",
     "fall_low": "幽冥深淵、垃圾場第一層、垃圾場第二層",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -3021,6 +3128,7 @@
     "magnification_old": "2x",
     "fall_high": "翠竹林、潛龍潭、蕈菇林、琅琊山、滄之雲海",
     "fall_low": "烈焰山",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -3049,6 +3157,7 @@
     "magnification_old": "2x",
     "fall_high": "鬼煞洞",
     "fall_low": "玄日峰、玄日岩",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -3077,6 +3186,7 @@
     "magnification_old": "2x",
     "fall_high": "-",
     "fall_low": "妖邪洞、幽納古林",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -3105,6 +3215,7 @@
     "magnification_old": "2x",
     "fall_high": "墨家名穴",
     "fall_low": "妖邪洞、幽納古林",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -3133,6 +3244,7 @@
     "magnification_old": "2x",
     "fall_high": "惡龍秘窟1層、惡龍秘窟2層、惡龍秘窟3層",
     "fall_low": "臥虎高原、荒骨高原、匯星高原、月鏡湖、北邙山、巨門關、迷蹤列島、蓬萊仙島、伏龍洞、天煞洞第1層、天煞洞第2層",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -3161,6 +3273,7 @@
     "magnification_old": "2x",
     "fall_high": "飛煞洞、地下墳場",
     "fall_low": "玄日峰、玄日岩",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -3189,6 +3302,7 @@
     "magnification_old": "2x",
     "fall_high": "藏玄洞",
     "fall_low": "皇陵",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -3217,6 +3331,7 @@
     "magnification_old": "2x",
     "fall_high": "西桑耶沙漠、東桑耶沙漠、南桑耶沙漠",
     "fall_low": "鬼煞洞",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -3245,6 +3360,7 @@
     "magnification_old": "2x",
     "fall_high": "金嗷洞一樓、金嗷洞二樓",
     "fall_low": "玉虛宮、寂靜死海",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -3273,6 +3389,7 @@
     "magnification_old": "2x",
     "fall_high": "西桑耶沙漠、東桑耶沙漠、南桑耶沙漠",
     "fall_low": "葬心塚、同心林、祈願湖、哭腸崖",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -3301,6 +3418,7 @@
     "magnification_old": "2x",
     "fall_high": "沰水道、銀沙河、地下通道、赤松林、飛鶴山、可汗沙漠、天朝山、池底洞窟、東海龍宮、龍宮大殿、靈山、峨嵋山",
     "fall_low": "-",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -3329,6 +3447,7 @@
     "magnification_old": "2x",
     "fall_high": "地下水道",
     "fall_low": "幽冥深淵、垃圾場第一層、垃圾場第二層",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -3357,6 +3476,7 @@
     "magnification_old": "2x",
     "fall_high": "羅煞洞-第五層",
     "fall_low": "崑崙山、真修洞",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -3385,6 +3505,7 @@
     "magnification_old": "2x",
     "fall_high": "陽燧山",
     "fall_low": "沰水道、銀沙河、地下通道、赤松林、飛鶴山、可汗沙漠、天朝山、池底洞窟、東海龍宮、龍宮大殿、靈山、峨嵋山",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -3413,6 +3534,7 @@
     "magnification_old": "2x",
     "fall_high": "崑崙山、真修洞",
     "fall_low": "西桑耶沙漠、東桑耶沙漠、南桑耶沙漠",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -3441,6 +3563,7 @@
     "magnification_old": "2x",
     "fall_high": "墨家名穴",
     "fall_low": "玉虛宮、寂靜死海",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -3469,6 +3592,7 @@
     "magnification_old": "2x",
     "fall_high": "羅煞洞-第一層、羅煞洞-第二層、羅煞洞-第三層",
     "fall_low": "鬼煞洞",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -3497,6 +3621,7 @@
     "magnification_old": "2x",
     "fall_high": "玄日峰、玄日岩",
     "fall_low": "葬心塚、同心林、祈願湖、哭腸崖",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -3525,6 +3650,7 @@
     "magnification_old": "2x",
     "fall_high": "臥虎高原、荒骨高原、匯星高原、月鏡湖、北邙山、巨門關、迷蹤列島、蓬萊仙島、伏龍洞、天煞洞第1層、天煞洞第2層",
     "fall_low": "奔雷嶺、夕之朝雲、幻之烏雲、大漩渦、華山、泰山、天山",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -3553,6 +3679,7 @@
     "magnification_old": "2x",
     "fall_high": "葬心塚、同心林、祈願湖、哭腸崖",
     "fall_low": "惡龍秘窟4層、盤古旛陣、金嗷洞三樓",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -3581,6 +3708,7 @@
     "magnification_old": "2x",
     "fall_high": "飛煞洞、地下墳場",
     "fall_low": "崑崙山、真修洞",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -3609,6 +3737,7 @@
     "magnification_old": "2x",
     "fall_high": "-",
     "fall_low": "藏玄洞",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -3637,6 +3766,7 @@
     "magnification_old": "2x",
     "fall_high": "幽冥深淵、垃圾場第一層、垃圾場第二層",
     "fall_low": "玄日洞",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -3665,6 +3795,7 @@
     "magnification_old": "2x",
     "fall_high": "藏玄洞",
     "fall_low": "幽冥深淵、垃圾場第一層、垃圾場第二層",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -3693,6 +3824,7 @@
     "magnification_old": "2x",
     "fall_high": "墨家名穴",
     "fall_low": "金嗷洞一樓、金嗷洞二樓",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -3721,6 +3853,7 @@
     "magnification_old": "2x",
     "fall_high": "玄日洞",
     "fall_low": "妖邪洞、幽納古林",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -3749,6 +3882,7 @@
     "magnification_old": "2x",
     "fall_high": "藏玄洞",
     "fall_low": "崑崙山、真修洞",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -3777,6 +3911,7 @@
     "magnification_old": "2x",
     "fall_high": "地下水道",
     "fall_low": "迷茫古墳、虎臂水洞",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -3805,6 +3940,7 @@
     "magnification_old": "2x",
     "fall_high": "臥虎高原、荒骨高原、匯星高原、月鏡湖、北邙山、巨門關、迷蹤列島、蓬萊仙島、伏龍洞、天煞洞第1層、天煞洞第2層",
     "fall_low": "惡龍秘窟1層、惡龍秘窟2層、惡龍秘窟3層",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -3833,6 +3969,7 @@
     "magnification_old": "2x",
     "fall_high": "幽冥深淵、垃圾場第一層、垃圾場第二層",
     "fall_low": "羅煞洞-第四層",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -3861,6 +3998,7 @@
     "magnification_old": "2x",
     "fall_high": "沰水道、銀沙河、地下通道、赤松林、飛鶴山、可汗沙漠、天朝山、池底洞窟、東海龍宮、龍宮大殿、靈山、峨嵋山",
     "fall_low": "玄日洞",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -3889,6 +4027,7 @@
     "magnification_old": "2x",
     "fall_high": "惡龍秘窟4層、盤古旛陣、金嗷洞三樓",
     "fall_low": "妖邪洞、幽納古林",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -3917,6 +4056,7 @@
     "magnification_old": "2x",
     "fall_high": "臥虎高原、荒骨高原、匯星高原、月鏡湖、北邙山、巨門關、迷蹤列島、蓬萊仙島、伏龍洞、天煞洞第1層、天煞洞第2層",
     "fall_low": "末日京城、地牢、水牢、火牢、死牢",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -3945,6 +4085,7 @@
     "magnification_old": "2x",
     "fall_high": "崑崙山、真修洞",
     "fall_low": "皇陵",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -3973,6 +4114,7 @@
     "magnification_old": "2x",
     "fall_high": "西桑耶沙漠、東桑耶沙漠、南桑耶沙漠",
     "fall_low": "羅煞洞-第一層、羅煞洞-第二層、羅煞洞-第三層",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -4001,6 +4143,7 @@
     "magnification_old": "2x",
     "fall_high": "迷茫古墳、虎臂水洞",
     "fall_low": "玉虛宮、寂靜死海",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -4029,6 +4172,7 @@
     "magnification_old": "2x",
     "fall_high": "羅煞洞-第一層、羅煞洞-第二層、羅煞洞-第三層",
     "fall_low": "玄日峰、玄日岩",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -4057,6 +4201,7 @@
     "magnification_old": "2x",
     "fall_high": "飛煞洞、地下墳場",
     "fall_low": "幽冥深淵、垃圾場第一層、垃圾場第二層",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -4085,6 +4230,7 @@
     "magnification_old": "2x",
     "fall_high": "皇陵",
     "fall_low": "羅煞洞-第一層、羅煞洞-第二層、羅煞洞-第三層",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -4113,6 +4259,7 @@
     "magnification_old": "2x",
     "fall_high": "奔雷嶺、夕之朝雲、幻之烏雲、大漩渦、華山、泰山、天山",
     "fall_low": "沰水道、銀沙河、地下通道、赤松林、飛鶴山、可汗沙漠、天朝山、池底洞窟、東海龍宮、龍宮大殿、靈山、峨嵋山",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -4141,6 +4288,7 @@
     "magnification_old": "2x",
     "fall_high": "飛煞洞、地下墳場",
     "fall_low": "皇陵",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -4169,6 +4317,7 @@
     "magnification_old": "2x",
     "fall_high": "飛煞洞、地下墳場",
     "fall_low": "金嗷洞一樓、金嗷洞二樓",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -4197,6 +4346,7 @@
     "magnification_old": "2x",
     "fall_high": "玄日洞",
     "fall_low": "幽納原野1",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -4225,6 +4375,7 @@
     "magnification_old": "2x",
     "fall_high": "羅煞洞-第一層、羅煞洞-第二層、羅煞洞-第三層",
     "fall_low": "地下水道",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -4253,6 +4404,7 @@
     "magnification_old": "2x",
     "fall_high": "葬心塚、同心林、祈願湖、哭腸崖",
     "fall_low": "羅煞洞-第一層、羅煞洞-第二層、羅煞洞-第三層",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -4281,6 +4433,7 @@
     "magnification_old": "2x",
     "fall_high": "玄日峰、玄日岩",
     "fall_low": "妖邪洞、幽納古林",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -4309,6 +4462,7 @@
     "magnification_old": "2x",
     "fall_high": "皇陵",
     "fall_low": "琉球仙島、玄冥煉獄",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -4337,6 +4491,7 @@
     "magnification_old": "2x",
     "fall_high": "羅煞洞-第一層、羅煞洞-第二層、羅煞洞-第三層",
     "fall_low": "玉虛宮、寂靜死海",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -4365,6 +4520,7 @@
     "magnification_old": "2x",
     "fall_high": "皇陵",
     "fall_low": "飛煞洞、地下墳場",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -4393,6 +4549,7 @@
     "magnification_old": "2x",
     "fall_high": "-",
     "fall_low": "妖邪洞、幽納古林",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -4421,6 +4578,7 @@
     "magnification_old": "2x",
     "fall_high": "青葉村、地煞洞第1層、地煞洞第2層、東都道",
     "fall_low": "幽冥深淵、垃圾場第一層、垃圾場第二層",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -4449,6 +4607,7 @@
     "magnification_old": "2x",
     "fall_high": "修羅洞",
     "fall_low": "幽冥深淵、垃圾場第一層、垃圾場第二層",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -4477,6 +4636,7 @@
     "magnification_old": "2x",
     "fall_high": "皇陵",
     "fall_low": "西桑耶沙漠、東桑耶沙漠、南桑耶沙漠",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -4505,6 +4665,7 @@
     "magnification_old": "2x",
     "fall_high": "地下水道",
     "fall_low": "西桑耶沙漠、東桑耶沙漠、南桑耶沙漠",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -4533,6 +4694,7 @@
     "magnification_old": "2x",
     "fall_high": "藏玄洞",
     "fall_low": "玄日洞",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -4561,6 +4723,7 @@
     "magnification_old": "2x",
     "fall_high": "末日京城、地牢、水牢、火牢、死牢",
     "fall_low": "修羅洞",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -4589,6 +4752,7 @@
     "magnification_old": "2x",
     "fall_high": "奔雷嶺、夕之朝雲、幻之烏雲、大漩渦、華山、泰山、天山",
     "fall_low": "玄日峰、玄日岩",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -4617,6 +4781,7 @@
     "magnification_old": "2x",
     "fall_high": "東門關、南門關、西門關、北門關、杏花谷、碧沙湖、北都道、西都道、南都道",
     "fall_low": "沰水道、銀沙河、地下通道、赤松林、飛鶴山、可汗沙漠、天朝山、池底洞窟、東海龍宮、龍宮大殿、靈山、峨嵋山",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -4645,6 +4810,7 @@
     "magnification_old": "2x",
     "fall_high": "東門關、南門關、西門關、北門關、杏花谷、碧沙湖、北都道、西都道、南都道",
     "fall_low": "藏玄洞",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -4673,6 +4839,7 @@
     "magnification_old": "2x",
     "fall_high": "翠竹林、潛龍潭、蕈菇林、琅琊山、滄之雲海",
     "fall_low": "藏玄洞",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -4701,6 +4868,7 @@
     "magnification_old": "2x",
     "fall_high": "烈焰山",
     "fall_low": "翠竹林、潛龍潭、蕈菇林、琅琊山、滄之雲海",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -4729,6 +4897,7 @@
     "magnification_old": "2x",
     "fall_high": "飛煞洞、地下墳場",
     "fall_low": "沰水道、銀沙河、地下通道、赤松林、飛鶴山、可汗沙漠、天朝山、池底洞窟、東海龍宮、龍宮大殿、靈山、峨嵋山",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -4757,6 +4926,7 @@
     "magnification_old": "2x",
     "fall_high": "烈焰山",
     "fall_low": "皇陵",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -4785,6 +4955,7 @@
     "magnification_old": "2x",
     "fall_high": "地下水道",
     "fall_low": "陽燧山",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -4813,6 +4984,7 @@
     "magnification_old": "2x",
     "fall_high": "妖邪迷宮",
     "fall_low": "奔雷嶺、夕之朝雲、幻之烏雲、大漩渦、華山、泰山、天山",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -4841,6 +5013,7 @@
     "magnification_old": "2x",
     "fall_high": "幽冥深淵、垃圾場第一層、垃圾場第二層",
     "fall_low": "地下水道",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -4869,6 +5042,7 @@
     "magnification_old": "2x",
     "fall_high": "末日京城、地牢、水牢、火牢、死牢",
     "fall_low": "羅煞洞-第一層、羅煞洞-第二層、羅煞洞-第三層",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -4897,6 +5071,7 @@
     "magnification_old": "2x",
     "fall_high": "惡龍秘窟1層、惡龍秘窟2層、惡龍秘窟3層",
     "fall_low": "飛煞洞、地下墳場",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -4925,6 +5100,7 @@
     "magnification_old": "2x",
     "fall_high": "幽納古林",
     "fall_low": "玄日洞",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -4953,6 +5129,7 @@
     "magnification_old": "2x",
     "fall_high": "崑崙山、真修洞",
     "fall_low": "葬心塚、同心林、祈願湖、哭腸崖",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -4981,6 +5158,7 @@
     "magnification_old": "2x",
     "fall_high": "迷茫古墳、虎臂水洞",
     "fall_low": "皇陵",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -5009,6 +5187,7 @@
     "magnification_old": "2x",
     "fall_high": "羅煞洞-第一層、羅煞洞-第二層、羅煞洞-第三層",
     "fall_low": "沰水道、銀沙河、地下通道、赤松林、飛鶴山、可汗沙漠、天朝山、池底洞窟、東海龍宮、龍宮大殿、靈山、峨嵋山",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -5037,6 +5216,7 @@
     "magnification_old": "2x",
     "fall_high": "藏玄洞",
     "fall_low": "修羅洞",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -5065,6 +5245,7 @@
     "magnification_old": "2x",
     "fall_high": "幽納古林",
     "fall_low": "修羅洞",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -5093,6 +5274,7 @@
     "magnification_old": "2x",
     "fall_high": "惡龍秘窟4層、盤古旛陣、金嗷洞三樓",
     "fall_low": "烈焰山",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -5121,6 +5303,7 @@
     "magnification_old": "2x",
     "fall_high": "活動",
     "fall_low": "活動",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -5149,6 +5332,7 @@
     "magnification_old": "2x",
     "fall_high": "妖邪洞、幽納古林",
     "fall_low": "陽燧山",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -5177,6 +5361,7 @@
     "magnification_old": "2x",
     "fall_high": "烈焰山",
     "fall_low": "修羅洞",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -5205,6 +5390,7 @@
     "magnification_old": "2x",
     "fall_high": "幽冥深淵、垃圾場第一層、垃圾場第二層",
     "fall_low": "琉球仙島、玄冥煉獄",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -5233,6 +5419,7 @@
     "magnification_old": "2x",
     "fall_high": "玉虛宮、寂靜死海",
     "fall_low": "末日京城、地牢、水牢、火牢、死牢",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -5261,6 +5448,7 @@
     "magnification_old": "2x",
     "fall_high": "玉虛宮、寂靜死海",
     "fall_low": "幽冥深淵、垃圾場第一層、垃圾場第二層",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -5289,6 +5477,7 @@
     "magnification_old": "2x",
     "fall_high": "活動",
     "fall_low": "活動",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -5317,6 +5506,7 @@
     "magnification_old": "2x",
     "fall_high": "羅煞洞-第一層、羅煞洞-第二層、羅煞洞-第三層",
     "fall_low": "妖邪洞、幽納古林",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -5345,6 +5535,7 @@
     "magnification_old": "2x",
     "fall_high": "沰水道、銀沙河、地下通道、赤松林、飛鶴山、可汗沙漠、天朝山、池底洞窟、東海龍宮、龍宮大殿、靈山、峨嵋山",
     "fall_low": "皇陵",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -5373,6 +5564,7 @@
     "magnification_old": "2x",
     "fall_high": "琉球仙島、玄冥煉獄",
     "fall_low": "沰水道、銀沙河、地下通道、赤松林、飛鶴山、可汗沙漠、天朝山、池底洞窟、東海龍宮、龍宮大殿、靈山、峨嵋山",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -5401,6 +5593,7 @@
     "magnification_old": "2x",
     "fall_high": "葬心塚、同心林、祈願湖、哭腸崖",
     "fall_low": "陽燧山",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -5429,6 +5622,7 @@
     "magnification_old": "2x",
     "fall_high": "翠竹林、潛龍潭、蕈菇林、琅琊山、滄之雲海",
     "fall_low": "地下水道",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -5457,6 +5651,7 @@
     "magnification_old": "2x",
     "fall_high": "玄日洞",
     "fall_low": "墨家名穴",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -5485,6 +5680,7 @@
     "magnification_old": "2x",
     "fall_high": "沰水道、銀沙河、地下通道、赤松林、飛鶴山、可汗沙漠、天朝山、池底洞窟、東海龍宮、龍宮大殿、靈山、峨嵋山",
     "fall_low": "妖邪洞、幽納古林",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -5513,6 +5709,7 @@
     "magnification_old": "2x",
     "fall_high": "烈焰山",
     "fall_low": "迷茫古墳、虎臂水洞",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -5541,6 +5738,7 @@
     "magnification_old": "2x",
     "fall_high": "臥虎高原、荒骨高原、匯星高原、月鏡湖、北邙山、巨門關、迷蹤列島、蓬萊仙島、伏龍洞、天煞洞第1層、天煞洞第2層",
     "fall_low": "妖邪洞、幽納古林",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -5569,6 +5767,7 @@
     "magnification_old": "2x",
     "fall_high": "修羅洞",
     "fall_low": "葬心塚、同心林、祈願湖、哭腸崖",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -5597,6 +5796,7 @@
     "magnification_old": "2x",
     "fall_high": "烈焰山",
     "fall_low": "妖邪洞、幽納古林",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -5625,6 +5825,7 @@
     "magnification_old": "2x",
     "fall_high": "玄日峰、玄日岩",
     "fall_low": "末日京城、地牢、水牢、火牢、死牢",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -5653,6 +5854,7 @@
     "magnification_old": "2x",
     "fall_high": "崑崙山、真修洞",
     "fall_low": "玄日峰、玄日岩",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -5681,6 +5883,7 @@
     "magnification_old": "2x",
     "fall_high": "琉球仙島、玄冥煉獄",
     "fall_low": "地下水道",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -5709,6 +5912,7 @@
     "magnification_old": "2x",
     "fall_high": "玄日洞",
     "fall_low": "琉球仙島、玄冥煉獄",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -5737,6 +5941,7 @@
     "magnification_old": "2x",
     "fall_high": "玄日洞",
     "fall_low": "崑崙山、真修洞",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -5765,6 +5970,7 @@
     "magnification_old": "2x",
     "fall_high": "惡龍秘窟1層、惡龍秘窟2層、惡龍秘窟3層",
     "fall_low": "地下水道",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -5793,6 +5999,7 @@
     "magnification_old": "2x",
     "fall_high": "臥虎高原、荒骨高原、匯星高原、月鏡湖、北邙山、巨門關、迷蹤列島、蓬萊仙島、伏龍洞、天煞洞第1層、天煞洞第2層",
     "fall_low": "鬼煞洞",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -5821,6 +6028,7 @@
     "magnification_old": "2x",
     "fall_high": "羅煞洞-第四層",
     "fall_low": "藏玄洞",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -5849,6 +6057,7 @@
     "magnification_old": "2x",
     "fall_high": "青葉村、地煞洞第1層、地煞洞第2層、東都道",
     "fall_low": "葬心塚、同心林、祈願湖、哭腸崖",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -5877,6 +6086,7 @@
     "magnification_old": "2x",
     "fall_high": "惡龍秘窟4層、盤古旛陣、金嗷洞三樓",
     "fall_low": "奔雷嶺、夕之朝雲、幻之烏雲、大漩渦、華山、泰山、天山",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -5905,6 +6115,7 @@
     "magnification_old": "2x",
     "fall_high": "修羅洞",
     "fall_low": "崑崙山、真修洞",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -5933,6 +6144,7 @@
     "magnification_old": "2x",
     "fall_high": "琉球仙島、玄冥煉獄",
     "fall_low": "幽冥深淵、垃圾場第一層、垃圾場第二層",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -5961,6 +6173,7 @@
     "magnification_old": "2x",
     "fall_high": "東門關、南門關、西門關、北門關、杏花谷、碧沙湖、北都道、西都道、南都道",
     "fall_low": "玄日洞",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -5989,6 +6202,7 @@
     "magnification_old": "2x",
     "fall_high": "翠竹林、潛龍潭、蕈菇林、琅琊山、滄之雲海",
     "fall_low": "迷茫古墳、虎臂水洞",
+    "player": "",
     "playerdata": "轉運站-茜小菲"
   },
   {
@@ -6017,6 +6231,7 @@
     "magnification_old": "2x",
     "fall_high": "修羅洞",
     "fall_low": "琉球仙島、玄冥煉獄",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -6045,6 +6260,7 @@
     "magnification_old": "2x",
     "fall_high": "末日京城、地牢、水牢、火牢、死牢",
     "fall_low": "地下水道",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -6073,6 +6289,7 @@
     "magnification_old": "2x",
     "fall_high": "幽冥深淵、垃圾場第一層、垃圾場第二層",
     "fall_low": "西桑耶沙漠、東桑耶沙漠、南桑耶沙漠",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -6101,6 +6318,7 @@
     "magnification_old": "2x",
     "fall_high": "沰水道、銀沙河、地下通道、赤松林、飛鶴山、可汗沙漠、天朝山、池底洞窟、東海龍宮、龍宮大殿、靈山、峨嵋山",
     "fall_low": "鬼煞洞",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -6129,6 +6347,7 @@
     "magnification_old": "2x",
     "fall_high": "東門關、南門關、西門關、北門關、杏花谷、碧沙湖、北都道、西都道、南都道",
     "fall_low": "沰水道、銀沙河、地下通道、赤松林、飛鶴山、可汗沙漠、天朝山、池底洞窟、東海龍宮、龍宮大殿、靈山、峨嵋山",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -6157,6 +6376,7 @@
     "magnification_old": "2x",
     "fall_high": "幽納古林",
     "fall_low": "藏玄洞",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -6185,6 +6405,7 @@
     "magnification_old": "2x",
     "fall_high": "藏玄洞",
     "fall_low": "妖邪洞、幽納古林",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -6213,6 +6434,7 @@
     "magnification_old": "2x",
     "fall_high": "青葉村、地煞洞第1層、地煞洞第2層、東都道",
     "fall_low": "玄日峰、玄日岩",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -6241,6 +6463,7 @@
     "magnification_old": "2x",
     "fall_high": "琉球仙島、玄冥煉獄",
     "fall_low": "葬心塚、同心林、祈願湖、哭腸崖",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -6269,6 +6492,7 @@
     "magnification_old": "2x",
     "fall_high": "琉球仙島、玄冥煉獄",
     "fall_low": "幽冥深淵、垃圾場第一層、垃圾場第二層",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -6297,6 +6521,7 @@
     "magnification_old": "2x",
     "fall_high": "羅煞洞-第五層",
     "fall_low": "藏玄洞",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -6325,6 +6550,7 @@
     "magnification_old": "2x",
     "fall_high": "青葉村、地煞洞第1層、地煞洞第2層、東都道",
     "fall_low": "妖邪洞、幽納古林",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -6353,6 +6579,7 @@
     "magnification_old": "2x",
     "fall_high": "奔雷嶺、夕之朝雲、幻之烏雲、大漩渦、華山、泰山、天山",
     "fall_low": "妖邪洞、幽納古林",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -6381,6 +6608,7 @@
     "magnification_old": "2x",
     "fall_high": "玄日洞",
     "fall_low": "西桑耶沙漠、東桑耶沙漠、南桑耶沙漠",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -6409,6 +6637,7 @@
     "magnification_old": "2x",
     "fall_high": "活動",
     "fall_low": "活動",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -6437,6 +6666,7 @@
     "magnification_old": "2x",
     "fall_high": "藏玄洞",
     "fall_low": "陽燧山",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -6465,6 +6695,7 @@
     "magnification_old": "2x",
     "fall_high": "妖邪洞、幽納古林",
     "fall_low": "飛煞洞、地下墳場",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -6493,6 +6724,7 @@
     "magnification_old": "2x",
     "fall_high": "東門關、南門關、西門關、北門關、杏花谷、碧沙湖、北都道、西都道、南都道",
     "fall_low": "沰水道、銀沙河、地下通道、赤松林、飛鶴山、可汗沙漠、天朝山、池底洞窟、東海龍宮、龍宮大殿、靈山、峨嵋山",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -6521,6 +6753,7 @@
     "magnification_old": "2x",
     "fall_high": "惡龍秘窟1層、惡龍秘窟2層、惡龍秘窟3層",
     "fall_low": "幽納古林",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -6549,6 +6782,7 @@
     "magnification_old": "2x",
     "fall_high": "皇陵",
     "fall_low": "沰水道、銀沙河、地下通道、赤松林、飛鶴山、可汗沙漠、天朝山、池底洞窟、東海龍宮、龍宮大殿、靈山、峨嵋山",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -6577,6 +6811,7 @@
     "magnification_old": "2x",
     "fall_high": "琉球仙島、玄冥煉獄",
     "fall_low": "幽冥深淵、垃圾場第一層、垃圾場第二層",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -6605,6 +6840,7 @@
     "magnification_old": "2x",
     "fall_high": "青葉村、地煞洞第1層、地煞洞第2層、東都道",
     "fall_low": "奔雷嶺、夕之朝雲、幻之烏雲、大漩渦、華山、泰山、天山",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -6633,6 +6869,7 @@
     "magnification_old": "2x",
     "fall_high": "琉球仙島、玄冥煉獄",
     "fall_low": "幽冥深淵、垃圾場第一層、垃圾場第二層",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -6661,6 +6898,7 @@
     "magnification_old": "2x",
     "fall_high": "妖邪洞、幽納古林",
     "fall_low": "玄日峰、玄日岩",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -6689,6 +6927,7 @@
     "magnification_old": "2x",
     "fall_high": "沰水道、銀沙河、地下通道、赤松林、飛鶴山、可汗沙漠、天朝山、池底洞窟、東海龍宮、龍宮大殿、靈山、峨嵋山",
     "fall_low": "玄日峰、玄日岩",
+    "player": "",
     "playerdata": ""
   },
   {
@@ -6717,6 +6956,7 @@
     "magnification_old": "2x",
     "fall_high": "幽納古林",
     "fall_low": "地下水道",
+    "player": "",
     "playerdata": ""
   }
 ]
