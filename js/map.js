@@ -43,7 +43,6 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // === 3. Modal 關閉邏輯 ===
-  // === 關閉 Modal ===
   function closeModal() {
     document.getElementById("modalOverlay").style.display = "none";
     document.getElementById("modalBox").style.display = "none";
@@ -62,9 +61,9 @@ function showDetailModal(item) {
  const autoImagePath = `/mo_data/pic/map/${item.mapid}.jpg`;
 
  // 🚀 新增：判斷是否為「洞窟」的條件變數 (用於顯示走法)
- const isCave = item.area && item.area.includes("洞窟");
+ const isCave = item.approach_a && item.approach_a.includes("要");
  // 🚀 新增：判斷是否為「城鎮」的條件變數 (用於隱藏防禦和掉落)
- const isTown = item.area && item.area === "城鎮"; 
+ const isTown = item.approach_a && item.approach_a === "城鎮"; 
 
  // 🚀 1. 構建 approach HTML 字串 (與之前邏輯相同)
  let approachHTML = "";
