@@ -1804,25 +1804,25 @@
     "commonly": ""
   },
   {
-    "category": "特殊",
+    "category": "傷害",
     "class": "全職業",
     "classSkill": "",
     "skillName": "衝動",
     "equipmentType1": "頭盔",
     "equipmentType2": "",
     "combinationMethod": "陀羅、地劫、武曲、天府、巨門、巨門",
-    "description": "物理技能傷害增加",
+    "description": "物理技能傷害增加%",
     "commonly": ""
   },
   {
-    "category": "特殊",
+    "category": "傷害",
     "class": "全職業",
     "classSkill": "",
     "skillName": "衝擊",
     "equipmentType1": "頭盔",
     "equipmentType2": "",
     "combinationMethod": "火、地空、武曲、太陰、貪狼、貪狼",
-    "description": "法術技能傷害增加",
+    "description": "法術技能傷害增加%",
     "commonly": ""
   },
   {
