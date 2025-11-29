@@ -273,31 +273,31 @@ h1 {
 /* 🚀 新增：說明區塊 (解釋內容) 樣式 */
 /* ================================================= */
 
-/* 確保「說明」內容也能實現懸掛縮排 */
+
+/* 🚀 新增：實現「走法」內容的懸掛縮排 */
 .explain-line-wrap {
-    display: flex;
-    white-space: normal;
+    display: flex;        /* 啟用 Flexbox */
+    white-space: normal;  /* 覆蓋 pre-formatted-text 的換行，讓 Flex 處理 */
 }
 
-/* 說明：標籤本身 (粗體) */
+/* 走法：標籤本身 */
 .explain-label {
-    flex-shrink: 0;
-    white-space: nowrap;
-    font-weight: bold; /* 讓「說明：」兩個字變粗體 */
+    /* 確保標籤不換行，且不會被內容擠壓 */
+    flex-shrink: 0; 
+    white-space: nowrap; 
+    font-weight: bold;
 }
 
-/* 說明內容區塊 (與 approach-content 共享樣式，但命名不同更清晰) */
+/* 走法內容區塊 */
 .explain-content {
-    flex-grow: 1;
-    white-space: pre-wrap; /* 處理 JSON 中的 \n 換行符號 */
+    /* 內容佔據剩餘所有空間 */
+    flex-grow: 1; 
+    
+    /* 關鍵：讓內容區塊內部可以處理 JSON 中的 \n 換行 */
+    white-space: pre-wrap; 
 }
 
-/* 確保整個區塊之間有間距 */
-.hero-explain {
-    margin-bottom: 10px; /* 根據需要調整與下方區塊的間距 */
-}
 
-/* ... 7. RWD 調整保持不變 ... */
 
 /* ================================================= */
 /* 7. RWD 調整 */
