@@ -61,7 +61,7 @@ function showDetailModal(item) {
     const autoImagePath = `/mo_data/pic/map/${item.mapid}.jpg`;
 
     // 判斷是否為「洞窟」的條件變數 (用於顯示走法)
-    const isCave = item.area && item.area.includes("洞窟");
+    const isCave = item.area && item.area.includes("要");
     // 判斷是否為「城鎮」的條件變數 (用於隱藏防禦和掉落)
     const isTown = item.area && item.area === "城鎮";
     // 🚀 新增：判斷是否為「說明」的條件變數
