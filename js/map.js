@@ -59,19 +59,23 @@ function showDetailModal(item) {
     if (!modalContent) return;
 
     const autoImagePath = `/mo_data/pic/map/${item.mapid}.jpg`;
+    
+    // 檢查 item.approach_a 是否存在
+    const approachA = item.approach_a;
 
-    // 判斷是否為「洞窟」的條件變數 (用於顯示走法)
-    const isCave = item.area && item.area.includes("要");
-    // 判斷是否為「城鎮」的條件變數 (用於隱藏防禦和掉落)
-    const isTown = item.area && item.area === "城鎮";
-    // 🚀 新增：判斷是否為「說明」的條件變數
-    const isExplan = item.approach_a && item.approach_a === "說明"; 
+    // 🚀 判斷邏輯優化：使用精確比對
+    const isTown = approachA === "城鎮";
+    const isCave = approachA === "要";     // 修正：使用 === "要"
+    const isExplan = approachA === "說明"; 
+    
+    // ----------------------------------------
+    // 1. 構建 走法/說明 HTML 區塊
+    // ----------------------------------------
+    let utilityHTML = "";
 
-
-    // 🚀 1. 構建 approach HTML 字串 (與之前邏輯相同)
-    let approachHTML = "";
     if (isCave) {
-    approachHTML = `
+    // 當 approach_a = "要" 時，顯示走法
+    utilityHTML = `
     <div class="hero-approach section-gap">
     <p class="approach-line-wrap">
     <span class="approach-label">走法：</span>
@@ -79,60 +83,59 @@ function showDetailModal(item) {
     </p>
     </div>
     `;
-  }
-  
-  // 🚀 2. 構建 explain HTML 字串 (新增邏輯)
-    let explainHTML = "";
-    if (isExplan) {
-    explainHTML = `
-      <div class="hero-explain section-gap">
-          <p class="explain-line-wrap">
-              <span class="explain-label">說明：</span>
-              <span class="explain-content pre-formatted-text">${item.approach || "無資料"}</span>
-          </p>
-      </div>
+    } else if (isExplan) {
+    // 當 approach_a = "說明" 時，顯示說明 (注意：這裡使用 item.approach 來填充內容)
+    utilityHTML = `
+    <div class="hero-explain section-gap">
+    <p class="explain-line-wrap">
+    <span class="explain-label">說明：</span>
+    <span class="explain-content pre-formatted-text">${item.approach || "無資料"}</span>
+    </p>
+    </div>
     `;
-  }
-
-  // 🚀 3. 構建防禦/閃避和掉落物品的 HTML 字串 (如果不是城鎮，則顯示)
-  let combatAndDropHTML = '';
-  if (!isTown) {
+    }
+    
+    // ----------------------------------------
+    // 2. 構建 防禦/掉落 HTML 區塊
+    // ----------------------------------------
+    let combatAndDropHTML = '';
+    if (!isTown) { // 如果不是城鎮，則顯示
     combatAndDropHTML = `
-      <div class="hero-defdodge">
-        <p><strong>防禦：</strong>${item.def || "N/A"}<strong>　　閃避：</strong>${item.dodge || "N/A"}</p>
-      </div>
-      
-      <div class="hero-column-details">
-        <div style="width: 100%;">
-          <p><strong>垃圾掉落:</strong> ${item.drop_rubbish || "N/A"}</p>
-          <div class="section-gap">
-            <p><strong>光輝掉落(掉落較多)：</strong><span class="value">${item.drop_glory_high || "N/A"}</span></p>
-          </div>
-          <div class="section-gap">
-            <p><strong>光輝掉落(掉落較低)：</strong><span class="value">${item.drop_glory_low || "N/A"}</span></p>
-          </div>
-          <div class="section-gap">
-            <p><strong>光輝掉落(玩家提供)：</strong><span class="value">-</span></p>
-          </div>
-        </div>
-      </div>
+    <div class="hero-defdodge section-gap">
+    <p><strong>防禦：</strong>${item.def || "N/A"}<strong>　　閃避：</strong>${item.dodge || "N/A"}</p>
+    </div>
+    
+    <div class="hero-column-details">
+    <div style="width: 100%;">
+    <p><strong>垃圾掉落:</strong> ${item.drop_rubbish || "N/A"}</p>
+    <div class="section-gap">
+    <p><strong>光輝掉落(掉落較多)：</strong><span class="value">${item.drop_glory_high || "N/A"}</span></p>
+    </div>
+    <div class="section-gap">
+    <p><strong>光輝掉落(掉落較低)：</strong><span class="value">${item.drop_glory_low || "N/A"}</span></p>
+    </div>
+    <div class="section-gap">
+    <p><strong>光輝掉落(玩家提供)：</strong><span class="value">-</span></p>
+    </div>
+    </div>
+    </div>
     `;
-  }
-  // 如果是城鎮 (isTown = true)，combatAndDropHTML 保持為空字串，將不會渲染到頁面上。
+    }
+    
+    // ----------------------------------------
+    // 3. 組合最終 HTML
+    // ----------------------------------------
+    modalContent.innerHTML = `
+    <h2 class="hero-name">${item.mapid || "N/A"}</h2>
+    <img src="${autoImagePath}" 
+    alt="${item.mapid || "地圖圖片"}" 
+    class="hero-image" 
+    onerror="this.style.display='none'" />
+    ${utilityHTML}
+    ${combatAndDropHTML}`;
 
- modalContent.innerHTML = `
- <h2 class="hero-name">${item.mapid || "N/A"}</h2>
- <img src="${autoImagePath}" 
- alt="${item.mapid || "地圖圖片"}" 
- class="hero-image" 
-onerror="this.style.display='none'" />
-
-  ${approachHTML}
-
- ${combatAndDropHTML}`;
-
- document.getElementById("modalOverlay").style.display = "block";
- document.getElementById("modalBox").style.display = "block";
+    document.getElementById("modalOverlay").style.display = "block";
+    document.getElementById("modalBox").style.display = "block";
 }
 
 // === 5. Image Map 點擊觸發函數 (全域函數，供 HTML onclick 調用) ===
