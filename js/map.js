@@ -55,30 +55,46 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // === 4. 彈窗內容填充函數 ===
 function showDetailModal(item) {
- const modalContent = document.getElementById("modalContent");
- if (!modalContent) return;
+    const modalContent = document.getElementById("modalContent");
+    if (!modalContent) return;
 
- const autoImagePath = `/mo_data/pic/map/${item.mapid}.jpg`;
+    const autoImagePath = `/mo_data/pic/map/${item.mapid}.jpg`;
 
- // 🚀 新增：判斷是否為「洞窟」的條件變數 (用於顯示走法)
- const isCave = item.approach_a && item.approach_a.includes("要");
- // 🚀 新增：判斷是否為「城鎮」的條件變數 (用於隱藏防禦和掉落)
- const isTown = item.approach_a && item.approach_a === "城鎮"; 
+    // 判斷是否為「洞窟」的條件變數 (用於顯示走法)
+    const isCave = item.area && item.area.includes("洞窟");
+    // 判斷是否為「城鎮」的條件變數 (用於隱藏防禦和掉落)
+    const isTown = item.area && item.area === "城鎮";
+    // 🚀 新增：判斷是否為「說明」的條件變數
+    const isExplan = item.approach_a && item.approach_a === "說明"; 
 
- // 🚀 1. 構建 approach HTML 字串 (與之前邏輯相同)
- let approachHTML = "";
- if (isCave) {
-  approachHTML = `
-  <div class="hero-approach">
-  <p class="approach-line-wrap pre-formatted-text">
-  <span class="approach-label">走法：</span>
-  <span class="approach-content">${item.approach || "無資料"}</span>
-  </p>
-  </div>
-  `;
- }
+
+    // 🚀 1. 構建 approach HTML 字串 (與之前邏輯相同)
+    let approachHTML = "";
+    if (isCave) {
+    approachHTML = `
+    <div class="hero-approach section-gap">
+    <p class="approach-line-wrap">
+    <span class="approach-label">走法：</span>
+    <span class="approach-content pre-formatted-text">${item.approach || "無資料"}</span>
+    </p>
+    </div>
+    `;
+  }
   
-  // 🚀 2. 構建防禦/閃避和掉落物品的 HTML 字串 (如果不是城鎮，則顯示)
+  // 🚀 2. 構建 explain HTML 字串 (新增邏輯)
+    let explainHTML = "";
+    if (isExplan) {
+    explainHTML = `
+      <div class="hero-explain section-gap">
+          <p class="explain-line-wrap">
+              <span class="explain-label">說明：</span>
+              <span class="explain-content pre-formatted-text">${item.approach || "無資料"}</span>
+          </p>
+      </div>
+    `;
+  }
+
+  // 🚀 3. 構建防禦/閃避和掉落物品的 HTML 字串 (如果不是城鎮，則顯示)
   let combatAndDropHTML = '';
   if (!isTown) {
     combatAndDropHTML = `
