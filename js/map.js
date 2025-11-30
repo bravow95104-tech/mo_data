@@ -60,21 +60,25 @@ function showDetailModal(item) {
 
     const autoImagePath = `/mo_data/pic/map/${item.mapid}.jpg`;
     
-    // 檢查 item.approach_a 是否存在
-    const approachA = item.approach_a;
-
-    // 🚀 判斷邏輯優化：使用精確比對
-    const isTown = approachA === "城鎮";
-    const isCave = approachA === "要";     // 修正：使用 === "要"
-    const isExplan = approachA === "說明"; 
+    // 檢查 item.approach_a 是否存在，並轉為大寫以進行彈性判斷（可選，但推薦）
+    const approachA = item.approach_a || ""; // 如果沒有值，設為空字串避免錯誤
+    
+    // 🚀 關鍵修改：使用 includes() 允許複合字串，並設定邏輯標籤
+    // 隱藏功能優先：只要包含「城鎮」就隱藏戰鬥和掉落資訊
+    const shouldHideCombatAndDrop = approachA.includes("城鎮"); 
+    
+    // 顯示邏輯：判斷是否包含 "要" 或 "說明"
+    const shouldShowCaveApproach = approachA.includes("要"); 
+    const shouldShowExplain = approachA.includes("說明"); 
     
     // ----------------------------------------
     // 1. 構建 走法/說明 HTML 區塊
     // ----------------------------------------
     let utilityHTML = "";
 
-    if (isCave) {
-    // 當 approach_a = "要" 時，顯示走法
+    // 確保走法和說明只顯示一個 (走法優先於說明)
+    if (shouldShowCaveApproach) {
+    // 當 approach_a 包含 "要" 時，顯示走法
     utilityHTML = `
     <div class="hero-approach section-gap">
     <p class="approach-line-wrap">
@@ -83,8 +87,8 @@ function showDetailModal(item) {
     </p>
     </div>
     `;
-    } else if (isExplan) {
-    // 當 approach_a = "說明" 時，顯示說明 (注意：這裡使用 item.approach 來填充內容)
+    } else if (shouldShowExplain) {
+    // 當 approach_a 包含 "說明" 且不包含 "要" 時，顯示說明
     utilityHTML = `
     <div class="hero-explain section-gap">
     <p class="explain-line-wrap">
@@ -96,10 +100,10 @@ function showDetailModal(item) {
     }
     
     // ----------------------------------------
-    // 2. 構建 防禦/掉落 HTML 區塊
+    // 2. 構建 防禦/掉落 HTML 區塊 (隱藏功能優先)
     // ----------------------------------------
     let combatAndDropHTML = '';
-    if (!isTown) { // 如果不是城鎮，則顯示
+    if (!shouldHideCombatAndDrop) { // 只要不包含「城鎮」，就顯示
     combatAndDropHTML = `
     <div class="hero-defdodge section-gap">
     <p><strong>防禦：</strong>${item.def || "N/A"}<strong>　　閃避：</strong>${item.dodge || "N/A"}</p>
