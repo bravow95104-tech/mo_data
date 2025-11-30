@@ -163,63 +163,42 @@ document.addEventListener("DOMContentLoaded", () => {
     return name.replace(/[^\w\u4e00-\u9fa5()]/g, '');
   }
 
-// === Modal 顯示 ===
-function showDetailModal(item) {
+  // === Modal 顯示 ===
+  function showDetailModal(item) {
     const overlay = document.getElementById('modalOverlay');
     const modalBox = document.getElementById('modalBox');
     const contentDiv = document.getElementById('modalContent');
 
     if (!overlay || !modalBox || !contentDiv) {
-        console.error("❌ 找不到 Modal 元素");
-        return;
+      console.error("❌ 找不到 Modal 元素");
+      return;
     }
 
     contentDiv.innerHTML = "";
 
-    // 1. 圖片處理 (與原代碼相同)
     const img = document.createElement("img");
     img.className = "hero-image";
     img.alt = item.card_id || "card-image";
     img.src = `/mo_data/pic/card-spirit/${encodeFileName(item.card_id)}.png`;
-    // 這裡可以選擇不處理 onerror，讓圖片不存在時留白，或者加上一個預設圖
-    img.onerror = () => { img.style.display = 'none'; }; 
+    img.onerror = () => {};
 
+    const html = `
+      <div class="hero-details-container">
+        <div class="hero-column">
+          <h2 class="hero-name">${item.card_id}</h2>
+        </div>
+        <div class="hero-column" id="imgContainer"></div>
+      </div>
+    `;
 
- // 2. 🚀 新增內容區塊 HTML
- const html = `
- <div class="hero-details-container">
- <div class="hero-column details-text-column">
- <h2 class="hero-name">${item.card_id || "卡片名稱"}</h2>
-                
-                <p class="detail-line"><strong>等級：</strong> <span class="value">${item.card_lv || "N/A"}</span></p>
+    contentDiv.innerHTML = html;
 
-                <div class="property-section">
-                    <h3>【卡片屬性】</h3>
-                    <p><strong>屬性一：</strong> <span class="value">${item.property_first || "N/A"}</span></p>
-                    <p><strong>屬性二：</strong> <span class="value">${item.property_second || "N/A"}</span></p>
-                    <p><strong>屬性三：</strong> <span class="value">${item.property_third || "N/A"}</span></p>
-                </div>
-                
-                <div class="drop-section">
-                    <h3>【掉落來源】</h3>
-                    <p class="pre-formatted-text">${item.drop || "N/A"}</p>
-                </div>
+    const imgContainer = contentDiv.querySelector("#imgContainer");
+    if (imgContainer) imgContainer.appendChild(img);
 
- </div>
- 
- <div class="hero-column image-column" id="imgContainer">
- </div>
- </div>
- `;
-
- contentDiv.innerHTML = html;
-
-        const imgContainer = contentDiv.querySelector("#imgContainer");
-        if (imgContainer) imgContainer.appendChild(img);
-
-        overlay.style.display = 'block';
-        modalBox.style.display = 'block';
-    }
+    overlay.style.display = 'block';
+    modalBox.style.display = 'block';
+  }
 
   // === 關閉 Modal ===
   function closeModal() {
