@@ -391,3 +391,59 @@ thead th {
   border-radius: 6px;
   box-sizing: border-box;
 }
+/* 彈窗內容基礎樣式 */
+.hero-details-container {
+    display: flex;
+    gap: 20px; /* 內容與圖片之間的間距 */
+    align-items: flex-start; /* 頂部對齊 */
+}
+
+.hero-column {
+    flex: 1;
+    min-width: 0;
+}
+
+.details-text-column {
+    flex: 2; /* 讓文字欄位寬度大於圖片欄位 */
+}
+
+.image-column {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+/* 確保圖片在容器內正常顯示 */
+.hero-image {
+    max-width: 100%;
+    height: auto;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+/* 標題與分區間距 */
+.hero-name {
+    margin-top: 0;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 5px;
+}
+
+.property-section, .drop-section {
+    margin-top: 15px;
+    padding-top: 5px;
+    border-top: 1px dashed #eee;
+}
+
+h3 {
+    color: #333;
+    margin-bottom: 5px;
+    font-size: 1.1em;
+}
+
+/* 掉落內容如果需要保留 JSON 中的換行 */
+.pre-formatted-text {
+    white-space: pre-wrap;
+    font-size: 0.9em;
+    line-height: 1.5;
+}
