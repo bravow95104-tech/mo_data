@@ -6305,7 +6305,7 @@
     "MP_ordinary": "",
     "MP_flashcards": "",
     "directions": "",
-    "drop": ""
+    "drop": "夕之朝雲"
   },
   {
     "type": "靈具卡",
@@ -6324,7 +6324,7 @@
     "MP_ordinary": "",
     "MP_flashcards": "",
     "directions": "",
-    "drop": ""
+    "drop": "修羅_狂亂"
   },
   {
     "type": "靈具卡",
@@ -6343,7 +6343,7 @@
     "MP_ordinary": "",
     "MP_flashcards": "",
     "directions": "",
-    "drop": ""
+    "drop": "玉虛宮"
   },
   {
     "type": "靈具卡",
@@ -6400,7 +6400,7 @@
     "MP_ordinary": "",
     "MP_flashcards": "",
     "directions": "",
-    "drop": ""
+    "drop": "奔雷嶺"
   },
   {
     "type": "靈具卡",
@@ -6438,7 +6438,7 @@
     "MP_ordinary": "",
     "MP_flashcards": "",
     "directions": "",
-    "drop": ""
+    "drop": "烈焰山"
   },
   {
     "type": "靈具卡",
@@ -6457,7 +6457,7 @@
     "MP_ordinary": "",
     "MP_flashcards": "",
     "directions": "",
-    "drop": ""
+    "drop": "烈焰山"
   },
   {
     "type": "靈具卡",
@@ -6476,7 +6476,7 @@
     "MP_ordinary": "",
     "MP_flashcards": "",
     "directions": "",
-    "drop": ""
+    "drop": "秘境山頂(?)"
   },
   {
     "type": "靈具卡",
@@ -6495,7 +6495,7 @@
     "MP_ordinary": "",
     "MP_flashcards": "",
     "directions": "",
-    "drop": ""
+    "drop": "明鏡、地牢"
   },
   {
     "type": "靈具卡",
@@ -6514,7 +6514,7 @@
     "MP_ordinary": "",
     "MP_flashcards": "",
     "directions": "",
-    "drop": ""
+    "drop": "明鏡、地牢"
   },
   {
     "type": "靈具卡",
@@ -6533,7 +6533,7 @@
     "MP_ordinary": "",
     "MP_flashcards": "",
     "directions": "",
-    "drop": ""
+    "drop": "幽納原野1"
   },
   {
     "type": "靈具卡",
@@ -6590,7 +6590,7 @@
     "MP_ordinary": "",
     "MP_flashcards": "",
     "directions": "",
-    "drop": ""
+    "drop": "幽納三"
   },
   {
     "type": "靈具卡",
@@ -6609,7 +6609,7 @@
     "MP_ordinary": "",
     "MP_flashcards": "",
     "directions": "",
-    "drop": ""
+    "drop": "烈焰秘境"
   },
   {
     "type": "靈具卡",
@@ -6628,7 +6628,7 @@
     "MP_ordinary": "",
     "MP_flashcards": "",
     "directions": "",
-    "drop": ""
+    "drop": "明鏡、地牢"
   },
   {
     "type": "靈具卡",
@@ -6647,7 +6647,7 @@
     "MP_ordinary": "",
     "MP_flashcards": "",
     "directions": "",
-    "drop": ""
+    "drop": "迷茫古墳"
   },
   {
     "type": "靈具卡",
@@ -6685,7 +6685,7 @@
     "MP_ordinary": "",
     "MP_flashcards": "",
     "directions": "",
-    "drop": ""
+    "drop": "帝皇城"
   },
   {
     "type": "靈具卡",
@@ -6704,7 +6704,7 @@
     "MP_ordinary": "",
     "MP_flashcards": "",
     "directions": "",
-    "drop": ""
+    "drop": "虎臂水洞_祭壇區"
   },
   {
     "type": "靈具卡",
@@ -6723,7 +6723,7 @@
     "MP_ordinary": "",
     "MP_flashcards": "",
     "directions": "",
-    "drop": ""
+    "drop": "虎臂水洞_祭壇區"
   },
   {
     "type": "靈具卡",
@@ -6761,7 +6761,7 @@
     "MP_ordinary": "",
     "MP_flashcards": "",
     "directions": "",
-    "drop": ""
+    "drop": "帝皇城"
   },
   {
     "type": "靈具卡",
@@ -6780,7 +6780,7 @@
     "MP_ordinary": "",
     "MP_flashcards": "",
     "directions": "",
-    "drop": ""
+    "drop": "帝皇城"
   },
   {
     "type": "主動技能卡",
@@ -7620,7 +7620,7 @@
   },
   {
     "type": "主動技能卡",
-    "new_old": "",
+    "new_old": "V",
     "card_id": "三昧真火卡",
     "card_property": "火",
     "card_data": "",
@@ -7631,7 +7631,7 @@
     "property_first": "",
     "property_second": "",
     "property_third": "",
-    "card_mp": "",
+    "card_mp": 40,
     "MP_ordinary": 40,
     "MP_flashcards": 30,
     "directions": "火行法術單體攻擊技能",
