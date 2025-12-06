@@ -53,8 +53,6 @@ document.addEventListener("DOMContentLoaded", () => {
           item.card_property,
           item.card_class,
           item.card_mp,
-          item.MP_ordinary,
-          item.MP_flashcards,
           item.directions
         ];
 
