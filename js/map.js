@@ -93,7 +93,7 @@ function showDetailModal(item) {
     <div class="hero-explain section-gap">
     <p class="explain-line-wrap">
     <span class="explain-label">說明：</span>
-    <span class="explain-content pre-formatted-text">${item.approach || "無資料"}</span>
+    <span class="explain-content pre-formatted-text">${item.illustrate || "無資料"}</span>
     </p>
     </div>
     `;
