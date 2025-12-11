@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <title>裝備資訊 | MoData</title>
+
+    <link rel="stylesheet" href="/mo_data/css/styles.css" />
+    <link rel="stylesheet" href="/mo_data/css/heromeal.css" />
+  </head>
+  <body>
+    <div id="nav-container"></div>
+    <!-- 這是導航列會被載入的位置 -->
+
+    <!-- 裝備購買地點 -->
+    <div class="card-table-container card-ui open">
+      <div class="card-header">
+        <span class="card-title">裝備購買地點</span>
+        <button class="card-toggle" aria-label="收合/展開">
+          <span class="toggle-icon">▼</span>
+        </button>
+      </div>
+      <div class="card-content">
+        <table class="card-table">
+          <thead>
+            <tr>
+              <th>等級</th>
+              <th>地點</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>不限</td>
+              <td>青葉村</td>
+            </tr>
+            <tr>
+              <td>15</td>
+              <td>京城</td>
+            </tr>
+            <tr>
+              <td>20</td>
+              <td>郡業、川都</td>
+            </tr>
+            <tr>
+              <td>25</td>
+              <td>梁山</td>
+            </tr>
+            <tr>
+              <td>30</td>
+              <td>仙界雲海村</td>
+            </tr>
+            <tr>
+              <td>35</td>
+              <td>巨岩村</td>
+            </tr>
+            <tr>
+              <td>40</td>
+              <td>雷爵村、桑耶市集</td>
+            </tr>
+            <tr>
+              <td>50</td>
+              <td>赤羽村</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+
+    <div id="footer-container"></div>
+    <!-- 這是頁尾會被載入的位置 -->
+    <script src="/mo_data/js/componentsLoader.js"></script>
+
+    <script>
+      // 卡片收合動畫（點擊立即反應）
+      document.querySelectorAll(".card-toggle").forEach(function (btn) {
+        btn.addEventListener("mousedown", function (e) {
+          e.preventDefault();
+
+          const card = btn.closest(".card-ui");
+          const content = card.querySelector(".card-content");
+          const icon = btn.querySelector(".toggle-icon");
+
+          const isOpen = card.classList.contains("open");
+
+          if (isOpen) {
+            // 正在展開 → 收合動畫
+            content.style.maxHeight = content.scrollHeight + "px"; // 先設定高度
+            content.offsetHeight; // 強制 reflow（觸發動畫）
+            content.style.maxHeight = "0px";
+            content.style.overflow = "hidden";
+
+            icon.style.transform = "rotate(0deg)";
+            card.classList.remove("open");
+          } else {
+            // 正在收合 → 展開動畫
+            content.style.maxHeight = content.scrollHeight + "px";
+            content.style.overflow = "hidden"; // 避免動畫過程中出現 scrollbar
+
+            icon.style.transform = "rotate(180deg)";
+            card.classList.add("open");
+
+            // 動畫結束後移除 max-height 限制
+            content.addEventListener("transitionend", function handler() {
+              content.style.maxHeight = "none"; // 讓內容可自然撐開
+              content.style.overflow = "visible";
+              content.removeEventListener("transitionend", handler);
+            });
+          }
+        });
+      });
+
+      // 預設展開（如果你要開啟的話）
+      document
+        .querySelectorAll(".card-ui.open .card-content")
+        .forEach(function (content) {
+          content.style.maxHeight = "none";
+          content.style.overflow = "visible";
+        });
+    </script>
+        <!-- 回到頂部按鈕 -->
+    <button id="backToTop" title="回到頂部">▲</button>
+<script src="/mo_data/js/hero-meal.js"></script>
+  </body>
+</html>
