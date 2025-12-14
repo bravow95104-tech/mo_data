@@ -8,6 +8,7 @@
     "approach_a": "野外",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "大賢之光輝、聖鬥之光輝、鐘會之光輝、曹貴人之光輝、安樂之光輝",
     "drop_glory_low": ""
@@ -21,6 +22,7 @@
     "approach_a": "要",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "毒士之光輝、警花之光、袁紹之光輝、小霸王之光輝、祝融之光輝、顏良之光輝、阮小七之光輝",
     "drop_glory_low": "孫權之光輝、青龍星之光、瓊霄之光輝、火府星之光、麒麟之光輝、天使之光、李逵之光輝、執年歲君之徵、智多星之光輝"
@@ -34,6 +36,7 @@
     "approach_a": "城鎮",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "",
     "drop_glory_low": ""
@@ -47,6 +50,7 @@
     "approach_a": "",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "大賢之光輝、聖鬥之光輝、鐘會之光輝、曹貴人之光輝、安樂之光輝",
     "drop_glory_low": ""
@@ -60,6 +64,7 @@
     "approach_a": "",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "張松之光輝、項充之光輝、豹騎之勇、虎騎之勇、魔鬥之勇",
     "drop_glory_low": ""
@@ -73,6 +78,7 @@
     "approach_a": "",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "張松之光輝、項充之光輝、豹騎之勇、虎騎之勇、魔鬥之勇",
     "drop_glory_low": ""
@@ -86,6 +92,7 @@
     "approach_a": "說明",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "張松之光輝、項充之光輝、豹騎之勇、虎騎之勇、魔鬥之勇",
     "drop_glory_low": ""
@@ -99,6 +106,7 @@
     "approach_a": "",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "張松之光輝、項充之光輝、豹騎之勇、虎騎之勇、魔鬥之勇",
     "drop_glory_low": ""
@@ -112,6 +120,7 @@
     "approach_a": "",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "張松之光輝、項充之光輝、豹騎之勇、虎騎之勇、魔鬥之勇",
     "drop_glory_low": ""
@@ -125,6 +134,7 @@
     "approach_a": "",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "張松之光輝、項充之光輝、豹騎之勇、虎騎之勇、魔鬥之勇",
     "drop_glory_low": ""
@@ -138,6 +148,7 @@
     "approach_a": "",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "",
     "drop_glory_low": ""
@@ -151,6 +162,7 @@
     "approach_a": "城鎮、說明",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "",
     "drop_glory_low": ""
@@ -164,6 +176,7 @@
     "approach_a": "",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "",
     "drop_glory_low": ""
@@ -177,6 +190,7 @@
     "approach_a": "",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "張松之光輝、項充之光輝、豹騎之勇、虎騎之勇、魔鬥之勇",
     "drop_glory_low": ""
@@ -190,6 +204,7 @@
     "approach_a": "",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "張松之光輝、項充之光輝、豹騎之勇、虎騎之勇、魔鬥之勇",
     "drop_glory_low": ""
@@ -203,6 +218,7 @@
     "approach_a": "要",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "周郎之光輝、孫二娘之光輝、盧俊義之光輝、阮小二之光輝、石秀之光輝、忍者之光、龍鬥之勇",
     "drop_glory_low": "諸葛惠之光輝"
@@ -216,6 +232,7 @@
     "approach_a": "洞窟",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "大賢之光輝、聖鬥之光輝、鐘會之光輝、曹貴人之光輝、安樂之光輝",
     "drop_glory_low": ""
@@ -229,6 +246,7 @@
     "approach_a": "洞窟",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "大賢之光輝、聖鬥之光輝、鐘會之光輝、曹貴人之光輝、安樂之光輝",
     "drop_glory_low": ""
@@ -242,6 +260,7 @@
     "approach_a": "洞窟",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "周郎之光輝、孫二娘之光輝、盧俊義之光輝、阮小二之光輝、石秀之光輝、忍者之光、龍鬥之勇",
     "drop_glory_low": "諸葛惠之光輝"
@@ -255,6 +274,7 @@
     "approach_a": "洞窟",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "周郎之光輝、孫二娘之光輝、盧俊義之光輝、阮小二之光輝、石秀之光輝、忍者之光、龍鬥之勇",
     "drop_glory_low": "諸葛惠之光輝"
@@ -268,6 +288,7 @@
     "approach_a": "",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "周郎之光輝、孫二娘之光輝、盧俊義之光輝、阮小二之光輝、石秀之光輝、忍者之光、龍鬥之勇",
     "drop_glory_low": "諸葛惠之光輝"
@@ -281,6 +302,7 @@
     "approach_a": "",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "關興之光輝、張魯之光輝、程遠志之光輝、劉備之光輝、魯智深之光輝、倭王之光輝",
     "drop_glory_low": "孫二娘之光輝、曹植之光輝、裴宣之光輝、天眼之光輝、太歲之光"
@@ -294,6 +316,7 @@
     "approach_a": "",
     "maplv": "80-83",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "關興之光輝、張魯之光輝、程遠志之光輝、劉備之光輝、魯智深之光輝、倭王之光輝",
     "drop_glory_low": "孫二娘之光輝、曹植之光輝、裴宣之光輝、天眼之光輝、太歲之光"
@@ -307,6 +330,7 @@
     "approach_a": "",
     "maplv": "86-88",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "關興之光輝、張魯之光輝、程遠志之光輝、劉備之光輝、魯智深之光輝、倭王之光輝",
     "drop_glory_low": "孫二娘之光輝、曹植之光輝、裴宣之光輝、天眼之光輝、太歲之光"
@@ -320,6 +344,7 @@
     "approach_a": "",
     "maplv": "91-94",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "關興之光輝、張魯之光輝、程遠志之光輝、劉備之光輝、魯智深之光輝、倭王之光輝",
     "drop_glory_low": "孫二娘之光輝、曹植之光輝、裴宣之光輝、天眼之光輝、太歲之光"
@@ -333,6 +358,7 @@
     "approach_a": "",
     "maplv": "96-99",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "關興之光輝、張魯之光輝、程遠志之光輝、劉備之光輝、魯智深之光輝、倭王之光輝",
     "drop_glory_low": "孫二娘之光輝、曹植之光輝、裴宣之光輝、天眼之光輝、太歲之光"
@@ -346,6 +372,7 @@
     "approach_a": "",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "",
     "drop_glory_low": ""
@@ -359,6 +386,7 @@
     "approach_a": "城鎮",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "",
     "drop_glory_low": ""
@@ -372,6 +400,7 @@
     "approach_a": "",
     "maplv": "",
     "monster": "",
+    "monster_atk": "被動",
     "drop_rubbish": "",
     "drop_glory_high": "周郎之光輝、孫二娘之光輝、盧俊義之光輝、阮小二之光輝、石秀之光輝、忍者之光、龍鬥之勇",
     "drop_glory_low": "諸葛惠之光輝"
@@ -385,6 +414,7 @@
     "approach_a": "",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "田豐之光輝、錦衣之光輝、王佐之光輝、黃月英之光輝、馬良之光輝、小喬之光輝",
     "drop_glory_low": "楊修之光輝"
@@ -398,6 +428,7 @@
     "approach_a": "",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "人公之光輝、益德之光輝、張苞之光輝、蔣敬之光輝、燕青之光輝、好人卡象徵、姬發之光輝、武吉之光輝、韋馱天之光",
     "drop_glory_low": "項充之光輝、虎騎之勇、魔鬥之勇、程普之光輝、西門慶之光輝、荀攸之光輝、徐庶之光輝、周倉之光輝、茶茶之光輝、孔融之光輝、毒士之光輝"
@@ -411,6 +442,7 @@
     "approach_a": "要",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "人公之光輝、益德之光輝、張苞之光輝、蔣敬之光輝、燕青之光輝、好人卡象徵、姬發之光輝、武吉之光輝、韋馱天之光",
     "drop_glory_low": "項充之光輝、虎騎之勇、魔鬥之勇、程普之光輝、西門慶之光輝、荀攸之光輝、徐庶之光輝、周倉之光輝、茶茶之光輝、孔融之光輝、毒士之光輝"
@@ -424,6 +456,7 @@
     "approach_a": "說明",
     "maplv": "30-39",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "",
     "drop_glory_low": ""
@@ -437,6 +470,7 @@
     "approach_a": "要",
     "maplv": "89-100",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "周通之光輝、虎威之光輝、子龍之光輝、神醫之光輝、男僕之光輝、太師之光輝、宋江之光輝、女僕之光輝",
     "drop_glory_low": "錦衣之光輝、南蠻王之光輝、穆容之光輝、羲皇之光、臥龍之光輝、武宣光輝、昭烈光輝、潘淑光輝"
@@ -450,6 +484,7 @@
     "approach_a": "要",
     "maplv": "89-100",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "周通之光輝、虎威之光輝、子龍之光輝、神醫之光輝、男僕之光輝、太師之光輝、宋江之光輝、女僕之光輝",
     "drop_glory_low": "錦衣之光輝、南蠻王之光輝、穆容之光輝、羲皇之光、臥龍之光輝、武宣光輝、昭烈光輝、潘淑光輝"
@@ -463,6 +498,7 @@
     "approach_a": "要",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "人公之光輝、益德之光輝、張苞之光輝、蔣敬之光輝、燕青之光輝、好人卡象徵、姬發之光輝、武吉之光輝、韋馱天之光",
     "drop_glory_low": "項充之光輝、虎騎之勇、魔鬥之勇、程普之光輝、西門慶之光輝、荀攸之光輝、徐庶之光輝、周倉之光輝、茶茶之光輝、孔融之光輝、毒士之光輝"
@@ -476,6 +512,7 @@
     "approach_a": "",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "",
     "drop_glory_low": "武宣光輝、昭烈光輝、潘淑光輝"
@@ -489,6 +526,7 @@
     "approach_a": "",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "劍器之光輝、馬超之光輝、曹洪之光輝、廖化之光輝、諸葛瑾之光輝、潘金蓮之光輝、鳳雛之光輝、孫權之光輝、安道全之光輝、兔女郎之光、青龍星之光",
     "drop_glory_low": "安樂之光輝、石秀之光輝、蔣敬之光輝、魯肅之光輝、增長之光、周泰之光輝、武大郎之光輝、董平之光輝、馬忠之光輝、魏定國之光輝、張清之光輝、奉孝之光輝、呼延灼之光輝、糜夫人之光輝、李袞之光輝、劉唐之光輝、蕭讓之光輝、顧大嫂之光輝"
@@ -502,6 +540,7 @@
     "approach_a": "",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "土府星之光、藥王之光、蟠桃之光輝、惡鬼之光輝",
     "drop_glory_low": "桃花星之光"
@@ -515,6 +554,7 @@
     "approach_a": "",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "花榮之光輝、巖流秘劍之徵、于吉之光輝、響馬茜之光輝、九尾狐之徵",
     "drop_glory_low": "白衣之光輝"
@@ -528,6 +568,7 @@
     "approach_a": "",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "",
     "drop_glory_low": ""
@@ -541,6 +582,7 @@
     "approach_a": "",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "",
     "drop_glory_low": ""
@@ -554,6 +596,7 @@
     "approach_a": "",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "",
     "drop_glory_low": ""
@@ -567,6 +610,7 @@
     "approach_a": "城鎮",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "",
     "drop_glory_low": ""
@@ -580,6 +624,7 @@
     "approach_a": "",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "",
     "drop_glory_low": ""
@@ -593,6 +638,7 @@
     "approach_a": "",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "",
     "drop_glory_low": ""
@@ -606,6 +652,7 @@
     "approach_a": "",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "",
     "drop_glory_low": ""
@@ -619,6 +666,7 @@
     "approach_a": "",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "",
     "drop_glory_low": ""
@@ -632,6 +680,7 @@
     "approach_a": "",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "",
     "drop_glory_low": ""
@@ -645,6 +694,7 @@
     "approach_a": "城鎮",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "",
     "drop_glory_low": ""
@@ -658,6 +708,7 @@
     "approach_a": "",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "張松之光輝、項充之光輝、豹騎之勇、虎騎之勇、魔鬥之勇",
     "drop_glory_low": ""
@@ -671,6 +722,7 @@
     "approach_a": "",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "周通之光輝、虎威之光輝、子龍之光輝、神醫之光輝、男僕之光輝、太師之光輝、宋江之光輝、女僕之光輝",
     "drop_glory_low": "錦衣之光輝、南蠻王之光輝、穆容之光輝、羲皇之光、臥龍之光輝"
@@ -684,6 +736,7 @@
     "approach_a": "",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "周郎之光輝、孫二娘之光輝、盧俊義之光輝、阮小二之光輝、石秀之光輝、忍者之光、龍鬥之勇",
     "drop_glory_low": "諸葛惠之光輝"
@@ -697,6 +750,7 @@
     "approach_a": "",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "劍器之光輝、馬超之光輝、鳳雛之光輝、孫權之光輝、安道全之光輝、兔女郎之光、青龍星之光",
     "drop_glory_low": "安樂之光輝、石秀之光輝、蔣敬之光輝、魯肅之光輝、增長之光、周泰之光輝、武大郎之光輝、馬忠之光輝、魏定國之光輝、張清之光輝、奉孝之光輝、呼延灼之光輝、糜夫人之光輝、李袞之光輝、劉唐之光輝、蕭讓之光輝、顧大嫂之光輝"
@@ -710,6 +764,7 @@
     "approach_a": "",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "劍器之光輝、馬超之光輝、鳳雛之光輝、孫權之光輝、安道全之光輝、兔女郎之光、青龍星之光",
     "drop_glory_low": "安樂之光輝、石秀之光輝、蔣敬之光輝、魯肅之光輝、增長之光、周泰之光輝、武大郎之光輝、馬忠之光輝、魏定國之光輝、張清之光輝、奉孝之光輝、呼延灼之光輝、糜夫人之光輝、李袞之光輝、劉唐之光輝、蕭讓之光輝、顧大嫂之光輝"
@@ -723,6 +778,7 @@
     "approach_a": "",
     "maplv": "37-57",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "劍器之光輝、馬超之光輝、鳳雛之光輝、孫權之光輝、安道全之光輝、兔女郎之光、青龍星之光",
     "drop_glory_low": "安樂之光輝、石秀之光輝、蔣敬之光輝、魯肅之光輝、增長之光、周泰之光輝、武大郎之光輝、馬忠之光輝、魏定國之光輝、張清之光輝、奉孝之光輝、呼延灼之光輝、糜夫人之光輝、李袞之光輝、劉唐之光輝、蕭讓之光輝、顧大嫂之光輝"
@@ -736,6 +792,7 @@
     "approach_a": "",
     "maplv": "46-59",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "劍器之光輝、馬超之光輝、鳳雛之光輝、孫權之光輝、安道全之光輝、兔女郎之光、青龍星之光",
     "drop_glory_low": "安樂之光輝、石秀之光輝、蔣敬之光輝、魯肅之光輝、增長之光、周泰之光輝、武大郎之光輝、馬忠之光輝、魏定國之光輝、張清之光輝、奉孝之光輝、呼延灼之光輝、糜夫人之光輝、李袞之光輝、劉唐之光輝、蕭讓之光輝、顧大嫂之光輝"
@@ -749,6 +806,7 @@
     "approach_a": "說明",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "",
     "drop_glory_low": ""
@@ -762,6 +820,7 @@
     "approach_a": "",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "",
     "drop_glory_low": ""
@@ -775,6 +834,7 @@
     "approach_a": "說明",
     "maplv": "71-85",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "毒士之光輝、警花之光、袁紹之光輝、小霸王之光輝、祝融之光輝、顏良之光輝、阮小七之光輝",
     "drop_glory_low": "孫權之光輝、青龍星之光、瓊霄之光輝、火府星之光、麒麟之光輝、天使之光、李逵之光輝、執年歲君之徵、智多星之光輝"
@@ -788,6 +848,7 @@
     "approach_a": "",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "周郎之光輝、孫二娘之光輝、盧俊義之光輝、阮小二之光輝、石秀之光輝、忍者之光、龍鬥之勇",
     "drop_glory_low": "諸葛惠之光輝"
@@ -801,6 +862,7 @@
     "approach_a": "說明",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "周郎之光輝、孫二娘之光輝、盧俊義之光輝、阮小二之光輝、石秀之光輝、忍者之光、龍鬥之勇",
     "drop_glory_low": "諸葛惠之光輝"
@@ -814,6 +876,7 @@
     "approach_a": "",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "人公之光輝、益德之光輝、張苞之光輝、蔣敬之光輝、燕青之光輝、好人卡象徵、姬發之光輝、武吉之光輝、韋馱天之光",
     "drop_glory_low": "項充之光輝、虎騎之勇、魔鬥之勇、程普之光輝、西門慶之光輝、荀攸之光輝、徐庶之光輝、周倉之光輝、茶茶之光輝、孔融之光輝、毒士之光輝"
@@ -827,6 +890,7 @@
     "approach_a": "城鎮",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "茶茶之光輝、雲中子光輝、天喜之光、通天玉晨之徵、玉琵琶之徵、司馬懿之光輝、火府星之光",
     "drop_glory_low": "周郎之光輝、水靈之光、二郎之徵、史進之光輝、文曲之光、安道全之光輝、法正之光輝、紅鸞星之光、惡魔之光輝、楊鳳兒之光輝、關銀屏之光輝、太師之光輝、惡鬼之光輝"
@@ -840,6 +904,7 @@
     "approach_a": "",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "茶茶之光輝、雲中子光輝、天喜之光、通天玉晨之徵、玉琵琶之徵、司馬懿之光輝、火府星之光",
     "drop_glory_low": "周郎之光輝、水靈之光、二郎之徵、史進之光輝、文曲之光、安道全之光輝、法正之光輝、紅鸞星之光、惡魔之光輝、楊鳳兒之光輝、關銀屏之光輝、太師之光輝、惡鬼之光輝"
@@ -853,6 +918,7 @@
     "approach_a": "",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "茶茶之光輝、雲中子光輝、天喜之光、通天玉晨之徵、玉琵琶之徵、司馬懿之光輝、火府星之光",
     "drop_glory_low": "周郎之光輝、水靈之光、二郎之徵、史進之光輝、文曲之光、安道全之光輝、法正之光輝、紅鸞星之光、惡魔之光輝、楊鳳兒之光輝、關銀屏之光輝、太師之光輝、惡鬼之光輝"
@@ -866,6 +932,7 @@
     "approach_a": "說明",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "楊修之光輝、張遼之光輝、蕭讓之光輝、天師道之光輝、貂蟬之光輝、雲長之光輝、穆容之光輝",
     "drop_glory_low": "黃月英之光輝、林沖之光輝、夏侯惇之光輝、昭姬之光輝"
@@ -879,6 +946,7 @@
     "approach_a": "說明",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "楊修之光輝、張遼之光輝、蕭讓之光輝、天師道之光輝、貂蟬之光輝、雲長之光輝、穆容之光輝",
     "drop_glory_low": "黃月英之光輝、林沖之光輝、夏侯惇之光輝、昭姬之光輝"
@@ -892,6 +960,7 @@
     "approach_a": "說明",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "楊修之光輝、張遼之光輝、蕭讓之光輝、天師道之光輝、貂蟬之光輝、雲長之光輝、穆容之光輝",
     "drop_glory_low": "黃月英之光輝、林沖之光輝、夏侯惇之光輝、昭姬之光輝"
@@ -905,6 +974,7 @@
     "approach_a": "說明",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "楊修之光輝、張遼之光輝、蕭讓之光輝、天師道之光輝、貂蟬之光輝、雲長之光輝、穆容之光輝",
     "drop_glory_low": "黃月英之光輝、林沖之光輝、夏侯惇之光輝、昭姬之光輝"
@@ -918,6 +988,7 @@
     "approach_a": "說明",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "楊修之光輝、張遼之光輝、蕭讓之光輝、天師道之光輝、貂蟬之光輝、雲長之光輝、穆容之光輝",
     "drop_glory_low": "黃月英之光輝、林沖之光輝、夏侯惇之光輝、昭姬之光輝"
@@ -931,6 +1002,7 @@
     "approach_a": "說明",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "楊修之光輝、張遼之光輝、蕭讓之光輝、天師道之光輝、貂蟬之光輝、雲長之光輝、穆容之光輝",
     "drop_glory_low": "黃月英之光輝、林沖之光輝、夏侯惇之光輝、昭姬之光輝"
@@ -944,6 +1016,7 @@
     "approach_a": "說明",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "陸遜之光輝、龐德之光輝、二天一流之徵、臥龍之光輝、無雙的威光",
     "drop_glory_low": "太公望之光輝、虎癡之光輝、古佛之徵"
@@ -957,6 +1030,7 @@
     "approach_a": "說明",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "陸遜之光輝、龐德之光輝、二天一流之徵、臥龍之光輝、無雙的威光",
     "drop_glory_low": "太公望之光輝、虎癡之光輝、古佛之徵"
@@ -970,12 +1044,27 @@
     "approach_a": "城鎮",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "",
     "drop_glory_low": ""
   },
   {
-    "mapid": "皇陵-前殿",
+    "mapid": "神道",
+    "def": "",
+    "dodge": "",
+    "approach": "",
+    "illustrate": "",
+    "approach_a": "城鎮",
+    "maplv": "",
+    "monster": "",
+    "monster_atk": "",
+    "drop_rubbish": "",
+    "drop_glory_high": "",
+    "drop_glory_low": ""
+  },
+  {
+    "mapid": "皇陵前殿",
     "def": "",
     "dodge": "",
     "approach": "",
@@ -983,12 +1072,13 @@
     "approach_a": "要",
     "maplv": "75-88",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "周倉之光輝、分水之光輝、小蘿之光輝、楊志之光輝、魔精之光、紅鸞星之光、瓊霄之光輝",
     "drop_glory_low": "王佐之光輝、人公之光輝、七殺星之光、通天玉晨之徵、金龍如意之徵、芙蓉之光輝、祝融之光輝、貂蟬之光輝、雲長之光輝、神醫之光輝"
   },
   {
-    "mapid": "皇陵-中殿",
+    "mapid": "皇陵中殿",
     "def": "",
     "dodge": "",
     "approach": "",
@@ -996,12 +1086,13 @@
     "approach_a": "要",
     "maplv": "77-90",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "周倉之光輝、分水之光輝、小蘿之光輝、楊志之光輝、魔精之光、紅鸞星之光、瓊霄之光輝",
     "drop_glory_low": "王佐之光輝、人公之光輝、七殺星之光、通天玉晨之徵、金龍如意之徵、芙蓉之光輝、祝融之光輝、貂蟬之光輝、雲長之光輝、神醫之光輝"
   },
   {
-    "mapid": "皇陵-迴廊",
+    "mapid": "皇陵迴廊",
     "def": "",
     "dodge": "",
     "approach": "",
@@ -1009,12 +1100,13 @@
     "approach_a": "要",
     "maplv": "79-92",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "周倉之光輝、分水之光輝、小蘿之光輝、楊志之光輝、魔精之光、紅鸞星之光、瓊霄之光輝",
     "drop_glory_low": "王佐之光輝、人公之光輝、七殺星之光、通天玉晨之徵、金龍如意之徵、芙蓉之光輝、祝融之光輝、貂蟬之光輝、雲長之光輝、神醫之光輝"
   },
   {
-    "mapid": "皇陵-通道",
+    "mapid": "皇陵通道",
     "def": "",
     "dodge": "",
     "approach": "",
@@ -1022,12 +1114,13 @@
     "approach_a": "要",
     "maplv": "81-94",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "周倉之光輝、分水之光輝、小蘿之光輝、楊志之光輝、魔精之光、紅鸞星之光、瓊霄之光輝",
     "drop_glory_low": "王佐之光輝、人公之光輝、七殺星之光、通天玉晨之徵、金龍如意之徵、芙蓉之光輝、祝融之光輝、貂蟬之光輝、雲長之光輝、神醫之光輝"
   },
   {
-    "mapid": "皇陵-正殿",
+    "mapid": "皇陵正殿",
     "def": "",
     "dodge": "",
     "approach": "",
@@ -1035,6 +1128,7 @@
     "approach_a": "要",
     "maplv": "83-96",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "周倉之光輝、分水之光輝、小蘿之光輝、楊志之光輝、魔精之光、紅鸞星之光、瓊霄之光輝",
     "drop_glory_low": "王佐之光輝、人公之光輝、七殺星之光、通天玉晨之徵、金龍如意之徵、芙蓉之光輝、祝融之光輝、貂蟬之光輝、雲長之光輝、神醫之光輝"
@@ -1048,6 +1142,7 @@
     "approach_a": "",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "西門慶之光輝、高俅之光輝、宋徽宗之光輝、四聖大元帥錄",
     "drop_glory_low": "搏浪之光輝、小蘿之光輝、夏侯淵之光輝、樊瑞之光輝、雲中子光輝、貌端星之光"
@@ -1061,6 +1156,7 @@
     "approach_a": "",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "徐庶之光輝、張順之光輝、奉孝之光輝、雅帝之光輝、孫尚香之光輝、巫毒之光",
     "drop_glory_low": "阮小二之光輝、燕青之光輝、炳靈公之光、妖鬥之勇、兔女郎之光、天喜之光、江東猛虎之光輝、小霸王之光輝"
@@ -1074,6 +1170,7 @@
     "approach_a": "",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "徐庶之光輝、張順之光輝、奉孝之光輝、雅帝之光輝、孫尚香之光輝、巫毒之光",
     "drop_glory_low": "阮小二之光輝、燕青之光輝、炳靈公之光、妖鬥之勇、兔女郎之光、天喜之光、江東猛虎之光輝、小霸王之光輝"
@@ -1087,6 +1184,7 @@
     "approach_a": "",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "徐庶之光輝、張順之光輝、奉孝之光輝、雅帝之光輝、孫尚香之光輝、巫毒之光",
     "drop_glory_low": "阮小二之光輝、燕青之光輝、炳靈公之光、妖鬥之勇、兔女郎之光、天喜之光、江東猛虎之光輝、小霸王之光輝"
@@ -1100,6 +1198,7 @@
     "approach_a": "",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "周郎之光輝、孫二娘之光輝、盧俊義之光輝、阮小二之光輝、石秀之光輝、忍者之光、龍鬥之勇",
     "drop_glory_low": "諸葛惠之光輝"
@@ -1113,6 +1212,7 @@
     "approach_a": "",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "",
     "drop_glory_low": ""
@@ -1126,6 +1226,7 @@
     "approach_a": "",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "田豐之光輝、錦衣之光輝、王佐之光輝、黃月英之光輝、馬良之光輝、小喬之光輝",
     "drop_glory_low": "楊修之光輝"
@@ -1139,6 +1240,7 @@
     "approach_a": "",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "人公之光輝、益德之光輝、張苞之光輝、蔣敬之光輝、燕青之光輝、好人卡象徵、姬發之光輝、武吉之光輝、韋馱天之光",
     "drop_glory_low": "項充之光輝、虎騎之勇、魔鬥之勇、程普之光輝、西門慶之光輝、荀攸之光輝、徐庶之光輝、周倉之光輝、茶茶之光輝、孔融之光輝、毒士之光輝"
@@ -1152,6 +1254,7 @@
     "approach_a": "城鎮",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "",
     "drop_glory_low": ""
@@ -1165,6 +1268,7 @@
     "approach_a": "",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "救世主之光、獵豹之光輝、文曲之光",
     "drop_glory_low": "聖鬥之光輝、瓊英之光輝、多聞之光、托塔之光輝、夏麗之光輝、高俅之光輝、朱武之光輝"
@@ -1178,6 +1282,7 @@
     "approach_a": "",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "救世主之光、獵豹之光輝、文曲之光",
     "drop_glory_low": "聖鬥之光輝、瓊英之光輝、多聞之光、托塔之光輝、夏麗之光輝、高俅之光輝、朱武之光輝"
@@ -1191,6 +1296,7 @@
     "approach_a": "",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "救世主之光、獵豹之光輝、文曲之光",
     "drop_glory_low": "聖鬥之光輝、瓊英之光輝、多聞之光、托塔之光輝、夏麗之光輝、高俅之光輝、朱武之光輝"
@@ -1204,6 +1310,7 @@
     "approach_a": "",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "救世主之光、獵豹之光輝、文曲之光",
     "drop_glory_low": "聖鬥之光輝、瓊英之光輝、多聞之光、托塔之光輝、夏麗之光輝、高俅之光輝、朱武之光輝"
@@ -1217,6 +1324,7 @@
     "approach_a": "要",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "黃蓋之光輝、李袞之光輝、木鹿之光輝、芙蓉之光輝、天齊仁之光、楊鳳兒之光輝、單廷珪之光輝、白衣之光輝",
     "drop_glory_low": ""
@@ -1230,6 +1338,7 @@
     "approach_a": "要",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "黃蓋之光輝、李袞之光輝、木鹿之光輝、芙蓉之光輝、天齊仁之光、楊鳳兒之光輝、單廷珪之光輝、白衣之光輝",
     "drop_glory_low": ""
@@ -1243,6 +1352,7 @@
     "approach_a": "要",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "黃蓋之光輝、李袞之光輝、木鹿之光輝、芙蓉之光輝、天齊仁之光、楊鳳兒之光輝、單廷珪之光輝、白衣之光輝",
     "drop_glory_low": ""
@@ -1256,6 +1366,7 @@
     "approach_a": "要",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "黃蓋之光輝、李袞之光輝、木鹿之光輝、芙蓉之光輝、天齊仁之光、楊鳳兒之光輝、單廷珪之光輝、白衣之光輝",
     "drop_glory_low": ""
@@ -1269,6 +1380,7 @@
     "approach_a": "要",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "黃蓋之光輝、李袞之光輝、木鹿之光輝、芙蓉之光輝、天齊仁之光、楊鳳兒之光輝、單廷珪之光輝、白衣之光輝",
     "drop_glory_low": ""
@@ -1282,6 +1394,7 @@
     "approach_a": "要",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "黃蓋之光輝、李袞之光輝、木鹿之光輝、芙蓉之光輝、天齊仁之光、楊鳳兒之光輝、單廷珪之光輝、白衣之光輝",
     "drop_glory_low": ""
@@ -1295,6 +1408,7 @@
     "approach_a": "要",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "黃蓋之光輝、李袞之光輝、木鹿之光輝、芙蓉之光輝、天齊仁之光、楊鳳兒之光輝、單廷珪之光輝、白衣之光輝",
     "drop_glory_low": ""
@@ -1308,6 +1422,7 @@
     "approach_a": "城鎮",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "",
     "drop_glory_low": ""
@@ -1321,6 +1436,7 @@
     "approach_a": "",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "田豐之光輝、錦衣之光輝、王佐之光輝、黃月英之光輝、馬良之光輝、小喬之光輝",
     "drop_glory_low": "楊修之光輝"
@@ -1334,6 +1450,7 @@
     "approach_a": "",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "田豐之光輝、錦衣之光輝、王佐之光輝、黃月英之光輝、馬良之光輝、小喬之光輝",
     "drop_glory_low": "楊修之光輝"
@@ -1347,6 +1464,7 @@
     "approach_a": "",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "人公之光輝、益德之光輝、張苞之光輝、蔣敬之光輝、燕青之光輝、好人卡象徵、姬發之光輝、武吉之光輝、韋馱天之光",
     "drop_glory_low": "項充之光輝、虎騎之勇、魔鬥之勇、程普之光輝、西門慶之光輝、荀攸之光輝、徐庶之光輝、周倉之光輝、茶茶之光輝、孔融之光輝、毒士之光輝"
@@ -1360,6 +1478,7 @@
     "approach_a": "要",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "阮小五之光輝、朱武之光輝、搏浪之光輝、張清之光輝、彩衣之光輝、林沖之光輝、扈三娘之光輝、羅真人之光輝",
     "drop_glory_low": "潘金蓮之光輝、木鹿之光輝、張魯之光輝、天師道之光輝、魏延之光輝、孟德之光輝、蟠桃之光輝、花榮之光輝、龐德之光輝"
@@ -1373,6 +1492,7 @@
     "approach_a": "要",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "阮小五之光輝、朱武之光輝、搏浪之光輝、張清之光輝、彩衣之光輝、林沖之光輝、扈三娘之光輝、羅真人之光輝",
     "drop_glory_low": "潘金蓮之光輝、木鹿之光輝、張魯之光輝、天師道之光輝、魏延之光輝、孟德之光輝、蟠桃之光輝、花榮之光輝、龐德之光輝"
@@ -1386,6 +1506,7 @@
     "approach_a": "要",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "阮小五之光輝、朱武之光輝、搏浪之光輝、張清之光輝、彩衣之光輝、林沖之光輝、扈三娘之光輝、羅真人之光輝",
     "drop_glory_low": "潘金蓮之光輝、木鹿之光輝、張魯之光輝、天師道之光輝、魏延之光輝、孟德之光輝、蟠桃之光輝、花榮之光輝、龐德之光輝"
@@ -1399,6 +1520,7 @@
     "approach_a": "要",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "阮小五之光輝、朱武之光輝、搏浪之光輝、張清之光輝、彩衣之光輝、林沖之光輝、扈三娘之光輝、羅真人之光輝",
     "drop_glory_low": "潘金蓮之光輝、木鹿之光輝、張魯之光輝、天師道之光輝、魏延之光輝、孟德之光輝、蟠桃之光輝、花榮之光輝、龐德之光輝"
@@ -1412,6 +1534,7 @@
     "approach_a": "",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "",
     "drop_glory_low": ""
@@ -1425,6 +1548,7 @@
     "approach_a": "",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "西門慶之光輝、高俅之光輝、宋徽宗之光輝、四聖大元帥錄",
     "drop_glory_low": "搏浪之光輝、小蘿之光輝、夏侯淵之光輝、樊瑞之光輝、雲中子光輝、貌端星之光"
@@ -1438,6 +1562,7 @@
     "approach_a": "城鎮",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "",
     "drop_glory_low": ""
@@ -1451,6 +1576,7 @@
     "approach_a": "",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "田豐之光輝、錦衣之光輝、王佐之光輝、黃月英之光輝、馬良之光輝、小喬之光輝",
     "drop_glory_low": "楊修之光輝"
@@ -1464,6 +1590,7 @@
     "approach_a": "城鎮",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "",
     "drop_glory_low": ""
@@ -1477,6 +1604,7 @@
     "approach_a": "",
     "maplv": "46-69",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "太公望之光輝、七殺星之光、斬仙之光、增長之光、多聞之光、持國之光、廣目之光",
     "drop_glory_low": "阮小五之光輝、地后星之光、黃蓋之光輝、警花之光、虎威之光輝、藥王之光、秘醫之跡、陸遜之光輝"
@@ -1490,6 +1618,7 @@
     "approach_a": "",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "太公望之光輝、七殺星之光、斬仙之光、增長之光、多聞之光、持國之光、廣目之光",
     "drop_glory_low": "阮小五之光輝、地后星之光、黃蓋之光輝、警花之光、虎威之光輝、藥王之光、秘醫之跡、陸遜之光輝"
@@ -1503,6 +1632,7 @@
     "approach_a": "",
     "maplv": "60-75",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "地公之光輝、曹植之光輝、魯肅之光輝、瓊英之光輝、水靈之光",
     "drop_glory_low": "忍者之光、張苞之光輝、小玲之光輝、碧霄之光輝、小艾之光輝、周通之光輝、土府星之光"
@@ -1516,6 +1646,7 @@
     "approach_a": "",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "",
     "drop_glory_low": ""
@@ -1529,6 +1660,7 @@
     "approach_a": "",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "程普之光輝、小倩之光輝、古之惡來光輝、武大郎之光輝、熱血之證、阿魯巴巴之光輝、九頭雉之徵",
     "drop_glory_low": "鐘會之光輝、盧俊義之光輝、姬發之光輝、程昱之光輝、關興之光輝、張遼之光輝、子龍之光輝、雷聲普化之徵、鄧飛之光輝、大喬之光輝、六合星之光"
@@ -1542,6 +1674,7 @@
     "approach_a": "",
     "maplv": "72-79",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "張郃之光輝、周泰之光輝、裴宣之光輝、托塔之光輝、二郎之徵、炳靈公之光",
     "drop_glory_low": "曹貴人之光輝、韋馱天之光、廣目之光、小倩之光輝、劍器之光輝、甘寧之光輝、張順之光輝、文醜之光輝、袁紹之光輝"
@@ -1555,6 +1688,7 @@
     "approach_a": "",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "",
     "drop_glory_low": ""
@@ -1568,6 +1702,7 @@
     "approach_a": "",
     "maplv": "79-85",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "地后星之光、沙摩柯之光輝、貌端星之光、呼延灼之光輝、普賢之光、夏侯惇之光輝、太史慈之光輝、武松之光輝、柴進之光輝、桃花星之光",
     "drop_glory_low": "豹騎之勇、武吉之光輝、張郃之光輝、救苦天尊之跡、諸葛瑾之光輝、彩衣之光輝、黃忠之光輝、晁蓋之光輝、一清之光輝、單廷珪之光輝、魯智深之光輝"
@@ -1581,6 +1716,7 @@
     "approach_a": "",
     "maplv": "84-87",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "地后星之光、沙摩柯之光輝、貌端星之光、呼延灼之光輝、普賢之光、夏侯惇之光輝、太史慈之光輝、武松之光輝、柴進之光輝、桃花星之光",
     "drop_glory_low": "豹騎之勇、武吉之光輝、張郃之光輝、救苦天尊之跡、諸葛瑾之光輝、彩衣之光輝、黃忠之光輝、晁蓋之光輝、一清之光輝、單廷珪之光輝、魯智深之光輝"
@@ -1594,6 +1730,7 @@
     "approach_a": "",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "張郃之光輝、周泰之光輝、裴宣之光輝、托塔之光輝、二郎之徵、炳靈公之光",
     "drop_glory_low": "曹貴人之光輝、韋馱天之光、廣目之光、小倩之光輝、劍器之光輝、甘寧之光輝、張順之光輝、文醜之光輝、袁紹之光輝"
@@ -1607,6 +1744,7 @@
     "approach_a": "",
     "maplv": "95-100",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "大喬之光輝、徐晃之光輝、太歲之光、媧皇之光、古佛之徵",
     "drop_glory_low": "司馬懿之光輝、響馬茜之光輝"
@@ -1620,6 +1758,7 @@
     "approach_a": "",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "小艾之光輝、劉唐之光輝、五穀星之光、關銀屏之光輝、王進之光輝、李逵之光輝",
     "drop_glory_low": "馬良之光輝、柴進之光輝、原初粉塵"
@@ -1633,6 +1772,7 @@
     "approach_a": "城鎮",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "",
     "drop_glory_low": ""
@@ -1646,6 +1786,7 @@
     "approach_a": "",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "程普之光輝、小倩之光輝、古之惡來光輝、武大郎之光輝、熱血之證、阿魯巴巴之光輝、九頭雉之徵",
     "drop_glory_low": "鐘會之光輝、盧俊義之光輝、姬發之光輝、程昱之光輝、關興之光輝、張遼之光輝、子龍之光輝、雷聲普化之徵、鄧飛之光輝、大喬之光輝、六合星之光"
@@ -1659,6 +1800,7 @@
     "approach_a": "",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "程普之光輝、小倩之光輝、古之惡來光輝、武大郎之光輝、熱血之證、阿魯巴巴之光輝、九頭雉之徵",
     "drop_glory_low": "鐘會之光輝、盧俊義之光輝、姬發之光輝、程昱之光輝、關興之光輝、張遼之光輝、子龍之光輝、雷聲普化之徵、鄧飛之光輝、大喬之光輝、六合星之光"
@@ -1672,6 +1814,7 @@
     "approach_a": "",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "龍騎之勇、夏侯淵之光輝、樊瑞之光輝、鄧艾之光輝、馬岱之光輝、晁蓋之光輝、惡魔之光輝",
     "drop_glory_low": "大賢之光輝、地公之光輝、九頭雉之徵、四聖大元帥錄、羅真人之光輝、呂虎威之光輝、魔精之光、玉琵琶之徵、普賢之光、關勝之光輝、天齊仁之光、顏良之光輝、劉備之光輝、五穀星之光、男僕之光輝、雲霄之光輝"
@@ -1685,6 +1828,7 @@
     "approach_a": "",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "鄧飛之光輝、顧大嫂之光輝、孟德之光輝、智多星之光輝、原初粉塵、昭姬之光輝",
     "drop_glory_low": "阿魯巴巴之光輝、救世主之光、太史慈之光輝"
@@ -1698,6 +1842,7 @@
     "approach_a": "城鎮",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "",
     "drop_glory_low": ""
@@ -1711,6 +1856,7 @@
     "approach_a": "城鎮",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "",
     "drop_glory_low": ""
@@ -1724,6 +1870,7 @@
     "approach_a": "",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "史進之光輝、夏麗之光輝、妖鬥之勇、三太子之光輝、風雷之光輝、救苦天尊之跡",
     "drop_glory_low": "持國之光、熱血之證、馬超之光輝、甄洛之光輝、分水之光輝、龍騎之勇、沙摩柯之光輝"
@@ -1737,6 +1884,7 @@
     "approach_a": "",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "史進之光輝、夏麗之光輝、妖鬥之勇、三太子之光輝、風雷之光輝、救苦天尊之跡",
     "drop_glory_low": "持國之光、熱血之證、馬超之光輝、甄洛之光輝、分水之光輝、龍騎之勇、沙摩柯之光輝"
@@ -1750,6 +1898,7 @@
     "approach_a": "",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "史進之光輝、夏麗之光輝、妖鬥之勇、三太子之光輝、風雷之光輝、救苦天尊之跡",
     "drop_glory_low": "持國之光、熱血之證、馬超之光輝、甄洛之光輝、分水之光輝、龍騎之勇、沙摩柯之光輝"
@@ -1763,6 +1912,7 @@
     "approach_a": "要",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "孔融之光輝、碧霄之光輝、文醜之光輝、程昱之光輝、糜夫人之光輝、戴宗之光輝、江東猛虎之光輝、關勝之光輝",
     "drop_glory_low": "風雷之光輝、獵豹之光輝、扈三娘之光輝、楊志之光輝、武松之光輝、倭王之光輝、女僕之光輝"
@@ -1776,6 +1926,7 @@
     "approach_a": "要",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "孔融之光輝、碧霄之光輝、文醜之光輝、程昱之光輝、糜夫人之光輝、戴宗之光輝、江東猛虎之光輝、關勝之光輝",
     "drop_glory_low": "風雷之光輝、獵豹之光輝、扈三娘之光輝、楊志之光輝、武松之光輝、倭王之光輝、女僕之光輝"
@@ -1789,6 +1940,7 @@
     "approach_a": "要",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "孔融之光輝、碧霄之光輝、文醜之光輝、程昱之光輝、糜夫人之光輝、戴宗之光輝、江東猛虎之光輝、關勝之光輝",
     "drop_glory_low": "風雷之光輝、獵豹之光輝、扈三娘之光輝、楊志之光輝、武松之光輝、倭王之光輝、女僕之光輝"
@@ -1802,6 +1954,7 @@
     "approach_a": "要",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "雲霄之光輝、袁術之光輝、虎癡之光輝",
     "drop_glory_low": "三太子之光輝、馬岱之光輝、無雙的威光"
@@ -1815,6 +1968,7 @@
     "approach_a": "要",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "秘醫之跡、六合星之光、凌震之光輝、羲皇之光",
     "drop_glory_low": "雅帝之光輝、孫尚香之光輝、九尾狐之徵"
@@ -1828,6 +1982,7 @@
     "approach_a": "要",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "周郎之光輝、孫二娘之光輝、盧俊義之光輝、阮小二之光輝、石秀之光輝、忍者之光、龍鬥之勇",
     "drop_glory_low": "諸葛惠之光輝"
@@ -1841,6 +1996,7 @@
     "approach_a": "",
     "maplv": "30-44",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "周郎之光輝、孫二娘之光輝、盧俊義之光輝、阮小二之光輝、石秀之光輝、忍者之光、龍鬥之勇",
     "drop_glory_low": "諸葛惠之光輝"
@@ -1854,6 +2010,7 @@
     "approach_a": "城鎮、說明",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "",
     "drop_glory_low": ""
@@ -1867,6 +2024,7 @@
     "approach_a": "城鎮",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "",
     "drop_glory_low": ""
@@ -1880,6 +2038,7 @@
     "approach_a": "",
     "maplv": "40-56",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "人公之光輝、益德之光輝、張苞之光輝、蔣敬之光輝、燕青之光輝、好人卡象徵、姬發之光輝、武吉之光輝、韋馱天之光",
     "drop_glory_low": "項充之光輝、虎騎之勇、魔鬥之勇、程普之光輝、西門慶之光輝、荀攸之光輝、徐庶之光輝、周倉之光輝、茶茶之光輝、孔融之光輝、毒士之光輝"
@@ -1893,6 +2052,7 @@
     "approach_a": "",
     "maplv": "60-78",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "地公之光輝、曹植之光輝、魯肅之光輝、瓊英之光輝、水靈之光",
     "drop_glory_low": "忍者之光、張苞之光輝、小玲之光輝、碧霄之光輝、小艾之光輝、周通之光輝、土府星之光"
@@ -1906,6 +2066,7 @@
     "approach_a": "城鎮",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "",
     "drop_glory_low": ""
@@ -1919,6 +2080,7 @@
     "approach_a": "",
     "maplv": "70-88",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "程普之光輝、小倩之光輝、古之惡來光輝、武大郎之光輝、熱血之證、阿魯巴巴之光輝、九頭雉之徵",
     "drop_glory_low": "鐘會之光輝、盧俊義之光輝、姬發之光輝、程昱之光輝、關興之光輝、張遼之光輝、子龍之光輝、雷聲普化之徵、鄧飛之光輝、大喬之光輝、六合星之光"
@@ -1932,6 +2094,7 @@
     "approach_a": "洞窟",
     "maplv": "80-93",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "諸葛惠之光輝、雷聲普化之徵、董平之光輝、魏延之光輝、胡車兒之光輝、執年歲君之徵、天眼之光輝",
     "drop_glory_low": "龍鬥之勇、益德之光輝、鳳雛之光輝、媧皇之光"
@@ -1945,6 +2108,7 @@
     "approach_a": "洞窟",
     "maplv": "80-93",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "諸葛惠之光輝、雷聲普化之徵、董平之光輝、魏延之光輝、胡車兒之光輝、執年歲君之徵、天眼之光輝",
     "drop_glory_low": "龍鬥之勇、益德之光輝、鳳雛之光輝、媧皇之光"
@@ -1958,6 +2122,7 @@
     "approach_a": "洞窟",
     "maplv": "90-96",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "諸葛惠之光輝、雷聲普化之徵、董平之光輝、魏延之光輝、胡車兒之光輝、執年歲君之徵、天眼之光輝",
     "drop_glory_low": "龍鬥之勇、益德之光輝、鳳雛之光輝、媧皇之光"
@@ -1971,6 +2136,7 @@
     "approach_a": "洞窟",
     "maplv": "90-96",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "鄧飛之光輝、顧大嫂之光輝、孟德之光輝、智多星之光輝、原初粉塵、昭姬之光輝",
     "drop_glory_low": "阿魯巴巴之光輝、救世主之光、太史慈之光輝"
@@ -1984,6 +2150,7 @@
     "approach_a": "",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "人公之光輝、益德之光輝、張苞之光輝、蔣敬之光輝、燕青之光輝、好人卡象徵、姬發之光輝、武吉之光輝、韋馱天之光",
     "drop_glory_low": "項充之光輝、虎騎之勇、魔鬥之勇、程普之光輝、西門慶之光輝、荀攸之光輝、徐庶之光輝、周倉之光輝、茶茶之光輝、孔融之光輝、毒士之光輝"
@@ -1997,6 +2164,7 @@
     "approach_a": "",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "程普之光輝、小倩之光輝、古之惡來光輝、武大郎之光輝、熱血之證、阿魯巴巴之光輝、九頭雉之徵",
     "drop_glory_low": "鐘會之光輝、盧俊義之光輝、姬發之光輝、程昱之光輝、關興之光輝、張遼之光輝、子龍之光輝、雷聲普化之徵、鄧飛之光輝、大喬之光輝、六合星之光"
@@ -2010,6 +2178,7 @@
     "approach_a": "",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "人公之光輝、益德之光輝、張苞之光輝、蔣敬之光輝、燕青之光輝、好人卡象徵、姬發之光輝、武吉之光輝、韋馱天之光",
     "drop_glory_low": "項充之光輝、虎騎之勇、魔鬥之勇、程普之光輝、西門慶之光輝、荀攸之光輝、徐庶之光輝、周倉之光輝、茶茶之光輝、孔融之光輝、毒士之光輝"
@@ -2023,6 +2192,7 @@
     "approach_a": "",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "程普之光輝、小倩之光輝、古之惡來光輝、武大郎之光輝、熱血之證、阿魯巴巴之光輝、九頭雉之徵",
     "drop_glory_low": "鐘會之光輝、盧俊義之光輝、姬發之光輝、程昱之光輝、關興之光輝、張遼之光輝、子龍之光輝、雷聲普化之徵、鄧飛之光輝、大喬之光輝、六合星之光"
@@ -2036,6 +2206,7 @@
     "approach_a": "",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "程普之光輝、小倩之光輝、古之惡來光輝、武大郎之光輝、熱血之證、阿魯巴巴之光輝、九頭雉之徵",
     "drop_glory_low": "鐘會之光輝、盧俊義之光輝、姬發之光輝、程昱之光輝、關興之光輝、張遼之光輝、子龍之光輝、雷聲普化之徵、鄧飛之光輝、大喬之光輝、六合星之光"
@@ -2049,6 +2220,7 @@
     "approach_a": "城鎮",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "",
     "drop_glory_low": ""
@@ -2062,6 +2234,7 @@
     "approach_a": "",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "人公之光輝、益德之光輝、張苞之光輝、蔣敬之光輝、燕青之光輝、好人卡象徵、姬發之光輝、武吉之光輝、韋馱天之光",
     "drop_glory_low": "項充之光輝、虎騎之勇、魔鬥之勇、程普之光輝、西門慶之光輝、荀攸之光輝、徐庶之光輝、周倉之光輝、茶茶之光輝、孔融之光輝、毒士之光輝"
@@ -2075,6 +2248,7 @@
     "approach_a": "城鎮",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "",
     "drop_glory_low": ""
@@ -2088,6 +2262,7 @@
     "approach_a": "洞窟",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "小玲之光輝、金龍如意之徵、一清之光輝、麒麟之光輝、天使之光",
     "drop_glory_low": "阮小七之光輝、王進之光輝、宋江之光輝、于吉之光輝、徐晃之光輝、二天一流之徵"
@@ -2101,6 +2276,7 @@
     "approach_a": "洞窟",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "小玲之光輝、金龍如意之徵、一清之光輝、麒麟之光輝、天使之光",
     "drop_glory_low": "阮小七之光輝、王進之光輝、宋江之光輝、于吉之光輝、徐晃之光輝、二天一流之徵"
@@ -2114,6 +2290,7 @@
     "approach_a": "洞窟",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "鄧飛之光輝、顧大嫂之光輝、孟德之光輝、智多星之光輝、原初粉塵、昭姬之光輝",
     "drop_glory_low": "阿魯巴巴之光輝、救世主之光、太史慈之光輝"
@@ -2127,6 +2304,7 @@
     "approach_a": "",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "龍騎之勇、夏侯淵之光輝、樊瑞之光輝、鄧艾之光輝、馬岱之光輝、晁蓋之光輝、惡魔之光輝",
     "drop_glory_low": "大賢之光輝、地公之光輝、九頭雉之徵、四聖大元帥錄、羅真人之光輝、呂虎威之光輝、魔精之光、玉琵琶之徵、普賢之光、關勝之光輝、天齊仁之光、顏良之光輝、劉備之光輝、五穀星之光、男僕之光輝、雲霄之光輝"
@@ -2140,6 +2318,7 @@
     "approach_a": "",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "龍騎之勇、夏侯淵之光輝、樊瑞之光輝、鄧艾之光輝、馬岱之光輝、晁蓋之光輝、惡魔之光輝",
     "drop_glory_low": "大賢之光輝、地公之光輝、九頭雉之徵、四聖大元帥錄、羅真人之光輝、呂虎威之光輝、魔精之光、玉琵琶之徵、普賢之光、關勝之光輝、天齊仁之光、顏良之光輝、劉備之光輝、五穀星之光、男僕之光輝、雲霄之光輝"
@@ -2153,6 +2332,7 @@
     "approach_a": "",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "人公之光輝、益德之光輝、張苞之光輝、蔣敬之光輝、燕青之光輝、好人卡象徵、姬發之光輝、武吉之光輝、韋馱天之光",
     "drop_glory_low": "項充之光輝、虎騎之勇、魔鬥之勇、程普之光輝、西門慶之光輝、荀攸之光輝、徐庶之光輝、周倉之光輝、茶茶之光輝、孔融之光輝、毒士之光輝"
@@ -2166,6 +2346,7 @@
     "approach_a": "",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "人公之光輝、益德之光輝、張苞之光輝、蔣敬之光輝、燕青之光輝、好人卡象徵、姬發之光輝、武吉之光輝、韋馱天之光",
     "drop_glory_low": "項充之光輝、虎騎之勇、魔鬥之勇、程普之光輝、西門慶之光輝、荀攸之光輝、徐庶之光輝、周倉之光輝、茶茶之光輝、孔融之光輝、毒士之光輝"
@@ -2179,6 +2360,7 @@
     "approach_a": "洞窟",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "太公望之光輝、七殺星之光、斬仙之光、增長之光、多聞之光、持國之光、廣目之光",
     "drop_glory_low": "阮小五之光輝、地后星之光、黃蓋之光輝、警花之光、虎威之光輝、藥王之光、秘醫之跡、陸遜之光輝"
@@ -2192,6 +2374,7 @@
     "approach_a": "洞窟",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "太公望之光輝、七殺星之光、斬仙之光、增長之光、多聞之光、持國之光、廣目之光",
     "drop_glory_low": "阮小五之光輝、地后星之光、黃蓋之光輝、警花之光、虎威之光輝、藥王之光、秘醫之跡、陸遜之光輝"
@@ -2205,6 +2388,7 @@
     "approach_a": "洞窟",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "太公望之光輝、七殺星之光、斬仙之光、增長之光、多聞之光、持國之光、廣目之光",
     "drop_glory_low": "阮小五之光輝、地后星之光、黃蓋之光輝、警花之光、虎威之光輝、藥王之光、秘醫之跡、陸遜之光輝"
@@ -2218,6 +2402,7 @@
     "approach_a": "洞窟",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "太公望之光輝、七殺星之光、斬仙之光、增長之光、多聞之光、持國之光、廣目之光",
     "drop_glory_low": "阮小五之光輝、地后星之光、黃蓋之光輝、警花之光、虎威之光輝、藥王之光、秘醫之跡、陸遜之光輝"
@@ -2231,6 +2416,7 @@
     "approach_a": "洞窟",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "太公望之光輝、七殺星之光、斬仙之光、增長之光、多聞之光、持國之光、廣目之光",
     "drop_glory_low": "阮小五之光輝、地后星之光、黃蓋之光輝、警花之光、虎威之光輝、藥王之光、秘醫之跡、陸遜之光輝"
@@ -2244,6 +2430,7 @@
     "approach_a": "洞窟",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "太公望之光輝、七殺星之光、斬仙之光、增長之光、多聞之光、持國之光、廣目之光",
     "drop_glory_low": "阮小五之光輝、地后星之光、黃蓋之光輝、警花之光、虎威之光輝、藥王之光、秘醫之跡、陸遜之光輝"
@@ -2257,6 +2444,7 @@
     "approach_a": "要",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "南蠻王之光輝、甄洛之光輝、荀攸之光輝、黃忠之光輝、法正之光輝、甘寧之光輝、呂虎威之光輝",
     "drop_glory_low": "田豐之光輝、斬仙之光、宋徽宗之光輝、鄧艾之光輝、戴宗之光輝、程遠志之光輝、廖化之光輝、胡車兒之光輝、巖流秘劍之徵"
@@ -2270,6 +2458,7 @@
     "approach_a": "要",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "南蠻王之光輝、甄洛之光輝、荀攸之光輝、黃忠之光輝、法正之光輝、甘寧之光輝、呂虎威之光輝",
     "drop_glory_low": "田豐之光輝、斬仙之光、宋徽宗之光輝、鄧艾之光輝、戴宗之光輝、程遠志之光輝、廖化之光輝、胡車兒之光輝、巖流秘劍之徵"
@@ -2283,6 +2472,7 @@
     "approach_a": "要",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "南蠻王之光輝、甄洛之光輝、荀攸之光輝、黃忠之光輝、法正之光輝、甘寧之光輝、呂虎威之光輝",
     "drop_glory_low": "田豐之光輝、斬仙之光、宋徽宗之光輝、鄧艾之光輝、戴宗之光輝、程遠志之光輝、廖化之光輝、胡車兒之光輝、巖流秘劍之徵"
@@ -2296,6 +2486,7 @@
     "approach_a": "要",
     "maplv": "",
     "monster": "",
+    "monster_atk": "",
     "drop_rubbish": "",
     "drop_glory_high": "南蠻王之光輝、甄洛之光輝、荀攸之光輝、黃忠之光輝、法正之光輝、甘寧之光輝、呂虎威之光輝",
     "drop_glory_low": "田豐之光輝、斬仙之光、宋徽宗之光輝、鄧艾之光輝、戴宗之光輝、程遠志之光輝、廖化之光輝、胡車兒之光輝、巖流秘劍之徵"
