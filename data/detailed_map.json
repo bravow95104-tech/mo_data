@@ -51,7 +51,7 @@
     "maplv": "3-13",
     "monster": "",
     "monster_atk": "",
-    "drop_rubbish": "",
+    "drop_rubbish": "奇怪的草菇、男人的胸毛、蚊子的翅膀、蛇皮、烏鴉蛋、黃金中指、蟲卵",
     "drop_glory_high": "大賢之光輝、聖鬥之光輝、鐘會之光輝、曹貴人之光輝、安樂之光輝",
     "drop_glory_low": ""
   },
@@ -65,7 +65,7 @@
     "maplv": "7-17",
     "monster": "",
     "monster_atk": "",
-    "drop_rubbish": "",
+    "drop_rubbish": "蚊子的翅膀、蛇膽、假髮、玩具眼球、蟲卵",
     "drop_glory_high": "張松之光輝、項充之光輝、豹騎之勇、虎騎之勇、魔鬥之勇",
     "drop_glory_low": ""
   },
@@ -79,7 +79,7 @@
     "maplv": "7-17",
     "monster": "",
     "monster_atk": "",
-    "drop_rubbish": "",
+    "drop_rubbish": "老鼠尾巴、假髮、蛇皮、烏鴉蛋、蟲卵、鬼火",
     "drop_glory_high": "張松之光輝、項充之光輝、豹騎之勇、虎騎之勇、魔鬥之勇",
     "drop_glory_low": ""
   },
@@ -93,7 +93,7 @@
     "maplv": "7-17",
     "monster": "",
     "monster_atk": "",
-    "drop_rubbish": "",
+    "drop_rubbish": "蛇膽、蚊子的翅膀、老鼠大便、翹鬍子、黃金中指",
     "drop_glory_high": "張松之光輝、項充之光輝、豹騎之勇、虎騎之勇、魔鬥之勇",
     "drop_glory_low": ""
   },
@@ -191,7 +191,7 @@
     "maplv": "13-23",
     "monster": "",
     "monster_atk": "",
-    "drop_rubbish": "",
+    "drop_rubbish": "翹鬍子、補丁的褲子、墨汁、香港腳、坐墊、白額虎皮",
     "drop_glory_high": "張松之光輝、項充之光輝、豹騎之勇、虎騎之勇、魔鬥之勇",
     "drop_glory_low": ""
   },
@@ -205,7 +205,7 @@
     "maplv": "12-24",
     "monster": "",
     "monster_atk": "",
-    "drop_rubbish": "",
+    "drop_rubbish": "蛇膽、蚊子的翅膀、白額虎皮、蛇皮、黃金中指、骷髏頭",
     "drop_glory_high": "張松之光輝、項充之光輝、豹騎之勇、虎騎之勇、魔鬥之勇",
     "drop_glory_low": ""
   },
@@ -219,7 +219,7 @@
     "maplv": "19-30",
     "monster": "",
     "monster_atk": "",
-    "drop_rubbish": "",
+    "drop_rubbish": "假髮、雞爪、白額虎皮、黃金中指、鬼火、坐墊、奇怪的草菇",
     "drop_glory_high": "周郎之光輝、孫二娘之光輝、盧俊義之光輝、阮小二之光輝、石秀之光輝、忍者之光、龍鬥之勇",
     "drop_glory_low": "諸葛惠之光輝"
   },
@@ -233,7 +233,7 @@
     "maplv": "9-19",
     "monster": "",
     "monster_atk": "",
-    "drop_rubbish": "",
+    "drop_rubbish": "恐龍化石、狐狸尾巴、兔子頭",
     "drop_glory_high": "大賢之光輝、聖鬥之光輝、鐘會之光輝、曹貴人之光輝、安樂之光輝",
     "drop_glory_low": ""
   },
@@ -247,7 +247,7 @@
     "maplv": "14-23",
     "monster": "",
     "monster_atk": "",
-    "drop_rubbish": "",
+    "drop_rubbish": "兔子頭、老鼠尾巴",
     "drop_glory_high": "大賢之光輝、聖鬥之光輝、鐘會之光輝、曹貴人之光輝、安樂之光輝",
     "drop_glory_low": ""
   },
@@ -261,7 +261,7 @@
     "maplv": "12-23",
     "monster": "",
     "monster_atk": "",
-    "drop_rubbish": "",
+    "drop_rubbish": "八卦、老鼠大便、蚊子的翅膀",
     "drop_glory_high": "周郎之光輝、孫二娘之光輝、盧俊義之光輝、阮小二之光輝、石秀之光輝、忍者之光、龍鬥之勇",
     "drop_glory_low": "諸葛惠之光輝"
   },
@@ -275,7 +275,7 @@
     "maplv": "15-23",
     "monster": "",
     "monster_atk": "",
-    "drop_rubbish": "",
+    "drop_rubbish": "八卦、蚊子的翅膀、蟲卵、香港腳、老鼠大便",
     "drop_glory_high": "周郎之光輝、孫二娘之光輝、盧俊義之光輝、阮小二之光輝、石秀之光輝、忍者之光、龍鬥之勇",
     "drop_glory_low": "諸葛惠之光輝"
   },
@@ -289,7 +289,7 @@
     "maplv": "14-24",
     "monster": "",
     "monster_atk": "",
-    "drop_rubbish": "",
+    "drop_rubbish": "男人的胸毛、坐墊、碧血石、木乃伊繃帶、龍鱗、兔子頭、針筒",
     "drop_glory_high": "周郎之光輝、孫二娘之光輝、盧俊義之光輝、阮小二之光輝、石秀之光輝、忍者之光、龍鬥之勇",
     "drop_glory_low": "諸葛惠之光輝"
   },
@@ -462,7 +462,7 @@
     "drop_glory_low": ""
   },
   {
-    "mapid": "虎臂水洞1樓",
+    "mapid": "虎臂水洞1",
     "def": "",
     "dodge": "",
     "approach": "",
@@ -476,7 +476,7 @@
     "drop_glory_low": "錦衣之光輝、南蠻王之光輝、穆容之光輝、羲皇之光、臥龍之光輝、武宣光輝、昭烈光輝、潘淑光輝"
   },
   {
-    "mapid": "虎臂水洞2樓",
+    "mapid": "虎臂水洞2",
     "def": "",
     "dodge": "",
     "approach": "",
@@ -616,7 +616,7 @@
     "drop_glory_low": ""
   },
   {
-    "mapid": "濯足澗1F",
+    "mapid": "濯足澗1",
     "def": "",
     "dodge": "",
     "approach": "",
@@ -630,7 +630,7 @@
     "drop_glory_low": ""
   },
   {
-    "mapid": "濯足澗2F",
+    "mapid": "濯足澗2",
     "def": "",
     "dodge": "",
     "approach": "",
@@ -644,7 +644,7 @@
     "drop_glory_low": ""
   },
   {
-    "mapid": "瑤琳仙境1F",
+    "mapid": "瑤琳仙境1",
     "def": "",
     "dodge": "",
     "approach": "",
@@ -658,7 +658,7 @@
     "drop_glory_low": ""
   },
   {
-    "mapid": "瑤琳仙境2F",
+    "mapid": "瑤琳仙境2",
     "def": "",
     "dodge": "",
     "approach": "",
@@ -672,7 +672,7 @@
     "drop_glory_low": ""
   },
   {
-    "mapid": "瑤琳仙境3F",
+    "mapid": "瑤琳仙境3",
     "def": "",
     "dodge": "",
     "approach": "",
@@ -709,7 +709,7 @@
     "maplv": "20-31",
     "monster": "",
     "monster_atk": "",
-    "drop_rubbish": "",
+    "drop_rubbish": "老鼠尾巴、男人的胸毛、烏鴉蛋、白額虎皮、狐狸尾巴、恐龍化石",
     "drop_glory_high": "張松之光輝、項充之光輝、豹騎之勇、虎騎之勇、魔鬥之勇",
     "drop_glory_low": ""
   },
@@ -1255,7 +1255,7 @@
     "maplv": "36-54",
     "monster": "",
     "monster_atk": "",
-    "drop_rubbish": "",
+    "drop_rubbish": "蛇膽、龍鱗、兔子頭、玻璃彈珠、斷刀、白額虎皮、黃金中指",
     "drop_glory_high": "人公之光輝、益德之光輝、張苞之光輝、蔣敬之光輝、燕青之光輝、好人卡象徵、姬發之光輝、武吉之光輝、韋馱天之光",
     "drop_glory_low": "項充之光輝、虎騎之勇、魔鬥之勇、程普之光輝、西門慶之光輝、荀攸之光輝、徐庶之光輝、周倉之光輝、茶茶之光輝、孔融之光輝、毒士之光輝"
   },
