@@ -106,6 +106,7 @@ function showDetailModal(item) {
     if (!shouldHideCombatAndDrop) { // 只要不包含「城鎮」，就顯示
     combatAndDropHTML = `
     <div class="hero-defdodge section-gap">
+    <p><strong>怪物等級：</strong>${item.maplv || "N/A"}</p>
     <p><strong>防禦：</strong>${item.def || "N/A"}<strong>　　閃避：</strong>${item.dodge || "N/A"}</p>
     </div>
     
