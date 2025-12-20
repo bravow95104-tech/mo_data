@@ -9080,7 +9080,7 @@
   {
     "class": "飾品",
     "job": "一般",
-    "sort": "眼鏡",
+    "sort": "嘴巴",
     "item": "綠色蒙面巾",
     "lv": 34,
     "Property1": 0,
@@ -9097,7 +9097,7 @@
   {
     "class": "飾品",
     "job": "一般",
-    "sort": "眼鏡",
+    "sort": "嘴巴",
     "item": "紅色蒙面巾",
     "lv": 30,
     "Property1": 0,
@@ -9114,7 +9114,7 @@
   {
     "class": "飾品",
     "job": "一般",
-    "sort": "眼鏡",
+    "sort": "嘴巴",
     "item": "黃色蒙面巾",
     "lv": 50,
     "Property1": 0,
@@ -9364,6 +9364,23 @@
     "material4": "",
     "material5": "",
     "illustrate": "戰鬥勝利時，若MP低於5%，有10%機率恢復最大法力2%+100，\n法術傷害-3%，召喚英雄法力-5，鑲嵌符石效果-90%",
+    "obtain": ""
+  },
+  {
+    "class": "飾品",
+    "job": "一般",
+    "sort": "嘴巴",
+    "item": "派對捲捲管(特化)",
+    "lv": "",
+    "Property1": "",
+    "Property2": "",
+    "Durability": "",
+    "material1": "",
+    "material2": "",
+    "material3": "",
+    "material4": "",
+    "material5": "",
+    "illustrate": "防禦+20、攻擊+15、hp+100、mp+100",
     "obtain": ""
   },
   {
@@ -10849,7 +10866,7 @@
     "class": "飾品",
     "job": "",
     "sort": "頭飾",
-    "item": "OK繃帶",
+    "item": "ok蹦帶",
     "lv": "不限",
     "Property1": 0,
     "Property2": 0,
@@ -10866,7 +10883,7 @@
     "class": "飾品",
     "job": "X",
     "sort": "頭飾",
-    "item": "強力的OK繃帶",
+    "item": "強力的ok蹦帶",
     "lv": "不限",
     "Property1": 0,
     "Property2": 0,
@@ -10876,7 +10893,7 @@
     "material3": "",
     "material4": "",
     "material5": "",
-    "illustrate": "坐下恢復HP+6",
+    "illustrate": "防禦+30、攻擊+50、hp+100、mp+50",
     "obtain": "打怪掉落"
   },
   {
@@ -11613,6 +11630,23 @@
   {
     "class": "飾品",
     "job": "",
+    "sort": "頭飾",
+    "item": "歸來之鬼神金箍",
+    "lv": 20,
+    "Property1": 0,
+    "Property2": 0,
+    "Durability": "",
+    "material1": "",
+    "material2": "",
+    "material3": "",
+    "material4": "",
+    "material5": "",
+    "illustrate": "防禦+100、閃避+50、法術防禦+168、hp+666、物理強度+198、\n法術強度+198、物理技能傷害+3%、法術技能傷害+3%、技能回復+5%",
+    "obtain": ""
+  },
+  {
+    "class": "飾品",
+    "job": "",
     "sort": "眼鏡",
     "item": "墨鏡",
     "lv": "不限",
@@ -12289,6 +12323,23 @@
     "material5": "",
     "illustrate": "防禦力+41、閃避值+22",
     "obtain": "開彩虹寶箱"
+  },
+  {
+    "class": "飾品",
+    "job": "",
+    "sort": "眼鏡",
+    "item": "回歸者墨鏡",
+    "lv": "不限",
+    "Property1": 0,
+    "Property2": 0,
+    "Durability": "",
+    "material1": "",
+    "material2": "",
+    "material3": "",
+    "material4": "",
+    "material5": "",
+    "illustrate": "法術防禦+77、mp+333、物理強度+132、法術強度+132、\n物理技能傷害+2%、法術技能傷害+2%、技能mp消耗-3%",
+    "obtain": ""
   },
   {
     "class": "飾品",
@@ -13105,6 +13156,23 @@
     "material5": "",
     "illustrate": "防禦力+15、閃避值+8",
     "obtain": "打怪掉落"
+  },
+  {
+    "class": "飾品",
+    "job": "",
+    "sort": "座騎",
+    "item": "川燙紅蟳竹馬",
+    "lv": "不限",
+    "Property1": 0,
+    "Property2": 0,
+    "Durability": 185,
+    "material1": "",
+    "material2": "",
+    "material3": "",
+    "material4": "",
+    "material5": "",
+    "illustrate": "防禦力+30、法術技能傷害+5%、移動速度+1",
+    "obtain": ""
   },
   {
     "class": "飾品",
