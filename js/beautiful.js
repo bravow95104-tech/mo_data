@@ -14,7 +14,7 @@ fetch('/mo_data/data/beautiful.json')
   .catch(error => {
     console.error('載入資料錯誤:', error);
     const tbody = document.querySelector('#heroes-table tbody');
-    tbody.innerHTML = '<tr><td colspan="8">無法載入資料</td></tr>';
+    tbody.innerHTML = '<tr><td colspan="7">無法載入資料</td></tr>';
   });
 
   const searchInput = document.getElementById('searchInput');
@@ -83,7 +83,7 @@ fetch('/mo_data/data/beautiful.json')
     const keyword = searchInput.value.trim().toLowerCase();
 
     if (data.length === 0) {
-      tbody.innerHTML = '<tr><td colspan="15">找不到符合條件的資料</td></tr>';
+      tbody.innerHTML = '<tr><td colspan="8">找不到符合條件的資料</td></tr>';
       return;
     }
 
