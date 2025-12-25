@@ -1,0 +1,389 @@
+[
+  {
+    "id": "淺珍珠紅染髮劑配方書",
+    "type": "新染髮劑",
+    "material1": "營養的老鼠糞料50個",
+    "material2": "噹噹牛皮50個",
+    "material3": "扭曲螺絲釘50個",
+    "material4": "箭神的箭頭15個",
+    "material5": "大狼的棘皮15個"
+  },
+  {
+    "id": "深銀灰染髮劑配方書",
+    "type": "新染髮劑",
+    "material1": "野狼的上皮50個",
+    "material2": "跳跳虎皮50個",
+    "material3": "斷劍50個",
+    "material4": "大狼的棘皮15個",
+    "material5": "石敢當碎石15個"
+  },
+  {
+    "id": "湖藍灰染髮劑配方書",
+    "type": "新染髮劑",
+    "material1": "龍種化石50個",
+    "material2": "嘿嘿狼皮50個",
+    "material3": "愛心針筒50個",
+    "material4": "箭神的箭頭15個",
+    "material5": "石敢當碎石15個"
+  },
+  {
+    "id": "道奇藍染髮劑配方書",
+    "type": "新染髮劑",
+    "material1": "獅子小骨50個",
+    "material2": "金色猴皮50個",
+    "material3": "穿山甲毛50個",
+    "material4": "狂殺者頭顱15個",
+    "material5": "大狼的棘皮15個"
+  },
+  {
+    "id": "青藍染髮劑配方書",
+    "type": "新染髮劑",
+    "material1": "海色貓皮50個",
+    "material2": "虎牌假牙50個",
+    "material3": "精怪碎石50個",
+    "material4": "陽光鼠毛15個",
+    "material5": "精靈破布15個"
+  },
+  {
+    "id": "含羞草黃染髮劑配方書",
+    "type": "新染髮劑",
+    "material1": "龍綠鱗50個",
+    "material2": "營養的老鼠糞料50個",
+    "material3": "汙精石50個",
+    "material4": "精靈破布15個",
+    "material5": "大狼的棘皮15個"
+  },
+  {
+    "id": "腥紅染髮劑配方書",
+    "type": "新染髮劑",
+    "material1": "海色貓皮50個",
+    "material2": "噹噹牛皮50個",
+    "material3": "仙女秀髮50個",
+    "material4": "陽光鼠毛15個",
+    "material5": "狂殺者頭顱15個"
+  },
+  {
+    "id": "荷莖綠染髮劑配方書",
+    "type": "新染髮劑",
+    "material1": "海色貓皮50個",
+    "material2": "跳跳虎皮50個",
+    "material3": "仙女秀髮50個",
+    "material4": "狂殺者頭顱15個",
+    "material5": "陽光鼠毛15個"
+  },
+  {
+    "id": "綠松石色染髮劑配方書",
+    "type": "新染髮劑",
+    "material1": "金色猴皮50個",
+    "material2": "嘿嘿狼皮50個",
+    "material3": "龍綠鱗50個",
+    "material4": "箭神的箭頭15個",
+    "material5": "精靈破布15個"
+  },
+  {
+    "id": "中蘭紫染髮劑配方書",
+    "type": "新染髮劑",
+    "material1": "金色猴皮50個",
+    "material2": "嘿嘿狼皮50個",
+    "material3": "噹噹牛皮50個",
+    "material4": "石敢當碎石15個",
+    "material5": "精靈破布15個"
+  },
+  {
+    "id": "特調咖啡染髮劑",
+    "type": "染髮劑",
+    "material1": "蛇膽10個",
+    "material2": "烏鴉蛋10個",
+    "material3": "伏苓5個",
+    "material4": "蘆根5個",
+    "material5": "天山雪蓮1個"
+  },
+  {
+    "id": "卡布奇諾染髮劑",
+    "type": "染髮劑",
+    "material1": "蛇膽10個",
+    "material2": "蟲卵10個",
+    "material3": "伏苓5個",
+    "material4": "蘆根5個",
+    "material5": "天山雪蓮1個"
+  },
+  {
+    "id": "生青蘋果染髮劑",
+    "type": "染髮劑",
+    "material1": "四葉幸運草10個",
+    "material2": "座墊10個",
+    "material3": "伏苓5個",
+    "material4": "蘆根5個",
+    "material5": "天山雪蓮1個"
+  },
+  {
+    "id": "蜂蜜起司染髮劑",
+    "type": "染髮劑",
+    "material1": "黃金中指10個",
+    "material2": "香港腳10個",
+    "material3": "伏苓5個",
+    "material4": "蘆根5個",
+    "material5": "天山雪蓮1個"
+  },
+  {
+    "id": "憂鬱海岸染髮劑",
+    "type": "染髮劑",
+    "material1": "龍鱗10個",
+    "material2": "補丁的褲子10個",
+    "material3": "伏苓5個",
+    "material4": "蘆根5個",
+    "material5": "天山雪蓮1個"
+  },
+  {
+    "id": "紅粉香檳染髮劑",
+    "type": "染髮劑",
+    "material1": "碧血石10個",
+    "material2": "雞爪10個",
+    "material3": "伏苓5個",
+    "material4": "蘆根5個",
+    "material5": "天山雪蓮1個"
+  },
+  {
+    "id": "黑夜森林染髮劑",
+    "type": "染髮劑",
+    "material1": "墨汁10個",
+    "material2": "老鼠大便10個",
+    "material3": "伏苓5個",
+    "material4": "蘆根5個",
+    "material5": "天山雪蓮1個"
+  },
+  {
+    "id": "血腥瑪麗染髮劑",
+    "type": "染髮劑",
+    "material1": "橡膠舌頭10個",
+    "material2": "翹鬍子10個",
+    "material3": "伏苓5個",
+    "material4": "蘆根5個",
+    "material5": "天山雪蓮1個"
+  },
+  {
+    "id": "橘子軟糖染髮劑",
+    "type": "染髮劑",
+    "material1": "向日葵10個",
+    "material2": "豹紋比基尼10個",
+    "material3": "伏苓5個",
+    "material4": "蘆根5個",
+    "material5": "天山雪蓮1個"
+  },
+  {
+    "id": "鮮蛋蜜汁染髮劑",
+    "type": "染髮劑",
+    "material1": "琥珀化石10個",
+    "material2": "香菇牛仔帽10個",
+    "material3": "伏苓5個",
+    "material4": "蘆根5個",
+    "material5": "天山雪蓮1個"
+  },
+  {
+    "id": "抹茶果凍染髮劑",
+    "type": "染髮劑",
+    "material1": "花盆10個",
+    "material2": "魚骨頭10個",
+    "material3": "伏苓5個",
+    "material4": "蘆根5個",
+    "material5": "天山雪蓮1個"
+  },
+  {
+    "id": "香草天空染髮劑",
+    "type": "染髮劑",
+    "material1": "浴巾10個",
+    "material2": "迴力鏢10個",
+    "material3": "伏苓5個",
+    "material4": "蘆根5個",
+    "material5": "天山雪蓮1個"
+  },
+  {
+    "id": "藍梅慕斯染髮劑",
+    "type": "染髮劑",
+    "material1": "狼牙棒10個",
+    "material2": "船槳10個",
+    "material3": "伏苓5個",
+    "material4": "蘆根5個",
+    "material5": "天山雪蓮1個"
+  },
+  {
+    "id": "薰衣草茶染髮劑",
+    "type": "染髮劑",
+    "material1": "火蟻10個",
+    "material2": "鱷魚皮包10個",
+    "material3": "伏苓5個",
+    "material4": "蘆根5個",
+    "material5": "天山雪蓮1個"
+  },
+  {
+    "id": "加州蜜桃染髮劑",
+    "type": "染髮劑",
+    "material1": "玻璃彈珠10個",
+    "material2": "僧人的耳環10個",
+    "material3": "伏苓5個",
+    "material4": "蘆根5個",
+    "material5": "天山雪蓮1個"
+  },
+  {
+    "id": "葡萄汽水染髮劑",
+    "type": "染髮劑",
+    "material1": "鯊魚背鰭10個",
+    "material2": "斷刀10個",
+    "material3": "伏苓5個",
+    "material4": "蘆根5個",
+    "material5": "天山雪蓮1個"
+  },
+  {
+    "id": "乳石英面膜",
+    "type": "面膜",
+    "material1": "蟲卵10個",
+    "material2": "黃金中指10",
+    "material3": "丹砂5個",
+    "material4": "硃砂5個",
+    "material5": "彩虹星砂1個"
+  },
+  {
+    "id": "粉珍珠面膜",
+    "type": "面膜",
+    "material1": "碧血石10個",
+    "material2": "骷髏頭10個",
+    "material3": "丹砂5個",
+    "material4": "硃砂5個",
+    "material5": "彩虹星砂1個"
+  },
+  {
+    "id": "黃琥珀面膜",
+    "type": "面膜",
+    "material1": "香港腳10個",
+    "material2": "蛇皮10個",
+    "material3": "丹砂5個",
+    "material4": "硃砂5個",
+    "material5": "彩虹星砂1個"
+  },
+  {
+    "id": "綠松石面膜",
+    "type": "面膜",
+    "material1": "四葉幸運草10個",
+    "material2": "奇怪的草菇10個",
+    "material3": "丹砂5個",
+    "material4": "硃砂5個",
+    "material5": "彩虹星砂1個"
+  },
+  {
+    "id": "翡翠玉面膜",
+    "type": "面膜",
+    "material1": "蚊子的翅膀10個",
+    "material2": "橡膠舌頭10個",
+    "material3": "丹砂5個",
+    "material4": "硃砂5個",
+    "material5": "彩虹星砂1個"
+  },
+  {
+    "id": "藍剛玉面膜",
+    "type": "面膜",
+    "material1": "鬼火10個",
+    "material2": "兔子頭10個",
+    "material3": "丹砂5個",
+    "material4": "硃砂5個",
+    "material5": "彩虹星砂1個"
+  },
+  {
+    "id": "紅瑪瑙面膜",
+    "type": "面膜",
+    "material1": "蛇膽10個",
+    "material2": "假髮10個",
+    "material3": "丹砂5個",
+    "material4": "硃砂5個",
+    "material5": "彩虹星砂1個"
+  },
+  {
+    "id": "雞血石面膜",
+    "type": "面膜",
+    "material1": "雞爪10個",
+    "material2": "碧血石10個",
+    "material3": "丹砂5個",
+    "material4": "硃砂5個",
+    "material5": "彩虹星砂1個"
+  },
+  {
+    "id": "藍珊瑚面膜",
+    "type": "面膜",
+    "material1": "補丁的褲子10個",
+    "material2": "恐龍化石10個",
+    "material3": "丹砂5個",
+    "material4": "硃砂5個",
+    "material5": "彩虹星砂1個"
+  },
+  {
+    "id": "祖母綠面膜",
+    "type": "面膜",
+    "material1": "女水賊的髮鎈10個",
+    "material2": "龜殼10個",
+    "material3": "丹砂5個",
+    "material4": "硃砂5個",
+    "material5": "彩虹星砂1個"
+  },
+  {
+    "id": "棕鋯石面膜",
+    "type": "面膜",
+    "material1": "刺蝟皮10個",
+    "material2": "四臂猿的毛髮10個",
+    "material3": "丹砂5個",
+    "material4": "硃砂5個",
+    "material5": "彩虹星砂1個"
+  },
+  {
+    "id": "虎斑螺面膜",
+    "type": "面膜",
+    "material1": "犀牛角10個",
+    "material2": "玩具弓箭10個",
+    "material3": "丹砂5個",
+    "material4": "硃砂5個",
+    "material5": "彩虹星砂1個"
+  },
+  {
+    "id": "紫水晶面膜",
+    "type": "面膜",
+    "material1": "破鏡子10個",
+    "material2": "大酒罈10個",
+    "material3": "丹砂5個",
+    "material4": "硃砂5個",
+    "material5": "彩虹星砂1個"
+  },
+  {
+    "id": "青金岩面膜",
+    "type": "面膜",
+    "material1": "魚叉10個",
+    "material2": "海妖的豎琴10個",
+    "material3": "丹砂5個",
+    "material4": "硃砂5個",
+    "material5": "彩虹星砂1個"
+  },
+  {
+    "id": "石榴石面膜",
+    "type": "面膜",
+    "material1": "蠻族的長毛10個",
+    "material2": "釣竿10個",
+    "material3": "丹砂5個",
+    "material4": "硃砂5個",
+    "material5": "彩虹星砂1個"
+  },
+  {
+    "id": "蛋白石面膜",
+    "type": "面膜",
+    "material1": "水賊的頭巾10個",
+    "material2": "笑假面10個",
+    "material3": "丹砂5個",
+    "material4": "硃砂5個",
+    "material5": "彩虹星砂1個"
+  },
+  {
+    "id": "貓眼石面膜",
+    "type": "面膜",
+    "material1": "向日葵10個",
+    "material2": "玻璃彈珠10個",
+    "material3": "丹砂5個",
+    "material4": "硃砂5個",
+    "material5": "彩虹星砂1個"
+  }
+]
