@@ -100,14 +100,14 @@ fetch('/mo_data/data/beautiful.json')
       imgTd.style.textAlign = 'center';
       imgTd.style.verticalAlign = 'middle';
 
-      if (hero.type) {
+      if (hero.id) {
         const img = document.createElement('img');
-        const basePath = `/mo_data/pic/beautiful/${hero.type}`;
+        const basePath = `/mo_data/pic/beautiful/${hero.id}`;
         const extensions = ['.png', '.jpg', '.bmp'];
         let attempt = 0;
 
         img.src = basePath + extensions[attempt];
-        img.alt = hero.type;
+        img.alt = hero.id;
         img.style.width = '40px';
         img.style.height = '40px';
         img.style.objectFit = 'contain';
