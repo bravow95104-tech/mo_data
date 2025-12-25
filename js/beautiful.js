@@ -83,7 +83,7 @@ fetch('/mo_data/data/beautiful.json')
     const keyword = searchInput.value.trim().toLowerCase();
 
     if (data.length === 0) {
-      tbody.innerHTML = '<tr><td colspan="8">找不到符合條件的資料</td></tr>';
+      tbody.innerHTML = '<tr><td colspan="7">找不到符合條件的資料</td></tr>';
       return;
     }
 
