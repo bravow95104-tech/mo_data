@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let searchTimer = null;  // ✅ 防抖用變數
 
   // === 載入 JSON 資料 ===
-  fetch('/mo_data/data/weapons.json')
+  fetch('/mo_data/data/medicine.json')
     .then(response => response.json())
     .then(data => {
       // ✅ 預先篩出 class = "藥品"
