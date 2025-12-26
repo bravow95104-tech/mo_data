@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let activeFilter = null; // ✅ 紀錄目前篩選條件（單一模式）
 
   // === 載入 JSON 資料 ===
-  fetch('/mo_data/data/weapons.json')
+  fetch('/mo_data/data/accessories.json')
     .then(response => response.json())
     .then(data => {
       // ✅ 預先篩出 class = "飾品"
