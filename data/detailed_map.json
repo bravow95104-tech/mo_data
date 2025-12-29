@@ -1559,7 +1559,7 @@
     "dodge": 690,
     "approach": "",
     "illustrate": "隊伍內所有角色等級為 85 級或以上。",
-    "approach_a": "要",
+    "approach_a": "",
     "maplv": "10-103",
     "monster": "",
     "monster_atk": "",
@@ -1759,7 +1759,7 @@
     "maplv": "76-100",
     "monster": "",
     "monster_atk": "",
-    "drop_rubbish": "",
+    "drop_rubbish": "機關小蠟燭、奇特的石塊、折損長槍、破碎機關符咒、破碎機關壺、破碎機關劍、藍色機關錘、紅色機關錘、綠色機關錘、白色機關錘、怪異零件、破碎機關大刀、魔化的石頭",
     "drop_glory_high": "小艾之光輝、劉唐之光輝、五穀星之光、關銀屏之光輝、王進之光輝、李逵之光輝",
     "drop_glory_low": "馬良之光輝、柴進之光輝、原初粉塵"
   },
