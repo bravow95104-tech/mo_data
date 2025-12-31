@@ -86,7 +86,7 @@
 }
 
 .mission-img {
-    max-width: 400px; /* 限制最大寬度，避免電腦版圖片太大 */
+    max-width: 650px; /* 限制最大寬度，避免電腦版圖片太大 */
     width: 100%;      /* 手機版會自動縮小 */
     height: auto;
     border: 1px solid #ddd;
