@@ -79,3 +79,17 @@
   border-bottom: 1px solid #eee;
 
 }
+/* 讓圖片在表格單元格內乖乖待著 */
+.mission-image-box {
+    margin-top: 5px;
+    max-width: 100%;
+}
+
+.mission-img {
+    max-width: 400px; /* 限制最大寬度，避免電腦版圖片太大 */
+    width: 100%;      /* 手機版會自動縮小 */
+    height: auto;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    display: block;
+}
