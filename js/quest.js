@@ -12,7 +12,7 @@ fetch("/mo_data/data/quest.json")
   });
 
 // ✅ 2. 監聽搜尋框輸入
-document.getElementById('questSearchInput').addEventListener('input', (e) => {
+document.getElementById('SearchInput').addEventListener('input', (e) => {
   renderQuests(e.target.value.trim());
 });
 
@@ -71,7 +71,7 @@ function renderQuests(keyword) {
       <div class="mission-badge">${task.star || "一般任務"}</div>
       <h3>${task.star_q}</h3>
       <table class="mission-table">
-        <tr><td style="width: 100px;"><strong>任務 ID：</strong></td><td>${task.id || "-"}</td></tr>
+        <tr><td style="width: 100px;"><strong>任務名稱：</strong></td><td>${task.id || "-"}</td></tr>
         <tr><td><strong>地區：</strong></td><td>${task.area || "-"}</td></tr>
         <tr><td><strong>起始 NPC：</strong></td><td>${task.start || "-"}</td></tr>
         <tr><td><strong>任務條件：</strong></td><td>${task.restriction || "-"}</td></tr>
