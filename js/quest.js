@@ -45,6 +45,7 @@ function renderQuests(keyword) {
     if (task.process_money)  rewardParts.push(`<strong>金錢：</strong>${task.process_money} 元`);
     if (task.process_renown) rewardParts.push(`<strong>名聲：</strong>${task.process_renown} 點`);
     if (task.process_item)   rewardParts.push(`<strong>物品：</strong>${task.process_item}`);
+    if (task.process)   rewardParts.push(`${task.process}`);
 
     let combinedRewardRow = "";
     if (rewardParts.length > 0) {
