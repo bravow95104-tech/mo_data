@@ -24,14 +24,22 @@ function renderQuests(keyword) {
   if (!container) return;
   container.innerHTML = "";
 
-  // 🔍 改用 task.id 來進行過濾
+  const lowKeyword = keyword.toLowerCase();
+
+  // 🔍 多欄位篩選邏輯
   const filtered = allQuestData.filter(task => {
-    const taskName = task.id || ""; // 如果 star_q 刪除了，就抓 id
-    return taskName.toLowerCase().includes(keyword.toLowerCase());
+    // 定義要參與搜尋的欄位，並確保欄位不存在時給予空字串
+    const searchStr = [
+      task.id,           // 任務名稱
+      task.area,         // 地區
+      task.start        // 起始 NPC
+    ].join("|").toLowerCase(); // 用特殊符號串接後轉小寫
+
+    return searchStr.includes(lowKeyword);
   });
 
   if (filtered.length === 0) {
-    container.innerHTML = "<p style='text-align:center; padding:50px; color:#999;'>找不到相符的任務</p>";
+    container.innerHTML = "<p style='text-align:center; padding:50px; color:#999;'>找不到相符的任務內容</p>";
     return;
   }
 
