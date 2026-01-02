@@ -77,7 +77,7 @@
   white-space: normal;
   padding: 6px 10px;
   border-bottom: 1px solid #eee;
-
+  text-align: left;
 }
 /* 讓圖片在表格單元格內乖乖待著 */
 .mission-image-box {
