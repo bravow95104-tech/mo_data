@@ -95,7 +95,7 @@ function renderQuests(data) {
     if (task.process_renown) rewardParts.push(`<strong>名聲：</strong>${task.process_renown} 點`);
     if (task.process_item)   rewardParts.push(`<strong>物品：</strong>${task.process_item}`);
     // 流程描述 (支援換行)
-    if (task.process)        rewardParts.push(`<strong>流程細節：</strong><br>${task.process.replace(/\n/g, "<br>")}`);
+    if (task.process)        rewardParts.push(`<strong>獎勵細節：</strong><br>${task.process.replace(/\n/g, "<br>")}`);
 
     let rewardHtml = rewardParts.length > 0 ? `
       <tr>
