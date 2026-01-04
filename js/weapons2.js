@@ -87,28 +87,26 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // === 套用篩選邏輯 ===
-  function applyFilters() {
-    const keyword = searchInput.value.trim().toLowerCase();
+function applyFilters() {
+  const keyword = searchInput.value.trim().toLowerCase();
 
-    const filtered = heroesData.filter(hero => {
-      // 按鈕篩選
-      if (activeFilter) {
-        const { type, value } = activeFilter;
-        if (type === "promotion" || type === "personality") {
-          if (hero.sort !== value) return false;
-        } else if (type === "job") {
-          if (hero.job !== value) return false;
-        }
-      }
-      // 關鍵字搜尋
-      if (keyword) {
-        const targetFields = [hero.item, hero.sort, hero.lv, hero.job].join(' ').toLowerCase();
-        if (!targetFields.includes(keyword)) return false;
-      }
-      return true;
-    });
-    renderTable(filtered);
-  }
+  const filtered = heroesData.filter(hero => {
+    // 按鈕篩選邏輯
+    if (activeFilter) {
+      const { type, value } = activeFilter;
+      // 這裡統一比對 hero.sort (假設 JSON 裡的類別是存放在 sort 欄位)
+      if (hero.sort !== value) return false;
+    }
+
+    // 關鍵字搜尋邏輯
+    if (keyword) {
+      const targetFields = [hero.item, hero.sort, hero.lv].join(' ').toLowerCase();
+      if (!targetFields.includes(keyword)) return false;
+    }
+    return true;
+  });
+  renderTable(filtered);
+}
 
   // === 產生表格核心 ===
   function renderTable(data) {
