@@ -157,18 +157,29 @@ document.addEventListener("DOMContentLoaded", () => {
 
       fields.forEach(field => {
         const td = document.createElement('td');
+        
+        // 🌟 獲取分類值並徹底去空格 (檢查 sort 或 promotion 欄位)
+        const currentSort = String(hero.sort || hero.promotion || "").trim();
+
         let shouldHide = false;
 
-        // 規則判斷
-        if (field === 'illustrate' && hideIllustrateSorts.includes(currentSort)) {
-          shouldHide = true;
+        // 規則 A：隱藏說明 (加入 log 方便你除錯)
+        if (field === 'illustrate') {
+          if (hideIllustrateSorts.some(s => s.trim() === currentSort)) {
+            shouldHide = true;
+          }
         }
-        if (field.startsWith('material') && hideMaterialSorts.includes(currentSort)) {
-          shouldHide = true;
+
+        // 規則 B：隱藏材料 (1-5 欄位)
+        if (field.startsWith('material')) {
+          if (hideMaterialSorts.some(s => s.trim() === currentSort)) {
+            shouldHide = true;
+          }
         }
 
         if (shouldHide) {
-          td.innerHTML = ""; 
+          td.innerHTML = ""; // 隱藏內容，但保留格子
+          // 如果你希望徹底連格子都不見（會導致對齊問題），才用 td.style.display = 'none';
         } else {
           const value = hero[field] !== undefined ? String(hero[field]) : '';
           const htmlValue = value.replace(/\n/g, '<br>');
