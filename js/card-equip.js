@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
       // Filter for "裝備卡" type only
       allCardData = data.filter(card => card.type === "裝備卡");
       renderTable(allCardData); // Initial render
+      updateSortIcons(); // Initialize sort icons
     })
     .catch(err => console.error("❌ Failed to load card data:", err));
 
@@ -35,7 +36,13 @@ document.addEventListener("DOMContentLoaded", () => {
       document.querySelectorAll('.filter-btn').forEach(btn => {
         btn.classList.remove('active');
       });
-      applyFilters();
+      
+      // Reset sorting state
+      currentSortColumn = '';
+      sortDirection = {};
+      
+      applyFilters(); // Re-render with reset filters and sorting
+      updateSortIcons(); // Remove sort icons from headers
     });
   }
 
@@ -192,6 +199,7 @@ function sortData(column) {
 
   dataToSort = sortArray(dataToSort, column, sortDirection[column]);
   renderTable(dataToSort);
+  updateSortIcons();
 }
 
 // Helper function to sort an array of objects
@@ -215,7 +223,30 @@ function sortArray(array, column, direction) {
   });
 }
 
- // === Modal 顯示 ===
+// Helper function to update sort icons in table headers
+function updateSortIcons() {
+  document.querySelectorAll('#card-equip-table th').forEach(th => {
+    th.classList.remove('sorted-asc', 'sorted-desc'); // Remove existing classes
+    // Remove existing sort icon span
+    const existingIcon = th.querySelector('.sort-icon');
+    if (existingIcon) {
+      existingIcon.remove();
+    }
+
+    const column = th.dataset.sort;
+    if (column === currentSortColumn) {
+      const icon = sortDirection[column] === 'asc' ? '▲' : '▼';
+      const span = document.createElement('span');
+      span.className = 'sort-icon';
+      span.textContent = icon;
+      th.appendChild(span);
+      th.classList.add(`sorted-${sortDirection[column]}`);
+    }
+  });
+}
+
+// Modal Functions
+// === Modal 顯示 ===
   function showDetailModal(item) {
     const overlay = document.getElementById('modalOverlay');
     const modalBox = document.getElementById('modalBox');
