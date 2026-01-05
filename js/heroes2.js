@@ -2,8 +2,22 @@ document.addEventListener("DOMContentLoaded", () => {
   let heroesData = [];
   let sortConfig = { key: null, direction: 'asc' }; // 記錄排序狀態
 
-  // === 動態新增排序箭頭 ===
+  // === 動態新增排序箭頭 (修正版) ===
   document.querySelectorAll('th.sortable').forEach(th => {
+    // 防止重複執行此邏輯
+    if (th.querySelector('.th-text-wrapper')) return;
+
+    const textWrapper = document.createElement('span');
+    textWrapper.className = 'th-text-wrapper';
+
+    // 將 th 內現有的所有子節點 (文字, <br>) 移入 textWrapper
+    while (th.firstChild) {
+      textWrapper.appendChild(th.firstChild);
+    }
+
+    // 將 textWrapper 和新的箭頭容器加回 th
+    th.appendChild(textWrapper);
+
     const caretContainer = document.createElement('span');
     caretContainer.className = 'sort-caret-container';
     caretContainer.innerHTML = '<span class="caret-up">▲</span><span class="caret-down">▼</span>';
