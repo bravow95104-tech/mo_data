@@ -298,7 +298,7 @@ th.sort-desc .caret-down {
 
 /* 左右欄位的基礎樣式 */
 .hero-column-base {
-  min-width: 250px;
+ 
   box-sizing: border-box;
   background-color: #f9f9f9;
   padding: 20px;
