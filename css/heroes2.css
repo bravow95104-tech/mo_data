@@ -39,7 +39,6 @@ thead th {
   top: var(--nav-offset); /* JS 動態修改 */
   background-color: var(--header-bg-color);
   z-index: 100;
-  transition: top 0.2s ease; /* 表頭滑動以閃避導航列 */
   color: var(--text-light);
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
@@ -304,7 +303,7 @@ th.sort-desc::after {
 
 .hero-column-base p {
   margin: 8px 0;
-  font-size: 14px;
+  font-size: 16px; /* 字體大小改回 16px */
   line-height: 1.4;
   color: var(--text-dark);
 }
