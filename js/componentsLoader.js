@@ -1,60 +1,67 @@
 // componentsLoader.js
-// 用於載入共用元件（如 nav、footer）到各頁面
+// 用於載入共用元件（如 nav、footer）到各頁面，並同步處理導覽列與表格表頭的位移
 
 function loadComponent(selector, url) {
-  const el = document.querySelector(selector);
-  if (!el) return Promise.resolve(); // 沒找到容器直接跳過
+    const el = document.querySelector(selector);
+    if (!el) return Promise.resolve(); 
 
-  return fetch(url)
-    .then(res => res.text())
-   .then(html => {
-    el.innerHTML = html;
-   })
-   .catch(err => console.error(`❌ 載入 ${url} 失敗:`, err));
+    return fetch(url)
+        .then(res => res.text())
+        .then(html => {
+            el.innerHTML = html;
+        })
+        .catch(err => console.error(`❌ 載入 ${url} 失敗:`, err));
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-  // === 自動偵測 Base URL ===
-  const pathParts = window.location.pathname.split("/").filter(Boolean);
-  const repoName = pathParts.length > 0 ? pathParts[0] : "";
-  const baseURL = repoName ? `${window.location.origin}/${repoName}` : window.location.origin;
+    // === 自動偵測 Base URL ===
+    const pathParts = window.location.pathname.split("/").filter(Boolean);
+    const repoName = pathParts.length > 0 ? pathParts[0] : "";
+    const baseURL = repoName ? `${window.location.origin}/${repoName}` : window.location.origin;
 
-  // === 載入 nav、footer ===
-  loadComponent("#nav-container", baseURL + "/components/nav/nav.html").then(() => {
-    initNavbarBehavior();
-  });
+    // === 載入 nav、footer ===
+    loadComponent("#nav-container", baseURL + "/components/nav/nav.html").then(() => {
+        initNavbarBehavior();
+    });
 
-  loadComponent("#footer-container", baseURL + "/components/footer/footer.html");
+    loadComponent("#footer-container", baseURL + "/components/footer/footer.html");
 
-  // === 回到頂部按鈕邏輯 ===
-  const backToTopBtn = document.getElementById("backToTop");
-  if (backToTopBtn) {
-    window.addEventListener("scroll", () => {
-      backToTopBtn.style.display = window.scrollY > 200 ? "block" : "none";
-    });
+    // === 回到頂部按鈕邏輯 ===
+    const backToTopBtn = document.getElementById("backToTop");
+    if (backToTopBtn) {
+        window.addEventListener("scroll", () => {
+            backToTopBtn.style.display = window.scrollY > 200 ? "block" : "none";
+        });
 
-    backToTopBtn.addEventListener("click", () => {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    });
-  }
+        backToTopBtn.addEventListener("click", () => {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+    }
 });
 
-// === 導覽列滾動、滑鼠顯示控制 與 漢堡選單邏輯 (修正衝突版) ===
+// === 導覽列滾動控制 與 表格偏移同步邏輯 ===
 function initNavbarBehavior() {
     const navbar = document.querySelector("#nav-container nav");
     if (!navbar) return;
 
-    // ✅ 將變數宣告移到頂部，讓所有邏輯都能使用
     const hamburgerBtn = document.getElementById("hamburger-btn");
     const navMenu = document.getElementById("nav-menu");
     
     let lastScrollY = window.scrollY;
     let isMouseNearTop = false;
 
-    // 初始狀態顯示
-    navbar.classList.add("visible");
+    // --- 🌟 關鍵：更新 CSS 變數以防止遮擋表格表頭 ---
+    function updateNavOffset() {
+        // 如果導航列處於可見狀態，則獲取其高度，否則偏移量為 0
+        const isVisible = navbar.classList.contains("visible");
+        const height = isVisible ? navbar.offsetHeight : 0;
+        document.documentElement.style.setProperty('--nav-offset', height + 'px');
+    }
 
-    // --- 輔助函式：檢查選單是否開啟 (手機模式) ---
+    // 初始狀態
+    navbar.classList.add("visible");
+    updateNavOffset();
+
     function isMobileMenuOpen() {
         return navMenu && navMenu.classList.contains("active");
     }
@@ -68,9 +75,6 @@ function initNavbarBehavior() {
     // 滾動控制顯示／隱藏
     window.addEventListener("scroll", () => {
         const currentY = window.scrollY;
-
-        // 📌 核心修正：判斷是否該隱藏導覽列
-        // 只有在向下滾動、滑鼠不在頂部 且 【手機選單沒有開啟】時，才隱藏
         const shouldHide = currentY > lastScrollY && !isMouseNearTop && !isMobileMenuOpen();
         
         if (currentY < 100) {
@@ -81,21 +85,19 @@ function initNavbarBehavior() {
             navbar.classList.add("visible");
         }
 
+        updateNavOffset(); // 📌 滾動時同步更新偏移量
         lastScrollY = currentY;
     });
 
     function updateNavbarVisibility() {
-        // 這裡也要檢查選單是否開啟，如果選單是開的，就不應該被關閉
         if (isMobileMenuOpen()) {
             navbar.classList.add("visible");
-            return;
-        }
-
-        if (isMouseNearTop) {
+        } else if (isMouseNearTop) {
             navbar.classList.add("visible");
         } else if (window.scrollY > 100) {
             navbar.classList.remove("visible");
         }
+        updateNavOffset(); // 📌 狀態改變時更新偏移量
     }
     
     // --- 漢堡選單控制邏輯 ---
@@ -103,14 +105,14 @@ function initNavbarBehavior() {
         hamburgerBtn.addEventListener("click", (e) => {
             e.stopPropagation();
             navMenu.classList.toggle("active");
-            // 當選單開啟或關閉時，強制讓 Navbar 顯示，防止被滾動邏輯立即隱藏
             navbar.classList.add("visible"); 
+            updateNavOffset();
         });
 
-        // 點擊選單外的區域時關閉選單
         document.addEventListener("click", (e) => {
             if (isMobileMenuOpen() && !navMenu.contains(e.target) && !hamburgerBtn.contains(e.target)) {
                 navMenu.classList.remove("active");
+                updateNavOffset();
             }
         });
     }
