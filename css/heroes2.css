@@ -1,3 +1,8 @@
+/* 設定一個全域變數，預設導航列還沒出現時為 0 */
+:root {
+  --nav-height: 0px;
+}
+
 /* 表格樣式 */
 table {
   border-collapse: collapse;
@@ -265,12 +270,12 @@ tbody tr:hover {
 /* 調整 table header sticky 時，避免蓋到 nav */
 thead th {
 position: sticky;
-  top: 0;           /* 確保貼齊頂部 */
-  background-color: #1976d2 !important; /* 強制背景色為深藍，防止透明穿透 */
-  z-index: 100;      /* 提高層級，確保不被後方資料或導航列遮擋 */
+  /* top 現在會根據導航列的高度動態調整 */
+  top: var(--nav-height); 
+  background-color: #1976d2 !important;
+  z-index: 100;
   color: white;
-  border: 1px solid #ccc;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* 增加陰影，讓捲動時邊界更清晰 */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
 
 /* 快速搜尋樣式 */
