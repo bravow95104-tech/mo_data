@@ -371,3 +371,30 @@ thead th {
   border-radius: 6px;
   box-sizing: border-box;
 }
+
+/* Sort Icon Styles */
+#card-equip-table th[data-sort] {
+  cursor: pointer;
+  position: relative;
+}
+
+.sort-icon-container {
+  display: inline-flex;
+  flex-direction: column;
+  margin-left: 5px;
+  vertical-align: middle;
+  line-height: 0.8;
+}
+
+.sort-arrow {
+  color: #ccc;
+  font-size: 10px;
+}
+
+th.sorted-asc .arrow-up {
+  color: white; 
+}
+
+th.sorted-desc .arrow-down {
+  color: white;
+}
