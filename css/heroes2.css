@@ -321,6 +321,17 @@ th.sort-desc .caret-down {
   color: var(--text-dark);
 }
 
+/* For aligning the "光輝掉落" section */
+.hero-column-details p {
+  display: flex;
+  align-items: flex-start; /* Align items to the top in case of wrapping */
+}
+
+.hero-column-details p strong {
+  flex-shrink: 0; /* Prevents the label from shrinking */
+  margin-right: 8px; /* Adds space between the label and the text */
+}
+
 .section-gap {
   margin-top: 16px !important; /* 顯著的段落開頭距離 */
 }
