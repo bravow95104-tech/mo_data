@@ -47,6 +47,9 @@ th.sortable {
   cursor: pointer;
   user-select: none; /* 防止快速點擊時選取到文字 */
   transition: background 0.2s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 th.sortable:hover {
@@ -58,7 +61,6 @@ th.sortable:hover {
   display: inline-flex;
   flex-direction: column;
   margin-left: 5px;
-  vertical-align: middle; /* 對齊整個容器 */
 }
 
 /* 預設箭頭為半透明 */
