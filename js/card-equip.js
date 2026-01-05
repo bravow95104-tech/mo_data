@@ -145,7 +145,7 @@ function renderTable(data) {
       <td>${card.nemultiplier || '-'}</td>
       <td>${card.hero_name || '-'}</td>
     `;
-    row.addEventListener('click', () => openModal(card));
+    row.addEventListener('click', () => showDetailModal(card));
     tbody.appendChild(row);
   });
 }
