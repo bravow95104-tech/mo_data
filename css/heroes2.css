@@ -270,10 +270,10 @@ tbody tr:hover {
 /* 調整 table header sticky 時，避免蓋到 nav */
 thead th {
 position: sticky;
-  /* top 現在會根據導航列的高度動態調整 */
-  top: var(--nav-height); 
-  background-color: #1976d2 !important;
+  top: var(--nav-offset); /* 📌 這裡會被 JS 動態修改 */
+  background-color: #1976d2 !important; /* 確保有顏色不透明 */
   z-index: 100;
+  transition: top 0.3s ease; /* 📌 增加平滑感，表頭會滑動閃避導航列 */
   color: white;
   box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
