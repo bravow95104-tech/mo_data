@@ -2,9 +2,10 @@
 <html lang="zh-Hant">
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>英雄清單 | MoData</title>
     <link rel="stylesheet" href="/mo_data/css/styles.css" />
-    <link rel="stylesheet" href="/mo_data/css/heroes.css" />
+    <link rel="stylesheet" href="/mo_data/css/heroes2.css" />
   </head>
   <body>
     <div id="nav-container"></div>
@@ -108,38 +109,38 @@
     <!-- 英雄表格 -->
     <table id="heroes-table">
       <thead>
-        <tr>
-          <th>英雄<br />名稱</th>
-          <th>對應<br />光輝</th>
-          <th>拜官</th>
-          <th>初始</th>
-          <th>素質</th>
-          <th>個性</th>
-          <th>屬性</th>
-          <th>力量</th>
-          <th>智慧</th>
-          <th>體質</th>
-          <th>敏捷</th>
-          <th>運氣</th>
-          <th>積極度<br />(生變前)</th>
-          <th>裝備卡<br />(新專)</th>
-          <th>裝備卡<br />(舊專)</th>
-        </tr>
-      </thead>
+  <tr>
+    <th class="sortable" data-col="name">英雄<br />名稱</th>
+    <th>對應<br />光輝</th>
+    <th>拜官</th>
+    <th class="sortable" data-col="initial">初始</th>
+    <th class="sortable" data-col="traits">素質</th>
+    <th>個性</th>
+    <th class="sortable" data-col="element">屬性</th>
+    <th class="sortable" data-col="str">力量</th>
+    <th class="sortable" data-col="int">智慧</th>
+    <th class="sortable" data-col="vit">體質</th>
+    <th class="sortable" data-col="agi">敏捷</th>
+    <th class="sortable" data-col="luk">運氣</th>
+    <th class="sortable" data-col="aggression_before">積極度<br />(生變前)</th>
+    <th>裝備卡<br />(新專)</th>
+    <th>裝備卡<br />(舊專)</th>
+  </tr>
+</thead>
       <tbody>
         <!-- 資料由 JS 動態載入 -->
       </tbody>
     </table>
 
     <!-- 留白避免按鈕遮住 -->
-    <div style="height: 80px"></div>
+    <div class="page-bottom-spacer"></div>
 
     <!-- 回到頂部按鈕 -->
     <button id="backToTop" title="回到頂部">▲</button>
 
     <!-- Modal HTML -->
     <div id="modalOverlay"></div>
-    <div id="modalBox">
+    <div id="modalBox" role="dialog" aria-modal="true" aria-labelledby="modal-title">
       <span class="close-btn">&times;</span>
       <div id="modalContent"></div>
     </div>
@@ -148,7 +149,7 @@
 
     <div id="footer-container"></div>
     <!-- 這是頁尾會被載入的位置 -->
-    <script src="/mo_data/js/heroes.js"></script>
+    <script src="/mo_data/js/heroes2.js"></script>
     <script src="/mo_data/js/componentsLoader.js"></script>
     
   </body>
