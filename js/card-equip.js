@@ -216,7 +216,7 @@ function sortArray(array, column, direction) {
 }
 
 // Modal Functions
-function openModal(card) {
+function openModal(item) {
   const modalOverlay = document.getElementById('modalOverlay');
   const modalBox = document.getElementById('modalBox');
   const modalContent = document.getElementById('modalContent');
@@ -236,7 +236,7 @@ function openModal(card) {
         <p class="section-gap"><strong>掉落地圖：</strong>${item.drop || '未知'}</p>
       </div>
     </div>
-    `;
+  `;
   }
 
   if (modalOverlay && modalBox) {
