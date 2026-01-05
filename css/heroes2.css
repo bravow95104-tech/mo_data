@@ -66,13 +66,14 @@ th.sortable:hover {
   display: inline-flex;
   flex-direction: column;
   margin-left: 5px;
+  gap: 2px; /* Add a small gap between the arrows */
 }
 
 /* 預設箭頭為半透明 */
 .sort-caret-container span {
   color: rgba(255, 255, 255, 0.5);
   font-size: 0.8em;
-  line-height: 0.7; /* 調整行高以縮小箭頭間距 */
+  line-height: 1; /* Reset line-height to normal if gap is used */
   padding: 0; /* 移除內邊距 */
 }
 
