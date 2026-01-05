@@ -381,7 +381,7 @@ thead th {
 .sort-icon-container {
   display: inline-flex;
   flex-direction: column;
-  margin-left: 5px;
+  /* Removed margin-left to improve centering */
   vertical-align: middle;
   line-height: 0.8;
 }
