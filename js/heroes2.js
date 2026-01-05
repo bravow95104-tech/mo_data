@@ -2,6 +2,14 @@ document.addEventListener("DOMContentLoaded", () => {
   let heroesData = [];
   let sortConfig = { key: null, direction: 'asc' }; // 記錄排序狀態
 
+  // === 動態新增排序箭頭 ===
+  document.querySelectorAll('th.sortable').forEach(th => {
+    const caretContainer = document.createElement('span');
+    caretContainer.className = 'sort-caret-container';
+    caretContainer.innerHTML = '<span class="caret-up">▲</span><span class="caret-down">▼</span>';
+    th.appendChild(caretContainer);
+  });
+
   // === DOM 元素快取 ===
   const tableBody = document.querySelector('#heroes-table tbody');
   const searchInput = document.getElementById('searchInput');
@@ -140,7 +148,7 @@ document.addEventListener("DOMContentLoaded", () => {
         sortConfig.direction = sortConfig.direction === 'asc' ? 'desc' : 'asc';
       } else {
         sortConfig.key = col;
-        sortConfig.direction = 'asc';
+        sortConfig.direction = 'desc'; // 更改為預設降冪排序
       }
 
       document.querySelectorAll('th.sortable').forEach(el => {
