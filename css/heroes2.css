@@ -53,20 +53,27 @@ th.sortable:hover {
   background-color: var(--header-hover-bg-color);
 }
 
-th.sortable::after {
-  content: ' ↕';
+/* 新的排序箭頭樣式 */
+.sort-caret-container {
+  display: inline-flex;
+  flex-direction: column;
+  margin-left: 5px;
+  line-height: 0.7;
+  position: relative; /* 使用 relative 微調位置 */
+  top: 1px;
+}
+
+/* 預設箭頭為半透明 */
+.sort-caret-container span {
+  color: rgba(255, 255, 255, 0.5);
   font-size: 0.8em;
-  color: rgba(255, 255, 255, 0.5); /* 半透明白色 */
+  padding: 1px 0; /* 增加一點垂直間距 */
 }
 
-th.sort-asc::after {
-  content: ' ▲';
-  color: var(--highlight-bg-color); /* 升冪用黃色亮起 */
-}
-
-th.sort-desc::after {
-  content: ' ▼';
-  color: var(--highlight-bg-color); /* 降冪用黃色亮起 */
+/* 高亮目前排序方向的箭頭 */
+th.sort-asc .caret-up,
+th.sort-desc .caret-down {
+  color: var(--highlight-bg-color); /* 黃色高亮 */
 }
 
 /* 搜尋與篩選 */
