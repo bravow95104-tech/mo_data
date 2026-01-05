@@ -240,6 +240,9 @@ document.addEventListener("DOMContentLoaded", () => {
           <p><strong>光輝掉落(掉落較低)：</strong>${hero.fall_low}</p>
           <p><strong>光輝掉落(玩家提供)：</strong>${hero.player}</p>
         </div>
+        <div class="hero-playerdata">
+        <p><strong>資訊提供：</strong>${hero.playerdata}</p>
+      </div>
       </div>
     `;
     modalContent.insertAdjacentHTML('beforeend', detailHTML);
