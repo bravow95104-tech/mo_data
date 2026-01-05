@@ -2,26 +2,33 @@ document.addEventListener("DOMContentLoaded", () => {
   let heroesData = [];
   let sortConfig = { key: null, direction: 'asc' }; // 記錄排序狀態
 
-  // === 動態新增排序箭頭 (修正版) ===
+  // === 動態新增排序箭頭 (最終修正版) ===
   document.querySelectorAll('th.sortable').forEach(th => {
-    // 防止重複執行此邏輯
-    if (th.querySelector('.th-text-wrapper')) return;
+    // 防止重複執行
+    if (th.querySelector('.th-flex-container')) return;
+
+    const flexContainer = document.createElement('div');
+    flexContainer.className = 'th-flex-container';
 
     const textWrapper = document.createElement('span');
     textWrapper.className = 'th-text-wrapper';
 
-    // 將 th 內現有的所有子節點 (文字, <br>) 移入 textWrapper
+    // 將現有內容移入 textWrapper
     while (th.firstChild) {
       textWrapper.appendChild(th.firstChild);
     }
 
-    // 將 textWrapper 和新的箭頭容器加回 th
-    th.appendChild(textWrapper);
-
+    // 建立箭頭容器
     const caretContainer = document.createElement('span');
     caretContainer.className = 'sort-caret-container';
     caretContainer.innerHTML = '<span class="caret-up">▲</span><span class="caret-down">▼</span>';
-    th.appendChild(caretContainer);
+
+    // 將文字和箭頭都放入 flex 總容器
+    flexContainer.appendChild(textWrapper);
+    flexContainer.appendChild(caretContainer);
+
+    // 最後將總容器放回 th
+    th.appendChild(flexContainer);
   });
 
   // === DOM 元素快取 ===
