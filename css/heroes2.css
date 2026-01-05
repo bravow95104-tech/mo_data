@@ -47,18 +47,18 @@ th.sortable {
   cursor: pointer;
   user-select: none; /* 防止快速點擊時選取到文字 */
   transition: background 0.2s;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 th.sortable:hover {
   background-color: var(--header-hover-bg-color);
 }
 
-/* 確保 th 內的文字內容在 flex 佈局下依然置中 */
-.th-text-wrapper {
-  text-align: center;
+/* 新的總容器，用於 flex 置中 */
+.th-flex-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* 容器內的文字預設會繼承 th 的 text-align: center */
 }
 
 /* 新的排序箭頭樣式 */
