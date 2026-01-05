@@ -233,6 +233,7 @@ tbody tr:hover {
   border-radius: 6px;        /* 可選：圓角讓框框好看 */
   box-shadow: 0 1px 4px rgba(0,0,0,0.1);
 }
+
 #modalContent {
   padding: 10px;
   font-size: 16px;
@@ -339,4 +340,32 @@ thead th {
 .hero-images img:hover {
   transform: scale(1.05);
   box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+}
+
+/* 讓表頭看起來可以點擊 */
+th.sortable {
+  cursor: pointer;
+  position: relative;
+  transition: background 0.2s;
+}
+
+th.sortable:hover {
+  background-color: #f0f0f0;
+}
+
+/* 排序箭頭圖示 */
+th.sortable::after {
+  content: ' ↕';
+  font-size: 0.8em;
+  color: #ccc;
+}
+
+th.sort-asc::after {
+  content: ' ▲';
+  color: #3399ff;
+}
+
+th.sort-desc::after {
+  content: ' ▼';
+  color: #3399ff;
 }
