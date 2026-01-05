@@ -376,6 +376,10 @@ thead th {
 #card-equip-table th[data-sort] {
   cursor: pointer;
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
 }
 
 .sort-icon-container {
