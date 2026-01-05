@@ -1,160 +1,228 @@
+let allCardData = [];
+let currentSortColumn = '';
+let sortDirection = {}; // Store sort direction for each column
+
 document.addEventListener("DOMContentLoaded", () => {
-  // 載入 JSON
+  // 1. Load Data
   fetch("/mo_data/data/card.json")
-    .then(res => {
-      if (!res.ok) throw new Error("載入 card.json 失敗");
-      return res.json();
+    .then(res => res.json())
+    .then(data => {
+      // Filter for "裝備卡" type only
+      allCardData = data.filter(card => card.type === "裝備卡");
+      renderTable(allCardData); // Initial render
     })
-    .then(json => {
-      const data = Array.isArray(json) ? json : json.data;
-      const filteredData = data.filter(d => d.type === "裝備卡");
+    .catch(err => console.error("❌ Failed to load card data:", err));
 
-      // ✅ 初始化表格 (已移除圖片預載，讚！)
-      initCardTable(filteredData);
-    })
-    .catch(err => {
-      console.error("❌ JSON 載入失敗：", err);
-      const tbody = document.querySelector("#card-equip-table tbody");
-      tbody.innerHTML = "<tr><td colspan='6'>無法載入資料</td></tr>";
+  // 2. Search Input Listener
+  const searchInput = document.getElementById('searchInput');
+  if (searchInput) {
+    searchInput.addEventListener('input', applyFilters);
+  }
+
+  // 3. Filter Button Listeners
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      btn.classList.toggle('active');
+      applyFilters();
     });
+  });
 
-  // === Accordion 展開／收合 ===
+  // 4. Clear Filters Button
+  const clearBtn = document.getElementById('clearFilters');
+  if (clearBtn) {
+    clearBtn.addEventListener('click', () => {
+      if (searchInput) searchInput.value = '';
+      document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.classList.remove('active');
+      });
+      applyFilters();
+    });
+  }
+
+  // 5. Accordion Toggle
   document.querySelectorAll('.accordion-header').forEach(header => {
     header.addEventListener('click', () => {
       header.parentElement.classList.toggle('collapsed');
     });
   });
+
+  // 6. Table Header Listeners for Sorting
+  document.querySelectorAll('#card-equip-table th').forEach(header => {
+    header.addEventListener('click', () => {
+      const column = header.dataset.sort; // Assuming data-sort attribute on th
+      if (column) {
+        sortData(column);
+      }
+    });
+  });
+
+  // 7. Back to Top Button
+  const backToTopButton = document.getElementById('backToTop');
+  if (backToTopButton) {
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 200) {
+        backToTopButton.style.display = 'block';
+      } else {
+        backToTopButton.style.display = 'none';
+      }
+    });
+
+    backToTopButton.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+
+  // 8. Modal Event Listeners
+  const modalOverlay = document.getElementById('modalOverlay');
+  const modalBox = document.getElementById('modalBox');
+  const closeBtn = document.querySelector('#modalBox .close-btn');
+
+  if (modalOverlay && modalBox && closeBtn) {
+    modalOverlay.addEventListener('click', closeModal);
+    closeBtn.addEventListener('click', closeModal);
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && modalBox.style.display === 'block') {
+        closeModal();
+      }
+    });
+  }
 });
 
-// === 初始化卡片表格 ===
-function initCardTable(data) {
-  const searchInput = document.getElementById("searchInput");
-  const clearBtn = document.getElementById("clearFilters");
-  const filterBtns = document.querySelectorAll(".filter-btn");
-  const tbody = document.querySelector("#card-equip-table tbody");
+// Apply Filters and Search
+function applyFilters() {
+  const searchInput = document.getElementById('searchInput');
+  const keyword = searchInput ? searchInput.value.trim().toLowerCase() : "";
 
-  let activeFilters = {
-    card_property: [],
-    multiplier: [],
-    new_old: [],
-  };
+  const activeCardProperties = Array.from(document.querySelectorAll('.filter-btn[data-type="card_property"].active'))
+                                .map(btn => btn.dataset.value);
+  const activeNemultipliers = Array.from(document.querySelectorAll('.filter-btn[data-type="nemultiplier"].active'))
+                               .map(btn => btn.dataset.value);
+  const activeNewOlds = Array.from(document.querySelectorAll('.filter-btn[data-type="new_old"].active'))
+                             .map(btn => btn.dataset.value);
 
-  // === 表格渲染 ===
-  function renderTable(filteredData) {
-    tbody.innerHTML = "";
-    const keyword = searchInput.value.trim().toLowerCase();
+  let filteredData = allCardData.filter(card => {
+    const matchKeyword = (
+      (card.card_id && card.card_id.toLowerCase().includes(keyword)) ||
+      (card.hero_name && card.hero_name.toLowerCase().includes(keyword))
+    );
 
-    if (filteredData.length === 0) {
-      tbody.innerHTML = "<tr><td colspan='6'>找不到符合條件的裝備卡</td></tr>";
-      return;
+    const matchCardProperty = activeCardProperties.length === 0 || 
+                              (card.card_property && activeCardProperties.includes(card.card_property));
+    const matchNemultiplier = activeNemultipliers.length === 0 || 
+                              (card.nemultiplier && activeNemultipliers.includes(card.nemultiplier));
+    const matchNewOld = activeNewOlds.length === 0 || 
+                        (card.new_old && activeNewOlds.includes(card.new_old));
+
+    return matchKeyword && matchCardProperty && matchNemultiplier && matchNewOld;
+  });
+
+  // Re-sort if a column was previously sorted
+  if (currentSortColumn) {
+    filteredData = sortArray(filteredData, currentSortColumn, sortDirection[currentSortColumn]);
+  }
+
+  renderTable(filteredData);
+}
+
+// Render Table
+function renderTable(data) {
+  const tbody = document.querySelector('#card-equip-table tbody');
+  if (!tbody) return;
+  tbody.innerHTML = '';
+
+  if (data.length === 0) {
+    tbody.innerHTML = '<tr><td colspan="6" style="text-align:center; padding:20px; color:#999;">沒有找到符合條件的裝備卡</td></tr>';
+    return;
+  }
+
+  data.forEach(card => {
+    const row = document.createElement('tr');
+    row.innerHTML = `
+      <td>${card.card_id || '-'}</td>
+      <td>${card.card_lv || '-'}</td>
+      <td>${card.card_property || '-'}</td>
+      <td>${card.card_data || '-'}</td>
+      <td>${card.nemultiplier || '-'}</td>
+      <td>${card.hero_name || '-'}</td>
+    `;
+    row.addEventListener('click', () => openModal(card));
+    tbody.appendChild(row);
+  });
+}
+
+// Sort Data
+function sortData(column) {
+  // Initialize sortDirection for the column if not set
+  if (!sortDirection[column]) {
+    sortDirection[column] = 'asc';
+  } else if (sortDirection[column] === 'asc') {
+    sortDirection[column] = 'desc';
+  } else {
+    sortDirection[column] = 'asc'; // Cycle back to 'asc' or reset? For simplicity, cycle.
+  }
+
+  currentSortColumn = column; // Keep track of the last sorted column
+
+  // Apply sorting to the currently filtered data
+  const searchInput = document.getElementById('searchInput');
+  const keyword = searchInput ? searchInput.value.trim().toLowerCase() : "";
+
+  const activeCardProperties = Array.from(document.querySelectorAll('.filter-btn[data-type="card_property"].active'))
+                                .map(btn => btn.dataset.value);
+  const activeNemultipliers = Array.from(document.querySelectorAll('.filter-btn[data-type="nemultiplier"].active'))
+                               .map(btn => btn.dataset.value);
+  const activeNewOlds = Array.from(document.querySelectorAll('.filter-btn[data-type="new_old"].active'))
+                             .map(btn => btn.dataset.value);
+
+  let dataToSort = allCardData.filter(card => {
+    const matchKeyword = (
+      (card.card_id && card.card_id.toLowerCase().includes(keyword)) ||
+      (card.hero_name && card.hero_name.toLowerCase().includes(keyword))
+    );
+
+    const matchCardProperty = activeCardProperties.length === 0 || 
+                              (card.card_property && activeCardProperties.includes(card.card_property));
+    const matchNemultiplier = activeNemultipliers.length === 0 || 
+                              (card.nemultiplier && activeNemultipliers.includes(card.nemultiplier));
+    const matchNewOld = activeNewOlds.length === 0 || 
+                        (card.new_old && activeNewOlds.includes(card.new_old));
+
+    return matchKeyword && matchCardProperty && matchNemultiplier && matchNewOld;
+  });
+
+  dataToSort = sortArray(dataToSort, column, sortDirection[column]);
+  renderTable(dataToSort);
+}
+
+// Helper function to sort an array of objects
+function sortArray(array, column, direction) {
+  return array.sort((a, b) => {
+    const valA = a[column];
+    const valB = b[column];
+
+    // Handle numbers if applicable
+    if (typeof valA === 'number' && typeof valB === 'number') {
+      return direction === 'asc' ? valA - valB : valB - valA;
     }
+    // Handle string comparison (case-insensitive)
+    if (typeof valA === 'string' && typeof valB === 'string') {
+      return direction === 'asc' ? valA.localeCompare(valB) : valB.localeCompare(valA);
+    }
+    // Fallback for other types or mixed types (treat as strings)
+    const strA = String(valA);
+    const strB = String(valB);
+    return direction === 'asc' ? strA.localeCompare(strB) : strB.localeCompare(strA);
+  });
+}
 
-    filteredData.forEach(item => {
-      const tr = document.createElement("tr");
-      const fields = [
-        item.card_id,
-        item.card_lv,
-        item.card_property,
-        item.card_data,
-        item.multiplier || item.nemultiplier, // 兼容舊欄位名稱
-        item.hero_name,
-      ];
+// Modal Functions
+function openModal(card) {
+  const modalOverlay = document.getElementById('modalOverlay');
+  const modalBox = document.getElementById('modalBox');
+  const modalContent = document.getElementById('modalContent');
 
-      fields.forEach(value => {
-        const td = document.createElement("td");
-        const str = String(value || "");
-        if (keyword && str.toLowerCase().includes(keyword)) {
-          const regex = new RegExp(`(${keyword})`, "gi");
-          td.innerHTML = str.replace(regex, "<span class='highlight2'>$1</span>");
-        } else {
-          td.textContent = str;
-        }
-        tr.appendChild(td);
-      });
-
-      tr.addEventListener("click", () => showDetailModal(item));
-      tbody.appendChild(tr);
-    });
-  }
-
-  // === 篩選邏輯 ===
-  function applyFilters() {
-    const keyword = searchInput.value.trim().toLowerCase();
-
-    const filtered = data.filter(item => {
-      const matchSearch =
-        !keyword ||
-        String(item.card_id || "").toLowerCase().includes(keyword) ||
-        String(item.hero_name || "").toLowerCase().includes(keyword) ||
-        String(item.card_property || "").toLowerCase().includes(keyword);
-
-      const matchProperty =
-        activeFilters.card_property.length === 0 ||
-        activeFilters.card_property.includes(item.card_property);
-
-      const matchMultiplier =
-        activeFilters.multiplier.length === 0 ||
-        activeFilters.multiplier.includes(item.multiplier || item.nemultiplier);
-
-      const matchNewOld =
-        activeFilters.new_old.length === 0 ||
-        activeFilters.new_old.includes(item.new_old);
-
-      return matchSearch && matchProperty && matchMultiplier && matchNewOld;
-    });
-
-    renderTable(filtered);
-  }
-
-  // === Modal 顯示 ===
-  function showDetailModal(item) {
-    const overlay = document.getElementById('modalOverlay');
-    const modalBox = document.getElementById('modalBox');
-    const contentDiv = document.getElementById('modalContent');
-
-    // 建立 img 元素
-    const img = document.createElement('img');
-    img.alt = item.card_id;
-    img.className = 'hero-image';
-    img.style.width = '100%';
-    img.style.height = 'auto';
-    img.style.objectFit = 'contain';
-
-    // ✅ 補回：編碼檔名 helper (建議使用 encodeURIComponent 處理特殊字元)
-    const encodeFileName = (name) => encodeURIComponent(name);
-
-    // 候選圖片路徑
-    const imageCandidates = [
-      `/mo_data/pic/card-equip/${encodeFileName(item.card_id)}_${encodeFileName(item.card_property)}.png`,
-      `/mo_data/pic/card-equip/${encodeFileName(item.card_id)}.png`,
-      `/mo_data/pic/card-equip/${encodeFileName(item.card_id)}_${encodeFileName(item.card_property)}.jpg`,
-      `/mo_data/pic/card-equip/${encodeFileName(item.card_id)}.jpg`,
-    ];
-
-    let index = 0;
-
-    const tryLoadImage = () => {
-      if (index >= imageCandidates.length) {
-        console.warn('❌ 所有圖片載入失敗，顯示預設圖');
-        return;
-      }
-
-      const path = imageCandidates[index];
-      const testImg = new Image();
-      testImg.onload = () => {
-        img.src = path;
-      };
-      testImg.onerror = () => {
-        index++;
-        tryLoadImage();
-      };
-      testImg.src = path;
-    };
-
-    tryLoadImage();
-
-    // 組裝 Modal 內容
-    const html = `
+  if (modalContent) {
+    modalContent.innerHTML = `
     <h2 class="hero-name">${item.card_id}</h2>
     <div class="hero-details-container" style="display:flex; gap: 20px;">
       <div class="hero-column left" style="flex:1;"></div>
@@ -168,57 +236,20 @@ function initCardTable(data) {
         <p class="section-gap"><strong>掉落地圖：</strong>${item.drop || '未知'}</p>
       </div>
     </div>
-  `;
+    `;
+  }
 
-    contentDiv.innerHTML = html;
-    contentDiv.querySelector('.hero-column.left').appendChild(img);
-
-    overlay.style.display = 'block';
+  if (modalOverlay && modalBox) {
+    modalOverlay.style.display = 'block';
     modalBox.style.display = 'block';
   }
+}
 
-  // === 關閉 Modal ===
-  function closeModal() {
-    document.getElementById('modalOverlay').style.display = 'none';
-    document.getElementById('modalBox').style.display = 'none';
+function closeModal() {
+  const modalOverlay = document.getElementById('modalOverlay');
+  const modalBox = document.getElementById('modalBox');
+  if (modalOverlay && modalBox) {
+    modalOverlay.style.display = 'none';
+    modalBox.style.display = 'none';
   }
-
-  const closeBtn = document.querySelector('#modalBox .close-btn');
-  closeBtn.addEventListener('click', closeModal);
-  document.getElementById('modalOverlay').addEventListener('click', closeModal);
-
-  // === 篩選按鈕 ===
-  filterBtns.forEach(btn => {
-    btn.addEventListener("click", () => {
-      const type = btn.dataset.type;
-      const value = btn.dataset.value;
-
-      btn.classList.toggle("active");
-      if (btn.classList.contains("active")) {
-        activeFilters[type].push(value);
-      } else {
-        activeFilters[type] = activeFilters[type].filter(f => f !== value);
-      }
-
-      applyFilters();
-    });
-  });
-
-  // === 清除篩選 ===
-  clearBtn.addEventListener("click", () => {
-    activeFilters = {
-      card_property: [],
-      multiplier: [],
-      new_old: []
-    };
-    filterBtns.forEach(b => b.classList.remove("active"));
-    searchInput.value = "";
-    applyFilters();
-  });
-
-  // === 搜尋框 ===
-  searchInput.addEventListener("input", applyFilters);
-
-  // 頁面載入後先渲染
-  renderTable(data);
 }
