@@ -227,13 +227,26 @@ function sortArray(array, column, direction) {
 // Helper function to set up the initial sort icons
 function initializeSortIcons() {
   document.querySelectorAll('#card-equip-table th[data-sort]').forEach(th => {
-    const container = document.createElement('span');
-    container.className = 'sort-icon-container';
-    container.innerHTML = `
+    // Wrap existing content in a div for flex layout
+    const text = th.textContent;
+    const wrapper = document.createElement('div');
+    wrapper.className = 'header-content';
+    
+    const textSpan = document.createElement('span');
+    textSpan.textContent = text;
+    
+    const iconContainer = document.createElement('span');
+    iconContainer.className = 'sort-icon-container';
+    iconContainer.innerHTML = `
       <span class="sort-arrow arrow-up">▲</span>
       <span class="sort-arrow arrow-down">▼</span>
     `;
-    th.appendChild(container);
+    
+    wrapper.appendChild(textSpan);
+    wrapper.appendChild(iconContainer);
+    
+    th.innerHTML = ''; // Clear original content
+    th.appendChild(wrapper);
   });
 }
 
