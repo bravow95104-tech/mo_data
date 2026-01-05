@@ -1,6 +1,18 @@
-/* 設定一個全域變數，預設導航列還沒出現時為 0 */
+/* 全域變數 */
 :root {
-  --nav-height: 0px;
+  --nav-height: 0px; /* JS 動態設定 */
+  --primary-color: #3399ff;
+  --primary-dark-color: #267acc;
+  --highlight-bg-color: #fff9c0;
+  --highlight-text-color: #b8860b;
+  --light-bg-color: #f5faff;
+  --border-color: #b3d8ff;
+  --header-bg-color: #1976d2;
+  --header-hover-bg-color: #1565c0;
+  --text-light: #ffffff;
+  --text-dark: #333333;
+  --border-light-gray: #ccc;
+  --modal-shadow: rgba(0, 0, 0, 0.3);
 }
 
 /* 表格樣式 */
@@ -10,7 +22,7 @@ table {
   margin-top: 20px;
 }
 th, td {
-  border: 1px solid #ccc;
+  border: 1px solid var(--border-light-gray);
   padding: 8px;
   text-align: center;
   font-size: 14px;
@@ -18,25 +30,52 @@ th, td {
 }
 
 tbody tr:hover {
-  background-color: #fff9c0;
+  background-color: var(--highlight-bg-color);
   cursor: pointer;
 }
-/*快速搜尋*/
-#searchInput {
-  padding: 6px 10px;
-  width: 100%;
-  font-size: 14px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-  max-width: 250px; /* 限制寬度 */
+
+thead th {
+  position: sticky;
+  top: var(--nav-offset); /* JS 動態修改 */
+  background-color: var(--header-bg-color);
+  z-index: 100;
+  transition: top 0.2s ease; /* 表頭滑動以閃避導航列 */
+  color: var(--text-light);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
-/*快速搜尋*/
+
+th.sortable {
+  cursor: pointer;
+  user-select: none; /* 防止快速點擊時選取到文字 */
+  transition: background 0.2s;
+}
+
+th.sortable:hover {
+  background-color: var(--header-hover-bg-color);
+}
+
+th.sortable::after {
+  content: ' ↕';
+  font-size: 0.8em;
+  color: rgba(255, 255, 255, 0.5); /* 半透明白色 */
+}
+
+th.sort-asc::after {
+  content: ' ▲';
+  color: var(--highlight-bg-color); /* 升冪用黃色亮起 */
+}
+
+th.sort-desc::after {
+  content: ' ▼';
+  color: var(--highlight-bg-color); /* 降冪用黃色亮起 */
+}
+
+/* 搜尋與篩選 */
 .quick-search-label {
   font-weight: 600;
   margin-right: 8px;
   font-size: 16px;
-  color: #3399ff;
+  color: var(--primary-color);
   vertical-align: middle;
 }
 
@@ -46,55 +85,76 @@ tbody tr:hover {
   gap: 8px;
 }
 
-/* 黃色高亮（柔和） */
+#searchInput {
+  padding: 6px 10px;
+  width: 100%;
+  font-size: 14px;
+  border: 1px solid var(--border-light-gray);
+  border-radius: 4px;
+  box-sizing: border-box;
+  max-width: 250px;
+}
+
 .highlight {
-  background-color: #fff9c0;
+  background-color: var(--highlight-bg-color);
   font-weight: bold;
   border-radius: 3px;
   padding: 2px 4px;
 }
 
-/* 黃色高亮（高亮） */
-.highlight2 {
-  background-color: #fff9c0;
-  font-weight: bold;
-  border-radius: 3px;
-  padding: 2px 4px;
+.accordion {
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  margin-bottom: 20px;
+  background: var(--light-bg-color);
 }
 
-/* 回到頂部按鈕 */
-#backToTop {
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
-  display: none;
-  background-color: #3399ff;
-  color: white;
-  border: none;
+.accordion-header {
+  color: var(--primary-dark-color);
+  margin: 0;
   padding: 12px 16px;
-  border-radius: 50%;
-  font-size: 18px;
   cursor: pointer;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-  transition: background-color 0.3s ease;
-  z-index: 1000;
-}
-#backToTop:hover {
-  background-color: #267acc;
+  font-size: 16px;
+  font-weight: bold;
+  background: var(--light-bg-color);
+  border-radius: 8px 8px 0 0;
+  user-select: none;
+  transition: background 0.3s;
 }
 
-/* 篩選標籤 */
+.accordion-header:hover {
+  background: var(--border-color);
+}
+
+.accordion-content {
+  padding: 12px 16px;
+  margin-top: 6px;
+  display: block;
+}
+
+.accordion.collapsed .accordion-content {
+  display: none;
+}
+
+.accordion.collapsed .accordion-header::after {
+  content: "▸";
+}
+
+.accordion-header::after {
+  content: "▾";
+  float: right;
+}
+
 .filter-label {
   font-weight: bold;
-  color: #267acc;
+  color: var(--primary-dark-color);
   margin-right: 8px;
 }
 
-/* 篩選按鈕 */
 .filter-btn {
   background: #e6f0ff;
-  border: 1px solid #3399ff;
-  color: #267acc;
+  border: 1px solid var(--primary-color);
+  color: var(--primary-dark-color);
   border-radius: 4px;
   padding: 4px 12px;
   margin: 2px 4px 2px 0;
@@ -105,16 +165,15 @@ tbody tr:hover {
 
 .filter-btn:hover,
 .filter-btn.active {
-  background: #fff9c0;   /* 柔和亮黃色 */
-  color: #b8860b;
+  background: var(--highlight-bg-color);
+  color: var(--highlight-text-color);
   border: 1.5px solid #ffe066;
 }
 
-/* 清除篩選按鈕 */
 .clear-btn {
   background: #ffefc0;
   border: 1px solid #ffc107;
-  color: #b8860b;
+  color: var(--highlight-text-color);
   border-radius: 4px;
   padding: 4px 12px;
   margin-top: 8px;
@@ -125,50 +184,48 @@ tbody tr:hover {
 
 .clear-btn:hover {
   background: #ffc107;
-  color: #fff;
+  color: var(--text-light);
 }
 
-
-
-/* Modal 遮罩 */
+/* Modal 彈出視窗 */
 #modalOverlay {
   display: none;
   position: fixed;
   top: 0; left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(0,0,0,0.5);
+  background-color: rgba(0, 0, 0, 0.5);
   z-index: 2000;
 }
 
-/* Modal 內容框 */
 #modalBox {
-  width: 90vw;
   display: none;
   position: fixed;
-  top: 50%; left: 50%;
+  top: 50%;
+  left: 50%;
   transform: translate(-50%, -50%);
   background: white;
   border-radius: 8px;
   padding: 10px 5px;
+  width: 90vw;
   max-width: 650px;
   max-height: 80vh;
   overflow-y: auto;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  box-shadow: 0 4px 12px var(--modal-shadow);
   z-index: 2001;
 }
 
-#modalBox h2 {
-  margin-top: 0;
-  margin-bottom: 15px;
-  font-size: 24px;
-  color: #3399ff;
-  text-align: center;
-}
-
-#modalBox p {
-  margin: 6px 0;
+#modalContent {
+  padding: 10px;
   font-size: 16px;
+  color: var(--text-dark);
+  max-height: 70vh;
+  width: 100%;
+  overflow-y: auto;
+  line-height: 1.5;
+  background-color: #fff;
+  border-radius: 6px;
+  box-sizing: border-box;
 }
 
 #modalBox .close-btn {
@@ -181,153 +238,18 @@ tbody tr:hover {
 }
 
 #modalBox .close-btn:hover {
-  color: #3399ff;
+  color: var(--primary-color);
 }
 
-/* Modal 英雄名稱置中 */
 .hero-name {
   text-align: center;
   font-size: 24px;
-  color: #3399ff;
+  color: var(--primary-color);
   margin-bottom: 20px;
   border-bottom: 1px solid #ddd;
   padding-bottom: 10px;
 }
 
-/* Modal 內部兩欄橫排容器 */
-.hero-details-container {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;           /* 視窗小時自動換行 */
-  gap: 20px;                 /* 兩灰色區塊間距 */
-  padding: 5px;
-  width: auto;
-  max-width: 600px;          /* Modal 最大寬度 */
-  margin: 0 auto;
-  box-sizing: border-box;
-}
-
-/* 左右欄樣式 */
-.hero-column {
-  flex: 0 0 40%;             /* 彈性成長，基底寬度48% */
-  min-width: 250px;          /* 最小寬度限制，避免太小擠壓 */
-  box-sizing: border-box;    /* 包含 padding、border */
-  background-color: #f9f9f9; /* 可選：輕微背景色區分 */
-  padding: 20px 20px;
-  border-radius: 6px;        /* 可選：圓角讓框框好看 */
-  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
-}
-/* 下欄樣式 */
-.hero-column-details {
-  flex: 0 0 90%;             /* 彈性成長，基底寬度48% */
-  min-width: 250px;          /* 最小寬度限制，避免太小擠壓 */
-  box-sizing: border-box;    /* 包含 padding、border */
-  background-color: #f9f9f9; /* 可選：輕微背景色區分 */
-  padding: 20px 20px;
-  border-radius: 6px;        /* 可選：圓角讓框框好看 */
-  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
-}
-
-/* 下欄樣式 */
-.hero-playerdata {
-  flex: 0 0 90%;             /* 彈性成長，基底寬度48% */
-  min-width: 250px;          /* 最小寬度限制，避免太小擠壓 */
-  box-sizing: border-box;    /* 包含 padding、border */
-  background-color: #f9f9f9; /* 可選：輕微背景色區分 */
-  padding: 20px 20px;
-  border-radius: 6px;        /* 可選：圓角讓框框好看 */
-  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
-}
-
-#modalContent {
-  padding: 10px;
-  font-size: 16px;
-  color: #333;
-  max-height: 70vh;         /* 限制最大高度 */
-  width: 100%;
-  overflow-y: auto;         /* 內容超出時垂直出現捲軸 */
-  line-height: 1.5;
-  background-color: #fff;
-  border-radius: 6px;
-  box-sizing: border-box;
-}
-
-/* 文字調整 */
-.hero-column p {
-  margin: 8px 0;
-  font-size: 14px;
-  line-height: 1.4;
-  color: #333;
-}
-
-.hero-column h2 {
-  margin-top: 0;
-  color: #3399ff;
-  text-align: center;
-  font-weight: 600;
-}
-
-/* 調整 table header sticky 時，避免蓋到 nav */
-thead th {
-position: sticky;
-  top: var(--nav-offset); /* 📌 這裡會被 JS 動態修改 */
-  background-color: #1976d2 !important; /* 確保有顏色不透明 */
-  z-index: 100;
-  transition: top 0.3s ease; /* 📌 增加平滑感，表頭會滑動閃避導航列 */
-  color: white;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-}
-
-/* 快速搜尋樣式 */
-.accordion {
-  border: 1px solid #b3d8ff;
-  border-radius: 8px;
-  margin-bottom: 20px;
-  background: #f5faff;
-}
-
-.accordion-header {
-  color: #267acc;
-  margin: 0;
-  padding: 12px 16px;
-  cursor: pointer;
-  font-size: 16px;
-  font-weight: bold;
-  background: #f5faff;
-  border-radius: 8px 8px 0 0;
-  user-select: none;
-  transition: background 0.3s;
-}
-
-.accordion-header:hover {
-  background: #b3d8ff;
-}
-
-.accordion-content {
-  padding: 12px 16px;
-    margin-top: 6px;
-  display: block; /* 預設展開 */
-}
-
-.accordion.collapsed .accordion-content {
-  display: none; /* 收合 */
-}
-
-.accordion.collapsed .accordion-header::after {
-  content: "▸"; /* 收合箭頭 */
-}
-
-.accordion-header::after {
-  content: "▾"; /* 展開箭頭 */
-  float: right;
-}
-
-/* box內的距離 */
-.section-gap {
-  margin-top: 16px !important; /* 顯著的段落開頭距離，加強效果 */
-}
-
-/*載入英雄圖片*/
 .hero-images {
   display: flex;
   justify-content: center;
@@ -342,6 +264,7 @@ position: sticky;
   border: 1px solid #ddd;
   box-shadow: 0 2px 6px rgba(0,0,0,0.15);
   transition: transform 0.25s ease, box-shadow 0.25s ease;
+  max-width: 100%;
 }
 
 .hero-images img:hover {
@@ -349,34 +272,69 @@ position: sticky;
   box-shadow: 0 4px 10px rgba(0,0,0,0.25);
 }
 
-/* 2. 修正可排序欄位的樣式 */
-th.sortable {
+.hero-details-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 5px;
+  width: auto;
+  max-width: 600px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+/* 左右欄位的基礎樣式 */
+.hero-column-base {
+  min-width: 250px;
+  box-sizing: border-box;
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 6px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+.hero-column {
+  flex: 0 0 40%;
+}
+
+.hero-column-details {
+  flex: 0 0 90%;
+}
+
+.hero-column-base p {
+  margin: 8px 0;
+  font-size: 14px;
+  line-height: 1.4;
+  color: var(--text-dark);
+}
+
+.section-gap {
+  margin-top: 16px !important; /* 顯著的段落開頭距離 */
+}
+
+/* 其他 */
+.page-bottom-spacer {
+  height: 80px;
+}
+
+#backToTop {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  display: none;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 12px 16px;
+  border-radius: 50%;
+  font-size: 18px;
   cursor: pointer;
-  /* 移除原本的 position: relative; 以免干擾 sticky */
-  /* 如果 sticky 失效，改用以下組合： */
-  position: sticky !important; 
-  transition: background 0.2s;
-  user-select: none; /* 防止快速點擊時選取到文字 */
+  box-shadow: 0 2px 6px var(--modal-shadow);
+  transition: background-color 0.3s ease;
+  z-index: 1000;
 }
 
-/* 3. 修正 Hover 顏色，不要讓它變太淡 */
-th.sortable:hover {
-  background-color: #1565c0 !important; /* 稍微深一點的藍色，而不是灰色 */
-}
-
-/* 4. 排序箭頭顏色調整（因為背景是深藍，箭頭改白一點比較清楚） */
-th.sortable::after {
-  content: ' ↕';
-  font-size: 0.8em;
-  color: rgba(255, 255, 255, 0.5); /* 半透明白色 */
-}
-
-th.sort-asc::after {
-  content: ' ▲';
-  color: #fff9c0 !important; /* 升冪用黃色亮起 */
-}
-
-th.sort-desc::after {
-  content: ' ▼';
-  color: #fff9c0 !important; /* 降冪用黃色亮起 */
+#backToTop:hover {
+  background-color: var(--primary-dark-color);
 }
