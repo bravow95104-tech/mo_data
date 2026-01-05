@@ -162,11 +162,11 @@ function renderTable(data) {
 function sortData(column) {
   // Initialize sortDirection for the column if not set
   if (!sortDirection[column]) {
+    sortDirection[column] = 'desc'; // Default to descending on first click
+  } else if (sortDirection[column] === 'desc') {
     sortDirection[column] = 'asc';
-  } else if (sortDirection[column] === 'asc') {
-    sortDirection[column] = 'desc';
   } else {
-    sortDirection[column] = 'asc'; // Cycle back to 'asc' or reset? For simplicity, cycle.
+    sortDirection[column] = 'desc'; // Cycle back to 'desc'
   }
 
   currentSortColumn = column; // Keep track of the last sorted column
