@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
       // Filter for "裝備卡" type only
       allCardData = data.filter(card => card.type === "裝備卡");
       renderTable(allCardData); // Initial render
+      initializeSortIcons(); // Create stacked arrows
       updateSortIcons(); // Initialize sort icons
     })
     .catch(err => console.error("❌ Failed to load card data:", err));
@@ -223,23 +224,25 @@ function sortArray(array, column, direction) {
   });
 }
 
+// Helper function to set up the initial sort icons
+function initializeSortIcons() {
+  document.querySelectorAll('#card-equip-table th[data-sort]').forEach(th => {
+    const container = document.createElement('span');
+    container.className = 'sort-icon-container';
+    container.innerHTML = `
+      <span class="sort-arrow arrow-up">▲</span>
+      <span class="sort-arrow arrow-down">▼</span>
+    `;
+    th.appendChild(container);
+  });
+}
+
 // Helper function to update sort icons in table headers
 function updateSortIcons() {
   document.querySelectorAll('#card-equip-table th').forEach(th => {
-    th.classList.remove('sorted-asc', 'sorted-desc'); // Remove existing classes
-    // Remove existing sort icon span
-    const existingIcon = th.querySelector('.sort-icon');
-    if (existingIcon) {
-      existingIcon.remove();
-    }
-
+    th.classList.remove('sorted-asc', 'sorted-desc');
     const column = th.dataset.sort;
     if (column === currentSortColumn) {
-      const icon = sortDirection[column] === 'asc' ? '▲' : '▼';
-      const span = document.createElement('span');
-      span.className = 'sort-icon';
-      span.textContent = icon;
-      th.appendChild(span);
       th.classList.add(`sorted-${sortDirection[column]}`);
     }
   });
