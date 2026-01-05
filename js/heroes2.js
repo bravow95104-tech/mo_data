@@ -2,6 +2,15 @@ document.addEventListener("DOMContentLoaded", () => {
   let heroesData = [];
   let sortConfig = { key: null, direction: 'asc' }; // 記錄排序狀態
 
+  // === DOM 元素快取 ===
+  const tableBody = document.querySelector('#heroes-table tbody');
+  const searchInput = document.getElementById('searchInput');
+  const clearFiltersBtn = document.getElementById('clearFilters');
+  const modalOverlay = document.getElementById('modalOverlay');
+  const modalBox = document.getElementById('modalBox');
+  const modalContent = document.getElementById('modalContent');
+  const closeModalBtn = document.querySelector('#modalBox .close-btn');
+
   // === 1. 載入 JSON 資料 ===
   fetch('/mo_data/data/heroes.json')
     .then(response => response.json())
@@ -11,11 +20,8 @@ document.addEventListener("DOMContentLoaded", () => {
     })
     .catch(error => {
       console.error('載入英雄資料錯誤:', error);
-      const tbody = document.querySelector('#heroes-table tbody');
-      if (tbody) tbody.innerHTML = '<tr><td colspan="15">無法載入英雄資料</td></tr>';
+      if (tableBody) tableBody.innerHTML = '<tr><td colspan="15">無法載入英雄資料</td></tr>';
     });
-
-  const searchInput = document.getElementById('searchInput');
 
   // === 2. 核心邏輯：套用 搜尋 + 篩選 + 排序 ===
   function applyFilters() {
@@ -57,8 +63,7 @@ document.addEventListener("DOMContentLoaded", () => {
       filtered.sort((a, b) => {
         let valA = a[sortConfig.key];
         let valB = b[sortConfig.key];
-
-        // 數值欄位轉換 (力量、智慧、積極度等)
+        
         const numA = parseFloat(valA);
         const numB = parseFloat(valB);
         
@@ -81,14 +86,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // === 3. 渲染表格 ===
   function renderTable(data) {
-    const tbody = document.querySelector('#heroes-table tbody');
-    if (!tbody) return;
-    tbody.innerHTML = '';
+    if (!tableBody) return;
+    tableBody.innerHTML = '';
 
     const keyword = searchInput.value.trim().toLowerCase();
 
     if (data.length === 0) {
-      tbody.innerHTML = '<tr><td colspan="15">找不到符合條件的英雄</td></tr>';
+      tableBody.innerHTML = '<tr><td colspan="15">找不到符合條件的英雄</td></tr>';
       return;
     }
 
@@ -106,7 +110,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (keyword && value.toLowerCase().includes(keyword)) {
           const regex = new RegExp(`(${keyword})`, 'gi');
-          td.innerHTML = value.replace(regex, '<span class="highlight2">$1</span>');
+          td.innerHTML = value.replace(regex, '<span class="highlight">$1</span>');
         } else {
           td.textContent = value;
         }
@@ -116,15 +120,12 @@ document.addEventListener("DOMContentLoaded", () => {
       tr.addEventListener('click', () => showDetailModal(hero));
       fragment.appendChild(tr);
     });
-    tbody.appendChild(fragment);
+    tableBody.appendChild(fragment);
   }
 
   // === 4. 事件監聽 (搜尋、按鈕、排序) ===
-
-  // 搜尋框
   searchInput.addEventListener('input', applyFilters);
 
-  // 篩選按鈕
   document.querySelectorAll('.filter-btn').forEach(btn => {
     btn.addEventListener('click', () => {
       btn.classList.toggle('active');
@@ -132,7 +133,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // 表頭排序點擊
   document.querySelectorAll('th.sortable').forEach(th => {
     th.addEventListener('click', () => {
       const col = th.dataset.col;
@@ -143,7 +143,6 @@ document.addEventListener("DOMContentLoaded", () => {
         sortConfig.direction = 'asc';
       }
 
-      // 更新 UI 箭頭
       document.querySelectorAll('th.sortable').forEach(el => {
         el.classList.remove('sort-asc', 'sort-desc');
       });
@@ -153,8 +152,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // 清除篩選
-  document.getElementById('clearFilters').addEventListener('click', () => {
+  clearFiltersBtn.addEventListener('click', () => {
     searchInput.value = '';
     sortConfig = { key: null, direction: 'asc' };
     document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
@@ -164,35 +162,27 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // === 5. Modal 詳細視窗 ===
   function showDetailModal(hero) {
-    const overlay = document.getElementById('modalOverlay');
-    const modalBox = document.getElementById('modalBox');
-    const contentDiv = document.getElementById('modalContent');
-
     const safeName = hero.name.replace(/[^\w\u4e00-\u9fa5]/g, '');
 
     function createImageWithFallbacks(basePath, altText) {
       const img = document.createElement('img');
       img.alt = altText;
-      img.style.maxWidth = '100%';
       img.src = basePath + '.png';
-      img.onerror = () => img.style.display = 'none';
+      img.onerror = () => img.style.display = 'none'; // Keep this for fallback
       return img;
     }
 
-    contentDiv.innerHTML = `<h2 class="hero-name">${hero.name}</h2>`;
+    modalContent.innerHTML = `<h2 class="hero-name" id="modal-title">${hero.name}</h2>`;
     
     const imgContainer = document.createElement('div');
     imgContainer.className = 'hero-images';
-    imgContainer.style.display = 'flex';
-    imgContainer.style.gap = '10px';
-    imgContainer.style.marginBottom = '20px';
     imgContainer.appendChild(createImageWithFallbacks(`/mo_data/pic/heroes/${safeName}_正`, '正面'));
     imgContainer.appendChild(createImageWithFallbacks(`/mo_data/pic/heroes/${safeName}_反`, '反面'));
-    contentDiv.appendChild(imgContainer);
+    modalContent.appendChild(imgContainer);
 
     const detailHTML = `
       <div class="hero-details-container">
-        <div class="hero-column left">
+        <div class="hero-column-base hero-column">
           <p><strong>對應光輝：</strong>${hero.glory}</p>
           <p><strong>拜官：</strong>${hero.promotion}</p>
           <p><strong>初始：</strong>${hero.initial}</p>
@@ -205,7 +195,7 @@ document.addEventListener("DOMContentLoaded", () => {
           <p><strong>敏捷：</strong>${hero.agi}</p>
           <p><strong>運氣：</strong>${hero.luk}</p>
         </div>
-        <div class="hero-column right">
+        <div class="hero-column-base hero-column">
           <p><strong>積極度(生變前)：</strong>${hero.aggression_before}</p>
           <p><strong>積極度(生變後)：</strong>${hero.aggression_after}</p>
           <p class="section-gap"><strong>裝備卡(新專)：</strong>${hero.equipment_new}</p>
@@ -216,29 +206,26 @@ document.addEventListener("DOMContentLoaded", () => {
           <p class="section-gap"><strong>天生技：</strong>${hero.innate_skill}</p>
           <p><strong>生變技能：</strong>${hero.transformation_skill}</p>
         </div>
-        <div class="hero-column-details">
+        <div class="hero-column-base hero-column-details">
           <p><strong>光輝掉落(掉落較多)：</strong>${hero.fall_high}</p>
           <p><strong>光輝掉落(掉落較低)：</strong>${hero.fall_low}</p>
           <p><strong>光輝掉落(玩家提供)：</strong>${hero.player}</p>
         </div>
       </div>
     `;
-    contentDiv.insertAdjacentHTML('beforeend', detailHTML);
+    modalContent.insertAdjacentHTML('beforeend', detailHTML);
 
-    overlay.style.display = 'block';
+    modalOverlay.style.display = 'block';
     modalBox.style.display = 'block';
   }
 
-  // 關閉 Modal
-  const closeBtn = document.querySelector('#modalBox .close-btn');
-  const overlay = document.getElementById('modalOverlay');
-  if (closeBtn) closeBtn.addEventListener('click', closeModal);
-  if (overlay) overlay.addEventListener('click', closeModal);
-
   function closeModal() {
-    document.getElementById('modalOverlay').style.display = 'none';
-    document.getElementById('modalBox').style.display = 'none';
+    modalOverlay.style.display = 'none';
+    modalBox.style.display = 'none';
   }
+
+  closeModalBtn.addEventListener('click', closeModal);
+  modalOverlay.addEventListener('click', closeModal);
 
   // Accordion
   document.querySelectorAll('.accordion-header').forEach(header => {
