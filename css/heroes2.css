@@ -56,6 +56,11 @@ th.sortable:hover {
   background-color: var(--header-hover-bg-color);
 }
 
+/* 確保 th 內的文字內容在 flex 佈局下依然置中 */
+.th-text-wrapper {
+  text-align: center;
+}
+
 /* 新的排序箭頭樣式 */
 .sort-caret-container {
   display: inline-flex;
