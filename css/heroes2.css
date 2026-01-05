@@ -58,16 +58,15 @@ th.sortable:hover {
   display: inline-flex;
   flex-direction: column;
   margin-left: 5px;
-  line-height: 0.7;
-  position: relative; /* 使用 relative 微調位置 */
-  top: 1px;
+  vertical-align: middle; /* 對齊整個容器 */
 }
 
 /* 預設箭頭為半透明 */
 .sort-caret-container span {
   color: rgba(255, 255, 255, 0.5);
   font-size: 0.8em;
-  padding: 1px 0; /* 增加一點垂直間距 */
+  line-height: 0.7; /* 調整行高以縮小箭頭間距 */
+  padding: 0; /* 移除內邊距 */
 }
 
 /* 高亮目前排序方向的箭頭 */
