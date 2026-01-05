@@ -350,3 +350,14 @@ th.sort-desc .caret-down {
 #backToTop:hover {
   background-color: var(--primary-dark-color);
 }
+
+/* 下欄樣式 */
+.hero-playerdata {
+  flex: 0 0 90%;             /* 彈性成長，基底寬度48% */
+  min-width: 250px;          /* 最小寬度限制，避免太小擠壓 */
+  box-sizing: border-box;    /* 包含 padding、border */
+  background-color: #f9f9f9; /* 可選：輕微背景色區分 */
+  padding: 20px 20px;
+  border-radius: 6px;        /* 可選：圓角讓框框好看 */
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+}
