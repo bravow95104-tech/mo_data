@@ -46,9 +46,11 @@ function initNavbarBehavior() {
 
     const hamburgerBtn = document.getElementById("hamburger-btn");
     const navMenu = document.getElementById("nav-menu");
+    const dropdowns = document.querySelectorAll(".dropdown");
     
     let lastScrollY = window.scrollY;
     let isMouseNearTop = false;
+    let isDropdownOpen = false;
 
     // --- 🌟 關鍵：更新 CSS 變數以防止遮擋表格表頭 ---
     function updateNavOffset() {
@@ -66,16 +68,31 @@ function initNavbarBehavior() {
         return navMenu && navMenu.classList.contains("active");
     }
 
+    // --- 🌟 新增：監聽下拉選單的開啟與關閉 ---
+    dropdowns.forEach(dropdown => {
+        dropdown.addEventListener("mouseenter", () => {
+            isDropdownOpen = true;
+            updateNavbarVisibility();
+        });
+        dropdown.addEventListener("mouseleave", () => {
+            isDropdownOpen = false;
+            updateNavbarVisibility();
+        });
+    });
+
     // 滑鼠靠近頂部顯示導覽列
     document.addEventListener("mousemove", e => {
         isMouseNearTop = e.clientY < 80;
-        updateNavbarVisibility();
+        if (!isDropdownOpen) {
+            updateNavbarVisibility();
+        }
     });
 
     // 滾動控制顯示／隱藏
     window.addEventListener("scroll", () => {
         const currentY = window.scrollY;
-        const shouldHide = currentY > lastScrollY && !isMouseNearTop && !isMobileMenuOpen();
+        // --- 🌟 修改：加入 isDropdownOpen 判斷 ---
+        const shouldHide = currentY > lastScrollY && !isMouseNearTop && !isMobileMenuOpen() && !isDropdownOpen;
         
         if (currentY < 100) {
             navbar.classList.add("visible");
@@ -90,7 +107,7 @@ function initNavbarBehavior() {
     });
 
     function updateNavbarVisibility() {
-        if (isMobileMenuOpen()) {
+        if (isMobileMenuOpen() || isDropdownOpen) {
             navbar.classList.add("visible");
         } else if (isMouseNearTop) {
             navbar.classList.add("visible");
