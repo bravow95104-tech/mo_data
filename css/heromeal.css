@@ -70,7 +70,6 @@ h1 {
   border-radius: 18px;
   box-shadow: 0 4px 24px rgba(51,153,255,0.10);
   /* padding: 32px 18px 24px 18px; */
-  overflow-x: auto;
 }
 
 /* 表格共用樣式 */
