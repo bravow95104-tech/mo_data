@@ -101,12 +101,16 @@ h1 {
 /* 表頭共用樣式 */
 .meal-table thead th,
 .card-table thead th {
-  background: #e3f2fd;   /* 單一淡藍色 */
-  color: #267acc;
+  position: sticky;
+  top: var(--nav-offset, 0px); /* JS 動態修改 */
+  background: #1976d2;   /* 單一淡藍色 */
+  color: white;
   font-weight: bold;
   font-size: 17px;
   letter-spacing: 1px;
   border-bottom: 2.5px solid #b3d8ff;
+  z-index: 100;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 /* 偶數列底色 */

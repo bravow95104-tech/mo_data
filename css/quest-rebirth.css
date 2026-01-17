@@ -1,4 +1,3 @@
-
 /* 分頁按鈕 */
 .tab-btn {
   padding: 8px 16px;
@@ -69,4 +68,14 @@
   padding: 6px 10px;
   border-bottom: 1px solid #eee;
   vertical-align: top;
+}
+
+/* 調整 table header sticky 時，避免蓋到 nav */
+thead th {
+  position: sticky;
+  top: var(--nav-offset, 0px); /* JS 動態修改 */
+  background-color: #1976d2;
+  z-index: 100;
+  color: white;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
