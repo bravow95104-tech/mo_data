@@ -2490,5 +2490,19 @@
     "drop_rubbish": "鬼火、木乃伊繃帶、四葉幸運草、虎牙",
     "drop_glory_high": "南蠻王之光輝、甄洛之光輝、荀攸之光輝、黃忠之光輝、法正之光輝、甘寧之光輝、呂虎威之光輝",
     "drop_glory_low": "田豐之光輝、斬仙之光、宋徽宗之光輝、鄧艾之光輝、戴宗之光輝、程遠志之光輝、廖化之光輝、胡車兒之光輝、巖流秘劍之徵"
+  },
+  {
+    "mapid": "古道小徑",
+    "def": "",
+    "dodge": "",
+    "approach": "",
+    "illustrate": "",
+    "approach_a": "",
+    "maplv": "",
+    "monster": "",
+    "monster_atk": "",
+    "drop_rubbish": "",
+    "drop_glory_high": "",
+    "drop_glory_low": ""
   }
 ]
