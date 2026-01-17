@@ -103,12 +103,15 @@ body {
 }
 
 /* Make table headers sticky */
-th {
+thead {
     position: sticky;
     top: var(--nav-offset, 0px); /* Use the dynamic nav offset, fallback to 0 */
+    z-index: 100;
+}
+
+th {
     background-color: #3399ff; /* Match navbar background */
     color: white; /* Ensure text is visible on the background */
-    z-index: 100;
 }
 
 /* 回到頂部按鈕 */
