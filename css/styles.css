@@ -24,7 +24,7 @@ body {
     align-items: center;
     border-radius: 0 0 8px 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
+    z-index: 2000;
     /* === 動畫控制 === */
     transform: translateY(-100%);
     transition: transform 0.3s ease;
@@ -100,6 +100,15 @@ body {
 
 .dropdown-content a:hover {
     background-color: #5abaff;
+}
+
+/* Make table headers sticky */
+th {
+    position: sticky;
+    top: var(--nav-offset, 0px); /* Use the dynamic nav offset, fallback to 0 */
+    background-color: #3399ff; /* Match navbar background */
+    color: white; /* Ensure text is visible on the background */
+    z-index: 100;
 }
 
 /* 回到頂部按鈕 */
