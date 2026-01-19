@@ -1,51 +1,139 @@
 let allCardData = [];
-let currentSortColumn = '';
-let sortDirection = {}; // Store sort direction for each column
+let sortConfig = { key: null, direction: 'asc' }; // 統一管理排序狀態
 
 document.addEventListener("DOMContentLoaded", () => {
-  // 1. Load Data
+  // === DOM 元素快取 ===
+  const tableBody = document.querySelector('#card-equip-table tbody');
+  const searchInput = document.getElementById('searchInput');
+  const clearFiltersBtn = document.getElementById('clearFilters');
+  const modalOverlay = document.getElementById('modalOverlay');
+  const modalBox = document.getElementById('modalBox');
+  const modalContent = document.getElementById('modalContent');
+  const closeModalBtn = document.querySelector('#modalBox .close-btn');
+
+  // 1. 載入資料
   fetch("/mo_data/data/card.json")
     .then(res => res.json())
     .then(data => {
-      // Filter for "裝備卡" type only
       allCardData = data.filter(card => card.type === "裝備卡");
-      renderTable(allCardData); // Initial render
-      initializeSortIcons(); // Create stacked arrows
-      updateSortIcons(); // Initialize sort icons
+      initializeSortIcons();
+      applyFiltersAndSort(); // 初始渲染
+      updateSortIcons();
     })
-    .catch(err => console.error("❌ Failed to load card data:", err));
+    .catch(err => {
+      console.error("❌ Failed to load card data:", err)
+      if (tableBody) tableBody.innerHTML = '<tr><td colspan="6">無法載入資料</td></tr>';
+    });
 
-  // 2. Search Input Listener
-  const searchInput = document.getElementById('searchInput');
-  if (searchInput) {
-    searchInput.addEventListener('input', applyFilters);
+  // 2. 核心邏輯：套用篩選與排序
+  function applyFiltersAndSort() {
+    const keyword = searchInput.value.trim().toLowerCase();
+
+    // A. 取得篩選條件
+    const activeCardProperties = Array.from(document.querySelectorAll('.filter-btn[data-type="card_property"].active')).map(btn => btn.dataset.value);
+    const activeNemultipliers = Array.from(document.querySelectorAll('.filter-btn[data-type="nemultiplier"].active')).map(btn => btn.dataset.value);
+    const activeNewOlds = Array.from(document.querySelectorAll('.filter-btn[data-type="new_old"].active')).map(btn => btn.dataset.value);
+
+    // B. 過濾資料
+    let filteredData = allCardData.filter(card => {
+      const matchKeyword = (
+        (card.card_id && card.card_id.toLowerCase().includes(keyword)) ||
+        (card.hero_name && card.hero_name.toLowerCase().includes(keyword))
+      );
+      const matchCardProperty = activeCardProperties.length === 0 || (card.card_property && activeCardProperties.includes(card.card_property));
+      const matchNemultiplier = activeNemultipliers.length === 0 || (card.nemultiplier && activeNemultipliers.includes(card.nemultiplier));
+      const matchNewOld = activeNewOlds.length === 0 || (card.new_old && activeNewOlds.includes(card.new_old));
+      return matchKeyword && matchCardProperty && matchNemultiplier && matchNewOld;
+    });
+
+    // C. 排序資料
+    if (sortConfig.key) {
+      filteredData.sort((a, b) => {
+        let valA = a[sortConfig.key];
+        let valB = b[sortConfig.key];
+        
+        // 嘗試轉為數字比較
+        const numA = parseFloat(valA);
+        const numB = parseFloat(valB);
+
+        if (!isNaN(numA) && !isNaN(numB)) {
+            valA = numA;
+            valB = numB;
+        } else {
+            valA = String(valA || "").toLowerCase();
+            valB = String(valB || "").toLowerCase();
+        }
+
+        if (valA < valB) return sortConfig.direction === 'asc' ? -1 : 1;
+        if (valA > valB) return sortConfig.direction === 'asc' ? 1 : -1;
+        return 0;
+      });
+    }
+    
+    renderTable(filteredData);
   }
 
-  // 3. Filter Button Listeners
+  // 3. 渲染表格
+  function renderTable(data) {
+    if (!tableBody) return;
+    tableBody.innerHTML = '';
+
+    if (data.length === 0) {
+      tableBody.innerHTML = '<tr><td colspan="6" style="text-align:center; padding:20px; color:#999;">沒有找到符合條件的裝備卡</td></tr>';
+      return;
+    }
+
+    const fragment = document.createDocumentFragment();
+    data.forEach(card => {
+      const row = document.createElement('tr');
+      row.innerHTML = `
+        <td>${card.card_id || '-'}</td>
+        <td>${card.card_lv || '-'}</td>
+        <td>${card.card_property || '-'}</td>
+        <td>${card.card_data || '-'}</td>
+        <td>${card.nemultiplier || '-'}</td>
+        <td>${card.hero_name || '-'}</td>
+      `;
+      row.addEventListener('click', () => showDetailModal(card));
+      fragment.appendChild(row);
+    });
+    tableBody.appendChild(fragment);
+  }
+
+  // 4. 事件監聽
+  searchInput.addEventListener('input', applyFiltersAndSort);
+
   document.querySelectorAll('.filter-btn').forEach(btn => {
     btn.addEventListener('click', () => {
       btn.classList.toggle('active');
-      applyFilters();
+      applyFiltersAndSort();
     });
   });
 
-  // 4. Clear Filters Button
-  const clearBtn = document.getElementById('clearFilters');
-  if (clearBtn) {
-    clearBtn.addEventListener('click', () => {
-      if (searchInput) searchInput.value = '';
-      document.querySelectorAll('.filter-btn').forEach(btn => {
-        btn.classList.remove('active');
-      });
+  document.querySelectorAll('#card-equip-table th[data-sort]').forEach(header => {
+    header.addEventListener('click', () => {
+      const column = header.dataset.sort;
+      if (!column) return;
+
+      if (sortConfig.key === column) {
+        sortConfig.direction = sortConfig.direction === 'asc' ? 'desc' : 'asc';
+      } else {
+        sortConfig.key = column;
+        sortConfig.direction = 'desc'; // 首次點擊預設為降序
+      }
       
-      // Reset sorting state
-      currentSortColumn = '';
-      sortDirection = {};
-      
-      applyFilters(); // Re-render with reset filters and sorting
-      updateSortIcons(); // Remove sort icons from headers
+      updateSortIcons();
+      applyFiltersAndSort();
     });
-  }
+  });
+
+  clearFiltersBtn.addEventListener('click', () => {
+    searchInput.value = '';
+    sortConfig = { key: null, direction: 'asc' };
+    document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+    updateSortIcons(); // 清除排序圖示
+    applyFiltersAndSort();
+  });
 
   // 5. Accordion Toggle
   document.querySelectorAll('.accordion-header').forEach(header => {
@@ -54,40 +142,10 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // 6. Table Header Listeners for Sorting
-  document.querySelectorAll('#card-equip-table th').forEach(header => {
-    header.addEventListener('click', () => {
-      const column = header.dataset.sort; // Assuming data-sort attribute on th
-      if (column) {
-        sortData(column);
-      }
-    });
-  });
-
-  // 7. Back to Top Button
-  const backToTopButton = document.getElementById('backToTop');
-  if (backToTopButton) {
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 200) {
-        backToTopButton.style.display = 'block';
-      } else {
-        backToTopButton.style.display = 'none';
-      }
-    });
-
-    backToTopButton.addEventListener('click', () => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-  }
-
-  // 8. Modal Event Listeners
-  const modalOverlay = document.getElementById('modalOverlay');
-  const modalBox = document.getElementById('modalBox');
-  const closeBtn = document.querySelector('#modalBox .close-btn');
-
-  if (modalOverlay && modalBox && closeBtn) {
+  // 6. Modal Event Listeners
+  if (modalOverlay && modalBox && closeModalBtn) {
     modalOverlay.addEventListener('click', closeModal);
-    closeBtn.addEventListener('click', closeModal);
+    closeModalBtn.addEventListener('click', closeModal);
     document.addEventListener('keydown', (event) => {
       if (event.key === 'Escape' && modalBox.style.display === 'block') {
         closeModal();
@@ -96,225 +154,79 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-// Apply Filters and Search
-function applyFilters() {
-  const searchInput = document.getElementById('searchInput');
-  const keyword = searchInput ? searchInput.value.trim().toLowerCase() : "";
-
-  const activeCardProperties = Array.from(document.querySelectorAll('.filter-btn[data-type="card_property"].active'))
-                                .map(btn => btn.dataset.value);
-  const activeNemultipliers = Array.from(document.querySelectorAll('.filter-btn[data-type="nemultiplier"].active'))
-                               .map(btn => btn.dataset.value);
-  const activeNewOlds = Array.from(document.querySelectorAll('.filter-btn[data-type="new_old"].active'))
-                             .map(btn => btn.dataset.value);
-
-  let filteredData = allCardData.filter(card => {
-    const matchKeyword = (
-      (card.card_id && card.card_id.toLowerCase().includes(keyword)) ||
-      (card.hero_name && card.hero_name.toLowerCase().includes(keyword))
-    );
-
-    const matchCardProperty = activeCardProperties.length === 0 || 
-                              (card.card_property && activeCardProperties.includes(card.card_property));
-    const matchNemultiplier = activeNemultipliers.length === 0 || 
-                              (card.nemultiplier && activeNemultipliers.includes(card.nemultiplier));
-    const matchNewOld = activeNewOlds.length === 0 || 
-                        (card.new_old && activeNewOlds.includes(card.new_old));
-
-    return matchKeyword && matchCardProperty && matchNemultiplier && matchNewOld;
-  });
-
-  // Re-sort if a column was previously sorted
-  if (currentSortColumn) {
-    filteredData = sortArray(filteredData, currentSortColumn, sortDirection[currentSortColumn]);
-  }
-
-  renderTable(filteredData);
-}
-
-// Render Table
-function renderTable(data) {
-  const tbody = document.querySelector('#card-equip-table tbody');
-  if (!tbody) return;
-  tbody.innerHTML = '';
-
-  if (data.length === 0) {
-    tbody.innerHTML = '<tr><td colspan="6" style="text-align:center; padding:20px; color:#999;">沒有找到符合條件的裝備卡</td></tr>';
-    return;
-  }
-
-  data.forEach(card => {
-    const row = document.createElement('tr');
-    row.innerHTML = `
-      <td>${card.card_id || '-'}</td>
-      <td>${card.card_lv || '-'}</td>
-      <td>${card.card_property || '-'}</td>
-      <td>${card.card_data || '-'}</td>
-      <td>${card.nemultiplier || '-'}</td>
-      <td>${card.hero_name || '-'}</td>
-    `;
-    row.addEventListener('click', () => showDetailModal(card));
-    tbody.appendChild(row);
-  });
-}
-
-// Sort Data
-function sortData(column) {
-  // Initialize sortDirection for the column if not set
-  if (!sortDirection[column]) {
-    sortDirection[column] = 'desc'; // Default to descending on first click
-  } else if (sortDirection[column] === 'desc') {
-    sortDirection[column] = 'asc';
-  } else {
-    sortDirection[column] = 'desc'; // Cycle back to 'desc'
-  }
-
-  currentSortColumn = column; // Keep track of the last sorted column
-
-  // Apply sorting to the currently filtered data
-  const searchInput = document.getElementById('searchInput');
-  const keyword = searchInput ? searchInput.value.trim().toLowerCase() : "";
-
-  const activeCardProperties = Array.from(document.querySelectorAll('.filter-btn[data-type="card_property"].active'))
-                                .map(btn => btn.dataset.value);
-  const activeNemultipliers = Array.from(document.querySelectorAll('.filter-btn[data-type="nemultiplier"].active'))
-                               .map(btn => btn.dataset.value);
-  const activeNewOlds = Array.from(document.querySelectorAll('.filter-btn[data-type="new_old"].active'))
-                             .map(btn => btn.dataset.value);
-
-  let dataToSort = allCardData.filter(card => {
-    const matchKeyword = (
-      (card.card_id && card.card_id.toLowerCase().includes(keyword)) ||
-      (card.hero_name && card.hero_name.toLowerCase().includes(keyword))
-    );
-
-    const matchCardProperty = activeCardProperties.length === 0 || 
-                              (card.card_property && activeCardProperties.includes(card.card_property));
-    const matchNemultiplier = activeNemultipliers.length === 0 || 
-                              (card.nemultiplier && activeNemultipliers.includes(card.nemultiplier));
-    const matchNewOld = activeNewOlds.length === 0 || 
-                        (card.new_old && activeNewOlds.includes(card.new_old));
-
-    return matchKeyword && matchCardProperty && matchNemultiplier && matchNewOld;
-  });
-
-  dataToSort = sortArray(dataToSort, column, sortDirection[column]);
-  renderTable(dataToSort);
-  updateSortIcons();
-}
-
-// Helper function to sort an array of objects
-function sortArray(array, column, direction) {
-  return array.sort((a, b) => {
-    const valA = a[column];
-    const valB = b[column];
-
-    // Handle numbers if applicable
-    if (typeof valA === 'number' && typeof valB === 'number') {
-      return direction === 'asc' ? valA - valB : valB - valA;
-    }
-    // Handle string comparison (case-insensitive)
-    if (typeof valA === 'string' && typeof valB === 'string') {
-      return direction === 'asc' ? valA.localeCompare(valB) : valB.localeCompare(valA);
-    }
-    // Fallback for other types or mixed types (treat as strings)
-    const strA = String(valA);
-    const strB = String(valB);
-    return direction === 'asc' ? strA.localeCompare(strB) : strB.localeCompare(strA);
-  });
-}
-
 // Helper function to set up the initial sort icons (Revised Version)
 function initializeSortIcons() {
   document.querySelectorAll('#card-equip-table th[data-sort]').forEach(th => {
-    // Prevent re-running the logic
     if (th.querySelector('.header-content')) return;
-
     const wrapper = document.createElement('div');
     wrapper.className = 'header-content';
-
     const textSpan = document.createElement('span');
-    
-    // Move existing content into the new span
     while (th.firstChild) {
       textSpan.appendChild(th.firstChild);
     }
-    
     const iconContainer = document.createElement('span');
     iconContainer.className = 'sort-icon-container';
     iconContainer.innerHTML = `
       <span class="sort-arrow arrow-up">▲</span>
       <span class="sort-arrow arrow-down">▼</span>
     `;
-    
     wrapper.appendChild(textSpan);
     wrapper.appendChild(iconContainer);
-    
     th.appendChild(wrapper);
   });
 }
 
 // Helper function to update sort icons in table headers
 function updateSortIcons() {
-  document.querySelectorAll('#card-equip-table th').forEach(th => {
+  document.querySelectorAll('#card-equip-table th[data-sort]').forEach(th => {
     th.classList.remove('sorted-asc', 'sorted-desc');
-    const column = th.dataset.sort;
-    if (column === currentSortColumn) {
-      th.classList.add(`sorted-${sortDirection[column]}`);
+    if (th.dataset.sort === sortConfig.key) {
+      th.classList.add(`sorted-${sortConfig.direction}`);
     }
   });
 }
 
 // Modal Functions
-// === Modal 顯示 ===
-  function showDetailModal(item) {
-    const overlay = document.getElementById('modalOverlay');
-    const modalBox = document.getElementById('modalBox');
-    const contentDiv = document.getElementById('modalContent');
+function showDetailModal(item) {
+  const overlay = document.getElementById('modalOverlay');
+  const modalBox = document.getElementById('modalBox');
+  const contentDiv = document.getElementById('modalContent');
+  if (!overlay || !modalBox || !contentDiv) return;
 
-    // 建立 img 元素
-    const img = document.createElement('img');
-    img.alt = item.card_id;
-    img.className = 'hero-image';
-    img.style.width = '100%';
-    img.style.height = 'auto';
-    img.style.objectFit = 'contain';
+  const img = document.createElement('img');
+  img.alt = item.card_id;
+  img.className = 'hero-image';
+  img.style.width = '100%';
+  img.style.height = 'auto';
+  img.style.objectFit = 'contain';
 
-    // ✅ 補回：編碼檔名 helper (建議使用 encodeURIComponent 處理特殊字元)
-    const encodeFileName = (name) => encodeURIComponent(name);
+  const encodeFileName = (name) => encodeURIComponent(String(name || ''));
 
-    // 候選圖片路徑
-    const imageCandidates = [
-      `/mo_data/pic/card-equip/${encodeFileName(item.card_id)}_${encodeFileName(item.card_property)}.png`,
-      `/mo_data/pic/card-equip/${encodeFileName(item.card_id)}.png`,
-      `/mo_data/pic/card-equip/${encodeFileName(item.card_id)}_${encodeFileName(item.card_property)}.jpg`,
-      `/mo_data/pic/card-equip/${encodeFileName(item.card_id)}.jpg`,
-    ];
+  const imageCandidates = [
+    `/mo_data/pic/card-equip/${encodeFileName(item.card_id)}_${encodeFileName(item.card_property)}.png`,
+    `/mo_data/pic/card-equip/${encodeFileName(item.card_id)}.png`,
+    `/mo_data-data/pic/card-equip/${encodeFileName(item.card_id)}_${encodeFileName(item.card_property)}.jpg`,
+    `/mo_data/pic/card-equip/${encodeFileName(item.card_id)}.jpg`,
+  ];
 
-    let index = 0;
-
-    const tryLoadImage = () => {
-      if (index >= imageCandidates.length) {
-        console.warn('❌ 所有圖片載入失敗，顯示預設圖');
-        return;
-      }
-
-      const path = imageCandidates[index];
-      const testImg = new Image();
-      testImg.onload = () => {
-        img.src = path;
-      };
-      testImg.onerror = () => {
-        index++;
-        tryLoadImage();
-      };
-      testImg.src = path;
+  let index = 0;
+  const tryLoadImage = () => {
+    if (index >= imageCandidates.length) {
+      console.warn('❌ 所有圖片載入失敗');
+      return;
+    }
+    const path = imageCandidates[index];
+    const testImg = new Image();
+    testImg.onload = () => { img.src = path; };
+    testImg.onerror = () => {
+      index++;
+      tryLoadImage();
     };
+    testImg.src = path;
+  };
+  tryLoadImage();
 
-    tryLoadImage();
-
-    // 組裝 Modal 內容
-    const html = `
+  const html = `
     <h2 class="hero-name">${item.card_id}</h2>
     <div class="hero-details-container" style="display:flex; gap: 20px;">
       <div class="hero-column left" style="flex:1;"></div>
@@ -330,12 +242,12 @@ function updateSortIcons() {
     </div>
   `;
 
-    contentDiv.innerHTML = html;
-    contentDiv.querySelector('.hero-column.left').appendChild(img);
+  contentDiv.innerHTML = html;
+  contentDiv.querySelector('.hero-column.left').appendChild(img);
 
-    overlay.style.display = 'block';
-    modalBox.style.display = 'block';
-  }
+  overlay.style.display = 'block';
+  modalBox.style.display = 'block';
+}
 
 function closeModal() {
   const modalOverlay = document.getElementById('modalOverlay');
