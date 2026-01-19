@@ -97,70 +97,7 @@ thead th {
   padding: 2px 4px;
 }
 
-/* 篩選標籤 */
-.filter-label {
-  font-weight: bold;
-  color: #267acc;
-  margin-right: 8px;
-}
-.filter-btn {
-  background: #e6f0ff;
-  border: 1px solid #3399ff;
-  color: #267acc;
-  border-radius: 4px;
-  padding: 4px 12px;
-  margin: 2px 4px 2px 0;
-  cursor: pointer;
-  font-size: 14px;
-  width: 80px;
-  text-align: center;
-  transition: background 0.2s, color 0.2s;
-}
-.filter-btn:hover,
-.filter-btn.active {
-  background: #fff9c0;
-  color: #b8860b;
-  border: 1.5px solid #ffe066;
-}
-.filter-row {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 8px;
-  align-items: start;
-  margin-bottom: 12px;
-}
-
-.filter-label {
-  font-weight: bold;
-  color: #267acc;
-  padding-top: 4px;
-  white-space: nowrap;
-}
-
-.filter-btns {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-}
-
-/* 清除篩選按鈕 */
-.clear-btn {
-  background: #ffefc0;
-  border: 1px solid #ffc107;
-  color: #b8860b;
-  border-radius: 4px;
-  padding: 4px 12px;
-  margin-top: 8px;
-  cursor: pointer;
-  font-size: 14px;
-  transition: background 0.2s, color 0.2s;
-}
-
-.clear-btn:hover {
-  background: #ffc107;
-  color: #fff;
-}
-/* 快速搜尋樣式 */
+/* 快速搜尋樣式 (Accordion) */
 .accordion {
   border: 1px solid #b3d8ff;
   border-radius: 8px;
@@ -187,7 +124,7 @@ thead th {
 
 .accordion-content {
   padding: 12px 16px;
-    margin-top: 6px;
+  margin-top: 6px;
   display: block; /* 預設展開 */
 }
 
@@ -204,30 +141,7 @@ thead th {
   float: right;
 }
 
-.filter-label {
-  font-weight: bold;
-  color: #267acc;
-  margin-right: 8px;
-}
-.filter-btn {
-  background: #e6f0ff;
-  border: 1px solid #3399ff;
-  color: #267acc;
-  border-radius: 4px;
-  padding: 4px 12px;
-  margin: 2px 4px 2px 0;
-  cursor: pointer;
-  font-size: 14px;
-  width: 80px;
-  text-align: center;
-  transition: background 0.2s, color 0.2s;
-}
-.filter-btn:hover,
-.filter-btn.active {
-  background: #fff9c0;
-  color: #b8860b;
-  border: 1.5px solid #ffe066;
-}
+/* 篩選器相關樣式 (統一區塊) */
 .filter-row {
   display: grid;
   grid-template-columns: auto 1fr;
@@ -248,6 +162,27 @@ thead th {
   flex-wrap: wrap;
   gap: 6px;
 }
+
+.filter-btn {
+  background: #e6f0ff;
+  border: 1px solid #3399ff;
+  color: #267acc;
+  border-radius: 4px;
+  padding: 4px 12px;
+  margin: 2px 4px 2px 0;
+  cursor: pointer;
+  font-size: 14px;
+  width: 80px;
+  text-align: center;
+  transition: background 0.2s, color 0.2s;
+}
+.filter-btn:hover,
+.filter-btn.active {
+  background: #fff9c0;
+  color: #b8860b;
+  border: 1.5px solid #ffe066;
+}
+
 .clear-btn {
   background: #ffefc0;
   border: 1px solid #ffc107;
@@ -257,11 +192,13 @@ thead th {
   margin-top: 8px;
   cursor: pointer;
   font-size: 14px;
+  transition: background 0.2s, color 0.2s;
 }
 .clear-btn:hover {
   background: #ffc107;
   color: #fff;
 }
+
 
 /* Modal 遮罩 */
 #modalOverlay {
@@ -393,7 +330,7 @@ thead th {
 }
 
 th.sorted-asc .arrow-up {
-  color: white; 
+  color: white;
 }
 
 th.sorted-desc .arrow-down {
