@@ -44,92 +44,40 @@ function initNavbarBehavior() {
     const navbar = document.querySelector("#nav-container nav");
     if (!navbar) return;
 
-    const hamburgerBtn = document.getElementById("hamburger-btn");
-    const navMenu = document.getElementById("nav-menu");
-    const dropdowns = document.querySelectorAll(".dropdown");
-    
-    let lastScrollY = window.scrollY;
-    let isMouseNearTop = false;
-    let isDropdownOpen = false;
+    // --- 💥 DEBUGGING: Force a visual change to confirm script execution ---
+    navbar.style.backgroundColor = 'red';
 
     // --- 🌟 關鍵：更新 CSS 變數以防止遮擋表格表頭 ---
     function updateNavOffset() {
-        // 如果導航列處於可見狀態，則獲取其高度，否則偏移量為 0
-        const isVisible = navbar.classList.contains("visible");
-        const height = isVisible ? navbar.offsetHeight : 0;
+        // 無論導覽列是否可見，都獲取其高度
+        const height = navbar.offsetHeight;
         document.documentElement.style.setProperty('--nav-offset', height + 'px');
     }
 
-    // 初始狀態
+    // --- 初始設定：永久顯示並設定偏移量 ---
     navbar.classList.add("visible");
     updateNavOffset();
 
-    function isMobileMenuOpen() {
-        return navMenu && navMenu.classList.contains("active");
-    }
-
-    // --- 🌟 新增：監聽下拉選單的開啟與關閉 ---
-    dropdowns.forEach(dropdown => {
-        dropdown.addEventListener("mouseenter", () => {
-            isDropdownOpen = true;
-            updateNavbarVisibility();
-        });
-        dropdown.addEventListener("mouseleave", () => {
-            isDropdownOpen = false;
-            updateNavbarVisibility();
-        });
-    });
-
-    // 滑鼠靠近頂部顯示導覽列
-    document.addEventListener("mousemove", e => {
-        isMouseNearTop = e.clientY < 80;
-        if (!isDropdownOpen) {
-            updateNavbarVisibility();
-        }
-    });
-
-    // 滾動控制顯示／隱藏
-    window.addEventListener("scroll", () => {
-        const currentY = window.scrollY;
-        // --- 🌟 修改：加入 isDropdownOpen 判斷 ---
-        const shouldHide = currentY > lastScrollY && !isMouseNearTop && !isMobileMenuOpen() && !isDropdownOpen;
-        
-        if (currentY < 100) {
-            navbar.classList.add("visible");
-        } else if (shouldHide) {
-            navbar.classList.remove("visible");
-        } else {
-            navbar.classList.add("visible");
-        }
-
-        updateNavOffset(); // 📌 滾動時同步更新偏移量
-        lastScrollY = currentY;
-    });
-
-    function updateNavbarVisibility() {
-        if (isMobileMenuOpen() || isDropdownOpen) {
-            navbar.classList.add("visible");
-        } else if (isMouseNearTop) {
-            navbar.classList.add("visible");
-        } else if (window.scrollY > 100) {
-            navbar.classList.remove("visible");
-        }
-        updateNavOffset(); // 📌 狀態改變時更新偏移量
-    }
+    // --- 當視窗大小改變時，重新計算偏移量 ---
+    window.addEventListener('resize', updateNavOffset);
     
     // --- 漢堡選單控制邏輯 ---
+    const hamburgerBtn = document.getElementById("hamburger-btn");
+    const navMenu = document.getElementById("nav-menu");
+    
     if (hamburgerBtn && navMenu) {
         hamburgerBtn.addEventListener("click", (e) => {
             e.stopPropagation();
             navMenu.classList.toggle("active");
-            navbar.classList.add("visible"); 
-            updateNavOffset();
+            navbar.classList.add("visible"); // 確保可見
+            // 選單展開/收合後高度可能變化，延遲更新以確保抓到正確高度
+            setTimeout(updateNavOffset, 300); // 300ms 等待 CSS 過渡
         });
 
         document.addEventListener("click", (e) => {
-            if (isMobileMenuOpen() && !navMenu.contains(e.target) && !hamburgerBtn.contains(e.target)) {
+            if (navMenu.classList.contains("active") && !navMenu.contains(e.target) && !hamburgerBtn.contains(e.target)) {
                 navMenu.classList.remove("active");
-                updateNavOffset();
+                setTimeout(updateNavOffset, 300);
             }
         });
     }
