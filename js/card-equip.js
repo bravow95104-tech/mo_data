@@ -16,9 +16,9 @@ document.addEventListener("DOMContentLoaded", () => {
     .then(res => res.json())
     .then(data => {
       allCardData = data.filter(card => card.type === "裝備卡");
-      initializeSortIcons();
+      // initializeSortIcons();
       applyFiltersAndSort(); // 初始渲染
-      updateSortIcons();
+      // updateSortIcons();
     })
     .catch(err => {
       console.error("❌ Failed to load card data:", err)
@@ -122,7 +122,7 @@ document.addEventListener("DOMContentLoaded", () => {
         sortConfig.direction = 'desc'; // 首次點擊預設為降序
       }
       
-      updateSortIcons();
+      // updateSortIcons();
       applyFiltersAndSort();
     });
   });
@@ -131,7 +131,7 @@ document.addEventListener("DOMContentLoaded", () => {
     searchInput.value = '';
     sortConfig = { key: null, direction: 'asc' };
     document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
-    updateSortIcons(); // 清除排序圖示
+    // updateSortIcons(); // 清除排序圖示
     applyFiltersAndSort();
   });
 
@@ -154,6 +154,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
+/*
 // Helper function to set up the initial sort icons (Revised Version)
 function initializeSortIcons() {
   document.querySelectorAll('#card-equip-table th[data-sort]').forEach(th => {
@@ -185,6 +186,7 @@ function updateSortIcons() {
     }
   });
 }
+*/
 
 // Modal Functions
 function showDetailModal(item) {
