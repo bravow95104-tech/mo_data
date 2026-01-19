@@ -20,7 +20,7 @@ tbody tr:hover {
 /* 調整 table header sticky 時，避免蓋到 nav */
 thead th {
   position: sticky;
-  top: var(--nav-offset, 0px); /* JS 動態修改 */
+  top: var(--nav-offset); /* JS 動態修改 */
   background-color: #1976d2;
   z-index: 100;
   color: white;
