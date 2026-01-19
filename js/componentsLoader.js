@@ -44,12 +44,8 @@ function initNavbarBehavior() {
     const navbar = document.querySelector("#nav-container nav");
     if (!navbar) return;
 
-    // --- 💥 DEBUGGING: Force a visual change to confirm script execution ---
-    navbar.style.backgroundColor = 'red';
-
     // --- 🌟 關鍵：更新 CSS 變數以防止遮擋表格表頭 ---
     function updateNavOffset() {
-        // 無論導覽列是否可見，都獲取其高度
         const height = navbar.offsetHeight;
         document.documentElement.style.setProperty('--nav-offset', height + 'px');
     }
@@ -57,6 +53,103 @@ function initNavbarBehavior() {
     // --- 初始設定：永久顯示並設定偏移量 ---
     navbar.classList.add("visible");
     updateNavOffset();
+
+    // --- 🐞 ADVANCED DEBUGGING: Log computed values ---
+    setTimeout(() => {
+      const computedNavOffset = getComputedStyle(document.documentElement).getPropertyValue('--nav-offset').trim();
+      const tableHeader = document.querySelector('thead');
+      if (tableHeader) {
+        const computedHeaderTop = getComputedStyle(tableHeader).top;
+        console.log(`--- DEBUG INFO for ${window.location.pathname} ---`);
+        console.log(`--nav-offset is: ${computedNavOffset}`);
+        console.log('Computed <thead> top:', computedHeaderTop);
+        console.log('-------------------------------------------');
+      }
+    }, 100); // Timeout to ensure styles are applied
+
+    // --- 當視窗大小改變時，重新計算偏移量 ---
+    window.addEventListener('resize', updateNavOffset);
+    
+    // --- 漢堡選單控制邏輯 ---
+    const hamburgerBtn = document.getElementById("hamburger-btn");
+    const navMenu = document.getElementById("nav-menu");
+    
+    if (hamburgerBtn && navMenu) {
+        hamburgerBtn.addEventListener("click", (e) => {
+            e.stopPropagation();
+            navMenu.classList.toggle("active");
+            navbar.classList.add("visible"); // 確保可見
+            // 選單展開/收合後高度可能變化，延遲更新以確保抓到正確高度
+            setTimeout(updateNavOffset, 300); // 300ms 等待 CSS 過渡
+        });
+
+        document.addEventListener("click", (e) => {
+            if (navMenu.classList.contains("active") && !navMenu.contains(e.target) && !hamburgerBtn.contains(e.target)) {
+                navMenu.classList.remove("active");
+                setTimeout(updateNavOffset, 300);
+            }
+        });
+    }
+}
+
+    // --- 初始設定：永久顯示並設定偏移量 ---
+    navbar.classList.add("visible");
+    updateNavOffset();
+
+    // --- 🐞 ADVANCED DEBUGGING: Log computed values ---
+    setTimeout(() => {
+      const computedNavOffset = getComputedStyle(document.documentElement).getPropertyValue('--nav-offset').trim();
+      const tableHeader = document.querySelector('thead');
+      if (tableHeader) {
+        const computedHeaderTop = getComputedStyle(tableHeader).top;
+        console.log(`--- DEBUG INFO for ${window.location.pathname} ---`);
+        console.log(`--nav-offset is: ${computedNavOffset}`);
+        console.log('Computed <thead> top:', computedHeaderTop);
+        console.log('-------------------------------------------');
+      }
+    }, 100); // Timeout to ensure styles are applied
+
+    // --- 當視窗大小改變時，重新計算偏移量 ---
+    window.addEventListener('resize', updateNavOffset);
+    
+    // --- 漢堡選單控制邏輯 ---
+    const hamburgerBtn = document.getElementById("hamburger-btn");
+    const navMenu = document.getElementById("nav-menu");
+    
+    if (hamburgerBtn && navMenu) {
+        hamburgerBtn.addEventListener("click", (e) => {
+            e.stopPropagation();
+            navMenu.classList.toggle("active");
+            navbar.classList.add("visible"); // 確保可見
+            // 選單展開/收合後高度可能變化，延遲更新以確保抓到正確高度
+            setTimeout(updateNavOffset, 300); // 300ms 等待 CSS 過渡
+        });
+
+        document.addEventListener("click", (e) => {
+            if (navMenu.classList.contains("active") && !navMenu.contains(e.target) && !hamburgerBtn.contains(e.target)) {
+                navMenu.classList.remove("active");
+                setTimeout(updateNavOffset, 300);
+            }
+        });
+    }
+}
+
+    // --- 初始設定：永久顯示並設定偏移量 ---
+    navbar.classList.add("visible");
+    updateNavOffset();
+
+    // --- 🐞 ADVANCED DEBUGGING: Log computed values ---
+    setTimeout(() => {
+      const computedNavOffset = getComputedStyle(document.documentElement).getPropertyValue('--nav-offset').trim();
+      const tableHeader = document.querySelector('thead');
+      if (tableHeader) {
+        const computedHeaderTop = getComputedStyle(tableHeader).top;
+        console.log(`--- DEBUG INFO for ${window.location.pathname} ---`);
+        console.log(`--nav-offset is: ${computedNavOffset}`);
+        console.log('Computed <thead> top:', computedHeaderTop);
+        console.log('-------------------------------------------');
+      }
+    }, 100); // Timeout to ensure styles are applied
 
     // --- 當視窗大小改變時，重新計算偏移量 ---
     window.addEventListener('resize', updateNavOffset);
