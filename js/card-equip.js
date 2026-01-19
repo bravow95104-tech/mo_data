@@ -224,16 +224,21 @@ function sortArray(array, column, direction) {
   });
 }
 
-// Helper function to set up the initial sort icons
+// Helper function to set up the initial sort icons (Revised Version)
 function initializeSortIcons() {
   document.querySelectorAll('#card-equip-table th[data-sort]').forEach(th => {
-    // Wrap existing content in a div for flex layout
-    const text = th.textContent;
+    // Prevent re-running the logic
+    if (th.querySelector('.header-content')) return;
+
     const wrapper = document.createElement('div');
     wrapper.className = 'header-content';
-    
+
     const textSpan = document.createElement('span');
-    textSpan.textContent = text;
+    
+    // Move existing content into the new span
+    while (th.firstChild) {
+      textSpan.appendChild(th.firstChild);
+    }
     
     const iconContainer = document.createElement('span');
     iconContainer.className = 'sort-icon-container';
@@ -245,7 +250,6 @@ function initializeSortIcons() {
     wrapper.appendChild(textSpan);
     wrapper.appendChild(iconContainer);
     
-    th.innerHTML = ''; // Clear original content
     th.appendChild(wrapper);
   });
 }
