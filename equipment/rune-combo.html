@@ -2,29 +2,140 @@
 <html lang="zh-Hant">
   <head>
     <meta charset="UTF-8" />
-    <title>MoData</title>
-    <link rel="stylesheet" href="/mo_data/css/styles.css" />
+    <title>銘文組合 | MoData</title>
 
+    <link rel="stylesheet" href="/mo_data/css/styles.css" />
+    <link rel="stylesheet" href="/mo_data/css/heromeal.css" />
   </head>
   <body>
-    <div id="nav-container"></div><!-- 這是導航列會被載入的位置 -->
-    <script src="/mo_data/js/componentsLoader.js"></script>
-    <!-- 主要內容 -->
-    <div id="content">
-      <h1></h1>
-      <!-- 更新紀錄區塊 -->
-<section id="changelog">
-  <h2>📝 更新日誌</h2>
-  <ul class="changelog-list">
-    <li>
-      <span class="date">還不知道要放甚麼....</span>
-      給建議
-    </li>
-  </ul>
-</section>
-      <!-- 其他 -->
+    <div id="nav-container"></div>
+    <!-- 這是導航列會被載入的位置 -->
+
+    <!-- A 組合 -->
+    <div class="card-table-container card-ui open">
+      <div class="card-header">
+        <span class="card-title">A 組合</span>
+        <button class="card-toggle" aria-label="收合/展開">
+          <span class="toggle-icon">▼</span>
+        </button>
+      </div>
+      <div class="card-content">
+        <div class="table-description">
+          全屬性增加、數量上限+2、數量下限+2、範圍上下限-5%</br>
+          排除SP、排除命中、排除攻擊、排除法術防禦
+        </div>
+        <table class="card-table">
+          <tbody>
+            <tr>
+              <td>天空</td>
+              <td>天刑</td>
+              <td>陰煞</td>
+              <td>天官</td>
+              <td>破碎</td>
+              <td>封誥</td>
+            </tr>
+            <tr>
+              <td>天巫</td>
+              <td>天貴</td>
+              <td>天才</td>
+              <td>旬中</td>
+              <td>旬空</td>
+              <td>天使</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
-    
-    <div id="footer-container"></div><!-- 這是頁尾會被載入的位置 -->
+
+    <!-- A 組合 -->
+    <div class="card-table-container card-ui open">
+      <div class="card-header">
+        <span class="card-title">A 組合</span>
+        <button class="card-toggle" aria-label="收合/展開">
+          <span class="toggle-icon">▼</span>
+        </button>
+      </div>
+      <div class="card-content">
+        <div class="table-description">
+          全屬性增加 數量上限+2 數量下限+2 範圍下限+2%~6%(依照每張英雄卡稀有度)</br>
+          排除SP、排除命中、排除攻擊、排除法術防禦
+        </div>
+        <table class="card-table">
+          <tbody>
+            <tr>
+              <td>天姚</td>
+              <td>天馬</td>
+              <td>解神</td>
+              <td>天喜</td>
+              <td>天福</td>
+              <td>天哭</td>
+            </tr>
+            <tr>
+              <td>蜚廉</td>
+              <td>台輔</td>
+              <td>三台</td>
+              <td>天壽</td>
+              <td>截空</td>
+              <td>天廚</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div id="footer-container"></div>
+    <!-- 這是頁尾會被載入的位置 -->
+    <script src="/mo_data/js/componentsLoader.js"></script>
+
+    <script>
+      // 卡片收合動畫（點擊立即反應）
+      document.querySelectorAll(".card-toggle").forEach(function (btn) {
+        btn.addEventListener("mousedown", function (e) {
+          e.preventDefault();
+
+          const card = btn.closest(".card-ui");
+          const content = card.querySelector(".card-content");
+          const icon = btn.querySelector(".toggle-icon");
+
+          const isOpen = card.classList.contains("open");
+
+          if (isOpen) {
+            // 正在展開 → 收合動畫
+            content.style.maxHeight = content.scrollHeight + "px"; // 先設定高度
+            content.offsetHeight; // 強制 reflow（觸發動畫）
+            content.style.maxHeight = "0px";
+            content.style.overflow = "hidden";
+
+            icon.style.transform = "rotate(0deg)";
+            card.classList.remove("open");
+          } else {
+            // 正在收合 → 展開動畫
+            content.style.maxHeight = content.scrollHeight + "px";
+            content.style.overflow = "hidden"; // 避免動畫過程中出現 scrollbar
+
+            icon.style.transform = "rotate(180deg)";
+            card.classList.add("open");
+
+            // 動畫結束後移除 max-height 限制
+            content.addEventListener("transitionend", function handler() {
+              content.style.maxHeight = "none"; // 讓內容可自然撐開
+              content.style.overflow = "visible";
+              content.removeEventListener("transitionend", handler);
+            });
+          }
+        });
+      });
+
+      // 預設展開（如果你要開啟的話）
+      document
+        .querySelectorAll(".card-ui.open .card-content")
+        .forEach(function (content) {
+          content.style.maxHeight = "none";
+          content.style.overflow = "visible";
+        });
+    </script>
+        <!-- 回到頂部按鈕 -->
+    <button id="backToTop" title="回到頂部">▲</button>
+<script src="/mo_data/js/hero-meal.js"></script>
   </body>
 </html>
