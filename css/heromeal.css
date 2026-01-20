@@ -147,3 +147,14 @@ h1 {
   display: block;
   height: 0;
 }
+
+/* 新增：表格上方文字敘述的樣式 */
+.table-description {
+    background: #e3f2fd;    /* 設置與 th 相同的淡藍色底色 */
+    color: #267acc;         /* 設置與 th 相同的藍色文字 */
+    padding: 12px 20px;     /* 增加內距讓文字不擁擠 */
+    font-size: 15px;        /* 字體大小 */
+    line-height: 1.6;       /* 行高，讓兩行文字間有呼吸感 */
+    border-bottom: 2px solid #b3d8ff; /* 底部邊框，銜接下方的表格 */
+    font-weight: bold;      /* 加粗讓它看起來像標題列 */
+}
