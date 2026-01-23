@@ -147,7 +147,7 @@ body {
 }
 
 /* ✅ 右側側邊欄 */
-#sidebar {
+.sidebar {
     flex: 0.7;
     background: white;
     padding: 30px 30px; /* 內部 padding 調整為 30px */
@@ -155,7 +155,7 @@ body {
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
 }
 
-#sidebar h2 {
+.sidebar h2 {
     font-size: 1.4rem;
     margin-bottom: 20px;
     border-bottom: 2px solid #3399ff;
@@ -300,7 +300,7 @@ h3.search-tip {
     }
 
     /* 🚀 修正 1 & 2：確保內容和側邊欄寬度不會溢出 */
-    #content, #sidebar {
+    #content, .sidebar {
         max-width: 100%;
         width: 100%; /* 確保區塊使用全部可用寬度 */
         padding: 20px; 
