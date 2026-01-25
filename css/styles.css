@@ -267,6 +267,10 @@ body {
 .changelog-list .tips {
     background-color: #41bb4b;
 }
+
+.sidebar-list li:last-child {
+    border-bottom: none;
+}
 .sidebar-list .tips {
     background-color: #41bb4b;
 }
