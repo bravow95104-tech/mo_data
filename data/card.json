@@ -184,7 +184,7 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "抽包、紫箱"
   },
   {
     "type": "裝備卡",
@@ -235,7 +235,7 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "抽包、紫箱"
   },
   {
     "type": "裝備卡",
@@ -252,7 +252,7 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "抽包、紫箱"
   },
   {
     "type": "裝備卡",
@@ -286,7 +286,7 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "抽包、紫箱"
   },
   {
     "type": "裝備卡",
@@ -303,7 +303,7 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "抽包、紫箱"
   },
   {
     "type": "裝備卡",
@@ -371,7 +371,7 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "抽包、紫箱"
   },
   {
     "type": "裝備卡",
@@ -388,7 +388,7 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "抽包、紫箱"
   },
   {
     "type": "裝備卡",
@@ -405,7 +405,7 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "抽包、紫箱"
   },
   {
     "type": "裝備卡",
@@ -473,7 +473,7 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "抽包、紫箱"
   },
   {
     "type": "裝備卡",
@@ -541,7 +541,7 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "抽包、紫箱"
   },
   {
     "type": "裝備卡",
@@ -609,7 +609,7 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "抽包、紫箱"
   },
   {
     "type": "裝備卡",
@@ -677,7 +677,7 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "抽包、紫箱"
   },
   {
     "type": "裝備卡",
@@ -711,7 +711,7 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "抽包、紫箱"
   },
   {
     "type": "裝備卡",
@@ -881,7 +881,7 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "抽包、紫箱"
   },
   {
     "type": "裝備卡",
@@ -983,7 +983,7 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "抽包、紫箱"
   },
   {
     "type": "裝備卡",
@@ -1017,7 +1017,7 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "抽包、紫箱"
   },
   {
     "type": "裝備卡",
@@ -1034,7 +1034,7 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "抽包、紫箱"
   },
   {
     "type": "裝備卡",
@@ -1136,7 +1136,7 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "抽包、紫箱"
   },
   {
     "type": "裝備卡",
@@ -1153,7 +1153,7 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "抽包、紫箱"
   },
   {
     "type": "裝備卡",
@@ -1221,7 +1221,7 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "抽包、紫箱"
   },
   {
     "type": "裝備卡",
@@ -1391,7 +1391,7 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "抽包、紫箱"
   },
   {
     "type": "裝備卡",
@@ -1459,7 +1459,7 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "抽包、紫箱"
   },
   {
     "type": "裝備卡",
@@ -1493,7 +1493,7 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "抽包、紫箱"
   },
   {
     "type": "裝備卡",
@@ -1561,7 +1561,7 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "抽包、紫箱"
   },
   {
     "type": "裝備卡",
@@ -1578,7 +1578,7 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "抽包、紫箱"
   },
   {
     "type": "裝備卡",
@@ -4031,7 +4031,7 @@
   {
     "type": "裝備卡",
     "new_old": "舊專",
-    "card_id": "赤煞刀卡",
+    "card_id": "赤剎刀卡",
     "card_property": "攻擊",
     "card_data": 20,
     "card_lv": 20,
@@ -6699,7 +6699,7 @@
   },
   {
     "type": "主動技能卡",
-    "new_old": "",
+    "new_old": "V",
     "card_id": "斷頭貳式卡",
     "card_property": "無",
     "card_data": "",
@@ -8129,7 +8129,7 @@
     "type": "主動技能卡",
     "new_old": "",
     "card_id": "金箭術閃卡",
-    "card_property": "",
+    "card_property": "金",
     "card_data": "",
     "card_lv": 60,
     "card_class": "通用",
@@ -8146,7 +8146,7 @@
     "type": "主動技能卡",
     "new_old": "",
     "card_id": "木箭術閃卡",
-    "card_property": "",
+    "card_property": "木",
     "card_data": "",
     "card_lv": 60,
     "card_class": "通用",
@@ -8163,7 +8163,7 @@
     "type": "主動技能卡",
     "new_old": "",
     "card_id": "水箭術閃卡",
-    "card_property": "",
+    "card_property": "水",
     "card_data": "",
     "card_lv": 60,
     "card_class": "通用",
@@ -8178,9 +8178,9 @@
   },
   {
     "type": "主動技能卡",
-    "new_old": "",
+    "new_old": "V",
     "card_id": "火箭術閃卡",
-    "card_property": "",
+    "card_property": "火",
     "card_data": "",
     "card_lv": 60,
     "card_class": "通用",
@@ -8189,7 +8189,7 @@
     "property_first": "",
     "property_second": "",
     "property_third": "",
-    "card_mp": "",
+    "card_mp": 100,
     "directions": "對一名敵人施展火行法術攻擊，有機率造成更強的傷害",
     "drop": ""
   },
