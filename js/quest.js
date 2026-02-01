@@ -16,13 +16,25 @@ document.addEventListener("DOMContentLoaded", () => {
     searchInput.addEventListener('input', applyFilters);
   }
 
-  // 3. 監聽篩選按鈕 (名聲按鈕)
-  document.querySelectorAll('.filter-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      btn.classList.toggle('active'); // 切換選中狀態
-      applyFilters(); // 每次點擊都重新計算篩選
-    });
+// 3. 監聽篩選按鈕 (全域單選：點擊任何一個，其他所有按鈕都取消)
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    // 1. 如果點擊的按鈕本來就是選中狀態，就取消它（變回顯示全部）
+    if (btn.classList.contains('active')) {
+      btn.classList.remove('active');
+    } else {
+      // 2. 核心邏輯：先移除「全頁面」所有按鈕的 active 狀態
+      document.querySelectorAll('.filter-btn').forEach(allBtn => {
+        allBtn.classList.remove('active');
+      });
+      // 3. 只幫當前點擊的這個按鈕加上 active
+      btn.classList.add('active');
+    }
+
+    // 4. 重新執行篩選
+    applyFilters();
   });
+});
 
   // 4. 清除所有篩選按鈕 (修正後的邏輯)
   const clearBtn = document.getElementById('clearFilters');
@@ -49,32 +61,30 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-// ✅ 核心功能：連動篩選邏輯 (搜尋框 + 名聲按鈕)
+// ✅ 核心功能：連動篩選邏輯 (搜尋框 + 全域單選按鈕)
 function applyFilters() {
   const searchInput = document.getElementById('searchInput');
   const keyword = searchInput ? searchInput.value.trim().toLowerCase() : "";
   
-  // 取得目前所有啟用的名聲數值 (從 HTML 的 data-value 取得)
-const activeRenowns = Array.from(document.querySelectorAll('.filter-btn.active[data-type="process_renown"]'))
-                             .map(btn => btn.dataset.value);
-  
-  const activeStars = Array.from(document.querySelectorAll('.filter-btn.active[data-type="star"]'))
-                             .map(btn => btn.dataset.value);
+  // 取得目前唯一啟用的按鈕 (因為現在是全域單選，畫面最多只有一個 active)
+  const activeBtn = document.querySelector('.filter-btn.active');
+  const activeType = activeBtn ? activeBtn.dataset.type : null;
+  const activeValue = activeBtn ? activeBtn.dataset.value : null;
 
   const filtered = allQuestData.filter(task => {
     // A. 處理文字搜尋 (id, area, start)
     const searchStr = [task.id, task.area, task.start].join("|").toLowerCase();
     const matchKeyword = searchStr.includes(keyword);
 
-    // B. 處理名聲按鈕
-    const taskRenown = String(task.process_renown || "");
-    const matchRenown = activeRenowns.length === 0 || activeRenowns.includes(taskRenown);
+    // B. 處理按鈕篩選 (判斷是哪種類型的按鈕)
+    let matchButton = true;
+    if (activeType === 'process_renown') {
+      matchButton = String(task.process_renown || "") === activeValue;
+    } else if (activeType === 'star') {
+      matchButton = String(task.star || "") === activeValue;
+    }
 
-    // C. 處理連續任務按鈕
-    const taskStar = String(task.star || "");
-    const matchStar = activeStars.length === 0 || activeStars.includes(taskStar);
-
-    return matchKeyword && matchRenown && matchStar; // 必須同時符合文字搜尋與名聲條件
+    return matchKeyword && matchButton; // 同時符合關鍵字與按鈕條件
   });
 
   renderQuests(filtered);
