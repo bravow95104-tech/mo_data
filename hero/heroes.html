@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="zh-Hant">
   <head>
     <meta charset="UTF-8" />
@@ -93,9 +93,13 @@
           </button>
         </div>
         <br />
-          <div class="filter-group">
+        <div class="filter-group">
           <span class="filter-label">其他：</span>
-          <button class="filter-btn" data-type="new_multiplier" data-value="2.5倍">
+          <button
+            class="filter-btn"
+            data-type="new_multiplier"
+            data-value="2.5倍"
+          >
             2.5倍專
           </button>
         </div>
@@ -107,30 +111,35 @@
     </div>
 
     <!-- 英雄表格 -->
-    <table id="heroes-table">
-      <thead>
-  <tr>
-    <th class="sortable" data-col="name">英雄<br />名稱</th>
-    <th>對應<br />光輝</th>
-    <th>拜官</th>
-    <th class="sortable" data-col="initial">初始</th>
-    <th class="sortable" data-col="traits">素質</th>
-    <th>個性</th>
-    <th class="sortable" data-col="element">屬性</th>
-    <th class="sortable" data-col="str">力量</th>
-    <th class="sortable" data-col="int">智慧</th>
-    <th class="sortable" data-col="vit">體質</th>
-    <th class="sortable" data-col="agi">敏捷</th>
-    <th class="sortable" data-col="luk">運氣</th>
-    <th class="sortable" data-col="aggression_before">積極度<br />(生變前)</th>
-    <th>裝備卡<br />(新專)</th>
-    <th>裝備卡<br />(舊專)</th>
-  </tr>
-</thead>
-      <tbody>
-        <!-- 資料由 JS 動態載入 -->
-      </tbody>
-    </table>
+    <div id="hero-table-container">
+      <table id="heroes-table">
+        <thead>
+          <tr>
+            <th class="sortable" data-col="name">英雄<br />名稱</th>
+            <th>對應<br />光輝</th>
+            <th>拜官</th>
+            <th class="sortable" data-col="initial">初始</th>
+            <th class="sortable" data-col="traits">素質</th>
+            <th>個性</th>
+            <th class="sortable" data-col="element">屬性</th>
+            <th class="sortable" data-col="str">力量</th>
+            <th class="sortable" data-col="int">智慧</th>
+            <th class="sortable" data-col="vit">體質</th>
+            <th class="sortable" data-col="agi">敏捷</th>
+            <th class="sortable" data-col="luk">運氣</th>
+            <th class="sortable" data-col="aggression_before">
+              積極度<br />(生變前)
+            </th>
+            <th>裝備卡<br />(新專)</th>
+            <th>裝備卡<br />(舊專)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- 資料由 JS 動態載入 -->
+        </tbody>
+      </table>
+    </div>
+    <div id="hero-card-container"></div>
 
     <!-- 留白避免按鈕遮住 -->
     <div class="page-bottom-spacer"></div>
@@ -140,7 +149,12 @@
 
     <!-- Modal HTML -->
     <div id="modalOverlay"></div>
-    <div id="modalBox" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div
+      id="modalBox"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modal-title"
+    >
       <span class="close-btn">&times;</span>
       <div id="modalContent"></div>
     </div>
@@ -151,6 +165,5 @@
     <!-- 這是頁尾會被載入的位置 -->
     <script src="/mo_data/js/heroes.js"></script>
     <script src="/mo_data/js/componentsLoader.js"></script>
-    
   </body>
 </html>
