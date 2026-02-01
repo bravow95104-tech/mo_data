@@ -55,7 +55,10 @@ function applyFilters() {
   const keyword = searchInput ? searchInput.value.trim().toLowerCase() : "";
   
   // 取得目前所有啟用的名聲數值 (從 HTML 的 data-value 取得)
-  const activeRenowns = Array.from(document.querySelectorAll('.filter-btn.active'))
+const activeRenowns = Array.from(document.querySelectorAll('.filter-btn.active[data-type="process_renown"]'))
+                             .map(btn => btn.dataset.value);
+  
+  const activeStars = Array.from(document.querySelectorAll('.filter-btn.active[data-type="star"]'))
                              .map(btn => btn.dataset.value);
 
   const filtered = allQuestData.filter(task => {
@@ -69,7 +72,7 @@ function applyFilters() {
 
     // C. 處理連續任務按鈕
     const taskStar = String(task.star || "");
-    const matchStar = activeRenowns.length === 0 || activeRenowns.includes(taskStar);
+    const matchStar = activeStars.length === 0 || activeStars.includes(taskStar);
 
     return matchKeyword && matchRenown && matchStar; // 必須同時符合文字搜尋與名聲條件
   });
