@@ -67,7 +67,11 @@ function applyFilters() {
     const taskRenown = String(task.process_renown || "");
     const matchRenown = activeRenowns.length === 0 || activeRenowns.includes(taskRenown);
 
-    return matchKeyword && matchRenown; // 必須同時符合文字搜尋與名聲條件
+    // C. 處理連續任務按鈕
+    const taskStar = String(task.star || "");
+    const matchStar = activeRenowns.length === 0 || activeRenowns.includes(taskStar);
+
+    return matchKeyword && matchRenown && matchStar; // 必須同時符合文字搜尋與名聲條件
   });
 
   renderQuests(filtered);
