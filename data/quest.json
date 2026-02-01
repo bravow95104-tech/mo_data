@@ -11,7 +11,8 @@
     "process_item": "5帖新手傷藥、巧匠可獲得50支新手弩箭",
     "remark": "",
     "process": "",
-    "image": ""
+    "image": "",
+    "star": ""
   },
   {
     "id": "新手英雄卡",
@@ -25,7 +26,8 @@
     "process_item": "1張英雄卡(3選1)、5帖新手傷藥",
     "remark": "標騎將軍(送重擊卡)\n遙池仙女(送治癒卡)\n天策軍師(送冶金卡)",
     "process": "",
-    "image": ""
+    "image": "",
+    "star": ""
   },
   {
     "id": "升級的孔夫子",
@@ -39,7 +41,8 @@
     "process_item": "5帖新手傷藥",
     "remark": "",
     "process": "",
-    "image": ""
+    "image": "",
+    "star": ""
   },
   {
     "id": "工作的方法",
@@ -50,10 +53,11 @@
     "process_exp": "",
     "process_renown": "",
     "process_money": "",
-    "process_item": "",
+    "process_item": "可以30元或40元購買一把價值100元的工具，僅限一次。",
     "remark": "",
-    "process": "可以30元或40元購買一把價值100元的工具，僅限一次。",
-    "image": ""
+    "process": "",
+    "image": "",
+    "star": ""
   },
   {
     "id": "歸來的地理師",
@@ -67,7 +71,8 @@
     "process_item": "",
     "remark": "",
     "process": "",
-    "image": ""
+    "image": "",
+    "star": ""
   },
   {
     "id": "滅鼠行動",
@@ -81,7 +86,8 @@
     "process_item": "",
     "remark": "",
     "process": "",
-    "image": ""
+    "image": "",
+    "star": ""
   },
   {
     "id": "善良的雪兒",
@@ -95,7 +101,8 @@
     "process_item": "",
     "remark": "",
     "process": "",
-    "image": ""
+    "image": "",
+    "star": ""
   },
   {
     "id": "少女的心願",
@@ -109,7 +116,8 @@
     "process_item": "獲的玩家職業等級1的鞋子一雙",
     "remark": "",
     "process": "",
-    "image": ""
+    "image": "",
+    "star": ""
   },
   {
     "id": "男人的回應",
@@ -123,7 +131,8 @@
     "process_item": "斗笠一頂",
     "remark": "",
     "process": "",
-    "image": ""
+    "image": "",
+    "star": ""
   },
   {
     "id": "五柳先生",
@@ -137,7 +146,8 @@
     "process_item": "小竹馬一隻",
     "remark": "",
     "process": "",
-    "image": ""
+    "image": "",
+    "star": ""
   },
   {
     "id": "百柳夫人",
@@ -151,7 +161,8 @@
     "process_item": "玉芙蓉",
     "remark": "",
     "process": "",
-    "image": ""
+    "image": "",
+    "star": ""
   },
   {
     "id": "鐵匠的煩惱",
@@ -165,7 +176,8 @@
     "process_item": "",
     "remark": "",
     "process": "",
-    "image": ""
+    "image": "",
+    "star": ""
   },
   {
     "id": "奇怪的礦石",
@@ -179,7 +191,8 @@
     "process_item": "",
     "remark": "",
     "process": "",
-    "image": ""
+    "image": "",
+    "star": ""
   },
   {
     "id": "郝仁的指引",
@@ -193,7 +206,8 @@
     "process_item": "給柯賜的家書",
     "remark": "",
     "process": "",
-    "image": ""
+    "image": "",
+    "star": ""
   },
   {
     "id": "柯賜的家書",
@@ -207,7 +221,8 @@
     "process_item": "",
     "remark": "",
     "process": "",
-    "image": ""
+    "image": "",
+    "star": ""
   },
   {
     "id": "英雄的認可",
@@ -221,7 +236,68 @@
     "process_item": "新手英雄卡",
     "remark": "",
     "process": "",
-    "image": ""
+    "image": "",
+    "star": ""
+  },
+  {
+    "id": "李師傅的憂鬱",
+    "area": "青葉村",
+    "start": "李師傅(48,65)",
+    "restriction": "等級5級以上，過程中需解「京城一番」、「食材宅急便」任務",
+    "award": "1.李師傅要玩家去京城找徒弟劉興興(65.277)\n2.解完劉興興(65.277)的任務京城一番後回去找 李師傅",
+    "process_exp": 500,
+    "process_renown": 50,
+    "process_money": 1000,
+    "process_item": "",
+    "remark": "",
+    "process": "",
+    "image": "",
+    "star": ""
+  },
+  {
+    "id": "京城一番",
+    "area": "京城",
+    "start": "劉興興(65.277)",
+    "restriction": "需接「李師傅的憂鬱」",
+    "award": "1.幫忙準備劉興興(65.277)要的材料\n2.解完食材宅急便取得的上等食材交給劉興興\n3.再來要去找萊恩解傳說廚具任務\n4.找劉興興拿麻婆豆腐給衙門附近的 王巡守(95.95)",
+    "process_exp": 1000,
+    "process_renown": 150,
+    "process_money": 2000,
+    "process_item": "",
+    "remark": "",
+    "process": "",
+    "image": "",
+    "star": ""
+  },
+  {
+    "id": "食材宅急便",
+    "area": "京城",
+    "start": "吉地師傅(114.254)",
+    "restriction": "需接「李師傅的憂鬱」",
+    "award": "1.劉興興(65.277)要玩家去找吉地師傅(114.254)\n2.吉地師傅(114.254)要玩家去郡業 麥匠(19.275)、川都 麥朱(70.119)、昌碇 麥豆(62.184)拿取道具\n3.交給吉地師傅所有材料後，會給上等食材",
+    "process_exp": 500,
+    "process_renown": 50,
+    "process_money": 1000,
+    "process_item": "",
+    "remark": "",
+    "process": "",
+    "image": "",
+    "star": ""
+  },
+  {
+    "id": "傳說廚具",
+    "area": "京城",
+    "start": "萊恩(92.116)",
+    "restriction": "需接「京城一番」",
+    "award": "1.萊恩要玩家去找兩個徒弟小鴻和小安(24.176)\n2.小安(24.176)要你跟他玩猜硬幣\n3.小鴻(152.175)要你跟他玩猜拳",
+    "process_exp": 500,
+    "process_renown": 50,
+    "process_money": 1000,
+    "process_item": "",
+    "remark": "",
+    "process": "",
+    "image": "",
+    "star": ""
   },
   {
     "id": "經商之道",
@@ -235,7 +311,8 @@
     "process_item": "京城居民金子胥的信賴",
     "remark": "",
     "process": "",
-    "image": ""
+    "image": "",
+    "star": ""
   },
   {
     "id": "捉迷藏",
@@ -249,7 +326,8 @@
     "process_item": "京城居民小毛的信賴",
     "remark": "",
     "process": "",
-    "image": ""
+    "image": "",
+    "star": ""
   },
   {
     "id": "人窮志不窮",
@@ -263,7 +341,8 @@
     "process_item": "京城居民范天保的信賴",
     "remark": "",
     "process": "",
-    "image": ""
+    "image": "",
+    "star": ""
   },
   {
     "id": "快雪時晴",
@@ -277,7 +356,8 @@
     "process_item": "獲得京城居民孫山和侯邦的信賴",
     "remark": "古董大盜出沒地點 \n87,21 京城最上面那個角落 \n117,81 北門聚義廳上方 \n144,138 京城右上方的范天保的左上方 \n152,173 京城右上方的范天保的右邊 \n134,211 王真人的右方 \n112,250 京城西門和王真中的中間位置 \n74,85 西門孔隆的上方 \n50,131 車夫的上方 \n96,301 京城最下面的祥福右方 \n105,298 京城最下面的祥福右方",
     "process": "",
-    "image": ""
+    "image": "",
+    "star": ""
   },
   {
     "id": "真人的考驗",
@@ -291,7 +371,8 @@
     "process_item": "英雄卡「黃金聖鬥士」",
     "remark": "",
     "process": "",
-    "image": ""
+    "image": "",
+    "star": ""
   },
   {
     "id": "靈犬凱兒",
@@ -305,7 +386,8 @@
     "process_item": "「1條狗的信任」",
     "remark": "",
     "process": "",
-    "image": ""
+    "image": "",
+    "star": ""
   },
   {
     "id": "脫胎換骨術",
@@ -319,7 +401,8 @@
     "process_item": "",
     "remark": "",
     "process": "獲得兩項資格：\n1.可以去郡業找北斗奇人全四郎(103，172」，把技能點數恢復到沒點過的狀態。\n2.可以去川都找歸無道長(68，258)，把屬性點數恢復到沒點過的狀態",
-    "image": ""
+    "image": "",
+    "star": ""
   },
   {
     "id": "恐龍竹馬",
@@ -333,7 +416,8 @@
     "process_item": "獲得「恐龍頭竹馬」一匹",
     "remark": "",
     "process": "",
-    "image": ""
+    "image": "",
+    "star": ""
   },
   {
     "id": "苦豆石磨",
@@ -347,7 +431,8 @@
     "process_item": "",
     "remark": "",
     "process": "第一次修復：名聲30點、經驗值300點。\n第二次修復：名聲50點、經驗值1000點。\n第三次修復：1.名聲50點、經驗值1000點、金幣1000枚。(選擇收下謝禮)\n2.名聲50點、經驗值2500。(選擇不用謝禮)",
-    "image": ""
+    "image": "",
+    "star": ""
   },
   {
     "id": "熱門商品",
@@ -361,7 +446,158 @@
     "process_item": "",
     "remark": "",
     "process": "1.經驗值2000點、名聲50點、1500枚金幣。\n2.經驗值5000點、名聲50點、3500枚金幣。\n3.經驗值9000點、名聲100點、5500枚金幣。",
-    "image": ""
+    "image": "",
+    "star": ""
+  },
+  {
+    "id": "氣憤的包大人",
+    "area": "京城",
+    "start": "包大人(111,96)",
+    "restriction": "過程需解「展護衛報告」、「烏盆有話說」、「婢女的關心」、「殺手滑鐵盧」",
+    "award": "1.京城找到包大人(111,96)，要你去回春谷找展護衛(33,45)\n2.完成展護衛(33,45)要找的三個人任務之後再回去找包大人\n3.會再請玩家去月鏡湖找鍾添師(74,140)",
+    "process_exp": 8000,
+    "process_renown": 50,
+    "process_money": 500,
+    "process_item": "",
+    "remark": "",
+    "process": "",
+    "image": "",
+    "star": "氣憤的包大人"
+  },
+  {
+    "id": "著急的侍官",
+    "area": "京城",
+    "start": "選後侍官(54,220)",
+    "restriction": "",
+    "award": "1.京城找到選後侍官(54,220)，說有八位未到參選，要玩家去找\n2.北邙山 馬守珍(27,219)、翠竹林 卞賽(14,83)、月鏡湖 李湘君(21,90)、青葉村 劉儒是(57,228)、雲海村 董小婉(36,122)、赤羽村 顧媚(25,31)、杏花谷 蔻媚(16,81)、桑耶市集 陳媛媛(37,193)\n3.完成8位美女後完成任務",
+    "process_exp": 10000,
+    "process_renown": 100,
+    "process_money": "",
+    "process_item": "",
+    "remark": "",
+    "process": "",
+    "image": "",
+    "star": "著急的侍官"
+  },
+  {
+    "id": "人要衣裝",
+    "area": "杏花谷",
+    "start": "寇魅(16,81)",
+    "restriction": "需先接下「著急的侍官」",
+    "award": "1.寇魅(16,81)要玩家準備一件蠶絲袍、金麟甲靴、鞅鞈皮帽、鋼鐵劍\n2.繳交物品完成任務",
+    "process_exp": 7000,
+    "process_renown": 70,
+    "process_money": "",
+    "process_item": "",
+    "remark": "",
+    "process": "",
+    "image": "",
+    "star": "著急的侍官"
+  },
+  {
+    "id": "減肥藥劑",
+    "area": "桑耶市集",
+    "start": "陳媛媛(37,193)",
+    "restriction": "需先接下「著急的侍官」",
+    "award": "1.陳媛媛(37,193)要玩家去遺跡之泉找扁昔(25,77)拿瘦身秘藥\n2.遺跡之泉找扁昔(25,77)要玩家準備99個茯苓或30個人蔘或20個靈芝\n3.再回去找陳媛媛(37,193)完成任務",
+    "process_exp": 5000,
+    "process_renown": 60,
+    "process_money": "",
+    "process_item": "",
+    "remark": "",
+    "process": "",
+    "image": "",
+    "star": ""
+  },
+  {
+    "id": "華麗豎琴",
+    "area": "月鏡湖",
+    "start": "李湘君(21,90)",
+    "restriction": "需先接下「著急的侍官」",
+    "award": "1.李湘君(21,90)要玩家準備99個海妖的豎琴\n2.繳交物品完成任務",
+    "process_exp": 5000,
+    "process_renown": 30,
+    "process_money": "",
+    "process_item": "",
+    "remark": "",
+    "process": "",
+    "image": "",
+    "star": ""
+  },
+  {
+    "id": "路途遙遠",
+    "area": "雲海村",
+    "start": "董小婉(36,122)",
+    "restriction": "需先接下「著急的侍官」",
+    "award": "1.董小婉(36,122)要玩家給她兩張行程符\n2.繳交物品完成任務",
+    "process_exp": 5000,
+    "process_renown": 50,
+    "process_money": "",
+    "process_item": "",
+    "remark": "",
+    "process": "",
+    "image": "",
+    "star": ""
+  },
+  {
+    "id": "醉酒壯膽",
+    "area": "青葉村",
+    "start": "劉儒是(57,228)",
+    "restriction": "需先接下「著急的侍官」",
+    "award": "1.劉儒是(57,228)要玩家拿10罐千日酒\n2.繳交物品完成任務",
+    "process_exp": 8000,
+    "process_renown": 80,
+    "process_money": "",
+    "process_item": "",
+    "remark": "",
+    "process": "",
+    "image": "",
+    "star": ""
+  },
+  {
+    "id": "美艷打扮",
+    "area": "赤羽村",
+    "start": "顧媚(25,31)",
+    "restriction": "需先接下「著急的侍官」",
+    "award": "1.赤羽村顧媚(25,31)要玩家給99個女用黑色網襪跟99個豹紋比基尼\n2.繳交物品完成任務",
+    "process_exp": 6000,
+    "process_renown": 60,
+    "process_money": "",
+    "process_item": "",
+    "remark": "",
+    "process": "",
+    "image": "",
+    "star": ""
+  },
+  {
+    "id": "醫救老父",
+    "area": "北邙山",
+    "start": "馬守珍(27,219)",
+    "restriction": "需先接下「著急的侍官」",
+    "award": "1.馬守珍(27,219)要玩家給20個治療藥、10個華陀藥\n2.繳交物品完成任務",
+    "process_exp": 6000,
+    "process_renown": 60,
+    "process_money": "",
+    "process_item": "",
+    "remark": "",
+    "process": "",
+    "image": "",
+    "star": ""
+  },
+  {
+    "id": "亮眼秀髮",
+    "area": "翠竹林",
+    "start": "卞賽(14,83)",
+    "restriction": "需先接下「著急的侍官」",
+    "award": "1.卞賽(14,83)要玩家準備99個假髮、葡萄汽水染髮劑1個\n2.繳交物品完成任務",
+    "process_exp": 6000,
+    "process_renown": 60,
+    "process_money": "",
+    "process_item": "",
+    "remark": "",
+    "process": "",
+    "image": "",
+    "star": ""
   },
   {
     "id": "擊退土匪",
@@ -375,7 +611,8 @@
     "process_item": "",
     "remark": "",
     "process": "",
-    "image": ""
+    "image": "",
+    "star": ""
   },
   {
     "id": "過往的回憶",
@@ -389,7 +626,8 @@
     "process_item": "御傷藥一瓶",
     "remark": "",
     "process": "",
-    "image": ""
+    "image": "",
+    "star": ""
   },
   {
     "id": "浪漫三友(1)",
@@ -403,7 +641,8 @@
     "process_item": "",
     "remark": "",
     "process": "",
-    "image": ""
+    "image": "",
+    "star": ""
   },
   {
     "id": "為民除害",
@@ -417,7 +656,8 @@
     "process_item": "",
     "remark": "",
     "process": "",
-    "image": ""
+    "image": "",
+    "star": ""
   },
   {
     "id": "飄逸的鬍子",
@@ -431,7 +671,8 @@
     "process_item": "",
     "remark": "",
     "process": "",
-    "image": ""
+    "image": "",
+    "star": ""
   },
   {
     "id": "官差的妙計",
@@ -445,7 +686,8 @@
     "process_item": "恐龍竹馬設計圖一張",
     "remark": "",
     "process": "",
-    "image": ""
+    "image": "",
+    "star": ""
   },
   {
     "id": "以毒攻毒",
@@ -459,7 +701,8 @@
     "process_item": "",
     "remark": "",
     "process": "",
-    "image": ""
+    "image": "",
+    "star": ""
   },
   {
     "id": "迷糊老翁",
@@ -473,7 +716,8 @@
     "process_item": "",
     "remark": "",
     "process": "",
-    "image": ""
+    "image": "",
+    "star": ""
   },
   {
     "id": "回神水",
@@ -487,7 +731,8 @@
     "process_item": "一瓶回神水",
     "remark": "",
     "process": "",
-    "image": ""
+    "image": "",
+    "star": ""
   },
   {
     "id": "男人的自信",
@@ -501,7 +746,8 @@
     "process_item": "",
     "remark": "",
     "process": "",
-    "image": ""
+    "image": "",
+    "star": ""
   },
   {
     "id": "浪漫三友(2)",
@@ -515,7 +761,8 @@
     "process_item": "學會手工紙的做法",
     "remark": "",
     "process": "",
-    "image": ""
+    "image": "",
+    "star": ""
   },
   {
     "id": "神農狗",
@@ -529,7 +776,8 @@
     "process_item": "兩條狗的信任",
     "remark": "",
     "process": "",
-    "image": ""
+    "image": "",
+    "star": ""
   },
   {
     "id": "親情的思念",
@@ -543,7 +791,8 @@
     "process_item": "",
     "remark": "",
     "process": "",
-    "image": ""
+    "image": "",
+    "star": ""
   },
   {
     "id": "嚴厲的紀律",
@@ -557,7 +806,8 @@
     "process_item": "",
     "remark": "",
     "process": "",
-    "image": ""
+    "image": "",
+    "star": ""
   },
   {
     "id": "369蛇明水",
@@ -571,21 +821,23 @@
     "process_item": "",
     "remark": "",
     "process": "時限內送達，金錢500元、名聲50點、經驗值4500、稱號快手快手竹馬 \n時限外送達，金錢500元、名聲50點、經驗值3500",
-    "image": ""
+    "image": "",
+    "star": ""
   },
   {
     "id": "烏盆有話說",
     "area": "西門關",
     "start": "烏盆(77,19)",
-    "restriction": "",
-    "award": "蒐集30張五鬼符、50個八卦。",
-    "process_exp": "",
-    "process_renown": "",
+    "restriction": "需已接下任務「氣憤的包大人」",
+    "award": "1.烏盆(77,19)要玩家蒐集30張五鬼符、50個八卦。\n2.完成任務",
+    "process_exp": 4000,
+    "process_renown": 30,
     "process_money": "",
     "process_item": "",
     "remark": "",
     "process": "",
-    "image": ""
+    "image": "",
+    "star": "氣憤的包大人"
   },
   {
     "id": "浪漫三友3",
@@ -599,7 +851,8 @@
     "process_item": "白玫瑰一支",
     "remark": "",
     "process": "",
-    "image": ""
+    "image": "",
+    "star": ""
   },
   {
     "id": "印刷術的秘密",
@@ -613,7 +866,8 @@
     "process_item": "物品藍貓耳朵配方、香蕉派眼鏡配方、粉紅緞帶配方、青銅小竹馬配方(四選一)、印刷術的秘密",
     "remark": "",
     "process": "",
-    "image": ""
+    "image": "",
+    "star": ""
   },
   {
     "id": "沙漠通行證",
@@ -627,7 +881,8 @@
     "process_item": "沙漠通行證",
     "remark": "寶箱位置：(85.244)、(95.154)、(84.16)",
     "process": "",
-    "image": ""
+    "image": "",
+    "star": ""
   },
   {
     "id": "三顧伏龍王",
@@ -641,7 +896,8 @@
     "process_item": "",
     "remark": "",
     "process": "偷襲他；經驗值8000點、逆龍鱗1個。\n等他；經驗值8000點、逆龍鱗1個、名聲500點。",
-    "image": ""
+    "image": "",
+    "star": ""
   },
   {
     "id": "天煞武將",
@@ -655,7 +911,8 @@
     "process_item": "上古巨斧1把",
     "remark": "",
     "process": "",
-    "image": ""
+    "image": "",
+    "star": ""
   },
   {
     "id": "製作醫書",
@@ -669,7 +926,8 @@
     "process_item": "鐵打散x1",
     "remark": "",
     "process": "",
-    "image": ""
+    "image": "",
+    "star": ""
   },
   {
     "id": "玄易之術",
@@ -683,7 +941,23 @@
     "process_item": "",
     "remark": "",
     "process": "",
-    "image": ""
+    "image": "",
+    "star": ""
+  },
+  {
+    "id": "展護衛報告",
+    "area": "回春谷",
+    "start": "展護衛(33,45)",
+    "restriction": "需已接下任務「氣憤的包大人」",
+    "award": "1.展護衛(33,45)要玩家再去三個地方找冤魂\n　一、西門關的烏盆(77,19)\n　二、翠竹林的蔻珠(27,53)\n　三、潛龍潭的韓奇(12,69)",
+    "process_exp": 3000,
+    "process_renown": 20,
+    "process_money": 500,
+    "process_item": "",
+    "remark": "",
+    "process": "",
+    "image": "",
+    "star": "氣憤的包大人"
   },
   {
     "id": "紅衣童子",
@@ -697,49 +971,53 @@
     "process_item": "",
     "remark": "",
     "process": "",
-    "image": ""
+    "image": "",
+    "star": ""
   },
   {
     "id": "堅韌的毛髮",
     "area": "赤松林",
     "start": "巴不德(60,34)",
     "restriction": "",
-    "award": "1.在赤松林找巴不德x060y034，對話後幫他取得四臂猿的毛髮。\n2.準備好四臂猿的毛髮30個，交給他即可完成任務。",
+    "award": "1.在赤松林找巴不德(60,34)，對話後幫他取得四臂猿的毛髮。\n2.準備好四臂猿的毛髮30個，交給他即可完成任務。",
     "process_exp": 10000,
     "process_renown": 50,
     "process_money": 2500,
     "process_item": "",
     "remark": "",
     "process": "",
-    "image": ""
+    "image": "",
+    "star": ""
   },
   {
     "id": "奪取寶藏",
     "area": "赤松林",
     "start": "蔣不聽(8,199)",
     "restriction": "等級50級以上、須先開啟「防護液」",
-    "award": "1.在赤松林找蔣不聽x008y199並對話，得知幫他取得海賊寶箱。 \n2.到修羅一煉獄打獵寶海賊，直到取得10個海賊的寶箱。 \n3.取得10個海賊寶箱後交給蔣不聽，得知需要10個枯木毒液囊。 \n4.在赤松林打枯木蟻獅，取得10個枯木毒液囊交給蔣不聽。 \n5.取得防護液後任務完成。",
-    "process_exp": "",
-    "process_renown": "",
+    "award": "1.在赤松林找蔣不聽(8,199)並對話，得知幫他取得海賊寶箱。 \n2.到修羅一煉獄打獵寶海賊，直到取得10個海賊的寶箱。 \n3.取得10個海賊寶箱後交給蔣不聽，得知需要10個枯木毒液囊。 \n4.在赤松林打枯木蟻獅，取得10個枯木毒液囊交給蔣不聽。 \n5.取得防護液後任務完成。",
+    "process_exp": 45000,
+    "process_renown": 100,
     "process_money": "",
     "process_item": "",
     "remark": "",
     "process": "交海賊寶箱可得名聲50點、經驗值30000點 \n交枯木毒液囊可得名聲50點、經驗值15000點、防護液1瓶。",
-    "image": ""
+    "image": "",
+    "star": ""
   },
   {
-    "id": "防謢液",
+    "id": "防護液",
     "area": "赤松林",
     "start": "梅法度(36,38)",
     "restriction": "需先完成「奪取寶藏」",
-    "award": "在赤松林找梅法度x036y038並對話，幫忙打聽防護液的事。 \n在赤松林找蔣不聽x008y199並對話，並取得防護液。 \n再將防護液交給梅法度即可完成任務。",
+    "award": "1.在赤松林找梅法度(36,38)並對話，幫忙打聽防護液的事。 \n2.在赤松林找蔣不聽(8,199)並對話，並取得防護液。 \n3.再將防護液交給梅法度即可完成任務。",
     "process_exp": 8000,
     "process_renown": 100,
     "process_money": "",
     "process_item": "一級加工穩定劑3瓶",
     "remark": "",
     "process": "",
-    "image": ""
+    "image": "",
+    "star": ""
   },
   {
     "id": "牛仔與淑女",
@@ -753,21 +1031,53 @@
     "process_item": "牛仔帽一頂",
     "remark": "",
     "process": "",
-    "image": ""
+    "image": "",
+    "star": ""
   },
   {
     "id": "虎太郎",
     "area": "蕈菇林",
     "start": "虎太郎(32,212)",
     "restriction": "",
-    "award": "1.虎太郎拜託你去找蕈菇醫生(87.197)詢問關於假牙的訊息。 \n2.蕈菇醫生要求給他30隻火蟻才答應幫忙。 \n3.蕈菇醫生需要30個虎牙才能幫虎太郎製作假牙。 \n4.拿30個虎牙給蕈菇醫生製作假牙後再回去找虎太郎。",
-    "process_exp": "",
-    "process_renown": "",
+    "award": "1.虎太郎拜託你去找蕈菇醫生(87.197)詢問關於假牙的訊息。 \n2.蕈菇醫生要求給他30隻火蟻才答應幫忙。 \n3.蕈菇醫生需要30個虎牙才能幫虎太郎製作假牙。 \n4.拿30個虎牙給蕈菇醫生製作假牙後再回去找虎太郎。\n5.拿假牙給虎太郎 進入戰鬥，打贏後完成任務。",
+    "process_exp": 11500,
+    "process_renown": 100,
+    "process_money": "",
+    "process_item": "黑貓耳朵",
+    "remark": "",
+    "process": "蕈菇醫生階段 經驗值：4500、名聲：50\n虎太郎階段 經驗值：7000、名聲：50",
+    "image": "",
+    "star": ""
+  },
+  {
+    "id": "拳聖香娸",
+    "area": "蕈菇林",
+    "start": "香娸(49,105)",
+    "restriction": "",
+    "award": "1.每一次猜拳都要9朵向日葵",
+    "process_exp": 4500,
+    "process_renown": 50,
+    "process_money": "",
+    "process_item": "",
+    "remark": "外號 拳聖的秘密",
+    "process": "",
+    "image": "",
+    "star": ""
+  },
+  {
+    "id": "婢女的關心",
+    "area": "翠竹林",
+    "start": "蔻珠(27,53)",
+    "restriction": "需已接下任務「氣憤的包大人」",
+    "award": "1.找蔻珠(27,53)後要玩家去西都道找姓巴的打聽打聽。\n2.到西都道找到巴賢(63,58)\n3.再回去找蔻珠(27,53)完成任務",
+    "process_exp": 5000,
+    "process_renown": 50,
     "process_money": "",
     "process_item": "",
     "remark": "",
-    "process": "名聲50點、經驗值1500點；名聲80點、經驗值2500點",
-    "image": ""
+    "process": "",
+    "image": "",
+    "star": "氣憤的包大人"
   },
   {
     "id": "躍龍訣",
@@ -781,7 +1091,23 @@
     "process_item": "學到躍龍訣這首詩",
     "remark": "",
     "process": "",
-    "image": ""
+    "image": "",
+    "star": ""
+  },
+  {
+    "id": "殺手滑鐵盧",
+    "area": "潛龍潭",
+    "start": "韓奇(12,69)",
+    "restriction": "需已接下任務「氣憤的包大人」",
+    "award": "1.韓奇(12,69)要玩家拿三件裝備 太浩皮甲、鬼頭刀、獸紋皮靴\n2.完成任務",
+    "process_exp": 5000,
+    "process_renown": 40,
+    "process_money": "",
+    "process_item": "",
+    "remark": "",
+    "process": "",
+    "image": "",
+    "star": "氣憤的包大人"
   },
   {
     "id": "天生一對(1)",
@@ -795,7 +1121,8 @@
     "process_item": "",
     "remark": "",
     "process": "名聲50點、經驗值2500點；名聲80點、經驗值3500點、月下好人稱號(如果已先解完天生一對(2)",
-    "image": ""
+    "image": "",
+    "star": ""
   },
   {
     "id": "天生一對(2)",
@@ -809,7 +1136,23 @@
     "process_item": "",
     "remark": "",
     "process": "名聲50點、經驗值1500點；名聲80點、經驗值2500點、月下好人稱號(如果已先解完天生一對(1)",
-    "image": ""
+    "image": "",
+    "star": ""
+  },
+  {
+    "id": "修理大門",
+    "area": "月鏡湖",
+    "start": "鍾添師(74,140)",
+    "restriction": "需先完成「氣憤的包大人」",
+    "award": "1.鍾添師(74,140)要玩家蒐集 檀木99、丹砂99、磷石99、龜殼99\n2.完成任務",
+    "process_exp": 7000,
+    "process_renown": 30,
+    "process_money": 2000,
+    "process_item": "",
+    "remark": "",
+    "process": "",
+    "image": "",
+    "star": "氣憤的包大人"
   },
   {
     "id": "驅蟲秘方",
@@ -823,7 +1166,8 @@
     "process_item": "菩提單2顆",
     "remark": "",
     "process": "",
-    "image": ""
+    "image": "",
+    "star": ""
   },
   {
     "id": "孝順父親",
@@ -837,7 +1181,8 @@
     "process_item": "",
     "remark": "",
     "process": "",
-    "image": ""
+    "image": "",
+    "star": ""
   },
   {
     "id": "寶塔經書",
@@ -851,7 +1196,8 @@
     "process_item": "",
     "remark": "",
     "process": "",
-    "image": ""
+    "image": "",
+    "star": ""
   },
   {
     "id": "靈芝的故事",
@@ -865,7 +1211,8 @@
     "process_item": "",
     "remark": "",
     "process": "",
-    "image": ""
+    "image": "",
+    "star": ""
   },
   {
     "id": "老毛病",
@@ -879,7 +1226,8 @@
     "process_item": "",
     "remark": "",
     "process": "",
-    "image": ""
+    "image": "",
+    "star": ""
   },
   {
     "id": "散落的綠豆",
@@ -893,7 +1241,8 @@
     "process_item": "陳年綠豆一把",
     "remark": "",
     "process": "",
-    "image": ""
+    "image": "",
+    "star": ""
   },
   {
     "id": "沉睡三兄弟(1)",
@@ -907,7 +1256,8 @@
     "process_item": "",
     "remark": "",
     "process": "",
-    "image": ""
+    "image": "",
+    "star": ""
   },
   {
     "id": "沉睡三兄弟(2)",
@@ -921,7 +1271,8 @@
     "process_item": "",
     "remark": "",
     "process": "",
-    "image": ""
+    "image": "",
+    "star": ""
   },
   {
     "id": "沉睡三兄弟(3)",
@@ -935,7 +1286,8 @@
     "process_item": "",
     "remark": "",
     "process": "",
-    "image": ""
+    "image": "",
+    "star": ""
   },
   {
     "id": "上古巨斧",
@@ -949,7 +1301,8 @@
     "process_item": "鐵斧頭",
     "remark": "",
     "process": "",
-    "image": ""
+    "image": "",
+    "star": ""
   },
   {
     "id": "郡業四傑(1)",
@@ -963,7 +1316,8 @@
     "process_item": "",
     "remark": "",
     "process": "",
-    "image": ""
+    "image": "",
+    "star": ""
   },
   {
     "id": "郡業四傑(2)",
@@ -977,7 +1331,8 @@
     "process_item": "",
     "remark": "",
     "process": "",
-    "image": ""
+    "image": "",
+    "star": ""
   },
   {
     "id": "郡業四傑(3)",
@@ -991,7 +1346,8 @@
     "process_item": "",
     "remark": "",
     "process": "",
-    "image": ""
+    "image": "",
+    "star": ""
   },
   {
     "id": "郡業四傑(4)",
@@ -1005,7 +1361,8 @@
     "process_item": "",
     "remark": "",
     "process": "",
-    "image": ""
+    "image": "",
+    "star": ""
   },
   {
     "id": "整人三人組(1)",
@@ -1019,7 +1376,8 @@
     "process_item": "9個小顆臭蛋",
     "remark": "",
     "process": "",
-    "image": ""
+    "image": "",
+    "star": ""
   },
   {
     "id": "整人三人組(2)",
@@ -1033,7 +1391,8 @@
     "process_item": "9個小串鞭炮",
     "remark": "",
     "process": "",
-    "image": ""
+    "image": "",
+    "star": ""
   },
   {
     "id": "整人三人組(3)",
@@ -1047,7 +1406,8 @@
     "process_item": "9個小顆水鴛鴦",
     "remark": "",
     "process": "",
-    "image": ""
+    "image": "",
+    "star": ""
   },
   {
     "id": "老人的牽掛",
@@ -1061,7 +1421,8 @@
     "process_item": "",
     "remark": "",
     "process": "",
-    "image": ""
+    "image": "",
+    "star": ""
   },
   {
     "id": "喜好礦石",
@@ -1075,7 +1436,8 @@
     "process_item": "",
     "remark": "",
     "process": "",
-    "image": ""
+    "image": "",
+    "star": ""
   },
   {
     "id": "煙火",
@@ -1089,7 +1451,8 @@
     "process_item": "",
     "remark": "",
     "process": "第一階段：名聲20點，第二階段：經驗值4500點、名聲30點。",
-    "image": ""
+    "image": "",
+    "star": ""
   },
   {
     "id": "獵皮",
@@ -1103,7 +1466,8 @@
     "process_item": "",
     "remark": "",
     "process": "",
-    "image": ""
+    "image": "",
+    "star": ""
   },
   {
     "id": "左凶右吉",
@@ -1117,7 +1481,8 @@
     "process_item": "",
     "remark": "",
     "process": "",
-    "image": ""
+    "image": "",
+    "star": ""
   },
   {
     "id": "以銅為鏡",
@@ -1131,7 +1496,8 @@
     "process_item": "",
     "remark": "",
     "process": "",
-    "image": ""
+    "image": "",
+    "star": ""
   },
   {
     "id": "遊手好閒",
@@ -1145,7 +1511,8 @@
     "process_item": "",
     "remark": "",
     "process": "",
-    "image": ""
+    "image": "",
+    "star": ""
   },
   {
     "id": "高級內褲",
@@ -1159,7 +1526,8 @@
     "process_item": "",
     "remark": "",
     "process": "",
-    "image": ""
+    "image": "",
+    "star": ""
   },
   {
     "id": "扮鬼嚇人",
@@ -1173,7 +1541,8 @@
     "process_item": "",
     "remark": "",
     "process": "",
-    "image": ""
+    "image": "",
+    "star": ""
   },
   {
     "id": "私塾書冊",
@@ -1187,7 +1556,8 @@
     "process_item": "黑框鏡",
     "remark": "",
     "process": "",
-    "image": ""
+    "image": "",
+    "star": ""
   },
   {
     "id": "攝魔盒",
@@ -1201,7 +1571,8 @@
     "process_item": "",
     "remark": "",
     "process": "1.名聲50點、金幣1000枚、七魄還神丹配方書99個。(拿酬金)2.名聲50點、經驗值3000點、七魄還神丹配方書99個。(不拿酬金)",
-    "image": ""
+    "image": "",
+    "star": ""
   },
   {
     "id": "來自仙界的少女",
@@ -1215,7 +1586,8 @@
     "process_item": "",
     "remark": "",
     "process": "",
-    "image": ""
+    "image": "",
+    "star": ""
   },
   {
     "id": "傳家寶",
@@ -1229,7 +1601,8 @@
     "process_item": "",
     "remark": "",
     "process": "",
-    "image": ""
+    "image": "",
+    "star": ""
   },
   {
     "id": "達摩洗髓經",
@@ -1243,7 +1616,8 @@
     "process_item": "",
     "remark": "",
     "process": "取得重新分配技能點數的資格",
-    "image": ""
+    "image": "",
+    "star": ""
   },
   {
     "id": "城市綠化",
@@ -1257,7 +1631,8 @@
     "process_item": "",
     "remark": "",
     "process": "",
-    "image": ""
+    "image": "",
+    "star": ""
   },
   {
     "id": "心病心醫",
@@ -1271,7 +1646,8 @@
     "process_item": "還神丹20顆",
     "remark": "",
     "process": "",
-    "image": ""
+    "image": "",
+    "star": ""
   },
   {
     "id": "昌碇義勇軍",
@@ -1285,7 +1661,8 @@
     "process_item": "(昌碇義勇軍)稱號",
     "remark": "",
     "process": "",
-    "image": ""
+    "image": "",
+    "star": ""
   },
   {
     "id": "昌碇義勇軍2",
@@ -1299,7 +1676,8 @@
     "process_item": "",
     "remark": "",
     "process": "1.經驗值1500點、金幣300枚、名聲30點。2.經驗值3000點、金幣600枚、名聲60點3.經驗值5000點、金幣1000枚、名聲100點。",
-    "image": ""
+    "image": "",
+    "star": ""
   },
   {
     "id": "靈異事件",
@@ -1313,7 +1691,23 @@
     "process_item": "",
     "remark": "",
     "process": "",
-    "image": ""
+    "image": "",
+    "star": ""
+  },
+  {
+    "id": "曲中情盡",
+    "area": "昌碇",
+    "start": "琴師(41,56)",
+    "restriction": "",
+    "award": "未知",
+    "process_exp": 1000,
+    "process_renown": 25,
+    "process_money": 500,
+    "process_item": "",
+    "remark": "",
+    "process": "",
+    "image": "",
+    "star": ""
   },
   {
     "id": "天仙劍",
@@ -1327,7 +1721,8 @@
     "process_item": "",
     "remark": "",
     "process": "經驗+5500、聲望+50、金幣+1000(有神農狗大便,含前段獎賞累加)",
-    "image": ""
+    "image": "",
+    "star": ""
   },
   {
     "id": "天生殘疾(1)",
@@ -1341,7 +1736,8 @@
     "process_item": "",
     "remark": "",
     "process": "",
-    "image": ""
+    "image": "",
+    "star": ""
   },
   {
     "id": "天生殘疾(2)",
@@ -1355,7 +1751,8 @@
     "process_item": "",
     "remark": "",
     "process": "",
-    "image": ""
+    "image": "",
+    "star": ""
   },
   {
     "id": "天生殘疾(3)",
@@ -1369,7 +1766,8 @@
     "process_item": "",
     "remark": "",
     "process": "",
-    "image": ""
+    "image": "",
+    "star": ""
   },
   {
     "id": "天生殘疾(4)",
@@ -1383,7 +1781,8 @@
     "process_item": "",
     "remark": "",
     "process": "",
-    "image": ""
+    "image": "",
+    "star": ""
   },
   {
     "id": "天生殘疾(5)",
@@ -1397,6 +1796,412 @@
     "process_item": "荷包蛋頭飾",
     "remark": "",
     "process": "",
-    "image": ""
+    "image": "",
+    "star": ""
+  },
+  {
+    "id": "情報收集",
+    "area": "昌碇",
+    "start": "季羽(28,180)",
+    "restriction": "",
+    "award": "1.跟四子說話 需子(36,266)、禾子(72,270)、包子 客棧 內、瓜子(88,19)\n2.回去找季羽(28,180)",
+    "process_exp": 1000,
+    "process_renown": 50,
+    "process_money": "",
+    "process_item": "",
+    "remark": "",
+    "process": "獲得前去赤羽村的資格",
+    "image": "",
+    "star": "藏玄洞資格"
+  },
+  {
+    "id": "赤羽村的危機",
+    "area": "赤羽村",
+    "start": "村長(客棧 26,55)",
+    "restriction": "",
+    "award": "1.進赤羽客棧(26,55)找村長\n2.長老玄曲(11,22)對話\n3.繳交(五行圖騰、五行獸牙、五行神木、五行蠶絲、五行藥材)各1\n4.等待10分鐘之後，再度跟長老玄曲(11,22)對話完成任務",
+    "process_exp": 3500,
+    "process_renown": 70,
+    "process_money": "",
+    "process_item": "獲得天之六合",
+    "remark": "",
+    "process": "",
+    "image": "",
+    "star": "藏玄洞資格"
+  },
+  {
+    "id": "葬心塚",
+    "area": "赤羽村",
+    "start": "孫女 玄舞(11,22)",
+    "restriction": "",
+    "award": "1.找孫女 玄舞(11,22)\n2.找 羽修士(6,25)對話\n3.前往葬心塚，對墓碑(36,25)按右鍵\n4.被傳送到同心林，找緣善(20,58)對話\n5.完成男女大不同任務後回去墓碑按右鍵即可進入藏玄洞",
+    "process_exp": "",
+    "process_renown": "",
+    "process_money": "",
+    "process_item": "獲得前往藏玄洞資格",
+    "remark": "",
+    "process": "",
+    "image": "",
+    "star": "藏玄洞資格"
+  },
+  {
+    "id": "男女大不同",
+    "area": "同心林",
+    "start": "緣善(20,58)",
+    "restriction": "",
+    "award": "1.找緣善(20,58)對話\n2.要玩家蒐集三樣東西\n　一、祈願湖之源\n　二、同心林之源\n　三、哭腸崖之源\n3.蒐集完之後找緣善(20,58)對話完成任務",
+    "process_exp": 2500,
+    "process_renown": 50,
+    "process_money": "",
+    "process_item": "獲得強化的天之六合",
+    "remark": "",
+    "process": "",
+    "image": "",
+    "star": "藏玄洞資格"
+  },
+  {
+    "id": "祈願湖之源",
+    "area": "祈願湖",
+    "start": "魅冰(38,109)",
+    "restriction": "",
+    "award": "1.找魅冰魅冰(38,109)對話。\n男生：\n　　1.在祈願湖打怪取得祈願湖之心\n　　2.找魅冰(38,109)對話，完成任務\n女生：\n　　1.找沙翁(12,96)，並等他5分鐘，獲得祈願湖之命\n　　2.找魅冰(38,109)對話，完成任務",
+    "process_exp": "",
+    "process_renown": "",
+    "process_money": "",
+    "process_item": "獲得祈願湖之命",
+    "remark": "",
+    "process": "",
+    "image": "",
+    "star": "藏玄洞資格"
+  },
+  {
+    "id": "心有所失(男)",
+    "area": "祈願湖",
+    "start": "魅冰(38，109)",
+    "restriction": "",
+    "award": "1.找羽寒(16,29)對話，要玩家去赤羽村找季福(34,27)。\n2.季福(34,27)要玩家給1萬，取得乾淨的湖水。\n2.找『羽希(32，59)』對話。\n3.找『羽心(10，45)』對話。\n4.找『祭壇』捐獻『香油錢』。(對『祭壇』點選右鍵，捐獻『香油錢』。)\n5.獲得乾淨的土壤，再找『羽希(32，59)』對話",
+    "process_exp": 1500,
+    "process_renown": 30,
+    "process_money": "",
+    "process_item": "獲得祈願湖之源",
+    "remark": "",
+    "process": "",
+    "image": "",
+    "star": "藏玄洞資格"
+  },
+  {
+    "id": "命有所缺(女)",
+    "area": "祈願湖",
+    "start": "羽希(32,59)",
+    "restriction": "",
+    "award": "1.找羽希(32,59)對話後，要玩家去赤羽村找季喜(15,40)。\n2.季喜(15,40)要玩家給1萬，取得乾淨的土壤。\n3.回去祈願湖找羽希(32,59)對話完成任務。",
+    "process_exp": 1500,
+    "process_renown": 30,
+    "process_money": "",
+    "process_item": "獲得祈願湖之源",
+    "remark": "",
+    "process": "",
+    "image": "",
+    "star": "藏玄洞資格"
+  },
+  {
+    "id": "同心林之源",
+    "area": "同心林",
+    "start": "緣起(34,21)",
+    "restriction": "",
+    "award": "1.找緣起(34，21)對話\n2.\n男生：要玩家打同心林的精怪取得 動物糞便10個\n女生：要玩家打同心林的精怪取得 同心林之情\n3.蒐集好道具回去找緣起(34，21)對話完成任務",
+    "process_exp": "男生：1000",
+    "process_renown": "男生：20",
+    "process_money": "",
+    "process_item": "男生：獲得同心林之愛",
+    "remark": "",
+    "process": "",
+    "image": "",
+    "star": "藏玄洞資格"
+  },
+  {
+    "id": "愛有所屬",
+    "area": "赤羽村",
+    "start": "鐵熊(32,76)",
+    "restriction": "",
+    "award": "1.赤羽村找到鐵熊(32,76)對話，要玩家去找羽優(20,21)\n2.羽優(20,21)要玩家去找羽姬(22,82)\n3.回去找鐵熊(32,76)對話，要玩家去找阿青(13,63)取得萬年圖騰\n4.找鐵熊(32,76)對話完成任務",
+    "process_exp": "男生：4000",
+    "process_renown": "男生：55",
+    "process_money": 5000,
+    "process_item": "女生：獲得同心林之源",
+    "remark": "",
+    "process": "",
+    "image": "",
+    "star": "藏玄洞資格"
+  },
+  {
+    "id": "情有所損(女)",
+    "area": "赤羽村",
+    "start": "羽燕(29,39)",
+    "restriction": "",
+    "award": "1.赤羽村找到羽燕(29,39)對話，要玩家去找萬年蠶絲\n2.找到阿青(13,63)對話選擇115顆獲得萬年蠶絲\n3.再付1萬獲得同心林之源",
+    "process_exp": "女生：4000",
+    "process_renown": "女生：55",
+    "process_money": "女生：10000",
+    "process_item": "女生：獲得同心林之源",
+    "remark": "",
+    "process": "",
+    "image": "",
+    "star": "藏玄洞資格"
+  },
+  {
+    "id": "永結同心",
+    "area": "赤羽村",
+    "start": "阿青(13,63)",
+    "restriction": "",
+    "award": "1.找到阿青(13,63)對話選擇115顆獲得萬年圖騰(男)萬年蠶絲(女)",
+    "process_exp": "",
+    "process_renown": "",
+    "process_money": "",
+    "process_item": "女生：獲得萬年蠶絲",
+    "remark": "",
+    "process": "",
+    "image": "",
+    "star": "藏玄洞資格"
+  },
+  {
+    "id": "哭腸崖之源",
+    "area": "哭腸崖",
+    "start": "羽娜(10,102)",
+    "restriction": "",
+    "award": "1.前往哭腸崖找羽娜(10,102)對話\n男生：\n　　1.要玩家去赤羽村找李匠(10.94)\n　　2.會給玩家圓(金秋)去哭腸崖挖哭腸崖之夢\n　　3.到哭腸崖(58,28)挖取得哭腸崖之夢\n　　4.回去找李匠(10.94)取得殘夢轉換劑\n　　5.再回去哭腸崖找羽娜(10,102)對話完成任務\n女生：\n　　1.要玩家去昌碇找空空道人(46,101)\n　　2.空空道人(46,101)借你垃圾袋要回去哭腸崖打怪取得哭腸崖之幻\n　　3.再去哭腸崖找羽娜(10,102)對話完成任務",
+    "process_exp": "",
+    "process_renown": "",
+    "process_money": "",
+    "process_item": "",
+    "remark": "",
+    "process": "",
+    "image": "",
+    "star": "藏玄洞資格"
+  },
+  {
+    "id": "幻有所空(女)",
+    "area": "赤羽村",
+    "start": "季實(29,91)",
+    "restriction": "",
+    "award": "1.赤羽村找季實(29,91)，交出垃圾袋跟哭腸崖之幻",
+    "process_exp": 4000,
+    "process_renown": 80,
+    "process_money": "",
+    "process_item": "獲得哭腸崖之源",
+    "remark": "",
+    "process": "",
+    "image": "",
+    "star": "藏玄洞資格"
+  },
+  {
+    "id": "夢有所破(男)",
+    "area": "赤羽村",
+    "start": "芝羽(21,47)",
+    "restriction": "",
+    "award": "1.赤羽村找芝羽(21,47)，交出殘夢轉換劑跟哭腸崖之夢",
+    "process_exp": 4000,
+    "process_renown": 80,
+    "process_money": "",
+    "process_item": "獲得哭腸崖之源",
+    "remark": "",
+    "process": "",
+    "image": "",
+    "star": "藏玄洞資格"
+  },
+  {
+    "id": "三世夫妻",
+    "area": "藏玄洞",
+    "start": "守墓人(18,114)",
+    "restriction": "",
+    "award": "1.進入藏玄洞第一層跟旁邊守墓人(18,114)對話\n2.到第七層找玄女戰鬥後解救赤羽村",
+    "process_exp": 6000,
+    "process_renown": 100,
+    "process_money": "",
+    "process_item": "",
+    "remark": "",
+    "process": "",
+    "image": "",
+    "star": ""
+  },
+  {
+    "id": "防水制服",
+    "area": "南揚湖",
+    "start": "魚夫 蔡斯衍(69,199)",
+    "restriction": "",
+    "award": "※由轉運站-老咸 開拓提供任務資訊\n1.到南揚湖找魚夫 蔡斯衍(69.199)\n2.在周圍打地皮20個\n3.找魚夫 蔡斯衍完成任務",
+    "process_exp": 5000,
+    "process_renown": 100,
+    "process_money": "",
+    "process_item": "",
+    "remark": "",
+    "process": "",
+    "image": "",
+    "star": ""
+  },
+  {
+    "id": "傾心於繡腿",
+    "area": "南揚湖",
+    "start": "探花 李順昇(99,194)",
+    "restriction": "",
+    "award": "※由轉運站-老咸 開拓提供任務資訊\n1.到南揚湖找探花 李順昇(99.194)\n2.到涼亭找 找降龍王大娤，把黃玫瑰交給他\n3.找探花 李順昇完成任務",
+    "process_exp": 8000,
+    "process_renown": 200,
+    "process_money": 10000,
+    "process_item": "",
+    "remark": "",
+    "process": "",
+    "image": "",
+    "star": ""
+  },
+  {
+    "id": "嶄新肥料",
+    "area": "南揚湖",
+    "start": "農民 啟億(65,25)",
+    "restriction": "",
+    "award": "※由轉運站-老咸 開拓提供任務資訊\n1.到南揚湖找農民 啟億(65.25)，需要螺絲釘96個、玩具眼球66個、玩具弓箭33個\n2.交道具後完成任務",
+    "process_exp": "",
+    "process_renown": "",
+    "process_money": "",
+    "process_item": "",
+    "remark": "",
+    "process": "",
+    "image": "",
+    "star": ""
+  },
+  {
+    "id": "虎臂水洞序錄",
+    "area": "南揚湖",
+    "start": "雲遊道士老江狐(146,160)",
+    "restriction": "",
+    "award": "※由轉運站-老咸 開拓提供任務資訊\n1.到南揚湖找雲遊道士老江狐(146,160)\n2.要你去找王棍神(144,101)\n3.找雲遊道士老江狐(146,160)\n4.進入虎臂水洞到往2F傳點\n5.找雲遊道士老江狐(146,160)，打天白地黑化舍利44個，打完回交任務\n6.這時候可以進入第二層，走到最尾端(祭壇區)與王嵐虎對話\n7.劇情會直接打死玩家，會出水洞到老江狐旁\n8.再進去二層祭壇區與王嵐虎對話，進入戰鬥需要撐住一段時間王棍神就會跑進來了",
+    "process_exp": 8000000,
+    "process_renown": 6000,
+    "process_money": "",
+    "process_item": "強化過的S英雄卡包",
+    "remark": "",
+    "process": "",
+    "image": "",
+    "star": ""
+  },
+  {
+    "id": "海龜太鑼",
+    "area": "蓬萊祕境",
+    "start": "海龜",
+    "restriction": "等級30級以上",
+    "award": "1.『蓬萊祕境』跟海龜對話並試過三種方法之後仍無效，得前往『巨岩村』找農夫\n2.巨岩村內找「炎農(42，77)」，錢莊旁邊大樹那，並給予任務用品之後得到「強效生髮水」\n3.回去找海龜太饠即完成任務",
+    "process_exp": 5000,
+    "process_renown": 50,
+    "process_money": "",
+    "process_item": "",
+    "remark": "龍宮傳送資格",
+    "process": "",
+    "image": "",
+    "star": ""
+  },
+  {
+    "id": "翠竹之王",
+    "area": "梁山",
+    "start": "藥盧前面-袁天",
+    "restriction": "",
+    "award": "1. 梁山開啟任務 藥盧前面-袁天\n2. 藥盧裡面 安道金-要你去找抓蛇大王\n3. 翠竹林-捉蛇大王 晃開 25.100\n需求物品麝香10個 驅魔相1個 - 得到招蛇香\n在附近打怪 會隨機遇到青蛇 可是不是遇到一定會掉毒液 不是很好打\n4. 得到青竹毒液10個後 再拿回給安道金\n5. 再找袁天 他會送你禮物",
+    "process_exp": "",
+    "process_renown": "",
+    "process_money": "",
+    "process_item": "",
+    "remark": "",
+    "process": "選擇不收禮物 經驗值10000 名聲200\n選擇收禮物 招魔香3個 經驗3000 名聲50",
+    "image": "",
+    "star": ""
+  },
+  {
+    "id": "三反大聯盟",
+    "area": "梁山",
+    "start": "雷痕 55.75",
+    "restriction": "",
+    "award": "1.北都道打奸商-金算盤10個 打完後再回去找雷痕\n2. 碧沙湖打劣紳-玉戒指10個 打完後再回去找雷痕\n3. 北門關打污吏-官印10個 打完後再回去找雷痕",
+    "process_exp": 8000,
+    "process_renown": 250,
+    "process_money": "",
+    "process_item": "黑貓耳朵一個",
+    "remark": "",
+    "process": "",
+    "image": "",
+    "star": ""
+  },
+  {
+    "id": "",
+    "area": "",
+    "start": "",
+    "restriction": "",
+    "award": "再回去找捉蛇大王 他要你幫她收集老鼠尾巴198個 烏鴉蛋198個",
+    "process_exp": "",
+    "process_renown": "",
+    "process_money": "",
+    "process_item": "",
+    "remark": "",
+    "process": "",
+    "image": "",
+    "star": ""
+  },
+  {
+    "id": "渡化英靈",
+    "area": "琅琊山",
+    "start": "阿渡大師(55,54)",
+    "restriction": "",
+    "award": "1. 琅琊山 找阿渡大師 55.54\n2. 蒐集30個大酒罈",
+    "process_exp": 8000,
+    "process_renown": 100,
+    "process_money": 3000,
+    "process_item": "",
+    "remark": "",
+    "process": "",
+    "image": "",
+    "star": ""
+  },
+  {
+    "id": "養蛇人",
+    "area": "梁山",
+    "start": "蛇子鈞(85,73)",
+    "restriction": "",
+    "award": "1.先去梁山找蛇子鈞(85,73)\n2.然後到蕈菇林找大頭(91,127)\n3.回梁山找蛇子鈞,要求去蕈菇林打蕈菇騎士掉嗩吶\n4.到蕈菇林打蕈菇騎士掉\"蛇子的嗩吶\"隨機掉\n5.回梁山找蛇子鈞,學會使用嗩吶\n6.到蕈菇林找大頭要求麝香50個、琥珀化石30個,得到\"大頭退毒散\"\n7.回梁山找蛇子鈞得到前半段獎勵\n8.玩猜竹樓遊戲(3選1隨機中?),猜一次需要金錢(依序是1000,2000,4000,8000,15000)\n(註:猜錯重新要在給一次錢)\n9.任務結束(全部猜完任務書才會打勾)",
+    "process_exp": "",
+    "process_renown": "",
+    "process_money": "",
+    "process_item": "",
+    "remark": "",
+    "process": "半段-50名聲、6000經驗值、\n第一次猜中為「內丹    」*50\n第二次猜中為「療傷藥」*50\n第三次猜中為「大補單」*50\n第四次猜中為「治療藥」*50\n第五次猜中為「火石圖騰」*1",
+    "image": "",
+    "star": ""
+  },
+  {
+    "id": "惰性的教訓",
+    "area": "東門關",
+    "start": "士兵 班長(23,74)",
+    "restriction": "等級36級以上",
+    "award": "1.先到東門關找 士兵 班長(23.74)\n2.到東邊找胡理 (58.69)給他50個龍鱗\n3.回到東門關找 班長 觸發戰鬥",
+    "process_exp": 30000,
+    "process_renown": 100,
+    "process_money": "",
+    "process_item": "海龍竹馬",
+    "remark": "",
+    "process": "",
+    "image": "",
+    "star": ""
+  },
+  {
+    "id": "慌張的差役",
+    "area": "川都",
+    "start": "慌張的差役(97,294)",
+    "restriction": "",
+    "award": "1.跟『慌張的差役』對話\n2.前往「川都西南側」找『差役--阿真』\n3.找旁邊的『門房--平次』\n4.然後進入張家大宅，且跟『差役--阿太』對話\n5.找『捕頭老大--木牧』\n6.找旁邊的『偵探--柯柯』\n7.找旁邊的『博士--阿立』\n8.前往「匯星高原」找『小哀』\n9.取得「50坐墊」之後再跟『小哀』對話\n10.取得「液態鑑識噴劑」之後，回川都交給『博士--阿立』\n11.前往『儲物房』，並使用「液態鑑識噴劑」來作鑑定\n12.回去找『博士--阿立』\n13.跟旁邊的『偵探--柯柯』對話\n14.然後找『捕頭--白郎』和『捕頭--高目』\n15.跟『捕頭--白郎』對話\n16.找位於「僕人房間」內張宅的『白總管』對話\n17.跟『捕頭--高目』對話\n18.找『張員外』、『張夫人』、『張宅--李長工』對話\n19.前往「僕人房間」，並與『張夫人』、『張宅--李長工』對話\n20.跟『張員外』對話\n21.取得「1組硃砂」之後，交給『白總管』\n22.跟『捕頭--高目』對話\n23.跟『捕頭--白郎』對話\n24.跟『偵探--柯柯』對話\n25.前往「客房區」尋找『張夫人』\n26.跟『偵探--柯柯』對話\n27.跟『捕頭老大--木牧』對話\n28.跟『張員外』對話\n29.前往「郡業」找『惡商--阿平』\n30.取得「1組貂皮」後跟『惡商--阿平』對話，拿回「虹光珍珠戒」\n31.取得「1組絹絲」後跟『惡商--阿平』對話，拿回「黃金袖珍盒」\n32.前往「昌碇」找『回收商--阿園』\n33.取得「斷刀50」後跟『回收商--阿園』對話，拿回「破畫」\n34.跟『張員外』對話\n34.跟『捕頭老大--木牧』對話",
+    "process_exp": "",
+    "process_renown": "",
+    "process_money": "",
+    "process_item": "",
+    "remark": "",
+    "process": "",
+    "image": "",
+    "star": ""
   }
 ]
