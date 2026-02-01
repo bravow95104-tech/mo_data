@@ -15,13 +15,29 @@
   --modal-shadow: rgba(0, 0, 0, 0.3);
 }
 
+#hero-card-container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.hero-card-images {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin: 12px 0 18px 0;
+  flex-wrap: wrap;
+}
 /* 表格樣式 */
 table {
   border-collapse: collapse;
   width: 100%;
   margin-top: 20px;
 }
-th, td {
+th,
+td {
   border: 1px solid var(--border-light-gray);
   padding: 8px;
   text-align: center;
@@ -173,7 +189,9 @@ th.sort-desc .caret-down {
   margin: 2px 4px 2px 0;
   cursor: pointer;
   font-size: 14px;
-  transition: background 0.2s, color 0.2s;
+  transition:
+    background 0.2s,
+    color 0.2s;
 }
 
 .filter-btn:hover,
@@ -192,7 +210,9 @@ th.sort-desc .caret-down {
   margin-top: 8px;
   cursor: pointer;
   font-size: 14px;
-  transition: background 0.2s, color 0.2s;
+  transition:
+    background 0.2s,
+    color 0.2s;
 }
 
 .clear-btn:hover {
@@ -204,7 +224,8 @@ th.sort-desc .caret-down {
 #modalOverlay {
   display: none;
   position: fixed;
-  top: 0; left: 0;
+  top: 0;
+  left: 0;
   width: 100vw;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.5);
@@ -243,7 +264,8 @@ th.sort-desc .caret-down {
 
 #modalBox .close-btn {
   position: absolute;
-  top: 10px; right: 15px;
+  top: 10px;
+  right: 15px;
   font-size: 28px;
   color: #666;
   cursor: pointer;
@@ -275,14 +297,16 @@ th.sort-desc .caret-down {
   height: auto;
   border-radius: 8px;
   border: 1px solid #ddd;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
   max-width: 100%;
 }
 
 .hero-images img:hover {
   transform: scale(1.05);
-  box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
 }
 
 .hero-details-container {
@@ -299,7 +323,6 @@ th.sort-desc .caret-down {
 
 /* 左右欄位的基礎樣式 */
 .hero-column-base {
- 
   box-sizing: border-box;
   background-color: #f9f9f9;
   padding: 20px;
@@ -365,11 +388,11 @@ th.sort-desc .caret-down {
 
 /* 下欄樣式 */
 .hero-playerdata {
-  flex: 0 0 90%;             /* 彈性成長，基底寬度48% */
-  min-width: 250px;          /* 最小寬度限制，避免太小擠壓 */
-  box-sizing: border-box;    /* 包含 padding、border */
+  flex: 0 0 90%; /* 彈性成長，基底寬度48% */
+  min-width: 250px; /* 最小寬度限制，避免太小擠壓 */
+  box-sizing: border-box; /* 包含 padding、border */
   background-color: #f9f9f9; /* 可選：輕微背景色區分 */
   padding: 20px 20px;
-  border-radius: 6px;        /* 可選：圓角讓框框好看 */
-  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+  border-radius: 6px; /* 可選：圓角讓框框好看 */
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
 }
