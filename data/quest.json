@@ -600,6 +600,21 @@
     "star": ""
   },
   {
+    "id": "展護衛報告",
+    "area": "回春谷",
+    "start": "展護衛(33,45)",
+    "restriction": "需已接下任務「氣憤的包大人」",
+    "award": "1.展護衛(33,45)要玩家再去三個地方找冤魂\n　一、西門關的烏盆(77,19)\n　二、翠竹林的蔻珠(27,53)\n　三、潛龍潭的韓奇(12,69)",
+    "process_exp": 3000,
+    "process_renown": 20,
+    "process_money": 500,
+    "process_item": "",
+    "remark": "",
+    "process": "",
+    "image": "",
+    "star": "氣憤的包大人"
+  },
+  {
     "id": "擊退土匪",
     "area": "北都道",
     "start": "官差曾尉(12,312)",
@@ -943,21 +958,6 @@
     "process": "",
     "image": "",
     "star": ""
-  },
-  {
-    "id": "展護衛報告",
-    "area": "回春谷",
-    "start": "展護衛(33,45)",
-    "restriction": "需已接下任務「氣憤的包大人」",
-    "award": "1.展護衛(33,45)要玩家再去三個地方找冤魂\n　一、西門關的烏盆(77,19)\n　二、翠竹林的蔻珠(27,53)\n　三、潛龍潭的韓奇(12,69)",
-    "process_exp": 3000,
-    "process_renown": 20,
-    "process_money": 500,
-    "process_item": "",
-    "remark": "",
-    "process": "",
-    "image": "",
-    "star": "氣憤的包大人"
   },
   {
     "id": "紅衣童子",
