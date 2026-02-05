@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>遊戲系統 | MoData</title>
+    <link rel="stylesheet" href="/mo_data/css/styles.css" />
+    <link rel="stylesheet" href="/mo_data/css/system.css" />
+
+</head>
+<body>
+    <div id="nav-container"></div>
+    <script src="/mo_data/js/componentsLoader.js"></script>
+
+    <div id="content-wrapper">
+        
+        <aside id="sidebar-container" class="system-sidebar">
+            <div class="sidebar">
+                <h2>遊戲系統</h2>
+                <ul class="sidebar-list" id="system-menu">
+                    <li class="active" data-file="hero_list.html">
+                        情感指令
+                    </li>
+                    <li data-file="equip_list.html">
+                        家族系統
+                    </li>
+                    <li data-file="map_list.html">
+                        蟠桃種子
+                    </li>
+                    <li data-file="production.html">
+                        結婚系統
+                    </li>
+                    <li data-file="exp_table.html">
+                        轉蛋系統
+                    </li>
+                    <li data-file="exp_table.html">
+                        強化裝備卡
+                    </li>
+                    <li data-file="exp_table.html">
+                        城寨攻城
+                    </li>
+                    <li data-file="exp_table.html">
+                        「四象」譜系竹馬
+                    </li>
+                    <li data-file="exp_table.html">
+                        七寶琉璃塔
+                    </li>
+                    <li data-file="expup.html">
+                        經驗祝福卡
+                    </li>
+                </ul>
+            </div>
+        </aside>
+
+        <section id="content">
+            <div id="dynamic-content">
+                <div class="loading-text">正在載入系統內容...</div>
+            </div>
+        </section>
+
+    </div>
+
+    <button id="backToTop" title="回到頂部">▲</button>
+
+    <div id="footer-container"></div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const menuItems = document.querySelectorAll('#system-menu li');
+            const contentDisplay = document.getElementById('dynamic-content');
+
+            // 載入內容的函式
+            function loadSystemPage(fileName) {
+                // 這裡的路徑請確保與你的資料夾結構一致 (例如放在 /mo_data/pages/ 底下)
+                fetch(`/mo_data/pages/${fileName}`)
+                    .then(response => {
+                        if (!response.ok) throw new Error('找不到內容檔案');
+                        return response.text();
+                    })
+                    .then(html => {
+                        contentDisplay.innerHTML = html;
+                        // 🌟 如果你的子頁面裡有表格，且需要用到之前的「排序箭頭」邏輯
+                        // 可以在這裡呼叫 reInitTableSort();
+                    })
+                    .catch(error => {
+                        contentDisplay.innerHTML = `<h3 class="search-tip">錯誤：無法讀取內容 (${fileName})</h3>`;
+                    });
+            }
+
+            // 選單點擊事件
+            menuItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    // 1. 切換 active 樣式
+                    menuItems.forEach(i => i.classList.remove('active'));
+                    item.classList.add('active');
+
+                    // 2. 執行載入
+                    const file = item.getAttribute('data-file');
+                    loadSystemPage(file);
+                });
+            });
+
+            // 初始載入第一項內容
+            loadSystemPage('hero_list.html');
+        });
+    </script>
+</body>
+</html>
