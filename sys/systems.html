@@ -6,7 +6,6 @@
     <title>遊戲系統 | MoData</title>
     <link rel="stylesheet" href="/mo_data/css/styles.css" />
     <link rel="stylesheet" href="/mo_data/css/system.css" />
-
 </head>
 <body>
     <div id="nav-container"></div>
@@ -18,35 +17,35 @@
             <div class="sidebar">
                 <h2>遊戲系統</h2>
                 <ul class="sidebar-list" id="system-menu">
-                    <li class="active" data-file="hero_list.html">
-                        情感指令
-                    </li>
-                    <li data-file="equip_list.html">
-                        家族系統
-                    </li>
-                    <li data-file="map_list.html">
-                        蟠桃種子
-                    </li>
-                    <li data-file="production.html">
-                        結婚系統
-                    </li>
-                    <li data-file="exp_table.html">
-                        轉蛋系統
-                    </li>
-                    <li data-file="exp_table.html">
-                        強化裝備卡
-                    </li>
-                    <li data-file="exp_table.html">
-                        城寨攻城
-                    </li>
-                    <li data-file="exp_table.html">
+                    <li class="active" data-file="newride.html">
                         「四象」譜系竹馬
                     </li>
-                    <li data-file="exp_table.html">
+                    <li data-file="exp_up.html">
+                        經驗祝福卡
+                    </li>
+                    <li data-file="tower.html">
                         七寶琉璃塔
                     </li>
-                    <li data-file="expup.html">
-                        經驗祝福卡
+                    <li data-file="seed.html">
+                        蟠桃種子
+                    </li>
+                    <li data-file="egg.html">
+                        轉蛋系統
+                    </li>
+                    <li data-file="equipment card.html">
+                        強化裝備卡
+                    </li>
+                    <li data-file="city.html">
+                        城寨攻城
+                    </li>
+                    <li data-file="marry.html">
+                        結婚系統
+                    </li>
+                    <li data-file="family.html">
+                        家族系統
+                    </li>
+                    <li data-file="command.html">
+                        情感指令
                     </li>
                 </ul>
             </div>
@@ -72,7 +71,7 @@
             // 載入內容的函式
             function loadSystemPage(fileName) {
                 // 這裡的路徑請確保與你的資料夾結構一致 (例如放在 /mo_data/pages/ 底下)
-                fetch(`/mo_data/pages/${fileName}`)
+                fetch(`/mo_data/sys/${fileName}`)
                     .then(response => {
                         if (!response.ok) throw new Error('找不到內容檔案');
                         return response.text();
@@ -101,7 +100,7 @@
             });
 
             // 初始載入第一項內容
-            loadSystemPage('hero_list.html');
+            loadSystemPage('newride.html');
         });
     </script>
 </body>
