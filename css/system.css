@@ -30,6 +30,11 @@
     color: #3399ff;
 }
 
+.system-main-content {
+    min-height: 500px;
+    /* 這裡可以繼承你原本 #content 的所有白底圓角陰影樣式 */
+}
+
 h2 {
     font-size: 1.4rem;
     margin-bottom: 20px;
@@ -38,7 +43,10 @@ h2 {
     color: #267acc;
 }
 
-.system-main-content {
-    min-height: 500px;
-    /* 這裡可以繼承你原本 #content 的所有白底圓角陰影樣式 */
+h3 {
+    font-size: 1.2rem;
+    margin-bottom: 14px;
+    border-bottom: 1px dashed #3399ff;
+    padding-bottom: 8px;
+    color: #267acc;
 }
