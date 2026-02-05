@@ -30,6 +30,14 @@
     color: #3399ff;
 }
 
+.system-sidebar h2 {
+    font-size: 1.4rem;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #3399ff;
+    padding-bottom: 8px;
+    color: #267acc;
+}
+
 .system-main-content {
     min-height: 500px;
     /* 這裡可以繼承你原本 #content 的所有白底圓角陰影樣式 */
