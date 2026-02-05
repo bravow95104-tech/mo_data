@@ -1,0 +1,36 @@
+/* 系統頁面專用調整 */
+.system-page {
+    align-items: stretch; /* 讓左右兩邊高度盡量齊平 */
+}
+
+.system-sidebar {
+    flex: 0 0 280px; /* 固定左側寬度，不隨縮放擠壓 */
+}
+
+.system-sidebar .sidebar-list li {
+    cursor: pointer;
+    transition: background 0.3s;
+    border-radius: 6px;
+    padding: 12px 10px;
+    margin-bottom: 5px;
+}
+
+/* 滑鼠移上去或選中時的藍色高亮 */
+.system-sidebar .sidebar-list li:hover {
+    background-color: #eef7ff;
+}
+
+.system-sidebar .sidebar-list li.active {
+    background-color: #3399ff;
+    color: white;
+}
+
+.system-sidebar .sidebar-list li.active .tips {
+    background-color: white;
+    color: #3399ff;
+}
+
+.system-main-content {
+    min-height: 500px;
+    /* 這裡可以繼承你原本 #content 的所有白底圓角陰影樣式 */
+}
