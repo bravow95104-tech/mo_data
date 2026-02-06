@@ -4,7 +4,7 @@
 }
 
 .system-sidebar {
-    flex: 0 0 200px; /* 固定左側寬度，不隨縮放擠壓 */
+    flex: 0 0 150px; /* 固定左側寬度，不隨縮放擠壓 */
 }
 
 .system-sidebar .sidebar-list li {
