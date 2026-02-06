@@ -65,6 +65,19 @@ h3 {
     border-radius: 0 4px 4px 0;
 }
 
+/* h4 設計：用於功能列表或次級說明 */
+h4 {
+    font-size: 1.05rem;
+    margin: 20px 0 10px 0;
+    padding: 5px 15px;
+    color: #fff;
+    background: linear-gradient(90deg, #5aa9ff, transparent); /* 漸層背景 */
+    border-left: 4px solid #1a5a96; /* 左側深藍深色條 */
+    display: inline-block; /* 讓背景寬度隨文字長度變化 */
+    border-radius: 4px 20px 20px 4px; /* 右側圓角化 */
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.05);
+}
+
 /* === 表格設計 (強化質感) === */
 table {
     width: 100%;
