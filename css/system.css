@@ -70,11 +70,12 @@ h4 {
     font-size: 1.05rem;
     margin: 20px 0 10px 0;
     padding: 5px 15px;
-    color: #fff;
-    background: linear-gradient(90deg, #5aa9ff, transparent); /* 漸層背景 */
-    border-left: 4px solid #1a5a96; /* 左側深藍深色條 */
-    display: inline-block; /* 讓背景寬度隨文字長度變化 */
-    border-radius: 4px 20px 20px 4px; /* 右側圓角化 */
+    color: #fff; /* 文字保持白色 */
+    /* 🚀 修復：讓藍色（#5aa9ff）延續到 80%，之後才變透明 */
+    background: linear-gradient(90deg, #5aa9ff 0%, #5aa9ff 80%, transparent 100%);
+    border-left: 4px solid #1a5a96;
+    display: inline-block;
+    border-radius: 4px 20px 20px 4px;
     box-shadow: 2px 2px 5px rgba(0,0,0,0.05);
 }
 
