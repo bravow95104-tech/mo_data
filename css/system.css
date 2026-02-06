@@ -35,18 +35,89 @@
     /* 這裡可以繼承你原本 #content 的所有白底圓角陰影樣式 */
 }
 
-h2 {
-    font-size: 1.4rem;
-    margin-bottom: 20px;
-    border-bottom: 2px solid #3399ff;
-    padding-bottom: 8px;
-    color: #267acc;
+/* === 全域內容容器調整 === */
+#content {
+    line-height: 1.8; /* 增加行距，讓說明文字不擁擠 */
+    color: #444;
 }
 
+/* === 標題設計 === */
+/* 主標題 (h2) - 沿用你的風格但增加一點層次 */
+h2 {
+    font-size: 1.5rem;
+    margin-bottom: 25px;
+    border-bottom: 3px solid #3399ff;
+    padding-bottom: 10px;
+    color: #1a5a96;
+    display: flex;
+    align-items: center;
+}
+
+/* 小標題 (h3) - 改用側邊色塊設計，比底線更有專業感 */
 h3 {
-    font-size: 1.1rem;
-    margin-bottom: 12px;
-    border-bottom: 1px dashed #3399ff;
-    padding-bottom: 6px;
+    font-size: 1.15rem;
+    margin: 25px 0 15px 0;
+    padding: 4px 12px;
+    border-left: 5px solid #3399ff; /* 側邊粗線 */
+    border-bottom: none; /* 移除原本的底虛線 */
+    background-color: #f0f7ff; /* 淡淡的底色 */
     color: #267acc;
+    border-radius: 0 4px 4px 0;
+}
+
+/* === 表格設計 (強化質感) === */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    background: white;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    border-radius: 8px;
+    overflow: hidden; /* 確保圓角生效 */
+}
+
+table th {
+    background-color: #3399ff;
+    color: white;
+    font-weight: 600;
+    padding: 12px 15px;
+    text-align: center;
+}
+
+table td {
+    padding: 10px 15px;
+    border-bottom: 1px solid #eee;
+    text-align: center;
+}
+
+table tbody tr:hover {
+    background-color: #f9fcff; /* 滑鼠經過變色 */
+}
+
+/* === 圖片裝備設計 === */
+/* 雖然你目前的 HTML 沒圖片，但預留給未來使用 */
+.system-img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 15px auto;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    padding: 5px;
+    background: #fff;
+}
+
+/* === 特殊強調文字 === */
+.highlight {
+    color: #d9534f; /* 警告或注意的紅色 */
+    font-weight: bold;
+}
+
+/* 針對 HTML 中的「※」號進行修飾 */
+.note-text {
+    display: block;
+    padding-left: 1em;
+    text-indent: -1em;
+    color: #666;
+    font-size: 0.95rem;
 }
