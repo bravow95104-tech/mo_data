@@ -330,3 +330,31 @@ h1 {
     /* 彈窗微調 */
     #modalBox { max-width: 95%; }
 }
+
+/* 世界地圖專用的放大容器 */
+.world-map-zoom-container {
+    width: 100%;
+    overflow-x: auto; /* 如果圖片寬度超過螢幕，允許左右滑動 */
+    text-align: center;
+    padding: 10px;
+}
+
+.world-map-large-img {
+    /* 設定為視窗寬度的 75% */
+    width: 75vw; 
+    max-width: 1731px; /* 不超過原始像素大小 */
+    height: auto;
+    border-radius: 4px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+/* 針對手機版的微調 */
+@media (max-width: 768px) {
+    .world-map-large-img {
+        width: 100%; /* 手機版則全滿，方便觀看 */
+    }
+    #modalBox[style*="max-width: 85%"] {
+        width: 95% ;
+        max-width: 95% ;
+    }
+}
