@@ -157,3 +157,28 @@ function openMapDetail(mapId) {
     // Handle case where item is not found if needed
   }
 }
+
+// 專屬：世界地圖放大功能
+function zoomWorldMap(src) {
+    const modalContent = document.getElementById("modalContent");
+    if (!modalContent) return;
+
+    // 清空並只放入一張大圖
+    modalContent.innerHTML = `
+        <h2 class="hero-name">世界地圖</h2>
+        <div style="width: 100%; overflow: hidden; border-radius: 8px;">
+            <img src="${src}" style="width: 100%; height: auto; display: block;" />
+        </div>
+        <p style="text-align:center; color:#888; margin-top:10px;">(點擊 X 或外側關閉)</p>
+    `;
+
+    // 顯示彈窗
+    document.getElementById("modalOverlay").style.display = "block";
+    document.getElementById("modalBox").style.display = "block";
+    
+    // 讓彈窗捲動回到頂部
+    document.getElementById("modalBox").scrollTop = 0;
+}
+
+// 記得掛載到全域
+window.zoomWorldMap = zoomWorldMap;
