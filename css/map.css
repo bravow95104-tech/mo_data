@@ -359,18 +359,24 @@ h1 {
     }
 }
 
-/* 必須使用 ID + Class 的組合，增加權重來覆蓋原始設定 */
+/* 使用 ID + Class 提高權重 */
 #modalBox.modal-large-mode {
-    max-width: 90vw !important;
-    width: 90% !important;
-    padding: 10px !important;
+    max-width: 95vw !important; /* 擴大到視窗 95% */
+    width: 95% !important;
+    padding: 15px !important;
 }
 
-/* 確保裡面的大圖不會被其他 hero-image 的樣式限制 */
-#modalBox.modal-large-mode img {
-    width: 100% !important;
-    max-width: 1731px !important;
-    height: auto !important;
+/* 確保大地圖容器可以橫向捲動（對手機版非常重要） */
+#modalBox.modal-large-mode .world-map-zoom-container {
+    overflow-x: auto; 
+    -webkit-overflow-scrolling: touch;
+    margin-top: 10px;
+}
+
+#modalBox.modal-large-mode img.world-map-large-img {
+    width: auto !important; /* 保持原圖比例 */
+    min-width: 100%;       /* 至少跟視窗一樣寬 */
+    max-width: none !important; /* 允許超過視窗以便捲動 */
 }
 
 /* 針對手機版確保寬度 */
