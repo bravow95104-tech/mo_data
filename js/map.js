@@ -1,57 +1,140 @@
-// 全域變數：儲存 map 資料
+// 全域變數
 let mapData = [];
 
-document.addEventListener("DOMContentLoaded", () => {
-  // === 1. 載入詳細資料 JSON ===
-  // 請確認這個 JSON 檔案路徑是否正確
-  fetch("/mo_data/data/detailed_map.json")
-    .then((res) => {
-      if (!res.ok) throw new Error("載入 detailed_map.json 失敗");
-      return res.json();
-    })
-    .then((json) => {
-      // 相容處理：判斷 JSON 是直接陣列還是包在 data 物件裡
-      mapData = Array.isArray(json) ? json : json.data;
-      console.log("✅ 地圖詳細資料載入完成:", mapData.length, "筆");
-    })
-    .catch((err) => {
-      console.error("❌ 詳細資料 JSON 載入失敗：", err);
-      // 可以在這裡把錯誤訊息顯示在頁面上，如果需要的話
-    });
+// 將關閉函式移到最外面，確保全域都能呼叫
+function closeModal() {
+  const modalBox = document.getElementById("modalBox");
+  const modalOverlay = document.getElementById("modalOverlay");
+  if (!modalBox || !modalOverlay) return;
 
-  // === 2. Tab 切換邏輯 ===
+  modalOverlay.style.display = "none";
+  modalBox.style.display = "none";
+  
+  // 恢復 Modal 原始寬度設定（避免世界地圖的 75% 殘留）
+  modalBox.style.maxWidth = "600px";
+  modalBox.style.width = "90%";
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  // === 1. 載入 JSON (維持原樣) ===
+  fetch("/mo_data/data/detailed_map.json")
+    .then((res) => res.json())
+    .then((json) => {
+      mapData = Array.isArray(json) ? json : json.data;
+      console.log("✅ 地圖詳細資料載入完成");
+    })
+    .catch((err) => console.error("❌ 載入失敗：", err));
+
+  // === 2. Tab 切換邏輯 (修正點) ===
   const tabButtons = document.querySelectorAll(".tab-button");
   const tabContents = document.querySelectorAll(".tab-content");
 
   tabButtons.forEach((button) => {
     button.addEventListener("click", () => {
-      // 移除所有按鈕和內容區塊的 active 狀態
       tabButtons.forEach((btn) => btn.classList.remove("active"));
       tabContents.forEach((content) => content.classList.remove("active"));
 
-      // 為當前點擊的按鈕和對應的內容區塊添加 active 狀態
       button.classList.add("active");
       const targetTabId = button.dataset.tab;
-
       const targetContent = document.getElementById(targetTabId);
+
       if (targetContent) {
         targetContent.classList.add("active");
-      } else {
-        console.warn(`找不到 ID 為 ${targetTabId} 的內容區塊`);
+        
+        // 🚀 重要修正：切換 Tab 後，圖片顯示出來了，此時重新計算 Image Map 座標
+        if (typeof imageMapResize === 'function') {
+          // 給瀏覽器一點點渲染時間 (100ms) 再計算
+          setTimeout(() => { imageMapResize(); }, 100);
+        }
       }
     });
+  })
+  document.addEventListener("keydown", (e) => {
+    // 檢查按下的是否為 Esc 鍵 (或是舊版瀏覽器的 'Escape')
+    if (e.key === "Escape" || e.key === "Esc") {
+        const modalBox = document.getElementById("modalBox");
+        
+        // 只有在 Modal 顯示的時候才執行關閉，避免多餘的操作
+        if (modalBox && modalBox.style.display === "block") {
+            closeModal();
+        }
+    }
   });
 
-  // === 3. Modal 關閉邏輯 ===
-  function closeModal() {
-    document.getElementById("modalOverlay").style.display = "none";
-    document.getElementById("modalBox").style.display = "none";
+// === 3. 初始化 Image Map 縮放 ===
+try {
+  // 檢查插件是否存在，且確保只針對有效的 <map> 標籤執行
+  const allMaps = document.querySelectorAll('map');
+  if (typeof imageMapResize === 'function' && allMaps.length > 0) {
+    // 傳入選擇器字串而非物件，這對插件來說比較安全
+    imageMapResize('map'); 
+    console.log("✅ Image Map 自動縮放已啟動");
   }
+} catch (err) {
+  console.error("❌ ImageMapResizer 執行異常:", err);
+}
 
+// 視窗改變時的監聽也加上判斷
+window.addEventListener('resize', () => {
+  if (typeof imageMapResize === 'function' && document.querySelectorAll('map').length > 0) {
+    imageMapResize('map');
+  }
+});
+
+  // === 4. 綁定關閉事件 ===
   const closeBtn = document.querySelector("#modalBox .close-btn");
   if (closeBtn) closeBtn.addEventListener("click", closeModal);
   document.getElementById("modalOverlay").addEventListener("click", closeModal);
 });
+
+// === 5. 彈窗與世界地圖函式 (掛載到 window 確保 HTML 呼叫得到) ===
+window.openMapDetail = function(mapId) {
+  if (!mapData.length) return;
+  const item = mapData.find((i) => i.mapid === mapId);
+  if (item) showDetailModal(item);
+};
+
+// 修改後的世界地圖放大函式
+// 🚀 修改後的世界地圖放大函式
+window.zoomWorldMap = function(src) {
+    const modalBox = document.getElementById("modalBox");
+    const modalContent = document.getElementById("modalContent");
+    const modalOverlay = document.getElementById("modalOverlay");
+    
+    if (!modalBox || !modalContent) return;
+
+    // 先把之前 closeModal 留下的手動寬度清空，讓 CSS 接手
+    modalBox.style.maxWidth = ""; 
+    modalBox.style.width = "";
+
+    // 加上 Class 讓 CSS 控制外觀
+    modalBox.classList.add("modal-large-mode");
+
+    modalContent.innerHTML = `
+        <h2 class="hero-name">世界地圖全圖</h2>
+        <div class="world-map-zoom-container">
+            <img src="${src}" class="world-map-large-img" alt="世界地圖">
+        </div>
+    `;
+
+    modalOverlay.style.display = "block";
+    modalBox.style.display = "block";
+    modalBox.scrollTop = 0;
+};
+
+// 🚀 核心修正：簡單乾淨的關閉函式
+function closeModal() {
+    const modalBox = document.getElementById("modalBox");
+    const modalOverlay = document.getElementById("modalOverlay");
+    
+    if (!modalBox || !modalOverlay) return;
+
+    modalOverlay.style.display = "none";
+    modalBox.style.display = "none";
+    
+    // 只移除 Class，不要去寫 style.maxWidth = "600px"！
+    modalBox.classList.remove("modal-large-mode");
+}
 
 // === 4. 彈窗內容填充函數 ===
 function showDetailModal(item) {
@@ -156,38 +239,4 @@ function openMapDetail(mapId) {
   } else {
     // Handle case where item is not found if needed
   }
-}
-
-// 專屬：世界地圖放大功能
-function zoomWorldMap(src) {
-    const modalContent = document.getElementById("modalContent");
-    const modalBox = document.getElementById("modalBox");
-    if (!modalContent || !modalBox) return;
-
-    // 🚀 重點：針對大圖片調整 Modal 寬度
-    // 將 max-width 設為視窗寬度的 85% (這樣圖片就能呈現約原圖 75%~85% 的視覺大小)
-    modalBox.style.maxWidth = "75%"; 
-    modalBox.style.width = "auto";   // 讓寬度隨內容撐開
-
-    modalContent.innerHTML = `
-        <h2 class="hero-name">世界地圖 (原始尺寸縮放)</h2>
-        <div class="world-map-zoom-container">
-            <img src="${src}" class="world-map-large-img" />
-        </div>
-    `;
-
-    document.getElementById("modalOverlay").style.display = "block";
-    modalBox.style.display = "block";
-}
-
-// 🚀 修改原本的 closeModal 函式
-// 確保下次打開普通地圖時，寬度會變回原本的 600px
-function closeModal() {
-    const modalBox = document.getElementById("modalBox");
-    document.getElementById("modalOverlay").style.display = "none";
-    modalBox.style.display = "none";
-    
-    // 恢復原始設定
-    modalBox.style.maxWidth = "600px";
-    modalBox.style.width = "90%";
 }
