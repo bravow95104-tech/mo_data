@@ -84,6 +84,7 @@ window.openMapDetail = function(mapId) {
 };
 
 // 修改後的世界地圖放大函式
+// 🚀 修改後的世界地圖放大函式
 window.zoomWorldMap = function(src) {
     const modalBox = document.getElementById("modalBox");
     const modalContent = document.getElementById("modalContent");
@@ -91,37 +92,37 @@ window.zoomWorldMap = function(src) {
     
     if (!modalBox || !modalContent) return;
 
-    // 1. 給 modalBox 加上一個專門的「大圖模式」Class
+    // 先把之前 closeModal 留下的手動寬度清空，讓 CSS 接手
+    modalBox.style.maxWidth = ""; 
+    modalBox.style.width = "";
+
+    // 加上 Class 讓 CSS 控制外觀
     modalBox.classList.add("modal-large-mode");
 
-    // 2. 放入內容
     modalContent.innerHTML = `
-        <h2 class="hero-name">世界地圖</h2>
-        <div style="width: 100%; overflow-x: auto; text-align: center;">
-            <img src="${src}" style="width: 75vw; max-width: 1731px; height: auto; border-radius: 8px;">
+        <h2 class="hero-name">世界地圖全圖</h2>
+        <div class="world-map-zoom-container">
+            <img src="${src}" class="world-map-large-img" alt="世界地圖">
         </div>
     `;
 
-    // 3. 顯示
     modalOverlay.style.display = "block";
     modalBox.style.display = "block";
     modalBox.scrollTop = 0;
 };
 
-// 修改後的關閉函式
+// 🚀 核心修正：簡單乾淨的關閉函式
 function closeModal() {
     const modalBox = document.getElementById("modalBox");
     const modalOverlay = document.getElementById("modalOverlay");
     
+    if (!modalBox || !modalOverlay) return;
+
     modalOverlay.style.display = "none";
     modalBox.style.display = "none";
     
-    // 🚀 關鍵：只移除 Class，讓 CSS 回歸原本 #modalBox 的預設設定
+    // 只移除 Class，不要去寫 style.maxWidth = "600px"！
     modalBox.classList.remove("modal-large-mode");
-    
-    // 清除行內樣式，確保下次打開時不會被舊寬度干擾
-    modalBox.style.maxWidth = "";
-    modalBox.style.width = "";
 }
 
 // === 4. 彈窗內容填充函數 ===
