@@ -116,8 +116,12 @@ function closeModal() {
     modalOverlay.style.display = "none";
     modalBox.style.display = "none";
     
-    // 🚀 關鍵：關閉時移除「大圖模式」Class，恢復原本的 600px 樣式
+    // 🚀 關鍵：只移除 Class，讓 CSS 回歸原本 #modalBox 的預設設定
     modalBox.classList.remove("modal-large-mode");
+    
+    // 清除行內樣式，確保下次打開時不會被舊寬度干擾
+    modalBox.style.maxWidth = "";
+    modalBox.style.width = "";
 }
 
 // === 4. 彈窗內容填充函數 ===
