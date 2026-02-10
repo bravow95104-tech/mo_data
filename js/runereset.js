@@ -23,13 +23,15 @@ document.addEventListener("DOMContentLoaded", () => {
     searchTimer = setTimeout(() => applyFilters(), 200);
   });
 
-  // === 綜合篩選 ===
+// === 綜合篩選 ===
   function applyFilters() {
     const keyword = searchInput.value.trim().toLowerCase();
 
     const filtered = runeresetData.filter(runereset => {
-      const targetFields = runereset.name.toLowerCase();
-      return targetFields.includes(keyword);
+      // 🚀 安全檢查：先確認 runereset.item 存在，再執行 toLowerCase()
+      const itemName = runereset.item ? String(runereset.item).toLowerCase() : "";
+      
+      return itemName.includes(keyword);
     });
 
     renderTable(filtered);
