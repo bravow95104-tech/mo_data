@@ -86,24 +86,32 @@ window.openMapDetail = function(mapId) {
 window.zoomWorldMap = function(src) {
     const modalContent = document.getElementById("modalContent");
     const modalBox = document.getElementById("modalBox");
+    const modalOverlay = document.getElementById("modalOverlay");
+    
     if (!modalContent || !modalBox) return;
 
-    // 🚀 關鍵：使用 setProperty 強制覆蓋所有 CSS 限制
-    modalBox.style.setProperty('max-width', '95vw', 'important');
-    modalBox.style.setProperty('width', '95%', 'important');
-    modalBox.style.setProperty('top', '50%', 'important'); // 確保位置沒跑掉
+    // 🚀 關鍵：直接用 cssText 強制定義樣式，避開所有 CSS 權重問題
+    modalBox.style.cssText = `
+        display: block !important;
+        max-width: 95vw !important;
+        width: 90% !important;
+        top: 50% !important;
+        left: 50% !important;
+        transform: translate(-50%, -50%) !important;
+        position: fixed !important;
+    `;
 
     modalContent.innerHTML = `
         <h2 class="hero-name">世界地圖</h2>
-        <div class="world-map-zoom-container" style="overflow-x:auto; text-align:center;">
+        <div class="world-map-zoom-container" style="overflow-x:auto; text-align:center; padding:10px;">
             <img src="${src}" class="world-map-large-img" 
-                 style="width:75vw; max-width:1731px; height:auto; display:inline-block; border-radius:8px; box-shadow:0 5px 20px rgba(0,0,0,0.5);" />
+                 style="width:80vw; max-width:1731px; height:auto; display:inline-block; border-radius:8px; box-shadow:0 10px 30px rgba(0,0,0,0.5);" />
         </div>
+        <p style="text-align:center; color:#666; font-size:14px; margin-top:10px;">(提示：大圖可拖動或滑動查看詳情)</p>
     `;
 
-    document.getElementById("modalOverlay").style.display = "block";
-    modalBox.style.display = "block";
-    modalBox.scrollTop = 0;
+    modalOverlay.style.display = "block";
+    modalBox.scrollTop = 0; 
 };
 
 // === 4. 彈窗內容填充函數 ===
