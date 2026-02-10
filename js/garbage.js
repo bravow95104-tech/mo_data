@@ -64,7 +64,7 @@ document.addEventListener("DOMContentLoaded", () => {
         // === 搜尋字串高亮 ===
         if (keyword && rawValue.toLowerCase().includes(keyword)) {
           const regex = new RegExp(`(${keyword})`, 'gi');
-          td.innerHTML = htmlValue.replace(regex, '<span class="highlight2">$1</span>');
+          td.innerHTML = htmlValue.replace(regex, '<span class="highlight">$1</span>');
         } else {
           td.innerHTML = htmlValue;
         }
