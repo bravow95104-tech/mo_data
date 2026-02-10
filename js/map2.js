@@ -48,6 +48,17 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       }
     });
+  })
+  document.addEventListener("keydown", (e) => {
+    // 檢查按下的是否為 Esc 鍵 (或是舊版瀏覽器的 'Escape')
+    if (e.key === "Escape" || e.key === "Esc") {
+        const modalBox = document.getElementById("modalBox");
+        
+        // 只有在 Modal 顯示的時候才執行關閉，避免多餘的操作
+        if (modalBox && modalBox.style.display === "block") {
+            closeModal();
+        }
+    }
   });
 
 // === 3. 初始化 Image Map 縮放 ===
