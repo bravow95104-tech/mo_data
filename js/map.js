@@ -166,7 +166,7 @@ function zoomWorldMap(src) {
 
     // 🚀 重點：針對大圖片調整 Modal 寬度
     // 將 max-width 設為視窗寬度的 85% (這樣圖片就能呈現約原圖 75%~85% 的視覺大小)
-    modalBox.style.maxWidth = "85%"; 
+    modalBox.style.maxWidth = "75%"; 
     modalBox.style.width = "auto";   // 讓寬度隨內容撐開
 
     modalContent.innerHTML = `
