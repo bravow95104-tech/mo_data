@@ -83,36 +83,42 @@ window.openMapDetail = function(mapId) {
   if (item) showDetailModal(item);
 };
 
+// 修改後的世界地圖放大函式
 window.zoomWorldMap = function(src) {
+    const modalBox = document.getElementById("modalBox");
     const modalContent = document.getElementById("modalContent");
+    const modalOverlay = document.getElementById("modalOverlay");
+    
+    if (!modalBox || !modalContent) return;
+
+    // 1. 給 modalBox 加上一個專門的「大圖模式」Class
+    modalBox.classList.add("modal-large-mode");
+
+    // 2. 放入內容
+    modalContent.innerHTML = `
+        <h2 class="hero-name">世界地圖</h2>
+        <div style="width: 100%; overflow-x: auto; text-align: center;">
+            <img src="${src}" style="width: 75vw; max-width: 1731px; height: auto; border-radius: 8px;">
+        </div>
+    `;
+
+    // 3. 顯示
+    modalOverlay.style.display = "block";
+    modalBox.style.display = "block";
+    modalBox.scrollTop = 0;
+};
+
+// 修改後的關閉函式
+function closeModal() {
     const modalBox = document.getElementById("modalBox");
     const modalOverlay = document.getElementById("modalOverlay");
     
-    if (!modalContent || !modalBox) return;
-
-    // 🚀 關鍵：直接用 cssText 強制定義樣式，避開所有 CSS 權重問題
-    modalBox.style.cssText = `
-        display: block !important;
-        max-width: 95vw !important;
-        width: 90% !important;
-        top: 50% !important;
-        left: 50% !important;
-        transform: translate(-50%, -50%) !important;
-        position: fixed !important;
-    `;
-
-    modalContent.innerHTML = `
-        <h2 class="hero-name">世界地圖</h2>
-        <div class="world-map-zoom-container" style="overflow-x:auto; text-align:center; padding:10px;">
-            <img src="${src}" class="world-map-large-img" 
-                 style="width:80vw; max-width:1731px; height:auto; display:inline-block; border-radius:8px; box-shadow:0 10px 30px rgba(0,0,0,0.5);" />
-        </div>
-        <p style="text-align:center; color:#666; font-size:14px; margin-top:10px;">(提示：大圖可拖動或滑動查看詳情)</p>
-    `;
-
-    modalOverlay.style.display = "block";
-    modalBox.scrollTop = 0; 
-};
+    modalOverlay.style.display = "none";
+    modalBox.style.display = "none";
+    
+    // 🚀 關鍵：關閉時移除「大圖模式」Class，恢復原本的 600px 樣式
+    modalBox.classList.remove("modal-large-mode");
+}
 
 // === 4. 彈窗內容填充函數 ===
 function showDetailModal(item) {
