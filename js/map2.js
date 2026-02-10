@@ -50,11 +50,25 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // === 3. 初始化 Image Map 縮放 ===
-  if (typeof imageMapResize === 'function') {
-    imageMapResize();
-    window.addEventListener('resize', imageMapResize);
+// === 3. 初始化 Image Map 縮放 ===
+try {
+  // 檢查插件是否存在，且確保只針對有效的 <map> 標籤執行
+  const allMaps = document.querySelectorAll('map');
+  if (typeof imageMapResize === 'function' && allMaps.length > 0) {
+    // 傳入選擇器字串而非物件，這對插件來說比較安全
+    imageMapResize('map'); 
+    console.log("✅ Image Map 自動縮放已啟動");
   }
+} catch (err) {
+  console.error("❌ ImageMapResizer 執行異常:", err);
+}
+
+// 視窗改變時的監聽也加上判斷
+window.addEventListener('resize', () => {
+  if (typeof imageMapResize === 'function' && document.querySelectorAll('map').length > 0) {
+    imageMapResize('map');
+  }
+});
 
   // === 4. 綁定關閉事件 ===
   const closeBtn = document.querySelector("#modalBox .close-btn");
@@ -74,20 +88,22 @@ window.zoomWorldMap = function(src) {
     const modalBox = document.getElementById("modalBox");
     if (!modalContent || !modalBox) return;
 
-    // 寬度調整
-    modalBox.style.maxWidth = "85%"; // 建議稍微寬一點，75% 有時在手機太小
-    modalBox.style.width = "auto";
+    // 🚀 關鍵：使用 setProperty 強制覆蓋所有 CSS 限制
+    modalBox.style.setProperty('max-width', '95vw', 'important');
+    modalBox.style.setProperty('width', '95%', 'important');
+    modalBox.style.setProperty('top', '50%', 'important'); // 確保位置沒跑掉
 
     modalContent.innerHTML = `
         <h2 class="hero-name">世界地圖</h2>
-        <div class="world-map-zoom-container" style="overflow-x:auto;">
-            <img src="${src}" class="world-map-large-img" style="width:75vw; max-width:1731px; height:auto; display:block; margin:0 auto;" />
+        <div class="world-map-zoom-container" style="overflow-x:auto; text-align:center;">
+            <img src="${src}" class="world-map-large-img" 
+                 style="width:75vw; max-width:1731px; height:auto; display:inline-block; border-radius:8px; box-shadow:0 5px 20px rgba(0,0,0,0.5);" />
         </div>
     `;
 
     document.getElementById("modalOverlay").style.display = "block";
     modalBox.style.display = "block";
-    modalBox.scrollTop = 0; // 開啟時自動回頂部
+    modalBox.scrollTop = 0;
 };
 
 // === 4. 彈窗內容填充函數 ===
