@@ -161,24 +161,33 @@ function openMapDetail(mapId) {
 // 專屬：世界地圖放大功能
 function zoomWorldMap(src) {
     const modalContent = document.getElementById("modalContent");
-    if (!modalContent) return;
+    const modalBox = document.getElementById("modalBox");
+    if (!modalContent || !modalBox) return;
 
-    // 清空並只放入一張大圖
+    // 🚀 重點：針對大圖片調整 Modal 寬度
+    // 將 max-width 設為視窗寬度的 85% (這樣圖片就能呈現約原圖 75%~85% 的視覺大小)
+    modalBox.style.maxWidth = "85%"; 
+    modalBox.style.width = "auto";   // 讓寬度隨內容撐開
+
     modalContent.innerHTML = `
-        <h2 class="hero-name">世界地圖</h2>
-        <div style="width: 100%; overflow: hidden; border-radius: 8px;">
-            <img src="${src}" style="width: 100%; height: auto; display: block;" />
+        <h2 class="hero-name">世界地圖 (原始尺寸縮放)</h2>
+        <div class="world-map-zoom-container">
+            <img src="${src}" class="world-map-large-img" />
         </div>
-        <p style="text-align:center; color:#888; margin-top:10px;">(點擊 X 或外側關閉)</p>
     `;
 
-    // 顯示彈窗
     document.getElementById("modalOverlay").style.display = "block";
-    document.getElementById("modalBox").style.display = "block";
-    
-    // 讓彈窗捲動回到頂部
-    document.getElementById("modalBox").scrollTop = 0;
+    modalBox.style.display = "block";
 }
 
-// 記得掛載到全域
-window.zoomWorldMap = zoomWorldMap;
+// 🚀 修改原本的 closeModal 函式
+// 確保下次打開普通地圖時，寬度會變回原本的 600px
+function closeModal() {
+    const modalBox = document.getElementById("modalBox");
+    document.getElementById("modalOverlay").style.display = "none";
+    modalBox.style.display = "none";
+    
+    // 恢復原始設定
+    modalBox.style.maxWidth = "600px";
+    modalBox.style.width = "90%";
+}
