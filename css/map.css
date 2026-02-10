@@ -358,3 +358,25 @@ h1 {
         max-width: 95% ;
     }
 }
+
+/* 必須使用 ID + Class 的組合，增加權重來覆蓋原始設定 */
+#modalBox.modal-large-mode {
+    max-width: 90vw !important;
+    width: 90% !important;
+    padding: 10px !important;
+}
+
+/* 確保裡面的大圖不會被其他 hero-image 的樣式限制 */
+#modalBox.modal-large-mode img {
+    width: 100% !important;
+    max-width: 1731px !important;
+    height: auto !important;
+}
+
+/* 針對手機版確保寬度 */
+@media (max-width: 768px) {
+    #modalBox.modal-large-mode {
+        width: 95% !important;
+        max-width: 95% !important;
+    }
+}
