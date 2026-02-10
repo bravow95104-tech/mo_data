@@ -360,23 +360,28 @@ h1 {
 }
 
 /* 使用 ID + Class 提高權重 */
+/* 1. 讓外層彈窗成為唯一的捲動主體 */
 #modalBox.modal-large-mode {
-    max-width: 95vw !important; /* 擴大到視窗 95% */
+    max-width: 95vw !important;
     width: 95% !important;
-    padding: 15px !important;
+    overflow-x: auto !important; /* 開啟外層水平捲動 */
+    overflow-y: auto !important; /* 開啟外層垂直捲動 */
+    padding: 10px !important;
 }
 
-/* 確保大地圖容器可以橫向捲動（對手機版非常重要） */
+/* 2. 讓內層容器只是個純裝飾，不負責捲動 */
 #modalBox.modal-large-mode .world-map-zoom-container {
-    overflow-x: auto; 
-    -webkit-overflow-scrolling: touch;
-    margin-top: 10px;
+    display: inline-block; /* 關鍵：讓容器隨圖片寬度撐開 */
+    min-width: 100%;
+    overflow: visible !important; /* 確保內容不被截斷 */
 }
 
-#modalBox.modal-large-mode img.world-map-large-img {
-    width: auto !important; /* 保持原圖比例 */
-    min-width: 100%;       /* 至少跟視窗一樣寬 */
-    max-width: none !important; /* 允許超過視窗以便捲動 */
+/* 3. 圖片設定 */
+#modalBox.modal-large-mode .world-map-large-img {
+    display: block;
+    width: auto !important;      /* 維持原圖比例 */
+    max-width: none !important;  /* 允許圖片超出彈窗寬度，進而觸發外層捲動 */
+    height: auto;
 }
 
 /* 針對手機版確保寬度 */
