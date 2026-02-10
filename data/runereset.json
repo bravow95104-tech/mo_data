@@ -1,0 +1,474 @@
+[
+  {
+    "item": "左輔",
+    "material1": "紅鸞",
+    "material2": "孤辰",
+    "material3": "寡宿",
+    "material4": "",
+    "material5": ""
+  },
+  {
+    "item": "右弼",
+    "material1": "左輔",
+    "material2": "左輔",
+    "material3": "紅鸞",
+    "material4": "",
+    "material5": ""
+  },
+  {
+    "item": "文昌",
+    "material1": "左輔",
+    "material2": "右弼",
+    "material3": "孤辰",
+    "material4": "",
+    "material5": ""
+  },
+  {
+    "item": "文曲",
+    "material1": "右弼",
+    "material2": "文昌",
+    "material3": "寡宿",
+    "material4": "",
+    "material5": ""
+  },
+  {
+    "item": "祿存",
+    "material1": "文昌",
+    "material2": "文曲",
+    "material3": "紅鸞",
+    "material4": "",
+    "material5": ""
+  },
+  {
+    "item": "天馬",
+    "material1": "文曲",
+    "material2": "祿存",
+    "material3": "孤辰",
+    "material4": "",
+    "material5": ""
+  },
+  {
+    "item": "擎羊",
+    "material1": "祿存",
+    "material2": "天馬",
+    "material3": "寡宿",
+    "material4": "",
+    "material5": ""
+  },
+  {
+    "item": "陀羅",
+    "material1": "天馬",
+    "material2": "擎羊",
+    "material3": "紅鸞",
+    "material4": "",
+    "material5": ""
+  },
+  {
+    "item": "火",
+    "material1": "擎羊",
+    "material2": "陀羅",
+    "material3": "孤辰",
+    "material4": "",
+    "material5": ""
+  },
+  {
+    "item": "鈴",
+    "material1": "陀羅",
+    "material2": "火",
+    "material3": "寡宿",
+    "material4": "",
+    "material5": ""
+  },
+  {
+    "item": "天魁",
+    "material1": "火",
+    "material2": "鈴",
+    "material3": "紅鸞",
+    "material4": "",
+    "material5": ""
+  },
+  {
+    "item": "天鉞",
+    "material1": "鈴",
+    "material2": "天魁",
+    "material3": "孤辰",
+    "material4": "",
+    "material5": ""
+  },
+  {
+    "item": "地空",
+    "material1": "天魁",
+    "material2": "天鉞",
+    "material3": "寡宿",
+    "material4": "",
+    "material5": ""
+  },
+  {
+    "item": "地劫",
+    "material1": "天鉞",
+    "material2": "地空",
+    "material3": "紅鸞",
+    "material4": "",
+    "material5": ""
+  },
+  {
+    "item": "紫微",
+    "material1": "武曲",
+    "material2": "地劫",
+    "material3": "天同",
+    "material4": "八座",
+    "material5": ""
+  },
+  {
+    "item": "天機",
+    "material1": "紫微",
+    "material2": "地空",
+    "material3": "廉貞",
+    "material4": "八座",
+    "material5": ""
+  },
+  {
+    "item": "太陽",
+    "material1": "天機",
+    "material2": "天鉞",
+    "material3": "天府",
+    "material4": "八座",
+    "material5": ""
+  },
+  {
+    "item": "武曲",
+    "material1": "太陽",
+    "material2": "天魁",
+    "material3": "太陰",
+    "material4": "八座",
+    "material5": ""
+  },
+  {
+    "item": "天同",
+    "material1": "巨門",
+    "material2": "鈴",
+    "material3": "廉貞",
+    "material4": "恩光",
+    "material5": ""
+  },
+  {
+    "item": "廉貞",
+    "material1": "天相",
+    "material2": "火",
+    "material3": "太陰",
+    "material4": "恩光",
+    "material5": ""
+  },
+  {
+    "item": "天府",
+    "material1": "天梁",
+    "material2": "陀羅",
+    "material3": "貪狼",
+    "material4": "恩光",
+    "material5": ""
+  },
+  {
+    "item": "太陰",
+    "material1": "七殺",
+    "material2": "擎羊",
+    "material3": "天同",
+    "material4": "恩光",
+    "material5": ""
+  },
+  {
+    "item": "貪狼",
+    "material1": "破軍",
+    "material2": "天馬",
+    "material3": "天府",
+    "material4": "恩光",
+    "material5": ""
+  },
+  {
+    "item": "巨門",
+    "material1": "七殺",
+    "material2": "祿存",
+    "material3": "天相",
+    "material4": "鳳閣",
+    "material5": ""
+  },
+  {
+    "item": "天相",
+    "material1": "七殺",
+    "material2": "文曲",
+    "material3": "天梁",
+    "material4": "龍池",
+    "material5": ""
+  },
+  {
+    "item": "天梁",
+    "material1": "七殺",
+    "material2": "文昌",
+    "material3": "七殺",
+    "material4": "鳳閣",
+    "material5": ""
+  },
+  {
+    "item": "七殺",
+    "material1": "破軍",
+    "material2": "右弼",
+    "material3": "破軍",
+    "material4": "龍池",
+    "material5": ""
+  },
+  {
+    "item": "破軍",
+    "material1": "地空",
+    "material2": "左輔",
+    "material3": "地劫",
+    "material4": "鳳閣",
+    "material5": ""
+  },
+  {
+    "item": "八座",
+    "material1": "恩光",
+    "material2": "恩光",
+    "material3": "恩光",
+    "material4": "",
+    "material5": ""
+  },
+  {
+    "item": "恩光",
+    "material1": "龍池",
+    "material2": "鳳閣",
+    "material3": "紅鸞",
+    "material4": "孤辰",
+    "material5": "寡宿"
+  },
+  {
+    "item": "龍池",
+    "material1": "天魁",
+    "material2": "地劫",
+    "material3": "紅鸞",
+    "material4": "孤辰",
+    "material5": "寡宿"
+  },
+  {
+    "item": "鳳閣",
+    "material1": "天鉞",
+    "material2": "地空",
+    "material3": "紅鸞",
+    "material4": "孤辰",
+    "material5": "寡宿"
+  },
+  {
+    "item": "紅鸞",
+    "material1": "左輔",
+    "material2": "孤辰",
+    "material3": "寡宿",
+    "material4": "",
+    "material5": ""
+  },
+  {
+    "item": "孤辰",
+    "material1": "左輔",
+    "material2": "紅鸞",
+    "material3": "寡宿",
+    "material4": "",
+    "material5": ""
+  },
+  {
+    "item": "寡宿",
+    "material1": "左輔",
+    "material2": "紅鸞",
+    "material3": "孤辰",
+    "material4": "",
+    "material5": ""
+  },
+  {
+    "item": "天才",
+    "material1": "天貴",
+    "material2": "天刑",
+    "material3": "天巫",
+    "material4": "",
+    "material5": ""
+  },
+  {
+    "item": "天貴",
+    "material1": "天刑",
+    "material2": "天巫",
+    "material3": "天使",
+    "material4": "",
+    "material5": ""
+  },
+  {
+    "item": "天刑",
+    "material1": "天巫",
+    "material2": "天使",
+    "material3": "天官",
+    "material4": "",
+    "material5": ""
+  },
+  {
+    "item": "天巫",
+    "material1": "天使",
+    "material2": "天官",
+    "material3": "天空",
+    "material4": "",
+    "material5": ""
+  },
+  {
+    "item": "天使",
+    "material1": "天官",
+    "material2": "天空",
+    "material3": "旬中",
+    "material4": "",
+    "material5": ""
+  },
+  {
+    "item": "天官",
+    "material1": "天空",
+    "material2": "旬中",
+    "material3": "旬空",
+    "material4": "",
+    "material5": ""
+  },
+  {
+    "item": "天空",
+    "material1": "旬中",
+    "material2": "旬空",
+    "material3": "封誥",
+    "material4": "",
+    "material5": ""
+  },
+  {
+    "item": "旬中",
+    "material1": "旬空",
+    "material2": "封誥",
+    "material3": "破碎",
+    "material4": "",
+    "material5": ""
+  },
+  {
+    "item": "旬空",
+    "material1": "封誥",
+    "material2": "破碎",
+    "material3": "陰煞",
+    "material4": "",
+    "material5": ""
+  },
+  {
+    "item": "封誥",
+    "material1": "破碎",
+    "material2": "陰煞",
+    "material3": "天才",
+    "material4": "",
+    "material5": ""
+  },
+  {
+    "item": "破碎",
+    "material1": "陰煞",
+    "material2": "天才",
+    "material3": "天貴",
+    "material4": "",
+    "material5": ""
+  },
+  {
+    "item": "陰煞",
+    "material1": "天才",
+    "material2": "天貴",
+    "material3": "天刑",
+    "material4": "",
+    "material5": ""
+  },
+  {
+    "item": "天姚",
+    "material1": "天哭",
+    "material2": "天馬",
+    "material3": "天喜",
+    "material4": "",
+    "material5": ""
+  },
+  {
+    "item": "天哭",
+    "material1": "天馬",
+    "material2": "天喜",
+    "material3": "天壽",
+    "material4": "",
+    "material5": ""
+  },
+  {
+    "item": "天馬",
+    "material1": "天喜",
+    "material2": "天壽",
+    "material3": "天福",
+    "material4": "",
+    "material5": ""
+  },
+  {
+    "item": "天喜",
+    "material1": "天壽",
+    "material2": "天福",
+    "material3": "天廚",
+    "material4": "",
+    "material5": ""
+  },
+  {
+    "item": "天壽",
+    "material1": "天福",
+    "material2": "天廚",
+    "material3": "台輔",
+    "material4": "",
+    "material5": ""
+  },
+  {
+    "item": "天福",
+    "material1": "天廚",
+    "material2": "台輔",
+    "material3": "解神",
+    "material4": "",
+    "material5": ""
+  },
+  {
+    "item": "天廚",
+    "material1": "台輔",
+    "material2": "解神",
+    "material3": "截空",
+    "material4": "",
+    "material5": ""
+  },
+  {
+    "item": "台輔",
+    "material1": "解神",
+    "material2": "截空",
+    "material3": "蜚廉",
+    "material4": "",
+    "material5": ""
+  },
+  {
+    "item": "解神",
+    "material1": "截空",
+    "material2": "蜚廉",
+    "material3": "三台",
+    "material4": "",
+    "material5": ""
+  },
+  {
+    "item": "截空",
+    "material1": "蜚廉",
+    "material2": "三台",
+    "material3": "天姚",
+    "material4": "",
+    "material5": ""
+  },
+  {
+    "item": "蜚廉",
+    "material1": "三台",
+    "material2": "天姚",
+    "material3": "天哭",
+    "material4": "",
+    "material5": ""
+  },
+  {
+    "item": "三台",
+    "material1": "天姚",
+    "material2": "天哭",
+    "material3": "天馬",
+    "material4": "",
+    "material5": ""
+  }
+]
