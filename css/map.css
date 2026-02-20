@@ -422,6 +422,30 @@ h1 {
     word-break: break-all;   /* 遇到超長英文或標點符號強制換行 */
 }
 
+
+.filter-actions {
+  display: flex;
+  justify-content: space-between; /* 🚀 關鍵：讓內容分開到最左與最右 */
+  align-items: center;
+  margin-top: 15px;
+  width: 100%;
+}
+
+/* 讓清除按鈕維持原本樣式，新按鈕可以套用類似但不同色系的樣式 */
+.secondary-btn {
+  padding: 8px 16px;
+  background-color: var(--primary-color); /* 使用你原本的藍色變數 */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.3s;
+}
+
+.secondary-btn:hover {
+  background-color: var(--primary-dark-color);
+}
 .clear-btn {
   background: #ffefc0;
   border: 1px solid #ffc107;
