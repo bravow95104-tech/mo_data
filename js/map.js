@@ -31,64 +31,76 @@ function initTableSearch() {
   const clearBtn = document.getElementById('clearFilters');
   if (!searchInput) return;
 
-  // 初始顯示（關鍵字為空）
   renderTable(mapData, "");
 
-  // 監聽輸入事件
   searchInput.addEventListener("input", (e) => {
     const keyword = e.target.value.toLowerCase().trim();
     const filtered = mapData.filter(item => {
+      // 🚀 擴大搜尋範圍，讓裝備卡和光輝也能被搜到
       return (
         (item.mapid && item.mapid.toLowerCase().includes(keyword)) ||
         (item.drop_rubbish && item.drop_rubbish.includes(keyword)) ||
-        (item.drop_hero && item.drop_hero.includes(keyword))
+        (item.drop_hero && item.drop_hero.includes(keyword)) ||
+        (item.drop_equidcard && item.drop_equidcard.includes(keyword)) ||
+        (item.drop_glory_high && item.drop_glory_high.includes(keyword))
       );
     });
-    // 渲染時傳入關鍵字
     renderTable(filtered, keyword);
   });
 
   if (clearBtn) {
     clearBtn.addEventListener('click', () => {
       searchInput.value = '';
-      renderTable(mapData, ""); // 清除時關鍵字為空
+      renderTable(mapData, "");
+      searchInput.focus(); // 清除後自動聚焦搜尋框
     });
   }
 }
 
-// 渲染表格函式（新增 keyword 參數）
-function renderTable(data, keyword) {
+// 渲染表格函式
+function renderTable(data, keyword = "") {
   const tbody = document.querySelector("#heroes-table tbody");
   if (!tbody) return;
 
-  tbody.innerHTML = ""; // 清空舊內容
+  tbody.innerHTML = ""; 
   const fragment = document.createDocumentFragment();
+
+  if (data.length === 0) {
+    const emptyTr = document.createElement("tr");
+    emptyTr.innerHTML = `<td colspan="6" style="text-align:center;">找不到相符的地圖資料</td>`;
+    tbody.appendChild(emptyTr);
+    return;
+  }
 
   data.forEach((item) => {
     const tr = document.createElement("tr");
     tr.style.cursor = "pointer";
     tr.onclick = () => window.openMapDetail(item.mapid);
 
-    // 定義要顯示的欄位 (請根據你的 JSON 欄位名稱調整)
     const columns = [
       item.mapid || "-",
       item.drop_rubbish || "-",
       item.drop_equidcard || "-",
       item.drop_hero || "-",
-      item.drop_glory_high || "-"
+      item.drop_glory_high || "-",
+      item.drop_glory_low || "-"
     ];
 
-    columns.forEach((text) => {
+    columns.forEach((text, index) => {
       const td = document.createElement("td");
-      let rawValue = String(text);
+      let content = String(text);
 
-      // === 搜尋字串高亮核心邏輯 ===
-      if (keyword && rawValue.toLowerCase().includes(keyword.toLowerCase())) {
-        // 使用正則表達式，'gi' 表示不分大小寫、全域替換
+      // 🚀 核心優化：先處理高亮，避免影響 HTML 標籤
+      if (keyword && content !== "-" && content.toLowerCase().includes(keyword.toLowerCase())) {
         const regex = new RegExp(`(${keyword})`, 'gi');
-        td.innerHTML = rawValue.replace(regex, '<span class="highlight">$1</span>');
+        content = content.replace(regex, '<span class="highlight">$1</span>');
+      }
+
+      // 處理完高亮後，若是第一欄則加上 strong
+      if (index === 0 && text !== "-") {
+        td.innerHTML = `<strong>${content}</strong>`;
       } else {
-        td.innerText = rawValue;
+        td.innerHTML = content;
       }
 
       tr.appendChild(td);
@@ -97,34 +109,7 @@ function renderTable(data, keyword) {
     fragment.appendChild(tr);
   });
 
-  if (data.length === 0) {
-    const emptyTr = document.createElement("tr");
-    emptyTr.innerHTML = `<td colspan="5" style="text-align:center;">找不到相符的地圖資料</td>`;
-    fragment.appendChild(emptyTr);
-  }
-
   tbody.appendChild(fragment);
-}
-
-function renderTable(data) {
-    const tbody = document.querySelector("#heroes-table tbody");
-    if (!tbody) return;
-
-    if (data.length === 0) {
-        tbody.innerHTML = `<tr><td colspan="6" style="text-align:center;">找不到相符的地圖資料</td></tr>`;
-        return;
-    }
-
-    tbody.innerHTML = data.map(item => `
-        <tr onclick="openMapDetail('${item.mapid}')" style="cursor:pointer;">
-            <td><strong>${item.mapid}</strong></td>
-            <td>${item.drop_rubbish || "-"}</td>
-            <td>${item.drop_equidcard || "-"}</td>
-            <td>${item.drop_hero || "-"}</td>
-            <td>${item.drop_glory_high || "-"}</td>
-            <td>${item.drop_glory_low || "-"}</td>
-        </tr>
-    `).join('');
 }
 
 // === 4. [HTML2 專屬] 地圖互動邏輯 ===
