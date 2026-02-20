@@ -192,7 +192,7 @@ function showDetailModal(item) {
     <p><strong>怪物等級：</strong>${item.maplv || "N/A"}</p>
     <p><strong>防禦：</strong>${item.def || "N/A"}<strong>　　閃避：</strong>${item.dodge || "N/A"}</p>
     </div>
-    
+    ${(item.drop_rubbish || item.drop_hero || item.drop_equidcard || item.drop_combo_old || item.drop_combo_new) ? `
     <div class="hero-column-details">
     <div style="width: 100%;">
     ${item.drop_rubbish ? `<p><strong>垃圾:</strong> ${item.drop_rubbish}</p>`: ""}
@@ -208,7 +208,7 @@ function showDetailModal(item) {
     <div class="section-gap">
     ${item.drop_combo_new ? `<p><strong>新文片：</strong><span class="value">${item.drop_combo_new}</span></p>`: ""}
     </div>
-</div></div>
+</div></div>` : ""}
 <div class="hero-column-details">
     <div class="section-gap">
     <p><strong>光輝(掉落較多)：</strong><span class="value">${item.drop_glory_high || "N/A"}</span></p>
