@@ -384,6 +384,27 @@ h1 {
     height: auto;
 }
 
+/* 讓每一行變成 Flex 容器 */
+.align-row {
+    display: flex;
+    align-items: flex-start; /* 讓內容對齊第一行頂部 */
+    margin: 5px 0;           /* 行與行之間的間距 */
+    line-height: 1.6;        /* 增加行高，閱讀更舒適 */
+}
+
+/* 左側標籤：固定寬度或不收縮 */
+.align-row strong {
+    white-space: nowrap;     /* 標籤不換行 */
+    flex-shrink: 0;          /* 防止標籤被擠壓 */
+    min-width: 100px;        /* 根據你的文字長度調整，確保「◢ 掉落較高：」放得下 */
+    color: #555;             /* 稍微調淡標籤顏色，突出內容 */
+}
+
+/* 右側內容：自動填滿剩餘空間並換行 */
+.align-row span {
+    flex-grow: 1;
+    word-break: break-all;   /* 遇到超長英文或標點符號強制換行 */
+}
 /* 針對手機版確保寬度 */
 @media (max-width: 768px) {
     #modalBox.modal-large-mode {
