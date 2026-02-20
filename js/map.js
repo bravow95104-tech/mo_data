@@ -79,8 +79,8 @@ function renderTable(data, keyword = "") {
 
     const columns = [
       item.mapid || "-",
-      item.drop_rubbish || "-",
       item.drop_equidcard || "-",
+      item.drop_rubbish || "-",      
       item.drop_hero || "-",
       item.drop_glory_high || "-",
       item.drop_glory_low || "-"
