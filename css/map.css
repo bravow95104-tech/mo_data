@@ -457,6 +457,45 @@ h1 {
   padding: 2px 4px;
 }
 
+/* 表格樣式 */
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-top: 20px;
+}
+th,
+td {
+  border: 1px solid var(--border-light-gray);
+  padding: 8px;
+  text-align: center;
+  font-size: 14px;
+  white-space: normal;
+}
+
+tbody tr:hover {
+  background-color: var(--highlight-bg-color);
+  cursor: pointer;
+}
+
+thead th {
+  position: sticky;
+  top: var(--nav-offset); /* JS 動態修改 */
+  background-color: var(--header-bg-color);
+  z-index: 100;
+  color: var(--text-light);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+th.sortable {
+  cursor: pointer;
+  user-select: none; /* 防止快速點擊時選取到文字 */
+  transition: background 0.2s;
+}
+
+th.sortable:hover {
+  background-color: var(--header-hover-bg-color);
+}
+
 /* 針對手機版確保寬度 */
 @media (max-width: 768px) {
     #modalBox.modal-large-mode {
