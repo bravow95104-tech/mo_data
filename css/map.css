@@ -405,6 +405,58 @@ h1 {
     flex-grow: 1;
     word-break: break-all;   /* 遇到超長英文或標點符號強制換行 */
 }
+
+.clear-btn {
+  background: #ffefc0;
+  border: 1px solid #ffc107;
+  color: var(--highlight-text-color);
+  border-radius: 4px;
+  padding: 4px 12px;
+  margin-top: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  transition:
+    background 0.2s,
+    color 0.2s;
+}
+
+.clear-btn:hover {
+  background: #ffc107;
+  color: var(--text-light);
+}
+
+/* 搜尋與篩選 */
+.quick-search-label {
+  font-weight: 600;
+  margin-right: 8px;
+  font-size: 16px;
+  color: var(--primary-color);
+  vertical-align: middle;
+}
+
+#searchContainer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+#searchInput {
+  padding: 6px 10px;
+  width: 100%;
+  font-size: 14px;
+  border: 1px solid var(--border-light-gray);
+  border-radius: 4px;
+  box-sizing: border-box;
+  max-width: 250px;
+}
+
+.highlight {
+  background-color: var(--highlight-bg-color);
+  font-weight: bold;
+  border-radius: 3px;
+  padding: 2px 4px;
+}
+
 /* 針對手機版確保寬度 */
 @media (max-width: 768px) {
     #modalBox.modal-large-mode {
