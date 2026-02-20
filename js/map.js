@@ -62,7 +62,8 @@ function renderTable(data) {
             <td>${item.drop_rubbish || "-"}</td>
             <td>${item.drop_equidcard || "-"}</td>
             <td>${item.drop_hero || "-"}</td>
-            <td>${item.drop_glory_player || item.drop_glory_high || "-"}</td>
+            <td>${item.drop_glory_high || "-"}</td>
+            <td>${item.drop_glory_low || "-"}</td>
         </tr>
     `).join('');
 }
