@@ -27,24 +27,83 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // === 3. [HTML1 專屬] 表格與搜尋邏輯 ===
 function initTableSearch() {
-    const searchInput = document.getElementById("searchInput");
-    if (!searchInput) return;
+  const searchInput = document.getElementById("searchInput");
+  const clearBtn = document.getElementById('clearFilters');
+  if (!searchInput) return;
 
-    // 初次渲染全資料
-    renderTable(mapData);
+  // 初始顯示（關鍵字為空）
+  renderTable(mapData, "");
 
-    // 監聽輸入事件
-    searchInput.addEventListener("input", (e) => {
-        const keyword = e.target.value.toLowerCase().trim();
-        const filtered = mapData.filter(item => {
-            return (
-                (item.mapid && item.mapid.toLowerCase().includes(keyword)) ||
-                (item.drop_rubbish && item.drop_rubbish.includes(keyword)) ||
-                (item.drop_hero && item.drop_hero.includes(keyword))
-            );
-        });
-        renderTable(filtered);
+  // 監聽輸入事件
+  searchInput.addEventListener("input", (e) => {
+    const keyword = e.target.value.toLowerCase().trim();
+    const filtered = mapData.filter(item => {
+      return (
+        (item.mapid && item.mapid.toLowerCase().includes(keyword)) ||
+        (item.drop_rubbish && item.drop_rubbish.includes(keyword)) ||
+        (item.drop_hero && item.drop_hero.includes(keyword))
+      );
     });
+    // 渲染時傳入關鍵字
+    renderTable(filtered, keyword);
+  });
+
+  if (clearBtn) {
+    clearBtn.addEventListener('click', () => {
+      searchInput.value = '';
+      renderTable(mapData, ""); // 清除時關鍵字為空
+    });
+  }
+}
+
+// 渲染表格函式（新增 keyword 參數）
+function renderTable(data, keyword) {
+  const tbody = document.querySelector("#heroes-table tbody");
+  if (!tbody) return;
+
+  tbody.innerHTML = ""; // 清空舊內容
+  const fragment = document.createDocumentFragment();
+
+  data.forEach((item) => {
+    const tr = document.createElement("tr");
+    tr.style.cursor = "pointer";
+    tr.onclick = () => window.openMapDetail(item.mapid);
+
+    // 定義要顯示的欄位 (請根據你的 JSON 欄位名稱調整)
+    const columns = [
+      item.mapid || "-",
+      item.drop_rubbish || "-",
+      item.drop_equidcard || "-",
+      item.drop_hero || "-",
+      item.drop_glory_high || "-"
+    ];
+
+    columns.forEach((text) => {
+      const td = document.createElement("td");
+      let rawValue = String(text);
+
+      // === 搜尋字串高亮核心邏輯 ===
+      if (keyword && rawValue.toLowerCase().includes(keyword.toLowerCase())) {
+        // 使用正則表達式，'gi' 表示不分大小寫、全域替換
+        const regex = new RegExp(`(${keyword})`, 'gi');
+        td.innerHTML = rawValue.replace(regex, '<span class="highlight">$1</span>');
+      } else {
+        td.innerText = rawValue;
+      }
+
+      tr.appendChild(td);
+    });
+
+    fragment.appendChild(tr);
+  });
+
+  if (data.length === 0) {
+    const emptyTr = document.createElement("tr");
+    emptyTr.innerHTML = `<td colspan="5" style="text-align:center;">找不到相符的地圖資料</td>`;
+    fragment.appendChild(emptyTr);
+  }
+
+  tbody.appendChild(fragment);
 }
 
 function renderTable(data) {
@@ -52,7 +111,7 @@ function renderTable(data) {
     if (!tbody) return;
 
     if (data.length === 0) {
-        tbody.innerHTML = `<tr><td colspan="5" style="text-align:center;">找不到相符的地圖資料</td></tr>`;
+        tbody.innerHTML = `<tr><td colspan="6" style="text-align:center;">找不到相符的地圖資料</td></tr>`;
         return;
     }
 
