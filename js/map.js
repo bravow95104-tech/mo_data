@@ -139,8 +139,9 @@ window.openMapDetail = function(mapId) {
         <div class="hero-column-details">
         ${showApproach ? `<div class="section-gap"><p><strong>走法：</strong>${item.approach}</p></div>` : ""}
         ${showExplain ? `<div class="section-gap"><p><strong>說明：</strong>${item.illustrate}</p></div>` : ""}
-        ${combatAndDropHTML}
         </div>
+        ${combatAndDropHTML}
+        
     `;
 
     showModal();
