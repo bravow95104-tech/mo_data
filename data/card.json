@@ -9163,6 +9163,23 @@
     "drop": ""
   },
   {
+    "type": "主動技能卡",
+    "new_old": "",
+    "card_id": "一斬衁花盛閃卡",
+    "card_property": "無",
+    "card_data": "",
+    "card_lv": 90,
+    "card_class": "通用",
+    "nemultiplier": "",
+    "hero_name": "",
+    "property_first": "",
+    "property_second": "",
+    "property_third": "",
+    "card_mp": 280,
+    "directions": "瞬間對目標劃出一道斬擊，有機率對目標造成出血傷害。",
+    "drop": ""
+  },
+  {
     "type": "被動技能卡",
     "new_old": "V",
     "card_id": "靜林卡",
