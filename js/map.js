@@ -195,19 +195,21 @@ function showDetailModal(item) {
     
     <div class="hero-column-details">
     <div style="width: 100%;">
-    <p><strong>垃圾:</strong> ${item.drop_rubbish || "N/A"}</p>
+    ${item.drop_rubbish ? `<p><strong>垃圾:</strong> ${item.drop_rubbish}</p>`: ""}
     <div class="section-gap">
-    <p><strong>英雄卡：</strong><span class="value">${item.drop_hero || "N/A"}</span></p>
+    ${item.drop_hero ? `<p><strong>英雄卡：</strong><span class="value">${item.drop_hero}</span></p>`: ""}
     </div>
     <div class="section-gap">
-    <p><strong>裝備卡：</strong><span class="value">${item.drop_equidcard || "N/A"}</span></p>
+    ${item.drop_equidcard ? `<p><strong>裝備卡：</strong><span class="value">${item.drop_equidcard}</span></p>`: ""}
     </div>
     <div class="section-gap">
-    <p><strong>舊文片：</strong><span class="value">${item.drop_combo_old || "N/A"}</span></p>
+    ${item.drop_combo_old ? `<p><strong>舊文片：</strong><span class="value">${item.drop_combo_old}</span></p>`: ""}
     </div>
     <div class="section-gap">
-    <p><strong>新文片：</strong><span class="value">${item.drop_combo_new || "N/A"}</span></p>
+    ${item.drop_combo_new ? `<p><strong>新文片：</strong><span class="value">${item.drop_combo_new}</span></p>`: ""}
     </div>
+</div></div>
+<div class="hero-column-details">
     <div class="section-gap">
     <p><strong>光輝(掉落較多)：</strong><span class="value">${item.drop_glory_high || "N/A"}</span></p>
     </div>
@@ -215,7 +217,7 @@ function showDetailModal(item) {
     <p><strong>光輝(掉落較低)：</strong><span class="value">${item.drop_glory_low || "N/A"}</span></p>
     </div>
     <div class="section-gap">
-    <p><strong>光輝(玩家提供)：</strong><span class="value">-</span></p>
+    ${item.drop_glory_player ? `<p><strong>光輝(玩家提供)：</strong><span class="value">${item.drop_glory_player}</span></p>`: ""}
     </div>
     </div>
     </div>
