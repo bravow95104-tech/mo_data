@@ -429,10 +429,12 @@ h1 {
   align-items: center;
   margin-top: 15px;
   width: 100%;
+  margin-bottom: 15px;      /* 增加一點下間距 */
 }
 
 /* 讓清除按鈕維持原本樣式，新按鈕可以套用類似但不同色系的樣式 */
 .secondary-btn {
+  margin-left: auto;         /* 🚀 自動推到最右邊 */
   padding: 8px 16px;
   background-color: var(--primary-color); /* 使用你原本的藍色變數 */
   color: white;
