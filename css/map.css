@@ -482,12 +482,12 @@ table {
 }
 /* 針對 6 欄位進行寬度權重分配 */
 /* 地圖名 | 垃圾 | 裝備 | 英雄 | 光輝高 | 光輝低 */
-th:nth-child(1) { width: 14%; }
-th:nth-child(2) { width: 14%; }
-th:nth-child(3) { width: 14%; }
-th:nth-child(4) { width: 14%; }
-th:nth-child(5) { width: 22%; }
-th:nth-child(6) { width: 22%; }
+th:nth-child(1) { width: 10%; }
+th:nth-child(2) { width: 10%; }
+th:nth-child(3) { width: 20%; }
+th:nth-child(4) { width: 20%; }
+th:nth-child(5) { width: 20%; }
+th:nth-child(6) { width: 20%; }
 
 th,
 td {
@@ -501,8 +501,16 @@ td {
   vertical-align: middle;   /* 垂直居中 */
 }
 
+/* 針對第一欄：地圖名稱的字體優化 */
+#heroes-table td:first-child {
+  font-size: 16px;          /* 🚀 從 14px 放大到 16px */
+  font-weight: bold;        /* 加粗文字 */
+  color: var(--primary-dark-color); /* 使用你變數中的藍色，增加辨識度 */
+  text-align: center;       /* 保持置中 */
+}
+
 /* 針對「光輝」等長文字欄位優化閱讀感 */
-td:nth-child(5), td:nth-child(6) {
+td:nth-child(4),td:nth-child(5), td:nth-child(6) {
   text-align: left; /* 🚀 長文字左對齊比較好閱讀 */
   font-size: 13px;  /* 文字多時稍微縮小一點 */
   line-height: 1.4;
