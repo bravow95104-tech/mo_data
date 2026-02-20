@@ -15,7 +15,8 @@
     "drop_combo_old": "",
     "drop_combo_new": "",
     "drop_glory_high": "大賢之光輝、聖鬥之光輝、鐘會之光輝、曹貴人之光輝、安樂之光輝",
-    "drop_glory_low": ""
+    "drop_glory_low": "",
+    "drop_glory_player": ""
   },
   {
     "mapid": "飛煞洞",
@@ -33,7 +34,8 @@
     "drop_combo_old": "紫薇、天機、天梁、天相、鈴、祿存、破軍",
     "drop_combo_new": "",
     "drop_glory_high": "毒士之光輝、警花之光、袁紹之光輝、小霸王之光輝、祝融之光輝、顏良之光輝、阮小七之光輝",
-    "drop_glory_low": "孫權之光輝、青龍星之光、瓊霄之光輝、火府星之光、麒麟之光輝、天使之光、李逵之光輝、執年歲君之徵、智多星之光輝"
+    "drop_glory_low": "孫權之光輝、青龍星之光、瓊霄之光輝、火府星之光、麒麟之光輝、天使之光、李逵之光輝、執年歲君之徵、智多星之光輝",
+    "drop_glory_player": ""
   },
   {
     "mapid": "京城",
@@ -51,7 +53,8 @@
     "drop_combo_old": "",
     "drop_combo_new": "",
     "drop_glory_high": "",
-    "drop_glory_low": ""
+    "drop_glory_low": "",
+    "drop_glory_player": ""
   },
   {
     "mapid": "東都道",
@@ -69,7 +72,8 @@
     "drop_combo_old": "",
     "drop_combo_new": "",
     "drop_glory_high": "大賢之光輝、聖鬥之光輝、鐘會之光輝、曹貴人之光輝、安樂之光輝",
-    "drop_glory_low": ""
+    "drop_glory_low": "",
+    "drop_glory_player": ""
   },
   {
     "mapid": "南都道",
@@ -87,7 +91,8 @@
     "drop_combo_old": "",
     "drop_combo_new": "",
     "drop_glory_high": "張松之光輝、項充之光輝、豹騎之勇、虎騎之勇、魔鬥之勇",
-    "drop_glory_low": ""
+    "drop_glory_low": "",
+    "drop_glory_player": ""
   },
   {
     "mapid": "西都道",
@@ -105,7 +110,8 @@
     "drop_combo_old": "",
     "drop_combo_new": "",
     "drop_glory_high": "張松之光輝、項充之光輝、豹騎之勇、虎騎之勇、魔鬥之勇",
-    "drop_glory_low": ""
+    "drop_glory_low": "",
+    "drop_glory_player": ""
   },
   {
     "mapid": "北都道",
@@ -123,7 +129,8 @@
     "drop_combo_old": "",
     "drop_combo_new": "",
     "drop_glory_high": "張松之光輝、項充之光輝、豹騎之勇、虎騎之勇、魔鬥之勇",
-    "drop_glory_low": ""
+    "drop_glory_low": "",
+    "drop_glory_player": ""
   },
   {
     "mapid": "東門關",
@@ -141,7 +148,8 @@
     "drop_combo_old": "",
     "drop_combo_new": "",
     "drop_glory_high": "張松之光輝、項充之光輝、豹騎之勇、虎騎之勇、魔鬥之勇",
-    "drop_glory_low": ""
+    "drop_glory_low": "",
+    "drop_glory_player": ""
   },
   {
     "mapid": "南門關",
@@ -159,7 +167,8 @@
     "drop_combo_old": "",
     "drop_combo_new": "",
     "drop_glory_high": "張松之光輝、項充之光輝、豹騎之勇、虎騎之勇、魔鬥之勇",
-    "drop_glory_low": ""
+    "drop_glory_low": "",
+    "drop_glory_player": ""
   },
   {
     "mapid": "北門關",
@@ -177,7 +186,8 @@
     "drop_combo_old": "",
     "drop_combo_new": "",
     "drop_glory_high": "張松之光輝、項充之光輝、豹騎之勇、虎騎之勇、魔鬥之勇",
-    "drop_glory_low": ""
+    "drop_glory_low": "",
+    "drop_glory_player": ""
   },
   {
     "mapid": "齊山密穴",
@@ -195,7 +205,8 @@
     "drop_combo_old": "",
     "drop_combo_new": "",
     "drop_glory_high": "",
-    "drop_glory_low": ""
+    "drop_glory_low": "",
+    "drop_glory_player": ""
   },
   {
     "mapid": "回春谷入口",
@@ -213,7 +224,8 @@
     "drop_combo_old": "",
     "drop_combo_new": "",
     "drop_glory_high": "",
-    "drop_glory_low": ""
+    "drop_glory_low": "",
+    "drop_glory_player": ""
   },
   {
     "mapid": "回春谷",
@@ -231,7 +243,8 @@
     "drop_combo_old": "",
     "drop_combo_new": "",
     "drop_glory_high": "",
-    "drop_glory_low": ""
+    "drop_glory_low": "",
+    "drop_glory_player": ""
   },
   {
     "mapid": "碧沙湖",
@@ -249,7 +262,8 @@
     "drop_combo_old": "",
     "drop_combo_new": "",
     "drop_glory_high": "張松之光輝、項充之光輝、豹騎之勇、虎騎之勇、魔鬥之勇",
-    "drop_glory_low": ""
+    "drop_glory_low": "",
+    "drop_glory_player": ""
   },
   {
     "mapid": "杏花谷",
@@ -267,7 +281,8 @@
     "drop_combo_old": "",
     "drop_combo_new": "",
     "drop_glory_high": "張松之光輝、項充之光輝、豹騎之勇、虎騎之勇、魔鬥之勇",
-    "drop_glory_low": ""
+    "drop_glory_low": "",
+    "drop_glory_player": ""
   },
   {
     "mapid": "伏龍洞",
@@ -285,7 +300,8 @@
     "drop_combo_old": "",
     "drop_combo_new": "",
     "drop_glory_high": "周郎之光輝、孫二娘之光輝、盧俊義之光輝、阮小二之光輝、石秀之光輝、忍者之光、龍鬥之勇",
-    "drop_glory_low": "諸葛惠之光輝"
+    "drop_glory_low": "諸葛惠之光輝",
+    "drop_glory_player": ""
   },
   {
     "mapid": "地煞洞第1層",
@@ -303,7 +319,8 @@
     "drop_combo_old": "",
     "drop_combo_new": "",
     "drop_glory_high": "大賢之光輝、聖鬥之光輝、鐘會之光輝、曹貴人之光輝、安樂之光輝",
-    "drop_glory_low": ""
+    "drop_glory_low": "",
+    "drop_glory_player": ""
   },
   {
     "mapid": "地煞洞第2層",
@@ -321,7 +338,8 @@
     "drop_combo_old": "",
     "drop_combo_new": "",
     "drop_glory_high": "大賢之光輝、聖鬥之光輝、鐘會之光輝、曹貴人之光輝、安樂之光輝",
-    "drop_glory_low": ""
+    "drop_glory_low": "",
+    "drop_glory_player": ""
   },
   {
     "mapid": "天煞洞第1層",
@@ -339,7 +357,8 @@
     "drop_combo_old": "",
     "drop_combo_new": "",
     "drop_glory_high": "周郎之光輝、孫二娘之光輝、盧俊義之光輝、阮小二之光輝、石秀之光輝、忍者之光、龍鬥之勇",
-    "drop_glory_low": "諸葛惠之光輝"
+    "drop_glory_low": "諸葛惠之光輝",
+    "drop_glory_player": ""
   },
   {
     "mapid": "天煞洞第2層",
@@ -357,7 +376,8 @@
     "drop_combo_old": "",
     "drop_combo_new": "",
     "drop_glory_high": "周郎之光輝、孫二娘之光輝、盧俊義之光輝、阮小二之光輝、石秀之光輝、忍者之光、龍鬥之勇",
-    "drop_glory_low": "諸葛惠之光輝"
+    "drop_glory_low": "諸葛惠之光輝",
+    "drop_glory_player": ""
   },
   {
     "mapid": "匯星高原",
@@ -375,7 +395,8 @@
     "drop_combo_old": "",
     "drop_combo_new": "",
     "drop_glory_high": "周郎之光輝、孫二娘之光輝、盧俊義之光輝、阮小二之光輝、石秀之光輝、忍者之光、龍鬥之勇",
-    "drop_glory_low": "諸葛惠之光輝"
+    "drop_glory_low": "諸葛惠之光輝",
+    "drop_glory_player": ""
   },
   {
     "mapid": "末日京城",
@@ -393,7 +414,8 @@
     "drop_combo_old": "",
     "drop_combo_new": "天刑、天才、三台、天貴",
     "drop_glory_high": "關興之光輝、張魯之光輝、程遠志之光輝、劉備之光輝、魯智深之光輝、倭王之光輝",
-    "drop_glory_low": "孫二娘之光輝、曹植之光輝、裴宣之光輝、天眼之光輝、太歲之光"
+    "drop_glory_low": "孫二娘之光輝、曹植之光輝、裴宣之光輝、天眼之光輝、太歲之光",
+    "drop_glory_player": ""
   },
   {
     "mapid": "地牢",
@@ -411,7 +433,8 @@
     "drop_combo_old": "",
     "drop_combo_new": "天貴、天空、天福、天廚、封誥、旬空、旬中、天巫、寡宿、天喜、天哭、孤辰、天姚、天馬、蜚廉、三台、恩光、陰煞、破碎、天壽、紅鸞、截空、天使、解神、天才、八座",
     "drop_glory_high": "關興之光輝、張魯之光輝、程遠志之光輝、劉備之光輝、魯智深之光輝、倭王之光輝",
-    "drop_glory_low": "孫二娘之光輝、曹植之光輝、裴宣之光輝、天眼之光輝、太歲之光"
+    "drop_glory_low": "孫二娘之光輝、曹植之光輝、裴宣之光輝、天眼之光輝、太歲之光",
+    "drop_glory_player": ""
   },
   {
     "mapid": "水牢",
@@ -429,7 +452,8 @@
     "drop_combo_old": "",
     "drop_combo_new": "天才、截空、解神",
     "drop_glory_high": "關興之光輝、張魯之光輝、程遠志之光輝、劉備之光輝、魯智深之光輝、倭王之光輝",
-    "drop_glory_low": "孫二娘之光輝、曹植之光輝、裴宣之光輝、天眼之光輝、太歲之光"
+    "drop_glory_low": "孫二娘之光輝、曹植之光輝、裴宣之光輝、天眼之光輝、太歲之光",
+    "drop_glory_player": ""
   },
   {
     "mapid": "火牢",
@@ -443,11 +467,12 @@
     "monster_atk": "",
     "drop_rubbish": "斷刀、幽靈氣球、八卦、假牙",
     "drop_hero": "宋江",
-    "drop_equidcard": "通天火神柱卡",
+    "drop_equidcard": "通天神火柱卡",
     "drop_combo_old": "",
     "drop_combo_new": "",
     "drop_glory_high": "關興之光輝、張魯之光輝、程遠志之光輝、劉備之光輝、魯智深之光輝、倭王之光輝",
-    "drop_glory_low": "孫二娘之光輝、曹植之光輝、裴宣之光輝、天眼之光輝、太歲之光"
+    "drop_glory_low": "孫二娘之光輝、曹植之光輝、裴宣之光輝、天眼之光輝、太歲之光",
+    "drop_glory_player": ""
   },
   {
     "mapid": "死牢",
@@ -465,7 +490,8 @@
     "drop_combo_old": "火",
     "drop_combo_new": "",
     "drop_glory_high": "關興之光輝、張魯之光輝、程遠志之光輝、劉備之光輝、魯智深之光輝、倭王之光輝",
-    "drop_glory_low": "孫二娘之光輝、曹植之光輝、裴宣之光輝、天眼之光輝、太歲之光"
+    "drop_glory_low": "孫二娘之光輝、曹植之光輝、裴宣之光輝、天眼之光輝、太歲之光",
+    "drop_glory_player": ""
   },
   {
     "mapid": "七星壇",
@@ -483,7 +509,8 @@
     "drop_combo_old": "",
     "drop_combo_new": "",
     "drop_glory_high": "",
-    "drop_glory_low": ""
+    "drop_glory_low": "",
+    "drop_glory_player": ""
   },
   {
     "mapid": "郡業",
@@ -501,7 +528,8 @@
     "drop_combo_old": "",
     "drop_combo_new": "",
     "drop_glory_high": "",
-    "drop_glory_low": ""
+    "drop_glory_low": "",
+    "drop_glory_player": ""
   },
   {
     "mapid": "月鏡湖",
@@ -519,7 +547,8 @@
     "drop_combo_old": "",
     "drop_combo_new": "",
     "drop_glory_high": "周郎之光輝、孫二娘之光輝、盧俊義之光輝、阮小二之光輝、石秀之光輝、忍者之光、龍鬥之勇",
-    "drop_glory_low": "諸葛惠之光輝"
+    "drop_glory_low": "諸葛惠之光輝",
+    "drop_glory_player": ""
   },
   {
     "mapid": "潛龍潭",
@@ -533,11 +562,12 @@
     "monster_atk": "",
     "drop_rubbish": "木乃伊的繃帶、坐墊、墨汁、四葉幸運草、龍麟、針筒、白額虎皮",
     "drop_hero": "宋徽宗、潘金蓮、劉備、項充、張梁、孫尚香、周泰、董平、鄧艾、血衣衛、高友乾、楊森、蔣敬、徐晃、荀彧、張松、文醜、蔡文姬、夏侯惇、孟獲、楊鳳兒、郭嘉、張寶",
-    "drop_equidcard": "龍行劍卡",
+    "drop_equidcard": "龍形劍卡",
     "drop_combo_old": "",
     "drop_combo_new": "",
     "drop_glory_high": "田豐之光輝、錦衣之光輝、王佐之光輝、黃月英之光輝、馬良之光輝、小喬之光輝",
-    "drop_glory_low": "楊修之光輝"
+    "drop_glory_low": "楊修之光輝",
+    "drop_glory_player": ""
   },
   {
     "mapid": "沰水道",
@@ -551,11 +581,12 @@
     "monster_atk": "",
     "drop_rubbish": "老鼠大便、玩具眼球、蛇膽、骷顱頭、橡膠舌頭、蛇皮、墨汁",
     "drop_hero": "孫權、呂蒙、孟獲、荀彧、夏侯惇、華陀、秦明、太史慈、李袞、李興霸、鄧艾、糜夫人、張郃、小喬、法正、徐晃、鄧九公、張郃、蔡文姬、楊森、張松、馬岱、魔禮壽、高友乾、郭嘉、楊森、文醜、諸葛惠",
-    "drop_equidcard": "赤煞刀卡、賽車保養組卡",
+    "drop_equidcard": "赤剎刀卡、賽車保養組卡",
     "drop_combo_old": "左輔、右弼",
     "drop_combo_new": "",
     "drop_glory_high": "人公之光輝、益德之光輝、張苞之光輝、蔣敬之光輝、燕青之光輝、好人卡象徵、姬發之光輝、武吉之光輝、韋馱天之光",
-    "drop_glory_low": "項充之光輝、虎騎之勇、魔鬥之勇、程普之光輝、西門慶之光輝、荀攸之光輝、徐庶之光輝、周倉之光輝、茶茶之光輝、孔融之光輝、毒士之光輝"
+    "drop_glory_low": "項充之光輝、虎騎之勇、魔鬥之勇、程普之光輝、西門慶之光輝、荀攸之光輝、徐庶之光輝、周倉之光輝、茶茶之光輝、孔融之光輝、毒士之光輝",
+    "drop_glory_player": ""
   },
   {
     "mapid": "銀沙河",
@@ -573,7 +604,8 @@
     "drop_combo_old": "左輔、右弼",
     "drop_combo_new": "",
     "drop_glory_high": "人公之光輝、益德之光輝、張苞之光輝、蔣敬之光輝、燕青之光輝、好人卡象徵、姬發之光輝、武吉之光輝、韋馱天之光",
-    "drop_glory_low": "項充之光輝、虎騎之勇、魔鬥之勇、程普之光輝、西門慶之光輝、荀攸之光輝、徐庶之光輝、周倉之光輝、茶茶之光輝、孔融之光輝、毒士之光輝"
+    "drop_glory_low": "項充之光輝、虎騎之勇、魔鬥之勇、程普之光輝、西門慶之光輝、荀攸之光輝、徐庶之光輝、周倉之光輝、茶茶之光輝、孔融之光輝、毒士之光輝",
+    "drop_glory_player": ""
   },
   {
     "mapid": "南揚湖",
@@ -591,7 +623,8 @@
     "drop_combo_old": "",
     "drop_combo_new": "",
     "drop_glory_high": "",
-    "drop_glory_low": ""
+    "drop_glory_low": "",
+    "drop_glory_player": ""
   },
   {
     "mapid": "虎臂水洞1",
@@ -609,7 +642,8 @@
     "drop_combo_old": "",
     "drop_combo_new": "",
     "drop_glory_high": "周通之光輝、虎威之光輝、子龍之光輝、神醫之光輝、男僕之光輝、太師之光輝、宋江之光輝、女僕之光輝",
-    "drop_glory_low": "錦衣之光輝、南蠻王之光輝、穆容之光輝、羲皇之光、臥龍之光輝、武宣光輝、昭烈光輝、潘淑光輝"
+    "drop_glory_low": "錦衣之光輝、南蠻王之光輝、穆容之光輝、羲皇之光、臥龍之光輝、武宣光輝、昭烈光輝、潘淑光輝",
+    "drop_glory_player": ""
   },
   {
     "mapid": "虎臂水洞2",
@@ -627,7 +661,8 @@
     "drop_combo_old": "廉貞、太陽、天機、太陰、武曲、天同、龍池、七殺、天魁",
     "drop_combo_new": "",
     "drop_glory_high": "周通之光輝、虎威之光輝、子龍之光輝、神醫之光輝、男僕之光輝、太師之光輝、宋江之光輝、女僕之光輝",
-    "drop_glory_low": "錦衣之光輝、南蠻王之光輝、穆容之光輝、羲皇之光、臥龍之光輝、武宣光輝、昭烈光輝、潘淑光輝"
+    "drop_glory_low": "錦衣之光輝、南蠻王之光輝、穆容之光輝、羲皇之光、臥龍之光輝、武宣光輝、昭烈光輝、潘淑光輝",
+    "drop_glory_player": ""
   },
   {
     "mapid": "地下通道",
@@ -645,7 +680,8 @@
     "drop_combo_old": "",
     "drop_combo_new": "",
     "drop_glory_high": "人公之光輝、益德之光輝、張苞之光輝、蔣敬之光輝、燕青之光輝、好人卡象徵、姬發之光輝、武吉之光輝、韋馱天之光",
-    "drop_glory_low": "項充之光輝、虎騎之勇、魔鬥之勇、程普之光輝、西門慶之光輝、荀攸之光輝、徐庶之光輝、周倉之光輝、茶茶之光輝、孔融之光輝、毒士之光輝"
+    "drop_glory_low": "項充之光輝、虎騎之勇、魔鬥之勇、程普之光輝、西門慶之光輝、荀攸之光輝、徐庶之光輝、周倉之光輝、茶茶之光輝、孔融之光輝、毒士之光輝",
+    "drop_glory_player": ""
   },
   {
     "mapid": "寧虎林",
@@ -663,7 +699,8 @@
     "drop_combo_old": "貪狼、天鉞、鈴、廉貞",
     "drop_combo_new": "天喜、陰煞、截空、天刑、三台、龍池、旬空、天空、天馬、台輔",
     "drop_glory_high": "",
-    "drop_glory_low": "武宣光輝、昭烈光輝、潘淑光輝"
+    "drop_glory_low": "武宣光輝、昭烈光輝、潘淑光輝",
+    "drop_glory_player": ""
   },
   {
     "mapid": "幽納古林",
@@ -681,7 +718,8 @@
     "drop_combo_old": "右弼",
     "drop_combo_new": "",
     "drop_glory_high": "劍器之光輝、馬超之光輝、曹洪之光輝、廖化之光輝、諸葛瑾之光輝、潘金蓮之光輝、鳳雛之光輝、孫權之光輝、安道全之光輝、兔女郎之光、青龍星之光",
-    "drop_glory_low": "安樂之光輝、石秀之光輝、蔣敬之光輝、魯肅之光輝、增長之光、周泰之光輝、武大郎之光輝、董平之光輝、馬忠之光輝、魏定國之光輝、張清之光輝、奉孝之光輝、呼延灼之光輝、糜夫人之光輝、李袞之光輝、劉唐之光輝、蕭讓之光輝、顧大嫂之光輝"
+    "drop_glory_low": "安樂之光輝、石秀之光輝、蔣敬之光輝、魯肅之光輝、增長之光、周泰之光輝、武大郎之光輝、董平之光輝、馬忠之光輝、魏定國之光輝、張清之光輝、奉孝之光輝、呼延灼之光輝、糜夫人之光輝、李袞之光輝、劉唐之光輝、蕭讓之光輝、顧大嫂之光輝",
+    "drop_glory_player": ""
   },
   {
     "mapid": "幽納原野1",
@@ -699,7 +737,8 @@
     "drop_combo_old": "天機、地空、太陽、巨門、地劫、天梁、天相",
     "drop_combo_new": "",
     "drop_glory_high": "土府星之光、藥王之光、蟠桃之光輝、惡鬼之光輝",
-    "drop_glory_low": "桃花星之光"
+    "drop_glory_low": "桃花星之光",
+    "drop_glory_player": ""
   },
   {
     "mapid": "幽納原野2",
@@ -717,7 +756,8 @@
     "drop_combo_old": "",
     "drop_combo_new": "",
     "drop_glory_high": "花榮之光輝、巖流秘劍之徵、于吉之光輝、響馬茜之光輝、九尾狐之徵",
-    "drop_glory_low": "白衣之光輝"
+    "drop_glory_low": "白衣之光輝",
+    "drop_glory_player": ""
   },
   {
     "mapid": "幽納洞窟1F",
@@ -735,7 +775,8 @@
     "drop_combo_old": "紫薇、武曲、天同、太陰、天府",
     "drop_combo_new": "",
     "drop_glory_high": "",
-    "drop_glory_low": ""
+    "drop_glory_low": "",
+    "drop_glory_player": ""
   },
   {
     "mapid": "幽納洞窟2F",
@@ -753,7 +794,8 @@
     "drop_combo_old": "天機、破軍",
     "drop_combo_new": "",
     "drop_glory_high": "",
-    "drop_glory_low": ""
+    "drop_glory_low": "",
+    "drop_glory_player": ""
   },
   {
     "mapid": "蒼龍洞",
@@ -771,7 +813,8 @@
     "drop_combo_old": "",
     "drop_combo_new": "",
     "drop_glory_high": "",
-    "drop_glory_low": ""
+    "drop_glory_low": "",
+    "drop_glory_player": ""
   },
   {
     "mapid": "江河鎮",
@@ -789,7 +832,8 @@
     "drop_combo_old": "",
     "drop_combo_new": "",
     "drop_glory_high": "",
-    "drop_glory_low": ""
+    "drop_glory_low": "",
+    "drop_glory_player": ""
   },
   {
     "mapid": "濯足澗1",
@@ -807,7 +851,8 @@
     "drop_combo_old": "",
     "drop_combo_new": "",
     "drop_glory_high": "",
-    "drop_glory_low": ""
+    "drop_glory_low": "",
+    "drop_glory_player": ""
   },
   {
     "mapid": "濯足澗2",
@@ -825,7 +870,8 @@
     "drop_combo_old": "",
     "drop_combo_new": "",
     "drop_glory_high": "",
-    "drop_glory_low": ""
+    "drop_glory_low": "",
+    "drop_glory_player": ""
   },
   {
     "mapid": "瑤琳仙境1",
@@ -843,7 +889,8 @@
     "drop_combo_old": "",
     "drop_combo_new": "",
     "drop_glory_high": "",
-    "drop_glory_low": ""
+    "drop_glory_low": "",
+    "drop_glory_player": ""
   },
   {
     "mapid": "瑤琳仙境2",
@@ -861,7 +908,8 @@
     "drop_combo_old": "",
     "drop_combo_new": "",
     "drop_glory_high": "",
-    "drop_glory_low": ""
+    "drop_glory_low": "",
+    "drop_glory_player": ""
   },
   {
     "mapid": "瑤琳仙境3",
@@ -879,7 +927,8 @@
     "drop_combo_old": "",
     "drop_combo_new": "",
     "drop_glory_high": "",
-    "drop_glory_low": ""
+    "drop_glory_low": "",
+    "drop_glory_player": ""
   },
   {
     "mapid": "川都",
@@ -897,7 +946,8 @@
     "drop_combo_old": "",
     "drop_combo_new": "",
     "drop_glory_high": "",
-    "drop_glory_low": ""
+    "drop_glory_low": "",
+    "drop_glory_player": ""
   },
   {
     "mapid": "西門關",
@@ -915,7 +965,8 @@
     "drop_combo_old": "",
     "drop_combo_new": "",
     "drop_glory_high": "張松之光輝、項充之光輝、豹騎之勇、虎騎之勇、魔鬥之勇",
-    "drop_glory_low": ""
+    "drop_glory_low": "",
+    "drop_glory_player": ""
   },
   {
     "mapid": "迷茫古墳",
@@ -933,7 +984,8 @@
     "drop_combo_old": "祿存、破軍、天馬、七殺、擎羊、天梁、陀羅、天相、火、巨門、天同、廉貞、天府",
     "drop_combo_new": "",
     "drop_glory_high": "周通之光輝、虎威之光輝、子龍之光輝、神醫之光輝、男僕之光輝、太師之光輝、宋江之光輝、女僕之光輝",
-    "drop_glory_low": "錦衣之光輝、南蠻王之光輝、穆容之光輝、羲皇之光、臥龍之光輝"
+    "drop_glory_low": "錦衣之光輝、南蠻王之光輝、穆容之光輝、羲皇之光、臥龍之光輝",
+    "drop_glory_player": ""
   },
   {
     "mapid": "臥虎高原",
@@ -951,7 +1003,8 @@
     "drop_combo_old": "",
     "drop_combo_new": "",
     "drop_glory_high": "周郎之光輝、孫二娘之光輝、盧俊義之光輝、阮小二之光輝、石秀之光輝、忍者之光、龍鬥之勇",
-    "drop_glory_low": "諸葛惠之光輝"
+    "drop_glory_low": "諸葛惠之光輝",
+    "drop_glory_player": ""
   },
   {
     "mapid": "妖邪洞初殿",
@@ -969,7 +1022,8 @@
     "drop_combo_old": "",
     "drop_combo_new": "",
     "drop_glory_high": "劍器之光輝、馬超之光輝、鳳雛之光輝、孫權之光輝、安道全之光輝、兔女郎之光、青龍星之光",
-    "drop_glory_low": "安樂之光輝、石秀之光輝、蔣敬之光輝、魯肅之光輝、增長之光、周泰之光輝、武大郎之光輝、馬忠之光輝、魏定國之光輝、張清之光輝、奉孝之光輝、呼延灼之光輝、糜夫人之光輝、李袞之光輝、劉唐之光輝、蕭讓之光輝、顧大嫂之光輝"
+    "drop_glory_low": "安樂之光輝、石秀之光輝、蔣敬之光輝、魯肅之光輝、增長之光、周泰之光輝、武大郎之光輝、馬忠之光輝、魏定國之光輝、張清之光輝、奉孝之光輝、呼延灼之光輝、糜夫人之光輝、李袞之光輝、劉唐之光輝、蕭讓之光輝、顧大嫂之光輝",
+    "drop_glory_player": ""
   },
   {
     "mapid": "妖邪洞惑殿",
@@ -987,7 +1041,8 @@
     "drop_combo_old": "",
     "drop_combo_new": "",
     "drop_glory_high": "劍器之光輝、馬超之光輝、鳳雛之光輝、孫權之光輝、安道全之光輝、兔女郎之光、青龍星之光",
-    "drop_glory_low": "安樂之光輝、石秀之光輝、蔣敬之光輝、魯肅之光輝、增長之光、周泰之光輝、武大郎之光輝、馬忠之光輝、魏定國之光輝、張清之光輝、奉孝之光輝、呼延灼之光輝、糜夫人之光輝、李袞之光輝、劉唐之光輝、蕭讓之光輝、顧大嫂之光輝"
+    "drop_glory_low": "安樂之光輝、石秀之光輝、蔣敬之光輝、魯肅之光輝、增長之光、周泰之光輝、武大郎之光輝、馬忠之光輝、魏定國之光輝、張清之光輝、奉孝之光輝、呼延灼之光輝、糜夫人之光輝、李袞之光輝、劉唐之光輝、蕭讓之光輝、顧大嫂之光輝",
+    "drop_glory_player": ""
   },
   {
     "mapid": "妖邪洞迷殿",
@@ -1005,7 +1060,8 @@
     "drop_combo_old": "",
     "drop_combo_new": "",
     "drop_glory_high": "劍器之光輝、馬超之光輝、鳳雛之光輝、孫權之光輝、安道全之光輝、兔女郎之光、青龍星之光",
-    "drop_glory_low": "安樂之光輝、石秀之光輝、蔣敬之光輝、魯肅之光輝、增長之光、周泰之光輝、武大郎之光輝、馬忠之光輝、魏定國之光輝、張清之光輝、奉孝之光輝、呼延灼之光輝、糜夫人之光輝、李袞之光輝、劉唐之光輝、蕭讓之光輝、顧大嫂之光輝"
+    "drop_glory_low": "安樂之光輝、石秀之光輝、蔣敬之光輝、魯肅之光輝、增長之光、周泰之光輝、武大郎之光輝、馬忠之光輝、魏定國之光輝、張清之光輝、奉孝之光輝、呼延灼之光輝、糜夫人之光輝、李袞之光輝、劉唐之光輝、蕭讓之光輝、顧大嫂之光輝",
+    "drop_glory_player": ""
   },
   {
     "mapid": "妖邪洞鎖殿",
@@ -1023,7 +1079,8 @@
     "drop_combo_old": "",
     "drop_combo_new": "",
     "drop_glory_high": "劍器之光輝、馬超之光輝、鳳雛之光輝、孫權之光輝、安道全之光輝、兔女郎之光、青龍星之光",
-    "drop_glory_low": "安樂之光輝、石秀之光輝、蔣敬之光輝、魯肅之光輝、增長之光、周泰之光輝、武大郎之光輝、馬忠之光輝、魏定國之光輝、張清之光輝、奉孝之光輝、呼延灼之光輝、糜夫人之光輝、李袞之光輝、劉唐之光輝、蕭讓之光輝、顧大嫂之光輝"
+    "drop_glory_low": "安樂之光輝、石秀之光輝、蔣敬之光輝、魯肅之光輝、增長之光、周泰之光輝、武大郎之光輝、馬忠之光輝、魏定國之光輝、張清之光輝、奉孝之光輝、呼延灼之光輝、糜夫人之光輝、李袞之光輝、劉唐之光輝、蕭讓之光輝、顧大嫂之光輝",
+    "drop_glory_player": ""
   },
   {
     "mapid": "妖邪洞犧殿",
@@ -1041,7 +1098,8 @@
     "drop_combo_old": "",
     "drop_combo_new": "",
     "drop_glory_high": "",
-    "drop_glory_low": ""
+    "drop_glory_low": "",
+    "drop_glory_player": ""
   },
   {
     "mapid": "妖邪洞曲腸道",
@@ -1059,7 +1117,8 @@
     "drop_combo_old": "",
     "drop_combo_new": "",
     "drop_glory_high": "劍器之光輝、馬超之光輝、鳳雛之光輝、孫權之光輝、安道全之光輝、兔女郎之光、青龍星之光",
-    "drop_glory_low": "安樂之光輝、石秀之光輝、蔣敬之光輝、魯肅之光輝、增長之光、周泰之光輝、武大郎之光輝、馬忠之光輝、魏定國之光輝、張清之光輝、奉孝之光輝、呼延灼之光輝、糜夫人之光輝、李袞之光輝、劉唐之光輝、蕭讓之光輝、顧大嫂之光輝"
+    "drop_glory_low": "安樂之光輝、石秀之光輝、蔣敬之光輝、魯肅之光輝、增長之光、周泰之光輝、武大郎之光輝、馬忠之光輝、魏定國之光輝、張清之光輝、奉孝之光輝、呼延灼之光輝、糜夫人之光輝、李袞之光輝、劉唐之光輝、蕭讓之光輝、顧大嫂之光輝",
+    "drop_glory_player": ""
   },
   {
     "mapid": "妖邪洞拜妖壇",
@@ -1077,7 +1136,8 @@
     "drop_combo_old": "",
     "drop_combo_new": "",
     "drop_glory_high": "劍器之光輝、馬超之光輝、鳳雛之光輝、孫權之光輝、安道全之光輝、兔女郎之光、青龍星之光",
-    "drop_glory_low": "安樂之光輝、石秀之光輝、蔣敬之光輝、魯肅之光輝、增長之光、周泰之光輝、武大郎之光輝、馬忠之光輝、魏定國之光輝、張清之光輝、奉孝之光輝、呼延灼之光輝、糜夫人之光輝、李袞之光輝、劉唐之光輝、蕭讓之光輝、顧大嫂之光輝"
+    "drop_glory_low": "安樂之光輝、石秀之光輝、蔣敬之光輝、魯肅之光輝、增長之光、周泰之光輝、武大郎之光輝、馬忠之光輝、魏定國之光輝、張清之光輝、奉孝之光輝、呼延灼之光輝、糜夫人之光輝、李袞之光輝、劉唐之光輝、蕭讓之光輝、顧大嫂之光輝",
+    "drop_glory_player": ""
   },
   {
     "mapid": "地下墳場",
@@ -1095,7 +1155,8 @@
     "drop_combo_old": "左輔、右弼、文昌、文曲、祿存、天馬、擎羊、太陽、武曲、鈴、天相、天梁、破軍",
     "drop_combo_new": "",
     "drop_glory_high": "毒士之光輝、警花之光、袁紹之光輝、小霸王之光輝、祝融之光輝、顏良之光輝、阮小七之光輝",
-    "drop_glory_low": "孫權之光輝、青龍星之光、瓊霄之光輝、火府星之光、麒麟之光輝、天使之光、李逵之光輝、執年歲君之徵、智多星之光輝"
+    "drop_glory_low": "孫權之光輝、青龍星之光、瓊霄之光輝、火府星之光、麒麟之光輝、天使之光、李逵之光輝、執年歲君之徵、智多星之光輝",
+    "drop_glory_player": ""
   },
   {
     "mapid": "荒骨高原",
@@ -1113,7 +1174,8 @@
     "drop_combo_old": "",
     "drop_combo_new": "",
     "drop_glory_high": "周郎之光輝、孫二娘之光輝、盧俊義之光輝、阮小二之光輝、石秀之光輝、忍者之光、龍鬥之勇",
-    "drop_glory_low": "諸葛惠之光輝"
+    "drop_glory_low": "諸葛惠之光輝",
+    "drop_glory_player": ""
   },
   {
     "mapid": "巨門關",
@@ -1131,7 +1193,8 @@
     "drop_combo_old": "",
     "drop_combo_new": "",
     "drop_glory_high": "周郎之光輝、孫二娘之光輝、盧俊義之光輝、阮小二之光輝、石秀之光輝、忍者之光、龍鬥之勇",
-    "drop_glory_low": "諸葛惠之光輝"
+    "drop_glory_low": "諸葛惠之光輝",
+    "drop_glory_player": ""
   },
   {
     "mapid": "可汗沙漠",
@@ -1149,7 +1212,8 @@
     "drop_combo_old": "",
     "drop_combo_new": "",
     "drop_glory_high": "人公之光輝、益德之光輝、張苞之光輝、蔣敬之光輝、燕青之光輝、好人卡象徵、姬發之光輝、武吉之光輝、韋馱天之光",
-    "drop_glory_low": "項充之光輝、虎騎之勇、魔鬥之勇、程普之光輝、西門慶之光輝、荀攸之光輝、徐庶之光輝、周倉之光輝、茶茶之光輝、孔融之光輝、毒士之光輝"
+    "drop_glory_low": "項充之光輝、虎騎之勇、魔鬥之勇、程普之光輝、西門慶之光輝、荀攸之光輝、徐庶之光輝、周倉之光輝、茶茶之光輝、孔融之光輝、毒士之光輝",
+    "drop_glory_player": ""
   },
   {
     "mapid": "陽燧山",
@@ -1167,7 +1231,8 @@
     "drop_combo_old": "",
     "drop_combo_new": "",
     "drop_glory_high": "茶茶之光輝、雲中子光輝、天喜之光、通天玉晨之徵、玉琵琶之徵、司馬懿之光輝、火府星之光",
-    "drop_glory_low": "周郎之光輝、水靈之光、二郎之徵、史進之光輝、文曲之光、安道全之光輝、法正之光輝、紅鸞星之光、惡魔之光輝、楊鳳兒之光輝、關銀屏之光輝、太師之光輝、惡鬼之光輝"
+    "drop_glory_low": "周郎之光輝、水靈之光、二郎之徵、史進之光輝、文曲之光、安道全之光輝、法正之光輝、紅鸞星之光、惡魔之光輝、楊鳳兒之光輝、關銀屏之光輝、太師之光輝、惡鬼之光輝",
+    "drop_glory_player": ""
   },
   {
     "mapid": "陽燧山第一層",
@@ -1185,7 +1250,8 @@
     "drop_combo_old": "",
     "drop_combo_new": "",
     "drop_glory_high": "茶茶之光輝、雲中子光輝、天喜之光、通天玉晨之徵、玉琵琶之徵、司馬懿之光輝、火府星之光",
-    "drop_glory_low": "周郎之光輝、水靈之光、二郎之徵、史進之光輝、文曲之光、安道全之光輝、法正之光輝、紅鸞星之光、惡魔之光輝、楊鳳兒之光輝、關銀屏之光輝、太師之光輝、惡鬼之光輝"
+    "drop_glory_low": "周郎之光輝、水靈之光、二郎之徵、史進之光輝、文曲之光、安道全之光輝、法正之光輝、紅鸞星之光、惡魔之光輝、楊鳳兒之光輝、關銀屏之光輝、太師之光輝、惡鬼之光輝",
+    "drop_glory_player": ""
   },
   {
     "mapid": "陽燧山第二層",
@@ -1203,7 +1269,8 @@
     "drop_combo_old": "祿存、七殺、擎羊",
     "drop_combo_new": "紅鸞、陰煞、天使、台輔、三台、天貴、天廚、鳳閣、天姚、寡宿",
     "drop_glory_high": "茶茶之光輝、雲中子光輝、天喜之光、通天玉晨之徵、玉琵琶之徵、司馬懿之光輝、火府星之光",
-    "drop_glory_low": "周郎之光輝、水靈之光、二郎之徵、史進之光輝、文曲之光、安道全之光輝、法正之光輝、紅鸞星之光、惡魔之光輝、楊鳳兒之光輝、關銀屏之光輝、太師之光輝、惡鬼之光輝"
+    "drop_glory_low": "周郎之光輝、水靈之光、二郎之徵、史進之光輝、文曲之光、安道全之光輝、法正之光輝、紅鸞星之光、惡魔之光輝、楊鳳兒之光輝、關銀屏之光輝、太師之光輝、惡鬼之光輝",
+    "drop_glory_player": ""
   },
   {
     "mapid": "烈焰山徑",
@@ -1221,7 +1288,8 @@
     "drop_combo_old": "",
     "drop_combo_new": "",
     "drop_glory_high": "楊修之光輝、張遼之光輝、蕭讓之光輝、天師道之光輝、貂蟬之光輝、雲長之光輝、穆容之光輝",
-    "drop_glory_low": "黃月英之光輝、林沖之光輝、夏侯惇之光輝、昭姬之光輝"
+    "drop_glory_low": "黃月英之光輝、林沖之光輝、夏侯惇之光輝、昭姬之光輝",
+    "drop_glory_player": ""
   },
   {
     "mapid": "烈焰山腳",
@@ -1239,7 +1307,8 @@
     "drop_combo_old": "",
     "drop_combo_new": "",
     "drop_glory_high": "楊修之光輝、張遼之光輝、蕭讓之光輝、天師道之光輝、貂蟬之光輝、雲長之光輝、穆容之光輝",
-    "drop_glory_low": "黃月英之光輝、林沖之光輝、夏侯惇之光輝、昭姬之光輝"
+    "drop_glory_low": "黃月英之光輝、林沖之光輝、夏侯惇之光輝、昭姬之光輝",
+    "drop_glory_player": ""
   },
   {
     "mapid": "烈焰山谷1",
@@ -1257,7 +1326,8 @@
     "drop_combo_old": "",
     "drop_combo_new": "",
     "drop_glory_high": "楊修之光輝、張遼之光輝、蕭讓之光輝、天師道之光輝、貂蟬之光輝、雲長之光輝、穆容之光輝",
-    "drop_glory_low": "黃月英之光輝、林沖之光輝、夏侯惇之光輝、昭姬之光輝"
+    "drop_glory_low": "黃月英之光輝、林沖之光輝、夏侯惇之光輝、昭姬之光輝",
+    "drop_glory_player": ""
   },
   {
     "mapid": "烈焰山谷2",
@@ -1275,7 +1345,8 @@
     "drop_combo_old": "",
     "drop_combo_new": "",
     "drop_glory_high": "楊修之光輝、張遼之光輝、蕭讓之光輝、天師道之光輝、貂蟬之光輝、雲長之光輝、穆容之光輝",
-    "drop_glory_low": "黃月英之光輝、林沖之光輝、夏侯惇之光輝、昭姬之光輝"
+    "drop_glory_low": "黃月英之光輝、林沖之光輝、夏侯惇之光輝、昭姬之光輝",
+    "drop_glory_player": ""
   },
   {
     "mapid": "烈焰山谷3",
@@ -1293,7 +1364,8 @@
     "drop_combo_old": "",
     "drop_combo_new": "",
     "drop_glory_high": "楊修之光輝、張遼之光輝、蕭讓之光輝、天師道之光輝、貂蟬之光輝、雲長之光輝、穆容之光輝",
-    "drop_glory_low": "黃月英之光輝、林沖之光輝、夏侯惇之光輝、昭姬之光輝"
+    "drop_glory_low": "黃月英之光輝、林沖之光輝、夏侯惇之光輝、昭姬之光輝",
+    "drop_glory_player": ""
   },
   {
     "mapid": "烈焰山峰",
@@ -1311,7 +1383,8 @@
     "drop_combo_old": "",
     "drop_combo_new": "",
     "drop_glory_high": "楊修之光輝、張遼之光輝、蕭讓之光輝、天師道之光輝、貂蟬之光輝、雲長之光輝、穆容之光輝",
-    "drop_glory_low": "黃月英之光輝、林沖之光輝、夏侯惇之光輝、昭姬之光輝"
+    "drop_glory_low": "黃月英之光輝、林沖之光輝、夏侯惇之光輝、昭姬之光輝",
+    "drop_glory_player": ""
   },
   {
     "mapid": "烈焰秘境1",
@@ -1329,7 +1402,8 @@
     "drop_combo_old": "",
     "drop_combo_new": "",
     "drop_glory_high": "陸遜之光輝、龐德之光輝、二天一流之徵、臥龍之光輝、無雙的威光",
-    "drop_glory_low": "太公望之光輝、虎癡之光輝、古佛之徵"
+    "drop_glory_low": "太公望之光輝、虎癡之光輝、古佛之徵",
+    "drop_glory_player": ""
   },
   {
     "mapid": "烈焰秘境2",
@@ -1347,7 +1421,8 @@
     "drop_combo_old": "",
     "drop_combo_new": "",
     "drop_glory_high": "陸遜之光輝、龐德之光輝、二天一流之徵、臥龍之光輝、無雙的威光",
-    "drop_glory_low": "太公望之光輝、虎癡之光輝、古佛之徵"
+    "drop_glory_low": "太公望之光輝、虎癡之光輝、古佛之徵",
+    "drop_glory_player": ""
   },
   {
     "mapid": "昌碇",
@@ -1365,7 +1440,8 @@
     "drop_combo_old": "",
     "drop_combo_new": "",
     "drop_glory_high": "",
-    "drop_glory_low": ""
+    "drop_glory_low": "",
+    "drop_glory_player": ""
   },
   {
     "mapid": "神道",
@@ -1383,7 +1459,8 @@
     "drop_combo_old": "",
     "drop_combo_new": "",
     "drop_glory_high": "",
-    "drop_glory_low": ""
+    "drop_glory_low": "",
+    "drop_glory_player": ""
   },
   {
     "mapid": "皇陵前殿",
@@ -1401,7 +1478,8 @@
     "drop_combo_old": "陀羅、巨門、鈴",
     "drop_combo_new": "三台、天才、天馬、天使、天刑",
     "drop_glory_high": "周倉之光輝、分水之光輝、小蘿之光輝、楊志之光輝、魔精之光、紅鸞星之光、瓊霄之光輝",
-    "drop_glory_low": "王佐之光輝、人公之光輝、七殺星之光、通天玉晨之徵、金龍如意之徵、芙蓉之光輝、祝融之光輝、貂蟬之光輝、雲長之光輝、神醫之光輝"
+    "drop_glory_low": "王佐之光輝、人公之光輝、七殺星之光、通天玉晨之徵、金龍如意之徵、芙蓉之光輝、祝融之光輝、貂蟬之光輝、雲長之光輝、神醫之光輝",
+    "drop_glory_player": ""
   },
   {
     "mapid": "皇陵中殿",
@@ -1419,7 +1497,8 @@
     "drop_combo_old": "鈴、陀羅、巨門",
     "drop_combo_new": "天福、天貴、天哭、天喜、破碎、天空、天壽、封誥、截空",
     "drop_glory_high": "周倉之光輝、分水之光輝、小蘿之光輝、楊志之光輝、魔精之光、紅鸞星之光、瓊霄之光輝",
-    "drop_glory_low": "王佐之光輝、人公之光輝、七殺星之光、通天玉晨之徵、金龍如意之徵、芙蓉之光輝、祝融之光輝、貂蟬之光輝、雲長之光輝、神醫之光輝"
+    "drop_glory_low": "王佐之光輝、人公之光輝、七殺星之光、通天玉晨之徵、金龍如意之徵、芙蓉之光輝、祝融之光輝、貂蟬之光輝、雲長之光輝、神醫之光輝",
+    "drop_glory_player": ""
   },
   {
     "mapid": "皇陵迴廊",
@@ -1437,7 +1516,8 @@
     "drop_combo_old": "貪狼、巨門、鈴、陀羅",
     "drop_combo_new": "紅鸞、解神、封誥、截空、天官、蜚廉、天使、天姚、旬空、天廚",
     "drop_glory_high": "周倉之光輝、分水之光輝、小蘿之光輝、楊志之光輝、魔精之光、紅鸞星之光、瓊霄之光輝",
-    "drop_glory_low": "王佐之光輝、人公之光輝、七殺星之光、通天玉晨之徵、金龍如意之徵、芙蓉之光輝、祝融之光輝、貂蟬之光輝、雲長之光輝、神醫之光輝"
+    "drop_glory_low": "王佐之光輝、人公之光輝、七殺星之光、通天玉晨之徵、金龍如意之徵、芙蓉之光輝、祝融之光輝、貂蟬之光輝、雲長之光輝、神醫之光輝",
+    "drop_glory_player": ""
   },
   {
     "mapid": "皇陵通道",
@@ -1455,7 +1535,8 @@
     "drop_combo_old": "鈴、陀羅、貪狼",
     "drop_combo_new": "",
     "drop_glory_high": "周倉之光輝、分水之光輝、小蘿之光輝、楊志之光輝、魔精之光、紅鸞星之光、瓊霄之光輝",
-    "drop_glory_low": "王佐之光輝、人公之光輝、七殺星之光、通天玉晨之徵、金龍如意之徵、芙蓉之光輝、祝融之光輝、貂蟬之光輝、雲長之光輝、神醫之光輝"
+    "drop_glory_low": "王佐之光輝、人公之光輝、七殺星之光、通天玉晨之徵、金龍如意之徵、芙蓉之光輝、祝融之光輝、貂蟬之光輝、雲長之光輝、神醫之光輝",
+    "drop_glory_player": ""
   },
   {
     "mapid": "皇陵正殿",
@@ -1473,7 +1554,8 @@
     "drop_combo_old": "鈴、貪狼、陀羅",
     "drop_combo_new": "蜚廉、天巫、寡宿、天貴",
     "drop_glory_high": "周倉之光輝、分水之光輝、小蘿之光輝、楊志之光輝、魔精之光、紅鸞星之光、瓊霄之光輝",
-    "drop_glory_low": "王佐之光輝、人公之光輝、七殺星之光、通天玉晨之徵、金龍如意之徵、芙蓉之光輝、祝融之光輝、貂蟬之光輝、雲長之光輝、神醫之光輝"
+    "drop_glory_low": "王佐之光輝、人公之光輝、七殺星之光、通天玉晨之徵、金龍如意之徵、芙蓉之光輝、祝融之光輝、貂蟬之光輝、雲長之光輝、神醫之光輝",
+    "drop_glory_player": ""
   },
   {
     "mapid": "玄冥煉獄",
@@ -1491,7 +1573,8 @@
     "drop_combo_old": "天魁、鈴、巨門",
     "drop_combo_new": "三台、旬中、蜚廉、天巫、天使、天貴",
     "drop_glory_high": "西門慶之光輝、高俅之光輝、宋徽宗之光輝、四聖大元帥錄",
-    "drop_glory_low": "搏浪之光輝、小蘿之光輝、夏侯淵之光輝、樊瑞之光輝、雲中子光輝、貌端星之光"
+    "drop_glory_low": "搏浪之光輝、小蘿之光輝、夏侯淵之光輝、樊瑞之光輝、雲中子光輝、貌端星之光",
+    "drop_glory_player": ""
   },
   {
     "mapid": "鬼煞洞第一層",
@@ -1509,7 +1592,8 @@
     "drop_combo_old": "",
     "drop_combo_new": "",
     "drop_glory_high": "徐庶之光輝、張順之光輝、奉孝之光輝、雅帝之光輝、孫尚香之光輝、巫毒之光",
-    "drop_glory_low": "阮小二之光輝、燕青之光輝、炳靈公之光、妖鬥之勇、兔女郎之光、天喜之光、江東猛虎之光輝、小霸王之光輝"
+    "drop_glory_low": "阮小二之光輝、燕青之光輝、炳靈公之光、妖鬥之勇、兔女郎之光、天喜之光、江東猛虎之光輝、小霸王之光輝",
+    "drop_glory_player": ""
   },
   {
     "mapid": "鬼煞洞第二層",
@@ -1527,7 +1611,8 @@
     "drop_combo_old": "",
     "drop_combo_new": "",
     "drop_glory_high": "徐庶之光輝、張順之光輝、奉孝之光輝、雅帝之光輝、孫尚香之光輝、巫毒之光",
-    "drop_glory_low": "阮小二之光輝、燕青之光輝、炳靈公之光、妖鬥之勇、兔女郎之光、天喜之光、江東猛虎之光輝、小霸王之光輝"
+    "drop_glory_low": "阮小二之光輝、燕青之光輝、炳靈公之光、妖鬥之勇、兔女郎之光、天喜之光、江東猛虎之光輝、小霸王之光輝",
+    "drop_glory_player": ""
   },
   {
     "mapid": "鬼煞洞第三層",
@@ -1545,7 +1630,8 @@
     "drop_combo_old": "文曲、天馬",
     "drop_combo_new": "",
     "drop_glory_high": "徐庶之光輝、張順之光輝、奉孝之光輝、雅帝之光輝、孫尚香之光輝、巫毒之光",
-    "drop_glory_low": "阮小二之光輝、燕青之光輝、炳靈公之光、妖鬥之勇、兔女郎之光、天喜之光、江東猛虎之光輝、小霸王之光輝"
+    "drop_glory_low": "阮小二之光輝、燕青之光輝、炳靈公之光、妖鬥之勇、兔女郎之光、天喜之光、江東猛虎之光輝、小霸王之光輝",
+    "drop_glory_player": ""
   },
   {
     "mapid": "北邙山",
@@ -1563,7 +1649,8 @@
     "drop_combo_old": "",
     "drop_combo_new": "",
     "drop_glory_high": "周郎之光輝、孫二娘之光輝、盧俊義之光輝、阮小二之光輝、石秀之光輝、忍者之光、龍鬥之勇",
-    "drop_glory_low": "諸葛惠之光輝"
+    "drop_glory_low": "諸葛惠之光輝",
+    "drop_glory_player": ""
   },
   {
     "mapid": "北山靈泉",
@@ -1581,7 +1668,8 @@
     "drop_combo_old": "",
     "drop_combo_new": "",
     "drop_glory_high": "",
-    "drop_glory_low": ""
+    "drop_glory_low": "",
+    "drop_glory_player": ""
   },
   {
     "mapid": "琅琊山",
@@ -1599,7 +1687,8 @@
     "drop_combo_old": "",
     "drop_combo_new": "",
     "drop_glory_high": "田豐之光輝、錦衣之光輝、王佐之光輝、黃月英之光輝、馬良之光輝、小喬之光輝",
-    "drop_glory_low": "楊修之光輝"
+    "drop_glory_low": "楊修之光輝",
+    "drop_glory_player": ""
   },
   {
     "mapid": "飛鶴山",
@@ -1617,7 +1706,8 @@
     "drop_combo_old": "",
     "drop_combo_new": "",
     "drop_glory_high": "人公之光輝、益德之光輝、張苞之光輝、蔣敬之光輝、燕青之光輝、好人卡象徵、姬發之光輝、武吉之光輝、韋馱天之光",
-    "drop_glory_low": "項充之光輝、虎騎之勇、魔鬥之勇、程普之光輝、西門慶之光輝、荀攸之光輝、徐庶之光輝、周倉之光輝、茶茶之光輝、孔融之光輝、毒士之光輝"
+    "drop_glory_low": "項充之光輝、虎騎之勇、魔鬥之勇、程普之光輝、西門慶之光輝、荀攸之光輝、徐庶之光輝、周倉之光輝、茶茶之光輝、孔融之光輝、毒士之光輝",
+    "drop_glory_player": ""
   },
   {
     "mapid": "赤羽村",
@@ -1635,7 +1725,8 @@
     "drop_combo_old": "",
     "drop_combo_new": "",
     "drop_glory_high": "",
-    "drop_glory_low": ""
+    "drop_glory_low": "",
+    "drop_glory_player": ""
   },
   {
     "mapid": "葬心塚",
@@ -1653,7 +1744,8 @@
     "drop_combo_old": "",
     "drop_combo_new": "",
     "drop_glory_high": "救世主之光、獵豹之光輝、文曲之光",
-    "drop_glory_low": "聖鬥之光輝、瓊英之光輝、多聞之光、托塔之光輝、夏麗之光輝、高俅之光輝、朱武之光輝"
+    "drop_glory_low": "聖鬥之光輝、瓊英之光輝、多聞之光、托塔之光輝、夏麗之光輝、高俅之光輝、朱武之光輝",
+    "drop_glory_player": ""
   },
   {
     "mapid": "祈願湖",
@@ -1671,7 +1763,8 @@
     "drop_combo_old": "",
     "drop_combo_new": "",
     "drop_glory_high": "救世主之光、獵豹之光輝、文曲之光",
-    "drop_glory_low": "聖鬥之光輝、瓊英之光輝、多聞之光、托塔之光輝、夏麗之光輝、高俅之光輝、朱武之光輝"
+    "drop_glory_low": "聖鬥之光輝、瓊英之光輝、多聞之光、托塔之光輝、夏麗之光輝、高俅之光輝、朱武之光輝",
+    "drop_glory_player": ""
   },
   {
     "mapid": "同心林",
@@ -1689,7 +1782,8 @@
     "drop_combo_old": "",
     "drop_combo_new": "",
     "drop_glory_high": "救世主之光、獵豹之光輝、文曲之光",
-    "drop_glory_low": "聖鬥之光輝、瓊英之光輝、多聞之光、托塔之光輝、夏麗之光輝、高俅之光輝、朱武之光輝"
+    "drop_glory_low": "聖鬥之光輝、瓊英之光輝、多聞之光、托塔之光輝、夏麗之光輝、高俅之光輝、朱武之光輝",
+    "drop_glory_player": ""
   },
   {
     "mapid": "哭腸崖",
@@ -1707,7 +1801,8 @@
     "drop_combo_old": "",
     "drop_combo_new": "",
     "drop_glory_high": "救世主之光、獵豹之光輝、文曲之光",
-    "drop_glory_low": "聖鬥之光輝、瓊英之光輝、多聞之光、托塔之光輝、夏麗之光輝、高俅之光輝、朱武之光輝"
+    "drop_glory_low": "聖鬥之光輝、瓊英之光輝、多聞之光、托塔之光輝、夏麗之光輝、高俅之光輝、朱武之光輝",
+    "drop_glory_player": ""
   },
   {
     "mapid": "藏玄洞第一層",
@@ -1725,7 +1820,8 @@
     "drop_combo_old": "文曲",
     "drop_combo_new": "",
     "drop_glory_high": "黃蓋之光輝、李袞之光輝、木鹿之光輝、芙蓉之光輝、天齊仁之光、楊鳳兒之光輝、單廷珪之光輝、白衣之光輝",
-    "drop_glory_low": ""
+    "drop_glory_low": "",
+    "drop_glory_player": ""
   },
   {
     "mapid": "藏玄洞第二層",
@@ -1743,7 +1839,8 @@
     "drop_combo_old": "",
     "drop_combo_new": "",
     "drop_glory_high": "黃蓋之光輝、李袞之光輝、木鹿之光輝、芙蓉之光輝、天齊仁之光、楊鳳兒之光輝、單廷珪之光輝、白衣之光輝",
-    "drop_glory_low": ""
+    "drop_glory_low": "",
+    "drop_glory_player": ""
   },
   {
     "mapid": "藏玄洞第三層",
@@ -1761,7 +1858,8 @@
     "drop_combo_old": "",
     "drop_combo_new": "",
     "drop_glory_high": "黃蓋之光輝、李袞之光輝、木鹿之光輝、芙蓉之光輝、天齊仁之光、楊鳳兒之光輝、單廷珪之光輝、白衣之光輝",
-    "drop_glory_low": ""
+    "drop_glory_low": "",
+    "drop_glory_player": ""
   },
   {
     "mapid": "藏玄洞第四層",
@@ -1779,7 +1877,8 @@
     "drop_combo_old": "",
     "drop_combo_new": "",
     "drop_glory_high": "黃蓋之光輝、李袞之光輝、木鹿之光輝、芙蓉之光輝、天齊仁之光、楊鳳兒之光輝、單廷珪之光輝、白衣之光輝",
-    "drop_glory_low": ""
+    "drop_glory_low": "",
+    "drop_glory_player": ""
   },
   {
     "mapid": "藏玄洞第五層",
@@ -1797,7 +1896,8 @@
     "drop_combo_old": "右弼、文曲",
     "drop_combo_new": "",
     "drop_glory_high": "黃蓋之光輝、李袞之光輝、木鹿之光輝、芙蓉之光輝、天齊仁之光、楊鳳兒之光輝、單廷珪之光輝、白衣之光輝",
-    "drop_glory_low": ""
+    "drop_glory_low": "",
+    "drop_glory_player": ""
   },
   {
     "mapid": "藏玄洞第六層",
@@ -1815,7 +1915,8 @@
     "drop_combo_old": "文曲、右弼、左輔",
     "drop_combo_new": "台輔、天壽",
     "drop_glory_high": "黃蓋之光輝、李袞之光輝、木鹿之光輝、芙蓉之光輝、天齊仁之光、楊鳳兒之光輝、單廷珪之光輝、白衣之光輝",
-    "drop_glory_low": ""
+    "drop_glory_low": "",
+    "drop_glory_player": ""
   },
   {
     "mapid": "藏玄洞第七層",
@@ -1833,7 +1934,8 @@
     "drop_combo_old": "",
     "drop_combo_new": "",
     "drop_glory_high": "黃蓋之光輝、李袞之光輝、木鹿之光輝、芙蓉之光輝、天齊仁之光、楊鳳兒之光輝、單廷珪之光輝、白衣之光輝",
-    "drop_glory_low": ""
+    "drop_glory_low": "",
+    "drop_glory_player": ""
   },
   {
     "mapid": "梁山",
@@ -1851,7 +1953,8 @@
     "drop_combo_old": "",
     "drop_combo_new": "",
     "drop_glory_high": "",
-    "drop_glory_low": ""
+    "drop_glory_low": "",
+    "drop_glory_player": ""
   },
   {
     "mapid": "蕈菇林",
@@ -1869,7 +1972,8 @@
     "drop_combo_old": "",
     "drop_combo_new": "",
     "drop_glory_high": "田豐之光輝、錦衣之光輝、王佐之光輝、黃月英之光輝、馬良之光輝、小喬之光輝",
-    "drop_glory_low": "楊修之光輝"
+    "drop_glory_low": "楊修之光輝",
+    "drop_glory_player": ""
   },
   {
     "mapid": "翠竹林",
@@ -1887,7 +1991,8 @@
     "drop_combo_old": "",
     "drop_combo_new": "",
     "drop_glory_high": "田豐之光輝、錦衣之光輝、王佐之光輝、黃月英之光輝、馬良之光輝、小喬之光輝",
-    "drop_glory_low": "楊修之光輝"
+    "drop_glory_low": "楊修之光輝",
+    "drop_glory_player": ""
   },
   {
     "mapid": "赤松林",
@@ -1905,7 +2010,8 @@
     "drop_combo_old": "右弼",
     "drop_combo_new": "",
     "drop_glory_high": "人公之光輝、益德之光輝、張苞之光輝、蔣敬之光輝、燕青之光輝、好人卡象徵、姬發之光輝、武吉之光輝、韋馱天之光",
-    "drop_glory_low": "項充之光輝、虎騎之勇、魔鬥之勇、程普之光輝、西門慶之光輝、荀攸之光輝、徐庶之光輝、周倉之光輝、茶茶之光輝、孔融之光輝、毒士之光輝"
+    "drop_glory_low": "項充之光輝、虎騎之勇、魔鬥之勇、程普之光輝、西門慶之光輝、荀攸之光輝、徐庶之光輝、周倉之光輝、茶茶之光輝、孔融之光輝、毒士之光輝",
+    "drop_glory_player": ""
   },
   {
     "mapid": "修羅洞_入口",
@@ -1923,7 +2029,8 @@
     "drop_combo_old": "七殺、陀羅、天馬",
     "drop_combo_new": "",
     "drop_glory_high": "阮小五之光輝、朱武之光輝、搏浪之光輝、張清之光輝、彩衣之光輝、林沖之光輝、扈三娘之光輝、羅真人之光輝",
-    "drop_glory_low": "潘金蓮之光輝、木鹿之光輝、張魯之光輝、天師道之光輝、魏延之光輝、孟德之光輝、蟠桃之光輝、花榮之光輝、龐德之光輝"
+    "drop_glory_low": "潘金蓮之光輝、木鹿之光輝、張魯之光輝、天師道之光輝、魏延之光輝、孟德之光輝、蟠桃之光輝、花榮之光輝、龐德之光輝",
+    "drop_glory_player": ""
   },
   {
     "mapid": "修羅洞_迷惘",
@@ -1941,7 +2048,8 @@
     "drop_combo_old": "七殺",
     "drop_combo_new": "",
     "drop_glory_high": "阮小五之光輝、朱武之光輝、搏浪之光輝、張清之光輝、彩衣之光輝、林沖之光輝、扈三娘之光輝、羅真人之光輝",
-    "drop_glory_low": "潘金蓮之光輝、木鹿之光輝、張魯之光輝、天師道之光輝、魏延之光輝、孟德之光輝、蟠桃之光輝、花榮之光輝、龐德之光輝"
+    "drop_glory_low": "潘金蓮之光輝、木鹿之光輝、張魯之光輝、天師道之光輝、魏延之光輝、孟德之光輝、蟠桃之光輝、花榮之光輝、龐德之光輝",
+    "drop_glory_player": ""
   },
   {
     "mapid": "修羅洞_狂亂",
@@ -1959,7 +2067,8 @@
     "drop_combo_old": "陀羅、七殺、天馬",
     "drop_combo_new": "",
     "drop_glory_high": "阮小五之光輝、朱武之光輝、搏浪之光輝、張清之光輝、彩衣之光輝、林沖之光輝、扈三娘之光輝、羅真人之光輝",
-    "drop_glory_low": "潘金蓮之光輝、木鹿之光輝、張魯之光輝、天師道之光輝、魏延之光輝、孟德之光輝、蟠桃之光輝、花榮之光輝、龐德之光輝"
+    "drop_glory_low": "潘金蓮之光輝、木鹿之光輝、張魯之光輝、天師道之光輝、魏延之光輝、孟德之光輝、蟠桃之光輝、花榮之光輝、龐德之光輝",
+    "drop_glory_player": ""
   },
   {
     "mapid": "修羅洞_煉獄",
@@ -1977,7 +2086,8 @@
     "drop_combo_old": "天馬、陀羅、七殺",
     "drop_combo_new": "天喜、陰煞、天官、旬中、天使、孤辰",
     "drop_glory_high": "阮小五之光輝、朱武之光輝、搏浪之光輝、張清之光輝、彩衣之光輝、林沖之光輝、扈三娘之光輝、羅真人之光輝",
-    "drop_glory_low": "潘金蓮之光輝、木鹿之光輝、張魯之光輝、天師道之光輝、魏延之光輝、孟德之光輝、蟠桃之光輝、花榮之光輝、龐德之光輝"
+    "drop_glory_low": "潘金蓮之光輝、木鹿之光輝、張魯之光輝、天師道之光輝、魏延之光輝、孟德之光輝、蟠桃之光輝、花榮之光輝、龐德之光輝",
+    "drop_glory_player": ""
   },
   {
     "mapid": "修羅洞_深淵",
@@ -1995,7 +2105,8 @@
     "drop_combo_old": "",
     "drop_combo_new": "",
     "drop_glory_high": "",
-    "drop_glory_low": ""
+    "drop_glory_low": "",
+    "drop_glory_player": ""
   },
   {
     "mapid": "琉球仙島",
@@ -2013,7 +2124,8 @@
     "drop_combo_old": "巨門、天魁、鈴",
     "drop_combo_new": "",
     "drop_glory_high": "西門慶之光輝、高俅之光輝、宋徽宗之光輝、四聖大元帥錄",
-    "drop_glory_low": "搏浪之光輝、小蘿之光輝、夏侯淵之光輝、樊瑞之光輝、雲中子光輝、貌端星之光"
+    "drop_glory_low": "搏浪之光輝、小蘿之光輝、夏侯淵之光輝、樊瑞之光輝、雲中子光輝、貌端星之光",
+    "drop_glory_player": ""
   },
   {
     "mapid": "雲海村",
@@ -2031,7 +2143,8 @@
     "drop_combo_old": "",
     "drop_combo_new": "",
     "drop_glory_high": "",
-    "drop_glory_low": ""
+    "drop_glory_low": "",
+    "drop_glory_player": ""
   },
   {
     "mapid": "滄之雲海",
@@ -2049,7 +2162,8 @@
     "drop_combo_old": "",
     "drop_combo_new": "",
     "drop_glory_high": "田豐之光輝、錦衣之光輝、王佐之光輝、黃月英之光輝、馬良之光輝、小喬之光輝",
-    "drop_glory_low": "楊修之光輝"
+    "drop_glory_low": "楊修之光輝",
+    "drop_glory_player": ""
   },
   {
     "mapid": "工作區",
@@ -2067,7 +2181,8 @@
     "drop_combo_old": "",
     "drop_combo_new": "",
     "drop_glory_high": "",
-    "drop_glory_low": ""
+    "drop_glory_low": "",
+    "drop_glory_player": ""
   },
   {
     "mapid": "崑崙山",
@@ -2081,11 +2196,12 @@
     "monster_atk": "",
     "drop_rubbish": "",
     "drop_hero": "許褚、太乙真人、李靖、申公豹、顧大嫂、馬超、殷郊、華陀、張清、瓊霄、武吉",
-    "drop_equidcard": "閰龍矛卡",
+    "drop_equidcard": "閻龍矛卡",
     "drop_combo_old": "祿存、文曲",
     "drop_combo_new": "",
     "drop_glory_high": "太公望之光輝、七殺星之光、斬仙之光、增長之光、多聞之光、持國之光、廣目之光",
-    "drop_glory_low": "阮小五之光輝、地后星之光、黃蓋之光輝、警花之光、虎威之光輝、藥王之光、秘醫之跡、陸遜之光輝"
+    "drop_glory_low": "阮小五之光輝、地后星之光、黃蓋之光輝、警花之光、虎威之光輝、藥王之光、秘醫之跡、陸遜之光輝",
+    "drop_glory_player": ""
   },
   {
     "mapid": "玉虛宮",
@@ -2103,7 +2219,8 @@
     "drop_combo_old": "破軍、天馬",
     "drop_combo_new": "",
     "drop_glory_high": "地公之光輝、曹植之光輝、魯肅之光輝、瓊英之光輝、水靈之光",
-    "drop_glory_low": "忍者之光、張苞之光輝、小玲之光輝、碧霄之光輝、小艾之光輝、周通之光輝、土府星之光"
+    "drop_glory_low": "忍者之光、張苞之光輝、小玲之光輝、碧霄之光輝、小艾之光輝、周通之光輝、土府星之光",
+    "drop_glory_player": ""
   },
   {
     "mapid": "雲霄洞",
@@ -2121,7 +2238,8 @@
     "drop_combo_old": "",
     "drop_combo_new": "",
     "drop_glory_high": "",
-    "drop_glory_low": ""
+    "drop_glory_low": "",
+    "drop_glory_player": ""
   },
   {
     "mapid": "夕之朝雲",
@@ -2139,7 +2257,8 @@
     "drop_combo_old": "",
     "drop_combo_new": "",
     "drop_glory_high": "程普之光輝、小倩之光輝、古之惡來光輝、武大郎之光輝、熱血之證、阿魯巴巴之光輝、九頭雉之徵",
-    "drop_glory_low": "鐘會之光輝、盧俊義之光輝、姬發之光輝、程昱之光輝、關興之光輝、張遼之光輝、子龍之光輝、雷聲普化之徵、鄧飛之光輝、大喬之光輝、六合星之光"
+    "drop_glory_low": "鐘會之光輝、盧俊義之光輝、姬發之光輝、程昱之光輝、關興之光輝、張遼之光輝、子龍之光輝、雷聲普化之徵、鄧飛之光輝、大喬之光輝、六合星之光",
+    "drop_glory_player": ""
   },
   {
     "mapid": "玄日峰",
@@ -2157,7 +2276,8 @@
     "drop_combo_old": "天相、陀羅",
     "drop_combo_new": "",
     "drop_glory_high": "張郃之光輝、周泰之光輝、裴宣之光輝、托塔之光輝、二郎之徵、炳靈公之光",
-    "drop_glory_low": "曹貴人之光輝、韋馱天之光、廣目之光、小倩之光輝、劍器之光輝、甘寧之光輝、張順之光輝、文醜之光輝、袁紹之光輝"
+    "drop_glory_low": "曹貴人之光輝、韋馱天之光、廣目之光、小倩之光輝、劍器之光輝、甘寧之光輝、張順之光輝、文醜之光輝、袁紹之光輝",
+    "drop_glory_player": ""
   },
   {
     "mapid": "玄日崖",
@@ -2175,7 +2295,8 @@
     "drop_combo_old": "",
     "drop_combo_new": "",
     "drop_glory_high": "",
-    "drop_glory_low": ""
+    "drop_glory_low": "",
+    "drop_glory_player": ""
   },
   {
     "mapid": "玄日洞上層",
@@ -2189,11 +2310,12 @@
     "monster_atk": "",
     "drop_rubbish": "",
     "drop_hero": "申公豹、黃飛虎、黃天化、楊戩、龍吉公主、公孫勝、哪吒、典韋、林沖、聞仲、燃燈道人、武松、于吉、通天教主、魯智深、潘夫人、關興",
-    "drop_equidcard": "闇龍矛卡、震雷斧卡",
+    "drop_equidcard": "閻龍矛卡、震雷斧卡",
     "drop_combo_old": "天魁、太陰、天鉞",
     "drop_combo_new": "孤辰、寡宿、紅鸞、天刑、陰煞、恩光、旬中、旬空、天貴、截空、天哭、天巫、天馬",
     "drop_glory_high": "地后星之光、沙摩柯之光輝、貌端星之光、呼延灼之光輝、普賢之光、夏侯惇之光輝、太史慈之光輝、武松之光輝、柴進之光輝、桃花星之光",
-    "drop_glory_low": "豹騎之勇、武吉之光輝、張郃之光輝、救苦天尊之跡、諸葛瑾之光輝、彩衣之光輝、黃忠之光輝、晁蓋之光輝、一清之光輝、單廷珪之光輝、魯智深之光輝"
+    "drop_glory_low": "豹騎之勇、武吉之光輝、張郃之光輝、救苦天尊之跡、諸葛瑾之光輝、彩衣之光輝、黃忠之光輝、晁蓋之光輝、一清之光輝、單廷珪之光輝、魯智深之光輝",
+    "drop_glory_player": ""
   },
   {
     "mapid": "玄日洞下層",
@@ -2211,7 +2333,8 @@
     "drop_combo_old": "陀羅",
     "drop_combo_new": "天空",
     "drop_glory_high": "地后星之光、沙摩柯之光輝、貌端星之光、呼延灼之光輝、普賢之光、夏侯惇之光輝、太史慈之光輝、武松之光輝、柴進之光輝、桃花星之光",
-    "drop_glory_low": "豹騎之勇、武吉之光輝、張郃之光輝、救苦天尊之跡、諸葛瑾之光輝、彩衣之光輝、黃忠之光輝、晁蓋之光輝、一清之光輝、單廷珪之光輝、魯智深之光輝"
+    "drop_glory_low": "豹騎之勇、武吉之光輝、張郃之光輝、救苦天尊之跡、諸葛瑾之光輝、彩衣之光輝、黃忠之光輝、晁蓋之光輝、一清之光輝、單廷珪之光輝、魯智深之光輝",
+    "drop_glory_player": ""
   },
   {
     "mapid": "玄日岩",
@@ -2229,7 +2352,8 @@
     "drop_combo_old": "",
     "drop_combo_new": "",
     "drop_glory_high": "張郃之光輝、周泰之光輝、裴宣之光輝、托塔之光輝、二郎之徵、炳靈公之光",
-    "drop_glory_low": "曹貴人之光輝、韋馱天之光、廣目之光、小倩之光輝、劍器之光輝、甘寧之光輝、張順之光輝、文醜之光輝、袁紹之光輝"
+    "drop_glory_low": "曹貴人之光輝、韋馱天之光、廣目之光、小倩之光輝、劍器之光輝、甘寧之光輝、張順之光輝、文醜之光輝、袁紹之光輝",
+    "drop_glory_player": ""
   },
   {
     "mapid": "妖邪迷宮",
@@ -2247,7 +2371,8 @@
     "drop_combo_old": "紫微、左輔、天機、右弼、文昌、文曲、太陽、天馬、祿存、武曲、陀羅、擎羊、天府、七殺、天相",
     "drop_combo_new": "",
     "drop_glory_high": "大喬之光輝、徐晃之光輝、太歲之光、媧皇之光、古佛之徵",
-    "drop_glory_low": "司馬懿之光輝、響馬茜之光輝"
+    "drop_glory_low": "司馬懿之光輝、響馬茜之光輝",
+    "drop_glory_player": ""
   },
   {
     "mapid": "墨家名穴",
@@ -2265,7 +2390,8 @@
     "drop_combo_old": "文昌、文曲、左輔、右弼、祿存、紫微、天馬、擎羊、太陽、鈴、天魁、天鉞、陀羅、地空、地劫、火星、天機、火、武曲、貪狼",
     "drop_combo_new": "天福、寡宿、天才",
     "drop_glory_high": "小艾之光輝、劉唐之光輝、五穀星之光、關銀屏之光輝、王進之光輝、李逵之光輝",
-    "drop_glory_low": "馬良之光輝、柴進之光輝、原初粉塵"
+    "drop_glory_low": "馬良之光輝、柴進之光輝、原初粉塵",
+    "drop_glory_player": ""
   },
   {
     "mapid": "金光洞",
@@ -2283,7 +2409,8 @@
     "drop_combo_old": "",
     "drop_combo_new": "",
     "drop_glory_high": "",
-    "drop_glory_low": ""
+    "drop_glory_low": "",
+    "drop_glory_player": ""
   },
   {
     "mapid": "幻之烏雲",
@@ -2301,7 +2428,8 @@
     "drop_combo_old": "天梁",
     "drop_combo_new": "",
     "drop_glory_high": "程普之光輝、小倩之光輝、古之惡來光輝、武大郎之光輝、熱血之證、阿魯巴巴之光輝、九頭雉之徵",
-    "drop_glory_low": "鐘會之光輝、盧俊義之光輝、姬發之光輝、程昱之光輝、關興之光輝、張遼之光輝、子龍之光輝、雷聲普化之徵、鄧飛之光輝、大喬之光輝、六合星之光"
+    "drop_glory_low": "鐘會之光輝、盧俊義之光輝、姬發之光輝、程昱之光輝、關興之光輝、張遼之光輝、子龍之光輝、雷聲普化之徵、鄧飛之光輝、大喬之光輝、六合星之光",
+    "drop_glory_player": ""
   },
   {
     "mapid": "奔雷嶺",
@@ -2319,7 +2447,8 @@
     "drop_combo_old": "擎羊",
     "drop_combo_new": "紅鸞、龍池",
     "drop_glory_high": "程普之光輝、小倩之光輝、古之惡來光輝、武大郎之光輝、熱血之證、阿魯巴巴之光輝、九頭雉之徵",
-    "drop_glory_low": "鐘會之光輝、盧俊義之光輝、姬發之光輝、程昱之光輝、關興之光輝、張遼之光輝、子龍之光輝、雷聲普化之徵、鄧飛之光輝、大喬之光輝、六合星之光"
+    "drop_glory_low": "鐘會之光輝、盧俊義之光輝、姬發之光輝、程昱之光輝、關興之光輝、張遼之光輝、子龍之光輝、雷聲普化之徵、鄧飛之光輝、大喬之光輝、六合星之光",
+    "drop_glory_player": ""
   },
   {
     "mapid": "幽冥深淵",
@@ -2337,7 +2466,8 @@
     "drop_combo_old": "",
     "drop_combo_new": "旬中、天空、陰煞",
     "drop_glory_high": "龍騎之勇、夏侯淵之光輝、樊瑞之光輝、鄧艾之光輝、馬岱之光輝、晁蓋之光輝、惡魔之光輝",
-    "drop_glory_low": "大賢之光輝、地公之光輝、九頭雉之徵、四聖大元帥錄、羅真人之光輝、呂虎威之光輝、魔精之光、玉琵琶之徵、普賢之光、關勝之光輝、天齊仁之光、顏良之光輝、劉備之光輝、五穀星之光、男僕之光輝、雲霄之光輝"
+    "drop_glory_low": "大賢之光輝、地公之光輝、九頭雉之徵、四聖大元帥錄、羅真人之光輝、呂虎威之光輝、魔精之光、玉琵琶之徵、普賢之光、關勝之光輝、天齊仁之光、顏良之光輝、劉備之光輝、五穀星之光、男僕之光輝、雲霄之光輝",
+    "drop_glory_player": ""
   },
   {
     "mapid": "盤古旛陣",
@@ -2355,7 +2485,8 @@
     "drop_combo_old": "武曲、天同、地劫、地空、天鉞",
     "drop_combo_new": "寡宿、天哭、旬中、天壽、孤辰、紅鸞、天使、旬空、天刑、破碎、天才、蜚廉、天貴、龍池、解神、天姚、台輔、天喜、天廚、天福、陰煞",
     "drop_glory_high": "鄧飛之光輝、顧大嫂之光輝、孟德之光輝、智多星之光輝、原初粉塵、昭姬之光輝",
-    "drop_glory_low": "阿魯巴巴之光輝、救世主之光、太史慈之光輝"
+    "drop_glory_low": "阿魯巴巴之光輝、救世主之光、太史慈之光輝",
+    "drop_glory_player": ""
   },
   {
     "mapid": "桑耶市集",
@@ -2373,7 +2504,8 @@
     "drop_combo_old": "",
     "drop_combo_new": "",
     "drop_glory_high": "",
-    "drop_glory_low": ""
+    "drop_glory_low": "",
+    "drop_glory_player": ""
   },
   {
     "mapid": "遺跡之泉",
@@ -2391,7 +2523,8 @@
     "drop_combo_old": "",
     "drop_combo_new": "",
     "drop_glory_high": "",
-    "drop_glory_low": ""
+    "drop_glory_low": "",
+    "drop_glory_player": ""
   },
   {
     "mapid": "東桑耶沙漠",
@@ -2409,7 +2542,8 @@
     "drop_combo_old": "",
     "drop_combo_new": "",
     "drop_glory_high": "史進之光輝、夏麗之光輝、妖鬥之勇、三太子之光輝、風雷之光輝、救苦天尊之跡",
-    "drop_glory_low": "持國之光、熱血之證、馬超之光輝、甄洛之光輝、分水之光輝、龍騎之勇、沙摩柯之光輝"
+    "drop_glory_low": "持國之光、熱血之證、馬超之光輝、甄洛之光輝、分水之光輝、龍騎之勇、沙摩柯之光輝",
+    "drop_glory_player": ""
   },
   {
     "mapid": "西桑耶沙漠",
@@ -2427,7 +2561,8 @@
     "drop_combo_old": "右弼、祿存、文曲",
     "drop_combo_new": "旬中、破碎、寡宿、天哭、天壽、紅鸞、天使",
     "drop_glory_high": "史進之光輝、夏麗之光輝、妖鬥之勇、三太子之光輝、風雷之光輝、救苦天尊之跡",
-    "drop_glory_low": "持國之光、熱血之證、馬超之光輝、甄洛之光輝、分水之光輝、龍騎之勇、沙摩柯之光輝"
+    "drop_glory_low": "持國之光、熱血之證、馬超之光輝、甄洛之光輝、分水之光輝、龍騎之勇、沙摩柯之光輝",
+    "drop_glory_player": ""
   },
   {
     "mapid": "南桑耶沙漠",
@@ -2445,7 +2580,8 @@
     "drop_combo_old": "文曲、綠存、右弼",
     "drop_combo_new": "天馬、天壽、天哭",
     "drop_glory_high": "史進之光輝、夏麗之光輝、妖鬥之勇、三太子之光輝、風雷之光輝、救苦天尊之跡",
-    "drop_glory_low": "持國之光、熱血之證、馬超之光輝、甄洛之光輝、分水之光輝、龍騎之勇、沙摩柯之光輝"
+    "drop_glory_low": "持國之光、熱血之證、馬超之光輝、甄洛之光輝、分水之光輝、龍騎之勇、沙摩柯之光輝",
+    "drop_glory_player": ""
   },
   {
     "mapid": "羅煞洞-第一層",
@@ -2463,7 +2599,8 @@
     "drop_combo_old": "天馬、左輔、文昌",
     "drop_combo_new": "天巫、天使、天壽、孤辰",
     "drop_glory_high": "孔融之光輝、碧霄之光輝、文醜之光輝、程昱之光輝、糜夫人之光輝、戴宗之光輝、江東猛虎之光輝、關勝之光輝",
-    "drop_glory_low": "風雷之光輝、獵豹之光輝、扈三娘之光輝、楊志之光輝、武松之光輝、倭王之光輝、女僕之光輝"
+    "drop_glory_low": "風雷之光輝、獵豹之光輝、扈三娘之光輝、楊志之光輝、武松之光輝、倭王之光輝、女僕之光輝",
+    "drop_glory_player": ""
   },
   {
     "mapid": "羅煞洞-第二層",
@@ -2481,7 +2618,8 @@
     "drop_combo_old": "天馬、文昌、左輔",
     "drop_combo_new": "",
     "drop_glory_high": "孔融之光輝、碧霄之光輝、文醜之光輝、程昱之光輝、糜夫人之光輝、戴宗之光輝、江東猛虎之光輝、關勝之光輝",
-    "drop_glory_low": "風雷之光輝、獵豹之光輝、扈三娘之光輝、楊志之光輝、武松之光輝、倭王之光輝、女僕之光輝"
+    "drop_glory_low": "風雷之光輝、獵豹之光輝、扈三娘之光輝、楊志之光輝、武松之光輝、倭王之光輝、女僕之光輝",
+    "drop_glory_player": ""
   },
   {
     "mapid": "羅煞洞-第三層",
@@ -2499,7 +2637,8 @@
     "drop_combo_old": "",
     "drop_combo_new": "孤辰",
     "drop_glory_high": "孔融之光輝、碧霄之光輝、文醜之光輝、程昱之光輝、糜夫人之光輝、戴宗之光輝、江東猛虎之光輝、關勝之光輝",
-    "drop_glory_low": "風雷之光輝、獵豹之光輝、扈三娘之光輝、楊志之光輝、武松之光輝、倭王之光輝、女僕之光輝"
+    "drop_glory_low": "風雷之光輝、獵豹之光輝、扈三娘之光輝、楊志之光輝、武松之光輝、倭王之光輝、女僕之光輝",
+    "drop_glory_player": ""
   },
   {
     "mapid": "羅煞洞-第四層",
@@ -2513,11 +2652,12 @@
     "monster_atk": "",
     "drop_rubbish": "",
     "drop_hero": "張苞、程昱、哪吒、伏羲、瓊英、于吉、通天教主、公孫勝、扈三娘、龍吉公主、林沖、史進、典韋、潘夫人",
-    "drop_equidcard": "木倌卡",
+    "drop_equidcard": "木棺卡",
     "drop_combo_old": "火、太陰、擎羊",
     "drop_combo_new": "三台、解神、陰煞、天官、天巫、天空、孤辰、天廚、紅鸞、寡宿、台輔、破碎、天姚",
     "drop_glory_high": "雲霄之光輝、袁術之光輝、虎癡之光輝",
-    "drop_glory_low": "三太子之光輝、馬岱之光輝、無雙的威光"
+    "drop_glory_low": "三太子之光輝、馬岱之光輝、無雙的威光",
+    "drop_glory_player": ""
   },
   {
     "mapid": "羅煞洞-第五層",
@@ -2535,7 +2675,8 @@
     "drop_combo_old": "天鉞、天同、廉貞、武曲",
     "drop_combo_new": "",
     "drop_glory_high": "秘醫之跡、六合星之光、凌震之光輝、羲皇之光",
-    "drop_glory_low": "雅帝之光輝、孫尚香之光輝、九尾狐之徵"
+    "drop_glory_low": "雅帝之光輝、孫尚香之光輝、九尾狐之徵",
+    "drop_glory_player": ""
   },
   {
     "mapid": "迷蹤列島",
@@ -2553,7 +2694,8 @@
     "drop_combo_old": "",
     "drop_combo_new": "",
     "drop_glory_high": "周郎之光輝、孫二娘之光輝、盧俊義之光輝、阮小二之光輝、石秀之光輝、忍者之光、龍鬥之勇",
-    "drop_glory_low": "諸葛惠之光輝"
+    "drop_glory_low": "諸葛惠之光輝",
+    "drop_glory_player": ""
   },
   {
     "mapid": "蓬萊仙島",
@@ -2567,11 +2709,12 @@
     "monster_atk": "",
     "drop_rubbish": "",
     "drop_hero": "周倉、廖化、田豐、沙摩柯、法正、木鹿大王、諸葛惠、蔡文姬、鄧飛、張松、鄧九公、華佗、黃妃",
-    "drop_equidcard": "地闔鎖鍊卡",
+    "drop_equidcard": "地闔鎖鏈卡",
     "drop_combo_old": "",
     "drop_combo_new": "",
     "drop_glory_high": "周郎之光輝、孫二娘之光輝、盧俊義之光輝、阮小二之光輝、石秀之光輝、忍者之光、龍鬥之勇",
-    "drop_glory_low": "諸葛惠之光輝"
+    "drop_glory_low": "諸葛惠之光輝",
+    "drop_glory_player": ""
   },
   {
     "mapid": "蓬萊秘境",
@@ -2589,7 +2732,8 @@
     "drop_combo_old": "",
     "drop_combo_new": "",
     "drop_glory_high": "",
-    "drop_glory_low": ""
+    "drop_glory_low": "",
+    "drop_glory_player": ""
   },
   {
     "mapid": "巨岩村",
@@ -2607,7 +2751,8 @@
     "drop_combo_old": "",
     "drop_combo_new": "",
     "drop_glory_high": "",
-    "drop_glory_low": ""
+    "drop_glory_low": "",
+    "drop_glory_player": ""
   },
   {
     "mapid": "東海龍宮",
@@ -2625,7 +2770,8 @@
     "drop_combo_old": "",
     "drop_combo_new": "",
     "drop_glory_high": "人公之光輝、益德之光輝、張苞之光輝、蔣敬之光輝、燕青之光輝、好人卡象徵、姬發之光輝、武吉之光輝、韋馱天之光",
-    "drop_glory_low": "項充之光輝、虎騎之勇、魔鬥之勇、程普之光輝、西門慶之光輝、荀攸之光輝、徐庶之光輝、周倉之光輝、茶茶之光輝、孔融之光輝、毒士之光輝"
+    "drop_glory_low": "項充之光輝、虎騎之勇、魔鬥之勇、程普之光輝、西門慶之光輝、荀攸之光輝、徐庶之光輝、周倉之光輝、茶茶之光輝、孔融之光輝、毒士之光輝",
+    "drop_glory_player": ""
   },
   {
     "mapid": "寂靜死海",
@@ -2643,7 +2789,8 @@
     "drop_combo_old": "天馬、破軍、擎羊",
     "drop_combo_new": "",
     "drop_glory_high": "地公之光輝、曹植之光輝、魯肅之光輝、瓊英之光輝、水靈之光",
-    "drop_glory_low": "忍者之光、張苞之光輝、小玲之光輝、碧霄之光輝、小艾之光輝、周通之光輝、土府星之光"
+    "drop_glory_low": "忍者之光、張苞之光輝、小玲之光輝、碧霄之光輝、小艾之光輝、周通之光輝、土府星之光",
+    "drop_glory_player": ""
   },
   {
     "mapid": "寒冰洞",
@@ -2661,7 +2808,8 @@
     "drop_combo_old": "",
     "drop_combo_new": "三台、寡宿、旬空、天空、台輔、破碎、天刑",
     "drop_glory_high": "",
-    "drop_glory_low": ""
+    "drop_glory_low": "",
+    "drop_glory_player": ""
   },
   {
     "mapid": "大漩渦",
@@ -2679,7 +2827,8 @@
     "drop_combo_old": "火",
     "drop_combo_new": "天貴",
     "drop_glory_high": "程普之光輝、小倩之光輝、古之惡來光輝、武大郎之光輝、熱血之證、阿魯巴巴之光輝、九頭雉之徵",
-    "drop_glory_low": "鐘會之光輝、盧俊義之光輝、姬發之光輝、程昱之光輝、關興之光輝、張遼之光輝、子龍之光輝、雷聲普化之徵、鄧飛之光輝、大喬之光輝、六合星之光"
+    "drop_glory_low": "鐘會之光輝、盧俊義之光輝、姬發之光輝、程昱之光輝、關興之光輝、張遼之光輝、子龍之光輝、雷聲普化之徵、鄧飛之光輝、大喬之光輝、六合星之光",
+    "drop_glory_player": ""
   },
   {
     "mapid": "惡龍秘窟第1層",
@@ -2697,7 +2846,8 @@
     "drop_combo_old": "天鉞、天府、鈴",
     "drop_combo_new": "旬中、天空、三台、孤辰、天才、天貴",
     "drop_glory_high": "諸葛惠之光輝、雷聲普化之徵、董平之光輝、魏延之光輝、胡車兒之光輝、執年歲君之徵、天眼之光輝",
-    "drop_glory_low": "龍鬥之勇、益德之光輝、鳳雛之光輝、媧皇之光"
+    "drop_glory_low": "龍鬥之勇、益德之光輝、鳳雛之光輝、媧皇之光",
+    "drop_glory_player": ""
   },
   {
     "mapid": "惡龍秘窟第2層",
@@ -2715,7 +2865,8 @@
     "drop_combo_old": "鈴、天鉞、天府",
     "drop_combo_new": "八座、天廚",
     "drop_glory_high": "諸葛惠之光輝、雷聲普化之徵、董平之光輝、魏延之光輝、胡車兒之光輝、執年歲君之徵、天眼之光輝",
-    "drop_glory_low": "龍鬥之勇、益德之光輝、鳳雛之光輝、媧皇之光"
+    "drop_glory_low": "龍鬥之勇、益德之光輝、鳳雛之光輝、媧皇之光",
+    "drop_glory_player": ""
   },
   {
     "mapid": "惡龍秘窟第3層",
@@ -2733,7 +2884,8 @@
     "drop_combo_old": "",
     "drop_combo_new": "",
     "drop_glory_high": "諸葛惠之光輝、雷聲普化之徵、董平之光輝、魏延之光輝、胡車兒之光輝、執年歲君之徵、天眼之光輝",
-    "drop_glory_low": "龍鬥之勇、益德之光輝、鳳雛之光輝、媧皇之光"
+    "drop_glory_low": "龍鬥之勇、益德之光輝、鳳雛之光輝、媧皇之光",
+    "drop_glory_player": ""
   },
   {
     "mapid": "惡龍秘窟第4層",
@@ -2751,7 +2903,8 @@
     "drop_combo_old": "武曲、地空、地劫、天鉞",
     "drop_combo_new": "",
     "drop_glory_high": "鄧飛之光輝、顧大嫂之光輝、孟德之光輝、智多星之光輝、原初粉塵、昭姬之光輝",
-    "drop_glory_low": "阿魯巴巴之光輝、救世主之光、太史慈之光輝"
+    "drop_glory_low": "阿魯巴巴之光輝、救世主之光、太史慈之光輝",
+    "drop_glory_player": ""
   },
   {
     "mapid": "峨嵋山",
@@ -2769,7 +2922,8 @@
     "drop_combo_old": "左輔、右弼",
     "drop_combo_new": "",
     "drop_glory_high": "人公之光輝、益德之光輝、張苞之光輝、蔣敬之光輝、燕青之光輝、好人卡象徵、姬發之光輝、武吉之光輝、韋馱天之光",
-    "drop_glory_low": "項充之光輝、虎騎之勇、魔鬥之勇、程普之光輝、西門慶之光輝、荀攸之光輝、徐庶之光輝、周倉之光輝、茶茶之光輝、孔融之光輝、毒士之光輝"
+    "drop_glory_low": "項充之光輝、虎騎之勇、魔鬥之勇、程普之光輝、西門慶之光輝、荀攸之光輝、徐庶之光輝、周倉之光輝、茶茶之光輝、孔融之光輝、毒士之光輝",
+    "drop_glory_player": ""
   },
   {
     "mapid": "華山",
@@ -2787,7 +2941,8 @@
     "drop_combo_old": "天梁、擎羊、火",
     "drop_combo_new": "",
     "drop_glory_high": "程普之光輝、小倩之光輝、古之惡來光輝、武大郎之光輝、熱血之證、阿魯巴巴之光輝、九頭雉之徵",
-    "drop_glory_low": "鐘會之光輝、盧俊義之光輝、姬發之光輝、程昱之光輝、關興之光輝、張遼之光輝、子龍之光輝、雷聲普化之徵、鄧飛之光輝、大喬之光輝、六合星之光"
+    "drop_glory_low": "鐘會之光輝、盧俊義之光輝、姬發之光輝、程昱之光輝、關興之光輝、張遼之光輝、子龍之光輝、雷聲普化之徵、鄧飛之光輝、大喬之光輝、六合星之光",
+    "drop_glory_player": ""
   },
   {
     "mapid": "靈山",
@@ -2805,7 +2960,8 @@
     "drop_combo_old": "",
     "drop_combo_new": "",
     "drop_glory_high": "人公之光輝、益德之光輝、張苞之光輝、蔣敬之光輝、燕青之光輝、好人卡象徵、姬發之光輝、武吉之光輝、韋馱天之光",
-    "drop_glory_low": "項充之光輝、虎騎之勇、魔鬥之勇、程普之光輝、西門慶之光輝、荀攸之光輝、徐庶之光輝、周倉之光輝、茶茶之光輝、孔融之光輝、毒士之光輝"
+    "drop_glory_low": "項充之光輝、虎騎之勇、魔鬥之勇、程普之光輝、西門慶之光輝、荀攸之光輝、徐庶之光輝、周倉之光輝、茶茶之光輝、孔融之光輝、毒士之光輝",
+    "drop_glory_player": ""
   },
   {
     "mapid": "天山",
@@ -2823,7 +2979,8 @@
     "drop_combo_old": "天梁",
     "drop_combo_new": "天刑、鳳閣",
     "drop_glory_high": "程普之光輝、小倩之光輝、古之惡來光輝、武大郎之光輝、熱血之證、阿魯巴巴之光輝、九頭雉之徵",
-    "drop_glory_low": "鐘會之光輝、盧俊義之光輝、姬發之光輝、程昱之光輝、關興之光輝、張遼之光輝、子龍之光輝、雷聲普化之徵、鄧飛之光輝、大喬之光輝、六合星之光"
+    "drop_glory_low": "鐘會之光輝、盧俊義之光輝、姬發之光輝、程昱之光輝、關興之光輝、張遼之光輝、子龍之光輝、雷聲普化之徵、鄧飛之光輝、大喬之光輝、六合星之光",
+    "drop_glory_player": ""
   },
   {
     "mapid": "泰山",
@@ -2841,7 +2998,8 @@
     "drop_combo_old": "天梁、火、擎羊",
     "drop_combo_new": "天福、解神",
     "drop_glory_high": "程普之光輝、小倩之光輝、古之惡來光輝、武大郎之光輝、熱血之證、阿魯巴巴之光輝、九頭雉之徵",
-    "drop_glory_low": "鐘會之光輝、盧俊義之光輝、姬發之光輝、程昱之光輝、關興之光輝、張遼之光輝、子龍之光輝、雷聲普化之徵、鄧飛之光輝、大喬之光輝、六合星之光"
+    "drop_glory_low": "鐘會之光輝、盧俊義之光輝、姬發之光輝、程昱之光輝、關興之光輝、張遼之光輝、子龍之光輝、雷聲普化之徵、鄧飛之光輝、大喬之光輝、六合星之光",
+    "drop_glory_player": ""
   },
   {
     "mapid": "瑤池仙境",
@@ -2859,7 +3017,8 @@
     "drop_combo_old": "",
     "drop_combo_new": "",
     "drop_glory_high": "",
-    "drop_glory_low": ""
+    "drop_glory_low": "",
+    "drop_glory_player": ""
   },
   {
     "mapid": "池底洞窟",
@@ -2877,7 +3036,8 @@
     "drop_combo_old": "",
     "drop_combo_new": "",
     "drop_glory_high": "人公之光輝、益德之光輝、張苞之光輝、蔣敬之光輝、燕青之光輝、好人卡象徵、姬發之光輝、武吉之光輝、韋馱天之光",
-    "drop_glory_low": "項充之光輝、虎騎之勇、魔鬥之勇、程普之光輝、西門慶之光輝、荀攸之光輝、徐庶之光輝、周倉之光輝、茶茶之光輝、孔融之光輝、毒士之光輝"
+    "drop_glory_low": "項充之光輝、虎騎之勇、魔鬥之勇、程普之光輝、西門慶之光輝、荀攸之光輝、徐庶之光輝、周倉之光輝、茶茶之光輝、孔融之光輝、毒士之光輝",
+    "drop_glory_player": ""
   },
   {
     "mapid": "雷爵村",
@@ -2895,7 +3055,8 @@
     "drop_combo_old": "",
     "drop_combo_new": "",
     "drop_glory_high": "",
-    "drop_glory_low": ""
+    "drop_glory_low": "",
+    "drop_glory_player": ""
   },
   {
     "mapid": "金嗷洞一樓",
@@ -2913,7 +3074,8 @@
     "drop_combo_old": "貪狼、陀羅、火",
     "drop_combo_new": "天空、陰煞、天巫、三台",
     "drop_glory_high": "小玲之光輝、金龍如意之徵、一清之光輝、麒麟之光輝、天使之光",
-    "drop_glory_low": "阮小七之光輝、王進之光輝、宋江之光輝、于吉之光輝、徐晃之光輝、二天一流之徵"
+    "drop_glory_low": "阮小七之光輝、王進之光輝、宋江之光輝、于吉之光輝、徐晃之光輝、二天一流之徵",
+    "drop_glory_player": ""
   },
   {
     "mapid": "金嗷洞二樓",
@@ -2931,7 +3093,8 @@
     "drop_combo_old": "",
     "drop_combo_new": "截空",
     "drop_glory_high": "小玲之光輝、金龍如意之徵、一清之光輝、麒麟之光輝、天使之光",
-    "drop_glory_low": "阮小七之光輝、王進之光輝、宋江之光輝、于吉之光輝、徐晃之光輝、二天一流之徵"
+    "drop_glory_low": "阮小七之光輝、王進之光輝、宋江之光輝、于吉之光輝、徐晃之光輝、二天一流之徵",
+    "drop_glory_player": ""
   },
   {
     "mapid": "金嗷洞三樓",
@@ -2949,7 +3112,8 @@
     "drop_combo_old": "",
     "drop_combo_new": "",
     "drop_glory_high": "鄧飛之光輝、顧大嫂之光輝、孟德之光輝、智多星之光輝、原初粉塵、昭姬之光輝",
-    "drop_glory_low": "阿魯巴巴之光輝、救世主之光、太史慈之光輝"
+    "drop_glory_low": "阿魯巴巴之光輝、救世主之光、太史慈之光輝",
+    "drop_glory_player": ""
   },
   {
     "mapid": "垃圾場第一層",
@@ -2967,7 +3131,8 @@
     "drop_combo_old": "天魁、地空、天鉞",
     "drop_combo_new": "截空、天刑、三台、蜚廉、孤辰、台輔",
     "drop_glory_high": "龍騎之勇、夏侯淵之光輝、樊瑞之光輝、鄧艾之光輝、馬岱之光輝、晁蓋之光輝、惡魔之光輝",
-    "drop_glory_low": "大賢之光輝、地公之光輝、九頭雉之徵、四聖大元帥錄、羅真人之光輝、呂虎威之光輝、魔精之光、玉琵琶之徵、普賢之光、關勝之光輝、天齊仁之光、顏良之光輝、劉備之光輝、五穀星之光、男僕之光輝、雲霄之光輝"
+    "drop_glory_low": "大賢之光輝、地公之光輝、九頭雉之徵、四聖大元帥錄、羅真人之光輝、呂虎威之光輝、魔精之光、玉琵琶之徵、普賢之光、關勝之光輝、天齊仁之光、顏良之光輝、劉備之光輝、五穀星之光、男僕之光輝、雲霄之光輝",
+    "drop_glory_player": ""
   },
   {
     "mapid": "垃圾場第二層",
@@ -2985,7 +3150,8 @@
     "drop_combo_old": "地空、天鉞、天魁",
     "drop_combo_new": "",
     "drop_glory_high": "龍騎之勇、夏侯淵之光輝、樊瑞之光輝、鄧艾之光輝、馬岱之光輝、晁蓋之光輝、惡魔之光輝",
-    "drop_glory_low": "大賢之光輝、地公之光輝、九頭雉之徵、四聖大元帥錄、羅真人之光輝、呂虎威之光輝、魔精之光、玉琵琶之徵、普賢之光、關勝之光輝、天齊仁之光、顏良之光輝、劉備之光輝、五穀星之光、男僕之光輝、雲霄之光輝"
+    "drop_glory_low": "大賢之光輝、地公之光輝、九頭雉之徵、四聖大元帥錄、羅真人之光輝、呂虎威之光輝、魔精之光、玉琵琶之徵、普賢之光、關勝之光輝、天齊仁之光、顏良之光輝、劉備之光輝、五穀星之光、男僕之光輝、雲霄之光輝",
+    "drop_glory_player": ""
   },
   {
     "mapid": "龍宮大殿",
@@ -3003,7 +3169,8 @@
     "drop_combo_old": "",
     "drop_combo_new": "",
     "drop_glory_high": "人公之光輝、益德之光輝、張苞之光輝、蔣敬之光輝、燕青之光輝、好人卡象徵、姬發之光輝、武吉之光輝、韋馱天之光",
-    "drop_glory_low": "項充之光輝、虎騎之勇、魔鬥之勇、程普之光輝、西門慶之光輝、荀攸之光輝、徐庶之光輝、周倉之光輝、茶茶之光輝、孔融之光輝、毒士之光輝"
+    "drop_glory_low": "項充之光輝、虎騎之勇、魔鬥之勇、程普之光輝、西門慶之光輝、荀攸之光輝、徐庶之光輝、周倉之光輝、茶茶之光輝、孔融之光輝、毒士之光輝",
+    "drop_glory_player": ""
   },
   {
     "mapid": "天朝山",
@@ -3021,7 +3188,8 @@
     "drop_combo_old": "",
     "drop_combo_new": "",
     "drop_glory_high": "人公之光輝、益德之光輝、張苞之光輝、蔣敬之光輝、燕青之光輝、好人卡象徵、姬發之光輝、武吉之光輝、韋馱天之光",
-    "drop_glory_low": "項充之光輝、虎騎之勇、魔鬥之勇、程普之光輝、西門慶之光輝、荀攸之光輝、徐庶之光輝、周倉之光輝、茶茶之光輝、孔融之光輝、毒士之光輝"
+    "drop_glory_low": "項充之光輝、虎騎之勇、魔鬥之勇、程普之光輝、西門慶之光輝、荀攸之光輝、徐庶之光輝、周倉之光輝、茶茶之光輝、孔融之光輝、毒士之光輝",
+    "drop_glory_player": ""
   },
   {
     "mapid": "真修洞第一層",
@@ -3039,7 +3207,8 @@
     "drop_combo_old": "",
     "drop_combo_new": "",
     "drop_glory_high": "太公望之光輝、七殺星之光、斬仙之光、增長之光、多聞之光、持國之光、廣目之光",
-    "drop_glory_low": "阮小五之光輝、地后星之光、黃蓋之光輝、警花之光、虎威之光輝、藥王之光、秘醫之跡、陸遜之光輝"
+    "drop_glory_low": "阮小五之光輝、地后星之光、黃蓋之光輝、警花之光、虎威之光輝、藥王之光、秘醫之跡、陸遜之光輝",
+    "drop_glory_player": ""
   },
   {
     "mapid": "真修洞第二層",
@@ -3057,7 +3226,8 @@
     "drop_combo_old": "",
     "drop_combo_new": "",
     "drop_glory_high": "太公望之光輝、七殺星之光、斬仙之光、增長之光、多聞之光、持國之光、廣目之光",
-    "drop_glory_low": "阮小五之光輝、地后星之光、黃蓋之光輝、警花之光、虎威之光輝、藥王之光、秘醫之跡、陸遜之光輝"
+    "drop_glory_low": "阮小五之光輝、地后星之光、黃蓋之光輝、警花之光、虎威之光輝、藥王之光、秘醫之跡、陸遜之光輝",
+    "drop_glory_player": ""
   },
   {
     "mapid": "真修洞第三層",
@@ -3075,7 +3245,8 @@
     "drop_combo_old": "",
     "drop_combo_new": "",
     "drop_glory_high": "太公望之光輝、七殺星之光、斬仙之光、增長之光、多聞之光、持國之光、廣目之光",
-    "drop_glory_low": "阮小五之光輝、地后星之光、黃蓋之光輝、警花之光、虎威之光輝、藥王之光、秘醫之跡、陸遜之光輝"
+    "drop_glory_low": "阮小五之光輝、地后星之光、黃蓋之光輝、警花之光、虎威之光輝、藥王之光、秘醫之跡、陸遜之光輝",
+    "drop_glory_player": ""
   },
   {
     "mapid": "真修洞第四層",
@@ -3093,7 +3264,8 @@
     "drop_combo_old": "",
     "drop_combo_new": "",
     "drop_glory_high": "太公望之光輝、七殺星之光、斬仙之光、增長之光、多聞之光、持國之光、廣目之光",
-    "drop_glory_low": "阮小五之光輝、地后星之光、黃蓋之光輝、警花之光、虎威之光輝、藥王之光、秘醫之跡、陸遜之光輝"
+    "drop_glory_low": "阮小五之光輝、地后星之光、黃蓋之光輝、警花之光、虎威之光輝、藥王之光、秘醫之跡、陸遜之光輝",
+    "drop_glory_player": ""
   },
   {
     "mapid": "真修洞第五層",
@@ -3111,7 +3283,8 @@
     "drop_combo_old": "",
     "drop_combo_new": "",
     "drop_glory_high": "太公望之光輝、七殺星之光、斬仙之光、增長之光、多聞之光、持國之光、廣目之光",
-    "drop_glory_low": "阮小五之光輝、地后星之光、黃蓋之光輝、警花之光、虎威之光輝、藥王之光、秘醫之跡、陸遜之光輝"
+    "drop_glory_low": "阮小五之光輝、地后星之光、黃蓋之光輝、警花之光、虎威之光輝、藥王之光、秘醫之跡、陸遜之光輝",
+    "drop_glory_player": ""
   },
   {
     "mapid": "真修洞第六層",
@@ -3129,7 +3302,8 @@
     "drop_combo_old": "",
     "drop_combo_new": "",
     "drop_glory_high": "太公望之光輝、七殺星之光、斬仙之光、增長之光、多聞之光、持國之光、廣目之光",
-    "drop_glory_low": "阮小五之光輝、地后星之光、黃蓋之光輝、警花之光、虎威之光輝、藥王之光、秘醫之跡、陸遜之光輝"
+    "drop_glory_low": "阮小五之光輝、地后星之光、黃蓋之光輝、警花之光、虎威之光輝、藥王之光、秘醫之跡、陸遜之光輝",
+    "drop_glory_player": ""
   },
   {
     "mapid": "地下水道第1層",
@@ -3147,7 +3321,8 @@
     "drop_combo_old": "",
     "drop_combo_new": "",
     "drop_glory_high": "南蠻王之光輝、甄洛之光輝、荀攸之光輝、黃忠之光輝、法正之光輝、甘寧之光輝、呂虎威之光輝",
-    "drop_glory_low": "田豐之光輝、斬仙之光、宋徽宗之光輝、鄧艾之光輝、戴宗之光輝、程遠志之光輝、廖化之光輝、胡車兒之光輝、巖流秘劍之徵"
+    "drop_glory_low": "田豐之光輝、斬仙之光、宋徽宗之光輝、鄧艾之光輝、戴宗之光輝、程遠志之光輝、廖化之光輝、胡車兒之光輝、巖流秘劍之徵",
+    "drop_glory_player": ""
   },
   {
     "mapid": "地下水道第2層",
@@ -3165,7 +3340,8 @@
     "drop_combo_old": "右弼、文昌",
     "drop_combo_new": "",
     "drop_glory_high": "南蠻王之光輝、甄洛之光輝、荀攸之光輝、黃忠之光輝、法正之光輝、甘寧之光輝、呂虎威之光輝",
-    "drop_glory_low": "田豐之光輝、斬仙之光、宋徽宗之光輝、鄧艾之光輝、戴宗之光輝、程遠志之光輝、廖化之光輝、胡車兒之光輝、巖流秘劍之徵"
+    "drop_glory_low": "田豐之光輝、斬仙之光、宋徽宗之光輝、鄧艾之光輝、戴宗之光輝、程遠志之光輝、廖化之光輝、胡車兒之光輝、巖流秘劍之徵",
+    "drop_glory_player": ""
   },
   {
     "mapid": "地下水道第3層",
@@ -3183,7 +3359,8 @@
     "drop_combo_old": "",
     "drop_combo_new": "",
     "drop_glory_high": "南蠻王之光輝、甄洛之光輝、荀攸之光輝、黃忠之光輝、法正之光輝、甘寧之光輝、呂虎威之光輝",
-    "drop_glory_low": "田豐之光輝、斬仙之光、宋徽宗之光輝、鄧艾之光輝、戴宗之光輝、程遠志之光輝、廖化之光輝、胡車兒之光輝、巖流秘劍之徵"
+    "drop_glory_low": "田豐之光輝、斬仙之光、宋徽宗之光輝、鄧艾之光輝、戴宗之光輝、程遠志之光輝、廖化之光輝、胡車兒之光輝、巖流秘劍之徵",
+    "drop_glory_player": ""
   },
   {
     "mapid": "地下水道第4層",
@@ -3201,7 +3378,8 @@
     "drop_combo_old": "文昌",
     "drop_combo_new": "天貴",
     "drop_glory_high": "南蠻王之光輝、甄洛之光輝、荀攸之光輝、黃忠之光輝、法正之光輝、甘寧之光輝、呂虎威之光輝",
-    "drop_glory_low": "田豐之光輝、斬仙之光、宋徽宗之光輝、鄧艾之光輝、戴宗之光輝、程遠志之光輝、廖化之光輝、胡車兒之光輝、巖流秘劍之徵"
+    "drop_glory_low": "田豐之光輝、斬仙之光、宋徽宗之光輝、鄧艾之光輝、戴宗之光輝、程遠志之光輝、廖化之光輝、胡車兒之光輝、巖流秘劍之徵",
+    "drop_glory_player": ""
   },
   {
     "mapid": "古道小徑",
@@ -3219,6 +3397,7 @@
     "drop_combo_old": "",
     "drop_combo_new": "",
     "drop_glory_high": "",
-    "drop_glory_low": ""
+    "drop_glory_low": "",
+    "drop_glory_player": ""
   }
 ]
