@@ -1,3 +1,19 @@
+/* 全域變數 */
+:root {
+  --nav-height: 0px; /* JS 動態設定 */
+  --primary-color: #3399ff;
+  --primary-dark-color: #267acc;
+  --highlight-bg-color: #fff9c0;
+  --highlight-text-color: #b8860b;
+  --light-bg-color: #f5faff;
+  --border-color: #b3d8ff;
+  --header-bg-color: #1976d2;
+  --header-hover-bg-color: #1565c0;
+  --text-light: #ffffff;
+  --text-dark: #333333;
+  --border-light-gray: #ccc;
+  --modal-shadow: rgba(0, 0, 0, 0.3);
+}
 /* ================================================= */
 /* 2. 導航列區塊 (頁籤) - 不固定在頂部 */
 /* ================================================= */
