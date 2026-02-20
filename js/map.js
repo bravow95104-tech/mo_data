@@ -119,15 +119,16 @@ window.openMapDetail = function(mapId) {
             ${hasDrop ? `
                 <div class="hero-column-details">
                     <p><strong>掉落物品：</strong></p>
-                    ${item.drop_rubbish ? `<p>· 垃圾: ${item.drop_rubbish}</p>` : ""}
-                    ${item.drop_hero ? `<p>· 英雄卡: ${item.drop_hero}</p>` : ""}
-                    ${item.drop_equidcard ? `<p>· 裝備卡: ${item.drop_equidcard}</p>` : ""}
+                    ${item.drop_rubbish ? `<p><strong>◢ 垃圾：</strong>${item.drop_rubbish}</p>` : ""}
+                    ${item.drop_hero ? `<p><strong>◢ 英雄卡：</strong>${item.drop_hero}</p>` : ""}
+                    ${item.drop_equidcard ? `<p><strong>◢裝備卡：</strong>${item.drop_equidcard}</p>` : ""}
                 </div>` : ""
             }
             <div class="hero-column-details">
                 <p><strong>光輝資訊：</strong></p>
-                <p>· 高掉率: ${item.drop_glory_high || "N/A"}</p>
-                ${item.drop_glory_player ? `<p>· 玩家提供: ${item.drop_glory_player}</p>` : ""}
+                <p><strong>◢ 高掉落率：</strong>${item.drop_glory_high || "N/A"}</p>
+                <p><strong>◢ 低掉落率：</strong>${item.drop_glory_low || "N/A"}</p>
+                ${item.drop_glory_player ? `<p><strong>◢ 玩家提供：</strong>${item.drop_glory_player}</p>` : ""}
             </div>
         `;
     }
