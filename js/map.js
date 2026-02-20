@@ -126,8 +126,8 @@ window.openMapDetail = function(mapId) {
             }
             <div class="hero-column-details">
                 <p><strong>光輝資訊：</strong></p>
-                <p><strong>◢ 高掉落率：</strong>${item.drop_glory_high || "N/A"}</p>
-                <p><strong>◢ 低掉落率：</strong>${item.drop_glory_low || "N/A"}</p>
+                <p><strong>◢ 掉落較高：</strong>${item.drop_glory_high || "N/A"}</p>
+                <p><strong>◢ 掉落較低：</strong>${item.drop_glory_low || "N/A"}</p>
                 ${item.drop_glory_player ? `<p><strong>◢ 玩家提供：</strong>${item.drop_glory_player}</p>` : ""}
             </div>
         `;
@@ -136,9 +136,11 @@ window.openMapDetail = function(mapId) {
     modalContent.innerHTML = `
         <h2 class="hero-name">${item.mapid}</h2>
         <img src="${autoImagePath}" class="hero-image" onerror="this.style.display='none'" />
+        <div class="hero-column-details">
         ${showApproach ? `<div class="section-gap"><p><strong>走法：</strong>${item.approach}</p></div>` : ""}
         ${showExplain ? `<div class="section-gap"><p><strong>說明：</strong>${item.illustrate}</p></div>` : ""}
         ${combatAndDropHTML}
+        </div>
     `;
 
     showModal();
