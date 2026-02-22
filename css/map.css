@@ -220,6 +220,7 @@ h1 {
 .section-gap p {
     display: flex; /* 讓 P 標籤成為 Flex 容器 */
     flex-wrap: wrap; /* 內容可以換行 */
+    white-space: pre-wrap; /* 保留換行與空格，且自動換行 */
 }
 
 .section-gap p strong {
