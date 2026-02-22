@@ -151,6 +151,10 @@ window.openMapDetail = function(mapId) {
     const isTown = approachA.includes("城鎮");
     const showApproach = approachA.includes("要");
     const showExplain = approachA.includes("說明");
+    const detailsHTML = `
+    ${showApproach ? `<div class="section-gap"><p><strong>走法：</strong>${item.approach}</p></div>` : ""}
+    ${showExplain ? `<div class="section-gap"><p><strong>說明：</strong>${item.illustrate}</p></div>` : ""}
+`.trim(); // 使用 trim() 去除多餘空格
 
     // 掉落與戰鬥區塊 (條件隱藏)
     let combatAndDropHTML = '';
@@ -181,10 +185,10 @@ window.openMapDetail = function(mapId) {
     modalContent.innerHTML = `
         <h2 class="hero-name">${item.mapid}</h2>
         <img src="${autoImagePath}" class="hero-image" onerror="this.style.display='none'" />
-        <div class="hero-column-details">
-        ${showApproach ? `<div class="section-gap"><p><strong>走法：</strong>${item.approach}</p></div>` : ""}
-        ${showExplain ? `<div class="section-gap"><p><strong>說明：</strong>${item.illustrate}</p></div>` : ""}
-        </div>
+        ${(showApproach || showExplain) ? 
+        `<div class="hero-column-details">${detailsHTML}</div>` : 
+        ""
+    }
         ${combatAndDropHTML}
         
     `;
