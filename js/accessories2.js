@@ -78,24 +78,45 @@ document.addEventListener("DOMContentLoaded", () => {
     tbody.innerHTML = '';
 
     const keyword = searchInput.value.trim().toLowerCase();
-    if (data.length === 0) {
-      tbody.innerHTML = '<tr><td colspan="15">找不到符合條件的飾品</td></tr>';
-      return;
-    }
-
     const fragment = document.createDocumentFragment();
 
     data.forEach(hero => {
       const tr = document.createElement('tr');
 
-      // --- 圖片欄位 ---
+      // --- ✅ 修正後的圖片欄位樣式 ---
       const imgTd = document.createElement('td');
       imgTd.style.cssText = 'width:50px; height:50px; text-align:center; vertical-align:middle;';
+      
       if (hero.item) {
         const img = document.createElement('img');
-        img.src = `/mo_data/pic/accessories/${hero.item}.png`; 
-        img.style.cssText = 'width:40px; height:40px; object-fit:contain;';
-        img.onerror = () => { imgTd.textContent = '—'; };
+        // 這裡維持你原本的圖片路徑
+        const basePath = `/mo_data/pic/accessories/${hero.item}`;
+        const extensions = ['.png', '.bmp', '.jpg'];
+        let attempt = 0;
+        
+        img.src = basePath + extensions[attempt];
+        img.alt = hero.item;
+        
+        // 加上圓角、背景、以及邊框
+        img.style.cssText = `
+          width: 40px; 
+          height: 40px; 
+          object-fit: contain; 
+          display: block; 
+          margin: 0 auto; 
+          background: #f9f9f9; 
+          border-radius: 4px;   /* ✅ 補回圓角 */
+          border: 1px solid #eee; /* 輕微邊框讓圖片更精緻 */
+        `;
+
+        img.onerror = () => {
+          attempt++;
+          if (attempt < extensions.length) { 
+            img.src = basePath + extensions[attempt]; 
+          } else { 
+            imgTd.textContent = '—'; 
+          }
+        };
         imgTd.appendChild(img);
       } else {
         imgTd.textContent = '—';
