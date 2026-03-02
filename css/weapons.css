@@ -260,12 +260,9 @@ tbody tr:hover {
 
 /* 2. 分別定義寬度 */
 .hero-column-accessories {
-  flex: 0 0 40%;  /* 兩欄並排時用 */
+  flex: 0 0 90%;  /* 飾品只有一欄 gain 時用 */
 }
 
-.hero-column-accessories-details {
-  flex: 0 0 90%;  /* 飾品只有一欄 gain 時用這個 */
-}
 
 /* 3. 文字樣式 */
 .hero-column-accessories p,
