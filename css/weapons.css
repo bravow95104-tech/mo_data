@@ -273,6 +273,21 @@ tbody tr:hover {
   color: #333; /* 如果 var(--text-dark) 沒定義，建議先用色碼 */
 }
 
+/* 說明文字中的關鍵字點擊樣式 */
+.keyword-link {
+    color: #1976d2;           /* 藍色字體 */
+    border-bottom: 2px dashed #1976d2; /* 藍色虛線 */
+    cursor: pointer;          /* 手指游標 */
+    font-weight: bold;
+    display: inline-block;
+    padding: 0 2px;
+    transition: background-color 0.2s;
+}
+
+.keyword-link:hover {
+    background-color: #e3f2fd; /* 滑鼠移上去有淡淡藍底 */
+}
+
 /* For aligning the "光輝掉落" section */
 .hero-column-details p {
   display: flex;
