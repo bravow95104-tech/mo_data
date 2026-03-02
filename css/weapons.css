@@ -248,6 +248,34 @@ tbody tr:hover {
   color: var(--text-dark);
 }
 
+/* 1. 定義飾品欄位的共同基礎樣式 (背景、圓角、陰影) */
+.hero-column-accessories, 
+.hero-column-accessories-details {
+  box-sizing: border-box;
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 6px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* 2. 分別定義寬度 */
+.hero-column-accessories {
+  flex: 0 0 40%;  /* 兩欄並排時用 */
+}
+
+.hero-column-accessories-details {
+  flex: 0 0 90%;  /* 飾品只有一欄 gain 時用這個 */
+}
+
+/* 3. 文字樣式 */
+.hero-column-accessories p,
+.hero-column-accessories-details p {
+  margin: 8px 0;
+  font-size: 16px;
+  line-height: 1.4;
+  color: #333; /* 如果 var(--text-dark) 沒定義，建議先用色碼 */
+}
+
 /* For aligning the "光輝掉落" section */
 .hero-column-details p {
   display: flex;
