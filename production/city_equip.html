@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>轉生裝備 | MoData</title>
+    <title>城寨裝備 | MoData</title>
     <link rel="stylesheet" href="/mo_data/css/styles.css" />
     <link rel="stylesheet" href="/mo_data/css/heroes.css" />
   </head>
@@ -136,13 +136,22 @@
     <!-- 回到頂部按鈕 -->
     <button id="backToTop" title="回到頂部">▲</button>
 
-
+    <!-- Modal HTML -->
+    <div id="modalOverlay"></div>
+    <div
+      id="modalBox"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modal-title">
+      <span class="close-btn">&times;</span>
+      <div id="modalContent"></div>
+    </div>
 
     <!-- JavaScript -->
 
     <div id="footer-container"></div>
     <!-- 這是頁尾會被載入的位置 -->
-    <script src="/mo_data/js/rebirth_equip.js"></script>
+    <script src="/mo_data/js/city.js"></script>
     <script src="/mo_data/js/componentsLoader.js"></script>
   </body>
 </html>
