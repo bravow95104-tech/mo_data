@@ -1,8 +1,7 @@
-
 document.addEventListener("DOMContentLoaded", () => {
   let heroesData = [];
   let searchTimer = null;
-  let activeFilter = null;
+  let activeFilter = null; 
 
   const modalOverlay = document.getElementById('modalOverlay');
   const modalBox = document.getElementById('modalBox');
@@ -24,18 +23,49 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const searchInput = document.getElementById('searchInput');
 
-  // === 搜尋與篩選邏輯 (保持不變) ===
+  // === 搜尋框事件 ===
   searchInput.addEventListener('input', () => {
     clearTimeout(searchTimer);
-    searchTimer = setTimeout(() => applyFilters(), 200);
+    searchTimer = setTimeout(() => {
+      applyFilters();
+    }, 200);
   });
 
+  // === 篩選按鈕事件 ===
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      activeFilter = { type: btn.dataset.type, value: btn.dataset.value };
+      applyFilters();
+    });
+  });
+
+  // === 清除篩選 ===
+  document.getElementById('clearFilters').addEventListener('click', () => {
+    activeFilter = null;
+    searchInput.value = '';
+    document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+    renderTable(heroesData);
+  });
+
+  // === 統一篩選函式（核心：確保篩選邏輯正確） ===
   function applyFilters() {
     const keyword = searchInput.value.trim().toLowerCase();
+    
     const filtered = heroesData.filter(hero => {
+      // 1. 搜尋關鍵字判斷
       const targetFields = [hero.item, hero.sort, hero.lv].join(' ').toLowerCase();
       const matchKeyword = keyword ? targetFields.includes(keyword) : true;
-      let matchFilter = activeFilter ? (hero.sort === activeFilter.value) : true;
+
+      // 2. 按鈕類別篩選判斷
+      let matchFilter = true;
+      if (activeFilter) {
+        const { type, value } = activeFilter;
+        if (type === "promotion") {
+          matchFilter = hero.sort === value;
+        }
+      }
       return matchKeyword && matchFilter;
     });
     renderTable(filtered);
@@ -48,50 +78,56 @@ document.addEventListener("DOMContentLoaded", () => {
     tbody.innerHTML = '';
 
     const keyword = searchInput.value.trim().toLowerCase();
+    if (data.length === 0) {
+      tbody.innerHTML = '<tr><td colspan="15">找不到符合條件的飾品</td></tr>';
+      return;
+    }
+
     const fragment = document.createDocumentFragment();
 
     data.forEach(hero => {
       const tr = document.createElement('tr');
 
-      // 1. 圖片欄位
+      // --- 圖片欄位 ---
       const imgTd = document.createElement('td');
       imgTd.style.cssText = 'width:50px; height:50px; text-align:center; vertical-align:middle;';
       if (hero.item) {
         const img = document.createElement('img');
-        img.src = `/mo_data/pic/accessories/${hero.item}.png`; // 簡化路徑邏輯
+        img.src = `/mo_data/pic/accessories/${hero.item}.png`; 
         img.style.cssText = 'width:40px; height:40px; object-fit:contain;';
+        img.onerror = () => { imgTd.textContent = '—'; };
         imgTd.appendChild(img);
+      } else {
+        imgTd.textContent = '—';
       }
       tr.appendChild(imgTd);
 
-      // 2. 資料欄位處理
+      // --- 其他欄位 ---
       const fields = ['item', 'lv', 'Property1', 'Property2', 'Durability', 'illustrate'];
       fields.forEach(field => {
         const td = document.createElement('td');
         let value = hero[field] !== undefined ? String(hero[field]) : '';
 
-        // ✅ 核心功能：針對說明欄位處理「增益效果」連結
+        // ✅ 核心邏輯：在說明欄位中找「增益」關鍵字
         if (field === 'illustrate') {
-          // 正規表示式：抓取任何以「增益」結尾的詞，例如：火龍增益
           const keywordRegex = /([^\s,，、]+增益)/g;
-
           if (value.match(keywordRegex)) {
-            // 加上關鍵字高亮 class (keyword-link)
+            // 先處理虛線連結
             value = value.replace(keywordRegex, `<span class="keyword-link">$1</span>`);
             td.innerHTML = value.replace(/\n/g, '<br>');
 
-            // 綁定點擊事件
+            // 綁定虛線點擊開 Modal (抓取 gain 欄位)
             td.querySelectorAll('.keyword-link').forEach(link => {
               link.addEventListener('click', (e) => {
-                e.stopPropagation(); // 防止干擾可能存在的 tr 事件
-                showDetailModal(hero, link.textContent); // 傳入增益名稱
+                e.stopPropagation();
+                showDetailModal(hero, link.textContent); 
               });
             });
           } else {
             td.innerHTML = value.replace(/\n/g, '<br>');
           }
         } else {
-          // 一般高亮邏輯
+          // 一般欄位處理搜尋高亮
           if (keyword && value.toLowerCase().includes(keyword)) {
             const regex = new RegExp(`(${keyword})`, 'gi');
             td.innerHTML = value.replace(regex, '<span class="highlight">$1</span>').replace(/\n/g, '<br>');
@@ -107,15 +143,15 @@ document.addEventListener("DOMContentLoaded", () => {
     tbody.appendChild(fragment);
   }
 
-  // === Modal 詳細視窗 ===
+  // === Modal 詳細視窗 (顯示 gain 內容) ===
   function showDetailModal(equip, effectName) {
     if (!modalContent) return;
 
     const gainHTML = (equip.gain && equip.gain.trim() !== "")
       ? `<div class="hero-column-accessories-details">
-           <p style="font-size: 16px; line-height: 1.6;">${equip.gain.replace(/\n/g, "<br>")}</p>
+           <p><br>${equip.gain.replace(/\n/g, "<br>")}</p>
          </div>`
-      : `<div class="hero-column-accessories-details"><p>暫無增益效果詳細說明。</p></div>`;
+      : `<div class="hero-column-accessories-details"><p>目前無詳細效果說明</p></div>`;
 
     modalContent.innerHTML = `
       <h2 class="hero-name">${effectName} 詳情</h2>
@@ -127,11 +163,14 @@ document.addEventListener("DOMContentLoaded", () => {
     modalBox.style.display = "block";
   }
 
-  // === 關閉與其他 UI 邏輯 ===
+  // --- 關閉與摺疊邏輯 ---
   function closeModal() {
-    modalOverlay.style.display = "none";
-    modalBox.style.display = "none";
+    if (modalOverlay) modalOverlay.style.display = "none";
+    if (modalBox) modalBox.style.display = "none";
   }
   if (closeModalBtn) closeModalBtn.addEventListener("click", closeModal);
   if (modalOverlay) modalOverlay.addEventListener("click", closeModal);
+  document.querySelectorAll('.accordion-header').forEach(header => {
+    header.addEventListener('click', () => { header.parentElement.classList.toggle('collapsed'); });
+  });
 });
