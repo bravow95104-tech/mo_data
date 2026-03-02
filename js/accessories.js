@@ -146,23 +146,16 @@ document.addEventListener("DOMContentLoaded", () => {
   function showDetailModal(equip) {
     if (!modalContent) return;
 
-    // 2. 處理「說明」欄位隱藏邏輯
-    const illustrateHTML = (equip.illustrate && equip.illustrate.trim() !== "") 
-      ? `<div class="hero-column-base hero-column-details" style="grid-column: span 2; border-top: 1px solid #ddd; padding-top: 10px;">
-           <p><strong>說明：</strong><br>${equip.illustrate.replace(/\n/g, "<br>")}</p>
-         </div>`
-      : "";
-
-    // 3. ✅ 新增：在 Modal 中顯示「獲得方式」(gain)
+    // 1. 效果區塊：直接套用 -details 確保寬度足夠
     const gainHTML = (equip.gain && equip.gain.trim() !== "")
-      ? `<div class="hero-column-base hero-column">
+      ? `<div class="hero-column-accessories-details">
            <p><strong>效果：</strong><br>${equip.gain.replace(/\n/g, "<br>")}</p>
          </div>`
       : "";
 
     modalContent.innerHTML = `
       <h2 class="hero-name">${equip.item}：增益效果</h2>
-      <div class="hero-details-container">
+      <div class="hero-details-container" style="max-width: 100%; justify-content: center;">
            ${gainHTML}
       </div>
     `;
