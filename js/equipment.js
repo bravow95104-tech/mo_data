@@ -176,11 +176,17 @@ document.addEventListener("DOMContentLoaded", () => {
     modalBox.style.display = "block";
   }
 
-  // === Modal 2: 增益效果 (點擊文字觸發) ===
+// === Modal 2: 增益效果 (點擊文字觸發) ===
   function showGainModal(equip, effectName) {
     if (!modalContent) return;
+    
+    // ✅ 移除原本標籤內的 <br>，改用 CSS 控制間距
     const gainContent = (equip.gain && equip.gain.trim() !== "")
-      ? `<div class="hero-column-accessories-details"><p><br>${equip.gain.replace(/\n/g, "<br>")}</p></div>`
+      ? `<div class="hero-column-accessories-details">
+           <p style="font-size: 16px; line-height: 1.8; padding-top: 10px;">
+             ${equip.gain.replace(/\n/g, "<br>")}
+           </p>
+         </div>`
       : `<div class="hero-column-accessories-details"><p>暫無詳細增益數值。</p></div>`;
 
     modalContent.innerHTML = `
