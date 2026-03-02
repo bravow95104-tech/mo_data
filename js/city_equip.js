@@ -123,7 +123,7 @@ document.addEventListener("DOMContentLoaded", () => {
           if (attempt < extensions.length) {
             img.src = basePath + extensions[attempt];
           } else {
-            imgTd.innerHTML = '<span style="color:#ccc; font-size:12px;">無圖</span>';
+            imgTd.innerHTML = '<span style="color:#ccc; font-size:12px;">-</span>';
           }
         };
         imgTd.appendChild(img);
@@ -171,7 +171,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const illustrateHtml = equip.illustrate ? equip.illustrate.replace(/\n/g, "<br>") : "無說明";
 
       div.innerHTML = `
-        <h2 class="equip-name">${equip.item}</h2>
+        <h2 class="hero-name">${equip.item}</h2>
         <div class="hero-details-container">
           <div class="hero-column-base hero-column">
             <p><strong>等級：</strong>${equip.lv}</p>
@@ -184,7 +184,7 @@ document.addEventListener("DOMContentLoaded", () => {
               equip[`material${num}`] ? `<p><strong>材料 ${num}：</strong>${equip[`material${num}`]}</p>` : ''
             ).join('')}
           </div>
-          <div class="equip-column-details" style="grid-column: span 2; border-top: 1px solid #eee; padding-top: 10px;">
+          <div class="hero-column-details" style="grid-column: span 2; border-top: 1px solid #eee; padding-top: 10px;">
             <p><strong>說明：</strong><br>${illustrateHtml}</p>
           </div>
         </div>
@@ -240,20 +240,20 @@ document.addEventListener("DOMContentLoaded", () => {
   // === 6. Modal 詳細視窗 ===
   function showDetailModal(equip) {
     modalContent.innerHTML = `
-      <h2 class="equip-name">${equip.item}</h2>
-      <div class="equip-details-container">
-        <div class="equip-column">
+      <h2 class="hero-name">${equip.item}</h2>
+      <div class="hero-details-container">
+        <div class="hero-column">
           <p><strong>等級：</strong>${equip.lv}</p>
           <p><strong>能力 1：</strong>${equip.Property1}</p>
           <p><strong>能力 2：</strong>${equip.Property2}</p>
           <p><strong>耐用度：</strong>${equip.Durability}</p>
         </div>
-        <div class="equip-column">
+        <div class="hero-column">
            ${[1,2,3,4,5,6,7,8,9,10,11].map(num => 
               equip[`material${num}`] ? `<p><strong>材料 ${num}：</strong>${equip[`material${num}`]}</p>` : ''
             ).join('')}
         </div>
-        <div class="equip-column-details" style="grid-column: span 2; border-top: 1px solid #ddd; padding-top: 15px;">
+        <div class="hero-column-details" style="grid-column: span 2; border-top: 1px solid #ddd; padding-top: 15px;">
           <p><strong>說明：</strong><br>${equip.illustrate ? equip.illustrate.replace(/\n/g, "<br>") : "無說明"}</p>
         </div>
       </div>
