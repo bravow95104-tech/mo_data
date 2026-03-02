@@ -116,8 +116,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (hero.item) {
         const img = document.createElement('img');
-        const basePath = `/mo_data/pic/weapons/${hero.item}`;
-        const extensions = ['.png', '.bmp', '.jpg']; // ✅ 修正拼錯 .bpm → .bmp
+        const basePath = `/mo_data/pic/equipment/${hero.item}`;
+        const extensions = ['.png', '.bmp', '.jpg'];
         let attempt = 0;
 
         // 設定初始 src
