@@ -12,6 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
   fetch('/mo_data/data/accessories.json')
     .then(response => response.json())
     .then(data => {
+      // 預先篩出 class = "飾品"
       heroesData = data.filter(item => item.class === "飾品");
       renderTable(heroesData);
     })
@@ -49,16 +50,14 @@ document.addEventListener("DOMContentLoaded", () => {
     renderTable(heroesData);
   });
 
-  // === 統一篩選函式（核心：確保篩選邏輯正確） ===
+  // === 統一篩選函式 ===
   function applyFilters() {
     const keyword = searchInput.value.trim().toLowerCase();
     
     const filtered = heroesData.filter(hero => {
-      // 1. 搜尋關鍵字判斷
       const targetFields = [hero.item, hero.sort, hero.lv].join(' ').toLowerCase();
       const matchKeyword = keyword ? targetFields.includes(keyword) : true;
 
-      // 2. 按鈕類別篩選判斷
       let matchFilter = true;
       if (activeFilter) {
         const { type, value } = activeFilter;
@@ -83,21 +82,18 @@ document.addEventListener("DOMContentLoaded", () => {
     data.forEach(hero => {
       const tr = document.createElement('tr');
 
-      // --- ✅ 修正後的圖片欄位樣式 ---
+      // --- 圖片欄位 (含圓角與背景樣式) ---
       const imgTd = document.createElement('td');
       imgTd.style.cssText = 'width:50px; height:50px; text-align:center; vertical-align:middle;';
       
       if (hero.item) {
         const img = document.createElement('img');
-        // 這裡維持你原本的圖片路徑
         const basePath = `/mo_data/pic/accessories/${hero.item}`;
         const extensions = ['.png', '.bmp', '.jpg'];
         let attempt = 0;
         
         img.src = basePath + extensions[attempt];
         img.alt = hero.item;
-        
-        // 加上圓角、背景、以及邊框
         img.style.cssText = `
           width: 40px; 
           height: 40px; 
@@ -105,8 +101,8 @@ document.addEventListener("DOMContentLoaded", () => {
           display: block; 
           margin: 0 auto; 
           background: #f9f9f9; 
-          border-radius: 4px;   /* ✅ 補回圓角 */
-          border: 1px solid #eee; /* 輕微邊框讓圖片更精緻 */
+          border-radius: 4px; 
+          border: 1px solid #eee;
         `;
 
         img.onerror = () => {
@@ -129,15 +125,16 @@ document.addEventListener("DOMContentLoaded", () => {
         const td = document.createElement('td');
         let value = hero[field] !== undefined ? String(hero[field]) : '';
 
-        // ✅ 核心邏輯：在說明欄位中找「增益」關鍵字
+        // ✅ 核心優化：偵測 ^&文字&^ 並轉換為虛線連結
         if (field === 'illustrate') {
-          const keywordRegex = /([^\s,，、]+增益)/g;
-          if (value.match(keywordRegex)) {
-            // 先處理虛線連結
-            value = value.replace(keywordRegex, `<span class="keyword-link">$1</span>`);
+          const specialRegex = /\^&([\s\S]*?)&^/g; 
+
+          if (value.match(specialRegex)) {
+            // 替換文字，隱藏符號並加上 class
+            value = value.replace(specialRegex, `<span class="keyword-link">$1</span>`);
             td.innerHTML = value.replace(/\n/g, '<br>');
 
-            // 綁定虛線點擊開 Modal (抓取 gain 欄位)
+            // 綁定虛線連結點擊事件
             td.querySelectorAll('.keyword-link').forEach(link => {
               link.addEventListener('click', (e) => {
                 e.stopPropagation();
@@ -148,7 +145,7 @@ document.addEventListener("DOMContentLoaded", () => {
             td.innerHTML = value.replace(/\n/g, '<br>');
           }
         } else {
-          // 一般欄位處理搜尋高亮
+          // 一般欄位處理搜尋高亮 (排除 illustrate 以免衝突)
           if (keyword && value.toLowerCase().includes(keyword)) {
             const regex = new RegExp(`(${keyword})`, 'gi');
             td.innerHTML = value.replace(regex, '<span class="highlight">$1</span>').replace(/\n/g, '<br>');
@@ -164,13 +161,14 @@ document.addEventListener("DOMContentLoaded", () => {
     tbody.appendChild(fragment);
   }
 
-  // === Modal 詳細視窗 (顯示 gain 內容) ===
+  // === Modal 詳細視窗 ===
   function showDetailModal(equip, effectName) {
     if (!modalContent) return;
 
+    // 抓取該飾品的 gain 欄位
     const gainHTML = (equip.gain && equip.gain.trim() !== "")
       ? `<div class="hero-column-accessories-details">
-           <p><br>${equip.gain.replace(/\n/g, "<br>")}</p>
+           <p style="font-size: 16px; line-height: 1.8;"><br>${equip.gain.replace(/\n/g, "<br>")}</p>
          </div>`
       : `<div class="hero-column-accessories-details"><p>目前無詳細效果說明</p></div>`;
 
@@ -191,7 +189,10 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   if (closeModalBtn) closeModalBtn.addEventListener("click", closeModal);
   if (modalOverlay) modalOverlay.addEventListener("click", closeModal);
+
   document.querySelectorAll('.accordion-header').forEach(header => {
-    header.addEventListener('click', () => { header.parentElement.classList.toggle('collapsed'); });
+    header.addEventListener('click', () => { 
+      header.parentElement.classList.toggle('collapsed'); 
+    });
   });
 });
