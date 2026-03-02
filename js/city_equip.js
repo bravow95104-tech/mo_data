@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let equipesData = [];
   let sortConfig = { key: null, direction: "asc" }; 
   let lastFilteredData = [];
-  let activeFilters = {}; // 記錄多重篩選條件
+  let activeFilters = {}; 
 
   // === 響應式斷點判斷 ===
   function isBreakpointBelow768() {
@@ -22,7 +22,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 150);
   });
 
-  // === DOM 元素快取 (修正 ID 以對應 HTML) ===
   const tableBody = document.querySelector("#heroes-table tbody");
   const searchInput = document.getElementById("searchInput");
   const clearFiltersBtn = document.getElementById("clearFilters");
@@ -50,31 +49,24 @@ document.addEventListener("DOMContentLoaded", () => {
     const keyword = searchInput.value.trim().toLowerCase();
 
     let filtered = equipesData.filter((equip) => {
-      // A. 多重按鈕篩選 (AND 邏輯)
       for (let type in activeFilters) {
         if (equip[type] !== activeFilters[type]) return false;
       }
-
-      // B. 關鍵字搜尋 (支援名稱、等級、類別)
       if (keyword) {
         const targetFields = `${equip.item} ${equip.lv} ${equip.class}`.toLowerCase();
         if (!targetFields.includes(keyword)) return false;
       }
-
       return true;
     });
 
-    // C. 排序邏輯
     if (sortConfig.key) {
       filtered.sort((a, b) => {
         let A = a[sortConfig.key];
         let B = b[sortConfig.key];
         const nA = parseFloat(A);
         const nB = parseFloat(B);
-
         if (!isNaN(nA) && !isNaN(nB)) { A = nA; B = nB; } 
         else { A = String(A || "").toLowerCase(); B = String(B || "").toLowerCase(); }
-
         if (A < B) return sortConfig.direction === "asc" ? -1 : 1;
         if (A > B) return sortConfig.direction === "asc" ? 1 : -1;
         return 0;
@@ -97,7 +89,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // === 3. 渲染視圖 (表格) ===
+  // === 3. 渲染視圖 (表格) - 已加入圖片欄位 ===
   function renderTable(data) {
     if (!tableBody) return;
     tableBody.innerHTML = "";
@@ -111,8 +103,37 @@ document.addEventListener("DOMContentLoaded", () => {
     const fragment = document.createDocumentFragment();
     data.forEach((equip) => {
       const tr = document.createElement("tr");
-      const fields = ["item", "lv", "Property1", "Property2", "Durability", "illustrate"];
 
+      // --- ✅ 新增：圖片欄邏輯 ---
+      const imgTd = document.createElement('td');
+      imgTd.style.cssText = 'width:50px; height:50px; text-align:center; vertical-align:middle;';
+      
+      if (equip.item) {
+        const img = document.createElement('img');
+        const basePath = `/mo_data/pic/city_equip/${equip.item}`; // 注意：這裡路徑需確認是否為 city_equip
+        const extensions = ['.png', '.bmp', '.jpg'];
+        let attempt = 0;
+
+        img.src = basePath + extensions[attempt];
+        img.alt = equip.item;
+        img.style.cssText = 'width:40px; height:40px; object-fit:contain; display:block; margin:0 auto; background:#f8f8f8; border-radius:4px;';
+
+        img.onerror = () => {
+          attempt++;
+          if (attempt < extensions.length) {
+            img.src = basePath + extensions[attempt];
+          } else {
+            imgTd.innerHTML = '<span style="color:#ccc; font-size:12px;">無圖</span>';
+          }
+        };
+        imgTd.appendChild(img);
+      } else {
+        imgTd.textContent = '—';
+      }
+      tr.appendChild(imgTd);
+
+      // --- 原有資料欄位 ---
+      const fields = ["item", "lv", "Property1", "Property2", "Durability", "illustrate"];
       fields.forEach((field) => {
         const td = document.createElement("td");
         let val = equip[field] !== undefined ? String(equip[field]) : "";
@@ -133,7 +154,7 @@ document.addEventListener("DOMContentLoaded", () => {
     tableBody.appendChild(fragment);
   }
 
-  // === 4. 渲染視圖 (手機卡片) ===
+  // === 4. 渲染視圖 (手機卡片) - 已修正變數與圖片邏輯 ===
   function renderCard(data) {
     equipesCardContainer.innerHTML = "";
     if (data.length === 0) {
@@ -145,19 +166,26 @@ document.addEventListener("DOMContentLoaded", () => {
     data.forEach((equip) => {
       const div = document.createElement("div");
       div.className = "accordion";
-      // 統一使用 item 作為檔名基礎
-      const safeName = equip.item ? equip.item.replace(/[^\w\u4e00-\u9fa5]/g, "") : "unknown";
+      
+      // 修正：將 hero 改回 equip，並處理說明文字換行
+      const illustrateHtml = equip.illustrate ? equip.illustrate.replace(/\n/g, "<br>") : "無說明";
 
       div.innerHTML = `
         <h2 class="equip-name">${equip.item}</h2>
-        <div class="equip-details-container">
-          <div class="equip-column">
+        <div class="hero-details-container">
+          <div class="hero-column-base hero-column">
             <p><strong>等級：</strong>${equip.lv}</p>
             <p><strong>攻擊 / 防禦：</strong>${equip.Property1}</p>
             <p><strong>命中 / 閃避：</strong>${equip.Property2}</p>
+            <p><strong>耐久度：</strong>${equip.Durability}</p>
           </div>
-          <div class="equip-column-details">
-            <p><strong>說明：</strong>${equip.illustrate ? equip.illustrate.replace(/\n/g, "<br>") : ""}</p>
+          <div class="hero-column-base hero-column">
+            ${[1,2,3,4,5,6,7,8,9,10,11].map(num => 
+              equip[`material${num}`] ? `<p><strong>材料 ${num}：</strong>${equip[`material${num}`]}</p>` : ''
+            ).join('')}
+          </div>
+          <div class="equip-column-details" style="grid-column: span 2; border-top: 1px solid #eee; padding-top: 10px;">
+            <p><strong>說明：</strong><br>${illustrateHtml}</p>
           </div>
         </div>
       `;
@@ -177,7 +205,6 @@ document.addEventListener("DOMContentLoaded", () => {
     btn.addEventListener("click", () => {
       const type = btn.dataset.type;
       const value = btn.dataset.value;
-
       if (btn.classList.contains("active")) {
         btn.classList.remove("active");
         delete activeFilters[type];
@@ -190,13 +217,11 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // 排序點擊
   document.querySelectorAll("th.sortable").forEach((th) => {
     th.addEventListener("click", () => {
       const col = th.dataset.col;
       sortConfig.direction = (sortConfig.key === col && sortConfig.direction === "asc") ? "desc" : "asc";
       sortConfig.key = col;
-
       document.querySelectorAll("th.sortable").forEach(el => el.classList.remove("sort-asc", "sort-desc"));
       th.classList.add(sortConfig.direction === "asc" ? "sort-asc" : "sort-desc");
       applyFilters();
@@ -214,8 +239,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // === 6. Modal 詳細視窗 ===
   function showDetailModal(equip) {
-    const safeName = equip.item ? equip.item.replace(/[^\w\u4e00-\u9fa5]/g, "") : "unknown";
-    
     modalContent.innerHTML = `
       <h2 class="equip-name">${equip.item}</h2>
       <div class="equip-details-container">
@@ -224,10 +247,14 @@ document.addEventListener("DOMContentLoaded", () => {
           <p><strong>能力 1：</strong>${equip.Property1}</p>
           <p><strong>能力 2：</strong>${equip.Property2}</p>
           <p><strong>耐用度：</strong>${equip.Durability}</p>
-          <hr style="margin: 20px 0; border: 0; border-top: 1px solid #ddd;">
         </div>
-        <div class="equip-column-details">
-          <p><strong>說明：</strong><br>${equip.illustrate ? equip.illustrate.replace(/\n/g, "<br>") : ""}</p>
+        <div class="equip-column">
+           ${[1,2,3,4,5,6,7,8,9,10,11].map(num => 
+              equip[`material${num}`] ? `<p><strong>材料 ${num}：</strong>${equip[`material${num}`]}</p>` : ''
+            ).join('')}
+        </div>
+        <div class="equip-column-details" style="grid-column: span 2; border-top: 1px solid #ddd; padding-top: 15px;">
+          <p><strong>說明：</strong><br>${equip.illustrate ? equip.illustrate.replace(/\n/g, "<br>") : "無說明"}</p>
         </div>
       </div>
     `;
