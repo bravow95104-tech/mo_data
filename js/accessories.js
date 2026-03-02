@@ -137,11 +137,15 @@ document.addEventListener("DOMContentLoaded", () => {
   // === Modal 顯示 gain 內容 ===
   function showDetailModal(equip, effectName) {
     if (!modalContent) return;
+
+    // ✅ 移除原本標籤內的 <br>，確保第一行文字不會下移
     const gainHTML = (equip.gain && equip.gain.trim() !== "")
       ? `<div class="hero-column-accessories-details">
-           <p style="font-size: 16px; line-height: 1.8;"><br>${equip.gain.replace(/\n/g, "<br>")}</p>
+           <p style="font-size: 16px; line-height: 1.8; margin: 0; padding: 5px 0;">
+             ${equip.gain.replace(/\n/g, "<br>")}
+           </p>
          </div>`
-      : `<div class="hero-column-accessories-details"><p>目前無詳細效果說明</p></div>`;
+      : `<div class="hero-column-accessories-details"><p style="margin:0;">目前無詳細效果說明</p></div>`;
 
     modalContent.innerHTML = `
       <h2 class="hero-name">${effectName} 詳情</h2>
