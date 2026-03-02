@@ -149,7 +149,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // 1. 效果區塊：直接套用 -details 確保寬度足夠
     const gainHTML = (equip.gain && equip.gain.trim() !== "")
       ? `<div class="hero-column-accessories-details">
-           <p><strong>效果：</strong><br>${equip.gain.replace(/\n/g, "<br>")}</p>
+           <p><br>${equip.gain.replace(/\n/g, "<br>")}</p>
          </div>`
       : "";
 
