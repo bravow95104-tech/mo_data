@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
     .catch(error => {
       console.error('載入武器資料錯誤:', error);
       const tbody = document.querySelector('#heroes-table tbody');
-      tbody.innerHTML = '<tr><td colspan="15">無法載入裝備資料</td></tr>';
+      tbody.innerHTML = '<tr><td colspan="7">無法載入裝備資料</td></tr>';
     });
 
   const searchInput = document.getElementById('searchInput');
@@ -52,34 +52,30 @@ document.addEventListener("DOMContentLoaded", () => {
     renderTable(heroesData);
   });
 
-  // === 同時套用搜尋 + 篩選 ===
+// === 同時套用搜尋 + 篩選 ===
   function applyFilters() {
     const keyword = searchInput.value.trim().toLowerCase();
 
     const filtered = heroesData.filter(hero => {
-      // ✅ 篩選按鈕條件
+      // ✅ 修正後的篩選按鈕條件：自動比對 hero 物件中對應 type 的 key
       if (activeFilter) {
         const { type, value } = activeFilter;
-
-        // promotion / personality 比對 hero.sort
-        if (type === "promotion" || type === "personality") {
-          if (hero.sort !== value) return false;
-        }
-
-        // ✅ job 比對 hero.job
-        if (type === "job") {
-          if (hero.job !== value) return false;
-        }
+        
+        // 核心邏輯：hero["class"] 或是 hero["sort"] 或是 hero["personality"]
+        // 必須等於按鈕上的 value
+        if (hero[type] !== value) return false;
       }
 
-      // ✅ 搜尋框條件
+      // ✅ 搜尋框條件 (同步擴充搜尋範圍)
       if (keyword) {
         const targetFields = [
           hero.item,
           hero.sort,
           hero.lv,
-          hero.job
+          hero.class,        // 新增類別搜尋
+          hero.personality   // 新增系列搜尋
         ].join(' ').toLowerCase();
+        
         if (!targetFields.includes(keyword)) return false;
       }
 
@@ -97,7 +93,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const keyword = searchInput.value.trim().toLowerCase();
 
     if (data.length === 0) {
-      tbody.innerHTML = '<tr><td colspan="15">找不到符合條件的裝備</td></tr>';
+      tbody.innerHTML = '<tr><td colspan="7">找不到符合條件的裝備</td></tr>';
       return;
     }
 
@@ -116,7 +112,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (hero.item) {
         const img = document.createElement('img');
-        const basePath = `/mo_data/pic/equipment/${hero.item}`;
+        const basePath = `/mo_data/pic/rebirth_equip/${hero.item}`;
         const extensions = ['.png', '.bmp', '.jpg'];
         let attempt = 0;
 
