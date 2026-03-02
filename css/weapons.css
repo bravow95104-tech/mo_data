@@ -224,7 +224,40 @@ tbody tr:hover {
   border-radius: 6px;
   box-sizing: border-box;
 }
+/* 左右欄位的基礎樣式 */
+.hero-column-base {
+  box-sizing: border-box;
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 6px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
 
+.hero-column {
+  flex: 0 0 40%;
+}
+
+.hero-column-details {
+  flex: 0 0 90%;
+}
+
+.hero-column-base p {
+  margin: 8px 0;
+  font-size: 16px; /* 字體大小改回 16px */
+  line-height: 1.4;
+  color: var(--text-dark);
+}
+
+/* For aligning the "光輝掉落" section */
+.hero-column-details p {
+  display: flex;
+  align-items: flex-start; /* Align items to the top in case of wrapping */
+}
+
+.hero-column-details p strong {
+  flex-shrink: 0; /* Prevents the label from shrinking */
+  margin-right: 8px; /* Adds space between the label and the text */
+}
 /* 文字調整 */
 .hero-column p {
   margin: 8px 0;
