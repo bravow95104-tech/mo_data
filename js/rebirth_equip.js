@@ -56,7 +56,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // === DOM 元素快取 ===
-  const tableBody = document.querySelector("#equipes-table tbody");
+  const tableBody = document.querySelector("#heroes-table tbody");
   const searchInput = document.getElementById("searchInput");
   const clearFiltersBtn = document.getElementById("clearFilters");
   const equipesTableContainer = document.getElementById("equip-table-container");
@@ -71,12 +71,13 @@ document.addEventListener("DOMContentLoaded", () => {
     .catch((error) => {
       console.error("載入裝備資料錯誤:", error);
       if (tableBody)
-        tableBody.innerHTML = '<tr><td colspan="15">無法載入裝備資料</td></tr>';
+        tableBody.innerHTML = '<tr><td colspan="6">無法載入裝備資料</td></tr>';
     });
 
   
   function applyFilters() {
     const keyword = searchInput.value.trim().toLowerCase();
+    
 
     // A. 取得篩選條件
     const filters = {
