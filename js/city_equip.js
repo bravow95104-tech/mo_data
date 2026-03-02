@@ -173,7 +173,7 @@ document.addEventListener("DOMContentLoaded", () => {
       div.innerHTML = `
         <h2 class="hero-name">${equip.item}</h2>
         <div class="hero-details-container">
-          <div class="hero-column-base hero-column">
+        <div class="hero-column-base hero-column">
             <p><strong>等級：</strong>${equip.lv}</p>
             <p><strong>攻擊 / 防禦：</strong>${equip.Property1}</p>
             <p><strong>命中 / 閃避：</strong>${equip.Property2}</p>
@@ -184,7 +184,7 @@ document.addEventListener("DOMContentLoaded", () => {
               equip[`material${num}`] ? `<p><strong>材料 ${num}：</strong>${equip[`material${num}`]}</p>` : ''
             ).join('')}
           </div>
-          <div class="hero-column-details" style="grid-column: span 2; border-top: 1px solid #eee; padding-top: 10px;">
+          <div class="hero-column-base hero-column-details">
             <p><strong>說明：</strong><br>${illustrateHtml}</p>
           </div>
         </div>
@@ -242,18 +242,18 @@ document.addEventListener("DOMContentLoaded", () => {
     modalContent.innerHTML = `
       <h2 class="hero-name">${equip.item}</h2>
       <div class="hero-details-container">
-        <div class="hero-column">
+        <div class="hero-column-base hero-column">
           <p><strong>等級：</strong>${equip.lv}</p>
           <p><strong>能力 1：</strong>${equip.Property1}</p>
           <p><strong>能力 2：</strong>${equip.Property2}</p>
           <p><strong>耐用度：</strong>${equip.Durability}</p>
         </div>
-        <div class="hero-column">
+        <div class="hero-column-base hero-column">
            ${[1,2,3,4,5,6,7,8,9,10,11].map(num => 
               equip[`material${num}`] ? `<p><strong>材料 ${num}：</strong>${equip[`material${num}`]}</p>` : ''
             ).join('')}
         </div>
-        <div class="hero-column-details" style="grid-column: span 2; border-top: 1px solid #ddd; padding-top: 15px;">
+        <div class="hero-column-base hero-column-details">
           <p><strong>說明：</strong><br>${equip.illustrate ? equip.illustrate.replace(/\n/g, "<br>") : "無說明"}</p>
         </div>
       </div>
