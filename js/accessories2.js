@@ -12,7 +12,6 @@ document.addEventListener("DOMContentLoaded", () => {
   fetch('/mo_data/data/accessories.json')
     .then(response => response.json())
     .then(data => {
-      // 預先篩出 class = "飾品"
       heroesData = data.filter(item => item.class === "飾品");
       renderTable(heroesData);
     })
@@ -27,9 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // === 搜尋框事件 ===
   searchInput.addEventListener('input', () => {
     clearTimeout(searchTimer);
-    searchTimer = setTimeout(() => {
-      applyFilters();
-    }, 200);
+    searchTimer = setTimeout(() => applyFilters(), 200);
   });
 
   // === 篩選按鈕事件 ===
@@ -50,21 +47,12 @@ document.addEventListener("DOMContentLoaded", () => {
     renderTable(heroesData);
   });
 
-  // === 統一篩選函式 ===
   function applyFilters() {
     const keyword = searchInput.value.trim().toLowerCase();
-    
     const filtered = heroesData.filter(hero => {
       const targetFields = [hero.item, hero.sort, hero.lv].join(' ').toLowerCase();
       const matchKeyword = keyword ? targetFields.includes(keyword) : true;
-
-      let matchFilter = true;
-      if (activeFilter) {
-        const { type, value } = activeFilter;
-        if (type === "promotion") {
-          matchFilter = hero.sort === value;
-        }
-      }
+      let matchFilter = activeFilter ? (hero.sort === activeFilter.value) : true;
       return matchKeyword && matchFilter;
     });
     renderTable(filtered);
@@ -82,36 +70,20 @@ document.addEventListener("DOMContentLoaded", () => {
     data.forEach(hero => {
       const tr = document.createElement('tr');
 
-      // --- 圖片欄位 (含圓角與背景樣式) ---
+      // --- 圖片欄位 ---
       const imgTd = document.createElement('td');
       imgTd.style.cssText = 'width:50px; height:50px; text-align:center; vertical-align:middle;';
-      
       if (hero.item) {
         const img = document.createElement('img');
         const basePath = `/mo_data/pic/accessories/${hero.item}`;
         const extensions = ['.png', '.bmp', '.jpg'];
         let attempt = 0;
-        
         img.src = basePath + extensions[attempt];
-        img.alt = hero.item;
-        img.style.cssText = `
-          width: 40px; 
-          height: 40px; 
-          object-fit: contain; 
-          display: block; 
-          margin: 0 auto; 
-          background: #f9f9f9; 
-          border-radius: 4px; 
-          border: 1px solid #eee;
-        `;
-
+        img.style.cssText = 'width:40px; height:40px; object-fit:contain; display:block; margin:0 auto; background:#f9f9f9; border-radius:4px; border:1px solid #eee;';
         img.onerror = () => {
           attempt++;
-          if (attempt < extensions.length) { 
-            img.src = basePath + extensions[attempt]; 
-          } else { 
-            imgTd.textContent = '—'; 
-          }
+          if (attempt < extensions.length) img.src = basePath + extensions[attempt];
+          else imgTd.textContent = '—';
         };
         imgTd.appendChild(img);
       } else {
@@ -125,18 +97,17 @@ document.addEventListener("DOMContentLoaded", () => {
         const td = document.createElement('td');
         let value = hero[field] !== undefined ? String(hero[field]) : '';
 
-        // ✅ 修正後的邏輯：精準抓取 ^& 與 &^ 之間的文字
+        // ✅ 核心修正：更穩健的符號偵測邏輯
         if (field === 'illustrate') {
-          // 使用 \\^ 來精確匹配文字中的 ^ 符號
-          const specialRegex = /\^&([\s\S]*?)&^/g; 
+          // 修正 Regex：開頭結尾都必須轉義 ^
+          const specialRegex = /\^&([\s\S]*?)&\^/g;
 
-          if (value.match(specialRegex)) {
-            // 1. 替換文字：將 ^&文字&^ 轉為 <span>文字</span>
-            // 我們改用 function 處理來確保 $1 抓取穩定
-            value = value.replace(/\^&([\s\S]*?)&\^/g, '<span class="keyword-link">$1</span>');
+          if (value.includes('^&') && value.includes('&^')) {
+            // 替換符號為 span
+            value = value.replace(specialRegex, '<span class="keyword-link">$1</span>');
             td.innerHTML = value.replace(/\n/g, '<br>');
 
-            // 2. 綁定事件 (這部分不變)
+            // 綁定點擊事件
             td.querySelectorAll('.keyword-link').forEach(link => {
               link.addEventListener('click', (e) => {
                 e.stopPropagation();
@@ -147,7 +118,7 @@ document.addEventListener("DOMContentLoaded", () => {
             td.innerHTML = value.replace(/\n/g, '<br>');
           }
         } else {
-          // 一般欄位處理搜尋高亮 (排除 illustrate 以免衝突)
+          // 一般高亮
           if (keyword && value.toLowerCase().includes(keyword)) {
             const regex = new RegExp(`(${keyword})`, 'gi');
             td.innerHTML = value.replace(regex, '<span class="highlight">$1</span>').replace(/\n/g, '<br>');
@@ -163,11 +134,9 @@ document.addEventListener("DOMContentLoaded", () => {
     tbody.appendChild(fragment);
   }
 
-  // === Modal 詳細視窗 ===
+  // === Modal 顯示 gain 內容 ===
   function showDetailModal(equip, effectName) {
     if (!modalContent) return;
-
-    // 抓取該飾品的 gain 欄位
     const gainHTML = (equip.gain && equip.gain.trim() !== "")
       ? `<div class="hero-column-accessories-details">
            <p style="font-size: 16px; line-height: 1.8;"><br>${equip.gain.replace(/\n/g, "<br>")}</p>
@@ -184,17 +153,13 @@ document.addEventListener("DOMContentLoaded", () => {
     modalBox.style.display = "block";
   }
 
-  // --- 關閉與摺疊邏輯 ---
   function closeModal() {
-    if (modalOverlay) modalOverlay.style.display = "none";
-    if (modalBox) modalBox.style.display = "none";
+    modalOverlay.style.display = "none";
+    modalBox.style.display = "none";
   }
   if (closeModalBtn) closeModalBtn.addEventListener("click", closeModal);
   if (modalOverlay) modalOverlay.addEventListener("click", closeModal);
-
   document.querySelectorAll('.accordion-header').forEach(header => {
-    header.addEventListener('click', () => { 
-      header.parentElement.classList.toggle('collapsed'); 
-    });
+    header.addEventListener('click', () => header.parentElement.classList.toggle('collapsed'));
   });
 });
