@@ -148,10 +148,17 @@ document.addEventListener("DOMContentLoaded", () => {
   // === Modal 詳細視窗 ===
   function showDetailModal(equip) {
     if (!modalContent) return;
-    
+    // 1. 生成材料清單的 HTML
     const materialsHTML = [1,2,3,4,5,6,7,8,9,10,11]
       .map(num => equip[`material${num}`] ? `<p><strong>材料 ${num}：</strong>${equip[`material${num}`]}</p>` : '')
       .join('');
+
+      // 2. ✅ 判斷說明欄位是否有值，若無值則不產生該 HTML 區塊
+    const illustrateHTML = (equip.illustrate && equip.illustrate.trim() !== "") 
+      ? `<div class="hero-column-base hero-column-details" style="grid-column: span 2; border-top: 1px solid #ddd; padding-top: 10px;">
+           <p><strong>說明：</strong><br>${equip.illustrate.replace(/\n/g, "<br>")}</p>
+         </div>`
+      : ""; // 為空則不顯示
 
     modalContent.innerHTML = `
       <h2 class="hero-name">${equip.item}</h2>
@@ -165,10 +172,9 @@ document.addEventListener("DOMContentLoaded", () => {
         <div class="hero-column-base hero-column">
            ${materialsHTML}
         </div>
-        <div class="hero-column-base hero-column-details" style="grid-column: span 2; border-top: 1px solid #ddd; padding-top: 10px;">
-          <p><strong>說明：</strong><br>${equip.illustrate ? equip.illustrate.replace(/\n/g, "<br>") : "無說明"}</p>
-        </div>
+        ${illustrateHTML}
       </div>
+
     `;
     modalOverlay.style.display = "block";
     modalBox.style.display = "block";
