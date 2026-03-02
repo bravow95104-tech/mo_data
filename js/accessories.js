@@ -3,7 +3,6 @@ document.addEventListener("DOMContentLoaded", () => {
   let searchTimer = null;
   let activeFilter = null; 
 
-  // === ✅ 取得 Modal 相關元素 ===
   const modalOverlay = document.getElementById('modalOverlay');
   const modalBox = document.getElementById('modalBox');
   const modalContent = document.getElementById('modalContent');
@@ -13,7 +12,6 @@ document.addEventListener("DOMContentLoaded", () => {
   fetch('/mo_data/data/accessories.json')
     .then(response => response.json())
     .then(data => {
-      // ✅ 預先篩出 class = "飾品"
       heroesData = data.filter(item => item.class === "飾品");
       renderTable(heroesData);
     })
@@ -25,15 +23,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const searchInput = document.getElementById('searchInput');
 
-  // === 搜尋框 ===
+  // === 搜尋框事件 ===
   searchInput.addEventListener('input', () => {
     clearTimeout(searchTimer);
-    searchTimer = setTimeout(() => {
-      applyFilters();
-    }, 200);
+    searchTimer = setTimeout(() => applyFilters(), 200);
   });
 
-  // === 篩選按鈕 ===
+  // === 篩選按鈕事件 ===
   document.querySelectorAll('.filter-btn').forEach(btn => {
     btn.addEventListener('click', () => {
       document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
@@ -51,20 +47,12 @@ document.addEventListener("DOMContentLoaded", () => {
     renderTable(heroesData);
   });
 
-  // === 統一篩選函式 ===
   function applyFilters() {
     const keyword = searchInput.value.trim().toLowerCase();
     const filtered = heroesData.filter(hero => {
       const targetFields = [hero.item, hero.sort, hero.lv].join(' ').toLowerCase();
       const matchKeyword = keyword ? targetFields.includes(keyword) : true;
-
-      let matchFilter = true;
-      if (activeFilter) {
-        const { type, value } = activeFilter;
-        if (type === "promotion") {
-          matchFilter = hero.sort === value;
-        }
-      }
+      let matchFilter = activeFilter ? (hero.sort === activeFilter.value) : true;
       return matchKeyword && matchFilter;
     });
     renderTable(filtered);
@@ -77,11 +65,6 @@ document.addEventListener("DOMContentLoaded", () => {
     tbody.innerHTML = '';
 
     const keyword = searchInput.value.trim().toLowerCase();
-    if (data.length === 0) {
-      tbody.innerHTML = '<tr><td colspan="15">找不到符合條件的飾品</td></tr>';
-      return;
-    }
-
     const fragment = document.createDocumentFragment();
 
     data.forEach(hero => {
@@ -96,12 +79,11 @@ document.addEventListener("DOMContentLoaded", () => {
         const extensions = ['.png', '.bmp', '.jpg'];
         let attempt = 0;
         img.src = basePath + extensions[attempt];
-        img.alt = hero.item;
-        img.style.cssText = 'width:40px; height:40px; object-fit:contain; display:block; margin:0 auto; background:#f9f9f9; border-radius:4px;';
+        img.style.cssText = 'width:40px; height:40px; object-fit:contain; display:block; margin:0 auto; background:#f9f9f9; border-radius:4px; border:1px solid #eee;';
         img.onerror = () => {
           attempt++;
-          if (attempt < extensions.length) { img.src = basePath + extensions[attempt]; } 
-          else { imgTd.textContent = '—'; }
+          if (attempt < extensions.length) img.src = basePath + extensions[attempt];
+          else imgTd.textContent = '—';
         };
         imgTd.appendChild(img);
       } else {
@@ -113,48 +95,56 @@ document.addEventListener("DOMContentLoaded", () => {
       const fields = ['item', 'lv', 'Property1', 'Property2', 'Durability', 'illustrate'];
       fields.forEach(field => {
         const td = document.createElement('td');
-        const value = hero[field] !== undefined ? String(hero[field]) : '';
-        const htmlValue = value.replace(/\n/g, '<br>');
+        let value = hero[field] !== undefined ? String(hero[field]) : '';
 
-        if (keyword && value.toLowerCase().includes(keyword)) {
-          const regex = new RegExp(`(${keyword})`, 'gi');
-          td.innerHTML = htmlValue.replace(regex, '<span class="highlight">$1</span>');
+        // ✅ 核心修正：更穩健的符號偵測邏輯
+        if (field === 'illustrate') {
+          // 修正 Regex：開頭結尾都必須轉義 ^
+          const specialRegex = /\^&([\s\S]*?)&\^/g;
+
+          if (value.includes('^&') && value.includes('&^')) {
+            // 替換符號為 span
+            value = value.replace(specialRegex, '<span class="keyword-link">$1</span>');
+            td.innerHTML = value.replace(/\n/g, '<br>');
+
+            // 綁定點擊事件
+            td.querySelectorAll('.keyword-link').forEach(link => {
+              link.addEventListener('click', (e) => {
+                e.stopPropagation();
+                showDetailModal(hero, link.textContent); 
+              });
+            });
+          } else {
+            td.innerHTML = value.replace(/\n/g, '<br>');
+          }
         } else {
-          td.innerHTML = htmlValue;
+          // 一般高亮
+          if (keyword && value.toLowerCase().includes(keyword)) {
+            const regex = new RegExp(`(${keyword})`, 'gi');
+            td.innerHTML = value.replace(regex, '<span class="highlight">$1</span>').replace(/\n/g, '<br>');
+          } else {
+            td.innerHTML = value.replace(/\n/g, '<br>');
+          }
         }
         tr.appendChild(td);
       });
-
-      // ==========================================
-      // ✅ 核心修改：判斷「gain」欄位是否有值
-      // ==========================================
-      const canOpenModal = hero.gain && String(hero.gain).trim() !== "";
-
-      if (canOpenModal) {
-        tr.style.cursor = "pointer"; // 顯示手指形狀
-        tr.addEventListener('click', () => showDetailModal(hero));
-      } else {
-        tr.style.cursor = "default"; // 一般指標
-      }
 
       fragment.appendChild(tr);
     });
     tbody.appendChild(fragment);
   }
 
-  // === Modal 詳細視窗 ===
-  function showDetailModal(equip) {
+  // === Modal 顯示 gain 內容 ===
+  function showDetailModal(equip, effectName) {
     if (!modalContent) return;
-
-    // 1. 效果區塊：直接套用 -details 確保寬度足夠
     const gainHTML = (equip.gain && equip.gain.trim() !== "")
       ? `<div class="hero-column-accessories-details">
-           <p><br>${equip.gain.replace(/\n/g, "<br>")}</p>
+           <p style="font-size: 16px; line-height: 1.8;"><br>${equip.gain.replace(/\n/g, "<br>")}</p>
          </div>`
-      : "";
+      : `<div class="hero-column-accessories-details"><p>目前無詳細效果說明</p></div>`;
 
     modalContent.innerHTML = `
-      <h2 class="hero-name">${equip.item}：增益效果</h2>
+      <h2 class="hero-name">${effectName} 詳情</h2>
       <div class="hero-details-container" style="max-width: 100%; justify-content: center;">
            ${gainHTML}
       </div>
@@ -164,16 +154,12 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function closeModal() {
-    if (modalOverlay) modalOverlay.style.display = "none";
-    if (modalBox) modalBox.style.display = "none";
+    modalOverlay.style.display = "none";
+    modalBox.style.display = "none";
   }
-
   if (closeModalBtn) closeModalBtn.addEventListener("click", closeModal);
   if (modalOverlay) modalOverlay.addEventListener("click", closeModal);
-
   document.querySelectorAll('.accordion-header').forEach(header => {
-    header.addEventListener('click', () => {
-      header.parentElement.classList.toggle('collapsed');
-    });
+    header.addEventListener('click', () => header.parentElement.classList.toggle('collapsed'));
   });
 });
