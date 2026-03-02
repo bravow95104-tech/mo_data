@@ -5,7 +5,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // === 判斷斷點是否在768以下 ===
   function isBreakpointBelow768() {
-    console.log("Viewport width:", window.innerWidth);
     return window.innerWidth <= 768;
   }
   let resizeFlag = isBreakpointBelow768();
@@ -334,7 +333,6 @@ document.addEventListener("DOMContentLoaded", () => {
     data.forEach((hero) => {
       const div = document.createElement("div");
       div.className = "accordion";
-      console.log(hero);
       const safeName = hero.name.replace(/[^\w\u4e00-\u9fa5]/g, "");
 
       function createImageWithFallbacks(basePath, altText) {
@@ -366,7 +364,8 @@ document.addEventListener("DOMContentLoaded", () => {
           <p><strong>素質：</strong>${hero.traits}</p>
           <p><strong>個性：</strong>${hero.personality}</p>
           <p><strong>屬性：</strong>${hero.element}</p>
-          <p class="section-gap"><strong>力量：</strong>${hero.str}</p>
+          <hr style="margin: 20px 0; border: 0; border-top: 1px solid #ddd;">
+          <p><strong>力量：</strong>${hero.str}</p>
           <p><strong>智慧：</strong>${hero.int}</p>
           <p><strong>體質：</strong>${hero.vit}</p>
           <p><strong>敏捷：</strong>${hero.agi}</p>
@@ -375,12 +374,15 @@ document.addEventListener("DOMContentLoaded", () => {
         <div class="hero-column-base hero-column">
           <p><strong>積極度(生變前)：</strong>${hero.aggression_before}</p>
           <p><strong>積極度(生變後)：</strong>${hero.aggression_after}</p>
-          <p class="section-gap"><strong>裝備卡(新專)：</strong>${hero.equipment_new}</p>
+          <hr style="margin: 20px 0; border: 0; border-top: 1px solid #ddd;">
+          <p><strong>裝備卡(新專)：</strong>${hero.equipment_new}</p>
           <p><strong>新專數值：</strong>${hero.equipment_new_data}</p>
           <p><strong>新專倍率：</strong>${hero.new_multiplier}</p>
-          <p class="section-gap"><strong>裝備卡(舊專)：</strong>${hero.equipment_old}</p>
+          <hr style="margin: 20px 0; border: 0; border-top: 1px solid #ddd;">
+          <p><strong>裝備卡(舊專)：</strong>${hero.equipment_old}</p>
           <p><strong>舊專數值：</strong>${hero.equipment_old_data}</p>
-          <p class="section-gap"><strong>天生技：</strong>${hero.innate_skill}</p>
+          <hr style="margin: 20px 0; border: 0; border-top: 1px solid #ddd;">
+          <p><strong>天生技：</strong>${hero.innate_skill}</p>
           <p><strong>生變技能：</strong>${hero.transformation_skill}</p>
         </div>
         <div class="hero-column-base hero-column-details">
@@ -403,7 +405,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
       fragment.appendChild(div);
     });
-    console.log(fragment);
     heroesCardContainer.appendChild(fragment);
   }
   // === 4. 事件監聽 (搜尋、按鈕、排序) ===
