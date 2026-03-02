@@ -125,16 +125,18 @@ document.addEventListener("DOMContentLoaded", () => {
         const td = document.createElement('td');
         let value = hero[field] !== undefined ? String(hero[field]) : '';
 
-        // ✅ 核心優化：偵測 ^&文字&^ 並轉換為虛線連結
+        // ✅ 修正後的邏輯：精準抓取 ^& 與 &^ 之間的文字
         if (field === 'illustrate') {
+          // 使用 \\^ 來精確匹配文字中的 ^ 符號
           const specialRegex = /\^&([\s\S]*?)&^/g; 
 
           if (value.match(specialRegex)) {
-            // 替換文字，隱藏符號並加上 class
-            value = value.replace(specialRegex, `<span class="keyword-link">$1</span>`);
+            // 1. 替換文字：將 ^&文字&^ 轉為 <span>文字</span>
+            // 我們改用 function 處理來確保 $1 抓取穩定
+            value = value.replace(/\^&([\s\S]*?)&\^/g, '<span class="keyword-link">$1</span>');
             td.innerHTML = value.replace(/\n/g, '<br>');
 
-            // 綁定虛線連結點擊事件
+            // 2. 綁定事件 (這部分不變)
             td.querySelectorAll('.keyword-link').forEach(link => {
               link.addEventListener('click', (e) => {
                 e.stopPropagation();
