@@ -128,7 +128,6 @@ document.addEventListener("DOMContentLoaded", () => {
         tr.appendChild(td);
       });
 
-      // 整列點擊顯示材料
       const hasMaterial = hero.material1 && String(hero.material1).trim() !== "";
       if (hasMaterial) {
         tr.style.cursor = "pointer";
@@ -165,8 +164,7 @@ document.addEventListener("DOMContentLoaded", () => {
         ${illustrateHTML}
       </div>
     `;
-    modalOverlay.style.display = "block";
-    modalBox.style.display = "block";
+    openModal();
   }
 
   // === Modal 2: 增益效果 ===
@@ -186,23 +184,38 @@ document.addEventListener("DOMContentLoaded", () => {
         ${gainContent}
       </div>
     `;
+    openModal();
+  }
+
+  // === Modal 顯示控制 ===
+  function openModal() {
     modalOverlay.style.display = "block";
     modalBox.style.display = "block";
   }
 
-  // === 視窗關閉與 Accordion 摺疊邏輯 ===
   function closeModal() {
     modalOverlay.style.display = "none";
     modalBox.style.display = "none";
   }
 
+  // --- 事件監聽器 (統一放置) ---
+
+  // 1. 關閉按鈕與遮罩
   if (closeModalBtn) closeModalBtn.addEventListener("click", closeModal);
   if (modalOverlay) modalOverlay.addEventListener("click", closeModal);
 
-  // ✅ 補回這段 Accordion 邏輯
+  // 2. 按下 ESC 鍵關閉
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && modalBox.style.display === "block") {
+      closeModal();
+    }
+  });
+
+  // 3. Accordion 邏輯
   document.querySelectorAll(".accordion-header").forEach((header) => {
     header.addEventListener("click", () => {
       header.parentElement.classList.toggle("collapsed");
     });
   });
-}); 
+
+});
