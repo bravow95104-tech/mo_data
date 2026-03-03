@@ -158,7 +158,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const illustrateHTML = (equip.illustrate && equip.illustrate.trim() !== "") 
       ? `<div class="hero-column-base hero-column-details" style="grid-column: span 2; border-top: 1px solid #ddd; padding-top: 10px;">
-           <p><strong>說明：</strong><br>${equip.illustrate.replace(/\^&|&\^/g, "").replace(/\n/g, "<br>")}</p>
+           <p><h3 class="modal-sub-title">說明</h3><br>${equip.illustrate.replace(/\^&|&\^/g, "").replace(/\n/g, "<br>")}</p>
          </div>`
       : "";
 
