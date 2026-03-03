@@ -393,3 +393,20 @@ thead th {
   transform: scale(1.05);
   box-shadow: 0 4px 10px rgba(0,0,0,0.25);
 }
+
+/* Modal 內的子標題 (基礎數值/製作材料) */
+.modal-sub-title {
+  margin-top: 0;
+  margin-bottom: 12px;
+  font-size: 18px;
+  color: #333; /* 深灰色，比較耐看 */
+  border-bottom: 2px solid #3399ff; /* 配合你快速搜尋的藍色 */
+  display: inline-block;
+  padding-bottom: 3px;
+}
+
+/* 確保橫跨整列的說明欄位在換行時寬度足夠 */
+.hero-column-details {
+  flex: 0 0 90% !important; /* 強制占滿寬度 */
+  margin-top: 10px;
+}
