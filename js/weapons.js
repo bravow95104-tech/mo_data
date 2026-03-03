@@ -3,7 +3,6 @@ document.addEventListener("DOMContentLoaded", () => {
   let activeFilter = null; 
   let searchTimer = null;  
 
-  // === ✅ 取得 Modal 相關元素 ===
   const modalOverlay = document.getElementById('modalOverlay');
   const modalBox = document.getElementById('modalBox');
   const modalContent = document.getElementById('modalContent');
@@ -13,6 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
   fetch('/mo_data/data/weapons.json')
     .then(response => response.json())
     .then(data => {
+      // ✅ 預先篩出武器
       heroesData = data.filter(item => item.class === "武器");
       renderTable(heroesData);
     })
@@ -24,12 +24,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const searchInput = document.getElementById('searchInput');
 
-  // === 搜尋框（防抖動版） ===
+  // === 搜尋框事件 ===
   searchInput.addEventListener('input', () => {
     clearTimeout(searchTimer);
-    searchTimer = setTimeout(() => {
-      applyFilters();
-    }, 200);
+    searchTimer = setTimeout(() => { applyFilters(); }, 200);
   });
 
   // === 篩選按鈕 ===
@@ -71,18 +69,13 @@ document.addEventListener("DOMContentLoaded", () => {
     renderTable(filtered);
   }
 
-  // === 核心修改：渲染表格與判斷 Modal 開啟權限 ===
+  // === 產生表格 ===
   function renderTable(data) {
     const tbody = document.querySelector('#heroes-table tbody');
     if (!tbody) return;
     tbody.innerHTML = '';
 
     const keyword = searchInput.value.trim().toLowerCase();
-    if (data.length === 0) {
-      tbody.innerHTML = '<tr><td colspan="15">找不到符合條件的武器</td></tr>';
-      return;
-    }
-
     const fragment = document.createDocumentFragment();
 
     data.forEach(hero => {
@@ -97,12 +90,11 @@ document.addEventListener("DOMContentLoaded", () => {
         const extensions = ['.png', '.bmp', '.jpg'];
         let attempt = 0;
         img.src = basePath + extensions[attempt];
-        img.alt = hero.item;
-        img.style.cssText = 'width:40px; height:40px; object-fit:contain; display:block; margin:0 auto; background:#f8f8f8; border-radius:4px;';
+        img.style.cssText = 'width:40px; height:40px; object-fit:contain; display:block; margin:0 auto; background:#f8f8f8; border-radius:4px; border:1px solid #eee;';
         img.onerror = () => {
           attempt++;
-          if (attempt < extensions.length) { img.src = basePath + extensions[attempt]; } 
-          else { imgTd.textContent = '—'; }
+          if (attempt < extensions.length) img.src = basePath + extensions[attempt];
+          else imgTd.textContent = '—';
         };
         imgTd.appendChild(img);
       } else {
@@ -110,34 +102,46 @@ document.addEventListener("DOMContentLoaded", () => {
       }
       tr.appendChild(imgTd);
 
-      // --- 其他資料欄位 ---
+      // --- 資料欄位 ---
       const fields = ['item', 'lv', 'Property1', 'Property2', 'Durability', 'illustrate'];
       fields.forEach(field => {
         const td = document.createElement('td');
-        const value = hero[field] !== undefined ? String(hero[field]) : '';
-        const htmlValue = value.replace(/\n/g, '<br>');
+        let value = hero[field] !== undefined ? String(hero[field]) : '';
 
-        if (keyword && value.toLowerCase().includes(keyword)) {
-          const regex = new RegExp(`(${keyword})`, 'gi');
-          td.innerHTML = htmlValue.replace(regex, '<span class="highlight2">$1</span>');
+        if (field === 'illustrate') {
+          const specialRegex = /\^&([\s\S]*?)&\^/g;
+          if (value.includes('^&') && value.includes('&^')) {
+            // 轉化為虛線連結
+            value = value.replace(specialRegex, '<span class="keyword-link">$1</span>');
+            td.innerHTML = value.replace(/\n/g, '<br>');
+            
+            // 點擊虛線開啟 gain 彈窗
+            td.querySelectorAll('.keyword-link').forEach(link => {
+              link.addEventListener('click', (e) => {
+                e.stopPropagation(); // 阻止觸發 tr 的材料彈窗
+                showGainModal(hero, link.textContent); 
+              });
+            });
+          } else {
+            td.innerHTML = value.replace(/\n/g, '<br>');
+          }
         } else {
-          td.innerHTML = htmlValue;
+          // 一般高亮
+          if (keyword && value.toLowerCase().includes(keyword)) {
+            const regex = new RegExp(`(${keyword})`, 'gi');
+            td.innerHTML = value.replace(regex, '<span class="highlight2">$1</span>').replace(/\n/g, '<br>');
+          } else {
+            td.innerHTML = value.replace(/\n/g, '<br>');
+          }
         }
         tr.appendChild(td);
       });
 
-      // ==========================================
-      // ✅ 整合：檢查 material1 是否有值
-      // ==========================================
+      // 整列點擊顯示材料
       const hasMaterial = hero.material1 && String(hero.material1).trim() !== "";
-
       if (hasMaterial) {
-        tr.style.cursor = "pointer"; // 滑鼠變成手指圖示
+        tr.style.cursor = "pointer";
         tr.addEventListener('click', () => showDetailModal(hero));
-        // 額外提示：可以在名稱欄位標記一下 (可選)
-        // tr.querySelector('td:nth-child(2)').style.color = "#0056b3"; 
-      } else {
-        tr.style.cursor = "default"; // 保持一般箭頭
       }
 
       fragment.appendChild(tr);
@@ -145,23 +149,21 @@ document.addEventListener("DOMContentLoaded", () => {
     tbody.appendChild(fragment);
   }
 
-  // === Modal 詳細視窗 ===
+  // === Modal 1: 製作材料 ===
   function showDetailModal(equip) {
     if (!modalContent) return;
-    // 1. 生成材料清單的 HTML
     const materialsHTML = [1,2,3,4,5,6,7,8,9,10,11]
       .map(num => equip[`material${num}`] ? `<p><strong>材料 ${num}：</strong>${equip[`material${num}`]}</p>` : '')
       .join('');
 
-      // 2. ✅ 判斷說明欄位是否有值，若無值則不產生該 HTML 區塊
     const illustrateHTML = (equip.illustrate && equip.illustrate.trim() !== "") 
       ? `<div class="hero-column-base hero-column-details" style="grid-column: span 2; border-top: 1px solid #ddd; padding-top: 10px;">
-           <p><strong>說明：</strong><br>${equip.illustrate.replace(/\n/g, "<br>")}</p>
+           <p><strong>說明：</strong><br>${equip.illustrate.replace(/\^&|&\^/g, "").replace(/\n/g, "<br>")}</p>
          </div>`
-      : ""; // 為空則不顯示
+      : "";
 
     modalContent.innerHTML = `
-      <h2 class="hero-name">${equip.item}</h2>
+      <h2 class="hero-name">${equip.item} (製作材料)</h2>
       <div class="hero-details-container">
         <div class="hero-column-base hero-column">
           <p><strong>等級：</strong>${equip.lv}</p>
@@ -169,24 +171,52 @@ document.addEventListener("DOMContentLoaded", () => {
           <p><strong>命中：</strong>${equip.Property2}</p>
           <p><strong>耐用度：</strong>${equip.Durability}</p>
         </div>
-        <div class="hero-column-base hero-column">
-           ${materialsHTML}
-        </div>
+        <div class="hero-column-base hero-column">${materialsHTML}</div>
         ${illustrateHTML}
       </div>
-
     `;
+    openModal();
+  }
+
+  // === Modal 2: 增益詳情 (點擊文字觸發) ===
+  function showGainModal(equip, effectName) {
+    if (!modalContent) return;
+    const gainContent = (equip.gain && equip.gain.trim() !== "")
+      ? `<div class="hero-column-accessories-details">
+           <p style="font-size: 16px; line-height: 1.8; padding-top: 10px;">
+             ${equip.gain.replace(/\n/g, "<br>")}
+           </p>
+         </div>`
+      : `<div class="hero-column-accessories-details"><p>暫無詳細效果說明。</p></div>`;
+
+    modalContent.innerHTML = `
+      <h2 class="hero-name">${effectName} 詳情</h2>
+      <div class="hero-details-container" style="justify-content: center;">
+        ${gainContent}
+      </div>
+    `;
+    openModal();
+  }
+
+  function openModal() {
     modalOverlay.style.display = "block";
     modalBox.style.display = "block";
   }
 
   function closeModal() {
-    if (modalOverlay) modalOverlay.style.display = "none";
-    if (modalBox) modalBox.style.display = "none";
+    modalOverlay.style.display = "none";
+    modalBox.style.display = "none";
   }
 
+  // === 事件監聽 (關閉與摺疊) ===
   if (closeModalBtn) closeModalBtn.addEventListener("click", closeModal);
   if (modalOverlay) modalOverlay.addEventListener("click", closeModal);
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && modalBox.style.display === "block") {
+      closeModal();
+    }
+  });
 
   document.querySelectorAll('.accordion-header').forEach(header => {
     header.addEventListener('click', () => {
