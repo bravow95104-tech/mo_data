@@ -152,15 +152,19 @@ document.addEventListener("DOMContentLoaded", () => {
       : "";
 
     modalContent.innerHTML = `
-      <h2 class="hero-name">${equip.item} (製作材料)</h2>
+      <h2 class="hero-name">${equip.item}</h2>
       <div class="hero-details-container">
         <div class="hero-column-base hero-column">
+        <h3 class="modal-sub-title">基礎數值</h3>
           <p><strong>等級：</strong>${equip.lv}</p>
           <p><strong>防禦：</strong>${equip.Property1}</p>
           <p><strong>閃避：</strong>${equip.Property2}</p>
           <p><strong>耐用度：</strong>${equip.Durability}</p>
         </div>
-        <div class="hero-column-base hero-column">${materialsHTML}</div>
+        <div class="hero-column-base hero-column">
+        <h3 class="modal-sub-title">製作材料</h3>
+        ${materialsHTML}
+        </div>
         ${illustrateHTML}
       </div>
     `;
