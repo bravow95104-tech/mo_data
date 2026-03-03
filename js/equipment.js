@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const closeModalBtn = document.querySelector('.close-btn');
 
   // === 載入 JSON 資料 ===
-  fetch('/mo_data/data/weapons.json') // 依據你的代碼路徑
+  fetch('/mo_data/data/weapons.json')
     .then(response => response.json())
     .then(data => {
       heroesData = data.filter(item => item.class === "防具");
@@ -23,13 +23,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const searchInput = document.getElementById('searchInput');
 
-  // === 搜尋框 ===
+  // === 搜尋與篩選事件 ===
   searchInput.addEventListener('input', () => {
     clearTimeout(searchTimer);
     searchTimer = setTimeout(() => { applyFilters(); }, 200);
   });
 
-  // === 篩選按鈕 ===
   document.querySelectorAll('.filter-btn').forEach(btn => {
     btn.addEventListener('click', () => {
       document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
@@ -39,7 +38,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // === 清除篩選 ===
   document.getElementById('clearFilters').addEventListener('click', () => {
     activeFilter = null;
     searchInput.value = '';
@@ -78,7 +76,7 @@ document.addEventListener("DOMContentLoaded", () => {
     data.forEach(hero => {
       const tr = document.createElement('tr');
 
-      // --- 圖片欄 (修正圓角) ---
+      // --- 圖片欄 ---
       const imgTd = document.createElement('td');
       imgTd.style.cssText = 'width:50px; height:50px; text-align:center; vertical-align:middle;';
       if (hero.item) {
@@ -105,17 +103,14 @@ document.addEventListener("DOMContentLoaded", () => {
         const td = document.createElement('td');
         let value = hero[field] !== undefined ? String(hero[field]) : '';
 
-        // ✅ 整合：防具說明欄位的符號偵測
         if (field === 'illustrate') {
           const specialRegex = /\^&([\s\S]*?)&\^/g;
           if (value.includes('^&') && value.includes('&^')) {
             value = value.replace(specialRegex, '<span class="keyword-link">$1</span>');
             td.innerHTML = value.replace(/\n/g, '<br>');
-            
-            // 點擊虛線開啟 gain 彈窗
             td.querySelectorAll('.keyword-link').forEach(link => {
               link.addEventListener('click', (e) => {
-                e.stopPropagation(); // 阻止觸發 tr 的材料彈窗
+                e.stopPropagation();
                 showGainModal(hero, link.textContent); 
               });
             });
@@ -123,7 +118,6 @@ document.addEventListener("DOMContentLoaded", () => {
             td.innerHTML = value.replace(/\n/g, '<br>');
           }
         } else {
-          // 一般高亮
           if (keyword && value.toLowerCase().includes(keyword)) {
             const regex = new RegExp(`(${keyword})`, 'gi');
             td.innerHTML = value.replace(regex, '<span class="highlight2">$1</span>').replace(/\n/g, '<br>');
@@ -134,19 +128,18 @@ document.addEventListener("DOMContentLoaded", () => {
         tr.appendChild(td);
       });
 
-      // --- 整列點擊 (顯示製作材料) ---
+      // 整列點擊顯示材料
       const hasMaterial = hero.material1 && String(hero.material1).trim() !== "";
       if (hasMaterial) {
         tr.style.cursor = "pointer";
         tr.addEventListener('click', () => showDetailModal(hero));
       }
-
       fragment.appendChild(tr);
     });
     tbody.appendChild(fragment);
   }
 
-  // === Modal 1: 製作材料 (點擊整列觸發) ===
+  // === Modal 1: 製作材料 ===
   function showDetailModal(equip) {
     if (!modalContent) return;
     const materialsHTML = [1,2,3,4,5,6,7,8,9,10,11]
@@ -176,11 +169,9 @@ document.addEventListener("DOMContentLoaded", () => {
     modalBox.style.display = "block";
   }
 
-// === Modal 2: 增益效果 (點擊文字觸發) ===
+  // === Modal 2: 增益效果 ===
   function showGainModal(equip, effectName) {
     if (!modalContent) return;
-    
-    // ✅ 移除原本標籤內的 <br>，改用 CSS 控制間距
     const gainContent = (equip.gain && equip.gain.trim() !== "")
       ? `<div class="hero-column-accessories-details">
            <p style="font-size: 16px; line-height: 1.8; padding-top: 10px;">
@@ -199,10 +190,19 @@ document.addEventListener("DOMContentLoaded", () => {
     modalBox.style.display = "block";
   }
 
+  // === 視窗關閉與 Accordion 摺疊邏輯 ===
   function closeModal() {
     modalOverlay.style.display = "none";
     modalBox.style.display = "none";
   }
+
   if (closeModalBtn) closeModalBtn.addEventListener("click", closeModal);
   if (modalOverlay) modalOverlay.addEventListener("click", closeModal);
-});
+
+  // ✅ 補回這段 Accordion 邏輯
+  document.querySelectorAll(".accordion-header").forEach((header) => {
+    header.addEventListener("click", () => {
+      header.parentElement.classList.toggle("collapsed");
+    });
+  });
+}); 
