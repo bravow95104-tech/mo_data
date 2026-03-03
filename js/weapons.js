@@ -163,15 +163,21 @@ document.addEventListener("DOMContentLoaded", () => {
       : "";
 
     modalContent.innerHTML = `
-      <h2 class="hero-name">${equip.item} (製作材料)</h2>
+      <h2 class="hero-name">${equip.item}</h2>
       <div class="hero-details-container">
         <div class="hero-column-base hero-column">
+        <h3 style="color: #444; margin-top: 0; margin-bottom: 12px; font-size: 18px; border-bottom: 2px solid #3498db; display: inline-block; padding-bottom: 3px;">基礎數值</h3>
+          <div style="line-height: 1.8;">
           <p><strong>等級：</strong>${equip.lv}</p>
           <p><strong>攻擊：</strong>${equip.Property1}</p>
           <p><strong>命中：</strong>${equip.Property2}</p>
           <p><strong>耐用度：</strong>${equip.Durability}</p>
         </div>
-        <div class="hero-column-base hero-column">${materialsHTML}</div>
+        <div class="hero-column-base hero-column" style="background: #fcfcfc; border: 1px solid #efefef; border-radius: 8px; padding: 15px;">
+          <h3 style="color: #444; margin-top: 0; margin-bottom: 12px; font-size: 18px; border-bottom: 2px solid #3498db; display: inline-block; padding-bottom: 3px;">製作材料</h3>
+          <div style="line-height: 1.8;">
+            ${materialsHTML || '<p>無須材料</p>'}
+          </div>
         ${illustrateHTML}
       </div>
     `;
