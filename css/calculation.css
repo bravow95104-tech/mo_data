@@ -42,7 +42,9 @@
   bottom: 3px;
   background: #3399ff;
   border-radius: 50%;
-  transition: transform 0.3s cubic-bezier(0.4, 2, 0.6, 1), background 0.3s;
+  transition:
+    transform 0.3s cubic-bezier(0.4, 2, 0.6, 1),
+    background 0.3s;
 }
 .switch-toggle input:checked + .slider {
   background: #b3e0ff;
@@ -79,7 +81,10 @@
   font-weight: bold;
   cursor: pointer;
   box-shadow: 0 2px 6px #0001;
-  transition: background 0.3s, color 0.3s, transform 0.25s;
+  transition:
+    background 0.3s,
+    color 0.3s,
+    transform 0.25s;
   outline: none;
   position: relative;
 }
@@ -227,8 +232,6 @@
   box-sizing: border-box;
 }
 
-
-
 .hero-content {
   gap: 12px;
   display: flex;
@@ -244,10 +247,66 @@
   min-width: 0; /* 防止內容撐破 */
   box-sizing: border-box;
 }
+
+.hero-card--hint {
+  position: relative;
+}
+.hero-card--hint .hint-btn {
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-card--hint .hint-btn.hint-position {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+}
+
+.hero-card--hint .hint-circle {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #3399ff;
+  color: yellow;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  box-shadow: 0 1px 3px #0003;
+}
+.hero-card--hint .hint-tooltip {
+  position: absolute;
+  top: 100%;
+  right: 0px;
+  background: #3399ff;
+  color: #fff;
+  padding: 8px 10px;
+  border-radius: 6px;
+  white-space: nowrap;
+  display: none;
+  z-index: 60;
+  box-shadow: 0 4px 12px #0003;
+}
+.hero-card--hint .hint-tooltip.show {
+  display: block;
+}
+
 @media (max-width: 768px) {
   .hero-card {
     width: calc(100% - 46px);
     padding: 12px;
+  }
+  .hero-card--hint .hint-btn.hint-position {
+    position: absolute;
+    top: 12px;
+    right: 12px;
   }
   .hero-content {
     flex-direction: column;
@@ -262,6 +321,11 @@
   .hero-card {
     width: calc(100% - 46px);
     padding: 12px;
+  }
+  .hero-card--hint .hint-btn.hint-position {
+    position: absolute;
+    top: 12px;
+    right: 12px;
   }
   .hero-content {
     flex-direction: column;
