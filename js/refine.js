@@ -67,7 +67,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const searchInput1 = document.getElementById("searchInput1");
   const searchInput2 = document.getElementById("searchInput2");
-
+  searchSwitch.checked = true; // 預設開啟搜尋功能
+  toggle.checked = true; // 預設開啟精煉等級功能
   function setEnable(el, enabled) {
     if (el) el.disabled = !enabled;
   }
@@ -90,7 +91,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
     // 預設關閉
-    setEnable(process, false);
+    setEnable(process, true);
   }
 
   if (toggle) {
@@ -110,7 +111,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
     // 預設關閉
-    setEnable(refine, false);
+    setEnable(refine, true);
   }
 
   if (togglePrefixSwitch) {
@@ -330,7 +331,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const calcBtn = document.querySelector(".calc-btn");
   if (calcBtn) {
     calcBtn.addEventListener("click", function () {
-
       const mainStat = document.getElementById("main-stat")?.value || 0;
       const subResult = document.getElementById("sub-stat")?.value || 0;
       const refineLevel = document.getElementById("refine-level")?.value || 0;
@@ -338,14 +338,13 @@ document.addEventListener("DOMContentLoaded", () => {
       const mainRefineInit = getRefineInit(mainStat, refineLevel, processLevel);
       const subRefineInit = getRefineInit(subResult, refineLevel, processLevel);
       const searchInput2 = document.getElementById("searchInput2");
-      const ratea = searchInput2.dataset.ratea || 1;
-      const rateb = searchInput2.dataset.rateb || 1;
+      const ratea = processLevel ? 1 : searchInput2.dataset.ratea || 1;
+      const rateb = processLevel ? 1 : searchInput2.dataset.rateb || 1;
       const result = document.getElementById("result");
-      const mainList = getRefineValue(mainRefineInit * ratea);
-      const subList = getRefineValue(subRefineInit * rateb);
+      const mainList = getRefineValue(Math.floor(mainRefineInit * ratea));
+      const subList = getRefineValue(Math.floor(subRefineInit * rateb));
 
       if (result) result.innerHTML = calcResult(mainList, subList); // 預設顯示結果
-
     });
   }
 });
@@ -433,7 +432,7 @@ document.addEventListener("DOMContentLoaded", () => {
     dropdownId,
     data,
     key = "name",
-    labelKey = "name"
+    labelKey = "name",
   ) {
     const input = document.getElementById(inputId);
     const dropdown = document.getElementById(dropdownId);
@@ -558,4 +557,18 @@ document.addEventListener("DOMContentLoaded", () => {
 document.addEventListener("DOMContentLoaded", () => {
   const result = document.getElementById("result");
   if (result) result.innerHTML = calcResult(); // 預設顯示結果
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+  var card = document.querySelector(".hero-card--hint");
+  if (!card) return;
+  var btn = card.querySelector(".hint-btn");
+  var tip = card.querySelector(".hint-tooltip");
+  btn.addEventListener("click", function (e) {
+    e.stopPropagation();
+    tip.classList.toggle("show");
+  });
+  document.addEventListener("click", function () {
+    tip.classList.remove("show");
+  });
 });
