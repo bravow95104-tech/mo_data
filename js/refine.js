@@ -121,6 +121,9 @@ document.addEventListener("DOMContentLoaded", () => {
       if (!this.checked) {
         setInputValueAndTrigger(searchInput1, "");
         setInputValueAndTrigger(searchInput2, "");
+      }else {
+        const searchSwitch = document.getElementById("hint-tooltip");
+        searchSwitch.classList.add("show");
       }
     });
     // 預設關閉
