@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="zh-Hant">
   <head>
     <meta charset="UTF-8" />
@@ -12,8 +12,14 @@
     <!-- 這是導航列會被載入的位置 -->
     <div class="main hero-content">
       <div class="hero-item">
-        <div class="hero-card">
+        <div class="hero-card hero-card--hint">
           <h2>裝備數值</h2>
+          <button class="hint-btn hint-position" type="button" aria-label="提示說明">
+            <span class="hint-circle">!</span>
+            <div class="hint-tooltip" role="tooltip">
+              依字首數值請填白字數值
+            </div>
+          </button>
 
           <div class="hero-form-col">
             <div class="search-toggle-container flex">
@@ -133,4 +139,3 @@
     <script src="/mo_data/js/refine.js"></script>
   </body>
 </html>
-
