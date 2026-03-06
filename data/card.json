@@ -1,6 +1,7 @@
 [
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "馬卡",
     "card_id": "姜子牙(四不相)",
     "card_property": "HP",
@@ -14,10 +15,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": "儲值活動贈送"
+    "drop": "儲值活動贈送",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "馬卡",
     "card_id": "妲己(桃花馬)",
     "card_property": "MP",
@@ -31,10 +34,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": "儲值活動贈送"
+    "drop": "儲值活動贈送",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "馬卡",
     "card_id": "黃飛虎(五色神牛)",
     "card_property": "運氣",
@@ -48,10 +53,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": "儲值活動贈送"
+    "drop": "儲值活動贈送",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "馬卡",
     "card_id": "孫權坐騎(快航)",
     "card_property": "智慧",
@@ -65,10 +72,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": "儲值活動贈送"
+    "drop": "儲值活動贈送",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "馬卡",
     "card_id": "趙雲坐騎(夜照玉狮子)",
     "card_property": "力量",
@@ -82,10 +91,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": "儲值活動贈送"
+    "drop": "儲值活動贈送",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "馬卡",
     "card_id": "馬超坐騎(裡飛沙)",
     "card_property": "敏捷",
@@ -99,10 +110,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": "儲值活動贈送"
+    "drop": "儲值活動贈送",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "特殊",
     "card_id": "諸葛連弩卡",
     "card_property": "敏捷",
@@ -116,10 +129,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": "儲值活動贈送"
+    "drop": "儲值活動贈送",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "特殊",
     "card_id": "赤兔馬卡",
     "card_property": "力量",
@@ -133,10 +148,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": "儲值活動贈送"
+    "drop": "儲值活動贈送",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "特殊",
     "card_id": "爪黃飛電卡",
     "card_property": "智慧",
@@ -150,10 +167,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": "儲值活動贈送"
+    "drop": "儲值活動贈送",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "特殊",
     "card_id": "絕影卡",
     "card_property": "力量",
@@ -167,10 +186,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": "儲值活動贈送"
+    "drop": "儲值活動贈送",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "新專",
     "card_id": "神鶴羽扇卡",
     "card_property": "智慧",
@@ -184,10 +205,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": "抽包、紫箱"
+    "drop": "抽包、紫箱",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "新專",
     "card_id": "直勾長杆卡",
     "card_property": "防禦力",
@@ -201,10 +224,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "新專",
     "card_id": "絕學寶典卡",
     "card_property": "體質",
@@ -218,10 +243,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "新專",
     "card_id": "魔神拂塵卡",
     "card_property": "智慧",
@@ -235,10 +262,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": "抽包、紫箱"
+    "drop": "抽包、紫箱",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "新專",
     "card_id": "妖狐之魂卡",
     "card_property": "智慧",
@@ -252,10 +281,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": "抽包、紫箱"
+    "drop": "抽包、紫箱",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "新專",
     "card_id": "開闢神劍卡",
     "card_property": "力量",
@@ -269,10 +300,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "新專",
     "card_id": "極．方天畫戟卡",
     "card_property": "力量",
@@ -286,10 +319,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": "抽包、紫箱"
+    "drop": "抽包、紫箱",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "新專",
     "card_id": "征討蛇矛卡",
     "card_property": "敏捷",
@@ -303,10 +338,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": "抽包、紫箱"
+    "drop": "抽包、紫箱",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "新專",
     "card_id": "弒神訣卡",
     "card_property": "防禦力",
@@ -320,10 +357,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "新專",
     "card_id": "智多星秘卷卡",
     "card_property": "智慧",
@@ -337,10 +376,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "新專",
     "card_id": "蛇形神弓卡",
     "card_property": "敏捷",
@@ -354,10 +395,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "新專",
     "card_id": "倡玉笛卡",
     "card_property": "智慧",
@@ -371,10 +414,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": "抽包、紫箱"
+    "drop": "抽包、紫箱",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "新專",
     "card_id": "甘梅玉人卡",
     "card_property": "力量",
@@ -388,10 +433,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": "抽包、紫箱"
+    "drop": "抽包、紫箱",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "新專",
     "card_id": "神女之扇卡",
     "card_property": "智慧",
@@ -405,10 +452,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": "抽包、紫箱"
+    "drop": "抽包、紫箱",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "新專",
     "card_id": "晨光稻穗卡",
     "card_property": "智慧",
@@ -422,10 +471,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "新專",
     "card_id": "喚雨招幡卡",
     "card_property": "智慧",
@@ -439,10 +490,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "新專",
     "card_id": "勇猛雙戟卡",
     "card_property": "敏捷",
@@ -456,10 +509,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "新專",
     "card_id": "黃金乾坤圈卡",
     "card_property": "敏捷",
@@ -473,10 +528,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": "抽包、紫箱"
+    "drop": "抽包、紫箱",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "新專",
     "card_id": "通天六魂旛卡",
     "card_property": "體質",
@@ -490,10 +547,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "新專",
     "card_id": "剛侯月牙戟卡",
     "card_property": "敏捷",
@@ -507,10 +566,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "新專",
     "card_id": "究極探照燈卡",
     "card_property": "體質",
@@ -524,10 +585,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "新專",
     "card_id": "鶯飛寶劍卡",
     "card_property": "智慧",
@@ -541,10 +604,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": "抽包、紫箱"
+    "drop": "抽包、紫箱",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "新專",
     "card_id": "唯我獨尊之錘卡",
     "card_property": "力量",
@@ -558,10 +623,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "新專",
     "card_id": "三尖兩刃刀卡",
     "card_property": "力量",
@@ -575,10 +642,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "新專",
     "card_id": "松紋古定劍卡",
     "card_property": "智慧",
@@ -592,10 +661,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "新專",
     "card_id": "青龍偃月刀卡",
     "card_property": "力量",
@@ -609,10 +680,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": "抽包、紫箱"
+    "drop": "抽包、紫箱",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "新專",
     "card_id": "亮銀槍卡",
     "card_property": "敏捷",
@@ -626,10 +699,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "新專",
     "card_id": "先知八卦卡",
     "card_property": "防禦力",
@@ -643,10 +718,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "新專",
     "card_id": "日月雙刀卡",
     "card_property": "力量",
@@ -660,10 +737,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "新專",
     "card_id": "超激神劍卡",
     "card_property": "體質",
@@ -677,10 +756,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": "抽包、紫箱"
+    "drop": "抽包、紫箱",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "新專",
     "card_id": "神龍金鞭卡",
     "card_property": "敏捷",
@@ -694,10 +775,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "新專",
     "card_id": "倚天劍卡",
     "card_property": "智慧",
@@ -711,10 +794,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": "抽包、紫箱"
+    "drop": "抽包、紫箱",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "新專",
     "card_id": "極．丈八蛇矛卡",
     "card_property": "力量",
@@ -728,10 +813,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "新專",
     "card_id": "陷仙劍卡",
     "card_property": "智慧",
@@ -745,10 +832,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "新專",
     "card_id": "金蛟剪卡",
     "card_property": "智慧",
@@ -762,10 +851,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "新專",
     "card_id": "金眼駝卡",
     "card_property": "智慧",
@@ -779,10 +870,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "新專",
     "card_id": "伯言秘卷卡",
     "card_property": "運氣",
@@ -796,10 +889,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "新專",
     "card_id": "柳枝淨水卡",
     "card_property": "閃避值",
@@ -813,10 +908,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "新專",
     "card_id": "仙界彩衣卡",
     "card_property": "防禦力",
@@ -830,10 +927,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "新專",
     "card_id": "公達秘卷卡",
     "card_property": "敏捷",
@@ -847,10 +946,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "新專",
     "card_id": "水滴芭蕉葉卡",
     "card_property": "智慧",
@@ -864,10 +965,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "新專",
     "card_id": "天燮綠沉槍卡",
     "card_property": "智慧",
@@ -881,10 +984,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": "抽包、紫箱"
+    "drop": "抽包、紫箱",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "新專",
     "card_id": "如意羽衣卡",
     "card_property": "智慧",
@@ -898,10 +1003,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "新專",
     "card_id": "魔力芭蕉葉卡",
     "card_property": "智慧",
@@ -915,10 +1022,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "新專",
     "card_id": "白玉金剛鐲卡",
     "card_property": "智慧",
@@ -932,10 +1041,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "新專",
     "card_id": "仲德羽扇卡",
     "card_property": "運氣",
@@ -949,10 +1060,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "新專",
     "card_id": "梁山披風卡",
     "card_property": "防禦力",
@@ -966,10 +1079,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "新專",
     "card_id": "元直兵法卡",
     "card_property": "運氣",
@@ -983,10 +1098,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": "抽包、紫箱"
+    "drop": "抽包、紫箱",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "新專",
     "card_id": "六柄寶劍卡",
     "card_property": "閃避值",
@@ -1000,10 +1117,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "新專",
     "card_id": "奉孝錦囊卡",
     "card_property": "智慧",
@@ -1017,10 +1136,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": "抽包、紫箱"
+    "drop": "抽包、紫箱",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "新專",
     "card_id": "士元毛筆卡",
     "card_property": "智慧",
@@ -1034,10 +1155,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": "抽包、紫箱"
+    "drop": "抽包、紫箱",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "新專",
     "card_id": "文若兵法卡",
     "card_property": "智慧",
@@ -1051,10 +1174,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "新專",
     "card_id": "子敬秘卷卡",
     "card_property": "閃避值",
@@ -1068,10 +1193,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "新專",
     "card_id": "武王護身符卡",
     "card_property": "運氣",
@@ -1085,10 +1212,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "新專",
     "card_id": "帝辛王冠卡",
     "card_property": "防禦力",
@@ -1102,10 +1231,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "新專",
     "card_id": "八棱亮銀錘卡",
     "card_property": "力量",
@@ -1119,10 +1250,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "新專",
     "card_id": "偃月戰靴卡",
     "card_property": "敏捷",
@@ -1136,10 +1269,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": "抽包、紫箱"
+    "drop": "抽包、紫箱",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "新專",
     "card_id": "青龍紋身卡",
     "card_property": "力量",
@@ -1153,10 +1288,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": "抽包、紫箱"
+    "drop": "抽包、紫箱",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "新專",
     "card_id": "兩柄板斧卡",
     "card_property": "敏捷",
@@ -1170,10 +1307,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "新專",
     "card_id": "赤紅盔甲卡",
     "card_property": "敏捷",
@@ -1187,10 +1326,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "新專",
     "card_id": "智深法袍卡",
     "card_property": "防禦力",
@@ -1204,10 +1345,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "新專",
     "card_id": "狼牙棒卡",
     "card_property": "力量",
@@ -1221,10 +1364,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": "抽包、紫箱"
+    "drop": "抽包、紫箱",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "新專",
     "card_id": "護心鏡卡",
     "card_property": "防禦力",
@@ -1238,10 +1383,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "新專",
     "card_id": "雉雞翎卡",
     "card_property": "防禦力",
@@ -1255,10 +1402,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "新專",
     "card_id": "截頭大刀卡",
     "card_property": "防禦力",
@@ -1272,10 +1421,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "新專",
     "card_id": "皇家鎖甲卡",
     "card_property": "防禦力",
@@ -1289,10 +1440,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "新專",
     "card_id": "吳鉤劍卡",
     "card_property": "力量",
@@ -1306,10 +1459,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "新專",
     "card_id": "炫彩頭飾卡",
     "card_property": "閃避值",
@@ -1323,10 +1478,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "新專",
     "card_id": "文長戰甲卡",
     "card_property": "力量",
@@ -1340,10 +1497,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "新專",
     "card_id": "幸運石卡",
     "card_property": "運氣",
@@ -1357,10 +1516,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "新專",
     "card_id": "水火花籃卡",
     "card_property": "敏捷",
@@ -1374,10 +1535,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "新專",
     "card_id": "雙股劍卡",
     "card_property": "運氣",
@@ -1391,10 +1554,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": "抽包、紫箱"
+    "drop": "抽包、紫箱",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "新專",
     "card_id": "五虎斷魂槍卡",
     "card_property": "力量",
@@ -1408,10 +1573,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "新專",
     "card_id": "季常毛筆卡",
     "card_property": "閃避值",
@@ -1425,10 +1592,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "新專",
     "card_id": "小李廣護身符卡",
     "card_property": "運氣",
@@ -1442,10 +1611,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "新專",
     "card_id": "箭術秘笈卡",
     "card_property": "敏捷",
@@ -1459,10 +1630,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": "抽包、紫箱"
+    "drop": "抽包、紫箱",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "新專",
     "card_id": "妙才戰靴卡",
     "card_property": "閃避值",
@@ -1476,10 +1649,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "新專",
     "card_id": "巫毒芭蕉葉卡",
     "card_property": "運氣",
@@ -1493,10 +1668,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": "抽包、紫箱"
+    "drop": "抽包、紫箱",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "新專",
     "card_id": "金背開山斧卡",
     "card_property": "閃避值",
@@ -1510,10 +1687,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "新專",
     "card_id": "興霸雙戟卡",
     "card_property": "閃避值",
@@ -1527,10 +1706,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "新專",
     "card_id": "神勇鎧甲卡",
     "card_property": "力量",
@@ -1544,10 +1725,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "新專",
     "card_id": "虎型雙刀卡",
     "card_property": "力量",
@@ -1561,10 +1744,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": "抽包、紫箱"
+    "drop": "抽包、紫箱",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "新專",
     "card_id": "血紅護額卡",
     "card_property": "敏捷",
@@ -1578,10 +1763,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": "抽包、紫箱"
+    "drop": "抽包、紫箱",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "新專",
     "card_id": "虎頭湛金槍卡",
     "card_property": "敏捷",
@@ -1595,10 +1782,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "臥龍訣卡",
     "card_property": "智慧",
@@ -1612,10 +1801,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "打神鞭卡",
     "card_property": "智慧",
@@ -1629,10 +1820,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "拐子劍卡",
     "card_property": "智慧",
@@ -1646,10 +1839,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "妖神拂塵卡",
     "card_property": "智慧",
@@ -1663,10 +1858,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": "盤古旛陣"
+    "drop": "盤古旛陣",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "狐尾圍巾卡",
     "card_property": "智慧",
@@ -1680,10 +1877,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "開天斧卡",
     "card_property": "體質",
@@ -1697,10 +1896,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "方天晝戟卡",
     "card_property": "攻擊",
@@ -1714,10 +1915,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "熱血棒球卡",
     "card_property": "攻擊",
@@ -1731,10 +1934,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": "惡龍秘窟第3層"
+    "drop": "惡龍秘窟第3層",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "天雄矛卡",
     "card_property": "力量",
@@ -1748,10 +1953,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "弒仙訣卡",
     "card_property": "智慧",
@@ -1765,10 +1972,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "勾魂銅鍊卡",
     "card_property": "命中",
@@ -1782,10 +1991,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": "夕之朝雲"
+    "drop": "夕之朝雲",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "補天彩石卡",
     "card_property": "攻擊",
@@ -1799,10 +2010,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "黃金稻穗卡",
     "card_property": "體質",
@@ -1816,10 +2029,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "祁雨招幡卡",
     "card_property": "防禦",
@@ -1833,10 +2048,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "牛頭巨斧卡",
     "card_property": "力量",
@@ -1850,10 +2067,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "噴射滑板卡",
     "card_property": "敏捷",
@@ -1867,10 +2086,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "六魂旛卡",
     "card_property": "智慧",
@@ -1884,10 +2105,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "文遠刀卡",
     "card_property": "攻擊",
@@ -1901,10 +2124,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "強力探照燈卡",
     "card_property": "智慧",
@@ -1918,10 +2143,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": "垃圾場第一層、垃圾場第二層"
+    "drop": "垃圾場第一層、垃圾場第二層",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "天使光環卡",
     "card_property": "HP",
@@ -1935,10 +2162,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "霧露仙網卡",
     "card_property": "攻擊",
@@ -1952,10 +2181,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "天地雙鎚卡",
     "card_property": "攻擊",
@@ -1969,10 +2200,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": "赤松林"
+    "drop": "赤松林",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "哮天犬卡",
     "card_property": "攻擊",
@@ -1986,10 +2219,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "太師拂塵卡",
     "card_property": "運氣",
@@ -2003,10 +2238,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "偃月刀卡",
     "card_property": "力量",
@@ -2020,10 +2257,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "青釭寶劍卡",
     "card_property": "攻擊",
@@ -2037,10 +2276,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "八卦卡",
     "card_property": "智慧",
@@ -2054,10 +2295,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "太歲奶瓶卡",
     "card_property": "體質",
@@ -2071,10 +2314,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "護體咒甲卡",
     "card_property": "防禦",
@@ -2088,10 +2333,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": "雲霄洞、玄日峰"
+    "drop": "雲霄洞、玄日峰",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "激神劍卡",
     "card_property": "力量",
@@ -2105,10 +2352,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "雌雄金鞭卡",
     "card_property": "運氣",
@@ -2122,10 +2371,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "孟德新書卡",
     "card_property": "HP",
@@ -2139,10 +2390,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": "幽冥深淵"
+    "drop": "幽冥深淵",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "丈八蛇矛卡",
     "card_property": "攻擊",
@@ -2156,10 +2409,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "神奇魔毯卡",
     "card_property": "智慧",
@@ -2173,10 +2428,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "成熟蟠桃卡",
     "card_property": "HP",
@@ -2190,10 +2447,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": "死牢"
+    "drop": "死牢",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "手指虎卡",
     "card_property": "攻擊",
@@ -2207,10 +2466,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "和泉守兼定卡",
     "card_property": "攻擊",
@@ -2224,10 +2485,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "備前長船長光卡",
     "card_property": "攻擊",
@@ -2241,10 +2504,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "斬神劍卡",
     "card_property": "防禦力",
@@ -2258,10 +2523,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": "地牢"
+    "drop": "地牢",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "九曲黃河陣卡",
     "card_property": "體質",
@@ -2275,10 +2542,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": "水牢"
+    "drop": "水牢",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "金霞冠卡",
     "card_property": "HP",
@@ -2292,10 +2561,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "伯言羽扇卡",
     "card_property": "智慧",
@@ -2309,10 +2580,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "真人拂塵卡",
     "card_property": "HP",
@@ -2326,10 +2599,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "愛的針筒卡",
     "card_property": "體質",
@@ -2343,10 +2618,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "黃金手環卡",
     "card_property": "命中值",
@@ -2360,10 +2637,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "蓮華法杖卡",
     "card_property": "智慧",
@@ -2377,10 +2656,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "碧玉寶珠卡",
     "card_property": "HP",
@@ -2394,10 +2675,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "加壓水槍卡",
     "card_property": "攻擊力",
@@ -2411,10 +2694,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "地煞石魁卡",
     "card_property": "HP",
@@ -2428,10 +2713,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": "翠竹林、玉虛宮"
+    "drop": "翠竹林、玉虛宮",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "香蘿羽扇卡",
     "card_property": "運氣",
@@ -2445,10 +2732,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": "惡龍秘窟第2層"
+    "drop": "惡龍秘窟第2層",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "加壓油槍卡",
     "card_property": "HP",
@@ -2462,10 +2751,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "青雲劍卡",
     "card_property": "攻擊",
@@ -2479,10 +2770,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": "峨嵋山"
+    "drop": "峨嵋山",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "軍師座車卡",
     "card_property": "防禦",
@@ -2496,10 +2789,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": "羅煞洞-第五層"
+    "drop": "羅煞洞-第五層",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "鐵刃骨扇卡",
     "card_property": "攻擊",
@@ -2513,10 +2808,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": "妖邪洞鎖殿"
+    "drop": "妖邪洞鎖殿",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "天罡稜鏡卡",
     "card_property": "智慧",
@@ -2530,10 +2827,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": "陽燧山第一層、陽燧山第二層"
+    "drop": "陽燧山第一層、陽燧山第二層",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "仲謀權杖卡",
     "card_property": "體質",
@@ -2547,10 +2846,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "河洛羅經卡",
     "card_property": "智慧",
@@ -2564,10 +2865,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": "東海龍宮"
+    "drop": "東海龍宮",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "鳳雛訣卡",
     "card_property": "智慧",
@@ -2581,10 +2884,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "陽嗔聖袍卡",
     "card_property": "HP",
@@ -2598,10 +2903,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "星文劍卡",
     "card_property": "HP",
@@ -2615,10 +2922,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "武王寶劍卡",
     "card_property": "智慧",
@@ -2632,10 +2941,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": "西桑耶沙漠"
+    "drop": "西桑耶沙漠",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "燕尾服卡",
     "card_property": "智慧",
@@ -2649,10 +2960,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "殷商大劍卡",
     "card_property": "力量",
@@ -2666,10 +2979,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": "惡龍秘窟第4層"
+    "drop": "惡龍秘窟第4層",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "莫邪巨劍卡",
     "card_property": "攻擊",
@@ -2683,10 +2998,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": "大漩渦"
+    "drop": "大漩渦",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "天勇偃月卡",
     "card_property": "力量",
@@ -2700,10 +3017,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "天微刀卡",
     "card_property": "攻擊",
@@ -2717,10 +3036,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "天殺雙斧卡",
     "card_property": "力量",
@@ -2734,10 +3055,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "龍形劍卡",
     "card_property": "力量",
@@ -2751,10 +3074,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": "潛龍潭"
+    "drop": "潛龍潭",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "渾鐵禪杖卡",
     "card_property": "力量",
@@ -2768,10 +3093,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": "幻之烏雲"
+    "drop": "幻之烏雲",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "百穗銀槍卡",
     "card_property": "力量",
@@ -2785,10 +3112,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "大龍袍卡",
     "card_property": "力量",
@@ -2802,10 +3131,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "真偃月刀卡",
     "card_property": "力量",
@@ -2819,10 +3150,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": "羅煞洞-第一層"
+    "drop": "羅煞洞-第一層",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "木棺卡",
     "card_property": "力量",
@@ -2836,10 +3169,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": "羅煞洞-第四層"
+    "drop": "羅煞洞-第四層",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "毒蛇眼罩卡",
     "card_property": "力量",
@@ -2853,10 +3188,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "芝麻餅卡",
     "card_property": "體質",
@@ -2870,10 +3207,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "長虹索卡",
     "card_property": "敏捷",
@@ -2887,10 +3226,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "玄音琵琶卡",
     "card_property": "智慧",
@@ -2904,10 +3245,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "逆炎大刀卡",
     "card_property": "命中",
@@ -2921,10 +3264,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "矢鐵貓卡",
     "card_property": "敏捷",
@@ -2938,10 +3283,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "通天神火柱卡",
     "card_property": "運氣",
@@ -2955,10 +3302,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": "火牢"
+    "drop": "火牢",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "陰陽雙劍卡",
     "card_property": "攻擊",
@@ -2972,10 +3321,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "五行珠卡",
     "card_property": "敏捷",
@@ -2989,10 +3340,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": "滄之雲海"
+    "drop": "滄之雲海",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "熾焰弓卡",
     "card_property": "敏捷",
@@ -3006,10 +3359,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "天英弓卡",
     "card_property": "敏捷",
@@ -3023,10 +3378,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "穿雲弓卡",
     "card_property": "攻擊",
@@ -3040,10 +3397,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "妙才磯砲卡",
     "card_property": "攻擊",
@@ -3057,10 +3416,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "低溫蠟燭卡",
     "card_property": "命中",
@@ -3074,10 +3435,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": "羅煞洞-第二層"
+    "drop": "羅煞洞-第二層",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "女僕服卡",
     "card_property": "攻擊",
@@ -3091,10 +3454,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": "寂靜死海"
+    "drop": "寂靜死海",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "震雷斧卡",
     "card_property": "力量",
@@ -3108,10 +3473,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": "修羅洞_狂亂、玄日洞上層、奔雷嶺"
+    "drop": "修羅洞_狂亂、玄日洞上層、奔雷嶺",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "赤血銅鈴卡",
     "card_property": "攻擊",
@@ -3125,10 +3492,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": "修羅洞_入口、修羅洞_迷惘"
+    "drop": "修羅洞_入口、修羅洞_迷惘",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "正丈八蛇矛卡",
     "card_property": "攻擊",
@@ -3142,10 +3511,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": "羅煞洞-第三層"
+    "drop": "羅煞洞-第三層",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "天傷棍卡",
     "card_property": "力量",
@@ -3159,10 +3530,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "伏虎雙錘卡",
     "card_property": "閃避",
@@ -3176,10 +3549,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "閻龍矛卡",
     "card_property": "攻擊",
@@ -3193,10 +3568,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": "崑崙山、玄日洞上層"
+    "drop": "崑崙山、玄日洞上層",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "賽車保養組卡",
     "card_property": "敏捷",
@@ -3210,10 +3587,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": "沰水道"
+    "drop": "沰水道",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "手裏劍卡",
     "card_property": "敏捷",
@@ -3227,10 +3606,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "兔女郎套裝卡",
     "card_property": "體質",
@@ -3244,10 +3625,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "土龍爪卡",
     "card_property": "閃避",
@@ -3261,10 +3644,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": "天山"
+    "drop": "天山",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "五光寶玉卡",
     "card_property": "敏捷",
@@ -3278,10 +3663,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": "末日京城"
+    "drop": "末日京城",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "縛龍索卡",
     "card_property": "命中",
@@ -3295,10 +3682,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "天捷棍卡",
     "card_property": "閃避",
@@ -3312,10 +3701,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": "南桑耶沙漠"
+    "drop": "南桑耶沙漠",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "冥蛇劍卡",
     "card_property": "攻擊",
@@ -3329,10 +3720,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "陰陽鏡卡",
     "card_property": "HP",
@@ -3346,10 +3739,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "香包卡",
     "card_property": "運氣",
@@ -3363,10 +3758,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": "伏龍洞"
+    "drop": "伏龍洞",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "天損寶衣卡",
     "card_property": "閃避",
@@ -3380,10 +3777,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "靛藍短弓卡",
     "card_property": "命中",
@@ -3397,10 +3796,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "天異彈卡",
     "card_property": "攻擊",
@@ -3414,10 +3815,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "水晶機弩卡",
     "card_property": "命中",
@@ -3431,10 +3834,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "鎖子甲卡",
     "card_property": "閃避",
@@ -3448,10 +3853,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": "臥虎高原"
+    "drop": "臥虎高原",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "滿月魔戒卡",
     "card_property": "敏捷",
@@ -3465,10 +3872,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "妖鬥衣卡",
     "card_property": "敏捷",
@@ -3482,10 +3891,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "隨身旅行包卡",
     "card_property": "攻擊",
@@ -3499,10 +3910,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "防開岔別針卡",
     "card_property": "命中",
@@ -3516,10 +3929,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "好人卡",
     "card_property": "運氣",
@@ -3533,10 +3948,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "六韜卡",
     "card_property": "敏捷",
@@ -3550,10 +3967,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "怪醫書典卡",
     "card_property": "運氣",
@@ -3567,10 +3986,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "驅魔蠟燭卡",
     "card_property": "閃避",
@@ -3584,10 +4005,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "黑琵琶卡",
     "card_property": "敏捷",
@@ -3601,10 +4024,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "造型電池卡",
     "card_property": "HP",
@@ -3618,10 +4043,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "文臺寶甲卡",
     "card_property": "體質",
@@ -3635,10 +4062,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "鎮國寶塔卡",
     "card_property": "防禦",
@@ -3652,10 +4081,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "天罡杖卡",
     "card_property": "命中",
@@ -3669,10 +4100,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "四郎拳譜卡",
     "card_property": "HP",
@@ -3686,10 +4119,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "手銬卡",
     "card_property": "體質",
@@ -3703,10 +4138,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "天猛寶甲卡",
     "card_property": "體質",
@@ -3720,10 +4157,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "托塔神柱卡",
     "card_property": "力量",
@@ -3737,10 +4176,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "精鋼巨棍卡",
     "card_property": "力量",
@@ -3754,10 +4195,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "御軍護甲卡",
     "card_property": "體質",
@@ -3771,10 +4214,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "天威棍卡",
     "card_property": "力量",
@@ -3788,10 +4233,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "蓋國天柱卡",
     "card_property": "體質",
@@ -3805,10 +4252,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "南蠻巨斧卡",
     "card_property": "體質",
@@ -3822,10 +4271,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "龍鬥衣卡",
     "card_property": "閃避",
@@ -3839,10 +4290,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "速風長劍卡",
     "card_property": "攻擊",
@@ -3856,10 +4309,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "酷炫球鞋卡",
     "card_property": "敏捷",
@@ -3873,10 +4328,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": "金嗷洞一樓"
+    "drop": "金嗷洞一樓",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "地陰書韜卡",
     "card_property": "敏捷",
@@ -3890,10 +4347,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "地壯寶玉卡",
     "card_property": "體質",
@@ -3907,10 +4366,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "獨角黑煙獸卡",
     "card_property": "閃避",
@@ -3924,10 +4385,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": "華山"
+    "drop": "華山",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "金銀雙棍卡",
     "card_property": "攻擊",
@@ -3941,10 +4404,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "地空剪卡",
     "card_property": "敏捷",
@@ -3958,10 +4423,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "白鬚斬刀卡",
     "card_property": "力量",
@@ -3975,10 +4442,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "厚刃巨劍卡",
     "card_property": "敏捷",
@@ -3992,10 +4461,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "分水剪卡",
     "card_property": "攻擊",
@@ -4009,10 +4480,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "流星鎖鏈卡",
     "card_property": "力量",
@@ -4026,10 +4499,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "赤剎刀卡",
     "card_property": "攻擊",
@@ -4043,10 +4518,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": "沰水道"
+    "drop": "沰水道",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "天敗書韜卡",
     "card_property": "閃避",
@@ -4060,10 +4537,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "赤葫蘆卡",
     "card_property": "體質",
@@ -4077,10 +4556,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": "池底洞窟"
+    "drop": "池底洞窟",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "天速剪卡",
     "card_property": "敏捷",
@@ -4094,10 +4575,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "豹女套裝卡",
     "card_property": "閃避",
@@ -4111,10 +4594,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "神威寶甲卡",
     "card_property": "防禦",
@@ -4128,10 +4613,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": "北門關"
+    "drop": "北門關",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "運動噴劑卡",
     "card_property": "敏捷",
@@ -4145,10 +4632,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "金蛟剪卡",
     "card_property": "攻擊",
@@ -4162,10 +4651,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": "泰山"
+    "drop": "泰山",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "混元金斗卡",
     "card_property": "運氣",
@@ -4179,10 +4670,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "地猛砲卡",
     "card_property": "攻擊",
@@ -4196,10 +4689,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "八卦袍卡",
     "card_property": "智慧",
@@ -4213,10 +4708,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": "妖邪洞迷殿"
+    "drop": "妖邪洞迷殿",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "五行道袍卡",
     "card_property": "防禦",
@@ -4230,10 +4727,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "雷公鞭卡",
     "card_property": "攻擊",
@@ -4247,10 +4746,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": "惡龍秘窟第1層"
+    "drop": "惡龍秘窟第1層",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "鎮魔土偶卡",
     "card_property": "運氣",
@@ -4264,10 +4765,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": "妖邪洞鎖殿"
+    "drop": "妖邪洞鎖殿",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "地奇砲卡",
     "card_property": "攻擊",
@@ -4281,10 +4784,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "太極法劍卡",
     "card_property": "智慧",
@@ -4298,10 +4803,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "珠纓卡",
     "card_property": "智慧",
@@ -4315,10 +4822,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "魔鬥衣卡",
     "card_property": "體質",
@@ -4332,10 +4841,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "漢中地圖卡",
     "card_property": "智慧",
@@ -4349,10 +4860,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "凌月琵琶卡",
     "card_property": "防禦",
@@ -4366,10 +4879,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": "蕈菇林"
+    "drop": "蕈菇林",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "靈彩頭冠卡",
     "card_property": "運氣",
@@ -4383,10 +4898,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "文和筆卡",
     "card_property": "智慧",
@@ -4400,10 +4917,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "玉錦盒卡",
     "card_property": "MP",
@@ -4417,10 +4936,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "正字金印卡",
     "card_property": "運氣",
@@ -4434,10 +4955,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "幽月琵琶卡",
     "card_property": "防禦",
@@ -4451,10 +4974,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "天尉寶甲卡",
     "card_property": "智慧",
@@ -4468,10 +4993,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "倭國貢品卡",
     "card_property": "智慧",
@@ -4485,10 +5012,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "番天印卡",
     "card_property": "HP",
@@ -4502,10 +5031,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "小毛驢卡",
     "card_property": "運氣",
@@ -4519,10 +5050,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "混元傘卡",
     "card_property": "智慧",
@@ -4536,10 +5069,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "華陀醫典卡",
     "card_property": "體質",
@@ -4553,10 +5088,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "北海水梨卡",
     "card_property": "運氣",
@@ -4570,10 +5107,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "骷髏法杖卡",
     "card_property": "HP",
@@ -4587,10 +5126,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "性感肚兜卡",
     "card_property": "閃避",
@@ -4604,10 +5145,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "夜明珠卡",
     "card_property": "運氣",
@@ -4621,10 +5164,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": "月鏡湖"
+    "drop": "月鏡湖",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "雲彩絹衣卡",
     "card_property": "閃避",
@@ -4638,10 +5183,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": "東都道"
+    "drop": "東都道",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "地靈醫典卡",
     "card_property": "體質",
@@ -4655,10 +5202,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "天師拂塵卡",
     "card_property": "運氣",
@@ -4672,10 +5221,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "地默刀卡",
     "card_property": "攻擊",
@@ -4689,10 +5240,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "洛神賦卡",
     "card_property": "智慧",
@@ -4706,10 +5259,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "伏妖葫蘆卡",
     "card_property": "智慧",
@@ -4723,10 +5278,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": "巨門關"
+    "drop": "巨門關",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "孫子兵法卡",
     "card_property": "智慧",
@@ -4740,10 +5297,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "昊天法袍卡",
     "card_property": "HP",
@@ -4757,10 +5316,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "八卦衣卡",
     "card_property": "運氣",
@@ -4774,10 +5335,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "金瓶寶扇卡",
     "card_property": "運氣",
@@ -4791,10 +5354,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "愛心卡",
     "card_property": "體質",
@@ -4808,10 +5373,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "奇書木杖卡",
     "card_property": "HP",
@@ -4825,10 +5392,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "天貴寶衣卡",
     "card_property": "防禦",
@@ -4842,10 +5411,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "七寶算盤卡",
     "card_property": "運氣",
@@ -4859,10 +5430,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "玉如意卡",
     "card_property": "運氣",
@@ -4876,10 +5449,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "天慧彈卡",
     "card_property": "攻擊",
@@ -4893,10 +5468,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "地魁刀卡",
     "card_property": "攻擊",
@@ -4910,10 +5487,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "地文筆卡",
     "card_property": "智慧",
@@ -4927,10 +5506,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "地正羅經卡",
     "card_property": "運氣",
@@ -4944,10 +5525,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "花狐貂卡",
     "card_property": "運氣",
@@ -4961,10 +5544,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "瘦金書帖卡",
     "card_property": "智慧",
@@ -4978,10 +5563,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "仙女彩衣卡",
     "card_property": "閃避",
@@ -4995,10 +5582,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "嬪妃服飾卡",
     "card_property": "防禦",
@@ -5012,10 +5601,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "無淚雙刀卡",
     "card_property": "閃避",
@@ -5029,10 +5620,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "天劍葫蘆卡",
     "card_property": "運氣",
@@ -5046,10 +5639,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "傳國玉璽卡",
     "card_property": "命中",
@@ -5063,10 +5658,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "青銅聖衣卡",
     "card_property": "防禦",
@@ -5080,10 +5677,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "地闔鎖鏈卡",
     "card_property": "力量",
@@ -5097,10 +5696,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": "蓬萊仙島"
+    "drop": "蓬萊仙島",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "天罪金鈴卡",
     "card_property": "體質",
@@ -5114,10 +5715,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "拌黃珠卡",
     "card_property": "攻擊",
@@ -5131,10 +5734,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "豹型鎧甲卡",
     "card_property": "敏捷",
@@ -5148,10 +5753,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "琉璃甲卡",
     "card_property": "防禦",
@@ -5165,10 +5772,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": "天煞洞第1層、天煞洞第2層、妖邪洞拜妖壇、可汗沙漠"
+    "drop": "天煞洞第1層、天煞洞第2層、妖邪洞拜妖壇、可汗沙漠",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "伐天巨斧卡",
     "card_property": "力量",
@@ -5182,10 +5791,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": "地煞洞第1層、地煞洞第2層"
+    "drop": "地煞洞第1層、地煞洞第2層",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "遠程子彈卡",
     "card_property": "敏捷",
@@ -5199,10 +5810,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "龍型鎧甲卡",
     "card_property": "防禦",
@@ -5216,10 +5829,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "天巧弓卡",
     "card_property": "攻擊",
@@ -5233,10 +5848,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "地飛櫻槍卡",
     "card_property": "敏捷",
@@ -5250,10 +5867,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "背心皮甲卡",
     "card_property": "防禦",
@@ -5267,10 +5886,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "地走櫻槍卡",
     "card_property": "攻擊",
@@ -5284,10 +5905,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "緊身衣卡",
     "card_property": "閃避",
@@ -5301,10 +5924,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "御賜足球卡",
     "card_property": "命中",
@@ -5318,10 +5943,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "混元珠卡",
     "card_property": "攻擊",
@@ -5335,10 +5962,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": "北都道"
+    "drop": "北都道",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "地軸彈卡",
     "card_property": "命中",
@@ -5352,10 +5981,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "安樂珠卡",
     "card_property": "運氣",
@@ -5369,10 +6000,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "打狗棒卡",
     "card_property": "防禦",
@@ -5386,10 +6019,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "蠻王戰弓卡",
     "card_property": "運氣",
@@ -5403,10 +6038,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "紅纓槍卡",
     "card_property": "攻擊",
@@ -5420,10 +6057,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": "南都道、西都道、杏花谷"
+    "drop": "南都道、西都道、杏花谷",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "巾幗寶甲卡",
     "card_property": "防禦",
@@ -5437,10 +6076,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "九公刀卡",
     "card_property": "力量",
@@ -5454,10 +6095,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": "池底洞窟"
+    "drop": "池底洞窟",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "虎型鎧甲卡",
     "card_property": "體質",
@@ -5471,10 +6114,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "天立櫻槍卡",
     "card_property": "攻擊",
@@ -5488,10 +6133,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "平忠大刀卡",
     "card_property": "體質",
@@ -5505,10 +6152,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "開天珠卡",
     "card_property": "命中",
@@ -5522,10 +6171,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "地邪劍卡",
     "card_property": "閃避",
@@ -5539,10 +6190,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "劈地珠卡",
     "card_property": "體質",
@@ -5556,10 +6209,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": "靈山"
+    "drop": "靈山",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "雁翅刀卡",
     "card_property": "力量",
@@ -5573,10 +6228,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": "地下水道第2層、地下水道第4層"
+    "drop": "地下水道第2層、地下水道第4層",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "降魔杵卡",
     "card_property": "力量",
@@ -5590,10 +6247,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "裝備卡",
+    "確認用": "",
     "new_old": "舊專",
     "card_id": "旋馬長刀卡",
     "card_property": "HP",
@@ -5607,10 +6266,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "靈具卡",
+    "確認用": "",
     "new_old": "",
     "card_id": "航空站",
     "card_property": "",
@@ -5624,10 +6285,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "靈具卡",
+    "確認用": "",
     "new_old": "",
     "card_id": "從青葉起步",
     "card_property": "",
@@ -5641,10 +6304,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "靈具卡",
+    "確認用": "",
     "new_old": "",
     "card_id": "天天來客棧",
     "card_property": "",
@@ -5658,10 +6323,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "靈具卡",
+    "確認用": "",
     "new_old": "",
     "card_id": "京城繁華",
     "card_property": "",
@@ -5675,10 +6342,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "靈具卡",
+    "確認用": "",
     "new_old": "",
     "card_id": "擂鼓鳴金",
     "card_property": "",
@@ -5692,10 +6361,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "靈具卡",
+    "確認用": "",
     "new_old": "",
     "card_id": "萬富錢莊",
     "card_property": "",
@@ -5709,10 +6380,12 @@
     "property_third": "攻擊力、防禦力",
     "card_mp": "",
     "directions": "",
-    "drop": "夕之朝雲"
+    "drop": "夕之朝雲",
+    "player": ""
   },
   {
     "type": "靈具卡",
+    "確認用": "",
     "new_old": "",
     "card_id": "毛賊三兄弟",
     "card_property": "",
@@ -5726,10 +6399,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": "修羅_狂亂"
+    "drop": "修羅_狂亂",
+    "player": ""
   },
   {
     "type": "靈具卡",
+    "確認用": "",
     "new_old": "",
     "card_id": "從容餘裕的態度",
     "card_property": "",
@@ -5743,10 +6418,12 @@
     "property_third": "命中值、防禦力",
     "card_mp": "",
     "directions": "",
-    "drop": "玉虛宮"
+    "drop": "玉虛宮",
+    "player": ""
   },
   {
     "type": "靈具卡",
+    "確認用": "",
     "new_old": "",
     "card_id": "劍客意志",
     "card_property": "",
@@ -5760,10 +6437,12 @@
     "property_third": "命中值、防禦力、最大MP",
     "card_mp": "",
     "directions": "",
-    "drop": "儲值"
+    "drop": "儲值",
+    "player": ""
   },
   {
     "type": "靈具卡",
+    "確認用": "",
     "new_old": "",
     "card_id": "術士意志",
     "card_property": "",
@@ -5777,10 +6456,12 @@
     "property_third": "閃避值、防禦力、攻擊力、最大MP",
     "card_mp": "",
     "directions": "",
-    "drop": "儲值"
+    "drop": "儲值",
+    "player": ""
   },
   {
     "type": "靈具卡",
+    "確認用": "",
     "new_old": "",
     "card_id": "英雄三傑",
     "card_property": "",
@@ -5794,10 +6475,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": "奔雷嶺"
+    "drop": "奔雷嶺",
+    "player": ""
   },
   {
     "type": "靈具卡",
+    "確認用": "",
     "new_old": "",
     "card_id": "回憶中的洞穴",
     "card_property": "",
@@ -5811,10 +6494,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "靈具卡",
+    "確認用": "",
     "new_old": "",
     "card_id": "過往的回憶",
     "card_property": "",
@@ -5828,10 +6513,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": "烈焰山"
+    "drop": "烈焰山",
+    "player": ""
   },
   {
     "type": "靈具卡",
+    "確認用": "",
     "new_old": "",
     "card_id": "暴打一頓",
     "card_property": "",
@@ -5845,10 +6532,12 @@
     "property_third": "命中值、防禦力、物理強度、法術強度",
     "card_mp": "",
     "directions": "",
-    "drop": "烈焰山"
+    "drop": "烈焰山",
+    "player": ""
   },
   {
     "type": "靈具卡",
+    "確認用": "",
     "new_old": "",
     "card_id": "一夜無夢",
     "card_property": "",
@@ -5862,10 +6551,12 @@
     "property_third": "命中值、閃避值、防禦力、物理強度、法術強度、法術防禦",
     "card_mp": "",
     "directions": "",
-    "drop": "秘境山頂(?)"
+    "drop": "秘境山頂(?)",
+    "player": ""
   },
   {
     "type": "靈具卡",
+    "確認用": "",
     "new_old": "",
     "card_id": "小隊全滅",
     "card_property": "",
@@ -5879,10 +6570,12 @@
     "property_third": "防禦力",
     "card_mp": "",
     "directions": "",
-    "drop": "明鏡、地牢"
+    "drop": "明鏡、地牢",
+    "player": ""
   },
   {
     "type": "靈具卡",
+    "確認用": "",
     "new_old": "",
     "card_id": "不講武德",
     "card_property": "",
@@ -5896,10 +6589,12 @@
     "property_third": "防禦力",
     "card_mp": "",
     "directions": "",
-    "drop": "明鏡、地牢"
+    "drop": "明鏡、地牢",
+    "player": ""
   },
   {
     "type": "靈具卡",
+    "確認用": "",
     "new_old": "",
     "card_id": "享用美味料理",
     "card_property": "",
@@ -5913,10 +6608,12 @@
     "property_third": "防禦力、物理強度、法術強度",
     "card_mp": "",
     "directions": "",
-    "drop": "幽納原野1"
+    "drop": "幽納原野1",
+    "player": ""
   },
   {
     "type": "靈具卡",
+    "確認用": "",
     "new_old": "",
     "card_id": "巧匠意志",
     "card_property": "",
@@ -5930,10 +6627,12 @@
     "property_third": "命中值、防禦力、物理強度",
     "card_mp": "",
     "directions": "",
-    "drop": "儲值"
+    "drop": "儲值",
+    "player": ""
   },
   {
     "type": "靈具卡",
+    "確認用": "",
     "new_old": "",
     "card_id": "風水師意志",
     "card_property": "",
@@ -5947,10 +6646,12 @@
     "property_third": "命中值、防禦力、法術強度",
     "card_mp": "",
     "directions": "",
-    "drop": "儲值"
+    "drop": "儲值",
+    "player": ""
   },
   {
     "type": "靈具卡",
+    "確認用": "",
     "new_old": "",
     "card_id": "回收產業",
     "card_property": "",
@@ -5964,10 +6665,12 @@
     "property_third": "閃避值、防禦力",
     "card_mp": "",
     "directions": "",
-    "drop": "幽納三"
+    "drop": "幽納三",
+    "player": ""
   },
   {
     "type": "靈具卡",
+    "確認用": "",
     "new_old": "",
     "card_id": "鎮妖塔對決",
     "card_property": "",
@@ -5981,10 +6684,12 @@
     "property_third": "命中值、防禦力、物理強度、法術強度、法術防禦",
     "card_mp": "",
     "directions": "",
-    "drop": "烈焰秘境"
+    "drop": "烈焰秘境",
+    "player": ""
   },
   {
     "type": "靈具卡",
+    "確認用": "",
     "new_old": "",
     "card_id": "路途好景",
     "card_property": "",
@@ -5998,10 +6703,12 @@
     "property_third": "閃避值、物理強度、法術強度",
     "card_mp": "",
     "directions": "",
-    "drop": "明鏡、地牢"
+    "drop": "明鏡、地牢",
+    "player": ""
   },
   {
     "type": "靈具卡",
+    "確認用": "",
     "new_old": "",
     "card_id": "武力開路",
     "card_property": "",
@@ -6015,10 +6722,12 @@
     "property_third": "防禦力、物理強度",
     "card_mp": "",
     "directions": "",
-    "drop": "迷茫古墳"
+    "drop": "迷茫古墳",
+    "player": ""
   },
   {
     "type": "靈具卡",
+    "確認用": "",
     "new_old": "",
     "card_id": "金蛇出洞",
     "card_property": "",
@@ -6032,10 +6741,12 @@
     "property_third": "隨機",
     "card_mp": "",
     "directions": "",
-    "drop": "活動"
+    "drop": "活動",
+    "player": ""
   },
   {
     "type": "靈具卡",
+    "確認用": "",
     "new_old": "",
     "card_id": "等待重生",
     "card_property": "",
@@ -6049,10 +6760,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": "帝皇城"
+    "drop": "帝皇城",
+    "player": ""
   },
   {
     "type": "靈具卡",
+    "確認用": "",
     "new_old": "",
     "card_id": "背地磨練",
     "card_property": "",
@@ -6066,10 +6779,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": "虎臂水洞_祭壇區"
+    "drop": "虎臂水洞_祭壇區",
+    "player": ""
   },
   {
     "type": "靈具卡",
+    "確認用": "",
     "new_old": "",
     "card_id": "法術競爭",
     "card_property": "",
@@ -6083,10 +6798,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": "虎臂水洞_祭壇區"
+    "drop": "虎臂水洞_祭壇區",
+    "player": ""
   },
   {
     "type": "靈具卡",
+    "確認用": "",
     "new_old": "",
     "card_id": "藥師意志",
     "card_property": "",
@@ -6100,10 +6817,12 @@
     "property_third": "閃避值、命中值、防禦力、攻擊力、物理強度、法術強度、最大MP",
     "card_mp": "",
     "directions": "",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "靈具卡",
+    "確認用": "",
     "new_old": "",
     "card_id": "武勇破軍",
     "card_property": "",
@@ -6117,10 +6836,12 @@
     "property_third": "命中值、閃避值、防禦力、攻擊力",
     "card_mp": "",
     "directions": "",
-    "drop": "帝皇城"
+    "drop": "帝皇城",
+    "player": ""
   },
   {
     "type": "靈具卡",
+    "確認用": "",
     "new_old": "",
     "card_id": "術法破敵",
     "card_property": "",
@@ -6134,11 +6855,13 @@
     "property_third": "命中值、閃避值、防禦力、法術防禦",
     "card_mp": "",
     "directions": "",
-    "drop": "帝皇城"
+    "drop": "帝皇城",
+    "player": ""
   },
   {
     "type": "主動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "重擊卡",
     "card_property": "無",
     "card_data": "",
@@ -6151,11 +6874,13 @@
     "property_third": "",
     "card_mp": 30,
     "directions": "強力一擊，驃騎將軍專用卡片",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "破碎擊卡",
     "card_property": "無",
     "card_data": "",
@@ -6168,11 +6893,13 @@
     "property_third": "",
     "card_mp": 30,
     "directions": "強力一擊",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "破碎擊閃卡",
     "card_property": "無",
     "card_data": "",
@@ -6185,11 +6912,13 @@
     "property_third": "",
     "card_mp": 20,
     "directions": "強力一擊",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "挑釁卡",
     "card_property": "無",
     "card_data": "",
@@ -6202,11 +6931,13 @@
     "property_third": "",
     "card_mp": 30,
     "directions": "挑釁敵人使其攻擊自己且降低其命中跟防禦",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "挑釁閃卡",
     "card_property": "無",
     "card_data": "",
@@ -6219,11 +6950,13 @@
     "property_third": "",
     "card_mp": 20,
     "directions": "挑釁敵人使其攻擊自己且降低其命中跟防禦",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "斷頭踢卡",
     "card_property": "無",
     "card_data": "",
@@ -6236,11 +6969,13 @@
     "property_third": "",
     "card_mp": 30,
     "directions": "強力一擊",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "斷頭踢閃卡",
     "card_property": "無",
     "card_data": "",
@@ -6253,11 +6988,13 @@
     "property_third": "",
     "card_mp": 20,
     "directions": "強力一擊",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "二連擊卡",
     "card_property": "無",
     "card_data": "",
@@ -6270,11 +7007,13 @@
     "property_third": "",
     "card_mp": 30,
     "directions": "連續射擊二次",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "二連擊閃卡",
     "card_property": "無",
     "card_data": "",
@@ -6287,11 +7026,13 @@
     "property_third": "",
     "card_mp": 20,
     "directions": "連續射擊二次",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "治癒卡",
     "card_property": "無",
     "card_data": "",
@@ -6304,11 +7045,13 @@
     "property_third": "",
     "card_mp": 30,
     "directions": "恢復少量體力的技能，瑤池仙女專用卡",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "刺金術卡",
     "card_property": "金",
     "card_data": "",
@@ -6321,11 +7064,13 @@
     "property_third": "",
     "card_mp": 30,
     "directions": "金行法術單體攻擊技能",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "刺金術閃卡",
     "card_property": "金",
     "card_data": "",
@@ -6338,11 +7083,13 @@
     "property_third": "",
     "card_mp": 20,
     "directions": "金行法術單體攻擊技能",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "刃斬符卡",
     "card_property": "金",
     "card_data": "",
@@ -6355,11 +7102,13 @@
     "property_third": "",
     "card_mp": 10,
     "directions": "可對敵人造成金屬性傷害",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "刃斬符閃卡",
     "card_property": "金",
     "card_data": "",
@@ -6372,11 +7121,13 @@
     "property_third": "",
     "card_mp": 5,
     "directions": "可對敵人造成金屬性傷害",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "冶金卡",
     "card_property": "金",
     "card_data": "",
@@ -6389,11 +7140,13 @@
     "property_third": "",
     "card_mp": 30,
     "directions": "可對敵人造成金屬性傷害，天策軍師專用卡片",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "急救術卡",
     "card_property": "無",
     "card_data": "",
@@ -6406,11 +7159,13 @@
     "property_third": "",
     "card_mp": 30,
     "directions": "恢復少量體力的技能",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "急救術閃卡",
     "card_property": "無",
     "card_data": "",
@@ -6423,11 +7178,13 @@
     "property_third": "",
     "card_mp": 20,
     "directions": "恢復少量體力的技能",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "下毒術卡",
     "card_property": "無",
     "card_data": "",
@@ -6440,11 +7197,13 @@
     "property_third": "",
     "card_mp": 30,
     "directions": "以特製的藥物讓敵人中毒",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "下毒術閃卡",
     "card_property": "無",
     "card_data": "",
@@ -6457,11 +7216,13 @@
     "property_third": "",
     "card_mp": 20,
     "directions": "以特製的藥物讓敵人中毒",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "刺刃符卡",
     "card_property": "木",
     "card_data": "",
@@ -6474,11 +7235,13 @@
     "property_third": "",
     "card_mp": 10,
     "directions": "可對敵人造成木屬性傷害",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "刺刃符閃卡",
     "card_property": "木",
     "card_data": "",
@@ -6491,11 +7254,13 @@
     "property_third": "",
     "card_mp": 5,
     "directions": "可對敵人造成木屬性傷害",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "擊斷符卡",
     "card_property": "土",
     "card_data": "",
@@ -6508,11 +7273,13 @@
     "property_third": "",
     "card_mp": 10,
     "directions": "可對敵人造成土屬性傷害",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "擊斷符閃卡",
     "card_property": "土",
     "card_data": "",
@@ -6525,11 +7292,13 @@
     "property_third": "",
     "card_mp": 5,
     "directions": "可對敵人造成土屬性傷害",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "斬擊符卡",
     "card_property": "火",
     "card_data": "",
@@ -6542,11 +7311,13 @@
     "property_third": "",
     "card_mp": 10,
     "directions": "可對敵人造成火屬性傷害",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "斬擊符閃卡",
     "card_property": "火",
     "card_data": "",
@@ -6559,11 +7330,13 @@
     "property_third": "",
     "card_mp": 5,
     "directions": "可對敵人造成火屬性傷害",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "斷刺符卡",
     "card_property": "水",
     "card_data": "",
@@ -6576,11 +7349,13 @@
     "property_third": "",
     "card_mp": 10,
     "directions": "可對敵人造成水屬性傷害",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "斷刺符閃卡",
     "card_property": "水",
     "card_data": "",
@@ -6593,10 +7368,12 @@
     "property_third": "",
     "card_mp": 5,
     "directions": "可對敵人造成水屬性傷害",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
+    "確認用": "",
     "new_old": "",
     "card_id": "妙手回春卡",
     "card_property": "",
@@ -6610,11 +7387,13 @@
     "property_third": "",
     "card_mp": "",
     "directions": "恢復體力的技能",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "妙手回春閃卡",
     "card_property": "無",
     "card_data": "",
@@ -6627,11 +7406,13 @@
     "property_third": "",
     "card_mp": 30,
     "directions": "恢復體力的技能",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "絕氣斬卡",
     "card_property": "無",
     "card_data": "",
@@ -6644,11 +7425,13 @@
     "property_third": "",
     "card_mp": 40,
     "directions": "可將敵人擊暈一段時間的武技",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "絕氣斬閃卡",
     "card_property": "無",
     "card_data": "",
@@ -6661,11 +7444,13 @@
     "property_third": "",
     "card_mp": 30,
     "directions": "可將敵人擊暈一段時間的武技",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "斬馬刀卡",
     "card_property": "無",
     "card_data": "",
@@ -6678,11 +7463,13 @@
     "property_third": "",
     "card_mp": 60,
     "directions": "以獨特刀法攻擊敵人,對響馬族有強化傷害的效果",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "斬馬刀閃卡",
     "card_property": "無",
     "card_data": "",
@@ -6695,11 +7482,13 @@
     "property_third": "",
     "card_mp": 50,
     "directions": "以獨特刀法攻擊敵人,對響馬族有強化傷害的效果",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "斷頭貳式卡",
     "card_property": "無",
     "card_data": "",
@@ -6712,11 +7501,13 @@
     "property_third": "",
     "card_mp": 60,
     "directions": "改良式斷頭踢技，具有更大的威力",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "斷頭貳式閃卡",
     "card_property": "無",
     "card_data": "",
@@ -6729,11 +7520,13 @@
     "property_third": "",
     "card_mp": 50,
     "directions": "改良式斷頭踢技，具有更大的威力",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "吸魂術閃卡",
     "card_property": "無",
     "card_data": "",
@@ -6746,11 +7539,13 @@
     "property_third": "",
     "card_mp": 50,
     "directions": "吸取敵人體力的法術",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "借策誅士閃卡",
     "card_property": "無",
     "card_data": "",
@@ -6763,11 +7558,13 @@
     "property_third": "",
     "card_mp": 20,
     "directions": "範圍攻擊，對策士敵人可加強傷害",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "押穴術閃卡",
     "card_property": "無",
     "card_data": "",
@@ -6780,11 +7577,13 @@
     "property_third": "",
     "card_mp": 15,
     "directions": "暫時給予敵人麻痺狀態的技能",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "三連擊卡",
     "card_property": "無",
     "card_data": "",
@@ -6797,11 +7596,13 @@
     "property_third": "",
     "card_mp": 40,
     "directions": "連續射擊三次",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "三連擊閃卡",
     "card_property": "無",
     "card_data": "",
@@ -6814,11 +7615,13 @@
     "property_third": "",
     "card_mp": 30,
     "directions": "連續射擊三次",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "絕仙箭卡",
     "card_property": "無",
     "card_data": "",
@@ -6831,11 +7634,13 @@
     "property_third": "",
     "card_mp": 40,
     "directions": "遠距離攻擊技能，可對仙士類與妖陽族的敵人加強傷害。",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "絕仙箭閃卡",
     "card_property": "無",
     "card_data": "",
@@ -6848,11 +7653,13 @@
     "property_third": "",
     "card_mp": 30,
     "directions": "遠距離攻擊技能，可對仙士類與妖陽族的敵人加強傷害。",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "裂金術卡",
     "card_property": "金",
     "card_data": "",
@@ -6865,11 +7672,13 @@
     "property_third": "",
     "card_mp": 40,
     "directions": "金行法術單體攻擊技能",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "裂金術閃卡",
     "card_property": "金",
     "card_data": "",
@@ -6882,11 +7691,13 @@
     "property_third": "",
     "card_mp": 30,
     "directions": "金行法術單體攻擊技能",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "五雷術卡",
     "card_property": "木",
     "card_data": "",
@@ -6899,11 +7710,13 @@
     "property_third": "",
     "card_mp": 40,
     "directions": "木行法術單體攻擊技能",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "五雷術閃卡",
     "card_property": "木",
     "card_data": "",
@@ -6916,11 +7729,13 @@
     "property_third": "",
     "card_mp": 30,
     "directions": "木行法術單體攻擊技能",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "寒冰術卡",
     "card_property": "水",
     "card_data": "",
@@ -6933,11 +7748,13 @@
     "property_third": "",
     "card_mp": 40,
     "directions": "水行法術單體攻擊技能",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "三昧真火卡",
     "card_property": "火",
     "card_data": "",
@@ -6950,11 +7767,13 @@
     "property_third": "",
     "card_mp": 40,
     "directions": "火行法術單體攻擊技能",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "三昧真火閃卡",
     "card_property": "火",
     "card_data": "",
@@ -6967,11 +7786,13 @@
     "property_third": "",
     "card_mp": 30,
     "directions": "火行法術單體攻擊技能",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "走土術卡",
     "card_property": "土",
     "card_data": "",
@@ -6984,11 +7805,13 @@
     "property_third": "",
     "card_mp": 40,
     "directions": "土行法術單體攻擊技能",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "走土術閃卡",
     "card_property": "土",
     "card_data": "",
@@ -7001,10 +7824,12 @@
     "property_third": "",
     "card_mp": 30,
     "directions": "土行法術單體攻擊技能",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
+    "確認用": "",
     "new_old": "",
     "card_id": "活骨術卡",
     "card_property": "",
@@ -7018,11 +7843,13 @@
     "property_third": "",
     "card_mp": "",
     "directions": "治療遲緩與睡眠的醫療術",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "活骨術閃卡",
     "card_property": "無",
     "card_data": "",
@@ -7035,11 +7862,13 @@
     "property_third": "",
     "card_mp": 10,
     "directions": "治療遲緩與睡眠的醫療術",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "活血術卡",
     "card_property": "無",
     "card_data": "",
@@ -7052,11 +7881,13 @@
     "property_third": "",
     "card_mp": 20,
     "directions": "治療暈眩與麻痺的醫療術",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "活血術閃卡",
     "card_property": "無",
     "card_data": "",
@@ -7069,11 +7900,13 @@
     "property_third": "",
     "card_mp": 10,
     "directions": "治療暈眩與麻痺的醫療術",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "兵弒咒卡",
     "card_property": "無",
     "card_data": "",
@@ -7086,11 +7919,13 @@
     "property_third": "",
     "card_mp": 40,
     "directions": "賦予戰場中士兵戰魂的氣魄",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "水影咒卡",
     "card_property": "無",
     "card_data": "",
@@ -7103,11 +7938,13 @@
     "property_third": "",
     "card_mp": 40,
     "directions": "對目標施展水紋護甲，降低其受到傷害",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "水影咒閃卡",
     "card_property": "無",
     "card_data": "",
@@ -7120,10 +7957,12 @@
     "property_third": "",
     "card_mp": 30,
     "directions": "對目標施展水紋護甲，降低其受到傷害",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
+    "確認用": "",
     "new_old": "",
     "card_id": "火輪咒卡",
     "card_property": "",
@@ -7137,11 +7976,13 @@
     "property_third": "",
     "card_mp": "",
     "directions": "對目標施展火輪咒，提昇其移動速度",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "火輪咒閃卡",
     "card_property": "無",
     "card_data": "",
@@ -7154,11 +7995,13 @@
     "property_third": "",
     "card_mp": 30,
     "directions": "對目標施展火輪咒，提昇其移動速度",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "傷魂咒卡",
     "card_property": "無",
     "card_data": "",
@@ -7171,11 +8014,13 @@
     "property_third": "",
     "card_mp": 40,
     "directions": "咒術類的法術，可無視法術防禦的傷害。",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "傷魂咒閃卡",
     "card_property": "無",
     "card_data": "",
@@ -7188,11 +8033,13 @@
     "property_third": "",
     "card_mp": 30,
     "directions": "咒術類的法術，可無視法術防禦的傷害。",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "淩刺刃符卡",
     "card_property": "木",
     "card_data": "",
@@ -7205,11 +8052,13 @@
     "property_third": "",
     "card_mp": 20,
     "directions": "可對敵人造成木屬性傷害。",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "鋒刃斬符卡",
     "card_property": "金",
     "card_data": "",
@@ -7222,11 +8071,13 @@
     "property_third": "",
     "card_mp": 20,
     "directions": "可對敵人造成金屬性傷害。",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "裂斬擊符閃卡",
     "card_property": "火",
     "card_data": "",
@@ -7239,11 +8090,13 @@
     "property_third": "",
     "card_mp": 10,
     "directions": "可對敵人造成火屬性傷害。",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "破擊斷符閃卡",
     "card_property": "土",
     "card_data": "",
@@ -7256,11 +8109,13 @@
     "property_third": "",
     "card_mp": 10,
     "directions": "可對敵人造成土屬性傷害。",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "擊斷刺符卡",
     "card_property": "水",
     "card_data": "",
@@ -7273,11 +8128,13 @@
     "property_third": "",
     "card_mp": 20,
     "directions": "可對敵人造成水屬性傷害。",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "擊斷刺符閃卡",
     "card_property": "水",
     "card_data": "",
@@ -7290,11 +8147,13 @@
     "property_third": "",
     "card_mp": 10,
     "directions": "可對敵人造成水屬性傷害。",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "慈石噴霧卡",
     "card_property": "無",
     "card_data": "",
@@ -7307,11 +8166,13 @@
     "property_third": "",
     "card_mp": 80,
     "directions": "範圍攻擊技能，附加睡眠效果",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "慈石噴霧閃卡",
     "card_property": "無",
     "card_data": "",
@@ -7324,11 +8185,13 @@
     "property_third": "",
     "card_mp": 70,
     "directions": "範圍攻擊技能，附加睡眠效果",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "四連擊卡",
     "card_property": "無",
     "card_data": "",
@@ -7341,11 +8204,13 @@
     "property_third": "",
     "card_mp": 60,
     "directions": "以暗器連續四次射擊",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "四連擊閃卡",
     "card_property": "無",
     "card_data": "",
@@ -7358,10 +8223,12 @@
     "property_third": "",
     "card_mp": 50,
     "directions": "以暗器連續四次射擊",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
+    "確認用": "",
     "new_old": "",
     "card_id": "爆裂箭卡",
     "card_property": "",
@@ -7375,11 +8242,13 @@
     "property_third": "",
     "card_mp": "",
     "directions": "射出帶有炸藥的暗器，可傷害一個範圍的敵人。",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "爆裂箭閃卡",
     "card_property": "無",
     "card_data": "",
@@ -7392,11 +8261,13 @@
     "property_third": "",
     "card_mp": 70,
     "directions": "射出帶有炸藥的暗器，可傷害一個範圍的敵人。",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "大羅仙術卡",
     "card_property": "無",
     "card_data": "",
@@ -7409,11 +8280,13 @@
     "property_third": "",
     "card_mp": 80,
     "directions": "高級的廣範圍恢復體力技能",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "大羅仙術閃卡",
     "card_property": "無",
     "card_data": "",
@@ -7426,11 +8299,13 @@
     "property_third": "",
     "card_mp": 70,
     "directions": "高級的廣範圍恢復體力技能",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "舞劍式卡",
     "card_property": "無",
     "card_data": "",
@@ -7443,11 +8318,13 @@
     "property_third": "",
     "card_mp": 90,
     "directions": "連續三次攻擊",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "舞劍式閃卡",
     "card_property": "無",
     "card_data": "",
@@ -7460,10 +8337,12 @@
     "property_third": "",
     "card_mp": 80,
     "directions": "連續三次攻擊",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
+    "確認用": "",
     "new_old": "",
     "card_id": "雙燕斬卡",
     "card_property": "",
@@ -7477,11 +8356,13 @@
     "property_third": "",
     "card_mp": "",
     "directions": "如同飛燕般的連續兩次攻擊",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "雙燕斬閃卡",
     "card_property": "無",
     "card_data": "",
@@ -7494,10 +8375,12 @@
     "property_third": "",
     "card_mp": 70,
     "directions": "如同飛燕般的連續兩次攻擊",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
+    "確認用": "",
     "new_old": "",
     "card_id": "落刀式卡",
     "card_property": "",
@@ -7511,11 +8394,13 @@
     "property_third": "",
     "card_mp": "",
     "directions": "以刀氣攻擊遠距離敵人的刀法",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "落刀式閃卡",
     "card_property": "無",
     "card_data": "",
@@ -7528,11 +8413,13 @@
     "property_third": "",
     "card_mp": 90,
     "directions": "以刀氣攻擊遠距離敵人的刀法",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "五連擊卡",
     "card_property": "無",
     "card_data": "",
@@ -7545,11 +8432,13 @@
     "property_third": "",
     "card_mp": 75,
     "directions": "以暗器連續五次射擊",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "五連擊閃卡",
     "card_property": "無",
     "card_data": "",
@@ -7562,11 +8451,13 @@
     "property_third": "",
     "card_mp": 65,
     "directions": "以暗器連續五次射擊",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "鬼嫿斷刺符卡",
     "card_property": "水",
     "card_data": "",
@@ -7579,11 +8470,13 @@
     "property_third": "",
     "card_mp": 40,
     "directions": "可對敵人造成水屬性傷害。",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "鬼嫿斷刺符閃卡",
     "card_property": "水",
     "card_data": "",
@@ -7596,11 +8489,13 @@
     "property_third": "",
     "card_mp": 30,
     "directions": "可對敵人造成水屬性傷害。",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "爆魂斬擊符卡",
     "card_property": "火",
     "card_data": "",
@@ -7613,11 +8508,13 @@
     "property_third": "",
     "card_mp": 40,
     "directions": "可對敵人造成火屬性傷害。",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "爆魂斬擊符閃卡",
     "card_property": "火",
     "card_data": "",
@@ -7630,11 +8527,13 @@
     "property_third": "",
     "card_mp": 30,
     "directions": "可對敵人造成火屬性傷害。",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "百擊刃斬符卡",
     "card_property": "金",
     "card_data": "",
@@ -7647,11 +8546,13 @@
     "property_third": "",
     "card_mp": 40,
     "directions": "可對敵人造成金屬性傷害。",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "百擊刃斬符閃卡",
     "card_property": "金",
     "card_data": "",
@@ -7664,11 +8565,13 @@
     "property_third": "",
     "card_mp": 30,
     "directions": "可對敵人造成金屬性傷害。",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "轟天擊斷符卡",
     "card_property": "土",
     "card_data": "",
@@ -7681,11 +8584,13 @@
     "property_third": "",
     "card_mp": 40,
     "directions": "可對敵人造成土屬性傷害。",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "轟天擊斷符閃卡",
     "card_property": "土",
     "card_data": "",
@@ -7698,11 +8603,13 @@
     "property_third": "",
     "card_mp": 30,
     "directions": "可對敵人造成土屬性傷害。",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "驚魄刺刃符閃卡",
     "card_property": "木",
     "card_data": "",
@@ -7715,11 +8622,13 @@
     "property_third": "",
     "card_mp": 30,
     "directions": "可對敵人造成木屬性傷害。",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "譽石碎霧卡",
     "card_property": "無",
     "card_data": "",
@@ -7732,11 +8641,13 @@
     "property_third": "",
     "card_mp": 60,
     "directions": "範圍攻擊技能，附加麻痺效果",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "譽石碎霧閃卡",
     "card_property": "無",
     "card_data": "",
@@ -7749,11 +8660,13 @@
     "property_third": "",
     "card_mp": 50,
     "directions": "範圍攻擊技能，附加麻痺效果",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "丹砂飛霧卡",
     "card_property": "無",
     "card_data": "",
@@ -7766,11 +8679,13 @@
     "property_third": "",
     "card_mp": 80,
     "directions": "噴灑以丹砂製成的粉末傷害周圍的敵人，具有讓敵人遲緩的效果",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "丹砂飛霧閃卡",
     "card_property": "無",
     "card_data": "",
@@ -7783,11 +8698,13 @@
     "property_third": "",
     "card_mp": 70,
     "directions": "噴灑以丹砂製成的粉末傷害周圍的敵人，具有讓敵人遲緩的效果",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "六連擊卡",
     "card_property": "無",
     "card_data": "",
@@ -7800,11 +8717,13 @@
     "property_third": "",
     "card_mp": 90,
     "directions": "連續射擊六次",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "六連擊閃卡",
     "card_property": "無",
     "card_data": "",
@@ -7817,11 +8736,13 @@
     "property_third": "",
     "card_mp": 80,
     "directions": "連續射擊六次",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "掩天箭卡",
     "card_property": "無",
     "card_data": "",
@@ -7834,11 +8755,13 @@
     "property_third": "",
     "card_mp": 40,
     "directions": "射出無數的暗器傷害周圍的敵人",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "掩天箭閃卡",
     "card_property": "無",
     "card_data": "",
@@ -7851,11 +8774,13 @@
     "property_third": "",
     "card_mp": 30,
     "directions": "射出無數的暗器傷害周圍的敵人",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "封神箭閃卡",
     "card_property": "無",
     "card_data": "",
@@ -7868,11 +8793,13 @@
     "property_third": "",
     "card_mp": 52,
     "directions": "將敵人的技能封印",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "金光陣卡",
     "card_property": "金",
     "card_data": "",
@@ -7885,11 +8812,13 @@
     "property_third": "",
     "card_mp": 80,
     "directions": "金行大範圍攻擊法術",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "金光陣閃卡",
     "card_property": "金",
     "card_data": "",
@@ -7902,11 +8831,13 @@
     "property_third": "",
     "card_mp": 70,
     "directions": "金行大範圍攻擊法術",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "風吼陣卡",
     "card_property": "木",
     "card_data": "",
@@ -7919,11 +8850,13 @@
     "property_third": "",
     "card_mp": 80,
     "directions": "木行大範圍攻擊法術",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "風吼陣閃卡",
     "card_property": "木",
     "card_data": "",
@@ -7936,11 +8869,13 @@
     "property_third": "",
     "card_mp": 70,
     "directions": "木行大範圍攻擊法術",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "紅水陣卡",
     "card_property": "水",
     "card_data": "",
@@ -7953,11 +8888,13 @@
     "property_third": "",
     "card_mp": 80,
     "directions": "水行大範圍攻擊法術",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "紅水陣閃卡",
     "card_property": "水",
     "card_data": "",
@@ -7970,11 +8907,13 @@
     "property_third": "",
     "card_mp": 70,
     "directions": "水行大範圍攻擊法術",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "烈燄陣卡",
     "card_property": "火",
     "card_data": "",
@@ -7987,11 +8926,13 @@
     "property_third": "",
     "card_mp": 80,
     "directions": "火行大範圍攻擊法術",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "烈燄陣閃卡",
     "card_property": "火",
     "card_data": "",
@@ -8004,10 +8945,12 @@
     "property_third": "",
     "card_mp": 70,
     "directions": "火行大範圍攻擊法術",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
+    "確認用": "",
     "new_old": "",
     "card_id": "紅沙陣卡",
     "card_property": "土",
@@ -8021,11 +8964,13 @@
     "property_third": "",
     "card_mp": "",
     "directions": "土行大範圍攻擊法術",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "紅沙陣閃卡",
     "card_property": "土",
     "card_data": "",
@@ -8038,11 +8983,13 @@
     "property_third": "",
     "card_mp": 70,
     "directions": "土行大範圍攻擊法術",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "鈍霆擊閃卡",
     "card_property": "無",
     "card_data": "",
@@ -8055,11 +9002,13 @@
     "property_third": "",
     "card_mp": 95,
     "directions": "遠距離攻擊，可重擊敵人",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "劇毒術卡",
     "card_property": "無",
     "card_data": "",
@@ -8072,11 +9021,13 @@
     "property_third": "",
     "card_mp": 90,
     "directions": "將劇毒施在敵人身上，暫時給予敵人中毒狀態的技能",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "劇毒術閃卡",
     "card_property": "無",
     "card_data": "",
@@ -8089,11 +9040,13 @@
     "property_third": "",
     "card_mp": 80,
     "directions": "將劇毒施在敵人身上，暫時給予敵人中毒狀態的技能",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "七連擊卡",
     "card_property": "無",
     "card_data": "",
@@ -8106,11 +9059,13 @@
     "property_third": "",
     "card_mp": 90,
     "directions": "連續七次射擊",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "七連擊閃卡",
     "card_property": "無",
     "card_data": "",
@@ -8123,10 +9078,12 @@
     "property_third": "",
     "card_mp": 80,
     "directions": "連續七次射擊",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
+    "確認用": "V",
     "new_old": "",
     "card_id": "金箭術閃卡",
     "card_property": "金",
@@ -8138,12 +9095,14 @@
     "property_first": "",
     "property_second": "",
     "property_third": "",
-    "card_mp": "",
+    "card_mp": 100,
     "directions": "對一名敵人施展金行法術攻擊，有機率造成更強的傷害",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
+    "確認用": "",
     "new_old": "",
     "card_id": "木箭術閃卡",
     "card_property": "木",
@@ -8157,10 +9116,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "對一名敵人施展木行法術攻擊，有機率造成更強的傷害",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
+    "確認用": "",
     "new_old": "",
     "card_id": "水箭術閃卡",
     "card_property": "水",
@@ -8174,11 +9135,13 @@
     "property_third": "",
     "card_mp": "",
     "directions": "對一名敵人施展水行法術攻擊，有機率造成更強的傷害",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "火箭術閃卡",
     "card_property": "火",
     "card_data": "",
@@ -8191,11 +9154,13 @@
     "property_third": "",
     "card_mp": 100,
     "directions": "對一名敵人施展火行法術攻擊，有機率造成更強的傷害",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "土箭術閃卡",
     "card_property": "土",
     "card_data": "",
@@ -8208,13 +9173,15 @@
     "property_third": "",
     "card_mp": 100,
     "directions": "對一名敵人施展土行法術攻擊，有機率造成更強的傷害",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
+    "確認用": "V",
     "new_old": "",
     "card_id": "降魔刃符閃卡",
-    "card_property": "",
+    "card_property": "金",
     "card_data": "",
     "card_lv": 60,
     "card_class": "通用",
@@ -8223,13 +9190,15 @@
     "property_first": "",
     "property_second": "",
     "property_third": "",
-    "card_mp": "",
+    "card_mp": 80,
     "directions": "對一名敵人造成法術傷害",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "降魔刺符閃卡",
     "card_property": "木",
     "card_data": "",
@@ -8242,13 +9211,15 @@
     "property_third": "",
     "card_mp": 80,
     "directions": "對一名敵人造成法術傷害",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
+    "確認用": "V",
     "new_old": "",
     "card_id": "降魔擊符閃卡",
-    "card_property": "",
+    "card_property": "土",
     "card_data": "",
     "card_lv": 60,
     "card_class": "通用",
@@ -8257,15 +9228,17 @@
     "property_first": "",
     "property_second": "",
     "property_third": "",
-    "card_mp": "",
+    "card_mp": 80,
     "directions": "對一名敵人造成法術傷害",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
+    "確認用": "V",
     "new_old": "",
     "card_id": "降魔斷符閃卡",
-    "card_property": "",
+    "card_property": "水",
     "card_data": "",
     "card_lv": 60,
     "card_class": "通用",
@@ -8274,13 +9247,15 @@
     "property_first": "",
     "property_second": "",
     "property_third": "",
-    "card_mp": "",
+    "card_mp": 80,
     "directions": "對一名敵人造成法術傷害",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "降魔斬符閃卡",
     "card_property": "火",
     "card_data": "",
@@ -8293,11 +9268,13 @@
     "property_third": "",
     "card_mp": 80,
     "directions": "對一名敵人造成法術傷害",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "癒魂術閃卡",
     "card_property": "無",
     "card_data": "",
@@ -8310,11 +9287,13 @@
     "property_third": "",
     "card_mp": 180,
     "directions": "治療一名隊友與其英雄的生命力",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "蕩刀式閃卡",
     "card_property": "無",
     "card_data": "",
@@ -8327,11 +9306,13 @@
     "property_third": "",
     "card_mp": 150,
     "directions": "近距離揮舞武器重擊敵人",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "突刺閃卡",
     "card_property": "無",
     "card_data": "",
@@ -8344,13 +9325,15 @@
     "property_third": "",
     "card_mp": 100,
     "directions": "迅速對近距離敵人做出銳利一擊，有機率造成更強的傷害",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
+    "確認用": "V",
     "new_old": "",
     "card_id": "全體挑釁閃卡",
-    "card_property": "",
+    "card_property": "無",
     "card_data": "",
     "card_lv": 65,
     "card_class": "武者",
@@ -8359,13 +9342,15 @@
     "property_first": "",
     "property_second": "",
     "property_third": "",
-    "card_mp": "",
+    "card_mp": 120,
     "directions": "挑釁一定距離內的所有敵人",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "牽制閃卡",
     "card_property": "無",
     "card_data": "",
@@ -8378,11 +9363,13 @@
     "property_third": "",
     "card_mp": 140,
     "directions": "牽制身旁敵人，造成暈眩及較弱的傷害",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "血魔鞭閃卡",
     "card_property": "無",
     "card_data": "",
@@ -8395,11 +9382,13 @@
     "property_third": "",
     "card_mp": 100,
     "directions": "鞭打對象吸取其生命力",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "冥魔鞭閃卡",
     "card_property": "無",
     "card_data": "",
@@ -8412,11 +9401,13 @@
     "property_third": "",
     "card_mp": 100,
     "directions": "鞭打對象吸取其法力",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "鬼蠶蠱閃卡",
     "card_property": "無",
     "card_data": "",
@@ -8429,13 +9420,15 @@
     "property_third": "",
     "card_mp": 140,
     "directions": "對一名敵人下鬼蠶蠱毒，會持續扣減敵人的生命力，如已中該蠱毒則會爆發",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
+    "確認用": "V",
     "new_old": "",
     "card_id": "百刃車閃卡",
-    "card_property": "",
+    "card_property": "無",
     "card_data": "",
     "card_lv": 70,
     "card_class": "工匠",
@@ -8444,13 +9437,15 @@
     "property_first": "",
     "property_second": "",
     "property_third": "",
-    "card_mp": "",
+    "card_mp": 160,
     "directions": "朝前方推出一台裝載刀劍的推車，攻擊直線上範圍內的敵人",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "暗器機關甲閃卡",
     "card_property": "無",
     "card_data": "",
@@ -8463,11 +9458,13 @@
     "property_third": "",
     "card_mp": 200,
     "directions": "武裝上特殊機關甲，反擊敵人傷害或者使攻擊附加暗器",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "影刃閃卡",
     "card_property": "無",
     "card_data": "",
@@ -8480,13 +9477,15 @@
     "property_third": "",
     "card_mp": 160,
     "directions": "近距離單體攻擊，有機率增加額外傷害",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
+    "確認用": "V",
     "new_old": "",
     "card_id": "追魂鉤閃卡",
-    "card_property": "",
+    "card_property": "無",
     "card_data": "",
     "card_lv": 70,
     "card_class": "通用",
@@ -8495,12 +9494,14 @@
     "property_first": "",
     "property_second": "",
     "property_third": "",
-    "card_mp": "",
+    "card_mp": 240,
     "directions": "讓一名敵人受到巨大的傷害",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
+    "確認用": "",
     "new_old": "",
     "card_id": "毒霧術閃卡",
     "card_property": "",
@@ -8514,11 +9515,13 @@
     "property_third": "",
     "card_mp": "",
     "directions": "使一個目標及其範圍的敵人中毒，能引發下毒的毒性爆發",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "天雷刃符閃卡",
     "card_property": "金",
     "card_data": "",
@@ -8531,11 +9534,13 @@
     "property_third": "",
     "card_mp": 150,
     "directions": "使用天雷符咒對複數目標造成傷害",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "天雷刺符閃卡",
     "card_property": "木",
     "card_data": "",
@@ -8548,11 +9553,13 @@
     "property_third": "",
     "card_mp": 150,
     "directions": "使用天雷符咒對複數目標造成傷害",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "天雷刃擊閃卡",
     "card_property": "土",
     "card_data": "",
@@ -8565,11 +9572,13 @@
     "property_third": "",
     "card_mp": 150,
     "directions": "使用天雷符咒對複數目標造成傷害",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "天雷斷符閃卡",
     "card_property": "水",
     "card_data": "",
@@ -8582,10 +9591,12 @@
     "property_third": "",
     "card_mp": 150,
     "directions": "使用天雷符咒對複數目標造成傷害",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
+    "確認用": "",
     "new_old": "",
     "card_id": "天雷斬符閃卡",
     "card_property": "",
@@ -8599,10 +9610,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "使用天雷符咒對複數目標造成傷害",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
+    "確認用": "",
     "new_old": "",
     "card_id": "迴刀式閃卡",
     "card_property": "",
@@ -8616,11 +9629,13 @@
     "property_third": "",
     "card_mp": "",
     "directions": "迴轉擺動武器傷害周遭敵人",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "金靈招喚閃卡",
     "card_property": "金",
     "card_data": "",
@@ -8633,11 +9648,13 @@
     "property_third": "",
     "card_mp": 250,
     "directions": "對目標範圍施展金行法術攻擊，有機率增加造成額外傷害",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "木靈招喚閃卡",
     "card_property": "木",
     "card_data": "",
@@ -8650,10 +9667,12 @@
     "property_third": "",
     "card_mp": 250,
     "directions": "對目標範圍施展木行法術攻擊，有機率封印敵人",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
+    "確認用": "",
     "new_old": "",
     "card_id": "水靈招喚閃卡",
     "card_property": "",
@@ -8667,11 +9686,13 @@
     "property_third": "",
     "card_mp": "",
     "directions": "對目標範圍施展水行法術攻擊，有機率使其冰凍",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "火靈招喚閃卡",
     "card_property": "火",
     "card_data": "",
@@ -8684,10 +9705,12 @@
     "property_third": "",
     "card_mp": 250,
     "directions": "對目標範圍施展火行法術攻擊，有機率使其燃燒",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
+    "確認用": "",
     "new_old": "",
     "card_id": "土靈招喚閃卡",
     "card_property": "",
@@ -8701,10 +9724,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "對目標範圍施展土行法術攻擊，有機率使其石化",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
+    "確認用": "",
     "new_old": "",
     "card_id": "奇異機關甲閃卡",
     "card_property": "",
@@ -8718,11 +9743,13 @@
     "property_third": "",
     "card_mp": "",
     "directions": "武裝上特殊機關甲，持續攻擊周遭敵人",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "暗殺閃卡",
     "card_property": "無",
     "card_data": "",
@@ -8735,10 +9762,12 @@
     "property_third": "",
     "card_mp": 200,
     "directions": "近距離單體攻擊，有機率增加額外傷害",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
+    "確認用": "",
     "new_old": "",
     "card_id": "魔靈之舞閃卡",
     "card_property": "",
@@ -8752,10 +9781,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "使大範圍內敵人受到傷害",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
+    "確認用": "",
     "new_old": "",
     "card_id": "瘟疫術閃卡",
     "card_property": "",
@@ -8769,13 +9800,15 @@
     "property_third": "",
     "card_mp": "",
     "directions": "使一個區域的敵人受傷並中毒，能引發下毒的毒性爆發",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
+    "確認用": "V",
     "new_old": "",
     "card_id": "慈悲之雨閃卡",
-    "card_property": "",
+    "card_property": "無",
     "card_data": "",
     "card_lv": 80,
     "card_class": "通用",
@@ -8784,13 +9817,15 @@
     "property_first": "",
     "property_second": "",
     "property_third": "",
-    "card_mp": "",
+    "card_mp": 400,
     "directions": "治療範圍內玩家或英雄大量的生命力",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "混元刃符閃卡",
     "card_property": "金",
     "card_data": "",
@@ -8803,10 +9838,12 @@
     "property_third": "",
     "card_mp": 200,
     "directions": "使用混元符咒對複數目標造成傷害",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
+    "確認用": "",
     "new_old": "",
     "card_id": "混元刺符閃卡",
     "card_property": "",
@@ -8820,11 +9857,13 @@
     "property_third": "",
     "card_mp": "",
     "directions": "使用混元符咒對複數目標造成傷害",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "混元擊符閃卡",
     "card_property": "土",
     "card_data": "",
@@ -8837,10 +9876,12 @@
     "property_third": "",
     "card_mp": 200,
     "directions": "使用混元符咒對複數目標造成傷害",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
+    "確認用": "",
     "new_old": "",
     "card_id": "混元斷符閃卡",
     "card_property": "",
@@ -8854,10 +9895,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "使用混元符咒對複數目標造成傷害",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
+    "確認用": "",
     "new_old": "",
     "card_id": "混元斬符閃卡",
     "card_property": "",
@@ -8871,11 +9914,13 @@
     "property_third": "",
     "card_mp": "",
     "directions": "使用混元符咒對複數目標造成傷害",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "粉碎烈擊閃卡",
     "card_property": "無",
     "card_data": "",
@@ -8888,10 +9933,12 @@
     "property_third": "",
     "card_mp": 240,
     "directions": "以充滿力量的武技震擊目標",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
+    "確認用": "",
     "new_old": "",
     "card_id": "無雙亂舞閃卡",
     "card_property": "",
@@ -8905,11 +9952,13 @@
     "property_third": "",
     "card_mp": "",
     "directions": "橫掃周遭敵人造成傷害，此技能較容易連續發動",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "火龍砲閃卡",
     "card_property": "火",
     "card_data": "",
@@ -8922,10 +9971,12 @@
     "property_third": "",
     "card_mp": 300,
     "directions": "對一個敵人及周遭目標，造成火行傷害",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
+    "確認用": "",
     "new_old": "",
     "card_id": "致命狙擊閃卡",
     "card_property": "",
@@ -8939,10 +9990,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "遠距離單體攻擊，有機率增加額外傷害",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
+    "確認用": "",
     "new_old": "",
     "card_id": "憾天動地閃卡",
     "card_property": "",
@@ -8956,10 +10009,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "遠距離對一個範圍內敵人造成傷害",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
+    "確認用": "",
     "new_old": "",
     "card_id": "招喚海王像閃卡",
     "card_property": "",
@@ -8973,10 +10028,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "招喚海王像，對範圍內我方恢復生命、敵人造成傷害",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
+    "確認用": "",
     "new_old": "",
     "card_id": "漫天魔血閃卡",
     "card_property": "",
@@ -8990,10 +10047,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "使大範圍內敵人受到巨大傷害",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
+    "確認用": "",
     "new_old": "",
     "card_id": "金神靈域閃卡",
     "card_property": "",
@@ -9007,10 +10066,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "對目標範圍施展金行法術攻擊，有機率增加造成額外傷害",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
+    "確認用": "",
     "new_old": "",
     "card_id": "木神靈域閃卡",
     "card_property": "",
@@ -9024,10 +10085,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "對目標範圍施展木行法術攻擊，有機率封印敵人",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
+    "確認用": "",
     "new_old": "",
     "card_id": "水神靈域閃卡",
     "card_property": "",
@@ -9041,10 +10104,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "對目標範圍施展水行法術攻擊，有機率使其冰凍",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
+    "確認用": "",
     "new_old": "",
     "card_id": "火神靈域閃卡",
     "card_property": "",
@@ -9058,10 +10123,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "對目標範圍施展火行法術攻擊，有機率使其燃燒",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
+    "確認用": "",
     "new_old": "",
     "card_id": "土神靈域閃卡",
     "card_property": "",
@@ -9075,10 +10142,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "對目標範圍施展土行法術攻擊，有機率使其石化",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
+    "確認用": "",
     "new_old": "",
     "card_id": "打神刃符閃卡",
     "card_property": "",
@@ -9092,10 +10161,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "使用打神符咒對複數目標造成傷害",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
+    "確認用": "",
     "new_old": "",
     "card_id": "打神刺符閃卡",
     "card_property": "",
@@ -9109,10 +10180,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "使用打神符咒對複數目標造成傷害",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
+    "確認用": "",
     "new_old": "",
     "card_id": "打神擊符閃卡",
     "card_property": "",
@@ -9126,10 +10199,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "使用打神符咒對複數目標造成傷害",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
+    "確認用": "",
     "new_old": "",
     "card_id": "打神斷符閃卡",
     "card_property": "",
@@ -9143,10 +10218,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "使用打神符咒對複數目標造成傷害",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
+    "確認用": "",
     "new_old": "",
     "card_id": "打神斬符閃卡",
     "card_property": "",
@@ -9160,10 +10237,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "使用打神符咒對複數目標造成傷害",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "主動技能卡",
+    "確認用": "",
     "new_old": "",
     "card_id": "一斬衁花盛閃卡",
     "card_property": "無",
@@ -9177,11 +10256,13 @@
     "property_third": "",
     "card_mp": 280,
     "directions": "瞬間對目標劃出一道斬擊，有機率對目標造成出血傷害。",
-    "drop": ""
+    "drop": "",
+    "player": "沒事多吸貓"
   },
   {
     "type": "被動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "靜林卡",
     "card_property": "無",
     "card_data": "",
@@ -9194,11 +10275,13 @@
     "property_third": "",
     "card_mp": "",
     "directions": "增加範圍內玩家及英雄的命中力",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "被動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "靜林閃卡",
     "card_property": "無",
     "card_data": "",
@@ -9211,11 +10294,13 @@
     "property_third": "",
     "card_mp": "",
     "directions": "增加範圍內玩家及英雄的命中力",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "被動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "動風卡",
     "card_property": "無",
     "card_data": "",
@@ -9228,11 +10313,13 @@
     "property_third": "",
     "card_mp": "",
     "directions": "增加範圍內玩家及英雄的迴避力",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "被動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "動風閃卡",
     "card_property": "無",
     "card_data": "",
@@ -9245,10 +10332,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "增加範圍內玩家及英雄的迴避力",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "被動技能卡",
+    "確認用": "",
     "new_old": "",
     "card_id": "盤山卡",
     "card_property": "無",
@@ -9262,11 +10351,13 @@
     "property_third": "",
     "card_mp": "",
     "directions": "增加範圍內玩家及英雄的防禦力",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "被動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "盤山閃卡",
     "card_property": "無",
     "card_data": "",
@@ -9279,11 +10370,13 @@
     "property_third": "",
     "card_mp": "",
     "directions": "增加範圍內玩家及英雄的防禦力",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "被動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "烈火卡",
     "card_property": "無",
     "card_data": "",
@@ -9296,11 +10389,13 @@
     "property_third": "",
     "card_mp": "",
     "directions": "增加範圍內玩家及英雄的攻擊力",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "被動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "烈火閃卡",
     "card_property": "無",
     "card_data": "",
@@ -9313,10 +10408,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "增加範圍內玩家及英雄的攻擊力",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "被動技能卡",
+    "確認用": "",
     "new_old": "",
     "card_id": "伏擊卡",
     "card_property": "土",
@@ -9330,11 +10427,13 @@
     "property_third": "",
     "card_mp": "",
     "directions": "周圍一格敵人受到土系傷害",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "被動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "伏擊閃卡",
     "card_property": "土",
     "card_data": "",
@@ -9347,10 +10446,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "周圍一格敵人受到土系傷害",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "被動技能卡",
+    "確認用": "",
     "new_old": "",
     "card_id": "血斷卡",
     "card_property": "水",
@@ -9364,11 +10465,13 @@
     "property_third": "",
     "card_mp": "",
     "directions": "周圍一格敵人受到水系傷害",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "被動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "血斷閃卡",
     "card_property": "水",
     "card_data": "",
@@ -9381,10 +10484,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "周圍一格敵人受到水系傷害",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "被動技能卡",
+    "確認用": "",
     "new_old": "",
     "card_id": "暗刺卡",
     "card_property": "木",
@@ -9398,11 +10503,13 @@
     "property_third": "",
     "card_mp": "",
     "directions": "周圍一格敵人受到木系傷害",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "被動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "暗刺閃卡",
     "card_property": "木",
     "card_data": "",
@@ -9415,10 +10522,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "周圍一格敵人受到木系傷害",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "被動技能卡",
+    "確認用": "",
     "new_old": "",
     "card_id": "光刃卡",
     "card_property": "金",
@@ -9432,11 +10541,13 @@
     "property_third": "",
     "card_mp": "",
     "directions": "周圍一格敵人受到金系傷害",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "被動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "光刃閃卡",
     "card_property": "金",
     "card_data": "",
@@ -9449,10 +10560,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "周圍一格敵人受到金系傷害",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "被動技能卡",
+    "確認用": "",
     "new_old": "",
     "card_id": "夭斬卡",
     "card_property": "火",
@@ -9466,11 +10579,13 @@
     "property_third": "",
     "card_mp": "",
     "directions": "周圍一格敵人受到火系傷害",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "被動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "夭斬閃卡",
     "card_property": "火",
     "card_data": "",
@@ -9483,10 +10598,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "周圍一格敵人受到火系傷害",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "被動技能卡",
+    "確認用": "",
     "new_old": "",
     "card_id": "木神卡",
     "card_property": "",
@@ -9500,11 +10617,13 @@
     "property_third": "",
     "card_mp": "",
     "directions": "自身週邊範圍內我方目標命中值提昇",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "被動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "木神閃卡",
     "card_property": "無",
     "card_data": "",
@@ -9517,10 +10636,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "自身週邊範圍內我方目標命中值提昇",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "被動技能卡",
+    "確認用": "",
     "new_old": "",
     "card_id": "風神卡",
     "card_property": "",
@@ -9534,11 +10655,13 @@
     "property_third": "",
     "card_mp": "",
     "directions": "自身週邊範圍內我方目標閃避值提昇",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "被動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "風神閃卡",
     "card_property": "無",
     "card_data": "",
@@ -9551,10 +10674,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "自身週邊範圍內我方目標閃避值提昇",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "被動技能卡",
+    "確認用": "",
     "new_old": "",
     "card_id": "山神卡",
     "card_property": "",
@@ -9568,11 +10693,13 @@
     "property_third": "",
     "card_mp": "",
     "directions": "自身週邊範圍內我方目標防禦力提昇",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "被動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "山神閃卡",
     "card_property": "無",
     "card_data": "",
@@ -9585,10 +10712,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "自身週邊範圍內我方目標防禦力提昇",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "被動技能卡",
+    "確認用": "",
     "new_old": "",
     "card_id": "火神卡",
     "card_property": "",
@@ -9602,11 +10731,13 @@
     "property_third": "",
     "card_mp": "",
     "directions": "自身週邊範圍內我方目標攻擊力提昇",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "被動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "火神閃卡",
     "card_property": "無",
     "card_data": "",
@@ -9619,10 +10750,12 @@
     "property_third": "",
     "card_mp": "",
     "directions": "自身週邊範圍內我方目標攻擊力提昇",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "被動技能卡",
+    "確認用": "",
     "new_old": "",
     "card_id": "太伏擊卡",
     "card_property": "",
@@ -9636,11 +10769,13 @@
     "property_third": "",
     "card_mp": "",
     "directions": "周圍一格敵人受到土系傷害",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "被動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "太伏擊閃卡",
     "card_property": "土",
     "card_data": "",
@@ -9653,11 +10788,13 @@
     "property_third": "",
     "card_mp": "",
     "directions": "周圍一格敵人受到土系傷害",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "被動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "幽血斷卡",
     "card_property": "水",
     "card_data": "",
@@ -9670,11 +10807,13 @@
     "property_third": "",
     "card_mp": "",
     "directions": "周圍一格敵人受到水系傷害",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "被動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "幽血斷閃卡",
     "card_property": "水",
     "card_data": "",
@@ -9687,11 +10826,13 @@
     "property_third": "",
     "card_mp": "",
     "directions": "周圍一格敵人受到水系傷害",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "被動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "冥暗刺卡",
     "card_property": "木",
     "card_data": "",
@@ -9704,11 +10845,13 @@
     "property_third": "",
     "card_mp": "",
     "directions": "周圍一格敵人受到木系傷害",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "被動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "冥暗刺閃卡",
     "card_property": "木",
     "card_data": "",
@@ -9721,11 +10864,13 @@
     "property_third": "",
     "card_mp": "",
     "directions": "周圍一格敵人受到木系傷害",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "被動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "極光刃卡",
     "card_property": "金",
     "card_data": "",
@@ -9738,11 +10883,13 @@
     "property_third": "",
     "card_mp": "",
     "directions": "周圍一格敵人受到金系傷害",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "被動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "極光刃閃卡",
     "card_property": "金",
     "card_data": "",
@@ -9755,11 +10902,13 @@
     "property_third": "",
     "card_mp": "",
     "directions": "周圍一格敵人受到金系傷害",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "被動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "灼夭斬卡",
     "card_property": "火",
     "card_data": "",
@@ -9772,11 +10921,13 @@
     "property_third": "",
     "card_mp": "",
     "directions": "周圍一格敵人受到火系傷害",
-    "drop": ""
+    "drop": "",
+    "player": ""
   },
   {
     "type": "被動技能卡",
-    "new_old": "V",
+    "確認用": "V",
+    "new_old": "",
     "card_id": "灼夭斬閃卡",
     "card_property": "火",
     "card_data": "",
@@ -9789,6 +10940,7 @@
     "property_third": "",
     "card_mp": "",
     "directions": "周圍一格敵人受到火系傷害",
-    "drop": ""
+    "drop": "",
+    "player": ""
   }
 ]
