@@ -14,6 +14,7 @@
     "drop_equidcard": "",
     "drop_combo_old": "",
     "drop_combo_new": "",
+    "drop_othrt": "",
     "drop_glory_high": "大賢之光輝、聖鬥之光輝、鐘會之光輝、曹貴人之光輝、安樂之光輝",
     "drop_glory_low": "",
     "drop_glory_player": ""
@@ -31,8 +32,9 @@
     "drop_rubbish": "營養的老鼠糞料、獅子小骨、野狼的上皮、精怪碎石、龍種化石",
     "drop_hero": "徐庶、甘寧、魔禮海、張奎、顧大嫂、瓊霄、殷郊、申公豹、王進、羅真人、姜維、張清、雷震子、李靖、周通、晁蓋、武吉、樊瑞、阮小七、夏侯淵、袁術、土行孫、黃飛虎、呼延灼、馬超、劉唐、趙公明、黃忠、殷洪、鄧禪玉、龐統、張順、碧霄、陸遜",
     "drop_equidcard": "",
-    "drop_combo_old": "紫薇、天機、天梁、天相、鈴、祿存、破軍",
+    "drop_combo_old": "紫薇星、天機星、天梁星、天相星、鈴星、祿存星、破軍星",
     "drop_combo_new": "",
+    "drop_othrt": "落刀式卡、砂鍋龍蝦汁、蝦肉豆腐皮",
     "drop_glory_high": "毒士之光輝、警花之光、袁紹之光輝、小霸王之光輝、祝融之光輝、顏良之光輝、阮小七之光輝",
     "drop_glory_low": "孫權之光輝、青龍星之光、瓊霄之光輝、火府星之光、麒麟之光輝、天使之光、李逵之光輝、執年歲君之徵、智多星之光輝",
     "drop_glory_player": ""
@@ -52,6 +54,7 @@
     "drop_equidcard": "",
     "drop_combo_old": "",
     "drop_combo_new": "",
+    "drop_othrt": "",
     "drop_glory_high": "",
     "drop_glory_low": "",
     "drop_glory_player": ""
@@ -71,6 +74,7 @@
     "drop_equidcard": "雲彩絹衣卡",
     "drop_combo_old": "",
     "drop_combo_new": "",
+    "drop_othrt": "",
     "drop_glory_high": "大賢之光輝、聖鬥之光輝、鐘會之光輝、曹貴人之光輝、安樂之光輝",
     "drop_glory_low": "",
     "drop_glory_player": ""
@@ -90,6 +94,7 @@
     "drop_equidcard": "紅纓槍卡",
     "drop_combo_old": "",
     "drop_combo_new": "",
+    "drop_othrt": "",
     "drop_glory_high": "張松之光輝、項充之光輝、豹騎之勇、虎騎之勇、魔鬥之勇",
     "drop_glory_low": "",
     "drop_glory_player": ""
@@ -109,6 +114,7 @@
     "drop_equidcard": "紅纓槍卡",
     "drop_combo_old": "",
     "drop_combo_new": "",
+    "drop_othrt": "",
     "drop_glory_high": "張松之光輝、項充之光輝、豹騎之勇、虎騎之勇、魔鬥之勇",
     "drop_glory_low": "",
     "drop_glory_player": ""
@@ -128,6 +134,7 @@
     "drop_equidcard": "青銅聖衣卡",
     "drop_combo_old": "",
     "drop_combo_new": "",
+    "drop_othrt": "",
     "drop_glory_high": "張松之光輝、項充之光輝、豹騎之勇、虎騎之勇、魔鬥之勇",
     "drop_glory_low": "",
     "drop_glory_player": ""
@@ -147,6 +154,7 @@
     "drop_equidcard": "",
     "drop_combo_old": "",
     "drop_combo_new": "",
+    "drop_othrt": "",
     "drop_glory_high": "張松之光輝、項充之光輝、豹騎之勇、虎騎之勇、魔鬥之勇",
     "drop_glory_low": "",
     "drop_glory_player": ""
@@ -166,6 +174,7 @@
     "drop_equidcard": "",
     "drop_combo_old": "",
     "drop_combo_new": "",
+    "drop_othrt": "",
     "drop_glory_high": "張松之光輝、項充之光輝、豹騎之勇、虎騎之勇、魔鬥之勇",
     "drop_glory_low": "",
     "drop_glory_player": ""
@@ -185,6 +194,7 @@
     "drop_equidcard": "神威寶甲卡",
     "drop_combo_old": "",
     "drop_combo_new": "",
+    "drop_othrt": "",
     "drop_glory_high": "張松之光輝、項充之光輝、豹騎之勇、虎騎之勇、魔鬥之勇",
     "drop_glory_low": "",
     "drop_glory_player": ""
@@ -204,6 +214,7 @@
     "drop_equidcard": "",
     "drop_combo_old": "",
     "drop_combo_new": "",
+    "drop_othrt": "",
     "drop_glory_high": "",
     "drop_glory_low": "",
     "drop_glory_player": ""
@@ -223,6 +234,7 @@
     "drop_equidcard": "",
     "drop_combo_old": "",
     "drop_combo_new": "",
+    "drop_othrt": "",
     "drop_glory_high": "",
     "drop_glory_low": "",
     "drop_glory_player": ""
@@ -242,6 +254,7 @@
     "drop_equidcard": "",
     "drop_combo_old": "",
     "drop_combo_new": "",
+    "drop_othrt": "",
     "drop_glory_high": "",
     "drop_glory_low": "",
     "drop_glory_player": ""
@@ -261,6 +274,7 @@
     "drop_equidcard": "",
     "drop_combo_old": "",
     "drop_combo_new": "",
+    "drop_othrt": "",
     "drop_glory_high": "張松之光輝、項充之光輝、豹騎之勇、虎騎之勇、魔鬥之勇",
     "drop_glory_low": "",
     "drop_glory_player": ""
@@ -280,6 +294,7 @@
     "drop_equidcard": "紅纓槍卡",
     "drop_combo_old": "",
     "drop_combo_new": "",
+    "drop_othrt": "",
     "drop_glory_high": "張松之光輝、項充之光輝、豹騎之勇、虎騎之勇、魔鬥之勇",
     "drop_glory_low": "",
     "drop_glory_player": ""
@@ -299,6 +314,7 @@
     "drop_equidcard": "香包卡",
     "drop_combo_old": "",
     "drop_combo_new": "",
+    "drop_othrt": "",
     "drop_glory_high": "周郎之光輝、孫二娘之光輝、盧俊義之光輝、阮小二之光輝、石秀之光輝、忍者之光、龍鬥之勇",
     "drop_glory_low": "諸葛惠之光輝",
     "drop_glory_player": ""
@@ -318,6 +334,7 @@
     "drop_equidcard": "伐天巨斧卡",
     "drop_combo_old": "",
     "drop_combo_new": "",
+    "drop_othrt": "",
     "drop_glory_high": "大賢之光輝、聖鬥之光輝、鐘會之光輝、曹貴人之光輝、安樂之光輝",
     "drop_glory_low": "",
     "drop_glory_player": ""
@@ -337,6 +354,7 @@
     "drop_equidcard": "伐天巨斧卡",
     "drop_combo_old": "",
     "drop_combo_new": "",
+    "drop_othrt": "",
     "drop_glory_high": "大賢之光輝、聖鬥之光輝、鐘會之光輝、曹貴人之光輝、安樂之光輝",
     "drop_glory_low": "",
     "drop_glory_player": ""
@@ -356,6 +374,7 @@
     "drop_equidcard": "琉璃甲卡",
     "drop_combo_old": "",
     "drop_combo_new": "",
+    "drop_othrt": "",
     "drop_glory_high": "周郎之光輝、孫二娘之光輝、盧俊義之光輝、阮小二之光輝、石秀之光輝、忍者之光、龍鬥之勇",
     "drop_glory_low": "諸葛惠之光輝",
     "drop_glory_player": ""
@@ -375,6 +394,7 @@
     "drop_equidcard": "琉璃甲卡",
     "drop_combo_old": "",
     "drop_combo_new": "",
+    "drop_othrt": "",
     "drop_glory_high": "周郎之光輝、孫二娘之光輝、盧俊義之光輝、阮小二之光輝、石秀之光輝、忍者之光、龍鬥之勇",
     "drop_glory_low": "諸葛惠之光輝",
     "drop_glory_player": ""
@@ -394,6 +414,7 @@
     "drop_equidcard": "",
     "drop_combo_old": "",
     "drop_combo_new": "",
+    "drop_othrt": "",
     "drop_glory_high": "周郎之光輝、孫二娘之光輝、盧俊義之光輝、阮小二之光輝、石秀之光輝、忍者之光、龍鬥之勇",
     "drop_glory_low": "諸葛惠之光輝",
     "drop_glory_player": ""
@@ -413,6 +434,7 @@
     "drop_equidcard": "五光寶玉卡",
     "drop_combo_old": "",
     "drop_combo_new": "天刑、天才、三台、天貴",
+    "drop_othrt": "",
     "drop_glory_high": "關興之光輝、張魯之光輝、程遠志之光輝、劉備之光輝、魯智深之光輝、倭王之光輝",
     "drop_glory_low": "孫二娘之光輝、曹植之光輝、裴宣之光輝、天眼之光輝、太歲之光",
     "drop_glory_player": ""
@@ -432,6 +454,7 @@
     "drop_equidcard": "斬神劍卡",
     "drop_combo_old": "",
     "drop_combo_new": "天貴、天空、天福、天廚、封誥、旬空、旬中、天巫、寡宿、天喜、天哭、孤辰、天姚、天馬、蜚廉、三台、恩光、陰煞、破碎、天壽、紅鸞、截空、天使、解神、天才、八座",
+    "drop_othrt": "",
     "drop_glory_high": "關興之光輝、張魯之光輝、程遠志之光輝、劉備之光輝、魯智深之光輝、倭王之光輝",
     "drop_glory_low": "孫二娘之光輝、曹植之光輝、裴宣之光輝、天眼之光輝、太歲之光",
     "drop_glory_player": ""
@@ -451,6 +474,7 @@
     "drop_equidcard": "九曲黃河陣卡",
     "drop_combo_old": "",
     "drop_combo_new": "天才、截空、解神",
+    "drop_othrt": "",
     "drop_glory_high": "關興之光輝、張魯之光輝、程遠志之光輝、劉備之光輝、魯智深之光輝、倭王之光輝",
     "drop_glory_low": "孫二娘之光輝、曹植之光輝、裴宣之光輝、天眼之光輝、太歲之光",
     "drop_glory_player": ""
@@ -470,6 +494,7 @@
     "drop_equidcard": "通天神火柱卡",
     "drop_combo_old": "",
     "drop_combo_new": "",
+    "drop_othrt": "",
     "drop_glory_high": "關興之光輝、張魯之光輝、程遠志之光輝、劉備之光輝、魯智深之光輝、倭王之光輝",
     "drop_glory_low": "孫二娘之光輝、曹植之光輝、裴宣之光輝、天眼之光輝、太歲之光",
     "drop_glory_player": ""
@@ -487,8 +512,9 @@
     "drop_rubbish": "天王內衣、盔甲碎片、仙女圖",
     "drop_hero": "妲己、左慈、張苞、盤古、吳用、姜子牙、女媧",
     "drop_equidcard": "成熟蟠桃卡",
-    "drop_combo_old": "火",
+    "drop_combo_old": "火星",
     "drop_combo_new": "",
+    "drop_othrt": "稀有符石",
     "drop_glory_high": "關興之光輝、張魯之光輝、程遠志之光輝、劉備之光輝、魯智深之光輝、倭王之光輝",
     "drop_glory_low": "孫二娘之光輝、曹植之光輝、裴宣之光輝、天眼之光輝、太歲之光",
     "drop_glory_player": ""
@@ -508,6 +534,7 @@
     "drop_equidcard": "",
     "drop_combo_old": "",
     "drop_combo_new": "",
+    "drop_othrt": "",
     "drop_glory_high": "",
     "drop_glory_low": "",
     "drop_glory_player": ""
@@ -527,6 +554,7 @@
     "drop_equidcard": "",
     "drop_combo_old": "",
     "drop_combo_new": "",
+    "drop_othrt": "",
     "drop_glory_high": "",
     "drop_glory_low": "",
     "drop_glory_player": ""
@@ -546,6 +574,7 @@
     "drop_equidcard": "夜明珠卡",
     "drop_combo_old": "",
     "drop_combo_new": "",
+    "drop_othrt": "",
     "drop_glory_high": "周郎之光輝、孫二娘之光輝、盧俊義之光輝、阮小二之光輝、石秀之光輝、忍者之光、龍鬥之勇",
     "drop_glory_low": "諸葛惠之光輝",
     "drop_glory_player": ""
@@ -565,6 +594,7 @@
     "drop_equidcard": "龍形劍卡",
     "drop_combo_old": "",
     "drop_combo_new": "",
+    "drop_othrt": "",
     "drop_glory_high": "田豐之光輝、錦衣之光輝、王佐之光輝、黃月英之光輝、馬良之光輝、小喬之光輝",
     "drop_glory_low": "楊修之光輝",
     "drop_glory_player": ""
@@ -582,8 +612,9 @@
     "drop_rubbish": "老鼠大便、玩具眼球、蛇膽、骷顱頭、橡膠舌頭、蛇皮、墨汁",
     "drop_hero": "孫權、呂蒙、孟獲、荀彧、夏侯惇、華陀、秦明、太史慈、李袞、李興霸、鄧艾、糜夫人、張郃、小喬、法正、徐晃、鄧九公、張郃、蔡文姬、楊森、張松、馬岱、魔禮壽、高友乾、郭嘉、楊森、文醜、諸葛惠",
     "drop_equidcard": "赤剎刀卡、賽車保養組卡",
-    "drop_combo_old": "左輔、右弼",
+    "drop_combo_old": "左輔星、右弼星",
     "drop_combo_new": "",
+    "drop_othrt": "",
     "drop_glory_high": "人公之光輝、益德之光輝、張苞之光輝、蔣敬之光輝、燕青之光輝、好人卡象徵、姬發之光輝、武吉之光輝、韋馱天之光",
     "drop_glory_low": "項充之光輝、虎騎之勇、魔鬥之勇、程普之光輝、西門慶之光輝、荀攸之光輝、徐庶之光輝、周倉之光輝、茶茶之光輝、孔融之光輝、毒士之光輝",
     "drop_glory_player": ""
@@ -601,8 +632,9 @@
     "drop_rubbish": "龍麟、骷顱頭、八卦、香港腳、虎牙、坐墊、木乃伊繃帶",
     "drop_hero": "華陀、郭嘉、諸葛惠、李靖、魔禮壽、糜夫人、姜維",
     "drop_equidcard": "",
-    "drop_combo_old": "左輔、右弼",
+    "drop_combo_old": "左輔星、右弼星",
     "drop_combo_new": "",
+    "drop_othrt": "",
     "drop_glory_high": "人公之光輝、益德之光輝、張苞之光輝、蔣敬之光輝、燕青之光輝、好人卡象徵、姬發之光輝、武吉之光輝、韋馱天之光",
     "drop_glory_low": "項充之光輝、虎騎之勇、魔鬥之勇、程普之光輝、西門慶之光輝、荀攸之光輝、徐庶之光輝、周倉之光輝、茶茶之光輝、孔融之光輝、毒士之光輝",
     "drop_glory_player": ""
@@ -617,11 +649,12 @@
     "maplv": "30-39",
     "monster": "",
     "monster_atk": "",
-    "drop_rubbish": "",
-    "drop_hero": "郭嘉、荀彧、蔡文姬、鄧九公",
+    "drop_rubbish": "男人的胸毛、刺蝟皮",
+    "drop_hero": "郭嘉、荀彧、蔡文姬、鄧九公、糜夫人",
     "drop_equidcard": "",
     "drop_combo_old": "",
     "drop_combo_new": "",
+    "drop_othrt": "盤山卡",
     "drop_glory_high": "",
     "drop_glory_low": "",
     "drop_glory_player": ""
@@ -639,8 +672,9 @@
     "drop_rubbish": "",
     "drop_hero": "",
     "drop_equidcard": "",
-    "drop_combo_old": "",
+    "drop_combo_old": "太陽星",
     "drop_combo_new": "",
+    "drop_othrt": "",
     "drop_glory_high": "周通之光輝、虎威之光輝、子龍之光輝、神醫之光輝、男僕之光輝、太師之光輝、宋江之光輝、女僕之光輝",
     "drop_glory_low": "錦衣之光輝、南蠻王之光輝、穆容之光輝、羲皇之光、臥龍之光輝、武宣光輝、昭烈光輝、潘淑光輝",
     "drop_glory_player": ""
@@ -655,11 +689,12 @@
     "maplv": "89-100",
     "monster": "",
     "monster_atk": "",
-    "drop_rubbish": "",
+    "drop_rubbish": "魔晶核、黑水指甲、詛咒黑指甲",
     "drop_hero": "劉禪、孫尚香、張順、紂王、宋江、朱武、姜子牙、女媧、吳用、妲己",
     "drop_equidcard": "",
-    "drop_combo_old": "廉貞、太陽、天機、太陰、武曲、天同、龍池、七殺、天魁",
-    "drop_combo_new": "",
+    "drop_combo_old": "廉貞星、太陽星、天機星、太陰星、武曲星、天同星、七殺星、天魁星",
+    "drop_combo_new": "龍池",
+    "drop_othrt": "獝狂武甲、修行癘袍、禦螭癘甲、天使的祝福配方書、強運搞笑饅頭配方書、神聖的光環配方書、5%精煉寶石、8%精煉寶石",
     "drop_glory_high": "周通之光輝、虎威之光輝、子龍之光輝、神醫之光輝、男僕之光輝、太師之光輝、宋江之光輝、女僕之光輝",
     "drop_glory_low": "錦衣之光輝、南蠻王之光輝、穆容之光輝、羲皇之光、臥龍之光輝、武宣光輝、昭烈光輝、潘淑光輝",
     "drop_glory_player": ""
@@ -679,6 +714,7 @@
     "drop_equidcard": "",
     "drop_combo_old": "",
     "drop_combo_new": "",
+    "drop_othrt": "",
     "drop_glory_high": "人公之光輝、益德之光輝、張苞之光輝、蔣敬之光輝、燕青之光輝、好人卡象徵、姬發之光輝、武吉之光輝、韋馱天之光",
     "drop_glory_low": "項充之光輝、虎騎之勇、魔鬥之勇、程普之光輝、西門慶之光輝、荀攸之光輝、徐庶之光輝、周倉之光輝、茶茶之光輝、孔融之光輝、毒士之光輝",
     "drop_glory_player": ""
@@ -696,8 +732,9 @@
     "drop_rubbish": "",
     "drop_hero": "燃燈道人、魯智深、龍吉公主、關興、林沖、武松、扈三娘、瓊英",
     "drop_equidcard": "",
-    "drop_combo_old": "貪狼、天鉞、鈴、廉貞",
-    "drop_combo_new": "天喜、陰煞、截空、天刑、三台、龍池、旬空、天空、天馬、台輔",
+    "drop_combo_old": "貪狼星、天鉞星、鈴星、廉貞星",
+    "drop_combo_new": "天喜、陰煞、截空、天刑、三台、龍池、旬空、天空、天馬、台輔、破碎",
+    "drop_othrt": "",
     "drop_glory_high": "",
     "drop_glory_low": "武宣光輝、昭烈光輝、潘淑光輝",
     "drop_glory_player": ""
@@ -715,8 +752,9 @@
     "drop_rubbish": "",
     "drop_hero": "張郃、張魯、華陀、王魔、黃妃",
     "drop_equidcard": "",
-    "drop_combo_old": "右弼",
+    "drop_combo_old": "右弼星",
     "drop_combo_new": "",
+    "drop_othrt": "",
     "drop_glory_high": "劍器之光輝、馬超之光輝、曹洪之光輝、廖化之光輝、諸葛瑾之光輝、潘金蓮之光輝、鳳雛之光輝、孫權之光輝、安道全之光輝、兔女郎之光、青龍星之光",
     "drop_glory_low": "安樂之光輝、石秀之光輝、蔣敬之光輝、魯肅之光輝、增長之光、周泰之光輝、武大郎之光輝、董平之光輝、馬忠之光輝、魏定國之光輝、張清之光輝、奉孝之光輝、呼延灼之光輝、糜夫人之光輝、李袞之光輝、劉唐之光輝、蕭讓之光輝、顧大嫂之光輝",
     "drop_glory_player": ""
@@ -734,8 +772,9 @@
     "drop_rubbish": "",
     "drop_hero": "王進、曹貴人、魯肅、荀彧、玉頂真人、左慈、吳用",
     "drop_equidcard": "",
-    "drop_combo_old": "天機、地空、太陽、巨門、地劫、天梁、天相",
+    "drop_combo_old": "天機星、地空星、太陽星、巨門星、地劫星、天梁星、天相星",
     "drop_combo_new": "",
+    "drop_othrt": "",
     "drop_glory_high": "土府星之光、藥王之光、蟠桃之光輝、惡鬼之光輝",
     "drop_glory_low": "桃花星之光",
     "drop_glory_player": ""
@@ -755,6 +794,7 @@
     "drop_equidcard": "",
     "drop_combo_old": "",
     "drop_combo_new": "",
+    "drop_othrt": "",
     "drop_glory_high": "花榮之光輝、巖流秘劍之徵、于吉之光輝、響馬茜之光輝、九尾狐之徵",
     "drop_glory_low": "白衣之光輝",
     "drop_glory_player": ""
@@ -772,8 +812,9 @@
     "drop_rubbish": "",
     "drop_hero": "瓊英、馬岱、呼延灼、殷郊、孫堅、周倉、木鹿大王",
     "drop_equidcard": "",
-    "drop_combo_old": "紫薇、武曲、天同、太陰、天府",
+    "drop_combo_old": "紫薇星、武曲星、天同星、太陰星、天府星",
     "drop_combo_new": "",
+    "drop_othrt": "",
     "drop_glory_high": "",
     "drop_glory_low": "",
     "drop_glory_player": ""
@@ -791,8 +832,9 @@
     "drop_rubbish": "",
     "drop_hero": "比干",
     "drop_equidcard": "",
-    "drop_combo_old": "天機、破軍",
+    "drop_combo_old": "天機星、破軍星",
     "drop_combo_new": "",
+    "drop_othrt": "",
     "drop_glory_high": "",
     "drop_glory_low": "",
     "drop_glory_player": ""
@@ -812,6 +854,7 @@
     "drop_equidcard": "",
     "drop_combo_old": "",
     "drop_combo_new": "",
+    "drop_othrt": "",
     "drop_glory_high": "",
     "drop_glory_low": "",
     "drop_glory_player": ""
@@ -831,6 +874,7 @@
     "drop_equidcard": "",
     "drop_combo_old": "",
     "drop_combo_new": "",
+    "drop_othrt": "",
     "drop_glory_high": "",
     "drop_glory_low": "",
     "drop_glory_player": ""
@@ -850,6 +894,7 @@
     "drop_equidcard": "",
     "drop_combo_old": "",
     "drop_combo_new": "",
+    "drop_othrt": "",
     "drop_glory_high": "",
     "drop_glory_low": "",
     "drop_glory_player": ""
@@ -869,6 +914,7 @@
     "drop_equidcard": "",
     "drop_combo_old": "",
     "drop_combo_new": "",
+    "drop_othrt": "",
     "drop_glory_high": "",
     "drop_glory_low": "",
     "drop_glory_player": ""
@@ -888,6 +934,7 @@
     "drop_equidcard": "",
     "drop_combo_old": "",
     "drop_combo_new": "",
+    "drop_othrt": "",
     "drop_glory_high": "",
     "drop_glory_low": "",
     "drop_glory_player": ""
@@ -907,6 +954,7 @@
     "drop_equidcard": "",
     "drop_combo_old": "",
     "drop_combo_new": "",
+    "drop_othrt": "",
     "drop_glory_high": "",
     "drop_glory_low": "",
     "drop_glory_player": ""
@@ -926,6 +974,7 @@
     "drop_equidcard": "",
     "drop_combo_old": "",
     "drop_combo_new": "",
+    "drop_othrt": "",
     "drop_glory_high": "",
     "drop_glory_low": "",
     "drop_glory_player": ""
@@ -945,6 +994,7 @@
     "drop_equidcard": "",
     "drop_combo_old": "",
     "drop_combo_new": "",
+    "drop_othrt": "",
     "drop_glory_high": "",
     "drop_glory_low": "",
     "drop_glory_player": ""
@@ -964,6 +1014,7 @@
     "drop_equidcard": "",
     "drop_combo_old": "",
     "drop_combo_new": "",
+    "drop_othrt": "",
     "drop_glory_high": "張松之光輝、項充之光輝、豹騎之勇、虎騎之勇、魔鬥之勇",
     "drop_glory_low": "",
     "drop_glory_player": ""
@@ -981,8 +1032,9 @@
     "drop_rubbish": "",
     "drop_hero": "蕭讓、張角、周泰、楊戩",
     "drop_equidcard": "",
-    "drop_combo_old": "祿存、破軍、天馬、七殺、擎羊、天梁、陀羅、天相、火、巨門、天同、廉貞、天府",
+    "drop_combo_old": "祿存星、破軍星、天馬星、七殺星、擎羊星、天梁星、陀羅星、天相星、火星、巨門星、天同星、廉貞星、天府星",
     "drop_combo_new": "",
+    "drop_othrt": "",
     "drop_glory_high": "周通之光輝、虎威之光輝、子龍之光輝、神醫之光輝、男僕之光輝、太師之光輝、宋江之光輝、女僕之光輝",
     "drop_glory_low": "錦衣之光輝、南蠻王之光輝、穆容之光輝、羲皇之光、臥龍之光輝",
     "drop_glory_player": ""
@@ -1002,6 +1054,7 @@
     "drop_equidcard": "鎖子甲卡",
     "drop_combo_old": "",
     "drop_combo_new": "",
+    "drop_othrt": "",
     "drop_glory_high": "周郎之光輝、孫二娘之光輝、盧俊義之光輝、阮小二之光輝、石秀之光輝、忍者之光、龍鬥之勇",
     "drop_glory_low": "諸葛惠之光輝",
     "drop_glory_player": ""
@@ -1021,6 +1074,7 @@
     "drop_equidcard": "",
     "drop_combo_old": "",
     "drop_combo_new": "",
+    "drop_othrt": "",
     "drop_glory_high": "劍器之光輝、馬超之光輝、鳳雛之光輝、孫權之光輝、安道全之光輝、兔女郎之光、青龍星之光",
     "drop_glory_low": "安樂之光輝、石秀之光輝、蔣敬之光輝、魯肅之光輝、增長之光、周泰之光輝、武大郎之光輝、馬忠之光輝、魏定國之光輝、張清之光輝、奉孝之光輝、呼延灼之光輝、糜夫人之光輝、李袞之光輝、劉唐之光輝、蕭讓之光輝、顧大嫂之光輝",
     "drop_glory_player": ""
@@ -1040,6 +1094,7 @@
     "drop_equidcard": "",
     "drop_combo_old": "",
     "drop_combo_new": "",
+    "drop_othrt": "",
     "drop_glory_high": "劍器之光輝、馬超之光輝、鳳雛之光輝、孫權之光輝、安道全之光輝、兔女郎之光、青龍星之光",
     "drop_glory_low": "安樂之光輝、石秀之光輝、蔣敬之光輝、魯肅之光輝、增長之光、周泰之光輝、武大郎之光輝、馬忠之光輝、魏定國之光輝、張清之光輝、奉孝之光輝、呼延灼之光輝、糜夫人之光輝、李袞之光輝、劉唐之光輝、蕭讓之光輝、顧大嫂之光輝",
     "drop_glory_player": ""
@@ -1059,6 +1114,7 @@
     "drop_equidcard": "八卦袍卡",
     "drop_combo_old": "",
     "drop_combo_new": "",
+    "drop_othrt": "",
     "drop_glory_high": "劍器之光輝、馬超之光輝、鳳雛之光輝、孫權之光輝、安道全之光輝、兔女郎之光、青龍星之光",
     "drop_glory_low": "安樂之光輝、石秀之光輝、蔣敬之光輝、魯肅之光輝、增長之光、周泰之光輝、武大郎之光輝、馬忠之光輝、魏定國之光輝、張清之光輝、奉孝之光輝、呼延灼之光輝、糜夫人之光輝、李袞之光輝、劉唐之光輝、蕭讓之光輝、顧大嫂之光輝",
     "drop_glory_player": ""
@@ -1078,6 +1134,7 @@
     "drop_equidcard": "鎮魔土偶卡、鐵刃骨扇卡",
     "drop_combo_old": "",
     "drop_combo_new": "",
+    "drop_othrt": "",
     "drop_glory_high": "劍器之光輝、馬超之光輝、鳳雛之光輝、孫權之光輝、安道全之光輝、兔女郎之光、青龍星之光",
     "drop_glory_low": "安樂之光輝、石秀之光輝、蔣敬之光輝、魯肅之光輝、增長之光、周泰之光輝、武大郎之光輝、馬忠之光輝、魏定國之光輝、張清之光輝、奉孝之光輝、呼延灼之光輝、糜夫人之光輝、李袞之光輝、劉唐之光輝、蕭讓之光輝、顧大嫂之光輝",
     "drop_glory_player": ""
@@ -1097,6 +1154,7 @@
     "drop_equidcard": "",
     "drop_combo_old": "",
     "drop_combo_new": "",
+    "drop_othrt": "",
     "drop_glory_high": "",
     "drop_glory_low": "",
     "drop_glory_player": ""
@@ -1116,6 +1174,7 @@
     "drop_equidcard": "",
     "drop_combo_old": "",
     "drop_combo_new": "",
+    "drop_othrt": "",
     "drop_glory_high": "劍器之光輝、馬超之光輝、鳳雛之光輝、孫權之光輝、安道全之光輝、兔女郎之光、青龍星之光",
     "drop_glory_low": "安樂之光輝、石秀之光輝、蔣敬之光輝、魯肅之光輝、增長之光、周泰之光輝、武大郎之光輝、馬忠之光輝、魏定國之光輝、張清之光輝、奉孝之光輝、呼延灼之光輝、糜夫人之光輝、李袞之光輝、劉唐之光輝、蕭讓之光輝、顧大嫂之光輝",
     "drop_glory_player": ""
@@ -1135,6 +1194,7 @@
     "drop_equidcard": "琉璃甲卡",
     "drop_combo_old": "",
     "drop_combo_new": "",
+    "drop_othrt": "",
     "drop_glory_high": "劍器之光輝、馬超之光輝、鳳雛之光輝、孫權之光輝、安道全之光輝、兔女郎之光、青龍星之光",
     "drop_glory_low": "安樂之光輝、石秀之光輝、蔣敬之光輝、魯肅之光輝、增長之光、周泰之光輝、武大郎之光輝、馬忠之光輝、魏定國之光輝、張清之光輝、奉孝之光輝、呼延灼之光輝、糜夫人之光輝、李袞之光輝、劉唐之光輝、蕭讓之光輝、顧大嫂之光輝",
     "drop_glory_player": ""
@@ -1150,10 +1210,11 @@
     "monster": "",
     "monster_atk": "",
     "drop_rubbish": "",
-    "drop_hero": "史進、哪吒、扈三娘、張苞、卞氏、典韋",
+    "drop_hero": "史進、哪吒、扈三娘、張苞、卞氏、典韋、神農、林沖、于吉",
     "drop_equidcard": "",
-    "drop_combo_old": "左輔、右弼、文昌、文曲、祿存、天馬、擎羊、太陽、武曲、鈴、天相、天梁、破軍",
+    "drop_combo_old": "左輔星、右弼星、文昌星、文曲星、祿存星、天馬星、擎羊星、太陽星、武曲星、鈴星、天相星、天梁星、破軍星",
     "drop_combo_new": "",
+    "drop_othrt": "稀有符石、智慧的盾牌配方書",
     "drop_glory_high": "毒士之光輝、警花之光、袁紹之光輝、小霸王之光輝、祝融之光輝、顏良之光輝、阮小七之光輝",
     "drop_glory_low": "孫權之光輝、青龍星之光、瓊霄之光輝、火府星之光、麒麟之光輝、天使之光、李逵之光輝、執年歲君之徵、智多星之光輝",
     "drop_glory_player": ""
@@ -1173,6 +1234,7 @@
     "drop_equidcard": "",
     "drop_combo_old": "",
     "drop_combo_new": "",
+    "drop_othrt": "",
     "drop_glory_high": "周郎之光輝、孫二娘之光輝、盧俊義之光輝、阮小二之光輝、石秀之光輝、忍者之光、龍鬥之勇",
     "drop_glory_low": "諸葛惠之光輝",
     "drop_glory_player": ""
@@ -1192,6 +1254,7 @@
     "drop_equidcard": "伏妖葫蘆卡",
     "drop_combo_old": "",
     "drop_combo_new": "",
+    "drop_othrt": "",
     "drop_glory_high": "周郎之光輝、孫二娘之光輝、盧俊義之光輝、阮小二之光輝、石秀之光輝、忍者之光、龍鬥之勇",
     "drop_glory_low": "諸葛惠之光輝",
     "drop_glory_player": ""
@@ -1211,6 +1274,7 @@
     "drop_equidcard": "琉璃甲卡",
     "drop_combo_old": "",
     "drop_combo_new": "",
+    "drop_othrt": "",
     "drop_glory_high": "人公之光輝、益德之光輝、張苞之光輝、蔣敬之光輝、燕青之光輝、好人卡象徵、姬發之光輝、武吉之光輝、韋馱天之光",
     "drop_glory_low": "項充之光輝、虎騎之勇、魔鬥之勇、程普之光輝、西門慶之光輝、荀攸之光輝、徐庶之光輝、周倉之光輝、茶茶之光輝、孔融之光輝、毒士之光輝",
     "drop_glory_player": ""
@@ -1230,6 +1294,7 @@
     "drop_equidcard": "",
     "drop_combo_old": "",
     "drop_combo_new": "",
+    "drop_othrt": "",
     "drop_glory_high": "茶茶之光輝、雲中子光輝、天喜之光、通天玉晨之徵、玉琵琶之徵、司馬懿之光輝、火府星之光",
     "drop_glory_low": "周郎之光輝、水靈之光、二郎之徵、史進之光輝、文曲之光、安道全之光輝、法正之光輝、紅鸞星之光、惡魔之光輝、楊鳳兒之光輝、關銀屏之光輝、太師之光輝、惡鬼之光輝",
     "drop_glory_player": ""
@@ -1248,7 +1313,8 @@
     "drop_hero": "甄宓、陸遜、甘寧、貂蟬、魏定國、 關羽、彩衣天女、大喬、玉鼎真人、孫策、魔禮青、程昱、火靈聖母",
     "drop_equidcard": "天罡稜鏡卡",
     "drop_combo_old": "",
-    "drop_combo_new": "",
+    "drop_combo_new": "天喜",
+    "drop_othrt": "",
     "drop_glory_high": "茶茶之光輝、雲中子光輝、天喜之光、通天玉晨之徵、玉琵琶之徵、司馬懿之光輝、火府星之光",
     "drop_glory_low": "周郎之光輝、水靈之光、二郎之徵、史進之光輝、文曲之光、安道全之光輝、法正之光輝、紅鸞星之光、惡魔之光輝、楊鳳兒之光輝、關銀屏之光輝、太師之光輝、惡鬼之光輝",
     "drop_glory_player": ""
@@ -1266,8 +1332,9 @@
     "drop_rubbish": "浴巾、玻璃彈珠、四葉幸運草、橡膠舌頭",
     "drop_hero": "關銀屏、玉鼎真人、陸遜、貂蟬、呂布、甄宓、孫權、王貴人、胡喜媚、諸葛亮、周瑜、司馬懿、馬良、黃天化、甘寧、劉備、程昱、普賢真人、雲中子、魏廷、曹操、關勝、公孫大娘、荀攸、龐德、紂王",
     "drop_equidcard": "天罡稜鏡卡",
-    "drop_combo_old": "祿存、七殺、擎羊",
+    "drop_combo_old": "祿存星、七殺星、擎羊星",
     "drop_combo_new": "紅鸞、陰煞、天使、台輔、三台、天貴、天廚、鳳閣、天姚、寡宿",
+    "drop_othrt": "",
     "drop_glory_high": "茶茶之光輝、雲中子光輝、天喜之光、通天玉晨之徵、玉琵琶之徵、司馬懿之光輝、火府星之光",
     "drop_glory_low": "周郎之光輝、水靈之光、二郎之徵、史進之光輝、文曲之光、安道全之光輝、法正之光輝、紅鸞星之光、惡魔之光輝、楊鳳兒之光輝、關銀屏之光輝、太師之光輝、惡鬼之光輝",
     "drop_glory_player": ""
@@ -1283,10 +1350,11 @@
     "monster": "",
     "monster_atk": "",
     "drop_rubbish": "",
-    "drop_hero": "",
+    "drop_hero": "諸葛亮",
     "drop_equidcard": "",
-    "drop_combo_old": "",
-    "drop_combo_new": "",
+    "drop_combo_old": "祿存星、文昌星、破軍星、鈴星、擎羊星、火星、七殺星",
+    "drop_combo_new": "台輔、天才、破碎、解神、天馬、天官",
+    "drop_othrt": "",
     "drop_glory_high": "楊修之光輝、張遼之光輝、蕭讓之光輝、天師道之光輝、貂蟬之光輝、雲長之光輝、穆容之光輝",
     "drop_glory_low": "黃月英之光輝、林沖之光輝、夏侯惇之光輝、昭姬之光輝",
     "drop_glory_player": ""
@@ -1306,6 +1374,7 @@
     "drop_equidcard": "",
     "drop_combo_old": "",
     "drop_combo_new": "",
+    "drop_othrt": "",
     "drop_glory_high": "楊修之光輝、張遼之光輝、蕭讓之光輝、天師道之光輝、貂蟬之光輝、雲長之光輝、穆容之光輝",
     "drop_glory_low": "黃月英之光輝、林沖之光輝、夏侯惇之光輝、昭姬之光輝",
     "drop_glory_player": ""
@@ -1325,6 +1394,7 @@
     "drop_equidcard": "",
     "drop_combo_old": "",
     "drop_combo_new": "",
+    "drop_othrt": "",
     "drop_glory_high": "楊修之光輝、張遼之光輝、蕭讓之光輝、天師道之光輝、貂蟬之光輝、雲長之光輝、穆容之光輝",
     "drop_glory_low": "黃月英之光輝、林沖之光輝、夏侯惇之光輝、昭姬之光輝",
     "drop_glory_player": ""
@@ -1344,6 +1414,7 @@
     "drop_equidcard": "",
     "drop_combo_old": "",
     "drop_combo_new": "",
+    "drop_othrt": "",
     "drop_glory_high": "楊修之光輝、張遼之光輝、蕭讓之光輝、天師道之光輝、貂蟬之光輝、雲長之光輝、穆容之光輝",
     "drop_glory_low": "黃月英之光輝、林沖之光輝、夏侯惇之光輝、昭姬之光輝",
     "drop_glory_player": ""
@@ -1363,6 +1434,7 @@
     "drop_equidcard": "",
     "drop_combo_old": "",
     "drop_combo_new": "",
+    "drop_othrt": "",
     "drop_glory_high": "楊修之光輝、張遼之光輝、蕭讓之光輝、天師道之光輝、貂蟬之光輝、雲長之光輝、穆容之光輝",
     "drop_glory_low": "黃月英之光輝、林沖之光輝、夏侯惇之光輝、昭姬之光輝",
     "drop_glory_player": ""
@@ -1382,6 +1454,7 @@
     "drop_equidcard": "",
     "drop_combo_old": "",
     "drop_combo_new": "",
+    "drop_othrt": "",
     "drop_glory_high": "楊修之光輝、張遼之光輝、蕭讓之光輝、天師道之光輝、貂蟬之光輝、雲長之光輝、穆容之光輝",
     "drop_glory_low": "黃月英之光輝、林沖之光輝、夏侯惇之光輝、昭姬之光輝",
     "drop_glory_player": ""
@@ -1401,6 +1474,7 @@
     "drop_equidcard": "",
     "drop_combo_old": "",
     "drop_combo_new": "",
+    "drop_othrt": "",
     "drop_glory_high": "陸遜之光輝、龐德之光輝、二天一流之徵、臥龍之光輝、無雙的威光",
     "drop_glory_low": "太公望之光輝、虎癡之光輝、古佛之徵",
     "drop_glory_player": ""
@@ -1420,6 +1494,7 @@
     "drop_equidcard": "",
     "drop_combo_old": "",
     "drop_combo_new": "",
+    "drop_othrt": "",
     "drop_glory_high": "陸遜之光輝、龐德之光輝、二天一流之徵、臥龍之光輝、無雙的威光",
     "drop_glory_low": "太公望之光輝、虎癡之光輝、古佛之徵",
     "drop_glory_player": ""
@@ -1439,6 +1514,7 @@
     "drop_equidcard": "",
     "drop_combo_old": "",
     "drop_combo_new": "",
+    "drop_othrt": "",
     "drop_glory_high": "",
     "drop_glory_low": "",
     "drop_glory_player": ""
@@ -1458,6 +1534,7 @@
     "drop_equidcard": "",
     "drop_combo_old": "",
     "drop_combo_new": "",
+    "drop_othrt": "",
     "drop_glory_high": "",
     "drop_glory_low": "",
     "drop_glory_player": ""
@@ -1475,8 +1552,9 @@
     "drop_rubbish": "",
     "drop_hero": "林沖、龍吉公主、武松",
     "drop_equidcard": "",
-    "drop_combo_old": "陀羅、巨門、鈴",
+    "drop_combo_old": "陀羅星、巨門星、鈴星",
     "drop_combo_new": "三台、天才、天馬、天使、天刑",
+    "drop_othrt": "",
     "drop_glory_high": "周倉之光輝、分水之光輝、小蘿之光輝、楊志之光輝、魔精之光、紅鸞星之光、瓊霄之光輝",
     "drop_glory_low": "王佐之光輝、人公之光輝、七殺星之光、通天玉晨之徵、金龍如意之徵、芙蓉之光輝、祝融之光輝、貂蟬之光輝、雲長之光輝、神醫之光輝",
     "drop_glory_player": ""
@@ -1494,8 +1572,9 @@
     "drop_rubbish": "",
     "drop_hero": "許褚、卑彌呼、扈三娘、關興、史進、林沖、通天教主、典韋、瓊英、華雄、卞氏",
     "drop_equidcard": "",
-    "drop_combo_old": "鈴、陀羅、巨門",
+    "drop_combo_old": "鈴星、陀羅星、巨門星",
     "drop_combo_new": "天福、天貴、天哭、天喜、破碎、天空、天壽、封誥、截空",
+    "drop_othrt": "",
     "drop_glory_high": "周倉之光輝、分水之光輝、小蘿之光輝、楊志之光輝、魔精之光、紅鸞星之光、瓊霄之光輝",
     "drop_glory_low": "王佐之光輝、人公之光輝、七殺星之光、通天玉晨之徵、金龍如意之徵、芙蓉之光輝、祝融之光輝、貂蟬之光輝、雲長之光輝、神醫之光輝",
     "drop_glory_player": ""
@@ -1513,8 +1592,9 @@
     "drop_rubbish": "",
     "drop_hero": "史進、神農、法正、楊戩、 馬岱、魯智深、王進、甘夫人、伏羲",
     "drop_equidcard": "",
-    "drop_combo_old": "貪狼、巨門、鈴、陀羅",
+    "drop_combo_old": "貪狼星、巨門星、鈴星、陀羅星",
     "drop_combo_new": "紅鸞、解神、封誥、截空、天官、蜚廉、天使、天姚、旬空、天廚",
+    "drop_othrt": "",
     "drop_glory_high": "周倉之光輝、分水之光輝、小蘿之光輝、楊志之光輝、魔精之光、紅鸞星之光、瓊霄之光輝",
     "drop_glory_low": "王佐之光輝、人公之光輝、七殺星之光、通天玉晨之徵、金龍如意之徵、芙蓉之光輝、祝融之光輝、貂蟬之光輝、雲長之光輝、神醫之光輝",
     "drop_glory_player": ""
@@ -1532,8 +1612,9 @@
     "drop_rubbish": "",
     "drop_hero": "王進、楊戩、神農、哪吒",
     "drop_equidcard": "",
-    "drop_combo_old": "鈴、陀羅、貪狼",
+    "drop_combo_old": "鈴星、陀羅星、貪狼星",
     "drop_combo_new": "",
+    "drop_othrt": "",
     "drop_glory_high": "周倉之光輝、分水之光輝、小蘿之光輝、楊志之光輝、魔精之光、紅鸞星之光、瓊霄之光輝",
     "drop_glory_low": "王佐之光輝、人公之光輝、七殺星之光、通天玉晨之徵、金龍如意之徵、芙蓉之光輝、祝融之光輝、貂蟬之光輝、雲長之光輝、神醫之光輝",
     "drop_glory_player": ""
@@ -1551,8 +1632,9 @@
     "drop_rubbish": "",
     "drop_hero": "阮小七、石秀",
     "drop_equidcard": "",
-    "drop_combo_old": "鈴、貪狼、陀羅",
+    "drop_combo_old": "鈴星、貪狼星、陀羅星",
     "drop_combo_new": "蜚廉、天巫、寡宿、天貴",
+    "drop_othrt": "",
     "drop_glory_high": "周倉之光輝、分水之光輝、小蘿之光輝、楊志之光輝、魔精之光、紅鸞星之光、瓊霄之光輝",
     "drop_glory_low": "王佐之光輝、人公之光輝、七殺星之光、通天玉晨之徵、金龍如意之徵、芙蓉之光輝、祝融之光輝、貂蟬之光輝、雲長之光輝、神醫之光輝",
     "drop_glory_player": ""
@@ -1570,8 +1652,9 @@
     "drop_rubbish": "向日葵、琥珀化石、船槳",
     "drop_hero": "神農、太乙真人、張郃、郭嘉、雲霄、張飛、典韋、普賢真人、張遼、伏羲、楊戩、卞氏、聞仲、甘夫人、潘夫人",
     "drop_equidcard": "",
-    "drop_combo_old": "天魁、鈴、巨門",
+    "drop_combo_old": "天魁星、鈴星、巨門星",
     "drop_combo_new": "三台、旬中、蜚廉、天巫、天使、天貴",
+    "drop_othrt": "",
     "drop_glory_high": "西門慶之光輝、高俅之光輝、宋徽宗之光輝、四聖大元帥錄",
     "drop_glory_low": "搏浪之光輝、小蘿之光輝、夏侯淵之光輝、樊瑞之光輝、雲中子光輝、貌端星之光",
     "drop_glory_player": ""
@@ -1591,6 +1674,7 @@
     "drop_equidcard": "",
     "drop_combo_old": "",
     "drop_combo_new": "",
+    "drop_othrt": "",
     "drop_glory_high": "徐庶之光輝、張順之光輝、奉孝之光輝、雅帝之光輝、孫尚香之光輝、巫毒之光",
     "drop_glory_low": "阮小二之光輝、燕青之光輝、炳靈公之光、妖鬥之勇、兔女郎之光、天喜之光、江東猛虎之光輝、小霸王之光輝",
     "drop_glory_player": ""
@@ -1610,6 +1694,7 @@
     "drop_equidcard": "",
     "drop_combo_old": "",
     "drop_combo_new": "",
+    "drop_othrt": "",
     "drop_glory_high": "徐庶之光輝、張順之光輝、奉孝之光輝、雅帝之光輝、孫尚香之光輝、巫毒之光",
     "drop_glory_low": "阮小二之光輝、燕青之光輝、炳靈公之光、妖鬥之勇、兔女郎之光、天喜之光、江東猛虎之光輝、小霸王之光輝",
     "drop_glory_player": ""
@@ -1627,8 +1712,9 @@
     "drop_rubbish": "香港腳、四葉幸運草、恐龍化石、橡膠舌頭",
     "drop_hero": "趙雲、孫二娘、魔禮青、張遼、關羽、孫策",
     "drop_equidcard": "",
-    "drop_combo_old": "文曲、天馬",
+    "drop_combo_old": "文曲星、天馬星",
     "drop_combo_new": "",
+    "drop_othrt": "",
     "drop_glory_high": "徐庶之光輝、張順之光輝、奉孝之光輝、雅帝之光輝、孫尚香之光輝、巫毒之光",
     "drop_glory_low": "阮小二之光輝、燕青之光輝、炳靈公之光、妖鬥之勇、兔女郎之光、天喜之光、江東猛虎之光輝、小霸王之光輝",
     "drop_glory_player": ""
@@ -1648,6 +1734,7 @@
     "drop_equidcard": "",
     "drop_combo_old": "",
     "drop_combo_new": "",
+    "drop_othrt": "",
     "drop_glory_high": "周郎之光輝、孫二娘之光輝、盧俊義之光輝、阮小二之光輝、石秀之光輝、忍者之光、龍鬥之勇",
     "drop_glory_low": "諸葛惠之光輝",
     "drop_glory_player": ""
@@ -1667,6 +1754,7 @@
     "drop_equidcard": "",
     "drop_combo_old": "",
     "drop_combo_new": "",
+    "drop_othrt": "",
     "drop_glory_high": "",
     "drop_glory_low": "",
     "drop_glory_player": ""
@@ -1686,6 +1774,7 @@
     "drop_equidcard": "",
     "drop_combo_old": "",
     "drop_combo_new": "",
+    "drop_othrt": "",
     "drop_glory_high": "田豐之光輝、錦衣之光輝、王佐之光輝、黃月英之光輝、馬良之光輝、小喬之光輝",
     "drop_glory_low": "楊修之光輝",
     "drop_glory_player": ""
@@ -1705,6 +1794,7 @@
     "drop_equidcard": "",
     "drop_combo_old": "",
     "drop_combo_new": "",
+    "drop_othrt": "",
     "drop_glory_high": "人公之光輝、益德之光輝、張苞之光輝、蔣敬之光輝、燕青之光輝、好人卡象徵、姬發之光輝、武吉之光輝、韋馱天之光",
     "drop_glory_low": "項充之光輝、虎騎之勇、魔鬥之勇、程普之光輝、西門慶之光輝、荀攸之光輝、徐庶之光輝、周倉之光輝、茶茶之光輝、孔融之光輝、毒士之光輝",
     "drop_glory_player": ""
@@ -1724,6 +1814,7 @@
     "drop_equidcard": "",
     "drop_combo_old": "",
     "drop_combo_new": "",
+    "drop_othrt": "",
     "drop_glory_high": "",
     "drop_glory_low": "",
     "drop_glory_player": ""
@@ -1743,6 +1834,7 @@
     "drop_equidcard": "",
     "drop_combo_old": "",
     "drop_combo_new": "",
+    "drop_othrt": "",
     "drop_glory_high": "救世主之光、獵豹之光輝、文曲之光",
     "drop_glory_low": "聖鬥之光輝、瓊英之光輝、多聞之光、托塔之光輝、夏麗之光輝、高俅之光輝、朱武之光輝",
     "drop_glory_player": ""
@@ -1762,6 +1854,7 @@
     "drop_equidcard": "",
     "drop_combo_old": "",
     "drop_combo_new": "",
+    "drop_othrt": "",
     "drop_glory_high": "救世主之光、獵豹之光輝、文曲之光",
     "drop_glory_low": "聖鬥之光輝、瓊英之光輝、多聞之光、托塔之光輝、夏麗之光輝、高俅之光輝、朱武之光輝",
     "drop_glory_player": ""
@@ -1781,6 +1874,7 @@
     "drop_equidcard": "",
     "drop_combo_old": "",
     "drop_combo_new": "",
+    "drop_othrt": "",
     "drop_glory_high": "救世主之光、獵豹之光輝、文曲之光",
     "drop_glory_low": "聖鬥之光輝、瓊英之光輝、多聞之光、托塔之光輝、夏麗之光輝、高俅之光輝、朱武之光輝",
     "drop_glory_player": ""
@@ -1800,6 +1894,7 @@
     "drop_equidcard": "",
     "drop_combo_old": "",
     "drop_combo_new": "",
+    "drop_othrt": "",
     "drop_glory_high": "救世主之光、獵豹之光輝、文曲之光",
     "drop_glory_low": "聖鬥之光輝、瓊英之光輝、多聞之光、托塔之光輝、夏麗之光輝、高俅之光輝、朱武之光輝",
     "drop_glory_player": ""
@@ -1817,8 +1912,9 @@
     "drop_rubbish": "",
     "drop_hero": "華陀、王魔、張奎、樊瑞",
     "drop_equidcard": "",
-    "drop_combo_old": "文曲",
+    "drop_combo_old": "文曲星",
     "drop_combo_new": "",
+    "drop_othrt": "",
     "drop_glory_high": "黃蓋之光輝、李袞之光輝、木鹿之光輝、芙蓉之光輝、天齊仁之光、楊鳳兒之光輝、單廷珪之光輝、白衣之光輝",
     "drop_glory_low": "",
     "drop_glory_player": ""
@@ -1838,6 +1934,7 @@
     "drop_equidcard": "",
     "drop_combo_old": "",
     "drop_combo_new": "",
+    "drop_othrt": "",
     "drop_glory_high": "黃蓋之光輝、李袞之光輝、木鹿之光輝、芙蓉之光輝、天齊仁之光、楊鳳兒之光輝、單廷珪之光輝、白衣之光輝",
     "drop_glory_low": "",
     "drop_glory_player": ""
@@ -1857,6 +1954,7 @@
     "drop_equidcard": "",
     "drop_combo_old": "",
     "drop_combo_new": "",
+    "drop_othrt": "",
     "drop_glory_high": "黃蓋之光輝、李袞之光輝、木鹿之光輝、芙蓉之光輝、天齊仁之光、楊鳳兒之光輝、單廷珪之光輝、白衣之光輝",
     "drop_glory_low": "",
     "drop_glory_player": ""
@@ -1876,6 +1974,7 @@
     "drop_equidcard": "",
     "drop_combo_old": "",
     "drop_combo_new": "",
+    "drop_othrt": "",
     "drop_glory_high": "黃蓋之光輝、李袞之光輝、木鹿之光輝、芙蓉之光輝、天齊仁之光、楊鳳兒之光輝、單廷珪之光輝、白衣之光輝",
     "drop_glory_low": "",
     "drop_glory_player": ""
@@ -1893,8 +1992,9 @@
     "drop_rubbish": "",
     "drop_hero": "魔禮海、龐德、甄宓、張苞、許褚、周瑜、趙雲、魏定國、武大郎、孫權、魔禮青",
     "drop_equidcard": "",
-    "drop_combo_old": "右弼、文曲",
+    "drop_combo_old": "右弼星、文曲星",
     "drop_combo_new": "",
+    "drop_othrt": "",
     "drop_glory_high": "黃蓋之光輝、李袞之光輝、木鹿之光輝、芙蓉之光輝、天齊仁之光、楊鳳兒之光輝、單廷珪之光輝、白衣之光輝",
     "drop_glory_low": "",
     "drop_glory_player": ""
@@ -1912,8 +2012,9 @@
     "drop_rubbish": "",
     "drop_hero": "周瑜、花榮、張苞、魔禮海、 孫策、胡喜媚、紂王、諸葛亮、宋江、關銀屏、單廷珪",
     "drop_equidcard": "",
-    "drop_combo_old": "文曲、右弼、左輔",
+    "drop_combo_old": "文曲星、右弼星、左輔星",
     "drop_combo_new": "台輔、天壽",
+    "drop_othrt": "",
     "drop_glory_high": "黃蓋之光輝、李袞之光輝、木鹿之光輝、芙蓉之光輝、天齊仁之光、楊鳳兒之光輝、單廷珪之光輝、白衣之光輝",
     "drop_glory_low": "",
     "drop_glory_player": ""
@@ -1933,6 +2034,7 @@
     "drop_equidcard": "",
     "drop_combo_old": "",
     "drop_combo_new": "",
+    "drop_othrt": "",
     "drop_glory_high": "黃蓋之光輝、李袞之光輝、木鹿之光輝、芙蓉之光輝、天齊仁之光、楊鳳兒之光輝、單廷珪之光輝、白衣之光輝",
     "drop_glory_low": "",
     "drop_glory_player": ""
@@ -1952,6 +2054,7 @@
     "drop_equidcard": "",
     "drop_combo_old": "",
     "drop_combo_new": "",
+    "drop_othrt": "",
     "drop_glory_high": "",
     "drop_glory_low": "",
     "drop_glory_player": ""
@@ -1971,6 +2074,7 @@
     "drop_equidcard": "凌月琵琶卡",
     "drop_combo_old": "",
     "drop_combo_new": "",
+    "drop_othrt": "",
     "drop_glory_high": "田豐之光輝、錦衣之光輝、王佐之光輝、黃月英之光輝、馬良之光輝、小喬之光輝",
     "drop_glory_low": "楊修之光輝",
     "drop_glory_player": ""
@@ -1990,6 +2094,7 @@
     "drop_equidcard": "地煞石魁卡",
     "drop_combo_old": "",
     "drop_combo_new": "",
+    "drop_othrt": "",
     "drop_glory_high": "田豐之光輝、錦衣之光輝、王佐之光輝、黃月英之光輝、馬良之光輝、小喬之光輝",
     "drop_glory_low": "楊修之光輝",
     "drop_glory_player": ""
@@ -2007,8 +2112,9 @@
     "drop_rubbish": "火蟻、花盆、蟻獅的腳、四臂猿的毛髮",
     "drop_hero": "羅真人、李逵、花榮、張順、王進、李靖、申公豹、周通、顧大嫂、龐統、黃飛虎、趙公明、碧霄、姜維、夏侯淵、呼延灼、武吉、馬超、鄧嬋玉、楊志、陸遜",
     "drop_equidcard": "天地雙鎚卡",
-    "drop_combo_old": "右弼",
+    "drop_combo_old": "右弼星",
     "drop_combo_new": "",
+    "drop_othrt": "",
     "drop_glory_high": "人公之光輝、益德之光輝、張苞之光輝、蔣敬之光輝、燕青之光輝、好人卡象徵、姬發之光輝、武吉之光輝、韋馱天之光",
     "drop_glory_low": "項充之光輝、虎騎之勇、魔鬥之勇、程普之光輝、西門慶之光輝、荀攸之光輝、徐庶之光輝、周倉之光輝、茶茶之光輝、孔融之光輝、毒士之光輝",
     "drop_glory_player": ""
@@ -2026,8 +2132,9 @@
     "drop_rubbish": "浴巾、蟻獅的角、僧人的耳環、女用黑色網襪",
     "drop_hero": "關勝、單廷桂、趙雲、關羽、張遼、卑彌呼、魔禮青、張飛、孫二娘、火靈聖母、許褚、孫策、宋江、姬發、雲霄",
     "drop_equidcard": "赤血銅鈴卡",
-    "drop_combo_old": "七殺、陀羅、天馬",
+    "drop_combo_old": "七殺星、陀羅星、天馬星",
     "drop_combo_new": "",
+    "drop_othrt": "",
     "drop_glory_high": "阮小五之光輝、朱武之光輝、搏浪之光輝、張清之光輝、彩衣之光輝、林沖之光輝、扈三娘之光輝、羅真人之光輝",
     "drop_glory_low": "潘金蓮之光輝、木鹿之光輝、張魯之光輝、天師道之光輝、魏延之光輝、孟德之光輝、蟠桃之光輝、花榮之光輝、龐德之光輝",
     "drop_glory_player": ""
@@ -2045,8 +2152,9 @@
     "drop_rubbish": "浴巾、蟻獅的角、僧人的耳環、破鏡子、豹紋比基尼、女用黑色網襪",
     "drop_hero": "華雄、單延珪、關勝、孫策、宋江、孫二娘、張飛、雲霄、趙雲、關羽、火靈聖母、張遼、彩衣天女、卑彌呼、許褚、董卓、楊志、太乙真人、諸葛瑾、姬發、魏定國、司馬懿、張遼、姬發、魔禮青",
     "drop_equidcard": "赤血銅鈴卡",
-    "drop_combo_old": "七殺",
+    "drop_combo_old": "七殺星",
     "drop_combo_new": "",
+    "drop_othrt": "",
     "drop_glory_high": "阮小五之光輝、朱武之光輝、搏浪之光輝、張清之光輝、彩衣之光輝、林沖之光輝、扈三娘之光輝、羅真人之光輝",
     "drop_glory_low": "潘金蓮之光輝、木鹿之光輝、張魯之光輝、天師道之光輝、魏延之光輝、孟德之光輝、蟠桃之光輝、花榮之光輝、龐德之光輝",
     "drop_glory_player": ""
@@ -2064,8 +2172,9 @@
     "drop_rubbish": "僧人的耳環、破鏡子、女用黑色網襪、豹紋比基尼、向日葵、釣竿",
     "drop_hero": "玉鼎真人、魏定國、花榮、劉備、關勝、荀攸、呂布、魏延、龐德、黃天化、紂王、諸葛亮、雲中子、曹操、普賢真人、魯肅、貂蟬、佐佐木小次郎、孫權、司馬懿",
     "drop_equidcard": "震雷斧卡",
-    "drop_combo_old": "陀羅、七殺、天馬",
+    "drop_combo_old": "陀羅星、七殺星、天馬星",
     "drop_combo_new": "",
+    "drop_othrt": "",
     "drop_glory_high": "阮小五之光輝、朱武之光輝、搏浪之光輝、張清之光輝、彩衣之光輝、林沖之光輝、扈三娘之光輝、羅真人之光輝",
     "drop_glory_low": "潘金蓮之光輝、木鹿之光輝、張魯之光輝、天師道之光輝、魏延之光輝、孟德之光輝、蟠桃之光輝、花榮之光輝、龐德之光輝",
     "drop_glory_player": ""
@@ -2083,8 +2192,9 @@
     "drop_rubbish": "向日葵、釣竿、豹紋比基尼、僧人的耳環、女用黑色網襪",
     "drop_hero": "花榮、馬良、太史慈、諸葛亮、周瑜、關勝、卞氏、李逵、司馬懿、紂王、魏定國、普賢真人、荀攸、龐德",
     "drop_equidcard": "",
-    "drop_combo_old": "天馬、陀羅、七殺",
+    "drop_combo_old": "天馬星、陀羅星、七殺星",
     "drop_combo_new": "天喜、陰煞、天官、旬中、天使、孤辰",
+    "drop_othrt": "",
     "drop_glory_high": "阮小五之光輝、朱武之光輝、搏浪之光輝、張清之光輝、彩衣之光輝、林沖之光輝、扈三娘之光輝、羅真人之光輝",
     "drop_glory_low": "潘金蓮之光輝、木鹿之光輝、張魯之光輝、天師道之光輝、魏延之光輝、孟德之光輝、蟠桃之光輝、花榮之光輝、龐德之光輝",
     "drop_glory_player": ""
@@ -2104,6 +2214,7 @@
     "drop_equidcard": "",
     "drop_combo_old": "",
     "drop_combo_new": "",
+    "drop_othrt": "",
     "drop_glory_high": "",
     "drop_glory_low": "",
     "drop_glory_player": ""
@@ -2121,8 +2232,9 @@
     "drop_rubbish": "玻璃彈珠、大酒罈、蕈菇徽章",
     "drop_hero": "雲霄、關銀屏、姬發、瓊英、曹操、聞仲、姜子牙、吳用、妲己、左慈、盤古、女媧、甘寧、關勝",
     "drop_equidcard": "",
-    "drop_combo_old": "巨門、天魁、鈴",
+    "drop_combo_old": "巨門星、天魁星、鈴星",
     "drop_combo_new": "",
+    "drop_othrt": "",
     "drop_glory_high": "西門慶之光輝、高俅之光輝、宋徽宗之光輝、四聖大元帥錄",
     "drop_glory_low": "搏浪之光輝、小蘿之光輝、夏侯淵之光輝、樊瑞之光輝、雲中子光輝、貌端星之光",
     "drop_glory_player": ""
@@ -2142,6 +2254,7 @@
     "drop_equidcard": "",
     "drop_combo_old": "",
     "drop_combo_new": "",
+    "drop_othrt": "",
     "drop_glory_high": "",
     "drop_glory_low": "",
     "drop_glory_player": ""
@@ -2161,6 +2274,7 @@
     "drop_equidcard": "五行珠卡",
     "drop_combo_old": "",
     "drop_combo_new": "",
+    "drop_othrt": "",
     "drop_glory_high": "田豐之光輝、錦衣之光輝、王佐之光輝、黃月英之光輝、馬良之光輝、小喬之光輝",
     "drop_glory_low": "楊修之光輝",
     "drop_glory_player": ""
@@ -2180,6 +2294,7 @@
     "drop_equidcard": "",
     "drop_combo_old": "",
     "drop_combo_new": "",
+    "drop_othrt": "",
     "drop_glory_high": "",
     "drop_glory_low": "",
     "drop_glory_player": ""
@@ -2197,8 +2312,9 @@
     "drop_rubbish": "",
     "drop_hero": "許褚、太乙真人、李靖、申公豹、顧大嫂、馬超、殷郊、華陀、張清、瓊霄、武吉",
     "drop_equidcard": "閻龍矛卡",
-    "drop_combo_old": "祿存、文曲",
+    "drop_combo_old": "祿存星、文曲星",
     "drop_combo_new": "",
+    "drop_othrt": "",
     "drop_glory_high": "太公望之光輝、七殺星之光、斬仙之光、增長之光、多聞之光、持國之光、廣目之光",
     "drop_glory_low": "阮小五之光輝、地后星之光、黃蓋之光輝、警花之光、虎威之光輝、藥王之光、秘醫之跡、陸遜之光輝",
     "drop_glory_player": ""
@@ -2216,8 +2332,9 @@
     "drop_rubbish": "",
     "drop_hero": "瓊英、鄧嬋玉、關勝、魏延、楊志、扈三娘、趙公明、諸葛亮、馬良、王貴人、姬發、黃天化、普賢真人、筍攸、胡喜媚、貂蟬、劉備、周瑜、紂王、李逵、關銀屏、司馬懿、呂布、華雄(護陣掉落)、雷震子、佐佐木小次郎、雲中子",
     "drop_equidcard": "地煞石魁卡",
-    "drop_combo_old": "破軍、天馬",
+    "drop_combo_old": "破軍星、天馬星",
     "drop_combo_new": "",
+    "drop_othrt": "",
     "drop_glory_high": "地公之光輝、曹植之光輝、魯肅之光輝、瓊英之光輝、水靈之光",
     "drop_glory_low": "忍者之光、張苞之光輝、小玲之光輝、碧霄之光輝、小艾之光輝、周通之光輝、土府星之光",
     "drop_glory_player": ""
@@ -2237,6 +2354,7 @@
     "drop_equidcard": "護體咒甲卡",
     "drop_combo_old": "",
     "drop_combo_new": "",
+    "drop_othrt": "",
     "drop_glory_high": "",
     "drop_glory_low": "",
     "drop_glory_player": ""
@@ -2256,6 +2374,7 @@
     "drop_equidcard": "勾魂銅鍊卡",
     "drop_combo_old": "",
     "drop_combo_new": "",
+    "drop_othrt": "",
     "drop_glory_high": "程普之光輝、小倩之光輝、古之惡來光輝、武大郎之光輝、熱血之證、阿魯巴巴之光輝、九頭雉之徵",
     "drop_glory_low": "鐘會之光輝、盧俊義之光輝、姬發之光輝、程昱之光輝、關興之光輝、張遼之光輝、子龍之光輝、雷聲普化之徵、鄧飛之光輝、大喬之光輝、六合星之光",
     "drop_glory_player": ""
@@ -2273,8 +2392,9 @@
     "drop_rubbish": "",
     "drop_hero": "楊戩、武松、許褚、通天教主、雷震子、趙公明、王貴人、黃天化",
     "drop_equidcard": "護體咒甲卡",
-    "drop_combo_old": "天相、陀羅",
+    "drop_combo_old": "天相星、陀羅星",
     "drop_combo_new": "",
+    "drop_othrt": "",
     "drop_glory_high": "張郃之光輝、周泰之光輝、裴宣之光輝、托塔之光輝、二郎之徵、炳靈公之光",
     "drop_glory_low": "曹貴人之光輝、韋馱天之光、廣目之光、小倩之光輝、劍器之光輝、甘寧之光輝、張順之光輝、文醜之光輝、袁紹之光輝",
     "drop_glory_player": ""
@@ -2294,6 +2414,7 @@
     "drop_equidcard": "",
     "drop_combo_old": "",
     "drop_combo_new": "",
+    "drop_othrt": "",
     "drop_glory_high": "",
     "drop_glory_low": "",
     "drop_glory_player": ""
@@ -2311,8 +2432,9 @@
     "drop_rubbish": "",
     "drop_hero": "申公豹、黃飛虎、黃天化、楊戩、龍吉公主、公孫勝、哪吒、典韋、林沖、聞仲、燃燈道人、武松、于吉、通天教主、魯智深、潘夫人、關興",
     "drop_equidcard": "閻龍矛卡、震雷斧卡",
-    "drop_combo_old": "天魁、太陰、天鉞",
+    "drop_combo_old": "天魁星、太陰星、天鉞星",
     "drop_combo_new": "孤辰、寡宿、紅鸞、天刑、陰煞、恩光、旬中、旬空、天貴、截空、天哭、天巫、天馬",
+    "drop_othrt": "",
     "drop_glory_high": "地后星之光、沙摩柯之光輝、貌端星之光、呼延灼之光輝、普賢之光、夏侯惇之光輝、太史慈之光輝、武松之光輝、柴進之光輝、桃花星之光",
     "drop_glory_low": "豹騎之勇、武吉之光輝、張郃之光輝、救苦天尊之跡、諸葛瑾之光輝、彩衣之光輝、黃忠之光輝、晁蓋之光輝、一清之光輝、單廷珪之光輝、魯智深之光輝",
     "drop_glory_player": ""
@@ -2330,8 +2452,9 @@
     "drop_rubbish": "",
     "drop_hero": "紂王、典韋、雷震子、王貴人、哪吒、聞仲、公孫勝、神農、伏羲、楊戩、于吉、扈三娘",
     "drop_equidcard": "",
-    "drop_combo_old": "陀羅",
+    "drop_combo_old": "陀羅星",
     "drop_combo_new": "天空",
+    "drop_othrt": "",
     "drop_glory_high": "地后星之光、沙摩柯之光輝、貌端星之光、呼延灼之光輝、普賢之光、夏侯惇之光輝、太史慈之光輝、武松之光輝、柴進之光輝、桃花星之光",
     "drop_glory_low": "豹騎之勇、武吉之光輝、張郃之光輝、救苦天尊之跡、諸葛瑾之光輝、彩衣之光輝、黃忠之光輝、晁蓋之光輝、一清之光輝、單廷珪之光輝、魯智深之光輝",
     "drop_glory_player": ""
@@ -2351,6 +2474,7 @@
     "drop_equidcard": "",
     "drop_combo_old": "",
     "drop_combo_new": "",
+    "drop_othrt": "",
     "drop_glory_high": "張郃之光輝、周泰之光輝、裴宣之光輝、托塔之光輝、二郎之徵、炳靈公之光",
     "drop_glory_low": "曹貴人之光輝、韋馱天之光、廣目之光、小倩之光輝、劍器之光輝、甘寧之光輝、張順之光輝、文醜之光輝、袁紹之光輝",
     "drop_glory_player": ""
@@ -2368,8 +2492,9 @@
     "drop_rubbish": "嘿嘿狼皮、海色貓皮、噹噹牛皮、石敢當碎石",
     "drop_hero": "姜子牙、女媧、左慈、吳用、妲己、盤古",
     "drop_equidcard": "",
-    "drop_combo_old": "紫微、左輔、天機、右弼、文昌、文曲、太陽、天馬、祿存、武曲、陀羅、擎羊、天府、七殺、天相",
+    "drop_combo_old": "紫微星、左輔星、天機星、右弼星、文昌星、文曲星、太陽星、天馬星、祿存星、武曲星、陀羅星、擎羊星、天府星、七殺星、天相星",
     "drop_combo_new": "",
+    "drop_othrt": "",
     "drop_glory_high": "大喬之光輝、徐晃之光輝、太歲之光、媧皇之光、古佛之徵",
     "drop_glory_low": "司馬懿之光輝、響馬茜之光輝",
     "drop_glory_player": ""
@@ -2387,8 +2512,9 @@
     "drop_rubbish": "機關小蠟燭、奇特的石塊、折損長槍、破碎機關符咒、破碎機關壺、破碎機關劍、藍色機關錘、紅色機關錘、綠色機關錘、白色機關錘、怪異零件、破碎機關大刀、魔化的石頭",
     "drop_hero": "燃燈道人、左慈",
     "drop_equidcard": "",
-    "drop_combo_old": "文昌、文曲、左輔、右弼、祿存、紫微、天馬、擎羊、太陽、鈴、天魁、天鉞、陀羅、地空、地劫、火星、天機、火、武曲、貪狼",
+    "drop_combo_old": "文昌星、文曲星、左輔星、右弼星、祿存星、紫微星、天馬星、擎羊星、太陽星、鈴星、天魁星、天鉞星、陀羅星、地空星、地劫星、火星星、天機星、火星、武曲星、貪狼星",
     "drop_combo_new": "天福、寡宿、天才",
+    "drop_othrt": "",
     "drop_glory_high": "小艾之光輝、劉唐之光輝、五穀星之光、關銀屏之光輝、王進之光輝、李逵之光輝",
     "drop_glory_low": "馬良之光輝、柴進之光輝、原初粉塵",
     "drop_glory_player": ""
@@ -2408,6 +2534,7 @@
     "drop_equidcard": "",
     "drop_combo_old": "",
     "drop_combo_new": "",
+    "drop_othrt": "",
     "drop_glory_high": "",
     "drop_glory_low": "",
     "drop_glory_player": ""
@@ -2425,8 +2552,9 @@
     "drop_rubbish": "",
     "drop_hero": "王貴人、姬發、黃飛虎、申公豹、太乙真人、李靖、馬良、呂布、周瑜、司馬懿、紂王、程昱、黃天化、諸葛亮、貂蟬、胡喜媚、劉備、普賢真人、荀攸",
     "drop_equidcard": "渾鐵禪杖卡",
-    "drop_combo_old": "天梁",
+    "drop_combo_old": "天梁星",
     "drop_combo_new": "",
+    "drop_othrt": "",
     "drop_glory_high": "程普之光輝、小倩之光輝、古之惡來光輝、武大郎之光輝、熱血之證、阿魯巴巴之光輝、九頭雉之徵",
     "drop_glory_low": "鐘會之光輝、盧俊義之光輝、姬發之光輝、程昱之光輝、關興之光輝、張遼之光輝、子龍之光輝、雷聲普化之徵、鄧飛之光輝、大喬之光輝、六合星之光",
     "drop_glory_player": ""
@@ -2444,8 +2572,9 @@
     "drop_rubbish": "",
     "drop_hero": "龍吉公主、鄧嬋玉、黃天化、申公豹、馬良、瓊英、周瑜、趙公明、張苞",
     "drop_equidcard": "震雷斧卡",
-    "drop_combo_old": "擎羊",
+    "drop_combo_old": "擎羊星",
     "drop_combo_new": "紅鸞、龍池",
+    "drop_othrt": "",
     "drop_glory_high": "程普之光輝、小倩之光輝、古之惡來光輝、武大郎之光輝、熱血之證、阿魯巴巴之光輝、九頭雉之徵",
     "drop_glory_low": "鐘會之光輝、盧俊義之光輝、姬發之光輝、程昱之光輝、關興之光輝、張遼之光輝、子龍之光輝、雷聲普化之徵、鄧飛之光輝、大喬之光輝、六合星之光",
     "drop_glory_player": ""
@@ -2465,6 +2594,7 @@
     "drop_equidcard": "孟德新書卡",
     "drop_combo_old": "",
     "drop_combo_new": "旬中、天空、陰煞",
+    "drop_othrt": "",
     "drop_glory_high": "龍騎之勇、夏侯淵之光輝、樊瑞之光輝、鄧艾之光輝、馬岱之光輝、晁蓋之光輝、惡魔之光輝",
     "drop_glory_low": "大賢之光輝、地公之光輝、九頭雉之徵、四聖大元帥錄、羅真人之光輝、呂虎威之光輝、魔精之光、玉琵琶之徵、普賢之光、關勝之光輝、天齊仁之光、顏良之光輝、劉備之光輝、五穀星之光、男僕之光輝、雲霄之光輝",
     "drop_glory_player": ""
@@ -2482,8 +2612,9 @@
     "drop_rubbish": "",
     "drop_hero": "哪吒、胡喜媚、雷震子、紂王、黃天化、王貴人、于吉",
     "drop_equidcard": "妖神拂塵卡",
-    "drop_combo_old": "武曲、天同、地劫、地空、天鉞",
+    "drop_combo_old": "武曲星、天同星、地劫星、地空星、天鉞星",
     "drop_combo_new": "寡宿、天哭、旬中、天壽、孤辰、紅鸞、天使、旬空、天刑、破碎、天才、蜚廉、天貴、龍池、解神、天姚、台輔、天喜、天廚、天福、陰煞",
+    "drop_othrt": "",
     "drop_glory_high": "鄧飛之光輝、顧大嫂之光輝、孟德之光輝、智多星之光輝、原初粉塵、昭姬之光輝",
     "drop_glory_low": "阿魯巴巴之光輝、救世主之光、太史慈之光輝",
     "drop_glory_player": ""
@@ -2503,6 +2634,7 @@
     "drop_equidcard": "",
     "drop_combo_old": "",
     "drop_combo_new": "",
+    "drop_othrt": "",
     "drop_glory_high": "",
     "drop_glory_low": "",
     "drop_glory_player": ""
@@ -2522,6 +2654,7 @@
     "drop_equidcard": "",
     "drop_combo_old": "",
     "drop_combo_new": "",
+    "drop_othrt": "",
     "drop_glory_high": "",
     "drop_glory_low": "",
     "drop_glory_player": ""
@@ -2541,6 +2674,7 @@
     "drop_equidcard": "",
     "drop_combo_old": "",
     "drop_combo_new": "",
+    "drop_othrt": "",
     "drop_glory_high": "史進之光輝、夏麗之光輝、妖鬥之勇、三太子之光輝、風雷之光輝、救苦天尊之跡",
     "drop_glory_low": "持國之光、熱血之證、馬超之光輝、甄洛之光輝、分水之光輝、龍騎之勇、沙摩柯之光輝",
     "drop_glory_player": ""
@@ -2558,8 +2692,9 @@
     "drop_rubbish": "",
     "drop_hero": "劉備、諸葛瑾、彩衣天女、黃天化、張遼、瓊霄、龐德、李逵、呂布、周瑜、趙雲、諸葛亮、程昱、魔里青、荀攸、胡喜媚、魏定國、紂王、曹操、玉頂真人、華雄、雲中子、佐佐木小次郎",
     "drop_equidcard": "武王寶劍卡",
-    "drop_combo_old": "右弼、祿存、文曲",
+    "drop_combo_old": "右弼星、祿存星、文曲星",
     "drop_combo_new": "旬中、破碎、寡宿、天哭、天壽、紅鸞、天使",
+    "drop_othrt": "",
     "drop_glory_high": "史進之光輝、夏麗之光輝、妖鬥之勇、三太子之光輝、風雷之光輝、救苦天尊之跡",
     "drop_glory_low": "持國之光、熱血之證、馬超之光輝、甄洛之光輝、分水之光輝、龍騎之勇、沙摩柯之光輝",
     "drop_glory_player": ""
@@ -2577,8 +2712,9 @@
     "drop_rubbish": "",
     "drop_hero": "袁術、火靈聖母、孫策、魔禮青、姬發、許褚、王進、太乙真人、張飛、關興、董卓、雲霄、趙雲、關羽、彩衣天女、孫二娘、華雄、卑彌呼、楊志、單廷珪、張遼",
     "drop_equidcard": "天捷棍卡",
-    "drop_combo_old": "文曲、綠存、右弼",
+    "drop_combo_old": "文曲星、綠存星、右弼星",
     "drop_combo_new": "天馬、天壽、天哭",
+    "drop_othrt": "",
     "drop_glory_high": "史進之光輝、夏麗之光輝、妖鬥之勇、三太子之光輝、風雷之光輝、救苦天尊之跡",
     "drop_glory_low": "持國之光、熱血之證、馬超之光輝、甄洛之光輝、分水之光輝、龍騎之勇、沙摩柯之光輝",
     "drop_glory_player": ""
@@ -2596,8 +2732,9 @@
     "drop_rubbish": "",
     "drop_hero": "馬良、雲中子、張苞、王貴人、劉備、周瑜、胡喜媚、龐德、諸葛亮、關勝、司馬懿、扈三娘、關興、孫權、魏延、魯肅、玉鼎真人、呂布、曹操、紂王、龍吉公主、普賢真人、伏羲、花榮、貂蟬、李逵、黃天化、程昱、甘夫人、卞氏",
     "drop_equidcard": "真偃月刀卡",
-    "drop_combo_old": "天馬、左輔、文昌",
+    "drop_combo_old": "天馬星、左輔星、文昌星",
     "drop_combo_new": "天巫、天使、天壽、孤辰",
+    "drop_othrt": "",
     "drop_glory_high": "孔融之光輝、碧霄之光輝、文醜之光輝、程昱之光輝、糜夫人之光輝、戴宗之光輝、江東猛虎之光輝、關勝之光輝",
     "drop_glory_low": "風雷之光輝、獵豹之光輝、扈三娘之光輝、楊志之光輝、武松之光輝、倭王之光輝、女僕之光輝",
     "drop_glory_player": ""
@@ -2615,8 +2752,9 @@
     "drop_rubbish": "",
     "drop_hero": "諸葛瑾、諸葛亮、卑彌呼、紂王、呂布、龐德、曹操、貂蟬、司馬懿、王貴人、關勝、黃天化、魯智深、魯肅、劉備、胡喜媚、花榮、雲中子、關銀屏、程昱、周瑜、孫權、荀攸、張遼、魏廷、李逵、關興、玉頂真人、佐佐木小次郎、甘夫人、卞氏、普賢真人、潘夫人",
     "drop_equidcard": "低溫蠟燭卡",
-    "drop_combo_old": "天馬、文昌、左輔",
+    "drop_combo_old": "天馬星、文昌星、左輔星",
     "drop_combo_new": "",
+    "drop_othrt": "",
     "drop_glory_high": "孔融之光輝、碧霄之光輝、文醜之光輝、程昱之光輝、糜夫人之光輝、戴宗之光輝、江東猛虎之光輝、關勝之光輝",
     "drop_glory_low": "風雷之光輝、獵豹之光輝、扈三娘之光輝、楊志之光輝、武松之光輝、倭王之光輝、女僕之光輝",
     "drop_glory_player": ""
@@ -2636,6 +2774,7 @@
     "drop_equidcard": "正丈八蛇矛卡",
     "drop_combo_old": "",
     "drop_combo_new": "孤辰",
+    "drop_othrt": "",
     "drop_glory_high": "孔融之光輝、碧霄之光輝、文醜之光輝、程昱之光輝、糜夫人之光輝、戴宗之光輝、江東猛虎之光輝、關勝之光輝",
     "drop_glory_low": "風雷之光輝、獵豹之光輝、扈三娘之光輝、楊志之光輝、武松之光輝、倭王之光輝、女僕之光輝",
     "drop_glory_player": ""
@@ -2653,8 +2792,9 @@
     "drop_rubbish": "",
     "drop_hero": "張苞、程昱、哪吒、伏羲、瓊英、于吉、通天教主、公孫勝、扈三娘、龍吉公主、林沖、史進、典韋、潘夫人",
     "drop_equidcard": "木棺卡",
-    "drop_combo_old": "火、太陰、擎羊",
+    "drop_combo_old": "火星、太陰星、擎羊星",
     "drop_combo_new": "三台、解神、陰煞、天官、天巫、天空、孤辰、天廚、紅鸞、寡宿、台輔、破碎、天姚",
+    "drop_othrt": "",
     "drop_glory_high": "雲霄之光輝、袁術之光輝、虎癡之光輝",
     "drop_glory_low": "三太子之光輝、馬岱之光輝、無雙的威光",
     "drop_glory_player": ""
@@ -2672,8 +2812,9 @@
     "drop_rubbish": "",
     "drop_hero": "龐德、伏羲、程昱、諸葛瑾、張苞、關興、哪吒、潘夫人、甘夫人、卞氏、楊戩、于吉",
     "drop_equidcard": "軍師座車卡",
-    "drop_combo_old": "天鉞、天同、廉貞、武曲",
+    "drop_combo_old": "天鉞星、天同星、廉貞星、武曲星",
     "drop_combo_new": "",
+    "drop_othrt": "",
     "drop_glory_high": "秘醫之跡、六合星之光、凌震之光輝、羲皇之光",
     "drop_glory_low": "雅帝之光輝、孫尚香之光輝、九尾狐之徵",
     "drop_glory_player": ""
@@ -2682,7 +2823,7 @@
     "mapid": "迷蹤列島",
     "def": "",
     "dodge": "",
-    "approach": "梁山>A>E>D>2(蓬萊仙島)\n郡業>\n幽納古林=梁山>A>E(E重複往返)",
+    "approach": "梁山>A>E>D>2(蓬萊仙島)\n郡業>\n幽納古林=梁山>A>E (E重複往返)",
     "illustrate": "",
     "approach_a": "要",
     "maplv": "",
@@ -2693,6 +2834,7 @@
     "drop_equidcard": "",
     "drop_combo_old": "",
     "drop_combo_new": "",
+    "drop_othrt": "",
     "drop_glory_high": "周郎之光輝、孫二娘之光輝、盧俊義之光輝、阮小二之光輝、石秀之光輝、忍者之光、龍鬥之勇",
     "drop_glory_low": "諸葛惠之光輝",
     "drop_glory_player": ""
@@ -2712,6 +2854,7 @@
     "drop_equidcard": "地闔鎖鏈卡",
     "drop_combo_old": "",
     "drop_combo_new": "",
+    "drop_othrt": "",
     "drop_glory_high": "周郎之光輝、孫二娘之光輝、盧俊義之光輝、阮小二之光輝、石秀之光輝、忍者之光、龍鬥之勇",
     "drop_glory_low": "諸葛惠之光輝",
     "drop_glory_player": ""
@@ -2731,6 +2874,7 @@
     "drop_equidcard": "",
     "drop_combo_old": "",
     "drop_combo_new": "",
+    "drop_othrt": "",
     "drop_glory_high": "",
     "drop_glory_low": "",
     "drop_glory_player": ""
@@ -2750,6 +2894,7 @@
     "drop_equidcard": "",
     "drop_combo_old": "",
     "drop_combo_new": "",
+    "drop_othrt": "",
     "drop_glory_high": "",
     "drop_glory_low": "",
     "drop_glory_player": ""
@@ -2769,6 +2914,7 @@
     "drop_equidcard": "河洛羅經卡",
     "drop_combo_old": "",
     "drop_combo_new": "",
+    "drop_othrt": "",
     "drop_glory_high": "人公之光輝、益德之光輝、張苞之光輝、蔣敬之光輝、燕青之光輝、好人卡象徵、姬發之光輝、武吉之光輝、韋馱天之光",
     "drop_glory_low": "項充之光輝、虎騎之勇、魔鬥之勇、程普之光輝、西門慶之光輝、荀攸之光輝、徐庶之光輝、周倉之光輝、茶茶之光輝、孔融之光輝、毒士之光輝",
     "drop_glory_player": ""
@@ -2786,8 +2932,9 @@
     "drop_rubbish": "",
     "drop_hero": "諸葛惠、關銀屏、石秀、李逵、彩衣天女、胡喜媚、劉備、司馬懿、周瑜、諸葛亮、曹操、龐德、呂布、馬良、程昱、王貴人、荀攸、紂王、魏延、甘夫人、高俅、凌震",
     "drop_equidcard": "女僕服卡",
-    "drop_combo_old": "天馬、破軍、擎羊",
+    "drop_combo_old": "天馬星、破軍星、擎羊星",
     "drop_combo_new": "",
+    "drop_othrt": "",
     "drop_glory_high": "地公之光輝、曹植之光輝、魯肅之光輝、瓊英之光輝、水靈之光",
     "drop_glory_low": "忍者之光、張苞之光輝、小玲之光輝、碧霄之光輝、小艾之光輝、周通之光輝、土府星之光",
     "drop_glory_player": ""
@@ -2807,6 +2954,7 @@
     "drop_equidcard": "",
     "drop_combo_old": "",
     "drop_combo_new": "三台、寡宿、旬空、天空、台輔、破碎、天刑",
+    "drop_othrt": "",
     "drop_glory_high": "",
     "drop_glory_low": "",
     "drop_glory_player": ""
@@ -2824,8 +2972,9 @@
     "drop_rubbish": "",
     "drop_hero": "顏良、魯智深、關銀屏、文醜、法正、關興",
     "drop_equidcard": "莫邪巨劍卡",
-    "drop_combo_old": "火",
+    "drop_combo_old": "火星",
     "drop_combo_new": "天貴",
+    "drop_othrt": "",
     "drop_glory_high": "程普之光輝、小倩之光輝、古之惡來光輝、武大郎之光輝、熱血之證、阿魯巴巴之光輝、九頭雉之徵",
     "drop_glory_low": "鐘會之光輝、盧俊義之光輝、姬發之光輝、程昱之光輝、關興之光輝、張遼之光輝、子龍之光輝、雷聲普化之徵、鄧飛之光輝、大喬之光輝、六合星之光",
     "drop_glory_player": ""
@@ -2843,8 +2992,9 @@
     "drop_rubbish": "",
     "drop_hero": "晁蓋、鄧艾、馬超、哪吒、典韋、林沖、武松、于吉、潘夫人、神農、卞氏、楊戩、甘夫人、聞仲、公孫勝、扈三娘、張魯",
     "drop_equidcard": "雷公鞭卡",
-    "drop_combo_old": "天鉞、天府、鈴",
+    "drop_combo_old": "天鉞星、天府星、鈴星",
     "drop_combo_new": "旬中、天空、三台、孤辰、天才、天貴",
+    "drop_othrt": "",
     "drop_glory_high": "諸葛惠之光輝、雷聲普化之徵、董平之光輝、魏延之光輝、胡車兒之光輝、執年歲君之徵、天眼之光輝",
     "drop_glory_low": "龍鬥之勇、益德之光輝、鳳雛之光輝、媧皇之光",
     "drop_glory_player": ""
@@ -2862,8 +3012,9 @@
     "drop_rubbish": "",
     "drop_hero": "柴進、張清、羅真人、林沖、關銀屏、荀攸",
     "drop_equidcard": "香蘿羽扇卡",
-    "drop_combo_old": "鈴、天鉞、天府",
+    "drop_combo_old": "鈴星、天鉞星、天府星",
     "drop_combo_new": "八座、天廚",
+    "drop_othrt": "",
     "drop_glory_high": "諸葛惠之光輝、雷聲普化之徵、董平之光輝、魏延之光輝、胡車兒之光輝、執年歲君之徵、天眼之光輝",
     "drop_glory_low": "龍鬥之勇、益德之光輝、鳳雛之光輝、媧皇之光",
     "drop_glory_player": ""
@@ -2883,6 +3034,7 @@
     "drop_equidcard": "熱血棒球卡",
     "drop_combo_old": "",
     "drop_combo_new": "",
+    "drop_othrt": "",
     "drop_glory_high": "諸葛惠之光輝、雷聲普化之徵、董平之光輝、魏延之光輝、胡車兒之光輝、執年歲君之徵、天眼之光輝",
     "drop_glory_low": "龍鬥之勇、益德之光輝、鳳雛之光輝、媧皇之光",
     "drop_glory_player": ""
@@ -2900,8 +3052,9 @@
     "drop_rubbish": "",
     "drop_hero": "瓊英、劉唐、周通、伏羲、宋徽宗、董卓、關銀屏、戴宗、盧俊義、華雄、姜子牙",
     "drop_equidcard": "殷商大劍卡",
-    "drop_combo_old": "武曲、地空、地劫、天鉞",
+    "drop_combo_old": "武曲星、地空星、地劫星、天鉞星",
     "drop_combo_new": "",
+    "drop_othrt": "",
     "drop_glory_high": "鄧飛之光輝、顧大嫂之光輝、孟德之光輝、智多星之光輝、原初粉塵、昭姬之光輝",
     "drop_glory_low": "阿魯巴巴之光輝、救世主之光、太史慈之光輝",
     "drop_glory_player": ""
@@ -2916,11 +3069,12 @@
     "maplv": "",
     "monster": "",
     "monster_atk": "",
-    "drop_rubbish": "",
-    "drop_hero": "魔禮壽、李興霸、大喬、晁蓋、馬岱、高友乾、阮小七、靡夫人、殷洪、張奎、鄧嬋玉、顧大嫂、碧霄、樊瑞、瓊霄、殷郊、王進、馬超、華陀、羅真人、徐庶、高友乾、太史慈、劉唐、張郃、李靖、夏侯淵、孫二娘、黃飛虎、周通、武吉、張順、龐統、孫策、秦明、袁術",
+    "drop_rubbish": "迴力鏢、蠻族的長矛",
+    "drop_hero": "魔禮壽、李興霸、大喬、晁蓋、馬岱、高友乾、阮小七、靡夫人、殷洪、張奎、鄧嬋玉、顧大嫂、碧霄、樊瑞、瓊霄、殷郊、王進、馬超、華陀、羅真人、徐庶、高友乾、太史慈、劉唐、張郃、李靖、夏侯淵、孫二娘、黃飛虎、周通、武吉、張順、龐統、孫策、秦明、袁術、姜維、甘寧",
     "drop_equidcard": "青雲劍卡",
-    "drop_combo_old": "左輔、右弼",
+    "drop_combo_old": "左輔星、右弼星",
     "drop_combo_new": "",
+    "drop_othrt": "天山雪蓮",
     "drop_glory_high": "人公之光輝、益德之光輝、張苞之光輝、蔣敬之光輝、燕青之光輝、好人卡象徵、姬發之光輝、武吉之光輝、韋馱天之光",
     "drop_glory_low": "項充之光輝、虎騎之勇、魔鬥之勇、程普之光輝、西門慶之光輝、荀攸之光輝、徐庶之光輝、周倉之光輝、茶茶之光輝、孔融之光輝、毒士之光輝",
     "drop_glory_player": ""
@@ -2938,8 +3092,9 @@
     "drop_rubbish": "",
     "drop_hero": "韋護、諸葛亮、碧霄、馬良、龍吉公主、史進、魯智深、 王貴人、雲霄、周瑜、劉備、林沖、司馬懿、雲中子、魯肅、呂布、黃天化、普賢真人、關銀屏、瓊英、玉頂真人、胡喜媚、龐德、卞氏、李逵、貂蟬、關勝、曹操",
     "drop_equidcard": "獨角黑煙獸卡",
-    "drop_combo_old": "天梁、擎羊、火",
+    "drop_combo_old": "天梁星、擎羊星、火星",
     "drop_combo_new": "",
+    "drop_othrt": "",
     "drop_glory_high": "程普之光輝、小倩之光輝、古之惡來光輝、武大郎之光輝、熱血之證、阿魯巴巴之光輝、九頭雉之徵",
     "drop_glory_low": "鐘會之光輝、盧俊義之光輝、姬發之光輝、程昱之光輝、關興之光輝、張遼之光輝、子龍之光輝、雷聲普化之徵、鄧飛之光輝、大喬之光輝、六合星之光",
     "drop_glory_player": ""
@@ -2954,11 +3109,12 @@
     "maplv": "",
     "monster": "",
     "monster_atk": "",
-    "drop_rubbish": "",
+    "drop_rubbish": "琥珀化石、花瓣",
     "drop_hero": "王魔、楊森、殷郊、張奎、殷洪、張飛、孫策、李靖、趙雲、太乙真人、武吉、瓊霄、彩衣天女、雷震子、周通、張順、宋江、碧霄、單廷珪、雲霄、許褚、顧大嫂、關羽、羅真人、申公豹、孫二娘、甘寧、魔禮青、黃飛虎、魏定國、晁蓋、王進、樊瑞、阮小七、楊志、鄧嬋玉、趙公明、呼延灼、火靈聖母、張遼、土行孫、陸遜、龐統、姜維、馬超、董卓、袁術、卑彌呼、黃忠、夏侯淵、姬發、張清、華雄、關勝、徐庶、呂布",
     "drop_equidcard": "劈地珠卡",
-    "drop_combo_old": "",
-    "drop_combo_new": "",
+    "drop_combo_old": "左輔星、右弼星",
+    "drop_combo_new": "天刑、陰煞、天哭、蜚廉、天貴、截空",
+    "drop_othrt": "野山人參",
     "drop_glory_high": "人公之光輝、益德之光輝、張苞之光輝、蔣敬之光輝、燕青之光輝、好人卡象徵、姬發之光輝、武吉之光輝、韋馱天之光",
     "drop_glory_low": "項充之光輝、虎騎之勇、魔鬥之勇、程普之光輝、西門慶之光輝、荀攸之光輝、徐庶之光輝、周倉之光輝、茶茶之光輝、孔融之光輝、毒士之光輝",
     "drop_glory_player": ""
@@ -2974,10 +3130,11 @@
     "monster": "",
     "monster_atk": "",
     "drop_rubbish": "",
-    "drop_hero": "黃妃、武吉、瓊霄、土行孫、魔禮壽、周瑜、曹操、司馬懿、貂蟬、魏延、魔禮海、紂王、宋江、魯智深、普賢真人、魔禮青、史進、劉備、諸葛瑾、程昱、馬良、扈三娘、關興、花榮、卑彌呼、張遼、孫策、許褚、玉鼎真人、胡喜媚、孫權、荀攸、燃燈道人、王貴人、許褚、彩衣天女、楊志、通天教主、雲中子、呂布、李逵、諸葛亮、卞氏、黃天化、關勝",
+    "drop_hero": "黃妃、武吉、瓊霄、土行孫、魔禮壽、周瑜、曹操、司馬懿、貂蟬、魏延、魔禮海、紂王、宋江、魯智深、普賢真人、魔禮青、史進、劉備、諸葛瑾、程昱、馬良、扈三娘、關興、花榮、卑彌呼、張遼、孫策、許褚、玉鼎真人、胡喜媚、孫權、荀攸、燃燈道人、王貴人、許褚、彩衣天女、楊志、通天教主、雲中子、呂布、李逵、諸葛亮、卞氏、黃天化、關勝、甘夫人",
     "drop_equidcard": "土龍爪卡",
-    "drop_combo_old": "天梁",
+    "drop_combo_old": "天梁星",
     "drop_combo_new": "天刑、鳳閣",
+    "drop_othrt": "",
     "drop_glory_high": "程普之光輝、小倩之光輝、古之惡來光輝、武大郎之光輝、熱血之證、阿魯巴巴之光輝、九頭雉之徵",
     "drop_glory_low": "鐘會之光輝、盧俊義之光輝、姬發之光輝、程昱之光輝、關興之光輝、張遼之光輝、子龍之光輝、雷聲普化之徵、鄧飛之光輝、大喬之光輝、六合星之光",
     "drop_glory_player": ""
@@ -2995,8 +3152,9 @@
     "drop_rubbish": "",
     "drop_hero": "瓊霄、魔禮青、魏定國、孫權、華雄、雲霄、孫策、賈氏、黃妃、張飛、諸葛瑾、宋江、火靈聖母、司馬懿",
     "drop_equidcard": "金蛟剪卡",
-    "drop_combo_old": "天梁、火、擎羊",
+    "drop_combo_old": "天梁星、火星、擎羊星",
     "drop_combo_new": "天福、解神",
+    "drop_othrt": "",
     "drop_glory_high": "程普之光輝、小倩之光輝、古之惡來光輝、武大郎之光輝、熱血之證、阿魯巴巴之光輝、九頭雉之徵",
     "drop_glory_low": "鐘會之光輝、盧俊義之光輝、姬發之光輝、程昱之光輝、關興之光輝、張遼之光輝、子龍之光輝、雷聲普化之徵、鄧飛之光輝、大喬之光輝、六合星之光",
     "drop_glory_player": ""
@@ -3016,6 +3174,7 @@
     "drop_equidcard": "",
     "drop_combo_old": "",
     "drop_combo_new": "",
+    "drop_othrt": "",
     "drop_glory_high": "",
     "drop_glory_low": "",
     "drop_glory_player": ""
@@ -3035,6 +3194,7 @@
     "drop_equidcard": "九公刀卡、赤葫蘆卡",
     "drop_combo_old": "",
     "drop_combo_new": "",
+    "drop_othrt": "",
     "drop_glory_high": "人公之光輝、益德之光輝、張苞之光輝、蔣敬之光輝、燕青之光輝、好人卡象徵、姬發之光輝、武吉之光輝、韋馱天之光",
     "drop_glory_low": "項充之光輝、虎騎之勇、魔鬥之勇、程普之光輝、西門慶之光輝、荀攸之光輝、徐庶之光輝、周倉之光輝、茶茶之光輝、孔融之光輝、毒士之光輝",
     "drop_glory_player": ""
@@ -3054,6 +3214,7 @@
     "drop_equidcard": "",
     "drop_combo_old": "",
     "drop_combo_new": "",
+    "drop_othrt": "",
     "drop_glory_high": "",
     "drop_glory_low": "",
     "drop_glory_player": ""
@@ -3071,8 +3232,9 @@
     "drop_rubbish": "法師鈴鐺、玩具弓箭、獅子的尾巴",
     "drop_hero": "土行孫、張奎、雲霄、妲己、劉備、司馬懿、火靈聖母、燃燈道人、程昱",
     "drop_equidcard": "酷炫球鞋卡",
-    "drop_combo_old": "貪狼、陀羅、火",
+    "drop_combo_old": "貪狼星、陀羅星、火星",
     "drop_combo_new": "天空、陰煞、天巫、三台",
+    "drop_othrt": "",
     "drop_glory_high": "小玲之光輝、金龍如意之徵、一清之光輝、麒麟之光輝、天使之光",
     "drop_glory_low": "阮小七之光輝、王進之光輝、宋江之光輝、于吉之光輝、徐晃之光輝、二天一流之徵",
     "drop_glory_player": ""
@@ -3092,6 +3254,7 @@
     "drop_equidcard": "",
     "drop_combo_old": "",
     "drop_combo_new": "截空",
+    "drop_othrt": "",
     "drop_glory_high": "小玲之光輝、金龍如意之徵、一清之光輝、麒麟之光輝、天使之光",
     "drop_glory_low": "阮小七之光輝、王進之光輝、宋江之光輝、于吉之光輝、徐晃之光輝、二天一流之徵",
     "drop_glory_player": ""
@@ -3111,6 +3274,7 @@
     "drop_equidcard": "",
     "drop_combo_old": "",
     "drop_combo_new": "",
+    "drop_othrt": "",
     "drop_glory_high": "鄧飛之光輝、顧大嫂之光輝、孟德之光輝、智多星之光輝、原初粉塵、昭姬之光輝",
     "drop_glory_low": "阿魯巴巴之光輝、救世主之光、太史慈之光輝",
     "drop_glory_player": ""
@@ -3128,8 +3292,9 @@
     "drop_rubbish": "",
     "drop_hero": "高友乾、雲中子、鄧九公、哪吒、公孫勝、典韋、聞仲、于吉、伏羲、扈三娘、神農、楊戩、林沖、潘夫人",
     "drop_equidcard": "強力探照燈卡",
-    "drop_combo_old": "天魁、地空、天鉞",
-    "drop_combo_new": "截空、天刑、三台、蜚廉、孤辰、台輔",
+    "drop_combo_old": "天魁星、地空星、天鉞星",
+    "drop_combo_new": "截空、天刑、三台、蜚廉、孤辰、台輔、天哭、旬空、八座、天使",
+    "drop_othrt": "",
     "drop_glory_high": "龍騎之勇、夏侯淵之光輝、樊瑞之光輝、鄧艾之光輝、馬岱之光輝、晁蓋之光輝、惡魔之光輝",
     "drop_glory_low": "大賢之光輝、地公之光輝、九頭雉之徵、四聖大元帥錄、羅真人之光輝、呂虎威之光輝、魔精之光、玉琵琶之徵、普賢之光、關勝之光輝、天齊仁之光、顏良之光輝、劉備之光輝、五穀星之光、男僕之光輝、雲霄之光輝",
     "drop_glory_player": ""
@@ -3145,10 +3310,11 @@
     "monster": "",
     "monster_atk": "",
     "drop_rubbish": "",
-    "drop_hero": "李興霸、聞仲、盤古、女媧、姜子牙、于吉、妲己、左慈、林沖、玉鼎真人、哪吒、王魔、 高友乾、楊森、吳用",
+    "drop_hero": "李興霸、聞仲、盤古、女媧、姜子牙、于吉、妲己、左慈、林沖、玉鼎真人、哪吒、王魔、 高友乾、楊森、吳用、普賢真人、雲中子",
     "drop_equidcard": "強力探照燈卡",
-    "drop_combo_old": "地空、天鉞、天魁",
+    "drop_combo_old": "地空星、天鉞星、天魁星、天府星",
     "drop_combo_new": "",
+    "drop_othrt": "清蒸鰻魚肉",
     "drop_glory_high": "龍騎之勇、夏侯淵之光輝、樊瑞之光輝、鄧艾之光輝、馬岱之光輝、晁蓋之光輝、惡魔之光輝",
     "drop_glory_low": "大賢之光輝、地公之光輝、九頭雉之徵、四聖大元帥錄、羅真人之光輝、呂虎威之光輝、魔精之光、玉琵琶之徵、普賢之光、關勝之光輝、天齊仁之光、顏良之光輝、劉備之光輝、五穀星之光、男僕之光輝、雲霄之光輝",
     "drop_glory_player": ""
@@ -3168,6 +3334,7 @@
     "drop_equidcard": "",
     "drop_combo_old": "",
     "drop_combo_new": "",
+    "drop_othrt": "",
     "drop_glory_high": "人公之光輝、益德之光輝、張苞之光輝、蔣敬之光輝、燕青之光輝、好人卡象徵、姬發之光輝、武吉之光輝、韋馱天之光",
     "drop_glory_low": "項充之光輝、虎騎之勇、魔鬥之勇、程普之光輝、西門慶之光輝、荀攸之光輝、徐庶之光輝、周倉之光輝、茶茶之光輝、孔融之光輝、毒士之光輝",
     "drop_glory_player": ""
@@ -3187,6 +3354,7 @@
     "drop_equidcard": "",
     "drop_combo_old": "",
     "drop_combo_new": "",
+    "drop_othrt": "",
     "drop_glory_high": "人公之光輝、益德之光輝、張苞之光輝、蔣敬之光輝、燕青之光輝、好人卡象徵、姬發之光輝、武吉之光輝、韋馱天之光",
     "drop_glory_low": "項充之光輝、虎騎之勇、魔鬥之勇、程普之光輝、西門慶之光輝、荀攸之光輝、徐庶之光輝、周倉之光輝、茶茶之光輝、孔融之光輝、毒士之光輝",
     "drop_glory_player": ""
@@ -3206,6 +3374,7 @@
     "drop_equidcard": "",
     "drop_combo_old": "",
     "drop_combo_new": "",
+    "drop_othrt": "",
     "drop_glory_high": "太公望之光輝、七殺星之光、斬仙之光、增長之光、多聞之光、持國之光、廣目之光",
     "drop_glory_low": "阮小五之光輝、地后星之光、黃蓋之光輝、警花之光、虎威之光輝、藥王之光、秘醫之跡、陸遜之光輝",
     "drop_glory_player": ""
@@ -3225,6 +3394,7 @@
     "drop_equidcard": "",
     "drop_combo_old": "",
     "drop_combo_new": "",
+    "drop_othrt": "",
     "drop_glory_high": "太公望之光輝、七殺星之光、斬仙之光、增長之光、多聞之光、持國之光、廣目之光",
     "drop_glory_low": "阮小五之光輝、地后星之光、黃蓋之光輝、警花之光、虎威之光輝、藥王之光、秘醫之跡、陸遜之光輝",
     "drop_glory_player": ""
@@ -3244,6 +3414,7 @@
     "drop_equidcard": "",
     "drop_combo_old": "",
     "drop_combo_new": "",
+    "drop_othrt": "",
     "drop_glory_high": "太公望之光輝、七殺星之光、斬仙之光、增長之光、多聞之光、持國之光、廣目之光",
     "drop_glory_low": "阮小五之光輝、地后星之光、黃蓋之光輝、警花之光、虎威之光輝、藥王之光、秘醫之跡、陸遜之光輝",
     "drop_glory_player": ""
@@ -3263,6 +3434,7 @@
     "drop_equidcard": "",
     "drop_combo_old": "",
     "drop_combo_new": "",
+    "drop_othrt": "",
     "drop_glory_high": "太公望之光輝、七殺星之光、斬仙之光、增長之光、多聞之光、持國之光、廣目之光",
     "drop_glory_low": "阮小五之光輝、地后星之光、黃蓋之光輝、警花之光、虎威之光輝、藥王之光、秘醫之跡、陸遜之光輝",
     "drop_glory_player": ""
@@ -3282,6 +3454,7 @@
     "drop_equidcard": "",
     "drop_combo_old": "",
     "drop_combo_new": "",
+    "drop_othrt": "",
     "drop_glory_high": "太公望之光輝、七殺星之光、斬仙之光、增長之光、多聞之光、持國之光、廣目之光",
     "drop_glory_low": "阮小五之光輝、地后星之光、黃蓋之光輝、警花之光、虎威之光輝、藥王之光、秘醫之跡、陸遜之光輝",
     "drop_glory_player": ""
@@ -3301,6 +3474,7 @@
     "drop_equidcard": "",
     "drop_combo_old": "",
     "drop_combo_new": "",
+    "drop_othrt": "",
     "drop_glory_high": "太公望之光輝、七殺星之光、斬仙之光、增長之光、多聞之光、持國之光、廣目之光",
     "drop_glory_low": "阮小五之光輝、地后星之光、黃蓋之光輝、警花之光、虎威之光輝、藥王之光、秘醫之跡、陸遜之光輝",
     "drop_glory_player": ""
@@ -3320,6 +3494,7 @@
     "drop_equidcard": "",
     "drop_combo_old": "",
     "drop_combo_new": "",
+    "drop_othrt": "",
     "drop_glory_high": "南蠻王之光輝、甄洛之光輝、荀攸之光輝、黃忠之光輝、法正之光輝、甘寧之光輝、呂虎威之光輝",
     "drop_glory_low": "田豐之光輝、斬仙之光、宋徽宗之光輝、鄧艾之光輝、戴宗之光輝、程遠志之光輝、廖化之光輝、胡車兒之光輝、巖流秘劍之徵",
     "drop_glory_player": ""
@@ -3337,8 +3512,9 @@
     "drop_rubbish": "鬼火、雞爪、龍麟、虎牙、木乃伊繃帶",
     "drop_hero": "張順、阮小七、羅真人、華佗、李靖、張郃、陸遜、蔡文姬、碧霄、魔禮海、申公豹、孫尚香、徐庶、馬超、趙公明、土行孫、周通、殷郊、袁術、張清、黃忠、瓊霄、姜維、劉唐、龐統",
     "drop_equidcard": "雁翅刀卡",
-    "drop_combo_old": "右弼、文昌",
+    "drop_combo_old": "右弼星、文昌星",
     "drop_combo_new": "",
+    "drop_othrt": "",
     "drop_glory_high": "南蠻王之光輝、甄洛之光輝、荀攸之光輝、黃忠之光輝、法正之光輝、甘寧之光輝、呂虎威之光輝",
     "drop_glory_low": "田豐之光輝、斬仙之光、宋徽宗之光輝、鄧艾之光輝、戴宗之光輝、程遠志之光輝、廖化之光輝、胡車兒之光輝、巖流秘劍之徵",
     "drop_glory_player": ""
@@ -3358,6 +3534,7 @@
     "drop_equidcard": "",
     "drop_combo_old": "",
     "drop_combo_new": "",
+    "drop_othrt": "",
     "drop_glory_high": "南蠻王之光輝、甄洛之光輝、荀攸之光輝、黃忠之光輝、法正之光輝、甘寧之光輝、呂虎威之光輝",
     "drop_glory_low": "田豐之光輝、斬仙之光、宋徽宗之光輝、鄧艾之光輝、戴宗之光輝、程遠志之光輝、廖化之光輝、胡車兒之光輝、巖流秘劍之徵",
     "drop_glory_player": ""
@@ -3375,8 +3552,9 @@
     "drop_rubbish": "鬼火、木乃伊繃帶、四葉幸運草、虎牙",
     "drop_hero": "華陀、徐晃 、糜夫人、趙公明、孫尚香、許褚、彩衣天女、張飛",
     "drop_equidcard": "雁翅刀卡",
-    "drop_combo_old": "文昌",
+    "drop_combo_old": "文昌星",
     "drop_combo_new": "天貴",
+    "drop_othrt": "",
     "drop_glory_high": "南蠻王之光輝、甄洛之光輝、荀攸之光輝、黃忠之光輝、法正之光輝、甘寧之光輝、呂虎威之光輝",
     "drop_glory_low": "田豐之光輝、斬仙之光、宋徽宗之光輝、鄧艾之光輝、戴宗之光輝、程遠志之光輝、廖化之光輝、胡車兒之光輝、巖流秘劍之徵",
     "drop_glory_player": ""
@@ -3396,6 +3574,7 @@
     "drop_equidcard": "",
     "drop_combo_old": "",
     "drop_combo_new": "",
+    "drop_othrt": "",
     "drop_glory_high": "",
     "drop_glory_low": "",
     "drop_glory_player": ""
