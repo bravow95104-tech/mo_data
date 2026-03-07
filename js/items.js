@@ -7,7 +7,6 @@ document.addEventListener("DOMContentLoaded", () => {
 fetch('/mo_data/data/items.json')
   .then(response => response.json())
   .then(data => {
-    // ✅ 不再預先篩選 class = "藥品"
     heroesData = data;
     renderTable(heroesData);
   })
@@ -69,7 +68,8 @@ function applyFilters() {
 
       if (hero.items) {
         const img = document.createElement('img');
-        const basePath = `/mo_data/pic/items/${hero.items}`;
+        const fileName = encodeURIComponent(hero.items);
+        const basePath = `/mo_data/pic/items/${fileName}`;
         const extensions = ['.png', '.jpg', '.bmp'];
         let attempt = 0;
 
