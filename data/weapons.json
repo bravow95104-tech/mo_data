@@ -13880,10 +13880,10 @@
     "sort": "坐騎",
     "pic": "",
     "item": "瑞獸海馬",
-    "lv": "",
-    "Property1": "",
-    "Property2": "",
-    "Durability": "",
+    "lv": 85,
+    "Property1": 0,
+    "Property2": 0,
+    "Durability": 541,
     "material1": "藻玉32",
     "material2": "扶木32",
     "material3": "赤銅32",
@@ -13895,7 +13895,7 @@
     "material9": "",
     "material10": "",
     "material11": "",
-    "illustrate": "",
+    "illustrate": "受火行技能傷害-7%、鑲英雄符石效果-90%\n移動速度+1、\n命中的技能傷害有9%機率減少9%、90%機率提升9%、1%機率提升99%",
     "gain": "",
     "obtain": ""
   }
