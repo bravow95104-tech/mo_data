@@ -315,6 +315,33 @@ h3.search-tip {
     color: #267acc;
 }
 
+/* 輪播容器樣式 */
+.sidebar-carousel {
+    position: relative;
+    width: 100%;
+    min-height: 250px; /* 根據你內容的高度調整，確保切換時不會跳動 */
+}
+
+/* 輪播項目基礎樣式 */
+.carousel-item {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 1s ease-in-out, visibility 1s;
+    z-index: 1;
+}
+
+/* 顯示中的項目 */
+.carousel-item.active {
+    opacity: 1;
+    visibility: visible;
+    position: relative; /* 讓容器高度被撐開 */
+    z-index: 2;
+}
+
 /* === 手機版調整：全站與導航列 (Media Query) === */
 @media (max-width: 768px) {
     /* 調整 body 內邊距 */
