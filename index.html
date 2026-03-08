@@ -60,9 +60,13 @@
           </ul>
         </section>
 
-        <div id="sidebar-container">
-            <aside id="special-thanks" class="sidebar">
-                <h2>特別感謝</h2>
+<div id="sidebar-container">
+      
+      <div class="sidebar-carousel-wrapper">
+        <div id="sidebar-carousel-inner">
+          
+          <aside class="sidebar carousel-item">
+            <h2>特別感謝</h2>
                 <ul class="sidebar-list">
                   <li><span class="tips">網站製作</span>霸王櫻桃鴨</li>
                   <li><span class="tips">技術指導</span>云云子</li>
@@ -70,6 +74,15 @@
                   <li><span class="tips">飛仙</span>沒事多吸貓、夏嫣乂</li>
                 </ul>
             </aside>
+            <aside id="other-links" class="sidebar carousel-item">
+            <h2>友情連結</h2>
+            <ul class="sidebar-list">
+                <li><span class="tips">官方DC</span><a href="https://discord.com/invite/Dwy7VjUztQ" target="_blank" style="color: #3399ff;">天外 Online</a></li>
+                <li><span class="tips">提供資料歡迎至官方DC群找我</li>
+            </ul>
+            </aside>
+        </div>
+    </div>
 
           <!-- 天外改版資訊區塊 -->
           <aside id="release-info" class="sidebar">
@@ -136,5 +149,35 @@
     <button id="backToTop" title="回到頂部">▲</button>
 
     <div id="footer-container"></div>
+    <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const carouselInner = document.getElementById('sidebar-carousel-inner');
+      const items = document.querySelectorAll('.carousel-item');
+      
+      // 檢查元素是否存在且數量大於 1 才執行
+      if (!carouselInner || items.length <= 1) return;
+
+      let currentIndex = 0;
+      const totalItems = items.length;
+      const intervalTime = 5000; // 每 5 秒滑動一次
+
+      function autoSlide() {
+        currentIndex++;
+        
+        // 如果滑過頭，回到第一個
+        if (currentIndex >= totalItems) {
+          currentIndex = 0;
+        }
+
+        // 計算偏移量
+        // 假設有 2 個項目，currentIndex 為 1 時，位移 -50%
+        const offset = currentIndex * (100 / totalItems);
+        carouselInner.style.transform = `translateX(-${offset}%)`;
+      }
+
+      // 啟動定時器
+      setInterval(autoSlide, intervalTime);
+    });
+  </script>
   </body>
 </html>
