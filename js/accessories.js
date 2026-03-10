@@ -138,31 +138,36 @@ document.addEventListener("DOMContentLoaded", () => {
         const td = document.createElement('td');
         let value = hero[field] !== undefined ? String(hero[field]) : '';
 
-        // ✅ 核心修正：更穩健的符號偵測邏輯
+        // 🔹 統一取得高亮關鍵字
+        const highlightKey = activeFilters.attr || keyword;
+
         if (field === 'illustrate') {
-          // 修正 Regex：開頭結尾都必須轉義 ^
           const specialRegex = /\^&([\s\S]*?)&\^/g;
 
+          // 1. 先處理特殊連結符號
           if (value.includes('^&') && value.includes('&^')) {
-            // 替換符號為 span
             value = value.replace(specialRegex, '<span class="keyword-link">$1</span>');
-            td.innerHTML = value.replace(/\n/g, '<br>');
-
-            // 綁定點擊事件
-            td.querySelectorAll('.keyword-link').forEach(link => {
-              link.addEventListener('click', (e) => {
-                e.stopPropagation();
-                showDetailModal(hero, link.textContent);
-              });
-            });
-          } else {
-            td.innerHTML = value.replace(/\n/g, '<br>');
           }
-        } else {
-          // ✅ 修改這裡：一般高亮邏輯
-          // 優先顯示按鈕選中的屬性 (activeFilters.attr)，沒選才顯示搜尋關鍵字 (keyword)
-          const highlightKey = activeFilters.attr || keyword;
 
+          // 2. ✅ 無論有沒有連結，都要處理「屬性按鈕/搜尋」的高亮
+          if (highlightKey) {
+            const hRegex = new RegExp(`(${highlightKey})`, 'gi');
+            // 注意：為了不破壞剛剛產生的 keyword-link 標籤，我們只對文字部分高亮
+            value = value.replace(hRegex, '<span class="highlight">$1</span>');
+          }
+
+          td.innerHTML = value.replace(/\n/g, '<br>');
+
+          // 3. 綁定點擊事件
+          td.querySelectorAll('.keyword-link').forEach(link => {
+            link.addEventListener('click', (e) => {
+              e.stopPropagation();
+              showDetailModal(hero, link.textContent);
+            });
+          });
+
+        } else {
+          // 一般欄位的高亮
           if (highlightKey && value.toLowerCase().includes(highlightKey.toLowerCase())) {
             const regex = new RegExp(`(${highlightKey})`, 'gi');
             td.innerHTML = value.replace(regex, '<span class="highlight">$1</span>').replace(/\n/g, '<br>');
