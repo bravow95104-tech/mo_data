@@ -91,16 +91,6 @@ document.addEventListener("DOMContentLoaded", () => {
     renderTable(heroesData);
   });
 
-  function applyFilters() {
-    const keyword = searchInput.value.trim().toLowerCase();
-    const filtered = heroesData.filter(hero => {
-      const targetFields = [hero.item, hero.sort, hero.lv].join(' ').toLowerCase();
-      const matchKeyword = keyword ? targetFields.includes(keyword) : true;
-      let matchFilter = activeFilter ? (hero.sort === activeFilter.value) : true;
-      return matchKeyword && matchFilter;
-    });
-    renderTable(filtered);
-  }
 
   // === 產生表格 ===
   function renderTable(data) {
