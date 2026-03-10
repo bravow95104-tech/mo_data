@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   let heroesData = [];
   let searchTimer = null;
-  let activeFilter = null; 
+  let activeFilter = null;
 
   const modalOverlay = document.getElementById('modalOverlay');
   const modalBox = document.getElementById('modalBox');
@@ -68,8 +68,15 @@ document.addEventListener("DOMContentLoaded", () => {
   function renderTable(data) {
     const tbody = document.querySelector('#heroes-table tbody');
     if (!tbody) return;
+    // 1. 先清空原本的內容
     tbody.innerHTML = '';
+    // 2. ✅ 新增：判斷如果篩選後沒有資料，顯示提示文字 (保持風格一致)
+    if (data.length === 0) {
+      tbody.innerHTML = '<tr><td colspan="7" style="text-align:center; padding: 20px;">找不到符合條件的防具</td></tr>';
+      return;
+    }
 
+    // 3. 原本的渲染邏輯 (使用 fragment)
     const keyword = searchInput.value.trim().toLowerCase();
     const fragment = document.createDocumentFragment();
 
@@ -111,7 +118,7 @@ document.addEventListener("DOMContentLoaded", () => {
             td.querySelectorAll('.keyword-link').forEach(link => {
               link.addEventListener('click', (e) => {
                 e.stopPropagation();
-                showGainModal(hero, link.textContent); 
+                showGainModal(hero, link.textContent);
               });
             });
           } else {
@@ -141,11 +148,11 @@ document.addEventListener("DOMContentLoaded", () => {
   // === Modal 1: 製作材料 ===
   function showDetailModal(equip) {
     if (!modalContent) return;
-    const materialsHTML = [1,2,3,4,5,6,7,8,9,10,11]
+    const materialsHTML = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
       .map(num => equip[`material${num}`] ? `<p><strong>材料 ${num}：</strong>${equip[`material${num}`]}</p>` : '')
       .join('');
 
-    const illustrateHTML = (equip.illustrate && equip.illustrate.trim() !== "") 
+    const illustrateHTML = (equip.illustrate && equip.illustrate.trim() !== "")
       ? `<div class="hero-column-base hero-column-details" style="grid-column: span 2; border-top: 1px solid #ddd; padding-top: 10px;">
            <p><h3 class="modal-sub-title">說明</h3><br>${equip.illustrate.replace(/\^&|&\^/g, "").replace(/\n/g, "<br>")}</p>
          </div>`
