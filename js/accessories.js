@@ -67,7 +67,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       // 2. 種類篩選 (對應 JSON 的 promotion 欄位，採完全比對)
       const matchesPromotion = activeFilters.promotion
-        ? (hero.promotion === activeFilters.promotion)
+        ? (hero.class === activeFilters.promotion)
         : true;
 
       // 3. 屬性篩選 (對應 JSON 的 illustrate 說明文字，採部分字詞包含比對)
