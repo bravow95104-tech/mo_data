@@ -1,7 +1,10 @@
 document.addEventListener("DOMContentLoaded", () => {
   let heroesData = [];
   let searchTimer = null;
-  let activeFilter = null; 
+  let activeFilters = {
+    promotion: null,
+    attr: null
+  };
 
   const modalOverlay = document.getElementById('modalOverlay');
   const modalBox = document.getElementById('modalBox');
@@ -18,7 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
     .catch(error => {
       console.error('載入飾品資料錯誤:', error);
       const tbody = document.querySelector('#heroes-table tbody');
-      if (tbody) tbody.innerHTML = '<tr><td colspan="15">無法載入飾品資料</td></tr>';
+      if (tbody) tbody.innerHTML = '<tr><td colspan="7">無法載入飾品資料</td></tr>';
     });
 
   const searchInput = document.getElementById('searchInput');
@@ -29,21 +32,62 @@ document.addEventListener("DOMContentLoaded", () => {
     searchTimer = setTimeout(() => applyFilters(), 200);
   });
 
-  // === 篩選按鈕事件 ===
-  document.querySelectorAll('.filter-btn').forEach(btn => {
+  // === 篩選按鈕點擊事件 ===
+  const filterButtons = document.querySelectorAll('.filter-btn');
+  filterButtons.forEach(btn => {
     btn.addEventListener('click', () => {
-      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      activeFilter = { type: btn.dataset.type, value: btn.dataset.value };
-      applyFilters();
+      const type = btn.getAttribute('data-type'); // promotion 或 attr
+      const value = btn.getAttribute('data-value');
+
+      // 如果點擊已啟動的按鈕，就取消它
+      if (btn.classList.contains('active')) {
+        btn.classList.remove('active');
+        activeFilters[type] = null;
+      } else {
+        // 同一組 (type) 的按鈕先清除 active，達成單選效果
+        document.querySelectorAll(`.filter-btn[data-type="${type}"]`)
+          .forEach(b => b.classList.remove('active'));
+
+        btn.classList.add('active');
+        activeFilters[type] = value;
+      }
+
+      applyFilters(); // 執行篩選
     });
   });
 
+  // === 綜合篩選核心邏輯 ===
+  function applyFilters() {
+    const keyword = searchInput.value.trim().toLowerCase();
+
+    const filtered = heroesData.filter(hero => {
+      // 1. 搜尋框篩選 (名稱 + 說明)
+      const matchesSearch = [hero.item, hero.illustrate]
+        .some(field => String(field || "").toLowerCase().includes(keyword));
+
+      // 2. 種類篩選 (對應 JSON 的 promotion 欄位，採完全比對)
+      const matchesPromotion = activeFilters.promotion
+        ? (hero.promotion === activeFilters.promotion)
+        : true;
+
+      // 3. 屬性篩選 (對應 JSON 的 illustrate 說明文字，採部分字詞包含比對)
+      // 這樣就算說明欄寫著 "體質+10、力量+5"，點擊 "體質" 也能過濾出來
+      const matchesAttr = activeFilters.attr
+        ? (hero.illustrate && hero.illustrate.includes(activeFilters.attr))
+        : true;
+
+      return matchesSearch && matchesPromotion && matchesAttr;
+    });
+
+    renderTable(filtered);
+  }
+
   // === 清除篩選 ===
   document.getElementById('clearFilters').addEventListener('click', () => {
-    activeFilter = null;
     searchInput.value = '';
-    document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+    activeFilters.promotion = null;
+    activeFilters.attr = null;
+    filterButtons.forEach(btn => btn.classList.remove('active'));
     renderTable(heroesData);
   });
 
@@ -111,7 +155,7 @@ document.addEventListener("DOMContentLoaded", () => {
             td.querySelectorAll('.keyword-link').forEach(link => {
               link.addEventListener('click', (e) => {
                 e.stopPropagation();
-                showDetailModal(hero, link.textContent); 
+                showDetailModal(hero, link.textContent);
               });
             });
           } else {
