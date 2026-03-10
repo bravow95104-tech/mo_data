@@ -159,9 +159,12 @@ document.addEventListener("DOMContentLoaded", () => {
             td.innerHTML = value.replace(/\n/g, '<br>');
           }
         } else {
-          // 一般高亮
-          if (keyword && value.toLowerCase().includes(keyword)) {
-            const regex = new RegExp(`(${keyword})`, 'gi');
+          // ✅ 修改這裡：一般高亮邏輯
+          // 優先顯示按鈕選中的屬性 (activeFilters.attr)，沒選才顯示搜尋關鍵字 (keyword)
+          const highlightKey = activeFilters.attr || keyword;
+
+          if (highlightKey && value.toLowerCase().includes(highlightKey.toLowerCase())) {
+            const regex = new RegExp(`(${highlightKey})`, 'gi');
             td.innerHTML = value.replace(regex, '<span class="highlight">$1</span>').replace(/\n/g, '<br>');
           } else {
             td.innerHTML = value.replace(/\n/g, '<br>');
