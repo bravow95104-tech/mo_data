@@ -67,7 +67,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       // 2. 種類篩選 (對應 JSON 的 promotion 欄位，採完全比對)
       const matchesPromotion = activeFilters.promotion
-        ? (hero.class === activeFilters.promotion)
+        ? (hero.sort === activeFilters.promotion)
         : true;
 
       // 3. 屬性篩選 (對應 JSON 的 illustrate 說明文字，採部分字詞包含比對)
@@ -96,8 +96,15 @@ document.addEventListener("DOMContentLoaded", () => {
   function renderTable(data) {
     const tbody = document.querySelector('#heroes-table tbody');
     if (!tbody) return;
+    // 1. 先清空原本的內容
     tbody.innerHTML = '';
+    // 2. ✅ 新增：判斷如果篩選後沒有資料，顯示提示文字
+    if (data.length === 0) {
+      tbody.innerHTML = '<tr><td colspan="7" style="text-align:center; padding: 20px;">找不到符合條件的飾品</td></tr>';
+      return;
+    }
 
+    // 3. 原本的渲染邏輯 (使用 fragment)
     const keyword = searchInput.value.trim().toLowerCase();
     const fragment = document.createDocumentFragment();
 
