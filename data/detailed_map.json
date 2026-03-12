@@ -2823,7 +2823,7 @@
     "mapid": "迷蹤列島",
     "def": "",
     "dodge": "",
-    "approach": "梁山>A>E>D>2(蓬萊仙島)\n郡業>\n幽納古林=梁山>A>E (E重複往返)",
+    "approach": "梁山->A->D->H->蓬萊仙島\n梁山->B->F->E->I->蓬萊仙島\n郡業->F-E->I->蓬萊仙島\nZ點為任一傳點有機率傳送到此",
     "illustrate": "",
     "approach_a": "要",
     "maplv": "",
