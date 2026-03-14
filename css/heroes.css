@@ -416,6 +416,17 @@ th.sort-desc .caret-down {
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
 }
 
+.filter-actions {
+  display: flex;
+  justify-content: space-between;
+  /* 🚀 關鍵：讓內容分開到最左與最右 */
+  align-items: center;
+  margin-top: 15px;
+  width: 100%;
+  margin-bottom: 15px;
+  /* 增加一點下間距 */
+}
+
 /* 讓清除按鈕維持原本樣式，新按鈕可以套用類似但不同色系的樣式 */
 .secondary-btn {
   margin-left: auto;
