@@ -174,7 +174,7 @@ window.openMapDetail = function (mapId) {
                     ${item.drop_equidcard ? `<p class="align-row"><strong>◢裝備卡：</strong>${item.drop_equidcard}</p>` : ""}
                     ${item.drop_hero ? `<p class="align-row"><strong>◢ 英雄卡：</strong>${String(item.drop_hero).replace(/\n/g, '<br>')}</p>` : ""}
                     ${item.drop_combo_old ? `<p class="align-row"><strong>◢ 舊文片：</strong>${String(item.drop_combo_old).replace(/\n/g, '<br>')}</p>` : ""}
-                    ${item.drop_combo_new ? `<p class="align-row"><strong>◢ 新文片：</strong>${String(item.drop_combo_nwe).replace(/\n/g, '<br>')}</p>` : ""}
+                    ${item.drop_combo_new ? `<p class="align-row"><strong>◢ 新文片：</strong>${String(item.drop_combo_new).replace(/\n/g, '<br>')}</p>` : ""}
                     ${item.drop_othrt ? `<p class="align-row"><strong>◢ 其他：</strong>${String(item.drop_othrt).replace(/\n/g, '<br>')}</p>` : ""}
                 </div>` : ""
       }
