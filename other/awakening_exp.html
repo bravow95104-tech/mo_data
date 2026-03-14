@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <title>覺醒經驗 | MoData</title>
+
+    <link rel="stylesheet" href="/mo_data/css/styles.css" />
+    <link rel="stylesheet" href="/mo_data/css/heromeal.css" />
+  </head>
+  <body>
+    <div id="nav-container"></div>
+    <!-- 這是導航列會被載入的位置 -->
+
+    <!-- 英雄覺醒等級 -->
+    <div class="card-table-container card-ui open">
+      <div class="card-header">
+        <span class="card-title">英雄覺醒等級</span>
+        <button class="card-toggle" aria-label="收合/展開">
+          <span class="toggle-icon">▼</span>
+        </button>
+      </div>
+      <div class="card-content">
+        <table class="card-table">
+          <thead>
+            <tr>
+              <th>覺醒等級</th>
+              <th>強化值</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>5000</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>9745</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>14935</td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td>28857</td>
+            </tr>
+            <tr>
+              <td>5</td>
+              <td>48762</td>
+            </tr>
+            <tr>
+              <td>6</td>
+              <td>72886</td>
+            </tr>
+            <tr>
+              <td>7</td>
+              <td>122177</td>
+            </tr>
+            <tr>
+              <td>8</td>
+              <td>299705</td>
+            </tr>
+            <tr>
+              <td>9</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>10</td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+
+
+
+    <div id="footer-container"></div>
+    <!-- 這是頁尾會被載入的位置 -->
+    <script src="/mo_data/js/componentsLoader.js"></script>
+
+    <script>
+      // 卡片收合動畫（點擊立即反應）
+      document.querySelectorAll(".card-toggle").forEach(function (btn) {
+        btn.addEventListener("mousedown", function (e) {
+          e.preventDefault();
+
+          const card = btn.closest(".card-ui");
+          const content = card.querySelector(".card-content");
+          const icon = btn.querySelector(".toggle-icon");
+
+          const isOpen = card.classList.contains("open");
+
+          if (isOpen) {
+            // 正在展開 → 收合動畫
+            content.style.maxHeight = content.scrollHeight + "px"; // 先設定高度
+            content.offsetHeight; // 強制 reflow（觸發動畫）
+            content.style.maxHeight = "0px";
+            content.style.overflow = "hidden";
+
+            icon.style.transform = "rotate(0deg)";
+            card.classList.remove("open");
+          } else {
+            // 正在收合 → 展開動畫
+            content.style.maxHeight = content.scrollHeight + "px";
+            content.style.overflow = "hidden"; // 避免動畫過程中出現 scrollbar
+
+            icon.style.transform = "rotate(180deg)";
+            card.classList.add("open");
+
+            // 動畫結束後移除 max-height 限制
+            content.addEventListener("transitionend", function handler() {
+              content.style.maxHeight = "none"; // 讓內容可自然撐開
+              content.style.overflow = "visible";
+              content.removeEventListener("transitionend", handler);
+            });
+          }
+        });
+      });
+
+      // 預設展開（如果你要開啟的話）
+      document
+        .querySelectorAll(".card-ui.open .card-content")
+        .forEach(function (content) {
+          content.style.maxHeight = "none";
+          content.style.overflow = "visible";
+        });
+    </script>
+        <!-- 回到頂部按鈕 -->
+    <button id="backToTop" title="回到頂部">▲</button>
+<script src="/mo_data/js/hero-meal.js"></script>
+  </body>
+</html>
