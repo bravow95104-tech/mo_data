@@ -42,6 +42,8 @@ function initTableSearch() {
         (item.drop_rubbish && item.drop_rubbish.includes(keyword)) ||
         (item.drop_hero && item.drop_hero.includes(keyword)) ||
         (item.drop_equidcard && item.drop_equidcard.includes(keyword)) ||
+        (item.drop_combo_old && item.drop_combo_old.includes(keyword)) ||
+        (item.drop_combo_new && item.drop_combo_new.includes(keyword)) ||
         (item.drop_glory_high && item.drop_glory_high.includes(keyword))
       );
     });
@@ -83,7 +85,8 @@ function renderTable(data, keyword = "") {
       item.drop_rubbish || "-",
       item.drop_hero || "-",
       item.drop_glory_high || "-",
-      item.drop_glory_low || "-"
+      item.drop_glory_low || "-",
+      item.drop_othrt || "-"
     ];
 
     columns.forEach((text, index) => {
@@ -159,7 +162,7 @@ window.openMapDetail = function (mapId) {
   // 掉落與戰鬥區塊 (條件隱藏)
   let combatAndDropHTML = '';
   if (!isTown) {
-    const hasDrop = !!(item.drop_rubbish || item.drop_hero || item.drop_equidcard || item.drop_combo_old || item.drop_combo_new);
+    const hasDrop = !!(item.drop_rubbish || item.drop_hero || item.drop_equidcard || item.drop_combo_old || item.drop_combo_new || item.drop_othrt);
     combatAndDropHTML = `
             <div class="hero-defdodge section-gap">
                 <p><strong>怪物等級：</strong>${item.maplv || "N/A"}</p>
@@ -169,8 +172,11 @@ window.openMapDetail = function (mapId) {
                 <div class="hero-column-details">
                     <p><strong>掉落物品：</strong></p>
                     ${item.drop_rubbish ? `<p class="align-row"><strong>◢ 垃圾：</strong>${item.drop_rubbish}</p>` : ""}
-                    ${item.drop_hero ? `<p class="align-row"><strong>◢ 英雄卡：</strong>${item.drop_hero}</p>` : ""}
                     ${item.drop_equidcard ? `<p class="align-row"><strong>◢裝備卡：</strong>${item.drop_equidcard}</p>` : ""}
+                    ${item.drop_hero ? `<p class="align-row"><strong>◢ 英雄卡：</strong>${String(item.drop_hero).replace(/\n/g, '<br>')}</p>` : ""}
+                    ${item.drop_combo_old ? `<p class="align-row"><strong>◢ 舊文片：</strong>${String(item.drop_combo_old).replace(/\n/g, '<br>')}</p>` : ""}
+                    ${item.drop_combo_new ? `<p class="align-row"><strong>◢ 新文片：</strong>${String(item.drop_combo_nwe).replace(/\n/g, '<br>')}</p>` : ""}
+                    ${item.drop_othrt ? `<p class="align-row"><strong>◢ 其他：</strong>${String(item.drop_othrt).replace(/\n/g, '<br>')}</p>` : ""}
                 </div>` : ""
       }
             <div class="hero-column-details">
