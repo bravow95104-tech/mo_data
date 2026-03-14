@@ -1,6 +1,7 @@
 /* 全域變數 */
 :root {
-  --nav-height: 0px; /* JS 動態設定 */
+  --nav-height: 0px;
+  /* JS 動態設定 */
   --primary-color: #3399ff;
   --primary-dark-color: #267acc;
   --highlight-bg-color: #fff9c0;
@@ -30,12 +31,14 @@
   margin: 12px 0 18px 0;
   flex-wrap: wrap;
 }
+
 /* 表格樣式 */
 table {
   border-collapse: collapse;
   width: 100%;
   margin-top: 20px;
 }
+
 th,
 td {
   border: 1px solid var(--border-light-gray);
@@ -52,7 +55,8 @@ tbody tr:hover {
 
 thead th {
   position: sticky;
-  top: var(--nav-offset); /* JS 動態修改 */
+  top: var(--nav-offset);
+  /* JS 動態修改 */
   background-color: var(--header-bg-color);
   z-index: 100;
   color: var(--text-light);
@@ -61,7 +65,8 @@ thead th {
 
 th.sortable {
   cursor: pointer;
-  user-select: none; /* 防止快速點擊時選取到文字 */
+  user-select: none;
+  /* 防止快速點擊時選取到文字 */
   transition: background 0.2s;
 }
 
@@ -82,21 +87,25 @@ th.sortable:hover {
   display: inline-flex;
   flex-direction: column;
   margin-left: 5px;
-  gap: 2px; /* Add a small gap between the arrows */
+  gap: 2px;
+  /* Add a small gap between the arrows */
 }
 
 /* 預設箭頭為半透明 */
 .sort-caret-container span {
   color: rgba(255, 255, 255, 0.5);
   font-size: 0.8em;
-  line-height: 1; /* Reset line-height to normal if gap is used */
-  padding: 0; /* 移除內邊距 */
+  line-height: 1;
+  /* Reset line-height to normal if gap is used */
+  padding: 0;
+  /* 移除內邊距 */
 }
 
 /* 高亮目前排序方向的箭頭 */
 th.sort-asc .caret-up,
 th.sort-desc .caret-down {
-  color: var(--highlight-bg-color); /* 黃色高亮 */
+  color: var(--highlight-bg-color);
+  /* 黃色高亮 */
 }
 
 /* 搜尋與篩選 */
@@ -340,7 +349,8 @@ th.sort-desc .caret-down {
 
 .hero-column-base p {
   margin: 8px 0;
-  font-size: 16px; /* 字體大小改回 16px */
+  font-size: 16px;
+  /* 字體大小改回 16px */
   line-height: 1.4;
   color: var(--text-dark);
 }
@@ -348,16 +358,20 @@ th.sort-desc .caret-down {
 /* For aligning the "光輝掉落" section */
 .hero-column-details p {
   display: flex;
-  align-items: flex-start; /* Align items to the top in case of wrapping */
+  align-items: flex-start;
+  /* Align items to the top in case of wrapping */
 }
 
 .hero-column-details p strong {
-  flex-shrink: 0; /* Prevents the label from shrinking */
-  margin-right: 8px; /* Adds space between the label and the text */
+  flex-shrink: 0;
+  /* Prevents the label from shrinking */
+  margin-right: 8px;
+  /* Adds space between the label and the text */
 }
 
 .section-gap {
-  margin-top: 16px !important; /* 顯著的段落開頭距離 */
+  margin-top: 16px !important;
+  /* 顯著的段落開頭距離 */
 }
 
 /* 其他 */
@@ -388,11 +402,35 @@ th.sort-desc .caret-down {
 
 /* 下欄樣式 */
 .hero-playerdata {
-  flex: 0 0 90%; /* 彈性成長，基底寬度48% */
-  min-width: 250px; /* 最小寬度限制，避免太小擠壓 */
-  box-sizing: border-box; /* 包含 padding、border */
-  background-color: #f9f9f9; /* 可選：輕微背景色區分 */
+  flex: 0 0 90%;
+  /* 彈性成長，基底寬度48% */
+  min-width: 250px;
+  /* 最小寬度限制，避免太小擠壓 */
+  box-sizing: border-box;
+  /* 包含 padding、border */
+  background-color: #f9f9f9;
+  /* 可選：輕微背景色區分 */
   padding: 20px 20px;
-  border-radius: 6px; /* 可選：圓角讓框框好看 */
+  border-radius: 6px;
+  /* 可選：圓角讓框框好看 */
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* 讓清除按鈕維持原本樣式，新按鈕可以套用類似但不同色系的樣式 */
+.secondary-btn {
+  margin-left: auto;
+  /* 🚀 自動推到最右邊 */
+  padding: 8px 16px;
+  background-color: var(--primary-color);
+  /* 使用你原本的藍色變數 */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.3s;
+}
+
+.secondary-btn:hover {
+  background-color: var(--primary-dark-color);
 }
