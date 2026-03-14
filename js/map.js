@@ -85,8 +85,7 @@ function renderTable(data, keyword = "") {
       item.drop_rubbish || "-",
       item.drop_hero || "-",
       item.drop_glory_high || "-",
-      item.drop_glory_low || "-",
-      item.drop_othrt || "-"
+      item.drop_glory_low || "-"
     ];
 
     columns.forEach((text, index) => {
