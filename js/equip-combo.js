@@ -24,7 +24,7 @@ function initComboPage(data) {
   const clearBtn = document.getElementById("clearFilters");
 
   // ✅ 加入 equipmentType1 篩選陣列
-  let activeFilters = { promotion: [], commonly: [], category: [], equipmentType1: [] };
+  let activeFilters = { promotion: [], commonly: [], category: [], equipmentType1: [], combinationMethod: [] };
 
   function renderList() {
     const searchText = searchInput.value.trim().toLowerCase();
@@ -45,6 +45,7 @@ function initComboPage(data) {
         job.includes(searchText) ||
         skillType.includes(searchText) ||
         cat.includes(searchText) ||
+        combinationMethod.includes(searchText) ||
         equip1.includes(searchText) ||
         equip2.includes(searchText);
 
@@ -69,7 +70,7 @@ function initComboPage(data) {
       const matchCommonly =
         activeFilters.commonly.length === 0 ||
         (activeFilters.commonly.some(f => f.toLowerCase() === "true") &&
-         String(item.commonly).toLowerCase() === "true");
+          String(item.commonly).toLowerCase() === "true");
 
       // ✅ 全部條件通過才顯示
       return matchSearch && matchFilter && matchCommonly && matchCategory && matchEquipType;
