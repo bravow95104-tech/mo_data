@@ -95,14 +95,34 @@ function initComboPage(data) {
       const equipDisplay =
         [item.equipmentType1, item.equipmentType2].filter(Boolean).join(" / ") || "—";
 
+      // --- 高亮邏輯開始 ---
+      // 定義需要處理高亮的欄位
+      const highlightFields = {
+        skillName: item.skillName || "—",
+        classSkill: item.classSkill || "—",
+        class: item.class || "—",
+        equipDisplay: equipDisplay,
+        combinationMethod: item.combinationMethod || "—",
+        description: item.description || "—"
+      };
+
+      // 如果有搜尋文字，則執行替換
+      if (searchText) {
+        const regex = new RegExp(`(${searchText})`, "gi"); // g:全域, i:不分大小寫
+        Object.keys(highlightFields).forEach(key => {
+          highlightFields[key] = String(highlightFields[key]).replace(regex, '<span class="highlight">$1</span>');
+        });
+      }
+      // --- 高亮邏輯結束 ---
+
       card.innerHTML = `
-        <div class="combo-title">${item.skillName || "—"}</div>
-        <div class="combo-category"><strong>職業技能：</strong>${item.classSkill || "—"}</div>
+        <div class="combo-title">${highlightFields.skillName || "—"}</div>
+        <div class="combo-category"><strong>職業技能：</strong>${highlightFields.classSkill || "—"}</div>
         <div class="combo-details">
-          <p><strong>職業：</strong>${item.class || "—"}</p>
+          <p><strong>職業：</strong>${highlightFields.class || "—"}</p>
           <p><strong>裝備部位：</strong>${equipDisplay}</p>
-          <p><strong>文片組合：</strong>${item.combinationMethod || "—"}</p>
-          <p><strong>說明：</strong>${item.description || "—"}</p>
+          <p><strong>文片組合：</strong>${highlightFields.combinationMethod || "—"}</p>
+          <p><strong>說明：</strong>${highlightFields.description || "—"}</p>
         </div>
       `;
       comboList.appendChild(card);
