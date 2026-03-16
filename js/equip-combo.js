@@ -24,7 +24,7 @@ function initComboPage(data) {
   const clearBtn = document.getElementById("clearFilters");
 
   // ✅ 加入 equipmentType1 篩選陣列
-  let activeFilters = { promotion: [], commonly: [], category: [], equipmentType1: [], combinationMethod: [] };
+  let activeFilters = { promotion: [], commonly: [], category: [], equipmentType1: [] };
 
   function renderList() {
     const searchText = searchInput.value.trim().toLowerCase();
@@ -35,6 +35,7 @@ function initComboPage(data) {
       const job = (item.class || "").toLowerCase();
       const skillType = (item.classSkill || "").toLowerCase();
       const cat = (item.category || "").toLowerCase();
+      const combinationMethod = (item.combinationMethod || "").toLowerCase();
       const equip1 = (item.equipmentType1 || "").toLowerCase();
       const equip2 = (item.equipmentType2 || "").toLowerCase();
 
