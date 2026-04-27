@@ -28,32 +28,35 @@ function initComboPage(data) {
 
   function renderList() {
     const searchText = searchInput.value.trim().toLowerCase();
+    const keywords = searchText.split(/\s+/).filter(k => k); // 支援多關鍵字 (空白分隔)
 
     const filtered = data.filter(item => {
-      // 將可能為 undefined 的欄位安全轉小寫
-      const skill = (item.skillName || "").toLowerCase();
+      // 將欄位轉小寫
+      const fieldsToSearch = [
+        item.skillName,
+        item.class,
+        item.classSkill,
+        item.category,
+        item.combinationMethod,
+        item.equipmentType1,
+        item.equipmentType2,
+        item.description
+      ].map(v => (v || "").toLowerCase());
+
+      // 🔍 搜尋條件 (需匹配所有關鍵字)
+      const matchSearch = keywords.length === 0 || keywords.every(kw => 
+        fieldsToSearch.some(field => field.includes(kw))
+      );
+
       const job = (item.class || "").toLowerCase();
-      const skillType = (item.classSkill || "").toLowerCase();
       const cat = (item.category || "").toLowerCase();
-      const combinationMethod = (item.combinationMethod || "").toLowerCase();
       const equip1 = (item.equipmentType1 || "").toLowerCase();
       const equip2 = (item.equipmentType2 || "").toLowerCase();
-
-      // 🔍 搜尋條件
-      const matchSearch =
-        !searchText ||
-        skill.includes(searchText) ||
-        job.includes(searchText) ||
-        skillType.includes(searchText) ||
-        cat.includes(searchText) ||
-        combinationMethod.includes(searchText) ||
-        equip1.includes(searchText) ||
-        equip2.includes(searchText);
 
       // 🧩 職業篩選
       const matchFilter =
         activeFilters.promotion.length === 0 ||
-        activeFilters.promotion.some(f => job.includes(f) || job.includes("全職業"));
+        activeFilters.promotion.some(f => job.includes(f.toLowerCase()) || job.includes("全職業"));
 
       // 📂 類別篩選
       const matchCategory =
@@ -73,7 +76,6 @@ function initComboPage(data) {
         (activeFilters.commonly.some(f => f.toLowerCase() === "true") &&
           String(item.commonly).toLowerCase() === "true");
 
-      // ✅ 全部條件通過才顯示
       return matchSearch && matchFilter && matchCommonly && matchCategory && matchEquipType;
     });
 
@@ -89,14 +91,11 @@ function initComboPage(data) {
     // 渲染結果卡片
     filtered.forEach(item => {
       const card = document.createElement("div");
-      card.className = "combo-card active"; // 預設展開
+      card.className = "combo-card active";
 
-      // ✅ 改進裝備部位顯示（自動跳過空值）
-      const equipDisplay =
-        [item.equipmentType1, item.equipmentType2].filter(Boolean).join(" / ") || "—";
+      const equipDisplay = [item.equipmentType1, item.equipmentType2].filter(Boolean).join(" / ") || "—";
 
-      // --- 高亮邏輯開始 ---
-      // 定義需要處理高亮的欄位
+      // --- 高亮邏輯 ---
       const highlightFields = {
         skillName: item.skillName || "—",
         classSkill: item.classSkill || "—",
@@ -106,23 +105,24 @@ function initComboPage(data) {
         description: item.description || "—"
       };
 
-      // 如果有搜尋文字，則執行替換
-      if (searchText) {
-        const regex = new RegExp(`(${searchText})`, "gi"); // g:全域, i:不分大小寫
+      if (keywords.length > 0) {
+        // 逃避特殊字元並建立 RegExp
+        const escapedKeywords = keywords.map(k => k.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")).join("|");
+        const regex = new RegExp(`(${escapedKeywords})`, "gi");
+        
         Object.keys(highlightFields).forEach(key => {
           highlightFields[key] = String(highlightFields[key]).replace(regex, '<span class="highlight">$1</span>');
         });
       }
-      // --- 高亮邏輯結束 ---
 
       card.innerHTML = `
-        <div class="combo-title">${highlightFields.skillName || "—"}</div>
-        <div class="combo-category"><strong>職業技能：</strong>${highlightFields.classSkill || "—"}</div>
+        <div class="combo-title">${highlightFields.skillName}</div>
+        <div class="combo-category"><strong>職業技能：</strong>${highlightFields.classSkill}</div>
         <div class="combo-details">
-          <p><strong>職業：</strong>${highlightFields.class || "—"}</p>
-          <p><strong>裝備部位：</strong>${equipDisplay}</p>
-          <p><strong>文片組合：</strong>${highlightFields.combinationMethod || "—"}</p>
-          <p><strong>說明：</strong>${highlightFields.description || "—"}</p>
+          <p><strong>職業：</strong>${highlightFields.class}</p>
+          <p><strong>裝備部位：</strong>${highlightFields.equipDisplay}</p>
+          <p><strong>文片組合：</strong>${highlightFields.combinationMethod}</p>
+          <p><strong>說明：</strong>${highlightFields.description}</p>
         </div>
       `;
       comboList.appendChild(card);
