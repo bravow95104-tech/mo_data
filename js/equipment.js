@@ -202,6 +202,9 @@ document.addEventListener("DOMContentLoaded", () => {
   function openModal() {
     modalOverlay.style.display = "block";
     modalBox.style.display = "block";
+    requestAnimationFrame(() => {
+      modalBox.scrollTop = 0;
+    });
   }
 
   function closeModal() {

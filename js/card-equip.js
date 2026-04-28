@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
   fetch("/mo_data/data/card.json")
     .then(res => res.json())
     .then(data => {
-      allCardData = data.filter(card => card.type === "裝備卡");
+      allCardData = data
       initializeSortIcons();
       applyFiltersAndSort(); // 初始渲染
       updateSortIcons();
@@ -247,6 +247,9 @@ function showDetailModal(item) {
 
   overlay.style.display = 'block';
   modalBox.style.display = 'block';
+  requestAnimationFrame(() => {
+    modalBox.scrollTop = 0;
+  });
 }
 
 function closeModal() {

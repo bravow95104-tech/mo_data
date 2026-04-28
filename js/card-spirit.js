@@ -198,6 +198,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     overlay.style.display = 'block';
     modalBox.style.display = 'block';
+    requestAnimationFrame(() => {
+      modalBox.scrollTop = 0;
+    });
   }
 
   // === 關閉 Modal ===
