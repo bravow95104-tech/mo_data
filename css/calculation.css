@@ -224,21 +224,75 @@
   color: #267acc;
 }
 
-/* 修正原本的樣式衝突 */
-.hero-card {
-  max-width: 550px; /* 稍微放寬一點 */
-  margin: 20px auto;
-  border: none;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+/* 標題樣式：加入漸層與裝飾感 */
+.hero-card h2 {
+  font-size: 24px;
+  font-weight: 800;
+  text-align: center;
+  color: #1a73e8;
+  margin-top: 0;
+  margin-bottom: 30px;
+  padding-bottom: 15px;
+  position: relative;
+  letter-spacing: 2px;
 }
 
-.hero-card h2 {
-  font-size: 22px;
-  letter-spacing: 1px;
-  border-bottom: 2px solid #f0f7ff;
-  padding-bottom: 15px;
-  margin-bottom: 25px;
+/* 標題底下的漸層裝飾線 */
+.hero-card h2::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 4px;
+  background: linear-gradient(90deg, #3399ff, #267acc);
+  border-radius: 2px;
 }
+
+/* 標題前的裝飾符號 */
+.hero-card h2::before {
+  content: "✦";
+  font-size: 18px;
+  color: #ffcc00;
+  margin-right: 10px;
+  vertical-align: middle;
+}
+
+/* 強化卡片質感 */
+.hero-card {
+  max-width: 550px;
+  margin: 30px auto;
+  border: none;
+  border-radius: 16px;
+  background: #ffffff;
+  padding: 30px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.06), 
+              0 2px 10px rgba(51, 153, 255, 0.05);
+  transition: transform 0.3s ease;
+}
+
+.hero-card:hover {
+  transform: translateY(-5px);
+}
+
+/* 修正標籤字體 */
+label {
+  font-size: 15px;
+  font-weight: 700;
+  color: #4a5568;
+  margin-bottom: 6px;
+  display: inline-block;
+}
+
+/* 分隔線美化 */
+hr {
+  border: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #e2e8f0, transparent);
+  margin: 25px 0;
+}
+
 
 .hero-card .hero-form-col {
   gap: 5px; /* 由 grid 接手間距 */
