@@ -206,9 +206,9 @@ function showModal() {
   const modalBox = document.getElementById("modalBox");
   document.getElementById("modalOverlay").style.display = "block";
   modalBox.style.display = "block";
-  requestAnimationFrame(() => {
+  setTimeout(() => {
     modalBox.scrollTop = 0;
-  });
+  }, 0);
 }
 
 function closeModal() {

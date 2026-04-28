@@ -69,9 +69,9 @@ document.addEventListener("DOMContentLoaded", () => {
       // 顯示 Modal
       overlay.style.display = 'block';
       modalBox.style.display = 'block';
-      requestAnimationFrame(() => {
+      setTimeout(() => {
         modalBox.scrollTop = 0;
-      });
+      }, 0);
     }
 
     // === 關閉 Modal ===
