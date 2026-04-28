@@ -459,7 +459,7 @@ document.addEventListener("DOMContentLoaded", () => {
       img.alt = altText;
       img.src = basePath + ".png";
       img.onerror = () => (img.style.display = "none"); // Keep this for fallback
-      // ✅ 修正：圖片載入後再次重設捲動位置，防止版面跳動
+      // ✅ 圖片載入後再次確保置頂
       img.onload = () => {
         if (modalBox.style.display === "block") {
           modalBox.scrollTop = 0;
@@ -468,6 +468,8 @@ document.addEventListener("DOMContentLoaded", () => {
       return img;
     }
 
+    // ✅ 打開前先清空內容並強制歸零
+    modalBox.scrollTop = 0;
     modalContent.innerHTML = `<h2 class="hero-name" id="modal-title">${hero.name}</h2>`;
 
     const imgContainer = document.createElement("div");
@@ -530,14 +532,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
     modalOverlay.style.display = "block";
     modalBox.style.display = "block";
+    
+    // ✅ 強制歸零
+    modalBox.scrollTop = 0;
+    
+    // ✅ 雙重保險：稍微延遲再歸零一次，對付瀏覽器的自動捲動恢復
     setTimeout(() => {
       modalBox.scrollTop = 0;
-    }, 0);
+    }, 10);
   }
 
   function closeModal() {
     modalOverlay.style.display = "none";
     modalBox.style.display = "none";
+    // ✅ 關鍵：關閉時就歸零，防止「記憶」殘留
+    modalBox.scrollTop = 0;
   }
 
   closeModalBtn.addEventListener("click", closeModal);
