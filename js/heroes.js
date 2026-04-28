@@ -522,6 +522,7 @@ document.addEventListener("DOMContentLoaded", () => {
     `;
     modalContent.insertAdjacentHTML("beforeend", detailHTML);
 
+    modalBox.scrollTop = 0;
     modalOverlay.style.display = "block";
     modalBox.style.display = "block";
   }

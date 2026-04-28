@@ -203,8 +203,10 @@ window.openMapDetail = function (mapId) {
 
 // === 6. Modal 基礎控制 ===
 function showModal() {
+  const modalBox = document.getElementById("modalBox");
+  modalBox.scrollTop = 0;
   document.getElementById("modalOverlay").style.display = "block";
-  document.getElementById("modalBox").style.display = "block";
+  modalBox.style.display = "block";
 }
 
 function closeModal() {
