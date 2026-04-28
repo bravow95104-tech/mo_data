@@ -459,6 +459,12 @@ document.addEventListener("DOMContentLoaded", () => {
       img.alt = altText;
       img.src = basePath + ".png";
       img.onerror = () => (img.style.display = "none"); // Keep this for fallback
+      // ✅ 修正：圖片載入後再次重設捲動位置，防止版面跳動
+      img.onload = () => {
+        if (modalBox.style.display === "block") {
+          modalBox.scrollTop = 0;
+        }
+      };
       return img;
     }
 
