@@ -155,30 +155,111 @@
   width: 100%;
   box-sizing: border-box;
 }
-.hero-card {
-  max-width: 500px;
-  margin: 32px 0;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px #0001;
-  padding: 24px;
-  background-color: white;
+/* 屬性格格化：將 6 大屬性改為雙欄或三欄 */
+.attributes-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+  margin-bottom: 20px;
 }
-.hero-card h2 {
-  margin-top: 0;
-  text-align: center;
-  color: #3399ff;
-}
-.hero-form-col {
+
+.attribute-item {
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 5px;
 }
-.hero-input {
-  width: 100%;
-  box-sizing: border-box;
-  height: 30px;
+
+/* 裝備卡分組框：讓三張裝備卡的欄位更有區隔感 */
+.equip-group-box {
+  background: #f4f9ff;
+  border: 1.5px solid #d0e7ff;
+  border-radius: 10px;
+  padding: 15px;
+  margin-bottom: 20px;
+  transition: border-color 0.3s, box-shadow 0.3s;
 }
+
+.equip-group-box:hover {
+  border-color: #3399ff;
+  box-shadow: 0 4px 12px rgba(51, 153, 255, 0.15);
+}
+
+.equip-group-title {
+  font-size: 15px;
+  font-weight: bold;
+  color: #267acc;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* 輸入框美化 */
+.hero-input, .equip-input, .search-input {
+  border: 1.5px solid #dce8f5;
+  border-radius: 6px;
+  padding: 8px 12px;
+  font-size: 15px;
+  transition: all 0.2s;
+  background-color: #ffffff;
+}
+
+.hero-input:focus, .equip-input:focus, .search-input:focus {
+  border-color: #3399ff;
+  box-shadow: 0 0 0 3px rgba(51, 153, 255, 0.2);
+  outline: none;
+}
+
+/* 計算結果強化 */
+.result-highlight {
+  background: #fffef0;
+  border-left: 5px solid #ffcc00;
+  padding: 12px;
+  border-radius: 4px;
+}
+
+.result-value-big {
+  font-size: 1.4em;
+  font-weight: 800;
+  color: #267acc;
+}
+
+/* 修正原本的樣式衝突 */
+.hero-card {
+  max-width: 550px; /* 稍微放寬一點 */
+  margin: 20px auto;
+  border: none;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+}
+
+.hero-card h2 {
+  font-size: 22px;
+  letter-spacing: 1px;
+  border-bottom: 2px solid #f0f7ff;
+  padding-bottom: 15px;
+  margin-bottom: 25px;
+}
+
+.hero-card .hero-form-col {
+  gap: 5px; /* 由 grid 接手間距 */
+}
+
+.switch-toggle-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #f8fbff;
+  padding: 8px 15px;
+  border-radius: 30px;
+  border: 1px solid #eef5ff;
+}
+
+@media (max-width: 768px) {
+  .attributes-grid {
+    grid-template-columns: 1fr; /* 手機版改回單欄 */
+  }
+}
+
 .equip-row {
   display: flex;
   gap: 8px;
