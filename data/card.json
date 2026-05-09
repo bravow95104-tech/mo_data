@@ -5050,7 +5050,7 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": "",
+    "drop": "明鏡堂地牢",
     "player": ""
   },
   {
@@ -6570,7 +6570,7 @@
     "property_third": "防禦力",
     "card_mp": "",
     "directions": "",
-    "drop": "明鏡、地牢",
+    "drop": "明鏡堂地牢",
     "player": ""
   },
   {
@@ -6589,7 +6589,7 @@
     "property_third": "防禦力",
     "card_mp": "",
     "directions": "",
-    "drop": "明鏡、地牢",
+    "drop": "明鏡堂地牢",
     "player": ""
   },
   {
@@ -6760,7 +6760,7 @@
     "property_third": "",
     "card_mp": "",
     "directions": "",
-    "drop": "帝皇城",
+    "drop": "帝皇殿地下",
     "player": ""
   },
   {
@@ -6836,7 +6836,7 @@
     "property_third": "命中值、閃避值、防禦力、攻擊力",
     "card_mp": "",
     "directions": "",
-    "drop": "帝皇城",
+    "drop": "帝皇殿地下",
     "player": ""
   },
   {
@@ -6855,7 +6855,7 @@
     "property_third": "命中值、閃避值、防禦力、法術防禦",
     "card_mp": "",
     "directions": "",
-    "drop": "帝皇城",
+    "drop": "帝皇殿地下",
     "player": ""
   },
   {
