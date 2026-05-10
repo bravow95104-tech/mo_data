@@ -1,8 +1,28 @@
 // === 1. 全域變數 ===
 let mapData = [];
+// 定義所有可能的欄位
+const ALL_COLUMNS = [
+  { id: 'mapid', label: '地圖名稱', default: true },
+  { id: 'drop_equidcard', label: '裝備卡', default: true },
+  { id: 'drop_rubbish', label: '垃圾', default: true },
+  { id: 'drop_hero', label: '英雄卡', default: true },
+  { id: 'drop_glory_high', label: '光輝(多)', default: true },
+  { id: 'drop_glory_low', label: '光輝(少)', default: true },
+  { id: 'maplv', label: '怪物等級', default: false },
+  { id: 'def', label: '防禦', default: false },
+  { id: 'dodge', label: '閃避', default: false },
+  { id: 'drop_combo_old', label: '舊文片', default: false },
+  { id: 'drop_combo_new', label: '新文片', default: false },
+  { id: 'drop_othrt', label: '其他掉落', default: false }
+];
+
+let activeColumns = [];
 
 // === 2. 核心初始化 ===
 document.addEventListener("DOMContentLoaded", () => {
+  // 載入使用者欄位設定
+  loadColumnSettings();
+
   // 載入 JSON 資料
   fetch("/mo_data/data/detailed_map.json")
     .then((res) => res.json())
@@ -13,6 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
       // [HTML1 邏輯] 如果頁面有表格，進行初次渲染
       if (document.querySelector("#heroes-table tbody")) {
         initTableSearch();
+        initColumnSettings();
       }
     })
     .catch((err) => console.error("❌ 載入失敗：", err));
@@ -35,41 +56,58 @@ function initTableSearch() {
 
   searchInput.addEventListener("input", (e) => {
     const keyword = e.target.value.toLowerCase().trim();
-    const filtered = mapData.filter(item => {
-      // 🚀 擴大搜尋範圍，讓裝備卡和光輝也能被搜到
-      return (
-        (item.mapid && item.mapid.toLowerCase().includes(keyword)) ||
-        (item.drop_rubbish && item.drop_rubbish.includes(keyword)) ||
-        (item.drop_hero && item.drop_hero.includes(keyword)) ||
-        (item.drop_equidcard && item.drop_equidcard.includes(keyword)) ||
-        (item.drop_combo_old && item.drop_combo_old.includes(keyword)) ||
-        (item.drop_combo_new && item.drop_combo_new.includes(keyword)) ||
-        (item.drop_glory_high && item.drop_glory_high.includes(keyword))
-      );
-    });
-    renderTable(filtered, keyword);
+    applyFilters(keyword);
   });
 
   if (clearBtn) {
     clearBtn.addEventListener('click', () => {
       searchInput.value = '';
-      renderTable(mapData, "");
-      searchInput.focus(); // 清除後自動聚焦搜尋框
+      applyFilters("");
+      searchInput.focus();
     });
   }
 }
 
+function applyFilters(keyword) {
+  const filtered = mapData.filter(item => {
+    return (
+      (item.mapid && item.mapid.toLowerCase().includes(keyword)) ||
+      (item.drop_rubbish && item.drop_rubbish.includes(keyword)) ||
+      (item.drop_hero && item.drop_hero.includes(keyword)) ||
+      (item.drop_equidcard && item.drop_equidcard.includes(keyword)) ||
+      (item.drop_combo_old && item.drop_combo_old.includes(keyword)) ||
+      (item.drop_combo_new && item.drop_combo_new.includes(keyword)) ||
+      (item.drop_glory_high && item.drop_glory_high.includes(keyword)) ||
+      (item.maplv && String(item.maplv).includes(keyword))
+    );
+  });
+  renderTable(filtered, keyword);
+}
+
 // 渲染表格函式
 function renderTable(data, keyword = "") {
+  const thead = document.querySelector("#heroes-table thead tr");
   const tbody = document.querySelector("#heroes-table tbody");
-  if (!tbody) return;
+  if (!tbody || !thead) return;
 
+  // 1. 渲染表頭
+  thead.innerHTML = "";
+  activeColumns.forEach(colId => {
+    const colInfo = ALL_COLUMNS.find(c => c.id === colId);
+    const th = document.createElement("th");
+    th.className = "sortable";
+    th.dataset.col = colId;
+    th.textContent = colInfo ? colInfo.label : colId;
+    thead.appendChild(th);
+  });
+
+  // 2. 渲染內容
   tbody.innerHTML = "";
   const fragment = document.createDocumentFragment();
 
   if (data.length === 0) {
     const emptyTr = document.createElement("tr");
-    emptyTr.innerHTML = `<td colspan="6" style="text-align:center;">找不到相符的地圖資料</td>`;
+    emptyTr.innerHTML = `<td colspan="${activeColumns.length}" style="text-align:center;">找不到相符的地圖資料</td>`;
     tbody.appendChild(emptyTr);
     return;
   }
@@ -79,27 +117,19 @@ function renderTable(data, keyword = "") {
     tr.style.cursor = "pointer";
     tr.onclick = () => window.openMapDetail(item.mapid);
 
-    const columns = [
-      item.mapid || "-",
-      item.drop_equidcard || "-",
-      item.drop_rubbish || "-",
-      item.drop_hero || "-",
-      item.drop_glory_high || "-",
-      item.drop_glory_low || "-"
-    ];
-
-    columns.forEach((text, index) => {
+    activeColumns.forEach((colId, index) => {
       const td = document.createElement("td");
-      let content = String(text || "-").replace(/\n/g, '<br>');
+      let text = item[colId] || "-";
+      let content = String(text).replace(/\n/g, '<br>');
 
-      // 🚀 核心優化：先處理高亮，避免影響 HTML 標籤
+      // 高亮
       if (keyword && content !== "-" && content.toLowerCase().includes(keyword.toLowerCase())) {
         const regex = new RegExp(`(${keyword})`, 'gi');
         content = content.replace(regex, '<span class="highlight">$1</span>');
       }
 
-      // 處理完高亮後，若是第一欄則加上 strong
-      if (index === 0 && text !== "-") {
+      // 地圖名稱特殊處理
+      if (colId === 'mapid') {
         td.innerHTML = `<strong>${content}</strong>`;
       } else {
         td.innerHTML = content;
@@ -112,6 +142,73 @@ function renderTable(data, keyword = "") {
   });
 
   tbody.appendChild(fragment);
+}
+
+// === 欄位設定邏輯 ===
+function initColumnSettings() {
+  const btn = document.getElementById("columnSettingsBtn");
+  const menu = document.getElementById("columnSettingsMenu");
+  const container = document.getElementById("columnCheckboxes");
+  const saveBtn = document.getElementById("saveColumnSettings");
+  const closeBtn = document.getElementById("closeColumnSettings");
+
+  if (!btn || !menu || !container) return;
+
+  // 生成核取方塊
+  container.innerHTML = "";
+  ALL_COLUMNS.forEach(col => {
+    const label = document.createElement("label");
+    label.className = "checkbox-item";
+    const isChecked = activeColumns.includes(col.id);
+    label.innerHTML = `
+      <input type="checkbox" value="${col.id}" ${isChecked ? 'checked' : ''}>
+      ${col.label}
+    `;
+    container.appendChild(label);
+  });
+
+  btn.onclick = (e) => {
+    e.stopPropagation();
+    menu.classList.toggle("active");
+  };
+
+  closeBtn.onclick = () => menu.classList.remove("active");
+
+  saveBtn.onclick = () => {
+    const checkboxes = container.querySelectorAll("input[type='checkbox']");
+    activeColumns = Array.from(checkboxes)
+      .filter(cb => cb.checked)
+      .map(cb => cb.value);
+    
+    // 如果什麼都沒選，預設選第一欄
+    if (activeColumns.length === 0) activeColumns = ['mapid'];
+
+    localStorage.setItem("mapActiveColumns", JSON.stringify(activeColumns));
+    menu.classList.remove("active");
+    
+    const searchInput = document.getElementById("searchInput");
+    renderTable(mapData, searchInput ? searchInput.value : "");
+  };
+
+  // 點擊外面關閉選單
+  document.addEventListener("click", (e) => {
+    if (!menu.contains(e.target) && e.target !== btn) {
+      menu.classList.remove("active");
+    }
+  });
+}
+
+function loadColumnSettings() {
+  const saved = localStorage.getItem("mapActiveColumns");
+  if (saved) {
+    try {
+      activeColumns = JSON.parse(saved);
+    } catch (e) {
+      activeColumns = ALL_COLUMNS.filter(c => c.default).map(c => c.id);
+    }
+  } else {
+    activeColumns = ALL_COLUMNS.filter(c => c.default).map(c => c.id);
+  }
 }
 
 // === 4. [HTML2 專屬] 地圖互動邏輯 ===
