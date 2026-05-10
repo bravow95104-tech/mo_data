@@ -1,20 +1,33 @@
 document.addEventListener("DOMContentLoaded", () => {
+  let mapData = []; // 新增：儲存地圖資料
+
   // 載入 JSON 資料
-  fetch("/mo_data/data/card.json")
-    .then(res => {
+  Promise.all([
+    fetch("/mo_data/data/card.json").then(res => {
       if (!res.ok) throw new Error("載入 card.json 失敗");
       return res.json();
+    }),
+    fetch("/mo_data/data/detailed_map.json").then(res => {
+      if (!res.ok) throw new Error("載入 detailed_map.json 失敗");
+      return res.json();
     })
-    .then(json => {
-      const data = Array.isArray(json) ? json : json.data;
-      const filteredData = data.filter(d => d.type === "靈具卡");
-      initCardTable(filteredData);
-    })
-    .catch(err => {
-      console.error("❌ JSON 載入失敗：", err);
-      const tbody = document.querySelector("#card-equip-table tbody");
-      tbody.innerHTML = "<tr><td colspan='5'>無法載入資料</td></tr>";
-    });
+  ])
+  .then(([json, maps]) => {
+    const data = Array.isArray(json) ? json : (json.data || []);
+    const filteredData = data.filter(d => d.type === "靈具卡");
+    mapData = Array.isArray(maps) ? maps : (maps.data || []);
+    
+    if (filteredData.length === 0) {
+      console.warn("⚠️ 找不到任何靈具卡資料");
+    }
+    
+    initCardTable(filteredData);
+  })
+  .catch(err => {
+    console.error("❌ 資料載入失敗：", err);
+    const tbody = document.querySelector("#card-equip-table tbody");
+    if (tbody) tbody.innerHTML = `<tr><td colspan="6" style="color:red;">資料載入失敗 (${err.message})</td></tr>`;
+  });
 
   // 初始化表格與搜尋功能
   function initCardTable(data) {
@@ -77,13 +90,24 @@ document.addEventListener("DOMContentLoaded", () => {
       filteredData.forEach(item => {
         const tr = document.createElement("tr");
 
+        // 🚀 核心優化：填補掉落資訊
+        let displayDrop = item.drop || "";
+        if (!displayDrop || displayDrop === "未知") {
+          const foundMaps = mapData.filter(map => {
+            const dropStr = map.drop_equidcard || "";
+            const dropList = dropStr.split("、");
+            return dropList.includes(item.card_id);
+          });
+          displayDrop = foundMaps.length > 0 ? foundMaps.map(m => m.mapid).join("、") : displayDrop;
+        }
+
         const fields = [
           item.card_id,           // 名稱
           item.card_lv,           // 等級
           item.property_first,    // 第一屬性
           item.property_second,   // 第二屬性
           item.property_third,    // 第三屬性
-          item.drop,   // 掉落
+          displayDrop,            // 掉落 (使用填補後的資料)
         ];
 
         fields.forEach((value, index) => {
