@@ -422,7 +422,6 @@ h1 {
 
 .filter-actions {
   display: flex;
-  justify-content: space-between; /* 🚀 關鍵：讓內容分開到最左與最右 */
   align-items: center;
   margin-top: 15px;
   width: 100%;
@@ -431,7 +430,6 @@ h1 {
 
 /* 讓清除按鈕維持原本樣式，新按鈕可以套用類似但不同色系的樣式 */
 .secondary-btn {
-  margin-left: auto;         /* 🚀 關鍵：確保切換模式等按鈕推到最右邊 */
   padding: 8px 16px;
   background-color: var(--primary-color); /* 使用你原本的藍色變數 */
   color: white;
@@ -445,6 +443,12 @@ h1 {
 .secondary-btn:hover {
   background-color: var(--primary-dark-color);
 }
+
+/* 🚀 修正：針對 map.html，如果切換按鈕是第一個(或唯一)右側元素，將它推到最右邊 */
+.filter-actions > .secondary-btn:first-child {
+  margin-left: auto;
+}
+
 .clear-btn {
   background: #ffefc0;
   border: 1px solid #ffc107;
