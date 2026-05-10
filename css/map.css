@@ -182,10 +182,6 @@ h1 {
 #modalBox, #modalContent, .hero-image, .modal-header {
     box-sizing: border-box;
 }
-#modalContent::-webkit-scrollbar { width: auto; }
-#modalContent::-webkit-scrollbar-track { background: auto; }
-#modalContent::-webkit-scrollbar-thumb { background-color: auto; border-radius: auto; }
-
 
 /* 彈窗內容元素樣式 */
 .hero-column-details { 
@@ -500,21 +496,97 @@ h1 {
   padding: 2px 4px;
 }
 
-/* 表格樣式 */
+/* 🚀 新增：自訂欄位設定選單樣式 */
+.column-settings-container {
+  position: relative;
+  margin-left: 10px;
+}
+
+.column-settings-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: white;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 15px;
+  z-index: 1000;
+  min-width: 280px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.column-settings-menu.active {
+  display: block;
+}
+
+.column-settings-menu h4 {
+  margin: 0 0 12px 0;
+  color: var(--primary-dark-color);
+  border-bottom: 1px solid #eee;
+  padding-bottom: 8px;
+}
+
+#columnCheckboxes {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-bottom: 15px;
+}
+
+.checkbox-item {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.checkbox-item input {
+  margin-right: 8px;
+}
+
+.menu-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  border-top: 1px solid #eee;
+  padding-top: 10px;
+}
+
+.primary-btn-sm {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 5px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.text-btn-sm {
+  background: none;
+  border: none;
+  color: #666;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.text-btn-sm:hover {
+  text-decoration: underline;
+}
+
+/* 🚀 移除表格固定寬度，讓它根據內容自動調整 */
 table {
   border-collapse: collapse;
   width: 100%;
   margin-top: 20px;
-  table-layout: fixed;
+  table-layout: auto; /* 從 fixed 改回 auto，讓動態欄位更靈活 */
 }
-/* 針對 6 欄位進行寬度權重分配 */
-/* 地圖名 | 垃圾 | 裝備 | 英雄 | 光輝高 | 光輝低 */
-th:nth-child(1) { width: 10%; }
-th:nth-child(2) { width: 10%; }
-th:nth-child(3) { width: 20%; }
-th:nth-child(4) { width: 20%; }
-th:nth-child(5) { width: 20%; }
-th:nth-child(6) { width: 20%; }
+
+/* 針對第一欄：地圖名稱的字體優化 (增加最小寬度) */
+#heroes-table td:first-child, #heroes-table th:first-child {
+  min-width: 100px;
+}
 
 th,
 td {
