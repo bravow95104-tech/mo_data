@@ -1,4 +1,5 @@
 let allCardData = [];
+let mapData = []; // 新增：儲存地圖資料
 let sortConfig = { key: null, direction: 'asc' }; // 統一管理排序狀態
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -12,18 +13,21 @@ document.addEventListener("DOMContentLoaded", () => {
   const closeModalBtn = document.querySelector('#modalBox .close-btn');
 
   // 1. 載入資料
-  fetch("/mo_data/data/card.json")
-    .then(res => res.json())
-    .then(data => {
-      allCardData = data
-      initializeSortIcons();
-      applyFiltersAndSort(); // 初始渲染
-      updateSortIcons();
-    })
-    .catch(err => {
-      console.error("❌ Failed to load card data:", err)
-      if (tableBody) tableBody.innerHTML = '<tr><td colspan="6">無法載入資料</td></tr>';
-    });
+  Promise.all([
+    fetch("/mo_data/data/card.json").then(res => res.json()),
+    fetch("/mo_data/data/detailed_map.json").then(res => res.json())
+  ])
+  .then(([cards, maps]) => {
+    allCardData = cards;
+    mapData = Array.isArray(maps) ? maps : maps.data;
+    initializeSortIcons();
+    applyFiltersAndSort(); // 初始渲染
+    updateSortIcons();
+  })
+  .catch(err => {
+    console.error("❌ Failed to load data:", err)
+    if (tableBody) tableBody.innerHTML = '<tr><td colspan="6">無法載入資料</td></tr>';
+  });
 
   // 2. 核心邏輯：套用篩選與排序
   function applyFiltersAndSort() {
@@ -226,6 +230,21 @@ function showDetailModal(item) {
   };
   tryLoadImage();
 
+  // 🚀 核心優化：尋找掉落地圖
+  let displayDrop = item.drop || '';
+  if (!displayDrop || displayDrop === '未知') {
+    const foundMaps = mapData.filter(map => {
+      const dropStr = map.drop_equidcard || "";
+      const dropList = dropStr.split('、');
+      return dropList.includes(item.card_id);
+    });
+    if (foundMaps.length > 0) {
+      displayDrop = foundMaps.map(m => m.mapid).join('、');
+    } else {
+      displayDrop = '未知';
+    }
+  }
+
   const html = `
     <h2 class="hero-name">${item.card_id}</h2>
     <div class="hero-details-container" style="display:flex; gap: 20px;">
@@ -237,7 +256,7 @@ function showDetailModal(item) {
         <p><strong>倍率：</strong>${item.nemultiplier || item.multiplier || '-'}</p>
         <p class="section-gap"><strong>專屬英雄：</strong>${item.hero_name}</p>
         <hr style="margin: 20px 0; border: 0; border-top: 1px solid #ddd;">
-        <p class="section-gap"><strong>掉落地圖：</strong>${item.drop || '未知'}</p>
+        <p class="section-gap"><strong>掉落地圖：</strong>${displayDrop}</p>
       </div>
     </div>
   `;
