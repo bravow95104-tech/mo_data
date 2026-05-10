@@ -431,7 +431,6 @@ h1 {
 
 /* 讓清除按鈕維持原本樣式，新按鈕可以套用類似但不同色系的樣式 */
 .secondary-btn {
-  margin-left: auto;         /* 🚀 自動推到最右邊 */
   padding: 8px 16px;
   background-color: var(--primary-color); /* 使用你原本的藍色變數 */
   color: white;
@@ -499,7 +498,8 @@ h1 {
 /* 🚀 新增：自訂欄位設定選單樣式 */
 .column-settings-container {
   position: relative;
-  margin-left: 10px;
+  margin-left: auto;         /* 🚀 關鍵：將此容器推到最右邊 */
+  margin-right: 10px;        /* 與右側按鈕保持間距 */
 }
 
 .column-settings-menu {
