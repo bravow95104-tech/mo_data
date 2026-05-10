@@ -159,10 +159,14 @@ function initColumnSettings() {
   ALL_COLUMNS.forEach(col => {
     const label = document.createElement("label");
     label.className = "checkbox-item";
-    const isChecked = activeColumns.includes(col.id);
+    const isChecked = activeColumns.includes(col.id) || col.id === 'mapid';
+    const isDisabled = col.id === 'mapid'; // 地圖名稱不可隱藏
+    
     label.innerHTML = `
-      <input type="checkbox" value="${col.id}" ${isChecked ? 'checked' : ''}>
-      ${col.label}
+      <input type="checkbox" value="${col.id}" 
+        ${isChecked ? 'checked' : ''} 
+        ${isDisabled ? 'disabled' : ''}>
+      ${col.label} ${isDisabled ? '(固定)' : ''}
     `;
     container.appendChild(label);
   });
