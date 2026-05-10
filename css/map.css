@@ -520,11 +520,24 @@ h1 {
   display: block;
 }
 
-.column-settings-menu h4 {
-  margin: 0 0 12px 0;
-  color: var(--primary-dark-color);
+.menu-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   border-bottom: 1px solid #eee;
+  margin-bottom: 12px;
   padding-bottom: 8px;
+}
+
+.menu-header h4 {
+  margin: 0;
+  color: var(--primary-dark-color);
+  padding: 0;
+}
+
+#resetDefaultColumns {
+  color: var(--primary-color);
+  font-weight: bold;
 }
 
 #columnCheckboxes {
