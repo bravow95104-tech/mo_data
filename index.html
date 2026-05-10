@@ -19,6 +19,8 @@
             <!-- 內容由 JavaScript 動態從 /data/changelog.txt 載入 -->
             <li>正在載入更新日誌...</li>
           </ul>
+          <!-- 分頁按鈕 -->
+          <div id="changelog-pagination" class="pagination-container"></div>
         </section>
 
         <div id="sidebar-container">
@@ -53,31 +55,83 @@
       document.addEventListener("DOMContentLoaded", function() {
         const baseURL = "/mo_data"; // 根據你的專案路徑設定
 
+        // --- 更新日誌分頁設定 ---
+        const ITEMS_PER_PAGE = 25;
+        let changelogLines = [];
+        let currentChangelogPage = 1;
+
+        function renderChangelog(page) {
+          const list = document.getElementById("changelog-list");
+          const pagination = document.getElementById("changelog-pagination");
+          list.innerHTML = "";
+          
+          const start = (page - 1) * ITEMS_PER_PAGE;
+          const end = start + ITEMS_PER_PAGE;
+          const pageLines = changelogLines.slice(start, end);
+
+          pageLines.forEach(line => {
+            if (!line.trim()) return;
+            const li = document.createElement("li");
+            
+            if (line.startsWith("[Tips]")) {
+              const content = line.replace("[Tips]", "").trim();
+              li.innerHTML = `<span class="tips">Tips</span>${content}`;
+            } else if (line.includes("|")) {
+              const [date, content] = line.split("|").map(s => s.trim());
+              li.innerHTML = `<span class="date">${date}</span>${content}`;
+            } else {
+              li.textContent = line;
+            }
+            list.appendChild(li);
+          });
+
+          // 渲染分頁按鈕
+          const totalPages = Math.ceil(changelogLines.length / ITEMS_PER_PAGE);
+          if (totalPages > 1) {
+            pagination.innerHTML = "";
+            
+            // 上一頁
+            const prevBtn = document.createElement("button");
+            prevBtn.textContent = "◀";
+            prevBtn.disabled = page === 1;
+            prevBtn.onclick = () => {
+              currentChangelogPage--;
+              renderChangelog(currentChangelogPage);
+              window.scrollTo({ top: 0, behavior: "smooth" });
+            };
+            pagination.appendChild(prevBtn);
+
+            // 頁碼資訊
+            const pageInfo = document.createElement("span");
+            pageInfo.textContent = ` 第 ${page} / ${totalPages} 頁 `;
+            pageInfo.style.margin = "0 15px";
+            pageInfo.style.fontWeight = "bold";
+            pagination.appendChild(pageInfo);
+
+            // 下一頁
+            const nextBtn = document.createElement("button");
+            nextBtn.textContent = "▶";
+            nextBtn.disabled = page === totalPages;
+            nextBtn.onclick = () => {
+              currentChangelogPage++;
+              renderChangelog(currentChangelogPage);
+              window.scrollTo({ top: 0, behavior: "smooth" });
+            };
+            pagination.appendChild(nextBtn);
+          }
+        }
+
         // 1. 載入更新日誌
         fetch(baseURL + "/data/changelog.txt")
           .then(res => res.text())
           .then(text => {
-            const list = document.getElementById("changelog-list");
-            const lines = text.trim().split("\n");
-            list.innerHTML = "";
-            
-            lines.forEach(line => {
-              if (!line.trim()) return;
-              const li = document.createElement("li");
-              
-              if (line.startsWith("[Tips]")) {
-                const content = line.replace("[Tips]", "").trim();
-                li.innerHTML = `<span class="tips">Tips</span>${content}`;
-              } else if (line.includes("|")) {
-                const [date, content] = line.split("|").map(s => s.trim());
-                li.innerHTML = `<span class="date">${date}</span>${content}`;
-              } else {
-                li.textContent = line;
-              }
-              list.appendChild(li);
-            });
+            changelogLines = text.trim().split("\n");
+            renderChangelog(1);
           })
-          .catch(err => console.error("載入更新日誌失敗:", err));
+          .catch(err => {
+            console.error("載入更新日誌失敗:", err);
+            document.getElementById("changelog-list").innerHTML = "<li>載入失敗。</li>";
+          });
 
         // 2. 載入改版資訊
         fetch(baseURL + "/data/releases.txt")
