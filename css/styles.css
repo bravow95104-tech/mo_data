@@ -291,7 +291,38 @@ body {
     background-color: #41bb4b;
 }
 
-/* 資料提供 */
+/* 分頁按鈕樣式 */
+.pagination-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid #e1e7ef;
+}
+
+.pagination-container button {
+    background-color: #3399ff;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.2s;
+}
+
+.pagination-container button:hover {
+    background-color: #267acc;
+}
+
+.pagination-container button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+/* ✅ 內容與側邊欄容器 */
+
 .info-wrapper {
     display: flex;
     justify-content: flex-end; 
