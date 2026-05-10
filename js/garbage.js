@@ -58,6 +58,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     data.forEach(item => {
       const tr = document.createElement('tr');
+      tr.style.cursor = 'pointer';
+      tr.title = '點擊查看掉落地圖';
+      tr.onclick = () => showDropMaps(item.name);
 
       const fields = [
         'class', 'name', 'family', 'renown', 'contribute'
@@ -74,15 +77,6 @@ document.addEventListener("DOMContentLoaded", () => {
           td.innerHTML = htmlValue.replace(regex, '<span class="highlight">$1</span>');
         } else {
           td.innerHTML = htmlValue;
-        }
-
-        // 🚀 新增：如果是「垃圾名稱」欄位，加上點擊功能
-        if (field === 'name') {
-          td.style.cursor = 'pointer';
-          td.style.color = '#3399ff';
-          td.style.textDecoration = 'underline';
-          td.title = '點擊查看掉落地圖';
-          td.onclick = () => showDropMaps(item.name);
         }
 
         tr.appendChild(td);
