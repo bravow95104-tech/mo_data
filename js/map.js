@@ -151,25 +151,30 @@ function initColumnSettings() {
   const container = document.getElementById("columnCheckboxes");
   const saveBtn = document.getElementById("saveColumnSettings");
   const closeBtn = document.getElementById("closeColumnSettings");
+  const resetBtn = document.getElementById("resetDefaultColumns");
 
   if (!btn || !menu || !container) return;
 
-  // 生成核取方塊
-  container.innerHTML = "";
-  ALL_COLUMNS.forEach(col => {
-    const label = document.createElement("label");
-    label.className = "checkbox-item";
-    const isChecked = activeColumns.includes(col.id) || col.id === 'mapid';
-    const isDisabled = col.id === 'mapid'; // 地圖名稱不可隱藏
-    
-    label.innerHTML = `
-      <input type="checkbox" value="${col.id}" 
-        ${isChecked ? 'checked' : ''} 
-        ${isDisabled ? 'disabled' : ''}>
-      ${col.label} ${isDisabled ? '(固定)' : ''}
-    `;
-    container.appendChild(label);
-  });
+  // 生成核取方塊函式
+  const generateCheckboxes = () => {
+    container.innerHTML = "";
+    ALL_COLUMNS.forEach(col => {
+      const label = document.createElement("label");
+      label.className = "checkbox-item";
+      const isChecked = activeColumns.includes(col.id) || col.id === 'mapid';
+      const isDisabled = col.id === 'mapid';
+      
+      label.innerHTML = `
+        <input type="checkbox" value="${col.id}" 
+          ${isChecked ? 'checked' : ''} 
+          ${isDisabled ? 'disabled' : ''}>
+        ${col.label} ${isDisabled ? '(固定)' : ''}
+      `;
+      container.appendChild(label);
+    });
+  };
+
+  generateCheckboxes();
 
   btn.onclick = (e) => {
     e.stopPropagation();
@@ -177,6 +182,14 @@ function initColumnSettings() {
   };
 
   closeBtn.onclick = () => menu.classList.remove("active");
+
+  resetBtn.onclick = () => {
+    // 回到預設欄位
+    activeColumns = ALL_COLUMNS.filter(c => c.default).map(c => c.id);
+    generateCheckboxes();
+    // 直接觸發儲存邏輯
+    saveBtn.click();
+  };
 
   saveBtn.onclick = () => {
     const checkboxes = container.querySelectorAll("input[type='checkbox']");
