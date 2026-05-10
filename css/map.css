@@ -431,6 +431,7 @@ h1 {
 
 /* 讓清除按鈕維持原本樣式，新按鈕可以套用類似但不同色系的樣式 */
 .secondary-btn {
+  margin-left: auto;         /* 🚀 關鍵：確保切換模式等按鈕推到最右邊 */
   padding: 8px 16px;
   background-color: var(--primary-color); /* 使用你原本的藍色變數 */
   color: white;
