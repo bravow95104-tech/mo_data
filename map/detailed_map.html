@@ -106,6 +106,19 @@
         <br />-->
         <div class="filter-actions">
           <button id="clearFilters" class="clear-btn">清除篩選</button>
+          <div class="column-settings-container">
+            <button id="columnSettingsBtn" class="secondary-btn">⚙️ 欄位顯示設定</button>
+            <div id="columnSettingsMenu" class="column-settings-menu">
+              <h4>選擇要顯示的欄位</h4>
+              <div id="columnCheckboxes">
+                <!-- 由 JS 動態生成 -->
+              </div>
+              <div class="menu-actions">
+                <button id="saveColumnSettings" class="primary-btn-sm">儲存設定</button>
+                <button id="closeColumnSettings" class="text-btn-sm">關閉</button>
+              </div>
+            </div>
+          </div>
           <button id="switchMode" class="secondary-btn" onclick="location.href='map.html'">切換地圖模式</button>
         </div>
       </div>
