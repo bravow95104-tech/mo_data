@@ -238,37 +238,20 @@ document.addEventListener("DOMContentLoaded", () => {
     img.onerror = () => {
     };
 
-    // 🚀 核心優化：尋找掉落地圖
-    const foundMaps = mapData.filter(map => {
-      const dropStr = map.drop_skillcard || "";
-      const dropList = dropStr.split('、');
-      return dropList.includes(item.card_id);
-    });
-    let displayDrop = foundMaps.length > 0 ? foundMaps.map(m => m.mapid).join('、 ') : (item.drop || "未知");
-
     // 建立內容
     const html = `
-      <h2 class="hero-name">${item.card_id}</h2>
-      <div class="hero-details-container" style="display:flex; gap: 20px;">
-        <div class="hero-column left" style="flex:1;"></div>
-        <div class="hero-column right" style="flex:1;">
-          <p><strong>卡片名稱：</strong>${item.card_id}</p>
-          <p class="section-gap"><strong>等級：</strong>${item.card_lv}</p>
-          <p><strong>屬性：</strong>${item.card_property || '無'}</p>
-          <p><strong>消耗MP：</strong>${item.card_mp || '0'}</p>
-          <p class="section-gap"><strong>專屬職業：</strong>${item.card_class}</p>
-          <hr style="margin: 20px 0; border: 0; border-top: 1px solid #ddd;">
-          <p><strong>技能說明：</strong></p>
-          <p style="white-space: pre-wrap;">${item.directions || '-'}</p>
-          <hr style="margin: 20px 0; border: 0; border-top: 1px solid #ddd;">
-          <p class="section-gap"><strong>掉落地點：</strong>${displayDrop}</p>
+      <div class="hero-details-container">
+        <div class="hero-column">
+          <h2 class="hero-name">${item.card_id}</h2>
         </div>
+        <div class="hero-column" id="imgContainer"></div>
       </div>
     `;
 
     contentDiv.innerHTML = html;
-    const leftCol = contentDiv.querySelector(".hero-column.left");
-    if (leftCol) leftCol.appendChild(img);
+
+    const imgContainer = contentDiv.querySelector("#imgContainer");
+    if (imgContainer) imgContainer.appendChild(img);
 
     overlay.style.display = "block";
     modalBox.style.display = "block";

@@ -19,6 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
     allCardData = data.filter(d => d.type === "靈具卡");
     mapData = Array.isArray(maps) ? maps : (maps.data || []);
     
+    populateDatalists(allCardData); // 🚀 補回：填充下拉清單
     initializeSortIcons();
     applyFiltersAndSort(); // 初始渲染
     updateSortIcons();
@@ -28,6 +29,46 @@ document.addEventListener("DOMContentLoaded", () => {
     const tbody = document.querySelector("#card-equip-table tbody");
     if (tbody) tbody.innerHTML = `<tr><td colspan="6" style="color:red;">資料載入失敗 (${err.message})</td></tr>`;
   });
+
+  // 🚀 補回：填充 datalist 選項函式
+  function populateDatalists(data) {
+    const uniqueFirst = new Set();
+    const uniqueSecond = new Set();
+    const uniqueThird = new Set();
+
+    data.forEach(item => {
+      if (item.property_first) uniqueFirst.add(item.property_first);
+
+      if (item.property_second) {
+        item.property_second.split("、").forEach(val => {
+          const v = val.trim();
+          if (v) uniqueSecond.add(v);
+        });
+      }
+
+      if (item.property_third) {
+        item.property_third.split("、").forEach(val => {
+          const v = val.trim();
+          if (v) uniqueThird.add(v);
+        });
+      }
+    });
+
+    function fillDatalist(id, items) {
+      const datalist = document.getElementById(id);
+      if (!datalist) return;
+      datalist.innerHTML = "";
+      Array.from(items).sort().forEach(value => {
+        const option = document.createElement("option");
+        option.value = value;
+        datalist.appendChild(option);
+      });
+    }
+
+    fillDatalist("propertyFirstList", uniqueFirst);
+    fillDatalist("propertySecondList", uniqueSecond);
+    fillDatalist("propertyThirdList", uniqueThird);
+  }
 
   function applyFiltersAndSort() {
     const searchFirst = document.getElementById("searchFirst");
@@ -232,35 +273,17 @@ document.addEventListener("DOMContentLoaded", () => {
     img.src = `/mo_data/pic/card-spirit/${encodeFileName(item.card_id)}.png`;
     img.onerror = () => {};
 
-    // 🚀 核心優化：尋找掉落地圖
-    let displayDrop = item.drop || "";
-    if (!displayDrop || displayDrop === "未知") {
-      const foundMaps = mapData.filter(map => {
-        const dropStr = map.drop_equidcard || "";
-        const dropList = dropStr.split("、");
-        return dropList.includes(item.card_id);
-      });
-      displayDrop = foundMaps.length > 0 ? foundMaps.map(m => m.mapid).join("、 ") : (item.drop || "未知");
-    }
-
     const html = `
-      <h2 class="hero-name">${item.card_id}</h2>
-      <div class="hero-details-container" style="display:flex; gap: 20px;">
-        <div class="hero-column left" style="flex:1;"></div>
-        <div class="hero-column right" style="flex:1;">
-          <p><strong>卡片名稱：</strong>${item.card_id}</p>
-          <p class="section-gap"><strong>等級：</strong>${item.card_lv}</p>
-          <p><strong>第一屬性：</strong>${item.property_first || '-'}</p>
-          <p><strong>第二屬性：</strong>${item.property_second || '-'}</p>
-          <p><strong>第三屬性：</strong>${item.property_third || '-'}</p>
-          <hr style="margin: 20px 0; border: 0; border-top: 1px solid #ddd;">
-          <p class="section-gap"><strong>掉落地點：</strong>${displayDrop}</p>
+      <div class="hero-details-container">
+        <div class="hero-column">
+          <h2 class="hero-name">${item.card_id}</h2>
         </div>
+        <div class="hero-column" id="imgContainer"></div>
       </div>
     `;
     contentDiv.innerHTML = html;
-    const leftCol = contentDiv.querySelector(".hero-column.left");
-    if (leftCol) leftCol.appendChild(img);
+    const imgContainer = contentDiv.querySelector("#imgContainer");
+    if (imgContainer) imgContainer.appendChild(img);
 
     overlay.style.display = 'block';
     modalBox.style.display = 'block';
