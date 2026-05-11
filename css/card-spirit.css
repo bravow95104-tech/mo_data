@@ -388,38 +388,37 @@ th.sorted-desc .arrow-down { color: #ffffff !important; }
   padding-bottom: 8px;
 }
 
-/* Modal 容器：上下排列 */
+/* Modal 容器 */
 .hero-details-container {
   display: flex;
-  flex-direction: column; /* 改為垂直方向排列 */
-  align-items: center;    /* 內容置中 */
-  justify-content: flex-start;
-  gap: 15px;              /* 名稱與圖片間距 */
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
   padding: 10px;
   width: 100%;
-  max-width: 400px;
   margin: 0 auto;
   box-sizing: border-box;
 }
 
 /* 單一內容區塊 */
 .hero-column {
-  width: 100%;
-  text-align: center;
-  background-color: transparent; /* 移除背景框 */
-  box-shadow: none;
-  padding: 0;
-  border-radius: 0;
+  flex: 1 1 250px;
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 6px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+  text-align: left; /* 改回靠左對齊 */
 }
 
 /* 圖片樣式 */
 .hero-image {
   display: block;
   margin: 0 auto;
-  max-width: 226px;
-  max-height: 318px;
+  max-width: 100%;
+  height: auto;
   object-fit: contain;
 }
+
 
 /* 下欄樣式 */
 .hero-column-details {
