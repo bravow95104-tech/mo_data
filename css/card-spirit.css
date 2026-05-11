@@ -17,7 +17,7 @@ tbody tr:hover {
   cursor: pointer;
 }
 
-/* 調整 table header sticky 時，避免蓋到 nav */
+/* 標題列 (Sticky) */
 thead th {
   position: sticky;
   top: var(--nav-offset, 0px); /* JS 動態修改 */
@@ -25,7 +25,46 @@ thead th {
   z-index: 100;
   color: white;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  height: 45px; /* 給予固定高度能更穩定置中 */
 }
+
+/* =========================================
+   排序圖示與表頭容器
+   ========================================= */
+#card-equip-table th[data-sort] {
+  cursor: pointer;
+  user-select: none;
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  width: 100%;
+  line-height: 1;
+}
+
+.sort-icon-container {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 12px;
+}
+
+.sort-arrow {
+  color: rgba(255, 255, 255, 0.3);
+  font-size: 8px;
+  line-height: 1;
+  margin: -1px 0;
+  transition: color 0.2s;
+}
+
+/* 排序啟動狀態 */
+th.sorted-asc .arrow-up { color: #ffffff !important; }
+th.sorted-desc .arrow-down { color: #ffffff !important; }
+
 /*快速搜尋*/
 #searchInput {
   padding: 6px 10px;
@@ -384,9 +423,7 @@ thead th {
   padding: 10px;
   font-size: 16px;
   color: #333;
-  max-height: 70vh;         /* 限制最大高度 */
   width: 100%;
-  overflow-y: auto;         /* 內容超出時垂直出現捲軸 */
   line-height: 1.5;
   background-color: #fff;
   border-radius: 6px;
