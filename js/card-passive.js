@@ -1,18 +1,26 @@
 document.addEventListener("DOMContentLoaded", () => {
+  let mapData = []; // 新增：儲存地圖資料
+
   fetch("/mo_data/data/card.json")
     .then(res => {
       if (!res.ok) throw new Error("載入 card.json 失敗");
       return res.json();
     })
     .then(json => {
-      const data = Array.isArray(json) ? json : json.data;
-      const filteredData = data.filter(d => d.type === "被動技能卡");
-      initCardTable(filteredData);
+      // 讀取地圖資料後再進行初始化
+      return fetch("/mo_data/data/detailed_map.json")
+        .then(res => res.json())
+        .then(maps => {
+          mapData = Array.isArray(maps) ? maps : (maps.data || []);
+          const data = Array.isArray(json) ? json : json.data;
+          const filteredData = data.filter(d => d.type === "被動技能卡");
+          initCardTable(filteredData);
+        });
     })
     .catch(err => {
       console.error("❌ JSON 載入失敗：", err);
       const tbody = document.querySelector("#card-equip-table tbody");
-      tbody.innerHTML = "<tr><td colspan='4'>無法載入資料</td></tr>";
+      if (tbody) tbody.innerHTML = "<tr><td colspan='5'>無法載入資料</td></tr>";
     });
 
 
@@ -88,22 +96,33 @@ document.addEventListener("DOMContentLoaded", () => {
     // === 渲染表格 ===
     function renderTable(filteredData) {
       const tbody = document.querySelector("#card-equip-table tbody");
+      if (!tbody) return;
       tbody.innerHTML = "";
 
       const keyword = searchInput.value.trim().toLowerCase();
 
       if (filteredData.length === 0) {
-        tbody.innerHTML = "<tr><td colspan='4'>找不到符合條件的技能卡</td></tr>";
+        tbody.innerHTML = "<tr><td colspan='5'>找不到符合條件的技能卡</td></tr>";
         return;
       }
 
       filteredData.forEach(item => {
         const tr = document.createElement("tr");
+        
+        // 🚀 核心優化：尋找掉落地圖
+        const foundMaps = mapData.filter(map => {
+          const dropStr = map.drop_skillcard || "";
+          const dropList = dropStr.split('、');
+          return dropList.includes(item.card_id);
+        });
+        const displayDrop = foundMaps.length > 0 ? foundMaps.map(m => m.mapid).join('、') : (item.drop || "-");
+
         const fields = [
           item.card_id,
           item.card_lv,
           item.card_class,
           item.directions,
+          displayDrop // 新增掉落地點
         ];
 
         fields.forEach(value => {
