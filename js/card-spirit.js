@@ -267,23 +267,22 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!overlay || !modalBox || !contentDiv) return;
 
     contentDiv.innerHTML = "";
+
+    // 建立名稱
+    const title = document.createElement("h2");
+    title.className = "hero-name";
+    title.textContent = item.card_id;
+
+    // 建立圖片
     const img = document.createElement("img");
     img.className = "hero-image";
     img.alt = item.card_id || "card-image";
     img.src = `/mo_data/pic/card-spirit/${encodeFileName(item.card_id)}.png`;
     img.onerror = () => {};
 
-    const html = `
-      <div class="hero-details-container">
-        <div class="hero-column">
-          <h2 class="hero-name">${item.card_id}</h2>
-        </div>
-        <div class="hero-column" id="imgContainer"></div>
-      </div>
-    `;
-    contentDiv.innerHTML = html;
-    const imgContainer = contentDiv.querySelector("#imgContainer");
-    if (imgContainer) imgContainer.appendChild(img);
+    // 加入元素
+    contentDiv.appendChild(title);
+    contentDiv.appendChild(img);
 
     overlay.style.display = 'block';
     modalBox.style.display = 'block';
