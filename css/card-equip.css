@@ -35,6 +35,17 @@ th, td {
   vertical-align: middle; /* 確保內容垂直置中 */
 }
 
+/* 針對最後一欄 (通常是掉落地圖) 優化 */
+#card-equip-table td:last-child {
+  text-align: left;
+  max-width: 280px;
+  min-width: 150px;
+  line-height: 1.5;
+  word-break: break-all;
+  padding-left: 12px;
+}
+
+
 /* 標題列 (Sticky) */
 thead th {
   position: sticky;

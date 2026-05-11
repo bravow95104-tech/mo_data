@@ -10,7 +10,19 @@ th, td {
   text-align: center;
   font-size: 14px;
   white-space: normal;
+  vertical-align: middle;
 }
+
+/* 針對掉落地點欄位優化 */
+#card-equip-table td:last-child {
+  text-align: left;
+  max-width: 280px;
+  min-width: 150px;
+  line-height: 1.5;
+  word-break: break-all;
+  padding-left: 12px;
+}
+
 
 tbody tr:hover {
   background-color: #fff9c0;
