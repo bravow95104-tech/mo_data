@@ -9,14 +9,14 @@
   <body>
     <div id="nav-container"></div>
 
-  </br>
+  <br/>
 
     <!-- 三個搜尋框 -->
      <div id="quick-search-label">
       <label for="searchInput" class="quick-search-label">快速搜尋：</label>
       <input type="text" id="searchInput1" placeholder="搜尋名稱..."/>
     </div>
-      </br>
+      <br/>
     <div id="quick-search-label">
       <label for="searchInput" class="quick-search-label">快速搜尋屬性：</label>
       <input type="text" id="searchFirst" list="propertyFirstList" placeholder="搜尋第一屬性" /><datalist id="propertyFirstList"></datalist>
@@ -30,11 +30,11 @@
     <table id="card-equip-table">
       <thead>
         <tr>
-          <th>專卡名稱</th>
-          <th>等級</th>
-          <th>第一屬性</th>
-          <th>第二屬性</th>
-          <th>第三屬性</th>
+          <th data-sort="card_id">專卡名稱</th>
+          <th data-sort="card_lv">等級</th>
+          <th data-sort="property_first">第一屬性</th>
+          <th data-sort="property_second">第二屬性</th>
+          <th data-sort="property_third">第三屬性</th>
           <th>掉落地點</th>
         </tr>
       </thead>
