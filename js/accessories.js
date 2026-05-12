@@ -246,7 +246,6 @@ document.addEventListener("DOMContentLoaded", () => {
       cardHeader.appendChild(img);
       cardHeader.appendChild(title);
 
-      // --- 判斷是否需要開啟彈窗的邏輯 ---
       const cleanIllustrate = hero.illustrate ? hero.illustrate.replace(/\^&|&\^/g, "") : "";
       const isLongDesc = cleanIllustrate.length > 50;
       const hasGain = hero.gain && hero.gain.trim() !== "";
@@ -257,7 +256,9 @@ document.addEventListener("DOMContentLoaded", () => {
       cardBody.className = 'card-body';
       cardBody.innerHTML = `
         <p><strong>等級：</strong>${hero.lv}</p>
-        <p><strong>屬性：</strong>${highlight(hero.Property1)}</p>
+        <p><strong>防禦力：</strong>${hero.Property1 || 0}</p>
+        <p><strong>閃避值：</strong>${hero.Property2 || 0}</p>
+        <p><strong>耐用度：</strong>${hero.Durability || 0}</p>
         <p><strong>說明：</strong>${highlight(cleanIllustrate.substring(0, 50))}${isLongDesc ? '...' : ''}</p>
         ${shouldBeClickable ? '<p style="text-align:right; color:#3399ff; font-size:12px; margin-top:5px;">查看完整資訊 ▾</p>' : ''}
       `;
@@ -281,7 +282,6 @@ document.addEventListener("DOMContentLoaded", () => {
   function showDetailModal(equip, titleName) {
     if (!modalContent) return;
 
-    // 1. 完整說明區域
     const illustrateHTML = `
       <div class="hero-column-accessories">
         <h3 class="modal-sub-title">完整說明</h3>
@@ -291,7 +291,6 @@ document.addEventListener("DOMContentLoaded", () => {
       </div>
     `;
 
-    // 2. 詳細數值區域 (gain)
     const gainHTML = (equip.gain && equip.gain.trim() !== "")
       ? `<div class="hero-column-accessories-details" style="margin-top:15px;">
            <h3 class="modal-sub-title">詳細效果</h3>
