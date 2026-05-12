@@ -118,17 +118,40 @@ document.addEventListener("DOMContentLoaded", () => {
         return String(text).replace(regex, '<span class="highlight2">$1</span>');
       };
 
-      card.innerHTML = `
-        <div class="card-header">
-          <img class="card-icon" src="/mo_data/pic/equipment/${hero.item}.png" onerror="this.src='/mo_data/pic/equipment/${hero.item}.bmp'; this.onerror=null;">
-          <h3 class="card-title">${highlight(hero.item)}</h3>
-        </div>
-        <div class="card-body">
-          <p><strong>等級：</strong>${hero.lv}</p>
-          <p><strong>屬性：</strong>${hero.Property1} / ${hero.Property2}</p>
-          <p><strong>說明：</strong>${hero.illustrate.replace(/\^&|&\^/g, "").substring(0, 50)}...</p>
-        </div>
+      // 建立標頭與圖片
+      const cardHeader = document.createElement('div');
+      cardHeader.className = 'card-header';
+
+      const img = document.createElement('img');
+      img.className = 'card-icon';
+      const basePath = `/mo_data/pic/equipment/${hero.item}`;
+      const extensions = ['.png', '.bmp', '.jpg'];
+      let attempt = 0;
+      img.src = basePath + extensions[attempt];
+      img.onerror = () => {
+        attempt++;
+        if (attempt < extensions.length) img.src = basePath + extensions[attempt];
+        else img.src = '/mo_data/pic/sys/no-image.png';
+      };
+
+      const title = document.createElement('h3');
+      title.className = 'card-title';
+      title.innerHTML = highlight(hero.item);
+
+      cardHeader.appendChild(img);
+      cardHeader.appendChild(title);
+
+      // 建立內容
+      const cardBody = document.createElement('div');
+      cardBody.className = 'card-body';
+      cardBody.innerHTML = `
+        <p><strong>等級：</strong>${hero.lv}</p>
+        <p><strong>屬性：</strong>${hero.Property1} / ${hero.Property2}</p>
+        <p><strong>說明：</strong>${hero.illustrate.replace(/\^&|&\^/g, "").substring(0, 50)}...</p>
       `;
+
+      card.appendChild(cardHeader);
+      card.appendChild(cardBody);
 
       card.addEventListener('click', () => showDetailModal(hero));
       fragment.appendChild(card);
