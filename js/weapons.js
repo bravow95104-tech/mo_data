@@ -29,9 +29,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // === 載入 JSON 資料 ===
   fetch('/mo_data/data/weapons.json')
-    .then(response => response.json())
+    .then(response => {
+      if (!response.ok) throw new Error('Network response was not ok');
+      return response.json();
+    })
     .then(data => {
-      heroesData = data.filter(item => item.class === "武器");
+      heroesData = data.filter(item => item.class && item.class.trim() === "武器");
       applyFilters();
     })
     .catch(error => {
@@ -42,10 +45,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const searchInput = document.getElementById('searchInput');
 
-  searchInput.addEventListener('input', () => {
-    clearTimeout(searchTimer);
-    searchTimer = setTimeout(() => { applyFilters(); }, 200);
-  });
+  if (searchInput) {
+    searchInput.addEventListener('input', () => {
+      clearTimeout(searchTimer);
+      searchTimer = setTimeout(() => { applyFilters(); }, 200);
+    });
+  }
 
   document.querySelectorAll('.filter-btn').forEach(btn => {
     btn.addEventListener('click', () => {
@@ -56,15 +61,18 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  document.getElementById('clearFilters').addEventListener('click', () => {
-    searchInput.value = '';
-    activeFilter = null;
-    document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
-    applyFilters();
-  });
+  const clearBtn = document.getElementById('clearFilters');
+  if (clearBtn) {
+    clearBtn.addEventListener('click', () => {
+      searchInput.value = '';
+      activeFilter = null;
+      document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+      applyFilters();
+    });
+  }
 
   function applyFilters() {
-    const keyword = searchInput.value.trim().toLowerCase();
+    const keyword = searchInput ? searchInput.value.trim().toLowerCase() : "";
     const filtered = heroesData.filter(hero => {
       if (activeFilter) {
         const { type, value } = activeFilter;
@@ -107,7 +115,7 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    const keyword = searchInput.value.trim().toLowerCase();
+    const keyword = searchInput ? searchInput.value.trim().toLowerCase() : "";
     const fragment = document.createDocumentFragment();
 
     data.forEach(hero => {
@@ -123,9 +131,15 @@ document.addEventListener("DOMContentLoaded", () => {
         img.style.cssText = 'width:40px; height:40px; object-fit:contain; display:block; margin:0 auto; background:#f8f8f8; border-radius:4px; border:1px solid #eee;';
         img.onerror = () => {
           attempt++;
-          if (attempt < extensions.length) img.src = basePath + extensions[attempt];
+          if (attempt < extensions.length) {
+            img.src = basePath + extensions[attempt];
+          } else {
+            imgTd.textContent = '-'; // 真的沒圖片顯示 -
+          }
         };
         imgTd.appendChild(img);
+      } else {
+        imgTd.textContent = '-';
       }
       tr.appendChild(imgTd);
 
@@ -173,7 +187,7 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    const keyword = searchInput.value.trim().toLowerCase();
+    const keyword = searchInput ? searchInput.value.trim().toLowerCase() : "";
     const fragment = document.createDocumentFragment();
 
     data.forEach(hero => {
@@ -186,11 +200,9 @@ document.addEventListener("DOMContentLoaded", () => {
         return String(text).replace(regex, '<span class="highlight2">$1</span>');
       };
 
-      // 建立卡片標頭
       const cardHeader = document.createElement('div');
       cardHeader.className = 'card-header';
 
-      // 建立圖片元件 (使用與表格相同的多副檔名邏輯)
       const img = document.createElement('img');
       img.className = 'card-icon';
       const basePath = `/mo_data/pic/weapons/${hero.item}`;
@@ -199,8 +211,16 @@ document.addEventListener("DOMContentLoaded", () => {
       img.src = basePath + extensions[attempt];
       img.onerror = () => {
         attempt++;
-        if (attempt < extensions.length) img.src = basePath + extensions[attempt];
-        else img.src = '/mo_data/pic/sys/no-image.png'; // 可選：增加預設圖
+        if (attempt < extensions.length) {
+          img.src = basePath + extensions[attempt];
+        } else {
+          // 如果真的沒圖片，隱藏 img 並在父容器顯示 -
+          img.style.display = 'none';
+          const noImgSpan = document.createElement('span');
+          noImgSpan.textContent = '-';
+          noImgSpan.style.cssText = 'width:50px; height:50px; display:flex; align-items:center; justify-content:center; background:#f8f8f8; border-radius:4px; border:1px solid #eee; font-weight:bold; color:#ccc;';
+          cardHeader.insertBefore(noImgSpan, img);
+        }
       };
       
       const title = document.createElement('h3');
@@ -210,7 +230,6 @@ document.addEventListener("DOMContentLoaded", () => {
       cardHeader.appendChild(img);
       cardHeader.appendChild(title);
 
-      // 建立卡片主體
       const cardBody = document.createElement('div');
       cardBody.className = 'card-body';
       cardBody.innerHTML = `
@@ -228,7 +247,7 @@ document.addEventListener("DOMContentLoaded", () => {
     cardContainer.appendChild(fragment);
   }
 
-  // === Modal 邏輯 (保持原樣但確保歸位) ===
+  // === Modal 邏輯 ===
   function showDetailModal(equip) {
     if (!modalContent) return;
     const materialsHTML = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]

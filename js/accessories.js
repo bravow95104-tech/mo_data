@@ -37,22 +37,17 @@ document.addEventListener("DOMContentLoaded", () => {
       return response.json();
     })
     .then(data => {
-      // 使用 trim() 避免空白字元影響
       heroesData = data.filter(item => item.class && item.class.trim() === "飾品");
-      console.log('載入飾品資料成功:', heroesData.length, '筆');
       applyFilters();
     })
     .catch(error => {
       console.error('載入飾品資料錯誤:', error);
-      const errorMsg = '<tr><td colspan="7" style="text-align:center; padding: 20px;">無法載入飾品資料，請檢查網路連線或稍後再試。</td></tr>';
       const tbody = document.querySelector('#heroes-table tbody');
-      if (tbody) tbody.innerHTML = errorMsg;
-      if (cardContainer) cardContainer.innerHTML = `<p style="text-align:center; padding:20px; color:red;">${errorMsg}</p>`;
+      if (tbody) tbody.innerHTML = '<tr><td colspan="7">無法載入飾品資料</td></tr>';
     });
 
   const searchInput = document.getElementById('searchInput');
 
-  // === 搜尋框事件 ===
   if (searchInput) {
     searchInput.addEventListener('input', () => {
       clearTimeout(searchTimer);
@@ -60,7 +55,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // === 篩選按鈕點擊事件 ===
   const filterButtons = document.querySelectorAll('.filter-btn');
   filterButtons.forEach(btn => {
     btn.addEventListener('click', () => {
@@ -80,7 +74,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // === 綜合篩選核心邏輯 ===
   function applyFilters() {
     const keyword = searchInput ? searchInput.value.trim().toLowerCase() : "";
 
@@ -115,7 +108,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // === 清除篩選 ===
   const clearBtn = document.getElementById('clearFilters');
   if (clearBtn) {
     clearBtn.addEventListener('click', () => {
@@ -153,9 +145,15 @@ document.addEventListener("DOMContentLoaded", () => {
         img.style.cssText = 'width:40px; height:40px; object-fit:contain; display:block; margin:0 auto; background:#f9f9f9; border-radius:4px; border:1px solid #eee;';
         img.onerror = () => {
           attempt++;
-          if (attempt < extensions.length) img.src = basePath + extensions[attempt];
+          if (attempt < extensions.length) {
+            img.src = basePath + extensions[attempt];
+          } else {
+            imgTd.textContent = '-';
+          }
         };
         imgTd.appendChild(img);
+      } else {
+        imgTd.textContent = '-';
       }
       tr.appendChild(imgTd);
 
@@ -230,8 +228,15 @@ document.addEventListener("DOMContentLoaded", () => {
       img.src = basePath + extensions[attempt];
       img.onerror = () => {
         attempt++;
-        if (attempt < extensions.length) img.src = basePath + extensions[attempt];
-        else img.src = '/mo_data/pic/sys/no-image.png';
+        if (attempt < extensions.length) {
+          img.src = basePath + extensions[attempt];
+        } else {
+          img.style.display = 'none';
+          const noImgSpan = document.createElement('span');
+          noImgSpan.textContent = '-';
+          noImgSpan.style.cssText = 'width:50px; height:50px; display:flex; align-items:center; justify-content:center; background:#f8f8f8; border-radius:4px; border:1px solid #eee; font-weight:bold; color:#ccc;';
+          cardHeader.insertBefore(noImgSpan, img);
+        }
       };
 
       const title = document.createElement('h3');
@@ -260,7 +265,6 @@ document.addEventListener("DOMContentLoaded", () => {
     cardContainer.appendChild(fragment);
   }
 
-  // === Modal 顯示 gain 內容 ===
   function showDetailModal(equip, effectName) {
     if (!modalContent) return;
     const gainHTML = (equip.gain && equip.gain.trim() !== "")

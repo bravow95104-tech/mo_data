@@ -29,9 +29,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // === 載入 JSON 資料 ===
   fetch('/mo_data/data/weapons.json')
-    .then(response => response.json())
+    .then(response => {
+      if (!response.ok) throw new Error('Network response was not ok');
+      return response.json();
+    })
     .then(data => {
-      heroesData = data.filter(item => item.class === "防具");
+      heroesData = data.filter(item => item.class && item.class.trim() === "防具");
       applyFilters();
     })
     .catch(error => {
@@ -42,11 +45,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const searchInput = document.getElementById('searchInput');
 
-  // === 搜尋與篩選事件 ===
-  searchInput.addEventListener('input', () => {
-    clearTimeout(searchTimer);
-    searchTimer = setTimeout(() => { applyFilters(); }, 200);
-  });
+  if (searchInput) {
+    searchInput.addEventListener('input', () => {
+      clearTimeout(searchTimer);
+      searchTimer = setTimeout(() => { applyFilters(); }, 200);
+    });
+  }
 
   document.querySelectorAll('.filter-btn').forEach(btn => {
     btn.addEventListener('click', () => {
@@ -57,15 +61,18 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  document.getElementById('clearFilters').addEventListener('click', () => {
-    activeFilter = null;
-    searchInput.value = '';
-    document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
-    applyFilters();
-  });
+  const clearBtn = document.getElementById('clearFilters');
+  if (clearBtn) {
+    clearBtn.addEventListener('click', () => {
+      activeFilter = null;
+      if (searchInput) searchInput.value = '';
+      document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+      applyFilters();
+    });
+  }
 
   function applyFilters() {
-    const keyword = searchInput.value.trim().toLowerCase();
+    const keyword = searchInput ? searchInput.value.trim().toLowerCase() : "";
     const filtered = heroesData.filter(hero => {
       const targetFields = [hero.item, hero.sort, hero.lv].join(' ').toLowerCase();
       const matchKeyword = keyword ? targetFields.includes(keyword) : true;
@@ -105,7 +112,7 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    const keyword = searchInput.value.trim().toLowerCase();
+    const keyword = searchInput ? searchInput.value.trim().toLowerCase() : "";
     const fragment = document.createDocumentFragment();
 
     data.forEach(hero => {
@@ -118,7 +125,6 @@ document.addEventListener("DOMContentLoaded", () => {
         return String(text).replace(regex, '<span class="highlight2">$1</span>');
       };
 
-      // 建立標頭與圖片
       const cardHeader = document.createElement('div');
       cardHeader.className = 'card-header';
 
@@ -130,8 +136,15 @@ document.addEventListener("DOMContentLoaded", () => {
       img.src = basePath + extensions[attempt];
       img.onerror = () => {
         attempt++;
-        if (attempt < extensions.length) img.src = basePath + extensions[attempt];
-        else img.src = '/mo_data/pic/sys/no-image.png';
+        if (attempt < extensions.length) {
+          img.src = basePath + extensions[attempt];
+        } else {
+          img.style.display = 'none';
+          const noImgSpan = document.createElement('span');
+          noImgSpan.textContent = '-';
+          noImgSpan.style.cssText = 'width:50px; height:50px; display:flex; align-items:center; justify-content:center; background:#f8f8f8; border-radius:4px; border:1px solid #eee; font-weight:bold; color:#ccc;';
+          cardHeader.insertBefore(noImgSpan, img);
+        }
       };
 
       const title = document.createElement('h3');
@@ -141,7 +154,6 @@ document.addEventListener("DOMContentLoaded", () => {
       cardHeader.appendChild(img);
       cardHeader.appendChild(title);
 
-      // 建立內容
       const cardBody = document.createElement('div');
       cardBody.className = 'card-body';
       cardBody.innerHTML = `
@@ -169,34 +181,34 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    const keyword = searchInput.value.trim().toLowerCase();
+    const keyword = searchInput ? searchInput.value.trim().toLowerCase() : "";
     const fragment = document.createDocumentFragment();
 
     data.forEach(hero => {
       const tr = document.createElement('tr');
-
-      // --- 圖片欄 ---
       const imgTd = document.createElement('td');
       imgTd.style.cssText = 'width:50px; height:50px; text-align:center; vertical-align:middle;';
       if (hero.item) {
         const img = document.createElement('img');
         const basePath = `/mo_data/pic/equipment/${hero.item}`;
-        const extensions = ['.png', '.jpg', '.bmp'];
+        const extensions = ['.png', '.bmp', '.jpg'];
         let attempt = 0;
         img.src = basePath + extensions[attempt];
         img.style.cssText = 'width:40px; height:40px; object-fit:contain; display:block; margin:0 auto; background:#f9f9f9; border-radius:4px; border:1px solid #eee;';
         img.onerror = () => {
           attempt++;
-          if (attempt < extensions.length) img.src = basePath + extensions[attempt];
-          else imgTd.textContent = '—';
+          if (attempt < extensions.length) {
+            img.src = basePath + extensions[attempt];
+          } else {
+            imgTd.textContent = '-';
+          }
         };
         imgTd.appendChild(img);
       } else {
-        imgTd.textContent = '—';
+        imgTd.textContent = '-';
       }
       tr.appendChild(imgTd);
 
-      // --- 資料欄位 ---
       const fields = ['item', 'lv', 'Property1', 'Property2', 'Durability', 'illustrate'];
       fields.forEach(field => {
         const td = document.createElement('td');
