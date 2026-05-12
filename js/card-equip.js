@@ -41,10 +41,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // B. 過濾資料
     let filteredData = allCardData.filter(card => {
-      const matchKeyword = (
-        (card.card_id && card.card_id.toLowerCase().includes(keyword)) ||
-        (card.hero_name && card.hero_name.toLowerCase().includes(keyword))
-      );
+      const matchKeyword = !keyword || [
+        card.card_id,
+        card.hero_name,
+        card.card_property,
+        card.card_lv,
+        card.card_data,
+        card.nemultiplier
+      ].some(val => String(val || "").toLowerCase().includes(keyword));
+      
       const matchCardProperty = activeCardProperties.length === 0 || (card.card_property && activeCardProperties.includes(card.card_property));
       const matchNemultiplier = activeNemultipliers.length === 0 || (card.nemultiplier && activeNemultipliers.includes(card.nemultiplier));
       const matchNewOld = activeNewOlds.length === 0 || (card.new_old && activeNewOlds.includes(card.new_old));
@@ -97,9 +102,19 @@ document.addEventListener("DOMContentLoaded", () => {
         const td = document.createElement('td');
         const value = card[field] || '-';
         const str = String(value);
-        if (keyword && str.toLowerCase().includes(keyword)) {
-          const regex = new RegExp(`(${keyword})`, "gi");
-          td.innerHTML = str.replace(regex, "<span class='highlight2'>$1</span>");
+        if (keyword) {
+          try {
+            const escapedKeyword = keyword.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+            const regex = new RegExp(`(${escapedKeyword})`, "gi");
+            if (str.toLowerCase().includes(keyword)) {
+              td.innerHTML = str.replace(regex, "<span class='highlight2'>$1</span>");
+            } else {
+              td.textContent = str;
+            }
+          } catch (e) {
+            console.error("Highlight error:", e);
+            td.textContent = str;
+          }
         } else {
           td.textContent = str;
         }
