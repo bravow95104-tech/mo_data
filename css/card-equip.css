@@ -376,4 +376,21 @@ th.sorted-desc .arrow-down { color: #ffffff !important; }
   .filter-btn {
     flex: 1 1 70px; /* 讓按鈕在小螢幕上可以稍微伸展 */
   }
+
+  /* 🚀 優化：手機版彈窗比例調整 */
+  #modalBox {
+    width: 85vw;       /* 縮小寬度，留出更多背景空間 */
+    max-height: 75vh;  /* 限制高度，避免佔滿全螢幕 */
+    padding: 15px;     /* 適度的內距 */
+    border-radius: 12px; /* 圓角加大，增加懸浮感 */
+  }
+
+  .hero-details-container {
+    flex-direction: column; /* 詳細資訊改為垂直排列 */
+    gap: 10px;
+  }
+
+  .hero-column {
+    padding: 15px;
+  }
 }
