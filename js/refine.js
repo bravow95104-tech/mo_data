@@ -346,11 +346,112 @@ document.addEventListener("DOMContentLoaded", () => {
       const result = document.getElementById("result");
       const mainList = getRefineValue(Math.floor(mainRefineInit * ratea));
       const subList = getRefineValue(Math.floor(subRefineInit * rateb));
-
+console.log("mainRefineInit", mainRefineInit, "subRefineInit", subRefineInit);
       if (result) result.innerHTML = calcResult(mainList, subList); // 預設顯示結果
+
+      const processResult = document.getElementById("process");
+      const mainProcessList = getProcessValue(mainRefineInit);
+      const subProcessList = getProcessValue(subRefineInit);
+      if (processResult) processResult.innerHTML = calcProcessResult(mainProcessList, subProcessList);
+
     });
   }
 });
+const getProcessValue = (value) => {
+    const calcValue = Number(value) || 0;
+  let res = [];
+  for (let index = 0; index < 9; index++) {
+    const rate = processLLevelRate[index];
+    const calc = calcValue * (1 + rate) + (index + 1);
+    res.push(Math.floor(calc));
+  }
+  return res;
+}
+const calcProcessResult = (mainList = [], subList = []) => {
+    const main = [...mainList];
+  const sub = [...subList];
+  if (main.length != 0 || sub.length != 0) {
+    let strList = [];
+    for (let index = 0; index < 9; index++) {
+      const str = ` <tr>
+                <td>${index + 1}</td>
+                <td>${main[index] || "-"}</td>
+                <td>${sub[index] || "-"}</td>
+              </tr>`;
+      strList.push(str);
+    }
+    const tbodyStr = strList.join("\n");
+    return `<table class="card-table">
+            <thead>
+              <tr>
+                <th>加工等級</th>
+                <th>防禦力/攻擊力</th>
+                <th>閃避/命中</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${tbodyStr}
+            </tbody>
+          </table>`;
+  }
+  return `<table class="card-table">
+            <thead>
+              <tr>
+                <th>加工等級</th>
+                <th>防禦力/攻擊力</th>
+                <th>閃避/命中</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>-</td>
+                <td>-</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>-</td>
+                <td>-</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>-</td>
+                <td>-</td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td>-</td>
+                <td>-</td>
+              </tr>
+              <tr>
+                <td>5</td>
+                <td>-</td>
+                <td>-</td>
+              </tr>
+              <tr>
+                <td>6</td>
+                <td>-</td>
+                <td>-</td>
+              </tr>
+              <tr>
+                <td>7</td>
+                <td>-</td>
+                <td>-</td>
+              </tr>
+              <tr>
+                <td>8</td>
+                <td>-</td>
+                <td>-</td>
+              </tr>
+              <tr>
+                <td>9</td>
+                <td>-</td>
+                <td>-</td>
+              </tr>
+
+            </tbody>
+          </table>`;
+}
 // 計算模組的資料夾路徑
 
 // searchDropdown.js
@@ -559,7 +660,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
 document.addEventListener("DOMContentLoaded", () => {
   const result = document.getElementById("result");
+  const process = document.getElementById("process");
   if (result) result.innerHTML = calcResult(); // 預設顯示結果
+  if (process) process.innerHTML = calcProcessResult(); // 預設顯示結果
 });
 
 document.addEventListener("DOMContentLoaded", function () {
