@@ -18,8 +18,9 @@ document.addEventListener("DOMContentLoaded", () => {
     fetch("/mo_data/data/detailed_map.json").then(res => res.json())
   ])
   .then(([cards, maps]) => {
-    allCardData = cards;
-    mapData = Array.isArray(maps) ? maps : maps.data;
+    const data = Array.isArray(cards) ? cards : (cards.data || []);
+    allCardData = data.filter(d => d.type === "裝備卡");
+    mapData = Array.isArray(maps) ? maps : (maps.data || []);
     initializeSortIcons();
     applyFiltersAndSort(); // 初始渲染
     updateSortIcons();
@@ -74,11 +75,11 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     }
     
-    renderTable(filteredData);
+    renderTable(filteredData, keyword);
   }
 
   // 3. 渲染表格
-  function renderTable(data) {
+  function renderTable(data, keyword) {
     if (!tableBody) return;
     tableBody.innerHTML = '';
 
@@ -94,7 +95,14 @@ document.addEventListener("DOMContentLoaded", () => {
       
       fields.forEach(field => {
         const td = document.createElement('td');
-        td.textContent = card[field] || '-';
+        const value = card[field] || '-';
+        const str = String(value);
+        if (keyword && str.toLowerCase().includes(keyword)) {
+          const regex = new RegExp(`(${keyword})`, "gi");
+          td.innerHTML = str.replace(regex, "<span class='highlight2'>$1</span>");
+        } else {
+          td.textContent = str;
+        }
         row.appendChild(td);
       });
       
@@ -239,7 +247,7 @@ function showDetailModal(item) {
       return dropList.includes(item.card_id);
     });
     if (foundMaps.length > 0) {
-      displayDrop = foundMaps.map(m => m.mapid).join('、');
+      displayDrop = foundMaps.map(m => m.mapid).join('、 ');
     } else {
       displayDrop = '未知';
     }
