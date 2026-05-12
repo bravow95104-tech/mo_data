@@ -246,38 +246,62 @@ document.addEventListener("DOMContentLoaded", () => {
       cardHeader.appendChild(img);
       cardHeader.appendChild(title);
 
+      const hasGain = hero.gain && hero.gain.trim() !== "";
+      const hasLinks = hero.illustrate && hero.illustrate.includes('^&');
+
       const cardBody = document.createElement('div');
       cardBody.className = 'card-body';
       cardBody.innerHTML = `
         <p><strong>等級：</strong>${hero.lv}</p>
         <p><strong>屬性：</strong>${highlight(hero.Property1)}</p>
-        <p><strong>說明：</strong>${hero.illustrate.replace(/\^&|&\^/g, "").substring(0, 50)}...</p>
+        <p><strong>說明：</strong>${hero.illustrate.replace(/\^&|&\^/g, "").substring(0, 50)}${hero.illustrate.length > 50 ? '...' : ''}</p>
+        ${(hasGain || hasLinks) ? '<p style="text-align:right; color:#3399ff; font-size:12px; margin-top:5px;">點擊查看詳情 ▾</p>' : ''}
       `;
 
       card.appendChild(cardHeader);
       card.appendChild(cardBody);
 
-      card.addEventListener('click', () => {
-          showDetailModal(hero, hero.item);
-      });
+      // 只有在有 gain 或關鍵字時才允許點擊整張卡片
+      if (hasGain || hasLinks) {
+          card.style.cursor = 'pointer';
+          card.addEventListener('click', () => {
+              showDetailModal(hero, hero.item);
+          });
+      }
+
       fragment.appendChild(card);
     });
     cardContainer.appendChild(fragment);
   }
 
-  function showDetailModal(equip, effectName) {
+  // === Modal 顯示內容 ===
+  function showDetailModal(equip, titleName) {
     if (!modalContent) return;
+
+    // 1. 完整說明區域 (不論有沒有詳情都顯示，解決說明被截斷的問題)
+    const illustrateHTML = `
+      <div class="hero-column-accessories">
+        <h3 class="modal-sub-title">完整說明</h3>
+        <p style="font-size: 16px; line-height: 1.6;">
+          ${equip.illustrate.replace(/\^&|&\^/g, "").replace(/\n/g, "<br>")}
+        </p>
+      </div>
+    `;
+
+    // 2. 詳細數值區域 (gain)
     const gainHTML = (equip.gain && equip.gain.trim() !== "")
-      ? `<div class="hero-column-accessories-details">
+      ? `<div class="hero-column-accessories-details" style="margin-top:15px;">
+           <h3 class="modal-sub-title">詳細效果</h3>
            <p style="font-size: 16px; line-height: 1.8; margin: 0; padding: 5px 0;">
              ${equip.gain.replace(/\n/g, "<br>")}
            </p>
          </div>`
-      : `<div class="hero-column-accessories-details"><p style="margin:0;">目前無詳細效果說明</p></div>`;
+      : "";
 
     modalContent.innerHTML = `
-      <h2 class="hero-name">${effectName} 詳情</h2>
-      <div class="hero-details-container" style="max-width: 100%; justify-content: center;">
+      <h2 class="hero-name">${titleName}</h2>
+      <div class="hero-details-container" style="max-width: 100%; justify-content: center; flex-direction:column;">
+           ${illustrateHTML}
            ${gainHTML}
       </div>
     `;
