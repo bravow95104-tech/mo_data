@@ -60,7 +60,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const filterButtons = document.querySelectorAll('.filter-btn');
   filterButtons.forEach(btn => {
     btn.addEventListener('click', () => {
-      const type = btn.getAttribute('data-type'); 
+      const type = btn.getAttribute('data-type');
       const value = btn.getAttribute('data-value');
 
       if (btn.classList.contains('active')) {
@@ -216,7 +216,7 @@ document.addEventListener("DOMContentLoaded", () => {
     data.forEach(hero => {
       const card = document.createElement('div');
       card.className = 'card-item';
-      
+
       const highlight = (text) => {
         if (!highlightKey) return text;
         const regex = new RegExp(`(${highlightKey.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
@@ -245,7 +245,7 @@ document.addEventListener("DOMContentLoaded", () => {
           cardHeader.insertBefore(noImgSpan, img);
         }
       };
-      
+
       const title = document.createElement('h3');
       title.className = 'card-title';
       title.innerHTML = highlight(hero.item);
@@ -257,7 +257,9 @@ document.addEventListener("DOMContentLoaded", () => {
       cardBody.className = 'card-body';
       cardBody.innerHTML = `
         <p><strong>等級：</strong>${hero.lv}</p>
-        <p><strong>屬性：</strong>${hero.Property1} / ${hero.Property2}</p>
+        <p><strong>攻擊：</strong>${hero.Property1}</p>
+        <p><strong>命中：</strong>${hero.Property2}</p>
+        <p><strong>耐用度：</strong>${hero.Property3}</p>
         <p><strong>說明：</strong>${highlight(hero.illustrate.replace(/\^&|&\^/g, "").substring(0, 50))}...</p>
       `;
 
