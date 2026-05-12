@@ -32,66 +32,68 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // === 載入 JSON 資料 ===
   fetch('/mo_data/data/accessories.json')
-    .then(response => response.json())
+    .then(response => {
+      if (!response.ok) throw new Error('Network response was not ok');
+      return response.json();
+    })
     .then(data => {
-      heroesData = data.filter(item => item.class === "飾品");
+      // 使用 trim() 避免空白字元影響
+      heroesData = data.filter(item => item.class && item.class.trim() === "飾品");
+      console.log('載入飾品資料成功:', heroesData.length, '筆');
       applyFilters();
     })
     .catch(error => {
       console.error('載入飾品資料錯誤:', error);
+      const errorMsg = '<tr><td colspan="7" style="text-align:center; padding: 20px;">無法載入飾品資料，請檢查網路連線或稍後再試。</td></tr>';
       const tbody = document.querySelector('#heroes-table tbody');
-      if (tbody) tbody.innerHTML = '<tr><td colspan="7">無法載入飾品資料</td></tr>';
+      if (tbody) tbody.innerHTML = errorMsg;
+      if (cardContainer) cardContainer.innerHTML = `<p style="text-align:center; padding:20px; color:red;">${errorMsg}</p>`;
     });
 
   const searchInput = document.getElementById('searchInput');
 
   // === 搜尋框事件 ===
-  searchInput.addEventListener('input', () => {
-    clearTimeout(searchTimer);
-    searchTimer = setTimeout(() => applyFilters(), 200);
-  });
+  if (searchInput) {
+    searchInput.addEventListener('input', () => {
+      clearTimeout(searchTimer);
+      searchTimer = setTimeout(() => applyFilters(), 200);
+    });
+  }
 
   // === 篩選按鈕點擊事件 ===
   const filterButtons = document.querySelectorAll('.filter-btn');
   filterButtons.forEach(btn => {
     btn.addEventListener('click', () => {
-      const type = btn.getAttribute('data-type'); // promotion 或 attr
+      const type = btn.getAttribute('data-type'); 
       const value = btn.getAttribute('data-value');
 
-      // 如果點擊已啟動的按鈕，就取消它
       if (btn.classList.contains('active')) {
         btn.classList.remove('active');
         activeFilters[type] = null;
       } else {
-        // 同一組 (type) 的按鈕先清除 active，達成單選效果
         document.querySelectorAll(`.filter-btn[data-type="${type}"]`)
           .forEach(b => b.classList.remove('active'));
-
         btn.classList.add('active');
         activeFilters[type] = value;
       }
-
-      applyFilters(); // 執行篩選
+      applyFilters();
     });
   });
 
   // === 綜合篩選核心邏輯 ===
   function applyFilters() {
-    const keyword = searchInput.value.trim().toLowerCase();
+    const keyword = searchInput ? searchInput.value.trim().toLowerCase() : "";
 
     const filtered = heroesData.filter(hero => {
-      // 1. 搜尋框篩選 (名稱 + 說明)
       const matchesSearch = [hero.item, hero.illustrate]
         .some(field => String(field || "").toLowerCase().includes(keyword));
 
-      // 2. 種類篩選 (對應 JSON 的 promotion 欄位，採完全比對)
       const matchesPromotion = activeFilters.promotion
         ? (hero.sort === activeFilters.promotion)
         : true;
 
-      // 3. 屬性篩選 (對應 JSON 的 illustrate 說明文字，採部分字詞包含比對)
       const matchesAttr = activeFilters.attr
-        ? (hero.illustrate && hero.illustrate.includes(activeFilters.attr))
+        ? (hero.illustrate && String(hero.illustrate).includes(activeFilters.attr))
         : true;
 
       return matchesSearch && matchesPromotion && matchesAttr;
@@ -114,14 +116,16 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // === 清除篩選 ===
-  document.getElementById('clearFilters').addEventListener('click', () => {
-    searchInput.value = '';
-    activeFilters.promotion = null;
-    activeFilters.attr = null;
-    filterButtons.forEach(btn => btn.classList.remove('active'));
-    applyFilters();
-  });
-
+  const clearBtn = document.getElementById('clearFilters');
+  if (clearBtn) {
+    clearBtn.addEventListener('click', () => {
+      if (searchInput) searchInput.value = '';
+      activeFilters.promotion = null;
+      activeFilters.attr = null;
+      filterButtons.forEach(btn => btn.classList.remove('active'));
+      applyFilters();
+    });
+  }
 
   // === 產生表格 ===
   function renderTable(data) {
@@ -133,13 +137,11 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    const keyword = searchInput.value.trim().toLowerCase();
+    const keyword = searchInput ? searchInput.value.trim().toLowerCase() : "";
     const fragment = document.createDocumentFragment();
 
     data.forEach(hero => {
       const tr = document.createElement('tr');
-
-      // --- 圖片欄位 ---
       const imgTd = document.createElement('td');
       imgTd.style.cssText = 'width:50px; height:50px; text-align:center; vertical-align:middle;';
       if (hero.item) {
@@ -157,7 +159,6 @@ document.addEventListener("DOMContentLoaded", () => {
       }
       tr.appendChild(imgTd);
 
-      // --- 其他欄位 ---
       const fields = ['item', 'lv', 'Property1', 'Property2', 'Durability', 'illustrate'];
       fields.forEach(field => {
         const td = document.createElement('td');
@@ -204,7 +205,7 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    const keyword = searchInput.value.trim().toLowerCase();
+    const keyword = searchInput ? searchInput.value.trim().toLowerCase() : "";
     const highlightKey = activeFilters.attr || keyword;
     const fragment = document.createDocumentFragment();
 
@@ -218,7 +219,6 @@ document.addEventListener("DOMContentLoaded", () => {
         return String(text).replace(regex, '<span class="highlight2">$1</span>');
       };
 
-      // 建立標頭與圖片
       const cardHeader = document.createElement('div');
       cardHeader.className = 'card-header';
 
@@ -241,7 +241,6 @@ document.addEventListener("DOMContentLoaded", () => {
       cardHeader.appendChild(img);
       cardHeader.appendChild(title);
 
-      // 建立內容
       const cardBody = document.createElement('div');
       cardBody.className = 'card-body';
       cardBody.innerHTML = `
