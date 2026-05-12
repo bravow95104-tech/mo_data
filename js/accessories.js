@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
   let heroesData = [];
+  let lastFilteredData = [];
   let searchTimer = null;
   let activeFilters = {
     promotion: null,
@@ -10,13 +11,31 @@ document.addEventListener("DOMContentLoaded", () => {
   const modalBox = document.getElementById('modalBox');
   const modalContent = document.getElementById('modalContent');
   const closeModalBtn = document.querySelector('.close-btn');
+  const tableContainer = document.getElementById('heroes-table');
+  const cardContainer = document.getElementById('hero-card-container');
+
+  // === 響應式判斷 ===
+  const isBelow768 = () => window.innerWidth <= 768;
+  let resizeFlag = isBelow768();
+  let resizeTimeout;
+
+  window.addEventListener("resize", () => {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(() => {
+      const currentFlag = isBelow768();
+      if (currentFlag !== resizeFlag) {
+        resizeFlag = currentFlag;
+        applyLayout();
+      }
+    }, 150);
+  });
 
   // === 載入 JSON 資料 ===
   fetch('/mo_data/data/accessories.json')
     .then(response => response.json())
     .then(data => {
       heroesData = data.filter(item => item.class === "飾品");
-      renderTable(heroesData);
+      applyFilters();
     })
     .catch(error => {
       console.error('載入飾品資料錯誤:', error);
@@ -71,7 +90,6 @@ document.addEventListener("DOMContentLoaded", () => {
         : true;
 
       // 3. 屬性篩選 (對應 JSON 的 illustrate 說明文字，採部分字詞包含比對)
-      // 這樣就算說明欄寫著 "體質+10、力量+5"，點擊 "體質" 也能過濾出來
       const matchesAttr = activeFilters.attr
         ? (hero.illustrate && hero.illustrate.includes(activeFilters.attr))
         : true;
@@ -79,7 +97,20 @@ document.addEventListener("DOMContentLoaded", () => {
       return matchesSearch && matchesPromotion && matchesAttr;
     });
 
-    renderTable(filtered);
+    lastFilteredData = filtered;
+    applyLayout();
+  }
+
+  function applyLayout() {
+    if (resizeFlag) {
+      renderCards(lastFilteredData);
+      if (tableContainer) tableContainer.style.display = 'none';
+      if (cardContainer) cardContainer.style.display = 'flex';
+    } else {
+      renderTable(lastFilteredData);
+      if (tableContainer) tableContainer.style.display = 'table';
+      if (cardContainer) cardContainer.style.display = 'none';
+    }
   }
 
   // === 清除篩選 ===
@@ -88,7 +119,7 @@ document.addEventListener("DOMContentLoaded", () => {
     activeFilters.promotion = null;
     activeFilters.attr = null;
     filterButtons.forEach(btn => btn.classList.remove('active'));
-    renderTable(heroesData);
+    applyFilters();
   });
 
 
@@ -96,15 +127,12 @@ document.addEventListener("DOMContentLoaded", () => {
   function renderTable(data) {
     const tbody = document.querySelector('#heroes-table tbody');
     if (!tbody) return;
-    // 1. 先清空原本的內容
     tbody.innerHTML = '';
-    // 2. ✅ 新增：判斷如果篩選後沒有資料，顯示提示文字
     if (data.length === 0) {
       tbody.innerHTML = '<tr><td colspan="7" style="text-align:center; padding: 20px;">找不到符合條件的飾品</td></tr>';
       return;
     }
 
-    // 3. 原本的渲染邏輯 (使用 fragment)
     const keyword = searchInput.value.trim().toLowerCase();
     const fragment = document.createDocumentFragment();
 
@@ -134,37 +162,25 @@ document.addEventListener("DOMContentLoaded", () => {
       fields.forEach(field => {
         const td = document.createElement('td');
         let value = hero[field] !== undefined ? String(hero[field]) : '';
-
-        // 🔹 統一取得高亮關鍵字
         const highlightKey = activeFilters.attr || keyword;
 
         if (field === 'illustrate') {
           const specialRegex = /\^&([\s\S]*?)&\^/g;
-
-          // 1. 先處理特殊連結符號
           if (value.includes('^&') && value.includes('&^')) {
             value = value.replace(specialRegex, '<span class="keyword-link">$1</span>');
           }
-
-          // 2. ✅ 無論有沒有連結，都要處理「屬性按鈕/搜尋」的高亮
           if (highlightKey) {
             const hRegex = new RegExp(`(${highlightKey.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
-            // 注意：為了不破壞剛剛產生的 keyword-link 標籤，我們只對文字部分高亮
             value = value.replace(hRegex, '<span class="highlight">$1</span>');
           }
-
           td.innerHTML = value.replace(/\n/g, '<br>');
-
-          // 3. 綁定點擊事件
           td.querySelectorAll('.keyword-link').forEach(link => {
             link.addEventListener('click', (e) => {
               e.stopPropagation();
               showDetailModal(hero, link.textContent);
             });
           });
-
         } else {
-          // 一般欄位的高亮
           if (highlightKey && value.toLowerCase().includes(highlightKey.toLowerCase())) {
             const regex = new RegExp(`(${highlightKey.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
             td.innerHTML = value.replace(regex, '<span class="highlight">$1</span>').replace(/\n/g, '<br>');
@@ -174,7 +190,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         tr.appendChild(td);
       });
-
       fragment.appendChild(tr);
     });
     tbody.appendChild(fragment);
@@ -216,8 +231,6 @@ document.addEventListener("DOMContentLoaded", () => {
       `;
 
       card.addEventListener('click', () => {
-          // 飾品頁面沒有材料彈窗，但有說明彈窗的需求嗎？
-          // 如果沒有，這裡可以留空或顯示說明詳情
           showDetailModal(hero, hero.item);
       });
       fragment.appendChild(card);
@@ -228,8 +241,6 @@ document.addEventListener("DOMContentLoaded", () => {
   // === Modal 顯示 gain 內容 ===
   function showDetailModal(equip, effectName) {
     if (!modalContent) return;
-
-    // ✅ 移除原本標籤內的 <br>，確保第一行文字不會下移
     const gainHTML = (equip.gain && equip.gain.trim() !== "")
       ? `<div class="hero-column-accessories-details">
            <p style="font-size: 16px; line-height: 1.8; margin: 0; padding: 5px 0;">

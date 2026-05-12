@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
   let heroesData = [];
+  let lastFilteredData = [];
   let searchTimer = null;
   let activeFilter = null;
 
@@ -7,13 +8,31 @@ document.addEventListener("DOMContentLoaded", () => {
   const modalBox = document.getElementById('modalBox');
   const modalContent = document.getElementById('modalContent');
   const closeModalBtn = document.querySelector('.close-btn');
+  const tableContainer = document.getElementById('heroes-table');
+  const cardContainer = document.getElementById('hero-card-container');
+
+  // === 響應式判斷 ===
+  const isBelow768 = () => window.innerWidth <= 768;
+  let resizeFlag = isBelow768();
+  let resizeTimeout;
+
+  window.addEventListener("resize", () => {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(() => {
+      const currentFlag = isBelow768();
+      if (currentFlag !== resizeFlag) {
+        resizeFlag = currentFlag;
+        applyLayout();
+      }
+    }, 150);
+  });
 
   // === 載入 JSON 資料 ===
   fetch('/mo_data/data/weapons.json')
     .then(response => response.json())
     .then(data => {
       heroesData = data.filter(item => item.class === "防具");
-      renderTable(heroesData);
+      applyFilters();
     })
     .catch(error => {
       console.error('載入防具資料錯誤:', error);
@@ -42,7 +61,7 @@ document.addEventListener("DOMContentLoaded", () => {
     activeFilter = null;
     searchInput.value = '';
     document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
-    renderTable(heroesData);
+    applyFilters();
   });
 
   function applyFilters() {
@@ -61,7 +80,20 @@ document.addEventListener("DOMContentLoaded", () => {
       }
       return matchKeyword && matchFilter;
     });
-    renderTable(filtered);
+    lastFilteredData = filtered;
+    applyLayout();
+  }
+
+  function applyLayout() {
+    if (resizeFlag) {
+      renderCards(lastFilteredData);
+      if (tableContainer) tableContainer.style.display = 'none';
+      if (cardContainer) cardContainer.style.display = 'flex';
+    } else {
+      renderTable(lastFilteredData);
+      if (tableContainer) tableContainer.style.display = 'table';
+      if (cardContainer) cardContainer.style.display = 'none';
+    }
   }
 
   // === 產生卡片 (手機版) ===
@@ -108,15 +140,12 @@ document.addEventListener("DOMContentLoaded", () => {
   function renderTable(data) {
     const tbody = document.querySelector('#heroes-table tbody');
     if (!tbody) return;
-    // 1. 先清空原本的內容
     tbody.innerHTML = '';
-    // 2. ✅ 新增：判斷如果篩選後沒有資料，顯示提示文字 (保持風格一致)
     if (data.length === 0) {
       tbody.innerHTML = '<tr><td colspan="7" style="text-align:center; padding: 20px;">找不到符合條件的防具</td></tr>';
       return;
     }
 
-    // 3. 原本的渲染邏輯 (使用 fragment)
     const keyword = searchInput.value.trim().toLowerCase();
     const fragment = document.createDocumentFragment();
 
@@ -252,20 +281,15 @@ document.addEventListener("DOMContentLoaded", () => {
     modalBox.style.display = "none";
   }
 
-  // --- 事件監聽器 (統一放置) ---
-
-  // 1. 關閉按鈕與遮罩
   if (closeModalBtn) closeModalBtn.addEventListener("click", closeModal);
   if (modalOverlay) modalOverlay.addEventListener("click", closeModal);
 
-  // 2. 按下 ESC 鍵關閉
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape" && modalBox.style.display === "block") {
       closeModal();
     }
   });
 
-  // 3. Accordion 邏輯
   document.querySelectorAll(".accordion-header").forEach((header) => {
     header.addEventListener("click", () => {
       header.parentElement.classList.toggle("collapsed");
