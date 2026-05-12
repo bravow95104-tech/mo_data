@@ -1,7 +1,12 @@
 document.addEventListener("DOMContentLoaded", () => {
   let heroesData = [];
   let lastFilteredData = [];
-  let activeFilter = null;
+  let activeFilters = {
+    promotion: null,
+    personality: null,
+    job: null,
+    attr: null
+  };
   let searchTimer = null;
 
   // === 響應式判斷 ===
@@ -52,11 +57,21 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  document.querySelectorAll('.filter-btn').forEach(btn => {
+  const filterButtons = document.querySelectorAll('.filter-btn');
+  filterButtons.forEach(btn => {
     btn.addEventListener('click', () => {
-      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      activeFilter = { type: btn.dataset.type, value: btn.dataset.value };
+      const type = btn.getAttribute('data-type'); 
+      const value = btn.getAttribute('data-value');
+
+      if (btn.classList.contains('active')) {
+        btn.classList.remove('active');
+        activeFilters[type] = null;
+      } else {
+        document.querySelectorAll(`.filter-btn[data-type="${type}"]`)
+          .forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        activeFilters[type] = value;
+      }
       applyFilters();
     });
   });
@@ -64,9 +79,14 @@ document.addEventListener("DOMContentLoaded", () => {
   const clearBtn = document.getElementById('clearFilters');
   if (clearBtn) {
     clearBtn.addEventListener('click', () => {
-      searchInput.value = '';
-      activeFilter = null;
-      document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+      if (searchInput) searchInput.value = '';
+      activeFilters = {
+        promotion: null,
+        personality: null,
+        job: null,
+        attr: null
+      };
+      filterButtons.forEach(btn => btn.classList.remove('active'));
       applyFilters();
     });
   }
@@ -74,20 +94,15 @@ document.addEventListener("DOMContentLoaded", () => {
   function applyFilters() {
     const keyword = searchInput ? searchInput.value.trim().toLowerCase() : "";
     const filtered = heroesData.filter(hero => {
-      if (activeFilter) {
-        const { type, value } = activeFilter;
-        if (type === "promotion" || type === "personality") {
-          if (hero.sort !== value) return false;
-        }
-        if (type === "job") {
-          if (hero.job !== value) return false;
-        }
-      }
-      if (keyword) {
-        const targetFields = [hero.item, hero.sort, hero.lv, hero.job].join(' ').toLowerCase();
-        if (!targetFields.includes(keyword)) return false;
-      }
-      return true;
+      const matchesSearch = [hero.item, hero.illustrate]
+        .some(field => String(field || "").toLowerCase().includes(keyword));
+
+      const matchPromotion = activeFilters.promotion ? hero.sort === activeFilters.promotion : true;
+      const matchPersonality = activeFilters.personality ? hero.sort === activeFilters.personality : true;
+      const matchJob = activeFilters.job ? hero.job === activeFilters.job : true;
+      const matchAttr = activeFilters.attr ? (hero.illustrate && String(hero.illustrate).includes(activeFilters.attr)) : true;
+
+      return matchesSearch && matchPromotion && matchPersonality && matchJob && matchAttr;
     });
     lastFilteredData = filtered;
     applyLayout();
@@ -116,6 +131,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     const keyword = searchInput ? searchInput.value.trim().toLowerCase() : "";
+    const highlightKey = activeFilters.attr || keyword;
     const fragment = document.createDocumentFragment();
 
     data.forEach(hero => {
@@ -150,7 +166,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (field === 'illustrate') {
           const specialRegex = /\^&([\s\S]*?)&\^/g;
-          value = value.replace(specialRegex, '<span class="keyword-link">$1</span>');
+          if (value.includes('^&') && value.includes('&^')) {
+            value = value.replace(specialRegex, '<span class="keyword-link">$1</span>');
+          }
+          if (highlightKey) {
+            const hRegex = new RegExp(`(${highlightKey.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
+            value = value.replace(hRegex, '<span class="highlight">$1</span>');
+          }
           td.innerHTML = value.replace(/\n/g, '<br>');
           td.querySelectorAll('.keyword-link').forEach(link => {
             link.addEventListener('click', (e) => {
@@ -159,8 +181,8 @@ document.addEventListener("DOMContentLoaded", () => {
             });
           });
         } else {
-          if (keyword && value.toLowerCase().includes(keyword)) {
-            const regex = new RegExp(`(${keyword})`, 'gi');
+          if (highlightKey && value.toLowerCase().includes(highlightKey.toLowerCase())) {
+            const regex = new RegExp(`(${highlightKey.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
             td.innerHTML = value.replace(regex, '<span class="highlight2">$1</span>').replace(/\n/g, '<br>');
           } else {
             td.innerHTML = value.replace(/\n/g, '<br>');
@@ -188,6 +210,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     const keyword = searchInput ? searchInput.value.trim().toLowerCase() : "";
+    const highlightKey = activeFilters.attr || keyword;
     const fragment = document.createDocumentFragment();
 
     data.forEach(hero => {
@@ -195,8 +218,8 @@ document.addEventListener("DOMContentLoaded", () => {
       card.className = 'card-item';
       
       const highlight = (text) => {
-        if (!keyword) return text;
-        const regex = new RegExp(`(${keyword.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
+        if (!highlightKey) return text;
+        const regex = new RegExp(`(${highlightKey.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
         return String(text).replace(regex, '<span class="highlight2">$1</span>');
       };
 
@@ -235,7 +258,7 @@ document.addEventListener("DOMContentLoaded", () => {
       cardBody.innerHTML = `
         <p><strong>等級：</strong>${hero.lv}</p>
         <p><strong>屬性：</strong>${hero.Property1} / ${hero.Property2}</p>
-        <p><strong>說明：</strong>${hero.illustrate.replace(/\^&|&\^/g, "").substring(0, 50)}...</p>
+        <p><strong>說明：</strong>${highlight(hero.illustrate.replace(/\^&|&\^/g, "").substring(0, 50))}...</p>
       `;
 
       card.appendChild(cardHeader);

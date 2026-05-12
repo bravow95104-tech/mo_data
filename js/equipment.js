@@ -2,7 +2,12 @@ document.addEventListener("DOMContentLoaded", () => {
   let heroesData = [];
   let lastFilteredData = [];
   let searchTimer = null;
-  let activeFilter = null;
+  let activeFilters = {
+    promotion: null,
+    personality: null,
+    job: null,
+    attr: null
+  };
 
   const modalOverlay = document.getElementById('modalOverlay');
   const modalBox = document.getElementById('modalBox');
@@ -52,11 +57,21 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  document.querySelectorAll('.filter-btn').forEach(btn => {
+  const filterButtons = document.querySelectorAll('.filter-btn');
+  filterButtons.forEach(btn => {
     btn.addEventListener('click', () => {
-      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      activeFilter = { type: btn.dataset.type, value: btn.dataset.value };
+      const type = btn.getAttribute('data-type'); 
+      const value = btn.getAttribute('data-value');
+
+      if (btn.classList.contains('active')) {
+        btn.classList.remove('active');
+        activeFilters[type] = null;
+      } else {
+        document.querySelectorAll(`.filter-btn[data-type="${type}"]`)
+          .forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        activeFilters[type] = value;
+      }
       applyFilters();
     });
   });
@@ -64,9 +79,14 @@ document.addEventListener("DOMContentLoaded", () => {
   const clearBtn = document.getElementById('clearFilters');
   if (clearBtn) {
     clearBtn.addEventListener('click', () => {
-      activeFilter = null;
       if (searchInput) searchInput.value = '';
-      document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+      activeFilters = {
+        promotion: null,
+        personality: null,
+        job: null,
+        attr: null
+      };
+      filterButtons.forEach(btn => btn.classList.remove('active'));
       applyFilters();
     });
   }
@@ -74,18 +94,15 @@ document.addEventListener("DOMContentLoaded", () => {
   function applyFilters() {
     const keyword = searchInput ? searchInput.value.trim().toLowerCase() : "";
     const filtered = heroesData.filter(hero => {
-      const targetFields = [hero.item, hero.sort, hero.lv].join(' ').toLowerCase();
-      const matchKeyword = keyword ? targetFields.includes(keyword) : true;
-      let matchFilter = true;
-      if (activeFilter) {
-        const { type, value } = activeFilter;
-        if (type === "promotion" || type === "personality") {
-          matchFilter = hero.sort === value;
-        } else if (type === "job") {
-          matchFilter = hero.job === value;
-        }
-      }
-      return matchKeyword && matchFilter;
+      const matchesSearch = [hero.item, hero.illustrate]
+        .some(field => String(field || "").toLowerCase().includes(keyword));
+
+      const matchPromotion = activeFilters.promotion ? hero.sort === activeFilters.promotion : true;
+      const matchPersonality = activeFilters.personality ? hero.sort === activeFilters.personality : true;
+      const matchJob = activeFilters.job ? hero.job === activeFilters.job : true;
+      const matchAttr = activeFilters.attr ? (hero.illustrate && String(hero.illustrate).includes(activeFilters.attr)) : true;
+
+      return matchesSearch && matchPromotion && matchPersonality && matchJob && matchAttr;
     });
     lastFilteredData = filtered;
     applyLayout();
@@ -113,6 +130,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     const keyword = searchInput ? searchInput.value.trim().toLowerCase() : "";
+    const highlightKey = activeFilters.attr || keyword;
     const fragment = document.createDocumentFragment();
 
     data.forEach(hero => {
@@ -120,8 +138,8 @@ document.addEventListener("DOMContentLoaded", () => {
       card.className = 'card-item';
       
       const highlight = (text) => {
-        if (!keyword) return text;
-        const regex = new RegExp(`(${keyword.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
+        if (!highlightKey) return text;
+        const regex = new RegExp(`(${highlightKey.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
         return String(text).replace(regex, '<span class="highlight2">$1</span>');
       };
 
@@ -159,7 +177,7 @@ document.addEventListener("DOMContentLoaded", () => {
       cardBody.innerHTML = `
         <p><strong>等級：</strong>${hero.lv}</p>
         <p><strong>屬性：</strong>${hero.Property1} / ${hero.Property2}</p>
-        <p><strong>說明：</strong>${hero.illustrate.replace(/\^&|&\^/g, "").substring(0, 50)}...</p>
+        <p><strong>說明：</strong>${highlight(hero.illustrate.replace(/\^&|&\^/g, "").substring(0, 50))}...</p>
       `;
 
       card.appendChild(cardHeader);
@@ -182,6 +200,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     const keyword = searchInput ? searchInput.value.trim().toLowerCase() : "";
+    const highlightKey = activeFilters.attr || keyword;
     const fragment = document.createDocumentFragment();
 
     data.forEach(hero => {
@@ -218,20 +237,22 @@ document.addEventListener("DOMContentLoaded", () => {
           const specialRegex = /\^&([\s\S]*?)&\^/g;
           if (value.includes('^&') && value.includes('&^')) {
             value = value.replace(specialRegex, '<span class="keyword-link">$1</span>');
-            td.innerHTML = value.replace(/\n/g, '<br>');
-            td.querySelectorAll('.keyword-link').forEach(link => {
-              link.addEventListener('click', (e) => {
-                e.stopPropagation();
-                showGainModal(hero, link.textContent);
-              });
-            });
-          } else {
-            td.innerHTML = value.replace(/\n/g, '<br>');
           }
+          if (highlightKey) {
+            const hRegex = new RegExp(`(${highlightKey.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
+            value = value.replace(hRegex, '<span class="highlight">$1</span>');
+          }
+          td.innerHTML = value.replace(/\n/g, '<br>');
+          td.querySelectorAll('.keyword-link').forEach(link => {
+            link.addEventListener('click', (e) => {
+              e.stopPropagation();
+              showGainModal(hero, link.textContent);
+            });
+          });
         } else {
-          if (keyword && value.toLowerCase().includes(keyword)) {
-            const regex = new RegExp(`(${keyword})`, 'gi');
-            td.innerHTML = value.replace(regex, '<span class="highlight2">$1</span>').replace(/\n/g, '<br>');
+          if (highlightKey && value.toLowerCase().includes(highlightKey.toLowerCase())) {
+            const regex = new RegExp(`(${highlightKey.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
+            td.innerHTML = value.replace(regex, '<span class="highlight">$1</span>').replace(/\n/g, '<br>');
           } else {
             td.innerHTML = value.replace(/\n/g, '<br>');
           }
