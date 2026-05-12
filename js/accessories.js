@@ -124,11 +124,8 @@ document.addEventListener("DOMContentLoaded", () => {
         img.onerror = () => {
           attempt++;
           if (attempt < extensions.length) img.src = basePath + extensions[attempt];
-          else imgTd.textContent = '—';
         };
         imgTd.appendChild(img);
-      } else {
-        imgTd.textContent = '—';
       }
       tr.appendChild(imgTd);
 
@@ -151,7 +148,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
           // 2. ✅ 無論有沒有連結，都要處理「屬性按鈕/搜尋」的高亮
           if (highlightKey) {
-            const hRegex = new RegExp(`(${highlightKey})`, 'gi');
+            const hRegex = new RegExp(`(${highlightKey.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
             // 注意：為了不破壞剛剛產生的 keyword-link 標籤，我們只對文字部分高亮
             value = value.replace(hRegex, '<span class="highlight">$1</span>');
           }
@@ -169,7 +166,7 @@ document.addEventListener("DOMContentLoaded", () => {
         } else {
           // 一般欄位的高亮
           if (highlightKey && value.toLowerCase().includes(highlightKey.toLowerCase())) {
-            const regex = new RegExp(`(${highlightKey})`, 'gi');
+            const regex = new RegExp(`(${highlightKey.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
             td.innerHTML = value.replace(regex, '<span class="highlight">$1</span>').replace(/\n/g, '<br>');
           } else {
             td.innerHTML = value.replace(/\n/g, '<br>');
@@ -181,6 +178,51 @@ document.addEventListener("DOMContentLoaded", () => {
       fragment.appendChild(tr);
     });
     tbody.appendChild(fragment);
+  }
+
+  // === 產生卡片 (手機版) ===
+  function renderCards(data) {
+    if (!cardContainer) return;
+    cardContainer.innerHTML = '';
+    if (data.length === 0) {
+      cardContainer.innerHTML = '<p style="text-align:center; padding: 20px; color: #999;">找不到符合條件的飾品</p>';
+      return;
+    }
+
+    const keyword = searchInput.value.trim().toLowerCase();
+    const highlightKey = activeFilters.attr || keyword;
+    const fragment = document.createDocumentFragment();
+
+    data.forEach(hero => {
+      const card = document.createElement('div');
+      card.className = 'card-item';
+      
+      const highlight = (text) => {
+        if (!highlightKey) return text;
+        const regex = new RegExp(`(${highlightKey.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
+        return String(text).replace(regex, '<span class="highlight2">$1</span>');
+      };
+
+      card.innerHTML = `
+        <div class="card-header">
+          <img class="card-icon" src="/mo_data/pic/accessories/${hero.item}.png" onerror="this.src='/mo_data/pic/accessories/${hero.item}.bmp'; this.onerror=null;">
+          <h3 class="card-title">${highlight(hero.item)}</h3>
+        </div>
+        <div class="card-body">
+          <p><strong>等級：</strong>${hero.lv}</p>
+          <p><strong>屬性：</strong>${highlight(hero.Property1)}</p>
+          <p><strong>說明：</strong>${hero.illustrate.replace(/\^&|&\^/g, "").substring(0, 50)}...</p>
+        </div>
+      `;
+
+      card.addEventListener('click', () => {
+          // 飾品頁面沒有材料彈窗，但有說明彈窗的需求嗎？
+          // 如果沒有，這裡可以留空或顯示說明詳情
+          showDetailModal(hero, hero.item);
+      });
+      fragment.appendChild(card);
+    });
+    cardContainer.appendChild(fragment);
   }
 
   // === Modal 顯示 gain 內容 ===
@@ -204,6 +246,9 @@ document.addEventListener("DOMContentLoaded", () => {
     `;
     modalOverlay.style.display = "block";
     modalBox.style.display = "block";
+    setTimeout(() => {
+      modalBox.scrollTop = 0;
+    }, 0);
   }
 
   function closeModal() {

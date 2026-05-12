@@ -64,6 +64,46 @@ document.addEventListener("DOMContentLoaded", () => {
     renderTable(filtered);
   }
 
+  // === 產生卡片 (手機版) ===
+  function renderCards(data) {
+    if (!cardContainer) return;
+    cardContainer.innerHTML = '';
+    if (data.length === 0) {
+      cardContainer.innerHTML = '<p style="text-align:center; padding: 20px; color: #999;">找不到符合條件的防具</p>';
+      return;
+    }
+
+    const keyword = searchInput.value.trim().toLowerCase();
+    const fragment = document.createDocumentFragment();
+
+    data.forEach(hero => {
+      const card = document.createElement('div');
+      card.className = 'card-item';
+      
+      const highlight = (text) => {
+        if (!keyword) return text;
+        const regex = new RegExp(`(${keyword.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
+        return String(text).replace(regex, '<span class="highlight2">$1</span>');
+      };
+
+      card.innerHTML = `
+        <div class="card-header">
+          <img class="card-icon" src="/mo_data/pic/equipment/${hero.item}.png" onerror="this.src='/mo_data/pic/equipment/${hero.item}.bmp'; this.onerror=null;">
+          <h3 class="card-title">${highlight(hero.item)}</h3>
+        </div>
+        <div class="card-body">
+          <p><strong>等級：</strong>${hero.lv}</p>
+          <p><strong>屬性：</strong>${hero.Property1} / ${hero.Property2}</p>
+          <p><strong>說明：</strong>${hero.illustrate.replace(/\^&|&\^/g, "").substring(0, 50)}...</p>
+        </div>
+      `;
+
+      card.addEventListener('click', () => showDetailModal(hero));
+      fragment.appendChild(card);
+    });
+    cardContainer.appendChild(fragment);
+  }
+
   // === 產生表格 ===
   function renderTable(data) {
     const tbody = document.querySelector('#heroes-table tbody');

@@ -1,20 +1,38 @@
 document.addEventListener("DOMContentLoaded", () => {
   let heroesData = [];
+  let lastFilteredData = [];
   let activeFilter = null;
   let searchTimer = null;
+
+  // === 響應式判斷 ===
+  const isBelow768 = () => window.innerWidth <= 768;
+  let resizeFlag = isBelow768();
+  let resizeTimeout;
+
+  window.addEventListener("resize", () => {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(() => {
+      const currentFlag = isBelow768();
+      if (currentFlag !== resizeFlag) {
+        resizeFlag = currentFlag;
+        applyLayout();
+      }
+    }, 150);
+  });
 
   const modalOverlay = document.getElementById('modalOverlay');
   const modalBox = document.getElementById('modalBox');
   const modalContent = document.getElementById('modalContent');
   const closeModalBtn = document.querySelector('.close-btn');
+  const tableContainer = document.getElementById('heroes-table');
+  const cardContainer = document.getElementById('hero-card-container');
 
   // === 載入 JSON 資料 ===
   fetch('/mo_data/data/weapons.json')
     .then(response => response.json())
     .then(data => {
-      // ✅ 預先篩出武器
       heroesData = data.filter(item => item.class === "武器");
-      renderTable(heroesData);
+      applyFilters();
     })
     .catch(error => {
       console.error('載入武器資料錯誤:', error);
@@ -24,13 +42,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const searchInput = document.getElementById('searchInput');
 
-  // === 搜尋框事件 ===
   searchInput.addEventListener('input', () => {
     clearTimeout(searchTimer);
     searchTimer = setTimeout(() => { applyFilters(); }, 200);
   });
 
-  // === 篩選按鈕 ===
   document.querySelectorAll('.filter-btn').forEach(btn => {
     btn.addEventListener('click', () => {
       document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
@@ -40,12 +56,11 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // === 清除篩選 ===
   document.getElementById('clearFilters').addEventListener('click', () => {
     searchInput.value = '';
     activeFilter = null;
     document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
-    renderTable(heroesData);
+    applyFilters();
   });
 
   function applyFilters() {
@@ -66,29 +81,33 @@ document.addEventListener("DOMContentLoaded", () => {
       }
       return true;
     });
-    renderTable(filtered);
+    lastFilteredData = filtered;
+    applyLayout();
   }
 
-  // === 產生表格 ===
+  function applyLayout() {
+    if (resizeFlag) {
+      renderCards(lastFilteredData);
+    } else {
+      renderTable(lastFilteredData);
+    }
+  }
+
+  // === 產生表格 (電腦版) ===
   function renderTable(data) {
     const tbody = document.querySelector('#heroes-table tbody');
     if (!tbody) return;
-    // 1. 先清空原本的內容
     tbody.innerHTML = '';
-    // 2. ✅ 新增：判斷如果篩選後沒有資料，顯示提示文字 (保持與飾品頁面一致)
     if (data.length === 0) {
       tbody.innerHTML = '<tr><td colspan="7" style="text-align:center; padding: 20px;">找不到符合條件的武器</td></tr>';
       return;
     }
 
-    // 3. 原本的渲染邏輯 (使用 fragment)
     const keyword = searchInput.value.trim().toLowerCase();
     const fragment = document.createDocumentFragment();
 
     data.forEach(hero => {
       const tr = document.createElement('tr');
-
-      // --- 圖片欄 ---
       const imgTd = document.createElement('td');
       imgTd.style.cssText = 'width:50px; height:50px; text-align:center; vertical-align:middle;';
       if (hero.item) {
@@ -101,15 +120,11 @@ document.addEventListener("DOMContentLoaded", () => {
         img.onerror = () => {
           attempt++;
           if (attempt < extensions.length) img.src = basePath + extensions[attempt];
-          else imgTd.textContent = '—';
         };
         imgTd.appendChild(img);
-      } else {
-        imgTd.textContent = '—';
       }
       tr.appendChild(imgTd);
 
-      // --- 資料欄位 ---
       const fields = ['item', 'lv', 'Property1', 'Property2', 'Durability', 'illustrate'];
       fields.forEach(field => {
         const td = document.createElement('td');
@@ -117,23 +132,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (field === 'illustrate') {
           const specialRegex = /\^&([\s\S]*?)&\^/g;
-          if (value.includes('^&') && value.includes('&^')) {
-            // 轉化為虛線連結
-            value = value.replace(specialRegex, '<span class="keyword-link">$1</span>');
-            td.innerHTML = value.replace(/\n/g, '<br>');
-
-            // 點擊虛線開啟 gain 彈窗
-            td.querySelectorAll('.keyword-link').forEach(link => {
-              link.addEventListener('click', (e) => {
-                e.stopPropagation(); // 阻止觸發 tr 的材料彈窗
-                showGainModal(hero, link.textContent);
-              });
+          value = value.replace(specialRegex, '<span class="keyword-link">$1</span>');
+          td.innerHTML = value.replace(/\n/g, '<br>');
+          td.querySelectorAll('.keyword-link').forEach(link => {
+            link.addEventListener('click', (e) => {
+              e.stopPropagation();
+              showGainModal(hero, link.textContent);
             });
-          } else {
-            td.innerHTML = value.replace(/\n/g, '<br>');
-          }
+          });
         } else {
-          // 一般高亮
           if (keyword && value.toLowerCase().includes(keyword)) {
             const regex = new RegExp(`(${keyword})`, 'gi');
             td.innerHTML = value.replace(regex, '<span class="highlight2">$1</span>').replace(/\n/g, '<br>');
@@ -144,19 +151,56 @@ document.addEventListener("DOMContentLoaded", () => {
         tr.appendChild(td);
       });
 
-      // 整列點擊顯示材料
-      const hasMaterial = hero.material1 && String(hero.material1).trim() !== "";
-      if (hasMaterial) {
+      if (hero.material1 && String(hero.material1).trim() !== "") {
         tr.style.cursor = "pointer";
         tr.addEventListener('click', () => showDetailModal(hero));
       }
-
       fragment.appendChild(tr);
     });
     tbody.appendChild(fragment);
   }
 
-  // === Modal 1: 製作材料 ===
+  // === 產生卡片 (手機版) ===
+  function renderCards(data) {
+    if (!cardContainer) return;
+    cardContainer.innerHTML = '';
+    if (data.length === 0) {
+      cardContainer.innerHTML = '<p style="text-align:center; padding: 20px; color: #999;">找不到符合條件的武器</p>';
+      return;
+    }
+
+    const keyword = searchInput.value.trim().toLowerCase();
+    const fragment = document.createDocumentFragment();
+
+    data.forEach(hero => {
+      const card = document.createElement('div');
+      card.className = 'card-item';
+      
+      const highlight = (text) => {
+        if (!keyword) return text;
+        const regex = new RegExp(`(${keyword.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
+        return String(text).replace(regex, '<span class="highlight2">$1</span>');
+      };
+
+      card.innerHTML = `
+        <div class="card-header">
+          <img class="card-icon" src="/mo_data/pic/weapons/${hero.item}.png" onerror="this.src='/mo_data/pic/weapons/${hero.item}.bmp'; this.onerror=null;">
+          <h3 class="card-title">${highlight(hero.item)}</h3>
+        </div>
+        <div class="card-body">
+          <p><strong>等級：</strong>${hero.lv}</p>
+          <p><strong>屬性：</strong>${hero.Property1} / ${hero.Property2}</p>
+          <p><strong>說明：</strong>${hero.illustrate.replace(/\^&|&\^/g, "").substring(0, 50)}...</p>
+        </div>
+      `;
+
+      card.addEventListener('click', () => showDetailModal(hero));
+      fragment.appendChild(card);
+    });
+    cardContainer.appendChild(fragment);
+  }
+
+  // === Modal 邏輯 (保持原樣但確保歸位) ===
   function showDetailModal(equip) {
     if (!modalContent) return;
     const materialsHTML = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
@@ -189,7 +233,6 @@ document.addEventListener("DOMContentLoaded", () => {
     openModal();
   }
 
-  // === Modal 2: 增益詳情 (點擊文字觸發) ===
   function showGainModal(equip, effectName) {
     if (!modalContent) return;
     const gainContent = (equip.gain && equip.gain.trim() !== "")
@@ -212,9 +255,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function openModal() {
     modalOverlay.style.display = "block";
     modalBox.style.display = "block";
-    setTimeout(() => {
-      modalBox.scrollTop = 0;
-    }, 0);
+    modalBox.scrollTop = 0;
   }
 
   function closeModal() {
@@ -222,7 +263,6 @@ document.addEventListener("DOMContentLoaded", () => {
     modalBox.style.display = "none";
   }
 
-  // === 事件監聽 (關閉與摺疊) ===
   if (closeModalBtn) closeModalBtn.addEventListener("click", closeModal);
   if (modalOverlay) modalOverlay.addEventListener("click", closeModal);
 
