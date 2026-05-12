@@ -281,7 +281,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const illustrateHTML = (equip.illustrate && equip.illustrate.trim() !== "")
       ? `<div class="hero-column-base hero-column-details" style="grid-column: span 2; border-top: 1px solid #ddd; padding-top: 10px;">
-           <p><h3 class="modal-sub-title">說明</h3><br>${equip.illustrate.replace(/\^&|&\^/g, "").replace(/\n/g, "<br>")}</p>
+           <h3 class="modal-sub-title">說明</h3>
+           <p style="font-size: 16px; line-height: 1.6;">${equip.illustrate.replace(/\^&|&\^/g, "").replace(/\n/g, "<br>")}</p>
+         </div>`
+      : "";
+
+    const gainHTML = (equip.gain && equip.gain.trim() !== "")
+      ? `<div class="hero-column-base hero-column-details" style="grid-column: span 2; border-top: 1px solid #ddd; padding-top: 10px;">
+           <h3 class="modal-sub-title">詳細效果</h3>
+           <p style="font-size: 16px; line-height: 1.8;">${equip.gain.replace(/\n/g, "<br>")}</p>
          </div>`
       : "";
 
@@ -300,6 +308,7 @@ document.addEventListener("DOMContentLoaded", () => {
         ${materialsHTML}
         </div>
         ${illustrateHTML}
+        ${gainHTML}
       </div>
     `;
     openModal();
