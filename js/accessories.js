@@ -246,23 +246,26 @@ document.addEventListener("DOMContentLoaded", () => {
       cardHeader.appendChild(img);
       cardHeader.appendChild(title);
 
+      // --- 判斷是否需要開啟彈窗的邏輯 ---
+      const cleanIllustrate = hero.illustrate ? hero.illustrate.replace(/\^&|&\^/g, "") : "";
+      const isLongDesc = cleanIllustrate.length > 50;
       const hasGain = hero.gain && hero.gain.trim() !== "";
       const hasLinks = hero.illustrate && hero.illustrate.includes('^&');
+      const shouldBeClickable = hasGain || hasLinks || isLongDesc;
 
       const cardBody = document.createElement('div');
       cardBody.className = 'card-body';
       cardBody.innerHTML = `
         <p><strong>等級：</strong>${hero.lv}</p>
         <p><strong>屬性：</strong>${highlight(hero.Property1)}</p>
-        <p><strong>說明：</strong>${hero.illustrate.replace(/\^&|&\^/g, "").substring(0, 50)}${hero.illustrate.length > 50 ? '...' : ''}</p>
-        ${(hasGain || hasLinks) ? '<p style="text-align:right; color:#3399ff; font-size:12px; margin-top:5px;">點擊查看詳情 ▾</p>' : ''}
+        <p><strong>說明：</strong>${highlight(cleanIllustrate.substring(0, 50))}${isLongDesc ? '...' : ''}</p>
+        ${shouldBeClickable ? '<p style="text-align:right; color:#3399ff; font-size:12px; margin-top:5px;">查看完整資訊 ▾</p>' : ''}
       `;
 
       card.appendChild(cardHeader);
       card.appendChild(cardBody);
 
-      // 只有在有 gain 或關鍵字時才允許點擊整張卡片
-      if (hasGain || hasLinks) {
+      if (shouldBeClickable) {
           card.style.cursor = 'pointer';
           card.addEventListener('click', () => {
               showDetailModal(hero, hero.item);
@@ -278,7 +281,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function showDetailModal(equip, titleName) {
     if (!modalContent) return;
 
-    // 1. 完整說明區域 (不論有沒有詳情都顯示，解決說明被截斷的問題)
+    // 1. 完整說明區域
     const illustrateHTML = `
       <div class="hero-column-accessories">
         <h3 class="modal-sub-title">完整說明</h3>
