@@ -259,7 +259,7 @@ document.addEventListener("DOMContentLoaded", () => {
         <p><strong>等級：</strong>${hero.lv}</p>
         <p><strong>攻擊：</strong>${hero.Property1}</p>
         <p><strong>命中：</strong>${hero.Property2}</p>
-        <p><strong>耐用度：</strong>${hero.Property3}</p>
+        <p><strong>耐用度：</strong>${hero.Durability}</p>
         <p><strong>說明：</strong>${highlight(hero.illustrate.replace(/\^&|&\^/g, "").substring(0, 50))}...</p>
       `;
 
