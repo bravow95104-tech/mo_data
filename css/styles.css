@@ -362,7 +362,7 @@ h3.search-tip {
     }
 
     /* 🚀 修正 1 & 2：確保內容和側邊欄寬度不會溢出 */
-    #content, .sidebar {
+    #content, #changelog, .sidebar, #sidebar-container {
         max-width: 100%;
         width: 100%; /* 確保區塊使用全部可用寬度 */
         padding: 20px; 
