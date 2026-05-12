@@ -176,7 +176,7 @@ document.addEventListener("DOMContentLoaded", () => {
           td.querySelectorAll('.keyword-link').forEach(link => {
             link.addEventListener('click', (e) => {
               e.stopPropagation();
-              showDetailModal(hero, link.textContent);
+              showGainModal(hero, link.textContent);
             });
           });
         } else {
@@ -278,7 +278,7 @@ document.addEventListener("DOMContentLoaded", () => {
     cardContainer.appendChild(fragment);
   }
 
-  // === Modal 顯示內容 ===
+  // === Modal 1: 完整資訊 (手機版點擊卡片) ===
   function showDetailModal(equip, titleName) {
     if (!modalContent) return;
 
@@ -307,6 +307,30 @@ document.addEventListener("DOMContentLoaded", () => {
            ${gainHTML}
       </div>
     `;
+    openModal();
+  }
+
+  // === Modal 2: 詳細效果 (電腦版點擊連結) ===
+  function showGainModal(equip, effectName) {
+    if (!modalContent) return;
+    const gainContent = (equip.gain && equip.gain.trim() !== "")
+      ? `<div class="hero-column-accessories-details">
+           <p style="font-size: 16px; line-height: 1.8; padding-top: 10px;">
+             ${equip.gain.replace(/\n/g, "<br>")}
+           </p>
+         </div>`
+      : `<div class="hero-column-accessories-details"><p>暫無詳細效果說明。</p></div>`;
+
+    modalContent.innerHTML = `
+      <h2 class="hero-name">${effectName} 詳情</h2>
+      <div class="hero-details-container" style="justify-content: center;">
+        ${gainContent}
+      </div>
+    `;
+    openModal();
+  }
+
+  function openModal() {
     modalOverlay.style.display = "block";
     modalBox.style.display = "block";
     setTimeout(() => {
