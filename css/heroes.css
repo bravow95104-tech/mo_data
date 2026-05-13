@@ -443,3 +443,22 @@ th.sort-desc .caret-down {
 .secondary-btn:hover {
   background-color: var(--primary-dark-color);
 }
+
+/* =========================================
+   手機版卡片樣式 (針對覺醒頁面)
+   ========================================= */
+#awakening-container {
+  display: none;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+@media (max-width: 768px) {
+  #heroes-table {
+    display: none !important;
+  }
+  #awakening-container {
+    display: flex !important;
+  }
+}
