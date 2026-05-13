@@ -269,21 +269,35 @@ function showDetailModal(item) {
     displayDrop = foundMaps.length > 0 ? foundMaps.map(m => m.mapid).join('、 ') : '未知';
   }
 
-  contentDiv.innerHTML = `
-    <h2 class="hero-name">${item.card_id}</h2>
-    <div class="hero-details-container">
-      <div class="hero-column left" id="modal-img-col"></div>
+  const isMobile = window.innerWidth <= 768;
+
+  if (isMobile) {
+    // 手機版：標題 + 圖片 (移除 DIV) + 僅顯示掉落地圖
+    contentDiv.innerHTML = `
+      <h2 class="hero-name">${item.card_id}</h2>
+      <div id="modal-img-col" style="text-align: center; margin-bottom: 15px;"></div>
       <div class="hero-column right">
-        <p><strong>專卡名稱：</strong>${item.card_id}</p>
-        <p><strong>等級：</strong>${item.card_lv}</p>
-        <p><strong>屬性：</strong>${item.card_property} + ${item.card_data}</p>
-        <p><strong>倍率：</strong>${item.nemultiplier || item.multiplier || '-'}</p>
-        <p><strong>專屬英雄：</strong>${item.hero_name}</p>
-        <hr style="margin: 15px 0; border: 0; border-top: 1px solid #ddd;">
-        <p><strong>掉落地圖：</strong>${displayDrop}</p>
+        <p><strong>掉落地圖：</strong><br>${displayDrop}</p>
       </div>
-    </div>
-  `;
+    `;
+  } else {
+    // 電腦版：維持原樣
+    contentDiv.innerHTML = `
+      <h2 class="hero-name">${item.card_id}</h2>
+      <div class="hero-details-container">
+        <div class="hero-column left" id="modal-img-col"></div>
+        <div class="hero-column right">
+          <p><strong>專卡名稱：</strong>${item.card_id}</p>
+          <p><strong>等級：</strong>${item.card_lv}</p>
+          <p><strong>屬性：</strong>${item.card_property} + ${item.card_data}</p>
+          <p><strong>倍率：</strong>${item.nemultiplier || item.multiplier || '-'}</p>
+          <p><strong>專屬英雄：</strong>${item.hero_name}</p>
+          <hr style="margin: 15px 0; border: 0; border-top: 1px solid #ddd;">
+          <p><strong>掉落地圖：</strong>${displayDrop}</p>
+        </div>
+      </div>
+    `;
+  }
   contentDiv.querySelector('#modal-img-col').appendChild(img);
 
   overlay.style.display = 'block';
