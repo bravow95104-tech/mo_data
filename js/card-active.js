@@ -269,12 +269,10 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>
       `;
     } else {
-      // 電腦版：標題 + 圖片
+      // 電腦版：標題 + 圖片 (移除多餘的容器層級)
       modalContent.innerHTML = `
         <h2 class="hero-name">${item.card_id}</h2>
-        <div class="hero-details-container" style="justify-content: center;">
-          <div class="hero-column" id="modal-img-col" style="flex: 0 1 auto; max-width: 100%;"></div>
-        </div>
+        <div id="modal-img-col" style="text-align: center; padding: 20px;"></div>
       `;
     }
     
