@@ -454,6 +454,34 @@ th.sort-desc .caret-down {
   margin-top: 20px;
 }
 
+.card-item {
+  background: white;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 15px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.card-item h3 {
+  margin: 0 0 10px 0;
+  color: var(--primary-color);
+  border-bottom: 1px solid #eee;
+  padding-bottom: 8px;
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+.card-item p {
+  margin: 5px 0;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.card-item strong {
+  color: var(--primary-dark-color);
+  margin-right: 5px;
+}
+
 @media (max-width: 768px) {
   #heroes-table {
     display: none !important;
