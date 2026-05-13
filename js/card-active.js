@@ -33,22 +33,22 @@ document.addEventListener("DOMContentLoaded", () => {
     fetch("/mo_data/data/card.json").then(res => res.json()),
     fetch("/mo_data/data/detailed_map.json").then(res => res.json())
   ])
-  .then(([json, maps]) => {
-    mapData = Array.isArray(maps) ? maps : (maps.data || []);
-    const data = Array.isArray(json) ? json : (json.data || []);
-    allCardData = data.filter(d => d.type === "主動技能卡");
-    
-    initializeSortIcons();
-    applyFiltersAndSort();
-    updateSortIcons();
-  })
-  .catch(err => {
-    console.error("❌ 資料載入失敗：", err);
-    const errorMsg = "<tr><td colspan='7'>無法載入資料</td></tr>";
-    const tbody = document.querySelector("#card-equip-table tbody");
-    if (tbody) tbody.innerHTML = errorMsg;
-    if (cardContainer) cardContainer.innerHTML = `<p style='text-align:center; padding:20px; color:red;'>無法載入資料 (${err.message})</p>`;
-  });
+    .then(([json, maps]) => {
+      mapData = Array.isArray(maps) ? maps : (maps.data || []);
+      const data = Array.isArray(json) ? json : (json.data || []);
+      allCardData = data.filter(d => d.type === "主動技能卡");
+
+      initializeSortIcons();
+      applyFiltersAndSort();
+      updateSortIcons();
+    })
+    .catch(err => {
+      console.error("❌ 資料載入失敗：", err);
+      const errorMsg = "<tr><td colspan='7'>無法載入資料</td></tr>";
+      const tbody = document.querySelector("#card-equip-table tbody");
+      if (tbody) tbody.innerHTML = errorMsg;
+      if (cardContainer) cardContainer.innerHTML = `<p style='text-align:center; padding:20px; color:red;'>無法載入資料 (${err.message})</p>`;
+    });
 
   // Accordion 展開／收合
   document.querySelectorAll(".accordion-header").forEach(header => {
@@ -81,11 +81,11 @@ document.addEventListener("DOMContentLoaded", () => {
         const numA = parseFloat(valA);
         const numB = parseFloat(valB);
         if (!isNaN(numA) && !isNaN(numB)) {
-            valA = numA;
-            valB = numB;
+          valA = numA;
+          valB = numB;
         } else {
-            valA = String(valA || "").toLowerCase();
-            valB = String(valB || "").toLowerCase();
+          valA = String(valA || "").toLowerCase();
+          valB = String(valB || "").toLowerCase();
         }
         if (valA < valB) return sortConfig.direction === 'asc' ? -1 : 1;
         if (valA > valB) return sortConfig.direction === 'asc' ? 1 : -1;
@@ -158,20 +158,24 @@ document.addEventListener("DOMContentLoaded", () => {
     data.forEach(card => {
       const cardDiv = document.createElement('div');
       cardDiv.className = 'card-item';
-      
+
       const highlight = (text) => {
         if (!keyword) return text;
         const regex = new RegExp(`(${keyword.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, "gi");
         return String(text).replace(regex, "<span class='highlight2'>$1</span>");
       };
 
+      const foundMaps = mapData.filter(map => (map.drop_skillcard || "").split('、').includes(card.card_id));
+      let displayDrop = foundMaps.length > 0 ? foundMaps.map(m => m.mapid).join('、 ') : (card.drop || "-");
+
       cardDiv.innerHTML = `
         <h3>${highlight(card.card_id)}</h3>
         <p><strong>等級：</strong>${card.card_lv || '-'}</p>
         <p><strong>屬性：</strong>${highlight(card.card_property || '-')}</p>
         <p><strong>拜官：</strong>${highlight(card.card_class || '-')}</p>
-        <p><strong>消耗MP：</strong>${card.card_mp || '0'}</p>
+        <p><strong>消耗MP：</strong>${card.card_mp || '-'}</p>
         <p><strong>說明：</strong>${highlight(card.directions || '-')}</p>
+        <p><strong>掉落地圖：</strong>${displayDrop}</p>
       `;
       cardDiv.addEventListener('click', () => showDetailModal(card));
       fragment.appendChild(cardDiv);
@@ -253,23 +257,29 @@ document.addEventListener("DOMContentLoaded", () => {
     const foundMaps = mapData.filter(map => (map.drop_skillcard || "").split('、').includes(item.card_id));
     let displayDrop = foundMaps.length > 0 ? foundMaps.map(m => m.mapid).join('、 ') : (item.drop || "未知");
 
-    modalContent.innerHTML = `
-      <h2 class="hero-name">${item.card_id}</h2>
-      <div class="hero-details-container">
-        <div class="hero-column left" id="modal-img-col"></div>
-        <div class="hero-column right">
-          <p><strong>卡片名稱：</strong>${item.card_id}</p>
-          <p><strong>等級：</strong>${item.card_lv}</p>
-          <p><strong>屬性：</strong>${item.card_property || '-'}</p>
-          <p><strong>拜官：</strong>${item.card_class}</p>
-          <p><strong>消耗MP：</strong>${item.card_mp || '0'}</p>
-          <p><strong>說明：</strong>${item.directions || '-'}</p>
-          <hr style="margin: 15px 0; border: 0; border-top: 1px solid #ddd;">
-          <p><strong>掉落地圖：</strong>${displayDrop}</p>
+    if (resizeFlag) {
+      // 手機版：標題 + 圖片 + 掉落地點
+      modalContent.innerHTML = `
+        <h2 class="hero-name">${item.card_id}</h2>
+        <div class="hero-details-container">
+          <div class="hero-column left" id="modal-img-col"></div>
+          <div class="hero-column right">
+            <p><strong>掉落地圖：</strong><br>${displayDrop}</p>
+          </div>
         </div>
-      </div>
-    `;
-    modalContent.querySelector('#modal-img-col').appendChild(img);
+      `;
+    } else {
+      // 電腦版：標題 + 圖片
+      modalContent.innerHTML = `
+        <h2 class="hero-name">${item.card_id}</h2>
+        <div class="hero-details-container" style="justify-content: center;">
+          <div class="hero-column" id="modal-img-col" style="flex: 0 1 auto; max-width: 100%;"></div>
+        </div>
+      `;
+    }
+    
+    const imgCol = modalContent.querySelector('#modal-img-col');
+    if (imgCol) imgCol.appendChild(img);
 
     modalOverlay.style.display = "block";
     modalBox.style.display = "block";
