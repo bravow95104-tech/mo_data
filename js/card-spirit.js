@@ -280,22 +280,25 @@ document.addEventListener("DOMContentLoaded", () => {
     const foundMaps = mapData.filter(map => (map.drop_equidcard || "").split("、").includes(item.card_id));
     let displayDrop = foundMaps.length > 0 ? foundMaps.map(m => m.mapid).join("、 ") : (item.drop || "未知");
 
-    modalContent.innerHTML = `
-      <h2 class="hero-name">${item.card_id}</h2>
-      <div class="hero-details-container">
-        <div class="hero-column left" id="modal-img-col"></div>
+    if (resizeFlag) {
+      // 手機版：標題 + 圖片 + 掉落地點 (移除多餘的容器層級)
+      modalContent.innerHTML = `
+        <h2 class="hero-name">${item.card_id}</h2>
+        <div id="modal-img-col" style="text-align: center; margin-bottom: 15px;"></div>
         <div class="hero-column right">
-          <p><strong>專卡名稱：</strong>${item.card_id}</p>
-          <p><strong>等級：</strong>${item.card_lv}</p>
-          <p><strong>第一屬性：</strong>${item.property_first || '-'}</p>
-          <p><strong>第二屬性：</strong>${item.property_second || '-'}</p>
-          <p><strong>第三屬性：</strong>${item.property_third || '-'}</p>
-          <hr style="margin: 15px 0; border: 0; border-top: 1px solid #ddd;">
-          <p><strong>掉落地圖：</strong>${displayDrop}</p>
+          <p><strong>掉落地圖：</strong><br>${displayDrop}</p>
         </div>
-      </div>
-    `;
-    modalContent.querySelector('#modal-img-col').appendChild(img);
+      `;
+    } else {
+      // 電腦版：標題 + 圖片 (移除多餘的容器層級)
+      modalContent.innerHTML = `
+        <h2 class="hero-name">${item.card_id}</h2>
+        <div id="modal-img-col" style="text-align: center; padding: 20px;"></div>
+      `;
+    }
+    
+    const imgCol = modalContent.querySelector('#modal-img-col');
+    if (imgCol) imgCol.appendChild(img);
 
     modalOverlay.style.display = 'block';
     modalBox.style.display = 'block';
