@@ -150,12 +150,15 @@ document.addEventListener("DOMContentLoaded", () => {
         return String(text).replace(regex, "<span class='highlight2'>$1</span>");
       };
 
+      const foundMaps = mapData.filter(map => (map.drop_skillcard || "").split('、').includes(card.card_id));
+      const displayDrop = foundMaps.length > 0 ? foundMaps.map(m => m.mapid).join('、 ') : (card.drop || "-");
+
       cardDiv.innerHTML = `
         <h3>${highlight(card.card_id)}</h3>
         <p><strong>等級：</strong>${card.card_lv || '-'}</p>
         <p><strong>拜官：</strong>${highlight(card.card_class || '-')}</p>
         <p><strong>說明：</strong>${highlight(card.directions || '-')}</p>
-        <p><strong>掉落地圖：</strong>${highlight(displayDrop || '-')}</p>
+        <p><strong>掉落地圖：</strong>${highlight(displayDrop)}</p>
       `;
       cardDiv.addEventListener('click', () => showDetailModal(card));
       fragment.appendChild(cardDiv);
