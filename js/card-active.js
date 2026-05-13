@@ -258,14 +258,12 @@ document.addEventListener("DOMContentLoaded", () => {
     let displayDrop = foundMaps.length > 0 ? foundMaps.map(m => m.mapid).join('、 ') : (item.drop || "未知");
 
     if (resizeFlag) {
-      // 手機版：標題 + 圖片 + 掉落地點
+      // 手機版：標題 + 圖片 + 掉落地點 (移除多餘的容器層級)
       modalContent.innerHTML = `
         <h2 class="hero-name">${item.card_id}</h2>
-        <div class="hero-details-container">
-          <div class="hero-column left" id="modal-img-col"></div>
-          <div class="hero-column right">
-            <p><strong>掉落地圖：</strong><br>${displayDrop}</p>
-          </div>
+        <div id="modal-img-col" style="text-align: center; margin-bottom: 15px;"></div>
+        <div class="hero-column right">
+          <p><strong>掉落地圖：</strong><br>${displayDrop}</p>
         </div>
       `;
     } else {
