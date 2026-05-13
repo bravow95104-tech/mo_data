@@ -26,6 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const modalBox = document.getElementById('modalBox');
   const modalContent = document.getElementById('modalContent');
   const closeModalBtn = document.querySelector('#modalBox .close-btn');
+  const searchInput = document.getElementById("searchInput");
 
   // 載入 JSON 資料
   Promise.all([
@@ -43,8 +44,10 @@ document.addEventListener("DOMContentLoaded", () => {
   })
   .catch(err => {
     console.error("❌ 資料載入失敗：", err);
+    const errorMsg = "<tr><td colspan='7'>無法載入資料</td></tr>";
     const tbody = document.querySelector("#card-equip-table tbody");
-    if (tbody) tbody.innerHTML = "<tr><td colspan='7'>無法載入資料</td></tr>";
+    if (tbody) tbody.innerHTML = errorMsg;
+    if (cardContainer) cardContainer.innerHTML = `<p style='text-align:center; padding:20px; color:red;'>無法載入資料 (${err.message})</p>`;
   });
 
   // Accordion 展開／收合
@@ -55,8 +58,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   function applyFiltersAndSort() {
-    const searchInput = document.getElementById("searchInput");
-    const keyword = searchInput.value.trim().toLowerCase();
+    const keyword = searchInput ? searchInput.value.trim().toLowerCase() : "";
     const activeCardClasses = Array.from(document.querySelectorAll('.filter-btn.active[data-type="card_class"]')).map(btn => btn.dataset.value);
 
     let filteredData = allCardData.filter(item => {
@@ -96,7 +98,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function applyLayout() {
-    const keyword = document.getElementById("searchInput").value.trim().toLowerCase();
+    const keyword = searchInput ? searchInput.value.trim().toLowerCase() : "";
     if (resizeFlag) {
       renderCards(lastFilteredData, keyword);
       if (tableContainer) tableContainer.style.display = 'none';
@@ -178,7 +180,6 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // === 綁定事件 ===
-  const searchInput = document.getElementById("searchInput");
   if (searchInput) searchInput.addEventListener("input", applyFiltersAndSort);
 
   document.querySelectorAll('.filter-btn').forEach(btn => {
