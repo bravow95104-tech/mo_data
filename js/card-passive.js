@@ -31,20 +31,20 @@ document.addEventListener("DOMContentLoaded", () => {
     fetch("/mo_data/data/card.json").then(res => res.json()),
     fetch("/mo_data/data/detailed_map.json").then(res => res.json())
   ])
-  .then(([json, maps]) => {
-    mapData = Array.isArray(maps) ? maps : (maps.data || []);
-    const data = Array.isArray(json) ? json : (json.data || []);
-    allCardData = data.filter(d => d.type === "被動技能卡");
-    
-    initializeSortIcons();
-    applyFiltersAndSort();
-    updateSortIcons();
-  })
-  .catch(err => {
-    console.error("❌ 資料載入失敗：", err);
-    const tbody = document.querySelector("#card-equip-table tbody");
-    if (tbody) tbody.innerHTML = "<tr><td colspan='5'>無法載入資料</td></tr>";
-  });
+    .then(([json, maps]) => {
+      mapData = Array.isArray(maps) ? maps : (maps.data || []);
+      const data = Array.isArray(json) ? json : (json.data || []);
+      allCardData = data.filter(d => d.type === "被動技能卡");
+
+      initializeSortIcons();
+      applyFiltersAndSort();
+      updateSortIcons();
+    })
+    .catch(err => {
+      console.error("❌ 資料載入失敗：", err);
+      const tbody = document.querySelector("#card-equip-table tbody");
+      if (tbody) tbody.innerHTML = "<tr><td colspan='5'>無法載入資料</td></tr>";
+    });
 
   function applyFiltersAndSort() {
     const searchInput = document.getElementById("searchInput");
@@ -65,11 +65,11 @@ document.addEventListener("DOMContentLoaded", () => {
         const numA = parseFloat(valA);
         const numB = parseFloat(valB);
         if (!isNaN(numA) && !isNaN(numB)) {
-            valA = numA;
-            valB = numB;
+          valA = numA;
+          valB = numB;
         } else {
-            valA = String(valA || "").toLowerCase();
-            valB = String(valB || "").toLowerCase();
+          valA = String(valA || "").toLowerCase();
+          valB = String(valB || "").toLowerCase();
         }
         if (valA < valB) return sortConfig.direction === 'asc' ? -1 : 1;
         if (valA > valB) return sortConfig.direction === 'asc' ? 1 : -1;
@@ -143,7 +143,7 @@ document.addEventListener("DOMContentLoaded", () => {
     data.forEach(card => {
       const cardDiv = document.createElement('div');
       cardDiv.className = 'card-item';
-      
+
       const highlight = (text) => {
         if (!keyword) return text;
         const regex = new RegExp(`(${keyword.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, "gi");
@@ -155,6 +155,7 @@ document.addEventListener("DOMContentLoaded", () => {
         <p><strong>等級：</strong>${card.card_lv || '-'}</p>
         <p><strong>拜官：</strong>${highlight(card.card_class || '-')}</p>
         <p><strong>說明：</strong>${highlight(card.directions || '-')}</p>
+        <p><strong>掉落地圖：</strong>${highlight(displayDrop || '-')}</p>
       `;
       cardDiv.addEventListener('click', () => showDetailModal(card));
       fragment.appendChild(cardDiv);
@@ -228,21 +229,25 @@ document.addEventListener("DOMContentLoaded", () => {
     const foundMaps = mapData.filter(map => (map.drop_skillcard || "").split('、').includes(item.card_id));
     const displayDrop = foundMaps.length > 0 ? foundMaps.map(m => m.mapid).join('、 ') : (item.drop || "未知");
 
-    modalContent.innerHTML = `
-      <h2 class="hero-name">${item.card_id}</h2>
-      <div class="hero-details-container">
-        <div class="hero-column left" id="modal-img-col"></div>
+    if (resizeFlag) {
+      // 手機版：標題 + 圖片 + 掉落地點 (移除多餘的容器層級)
+      modalContent.innerHTML = `
+        <h2 class="hero-name">${item.card_id}</h2>
+        <div id="modal-img-col" style="text-align: center; margin-bottom: 15px;"></div>
         <div class="hero-column right">
-          <p><strong>卡片名稱：</strong>${item.card_id}</p>
-          <p><strong>等級：</strong>${item.card_lv}</p>
-          <p><strong>拜官：</strong>${item.card_class || '-'}</p>
-          <p><strong>說明：</strong>${item.directions || '-'}</p>
-          <hr style="margin: 15px 0; border: 0; border-top: 1px solid #ddd;">
-          <p><strong>掉落地圖：</strong>${displayDrop}</p>
+          <p><strong>掉落地圖：</strong><br>${displayDrop}</p>
         </div>
-      </div>
-    `;
-    modalContent.querySelector('#modal-img-col').appendChild(img);
+      `;
+    } else {
+      // 電腦版：標題 + 圖片 (移除多餘的容器層級)
+      modalContent.innerHTML = `
+        <h2 class="hero-name">${item.card_id}</h2>
+        <div id="modal-img-col" style="text-align: center; padding: 20px;"></div>
+      `;
+    }
+    
+    const imgCol = modalContent.querySelector('#modal-img-col');
+    if (imgCol) imgCol.appendChild(img);
 
     modalOverlay.style.display = 'block';
     modalBox.style.display = 'block';
