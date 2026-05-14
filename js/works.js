@@ -218,10 +218,10 @@ document.addEventListener("DOMContentLoaded", () => {
       const safeName = hero.name ? hero.name.replace(/[\\\/:*?"<>|]/g, '') : '';
       const extensions = ['.png', '.bmp', '.jpg'];
       let attempt = 0;
-      img.style.width = '32px';
-      img.style.height = '32px';
+      img.style.width = '40px';
+      img.style.height = '40px';
       img.style.objectFit = 'contain';
-      
+
       function tryLoadImg() {
         img.src = `/mo_data/pic/works/${safeName}${extensions[attempt]}`;
         img.onerror = () => {
