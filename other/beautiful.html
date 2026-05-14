@@ -2,6 +2,7 @@
 <html lang="zh-Hant">
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>美容院 | MoData</title>
     <link rel="stylesheet" href="/mo_data/css/styles.css" />
     <link rel="stylesheet" href="/mo_data/css/heroes.css" />
@@ -45,6 +46,9 @@
       </div>
     </div>
 
+    <!-- 卡片容器 (手機版使用) -->
+    <div id="hero-card-container"></div>
+
     <!-- 英雄表格 -->
     <table id="heroes-table">
       <thead>
@@ -69,6 +73,13 @@
 
     <!-- 回到頂部按鈕 -->
     <button id="backToTop" title="回到頂部">▲</button>
+
+    <!-- Modal HTML -->
+    <div id="modalOverlay"></div>
+    <div id="modalBox">
+      <span class="close-btn">&times;</span>
+      <div id="modalContent"></div>
+    </div>
 
     <!-- JavaScript -->
 
