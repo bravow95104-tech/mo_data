@@ -1,7 +1,28 @@
 document.addEventListener("DOMContentLoaded", () => {
   let garbageData = [];
   let mapData = []; // 新增：儲存地圖資料
+  let lastFilteredData = [];
   let searchTimer = null;
+
+  const garbageTable = document.getElementById('garbageTable');
+  const cardContainer = document.getElementById('hero-card-container');
+  const searchInput = document.getElementById('searchInput');
+
+  // === 響應式判斷 ===
+  const isBelow768 = () => window.innerWidth <= 768;
+  let resizeFlag = isBelow768();
+  let resizeTimeout;
+
+  window.addEventListener("resize", () => {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(() => {
+      const currentFlag = isBelow768();
+      if (currentFlag !== resizeFlag) {
+        resizeFlag = currentFlag;
+        applyLayout();
+      }
+    }, 150);
+  });
 
   // === 載入資料 ===
   Promise.all([
@@ -11,15 +32,13 @@ document.addEventListener("DOMContentLoaded", () => {
   .then(([garbage, maps]) => {
     garbageData = garbage;
     mapData = maps;
-    renderTable(garbageData);
+    applyFilters();
   })
   .catch(error => {
     console.error('載入資料錯誤:', error);
     const tbody = document.querySelector('#garbageTable tbody');
-    if (tbody) tbody.innerHTML = '<tr><td colspan="5">無法載入資料</td></tr>';
+    if (tbody) tbody.innerHTML = '<tr><td colspan="6">無法載入資料</td></tr>';
   });
-
-  const searchInput = document.getElementById('searchInput');
 
   // === 搜尋框（防抖）===
   if (searchInput) {
@@ -38,10 +57,23 @@ document.addEventListener("DOMContentLoaded", () => {
       return targetFields.includes(keyword);
     });
 
-    renderTable(filtered);
+    lastFilteredData = filtered;
+    applyLayout();
   }
 
-  // === 產生表格 ===
+  function applyLayout() {
+    if (resizeFlag) {
+      renderCards(lastFilteredData);
+      if (garbageTable) garbageTable.style.display = 'none';
+      if (cardContainer) cardContainer.style.display = 'flex';
+    } else {
+      renderTable(lastFilteredData);
+      if (garbageTable) garbageTable.style.display = 'table';
+      if (cardContainer) cardContainer.style.display = 'none';
+    }
+  }
+
+  // === 產生表格 (電腦版) ===
   function renderTable(data) {
     const tbody = document.querySelector('#garbageTable tbody');
     if (!tbody) return;
@@ -50,7 +82,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const keyword = searchInput ? searchInput.value.trim().toLowerCase() : "";
 
     if (data.length === 0) {
-      tbody.innerHTML = '<tr><td colspan="5">找不到符合條件的道具</td></tr>';
+      tbody.innerHTML = '<tr><td colspan="6">找不到符合條件的道具</td></tr>';
       return;
     }
 
@@ -61,6 +93,18 @@ document.addEventListener("DOMContentLoaded", () => {
       tr.style.cursor = 'pointer';
       tr.title = '點擊查看掉落地圖';
       tr.onclick = () => showDropMaps(item.name);
+
+      // === 圖示欄位 ===
+      const iconTd = document.createElement('td');
+      iconTd.style.textAlign = 'center';
+      const img = document.createElement('img');
+      img.src = `/mo_data/pic/garbage/${item.name}.bmp`;
+      img.alt = item.name;
+      img.style.width = '40px';
+      img.style.height = 'auto';
+      img.onerror = () => { img.style.display = 'none'; };
+      iconTd.appendChild(img);
+      tr.appendChild(iconTd);
 
       const fields = [
         'class', 'name', 'family', 'renown', 'contribute'
@@ -86,6 +130,77 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     tbody.appendChild(fragment);
+  }
+
+  // === 產生卡片 (手機版) ===
+  function renderCards(data) {
+    if (!cardContainer) return;
+    cardContainer.innerHTML = '';
+
+    if (data.length === 0) {
+      cardContainer.innerHTML = '<p style="text-align:center; padding: 20px; color: #999;">找不到符合條件的道具</p>';
+      return;
+    }
+
+    const keyword = searchInput ? searchInput.value.trim().toLowerCase() : "";
+    const fragment = document.createDocumentFragment();
+
+    data.forEach(item => {
+      const card = document.createElement('div');
+      card.className = 'card-item';
+      card.style.cursor = 'pointer';
+      card.onclick = () => showDropMaps(item.name);
+
+      const highlight = (text) => {
+        if (!keyword) return text;
+        const regex = new RegExp(`(${keyword.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
+        return String(text).replace(regex, '<span class="highlight">$1</span>');
+      };
+
+      // 卡片標題區域 (含圖示)
+      const cardHeader = document.createElement('div');
+      cardHeader.style.display = 'flex';
+      cardHeader.style.alignItems = 'center';
+      cardHeader.style.gap = '10px';
+      cardHeader.style.marginBottom = '10px';
+      cardHeader.style.borderBottom = '1px solid #eee';
+      cardHeader.style.paddingBottom = '8px';
+
+      const img = document.createElement('img');
+      img.src = `/mo_data/pic/garbage/${item.name}.bmp`;
+      img.alt = item.name;
+      img.style.width = '40px';
+      img.style.height = '40px';
+      img.style.objectFit = 'contain';
+      img.onerror = () => { img.style.display = 'none'; };
+
+      const title = document.createElement('h3');
+      title.style.margin = '0';
+      title.style.fontSize = '18px';
+      title.style.color = '#3399ff';
+      title.innerHTML = highlight(item.name);
+
+      cardHeader.appendChild(img);
+      cardHeader.appendChild(title);
+
+      // 卡片內容
+      const cardBody = document.createElement('div');
+      cardBody.style.fontSize = '14px';
+      cardBody.style.lineHeight = '1.6';
+      cardBody.innerHTML = `
+        <p><strong>類別：</strong>${item.class}</p>
+        <p><strong>家族威望(流水)：</strong>${item.family}</p>
+        <p><strong>個人名聲(不動)：</strong>${item.renown}</p>
+        <p><strong>貢獻度(石頭)：</strong>${item.contribute}</p>
+        <p style="text-align:right; color:#3399ff; font-size:12px; margin-top:5px;">點擊查看掉落地圖 ▾</p>
+      `;
+
+      card.appendChild(cardHeader);
+      card.appendChild(cardBody);
+      fragment.appendChild(card);
+    });
+
+    cardContainer.appendChild(fragment);
   }
 
   // 🚀 核心實驗功能：尋找並顯示掉落地圖
@@ -147,7 +262,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (clearBtn) {
     clearBtn.addEventListener('click', () => {
       searchInput.value = '';
-      renderTable(garbageData);
+      applyFilters();
     });
   }
 });
