@@ -176,8 +176,8 @@ document.addEventListener("DOMContentLoaded", () => {
       const img = document.createElement('img');
       img.src = `/mo_data/pic/garbage/${encodeURIComponent(itemName)}.bmp`;
       img.alt = itemName;
-      img.style.width = '32px';
-      img.style.height = '32px';
+      img.style.width = '40px';
+      img.style.height = '40px';
       img.style.objectFit = 'contain';
       img.onerror = () => { img.style.display = 'none'; };
 

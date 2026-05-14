@@ -179,8 +179,8 @@ document.addEventListener("DOMContentLoaded", () => {
           else img.style.display = 'none';
         };
       };
-      img.style.width = '32px';
-      img.style.height = '32px';
+      img.style.width = '40px';
+      img.style.height = '40px';
       img.style.objectFit = 'contain';
       if (itemName) tryLoadImg();
 

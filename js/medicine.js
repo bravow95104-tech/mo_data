@@ -231,8 +231,8 @@ document.addEventListener("DOMContentLoaded", () => {
           else img.style.display = 'none';
         };
       };
-      img.style.width = '32px';
-      img.style.height = '32px';
+      img.style.width = '40px';
+      img.style.height = '40px';
       img.style.objectFit = 'contain';
       if (hero.item) tryLoadImg();
 
@@ -272,7 +272,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function showDetailModal(hero) {
     if (!modalContent) return;
-    
+
     let materialsHTML = '';
     for (let i = 1; i <= 5; i++) {
       const mat = hero[`material${i}`];
