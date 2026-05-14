@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
   let garbageData = [];
-  let mapData = []; // 新增：儲存地圖資料
+  let mapData = [];
   let lastFilteredData = [];
   let searchTimer = null;
 
@@ -26,18 +26,25 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // === 載入資料 ===
   Promise.all([
-    fetch('/mo_data/data/garbage.json').then(res => res.json()),
-    fetch('/mo_data/data/detailed_map.json').then(res => res.json())
+    fetch('/mo_data/data/garbage.json').then(res => {
+      if (!res.ok) throw new Error('無法讀取 garbage.json');
+      return res.json();
+    }),
+    fetch('/mo_data/data/detailed_map.json').then(res => {
+      if (!res.ok) throw new Error('無法讀取 detailed_map.json');
+      return res.json();
+    })
   ])
   .then(([garbage, maps]) => {
-    garbageData = garbage;
-    mapData = maps;
+    garbageData = garbage || [];
+    mapData = maps || [];
     applyFilters();
   })
   .catch(error => {
     console.error('載入資料錯誤:', error);
     const tbody = document.querySelector('#garbageTable tbody');
-    if (tbody) tbody.innerHTML = '<tr><td colspan="6">無法載入資料</td></tr>';
+    if (tbody) tbody.innerHTML = `<tr><td colspan="6">載入失敗: ${error.message}</td></tr>`;
+    if (cardContainer) cardContainer.innerHTML = `<p style="text-align:center; color:red;">載入失敗: ${error.message}</p>`;
   });
 
   // === 搜尋框（防抖）===
@@ -50,11 +57,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // === 綜合篩選 ===
   function applyFilters() {
-    const keyword = searchInput.value.trim().toLowerCase();
+    const keyword = searchInput ? searchInput.value.trim().toLowerCase() : "";
 
     const filtered = garbageData.filter(garbage => {
-      const targetFields = (garbage.name || "").toLowerCase();
-      return targetFields.includes(keyword);
+      const name = String(garbage.name || "").toLowerCase();
+      return name.includes(keyword);
     });
 
     lastFilteredData = filtered;
@@ -106,23 +113,19 @@ document.addEventListener("DOMContentLoaded", () => {
       iconTd.appendChild(img);
       tr.appendChild(iconTd);
 
-      const fields = [
-        'class', 'name', 'family', 'renown', 'contribute'
-      ];
+      const fields = ['class', 'name', 'family', 'renown', 'contribute'];
 
       fields.forEach(field => {
         const td = document.createElement('td');
-        const rawValue = item[field] ? String(item[field]) : '';
+        const rawValue = item[field] !== undefined ? String(item[field]) : '';
         const htmlValue = rawValue.replace(/\n/g, '<br>');
 
-        // === 搜尋字串高亮 ===
         if (keyword && rawValue.toLowerCase().includes(keyword)) {
-          const regex = new RegExp(`(${keyword})`, 'gi');
+          const regex = new RegExp(`(${keyword.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
           td.innerHTML = htmlValue.replace(regex, '<span class="highlight">$1</span>');
         } else {
           td.innerHTML = htmlValue;
         }
-
         tr.appendChild(td);
       });
 
@@ -149,7 +152,10 @@ document.addEventListener("DOMContentLoaded", () => {
       const card = document.createElement('div');
       card.className = 'card-item';
       card.style.cursor = 'pointer';
-      card.onclick = () => showDropMaps(item.name);
+      card.onclick = (e) => {
+        e.stopPropagation();
+        showDropMaps(item.name);
+      };
 
       const highlight = (text) => {
         if (!keyword) return text;
@@ -161,10 +167,10 @@ document.addEventListener("DOMContentLoaded", () => {
       const cardHeader = document.createElement('div');
       cardHeader.style.display = 'flex';
       cardHeader.style.alignItems = 'center';
-      cardHeader.style.gap = '10px';
-      cardHeader.style.marginBottom = '10px';
+      cardHeader.style.gap = '12px';
+      cardHeader.style.marginBottom = '12px';
       cardHeader.style.borderBottom = '1px solid #eee';
-      cardHeader.style.paddingBottom = '8px';
+      cardHeader.style.paddingBottom = '10px';
 
       const img = document.createElement('img');
       img.src = `/mo_data/pic/garbage/${item.name}.bmp`;
@@ -172,11 +178,13 @@ document.addEventListener("DOMContentLoaded", () => {
       img.style.width = '40px';
       img.style.height = '40px';
       img.style.objectFit = 'contain';
+      img.style.background = '#f8f8f8';
+      img.style.borderRadius = '4px';
       img.onerror = () => { img.style.display = 'none'; };
 
       const title = document.createElement('h3');
       title.style.margin = '0';
-      title.style.fontSize = '18px';
+      title.style.fontSize = '1.1rem';
       title.style.color = '#3399ff';
       title.innerHTML = highlight(item.name);
 
@@ -185,14 +193,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
       // 卡片內容
       const cardBody = document.createElement('div');
-      cardBody.style.fontSize = '14px';
-      cardBody.style.lineHeight = '1.6';
+      cardBody.className = 'card-body';
       cardBody.innerHTML = `
         <p><strong>類別：</strong>${item.class}</p>
-        <p><strong>家族威望(流水)：</strong>${item.family}</p>
-        <p><strong>個人名聲(不動)：</strong>${item.renown}</p>
-        <p><strong>貢獻度(石頭)：</strong>${item.contribute}</p>
-        <p style="text-align:right; color:#3399ff; font-size:12px; margin-top:5px;">點擊查看掉落地圖 ▾</p>
+        <p><strong>家族威望：</strong>${item.family}</p>
+        <p><strong>個人名聲：</strong>${item.renown}</p>
+        <p><strong>貢獻度：</strong>${item.contribute}</p>
+        <p style="text-align:right; color:#3399ff; font-size:12px; margin-top:10px;">點擊查看掉落地圖 ▾</p>
       `;
 
       card.appendChild(cardHeader);
@@ -203,14 +210,12 @@ document.addEventListener("DOMContentLoaded", () => {
     cardContainer.appendChild(fragment);
   }
 
-  // 🚀 核心實驗功能：尋找並顯示掉落地圖
+  // 🚀 核心功能：尋找並顯示掉落地圖
   function showDropMaps(garbageName) {
     if (!mapData || mapData.length === 0) return;
 
-    // 在地圖資料中尋找含有此垃圾的地圖
     const foundMaps = mapData.filter(map => {
       const dropStr = map.drop_rubbish || "";
-      // 利用「、」切換成陣列，進行精確比對
       const dropList = dropStr.split('、');
       return dropList.includes(garbageName);
     });
@@ -220,7 +225,6 @@ document.addEventListener("DOMContentLoaded", () => {
       ? mapNames.join('、') 
       : "目前無地圖掉落資料";
 
-    // 顯示在 Modal
     const modalContent = document.getElementById('modalContent');
     if (modalContent) {
       modalContent.innerHTML = `
@@ -261,7 +265,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const clearBtn = document.getElementById('clearFilters');
   if (clearBtn) {
     clearBtn.addEventListener('click', () => {
-      searchInput.value = '';
+      if (searchInput) searchInput.value = '';
       applyFilters();
     });
   }
