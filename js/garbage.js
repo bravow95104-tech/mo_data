@@ -149,12 +149,13 @@ document.addEventListener("DOMContentLoaded", () => {
     const fragment = document.createDocumentFragment();
 
     data.forEach(item => {
+      const itemName = String(item.name || "").trim();
       const card = document.createElement('div');
       card.className = 'card-item';
       card.style.cursor = 'pointer';
       card.onclick = (e) => {
         e.stopPropagation();
-        showDropMaps(item.name);
+        showDropMaps(itemName);
       };
 
       const highlight = (text) => {
@@ -167,26 +168,25 @@ document.addEventListener("DOMContentLoaded", () => {
       const cardHeader = document.createElement('div');
       cardHeader.style.display = 'flex';
       cardHeader.style.alignItems = 'center';
-      cardHeader.style.gap = '12px';
+      cardHeader.style.gap = '8px';
       cardHeader.style.marginBottom = '12px';
-      cardHeader.style.borderBottom = '1px solid #eee';
-      cardHeader.style.paddingBottom = '10px';
+      cardHeader.style.paddingBottom = '5px';
 
       const img = document.createElement('img');
-      img.src = `/mo_data/pic/garbage/${item.name}.bmp`;
-      img.alt = item.name;
-      img.style.width = '40px';
-      img.style.height = '40px';
+      img.src = `/mo_data/pic/garbage/${encodeURIComponent(itemName)}.bmp`;
+      img.alt = itemName;
+      img.style.width = '32px';
+      img.style.height = '32px';
       img.style.objectFit = 'contain';
-      img.style.background = '#f8f8f8';
-      img.style.borderRadius = '4px';
       img.onerror = () => { img.style.display = 'none'; };
 
       const title = document.createElement('h3');
       title.style.margin = '0';
       title.style.fontSize = '1.1rem';
       title.style.color = '#3399ff';
-      title.innerHTML = highlight(item.name);
+      title.style.borderBottom = 'none';
+      title.style.textAlign = 'left';
+      title.innerHTML = highlight(itemName);
 
       cardHeader.appendChild(img);
       cardHeader.appendChild(title);
