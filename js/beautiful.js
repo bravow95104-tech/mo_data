@@ -212,7 +212,6 @@ document.addEventListener("DOMContentLoaded", () => {
       cardHeader.style.gap = '10px';
       cardHeader.style.marginBottom = '10px';
       cardHeader.style.paddingBottom = '8px';
-      cardHeader.style.borderBottom = '1px solid #eee';
 
       const img = document.createElement('img');
       const basePath = `/mo_data/pic/beautiful/${hero.id}`;
@@ -235,6 +234,8 @@ document.addEventListener("DOMContentLoaded", () => {
       title.style.margin = '0';
       title.style.fontSize = '1.1rem';
       title.style.color = '#3399ff';
+      title.style.borderBottom = 'none'; // 移除底線
+      title.style.textAlign = 'left';    // 靠左對齊
       title.innerHTML = highlight(hero.id);
 
       cardHeader.appendChild(img);
