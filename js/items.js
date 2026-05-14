@@ -166,6 +166,7 @@ document.addEventListener("DOMContentLoaded", () => {
       cardHeader.style.gap = '10px';
       cardHeader.style.marginBottom = '10px';
       cardHeader.style.paddingBottom = '8px';
+      cardHeader.style.borderBottom = '1px solid #eee'; // 新增分隔線
 
       const img = document.createElement('img');
       const extensions = ['.png', '.jpg', '.bmp'];
