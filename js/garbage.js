@@ -171,6 +171,7 @@ document.addEventListener("DOMContentLoaded", () => {
       cardHeader.style.gap = '8px';
       cardHeader.style.marginBottom = '12px';
       cardHeader.style.paddingBottom = '5px';
+      cardHeader.style.borderBottom = '1px solid #eee'; // 新增分隔線
 
       const img = document.createElement('img');
       img.src = `/mo_data/pic/garbage/${encodeURIComponent(itemName)}.bmp`;
