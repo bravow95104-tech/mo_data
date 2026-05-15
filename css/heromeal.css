@@ -178,18 +178,59 @@ h1 {
   .card-table th[colspan="2"] {
     grid-column: span 2;
     background: #cbe6ff;
+  /* --- 5 欄位表格 (英雄料理拜官材料) 的「卡片化」優化 --- */
+  /* 識別 5 欄位且非對比表格 (沒有 colspan="2" 的 5 欄表格) */
+  .card-table:has(th:nth-child(5)):not(:has(th[colspan="2"])) {
+    display: block;
+  }
+  .card-table:has(th:nth-child(5)):not(:has(th[colspan="2"])) thead {
+    display: none; /* 標頭在手機版過於擠迫且重複，故隱藏 */
+  }
+  .card-table:has(th:nth-child(5)):not(:has(th[colspan="2"])) tbody {
+    display: block;
+  }
+  .card-table:has(th:nth-child(5)):not(:has(th[colspan="2"])) tr {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-bottom: 20px;
+    border: 1px solid #cbe6ff;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0 4px 12px rgba(51, 153, 255, 0.1);
+  }
+  .card-table:has(th:nth-child(5)):not(:has(th[colspan="2"])) td {
+    padding: 12px 8px;
+    border: none;
+    border-bottom: 0.5px solid #f0f7ff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  /* 第一欄：英雄名稱 (置頂全寬) */
+  .card-table:has(th:nth-child(5)):not(:has(th[colspan="2"])) td:nth-child(1) {
+    grid-column: span 2;
+    background: #1976d2 !important;
+    color: #fff !important;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border-bottom: 2px solid #1565c0;
+  }
+  /* 材料欄位 (第2, 4欄) 加個淡底色區分 */
+  .card-table:has(th:nth-child(5)):not(:has(th[colspan="2"])) td:nth-child(2),
+  .card-table:has(th:nth-child(5)):not(:has(th[colspan="2"])) td:nth-child(4) {
+    background: #f8fbff;
+    color: #267acc;
+    font-weight: bold;
+    border-right: 1px solid #e3f2fd;
+  }
+  /* 數量欄位 (第3, 5欄) */
+  .card-table:has(th:nth-child(5)):not(:has(th[colspan="2"])) td:nth-child(3),
+  .card-table:has(th:nth-child(5)):not(:has(th[colspan="2"])) td:nth-child(5) {
+    background: #fff;
   }
 
-  /* 針對 5 欄位的「英雄料理拜官材料」表格優化 */
-  .meal-table td:first-child:nth-last-child(5),
-  .meal-table th:first-child:nth-last-child(5),
-  .card-table td:first-child:nth-last-child(5),
-  .card-table th:first-child:nth-last-child(5) {
-    grid-column: span 2;
-    background: #f0f7ff;
-    font-weight: bold;
-    color: #1976d2;
-  }
+  h1 {
 
   /* --- 進階 RWD：針對 4 欄位對比表格進行「重新排序」 --- */
   /* 當表格有 colspan="2" 且總列數較多時，強制分組顯示 */
