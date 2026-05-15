@@ -62,7 +62,7 @@ h1 {
   background: #fff;
   border-radius: 18px;
   box-shadow: 0 4px 24px rgba(51,153,255,0.10);
-  overflow: hidden; /* 確保圓角不破裂 */
+  overflow: hidden; 
 }
 
 /* --- 表格核心樣式 (桌機版) --- */
@@ -87,127 +87,6 @@ h1 {
 .card-table tbody tr:nth-child(even) { background: #f4faff; }
 .card-table tbody tr:hover { background: #fff9c0; }
 
-/* ============================================================
-   RWD 手機/平板優化 (核心修正區)
-   ============================================================ */
-@media (max-width: 768px) {
-  * { box-sizing: border-box; } /* 強制所有元素包含邊框計算 */
-
-  .card-table-container {
-    margin: 15px 10px;
-    border-radius: 12px;
-  }
-
-  .card-table {
-    display: block; /* 打破表格佈局 */
-    width: 100%;
-  }
-
-  /* --- 1. 英雄料理拜官材料 (5 欄位版) --- */
-  /* 判定基準：沒有 colspan 且有 5 個欄位 */
-  .card-table:not(:has(th[colspan])) thead { display: none; }
-  .card-table:not(:has(th[colspan])) tbody { display: block; }
-  
-  .card-table:not(:has(th[colspan])) tr {
-    display: grid;
-    grid-template-columns: 1fr 1fr; /* 強制切分為兩等分 */
-    margin: 12px;
-    border: 1px solid #cbe6ff;
-    border-radius: 10px;
-    overflow: hidden;
-    background: #fff;
-    box-shadow: 0 2px 6px rgba(51,153,255,0.05);
-  }
-
-  .card-table:not(:has(th[colspan])) td {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 12px 5px;
-    border: none;
-    border-bottom: 0.5px solid #f0f7ff;
-    font-size: 14px;
-  }
-
-  /* 第一格：英雄名稱 - 強制跨 2 欄且置頂 */
-  .card-table:not(:has(th[colspan])) td:nth-child(1) {
-    grid-column: 1 / 3;
-    background: #1976d2 !important;
-    color: #fff !important;
-    font-weight: bold;
-    font-size: 1rem;
-    border-bottom: 2px solid #1565c0;
-  }
-
-  /* 材料標示 (第 2, 4 欄) - 加上底色區分 */
-  .card-table:not(:has(th[colspan])) td:nth-child(2),
-  .card-table:not(:has(th[colspan])) td:nth-child(4) {
-    background: #f8fbff;
-    color: #1976d2;
-    font-weight: bold;
-    border-right: 1px solid #e3f2fd;
-  }
-
-  /* --- 2. 數值對比表格 (4 欄位 / 2 欄位版) --- */
-  /* 判定基準：含有 colspan 的對比表 */
-  .card-table:has(th[colspan]) {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    border: none;
-  }
-  .card-table:has(th[colspan]) thead,
-  .card-table:has(th[colspan]) tbody,
-  .card-table:has(th[colspan]) tr {
-    display: contents; /* 讓所有單元格成為直接的 Grid Item 進行 order 排序 */
-  }
-
-  .card-table:has(th[colspan]) th,
-  .card-table:has(th[colspan]) td {
-    padding: 10px 4px;
-    border: 0.5px solid #e3f2fd;
-    font-size: 14px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  /* 排序邏輯：第一組 (無廚具) */
-  .card-table:has(th[colspan]) thead tr:first-child th:nth-child(1) {
-    order: 10; grid-column: 1 / 3;
-    background: #1976d2 !important; color: #fff !important;
-  }
-  .card-table:has(th[colspan]) thead tr:nth-child(2) th:nth-child(1),
-  .card-table:has(th[colspan]) thead tr:nth-child(2) th:nth-child(2) {
-    order: 11; background: #e3f2fd; font-weight: bold;
-  }
-  .card-table:has(th[colspan]) tbody tr td:nth-child(1),
-  .card-table:has(th[colspan]) tbody tr td:nth-child(2) {
-    order: 12;
-  }
-
-  /* 排序邏輯：第二組 (放入醬汁) */
-  .card-table:has(th[colspan]) thead tr:first-child th:nth-child(2) {
-    order: 20; grid-column: 1 / 3;
-    background: #267acc !important; color: #fff !important;
-    margin-top: 20px; /* 拉開組間距 */
-    border-top: 3px solid #1976d2;
-  }
-  .card-table:has(th[colspan]) thead tr:nth-child(2) th:nth-child(3),
-  .card-table:has(th[colspan]) thead tr:nth-child(2) th:nth-child(4) {
-    order: 21; background: #e3f2fd; font-weight: bold;
-  }
-  .card-table:has(th[colspan]) tbody tr td:nth-child(3),
-  .card-table:has(th[colspan]) tbody tr td:nth-child(4) {
-    order: 22;
-  }
-
-  /* 斑馬紋 (手機版強化) */
-  .card-table:has(th[colspan]) tbody tr:nth-child(even) td { background: #f9fcff; }
-
-  h1 { font-size: 1.5rem; margin: 20px 0; }
-}
-
-/* --- 其他元件 --- */
 .table-description {
   background: #e3f2fd;
   color: #267acc;
@@ -216,19 +95,4 @@ h1 {
   line-height: 1.6;
   border-bottom: 2px solid #b3d8ff;
   font-weight: bold;
-}
-#backToTop {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background: #1976d2;
-  color: #fff;
-  border: none;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  cursor: pointer;
-  display: none;
-  z-index: 1000;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
 }
