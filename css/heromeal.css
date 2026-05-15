@@ -27,9 +27,6 @@
   margin-left: 8px;
   transition: color 0.2s;
 }
-/* .card-header .card-toggle:focus {
-  outline: 2px solid #fff;
-} */
 .card-header .toggle-icon {
   display: inline-block;
   transition: transform 0.3s;
@@ -50,7 +47,6 @@
   transform: rotate(180deg);
 }
 
-/* 全域背景與標題 */
 h1 {
   text-align: center;
   color: #267acc;
@@ -61,7 +57,6 @@ h1 {
   text-shadow: 0 2px 8px #e3f2fd;
 }
 
-/* 表格外框容器 */
 .meal-table-container,
 .card-table-container {
   margin: 36px auto 48px auto;
@@ -69,11 +64,9 @@ h1 {
   background: #fff;
   border-radius: 18px;
   box-shadow: 0 4px 24px rgba(51,153,255,0.10);
-  /* padding: 32px 18px 24px 18px; */
   overflow-x: auto;
 }
 
-/* 表格共用樣式 */
 .meal-table,
 .card-table {
   border-collapse: collapse;
@@ -82,11 +75,9 @@ h1 {
   border-radius: 0 0 12px 12px;
   overflow: hidden;
   box-shadow: 0 2px 12px rgba(51,153,255,0.07);
-  /* margin-bottom: 24px; */
   font-family: 'Microsoft JhengHei', 'Segoe UI', Arial, sans-serif;
 }
 
-/* 表格欄位共用樣式 */
 .meal-table th, .meal-table td,
 .card-table th, .card-table td {
   border: 1px solid #cbe6ff;
@@ -95,13 +86,11 @@ h1 {
   font-size: 16px;
   transition: background 0.2s;
   vertical-align: middle;
-  background-clip: padding-box;
 }
 
-/* 表頭共用樣式 */
 .meal-table thead th,
 .card-table thead th {
-  background: #e3f2fd;   /* 單一淡藍色 */
+  background: #e3f2fd;
   color: #267acc;
   font-weight: bold;
   font-size: 17px;
@@ -109,183 +98,123 @@ h1 {
   border-bottom: 2.5px solid #b3d8ff;
 }
 
-/* 偶數列底色 */
 .meal-table tbody tr:nth-child(even),
 .card-table tbody tr:nth-child(even) {
   background: #f4faff;
 }
 
-/* 滑鼠移上高亮 */
 .meal-table tbody tr:hover,
 .card-table tbody tr:hover {
   background: #fff9c0;
-  transition: background 0.2s;
 }
 
-
-/* RWD 手機優化 */
+/* RWD 手機優化 (平板以下) */
 @media (max-width: 768px) {
-  .meal-table-container,
   .card-table-container {
-    padding: 5px 0;
+    padding: 10px 0;
     max-width: 100%;
-    border-radius: 10px;
-    box-shadow: none;
+    margin: 20px auto;
   }
 
-  /* --- 基礎表格 RWD (適用於 2 欄位或 5 欄位) --- */
-  .meal-table,
+  /* --- 通用表格重排 --- */
   .card-table {
     display: block;
+    width: 100%;
     border: none;
   }
-
-  .meal-table thead, .meal-table tbody, .meal-table tr,
   .card-table thead, .card-table tbody, .card-table tr {
     display: block;
     width: 100%;
   }
 
-  .meal-table tr,
-  .card-table tr {
+  /* --- 針對 5 欄位「拜官材料」表格 (卡片化) --- */
+  /* 當第一列標頭數量為 5 時觸發 */
+  .card-table:not(:has(th[colspan="2"])) thead {
+    display: none;
+  }
+  .card-table:not(:has(th[colspan="2"])) tr {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    border-bottom: 2px solid #b3d8ff;
+    grid-template-columns: 1fr 1fr;
+    margin: 10px;
+    border: 1px solid #cbe6ff;
+    border-radius: 12px;
     background: #fff;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  }
+  .card-table:not(:has(th[colspan="2"])) td {
+    padding: 12px 8px;
+    border: 0.5px solid #f0f7ff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+  }
+  /* 第一欄：英雄名稱 (強迫佔滿全寬) */
+  .card-table:not(:has(th[colspan="2"])) td:nth-child(1) {
+    grid-column: 1 / 3;
+    background: #1976d2 !important;
+    color: #fff !important;
+    font-weight: bold;
+    font-size: 1.1rem;
+  }
+  /* 材料欄位背景 */
+  .card-table:not(:has(th[colspan="2"])) td:nth-child(2),
+  .card-table:not(:has(th[colspan="2"])) td:nth-child(4) {
+    background: #f8fbff;
+    font-weight: bold;
+    color: #267acc;
   }
 
-  .meal-table th, .meal-table td,
-  .card-table th, .card-table td {
-    padding: 12px 8px;
+  /* --- 針對 4 欄位「數值對比」表格 (分組重排) --- */
+  .card-table:has(th[colspan="2"]) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  .card-table:has(th[colspan="2"]) thead,
+  .card-table:has(th[colspan="2"]) tbody,
+  .card-table:has(th[colspan="2"]) tr {
+    display: contents;
+  }
+  .card-table:has(th[colspan="2"]) th,
+  .card-table:has(th[colspan="2"]) td {
+    padding: 10px 4px;
     font-size: 14px;
     border: 0.5px solid #e3f2fd;
     display: flex;
     align-items: center;
     justify-content: center;
-    text-align: center;
-    box-sizing: border-box;
   }
-
-  .meal-table thead th,
-  .card-table thead th {
-    background: #e3f2fd;
-    color: #267acc;
-    font-weight: bold;
-  }
-
-  /* 處理合併儲存格 (colspan="2") */
-  .meal-table th[colspan="2"],
-  .card-table th[colspan="2"] {
-    grid-column: span 2;
-    background: #cbe6ff;
-  }
-
-  /* --- 5 欄位表格 (英雄料理拜官材料) 的「卡片化」優化 --- */
-  /* 識別 5 欄位且非對比表格 (沒有 colspan="2" 的 5 欄表格) */
-  .card-table:has(th:nth-child(5)):not(:has(th[colspan="2"])) {
-    display: block;
-  }
-  .card-table:has(th:nth-child(5)):not(:has(th[colspan="2"])) thead {
-    display: none;
-  }
-  .card-table:has(th:nth-child(5)):not(:has(th[colspan="2"])) tbody {
-    display: block;
-  }
-  .card-table:has(th:nth-child(5)):not(:has(th[colspan="2"])) tr {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    margin-bottom: 20px;
-    border: 1px solid #cbe6ff;
-    border-radius: 12px;
-    overflow: hidden;
-    background: #fff;
-    box-shadow: 0 4px 12px rgba(51, 153, 255, 0.1);
-  }
-  .card-table:has(th:nth-child(5)):not(:has(th[colspan="2"])) td {
-    padding: 12px 8px;
-    border: none;
-    border-bottom: 0.5px solid #f0f7ff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .card-table:has(th:nth-child(5)):not(:has(th[colspan="2"])) td:nth-child(1) {
-    grid-column: span 2;
-    background: #1976d2 !important;
-    color: #fff !important;
-    font-size: 1.1rem;
-    font-weight: bold;
-    border-bottom: 2px solid #1565c0;
-  }
-  .card-table:has(th:nth-child(5)):not(:has(th[colspan="2"])) td:nth-child(2),
-  .card-table:has(th:nth-child(5)):not(:has(th[colspan="2"])) td:nth-child(4) {
-    background: #f8fbff;
-    color: #267acc;
-    font-weight: bold;
-    border-right: 1px solid #e3f2fd;
-  }
-
-  /* --- 進階 RWD：針對 4 欄位對比表格進行「重新排序」 --- */
-  /* 當表格有 colspan="2" 且總列數較多時，強制分組顯示 */
-  .card-table:has(thead th[colspan="2"]:nth-child(2)) {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .card-table:has(thead th[colspan="2"]:nth-child(2)) thead,
-  .card-table:has(thead th[colspan="2"]:nth-child(2)) tbody,
-  .card-table:has(thead th[colspan="2"]:nth-child(2)) tr {
-    display: contents; /* 關鍵：打破 tr 限制，讓所有單元格參與 grid 排序 */
-  }
-
-  /* 第一組 (例如：無廚具) 排序 10-19 */
-  .card-table thead tr:first-child th:nth-child(1) { 
-    order: 10; grid-column: span 2; 
-    background: #1976d2 !important; color: #fff !important; 
-  }
+  /* 分組排序邏輯 */
+  .card-table thead tr:first-child th:nth-child(1) { order: 10; grid-column: 1 / 3; background: #1976d2 !important; color: #fff !important; }
   .card-table thead tr:nth-child(2) th:nth-child(1),
-  .card-table thead tr:nth-child(2) th:nth-child(2) { order: 11; }
+  .card-table thead tr:nth-child(2) th:nth-child(2) { order: 11; background: #e3f2fd; }
   .card-table tbody tr td:nth-child(1),
   .card-table tbody tr td:nth-child(2) { order: 12; }
 
-  /* 第二組 (例如：放入醬汁) 排序 20-29 */
   .card-table thead tr:first-child th:nth-child(2) { 
-    order: 20; grid-column: span 2; 
+    order: 20; grid-column: 1 / 3; 
     background: #267acc !important; color: #fff !important;
-    margin-top: 20px; /* 組間距 */
-    border-top: 3px solid #1976d2;
+    margin-top: 15px;
+    border-top: 2px solid #1976d2;
   }
   .card-table thead tr:nth-child(2) th:nth-child(3),
-  .card-table thead tr:nth-child(2) th:nth-child(4) { order: 21; }
+  .card-table thead tr:nth-child(2) th:nth-child(4) { order: 21; background: #e3f2fd; }
   .card-table tbody tr td:nth-child(3),
   .card-table tbody tr td:nth-child(4) { order: 22; }
 
-  /* 斑馬紋修復 (針對 grid 內的單元格) */
-  .card-table tbody tr:nth-child(even) td {
-    background: #f9fcff;
-  }
+  /* 斑馬紋 */
+  .card-table tbody tr:nth-child(even) td { background: #f9fcff; }
 
-  h1 {
-    font-size: 1.5rem;
-    margin: 20px 0;
-  }
+  h1 { font-size: 1.5rem; }
 }
 
-/* 表格標題加強 */
-.meal-table-container > table:before,
-.card-table-container > table:before {
-  content: '';
-  display: block;
-  height: 0;
-}
-
-/* 新增：表格上方文字敘述的樣式 */
 .table-description {
-    background: #e3f2fd;    /* 設置與 th 相同的淡藍色底色 */
-    color: #267acc;         /* 設置與 th 相同的藍色文字 */
-    padding: 12px 20px;     /* 增加內距讓文字不擁擠 */
-    font-size: 17px;        /* 字體大小 */
-    line-height: 1.6;       /* 行高，讓兩行文字間有呼吸感 */
-    border-bottom: 2px solid #b3d8ff; /* 底部邊框，銜接下方的表格 */
-    font-weight: bold;      /* 加粗讓它看起來像標題列 */
+    background: #e3f2fd;
+    color: #267acc;
+    padding: 12px 20px;
+    font-size: 17px;
+    line-height: 1.6;
+    border-bottom: 2px solid #b3d8ff;
+    font-weight: bold;
 }
