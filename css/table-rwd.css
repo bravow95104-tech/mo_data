@@ -53,11 +53,22 @@
   .card-table.rwd-card td {
     display: flex !important;
     align-items: center;
-    justify-content: center;
-    padding: 10px 5px !important;
+    justify-content: space-between; /* 內容左右分開 */
+    padding: 10px 15px !important;
     font-size: 14px !important;
     border: none !important;
     border-bottom: 0.5px solid #f0f7ff !important;
+    text-align: right !important; /* 數據靠右 */
+  }
+
+  /* 顯示標籤 */
+  .card-table.rwd-card td::before,
+  .card-table.rwd-stack td::before {
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+    color: #666;
+    margin-right: 10px;
   }
 
   /* 第一格：標題全寬 */
@@ -68,6 +79,11 @@
     font-weight: bold !important;
     font-size: 15px !important;
     padding: 12px 5px !important;
+    justify-content: center; /* 標題置中 */
+    text-align: center !important;
+  }
+  .card-table.rwd-card td:first-child::before {
+    display: none; /* 第一格通常是等級/標題，不需要重複標籤 */
   }
 
   /* ------------------------------------------------------------
@@ -87,10 +103,12 @@
   }
 
   .card-table.rwd-stack td {
-    display: block !important;
+    display: flex !important;
+    justify-content: space-between;
+    align-items: center;
     width: 100% !important;
-    padding: 10px !important;
-    text-align: center !important;
+    padding: 10px 15px !important;
+    text-align: right !important;
     border: none !important;
     border-bottom: 0.5px solid #f0f7ff !important;
   }
@@ -99,6 +117,11 @@
     background: #e3f2fd !important;
     color: #267acc !important;
     font-weight: bold !important;
+    justify-content: center;
+    text-align: center !important;
+  }
+  .card-table.rwd-stack td:first-child::before {
+    display: none;
   }
 
   /* ------------------------------------------------------------
