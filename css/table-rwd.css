@@ -1,80 +1,90 @@
 /* ============================================================
-   通用表格響應式框架 (table-rwd.css)
+   通用表格響應式框架 (table-rwd.css) - 穩定強化版
    ============================================================ */
 
-/* 基礎容器優化 (手機版) */
 @media (max-width: 768px) {
+  * { box-sizing: border-box; }
+
   .card-table-container {
-    margin: 15px 10px !important;
-    border-radius: 12px !important;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05) !important;
+    margin: 10px 5px !important;
+    padding: 0 !important;
+    border-radius: 8px !important;
   }
 
   .card-table {
-    display: block !important;
+    display: table !important; /* 預設維持 table，由模式決定是否變更 */
     width: 100% !important;
-    border: none !important;
+    border-collapse: collapse !important;
   }
 
   /* ------------------------------------------------------------
-     模式 A: .rwd-card (適合 5 欄以上，欄位名稱固定的複雜資料)
+     模式 1: .rwd-simple (適合 2-3 欄長表格，如：經驗表)
+     保留表格結構，但縮小間距，適合大量數據快速捲動
      ------------------------------------------------------------ */
-  .card-table.rwd-card thead { display: none; }
-  .card-table.rwd-card tbody, 
-  .card-table.rwd-card tr { display: block; width: 100%; }
+  .card-table.rwd-simple {
+    display: table !important;
+  }
+  .card-table.rwd-simple th,
+  .card-table.rwd-simple td {
+    padding: 8px 4px !important;
+    font-size: 13px !important;
+  }
+
+  /* ------------------------------------------------------------
+     模式 2: .rwd-card (適合 5 欄以上複雜資料)
+     將每一行轉為獨立卡片，強迫第一欄置頂
+     ------------------------------------------------------------ */
+  .card-table.rwd-card { display: block !important; }
+  .card-table.rwd-card thead { display: none !important; }
+  .card-table.rwd-card tbody,
+  .card-table.rwd-card tr { display: block !important; width: 100% !important; }
   
   .card-table.rwd-card tr {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    margin: 15px 10px;
-    border: 1px solid #cbe6ff;
-    border-radius: 10px;
-    background: #fff;
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    margin-bottom: 15px !important;
+    border: 1px solid #cbe6ff !important;
+    border-radius: 10px !important;
+    background: #fff !important;
     overflow: hidden;
-    box-shadow: 0 2px 8px rgba(51,153,255,0.05);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
   }
 
   .card-table.rwd-card td {
-    display: flex;
+    display: flex !important;
     align-items: center;
     justify-content: center;
-    padding: 12px 8px;
-    border: 0.5px solid #f0f7ff;
-    font-size: 14px;
-    text-align: center;
+    padding: 10px 5px !important;
+    font-size: 14px !important;
+    border: none !important;
+    border-bottom: 0.5px solid #f0f7ff !important;
   }
 
-  /* 卡片標題：強迫第一格佔滿全寬 (通常是 名稱/英雄/裝備名) */
+  /* 第一格：標題全寬 */
   .card-table.rwd-card td:first-child {
-    grid-column: 1 / 3;
+    grid-column: 1 / 3 !important;
     background: #1976d2 !important;
     color: #fff !important;
-    font-weight: bold;
-    font-size: 1.1rem;
+    font-weight: bold !important;
+    font-size: 15px !important;
   }
 
   /* ------------------------------------------------------------
-     模式 B: .rwd-compare (適合 2 組數據對比，如 無廚具 vs 放入醬汁)
+     模式 3: .rwd-compare (對比模式)
      ------------------------------------------------------------ */
-  .card-table.rwd-compare {
-    display: grid !important;
-    grid-template-columns: 1fr 1fr;
-  }
+  .card-table.rwd-compare { display: grid !important; grid-template-columns: 1fr 1fr !important; }
   .card-table.rwd-compare thead,
   .card-table.rwd-compare tbody,
-  .card-table.rwd-compare tr {
-    display: contents;
-  }
+  .card-table.rwd-compare tr { display: contents !important; }
   .card-table.rwd-compare th,
   .card-table.rwd-compare td {
-    padding: 10px 4px;
-    border: 0.5px solid #e3f2fd;
-    font-size: 14px;
-    display: flex;
+    padding: 10px 2px !important;
+    font-size: 13px !important;
+    display: flex !important;
     align-items: center;
     justify-content: center;
+    border: 0.5px solid #e3f2fd !important;
   }
-  /* 排序分組 (假設前兩欄一組，後兩欄一組) */
   .card-table.rwd-compare thead tr:first-child th:nth-child(1) { order: 10; grid-column: 1 / 3; background: #1976d2 !important; color: #fff !important; }
   .card-table.rwd-compare thead tr:nth-child(2) th:nth-child(1),
   .card-table.rwd-compare thead tr:nth-child(2) th:nth-child(2) { order: 11; background: #e3f2fd; }
@@ -84,8 +94,7 @@
   .card-table.rwd-compare thead tr:first-child th:nth-child(2) { 
     order: 20; grid-column: 1 / 3; 
     background: #267acc !important; color: #fff !important;
-    margin-top: 20px;
-    border-top: 3px solid #1976d2;
+    margin-top: 15px !important;
   }
   .card-table.rwd-compare thead tr:nth-child(2) th:nth-child(3),
   .card-table.rwd-compare thead tr:nth-child(2) th:nth-child(4) { order: 21; background: #e3f2fd; }
@@ -93,39 +102,16 @@
   .card-table.rwd-compare tbody tr td:nth-child(4) { order: 22; }
 
   /* ------------------------------------------------------------
-     模式 C: .rwd-stack (適合 2-3 欄簡單資料，如 等級與經驗)
-     ------------------------------------------------------------ */
-  .card-table.rwd-stack thead { display: none; }
-  .card-table.rwd-stack tr {
-    display: grid;
-    grid-template-columns: 80px 1fr; /* 左邊小欄位，右邊大內容 */
-    border-bottom: 1px solid #cbe6ff;
-  }
-  .card-table.rwd-stack td {
-    padding: 10px;
-    border: none;
-    text-align: left;
-    justify-content: flex-start;
-  }
-  .card-table.rwd-stack td:first-child {
-    background: #f0f7ff;
-    color: #1976d2;
-    font-weight: bold;
-    text-align: center;
-    justify-content: center;
-  }
-
-  /* ------------------------------------------------------------
-     模式 D: .rwd-grid (適合超多小方塊，如 銘文組合)
+     模式 4: .rwd-grid (銘文組合小方塊)
      ------------------------------------------------------------ */
   .card-table.rwd-grid tbody,
-  .card-table.rwd-grid tr { display: flex; flex-wrap: wrap; justify-content: center; }
+  .card-table.rwd-grid tr { display: flex !important; flex-wrap: wrap !important; justify-content: center !important; }
   .card-table.rwd-grid td {
-    flex: 0 0 calc(33.33% - 10px); /* 一行三個 */
-    margin: 5px;
-    border: 1px solid #cbe6ff;
-    border-radius: 6px;
-    background: #fff;
-    padding: 8px 2px;
+    flex: 0 0 calc(33.33% - 8px) !important;
+    margin: 4px !important;
+    border: 1px solid #cbe6ff !important;
+    border-radius: 6px !important;
+    font-size: 13px !important;
+    padding: 8px 2px !important;
   }
 }
