@@ -124,7 +124,7 @@ h1 {
 
 
 /* RWD 手機優化 */
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   .meal-table-container,
   .card-table-container {
     padding: 5px 0;

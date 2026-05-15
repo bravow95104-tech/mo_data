@@ -2,6 +2,7 @@
 body {
     background-color: #f4f8fb;
     margin: 0;
+    -webkit-text-size-adjust: 100%;
     /* 🚀 關鍵修復 1：合併計算導航列高度 (約 44px) + 導航列 padding (12px*2) + 內容間距 (30px) */
     /* 44px (導航列內容高度) + 12px*2 (導航列 padding) = 68px (導航列總高) */
     /* 我們將 body 頂部留出 68px (導航列總高) + 30px (內容間距) = 98px */
