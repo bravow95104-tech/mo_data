@@ -127,16 +127,75 @@ h1 {
 @media (max-width: 600px) {
   .meal-table-container,
   .card-table-container {
-    padding: 10px 2px;
+    padding: 5px 0;
     max-width: 100%;
+    border-radius: 10px;
   }
+
+  /* 讓表格在手機上變成可折疊/堆疊的網格 */
+  .meal-table,
+  .card-table {
+    display: block;
+    border: none;
+  }
+
+  .meal-table thead, .meal-table tbody, .meal-table tr,
+  .card-table thead, .card-table tbody, .card-table tr {
+    display: block;
+    width: 100%;
+  }
+
+  /* 針對表格列使用 Grid 佈局 */
+  .meal-table tr,
+  .card-table tr {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 預設改為兩欄 */
+    border-bottom: 2px solid #b3d8ff;
+    background: #fff;
+  }
+
   .meal-table th, .meal-table td,
   .card-table th, .card-table td {
-    padding: 8px 4px;
-    font-size: 13px;
+    padding: 10px 8px;
+    font-size: 14px;
+    border: 0.5px solid #e3f2fd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    box-sizing: border-box;
   }
+
+  /* 表頭樣式調整 */
+  .meal-table thead th,
+  .card-table thead th {
+    background: #e3f2fd;
+    color: #267acc;
+    font-weight: bold;
+  }
+
+  /* 處理合併儲存格 (colspan="2")，讓它占滿全寬 */
+  .meal-table th[colspan="2"],
+  .card-table th[colspan="2"] {
+    grid-column: span 2;
+    background: #cbe6ff;
+  }
+
+  /* 針對 5 欄位的「英雄料理拜官材料」表格優化 */
+  /* 第一欄(英雄拜官) 占滿全寬 */
+  .meal-table td:first-child:nth-last-child(5),
+  .meal-table th:first-child:nth-last-child(5),
+  .card-table td:first-child:nth-last-child(5),
+  .card-table th:first-child:nth-last-child(5) {
+    grid-column: span 2;
+    background: #f0f7ff;
+    font-weight: bold;
+    color: #1976d2;
+  }
+
   h1 {
-    font-size: 1.2rem;
+    font-size: 1.5rem;
+    margin: 20px 0;
   }
 }
 
