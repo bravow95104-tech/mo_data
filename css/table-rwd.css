@@ -63,10 +63,42 @@
   /* 第一格：標題全寬 */
   .card-table.rwd-card td:first-child {
     grid-column: 1 / 3 !important;
-    background: #1976d2 !important;
+    background: #4ea1d3 !important;
     color: #fff !important;
     font-weight: bold !important;
     font-size: 15px !important;
+    padding: 12px 5px !important;
+  }
+
+  /* ------------------------------------------------------------
+     模式 5: .rwd-stack (簡單垂直堆疊，適合 2 欄表格)
+     ------------------------------------------------------------ */
+  .card-table.rwd-stack { display: block !important; }
+  .card-table.rwd-stack thead { display: none !important; }
+  .card-table.rwd-stack tbody,
+  .card-table.rwd-stack tr { display: block !important; width: 100% !important; }
+  
+  .card-table.rwd-stack tr {
+    margin-bottom: 12px !important;
+    border: 1px solid #cbe6ff !important;
+    border-radius: 8px !important;
+    background: #fff !important;
+    overflow: hidden;
+  }
+
+  .card-table.rwd-stack td {
+    display: block !important;
+    width: 100% !important;
+    padding: 10px !important;
+    text-align: center !important;
+    border: none !important;
+    border-bottom: 0.5px solid #f0f7ff !important;
+  }
+
+  .card-table.rwd-stack td:first-child {
+    background: #e3f2fd !important;
+    color: #267acc !important;
+    font-weight: bold !important;
   }
 
   /* ------------------------------------------------------------
