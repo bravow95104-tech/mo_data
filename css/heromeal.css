@@ -130,9 +130,10 @@ h1 {
     padding: 5px 0;
     max-width: 100%;
     border-radius: 10px;
+    box-shadow: none;
   }
 
-  /* 讓表格在手機上變成可折疊/堆疊的網格 */
+  /* --- 基礎表格 RWD (適用於 2 欄位或 5 欄位) --- */
   .meal-table,
   .card-table {
     display: block;
@@ -145,18 +146,17 @@ h1 {
     width: 100%;
   }
 
-  /* 針對表格列使用 Grid 佈局 */
   .meal-table tr,
   .card-table tr {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* 預設改為兩欄 */
+    grid-template-columns: repeat(2, 1fr);
     border-bottom: 2px solid #b3d8ff;
     background: #fff;
   }
 
   .meal-table th, .meal-table td,
   .card-table th, .card-table td {
-    padding: 10px 8px;
+    padding: 12px 8px;
     font-size: 14px;
     border: 0.5px solid #e3f2fd;
     display: flex;
@@ -166,7 +166,6 @@ h1 {
     box-sizing: border-box;
   }
 
-  /* 表頭樣式調整 */
   .meal-table thead th,
   .card-table thead th {
     background: #e3f2fd;
@@ -174,7 +173,7 @@ h1 {
     font-weight: bold;
   }
 
-  /* 處理合併儲存格 (colspan="2")，讓它占滿全寬 */
+  /* 處理合併儲存格 (colspan="2") */
   .meal-table th[colspan="2"],
   .card-table th[colspan="2"] {
     grid-column: span 2;
@@ -182,7 +181,6 @@ h1 {
   }
 
   /* 針對 5 欄位的「英雄料理拜官材料」表格優化 */
-  /* 第一欄(英雄拜官) 占滿全寬 */
   .meal-table td:first-child:nth-last-child(5),
   .meal-table th:first-child:nth-last-child(5),
   .card-table td:first-child:nth-last-child(5),
@@ -191,6 +189,46 @@ h1 {
     background: #f0f7ff;
     font-weight: bold;
     color: #1976d2;
+  }
+
+  /* --- 進階 RWD：針對 4 欄位對比表格進行「重新排序」 --- */
+  /* 當表格有 colspan="2" 且總列數較多時，強制分組顯示 */
+  .card-table:has(thead th[colspan="2"]:nth-child(2)) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .card-table:has(thead th[colspan="2"]:nth-child(2)) thead,
+  .card-table:has(thead th[colspan="2"]:nth-child(2)) tbody,
+  .card-table:has(thead th[colspan="2"]:nth-child(2)) tr {
+    display: contents; /* 關鍵：打破 tr 限制，讓所有單元格參與 grid 排序 */
+  }
+
+  /* 第一組 (例如：無廚具) 排序 10-19 */
+  .card-table thead tr:first-child th:nth-child(1) { 
+    order: 10; grid-column: span 2; 
+    background: #1976d2 !important; color: #fff !important; 
+  }
+  .card-table thead tr:nth-child(2) th:nth-child(1),
+  .card-table thead tr:nth-child(2) th:nth-child(2) { order: 11; }
+  .card-table tbody tr td:nth-child(1),
+  .card-table tbody tr td:nth-child(2) { order: 12; }
+
+  /* 第二組 (例如：放入醬汁) 排序 20-29 */
+  .card-table thead tr:first-child th:nth-child(2) { 
+    order: 20; grid-column: span 2; 
+    background: #267acc !important; color: #fff !important;
+    margin-top: 20px; /* 組間距 */
+    border-top: 3px solid #1976d2;
+  }
+  .card-table thead tr:nth-child(2) th:nth-child(3),
+  .card-table thead tr:nth-child(2) th:nth-child(4) { order: 21; }
+  .card-table tbody tr td:nth-child(3),
+  .card-table tbody tr td:nth-child(4) { order: 22; }
+
+  /* 斑馬紋修復 (針對 grid 內的單元格) */
+  .card-table tbody tr:nth-child(even) td {
+    background: #f9fcff;
   }
 
   h1 {
