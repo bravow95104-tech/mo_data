@@ -6,21 +6,21 @@ body {
     /* 🚀 關鍵修復 1：合併計算導航列高度 (約 44px) + 導航列 padding (12px*2) + 內容間距 (30px) */
     /* 44px (導航列內容高度) + 12px*2 (導航列 padding) = 68px (導航列總高) */
     /* 我們將 body 頂部留出 68px (導航列總高) + 30px (內容間距) = 98px */
-    padding: 98px 40px 0 40px; 
+    padding: 98px 40px 0 40px;
     font-family: "Microsoft JhengHei", sans-serif;
 }
 
 /* 導航列固定在最上方 */
 /* === 導覽列容器 (保持原狀) === */
 #nav-container nav {
-    position: fixed; 
+    position: fixed;
     top: 0;
     left: 0;
     right: 0;
     width: 100%;
     background: #3399ff;
     color: #fff;
-    padding: 12px 40px; 
+    padding: 12px 40px;
     display: flex;
     align-items: center;
     border-radius: 0 0 8px 8px;
@@ -37,15 +37,16 @@ body {
 
 /* 📌 確保手機 Header 在桌機上隱藏 */
 .nav-mobile-header {
-    display: none; 
+    display: none;
 }
 
 /* 📌 核心修正：桌機版導覽列內容 (水平排列) */
 .nav-menu {
     display: flex;
     align-items: center;
-    gap: 10px; /* 選單間距 */
-    padding: 0; 
+    gap: 10px;
+    /* 選單間距 */
+    padding: 0;
 }
 
 /* === 導覽列內部連結樣式 (適用於桌機) === */
@@ -56,7 +57,8 @@ body {
     text-decoration: none;
     font-weight: 600;
     font-size: 16px;
-    padding: 8px 14px; /* 🚀 統一主連結/切換按鈕的 padding */
+    padding: 8px 14px;
+    /* 🚀 統一主連結/切換按鈕的 padding */
     border-radius: 4px;
     cursor: pointer;
 }
@@ -71,7 +73,7 @@ body {
 .dropdown {
     position: relative;
     /* 🚀 優化 2：Dropdown 區塊的右邊距應由 nav .dropdown-toggle 上的 margin-right: 10px 來控制，這裡保留 20px 讓整體間距更大 */
-    margin-right: 20px; 
+    margin-right: 20px;
 }
 
 /* 🚀 關鍵修復 2：刪除獨立的 .dropdown-toggle 樣式，避免被高權重選擇器覆蓋產生混亂 */
@@ -80,10 +82,11 @@ body {
 .dropdown-content {
     display: none;
     position: absolute;
-    top: 100%; 
+    top: 100%;
     left: 0;
     background-color: #3399ff;
-    min-width: 150px; /* 縮小後的寬度 */
+    min-width: 150px;
+    /* 縮小後的寬度 */
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     border-radius: 4px;
 }
@@ -116,10 +119,11 @@ body {
     border-radius: 50%;
     font-size: 18px;
     cursor: pointer;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
     transition: background-color 0.3s ease;
     z-index: 1000;
 }
+
 #backToTop:hover {
     background-color: #267acc;
 }
@@ -127,13 +131,13 @@ body {
 /* ✅ 內容與側邊欄容器 */
 #content-wrapper {
     display: flex;
-    align-items: flex-start; 
+    align-items: flex-start;
     justify-content: flex-start;
     max-width: 1200px;
     margin: 0 auto;
     /* 🚀 關鍵修復 3：上 padding/margin 設為 0，間距已在 body 上統一設定 */
-    padding: 0; 
-    margin-top: 0; 
+    padding: 0;
+    margin-top: 0;
     gap: 40px;
 }
 
@@ -141,7 +145,8 @@ body {
 #content {
     flex: 1;
     background: white;
-    padding: 30px 30px; /* 內部 padding 調整為 30px */
+    padding: 30px 30px;
+    /* 內部 padding 調整為 30px */
     border-radius: 10px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
     max-width: 800px;
@@ -158,7 +163,8 @@ body {
 /* ✅ 右側側邊欄 */
 .sidebar {
     background: white;
-    padding: 30px 30px; /* 內部 padding 調整為 30px */
+    padding: 30px 30px;
+    /* 內部 padding 調整為 30px */
     border-radius: 10px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
 }
@@ -170,6 +176,7 @@ body {
     padding-bottom: 8px;
     color: #267acc;
 }
+
 .sidebar-list {
     list-style: none;
     padding: 0;
@@ -191,7 +198,8 @@ body {
 }
 
 /* 內容區塊的日期標籤樣式 (保持不變) */
-.sidebar-list .date, .sidebar-list .date2 {
+.sidebar-list .date,
+.sidebar-list .date2 {
     flex-shrink: 0;
     width: 110px;
     background-color: #3399ff;
@@ -207,6 +215,7 @@ body {
     box-shadow: 0 2px 8px rgba(51, 153, 255, 0.3);
     border: 1px solid #1c7ed6;
 }
+
 .sidebar-list .date2 {
     background-color: #5aa9ff;
     border: 1px solid #a3d0ff;
@@ -216,7 +225,7 @@ body {
 #changelog {
     flex: 1;
     background: white;
-    padding: 30px 30px; 
+    padding: 30px 30px;
     border-radius: 10px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
 }
@@ -250,7 +259,8 @@ body {
 }
 
 /* changelog 的日期標籤樣式 (保持不變) */
-.changelog-list .date, .changelog-list .tips {
+.changelog-list .date,
+.changelog-list .tips {
     flex-shrink: 0;
     width: 110px;
     background-color: #3399ff;
@@ -265,6 +275,7 @@ body {
     user-select: none;
     box-shadow: 0 2px 8px rgba(51, 153, 255, 0.3);
 }
+
 .changelog-list .tips {
     background-color: #41bb4b;
 }
@@ -285,9 +296,11 @@ body {
     user-select: none;
     box-shadow: 0 2px 8px rgba(51, 153, 255, 0.3);
 }
+
 .sidebar-list li:last-child {
     border-bottom: none;
 }
+
 .sidebar-list .tips {
     background-color: #41bb4b;
 }
@@ -326,7 +339,7 @@ body {
 
 .info-wrapper {
     display: flex;
-    justify-content: flex-end; 
+    justify-content: flex-end;
 }
 
 .Information {
@@ -337,8 +350,9 @@ body {
     padding: 8px 14px;
     font-size: 14px;
     cursor: default;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
 }
+
 /*注意資料*/
 h3.search-tip {
     font-size: 1.0rem;
@@ -350,9 +364,10 @@ h3.search-tip {
 
 /* === 手機版調整：全站與導航列 (Media Query) === */
 @media (max-width: 768px) {
+
     /* 調整 body 內邊距，配合極窄化導覽列 */
     body {
-        padding: 40px 15px 0 15px; 
+        padding: 40px 15px 0 15px;
     }
 
     /* 🚀 移除桌機版 nav 的內距與圓角 */
@@ -361,65 +376,75 @@ h3.search-tip {
         border-radius: 0 !important;
         min-height: auto !important;
     }
-    
+
     /* 讓左右內容變成垂直堆疊 */
     #content-wrapper {
         flex-direction: column;
-        padding: 20px 0; 
+        padding: 20px 0;
         gap: 20px;
     }
 
     /* 🚀 修正 1 & 2：確保內容和側邊欄寬度不會溢出 */
-    #content, #changelog, .sidebar, #sidebar-container {
+    #content,
+    #changelog,
+    .sidebar,
+    #sidebar-container {
         max-width: 100%;
-        width: 100%; /* 確保區塊使用全部可用寬度 */
-        padding: 20px; 
-        margin: 0 auto; 
-        box-sizing: border-box; /* 關鍵：讓 padding 內縮到 width 內 */
+        width: 100%;
+        /* 確保區塊使用全部可用寬度 */
+        padding: 20px;
+        margin: 0 auto;
+        box-sizing: border-box;
+        /* 關鍵：讓 padding 內縮到 width 內 */
     }
-    
+
     /* 內容區塊細節修正 (保持不變) */
-    .changelog-list li, .sidebar-list li {
+    .changelog-list li,
+    .sidebar-list li {
         flex-direction: column;
         align-items: flex-start;
     }
-    
-    .changelog-list .date, .changelog-list .tips, .sidebar-list .date, .sidebar-list .date2 {
-        margin-bottom: 8px; 
+
+    .changelog-list .date,
+    .changelog-list .tips,
+    .sidebar-list .date,
+    .sidebar-list .date2 {
+        margin-bottom: 8px;
         margin-right: 0;
-        width: auto; 
-        display: inline-block; 
-        text-align: center; 
+        width: auto;
+        display: inline-block;
+        text-align: center;
         padding: 6px 10px;
     }
+
     .sidebar-list li {
-        display: block; 
-        padding-bottom: 0; 
+        display: block;
+        padding-bottom: 0;
     }
-    
+
     /* === 漢堡選單樣式：極窄化調整 === */
     .nav-mobile-header {
         display: flex;
-        justify-content: flex-start; 
+        justify-content: flex-start;
         align-items: center;
-        gap: 12px; 
-        background-color: #3399ff; 
+        gap: 12px;
+        background-color: #3399ff;
         color: white;
-        padding: 2px 15px; 
+        padding: 15px 15px;
         width: 100%;
-        position: static; 
+        position: static;
         min-height: 36px;
     }
-    
+
     .hamburger-btn {
         appearance: none;
-        -webkit-appearance: none; 
+        -webkit-appearance: none;
         background: none;
-        border: none; 
+        border: none;
         color: white;
         font-size: 20px;
         cursor: pointer;
-        padding: 2px 6px; 
+        padding: 2px 6px;
         line-height: 1;
         display: flex;
         align-items: center;
@@ -432,17 +457,17 @@ h3.search-tip {
         font-size: 15px;
         line-height: 1;
     }
-    
+
     /* 2. 選單容器 (垂直堆疊並隱藏) */
     .nav-menu {
-        display: none; 
+        display: none;
         flex-direction: column;
-        background-color: #3399ff; 
+        background-color: #3399ff;
         width: 100%;
-        position: absolute; 
-        top: 100%; 
+        position: absolute;
+        top: 100%;
         left: 0;
-        z-index: 999; 
+        z-index: 999;
         margin: 0;
         padding: 0;
     }
@@ -453,45 +478,48 @@ h3.search-tip {
     }
 
     /* 3. 調整連結與下拉切換按鈕 (垂直間距修正) */
-    .dropdown, .nav-link {
+    .dropdown,
+    .nav-link {
         width: 100%;
         text-align: left;
-        border-bottom: 1px solid #5abaff; 
+        border-bottom: 1px solid #5abaff;
     }
-    
-    .dropdown-toggle, .nav-menu a {
-        padding: 8px 50px; 
+
+    .dropdown-toggle,
+    .nav-menu a {
+        padding: 8px 50px;
         display: block;
         width: 100%;
-        margin-right: 0; 
+        margin-right: 0;
     }
 
     /* 統一 Hover 效果 */
-    .dropdown-toggle:hover, .nav-menu a:hover {
-        background-color: #5abaff; 
+    .dropdown-toggle:hover,
+    .nav-menu a:hover {
+        background-color: #5abaff;
     }
 
     /* 4. 下拉內容樣式 (子選單) */
     .dropdown-content {
-        position: static; 
+        position: static;
         width: 100%;
-        background-color: #5abaff; 
-        box-shadow: none; 
+        background-color: #5abaff;
+        box-shadow: none;
         border-radius: 0;
-        display: none; 
+        display: none;
     }
-    
+
     /* 子選單連結內縮 */
     .dropdown-content a {
-        padding: 8px 70px; 
+        padding: 8px 70px;
     }
-    
+
     /* 手機版點選(hover)時展開子選單 */
     .dropdown:hover .dropdown-content,
     .dropdown:focus-within .dropdown-content {
         display: block;
     }
-    
+
     /* 隱藏桌機專用連結 */
     .desktop-only {
         display: none !important;
