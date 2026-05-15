@@ -395,10 +395,10 @@ h3.search-tip {
         display: flex;
         justify-content: flex-start; 
         align-items: center;
-        gap: 20px; 
+        gap: 15px; 
         background-color: #3399ff; 
         color: white;
-        padding: 8px 40px; 
+        padding: 6px 20px; 
         width: 100%;
         position: static; 
     }
@@ -409,9 +409,9 @@ h3.search-tip {
         background: none;
         border: none; 
         color: white;
-        font-size: 24px;
+        font-size: 22px;
         cursor: pointer;
-        padding: 0; 
+        padding: 4px; 
         line-height: 1;
     }
 
