@@ -181,14 +181,14 @@ const calcResult = (mainList = [], subList = []) => {
     let strList = [];
     for (let index = 0; index < 20; index++) {
       const str = ` <tr>
-                <td>${index + 1}</td>
-                <td>${main[index] || "-"}</td>
-                <td>${sub[index] || "-"}</td>
+                <td data-label="精煉等級">${index + 1}</td>
+                <td data-label="防禦力/攻擊力">${main[index] || "-"}</td>
+                <td data-label="閃避/命中">${sub[index] || "-"}</td>
               </tr>`;
       strList.push(str);
     }
     const tbodyStr = strList.join("\n");
-    return `<table class="card-table">
+    return `<table class="card-table rwd-stack">
             <thead>
               <tr>
                 <th>精煉等級</th>
@@ -201,7 +201,7 @@ const calcResult = (mainList = [], subList = []) => {
             </tbody>
           </table>`;
   }
-  return `<table class="card-table">
+  return `<table class="card-table rwd-stack">
             <thead>
               <tr>
                 <th>精煉等級</th>
@@ -211,104 +211,104 @@ const calcResult = (mainList = [], subList = []) => {
             </thead>
             <tbody>
               <tr>
-                <td>1</td>
-                <td>-</td>
-                <td>-</td>
+                <td data-label="精煉等級">1</td>
+                <td data-label="防禦力/攻擊力">-</td>
+                <td data-label="閃避/命中">-</td>
               </tr>
               <tr>
-                <td>2</td>
-                <td>-</td>
-                <td>-</td>
+                <td data-label="精煉等級">2</td>
+                <td data-label="防禦力/攻擊力">-</td>
+                <td data-label="閃避/命中">-</td>
               </tr>
               <tr>
-                <td>3</td>
-                <td>-</td>
-                <td>-</td>
+                <td data-label="精煉等級">3</td>
+                <td data-label="防禦力/攻擊力">-</td>
+                <td data-label="閃避/命中">-</td>
               </tr>
               <tr>
-                <td>4</td>
-                <td>-</td>
-                <td>-</td>
+                <td data-label="精煉等級">4</td>
+                <td data-label="防禦力/攻擊力">-</td>
+                <td data-label="閃避/命中">-</td>
               </tr>
               <tr>
-                <td>5</td>
-                <td>-</td>
-                <td>-</td>
+                <td data-label="精煉等級">5</td>
+                <td data-label="防禦力/攻擊力">-</td>
+                <td data-label="閃避/命中">-</td>
               </tr>
               <tr>
-                <td>6</td>
-                <td>-</td>
-                <td>-</td>
+                <td data-label="精煉等級">6</td>
+                <td data-label="防禦力/攻擊力">-</td>
+                <td data-label="閃避/命中">-</td>
               </tr>
               <tr>
-                <td>7</td>
-                <td>-</td>
-                <td>-</td>
+                <td data-label="精煉等級">7</td>
+                <td data-label="防禦力/攻擊力">-</td>
+                <td data-label="閃避/命中">-</td>
               </tr>
               <tr>
-                <td>8</td>
-                <td>-</td>
-                <td>-</td>
+                <td data-label="精煉等級">8</td>
+                <td data-label="防禦力/攻擊力">-</td>
+                <td data-label="閃避/命中">-</td>
               </tr>
               <tr>
-                <td>9</td>
-                <td>-</td>
-                <td>-</td>
+                <td data-label="精煉等級">9</td>
+                <td data-label="防禦力/攻擊力">-</td>
+                <td data-label="閃避/命中">-</td>
               </tr>
               <tr>
-                <td>10</td>
-                <td>-</td>
-                <td>-</td>
+                <td data-label="精煉等級">10</td>
+                <td data-label="防禦力/攻擊力">-</td>
+                <td data-label="閃避/命中">-</td>
               </tr>
               <tr>
-                <td>11</td>
-                <td>-</td>
-                <td>-</td>
+                <td data-label="精煉等級">11</td>
+                <td data-label="防禦力/攻擊力">-</td>
+                <td data-label="閃避/命中">-</td>
               </tr>
               <tr>
-                <td>12</td>
-                <td>-</td>
-                <td>-</td>
+                <td data-label="精煉等級">12</td>
+                <td data-label="防禦力/攻擊力">-</td>
+                <td data-label="閃避/命中">-</td>
               </tr>
               <tr>
-                <td>13</td>
-                <td>-</td>
-                <td>-</td>
+                <td data-label="精煉等級">13</td>
+                <td data-label="防禦力/攻擊力">-</td>
+                <td data-label="閃避/命中">-</td>
               </tr>
               <tr>
-                <td>14</td>
-                <td>-</td>
-                <td>-</td>
+                <td data-label="精煉等級">14</td>
+                <td data-label="防禦力/攻擊力">-</td>
+                <td data-label="閃避/命中">-</td>
               </tr>
               <tr>
-                <td>15</td>
-                <td>-</td>
-                <td>-</td>
+                <td data-label="精煉等級">15</td>
+                <td data-label="防禦力/攻擊力">-</td>
+                <td data-label="閃避/命中">-</td>
               </tr>
               <tr>
-                <td>16</td>
-                <td>-</td>
-                <td>-</td>
+                <td data-label="精煉等級">16</td>
+                <td data-label="防禦力/攻擊力">-</td>
+                <td data-label="閃避/命中">-</td>
               </tr>
               <tr>
-                <td>17</td>
-                <td>-</td>
-                <td>-</td>
+                <td data-label="精煉等級">17</td>
+                <td data-label="防禦力/攻擊力">-</td>
+                <td data-label="閃避/命中">-</td>
               </tr>
               <tr>
-                <td>18</td>
-                <td>-</td>
-                <td>-</td>
+                <td data-label="精煉等級">18</td>
+                <td data-label="防禦力/攻擊力">-</td>
+                <td data-label="閃避/命中">-</td>
               </tr>
               <tr>
-                <td>19</td>
-                <td>-</td>
-                <td>-</td>
+                <td data-label="精煉等級">19</td>
+                <td data-label="防禦力/攻擊力">-</td>
+                <td data-label="閃避/命中">-</td>
               </tr>
               <tr>
-                <td>20</td>
-                <td>-</td>
-                <td>-</td>
+                <td data-label="精煉等級">20</td>
+                <td data-label="防禦力/攻擊力">-</td>
+                <td data-label="閃避/命中">-</td>
               </tr>
             </tbody>
           </table>`;
@@ -374,14 +374,14 @@ const calcProcessResult = (mainList = [], subList = []) => {
     let strList = [];
     for (let index = 0; index < 9; index++) {
       const str = ` <tr>
-                <td>${index + 1}</td>
-                <td>${main[index] || "-"}</td>
-                <td>${sub[index] || "-"}</td>
+                <td data-label="加工等級">${index + 1}</td>
+                <td data-label="防禦力/攻擊力">${main[index] || "-"}</td>
+                <td data-label="閃避/命中">${sub[index] || "-"}</td>
               </tr>`;
       strList.push(str);
     }
     const tbodyStr = strList.join("\n");
-    return `<table class="card-table">
+    return `<table class="card-table rwd-stack">
             <thead>
               <tr>
                 <th>加工等級</th>
@@ -394,7 +394,7 @@ const calcProcessResult = (mainList = [], subList = []) => {
             </tbody>
           </table>`;
   }
-  return `<table class="card-table">
+  return `<table class="card-table rwd-stack">
             <thead>
               <tr>
                 <th>加工等級</th>
@@ -404,49 +404,49 @@ const calcProcessResult = (mainList = [], subList = []) => {
             </thead>
             <tbody>
               <tr>
-                <td>1</td>
-                <td>-</td>
-                <td>-</td>
+                <td data-label="加工等級">1</td>
+                <td data-label="防禦力/攻擊力">-</td>
+                <td data-label="閃避/命中">-</td>
               </tr>
               <tr>
-                <td>2</td>
-                <td>-</td>
-                <td>-</td>
+                <td data-label="加工等級">2</td>
+                <td data-label="防禦力/攻擊力">-</td>
+                <td data-label="閃避/命中">-</td>
               </tr>
               <tr>
-                <td>3</td>
-                <td>-</td>
-                <td>-</td>
+                <td data-label="加工等級">3</td>
+                <td data-label="防禦力/攻擊力">-</td>
+                <td data-label="閃避/命中">-</td>
               </tr>
               <tr>
-                <td>4</td>
-                <td>-</td>
-                <td>-</td>
+                <td data-label="加工等級">4</td>
+                <td data-label="防禦力/攻擊力">-</td>
+                <td data-label="閃避/命中">-</td>
               </tr>
               <tr>
-                <td>5</td>
-                <td>-</td>
-                <td>-</td>
+                <td data-label="加工等級">5</td>
+                <td data-label="防禦力/攻擊力">-</td>
+                <td data-label="閃避/命中">-</td>
               </tr>
               <tr>
-                <td>6</td>
-                <td>-</td>
-                <td>-</td>
+                <td data-label="加工等級">6</td>
+                <td data-label="防禦力/攻擊力">-</td>
+                <td data-label="閃避/命中">-</td>
               </tr>
               <tr>
-                <td>7</td>
-                <td>-</td>
-                <td>-</td>
+                <td data-label="加工等級">7</td>
+                <td data-label="防禦力/攻擊力">-</td>
+                <td data-label="閃避/命中">-</td>
               </tr>
               <tr>
-                <td>8</td>
-                <td>-</td>
-                <td>-</td>
+                <td data-label="加工等級">8</td>
+                <td data-label="防禦力/攻擊力">-</td>
+                <td data-label="閃避/命中">-</td>
               </tr>
               <tr>
-                <td>9</td>
-                <td>-</td>
-                <td>-</td>
+                <td data-label="加工等級">9</td>
+                <td data-label="防禦力/攻擊力">-</td>
+                <td data-label="閃避/命中">-</td>
               </tr>
 
             </tbody>
