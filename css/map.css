@@ -192,13 +192,14 @@ h1 {
 
 @media (max-width: 768px) {
     #modalBox {
-        top: 5% !important;
-        left: 2.5% !important;
-        transform: none !important;
-        width: 95% !important;
-        max-width: 95% !important;
-        max-height: 90vh !important;
-        padding: 15px 10px !important;
+        top: 10% !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        width: 85% !important;
+        max-width: 85% !important;
+        max-height: 80vh !important;
+        padding: 20px 15px !important;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4) !important;
     }
 
     .map-image-wrapper img {
