@@ -33,69 +33,62 @@
     </div>
 <h3 class="search-tip">古文重鑄方法：於梁山古董鋪找古文學士 姬扒，可運用 3~5 個文字碎片與金幣一起組合，將會合成新的文字碎片。</h3>
 
-    <!-- 文片重鑄清單 -->
-    <div id="runeresetList" class="runereset-list"></div>
+    <!-- 英雄表格 -->
+    <table id="runeresetTable" class="card-table rwd-card">
+      <thead>
+        <tr>
+          <th>文片重鑄後</th>
+          <th>合成材料1</th>
+          <th>合成材料2</th>
+          <th>合成材料3</th>
+          <th>合成材料4</th>
+          <th>合成材料5</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- 資料由 JS 動態載入 -->
+      </tbody>
+    </table>
 
     <style>
-      .runereset-list {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-        gap: 20px;
-        margin: 20px;
-      }
-      .runereset-card {
-        background: #ffffff;
-        border: 1px solid #ddd;
-        border-radius: 8px;
-        padding: 16px;
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
-        transition: transform 0.2s ease, box-shadow 0.2s ease;
-      }
-      .runereset-card:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        background-color: #fff9c0;
-      }
-      .runereset-title {
-        font-size: 18px;
-        font-weight: 600;
-        color: #3399ff;
-        margin-bottom: 12px;
-        border-bottom: 1px solid #eee;
-        padding-bottom: 8px;
-        text-align: center;
-      }
-      .runereset-details p {
-        margin: 6px 0;
-        font-size: 14px;
-        line-height: 1.4;
-      }
-      .runereset-details strong {
-        color: #267acc;
-        margin-right: 5px;
-      }
-      .highlight {
-        background-color: #fff9c0;
-        font-weight: bold;
-        border-radius: 3px;
-        padding: 2px 4px;
-      }
-
+      /* 手機版自定義卡片樣式調整 (基於 rwd-card) */
       @media (max-width: 768px) {
-        .runereset-list {
-          grid-template-columns: 1fr;
-          margin: 10px;
-          gap: 15px;
+        .card-table.rwd-card tr {
+          margin: 15px 10px !important;
+          box-shadow: 0 4px 12px rgba(0,0,0,0.1) !important;
+          border: 1px solid #cbe6ff !important;
+          background: #fff !important;
+          display: block !important; /* 改為 block 方便堆疊 */
         }
+        
+        .card-table.rwd-card td {
+          padding: 10px 15px !important;
+          border-bottom: 1px solid #f0f7ff !important;
+          display: flex !important;
+          justify-content: space-between !important;
+          text-align: right !important;
+        }
+
+        .card-table.rwd-card td:first-child {
+          background: #4ea1d3 !important;
+          color: #fff !important;
+          justify-content: center !important;
+          font-size: 16px !important;
+          border-radius: 8px 8px 0 0;
+        }
+
+        .card-table.rwd-card td::before {
+          content: attr(data-label);
+          font-weight: bold;
+          color: #267acc;
+          margin-right: 10px;
+        }
+        
         #searchContainer {
           margin: 10px;
         }
         #searchContainer input {
           max-width: 100%;
-        }
-        .search-tip {
-          margin: 10px;
-          font-size: 14px;
         }
       }
     </style>
