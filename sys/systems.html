@@ -51,12 +51,27 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", () => {
+            const sidebar = document.getElementById('system-sidebar');
+            const sidebarTitle = sidebar.querySelector('h2');
             const menuItems = document.querySelectorAll('#system-menu li');
             const contentDisplay = document.getElementById('dynamic-content');
 
+            // 手機版：點擊標題切換展開/收合
+            sidebarTitle.addEventListener('click', () => {
+                if (window.innerWidth <= 768) {
+                    sidebar.classList.toggle('open');
+                }
+            });
+
             // 載入內容的函式
-            function loadSystemPage(fileName) {
-                // 這裡的路徑請確保與你的資料夾結構一致 (例如放在 /mo_data/pages/ 底下)
+            function loadSystemPage(fileName, titleText) {
+                // 更新標題顯示 (手機版)
+                if (window.innerWidth <= 768 && titleText) {
+                    sidebarTitle.innerHTML = `系統：${titleText}`;
+                } else {
+                    sidebarTitle.innerHTML = "遊戲系統";
+                }
+
                 fetch(`/mo_data/sys/${fileName}`)
                     .then(response => {
                         if (!response.ok) throw new Error('找不到內容檔案');
@@ -64,8 +79,10 @@
                     })
                     .then(html => {
                         contentDisplay.innerHTML = html;
-                        // 🌟 如果你的子頁面裡有表格，且需要用到之前的「排序箭頭」邏輯
-                        // 可以在這裡呼叫 reInitTableSort();
+                        // 捲動回內容頂部
+                        if (window.innerWidth <= 768) {
+                            window.scrollTo({ top: sidebar.offsetTop, behavior: 'smooth' });
+                        }
                     })
                     .catch(error => {
                         contentDisplay.innerHTML = `<h3 class="search-tip">錯誤：無法讀取內容 (${fileName})</h3>`;
@@ -75,18 +92,26 @@
             // 選單點擊事件
             menuItems.forEach(item => {
                 item.addEventListener('click', () => {
+                    const title = item.innerText;
+                    const file = item.getAttribute('data-file');
+
                     // 1. 切換 active 樣式
                     menuItems.forEach(i => i.classList.remove('active'));
                     item.classList.add('active');
 
                     // 2. 執行載入
-                    const file = item.getAttribute('data-file');
-                    loadSystemPage(file);
+                    loadSystemPage(file, title);
+
+                    // 3. 手機版點選後自動收合
+                    if (window.innerWidth <= 768) {
+                        sidebar.classList.remove('open');
+                    }
                 });
             });
 
             // 初始載入第一項內容
-            loadSystemPage('refining_transfer.html');
+            const firstItem = menuItems[0];
+            loadSystemPage(firstItem.getAttribute('data-file'), firstItem.innerText);
         });
     </script>
 </body>
