@@ -58,11 +58,18 @@ h1 {
 /* 4. Tabs 導航樣式 */
 .tabs { 
     display: flex; 
-    flex-wrap: wrap; 
+    flex-wrap: nowrap; /* 手機版不換行 */
+    overflow-x: auto;  /* 允許水平捲動 */
+    -webkit-overflow-scrolling: touch; /* 順暢滑動 */
     background-color: #ffffff;
     border-radius: 8px 8px 0 0; 
     border-bottom: 1px solid #e0e0e0; 
     padding: 0 10px; 
+    scrollbar-width: none; /* 隱藏捲軸 (Firefox) */
+}
+
+.tabs::-webkit-scrollbar {
+    display: none; /* 隱藏捲軸 (Chrome/Safari) */
 }
 
 .tab-button {
@@ -75,6 +82,8 @@ h1 {
     transition: all 0.2s ease; 
     border-bottom: 3px solid transparent; 
     margin-bottom: -1px; 
+    white-space: nowrap; /* 避免文字斷行 */
+    flex: 0 0 auto; /* 防止縮小 */
 }
 
 .tab-button:hover { 
@@ -99,10 +108,11 @@ h1 {
     border-radius: 8px;
     background-color: #f9fcff; 
     border: 1px solid #b3d8ff; 
+    overflow-x: auto; /* 允許地圖太寬時滑動 */
 }
 
 .map-image-wrapper img {
-    max-width: 100%;
+    max-width: 100%; /* 電腦版維持 */
     height: auto;
     display: block; 
     margin: 0 auto; 
@@ -135,6 +145,23 @@ h1 {
     box-shadow: 0 5px 25px rgba(0, 0, 0, 0.3); 
 }
 
+@media (max-width: 768px) {
+    #modalBox {
+        top: 5% !important;
+        left: 2.5% !important;
+        transform: none !important;
+        width: 95% !important;
+        max-width: 95% !important;
+        max-height: 90vh !important;
+        padding: 15px 10px !important;
+    }
+
+    .map-image-wrapper img {
+        max-width: none !important; /* 讓地圖可以稍微大一點，不被強行縮小到手機寬度 */
+        width: 750px; /* 這裡設定一個合理的最小寬度，確保點擊區不會太小 */
+    }
+}
+
 /* ✅ 標題列樣式 (現在會跟著滾動) */
 .modal-header {
     display: flex;
@@ -144,6 +171,55 @@ h1 {
     padding: 0; 
     margin-bottom: 15px; /* 在標題底部增加間隔 */
     border-bottom: 1px solid #eee; 
+}
+
+/* 針對手機版自定義高亮顏色與表格微調 */
+@media (max-width: 768px) {
+  .highlight {
+    background-color: #fff9c0 !important;
+    color: #b8860b !important;
+    padding: 2px 4px;
+    border-radius: 3px;
+  }
+  
+  #searchContainer {
+    flex-direction: column;
+    align-items: stretch;
+    margin: 10px;
+  }
+  
+  #searchInput {
+    max-width: 100%;
+  }
+
+  .filter-actions {
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 0 10px;
+  }
+  
+  .filter-actions > .secondary-btn {
+    flex: 1 1 calc(50% - 10px);
+    margin: 0 !important;
+    text-align: center;
+    font-size: 13px;
+  }
+
+  .column-settings-container {
+    flex: 1 1 100%;
+    margin: 0 !important;
+  }
+
+  #columnSettingsBtn {
+    width: 100%;
+  }
+
+  /* Modal 滿版優化 */
+  #modalBox {
+    width: 95% !important;
+    max-width: 95% !important;
+    padding: 15px 10px !important;
+  }
 }
 
 /* 標題樣式 */
