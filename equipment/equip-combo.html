@@ -2,9 +2,42 @@
 <html lang="zh-Hant">
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>文片組合 | MoData</title>
     <link rel="stylesheet" href="/mo_data/css/styles.css" />
     <link rel="stylesheet" href="/mo_data/css/equip-combo.css" />
+    <style>
+      @media (max-width: 768px) {
+        #searchContainer {
+          margin: 10px;
+        }
+        #searchContainer input {
+          max-width: 100%;
+        }
+        #filterContainer {
+          margin: 10px;
+        }
+        .filter-row {
+          grid-template-columns: 1fr;
+        }
+        .filter-btn {
+          flex: 1 1 calc(33.33% - 10px);
+          min-width: 70px;
+        }
+        .combo-list {
+          grid-template-columns: 1fr;
+          margin: 10px;
+          gap: 15px;
+        }
+        .accordion-header {
+          font-size: 15px;
+          padding: 10px;
+        }
+        .accordion-content {
+          padding: 10px;
+        }
+      }
+    </style>
   </head>
   <body>
     <div id="nav-container"></div>
