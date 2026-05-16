@@ -106,6 +106,53 @@ body {
     background-color: #5abaff;
 }
 
+/* === 更多選單 (More Menu) 邏輯 === */
+.more-menu {
+    display: none; /* 預設隱藏 */
+}
+
+/* 當視窗在 1150px ~ 1300px 之間，收納「系統」 */
+@media (max-width: 1300px) and (min-width: 769px) {
+    .nav-item-sys { display: none; }
+    .more-menu { display: block; }
+    .more-item-map, .more-item-prod, .more-item-other { display: none; }
+}
+
+/* 當視窗在 1000px ~ 1149px 之間，收納「其他」、「系統」 */
+@media (max-width: 1150px) and (min-width: 769px) {
+    .nav-item-other, .nav-item-sys { display: none; }
+    .more-menu { display: block; }
+    .more-item-map, .more-item-prod { display: none; }
+    .more-item-other, .more-item-sys { display: block; }
+}
+
+/* 當視窗在 850px ~ 999px 之間，收納「生產道具」、「其他」、「系統」 */
+@media (max-width: 1000px) and (min-width: 769px) {
+    .nav-item-prod, .nav-item-other, .nav-item-sys { display: none; }
+    .more-menu { display: block; }
+    .more-item-map { display: none; }
+    .more-item-prod, .more-item-other, .more-item-sys { display: block; }
+}
+
+/* 當視窗更小時，收納更多 */
+@media (max-width: 900px) and (min-width: 769px) {
+    .nav-item-map, .nav-item-prod, .nav-item-other, .nav-item-sys { display: none; }
+    .more-menu { display: block; }
+    .more-item-map, .more-item-prod, .more-item-other, .more-item-sys { display: block; }
+    
+    /* 同時微調間距確保不換行 */
+    #nav-container nav a, #nav-container nav .dropdown-toggle {
+        padding: 8px 10px;
+        font-size: 15px;
+    }
+}
+
+/* 確保手機版漢堡選單內不出現「更多」選單 */
+@media (max-width: 768px) {
+    .more-menu { display: none !important; }
+    .nav-item-map, .nav-item-prod, .nav-item-other, .nav-item-sys { display: block !important; }
+}
+
 /* 回到頂部按鈕 */
 #backToTop {
     position: fixed;
@@ -444,7 +491,7 @@ h3.search-tip {
         color: white;
         font-size: 20px;
         cursor: pointer;
-        padding: 4px 6px;
+        padding: 3px 6px;
         line-height: 1;
         display: flex;
         align-items: center;
