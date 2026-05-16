@@ -106,7 +106,25 @@ body {
     background-color: #5abaff;
 }
 
-/* === 更多選單 (More Menu) 邏輯 === */
+/* === 更多選單 (More Menu) 內部樣式 === */
+.more-group-header {
+    background-color: #267acc;
+    color: #fff;
+    padding: 8px 12px;
+    font-size: 13px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 5px;
+}
+
+.sub-indent {
+    padding-left: 25px !important; /* 子項目縮排 */
+    font-size: 14px !important;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+/* === 更多選單 (More Menu) 顯示邏輯 === */
 .more-menu {
     display: none; /* 預設隱藏 */
 }
