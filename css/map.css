@@ -35,6 +35,51 @@
     max-width: 1200px;
     margin: 0 auto; 
     padding: 0 0px;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+/* 捲動箭頭樣式 */
+.nav-arrow {
+    display: none; /* 電腦版預設隱藏 */
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid #ddd;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    z-index: 10;
+    justify-content: center;
+    align-items: center;
+    color: #267acc;
+    font-size: 14px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: background 0.3s, color 0.3s;
+    flex-shrink: 0;
+}
+
+.nav-arrow:hover {
+    background: #267acc;
+    color: #fff;
+}
+
+.nav-arrow.left {
+    margin-right: -16px;
+    position: relative;
+    left: 10px;
+}
+
+.nav-arrow.right {
+    margin-left: -16px;
+    position: relative;
+    right: 10px;
+}
+
+@media (max-width: 768px) {
+    .nav-arrow {
+        display: flex; /* 手機版顯示箭頭 */
+    }
 }
 
 /* 3. 主內容區塊 */
