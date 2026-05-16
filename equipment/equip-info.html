@@ -2,10 +2,12 @@
 <html lang="zh-Hant">
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>裝備資訊 | MoData</title>
 
     <link rel="stylesheet" href="/mo_data/css/styles.css" />
     <link rel="stylesheet" href="/mo_data/css/heromeal.css" />
+    <link rel="stylesheet" href="/mo_data/css/table-rwd.css" />
   </head>
   <body>
     <div id="nav-container"></div>
@@ -20,7 +22,7 @@
         </button>
       </div>
       <div class="card-content">
-        <table class="card-table">
+        <table class="card-table rwd-stack">
           <thead>
             <tr>
               <th>等級</th>
@@ -29,36 +31,36 @@
           </thead>
           <tbody>
             <tr>
-              <td>不限</td>
-              <td>青葉村</td>
+              <td data-label="等級">不限</td>
+              <td data-label="地點">青葉村</td>
             </tr>
             <tr>
-              <td>15</td>
-              <td>京城</td>
+              <td data-label="等級">15</td>
+              <td data-label="地點">京城</td>
             </tr>
             <tr>
-              <td>20</td>
-              <td>郡業、川都</td>
+              <td data-label="等級">20</td>
+              <td data-label="地點">郡業、川都</td>
             </tr>
             <tr>
-              <td>25</td>
-              <td>梁山</td>
+              <td data-label="等級">25</td>
+              <td data-label="地點">梁山</td>
             </tr>
             <tr>
-              <td>30</td>
-              <td>仙界雲海村</td>
+              <td data-label="等級">30</td>
+              <td data-label="地點">仙界雲海村</td>
             </tr>
             <tr>
-              <td>35</td>
-              <td>巨岩村</td>
+              <td data-label="等級">35</td>
+              <td data-label="地點">巨岩村</td>
             </tr>
             <tr>
-              <td>40</td>
-              <td>雷爵村、桑耶市集</td>
+              <td data-label="等級">40</td>
+              <td data-label="地點">雷爵村、桑耶市集</td>
             </tr>
             <tr>
-              <td>50</td>
-              <td>赤羽村</td>
+              <td data-label="等級">50</td>
+              <td data-label="地點">赤羽村</td>
             </tr>
           </tbody>
         </table>
@@ -74,7 +76,7 @@
         </button>
       </div>
       <div class="card-content">
-        <table class="card-table">
+        <table class="card-table rwd-card">
           <thead>
             <tr>
               <th>階級</th>
@@ -84,58 +86,58 @@
           </thead>
           <tbody>
             <tr>
-              <td>AA</td>
-              <td>精湛</td>
-              <td>攻擊x1.3</br>
-                命中x1.3</br>
+              <td data-label="階級">AA</td>
+              <td data-label="字首名稱">精湛</td>
+              <td data-label="數值計算">攻擊x1.3<br/>
+                命中x1.3<br/>
                 耐用x1.3</td>
             </tr>
             <tr>
-              <td>A</td>
-              <td>輕快</td>
-              <td>攻擊x1.3</br>
+              <td data-label="階級">A</td>
+              <td data-label="字首名稱">輕快</td>
+              <td data-label="數值計算">攻擊x1.3<br/>
               命中x1.3</td>
             </tr>
             <tr>
-              <td>A</td>
-              <td>鋒利</td>
-              <td>攻擊x1.3</br>
+              <td data-label="階級">A</td>
+              <td data-label="字首名稱">鋒利</td>
+              <td data-label="數值計算">攻擊x1.3<br/>
                 耐用x1.3</td>
             </tr>
             <tr>
-              <td>B</td>
-              <td>威力</td>
-              <td>攻擊x1.15</br>
+              <td data-label="階級">B</td>
+              <td data-label="字首名稱">威力</td>
+              <td data-label="數值計算">攻擊x1.15<br/>
                 耐用x1.15</td>
             </tr>
             <tr>
-              <td>B</td>
-              <td>靈巧</td>
-              <td>攻擊x1.15</br>
+              <td data-label="階級">B</td>
+              <td data-label="字首名稱">靈巧</td>
+              <td data-label="數值計算">攻擊x1.15<br/>
                 命中x1.15</td>
             </tr>
             <tr>
-              <td>B</td>
-              <td>耐用</td>
-              <td>命中x1.15</br>
+              <td data-label="階級">B</td>
+              <td data-label="字首名稱">耐用</td>
+              <td data-label="數值計算">命中x1.15<br/>
                 耐用x1.15</td>
             </tr>
             <tr>
-              <td>C</td>
-              <td>強襲</td>
-              <td>攻擊x1.15</br>
+              <td data-label="階級">C</td>
+              <td data-label="字首名稱">強襲</td>
+              <td data-label="數值計算">攻擊x1.15<br/>
                 耐用-(耐用x5/10)</td>
             </tr>
             <tr>
-              <td>C</td>
-              <td>迅擊</td>
-              <td>命中x1.15</br>
+              <td data-label="階級">C</td>
+              <td data-label="字首名稱">迅擊</td>
+              <td data-label="數值計算">命中x1.15<br/>
                 耐用-(耐用x5/10)</td>
             </tr>
             <tr>
-              <td>C</td>
-              <td>堅固</td>
-              <td>耐用x1.15</br>
+              <td data-label="階級">C</td>
+              <td data-label="字首名稱">堅固</td>
+              <td data-label="數值計算">耐用x1.15</td>
             </tr>
 
           </tbody>
@@ -151,7 +153,7 @@
         </button>
       </div>
       <div class="card-content">
-        <table class="card-table">
+        <table class="card-table rwd-card">
           <thead>
             <tr>
               <th>階級</th>
@@ -161,58 +163,58 @@
           </thead>
           <tbody>
             <tr>
-              <td>AA</td>
-              <td>華麗</td>
-              <td>防禦x1.3</br>
-                閃避x1.3</br>
+              <td data-label="階級">AA</td>
+              <td data-label="字首名稱">華麗</td>
+              <td data-label="數值計算">防禦x1.3<br/>
+                閃避x1.3<br/>
                 耐用x1.3</td>
             </tr>
             <tr>
-              <td>A</td>
-              <td>迴避</td>
-              <td>防禦x1.3</br>
+              <td data-label="階級">A</td>
+              <td data-label="字首名稱">迴避</td>
+              <td data-label="數值計算">防禦x1.3<br/>
               閃避x1.3</td>
             </tr>
             <tr>
-              <td>A</td>
-              <td>堅硬</td>
-              <td>防禦x1.3</br>
+              <td data-label="階級">A</td>
+              <td data-label="字首名稱">堅硬</td>
+              <td data-label="數值計算">防禦x1.3<br/>
                 耐用x1.3</td>
             </tr>
             <tr>
-              <td>B</td>
-              <td>保護</td>
-              <td>防禦x1.15</br>
+              <td data-label="階級">B</td>
+              <td data-label="字首名稱">保護</td>
+              <td data-label="數值計算">防禦x1.15<br/>
                 耐用x1.15</td>
             </tr>
             <tr>
-              <td>B</td>
-              <td>流動</td>
-              <td>防禦x1.15</br>
+              <td data-label="階級">B</td>
+              <td data-label="字首名稱">流動</td>
+              <td data-label="數值計算">防禦x1.15<br/>
                 閃避x1.15</td>
             </tr>
             <tr>
-              <td>B</td>
-              <td>耐用</td>
-              <td>閃避x1.15</br>
+              <td data-label="階級">B</td>
+              <td data-label="字首名稱">耐用</td>
+              <td data-label="數值計算">閃避x1.15<br/>
                 耐用x1.15</td>
             </tr>
             <tr>
-              <td>C</td>
-              <td>屏障</td>
-              <td>防禦x1.15</br>
+              <td data-label="階級">C</td>
+              <td data-label="字首名稱">屏障</td>
+              <td data-label="數值計算">防禦x1.15<br/>
                 耐用-(耐用x5/10)</td>
             </tr>
             <tr>
-              <td>C</td>
-              <td>機動</td>
-              <td>閃避x1.15</br>
+              <td data-label="階級">C</td>
+              <td data-label="字首名稱">機動</td>
+              <td data-label="數值計算">閃避x1.15<br/>
                 耐用-(耐用x5/10)</td>
             </tr>
             <tr>
-              <td>C</td>
-              <td>堅固</td>
-              <td>耐用x1.15</br>
+              <td data-label="階級">C</td>
+              <td data-label="字首名稱">堅固</td>
+              <td data-label="數值計算">耐用x1.15</td>
             </tr>
 
           </tbody>
