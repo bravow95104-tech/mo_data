@@ -37,23 +37,22 @@ document.addEventListener("DOMContentLoaded", () => {
     renderTable(filtered);
   }
 
-  // === 產生列表 (卡片形式) ===
+  // === 產生表格 ===
   function renderTable(data) {
-    const listContainer = document.getElementById('runeresetList');
-    listContainer.innerHTML = '';
+    const tbody = document.querySelector('#runeresetTable tbody');
+    tbody.innerHTML = '';
 
     const keyword = searchInput.value.trim().toLowerCase();
 
     if (data.length === 0) {
-      listContainer.innerHTML = '<p style="text-align:center; color:#777; width:100%;">找不到符合條件的文片</p>';
+      tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;">找不到符合條件的文片</td></tr>';
       return;
     }
 
     const fragment = document.createDocumentFragment();
 
     data.forEach(item => {  
-      const card = document.createElement('div');
-      card.className = 'runereset-card';
+      const tr = document.createElement('tr');
 
       const fields = [
         { key: 'item', label: '文片重鑄後' },
@@ -64,35 +63,28 @@ document.addEventListener("DOMContentLoaded", () => {
         { key: 'material5', label: '合成材料5' }
       ];
 
-      // 高亮處理後的資料
-      const highlightData = {};
-      fields.forEach(f => {
-        const rawValue = item[f.key] ? String(item[f.key]) : '—';
+      fields.forEach(field => {
+        const td = document.createElement('td');
+        const rawValue = item[field.key] ? String(item[field.key]) : '—';
         const htmlValue = rawValue.replace(/\n/g, '<br>');
 
+        td.setAttribute('data-label', field.label);
+
+        // === 搜尋字串高亮 ===
         if (keyword && rawValue.toLowerCase().includes(keyword)) {
           const regex = new RegExp(`(${keyword})`, 'gi');
-          highlightData[f.key] = htmlValue.replace(regex, '<span class="highlight">$1</span>');
+          td.innerHTML = htmlValue.replace(regex, '<span class="highlight">$1</span>');
         } else {
-          highlightData[f.key] = htmlValue;
+          td.innerHTML = htmlValue;
         }
+
+        tr.appendChild(td);
       });
 
-      card.innerHTML = `
-        <div class="runereset-title">${highlightData.item}</div>
-        <div class="runereset-details">
-          <p><strong>材料1：</strong>${highlightData.material1}</p>
-          <p><strong>材料2：</strong>${highlightData.material2}</p>
-          <p><strong>材料3：</strong>${highlightData.material3}</p>
-          <p><strong>材料4：</strong>${highlightData.material4}</p>
-          <p><strong>材料5：</strong>${highlightData.material5}</p>
-        </div>
-      `;
-
-      fragment.appendChild(card);
+      fragment.appendChild(tr);
     });
 
-    listContainer.appendChild(fragment);
+    tbody.appendChild(fragment);
   }
 
   // === 清除搜尋 ===
