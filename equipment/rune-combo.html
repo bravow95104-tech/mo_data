@@ -2,10 +2,12 @@
 <html lang="zh-Hant">
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>銘文組合 | MoData</title>
 
     <link rel="stylesheet" href="/mo_data/css/styles.css" />
     <link rel="stylesheet" href="/mo_data/css/heromeal.css" />
+    <link rel="stylesheet" href="/mo_data/css/table-rwd.css" />
   </head>
   <body>
     <div id="nav-container"></div>
@@ -21,10 +23,10 @@
       </div>
       <div class="card-content">
         <div class="table-description">
-          全屬性增加、數量上限+2、數量下限+2、範圍上下限-5%</br>
+          全屬性增加、數量上限+2、數量下限+2、範圍上下限-5%<br/>
           排除SP、排除命中、排除攻擊、排除法術防禦
         </div>
-        <table class="card-table">
+        <table class="card-table rwd-grid">
           <tbody>
             <tr>
               <td>天空</td>
@@ -57,10 +59,10 @@
       </div>
       <div class="card-content">
         <div class="table-description">
-          全屬性增加、數量上限+2、數量下限+2、範圍下限+2%~6%(依照每張英雄卡稀有度)</br>
+          全屬性增加、數量上限+2、數量下限+2、範圍下限+2%~6%(依照每張英雄卡稀有度)<br/>
           排除SP、排除命中、排除攻擊、排除法術防禦
         </div>
-        <table class="card-table">
+        <table class="card-table rwd-grid">
           <tbody>
             <tr>
               <td>天姚</td>
@@ -82,6 +84,44 @@
         </table>
       </div>
     </div>
+
+        <!-- 高 HP 組合 -->
+    <div class="card-table-container card-ui open">
+      <div class="card-header">
+        <span class="card-title">高 HP 組合</span>
+        <button class="card-toggle" aria-label="收合/展開">
+          <span class="toggle-icon">▼</span>
+        </button>
+      </div>
+      <div class="card-content">
+        <div class="table-description">
+          HP增加<br/>
+          
+        </div>
+        <table class="card-table rwd-grid">
+          <tbody>
+            <tr>
+              <td>破軍*5</td>
+              <td>火*2</td>
+              <td>祿存*2</td>
+              <td>地空*2</td>
+              <td>陀螺*2</td>
+              <td>天鉞*2</td>
+            </tr>
+            <tr>
+              <td>天府*2</td>
+              <td>文昌</td>
+              <td>擎羊</td>
+              <td>鈴</td>
+              <td>天機</td>
+              <td>紫微</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+
 
     <div id="footer-container"></div>
     <!-- 這是頁尾會被載入的位置 -->
