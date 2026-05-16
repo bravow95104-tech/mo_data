@@ -90,7 +90,11 @@ function applyFilters(keyword) {
 function renderTable(data, keyword = "") {
   const thead = document.querySelector("#heroes-table thead tr");
   const tbody = document.querySelector("#heroes-table tbody");
+  const table = document.getElementById("heroes-table");
   if (!tbody || !thead) return;
+
+  // 加入 RWD 類別
+  table.classList.add("rwd-card");
 
   // 1. 渲染表頭
   thead.innerHTML = "";
@@ -121,6 +125,9 @@ function renderTable(data, keyword = "") {
 
     activeColumns.forEach((colId, index) => {
       const td = document.createElement("td");
+      const colInfo = ALL_COLUMNS.find(c => c.id === colId);
+      td.setAttribute("data-label", colInfo ? colInfo.label : colId);
+
       let text = item[colId] || "-";
       let content = String(text).replace(/\n/g, '<br>');
 
