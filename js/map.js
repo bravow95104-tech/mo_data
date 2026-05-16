@@ -240,6 +240,10 @@ function loadColumnSettings() {
 // === 4. [HTML2 專屬] 地圖互動邏輯 ===
 function initMapTabs() {
   const tabButtons = document.querySelectorAll(".tab-button");
+  const scrollLeftBtn = document.getElementById("scroll-left");
+  const scrollRightBtn = document.getElementById("scroll-right");
+  const tabsScroll = document.getElementById("tabs-scroll");
+
   tabButtons.forEach(button => {
     button.addEventListener("click", () => {
       document.querySelectorAll(".tab-button, .tab-content").forEach(el => el.classList.remove("active"));
@@ -253,6 +257,32 @@ function initMapTabs() {
       }
     });
   });
+
+  // 箭頭捲動邏輯
+  if (scrollLeftBtn && scrollRightBtn && tabsScroll) {
+    scrollLeftBtn.addEventListener("click", () => {
+      tabsScroll.scrollBy({ left: -200, behavior: "smooth" });
+    });
+    scrollRightBtn.addEventListener("click", () => {
+      tabsScroll.scrollBy({ left: 200, behavior: "smooth" });
+    });
+
+    // 監聽捲動狀態來決定是否隱藏箭頭 (選用功能，讓介面更精緻)
+    const updateArrows = () => {
+      const scrollLeft = tabsScroll.scrollLeft;
+      const maxScroll = tabsScroll.scrollWidth - tabsScroll.clientWidth;
+      
+      scrollLeftBtn.style.opacity = scrollLeft <= 0 ? "0.3" : "1";
+      scrollLeftBtn.style.pointerEvents = scrollLeft <= 0 ? "none" : "auto";
+      
+      scrollRightBtn.style.opacity = scrollLeft >= maxScroll - 1 ? "0.3" : "1";
+      scrollRightBtn.style.pointerEvents = scrollLeft >= maxScroll - 1 ? "none" : "auto";
+    };
+
+    tabsScroll.addEventListener("scroll", updateArrows);
+    window.addEventListener("resize", updateArrows);
+    updateArrows(); // 初始化
+  }
 }
 
 function initImageMapResizer() {
