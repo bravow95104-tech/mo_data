@@ -30,6 +30,81 @@
     color: #3399ff;
 }
 
+/* === RWD 手機版優化 (下拉選單模式) === */
+@media (max-width: 768px) {
+    #content-wrapper {
+        flex-direction: column;
+    }
+
+    .system-sidebar {
+        flex: none;
+        width: 100%;
+        position: sticky;
+        top: 0; /* 如果有頂部導航列，可能需要微調 top */
+        z-index: 100;
+        background: #fff;
+        margin-bottom: 15px;
+    }
+
+    .sidebar {
+        border: 1px solid #b3d8ff;
+        border-radius: 8px;
+        overflow: hidden;
+        margin: 10px 0;
+    }
+
+    .sidebar h2 {
+        margin: 0;
+        padding: 15px;
+        font-size: 1.1rem;
+        cursor: pointer;
+        border-bottom: none;
+        background: #f0f7ff;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    /* 增加下拉箭頭 */
+    .sidebar h2::after {
+        content: "▼";
+        font-size: 0.8rem;
+        transition: transform 0.3s;
+    }
+
+    .system-sidebar.open .sidebar h2::after {
+        transform: rotate(180deg);
+    }
+
+    .system-sidebar.open .sidebar h2 {
+        border-bottom: 1px solid #b3d8ff;
+    }
+
+    .sidebar-list {
+        display: none; /* 預設隱藏清單 */
+        max-height: 300px;
+        overflow-y: auto;
+        padding: 10px;
+    }
+
+    .system-sidebar.open .sidebar-list {
+        display: block;
+    }
+
+    .system-sidebar .sidebar-list li {
+        padding: 10px 15px;
+        border-bottom: 1px solid #f0f0f0;
+    }
+
+    .system-sidebar .sidebar-list li:last-child {
+        border-bottom: none;
+    }
+
+    #content {
+        padding: 10px;
+    }
+}
+
 .system-main-content {
     min-height: 500px;
     /* 這裡可以繼承你原本 #content 的所有白底圓角陰影樣式 */
