@@ -90,49 +90,77 @@ function renderQuests(data) {
     container.innerHTML = "";
 
     if (data.length === 0) {
-        container.innerHTML = "<p style='text-align:center; padding:50px; color:#999;'>找不到相符的任務內容</p>";
+        container.innerHTML = "<div class='no-results'>找不到相符的任務內容</div>";
         return;
     }
+
+    // 建立隔離容器
+    const questWrapper = document.createElement("div");
+    questWrapper.className = "quest-system-container";
+    container.appendChild(questWrapper);
 
     data.forEach(task => {
         const card = document.createElement("div");
         card.className = "mission-card";
 
-        // 💰 獎勵處理
-        const rewardParts = [];
-        if (task.process_exp)    rewardParts.push(`<strong>經驗：</strong>${task.process_exp} 點`);
-        if (task.process_money)  rewardParts.push(`<strong>金錢：</strong>${task.process_money} 元`);
-        if (task.process_renown) rewardParts.push(`<strong>名聲：</strong>${task.process_renown} 點`);
-        if (task.process_item)   rewardParts.push(`<strong>物品：</strong>${formatContent(task.process_item)}`);
-        if (task.process)        rewardParts.push(`<strong>獎勵細節：</strong><br>${formatContent(task.process)}`);
+        // 💰 獎勵處理 - 轉換為 Badge 模式
+        const rewardBadges = [];
+        if (task.process_exp)    rewardBadges.push(`<span class="q-badge q-badge-exp">經驗：${task.process_exp}</span>`);
+        if (task.process_money)  rewardBadges.push(`<span class="q-badge q-badge-money">金錢：${task.process_money} 元</span>`);
+        if (task.process_renown) rewardBadges.push(`<span class="q-badge q-badge-renown">名聲：${task.process_renown}</span>`);
+        
+        let rewardHtml = "";
+        if (rewardBadges.length > 0 || task.process_item || task.process) {
+            rewardHtml = `
+                <div class="mission-section">
+                    <div class="section-title">任務獎勵</div>
+                    <div class="reward-content">
+                        <div class="badge-list">${rewardBadges.join("")}</div>
+                        ${task.process_item ? `<div class="item-reward"><strong>物品：</strong>${formatContent(task.process_item)}</div>` : ""}
+                        ${task.process ? `<div class="reward-detail">${formatContent(task.process)}</div>` : ""}
+                    </div>
+                </div>`;
+        }
 
-        let rewardHtml = rewardParts.length > 0 ? `
-            <tr>
-                <td style="vertical-align: top;"><strong>任務獎勵：</strong></td>
-                <td>${rewardParts.join("<br>")}</td>
-            </tr>` : "";
-
-        let imageRow = "";
+        let imageSection = "";
         if (task.image) {
             const imgSrc = `/mo_data/pic/quest/${task.image.toLowerCase()}`;
-            imageRow = `<tr><td><strong>任務參考圖：</strong></td><td><img src="${imgSrc}" class="mission-img" onerror="this.closest('tr').style.display='none'"></td></tr>`;
+            imageSection = `<div class="mission-section img-section"><div class="section-title">任務參考圖</div><img src="${imgSrc}" class="mission-img" onerror="this.closest('.img-section').style.display='none'"></div>`;
         }
 
         card.innerHTML = `
-            <div class="mission-badge" style="float:right; background:#3399ff; color:#fff; padding:2px 8px; border-radius:4px; font-size:12px;">
-                ${task.star || "一般任務"}
+            <div class="mission-header">
+                <div class="mission-tag">${task.star || "一般任務"}</div>
+                <h3 class="mission-title">${task.id || "未命名任務"}</h3>
             </div>
-            <h3 style="color: #3399ff; margin-bottom:10px;">${task.id || "未命名任務"}</h3>
-            <table class="mission-table">
-                <tr><td style="width: 120px;"><strong>任務地區：</strong></td><td>${task.area || "-"}</td></tr>
-                <tr><td><strong>起始 NPC：</strong></td><td>${formatContent(task.start)}</td></tr>
-                <tr><td><strong>任務條件：</strong></td><td>${formatContent(task.restriction)}</td></tr>
-                <tr><td><strong>任務流程：</strong></td><td>${formatContent(task.award)}</td></tr>
+            
+            <div class="mission-body">
+                <div class="info-grid">
+                    <div class="info-item"><span class="label">任務地區</span><span class="value">${task.area || "-"}</span></div>
+                    <div class="info-item"><span class="label">起始 NPC</span><span class="value">${formatContent(task.start)}</span></div>
+                </div>
+
+                <div class="mission-section">
+                    <div class="section-title">任務條件</div>
+                    <div class="section-text">${formatContent(task.restriction)}</div>
+                </div>
+
+                <div class="mission-section">
+                    <div class="section-title">任務流程</div>
+                    <div class="section-text">${formatContent(task.award)}</div>
+                </div>
+
                 ${rewardHtml}
-                ${task.remark ? `<tr><td><strong>備註：</strong></td><td>${formatContent(task.remark)}</td></tr>` : ""}
-                ${imageRow}
-            </table>
+                
+                ${task.remark ? `
+                <div class="mission-section remark-section">
+                    <div class="section-title">備註</div>
+                    <div class="section-text">${formatContent(task.remark)}</div>
+                </div>` : ""}
+
+                ${imageSection}
+            </div>
         `;
-        container.appendChild(card);
+        questWrapper.appendChild(card);
     });
 }
