@@ -1,128 +1,153 @@
 /* ============================================================
-   任務系統：全域控制與搜尋篩選 (恢復與優化)
+   任務系統：全域控制與搜尋篩選 (恢復原始專案樣式)
    ============================================================ */
 
-/* 搜尋框樣式 */
-#searchContainer {
-    max-width: 1000px;
-    margin: 20px auto;
-    padding: 0 20px;
-    display: flex;
-    align-items: center;
-    gap: 15px;
+:root {
+  --primary-color: #3399ff;
+  --primary-dark-color: #267acc;
+  --highlight-bg-color: #fff9c0;
+  --highlight-text-color: #b8860b;
+  --light-bg-color: #f5faff;
+  --border-color: #b3d8ff;
+  --header-bg-color: #1976d2;
+  --header-hover-bg-color: #1565c0;
+  --text-light: #ffffff;
+  --text-dark: #333333;
+  --border-light-gray: #ccc;
 }
 
+/* 搜尋與篩選 */
 .quick-search-label {
-    font-weight: bold;
-    color: #1976d2;
-    white-space: nowrap;
+  font-weight: 600;
+  margin-right: 8px;
+  font-size: 16px;
+  color: var(--primary-color);
+  vertical-align: middle;
+}
+
+#searchContainer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 20px;
 }
 
 #searchInput {
-    flex: 1;
-    padding: 10px 15px;
-    border: 2px solid #e1e8ed;
-    border-radius: 8px;
-    font-size: 1rem;
-    transition: border-color 0.2s;
+  padding: 6px 10px;
+  width: 100%;
+  font-size: 14px;
+  border: 1px solid var(--border-light-gray);
+  border-radius: 4px;
+  box-sizing: border-box;
+  max-width: 250px;
 }
 
-#searchInput:focus {
-    outline: none;
-    border-color: #3399ff;
-    box-shadow: 0 0 0 3px rgba(51, 153, 255, 0.1);
+.highlight {
+  background-color: var(--highlight-bg-color);
+  font-weight: bold;
+  border-radius: 3px;
+  padding: 2px 4px;
 }
 
-/* 折疊選單 (Accordion) */
 .accordion {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 0 20px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  margin-bottom: 20px;
+  background: var(--light-bg-color);
+  max-width: 1000px;
+  margin: 20px auto;
 }
 
 .accordion-header {
-    background: #f8fbff;
-    color: #267acc;
-    padding: 12px 20px;
-    cursor: pointer;
-    border-radius: 8px;
-    font-size: 1.1rem;
-    border: 1px solid #d0e3ff;
-    transition: background 0.2s;
-    user-select: none;
+  color: var(--primary-dark-color);
+  margin: 0;
+  padding: 12px 16px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  background: var(--light-bg-color);
+  border-radius: 8px 8px 0 0;
+  user-select: none;
+  transition: background 0.3s;
 }
 
 .accordion-header:hover {
-    background: #eef6ff;
+  background: var(--border-color);
 }
 
 .accordion-content {
-    background: #ffffff;
-    border: 1px solid #d0e3ff;
-    border-top: none;
-    padding: 20px;
-    border-radius: 0 0 8px 8px;
-    /* JS 可能會控制顯示/隱藏，這裡確保基礎樣式 */
+  padding: 12px 16px;
+  margin-top: 6px;
+  display: block;
 }
 
-/* 篩選群組與按鈕 */
-.filter-group {
-    margin-bottom: 15px;
+.accordion.collapsed .accordion-content {
+  display: none;
+}
+
+.accordion.collapsed .accordion-header::after {
+  content: "▸";
+}
+
+.accordion-header::after {
+  content: "▾";
+  float: right;
 }
 
 .filter-label {
-    font-weight: bold;
-    color: #666;
-    margin-right: 10px;
-    display: inline-block;
-    min-width: 80px;
+  font-weight: bold;
+  color: var(--primary-dark-color);
+  margin-right: 8px;
 }
 
 .filter-btn {
-    padding: 6px 16px;
-    margin: 4px;
-    border: 1px solid #ddd;
-    background: #fff;
-    border-radius: 20px;
-    cursor: pointer;
-    transition: all 0.2s;
-    font-size: 0.9rem;
+  background: #e6f0ff;
+  border: 1px solid var(--primary-color);
+  color: var(--primary-dark-color);
+  border-radius: 4px;
+  padding: 4px 12px;
+  margin: 2px 4px 2px 0;
+  cursor: pointer;
+  font-size: 14px;
+  transition:
+    background 0.2s,
+    color 0.2s;
 }
 
-.filter-btn:hover {
-    border-color: #3399ff;
-    color: #3399ff;
-    background: #f0f8ff;
-}
-
+.filter-btn:hover,
 .filter-btn.active {
-    background: #3399ff;
-    color: #fff;
-    border-color: #3399ff;
-    box-shadow: 0 2px 5px rgba(51, 153, 255, 0.3);
-}
-
-/* 篩選操作 */
-.filter-actions {
-    display: flex;
-    justify-content: flex-end;
-    margin-top: 10px;
+  background: var(--highlight-bg-color);
+  color: var(--highlight-text-color);
+  border: 1.5px solid #ffe066;
 }
 
 .clear-btn {
-    padding: 8px 20px;
-    background: #f1f5f9;
-    color: #64748b;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: background 0.2s;
+  background: #ffefc0;
+  border: 1px solid #ffc107;
+  color: var(--highlight-text-color);
+  border-radius: 4px;
+  padding: 4px 12px;
+  margin-top: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  transition:
+    background 0.2s,
+    color 0.2s;
 }
 
 .clear-btn:hover {
-    background: #e2e8f0;
-    color: #334155;
+  background: #ffc107;
+  color: var(--text-light);
+}
+
+.filter-actions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-top: 15px;
+  width: 100%;
 }
 
 /* ============================================================
