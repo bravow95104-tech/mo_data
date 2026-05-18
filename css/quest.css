@@ -1,5 +1,132 @@
 /* ============================================================
-   任務系統專屬樣式 (quest.css)
+   任務系統：全域控制與搜尋篩選 (恢復與優化)
+   ============================================================ */
+
+/* 搜尋框樣式 */
+#searchContainer {
+    max-width: 1000px;
+    margin: 20px auto;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.quick-search-label {
+    font-weight: bold;
+    color: #1976d2;
+    white-space: nowrap;
+}
+
+#searchInput {
+    flex: 1;
+    padding: 10px 15px;
+    border: 2px solid #e1e8ed;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.2s;
+}
+
+#searchInput:focus {
+    outline: none;
+    border-color: #3399ff;
+    box-shadow: 0 0 0 3px rgba(51, 153, 255, 0.1);
+}
+
+/* 折疊選單 (Accordion) */
+.accordion {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.accordion-header {
+    background: #f8fbff;
+    color: #267acc;
+    padding: 12px 20px;
+    cursor: pointer;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    border: 1px solid #d0e3ff;
+    transition: background 0.2s;
+    user-select: none;
+}
+
+.accordion-header:hover {
+    background: #eef6ff;
+}
+
+.accordion-content {
+    background: #ffffff;
+    border: 1px solid #d0e3ff;
+    border-top: none;
+    padding: 20px;
+    border-radius: 0 0 8px 8px;
+    /* JS 可能會控制顯示/隱藏，這裡確保基礎樣式 */
+}
+
+/* 篩選群組與按鈕 */
+.filter-group {
+    margin-bottom: 15px;
+}
+
+.filter-label {
+    font-weight: bold;
+    color: #666;
+    margin-right: 10px;
+    display: inline-block;
+    min-width: 80px;
+}
+
+.filter-btn {
+    padding: 6px 16px;
+    margin: 4px;
+    border: 1px solid #ddd;
+    background: #fff;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 0.9rem;
+}
+
+.filter-btn:hover {
+    border-color: #3399ff;
+    color: #3399ff;
+    background: #f0f8ff;
+}
+
+.filter-btn.active {
+    background: #3399ff;
+    color: #fff;
+    border-color: #3399ff;
+    box-shadow: 0 2px 5px rgba(51, 153, 255, 0.3);
+}
+
+/* 篩選操作 */
+.filter-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
+}
+
+.clear-btn {
+    padding: 8px 20px;
+    background: #f1f5f9;
+    color: #64748b;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.2s;
+}
+
+.clear-btn:hover {
+    background: #e2e8f0;
+    color: #334155;
+}
+
+/* ============================================================
+   任務卡片樣式區
    ============================================================ */
 
 /* 1. 樣式隔離容器 */
