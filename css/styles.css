@@ -133,30 +133,39 @@ body {
 @media (max-width: 1300px) and (min-width: 769px) {
     .nav-item-sys { display: none; }
     .more-menu { display: block; }
-    .more-item-map, .more-item-prod, .more-item-other { display: none; }
+    .more-menu .more-item-map, 
+    .more-menu .more-item-prod, 
+    .more-item-other { display: none; }
 }
 
 /* 當視窗在 1000px ~ 1149px 之間，收納「其他」、「系統」 */
 @media (max-width: 1150px) and (min-width: 769px) {
     .nav-item-other, .nav-item-sys { display: none; }
     .more-menu { display: block; }
-    .more-item-map, .more-item-prod { display: none; }
-    .more-item-other, .more-item-sys { display: block; }
+    .more-menu .more-item-map, 
+    .more-menu .more-item-prod { display: none; }
+    .more-menu .more-item-other, 
+    .more-menu .more-item-sys { display: block; }
 }
 
 /* 當視窗在 850px ~ 999px 之間，收納「生產道具」、「其他」、「系統」 */
 @media (max-width: 1000px) and (min-width: 769px) {
     .nav-item-prod, .nav-item-other, .nav-item-sys { display: none; }
     .more-menu { display: block; }
-    .more-item-map { display: none; }
-    .more-item-prod, .more-item-other, .more-item-sys { display: block; }
+    .more-menu .more-item-map { display: none; }
+    .more-menu .more-item-prod, 
+    .more-menu .more-item-other, 
+    .more-menu .more-item-sys { display: block; }
 }
 
 /* 當視窗更小時，收納更多 */
 @media (max-width: 900px) and (min-width: 769px) {
     .nav-item-map, .nav-item-prod, .nav-item-other, .nav-item-sys { display: none; }
     .more-menu { display: block; }
-    .more-item-map, .more-item-prod, .more-item-other, .more-item-sys { display: block; }
+    .more-menu .more-item-map, 
+    .more-menu .more-item-prod, 
+    .more-menu .more-item-other, 
+    .more-menu .more-item-sys { display: block; }
     
     /* 同時微調間距確保不換行 */
     #nav-container nav a, #nav-container nav .dropdown-toggle {
