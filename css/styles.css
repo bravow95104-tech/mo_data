@@ -550,7 +550,16 @@ h3.search-tip {
         border-bottom: 1px solid #5abaff;
     }
 
-    .dropdown-toggle,
+    .dropdown-toggle {
+        padding: 10px 50px;
+        display: block;
+        width: 100%;
+        margin-right: 0;
+        background-color: #267acc !important; /* 深藍色標題 */
+        color: white !important;
+        font-weight: bold;
+    }
+
     .nav-menu a {
         padding: 8px 50px;
         display: block;
@@ -559,7 +568,10 @@ h3.search-tip {
     }
 
     /* 統一 Hover 效果 */
-    .dropdown-toggle:hover,
+    .dropdown-toggle:hover {
+        background-color: #1976d2 !important;
+    }
+    
     .nav-menu a:hover {
         background-color: #5abaff;
     }
