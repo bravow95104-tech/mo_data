@@ -26,9 +26,10 @@
   background: #e6f3ff;
   padding: 12px 16px;
   display: flex;
-  justify-content: space-between;
+  justify-content: center; /* 標題置中 */
   align-items: center;
   border-bottom: 1px solid #b3d8ff;
+  position: relative; /* 為了讓標籤定位 */
 }
 
 .mission-title {
@@ -36,6 +37,7 @@
   color: #1976d2;
   font-size: 1.25rem;
   font-weight: bold;
+  text-align: center;
 }
 
 .mission-tag {
@@ -44,6 +46,8 @@
   padding: 2px 10px;
   border-radius: 4px;
   font-size: 0.85rem;
+  position: absolute; /* 絕對定位 */
+  right: 16px; /* 靠右對齊 */
 }
 
 .mission-body {
