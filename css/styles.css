@@ -130,16 +130,17 @@ body {
 }
 
 /* 當視窗在 1150px ~ 1300px 之間，收納「系統」 */
-@media (max-width: 1300px) and (min-width: 769px) {
+@media (max-width: 1300px) and (min-width: 1151px) {
     .nav-item-sys { display: none; }
     .more-menu { display: block; }
     .more-menu .more-item-map, 
     .more-menu .more-item-prod, 
-    .more-item-other { display: none; }
+    .more-menu .more-item-other { display: none; }
+    .more-menu .more-item-sys { display: block; }
 }
 
-/* 當視窗在 1000px ~ 1149px 之間，收納「其他」、「系統」 */
-@media (max-width: 1150px) and (min-width: 769px) {
+/* 當視窗在 1000px ~ 1150px 之間，收納「其他」、「系統」 */
+@media (max-width: 1150px) and (min-width: 1001px) {
     .nav-item-other, .nav-item-sys { display: none; }
     .more-menu { display: block; }
     .more-menu .more-item-map, 
@@ -148,8 +149,8 @@ body {
     .more-menu .more-item-sys { display: block; }
 }
 
-/* 當視窗在 850px ~ 999px 之間，收納「生產道具」、「其他」、「系統」 */
-@media (max-width: 1000px) and (min-width: 769px) {
+/* 當視窗在 900px ~ 1000px 之間，收納「生產道具」、「其他」、「系統」 */
+@media (max-width: 1000px) and (min-width: 901px) {
     .nav-item-prod, .nav-item-other, .nav-item-sys { display: none; }
     .more-menu { display: block; }
     .more-menu .more-item-map { display: none; }
@@ -158,7 +159,7 @@ body {
     .more-menu .more-item-sys { display: block; }
 }
 
-/* 當視窗更小時，收納更多 */
+/* 當視窗更小時 (900px 以下)，收納全部 */
 @media (max-width: 900px) and (min-width: 769px) {
     .nav-item-map, .nav-item-prod, .nav-item-other, .nav-item-sys { display: none; }
     .more-menu { display: block; }
