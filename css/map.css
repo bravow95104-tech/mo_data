@@ -34,46 +34,44 @@
 .tabs-container {
     max-width: 1200px;
     margin: 0 auto; 
-    padding: 0 0px;
+    padding: 0 10px;
     position: relative;
     display: flex;
     align-items: center;
+    background-color: #ffffff; /* 將白底移到容器上 */
+    border-radius: 8px 8px 0 0; /* 只有上方圓角 */
+    box-shadow: 0 -2px 10px rgba(0,0,0,0.05), 2px 0 6px rgba(0,0,0,0.1), -2px 0 6px rgba(0,0,0,0.1); /* 給予上方與左右陰影 */
+    border-bottom: 1px solid #e0e0e0;
 }
 
 /* 捲動箭頭樣式 */
 .nav-arrow {
-    display: flex; /* 始終顯示箭頭 */
-    background: rgba(255, 255, 255, 0.9);
-    border: 1px solid #ddd;
-    border-radius: 50%;
+    display: flex; 
+    background: transparent; /* 改為透明，因為容器已經有底色 */
+    border: none;
     width: 32px;
-    height: 32px;
+    height: 48px; /* 增加高度與頁籤一致 */
     cursor: pointer;
     z-index: 10;
     justify-content: center;
     align-items: center;
     color: #267acc;
-    font-size: 14px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    transition: background 0.3s, color 0.3s;
+    font-size: 16px;
+    transition: color 0.3s;
     flex-shrink: 0;
 }
 
 .nav-arrow:hover {
-    background: #267acc;
-    color: #fff;
+    color: #3399ff;
+    background: #f0f8ff;
 }
 
 .nav-arrow.left {
-    margin-right: -16px;
-    position: relative;
-    left: 10px;
+    margin-right: 0;
 }
 
 .nav-arrow.right {
-    margin-left: -16px;
-    position: relative;
-    right: 10px;
+    margin-left: 0;
 }
 
 /* 3. 主內容區塊 */
@@ -81,11 +79,12 @@
     max-width: 1200px; 
     margin: 0 auto 20px auto; 
     background-color: #ffffff; 
-    /* 圓角：讓 Tab 區塊看起來像卡片頭部，內容區塊像卡片本體 */
+    /* 圓角：只有下方圓角，讓它與上方頁籤結合 */
     border-radius: 0 0 8px 8px; 
     padding: 20px; 
     min-height: 700px; 
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1); 
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* 強化下方陰影 */
+    border-top: none; /* 移除頂部邊框，確保無縫 */
 }
 
 h1 { 
@@ -97,14 +96,13 @@ h1 {
 /* 4. Tabs 導航樣式 */
 .tabs { 
     display: flex; 
-    flex-wrap: nowrap; /* 手機版不換行 */
-    overflow-x: auto;  /* 允許水平捲動 */
-    -webkit-overflow-scrolling: touch; /* 順暢滑動 */
-    background-color: #ffffff;
-    border-radius: 8px 8px 0 0; 
-    border-bottom: 1px solid #e0e0e0; 
-    padding: 0 10px; 
-    scrollbar-width: none; /* 隱藏捲軸 (Firefox) */
+    flex: 1; /* 讓頁籤區塊佔滿剩餘空間 */
+    flex-wrap: nowrap; 
+    overflow-x: auto;  
+    -webkit-overflow-scrolling: touch; 
+    background-color: transparent; /* 底色已移至 container */
+    padding: 0; 
+    scrollbar-width: none; 
 }
 
 .tabs::-webkit-scrollbar {
