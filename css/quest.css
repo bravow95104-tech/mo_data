@@ -1,27 +1,159 @@
 /* ============================================================
-   任務系統：全域控制與搜尋篩選 (恢復原始專案樣式)
+   任務列表卡片化樣式 (支援新結構，維持原始色系)
    ============================================================ */
 
-:root {
-  --primary-color: #3399ff;
-  --primary-dark-color: #267acc;
-  --highlight-bg-color: #fff9c0;
-  --highlight-text-color: #b8860b;
-  --light-bg-color: #f5faff;
-  --border-color: #b3d8ff;
-  --header-bg-color: #1976d2;
-  --header-hover-bg-color: #1565c0;
-  --text-light: #ffffff;
-  --text-dark: #333333;
-  --border-light-gray: #ccc;
+.quest-system-container {
+    max-width: 1000px;
+    margin: 0 auto;
 }
 
-/* 搜尋與篩選 */
+.mission-card {
+  background: #f9fcff;
+  border: 1px solid #b3d8ff;
+  border-radius: 8px;
+  margin-bottom: 25px;
+  box-shadow: 0 2px 8px rgba(51, 153, 255, 0.1);
+  overflow: hidden;
+  transition: transform 0.2s;
+}
+
+.mission-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(51, 153, 255, 0.15);
+}
+
+.mission-header {
+  background: #e6f3ff;
+  padding: 12px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #b3d8ff;
+}
+
+.mission-title {
+  margin: 0;
+  color: #1976d2;
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.mission-tag {
+  background: #3399ff;
+  color: #fff;
+  padding: 2px 10px;
+  border-radius: 4px;
+  font-size: 0.85rem;
+}
+
+.mission-body {
+  padding: 16px;
+}
+
+/* 資訊網格 */
+.info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 16px;
+  background: #ffffff;
+  padding: 12px;
+  border-radius: 6px;
+  border: 1px solid #e1f0ff;
+}
+
+.info-item {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.info-item .label {
+  color: #267acc;
+  font-weight: bold;
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+
+.info-item .value {
+  color: #333;
+}
+
+/* 章節樣式 */
+.mission-section {
+  margin-bottom: 15px;
+  border-bottom: 1px solid #f0f7ff;
+  padding-bottom: 10px;
+}
+
+.mission-section:last-child {
+  border-bottom: none;
+}
+
+.section-title {
+  color: #3399ff;
+  font-weight: bold;
+  margin-bottom: 5px;
+  font-size: 0.95rem;
+}
+
+.section-text {
+  line-height: 1.6;
+  color: #444;
+  padding-left: 5px;
+}
+
+/* 獎勵標籤 */
+.badge-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 5px;
+}
+
+.q-badge {
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  font-weight: bold;
+}
+
+.q-badge-exp { background: #e3f2fd; color: #1976d2; border: 1px solid #bbdefb; }
+.q-badge-money { background: #fff9c4; color: #b8860b; border: 1px solid #fff59d; }
+.q-badge-renown { background: #f3e5f5; color: #7b1fa2; border: 1px solid #e1bee7; }
+
+.item-reward {
+  margin-top: 8px;
+  color: #b8860b;
+  font-weight: bold;
+}
+
+.mission-img {
+    max-width: 650px;
+    width: 100%;
+    height: auto;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    display: block;
+    margin-top: 10px;
+}
+
+/*快速搜尋*/
+#searchInput {
+  padding: 6px 10px;
+  width: 100%;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  max-width: 250px; /* 限制寬度 */
+}
+/*快速搜尋*/
 .quick-search-label {
   font-weight: 600;
   margin-right: 8px;
   font-size: 16px;
-  color: var(--primary-color);
+  color: #3399ff;
   vertical-align: middle;
 }
 
@@ -29,346 +161,191 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 0 20px;
 }
 
-#searchInput {
-  padding: 6px 10px;
-  width: 100%;
-  font-size: 14px;
-  border: 1px solid var(--border-light-gray);
-  border-radius: 4px;
-  box-sizing: border-box;
-  max-width: 250px;
-}
-
+/* 黃色高亮（柔和） */
 .highlight {
-  background-color: var(--highlight-bg-color);
+  background-color: #fff9c0;
   font-weight: bold;
   border-radius: 3px;
   padding: 2px 4px;
 }
 
+/* 黃色高亮（高亮） */
+.highlight2 {
+  background-color: #fff9c0;
+  font-weight: bold;
+  border-radius: 3px;
+  padding: 2px 4px;
+}
+
+/* 回到頂部按鈕 */
+#backToTop {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  display: none;
+  background-color: #3399ff;
+  color: white;
+  border: none;
+  padding: 12px 16px;
+  border-radius: 50%;
+  font-size: 18px;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+  transition: background-color 0.3s ease;
+  z-index: 1000;
+}
+#backToTop:hover {
+  background-color: #267acc;
+}
+
+/* 篩選標籤 */
+.filter-label {
+  font-weight: bold;
+  color: #267acc;
+  margin-right: 8px;
+}
+
+/* 篩選按鈕 */
+.filter-btn {
+  background: #e6f0ff;
+  border: 1px solid #3399ff;
+  color: #267acc;
+  border-radius: 4px;
+  padding: 4px 12px;
+  margin: 2px 4px 2px 0;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+  background: #fff9c0;   /* 柔和亮黃色 */
+  color: #b8860b;
+  border: 1.5px solid #ffe066;
+}
+
+/* 清除篩選按鈕 */
+.clear-btn {
+  background: #ffefc0;
+  border: 1px solid #ffc107;
+  color: #b8860b;
+  border-radius: 4px;
+  padding: 4px 12px;
+  margin-top: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.clear-btn:hover {
+  background: #ffc107;
+  color: #fff;
+}
+
+/* 文字調整 */
+.hero-column p {
+  margin: 8px 0;
+  font-size: 14px;
+  line-height: 1.4;
+  color: #333;
+}
+
+.hero-column h2 {
+  margin-top: 0;
+  color: #3399ff;
+  text-align: center;
+  font-weight: 600;
+}
+
+/* 調整 table header sticky 時，避免蓋到 nav */
+thead th {
+  position: sticky;
+  top: var(--nav-offset, 0px); /* JS 動態修改 */
+  background-color: #1976d2;
+  z-index: 100;
+  color: white;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* 快速搜尋樣式 */
 .accordion {
-  border: 1px solid var(--border-color);
+  border: 1px solid #b3d8ff;
   border-radius: 8px;
   margin-bottom: 20px;
-  background: var(--light-bg-color);
-  max-width: 1000px;
-  margin: 20px auto;
+  background: #f5faff;
 }
 
 .accordion-header {
-  color: var(--primary-dark-color);
+  color: #267acc;
   margin: 0;
   padding: 12px 16px;
   cursor: pointer;
   font-size: 16px;
   font-weight: bold;
-  background: var(--light-bg-color);
+  background: #f5faff;
   border-radius: 8px 8px 0 0;
   user-select: none;
   transition: background 0.3s;
 }
 
 .accordion-header:hover {
-  background: var(--border-color);
+  background: #b3d8ff;
 }
 
 .accordion-content {
   padding: 12px 16px;
-  margin-top: 6px;
-  display: block;
+    margin-top: 6px;
+  display: block; /* 預設展開 */
 }
 
 .accordion.collapsed .accordion-content {
-  display: none;
+  display: none; /* 收合 */
 }
 
 .accordion.collapsed .accordion-header::after {
-  content: "▸";
+  content: "▸"; /* 收合箭頭 */
 }
 
 .accordion-header::after {
-  content: "▾";
+  content: "▾"; /* 展開箭頭 */
   float: right;
 }
 
-.filter-label {
-  font-weight: bold;
-  color: var(--primary-dark-color);
-  margin-right: 8px;
+/* box內的距離 */
+.section-gap {
+  margin-top: 16px !important; /* 顯著的段落開頭距離，加強效果 */
 }
 
-.filter-btn {
-  background: #e6f0ff;
-  border: 1px solid var(--primary-color);
-  color: var(--primary-dark-color);
-  border-radius: 4px;
-  padding: 4px 12px;
-  margin: 2px 4px 2px 0;
-  cursor: pointer;
-  font-size: 14px;
-  transition:
-    background 0.2s,
-    color 0.2s;
-}
-
-.filter-btn:hover,
-.filter-btn.active {
-  background: var(--highlight-bg-color);
-  color: var(--highlight-text-color);
-  border: 1.5px solid #ffe066;
-}
-
-.clear-btn {
-  background: #ffefc0;
-  border: 1px solid #ffc107;
-  color: var(--highlight-text-color);
-  border-radius: 4px;
-  padding: 4px 12px;
-  margin-top: 8px;
-  cursor: pointer;
-  font-size: 14px;
-  transition:
-    background 0.2s,
-    color 0.2s;
-}
-
-.clear-btn:hover {
-  background: #ffc107;
-  color: var(--text-light);
-}
-
-.filter-actions {
+/*載入英雄圖片*/
+.hero-images {
   display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  margin-top: 15px;
-  width: 100%;
+  justify-content: center;
+  gap: 16px;
+  margin: 12px 0 18px 0;
 }
 
-/* ============================================================
-   任務卡片樣式區
-   ============================================================ */
-
-/* 1. 樣式隔離容器 */
-.quest-system-container {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 20px;
-    font-family: "Microsoft JhengHei", sans-serif;
+.hero-images img {
+  width: 220px;
+  height: auto;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
-/* 2. 任務卡片主體 */
-.mission-card {
-    background: #ffffff;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-    margin-bottom: 30px;
-    overflow: hidden;
-    border: 1px solid #e1e8ed;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+.hero-images img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.25);
 }
 
-.mission-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
-}
-
-/* 3. 卡片頭部 */
-.mission-header {
-    background: linear-gradient(135deg, #3399ff 0%, #1976d2 100%);
-    padding: 15px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.mission-title {
-    margin: 0;
-    color: #ffffff;
-    font-size: 1.4rem;
-    font-weight: bold;
-    text-shadow: 0 1px 2px rgba(0,0,0,0.1);
-}
-
-.mission-tag {
-    background: rgba(255, 255, 255, 0.2);
-    color: #ffffff;
-    padding: 4px 12px;
-    border-radius: 20px;
-    font-size: 0.85rem;
-    font-weight: bold;
-    backdrop-filter: blur(4px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-}
-
-/* 4. 卡片內容區 */
-.mission-body {
-    padding: 25px;
-}
-
-/* 資訊網格 (地區、NPC) */
-.info-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 15px;
-    margin-bottom: 25px;
-    background: #f8fbff;
-    padding: 15px;
-    border-radius: 8px;
-    border: 1px dashed #3399ff;
-}
-
-.info-item {
-    display: flex;
-    flex-direction: column;
-}
-
-.info-item .label {
-    font-size: 0.85rem;
-    color: #267acc;
-    font-weight: bold;
-    margin-bottom: 4px;
-}
-
-.info-item .value {
-    font-size: 1rem;
-    color: #333;
-}
-
-/* 任務章節樣式 */
-.mission-section {
-    margin-bottom: 20px;
-}
-
-.mission-section:last-child {
-    margin-bottom: 0;
-}
-
-.section-title {
-    font-size: 1.1rem;
-    color: #1976d2;
-    font-weight: bold;
-    margin-bottom: 8px;
-    display: flex;
-    align-items: center;
-    border-left: 4px solid #3399ff;
-    padding-left: 10px;
-}
-
-.section-text {
-    line-height: 1.7;
-    color: #444;
-    font-size: 1rem;
-    padding-left: 14px;
-}
-
-/* 5. 獎勵樣式 (Badge) */
-.reward-content {
-    background: #fffcf0;
-    border: 1px solid #ffeeba;
-    padding: 15px;
-    border-radius: 8px;
-}
-
-.badge-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-bottom: 12px;
-}
-
-.q-badge {
-    display: inline-block;
-    padding: 6px 14px;
-    border-radius: 6px;
-    font-size: 0.9rem;
-    font-weight: bold;
-}
-
-.q-badge-exp { background: #e3f2fd; color: #1976d2; border: 1px solid #bbdefb; }
-.q-badge-money { background: #fff9c4; color: #fbc02d; border: 1px solid #fff59d; }
-.q-badge-renown { background: #f3e5f5; color: #7b1fa2; border: 1px solid #e1bee7; }
-
-.item-reward {
-    margin-top: 10px;
-    color: #b8860b;
-    font-weight: bold;
-}
-
-.reward-detail {
-    margin-top: 8px;
-    font-size: 0.95rem;
-    color: #666;
-    border-top: 1px solid rgba(0,0,0,0.05);
-    padding-top: 8px;
-}
-
-/* 6. 特殊樣式 */
-.remark-section {
-    background: #fef2f2;
-    border: 1px solid #fee2e2;
-    padding: 15px;
-    border-radius: 8px;
-}
-
-.remark-section .section-title {
-    color: #dc2626;
-    border-left-color: #ef4444;
-}
-
+/* 這是被 ^& ... &^ 包裹的文字樣式 */
 .quest-highlight {
-    color: #e67e22;
+    color: #ff4500; /* 設定成你要的顏色，例如橘紅色 */
     font-weight: bold;
-    text-decoration: underline;
-}
-
-.mission-img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 8px;
-    margin-top: 10px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    border: 1px solid #eee;
-}
-
-/* 7. 手機版優化 */
-@media (max-width: 768px) {
-    .quest-system-container {
-        padding: 10px;
-    }
-
-    .mission-header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 8px;
-    }
-
-    .mission-title {
-        font-size: 1.2rem;
-    }
-
-    .info-grid {
-        grid-template-columns: 1fr; /* 手機端網格變單欄 */
-    }
-
-    .q-badge {
-        width: 100%; /* 標籤全寬 */
-        text-align: center;
-    }
-}
-
-/* 無結果顯示 */
-.no-results {
-    text-align: center;
-    padding: 80px 20px;
-    color: #999;
-    font-size: 1.1rem;
-    background: white;
-    border-radius: 12px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    background-color: rgba(255, 69, 0, 0.1); /* 淡淡的底色，增加識別度 */
+    padding: 0 2px;
+    border-radius: 2px;
 }
