@@ -1,104 +1,216 @@
-/* 分頁按鈕 */
-.tab-btn {
-  padding: 8px 16px;
-  border: 1px solid #6ab7ff;
-  background: #eef6ff;
-  color: #267acc;
-  border-radius: 6px;
-  cursor: pointer;
-  font-weight: bold;
-  transition: 0.2s;
-  margin-right: 8px; /* ✅ 右邊留一點距離 */
+/* ============================================================
+   星曜任務專用樣式
+   ============================================================ */
+
+.main-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding-bottom: 50px;
 }
 
-.tab-btn:hover,
+/* 頁面大標題 */
+.page-header {
+    text-align: center;
+    margin-bottom: 30px;
+    padding: 40px 20px;
+    background: linear-gradient(135deg, #1976d2 0%, #3399ff 100%);
+    color: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(25, 118, 210, 0.2);
+}
+
+.page-header h1 {
+    margin: 0;
+    font-size: 2.5rem;
+    letter-spacing: 4px;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.page-header p {
+    margin: 15px 0 0;
+    opacity: 0.9;
+    font-size: 1.2rem;
+}
+
+#starContainer {
+    padding: 0 15px;
+}
+
+/* 分頁按鈕容器 */
+.star-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 30px;
+    padding: 10px;
+    background: #f0f7ff;
+    border-radius: 12px;
+    border: 1px solid #d0e7ff;
+}
+
+/* 分頁按鈕 */
+.tab-btn {
+    padding: 10px 20px;
+    border: 1px solid #3399ff;
+    background: white;
+    color: #1976d2;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.tab-btn:hover {
+    background: #e3f2fd;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(51, 153, 255, 0.2);
+}
+
 .tab-btn.active {
-  background: #fff6b0;
-  color: #b8860b;
-  border-color: #ffd84d;
+    background: #1976d2;
+    color: white;
+    border-color: #1565c0;
+    transform: translateY(0);
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
 }
 
 /* 分頁內容區塊 */
 .tab-content {
-  display: none;
-  padding: 40px;
-  background: white;
-  border-radius: 8px;
-  margin: 20px auto;
-  max-width: 960px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    display: none;
+    animation: fadeIn 0.4s ease-out;
 }
 
 .tab-content.active {
-  display: block;
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 /* 任務卡片 */
 .mission-card {
-  background: #f9fcff;
-  border: 1px solid #b3d8ff;
-  border-radius: 6px;
-  padding: 12px 16px;
-  margin-bottom: 16px;
+    background: white;
+    border: 1px solid #e1f0ff;
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 25px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s, box-shadow 0.2s;
+    border-left: 5px solid #3399ff;
+}
+
+.mission-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
 }
 
 .mission-card h3 {
-  padding: 6px 10px;
-  margin: 0 0 8px;
-  color: #3399ff;
+    color: #1976d2;
+    font-size: 1.4rem;
+    margin-top: 0;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #f0f7ff;
 }
 
 /* 任務表格 */
 .mission-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 8px;
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-top: 10px;
+    border: 1px solid #f0f0f0;
+    border-radius: 8px;
+    overflow: hidden;
 }
 
-.mission-table p {
-  padding: 6px 10px;
-  white-space: nowrap;
-  vertical-align: top;
+.mission-table tr td {
+    padding: 12px 16px;
+    border-bottom: 1px solid #f5f5f5;
+    line-height: 1.6;
+    color: #444;
 }
-/* 左欄（表頭）設定：不換行 + 固定寬度 */
+
+.mission-table tr:last-child td {
+    border-bottom: none;
+}
+
+/* 左欄（標籤欄）樣式 */
 .mission-table tr td:first-child {
-  width: 120px;
-  white-space: nowrap;  /* ✅ 不換行 */
-  font-weight: bold;
-  background-color: #f8fbff;
-  vertical-align: top;
+    width: 140px;
+    background-color: #f8fbff;
+    color: #267acc;
+    font-weight: bold;
+    border-right: 1px solid #f0f7ff;
+    text-align: right;
+    vertical-align: top;
 }
 
-.mission-table td,
-.mission-table th {
-  word-wrap: break-word;
-  word-break: break-all;
-  white-space: normal;
-  padding: 6px 10px;
-  border-bottom: 1px solid #eee;
-
+.mission-table strong {
+    color: #1976d2;
 }
-/* 讓圖片在表格單元格內乖乖待著 */
-.mission-image-box {
-    margin-top: 5px;
-    max-width: 100%;
+
+/* 圖片處理 */
+.mission-img-container {
+    text-align: center;
+    margin-top: 15px;
 }
 
 .mission-img {
-    max-width: 650px; /* 限制最大寬度，避免電腦版圖片太大 */
-    width: 100%;      /* 手機版會自動縮小 */
+    max-width: 100%;
     height: auto;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    display: block;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    border: 1px solid #eee;
 }
 
-/* 調整 table header sticky 時，避免蓋到 nav */
-thead th {
-  position: sticky;
-  top: var(--nav-offset, 0px); /* JS 動態修改 */
-  background-color: #1976d2;
-  z-index: 100;
-  color: white;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+/* 回到頂部按鈕 */
+#backToTop {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    display: none;
+    background-color: #1976d2;
+    color: white;
+    border: none;
+    padding: 12px 16px;
+    border-radius: 50%;
+    font-size: 18px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    transition: all 0.3s;
+    z-index: 1000;
+}
+
+#backToTop:hover {
+    background-color: #1565c0;
+    transform: translateY(-3px);
+}
+
+/* 響應式調整 */
+@media (max-width: 768px) {
+    .star-tabs {
+        gap: 8px;
+    }
+    
+    .tab-btn {
+        padding: 8px 14px;
+        font-size: 0.9rem;
+    }
+    
+    .mission-table tr td:first-child {
+        width: 100px;
+        font-size: 0.9rem;
+        padding: 10px;
+    }
+    
+    .mission-table tr td {
+        padding: 10px;
+        font-size: 0.95rem;
+    }
 }
