@@ -13,17 +13,27 @@
   <script src="/mo_data/js/componentsLoader.js"></script>
 
   <div class="main-container">
-    <!-- 頁面標題 -->
-    <div class="section-title">
-      
-    </div>
-<br/>
     <!-- 轉生需求 -->
     <div class="mission-card">
       <h3>轉生需求</h3>
       <p>
-        一隻角色共有轉生三次的機會，當玩家角色等即到達100級後，可藉由完成一連串的轉生任務，獲得轉生的資格，轉生後還可以再轉生，每個角色最多可轉生三次，轉生的條件難度會越來越高。
+        一隻角色共有轉生三次的機會，當玩家角色等級到達100級後，可藉由完成一連串的轉生任務，獲得轉生的資格。轉生後還可以再轉生，每個角色最多可轉生三次，難度會隨著轉生次數越來越高。
       </p>
+
+      <div class="requirement-grid">
+        <div class="req-card">
+          <span class="req-label">等級需求</span>
+          <span class="req-value">Lv100</span>
+        </div>
+        <div class="req-card">
+          <span class="req-label">次數限制</span>
+          <span class="req-value">最多三次</span>
+        </div>
+        <div class="req-card">
+          <span class="req-label">任務起點</span>
+          <span class="req-value">遺跡之泉 蓮華仙子</span>
+        </div>
+      </div>
 
       <table class="mission-table">
         <thead>
@@ -36,40 +46,40 @@
         </thead>
         <tbody>
           <tr>
-            <td><p>等級</p></td>
-            <td><p>Lv100</p></td>
-            <td><p>Lv100 已轉生一次</p></td>
-            <td><p>Lv100 已轉生二次</p></td>
+            <td>等級狀態</td>
+            <td>Lv100</td>
+            <td>Lv100 (已一轉)</td>
+            <td>Lv100 (已二轉)</td>
           </tr>
           <tr>
-            <td><p>金錢</p></td>
-            <td><p>100萬</p></td>
-            <td><p>200萬</p></td>
-            <td><p>300萬</p></td>
+            <td>金錢需求</td>
+            <td>100萬</td>
+            <td>200萬</td>
+            <td>300萬</td>
           </tr>
           <tr>
-            <td><p>名聲</p></td>
-            <td><p>1萬</p></td>
-            <td><p>2萬</p></td>
-            <td><p>3萬</p></td>
+            <td>名聲需求</td>
+            <td>1萬</td>
+            <td>2萬</td>
+            <td>3萬</td>
           </tr>
           <tr>
-            <td><p>特產</p></td>
-            <td><p>六種工作特產各 500 個</p></td>
-            <td><p>六種工作特產各 1000 個</p></td>
-            <td><p>六種工作特產各 1500 個</p></td>
+            <td>工作特產</td>
+            <td>六種各 500 個</td>
+            <td>六種各 1000 個</td>
+            <td>六種各 1500 個</td>
           </tr>
           <tr>
-            <td><p>100級產物</p></td>
-            <td><p>六種 100 級產物各 500 個</p></td>
-            <td><p>六種 100 級產物各 1000 個</p></td>
-            <td><p>六種 100 級產物各 1500 個</p></td>
+            <td>100級產物</td>
+            <td>六種各 500 個</td>
+            <td>六種各 1000 個</td>
+            <td>六種各 1500 個</td>
           </tr>
           <tr>
-            <td><p>武力</p></td>
-            <td><p>打贏 真‧武門修羅 (Lv90)</p></td>
-            <td><p>打贏 真‧武門修羅 (Lv95)</p></td>
-            <td><p>打贏 真‧武門修羅 (Lv100)</p></td>
+            <td>武力考驗</td>
+            <td>真‧武門修羅 (Lv90)</td>
+            <td>真‧武門修羅 (Lv95)</td>
+            <td>真‧武門修羅 (Lv100)</td>
           </tr>
         </tbody>
       </table>
@@ -78,208 +88,192 @@
     <!-- 任務流程 -->
     <div class="mission-card">
       <h3>任務流程</h3>
+      
+      <div class="timeline">
+        <!-- 步驟一 -->
+        <div class="step-box">
+          <div class="step-dot"></div>
+          <div class="step-content">
+            <div class="step-header"><span>步驟一</span> 啟程與善良的證明</div>
+            <p>
+              前往 <span class="highlight">遺跡之泉</span> 找到 <span class="highlight">蓮華仙子</span> <span class="coord">(32，71)</span> 對話。<br>
+              她會要求你找到五位「可憐的乞丐」並施捨他們，以證明你的善良。
+            </p>
+          </div>
+        </div>
 
-      <p><strong>步驟一：</strong></p>
-      <p>
-        當玩家達成轉生需求後，到遺跡之泉找到蓮華仙子（32，71）對話，說明想要轉生的意願。<br>
-        蓮華仙子會向你說明轉生的條件，並要求玩家找到五位「可憐的乞丐」，幫助他們以證明你的善良。
-      </p>
-<br/>
-      <p><strong>步驟二：</strong></p>
-      <p>
-        到京城、郡業、川都、昌碇、梁山等五大城，分別找到五位「可憐的乞丐」，施捨他們一點錢。<br>
-        五個可憐的乞丐位置如下：
-      </p>
+        <!-- 步驟二 -->
+        <div class="step-box">
+          <div class="step-dot"></div>
+          <div class="step-content">
+            <div class="step-header"><span>步驟二</span> 五大城的施捨</div>
+            <p>前往各大城市尋找乞丐並施捨金錢：</p>
+            <table class="mission-table">
+              <thead>
+                <tr>
+                  <th>城市</th>
+                  <th>乞丐位置座標</th>
+                  <th>施捨金額 (1轉/2轉/3轉)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>京城</td>
+                  <td><span class="coord">京城花園左下角 (16，175)</span></td>
+                  <td rowspan="5" style="vertical-align: middle; text-align: center;">各 20萬 / 40萬 / 60萬</td>
+                </tr>
+                <tr>
+                  <td>川都</td>
+                  <td><span class="coord">錢莊後方房子 (87，206)</span></td>
+                </tr>
+                <tr>
+                  <td>郡業</td>
+                  <td><span class="coord">往藥廬方向城門 (17，257)</span></td>
+                </tr>
+                <tr>
+                  <td>昌碇</td>
+                  <td><span class="coord">防具舖後方 (75，177)</span></td>
+                </tr>
+                <tr>
+                  <td>梁山</td>
+                  <td><span class="coord">往賭場的方向 (23, 203)</span></td>
+                </tr>
+              </tbody>
+            </table>
+            <p>完成後，回去找蓮華仙子對話。</p>
+          </div>
+        </div>
 
-      <table class="mission-table">
-        <thead>
-          <tr>
-            <th>地區</th>
-            <th>座標</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><p>京城座標</p></td>
-            <td><p>京城花園左下角(16，175)</p></td>
-          </tr>
-          <tr>
-            <td><p>川都座標</p></td>
-            <td><p>在錢莊後方的房子裡(87，206)</p></td>
-          </tr>
-          <tr>
-            <td><p>郡業座標</p></td>
-            <td><p>往藥廬方向去的城門那(17，257)</p></td>
-          </tr>
-          <tr>
-            <td><p>昌碇座標</p></td>
-            <td><p>在防具舖後方(75，177)</p></td>
-          </tr>
-          <tr>
-            <td><p>梁山座標</p></td>
-            <td><p>往賭場的方向進去(23,203)</p></td>
-          </tr>
-        </tbody>
-      </table><p>
-<table class="mission-table">
-        <thead>
-          <tr>
-            <th>條件</th>
-            <th>第一次轉生</th>
-            <th>第二次轉生</th>
-            <th>第三次轉生</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><p>京城座標</p></td>
-            <td><p>各20萬</p></td>
-            <td><p>各40萬</p></td>
-            <td><p>各60萬</p></td>
-          </tr>
-        </tbody>
-      </table>
-      <p>完成後，回去遺跡之泉找蓮華仙子對話。</p>
-    <br/>
-      <p><strong>步驟三：</strong></p>
-      <p>
-        蓮華仙子會要你到回春谷中找「年高德劭的老爺爺」，獲得他的肯定以證明你的內涵與修養。<br>
-        前往北門關，往回春谷入口，進入方式:右>>右>>下>>上，可到達回春谷。<br>
-        年高德劭的老爺爺（30，32）會探索你的內涵與修養，但是被探索的人會失去一定的名聲，他會要玩家好好考慮清楚。<br>
-        探索完成後，再回去找蓮華仙子對話。<p>
-      <br/>
-<p><strong>步驟四：</strong></p>
-      <p>
-        蓮華仙子要你到杏花谷中，找一位運氣很旺的仙界老前輩，請他幫忙增加自己的運氣。<br>
-到杏花谷找到旺旺仙輩（57，117）對話，他說需要一些工作特產來做為施法的材料。
-      </p>
-<table class="mission-table">
-        <thead>
-          <tr>
-            <th>條件需求</th>
-            <th>第一次轉生數量</th>
-            <th>第二次轉生數量</th>
-            <th>第三次轉生數量</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><p>五行圖騰</p></td>
-            <td><p>共500個</p></td>
-            <td><p>共1000個</p></td>
-            <td><p>共1500個</p></td>
-          </tr>
-          <tr>
-            <td><p>五行蠶絲</p></td>
-            <td><p>共500個</p></td>
-            <td><p>共1000個</p></td>
-            <td><p>共1500個</p></td>
-          </tr>
-          <tr>
-            <td><p>五行獸牙</p></td>
-            <td><p>共500個</p></td>
-            <td><p>共1000個</p></td>
-            <td><p>共1500個</p></td>
-          </tr>
-          <tr>
-            <td><p>五行神木</p></td>
-            <td><p>共500個</p></td>
-            <td><p>共1000個</p></td>
-            <td><p>共1500個</p></td>
-          </tr>
-          <tr>
-            <td><p>特殊藥材</p></td>
-            <td><p>共500個</p></td>
-            <td><p>共1000個</p></td>
-            <td><p>共1500個</p></td>
-          </tr>
-          <tr>
-            <td><p>特殊星沙</p></td>
-            <td><p>共500個</p></td>
-            <td><p>共1000個</p></td>
-            <td><p>共1500個</p></td>
-          </tr>
-        </tbody>
-      </table>
-      <p>上述特產不限種類，只要蒐集到需求數目即可；特產可分批提供，系統會自動記錄你還欠多少材料。  </br>
-蒐集完成後交給旺旺仙輩，再回去找蓮華仙子對話。</p>
-<br/>
-<p><strong>步驟五：</strong></p>
-      <p>
-        這一次蓮華仙子要你到飛鶴山上找毅力達人，讓他來磨練你的毅力及耐力。<br>
-到飛鶴山上找到毅力達人（63，168）對話，他要你幫他找來六種100級的工作產物。
-      </p>
-<table class="mission-table">
-        <thead>
-          <tr>
-            <th>條件需求</th>
-            <th>第一次轉生數量</th>
-            <th>第二次轉生數量</th>
-            <th>第三次轉生數量</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><p>五色彩石</p></td>
-            <td><p>共500個</p></td>
-            <td><p>共1000個</p></td>
-            <td><p>共1500個</p></td>
-          </tr>
-          <tr>
-            <td><p>夔皮</p></td>
-            <td><p>共500個</p></td>
-            <td><p>共1000個</p></td>
-            <td><p>共1500個</p></td>
-          </tr>
-          <tr>
-            <td><p>不周木</p></td>
-            <td><p>共500個</p></td>
-            <td><p>共1000個</p></td>
-            <td><p>共1500個</p></td>
-          </tr>
-          <tr>
-            <td><p>息壤</p></td>
-            <td><p>共500個</p></td>
-            <td><p>共1000個</p></td>
-            <td><p>共1500個</p></td>
-          </tr>
-          <tr>
-            <td><p>七彩天綢</p></td>
-            <td><p>共500個</p></td>
-            <td><p>共1000個</p></td>
-            <td><p>共1500個</p></td>
-          </tr>
-          <tr>
-            <td><p>蟠桃</p></td>
-            <td><p>共500個</p></td>
-            <td><p>共1000個</p></td>
-            <td><p>共1500個</p></td>
-          </tr>
-        </tbody>
-      </table>
-      <p>特產可分批提供，系統會自動記錄你還欠多少材料。  </br>
-蒐集完成後交給毅力達人，再回去找蓮華仙子對話。</p>
-<br/>
-<p><strong>步驟六：</strong></p>
-      <p>
-        蓮華仙子要你到修羅洞的最深處，找到「真‧武鬥修羅」並打敗他，取得「修羅之心」後再回去找蓮華仙子。<br>
-前往梁山>>赤松林>>>修羅洞入口。<br>
-在修羅洞_深淵找到真‧武鬥修羅（20，44），他會告訴你他不隨便和人交手的，想要和他打要先拿1組修羅魂和1組水晶來給他。（任意一種工作特產的水晶）<br>
-玩家蒐集好道具後，只要將修羅魂和水晶放入介面後，便會進入戰鬥畫面。<br>
-打敗了真‧武鬥修羅後，玩家便可獲得「修羅之心」，接著只要再回去找蓮華仙子對話，就能成功轉生囉！<br>
-轉生後可獲得一張新手英雄卡，並且會回到青葉村重新開始。
-      </p>
-      <img src="/mo_data/pic/quest/轉生路線.jpg"/>
+        <!-- 步驟三 -->
+        <div class="step-box">
+          <div class="step-dot"></div>
+          <div class="step-content">
+            <div class="step-header"><span>步驟三</span> 內涵與修養的考驗</div>
+            <p>
+              前往 <span class="highlight">北門關</span> 進入 <span class="highlight">回春谷</span> (進入方式：右→右→下→上)。<br>
+              找到 <span class="highlight">年高德劭的老爺爺</span> <span class="coord">(30，32)</span>，他會探索你的內涵。<br>
+              <span class="highlight">注意：</span> 探索後會失去一定名聲。完成後回去找蓮華仙子。
+            </p>
+          </div>
+        </div>
+
+        <!-- 步驟四 -->
+        <div class="step-box">
+          <div class="step-dot"></div>
+          <div class="step-content">
+            <div class="step-header"><span>步驟四</span> 運氣的磨練</div>
+            <p>
+              前往 <span class="highlight">杏花谷</span> 找到 <span class="highlight">旺旺仙輩</span> <span class="coord">(57，117)</span>。<br>
+              他需要大量工作特產作為施法材料：
+            </p>
+            <table class="mission-table">
+              <thead>
+                <tr>
+                  <th>所需特產 (不限種類)</th>
+                  <th>1轉數量</th>
+                  <th>2轉數量</th>
+                  <th>3轉數量</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>五行圖騰、五行蠶絲、五行獸牙、五行神木、特殊藥材、特殊星沙</td>
+                  <td>各 500 個</td>
+                  <td>各 1000 個</td>
+                  <td>各 1500 個</td>
+                </tr>
+              </tbody>
+            </table>
+            <p>特產可分批提供，蒐集完成後交給旺旺仙輩，再回去找蓮華仙子。</p>
+          </div>
+        </div>
+
+        <!-- 步驟五 -->
+        <div class="step-box">
+          <div class="step-dot"></div>
+          <div class="step-content">
+            <div class="step-header"><span>步驟五</span> 毅力的磨練</div>
+            <p>
+              前往 <span class="highlight">飛鶴山</span> 找到 <span class="highlight">毅力達人</span> <span class="coord">(63，168)</span>。<br>
+              他需要六種100級工作產物：
+            </p>
+            <table class="mission-table">
+              <thead>
+                <tr>
+                  <th>所需 100 級產物</th>
+                  <th>1轉數量</th>
+                  <th>2轉數量</th>
+                  <th>3轉數量</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>五色彩石、夔皮、不周木、息壤、七彩天綢、蟠桃</td>
+                  <td>各 500 個</td>
+                  <td>各 1000 個</td>
+                  <td>各 1500 個</td>
+                </tr>
+              </tbody>
+            </table>
+            <p>完成後交給毅力達人，回去找蓮華仙子對話。</p>
+          </div>
+        </div>
+
+        <!-- 步驟六 -->
+        <div class="step-box">
+          <div class="step-dot"></div>
+          <div class="step-content">
+            <div class="step-header"><span>步驟六</span> 最終考驗：修羅之心</div>
+            <p>
+              前往 <span class="highlight">修羅洞_深淵</span> 挑戰 <span class="highlight">真‧武鬥修羅</span> <span class="coord">(20，44)</span>。<br>
+              入場需準備：<span class="highlight">1組修羅魂</span> 與 <span class="highlight">1組水晶</span> (任意特產水晶)。<br>
+              打敗他後取得「修羅之心」，回去找蓮華仙子即可成功轉生！
+            </p>
+            <div style="text-align: center;">
+              <img src="/mo_data/pic/quest/轉生路線.jpg" class="mission-img" alt="轉生路線圖"/>
+            </div>
+            <p>轉生後可獲得一張新手英雄卡，並回到青葉村重新開始。</p>
+          </div>
+        </div>
+      </div>
     </div>
-  </div></div><br/>
 
     <!-- 轉生的改變 -->
     <div class="mission-card">
       <h3>轉生的改變</h3>
-      <p>
-        每一次轉生後的角色，會額外獲得10點技能點。因此，在第一次轉生後，總計能點數共增加10點；第二次轉生後，總計能點數共增加20點；第三次轉生後，總計能點數增加30點。此外，升級時所獲得的能自由分配的屬性點，會隨轉生的次數做不同的增加。第一次轉生後，每升一級所能分配的屬性點共有5點；第二次轉生後，每升一級所能分配的屬性點共有7點；第三次轉生後，每升一級所能分配的屬性點共有9點。<br>
-每一次轉生後的角色，可獲得一隻新的轉生新手英雄。轉生新手英雄共有三隻，分別是虎威將軍、蟠桃仙女、天眼軍師，第一次轉生後，可從這三隻英雄中挑選一隻獲得；第二次轉生後，可從剩下來的兩隻中挑選一隻獲得；第三次轉生後，可獲得最後一隻英雄。剛開始領到新手英雄是950的英雄，但二次轉生以後，領取的英雄會額外多50點屬性；三次轉生以後，領取的英雄會額外多100點屬性唷！<br>
-轉生後的玩家，除了技能和屬性點都會回到原始狀態，但名聲、金錢、任務記錄都會保留，而且工作技能、英雄卡、裝備等也不會消失。此外，轉生後的角色在名字顯示的背版上也會有所改變，能讓玩家們能辨識出哪些是已轉生的角色唷。
+      <table class="mission-table">
+        <thead>
+          <tr>
+            <th>項目</th>
+            <th>一轉</th>
+            <th>二轉</th>
+            <th>三轉</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>額外技能點</td>
+            <td>+10 點</td>
+            <td>+20 點</td>
+            <td>+30 點</td>
+          </tr>
+          <tr>
+            <td>升級屬性點</td>
+            <td>每級 5 點</td>
+            <td>每級 7 點</td>
+            <td>每級 9 點</td>
+          </tr>
+          <tr>
+            <td>新手英雄屬性</td>
+            <td>基本 (950)</td>
+            <td>額外 +50 點</td>
+            <td>額外 +100 點</td>
+          </tr>
+        </tbody>
+      </table>
+      <p style="font-size: 0.95rem; line-height: 1.6;">
+        * 名聲、金錢、任務記錄、工作技能、英雄卡與裝備皆會保留。<br>
+        * 名字背板會隨轉生次數改變，彰顯實力。
       </p>
     </div>
 
@@ -287,18 +281,13 @@
     <div class="mission-card">
       <h3>轉職任務</h3>
       <p>
-        轉生後的玩家若達到轉職條件，必須在遺跡之泉找到各學院的進階試煉者，才能進行一系列轉職任務。當玩家符合一切轉職條件，必須向學院進階試煉者挑戰，而不同轉生的次數，也會影響轉生試煉的難度唷。
-    </p>
+        轉生後的玩家若達到轉職條件，必須在 <span class="highlight">遺跡之泉</span> 找到各學院的 <span class="highlight">進階試煉者</span> 進行轉職。難度會隨轉生次數提升。
+      </p>
     </div>
-
-
-
+  </div>
 
   <!-- 回到頂部按鈕 -->
   <button id="backToTop" title="回到頂部">▲</button>
-
-  <!-- ✅ JS -->
-  <script src="/mo_data/js/star_quest.js"></script>
 
   <div id="footer-container"></div>
 </body>
