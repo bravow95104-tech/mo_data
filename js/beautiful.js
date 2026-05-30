@@ -142,7 +142,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
       if (hero.id) {
         const img = document.createElement('img');
-        const basePath = `/mo_data/pic/beautiful/${hero.id}`;
+        const basePath = `/mo_data/pic/beautiful/${hero.beauty_id}`;
         const extensions = ['.png', '.jpg', '.bmp'];
         let attempt = 0;
 
@@ -224,7 +224,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       cardHeader.style.borderBottom = '1px solid #eee'; // 新增分隔線
 
       const img = document.createElement('img');
-      const basePath = `/mo_data/pic/beautiful/${hero.id}`;
+      const basePath = `/mo_data/pic/beautiful/${hero.beauty_id}`;
       const extensions = ['.png', '.jpg', '.bmp'];
       let attempt = 0;
       img.src = basePath + extensions[attempt];
