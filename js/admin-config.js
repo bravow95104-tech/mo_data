@@ -35,7 +35,7 @@ export const TABLE_CONFIGS = {
             { id: 'heros', label: '對應英雄', type: 'text', grid: 2 }
         ]
     },
-    shine: {
+    glory_drop: {
         title: '光輝掉落管理',
         tableName: 'glory_drop',
         tableCols: ['地區', '掉落較多', '掉落較低', '操作'],
@@ -45,6 +45,165 @@ export const TABLE_CONFIGS = {
             { id: 'sort_id', label: '顯示順序', type: 'number', grid: 1 },
             { id: 'more', label: '掉落較多', type: 'textarea', grid: 3 },
             { id: 'low', label: '掉落較低', type: 'textarea', grid: 3 }
+        ]
+    },
+    'equip-combo': {
+        title: '文片組合管理',
+        tableName: 'equip_combo',
+        tableCols: ['技能名稱', '職業', '文片組合', '操作'],
+        displayFields: ['skillname', 'class', 'combinationmethod'],
+        fields: [
+            { id: 'skillname', label: '技能名稱', type: 'text', required: true, grid: 1 },
+            { id: 'sort_id', label: '顯示順序', type: 'number', grid: 1 },
+            { id: 'category', label: '類別', type: 'text', grid: 1 },
+            { id: 'class', label: '職業', type: 'text', grid: 1 },
+            { id: 'classskill', label: '職業技能', type: 'text', grid: 1 },
+            { id: 'equipmenttype1', label: '裝備類型1', type: 'text', grid: 1 },
+            { id: 'equipmenttype2', label: '裝備類型2', type: 'text', grid: 1 },
+            { id: 'combinationmethod', label: '文片組合', type: 'text', grid: 2 },
+            { id: 'description', label: '說明', type: 'textarea', grid: 3 },
+            { id: 'commonly', label: '常用', type: 'text', grid: 1 }
+        ]
+    },
+    runereset: {
+        title: '文片重鑄管理',
+        tableName: 'runereset',
+        tableCols: ['道具', '材料1', '材料2', '操作'],
+        displayFields: ['item', 'material1', 'material2'],
+        fields: [
+            { id: 'item', label: '道具', type: 'text', required: true, grid: 1 },
+            { id: 'sort_id', label: '顯示順序', type: 'number', grid: 1 },
+            { id: 'material1', label: '材料1', type: 'text', grid: 1 },
+            { id: 'material2', label: '材料2', type: 'text', grid: 1 },
+            { id: 'material3', label: '材料3', type: 'text', grid: 1 },
+            { id: 'material4', label: '材料4', type: 'text', grid: 1 },
+            { id: 'material5', label: '材料5', type: 'text', grid: 1 }
+        ]
+    },
+    card: {
+        title: '卡片管理',
+        tableName: 'card',
+        tableCols: ['卡片ID', '卡片屬性', '操作'],
+        displayFields: [ 'card_id', 'card_property'],
+        fields: [
+            { id: 'hero_name', label: '英雄名稱', type: 'text', grid: 1 },
+            { id: 'sort_id', label: '顯示順序', type: 'number', grid: 1 },
+            { id: 'type', label: '類型', type: 'text', grid: 1 },
+            { id: 'check_use', label: '確認用', type: 'text', grid: 1 },
+            { id: 'new_old', label: '新舊', type: 'text', grid: 1 },
+            { id: 'card_id', label: '卡片ID', type: 'text', grid: 1 },
+            { id: 'card_property', label: '卡片屬性', type: 'text', grid: 1 },
+            { id: 'card_data', label: '卡片數據', type: 'text', grid: 1 },
+            { id: 'card_lv', label: '卡片等級', type: 'text', grid: 1 },
+            { id: 'card_class', label: '卡片階級', type: 'text', grid: 1 },
+            { id: 'nemultiplier', label: '倍率', type: 'text', grid: 1 },
+            { id: 'property_first', label: '第一屬性', type: 'text', grid: 1 },
+            { id: 'property_second', label: '第二屬性', type: 'text', grid: 1 },
+            { id: 'property_third', label: '第三屬性', type: 'text', grid: 1 },
+            { id: 'card_mp', label: '卡片MP', type: 'text', grid: 1 },
+            { id: 'directions', label: '說明', type: 'textarea', grid: 3 },
+            { id: 'drop', label: '掉落', type: 'text', grid: 1 },
+            { id: 'player', label: '玩家', type: 'text', grid: 1 }
+        ]
+    },
+    accessories: {
+        title: '飾品管理',
+        tableName: 'accessories',
+        tableCols: ['項目', '等級', '說明', '操作'],
+        displayFields: ['item', 'lv', 'illustrate'],
+        fields: [
+            { id: 'item', label: '項目', type: 'text', required: true, grid: 1 },
+            { id: 'sort_id', label: '顯示順序', type: 'number', grid: 1 },
+            { id: 'class', label: '分類', type: 'text', grid: 1 },
+            { id: 'sort', label: '部位', type: 'text', grid: 1 },
+            { id: 'type', label: '類型', type: 'text', grid: 1 },
+            { id: 'lv', label: '等級', type: 'text', grid: 1 },
+            { id: 'Property1', label: '屬性1', type: 'text', grid: 1 },
+            { id: 'Property2', label: '屬性2', type: 'text', grid: 1 },
+            { id: 'Durability', label: '耐用', type: 'text', grid: 1 },
+            { id: 'material1', label: '材料1', type: 'text', grid: 1 },
+            { id: 'material2', label: '材料2', type: 'text', grid: 1 },
+            { id: 'material3', label: '材料3', type: 'text', grid: 1 },
+            { id: 'material4', label: '材料4', type: 'text', grid: 1 },
+            { id: 'material5', label: '材料5', type: 'text', grid: 1 },
+            { id: 'illustrate', label: '說明', type: 'textarea', grid: 3 },
+            { id: 'gain', label: '獲得方式', type: 'text', grid: 1 }
+        ]
+    },
+    beautiful: {
+        title: '美容院管理',
+        tableName: 'beautiful',
+        tableCols: ['ID', '類型', '材料1', '操作'],
+        displayFields: ['beauty_id', 'type', 'material1'],
+        fields: [
+            { id: 'beauty_id', label: 'ID', type: 'text', required: true, grid: 1 },
+            { id: 'sort_id', label: '顯示順序', type: 'number', grid: 1 },
+            { id: 'type', label: '類型', type: 'text', grid: 1 },
+            { id: 'material1', label: '材料1', type: 'text', grid: 1 },
+            { id: 'material2', label: '材料2', type: 'text', grid: 1 },
+            { id: 'material3', label: '材料3', type: 'text', grid: 1 },
+            { id: 'material4', label: '材料4', type: 'text', grid: 1 },
+            { id: 'material5', label: '材料5', type: 'text', grid: 1 }
+        ]
+    },
+    garbage: {
+        title: '垃圾名聲管理',
+        tableName: 'garbage',
+        tableCols: ['名稱', '分類', '家族', '操作'],
+        displayFields: ['name', 'class', 'family'],
+        fields: [
+            { id: 'name', label: '名稱', type: 'text', required: true, grid: 1 },
+            { id: 'sort_id', label: '顯示順序', type: 'number', grid: 1 },
+            { id: 'class', label: '分類', type: 'text', grid: 1 },
+            { id: 'family', label: '家族', type: 'text', grid: 1 },
+            { id: 'renown', label: '名聲', type: 'text', grid: 1 },
+            { id: 'contribute', label: '貢獻', type: 'text', grid: 1 }
+        ]
+    },
+    works: {
+        title: '工作管理',
+        tableName: 'works',
+        tableCols: ['名稱', '類型', '等級', '操作'],
+        displayFields: ['name', 'type', 'lv'],
+        fields: [
+            { id: 'name', label: '名稱', type: 'text', required: true, grid: 1 },
+            { id: 'sort_id', label: '顯示順序', type: 'number', grid: 1 },
+            { id: 'type', label: '類型', type: 'text', grid: 1 },
+            { id: 'lv', label: '等級', type: 'text', grid: 1 },
+            { id: 'area', label: '地區', type: 'text', grid: 1 }
+        ]
+    },
+    items: {
+        title: '道具管理',
+        tableName: 'items',
+        tableCols: ['項目', '類型', '操作'],
+        displayFields: ['items', 'type'],
+        fields: [
+            { id: 'items', label: '項目', type: 'text', required: true, grid: 1 },
+            { id: 'sort_id', label: '顯示順序', type: 'number', grid: 1 },
+            { id: 'type', label: '類型', type: 'text', grid: 1 },
+            { id: 'illustrate', label: '說明', type: 'textarea', grid: 3 }
+        ]
+    },
+    medicine: {
+        title: '藥品管理',
+        tableName: 'medicine',
+        tableCols: ['名稱', '等級', '操作'],
+        displayFields: ['item', 'lv'],
+        fields: [
+            { id: 'item', label: '名稱', type: 'text', required: true, grid: 1 },
+            { id: 'sort_id', label: '顯示順序', type: 'number', grid: 1 },
+            { id: 'class', label: '分類', type: 'text', grid: 1 },
+            { id: 'job', label: '職業', type: 'text', grid: 1 },
+            { id: 'sort', label: '部位', type: 'text', grid: 1 },
+            { id: 'lv', label: '等級', type: 'text', grid: 1 },
+            { id: 'material1', label: '材料1', type: 'text', grid: 1 },
+            { id: 'material2', label: '材料2', type: 'text', grid: 1 },
+            { id: 'material3', label: '材料3', type: 'text', grid: 1 },
+            { id: 'material4', label: '材料4', type: 'text', grid: 1 },
+            { id: 'material5', label: '材料5', type: 'text', grid: 1 },
+            { id: 'illustrate', label: '說明', type: 'textarea', grid: 3 },
+            { id: 'obtain', label: '獲得方式', type: 'text', grid: 1 }
         ]
     }
     // 未來可以在此處直接新增 equipment, items, maps 等配置

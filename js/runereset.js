@@ -1,21 +1,28 @@
-document.addEventListener("DOMContentLoaded", () => {
+import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm'
+import { SUPABASE_URL, SUPABASE_KEY } from './supabase-config.js'
+
+const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
+
+document.addEventListener("DOMContentLoaded", async () => {
   let runeresetData = [];
   let searchTimer = null;
-
-  // === 載入 JSON 資料 ===
-  fetch('/mo_data/data/runereset.json')
-    .then(response => response.json())
-    .then(data => {
-      runeresetData = data;
-      renderTable(runeresetData);
-    })
-    .catch(error => {
-      console.error('載入道具資料錯誤:', error);
-      const tbody = document.querySelector('#runeresetTable tbody');
-      tbody.innerHTML = '<tr><td colspan="5">無法載入道具資料</td></tr>';
-    });
-
   const searchInput = document.getElementById('searchInput');
+
+  // === 載入 Supabase 資料 ===
+  try {
+    const { data, error } = await supabase
+      .from('runereset')
+      .select('*')
+      .order('sort_id', { ascending: true });
+
+    if (error) throw error;
+    runeresetData = data;
+    renderTable(runeresetData);
+  } catch (error) {
+    console.error('載入道具資料錯誤:', error);
+    const tbody = document.querySelector('#runeresetTable tbody');
+    if (tbody) tbody.innerHTML = '<tr><td colspan="5">無法載入雲端資料</td></tr>';
+  }
 
   // === 搜尋框（防抖）===
   searchInput.addEventListener('input', () => {

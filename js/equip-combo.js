@@ -1,20 +1,24 @@
-document.addEventListener("DOMContentLoaded", () => {
-  fetch("/mo_data/data/equip-combo.json") // 相對路徑載入 JSON
-    .then(res => {
-      if (!res.ok) throw new Error("載入 equip-combo.json 失敗");
-      return res.json();
-    })
-    .then(json => {
-      const data = Array.isArray(json) ? json : json.data; // ✅ 處理包外層 data
-      initComboPage(data);
-    })
-    .catch(err => {
-      console.error("❌ JSON 載入失敗：", err);
-      const comboList = document.getElementById("comboList");
-      if (comboList)
-        comboList.innerHTML =
-          "<p style='color:red;text-align:center;'>無法載入資料</p>";
-    });
+import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm'
+import { SUPABASE_URL, SUPABASE_KEY } from './supabase-config.js'
+
+const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
+
+document.addEventListener("DOMContentLoaded", async () => {
+  try {
+    const { data, error } = await supabase
+      .from('equip_combo')
+      .select('*')
+      .order('sort_id', { ascending: true });
+
+    if (error) throw error;
+    initComboPage(data);
+  } catch (err) {
+    console.error("❌ Supabase 載入失敗：", err);
+    const comboList = document.getElementById("comboList");
+    if (comboList)
+      comboList.innerHTML =
+        "<p style='color:red;text-align:center;'>無法載入雲端資料</p>";
+  }
 });
 
 function initComboPage(data) {
@@ -24,7 +28,7 @@ function initComboPage(data) {
   const clearBtn = document.getElementById("clearFilters");
 
   // ✅ 加入 equipmentType1 篩選陣列
-  let activeFilters = { promotion: [], commonly: [], category: [], equipmentType1: [] };
+  let activeFilters = { promotion: [], commonly: [], category: [], equipmenttype1: [] };
 
   function renderList() {
     const searchText = searchInput.value.trim().toLowerCase();
@@ -33,13 +37,13 @@ function initComboPage(data) {
     const filtered = data.filter(item => {
       // 將欄位轉小寫
       const fieldsToSearch = [
-        item.skillName,
+        item.skillname,
         item.class,
-        item.classSkill,
+        item.classskill,
         item.category,
-        item.combinationMethod,
-        item.equipmentType1,
-        item.equipmentType2,
+        item.combinationmethod,
+        item.equipmenttype1,
+        item.equipmenttype2,
         item.description
       ].map(v => (v || "").toLowerCase());
 
@@ -50,8 +54,8 @@ function initComboPage(data) {
 
       const job = (item.class || "").toLowerCase();
       const cat = (item.category || "").toLowerCase();
-      const equip1 = (item.equipmentType1 || "").toLowerCase();
-      const equip2 = (item.equipmentType2 || "").toLowerCase();
+      const equip1 = (item.equipmenttype1 || "").toLowerCase();
+      const equip2 = (item.equipmenttype2 || "").toLowerCase();
 
       // 🧩 職業篩選
       const matchFilter =
@@ -65,8 +69,8 @@ function initComboPage(data) {
 
       // ⚙️ 裝備部位篩選
       const matchEquipType =
-        activeFilters.equipmentType1.length === 0 ||
-        activeFilters.equipmentType1.some(f =>
+        activeFilters.equipmenttype1.length === 0 ||
+        activeFilters.equipmenttype1.some(f =>
           equip1.includes(f.toLowerCase()) || equip2.includes(f.toLowerCase())
         );
 
@@ -93,15 +97,15 @@ function initComboPage(data) {
       const card = document.createElement("div");
       card.className = "combo-card active";
 
-      const equipDisplay = [item.equipmentType1, item.equipmentType2].filter(Boolean).join(" / ") || "—";
+      const equipDisplay = [item.equipmenttype1, item.equipmenttype2].filter(Boolean).join(" / ") || "—";
 
       // --- 高亮邏輯 ---
       const highlightFields = {
-        skillName: item.skillName || "—",
-        classSkill: item.classSkill || "—",
+        skillName: item.skillname || "—",
+        classSkill: item.classskill || "—",
         class: item.class || "—",
         equipDisplay: equipDisplay,
-        combinationMethod: item.combinationMethod || "—",
+        combinationMethod: item.combinationmethod || "—",
         description: item.description || "—"
       };
 
@@ -151,7 +155,7 @@ function initComboPage(data) {
 
   // ❌ 清除篩選
   clearBtn.addEventListener("click", () => {
-    activeFilters = { promotion: [], commonly: [], category: [], equipmentType1: [] };
+    activeFilters = { promotion: [], commonly: [], category: [], equipmenttype1: [] };
     filterBtns.forEach(btn => btn.classList.remove("active"));
     searchInput.value = "";
     console.log("✅ 清除篩選", activeFilters);
