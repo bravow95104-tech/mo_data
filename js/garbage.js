@@ -1,4 +1,9 @@
-document.addEventListener("DOMContentLoaded", () => {
+import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm'
+import { SUPABASE_URL, SUPABASE_KEY } from './supabase-config.js'
+
+const supabase = createClient(SUPABASE_URL, SUPABASE_KEY)
+
+document.addEventListener("DOMContentLoaded", async () => {
   let garbageData = [];
   let mapData = [];
   let lastFilteredData = [];
@@ -25,27 +30,26 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // === 載入資料 ===
-  Promise.all([
-    fetch('/mo_data/data/garbage.json').then(res => {
-      if (!res.ok) throw new Error('無法讀取 garbage.json');
-      return res.json();
-    }),
-    fetch('/mo_data/data/detailed_map.json').then(res => {
-      if (!res.ok) throw new Error('無法讀取 detailed_map.json');
-      return res.json();
-    })
-  ])
-  .then(([garbage, maps]) => {
-    garbageData = garbage || [];
-    mapData = maps || [];
+  try {
+    const [garbageRes, mapsRes] = await Promise.all([
+      supabase.from('garbage').select('*').order('sort_id', { ascending: true }),
+      fetch('../data/detailed_map.json').then(res => {
+        if (!res.ok) throw new Error('無法讀取 detailed_map.json');
+        return res.json();
+      })
+    ]);
+
+    if (garbageRes.error) throw garbageRes.error;
+
+    garbageData = garbageRes.data || [];
+    mapData = mapsRes || [];
     applyFilters();
-  })
-  .catch(error => {
+  } catch (error) {
     console.error('載入資料錯誤:', error);
     const tbody = document.querySelector('#garbageTable tbody');
     if (tbody) tbody.innerHTML = `<tr><td colspan="6">載入失敗: ${error.message}</td></tr>`;
     if (cardContainer) cardContainer.innerHTML = `<p style="text-align:center; color:red;">載入失敗: ${error.message}</p>`;
-  });
+  }
 
   // === 搜尋框（防抖）===
   if (searchInput) {
@@ -105,7 +109,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const iconTd = document.createElement('td');
       iconTd.style.textAlign = 'center';
       const img = document.createElement('img');
-      img.src = `/mo_data/pic/garbage/${item.name}.bmp`;
+      img.src = `../pic/garbage/${item.name}.bmp`;
       img.alt = item.name;
       img.style.width = '40px';
       img.style.height = 'auto';
@@ -174,7 +178,7 @@ document.addEventListener("DOMContentLoaded", () => {
       cardHeader.style.borderBottom = '1px solid #eee'; // 新增分隔線
 
       const img = document.createElement('img');
-      img.src = `/mo_data/pic/garbage/${encodeURIComponent(itemName)}.bmp`;
+      img.src = `../pic/garbage/${encodeURIComponent(itemName)}.bmp`;
       img.alt = itemName;
       img.style.width = '40px';
       img.style.height = '40px';
