@@ -55,8 +55,8 @@ tbody tr:hover {
 
 thead th {
   position: sticky;
-  top: var(--nav-offset);
-  /* JS 動態修改 */
+  top: var(--nav-offset, 68px);
+  /* JS 動態修改，預設 68px */
   background-color: var(--header-bg-color);
   z-index: 100;
   color: var(--text-light);

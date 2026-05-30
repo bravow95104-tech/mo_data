@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MoData Admin | 核心管理後台</title>
+    <!-- 引入 FontAwesome 圖標 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --sidebar-bg: #1e293b;
+            --sidebar-hover: #334155;
+            --primary: #3b82f6;
+            --bg-main: #f8fafc;
+            --text-main: #334155;
+            --border: #e2e8f0;
+        }
+        body { font-family: 'Segoe UI', 'Microsoft JhengHei', sans-serif; margin: 0; display: flex; height: 100vh; background: var(--bg-main); color: var(--text-main); }
+
+        /* Sidebar 樣式 */
+        .sidebar { width: 260px; background: var(--sidebar-bg); color: #cbd5e1; display: flex; flex-direction: column; flex-shrink: 0; }
+        .logo { padding: 25px; font-size: 22px; font-weight: bold; color: white; border-bottom: 1px solid #334155; text-align: center; }
+        .nav-scroll { flex: 1; overflow-y: auto; padding: 15px 0; }
+        .nav-group { padding: 15px 20px 5px; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #64748b; font-weight: bold; }
+        .nav-item { padding: 12px 25px; display: flex; align-items: center; gap: 12px; cursor: pointer; transition: 0.2s; color: #94a3b8; }
+        .nav-item:hover { background: var(--sidebar-hover); color: white; }
+        .nav-item.active { background: var(--primary); color: white; border-radius: 0 25px 25px 0; margin-right: 15px; }
+        .nav-item i { width: 20px; text-align: center; }
+
+        /* 主要區塊 */
+        .main { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
+        .header { height: 70px; background: white; border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; padding: 0 30px; box-shadow: 0 1px 2px rgba(0,0,0,0.03); }
+        .content { flex: 1; padding: 30px; overflow-y: auto; }
+        
+        /* 內容卡片 */
+        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; margin-bottom: 30px; }
+        .stat-card { background: white; padding: 20px; border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); border-left: 4px solid var(--primary); }
+        .table-card { background: white; border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); padding: 25px; }
+
+        /* 按鈕樣式 */
+        .btn { padding: 10px 18px; border-radius: 6px; border: none; font-weight: 600; cursor: pointer; transition: 0.2s; display: inline-flex; align-items: center; gap: 8px; font-size: 14px; }
+        .btn-primary { background: var(--primary); color: white; }
+        .btn-primary:hover { background: #2563eb; }
+        .btn-logout { background: #fee2e2; color: #ef4444; }
+        .btn-logout:hover { background: #fecaca; }
+        .btn-edit { background: #f1f5f9; color: var(--primary); padding: 6px 12px; }
+        .btn-edit:hover { background: #e2e8f0; }
+
+        /* 表格樣式 */
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th { text-align: left; padding: 15px; background: #f8fafc; color: #64748b; font-size: 13px; font-weight: 600; border-bottom: 2px solid var(--border); position: relative; }
+        td { padding: 15px; border-bottom: 1px solid #f1f5f9; font-size: 14px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 200px; }
+        tr:hover td { background-color: #f8fafc; }
+
+        /* 欄位調整手把 */
+        .resizer {
+            position: absolute;
+            right: 0;
+            top: 0;
+            height: 100%;
+            width: 5px;
+            background: rgba(0,0,0,0);
+            cursor: col-resize;
+            user-select: none;
+            transition: background 0.2s;
+        }
+        .resizer:hover, .resizing {
+            background: var(--primary) !important;
+            width: 2px;
+        }
+
+        /* Modal Styles */
+        #editModal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); backdrop-filter: blur(4px); }
+        .modal-content { background: white; margin: 40px auto; padding: 30px; width: 90%; max-width: 900px; border-radius: 16px; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1); max-height: 85vh; overflow-y: auto; }
+        .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; border-bottom: 1px solid var(--border); padding-bottom: 15px; }
+        .form-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+        .form-group { display: flex; flex-direction: column; }
+        .form-group label { font-weight: 600; margin-bottom: 6px; color: #475569; font-size: 13px; }
+        .form-group input, .form-group select, .form-group textarea { padding: 10px; border: 1px solid #d1d5db; border-radius: 6px; font-size: 14px; }
+        .form-group input:focus { border-color: var(--primary); outline: none; box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1); }
+        .modal-footer { margin-top: 35px; display: flex; justify-content: flex-end; gap: 12px; border-top: 1px solid var(--border); padding-top: 25px; }
+        
+        .badge { padding: 4px 8px; border-radius: 4px; font-size: 12px; font-weight: bold; }
+        .badge-element { background: #e0f2fe; color: #0369a1; }
+
+        /* 隱藏原生捲軸但保留功能 */
+        .nav-scroll::-webkit-scrollbar { width: 4px; }
+        .nav-scroll::-webkit-scrollbar-thumb { background: #334155; border-radius: 10px; }
+    </style>
+</head>
+<body>
+
+<div class="sidebar">
+    <div class="logo">MoData Panel</div>
+    <div class="nav-scroll">
+        <div class="nav-item active" data-page="dashboard"><i class="fas fa-chart-line"></i> 儀表板</div>
+        
+        <div class="nav-group">英雄系統</div>
+        <div class="nav-item" data-page="heroes"><i class="fas fa-user-ninja"></i> 英雄清單</div>
+        <div class="nav-item" data-page="shine"><i class="fas fa-bolt"></i> 光輝掉落</div>
+        <div class="nav-item" data-page="awakening"><i class="fas fa-bolt"></i> 覺醒技能</div>
+        
+        <div class="nav-group">裝備系統</div>
+        <div class="nav-item" data-page="equip-combo"><i class="fas fa-shapes"></i> 文片組合</div>
+        <div class="nav-item" data-page="runereset"><i class="fas fa-sync-alt"></i> 文片重鑄</div>
+
+        <div class="nav-group">任務系統</div>
+        <div class="nav-item" data-page="quest"><i class="fas fa-scroll"></i> 一般任務</div>
+        
+        <div class="nav-group">卡片系統</div>
+        <div class="nav-item" data-page="card"><i class="fas fa-clone"></i> 卡片管理</div>
+
+        <div class="nav-group">世界觀</div>
+        <div class="nav-item" data-page="detailed_map"><i class="fas fa-map-marked-alt"></i> 地圖資訊</div>
+        
+        <div class="nav-group">生產與道具</div>
+        <div class="nav-item" data-page="weapons"><i class="fas fa-sword"></i> 武器</div>
+        <div class="nav-item" data-page="equipment"><i class="fas fa-shield-alt"></i> 防具</div>
+        <div class="nav-item" data-page="accessories"><i class="fas fa-gem"></i> 飾品</div>
+        <div class="nav-item" data-page="medicine"><i class="fas fa-flask"></i> 藥品</div>
+        <div class="nav-item" data-page="items"><i class="fas fa-box-open"></i> 道具</div>
+        <div class="nav-item" data-page="works"><i class="fas fa-briefcase"></i> 工作</div>
+
+        <div class="nav-group">其他</div>
+        <div class="nav-item" data-page="garbage"><i class="fas fa-trash-alt"></i> 垃圾名聲</div>
+        <div class="nav-item" data-page="beautiful"><i class="fas fa-cut"></i> 美容院</div>
+        
+        <div class="nav-group">系統</div>
+        <div class="nav-item" data-page="changelog"><i class="fas fa-file-alt"></i> 更新日誌</div>
+    </div>
+</div>
+
+<div class="main">
+    <div class="header">
+        <div class="search-box">
+            <i class="fas fa-search" style="color:#94a3b8"></i>
+            <input type="text" id="globalSearch" placeholder="在當前頁面中搜尋..." style="border:none; outline:none; margin-left:10px; width:300px; font-size: 15px;">
+        </div>
+        <div style="display: flex; align-items: center; gap: 20px;">
+            <div style="text-align: right;">
+                <div id="userEmail" style="font-weight: 600; font-size: 14px; color: #1e293b;">---</div>
+                <div style="font-size: 12px; color: #64748b;">系統管理員</div>
+            </div>
+            <button id="logoutBtn" class="btn btn-logout"><i class="fas fa-sign-out-alt"></i> 登出</button>
+        </div>
+    </div>
+
+    <div class="content">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px;">
+            <h2 id="pageTitle" style="margin: 0; font-size: 24px; color: #1e293b;">儀表板</h2>
+            <div id="pageActions">
+                <button id="addBtn" class="btn btn-primary" onclick="openAddModal()"><i class="fas fa-plus"></i> 新增資料</button>
+            </div>
+        </div>
+        
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div style="color: #64748b; font-size: 13px; font-weight: 600;">總英雄筆數</div>
+                <div style="font-size: 28px; font-weight: bold; margin-top: 5px; color: var(--primary);" id="stat-count">---</div>
+            </div>
+            <div class="stat-card" style="border-left-color: #10b981;">
+                <div style="color: #64748b; font-size: 13px; font-weight: 600;">最後更新資料</div>
+                <div style="font-size: 16px; font-weight: bold; margin-top: 12px;" id="stat-latest">無資料</div>
+            </div>
+        </div>
+
+        <div class="table-card">
+            <table id="dataTable">
+                <thead id="tableHead">
+                    <!-- 表頭會由 JS 動態產生 -->
+                </thead>
+                <tbody id="tableBody">
+                    <tr><td colspan="4" style="text-align: center; color: #94a3b8; padding: 40px;">正在載入雲端資料...</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- 編輯視窗 (Modal) -->
+<div id="editModal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2 id="modalTitle" style="margin:0; font-size: 20px;">編輯英雄資料</h2>
+            <button onclick="closeModal()" style="background:none; border:none; font-size:24px; cursor:pointer; color:#94a3b8;">&times;</button>
+        </div>
+        <form id="editForm">
+            <input type="hidden" id="edit-id">
+            <div class="form-grid" id="dynamicFormGrid">
+                <!-- 由 JS 動態產生欄位 -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn" style="background:#f1f5f9;" onclick="closeModal()">取消</button>
+                <button type="submit" class="btn btn-primary">儲存資料至雲端</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script type="module">
+    import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm'
+    import { SUPABASE_URL, SUPABASE_KEY } from './js/supabase-config.js'
+    import { TABLE_CONFIGS } from './js/admin-config.js'
+
+    const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
+    let currentTable = 'heroes';
+    let allData = [];
+
+    // 檢查登入狀態
+    async function checkAuth() {
+        const { data: { session } } = await supabase.auth.getSession();
+        if (!session) {
+            window.location.href = 'login.html';
+        } else {
+            document.getElementById('userEmail').innerText = session.user.email;
+            initSidebar();
+            loadTableData();
+        }
+    }
+
+    // 初始化側邊欄
+    function initSidebar() {
+        document.querySelectorAll('.nav-item').forEach(item => {
+            item.onclick = function() {
+                const page = this.dataset.page;
+                if (page === 'dashboard') {
+                    alert('儀表板功能開發中'); return;
+                }
+                
+                if (!TABLE_CONFIGS[page]) {
+                    alert(this.innerText + ' 配置尚未在 admin-config.js 定義'); return;
+                }
+
+                document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
+                this.classList.add('active');
+                
+                currentTable = page;
+                document.getElementById('pageTitle').innerText = TABLE_CONFIGS[page].title;
+                document.getElementById('addBtn').innerHTML = `<i class="fas fa-plus"></i> 新增${TABLE_CONFIGS[page].title.replace('管理', '')}`;
+                loadTableData();
+            };
+        });
+    }
+
+    // 載入資料
+    async function loadTableData() {
+        const config = TABLE_CONFIGS[currentTable];
+        const tbody = document.getElementById('tableBody');
+        const thead = document.getElementById('tableHead');
+        
+        tbody.innerHTML = '<tr><td colspan="10" style="text-align: center; padding: 40px;">正在載入...</td></tr>';
+        thead.innerHTML = `<tr>${config.tableCols.map(c => `<th>${c}<div class="resizer"></div></th>`).join('')}</tr>`;
+
+        // 綁定調整寬度事件
+        initResizableColumns();
+
+        const { data, error } = await supabase
+            .from(config.tableName)
+            .select('*')
+            .order('sort_id', { ascending: true });
+
+        if (error) {
+            alert('載入失敗: ' + error.message); return;
+        }
+
+        allData = data;
+        renderTable(data);
+        document.getElementById('stat-count').innerText = data.length;
+    }
+
+    function renderTable(data) {
+        const config = TABLE_CONFIGS[currentTable];
+        const tbody = document.getElementById('tableBody');
+        
+        if (data.length === 0) {
+            tbody.innerHTML = '<tr><td colspan="10" style="text-align: center; padding: 40px;">無資料</td></tr>';
+            return;
+        }
+
+        tbody.innerHTML = data.map(item => `
+            <tr>
+                ${config.displayFields.map(f => `<td>${item[f] || '-'}</td>`).join('')}
+                <td>
+                    <button class="btn btn-edit" onclick="openEditModal('${item.id}')">
+                        <i class="fas fa-edit"></i> 編輯
+                    </button>
+                </td>
+            </tr>
+        `).join('');
+    }
+
+    // 動態產生編輯表單
+    function renderEditForm() {
+        const config = TABLE_CONFIGS[currentTable];
+        const grid = document.getElementById('dynamicFormGrid');
+        
+        grid.innerHTML = config.fields.map(f => {
+            let input = '';
+            if (f.type === 'select') {
+                input = `<select id="edit-${f.id}">${f.options.map(o => `<option value="${o}">${o}</option>`).join('')}</select>`;
+            } else if (f.type === 'textarea') {
+                input = `<textarea id="edit-${f.id}" rows="4" style="resize: vertical; min-height: 80px;"></textarea>`;
+            } else {
+                input = `<input type="${f.type}" id="edit-${f.id}" ${f.required ? 'required' : ''}>`;
+            }
+            
+            return `
+                <div class="form-group" style="grid-column: span ${f.grid || 1}">
+                    <label>${f.label}</label>
+                    ${input}
+                </div>
+            `;
+        }).join('');
+    }
+
+    window.openAddModal = () => {
+        renderEditForm();
+        document.getElementById('modalTitle').innerText = '新增' + TABLE_CONFIGS[currentTable].title;
+        document.getElementById('edit-id').value = '';
+        document.getElementById('editForm').reset();
+        if (document.getElementById('edit-sort_id')) {
+            document.getElementById('edit-sort_id').value = allData.length + 1;
+        }
+        document.getElementById('editModal').style.display = 'block';
+    };
+
+    window.openEditModal = (id) => {
+        const item = allData.find(d => d.id === id);
+        if (!item) return;
+
+        renderEditForm();
+        document.getElementById('modalTitle').innerText = '編輯：' + (item.name || '未命名');
+        document.getElementById('edit-id').value = item.id;
+        
+        TABLE_CONFIGS[currentTable].fields.forEach(f => {
+            const el = document.getElementById('edit-' + f.id);
+            if (el) el.value = item[f.id] || (f.type === 'number' ? 0 : '');
+        });
+
+        document.getElementById('editModal').style.display = 'block';
+    };
+
+    window.closeModal = () => {
+        document.getElementById('editModal').style.display = 'none';
+    };
+
+    document.getElementById('editForm').onsubmit = async (e) => {
+        e.preventDefault();
+        const id = document.getElementById('edit-id').value;
+        const updates = {};
+        
+        TABLE_CONFIGS[currentTable].fields.forEach(f => {
+            const val = document.getElementById('edit-' + f.id).value;
+            updates[f.id] = f.type === 'number' ? parseInt(val) : val;
+        });
+
+        let res = id ? 
+            await supabase.from(currentTable).update(updates).eq('id', id) : 
+            await supabase.from(currentTable).insert([updates]);
+
+        if (res.error) alert('失敗: ' + res.error.message);
+        else { alert('✅ 成功！'); closeModal(); loadTableData(); }
+    };
+
+    document.getElementById('globalSearch').oninput = (e) => {
+        const kw = e.target.value.toLowerCase();
+        renderTable(allData.filter(d => Object.values(d).some(v => String(v).toLowerCase().includes(kw))));
+    };
+
+    document.getElementById('logoutBtn').onclick = async () => {
+        await supabase.auth.signOut(); window.location.href = 'login.html';
+    };
+
+    // --- 欄位調整邏輯 ---
+    function initResizableColumns() {
+        const thead = document.getElementById('tableHead');
+        const resizers = thead.querySelectorAll('.resizer');
+        
+        resizers.forEach(resizer => {
+            resizer.onmousedown = (e) => {
+                const th = resizer.parentElement;
+                const startX = e.pageX;
+                const startWidth = th.offsetWidth;
+                
+                resizer.classList.add('resizing');
+                
+                const onMouseMove = (e) => {
+                    const newWidth = startWidth + (e.pageX - startX);
+                    if (newWidth > 50) { // 最小寬度限制
+                        th.style.width = newWidth + 'px';
+                        th.style.minWidth = newWidth + 'px';
+                    }
+                };
+                
+                const onMouseUp = () => {
+                    resizer.classList.remove('resizing');
+                    document.removeEventListener('mousemove', onMouseMove);
+                    document.removeEventListener('mouseup', onMouseUp);
+                };
+                
+                document.addEventListener('mousemove', onMouseMove);
+                document.addEventListener('mouseup', onMouseUp);
+            };
+        });
+    }
+
+    checkAuth();
+</script>
+
+</body>
+</html>

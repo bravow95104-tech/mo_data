@@ -1,3 +1,8 @@
+import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm'
+import { SUPABASE_URL, SUPABASE_KEY } from './supabase-config.js'
+
+const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
+
 document.addEventListener("DOMContentLoaded", () => {
   let heroesData = [];
   let lastFilteredData = [];
@@ -22,19 +27,27 @@ document.addEventListener("DOMContentLoaded", () => {
   const cardContainer = document.getElementById('awakening-container');
   const searchInput = document.getElementById('searchInput');
 
-  // 載入 JSON 資料
-  fetch('/mo_data/data/awakening.json')
-    .then(response => response.json())
-    .then(data => {
+  // 載入資料 (改為從 Supabase 讀取)
+  async function loadAwakeningFromSupabase() {
+    try {
+      const { data, error } = await supabase
+        .from('awakening')
+        .select('*')
+        .order('sort_id', { ascending: true });
+
+      if (error) throw error;
+
       heroesData = data;
       lastFilteredData = data;
       applyLayout();
-    })
-    .catch(error => {
+    } catch (error) {
       console.error('載入覺醒資料錯誤:', error);
       const tbody = document.querySelector('#heroes-table tbody');
-      if (tbody) tbody.innerHTML = '<tr><td colspan="3">無法載入覺醒資料</td></tr>';
-    });
+      if (tbody) tbody.innerHTML = '<tr><td colspan="3">無法載入雲端覺醒資料</td></tr>';
+    }
+  }
+
+  loadAwakeningFromSupabase();
 
   // 搜尋框邏輯
   if (searchInput) {
@@ -92,14 +105,13 @@ document.addEventListener("DOMContentLoaded", () => {
         const value = hero[field] !== undefined ? String(hero[field]) : '';
 
         if (keyword && value.toLowerCase().includes(keyword)) {
-          const regex = new RegExp(`(${keyword})`, 'gi');
+          const regex = new RegExp(`(${keyword})`, "gi");
           td.innerHTML = value.replace(regex, '<span class="highlight2">$1</span>');
         } else {
           td.textContent = value;
         }
         tr.appendChild(td);
       });
-      // 移除點擊彈窗事件
       tbody.appendChild(tr);
     });
   }
@@ -123,7 +135,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const highlight = (text) => {
         if (!keyword) return text;
-        const regex = new RegExp(`(${keyword})`, 'gi');
+        const regex = new RegExp(`(${keyword})`, "gi");
         return String(text).replace(regex, '<span class="highlight2">$1</span>');
       };
 

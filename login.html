@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MoData | 管理員登入</title>
+    <link rel="stylesheet" href="/mo_data/css/styles.css">
+    <style>
+        body { font-family: 'Microsoft JhengHei', sans-serif; background: #f0f2f5; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+        .login-card { background: white; padding: 40px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); width: 100%; max-width: 400px; }
+        h1 { text-align: center; color: #333; margin-bottom: 30px; }
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; margin-bottom: 8px; color: #666; font-weight: bold; }
+        .form-group input { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 6px; box-sizing: border-box; font-size: 16px; }
+        .btn-login { width: 100%; padding: 12px; background: #007bff; color: white; border: none; border-radius: 6px; font-size: 18px; font-weight: bold; cursor: pointer; transition: 0.3s; }
+        .btn-login:hover { background: #0056b3; }
+        .error-msg { color: #dc3545; text-align: center; margin-top: 15px; font-size: 14px; display: none; }
+        .back-link { display: block; text-align: center; margin-top: 20px; color: #666; text-decoration: none; font-size: 14px; }
+        .back-link:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+
+<div class="login-card">
+    <h1>管理員登入</h1>
+    <form id="loginForm">
+        <div class="form-group">
+            <label>Email</label>
+            <input type="email" id="email" required placeholder="請輸入 Email">
+        </div>
+        <div class="form-group">
+            <label>密碼</label>
+            <input type="password" id="password" required placeholder="請輸入密碼">
+        </div>
+        <button type="submit" class="btn-login">登入</button>
+        <div id="errorMsg" class="error-msg">登入失敗，請檢查帳號密碼</div>
+    </form>
+    <a href="/mo_data/index.html" class="back-link">← 回到首頁</a>
+</div>
+
+<script type="module">
+    import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm'
+    import { SUPABASE_URL, SUPABASE_KEY } from './js/supabase-config.js'
+
+    const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
+
+    // 檢查是否已登入，若已登入則直接跳轉後台
+    async function checkSession() {
+        const { data: { session } } = await supabase.auth.getSession();
+        if (session) {
+            window.location.href = 'admin.html';
+        }
+    }
+    checkSession();
+
+    document.getElementById('loginForm').onsubmit = async (e) => {
+        e.preventDefault();
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+        const errorMsg = document.getElementById('errorMsg');
+
+        errorMsg.style.display = 'none';
+
+        const { data, error } = await supabase.auth.signInWithPassword({
+            email: email,
+            password: password,
+        });
+
+        if (error) {
+            errorMsg.innerText = '登入失敗：' + error.message;
+            errorMsg.style.display = 'block';
+        } else {
+            window.location.href = 'admin.html';
+        }
+    };
+</script>
+
+</body>
+</html>
