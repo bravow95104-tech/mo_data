@@ -109,10 +109,10 @@ export const TABLE_CONFIGS = {
     accessories: {
         title: '飾品管理',
         tableName: 'accessories',
-        tableCols: ['項目', '等級', '說明', '操作'],
-        displayFields: ['item', 'lv', 'illustrate'],
+        tableCols: ['名稱','分類', '等級', '說明', '操作'],
+        displayFields: ['item','class', 'lv', 'illustrate'],
         fields: [
-            { id: 'item', label: '項目', type: 'text', required: true, grid: 1 },
+            { id: 'item', label: '名稱', type: 'text', required: true, grid: 1 },
             { id: 'sort_id', label: '顯示順序', type: 'number', grid: 1 },
             { id: 'class', label: '分類', type: 'select', options: ['飾品'], grid: 1 },
             { id: 'sort', label: '部位', type: 'select', options: ['嘴巴','頭飾','眼鏡','座騎'], grid: 1 },
@@ -216,6 +216,29 @@ export const TABLE_CONFIGS = {
             { id: 'sort_id', label: '顯示順序', type: 'number', grid: 1 },
             { id: 'is_tips', label: '是否為 Tips', type: 'select', options: ['是', '否'], grid: 1 },
             { id: 'content', label: '內容', type: 'textarea', required: true, grid: 3 }
+        ]
+    },
+    thank: {
+        title: '特別感謝管理',
+        tableName: 'thanks',
+        tableCols: ['類別', '名單', '操作'],
+        displayFields: ['category', 'names'],
+        fields: [
+            { id: 'category', label: '類別', type: 'text', placeholder: '如：網站製作、技術指導', required: true, grid: 1 },
+            { id: 'sort_id', label: '顯示順序', type: 'number', grid: 1 },
+            { id: 'names', label: '名單', type: 'textarea', placeholder: '多個名稱請用、隔開', required: true, grid: 3 }
+        ]
+    },
+    releases: {
+        title: '改版資訊管理',
+        tableName: 'releases',
+        tableCols: ['日期', '標題', '操作'],
+        displayFields: ['date', 'title'],
+        fields: [
+            { id: 'date', label: '日期', type: 'text', placeholder: 'YYYY-MM-DD', required: true, grid: 1 },
+            { id: 'sort_id', label: '顯示順序', type: 'number', grid: 1 },
+            { id: 'title', label: '標題', type: 'text', required: true, grid: 3 },
+            { id: 'url', label: '連結 URL', type: 'text', grid: 3 }
         ]
     }
     // 未來可以在此處直接新增 equipment, items, maps 等配置
