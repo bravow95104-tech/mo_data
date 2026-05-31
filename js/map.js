@@ -1,3 +1,8 @@
+import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm'
+import { SUPABASE_URL, SUPABASE_KEY } from './supabase-config.js'
+
+const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
+
 // === 1. 全域變數 ===
 let mapData = [];
 // 定義所有可能的欄位
@@ -24,20 +29,53 @@ document.addEventListener("DOMContentLoaded", () => {
   // 載入使用者欄位設定
   loadColumnSettings();
 
-  // 載入 JSON 資料
-  fetch("/mo_data/data/detailed_map.json")
-    .then((res) => res.json())
-    .then((json) => {
-      mapData = Array.isArray(json) ? json : json.data;
-      console.log("✅ 地圖資料載入完成");
+  // 載入資料
+  async function loadData() {
+    // 同時抓取地圖資料與光輝掉落資料
+    const [mapRes, gloryRes] = await Promise.all([
+      supabase.from('detailed_map').select('*').order('sort_id', { ascending: true }),
+      supabase.from('glory_drop').select('*')
+    ]);
 
-      // [HTML1 邏輯] 如果頁面有表格，進行初次渲染
-      if (document.querySelector("#heroes-table tbody")) {
-        initTableSearch();
-        initColumnSettings();
+    if (mapRes.error) {
+      console.error('載入地圖資料錯誤:', mapRes.error);
+      const tbody = document.querySelector('#heroes-table tbody');
+      if (tbody) tbody.innerHTML = '<tr><td colspan="15">無法載入地圖資料</td></tr>';
+      return;
+    }
+
+    const rawMapData = mapRes.data;
+    const gloryDropData = gloryRes.data || [];
+
+    // 進行資料對接：根據 glory_drop 的 area (用、分隔) 來對應地圖
+    mapData = rawMapData.map(map => {
+      // 尋找符合的地圖區域配置
+      const matchedGlory = gloryDropData.find(g => {
+        if (!g.area) return false;
+        const areas = g.area.split('、');
+        return areas.includes(map.mapid);
+      });
+
+      if (matchedGlory) {
+        return {
+          ...map,
+          drop_glory_high: matchedGlory.more,
+          drop_glory_low: matchedGlory.low,
+          glory_area: matchedGlory.area // 記錄所屬區域字串
+        };
       }
-    })
-    .catch((err) => console.error("❌ 載入失敗：", err));
+      return map;
+    });
+
+    console.log("✅ 地圖與光輝資料載入完成 (Supabase)");
+
+    if (document.querySelector("#heroes-table tbody")) {
+      initTableSearch();
+      initColumnSettings();
+    }
+  }
+
+  loadData();
 
   // [HTML2 邏輯] Tab 切換與 Image Map 縮放
   initMapTabs();
@@ -128,8 +166,9 @@ function renderTable(data, keyword = "") {
       const colInfo = ALL_COLUMNS.find(c => c.id === colId);
       td.setAttribute("data-label", colInfo ? colInfo.label : colId);
 
-      let text = item[colId] || "-";
-      let content = String(text).replace(/\n/g, '<br>');
+      let val = item[colId];
+      let text = (val !== null && val !== undefined) ? String(val) : "-";
+      let content = text.replace(/\n/g, '<br>');
 
       // 高亮
       if (keyword && content !== "-" && content.toLowerCase().includes(keyword.toLowerCase())) {
@@ -267,7 +306,6 @@ function initMapTabs() {
       tabsScroll.scrollBy({ left: 200, behavior: "smooth" });
     });
 
-    // 監聽捲動狀態來決定是否隱藏箭頭 (選用功能，讓介面更精緻)
     const updateArrows = () => {
       const scrollLeft = tabsScroll.scrollLeft;
       const maxScroll = tabsScroll.scrollWidth - tabsScroll.clientWidth;
@@ -307,9 +345,9 @@ window.openMapDetail = function (mapId) {
   const showApproach = approachA.includes("要");
   const showExplain = approachA.includes("說明");
   const detailsHTML = `
-    ${showApproach ? `<div class="section-gap"><p><strong>走法：</strong>${item.approach}</p></div>` : ""}
-    ${showExplain ? `<div class="section-gap"><p><strong>說明：</strong>${item.illustrate}</p></div>` : ""}
-`.trim(); // 使用 trim() 去除多餘空格
+    ${showApproach ? `<div class="section-gap"><p><strong>走法：</strong>${item.approach || "-"}</p></div>` : ""}
+    ${showExplain ? `<div class="section-gap"><p><strong>說明：</strong>${item.illustrate || "-"}</p></div>` : ""}
+`.trim();
 
   // 掉落與戰鬥區塊 (條件隱藏)
   let combatAndDropHTML = '';
@@ -317,8 +355,8 @@ window.openMapDetail = function (mapId) {
     const hasDrop = !!(item.drop_rubbish || item.drop_hero || item.drop_equidcard || item.drop_skillcard || item.drop_combo_old || item.drop_combo_new || item.drop_othrt);
     combatAndDropHTML = `
             <div class="hero-defdodge section-gap">
-                <p><strong>怪物等級：</strong>${item.maplv || "N/A"}</p>
-                <p><strong>防禦：</strong>${item.def || "N/A"}　<strong>閃避：</strong>${item.dodge || "N/A"}</p>
+                <p><strong>怪物等級：</strong>${item.maplv || "-"}</p>
+                <p><strong>防禦：</strong>${item.def || "-"}　<strong>閃避：</strong>${item.dodge || "-"}</p>
             </div>
             ${hasDrop ? `
                 <div class="hero-column-details">
@@ -334,8 +372,8 @@ window.openMapDetail = function (mapId) {
       }
             <div class="hero-column-details">
                 <p><strong>光輝資訊：</strong></p>
-                <p class="align-row"><strong>◢ 掉落較高：</strong>${item.drop_glory_high || "N/A"}</p>
-                <p class="align-row"><strong>◢ 掉落較低：</strong>${item.drop_glory_low || "N/A"}</p>
+                <p class="align-row"><strong>◢ 掉落較高：</strong>${item.drop_glory_high || "-"}</p>
+                <p class="align-row"><strong>◢ 掉落較低：</strong>${item.drop_glory_low || "-"}</p>
                 ${item.drop_glory_player ? `<p class="align-row"><strong>◢ 玩家提供：</strong>${item.drop_glory_player}</p>` : ""}
             </div>
         `;
