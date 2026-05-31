@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="zh-Hant">
   <head>
     <meta charset="UTF-8" />
@@ -16,11 +16,7 @@
     <!-- 搜尋框 -->
     <div id="searchContainer">
       <label for="searchInput" class="quick-search-label">快速搜尋</label>
-      <input
-        type="text"
-        id="searchInput"
-        placeholder="搜尋名稱..."
-      />
+      <input type="text" id="searchInput" placeholder="搜尋名稱..." />
     </div>
     <br />
     <!-- 快速搜尋 -->
@@ -29,8 +25,12 @@
       <div class="accordion-content">
         <div class="filter-group">
           <span class="filter-label">種類：</span>
-          <button class="filter-btn" data-type="promotion" data-value="角色">角色</button>
-          <button class="filter-btn" data-type="promotion" data-value="英雄">英雄</button>
+          <button class="filter-btn" data-type="promotion" data-value="角色">
+            角色
+          </button>
+          <button class="filter-btn" data-type="promotion" data-value="英雄">
+            英雄
+          </button>
         </div>
         <br />
         <div class="filter-actions">
@@ -79,8 +79,7 @@
 
     <div id="footer-container"></div>
     <!-- 這是頁尾會被載入的位置 -->
-    <script src="/mo_data/js/medicine.js"></script>
+    <script type="module" src="/mo_data/js/medicine.js"></script>
     <script src="/mo_data/js/componentsLoader.js"></script>
-    
   </body>
 </html>
