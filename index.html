@@ -127,7 +127,7 @@
           const { data, error } = await supabase
             .from('changelog')
             .select('*')
-            .order('sort_id', { ascending: false }); // 讓最新的在上面
+            .order('sort_id', { ascending: false });
 
           if (error) throw error;
           changelogLines = data;
@@ -137,26 +137,48 @@
           document.getElementById("changelog-list").innerHTML = "<li>載入失敗。</li>";
         }
 
-        // 2. 載入改版資訊 (目前仍維持 JSON/Text，未來可同樣改為 Supabase)
-        fetch(baseURL + "/data/releases.txt")
-          .then(res => res.text())
-          .then(text => {
-            const list = document.getElementById("release-list");
-            const lines = text.trim().split("\n");
-            list.innerHTML = "";
-            
-            lines.forEach(line => {
-              if (!line.trim() || !line.includes("|")) return;
-              const [date, title, url] = line.split("|").map(s => s.trim());
-              const li = document.createElement("li");
-              li.innerHTML = `
-                <span class="date">${date}</span>
-                <a href="${url}" target="_blank" rel="noopener noreferrer" class="date2">${title}</a>
-              `;
-              list.appendChild(li);
-            });
-          })
-          .catch(err => console.error("載入改版資訊失敗:", err));
+        // 2. 載入特別感謝 (Supabase)
+        try {
+          const { data, error } = await supabase
+            .from('thanks')
+            .select('*')
+            .order('sort_id', { ascending: true });
+
+          if (error) throw error;
+          const list = document.getElementById("thanks-list");
+          list.innerHTML = "";
+          data.forEach(item => {
+            const li = document.createElement("li");
+            li.innerHTML = `<span class="tips">${item.category}</span>${item.names.replace(/\n/g, '<br>')}`;
+            list.appendChild(li);
+          });
+        } catch (err) {
+          console.error("載入特別感謝失敗:", err);
+          document.getElementById("thanks-list").innerHTML = "<li>載入失敗。</li>";
+        }
+
+        // 3. 載入改版資訊 (Supabase)
+        try {
+          const { data, error } = await supabase
+            .from('releases')
+            .select('*')
+            .order('sort_id', { ascending: false });
+
+          if (error) throw error;
+          const list = document.getElementById("release-list");
+          list.innerHTML = "";
+          data.forEach(item => {
+            const li = document.createElement("li");
+            li.innerHTML = `
+              <span class="date">${item.date}</span>
+              <a href="${item.url || '#'}" target="_blank" rel="noopener noreferrer" class="date2">${item.title}</a>
+            `;
+            list.appendChild(li);
+          });
+        } catch (err) {
+          console.error("載入改版資訊失敗:", err);
+          document.getElementById("release-list").innerHTML = "<li>載入失敗。</li>";
+        }
       });
     </script>
   </body>
