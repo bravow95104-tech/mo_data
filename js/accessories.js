@@ -1,4 +1,9 @@
-document.addEventListener("DOMContentLoaded", () => {
+import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm'
+import { SUPABASE_URL, SUPABASE_KEY } from './supabase-config.js'
+
+const supabase = createClient(SUPABASE_URL, SUPABASE_KEY)
+
+document.addEventListener("DOMContentLoaded", async () => {
   let heroesData = [];
   let lastFilteredData = [];
   let searchTimer = null;
@@ -7,12 +12,14 @@ document.addEventListener("DOMContentLoaded", () => {
     attr: null
   };
 
+  // 🔹 提前初始化 DOM 元素
   const modalOverlay = document.getElementById('modalOverlay');
   const modalBox = document.getElementById('modalBox');
   const modalContent = document.getElementById('modalContent');
   const closeModalBtn = document.querySelector('.close-btn');
   const tableContainer = document.getElementById('heroes-table');
   const cardContainer = document.getElementById('hero-card-container');
+  const searchInput = document.getElementById('searchInput');
 
   // === 響應式判斷 ===
   const isBelow768 = () => window.innerWidth <= 768;
@@ -30,23 +37,24 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 150);
   });
 
-  // === 載入 JSON 資料 ===
-  fetch('/mo_data/data/accessories.json')
-    .then(response => {
-      if (!response.ok) throw new Error('Network response was not ok');
-      return response.json();
-    })
-    .then(data => {
-      heroesData = data.filter(item => item.class && item.class.trim() === "飾品");
-      applyFilters();
-    })
-    .catch(error => {
-      console.error('載入飾品資料錯誤:', error);
-      const tbody = document.querySelector('#heroes-table tbody');
-      if (tbody) tbody.innerHTML = '<tr><td colspan="7">無法載入飾品資料</td></tr>';
-    });
+  // === 載入資料 ===
+  try {
+    const { data, error } = await supabase
+      .from('accessories')
+      .select('*')
+      .order('sort_id', { ascending: true });
 
-  const searchInput = document.getElementById('searchInput');
+    if (error) throw error;
+
+    // 確保只顯示類別為「飾品」的資料
+    heroesData = (data || []).filter(item => item.class && String(item.class).trim() === "飾品");
+    applyFilters();
+  } catch (error) {
+    console.error('載入飾品資料錯誤:', error);
+    const tbody = document.querySelector('#heroes-table tbody');
+    if (tbody) tbody.innerHTML = '<tr><td colspan="7">無法載入雲端資料</td></tr>';
+    if (cardContainer) cardContainer.innerHTML = '<p style="text-align:center; color:red; padding:20px;">無法載入雲端資料</p>';
+  }
 
   if (searchInput) {
     searchInput.addEventListener('input', () => {
@@ -119,6 +127,9 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  // 🔹 輔助函式：處理 NULL 值
+  const getVal = (v) => (v === null || v === undefined || String(v).trim() === "") ? "-" : v;
+
   // === 產生表格 ===
   function renderTable(data) {
     const tbody = document.querySelector('#heroes-table tbody');
@@ -136,9 +147,10 @@ document.addEventListener("DOMContentLoaded", () => {
       const tr = document.createElement('tr');
       const imgTd = document.createElement('td');
       imgTd.style.cssText = 'width:50px; height:50px; text-align:center; vertical-align:middle;';
+      
       if (hero.item) {
         const img = document.createElement('img');
-        const basePath = `/mo_data/pic/accessories/${hero.item}`;
+        const basePath = `=/mo_data/pic/accessories/${hero.item}`;
         const extensions = ['.png', '.bmp', '.jpg'];
         let attempt = 0;
         img.src = basePath + extensions[attempt];
@@ -160,19 +172,19 @@ document.addEventListener("DOMContentLoaded", () => {
       const fields = ['item', 'lv', 'Property1', 'Property2', 'Durability', 'illustrate'];
       fields.forEach(field => {
         const td = document.createElement('td');
-        let value = hero[field] !== undefined ? String(hero[field]) : '';
+        let value = getVal(hero[field]);
         const highlightKey = activeFilters.attr || keyword;
 
         if (field === 'illustrate') {
           const specialRegex = /\^&([\s\S]*?)&\^/g;
-          if (value.includes('^&') && value.includes('&^')) {
-            value = value.replace(specialRegex, '<span class="keyword-link">$1</span>');
+          if (String(value).includes('^&') && String(value).includes('&^')) {
+            value = String(value).replace(specialRegex, '<span class="keyword-link">$1</span>');
           }
-          if (highlightKey) {
+          if (highlightKey && value !== "-") {
             const hRegex = new RegExp(`(${highlightKey.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
-            value = value.replace(hRegex, '<span class="highlight">$1</span>');
+            value = String(value).replace(hRegex, '<span class="highlight">$1</span>');
           }
-          td.innerHTML = value.replace(/\n/g, '<br>');
+          td.innerHTML = String(value).replace(/\n/g, '<br>');
           td.querySelectorAll('.keyword-link').forEach(link => {
             link.addEventListener('click', (e) => {
               e.stopPropagation();
@@ -180,11 +192,11 @@ document.addEventListener("DOMContentLoaded", () => {
             });
           });
         } else {
-          if (highlightKey && value.toLowerCase().includes(highlightKey.toLowerCase())) {
+          if (highlightKey && value !== "-" && String(value).toLowerCase().includes(highlightKey.toLowerCase())) {
             const regex = new RegExp(`(${highlightKey.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
-            td.innerHTML = value.replace(regex, '<span class="highlight">$1</span>').replace(/\n/g, '<br>');
+            td.innerHTML = String(value).replace(regex, '<span class="highlight">$1</span>').replace(/\n/g, '<br>');
           } else {
-            td.innerHTML = value.replace(/\n/g, '<br>');
+            td.innerHTML = String(value).replace(/\n/g, '<br>');
           }
         }
         tr.appendChild(td);
@@ -212,7 +224,7 @@ document.addEventListener("DOMContentLoaded", () => {
       card.className = 'card-item';
       
       const highlight = (text) => {
-        if (!highlightKey) return text;
+        if (!highlightKey || text === "-") return text;
         const regex = new RegExp(`(${highlightKey.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
         return String(text).replace(regex, '<span class="highlight2">$1</span>');
       };
@@ -241,24 +253,25 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const title = document.createElement('h3');
       title.className = 'card-title';
-      title.innerHTML = highlight(hero.item);
+      title.innerHTML = highlight(getVal(hero.item));
 
       cardHeader.appendChild(img);
       cardHeader.appendChild(title);
 
-      const cleanIllustrate = hero.illustrate ? hero.illustrate.replace(/\^&|&\^/g, "") : "";
+      const rawIllustrate = hero.illustrate ? String(hero.illustrate).replace(/\^&|&\^/g, "") : "";
+      const cleanIllustrate = getVal(rawIllustrate);
       const isLongDesc = cleanIllustrate.length > 50;
-      const hasGain = hero.gain && hero.gain.trim() !== "";
-      const hasLinks = hero.illustrate && hero.illustrate.includes('^&');
+      const hasGain = hero.gain && String(hero.gain).trim() !== "";
+      const hasLinks = hero.illustrate && String(hero.illustrate).includes('^&');
       const shouldBeClickable = hasGain || hasLinks || isLongDesc;
 
       const cardBody = document.createElement('div');
       cardBody.className = 'card-body';
       cardBody.innerHTML = `
-        <p><strong>等級：</strong>${hero.lv}</p>
-        <p><strong>防禦力：</strong>${hero.Property1 || 0}</p>
-        <p><strong>閃避值：</strong>${hero.Property2 || 0}</p>
-        <p><strong>耐用度：</strong>${hero.Durability || 0}</p>
+        <p><strong>等級：</strong>${getVal(hero.lv)}</p>
+        <p><strong>防禦力：</strong>${getVal(hero.Property1)}</p>
+        <p><strong>閃避值：</strong>${getVal(hero.Property2)}</p>
+        <p><strong>耐用度：</strong>${getVal(hero.Durability)}</p>
         <p><strong>說明：</strong>${highlight(cleanIllustrate.substring(0, 50))}${isLongDesc ? '...' : ''}</p>
         ${shouldBeClickable ? '<p style="text-align:right; color:#3399ff; font-size:12px; margin-top:5px;">查看完整資訊 ▾</p>' : ''}
       `;
@@ -286,22 +299,22 @@ document.addEventListener("DOMContentLoaded", () => {
       <div class="hero-column-accessories">
         <h3 class="modal-sub-title">完整說明</h3>
         <p style="font-size: 16px; line-height: 1.6;">
-          ${equip.illustrate.replace(/\^&|&\^/g, "").replace(/\n/g, "<br>")}
+          ${getVal(equip.illustrate).replace(/\^&|&\^/g, "").replace(/\n/g, "<br>")}
         </p>
       </div>
     `;
 
-    const gainHTML = (equip.gain && equip.gain.trim() !== "")
+    const gainHTML = (equip.gain && String(equip.gain).trim() !== "")
       ? `<div class="hero-column-accessories-details" style="margin-top:15px;">
            <h3 class="modal-sub-title">詳細效果</h3>
            <p style="font-size: 16px; line-height: 1.8; margin: 0; padding: 5px 0;">
-             ${equip.gain.replace(/\n/g, "<br>")}
+             ${String(equip.gain).replace(/\n/g, "<br>")}
            </p>
          </div>`
       : "";
 
     modalContent.innerHTML = `
-      <h2 class="hero-name">${titleName}</h2>
+      <h2 class="hero-name">${getVal(titleName)}</h2>
       <div class="hero-details-container" style="max-width: 100%; justify-content: center; flex-direction:column;">
            ${illustrateHTML}
            ${gainHTML}
@@ -313,16 +326,16 @@ document.addEventListener("DOMContentLoaded", () => {
   // === Modal 2: 詳細效果 (電腦版點擊連結) ===
   function showGainModal(equip, effectName) {
     if (!modalContent) return;
-    const gainContent = (equip.gain && equip.gain.trim() !== "")
+    const gainContent = (equip.gain && String(equip.gain).trim() !== "")
       ? `<div class="hero-column-accessories-details">
            <p style="font-size: 16px; line-height: 1.8; padding-top: 10px;">
-             ${equip.gain.replace(/\n/g, "<br>")}
+             ${String(equip.gain).replace(/\n/g, "<br>")}
            </p>
          </div>`
       : `<div class="hero-column-accessories-details"><p>暫無詳細效果說明。</p></div>`;
 
     modalContent.innerHTML = `
-      <h2 class="hero-name">${effectName} 詳情</h2>
+      <h2 class="hero-name">${getVal(effectName)} 詳情</h2>
       <div class="hero-details-container" style="justify-content: center;">
         ${gainContent}
       </div>
