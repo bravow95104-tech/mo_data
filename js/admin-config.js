@@ -10,7 +10,7 @@ export const TABLE_CONFIGS = {
             { id: 'sort_id', label: '顯示順序', type: 'number', grid: 1 },
             { id: 'glory', label: '對應光輝', type: 'text', grid: 1 },
             { id: 'promotion', label: '拜官', type: 'text', grid: 1 },
-            { id: 'element', label: '屬性', type: 'select', options: ['火', '水', '木', '金', '土', '無'], grid: 1 },
+            { id: 'element', label: '屬性', type: 'select', options: ['火', '水', '木', '金', '土'], grid: 1 },
             { id: 'str', label: '力量 (STR)', type: 'number', grid: 1 },
             { id: 'int', label: '智慧 (INT)', type: 'number', grid: 1 },
             { id: 'vit', label: '體質 (VIT)', type: 'number', grid: 1 },
@@ -19,7 +19,7 @@ export const TABLE_CONFIGS = {
             { id: 'equipment_new', label: '裝備卡(新專)', type: 'text', grid: 1 },
             { id: 'new_multiplier', label: '新專倍率', type: 'text', grid: 1 },
             { id: 'transformation_skill', label: '生變技能', type: 'text', grid: 1 },
-            { id: 'player', label: '光輝掉落(玩家)', type: 'text', grid: 1 },
+            { id: 'player', label: '光輝掉落(玩家提供)', type: 'text', grid: 1 },
             { id: 'playerdata', label: '資訊提供者', type: 'text', grid: 1 }
         ]
     },
@@ -55,21 +55,21 @@ export const TABLE_CONFIGS = {
         fields: [
             { id: 'skillname', label: '技能名稱', type: 'text', required: true, grid: 1 },
             { id: 'sort_id', label: '顯示順序', type: 'number', grid: 1 },
-            { id: 'category', label: '類別', type: 'text', grid: 1 },
+            { id: 'category', label: '類別', type: 'select', options: ['傷害', '減CD', '施法', '特殊'], grid: 1 },
             { id: 'class', label: '職業', type: 'text', grid: 1 },
             { id: 'classskill', label: '職業技能', type: 'text', grid: 1 },
-            { id: 'equipmenttype1', label: '裝備類型1', type: 'text', grid: 1 },
+            { id: 'equipmenttype1', label: '裝備類型1', type: 'select', options: ['武器', '盔甲', '共用', '坐騎', '眼睛', '嘴巴','頭盔','鞋子'], grid: 1 },
             { id: 'equipmenttype2', label: '裝備類型2', type: 'text', grid: 1 },
             { id: 'combinationmethod', label: '文片組合', type: 'text', grid: 2 },
             { id: 'description', label: '說明', type: 'textarea', grid: 3 },
-            { id: 'commonly', label: '常用', type: 'text', grid: 1 }
+            { id: 'commonly', label: '常用', type: 'select', options: ['','TRUE'], grid: 1 }
         ]
     },
     runereset: {
         title: '文片重鑄管理',
         tableName: 'runereset',
-        tableCols: ['道具', '材料1', '材料2', '操作'],
-        displayFields: ['item', 'material1', 'material2'],
+        tableCols: ['道具', '材料1', '材料2', '材料3','材料4','材料5','操作'],
+        displayFields: ['item', 'material1', 'material2', 'material3', 'material4', 'material5'],
         fields: [
             { id: 'item', label: '道具', type: 'text', required: true, grid: 1 },
             { id: 'sort_id', label: '顯示順序', type: 'number', grid: 1 },
@@ -83,25 +83,25 @@ export const TABLE_CONFIGS = {
     card: {
         title: '卡片管理',
         tableName: 'card',
-        tableCols: ['卡片ID', '卡片屬性', '操作'],
-        displayFields: [ 'card_id', 'card_property'],
+        tableCols: ['類型','卡片ID', '卡片屬性', '操作'],
+        displayFields: [ 'type','card_id', 'card_property'],
         fields: [
-            { id: 'hero_name', label: '英雄名稱', type: 'text', grid: 1 },
             { id: 'sort_id', label: '顯示順序', type: 'number', grid: 1 },
-            { id: 'type', label: '類型', type: 'text', grid: 1 },
+            { id: 'type', label: '類型', type: 'select', options: ['裝備卡','靈具卡','主動技能卡','被動技能卡'], grid: 1 },
             { id: 'check_use', label: '確認用', type: 'text', grid: 1 },
-            { id: 'new_old', label: '新舊', type: 'text', grid: 1 },
+            { id: 'new_old', label: '新舊', type: 'select', options: ['','新專','舊專','馬卡'], grid: 1 },
             { id: 'card_id', label: '卡片ID', type: 'text', grid: 1 },
             { id: 'card_property', label: '卡片屬性', type: 'text', grid: 1 },
             { id: 'card_data', label: '卡片數據', type: 'text', grid: 1 },
             { id: 'card_lv', label: '卡片等級', type: 'text', grid: 1 },
             { id: 'card_class', label: '卡片階級', type: 'text', grid: 1 },
-            { id: 'nemultiplier', label: '倍率', type: 'text', grid: 1 },
+            { id: 'nemultiplier', label: '倍率', type: 'select', options: ['','2.5倍','2倍'], grid: 1 },
             { id: 'property_first', label: '第一屬性', type: 'text', grid: 1 },
             { id: 'property_second', label: '第二屬性', type: 'text', grid: 1 },
             { id: 'property_third', label: '第三屬性', type: 'text', grid: 1 },
             { id: 'card_mp', label: '卡片MP', type: 'text', grid: 1 },
             { id: 'directions', label: '說明', type: 'textarea', grid: 3 },
+            { id: 'hero_name', label: '英雄名稱', type: 'text', grid: 1 },
             { id: 'drop', label: '掉落', type: 'text', grid: 1 },
             { id: 'player', label: '玩家', type: 'text', grid: 1 }
         ]
@@ -114,9 +114,9 @@ export const TABLE_CONFIGS = {
         fields: [
             { id: 'item', label: '項目', type: 'text', required: true, grid: 1 },
             { id: 'sort_id', label: '顯示順序', type: 'number', grid: 1 },
-            { id: 'class', label: '分類', type: 'text', grid: 1 },
-            { id: 'sort', label: '部位', type: 'text', grid: 1 },
-            { id: 'type', label: '類型', type: 'text', grid: 1 },
+            { id: 'class', label: '分類', type: 'select', options: ['飾品'], grid: 1 },
+            { id: 'sort', label: '部位', type: 'select', options: ['嘴巴','頭飾','眼鏡','座騎'], grid: 1 },
+            { id: 'type', label: '類型(暫無作用 原意分類道具)', type: 'text', grid: 1 },
             { id: 'lv', label: '等級', type: 'text', grid: 1 },
             { id: 'Property1', label: '屬性1', type: 'text', grid: 1 },
             { id: 'Property2', label: '屬性2', type: 'text', grid: 1 },
@@ -127,14 +127,14 @@ export const TABLE_CONFIGS = {
             { id: 'material4', label: '材料4', type: 'text', grid: 1 },
             { id: 'material5', label: '材料5', type: 'text', grid: 1 },
             { id: 'illustrate', label: '說明', type: 'textarea', grid: 3 },
-            { id: 'gain', label: '獲得方式', type: 'text', grid: 1 }
+            { id: 'gain', label: '特殊效果說明(modelbox)', type: 'text', grid: 1 }
         ]
     },
     beautiful: {
         title: '美容院管理',
         tableName: 'beautiful',
-        tableCols: ['ID', '類型', '材料1', '操作'],
-        displayFields: ['beauty_id', 'type', 'material1'],
+        tableCols: ['ID', '類型', '材料1','材料2','材料3','材料4','材料5', '操作'],
+        displayFields: ['beauty_id', 'type', 'material1','material2','material3','material4','material5'],
         fields: [
             { id: 'beauty_id', label: 'ID', type: 'text', required: true, grid: 1 },
             { id: 'sort_id', label: '顯示順序', type: 'number', grid: 1 },
@@ -149,8 +149,8 @@ export const TABLE_CONFIGS = {
     garbage: {
         title: '垃圾名聲管理',
         tableName: 'garbage',
-        tableCols: ['名稱', '分類', '家族', '操作'],
-        displayFields: ['name', 'class', 'family'],
+        tableCols: ['名稱', '分類', '家族', '名聲', '貢獻', '操作'],
+        displayFields: ['name', 'class', 'family', 'renown', 'contribute'],
         fields: [
             { id: 'name', label: '名稱', type: 'text', required: true, grid: 1 },
             { id: 'sort_id', label: '顯示順序', type: 'number', grid: 1 },
@@ -163,8 +163,8 @@ export const TABLE_CONFIGS = {
     works: {
         title: '工作管理',
         tableName: 'works',
-        tableCols: ['名稱', '類型', '等級', '操作'],
-        displayFields: ['name', 'type', 'lv'],
+        tableCols: ['名稱', '類型', '等級','地區', '操作'],
+        displayFields: ['name', 'type', 'lv', 'area'],
         fields: [
             { id: 'name', label: '名稱', type: 'text', required: true, grid: 1 },
             { id: 'sort_id', label: '顯示順序', type: 'number', grid: 1 },
@@ -176,8 +176,8 @@ export const TABLE_CONFIGS = {
     items: {
         title: '道具管理',
         tableName: 'items',
-        tableCols: ['項目', '類型', '操作'],
-        displayFields: ['items', 'type'],
+        tableCols: ['項目', '類型', '說明', '操作'],
+        displayFields: ['items', 'type', 'illustrate'],
         fields: [
             { id: 'items', label: '項目', type: 'text', required: true, grid: 1 },
             { id: 'sort_id', label: '顯示順序', type: 'number', grid: 1 },
