@@ -80,7 +80,6 @@ window.openMapDetail = function (mapId) {
       }
             <div class="hero-column-details">
                 <p><strong>光輝資訊：</strong></p>
-                ${item.glory_area ? `<p class="align-row"><strong>◢ 所屬區域：</strong>${item.glory_area}</p>` : ""}
                 <p class="align-row"><strong>◢ 掉落較高：</strong>${item.drop_glory_high || "-"}</p>
                 <p class="align-row"><strong>◢ 掉落較低：</strong>${item.drop_glory_low || "-"}</p>
                 ${item.drop_glory_player ? `<p class="align-row"><strong>◢ 玩家提供：</strong>${item.drop_glory_player}</p>` : ""}
