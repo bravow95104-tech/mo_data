@@ -1,3 +1,8 @@
+import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm'
+import { SUPABASE_URL, SUPABASE_KEY } from './supabase-config.js'
+
+const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
+
 document.addEventListener("DOMContentLoaded", () => {
   let heroesData = [];
   let lastFilteredData = [];
@@ -32,21 +37,25 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 150);
   });
 
-  // === 載入 JSON 資料 ===
-  fetch('/mo_data/data/weapons.json')
-    .then(response => {
-      if (!response.ok) throw new Error('Network response was not ok');
-      return response.json();
-    })
-    .then(data => {
-      heroesData = data.filter(item => item.class && item.class.trim() === "防具");
-      applyFilters();
-    })
-    .catch(error => {
+  // === 從 Supabase 載入資料 ===
+  async function loadData() {
+    const { data, error } = await supabase
+      .from('equipment')
+      .select('*')
+      .order('sort_id', { ascending: true });
+
+    if (error) {
       console.error('載入防具資料錯誤:', error);
       const tbody = document.querySelector('#heroes-table tbody');
       if (tbody) tbody.innerHTML = '<tr><td colspan="15">無法載入防具資料</td></tr>';
-    });
+      return;
+    }
+
+    heroesData = data;
+    applyFilters();
+  }
+
+  loadData();
 
   const searchInput = document.getElementById('searchInput');
 
@@ -176,9 +185,9 @@ document.addEventListener("DOMContentLoaded", () => {
       cardBody.className = 'card-body';
       cardBody.innerHTML = `
         <p><strong>等級：</strong>${hero.lv}</p>
-        <p><strong>攻擊：</strong>${hero.Property1}</p>
-        <p><strong>命中：</strong>${hero.Property2}</p>
-        <p><strong>耐用度：</strong>${hero.Durability}</p>
+        <p><strong>防禦：</strong>${hero.property1}</p>
+        <p><strong>閃避：</strong>${hero.property2}</p>
+        <p><strong>耐用度：</strong>${hero.durability}</p>
         <p><strong>說明：</strong>${highlight(hero.illustrate.replace(/\^&|&\^/g, "").substring(0, 50))}...</p>
       `;
 
@@ -230,31 +239,35 @@ document.addEventListener("DOMContentLoaded", () => {
       }
       tr.appendChild(imgTd);
 
-      const fields = ['item', 'lv', 'Property1', 'Property2', 'Durability', 'illustrate'];
+      const fields = ['item', 'lv', 'property1', 'property2', 'durability', 'illustrate'];
       fields.forEach(field => {
         const td = document.createElement('td');
-        let value = hero[field] !== undefined ? String(hero[field]) : '';
+        let value = (hero[field] !== null && hero[field] !== undefined) ? String(hero[field]) : '-';
 
         if (field === 'illustrate') {
-          const specialRegex = /\^&([\s\S]*?)&\^/g;
-          if (value.includes('^&') && value.includes('&^')) {
-            value = value.replace(specialRegex, '<span class="keyword-link">$1</span>');
-          }
-          if (highlightKey) {
-            const hRegex = new RegExp(`(${highlightKey.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
-            value = value.replace(hRegex, '<span class="highlight">$1</span>');
-          }
-          td.innerHTML = value.replace(/\n/g, '<br>');
-          td.querySelectorAll('.keyword-link').forEach(link => {
-            link.addEventListener('click', (e) => {
-              e.stopPropagation();
-              showGainModal(hero, link.textContent);
+          if (value === '-') {
+            td.textContent = '-';
+          } else {
+            const specialRegex = /\^&([\s\S]*?)&\^/g;
+            if (value.includes('^&') && value.includes('&^')) {
+              value = value.replace(specialRegex, '<span class="keyword-link">$1</span>');
+            }
+            if (highlightKey) {
+              const hRegex = new RegExp(`(${highlightKey.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
+              value = value.replace(hRegex, '<span class="highlight">$1</span>');
+            }
+            td.innerHTML = value.replace(/\n/g, '<br>');
+            td.querySelectorAll('.keyword-link').forEach(link => {
+              link.addEventListener('click', (e) => {
+                e.stopPropagation();
+                showGainModal(hero, link.textContent);
+              });
             });
-          });
+          }
         } else {
-          if (highlightKey && value.toLowerCase().includes(highlightKey.toLowerCase())) {
+          if (value !== '-' && highlightKey && value.toLowerCase().includes(highlightKey.toLowerCase())) {
             const regex = new RegExp(`(${highlightKey.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
-            td.innerHTML = value.replace(regex, '<span class="highlight">$1</span>').replace(/\n/g, '<br>');
+            td.innerHTML = value.replace(regex, '<span class="highlight2">$1</span>').replace(/\n/g, '<br>');
           } else {
             td.innerHTML = value.replace(/\n/g, '<br>');
           }
@@ -262,7 +275,7 @@ document.addEventListener("DOMContentLoaded", () => {
         tr.appendChild(td);
       });
 
-      const hasMaterial = hero.material1 && String(hero.material1).trim() !== "";
+      const hasMaterial = hero.material1 && String(hero.material1).trim() !== "" && hero.material1 !== null;
       if (hasMaterial) {
         tr.style.cursor = "pointer";
         tr.addEventListener('click', () => showDetailModal(hero));
@@ -276,17 +289,17 @@ document.addEventListener("DOMContentLoaded", () => {
   function showDetailModal(equip) {
     if (!modalContent) return;
     const materialsHTML = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
-      .map(num => equip[`material${num}`] ? `<p><strong>材料 ${num}：</strong>${equip[`material${num}`]}</p>` : '')
+      .map(num => (equip[`material${num}`] && equip[`material${num}`] !== null) ? `<p><strong>材料 ${num}：</strong>${equip[`material${num}`]}</p>` : '')
       .join('');
 
-    const illustrateHTML = (equip.illustrate && equip.illustrate.trim() !== "")
+    const illustrateHTML = (equip.illustrate && equip.illustrate.trim() !== "" && equip.illustrate !== null)
       ? `<div class="hero-column-base hero-column-details" style="grid-column: span 2; border-top: 1px solid #ddd; padding-top: 10px;">
            <h3 class="modal-sub-title">說明</h3>
            <p style="font-size: 16px; line-height: 1.6;">${equip.illustrate.replace(/\^&|&\^/g, "").replace(/\n/g, "<br>")}</p>
          </div>`
       : "";
 
-    const gainHTML = (equip.gain && equip.gain.trim() !== "")
+    const gainHTML = (equip.gain && equip.gain.trim() !== "" && equip.gain !== null)
       ? `<div class="hero-column-base hero-column-details" style="grid-column: span 2; border-top: 1px solid #ddd; padding-top: 10px;">
            <h3 class="modal-sub-title">詳細效果</h3>
            <p style="font-size: 16px; line-height: 1.8;">${equip.gain.replace(/\n/g, "<br>")}</p>
@@ -294,14 +307,14 @@ document.addEventListener("DOMContentLoaded", () => {
       : "";
 
     modalContent.innerHTML = `
-      <h2 class="hero-name">${equip.item}</h2>
+      <h2 class="hero-name">${equip.item || '-'}</h2>
       <div class="hero-details-container">
         <div class="hero-column-base hero-column">
         <h3 class="modal-sub-title">基礎數值</h3>
-          <p><strong>等級：</strong>${equip.lv}</p>
-          <p><strong>防禦：</strong>${equip.Property1}</p>
-          <p><strong>閃避：</strong>${equip.Property2}</p>
-          <p><strong>耐用度：</strong>${equip.Durability}</p>
+          <p><strong>等級：</strong>${equip.lv || '-'}</p>
+          <p><strong>防禦：</strong>${equip.property1 || '-'}</p>
+          <p><strong>閃避：</strong>${equip.property2 || '-'}</p>
+          <p><strong>耐用度：</strong>${equip.durability || '-'}</p>
         </div>
         <div class="hero-column-base hero-column">
         <h3 class="modal-sub-title">製作材料</h3>
