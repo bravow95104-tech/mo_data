@@ -43,8 +43,10 @@
         .btn-primary:hover { background: #2563eb; }
         .btn-logout { background: #fee2e2; color: #ef4444; }
         .btn-logout:hover { background: #fecaca; }
-        .btn-edit { background: #f1f5f9; color: var(--primary); padding: 6px 12px; }
+        .btn-edit { background: #f1f5f9; color: var(--primary); padding: 6px 12px; min-width: 80px; justify-content: center; }
         .btn-edit:hover { background: #e2e8f0; }
+        .btn-delete { background: #fee2e2; color: #ef4444; padding: 6px 12px; min-width: 80px; justify-content: center; margin-left: 5px; }
+        .btn-delete:hover { background: #fecaca; }
 
         /* 表格樣式 */
         table { width: 100%; border-collapse: collapse; margin-top: 20px; }
@@ -114,7 +116,7 @@
         <div class="nav-item" data-page="detailed_map"><i class="fas fa-map-marked-alt"></i> 地圖資訊</div>
         
         <div class="nav-group">生產與道具</div>
-        <div class="nav-item" data-page="weapons"><i class="fas fa-sword"></i> 武器</div>
+        <div class="nav-item" data-page="weapons"><i class="fa-sharp-duotone fa-solid fa-swords"></i> 武器</div>
         <div class="nav-item" data-page="equipment"><i class="fas fa-shield-alt"></i> 防具</div>
         <div class="nav-item" data-page="accessories"><i class="fas fa-gem"></i> 飾品</div>
         <div class="nav-item" data-page="medicine"><i class="fas fa-flask"></i> 藥品</div>
@@ -127,6 +129,8 @@
         
         <div class="nav-group">系統</div>
         <div class="nav-item" data-page="changelog"><i class="fas fa-file-alt"></i> 更新日誌</div>
+        <div class="nav-item" data-page="thank"><i class="fas fa-file-alt"></i> 特別感謝</div>
+        <div class="nav-item" data-page="releases"><i class="fas fa-file-alt"></i> 改版資訊</div>
     </div>
 </div>
 
@@ -284,6 +288,9 @@
                     <button class="btn btn-edit" onclick="openEditModal('${item.id}')">
                         <i class="fas fa-edit"></i> 編輯
                     </button>
+                    <button class="btn btn-delete" onclick="deleteItem('${item.id}')">
+                        <i class="fas fa-trash-alt"></i> 刪除
+                    </button>
                 </td>
             </tr>
         `).join('');
@@ -329,7 +336,7 @@
         if (!item) return;
 
         renderEditForm();
-        document.getElementById('modalTitle').innerText = '編輯：' + (item.name || '未命名');
+        document.getElementById('modalTitle').innerText = '編輯：' + (item.name || item.item || item.skillName || item.items || item.skillname || '未命名');
         document.getElementById('edit-id').value = item.id;
         
         TABLE_CONFIGS[currentTable].fields.forEach(f => {
@@ -338,6 +345,23 @@
         });
 
         document.getElementById('editModal').style.display = 'block';
+    };
+
+    window.deleteItem = async (id) => {
+        if (!confirm('確定要刪除這筆資料嗎？此動作無法復原。')) return;
+
+        const config = TABLE_CONFIGS[currentTable];
+        const { error } = await supabase
+            .from(config.tableName)
+            .delete()
+            .eq('id', id);
+
+        if (error) {
+            alert('刪除失敗: ' + error.message);
+        } else {
+            alert('刪除成功');
+            loadTable(currentTable); // 重新載入表格
+        }
     };
 
     window.closeModal = () => {
