@@ -8,7 +8,7 @@
   </head>
   <body>
     <div id="nav-container"></div>
-    <script src="/mo_data/js/componentsLoader.js"></script>
+    <script src="js/componentsLoader.js"></script>
 <!-- 碎碎念 -->
  <!-- 網頁圖檔皆以PNG為主，未來還是得重製圖檔 -->
     <!-- 更新日誌區塊 -->
@@ -50,10 +50,15 @@
 
     <div id="footer-container"></div>
 
-    <script>
+    <script type="module">
+      import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm'
+      import { SUPABASE_URL, SUPABASE_KEY } from './js/supabase-config.js'
+
+      const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
+
       // 動態載入文字檔並渲染
-      document.addEventListener("DOMContentLoaded", function() {
-        const baseURL = "/mo_data"; // 根據你的專案路徑設定
+      document.addEventListener("DOMContentLoaded", async function() {
+        const baseURL = "."; // 修正為相對路徑
 
         // --- 更新日誌分頁設定 ---
         const ITEMS_PER_PAGE = 25;
@@ -69,18 +74,14 @@
           const end = start + ITEMS_PER_PAGE;
           const pageLines = changelogLines.slice(start, end);
 
-          pageLines.forEach(line => {
-            if (!line.trim()) return;
+          pageLines.forEach(item => {
             const li = document.createElement("li");
+            const safeContent = item.content ? String(item.content).replace(/\n/g, '<br>') : '';
             
-            if (line.startsWith("[Tips]")) {
-              const content = line.replace("[Tips]", "").trim();
-              li.innerHTML = `<span class="tips">Tips</span>${content}`;
-            } else if (line.includes("|")) {
-              const [date, content] = line.split("|").map(s => s.trim());
-              li.innerHTML = `<span class="date">${date}</span>${content}`;
+            if (item.is_tips === '是') {
+              li.innerHTML = `<span class="tips">Tips</span>${safeContent}`;
             } else {
-              li.textContent = line;
+              li.innerHTML = `<span class="date">${item.date}</span>${safeContent}`;
             }
             list.appendChild(li);
           });
@@ -121,19 +122,22 @@
           }
         }
 
-        // 1. 載入更新日誌
-        fetch(baseURL + "/data/changelog.txt")
-          .then(res => res.text())
-          .then(text => {
-            changelogLines = text.trim().split("\n");
-            renderChangelog(1);
-          })
-          .catch(err => {
-            console.error("載入更新日誌失敗:", err);
-            document.getElementById("changelog-list").innerHTML = "<li>載入失敗。</li>";
-          });
+        // 1. 載入更新日誌 (Supabase)
+        try {
+          const { data, error } = await supabase
+            .from('changelog')
+            .select('*')
+            .order('sort_id', { ascending: false }); // 讓最新的在上面
 
-        // 2. 載入改版資訊
+          if (error) throw error;
+          changelogLines = data;
+          renderChangelog(1);
+        } catch (err) {
+          console.error("載入更新日誌失敗:", err);
+          document.getElementById("changelog-list").innerHTML = "<li>載入失敗。</li>";
+        }
+
+        // 2. 載入改版資訊 (目前仍維持 JSON/Text，未來可同樣改為 Supabase)
         fetch(baseURL + "/data/releases.txt")
           .then(res => res.text())
           .then(text => {
