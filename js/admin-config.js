@@ -205,6 +205,18 @@ export const TABLE_CONFIGS = {
             { id: 'illustrate', label: '說明', type: 'textarea', grid: 3 },
             { id: 'obtain', label: '獲得方式', type: 'text', grid: 1 }
         ]
+    },
+    changelog: {
+        title: '更新日誌管理',
+        tableName: 'changelog',
+        tableCols: ['日期', '內容', '操作'],
+        displayFields: ['date', 'content'],
+        fields: [
+            { id: 'date', label: '日期', type: 'text', placeholder: 'YYYY-MM-DD', required: true, grid: 1 },
+            { id: 'sort_id', label: '顯示順序', type: 'number', grid: 1 },
+            { id: 'is_tips', label: '是否為 Tips', type: 'select', options: ['是', '否'], grid: 1 },
+            { id: 'content', label: '內容', type: 'textarea', required: true, grid: 3 }
+        ]
     }
     // 未來可以在此處直接新增 equipment, items, maps 等配置
 };
