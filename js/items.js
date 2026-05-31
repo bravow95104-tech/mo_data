@@ -7,6 +7,11 @@ document.addEventListener("DOMContentLoaded", async () => {
   let heroesData = [];
   let lastFilteredData = [];
   let searchTimer = null;
+  
+  // 🔹 提前初始化 DOM 元素，防止 ReferenceError
+  const searchInput = document.getElementById('searchInput');
+  const heroesTable = document.getElementById('heroes-table');
+  const cardContainer = document.getElementById('hero-card-container');
 
   // === 響應式判斷 ===
   const isBelow768 = () => window.innerWidth <= 768;
@@ -38,12 +43,10 @@ document.addEventListener("DOMContentLoaded", async () => {
   } catch (error) {
     console.error('載入道具資料錯誤:', error);
     const tbody = document.querySelector('#heroes-table tbody');
-    if (tbody) tbody.innerHTML = '<tr><td colspan="3">無法載入道具資料</td></tr>';
-    const cardContainer = document.getElementById('hero-card-container');
-    if (cardContainer) cardContainer.innerHTML = '<p style="text-align:center; color:red; padding:20px;">無法載入道具資料</p>';
+    if (tbody) tbody.innerHTML = '<tr><td colspan="3">無法載入雲端資料</td></tr>';
+    if (cardContainer) cardContainer.innerHTML = '<p style="text-align:center; color:red; padding:20px;">無法載入雲端資料</p>';
   }
 
-  const searchInput = document.getElementById('searchInput');
   if (searchInput) {
     searchInput.addEventListener('input', () => {
       clearTimeout(searchTimer);
@@ -65,9 +68,6 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 
   function applyLayout() {
-    const heroesTable = document.getElementById('heroes-table');
-    const cardContainer = document.getElementById('hero-card-container');
-
     if (resizeFlag) {
       renderCards(lastFilteredData);
       if (heroesTable) heroesTable.style.display = 'none';
@@ -106,7 +106,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         let attempt = 0;
         
         const tryLoad = () => {
-          img.src = `/mo_data/pic/items/${encodeURIComponent(itemName)}${extensions[attempt]}`;
+          img.src = `../pic/items/${encodeURIComponent(itemName)}${extensions[attempt]}`;
           img.onerror = () => {
             attempt++;
             if (attempt < extensions.length) tryLoad();
@@ -127,12 +127,18 @@ document.addEventListener("DOMContentLoaded", async () => {
       const fields = ['items', 'illustrate'];
       fields.forEach(field => {
         const td = document.createElement('td');
-        const value = hero[field] !== undefined ? String(hero[field]) : '';
-        if (keyword && value.toLowerCase().includes(keyword)) {
+        let rawValue = hero[field];
+        if (rawValue === null || rawValue === undefined || String(rawValue).trim() === "") {
+            rawValue = "-";
+        }
+        const value = String(rawValue);
+        const htmlValue = value.replace(/\n/g, '<br>');
+
+        if (keyword && value !== "-" && value.toLowerCase().includes(keyword)) {
           const regex = new RegExp(`(${keyword.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
-          td.innerHTML = value.replace(regex, '<span class="highlight">$1</span>').replace(/\n/g, '<br>');
+          td.innerHTML = htmlValue.replace(regex, '<span class="highlight">$1</span>');
         } else {
-          td.innerHTML = value.replace(/\n/g, '<br>');
+          td.innerHTML = htmlValue;
         }
         tr.appendChild(td);
       });
@@ -143,7 +149,6 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 
   function renderCards(data) {
-    const cardContainer = document.getElementById('hero-card-container');
     if (!cardContainer) return;
     cardContainer.innerHTML = '';
 
@@ -166,19 +171,21 @@ document.addEventListener("DOMContentLoaded", async () => {
         return String(text).replace(regex, '<span class="highlight">$1</span>');
       };
 
+      const getVal = (v) => (v === null || v === undefined || String(v).trim() === "") ? "-" : v;
+
       const cardHeader = document.createElement('div');
       cardHeader.style.display = 'flex';
       cardHeader.style.alignItems = 'center';
       cardHeader.style.gap = '10px';
       cardHeader.style.marginBottom = '10px';
       cardHeader.style.paddingBottom = '8px';
-      cardHeader.style.borderBottom = '1px solid #eee'; // 新增分隔線
+      cardHeader.style.borderBottom = '1px solid #eee';
 
       const img = document.createElement('img');
       const extensions = ['.png', '.jpg', '.bmp'];
       let attempt = 0;
       const tryLoadImg = () => {
-        img.src = `/mo_data/pic/items/${encodeURIComponent(itemName)}${extensions[attempt]}`;
+        img.src = `../pic/items/${encodeURIComponent(itemName)}${extensions[attempt]}`;
         img.onerror = () => {
           attempt++;
           if (attempt < extensions.length) tryLoadImg();
@@ -204,7 +211,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       const cardBody = document.createElement('div');
       cardBody.style.fontSize = '14px';
       cardBody.style.lineHeight = '1.6';
-      cardBody.innerHTML = `<p><strong>說明：</strong>${highlight(hero.illustrate || '')}</p>`;
+      cardBody.innerHTML = `<p><strong>說明：</strong>${highlight(getVal(hero.illustrate))}</p>`;
 
       card.appendChild(cardHeader);
       card.appendChild(cardBody);
