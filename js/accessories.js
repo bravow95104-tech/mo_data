@@ -12,6 +12,9 @@ document.addEventListener("DOMContentLoaded", async () => {
     attr: null
   };
 
+  // 🔹 輔助函式：處理 NULL 值 (必須放在最上方，避免 TDZ 錯誤)
+  const getVal = (v) => (v === null || v === undefined || String(v).trim() === "") ? "-" : v;
+
   // 🔹 提前初始化 DOM 元素
   const modalOverlay = document.getElementById('modalOverlay');
   const modalBox = document.getElementById('modalBox');
@@ -127,9 +130,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
   }
 
-  // 🔹 輔助函式：處理 NULL 值
-  const getVal = (v) => (v === null || v === undefined || String(v).trim() === "") ? "-" : v;
-
   // === 產生表格 ===
   function renderTable(data) {
     const tbody = document.querySelector('#heroes-table tbody');
@@ -150,7 +150,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       
       if (hero.item) {
         const img = document.createElement('img');
-        const basePath = `=/mo_data/pic/accessories/${hero.item}`;
+        const basePath = `../pic/accessories/${hero.item}`;
         const extensions = ['.png', '.bmp', '.jpg'];
         let attempt = 0;
         img.src = basePath + extensions[attempt];
@@ -169,7 +169,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       }
       tr.appendChild(imgTd);
 
-      const fields = ['item', 'lv', 'Property1', 'Property2', 'Durability', 'illustrate'];
+      const fields = ['item', 'lv', 'property1', 'property2', 'durability', 'illustrate'];
       fields.forEach(field => {
         const td = document.createElement('td');
         let value = getVal(hero[field]);
@@ -269,9 +269,9 @@ document.addEventListener("DOMContentLoaded", async () => {
       cardBody.className = 'card-body';
       cardBody.innerHTML = `
         <p><strong>等級：</strong>${getVal(hero.lv)}</p>
-        <p><strong>防禦力：</strong>${getVal(hero.Property1)}</p>
-        <p><strong>閃避值：</strong>${getVal(hero.Property2)}</p>
-        <p><strong>耐用度：</strong>${getVal(hero.Durability)}</p>
+        <p><strong>防禦力：</strong>${getVal(hero.property1)}</p>
+        <p><strong>閃避值：</strong>${getVal(hero.property2)}</p>
+        <p><strong>耐用度：</strong>${getVal(hero.durability)}</p>
         <p><strong>說明：</strong>${highlight(cleanIllustrate.substring(0, 50))}${isLongDesc ? '...' : ''}</p>
         ${shouldBeClickable ? '<p style="text-align:right; color:#3399ff; font-size:12px; margin-top:5px;">查看完整資訊 ▾</p>' : ''}
       `;
