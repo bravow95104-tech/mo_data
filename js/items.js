@@ -1,4 +1,9 @@
-document.addEventListener("DOMContentLoaded", () => {
+import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm'
+import { SUPABASE_URL, SUPABASE_KEY } from './supabase-config.js'
+
+const supabase = createClient(SUPABASE_URL, SUPABASE_KEY)
+
+document.addEventListener("DOMContentLoaded", async () => {
   let heroesData = [];
   let lastFilteredData = [];
   let searchTimer = null;
@@ -19,23 +24,24 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 150);
   });
 
-  // === 載入 JSON 資料 ===
-  fetch('/mo_data/data/items.json')
-    .then(response => {
-      if (!response.ok) throw new Error('Network response was not ok');
-      return response.json();
-    })
-    .then(data => {
-      heroesData = data || [];
-      applyFilters();
-    })
-    .catch(error => {
-      console.error('載入道具資料錯誤:', error);
-      const tbody = document.querySelector('#heroes-table tbody');
-      if (tbody) tbody.innerHTML = '<tr><td colspan="3">無法載入道具資料</td></tr>';
-      const cardContainer = document.getElementById('hero-card-container');
-      if (cardContainer) cardContainer.innerHTML = '<p style="text-align:center; color:red; padding:20px;">無法載入道具資料</p>';
-    });
+  // === 載入資料 ===
+  try {
+    const { data, error } = await supabase
+      .from('items')
+      .select('*')
+      .order('sort_id', { ascending: true });
+
+    if (error) throw error;
+
+    heroesData = data || [];
+    applyFilters();
+  } catch (error) {
+    console.error('載入道具資料錯誤:', error);
+    const tbody = document.querySelector('#heroes-table tbody');
+    if (tbody) tbody.innerHTML = '<tr><td colspan="3">無法載入道具資料</td></tr>';
+    const cardContainer = document.getElementById('hero-card-container');
+    if (cardContainer) cardContainer.innerHTML = '<p style="text-align:center; color:red; padding:20px;">無法載入道具資料</p>';
+  }
 
   const searchInput = document.getElementById('searchInput');
   if (searchInput) {

@@ -1,4 +1,9 @@
-document.addEventListener("DOMContentLoaded", () => {
+import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm'
+import { SUPABASE_URL, SUPABASE_KEY } from './supabase-config.js'
+
+const supabase = createClient(SUPABASE_URL, SUPABASE_KEY)
+
+document.addEventListener("DOMContentLoaded", async () => {
   let heroesData = [];
   let lastFilteredData = [];
   let activeFilter = null; // 🔹記錄目前的篩選條件
@@ -24,23 +29,24 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 150);
   });
 
-  // === 載入 JSON 資料 ===
-  fetch('/mo_data/data/medicine.json')
-    .then(response => {
-      if (!response.ok) throw new Error('無法讀取 medicine.json');
-      return response.json();
-    })
-    .then(data => {
-      // ✅ 預先篩出 class = "藥品"
-      heroesData = (data || []).filter(item => item.class === "藥品");
-      applyFilters();
-    })
-    .catch(error => {
-      console.error('載入藥品資料錯誤:', error);
-      const tbody = document.querySelector('#heroes-table tbody');
-      if (tbody) tbody.innerHTML = '<tr><td colspan="9">無法載入藥品資料</td></tr>';
-      if (cardContainer) cardContainer.innerHTML = `<p style="text-align:center; color:red; padding:20px;">載入失敗: ${error.message}</p>`;
-    });
+  // === 載入資料 ===
+  try {
+    const { data, error } = await supabase
+      .from('medicine')
+      .select('*')
+      .order('sort_id', { ascending: true });
+
+    if (error) throw error;
+
+    // ✅ 預先篩出 class = "藥品"
+    heroesData = (data || []).filter(item => item.class === "藥品");
+    applyFilters();
+  } catch (error) {
+    console.error('載入藥品資料錯誤:', error);
+    const tbody = document.querySelector('#heroes-table tbody');
+    if (tbody) tbody.innerHTML = '<tr><td colspan="9">無法載入藥品資料</td></tr>';
+    if (cardContainer) cardContainer.innerHTML = `<p style="text-align:center; color:red; padding:20px;">無法載入資料</p>`;
+  }
 
   // === 搜尋框（防抖動版）===
   if (searchInput) {

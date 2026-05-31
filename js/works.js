@@ -1,4 +1,9 @@
-document.addEventListener("DOMContentLoaded", () => {
+import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm'
+import { SUPABASE_URL, SUPABASE_KEY } from './supabase-config.js'
+
+const supabase = createClient(SUPABASE_URL, SUPABASE_KEY)
+
+document.addEventListener("DOMContentLoaded", async () => {
   let heroesData = [];
   let lastFilteredData = [];
   let searchTimer = null; // ✅ 防抖動用變數
@@ -24,18 +29,22 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 150);
   });
 
-  // === 載入 JSON 資料 ===
-  fetch('/mo_data/data/works.json')
-    .then(response => response.json())
-    .then(data => {
-      heroesData = data;
-      applyFilters();
-    })
-    .catch(error => {
-      console.error('載入工作資料錯誤:', error);
-      const tbody = document.querySelector('#heroes-table tbody');
-      if (tbody) tbody.innerHTML = '<tr><td colspan="15">無法載入工作資料</td></tr>';
-    });
+  // === 載入資料 ===
+  try {
+    const { data, error } = await supabase
+      .from('works')
+      .select('*')
+      .order('sort_id', { ascending: true });
+
+    if (error) throw error;
+
+    heroesData = data || [];
+    applyFilters();
+  } catch (error) {
+    console.error('載入工作資料錯誤:', error);
+    const tbody = document.querySelector('#heroes-table tbody');
+    if (tbody) tbody.innerHTML = '<tr><td colspan="15">無法載入工作資料</td></tr>';
+  }
 
   // === 搜尋框（防抖動）===
   if (searchInput) {
