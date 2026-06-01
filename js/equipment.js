@@ -51,14 +51,13 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    heroesData = data;
+    heroesData = data || [];
     applyFilters();
   }
 
   loadData();
 
   const searchInput = document.getElementById('searchInput');
-
   if (searchInput) {
     searchInput.addEventListener('input', () => {
       clearTimeout(searchTimer);
@@ -107,7 +106,7 @@ document.addEventListener("DOMContentLoaded", () => {
         .some(field => String(field || "").toLowerCase().includes(keyword));
 
       const matchPromotion = activeFilters.promotion ? hero.sort === activeFilters.promotion : true;
-      const matchPersonality = activeFilters.personality ? hero.sort === activeFilters.personality : true;
+      const matchPersonality = activeFilters.personality ? hero.job === activeFilters.personality : true;
       const matchJob = activeFilters.job ? hero.job === activeFilters.job : true;
       const matchAttr = activeFilters.attr ? (hero.illustrate && String(hero.illustrate).includes(activeFilters.attr)) : true;
 
@@ -118,7 +117,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function applyLayout() {
-    if (resizeFlag) {
+    if (isBelow768()) {
       renderCards(lastFilteredData);
       if (tableContainer) tableContainer.style.display = 'none';
       if (cardContainer) cardContainer.style.display = 'flex';
@@ -147,7 +146,7 @@ document.addEventListener("DOMContentLoaded", () => {
       card.className = 'card-item';
 
       const highlight = (text) => {
-        if (!highlightKey) return text;
+        if (!highlightKey || text === '-') return text;
         const regex = new RegExp(`(${highlightKey.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
         return String(text).replace(regex, '<span class="highlight2">$1</span>');
       };
@@ -176,19 +175,24 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const title = document.createElement('h3');
       title.className = 'card-title';
-      title.innerHTML = highlight(hero.item);
+      title.innerHTML = highlight(hero.item || '-');
 
       cardHeader.appendChild(img);
       cardHeader.appendChild(title);
 
       const cardBody = document.createElement('div');
       cardBody.className = 'card-body';
+      
+      // 這裡加入空值檢查修復 replace 報錯
+      const rawIllustrate = hero.illustrate ? String(hero.illustrate).replace(/\^&|&\^/g, "").substring(0, 50) : "-";
+      const safeIllustrate = highlight(rawIllustrate);
+      
       cardBody.innerHTML = `
-        <p><strong>等級：</strong>${hero.lv}</p>
-        <p><strong>防禦：</strong>${hero.property1}</p>
-        <p><strong>閃避：</strong>${hero.property2}</p>
-        <p><strong>耐用度：</strong>${hero.durability}</p>
-        <p><strong>說明：</strong>${highlight(hero.illustrate.replace(/\^&|&\^/g, "").substring(0, 50))}...</p>
+        <p><strong>等級：</strong>${hero.lv || '-'}</p>
+        <p><strong>防禦：</strong>${hero.property1 || '-'}</p>
+        <p><strong>閃避：</strong>${hero.property2 || '-'}</p>
+        <p><strong>耐用度：</strong>${hero.durability || '-'}</p>
+        <p><strong>說明：</strong>${safeIllustrate}${rawIllustrate !== '-' ? '...' : ''}</p>
       `;
 
       card.appendChild(cardHeader);
@@ -242,7 +246,8 @@ document.addEventListener("DOMContentLoaded", () => {
       const fields = ['item', 'lv', 'property1', 'property2', 'durability', 'illustrate'];
       fields.forEach(field => {
         const td = document.createElement('td');
-        let value = (hero[field] !== null && hero[field] !== undefined) ? String(hero[field]) : '-';
+        let val = hero[field];
+        let value = (val !== null && val !== undefined) ? String(val) : '-';
 
         if (field === 'illustrate') {
           if (value === '-') {
@@ -295,14 +300,14 @@ document.addEventListener("DOMContentLoaded", () => {
     const illustrateHTML = (equip.illustrate && equip.illustrate.trim() !== "" && equip.illustrate !== null)
       ? `<div class="hero-column-base hero-column-details" style="grid-column: span 2; border-top: 1px solid #ddd; padding-top: 10px;">
            <h3 class="modal-sub-title">說明</h3>
-           <p style="font-size: 16px; line-height: 1.6;">${equip.illustrate.replace(/\^&|&\^/g, "").replace(/\n/g, "<br>")}</p>
+           <p style="font-size: 16px; line-height: 1.6;">${String(equip.illustrate).replace(/\^&|&\^/g, "").replace(/\n/g, "<br>")}</p>
          </div>`
       : "";
 
     const gainHTML = (equip.gain && equip.gain.trim() !== "" && equip.gain !== null)
       ? `<div class="hero-column-base hero-column-details" style="grid-column: span 2; border-top: 1px solid #ddd; padding-top: 10px;">
            <h3 class="modal-sub-title">詳細效果</h3>
-           <p style="font-size: 16px; line-height: 1.8;">${equip.gain.replace(/\n/g, "<br>")}</p>
+           <p style="font-size: 16px; line-height: 1.8;">${String(equip.gain).replace(/\n/g, "<br>")}</p>
          </div>`
       : "";
 
@@ -333,7 +338,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const gainContent = (equip.gain && equip.gain.trim() !== "")
       ? `<div class="hero-column-accessories-details">
            <p style="font-size: 16px; line-height: 1.8; padding-top: 10px;">
-             ${equip.gain.replace(/\n/g, "<br>")}
+             ${String(equip.gain).replace(/\n/g, "<br>")}
            </p>
          </div>`
       : `<div class="hero-column-accessories-details"><p>暫無詳細增益數值。</p></div>`;
@@ -347,7 +352,6 @@ document.addEventListener("DOMContentLoaded", () => {
     openModal();
   }
 
-  // === Modal 顯示控制 ===
   function openModal() {
     modalOverlay.style.display = "block";
     modalBox.style.display = "block";

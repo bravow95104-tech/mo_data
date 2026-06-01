@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    heroesData = data;
+    heroesData = data || [];
     applyFilters();
   }
 
@@ -102,14 +102,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function applyFilters() {
     const keyword = searchInput ? searchInput.value.trim().toLowerCase() : "";
-    const filtered = heroesData.filter(hero => {
-      const matchesSearch = [hero.item, hero.illustrate]
+    const filtered = heroesData.filter(item => {
+      const matchesSearch = [item.item, item.illustrate]
         .some(field => String(field || "").toLowerCase().includes(keyword));
 
-      const matchPromotion = activeFilters.promotion ? hero.sort === activeFilters.promotion : true;
-      const matchPersonality = activeFilters.personality ? hero.sort === activeFilters.personality : true;
-      const matchJob = activeFilters.job ? hero.job === activeFilters.job : true;
-      const matchAttr = activeFilters.attr ? (hero.illustrate && String(hero.illustrate).includes(activeFilters.attr)) : true;
+      const matchPromotion = activeFilters.promotion ? item.sort === activeFilters.promotion : true;
+      const matchPersonality = activeFilters.personality ? item.job === activeFilters.personality : true;
+      const matchJob = activeFilters.job ? item.job === activeFilters.job : true;
+      const matchAttr = activeFilters.attr ? (item.illustrate && String(item.illustrate).includes(activeFilters.attr)) : true;
 
       return matchesSearch && matchPromotion && matchPersonality && matchJob && matchAttr;
     });
@@ -143,13 +143,14 @@ document.addEventListener("DOMContentLoaded", () => {
     const highlightKey = activeFilters.attr || keyword;
     const fragment = document.createDocumentFragment();
 
-    data.forEach(hero => {
+    data.forEach(item => {
       const tr = document.createElement('tr');
       const imgTd = document.createElement('td');
       imgTd.style.cssText = 'width:50px; height:50px; text-align:center; vertical-align:middle;';
-      if (hero.item) {
+      
+      if (item.item) {
         const img = document.createElement('img');
-        const basePath = `/mo_data/pic/weapons/${hero.item}`;
+        const basePath = `/mo_data/pic/weapons/${item.item}`;
         const extensions = ['.png', '.bmp', '.jpg'];
         let attempt = 0;
         img.src = basePath + extensions[attempt];
@@ -171,7 +172,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const fields = ['item', 'lv', 'property1', 'property2', 'durability', 'illustrate'];
       fields.forEach(field => {
         const td = document.createElement('td');
-        let value = (hero[field] !== null && hero[field] !== undefined) ? String(hero[field]) : '-';
+        let value = (item[field] !== null && item[field] !== undefined) ? String(item[field]) : '-';
 
         if (field === 'illustrate') {
           if (value === '-') {
@@ -189,7 +190,7 @@ document.addEventListener("DOMContentLoaded", () => {
             td.querySelectorAll('.keyword-link').forEach(link => {
               link.addEventListener('click', (e) => {
                 e.stopPropagation();
-                showGainModal(hero, link.textContent);
+                showGainModal(item, link.textContent);
               });
             });
           }
@@ -204,9 +205,9 @@ document.addEventListener("DOMContentLoaded", () => {
         tr.appendChild(td);
       });
 
-      if (hero.material1 && String(hero.material1).trim() !== "" && hero.material1 !== null) {
+      if (item.material1 && String(item.material1).trim() !== "" && item.material1 !== null) {
         tr.style.cursor = "pointer";
-        tr.addEventListener('click', () => showDetailModal(hero));
+        tr.addEventListener('click', () => showDetailModal(item));
       }
       fragment.appendChild(tr);
     });
@@ -226,7 +227,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const highlightKey = activeFilters.attr || keyword;
     const fragment = document.createDocumentFragment();
 
-    data.forEach(hero => {
+    data.forEach(item => {
       const card = document.createElement('div');
       card.className = 'card-item';
 
@@ -241,7 +242,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const img = document.createElement('img');
       img.className = 'card-icon';
-      const basePath = `/mo_data/pic/weapons/${hero.item}`;
+      const basePath = `/mo_data/pic/weapons/${item.item}`;
       const extensions = ['.png', '.bmp', '.jpg'];
       let attempt = 0;
       img.src = basePath + extensions[attempt];
@@ -260,28 +261,28 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const title = document.createElement('h3');
       title.className = 'card-title';
-      title.innerHTML = highlight(hero.item || '-');
+      title.innerHTML = highlight(item.item || '-');
 
       cardHeader.appendChild(img);
       cardHeader.appendChild(title);
 
       const cardBody = document.createElement('div');
       cardBody.className = 'card-body';
-      const rawIllustrate = hero.illustrate ? hero.illustrate.replace(/\^&|&\^/g, "").substring(0, 50) : "-";
+      const rawIllustrate = item.illustrate ? item.illustrate.replace(/\^&|&\^/g, "").substring(0, 50) : "-";
       const safeIllustrate = highlight(rawIllustrate);
       
       cardBody.innerHTML = `
-        <p><strong>等級：</strong>${hero.lv || '-'}</p>
-        <p><strong>攻擊：</strong>${hero.property1 || '-'}</p>
-        <p><strong>命中：</strong>${hero.property2 || '-'}</p>
-        <p><strong>耐用度：</strong>${hero.durability || '-'}</p>
+        <p><strong>等級：</strong>${item.lv || '-'}</p>
+        <p><strong>攻擊：</strong>${item.property1 || '-'}</p>
+        <p><strong>命中：</strong>${item.property2 || '-'}</p>
+        <p><strong>耐用度：</strong>${item.durability || '-'}</p>
         <p><strong>說明：</strong>${safeIllustrate}${rawIllustrate !== '-' ? '...' : ''}</p>
       `;
 
       card.appendChild(cardHeader);
       card.appendChild(cardBody);
 
-      card.addEventListener('click', () => showDetailModal(hero));
+      card.addEventListener('click', () => showDetailModal(item));
       fragment.appendChild(card);
     });
     cardContainer.appendChild(fragment);
