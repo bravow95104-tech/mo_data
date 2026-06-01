@@ -436,9 +436,22 @@
             alert('載入失敗: ' + error.message); return;
         }
 
-        allData = data;
-        renderTable(data);
-        document.getElementById('stat-count').innerText = data.length;
+        let processedData = data;
+        // 針對更新日誌進行「絕對置頂」排序
+        if (currentTable === 'changelog') {
+            processedData = data.sort((a, b) => {
+                const aTip = a.is_tips === '是' ? 1 : 0;
+                const bTip = b.is_tips === '是' ? 1 : 0;
+                // 1. 先比是否為 Tips (1 在前)
+                if (aTip !== bTip) return bTip - aTip;
+                // 2. 同樣是 Tips 或同樣不是，則比 sort_id (大在前)
+                return (b.sort_id || 0) - (a.sort_id || 0);
+            });
+        }
+
+        allData = processedData;
+        renderTable(processedData);
+        document.getElementById('stat-count').innerText = processedData.length;
     }
 
     function renderTable(data) {

@@ -125,12 +125,18 @@
         try {
           const { data, error } = await supabase
             .from("changelog")
-            .select("*")
-            .order("is_tips", { ascending: false }) // '是' 排在 '否' 之前
-            .order("sort_id", { ascending: false }); // 數字大的（新的）在前面
+            .select("*");
 
           if (error) throw error;
-          changelogLines = data;
+
+          // 🚀 強制前端排序：Tips 置頂，其餘按 sort_id 降冪
+          changelogLines = data.sort((a, b) => {
+            const aTip = a.is_tips === "是" ? 1 : 0;
+            const bTip = b.is_tips === "是" ? 1 : 0;
+            if (aTip !== bTip) return bTip - aTip; // Tips 優先
+            return (b.sort_id || 0) - (a.sort_id || 0); // 其餘按 ID 倒序
+          });
+
           renderChangelog(1);
         } catch (err) {
           console.error("載入更新日誌失敗:", err);
