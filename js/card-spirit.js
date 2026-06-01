@@ -1,4 +1,9 @@
-document.addEventListener("DOMContentLoaded", () => {
+import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm'
+import { SUPABASE_URL, SUPABASE_KEY } from './supabase-config.js'
+
+const supabase = createClient(SUPABASE_URL, SUPABASE_KEY)
+
+document.addEventListener("DOMContentLoaded", async () => {
   let allCardData = [];
   let mapData = [];
   let lastFilteredData = [];
@@ -27,25 +32,27 @@ document.addEventListener("DOMContentLoaded", () => {
   const modalContent = document.getElementById('modalContent');
   const closeModalBtn = document.querySelector('#modalBox .close-btn');
 
-  Promise.all([
-    fetch("/mo_data/data/card.json").then(res => res.json()),
-    fetch("/mo_data/data/detailed_map.json").then(res => res.json())
-  ])
-  .then(([json, maps]) => {
-    const data = Array.isArray(json) ? json : (json.data || []);
-    allCardData = data.filter(d => d.type === "靈具卡");
-    mapData = Array.isArray(maps) ? maps : (maps.data || []);
+  try {
+    const [cardRes, mapsRes] = await Promise.all([
+      supabase.from('card_spirit').select('*').order('sort_id', { ascending: true }),
+      supabase.from('detailed_map').select('mapid, drop_equidcard')
+    ]);
+
+    if (cardRes.error) throw cardRes.error;
+    if (mapsRes.error) throw mapsRes.error;
+
+    allCardData = cardRes.data || [];
+    mapData = mapsRes.data || [];
     
     populateDatalists(allCardData);
     initializeSortIcons();
     applyFiltersAndSort();
     updateSortIcons();
-  })
-  .catch(err => {
+  } catch (err) {
     console.error("❌ 資料載入失敗：", err);
     const tbody = document.querySelector("#card-equip-table tbody");
     if (tbody) tbody.innerHTML = `<tr><td colspan="6" style="color:red; text-align:center; padding:20px;">資料載入失敗 (${err.message})</td></tr>`;
-  });
+  }
 
   function populateDatalists(data) {
     const uniqueFirst = new Set();

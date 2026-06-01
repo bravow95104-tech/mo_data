@@ -1,10 +1,15 @@
-document.addEventListener("DOMContentLoaded", () => {
+import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm'
+import { SUPABASE_URL, SUPABASE_KEY } from './supabase-config.js'
+
+const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
+
+document.addEventListener("DOMContentLoaded", async () => {
   let allCardData = [];
   let mapData = [];
   let lastFilteredData = [];
   let sortConfig = { key: null, direction: 'asc' };
 
-  // === 響應式判斷 ===
+  // ... (響應式判斷代碼保持不變)
   const isBelow768 = () => window.innerWidth <= 768;
   let resizeFlag = isBelow768();
   let resizeTimeout;
@@ -28,27 +33,29 @@ document.addEventListener("DOMContentLoaded", () => {
   const closeModalBtn = document.querySelector('#modalBox .close-btn');
   const searchInput = document.getElementById("searchInput");
 
-  // 載入 JSON 資料
-  Promise.all([
-    fetch("/mo_data/data/card.json").then(res => res.json()),
-    fetch("/mo_data/data/detailed_map.json").then(res => res.json())
-  ])
-    .then(([json, maps]) => {
-      mapData = Array.isArray(maps) ? maps : (maps.data || []);
-      const data = Array.isArray(json) ? json : (json.data || []);
-      allCardData = data.filter(d => d.type === "主動技能卡");
+  // 載入 Supabase 資料
+  try {
+    const [cardRes, mapsRes] = await Promise.all([
+      supabase.from('card_active').select('*').order('sort_id', { ascending: true }),
+      supabase.from('detailed_map').select('mapid, drop_skillcard')
+    ]);
 
-      initializeSortIcons();
-      applyFiltersAndSort();
-      updateSortIcons();
-    })
-    .catch(err => {
-      console.error("❌ 資料載入失敗：", err);
-      const errorMsg = "<tr><td colspan='7'>無法載入資料</td></tr>";
-      const tbody = document.querySelector("#card-equip-table tbody");
-      if (tbody) tbody.innerHTML = errorMsg;
-      if (cardContainer) cardContainer.innerHTML = `<p style='text-align:center; padding:20px; color:red;'>無法載入資料 (${err.message})</p>`;
-    });
+    if (cardRes.error) throw cardRes.error;
+    if (mapsRes.error) throw mapsRes.error;
+
+    allCardData = cardRes.data;
+    mapData = mapsRes.data || [];
+
+    initializeSortIcons();
+    applyFiltersAndSort();
+    updateSortIcons();
+  } catch (err) {
+    console.error("❌ 資料載入失敗：", err);
+    const errorMsg = "<tr><td colspan='7'>無法載入雲端資料</td></tr>";
+    const tbody = document.querySelector("#card-equip-table tbody");
+    if (tbody) tbody.innerHTML = errorMsg;
+    if (cardContainer) cardContainer.innerHTML = `<p style='text-align:center; padding:20px; color:red;'>無法載入資料 (${err.message})</p>`;
+  }
 
   // Accordion 展開／收合
   document.querySelectorAll(".accordion-header").forEach(header => {

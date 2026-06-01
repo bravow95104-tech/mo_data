@@ -1,9 +1,14 @@
+import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm'
+import { SUPABASE_URL, SUPABASE_KEY } from './supabase-config.js'
+
+const supabase = createClient(SUPABASE_URL, SUPABASE_KEY)
+
 let allCardData = [];
 let mapData = [];
 let lastFilteredData = []; // 存儲最後過濾出的資料
 let sortConfig = { key: null, direction: 'asc' };
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
   // === 響應式判斷 ===
   const isBelow768 = () => window.innerWidth <= 768;
   let resizeFlag = isBelow768();
@@ -31,22 +36,25 @@ document.addEventListener("DOMContentLoaded", () => {
   const closeModalBtn = document.querySelector('#modalBox .close-btn');
 
   // 1. 載入資料
-  Promise.all([
-    fetch("/mo_data/data/card.json").then(res => res.json()),
-    fetch("/mo_data/data/detailed_map.json").then(res => res.json())
-  ])
-  .then(([cards, maps]) => {
-    const data = Array.isArray(cards) ? cards : (cards.data || []);
-    allCardData = data.filter(d => d.type === "裝備卡");
-    mapData = Array.isArray(maps) ? maps : (maps.data || []);
+  try {
+    const [cardRes, mapsRes] = await Promise.all([
+      supabase.from('card_equip').select('*').order('sort_id', { ascending: true }),
+      supabase.from('detailed_map').select('mapid, drop_equidcard')
+    ]);
+
+    if (cardRes.error) throw cardRes.error;
+    if (mapsRes.error) throw mapsRes.error;
+    
+    allCardData = cardRes.data || [];
+    mapData = mapsRes.data || [];
+    
     initializeSortIcons();
     applyFiltersAndSort(); 
     updateSortIcons();
-  })
-  .catch(err => {
+  } catch (err) {
     console.error("❌ Failed to load data:", err)
     if (tableBody) tableBody.innerHTML = '<tr><td colspan="6">無法載入資料</td></tr>';
-  });
+  }
 
   // 2. 核心邏輯：套用篩選與排序
   function applyFiltersAndSort() {
