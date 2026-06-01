@@ -643,10 +643,71 @@ h1 {
 }
 
 .highlight {
-  background-color: var(--highlight-bg-color);
+  background-color: #fff9c0;
+  color: #b8860b;
   font-weight: bold;
   border-radius: 3px;
-  padding: 2px 4px;
+  padding: 0 2px;
+}
+
+/* 🚀 表格專用：簡潔模式標籤 */
+.table-tier-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-bottom: 4px;
+    text-align: left;
+}
+
+.table-tier-badge {
+    background: var(--primary-color);
+    color: white;
+    font-size: 10px;
+    font-weight: bold;
+    padding: 1px 5px;
+    border-radius: 3px;
+    flex-shrink: 0;
+    min-width: 24px;
+    text-align: center;
+}
+
+/* 🚀 等級標籤 (Pill 式樣) */
+.lv-badge {
+    background: #f1f5f9;
+    color: #475569;
+    padding: 2px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 600;
+    border: 1px solid #e2e8f0;
+}
+
+/* 🚀 表格內容質感提升 */
+#heroes-table td {
+    padding: 12px 8px;
+    transition: all 0.2s;
+}
+
+#heroes-table tr:hover td {
+    background-color: #f8fbff;
+}
+
+/* 針對第一欄：地圖名稱的字體優化 */
+#heroes-table td:first-child {
+  font-size: 15px;
+  font-weight: bold;
+  color: var(--primary-dark-color);
+  text-align: center;
+}
+
+/* 🚀 欄位間距與排版優化 */
+td[data-label="裝備卡"], 
+td[data-label="技能卡"], 
+td[data-label="英雄卡"],
+td[data-label="垃圾"] {
+    max-width: 300px;
+    font-size: 13.5px;
+    line-height: 1.5;
 }
 
 /* 🚀 新增：自訂欄位設定選單樣式 */
