@@ -92,6 +92,35 @@
         .form-group label { font-weight: 600; margin-bottom: 6px; color: #475569; font-size: 13px; }
         .form-group input, .form-group select, .form-group textarea { padding: 10px; border: 1px solid #d1d5db; border-radius: 6px; font-size: 14px; }
         .form-group input:focus { border-color: var(--primary); outline: none; box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1); }
+        
+        /* 欄位群組容器樣式 */
+        .form-section {
+            grid-column: span 3;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .form-section-title {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e2e8f0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .form-section-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+
         .modal-footer { margin-top: 35px; display: flex; justify-content: flex-end; gap: 12px; border-top: 1px solid var(--border); padding-top: 25px; }
         
         .badge { padding: 4px 8px; border-radius: 4px; font-size: 12px; font-weight: bold; }
@@ -433,25 +462,47 @@
         const config = TABLE_CONFIGS[currentTable];
         const grid = document.getElementById('dynamicFormGrid');
         
-        grid.innerHTML = config.fields.map(f => {
-            let input = '';
-            if (f.type === 'select') {
-                input = `<select id="edit-${f.id}">${f.options.map(o => `<option value="${o}">${o}</option>`).join('')}</select>`;
-            } else if (f.type === 'checkbox') {
-                input = `<div id="edit-${f.id}" class="checkbox-group">${f.options.map(o => `
-                    <label class="checkbox-item">
-                        <input type="checkbox" value="${o}"> ${o}
-                    </label>`).join('')}</div>`;
-            } else if (f.type === 'textarea') {
-                input = `<textarea id="edit-${f.id}" rows="4" style="resize: vertical; min-height: 80px;"></textarea>`;
-            } else {
-                input = `<input type="${f.type}" id="edit-${f.id}" ${f.required ? 'required' : ''}>`;
-            }
-            
+        // 1. 先根據 group 對欄位進行分類
+        const groups = {};
+        config.fields.forEach(f => {
+            const groupName = f.group || '一般設定';
+            if (!groups[groupName]) groups[groupName] = [];
+            groups[groupName].push(f);
+        });
+
+        // 2. 渲染分類後的 HTML
+        grid.innerHTML = Object.keys(groups).map(groupName => {
+            const fieldsHtml = groups[groupName].map(f => {
+                let input = '';
+                if (f.type === 'select') {
+                    input = `<select id="edit-${f.id}">${f.options.map(o => `<option value="${o}">${o}</option>`).join('')}</select>`;
+                } else if (f.type === 'checkbox') {
+                    input = `<div id="edit-${f.id}" class="checkbox-group">${f.options.map(o => `
+                        <label class="checkbox-item">
+                            <input type="checkbox" value="${o}"> ${o}
+                        </label>`).join('')}</div>`;
+                } else if (f.type === 'textarea') {
+                    input = `<textarea id="edit-${f.id}" rows="4" style="resize: vertical; min-height: 80px;"></textarea>`;
+                } else {
+                    input = `<input type="${f.type}" id="edit-${f.id}" ${f.required ? 'required' : ''}>`;
+                }
+                
+                return `
+                    <div class="form-group" style="grid-column: span ${f.grid || 1}">
+                        <label>${f.label}</label>
+                        ${input}
+                    </div>
+                `;
+            }).join('');
+
             return `
-                <div class="form-group" style="grid-column: span ${f.grid || 1}">
-                    <label>${f.label}</label>
-                    ${input}
+                <div class="form-section">
+                    <div class="form-section-title">
+                        <i class="fas fa-layer-group"></i> ${groupName}
+                    </div>
+                    <div class="form-section-grid">
+                        ${fieldsHtml}
+                    </div>
                 </div>
             `;
         }).join('');
