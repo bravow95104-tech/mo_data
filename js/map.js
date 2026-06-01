@@ -44,6 +44,29 @@ window.openMapDetail = function (mapId) {
       return;
   }
 
+  // 輔助函數：處理分層標籤 (例如：第1層：...)
+  const formatTieredContent = (text) => {
+    if (!text) return "";
+    // 如果包含「第」和「層：」，進行分層解析
+    if (text.includes("第") && text.includes("層：")) {
+      return text.split('\n').map(line => {
+        if (line.includes("層：")) {
+          const parts = line.split("：");
+          const tier = parts[0];
+          const names = parts.slice(1).join("：");
+          return `
+            <div class="tier-group">
+              <div class="tier-header"><span class="tier-badge">${tier}</span></div>
+              <div class="tier-names">${names}</div>
+            </div>`;
+        }
+        return line.trim() ? `<div>${line}</div>` : "";
+      }).join('');
+    }
+    // 一般內容換行轉 <br>
+    return String(text).replace(/\n/g, '<br>');
+  };
+
   const modalContent = document.getElementById("modalContent");
   const autoImagePath = `/mo_data/pic/map/${item.mapid}.jpg`;
 
@@ -69,20 +92,20 @@ window.openMapDetail = function (mapId) {
             ${hasDrop ? `
                 <div class="hero-column-details">
                     <p><strong>掉落物品：</strong></p>
-                    ${item.drop_rubbish ? `<p class="align-row"><strong>◢ 垃圾：</strong>${item.drop_rubbish}</p>` : ""}
-                    ${item.drop_equidcard ? `<p class="align-row"><strong>◢ 裝備卡：</strong>${item.drop_equidcard}</p>` : ""}
-                    ${item.drop_skillcard ? `<p class="align-row"><strong>◢ 技能卡：</strong>${String(item.drop_skillcard).replace(/\n/g, '<br>')}</p>` : ""}
-                    ${item.drop_hero ? `<p class="align-row"><strong>◢ 英雄卡：</strong>${String(item.drop_hero).replace(/\n/g, '<br>')}</p>` : ""}
-                    ${item.drop_combo_old ? `<p class="align-row"><strong>◢ 舊文片：</strong>${String(item.drop_combo_old).replace(/\n/g, '<br>')}</p>` : ""}
-                    ${item.drop_combo_new ? `<p class="align-row"><strong>◢ 新文片：</strong>${String(item.drop_combo_new).replace(/\n/g, '<br>')}</p>` : ""}
-                    ${item.drop_othrt ? `<p class="align-row"><strong>◢ 其他：</strong>${String(item.drop_othrt).replace(/\n/g, '<br>')}</p>` : ""}
+                    ${item.drop_rubbish ? `<p class="align-row"><strong>◢ 垃圾：</strong><span>${item.drop_rubbish}</span></p>` : ""}
+                    ${item.drop_equidcard ? `<p class="align-row"><strong>◢ 裝備卡：</strong><span>${item.drop_equidcard}</span></p>` : ""}
+                    ${item.drop_skillcard ? `<p class="align-row"><strong>◢ 技能卡：</strong><span>${formatTieredContent(item.drop_skillcard)}</span></p>` : ""}
+                    ${item.drop_hero ? `<p class="align-row"><strong>◢ 英雄卡：</strong><span>${formatTieredContent(item.drop_hero)}</span></p>` : ""}
+                    ${item.drop_combo_old ? `<p class="align-row"><strong>◢ 舊文片：</strong><span>${formatTieredContent(item.drop_combo_old)}</span></p>` : ""}
+                    ${item.drop_combo_new ? `<p class="align-row"><strong>◢ 新文片：</strong><span>${formatTieredContent(item.drop_combo_new)}</span></p>` : ""}
+                    ${item.drop_othrt ? `<p class="align-row"><strong>◢ 其他：</strong><span>${formatTieredContent(item.drop_othrt)}</span></p>` : ""}
                 </div>` : ""
       }
             <div class="hero-column-details">
                 <p><strong>光輝資訊：</strong></p>
-                <p class="align-row"><strong>◢ 掉落較高：</strong>${item.drop_glory_high || "-"}</p>
-                <p class="align-row"><strong>◢ 掉落較低：</strong>${item.drop_glory_low || "-"}</p>
-                ${item.drop_glory_player ? `<p class="align-row"><strong>◢ 玩家提供：</strong>${item.drop_glory_player}</p>` : ""}
+                <p class="align-row"><strong>◢ 掉落較高：</strong><span>${item.drop_glory_high || "-"}</span></p>
+                <p class="align-row"><strong>◢ 掉落較低：</strong><span>${item.drop_glory_low || "-"}</span></p>
+                ${item.drop_glory_player ? `<p class="align-row"><strong>◢ 玩家提供：</strong><span>${item.drop_glory_player}</span></p>` : ""}
             </div>
         `;
   }
