@@ -689,7 +689,7 @@ h1 {
 }
 
 #heroes-table tr:hover td {
-    background-color: #f8fbff;
+    background-color: var(--highlight-bg-color) !important; /* 恢復黃底 */
 }
 
 /* 針對第一欄：地圖名稱的字體優化 */
