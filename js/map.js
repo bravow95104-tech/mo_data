@@ -93,29 +93,6 @@ window.openMapDetail = function (mapId) {
       return;
   }
 
-  // 輔助函數：處理分層標籤 (例如：第1層：...)
-  const formatTieredContent = (text) => {
-    if (!text) return "";
-    // 如果包含「第」和「層：」，進行分層解析
-    if (text.includes("第") && text.includes("層：")) {
-      return text.split('\n').map(line => {
-        if (line.includes("層：")) {
-          const parts = line.split("：");
-          const tier = parts[0];
-          const names = parts.slice(1).join("：");
-          return `
-            <div class="tier-group">
-              <div class="tier-header"><span class="tier-badge">${tier}</span></div>
-              <div class="tier-names">${names}</div>
-            </div>`;
-        }
-        return line.trim() ? `<div>${line}</div>` : "";
-      }).join('');
-    }
-    // 一般內容換行轉 <br>
-    return String(text).replace(/\n/g, '<br>');
-  };
-
   const modalContent = document.getElementById("modalContent");
   const autoImagePath = `/mo_data/pic/map/${item.mapid}.jpg`;
 
