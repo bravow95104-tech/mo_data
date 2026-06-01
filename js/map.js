@@ -26,10 +26,21 @@ const ALL_COLUMNS = [
 let activeColumns = [];
 
 // === 智慧格式化解析器 (支援全域共用) ===
-const formatTieredContent = (text, isCompact = false) => {
+const formatTieredContent = (text, isCompact = false, isHeroLink = false) => {
   if (!text) return isCompact ? "" : "-";
   const str = String(text);
   
+  // 英雄超連結處理函數
+  const wrapHeroLinks = (namesStr) => {
+    if (!isHeroLink) return namesStr;
+    return namesStr.split('、').map(name => {
+      const trimmedName = name.trim();
+      if (!trimmedName) return "";
+      // 假設從 map/map.html 連結到 hero/heroes.html
+      return `<a href="../hero/heroes.html?hero=${encodeURIComponent(trimmedName)}" class="hero-link">${trimmedName}</a>`;
+    }).join('、');
+  };
+
   // 檢查是否包含分層格式 (相容全形 ： 與半形 :)
   const tierRegex = /第\d+層[：:]/g;
   if (tierRegex.test(str)) {
@@ -40,7 +51,8 @@ const formatTieredContent = (text, isCompact = false) => {
       const match = line.match(/(第\d+層)[：:](.*)/);
       if (match) {
         const tier = match[1];
-        const names = match[2].trim();
+        const namesRaw = match[2].trim();
+        const names = wrapHeroLinks(namesRaw);
         
         if (isCompact) {
           const shortTier = tier.replace("第", "T").replace("層", "");
@@ -53,11 +65,13 @@ const formatTieredContent = (text, isCompact = false) => {
             <div class="tier-names">${names}</div>
           </div>`;
       }
-      return line.trim() ? `<div>${line}</div>` : "";
+      const normalNames = wrapHeroLinks(line.trim());
+      return normalNames ? `<div>${normalNames}</div>` : "";
     }).join('');
   }
   
-  return isCompact ? str : str.replace(/\n/g, '<br>');
+  const finalNormalNames = wrapHeroLinks(str);
+  return isCompact ? finalNormalNames : finalNormalNames.replace(/\n/g, '<br>');
 };
 
 // --- 公開函數到 window 物件，確保 HTML onclick 能觸發 ---
@@ -130,7 +144,7 @@ window.openMapDetail = function (mapId) {
                     ${item.drop_rubbish ? `<p class="align-row"><strong>◢ 垃圾：</strong><span>${item.drop_rubbish}</span></p>` : ""}
                     ${item.drop_equidcard ? `<p class="align-row"><strong>◢ 裝備卡：</strong><span>${item.drop_equidcard}</span></p>` : ""}
                     ${item.drop_skillcard ? `<p class="align-row"><strong>◢ 技能卡：</strong><span>${formatTieredContent(item.drop_skillcard)}</span></p>` : ""}
-                    ${item.drop_hero ? `<p class="align-row"><strong>◢ 英雄卡：</strong><span>${formatTieredContent(item.drop_hero)}</span></p>` : ""}
+                    ${item.drop_hero ? `<p class="align-row"><strong>◢ 英雄卡：</strong><span>${formatTieredContent(item.drop_hero, false, true)}</span></p>` : ""}
                     ${item.drop_combo_old ? `<p class="align-row"><strong>◢ 舊文片：</strong><span>${formatTieredContent(item.drop_combo_old)}</span></p>` : ""}
                     ${item.drop_combo_new ? `<p class="align-row"><strong>◢ 新文片：</strong><span>${formatTieredContent(item.drop_combo_new)}</span></p>` : ""}
                     ${item.drop_othrt ? `<p class="align-row"><strong>◢ 其他：</strong><span>${formatTieredContent(item.drop_othrt)}</span></p>` : ""}

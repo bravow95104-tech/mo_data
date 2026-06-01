@@ -86,6 +86,20 @@ document.addEventListener("DOMContentLoaded", () => {
       heroesData = heroesRes.data;
       gloryDropsData = dropsRes.data;
       applyFilters(); // 初始渲染
+      
+      // === 🚀 跨頁面深度連結處理 ===
+      const urlParams = new URLSearchParams(window.location.search);
+      const heroName = urlParams.get('hero');
+      if (heroName) {
+        // 在所有資料中尋找匹配的英雄
+        const targetHero = heroesData.find(h => h.name === heroName);
+        if (targetHero) {
+          // 稍微延遲確保 DOM 渲染完成再開啟 Modal
+          setTimeout(() => {
+            showDetailModal(targetHero);
+          }, 100);
+        }
+      }
     } catch (error) {
       console.error("載入英雄資料錯誤:", error);
       if (tableBody)
