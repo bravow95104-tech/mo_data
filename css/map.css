@@ -593,6 +593,20 @@ h1 {
     padding-left: 2px;
 }
 
+/* 🚀 英雄超連結樣式 */
+.hero-link {
+    color: inherit;
+    text-decoration: none;
+    transition: all 0.2s;
+    cursor: pointer;
+}
+
+.hero-link:hover {
+    color: var(--primary-color);
+    border-bottom: 1px dashed var(--primary-color);
+    background-color: rgba(51, 153, 255, 0.05);
+}
+
 /* 🚀 修正：針對 map.html，如果切換按鈕是第一個(或唯一)右側元素，將它推到最右邊 */
 .filter-actions > .secondary-btn:first-child {
   margin-left: auto;
