@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="zh-Hant">
   <head>
     <meta charset="UTF-8" />
@@ -16,11 +16,7 @@
     <!-- 搜尋框 -->
     <div id="searchContainer">
       <label for="searchInput" class="quick-search-label">快速搜尋</label>
-      <input
-        type="text"
-        id="searchInput"
-        placeholder="搜尋卡片名稱、拜官..."
-      />
+      <input type="text" id="searchInput" placeholder="搜尋卡片名稱、拜官..." />
     </div>
     <br />
     <!-- 快速條件搜尋 -->
@@ -29,18 +25,54 @@
       <div class="accordion-content">
         <div class="filter-group">
           <div class="filter-row">
-          <span class="filter-label">拜官：</span>
-          <div class="filter-btns">
-          <button class="filter-btn" data-type="card_class" data-value="武者">武者</button>
-          <button class="filter-btn" data-type="card_class" data-value="響馬">響馬</button>
-          <button class="filter-btn" data-type="card_class" data-value="仙士">仙士</button>
-          <button class="filter-btn" data-type="card_class" data-value="策士">策士</button>
-          <button class="filter-btn" data-type="card_class" data-value="工匠">工匠</button>
-          <button class="filter-btn" data-type="card_class" data-value="通用">通用</button>
+            <span class="filter-label">拜官：</span>
+            <div class="filter-btns">
+              <button
+                class="filter-btn"
+                data-type="card_class"
+                data-value="武者"
+              >
+                武者
+              </button>
+              <button
+                class="filter-btn"
+                data-type="card_class"
+                data-value="響馬"
+              >
+                響馬
+              </button>
+              <button
+                class="filter-btn"
+                data-type="card_class"
+                data-value="仙士"
+              >
+                仙士
+              </button>
+              <button
+                class="filter-btn"
+                data-type="card_class"
+                data-value="策士"
+              >
+                策士
+              </button>
+              <button
+                class="filter-btn"
+                data-type="card_class"
+                data-value="工匠"
+              >
+                工匠
+              </button>
+              <button
+                class="filter-btn"
+                data-type="card_class"
+                data-value="通用"
+              >
+                通用
+              </button>
+            </div>
+          </div>
         </div>
-        </div>
-        </div>
-        <br/>
+        <br />
         <div class="filter-actions">
           <button id="clearFilters" class="clear-btn">清除篩選</button>
         </div>
@@ -64,7 +96,6 @@
         </tr>
       </thead>
       <tbody>
-
         <!-- 資料由 JS 動態載入 -->
       </tbody>
     </table>
@@ -75,17 +106,16 @@
     <!-- 回到頂部按鈕 -->
     <button id="backToTop" title="回到頂部">▲</button>
 
-        <!-- Modal HTML -->
+    <!-- Modal HTML -->
     <div id="modalOverlay"></div>
     <div id="modalBox">
       <span class="close-btn">&times;</span>
       <div id="modalContent"></div>
     </div>
-    
+
     <div id="footer-container"></div>
     <!-- 這是頁尾會被載入的位置 -->
-    <script src="/mo_data/js/card-active.js"></script>
+    <script type="module" src="/mo_data/js/card-active.js"></script>
     <script src="/mo_data/js/componentsLoader.js"></script>
-    
   </body>
 </html>
