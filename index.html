@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="zh-Hant">
   <head>
     <meta charset="UTF-8" />
@@ -8,53 +8,53 @@
   </head>
   <body>
     <div id="nav-container"></div>
-    <script src="js/componentsLoader.js"></script>
-<!-- 碎碎念 -->
- <!-- 網頁圖檔皆以PNG為主，未來還是得重製圖檔 -->
+    <script src="/mo_data/js/componentsLoader.js"></script>
+    <!-- 碎碎念 -->
+    <!-- 網頁圖檔皆以PNG為主，未來還是得重製圖檔 -->
     <!-- 更新日誌區塊 -->
     <div id="content-wrapper">
-        <section id="changelog">
-          <h2>📝 更新日誌</h2>
-          <ul class="changelog-list" id="changelog-list">
-            <!-- 內容由 JavaScript 動態從 supabase_changelog 載入 -->
-            <li>正在載入更新日誌...</li>
+      <section id="changelog">
+        <h2>📝 更新日誌</h2>
+        <ul class="changelog-list" id="changelog-list">
+          <!-- 內容由 JavaScript 動態從 supabase_changelog 載入 -->
+          <li>正在載入更新日誌...</li>
+        </ul>
+        <!-- 分頁按鈕 -->
+        <div id="changelog-pagination" class="pagination-container"></div>
+      </section>
+
+      <div id="sidebar-container">
+        <aside id="special-thanks" class="sidebar">
+          <h2>特別感謝</h2>
+          <ul class="sidebar-list" id="thanks-list">
+            <!-- 內容由 JavaScript 動態從 supabase_thank 載入 -->
           </ul>
-          <!-- 分頁按鈕 -->
-          <div id="changelog-pagination" class="pagination-container"></div>
-        </section>
+        </aside>
 
-        <div id="sidebar-container">
-            <aside id="special-thanks" class="sidebar">
-                <h2>特別感謝</h2>
-                <ul class="sidebar-list" id="thanks-list">
-                  <!-- 內容由 JavaScript 動態從 supabase_thank 載入 -->
-                </ul>
-            </aside>
-
-          <!-- 天外改版資訊區塊 -->
-          <aside id="release-info" class="sidebar">
-            <h2>天外改版資訊</h2> 
-            <ul class="sidebar-list" id="release-list">
-                <!-- 內容由 JavaScript 動態從 supabase_release 載入 -->
-                <li>正在載入改版資訊...</li>
-            </ul>
-          </aside>
-        </div>
+        <!-- 天外改版資訊區塊 -->
+        <aside id="release-info" class="sidebar">
+          <h2>天外改版資訊</h2>
+          <ul class="sidebar-list" id="release-list">
+            <!-- 內容由 JavaScript 動態從 supabase_release 載入 -->
+            <li>正在載入改版資訊...</li>
+          </ul>
+        </aside>
+      </div>
     </div>
-    
+
     <!-- 回到頂部按鈕 -->
     <button id="backToTop" title="回到頂部">▲</button>
 
     <div id="footer-container"></div>
 
     <script type="module">
-      import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm'
-      import { SUPABASE_URL, SUPABASE_KEY } from './js/supabase-config.js'
+      import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm";
+      import { SUPABASE_URL, SUPABASE_KEY } from "./js/supabase-config.js";
 
       const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
 
       // 動態載入文字檔並渲染
-      document.addEventListener("DOMContentLoaded", async function() {
+      document.addEventListener("DOMContentLoaded", async function () {
         const baseURL = "."; // 修正為相對路徑
 
         // --- 更新日誌分頁設定 ---
@@ -66,16 +66,18 @@
           const list = document.getElementById("changelog-list");
           const pagination = document.getElementById("changelog-pagination");
           list.innerHTML = "";
-          
+
           const start = (page - 1) * ITEMS_PER_PAGE;
           const end = start + ITEMS_PER_PAGE;
           const pageLines = changelogLines.slice(start, end);
 
-          pageLines.forEach(item => {
+          pageLines.forEach((item) => {
             const li = document.createElement("li");
-            const safeContent = item.content ? String(item.content).replace(/\n/g, '<br>') : '';
-            
-            if (item.is_tips === '是') {
+            const safeContent = item.content
+              ? String(item.content).replace(/\n/g, "<br>")
+              : "";
+
+            if (item.is_tips === "是") {
               li.innerHTML = `<span class="tips">Tips</span>${safeContent}`;
             } else {
               li.innerHTML = `<span class="date">${item.date}</span>${safeContent}`;
@@ -87,7 +89,7 @@
           const totalPages = Math.ceil(changelogLines.length / ITEMS_PER_PAGE);
           if (totalPages > 1) {
             pagination.innerHTML = "";
-            
+
             // 上一頁
             const prevBtn = document.createElement("button");
             prevBtn.textContent = "◀";
@@ -122,59 +124,63 @@
         // 1. 載入更新日誌 (Supabase)
         try {
           const { data, error } = await supabase
-            .from('changelog')
-            .select('*')
-            .order('sort_id', { ascending: false });
+            .from("changelog")
+            .select("*")
+            .order("is_tips", { ascending: false }) // '是' 會排在 '否' 前面
+            .order("date", { ascending: false });  // 日期最新的在前面
 
           if (error) throw error;
           changelogLines = data;
           renderChangelog(1);
         } catch (err) {
           console.error("載入更新日誌失敗:", err);
-          document.getElementById("changelog-list").innerHTML = "<li>載入失敗。</li>";
+          document.getElementById("changelog-list").innerHTML =
+            "<li>載入失敗。</li>";
         }
 
         // 2. 載入特別感謝 (Supabase)
         try {
           const { data, error } = await supabase
-            .from('thanks')
-            .select('*')
-            .order('sort_id', { ascending: true });
+            .from("thanks")
+            .select("*")
+            .order("sort_id", { ascending: true });
 
           if (error) throw error;
           const list = document.getElementById("thanks-list");
           list.innerHTML = "";
-          data.forEach(item => {
+          data.forEach((item) => {
             const li = document.createElement("li");
-            li.innerHTML = `<span class="tips">${item.category}</span>${item.names.replace(/\n/g, '<br>')}`;
+            li.innerHTML = `<span class="tips">${item.category}</span>${item.names.replace(/\n/g, "<br>")}`;
             list.appendChild(li);
           });
         } catch (err) {
           console.error("載入特別感謝失敗:", err);
-          document.getElementById("thanks-list").innerHTML = "<li>載入失敗。</li>";
+          document.getElementById("thanks-list").innerHTML =
+            "<li>載入失敗。</li>";
         }
 
         // 3. 載入改版資訊 (Supabase)
         try {
           const { data, error } = await supabase
-            .from('releases')
-            .select('*')
-            .order('sort_id', { ascending: false });
+            .from("releases")
+            .select("*")
+            .order("sort_id", { ascending: false });
 
           if (error) throw error;
           const list = document.getElementById("release-list");
           list.innerHTML = "";
-          data.forEach(item => {
+          data.forEach((item) => {
             const li = document.createElement("li");
             li.innerHTML = `
               <span class="date">${item.date}</span>
-              <a href="${item.url || '#'}" target="_blank" rel="noopener noreferrer" class="date2">${item.title}</a>
+              <a href="${item.url || "#"}" target="_blank" rel="noopener noreferrer" class="date2">${item.title}</a>
             `;
             list.appendChild(li);
           });
         } catch (err) {
           console.error("載入改版資訊失敗:", err);
-          document.getElementById("release-list").innerHTML = "<li>載入失敗。</li>";
+          document.getElementById("release-list").innerHTML =
+            "<li>載入失敗。</li>";
         }
       });
     </script>

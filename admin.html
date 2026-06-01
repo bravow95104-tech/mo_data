@@ -419,10 +419,18 @@
         // 綁定調整寬度事件
         initResizableColumns();
 
-        const { data, error } = await supabase
-            .from(config.tableName)
-            .select('*')
-            .order('sort_id', { ascending: true });
+        let query = supabase.from(config.tableName).select('*');
+
+        // 針對更新日誌做特殊排序：Tips 置頂
+        if (currentTable === 'changelog') {
+            query = query
+                .order('is_tips', { ascending: false }) // '是' 會排在 '否' 前面
+                .order('date', { ascending: false });  // 日期最新的在前面
+        } else {
+            query = query.order('sort_id', { ascending: true });
+        }
+
+        const { data, error } = await query;
 
         if (error) {
             alert('載入失敗: ' + error.message); return;
