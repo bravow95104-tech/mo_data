@@ -97,6 +97,31 @@
         .badge { padding: 4px 8px; border-radius: 4px; font-size: 12px; font-weight: bold; }
         .badge-element { background: #e0f2fe; color: #0369a1; }
 
+        /* 多選 Checkbox 樣式 */
+        .checkbox-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            padding: 10px;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            background: #fff;
+        }
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 14px;
+            color: #475569;
+            cursor: pointer;
+            user-select: none;
+        }
+        .checkbox-item input {
+            width: 16px;
+            height: 16px;
+            cursor: pointer;
+        }
+
         /* 隱藏原生捲軸但保留功能 */
         .nav-scroll::-webkit-scrollbar { width: 4px; }
         .nav-scroll::-webkit-scrollbar-thumb { background: #334155; border-radius: 10px; }
@@ -202,8 +227,9 @@
         
         <div class="nav-group">英雄系統</div>
         <div class="nav-item" data-page="heroes"><i class="fas fa-user-ninja"></i> 英雄清單</div>
-        <div class="nav-item" data-page="glory_drop"><i class="fas fa-bolt"></i> 光輝掉落</div>
+        <div class="nav-item" data-page="glory_drop"><i class="fas fa-bolt"></i> 光輝掉落(官方版)</div>
         <div class="nav-item" data-page="awakening"><i class="fas fa-bolt"></i> 覺醒技能</div>
+        <div class="nav-item" data-page="glory_drop_player"><i class="fas fa-bolt"></i> 光輝掉落(玩家版)</div>
         
         <div class="nav-group">裝備系統</div>
         <div class="nav-item" data-page="equip-combo"><i class="fas fa-shapes"></i> 文片組合</div>
@@ -213,7 +239,10 @@
         <div class="nav-item" data-page="quest"><i class="fas fa-scroll"></i> 一般任務</div>
         
         <div class="nav-group">卡片系統</div>
-        <div class="nav-item" data-page="card"><i class="fas fa-clone"></i> 卡片管理</div>
+        <div class="nav-item" data-page="card-equip"><i class="fas fa-clone"></i> 裝備卡</div>
+        <div class="nav-item" data-page="card-active"><i class="fas fa-clone"></i> 主動技能卡</div>
+        <div class="nav-item" data-page="card-passive"><i class="fas fa-clone"></i> 被動技能卡</div>
+        <div class="nav-item" data-page="card-spirit"><i class="fas fa-clone"></i> 靈具卡</div>
 
         <div class="nav-group">世界觀</div>
         <div class="nav-item" data-page="detailed_map"><i class="fas fa-map-marked-alt"></i> 地圖資訊</div>
@@ -408,6 +437,11 @@
             let input = '';
             if (f.type === 'select') {
                 input = `<select id="edit-${f.id}">${f.options.map(o => `<option value="${o}">${o}</option>`).join('')}</select>`;
+            } else if (f.type === 'checkbox') {
+                input = `<div id="edit-${f.id}" class="checkbox-group">${f.options.map(o => `
+                    <label class="checkbox-item">
+                        <input type="checkbox" value="${o}"> ${o}
+                    </label>`).join('')}</div>`;
             } else if (f.type === 'textarea') {
                 input = `<textarea id="edit-${f.id}" rows="4" style="resize: vertical; min-height: 80px;"></textarea>`;
             } else {
@@ -435,16 +469,26 @@
     };
 
     window.openEditModal = (id) => {
-        const item = allData.find(d => d.id === id);
+        const item = allData.find(d => d.id == id);
         if (!item) return;
 
         renderEditForm();
-        document.getElementById('modalTitle').innerText = '編輯：' + (item.name || item.item || item.skillName || item.items || item.skillname || '未命名');
+        const titleText = item.name || item.item || item.skillName || item.items || item.skillname || item.mapid || '未命名';
+        document.getElementById('modalTitle').innerText = '編輯：' + titleText;
         document.getElementById('edit-id').value = item.id;
         
         TABLE_CONFIGS[currentTable].fields.forEach(f => {
             const el = document.getElementById('edit-' + f.id);
-            if (el) el.value = item[f.id] || (f.type === 'number' ? 0 : '');
+            if (el) {
+                if (f.type === 'checkbox') {
+                    const values = (item[f.id] || '').split('、');
+                    el.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+                        cb.checked = values.includes(cb.value);
+                    });
+                } else {
+                    el.value = item[f.id] || (f.type === 'number' ? 0 : '');
+                }
+            }
         });
 
         document.getElementById('editModal').style.display = 'block';
@@ -463,7 +507,7 @@
             alert('刪除失敗: ' + error.message);
         } else {
             alert('刪除成功');
-            loadTable(currentTable); // 重新載入表格
+            loadTableData(); // 重新載入表格
         }
     };
 
@@ -475,15 +519,26 @@
         e.preventDefault();
         const id = document.getElementById('edit-id').value;
         const updates = {};
+        const config = TABLE_CONFIGS[currentTable];
         
-        TABLE_CONFIGS[currentTable].fields.forEach(f => {
-            const val = document.getElementById('edit-' + f.id).value;
-            updates[f.id] = f.type === 'number' ? parseInt(val) : val;
+        config.fields.forEach(f => {
+            const el = document.getElementById('edit-' + f.id);
+            if (!el) return;
+            let val = '';
+            
+            if (f.type === 'checkbox') {
+                const checked = Array.from(el.querySelectorAll('input[type="checkbox"]:checked')).map(cb => cb.value);
+                val = checked.join('、');
+            } else {
+                val = el.value;
+            }
+            
+            updates[f.id] = f.type === 'number' ? parseInt(val || 0) : val;
         });
 
         let res = id ? 
-            await supabase.from(currentTable).update(updates).eq('id', id) : 
-            await supabase.from(currentTable).insert([updates]);
+            await supabase.from(config.tableName).update(updates).eq('id', id) : 
+            await supabase.from(config.tableName).insert([updates]);
 
         if (res.error) alert('失敗: ' + res.error.message);
         else { alert('✅ 成功！'); closeModal(); loadTableData(); }
