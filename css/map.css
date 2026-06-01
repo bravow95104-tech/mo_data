@@ -686,6 +686,7 @@ h1 {
 #heroes-table td {
     padding: 12px 8px;
     transition: all 0.2s;
+    color: #475569; /* 統一資料顏色 */
 }
 
 #heroes-table tr:hover td {
@@ -708,6 +709,22 @@ td[data-label="垃圾"] {
     max-width: 300px;
     font-size: 13.5px;
     line-height: 1.5;
+    color: #475569;
+}
+
+/* 🚀 彈窗資料內容顏色統一 */
+.align-row span,
+.section-gap p,
+.hero-column-details p,
+.hero-defdodge p {
+    color: #475569;
+}
+
+/* 確保 Strong 標籤維持原本的深色以利對比 */
+.align-row strong,
+.section-gap strong,
+.hero-column-details strong {
+    color: #333;
 }
 
 /* 🚀 新增：自訂欄位設定選單樣式 */
