@@ -71,7 +71,7 @@ window.openMapDetail = function (mapId) {
                     <p><strong>掉落物品：</strong></p>
                     ${item.drop_rubbish ? `<p class="align-row"><strong>◢ 垃圾：</strong>${item.drop_rubbish}</p>` : ""}
                     ${item.drop_equidcard ? `<p class="align-row"><strong>◢ 裝備卡：</strong>${item.drop_equidcard}</p>` : ""}
-                    ${item.drop_skillcard ? `<p class="align-row"><strong>◢ 技能卡：</strong>${item.drop_skillcard}</p>` : ""}
+                    ${item.drop_skillcard ? `<p class="align-row"><strong>◢ 技能卡：</strong>${String(item.drop_skillcard).replace(/\n/g, '<br>')}</p>` : ""}
                     ${item.drop_hero ? `<p class="align-row"><strong>◢ 英雄卡：</strong>${String(item.drop_hero).replace(/\n/g, '<br>')}</p>` : ""}
                     ${item.drop_combo_old ? `<p class="align-row"><strong>◢ 舊文片：</strong>${String(item.drop_combo_old).replace(/\n/g, '<br>')}</p>` : ""}
                     ${item.drop_combo_new ? `<p class="align-row"><strong>◢ 新文片：</strong>${String(item.drop_combo_new).replace(/\n/g, '<br>')}</p>` : ""}
