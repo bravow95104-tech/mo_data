@@ -83,8 +83,8 @@ export const TABLE_CONFIGS = {
     'card-equip': {
         title: '裝備卡管理',
         tableName: 'card_equip',
-        tableCols: ['類型','卡片ID', '卡片屬性', '操作'],
-        displayFields: [ 'type','card_id', 'card_property'],
+        tableCols: ['類型','卡片ID', '卡片屬性','卡片數據', '操作'],
+        displayFields: [ 'type','card_id', 'card_property','card_data'],
         fields: [
             { id: 'sort_id', label: '顯示順序', type: 'number', grid: 1 },
             { id: 'type', label: '類型', type: 'select', options: ['裝備卡'], grid: 1 },
@@ -96,12 +96,9 @@ export const TABLE_CONFIGS = {
             { id: 'card_lv', label: '卡片等級', type: 'text', grid: 1 },
             { id: 'card_class', label: '卡片階級', type: 'text', grid: 1 },
             { id: 'nemultiplier', label: '倍率', type: 'select', options: ['','2.5倍','2倍'], grid: 1 },
-            { id: 'property_first', label: '第一屬性', type: 'text', grid: 1 },
-            { id: 'property_second', label: '第二屬性', type: 'text', grid: 1 },
-            { id: 'property_third', label: '第三屬性', type: 'text', grid: 1 },
             { id: 'card_mp', label: '卡片MP', type: 'text', grid: 1 },
             { id: 'directions', label: '說明', type: 'textarea', grid: 3 },
-            { id: 'hero_name', label: '英雄名稱', type: 'text', grid: 1 },
+            { id: 'hero_name', label: '英雄名稱(專卡)', type: 'text', grid: 1 },
             { id: 'drop', label: '掉落', type: 'text', grid: 1 },
             { id: 'player', label: '玩家', type: 'text', grid: 1 }
         ]
@@ -109,8 +106,8 @@ export const TABLE_CONFIGS = {
     'card-active': {
         title: '主動技能卡管理',
         tableName: 'card_active',
-        tableCols: ['類型','卡片ID', '卡片屬性', '操作'],
-        displayFields: [ 'type','card_id', 'card_property'],
+        tableCols: ['類型','卡片ID', '卡片屬性','卡片MP', '操作'],
+        displayFields: [ 'type','card_id', 'card_property','card_mp'],
         fields: [
             { id: 'sort_id', label: '顯示順序', type: 'number', grid: 1 },
             { id: 'type', label: '類型', type: 'select', options: ['主動技能卡'], grid: 1 },
@@ -122,9 +119,6 @@ export const TABLE_CONFIGS = {
             { id: 'card_lv', label: '卡片等級', type: 'text', grid: 1 },
             { id: 'card_class', label: '卡片階級', type: 'text', grid: 1 },
             { id: 'nemultiplier', label: '倍率', type: 'select', options: ['','2.5倍','2倍'], grid: 1 },
-            { id: 'property_first', label: '第一屬性', type: 'text', grid: 1 },
-            { id: 'property_second', label: '第二屬性', type: 'text', grid: 1 },
-            { id: 'property_third', label: '第三屬性', type: 'text', grid: 1 },
             { id: 'card_mp', label: '卡片MP', type: 'text', grid: 1 },
             { id: 'directions', label: '說明', type: 'textarea', grid: 3 },
             { id: 'hero_name', label: '英雄名稱', type: 'text', grid: 1 },
@@ -148,9 +142,6 @@ export const TABLE_CONFIGS = {
             { id: 'card_lv', label: '卡片等級', type: 'text', grid: 1 },
             { id: 'card_class', label: '卡片階級', type: 'text', grid: 1 },
             { id: 'nemultiplier', label: '倍率', type: 'select', options: ['','2.5倍','2倍'], grid: 1 },
-            { id: 'property_first', label: '第一屬性', type: 'text', grid: 1 },
-            { id: 'property_second', label: '第二屬性', type: 'text', grid: 1 },
-            { id: 'property_third', label: '第三屬性', type: 'text', grid: 1 },
             { id: 'card_mp', label: '卡片MP', type: 'text', grid: 1 },
             { id: 'directions', label: '說明', type: 'textarea', grid: 3 },
             { id: 'hero_name', label: '英雄名稱', type: 'text', grid: 1 },
@@ -161,8 +152,8 @@ export const TABLE_CONFIGS = {
     'card-spirit': {
         title: '靈具卡管理',
         tableName: 'card_spirit',
-        tableCols: ['類型','卡片ID', '卡片屬性', '操作'],
-        displayFields: [ 'type','card_id', 'card_property'],
+        tableCols: ['類型','卡片ID', '卡片等級', '操作'],
+        displayFields: [ 'type','card_id', 'card_lv'],
         fields: [
             { id: 'sort_id', label: '顯示順序', type: 'number', grid: 1 },
             { id: 'type', label: '類型', type: 'select', options: ['靈具卡'], grid: 1 },
