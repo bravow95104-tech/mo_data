@@ -388,7 +388,7 @@ export const TABLE_CONFIGS = {
             { id: 'maplv', label: '地圖等級', type: 'text', grid: 1 },
             { id: 'monster', label: '怪物', type: 'text', grid: 1 },
             { id: 'monster_atk', label: '怪物攻擊類型', type: 'text', grid: 1 },
-            { id: 'drop_rubbish', label: '垃圾掉落', type: 'text', grid: 1 },
+            { id: 'drop_rubbish', label: '垃圾掉落', type: 'textarea', grid: 1 },
             { id: 'drop_hero', label: '英雄卡掉落', type: 'textarea', grid: 1 },
             { id: 'drop_equidcard', label: '裝備卡掉落', type: 'textarea', grid: 1 },
             { id: 'drop_skillcard', label: '技能卡掉落', type: 'textarea', grid: 1 },
