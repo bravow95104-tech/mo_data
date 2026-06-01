@@ -28,22 +28,25 @@ let activeColumns = [];
 // === 智慧格式化解析器 (支援全域共用) ===
 const formatTieredContent = (text, isCompact = false) => {
   if (!text) return isCompact ? "" : "-";
+  const str = String(text);
   
-  // 如果包含「第」和「層：」，進行分層解析
-  if (text.includes("第") && text.includes("層：")) {
-    return text.split('\n').map(line => {
-      if (line.includes("層：")) {
-        const parts = line.split("：");
-        const tier = parts[0];
-        const names = parts.slice(1).join("：");
+  // 檢查是否包含分層格式 (相容全形 ： 與半形 :)
+  const tierRegex = /第\d+層[：:]/g;
+  if (tierRegex.test(str)) {
+    // 統一換行處理
+    const lines = str.split(/\n|<br>/i);
+    
+    return lines.map(line => {
+      const match = line.match(/(第\d+層)[：:](.*)/);
+      if (match) {
+        const tier = match[1];
+        const names = match[2].trim();
         
         if (isCompact) {
-          // 表格簡潔模式：顯示縮小標籤
           const shortTier = tier.replace("第", "T").replace("層", "");
           return `<div class="table-tier-item"><span class="table-tier-badge">${shortTier}</span> ${names}</div>`;
         }
         
-        // 彈窗完整模式
         return `
           <div class="tier-group">
             <div class="tier-header"><span class="tier-badge">${tier}</span></div>
@@ -54,8 +57,7 @@ const formatTieredContent = (text, isCompact = false) => {
     }).join('');
   }
   
-  // 一般內容處理
-  return isCompact ? String(text) : String(text).replace(/\n/g, '<br>');
+  return isCompact ? str : str.replace(/\n/g, '<br>');
 };
 
 // --- 公開函數到 window 物件，確保 HTML onclick 能觸發 ---
