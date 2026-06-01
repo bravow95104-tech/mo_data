@@ -25,6 +25,39 @@ const ALL_COLUMNS = [
 
 let activeColumns = [];
 
+// === 智慧格式化解析器 (支援全域共用) ===
+const formatTieredContent = (text, isCompact = false) => {
+  if (!text) return isCompact ? "" : "-";
+  
+  // 如果包含「第」和「層：」，進行分層解析
+  if (text.includes("第") && text.includes("層：")) {
+    return text.split('\n').map(line => {
+      if (line.includes("層：")) {
+        const parts = line.split("：");
+        const tier = parts[0];
+        const names = parts.slice(1).join("：");
+        
+        if (isCompact) {
+          // 表格簡潔模式：顯示縮小標籤
+          const shortTier = tier.replace("第", "T").replace("層", "");
+          return `<div class="table-tier-item"><span class="table-tier-badge">${shortTier}</span> ${names}</div>`;
+        }
+        
+        // 彈窗完整模式
+        return `
+          <div class="tier-group">
+            <div class="tier-header"><span class="tier-badge">${tier}</span></div>
+            <div class="tier-names">${names}</div>
+          </div>`;
+      }
+      return line.trim() ? `<div>${line}</div>` : "";
+    }).join('');
+  }
+  
+  // 一般內容處理
+  return isCompact ? String(text) : String(text).replace(/\n/g, '<br>');
+};
+
 // --- 公開函數到 window 物件，確保 HTML onclick 能觸發 ---
 window.zoomWorldMap = function (src) {
   const modalBox = document.getElementById("modalBox");
@@ -252,8 +285,10 @@ function renderTable(data, keyword = "") {
       td.setAttribute("data-label", colInfo ? colInfo.label : colId);
 
       let val = item[colId];
-      let text = (val !== null && val !== undefined) ? String(val) : "-";
-      let content = text.replace(/\n/g, '<br>');
+      
+      // 使用智慧解析器，並判斷是否需要簡潔模式
+      const isDropCol = colId.startsWith('drop_');
+      let content = formatTieredContent(val, isDropCol);
 
       if (keyword && content !== "-" && content.toLowerCase().includes(keyword.toLowerCase())) {
         const regex = new RegExp(`(${keyword})`, 'gi');
@@ -262,6 +297,8 @@ function renderTable(data, keyword = "") {
 
       if (colId === 'mapid') {
         td.innerHTML = `<strong>${content}</strong>`;
+      } else if (colId === 'maplv' && val) {
+        td.innerHTML = `<span class="lv-badge">${content}</span>`;
       } else {
         td.innerHTML = content;
       }
