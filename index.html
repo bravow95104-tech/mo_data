@@ -126,8 +126,8 @@
           const { data, error } = await supabase
             .from("changelog")
             .select("*")
-            .order("is_tips", { ascending: false }) // '是' 會排在 '否' 前面
-            .order("date", { ascending: false });  // 日期最新的在前面
+            .order("is_tips", { ascending: false }) // '是' 排在 '否' 之前
+            .order("sort_id", { ascending: false }); // 數字大的（新的）在前面
 
           if (error) throw error;
           changelogLines = data;
