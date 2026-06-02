@@ -9,22 +9,9 @@ document.addEventListener("DOMContentLoaded", async () => {
   let lastFilteredData = [];
   let sortConfig = { key: null, direction: 'asc' };
 
-  // ... (響應式判斷代碼保持不變)
   const isBelow768 = () => window.innerWidth <= 768;
   let resizeFlag = isBelow768();
-  let resizeTimeout;
-
-  window.addEventListener("resize", () => {
-    clearTimeout(resizeTimeout);
-    resizeTimeout = setTimeout(() => {
-      const currentFlag = isBelow768();
-      if (currentFlag !== resizeFlag) {
-        resizeFlag = currentFlag;
-        applyLayout();
-      }
-    }, 150);
-  });
-
+  
   const tableContainer = document.getElementById('card-equip-table');
   const cardContainer = document.getElementById('card-equip-container');
   const modalOverlay = document.getElementById('modalOverlay');
@@ -33,7 +20,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   const closeModalBtn = document.querySelector('#modalBox .close-btn');
   const searchInput = document.getElementById("searchInput");
 
-  // 載入 Supabase 資料
+  // 1. 載入資料
   try {
     const [cardRes, mapsRes] = await Promise.all([
       supabase.from('card_active').select('*').order('sort_id', { ascending: true }),
@@ -41,45 +28,35 @@ document.addEventListener("DOMContentLoaded", async () => {
     ]);
 
     if (cardRes.error) throw cardRes.error;
-    if (mapsRes.error) throw mapsRes.error;
-
-    allCardData = cardRes.data;
+    allCardData = cardRes.data || [];
     mapData = mapsRes.data || [];
 
     initializeSortIcons();
-    applyFiltersAndSort();
-    updateSortIcons();
 
-    // === 🚀 跨頁面深度連結處理 (僅執行一次) ===
+    // === 🚀 處理跨頁面跳轉 (在此優先處理，僅執行一次) ===
     const urlParams = new URLSearchParams(window.location.search);
     const cardParam = urlParams.get('card');
     if (cardParam) {
       const exists = allCardData.some(c => c.card_id === cardParam);
       if (exists) {
-        if (searchInput) {
-          searchInput.value = cardParam;
-          applyFiltersAndSort(); // 觸發過濾
-        }
+        if (searchInput) searchInput.value = cardParam;
       } else {
-        // 找不到，跳轉到被動技能卡
+        // 找不到則跳轉，並終止後續執行
         window.location.href = `card-passive.html?card=${encodeURIComponent(cardParam)}`;
+        return;
       }
     }
+
+    // 執行初次過濾與渲染
+    applyFiltersAndSort();
+    updateSortIcons();
+
   } catch (err) {
     console.error("❌ 資料載入失敗：", err);
-    const errorMsg = "<tr><td colspan='7'>無法載入雲端資料</td></tr>";
-    const tbody = document.querySelector("#card-equip-table tbody");
-    if (tbody) tbody.innerHTML = errorMsg;
     if (cardContainer) cardContainer.innerHTML = `<p style='text-align:center; padding:20px; color:red;'>無法載入資料 (${err.message})</p>`;
   }
 
-  // Accordion 展開／收合
-  document.querySelectorAll(".accordion-header").forEach(header => {
-    header.addEventListener("click", () => {
-      header.parentElement.classList.toggle("collapsed");
-    });
-  });
-
+  // 2. 核心邏輯
   function applyFiltersAndSort() {
     const keyword = searchInput ? searchInput.value.trim().toLowerCase() : "";
     const activeCardClasses = Array.from(document.querySelectorAll('.filter-btn.active[data-type="card_class"]')).map(btn => btn.dataset.value);
@@ -91,9 +68,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         item.directions,
         item.card_property
       ].some(val => String(val || "").toLowerCase().includes(keyword));
-
       const matchCardClass = activeCardClasses.length === 0 || activeCardClasses.includes(item.card_class);
-
       return matchSearch && matchCardClass;
     });
 
@@ -103,13 +78,8 @@ document.addEventListener("DOMContentLoaded", async () => {
         let valB = b[sortConfig.key];
         const numA = parseFloat(valA);
         const numB = parseFloat(valB);
-        if (!isNaN(numA) && !isNaN(numB)) {
-          valA = numA;
-          valB = numB;
-        } else {
-          valA = String(valA || "").toLowerCase();
-          valB = String(valB || "").toLowerCase();
-        }
+        if (!isNaN(numA) && !isNaN(numB)) { valA = numA; valB = numB; }
+        else { valA = String(valA || "").toLowerCase(); valB = String(valB || "").toLowerCase(); }
         if (valA < valB) return sortConfig.direction === 'asc' ? -1 : 1;
         if (valA > valB) return sortConfig.direction === 'asc' ? 1 : -1;
         return 0;
@@ -143,6 +113,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       return;
     }
 
+    const fragment = document.createDocumentFragment();
     data.forEach(item => {
       const tr = document.createElement("tr");
       const foundMaps = mapData.filter(map => (map.drop_skillcard || "").split('、').includes(item.card_id));
@@ -152,8 +123,10 @@ document.addEventListener("DOMContentLoaded", async () => {
       fields.forEach(field => {
         const td = document.createElement("td");
         const str = String(item[field] || "");
+        
         if (keyword && str.toLowerCase().includes(keyword)) {
-          const regex = new RegExp(`(${keyword.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, "gi");
+          const escaped = keyword.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+          const regex = new RegExp(`(${escaped})`, "gi");
           td.innerHTML = str.replace(regex, "<span class='highlight2'>$1</span>");
         } else {
           td.textContent = str;
@@ -166,8 +139,9 @@ document.addEventListener("DOMContentLoaded", async () => {
       tr.appendChild(dropTd);
 
       tr.addEventListener("click", () => showDetailModal(item));
-      tbody.appendChild(tr);
+      fragment.appendChild(tr);
     });
+    tbody.appendChild(fragment);
   }
 
   function renderCards(data, keyword) {
@@ -184,7 +158,8 @@ document.addEventListener("DOMContentLoaded", async () => {
 
       const highlight = (text) => {
         if (!keyword) return text;
-        const regex = new RegExp(`(${keyword.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, "gi");
+        const escaped = keyword.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+        const regex = new RegExp(`(${escaped})`, "gi");
         return String(text).replace(regex, "<span class='highlight2'>$1</span>");
       };
 
@@ -206,8 +181,12 @@ document.addEventListener("DOMContentLoaded", async () => {
     cardContainer.appendChild(fragment);
   }
 
-  // === 綁定事件 ===
-  if (searchInput) searchInput.addEventListener("input", applyFiltersAndSort);
+  // 3. 事件綁定
+  if (searchInput) {
+    searchInput.addEventListener("input", () => {
+      applyFiltersAndSort();
+    });
+  }
 
   document.querySelectorAll('.filter-btn').forEach(btn => {
     btn.addEventListener('click', () => {
@@ -241,6 +220,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
   }
 
+  // 4. 工具函數
   function initializeSortIcons() {
     document.querySelectorAll('#card-equip-table th[data-sort]').forEach(th => {
       if (th.querySelector('.header-content')) return;
@@ -264,39 +244,25 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
   }
 
-  function encodeFileName(name) {
-    return name.replace(/[^\w\u4e00-\u9fa5()]/g, "");
-  }
-
   function showDetailModal(item) {
     if (!modalOverlay || !modalBox || !modalContent) return;
-
+    const encodeName = (n) => String(n || "").replace(/[^\w\u4e00-\u9fa5()]/g, "");
     const img = document.createElement("img");
     img.className = "hero-image";
     img.alt = item.card_id;
-    img.src = `/mo_data/pic/card-active/${encodeFileName(item.card_id)}.png`;
+    img.src = `/mo_data/pic/card-active/${encodeName(item.card_id)}.png`;
     img.onerror = () => { img.style.display = 'none'; };
 
     const foundMaps = mapData.filter(map => (map.drop_skillcard || "").split('、').includes(item.card_id));
     let displayDrop = foundMaps.length > 0 ? foundMaps.map(m => m.mapid).join('、 ') : (item.drop || "未知");
 
-    if (resizeFlag) {
-      // 手機版：標題 + 圖片 + 掉落地點 (移除多餘的容器層級)
-      modalContent.innerHTML = `
-        <h2 class="hero-name">${item.card_id}</h2>
-        <div id="modal-img-col" style="text-align: center; margin-bottom: 15px;"></div>
-        <div class="hero-column right">
-          <p><strong>掉落地圖：</strong><br>${displayDrop}</p>
-        </div>
-      `;
-    } else {
-      // 電腦版：標題 + 圖片 (移除多餘的容器層級)
-      modalContent.innerHTML = `
-        <h2 class="hero-name">${item.card_id}</h2>
-        <div id="modal-img-col" style="text-align: center; padding: 20px;"></div>
-      `;
-    }
-    
+    modalContent.innerHTML = `
+      <h2 class="hero-name">${item.card_id}</h2>
+      <div id="modal-img-col" style="text-align: center; margin-bottom: 15px;"></div>
+      <div class="hero-column right">
+        <p><strong>掉落地圖：</strong><br>${displayDrop}</p>
+      </div>
+    `;
     const imgCol = modalContent.querySelector('#modal-img-col');
     if (imgCol) imgCol.appendChild(img);
 
@@ -306,8 +272,8 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 
   function closeModal() {
-    modalOverlay.style.display = "none";
-    modalBox.style.display = "none";
+    if (modalOverlay) modalOverlay.style.display = "none";
+    if (modalBox) modalBox.style.display = "none";
   }
 
   if (closeModalBtn) closeModalBtn.addEventListener("click", closeModal);
