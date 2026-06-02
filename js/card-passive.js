@@ -47,6 +47,14 @@ document.addEventListener("DOMContentLoaded", async () => {
     initializeSortIcons();
     applyFiltersAndSort();
     updateSortIcons();
+
+    // === 🚀 跨頁面深度連結處理 (僅執行一次) ===
+    const urlParams = new URLSearchParams(window.location.search);
+    const cardParam = urlParams.get('card');
+    if (cardParam && searchInput) {
+      searchInput.value = cardParam;
+      applyFiltersAndSort(); // 觸發過濾
+    }
   } catch (err) {
     console.error("❌ 資料載入失敗：", err);
     const tbody = document.querySelector("#card-equip-table tbody");
@@ -86,14 +94,6 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     lastFilteredData = filtered;
     applyLayout();
-
-    // === 🚀 跨頁面深度連結處理 ===
-    const urlParams = new URLSearchParams(window.location.search);
-    const cardParam = urlParams.get('card');
-    if (cardParam && searchInput) {
-      searchInput.value = cardParam;
-      applyFiltersAndSort(); // 執行搜尋
-    }
   }
 
   function applyLayout() {

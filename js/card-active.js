@@ -49,6 +49,22 @@ document.addEventListener("DOMContentLoaded", async () => {
     initializeSortIcons();
     applyFiltersAndSort();
     updateSortIcons();
+
+    // === 🚀 跨頁面深度連結處理 (僅執行一次) ===
+    const urlParams = new URLSearchParams(window.location.search);
+    const cardParam = urlParams.get('card');
+    if (cardParam) {
+      const exists = allCardData.some(c => c.card_id === cardParam);
+      if (exists) {
+        if (searchInput) {
+          searchInput.value = cardParam;
+          applyFiltersAndSort(); // 觸發過濾
+        }
+      } else {
+        // 找不到，跳轉到被動技能卡
+        window.location.href = `card-passive.html?card=${encodeURIComponent(cardParam)}`;
+      }
+    }
   } catch (err) {
     console.error("❌ 資料載入失敗：", err);
     const errorMsg = "<tr><td colspan='7'>無法載入雲端資料</td></tr>";
@@ -102,22 +118,6 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     lastFilteredData = filteredData;
     applyLayout();
-
-    // === 🚀 跨頁面深度連結處理 ===
-    const urlParams = new URLSearchParams(window.location.search);
-    const cardParam = urlParams.get('card');
-    if (cardParam) {
-      const exists = allCardData.some(c => c.card_id === cardParam);
-      if (exists) {
-        if (searchInput) {
-          searchInput.value = cardParam;
-          applyFiltersAndSort(); // 執行搜尋
-        }
-      } else {
-        // 找不到，跳轉到被動技能卡
-        window.location.href = `card-passive.html?card=${encodeURIComponent(cardParam)}`;
-      }
-    }
   }
 
   function applyLayout() {
