@@ -100,6 +100,19 @@ document.addEventListener("DOMContentLoaded", async () => {
     
     lastFilteredData = filteredData;
     applyLayout();
+
+    // === 🚀 跨頁面深度連結處理 ===
+    const urlParams = new URLSearchParams(window.location.search);
+    const cardParam = urlParams.get('card');
+    if (cardParam) {
+      const targetCard = allCardData.find(c => c.card_id === cardParam);
+      if (targetCard) {
+        setTimeout(() => showDetailModal(targetCard), 100);
+      } else {
+        // 找不到，跳轉到靈具卡頁面
+        window.location.href = `card-spirit.html?card=${encodeURIComponent(cardParam)}`;
+      }
+    }
   }
 
   // 3. 佈局切換

@@ -113,6 +113,14 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     lastFilteredData = filtered;
     applyLayout();
+
+    // === 🚀 跨頁面深度連結處理 ===
+    const urlParams = new URLSearchParams(window.location.search);
+    const cardParam = urlParams.get('card');
+    if (cardParam && searchName) {
+      searchName.value = cardParam;
+      applyFiltersAndSort(); // 觸發搜尋
+    }
   }
 
   function applyLayout() {

@@ -36,7 +36,7 @@ export const TABLE_CONFIGS = {
         ]
     },
     glory_drop: {
-        title: '光輝掉落管理',
+        title: '光輝掉落(官方)管理',
         tableName: 'glory_drop',
         tableCols: ['地區', '掉落較多', '掉落較低', '操作'],
         displayFields: ['area', 'more', 'low'],
@@ -45,6 +45,17 @@ export const TABLE_CONFIGS = {
             { id: 'sort_id', label: '顯示順序', type: 'number', grid: 1 },
             { id: 'more', label: '掉落較多', type: 'textarea', grid: 3 },
             { id: 'low', label: '掉落較低', type: 'textarea', grid: 3 }
+        ]
+    },
+    glory_drop_player: {
+        title: '光輝掉落(玩家)管理',
+        tableName: 'glory_drop_player',
+        tableCols: ['地區', '顯示順序', '掉落名稱', '操作'],
+        displayFields: ['area', 'sort_id', 'drop_content'],
+        fields: [
+            { id: 'area', label: '地區', type: 'text', required: true, grid: 1 },
+            { id: 'sort_id', label: '顯示順序', type: 'number', grid: 1 },
+            { id: 'drop_content', label: '掉落名稱', type: 'textarea', grid: 3 },
         ]
     },
     'equip-combo': {
@@ -114,7 +125,7 @@ export const TABLE_CONFIGS = {
             { id: 'check_use', label: '確認用', type: 'text', grid: 1 },
             { id: 'new_old', label: '新舊', type: 'select', options: ['','新專','舊專','馬卡'], grid: 1 },
             { id: 'card_id', label: '卡片ID', type: 'text', grid: 1 },
-            { id: 'card_property', label: '卡片屬性', type: 'text', grid: 1 },
+            { id: 'card_property', label: '卡片屬性', type: 'select', options: ['金','木','水','火','土','無',''], grid: 1 },
             { id: 'card_data', label: '卡片數據', type: 'text', grid: 1 },
             { id: 'card_lv', label: '卡片等級', type: 'text', grid: 1 },
             { id: 'card_class', label: '卡片階級', type: 'text', grid: 1 },
@@ -318,9 +329,9 @@ export const TABLE_CONFIGS = {
         fields: [
             { id: 'item', label: '名稱', type: 'text', required: true, grid: 1 },
             { id: 'sort_id', label: '顯示順序', type: 'number', grid: 1 },
-            { id: 'class', label: '分類', type: 'select', options: ['武器'], grid: 1 },
-            { id: 'sort', label: '部位', type: 'text', grid: 1 },
-            { id: 'job', label: '職業類型', type: 'select', options: ['基礎職業','進階職業','極限裝備','新城寨裝備'], grid: 1 },
+            { id: 'class', label: '分類', type: 'select', options: ['武器'], grid: 1 , group: '分類'},
+            { id: 'sort', label: '部位', type: 'text', grid: 1 , group: '分類'},
+            { id: 'job', label: '職業類型', type: 'select', options: ['基礎職業','進階職業','極限裝備','新城寨裝備'], grid: 1 , group: '分類'},
             { id: 'pic', label: '無作用', type: 'text', grid: 1 },
             { id: 'lv', label: '等級', type: 'text', grid: 1 },
             { id: 'property1', label: '屬性1(防禦/攻擊)', type: 'text', grid: 1 },
@@ -349,9 +360,9 @@ export const TABLE_CONFIGS = {
         fields: [
             { id: 'item', label: '名稱', type: 'text', required: true, grid: 1 },
             { id: 'sort_id', label: '顯示順序', type: 'number', grid: 1 },
-            { id: 'class', label: '分類', type: 'select', options: ['防具'], grid: 1 },
-            { id: 'sort', label: '部位', type: 'text', grid: 1 },
-            { id: 'job', label: '職業類型', type: 'select', options: ['基礎職業','進階職業','極限裝備','新城寨裝備'], grid: 1 },
+            { id: 'class', label: '分類', type: 'select', options: ['防具'], grid: 1 , group: '分類'},
+            { id: 'sort', label: '部位', type: 'text', grid: 1 , group: '分類'},
+            { id: 'job', label: '職業類型', type: 'select', options: ['基礎職業','進階職業','極限裝備','新城寨裝備'], grid: 1 , group: '分類'},
             { id: 'pic', label: '無作用', type: 'text', grid: 1 },
             { id: 'lv', label: '等級', type: 'text', grid: 1 },
             { id: 'property1', label: '屬性1(防禦/攻擊)', type: 'text', grid: 1 },

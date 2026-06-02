@@ -86,6 +86,14 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     lastFilteredData = filtered;
     applyLayout();
+
+    // === 🚀 跨頁面深度連結處理 ===
+    const urlParams = new URLSearchParams(window.location.search);
+    const cardParam = urlParams.get('card');
+    if (cardParam && searchInput) {
+      searchInput.value = cardParam;
+      applyFiltersAndSort(); // 執行搜尋
+    }
   }
 
   function applyLayout() {

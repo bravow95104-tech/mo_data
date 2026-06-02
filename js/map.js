@@ -26,52 +26,56 @@ const ALL_COLUMNS = [
 let activeColumns = [];
 
 // === 智慧格式化解析器 (支援全域共用) ===
-const formatTieredContent = (text, isCompact = false, isHeroLink = false) => {
+const formatTieredContent = (text, isCompact = false, linkType = null) => {
   if (!text) return isCompact ? "" : "-";
   const str = String(text);
   
-  // 英雄超連結處理函數
-  const wrapHeroLinks = (namesStr) => {
-    if (!isHeroLink) return namesStr;
+  // 智慧超連結處理函數 (支援 hero, equip, skill)
+  const wrapLinks = (namesStr) => {
+    if (!linkType) return namesStr;
     return namesStr.split('、').map(name => {
       const trimmedName = name.trim();
       if (!trimmedName) return "";
-      // 假設從 map/map.html 連結到 hero/heroes.html
-      return `<a href="../hero/heroes.html?hero=${encodeURIComponent(trimmedName)}" class="hero-link">${trimmedName}</a>`;
+      
+      let targetPage = "";
+      let className = "hero-link"; // 複用英雄連結的虛線樣式
+      
+      if (linkType === 'hero') {
+        targetPage = "../hero/heroes.html?hero=";
+      } else if (linkType === 'equip') {
+        // 預設去裝備卡頁面
+        targetPage = "../card/card-equip.html?card=";
+      } else if (linkType === 'skill') {
+        // 預設去主動技能卡頁面
+        targetPage = "../card/card-active.html?card=";
+      }
+      
+      return `<a href="${targetPage}${encodeURIComponent(trimmedName)}" class="${className}">${trimmedName}</a>`;
     }).join('、');
   };
 
-  // 檢查是否包含分層格式 (相容全形 ： 與半形 :)
+  // 檢查是否包含分層格式
   const tierRegex = /第\d+層[：:]/g;
   if (tierRegex.test(str)) {
-    // 統一換行處理
     const lines = str.split(/\n|<br>/i);
-    
     return lines.map(line => {
       const match = line.match(/(第\d+層)[：:](.*)/);
       if (match) {
         const tier = match[1];
-        const namesRaw = match[2].trim();
-        const names = wrapHeroLinks(namesRaw);
-        
+        const names = wrapLinks(match[2].trim());
         if (isCompact) {
           const shortTier = tier.replace("第", "T").replace("層", "");
           return `<div class="table-tier-item"><span class="table-tier-badge">${shortTier}</span> ${names}</div>`;
         }
-        
-        return `
-          <div class="tier-group">
-            <div class="tier-header"><span class="tier-badge">${tier}</span></div>
-            <div class="tier-names">${names}</div>
-          </div>`;
+        return `<div class="tier-group"><div class="tier-header"><span class="tier-badge">${tier}</span></div><div class="tier-names">${names}</div></div>`;
       }
-      const normalNames = wrapHeroLinks(line.trim());
+      const normalNames = wrapLinks(line.trim());
       return normalNames ? `<div>${normalNames}</div>` : "";
     }).join('');
   }
   
-  const finalNormalNames = wrapHeroLinks(str);
-  return isCompact ? finalNormalNames : finalNormalNames.replace(/\n/g, '<br>');
+  const finalNames = wrapLinks(str);
+  return isCompact ? finalNames : finalNames.replace(/\n/g, '<br>');
 };
 
 // --- 公開函數到 window 物件，確保 HTML onclick 能觸發 ---
@@ -119,9 +123,9 @@ window.openMapDetail = function (mapId) {
                 <div class="hero-column-details">
                     <p><strong>掉落物品：</strong></p>
                     ${item.drop_rubbish ? `<p class="align-row"><strong>◢ 垃圾：</strong><span>${item.drop_rubbish}</span></p>` : ""}
-                    ${item.drop_equidcard ? `<p class="align-row"><strong>◢ 裝備卡：</strong><span>${item.drop_equidcard}</span></p>` : ""}
-                    ${item.drop_skillcard ? `<p class="align-row"><strong>◢ 技能卡：</strong><span>${formatTieredContent(item.drop_skillcard)}</span></p>` : ""}
-                    ${item.drop_hero ? `<p class="align-row"><strong>◢ 英雄卡：</strong><span>${formatTieredContent(item.drop_hero, false, true)}</span></p>` : ""}
+                    ${item.drop_equidcard ? `<p class="align-row"><strong>◢ 裝備卡：</strong><span>${formatTieredContent(item.drop_equidcard, false, 'equip')}</span></p>` : ""}
+                    ${item.drop_skillcard ? `<p class="align-row"><strong>◢ 技能卡：</strong><span>${formatTieredContent(item.drop_skillcard, false, 'skill')}</span></p>` : ""}
+                    ${item.drop_hero ? `<p class="align-row"><strong>◢ 英雄卡：</strong><span>${formatTieredContent(item.drop_hero, false, 'hero')}</span></p>` : ""}
                     ${item.drop_combo_old ? `<p class="align-row"><strong>◢ 舊文片：</strong><span>${formatTieredContent(item.drop_combo_old)}</span></p>` : ""}
                     ${item.drop_combo_new ? `<p class="align-row"><strong>◢ 新文片：</strong><span>${formatTieredContent(item.drop_combo_new)}</span></p>` : ""}
                     ${item.drop_othrt ? `<p class="align-row"><strong>◢ 其他：</strong><span>${formatTieredContent(item.drop_othrt)}</span></p>` : ""}
@@ -160,9 +164,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // === 3. 資料載入與對接 ===
 async function loadData() {
-  const [mapRes, gloryRes] = await Promise.all([
+  const [mapRes, gloryRes, playerRes] = await Promise.all([
     supabase.from('detailed_map').select('*').order('sort_id', { ascending: true }),
-    supabase.from('glory_drop').select('*')
+    supabase.from('glory_drop').select('*'),
+    supabase.from('glory_drop_player').select('*') // 🚀 新增：載入玩家版資料
   ]);
 
   if (mapRes.error) {
@@ -174,26 +179,45 @@ async function loadData() {
 
   const rawMapData = mapRes.data;
   const gloryDropData = gloryRes.data || [];
+  const playerDropData = playerRes.data || []; // 🚀 新增
 
   mapData = rawMapData.map(map => {
+    // 匹配官方版
     const matchedGlory = gloryDropData.find(g => {
       if (!g.area) return false;
       const areas = g.area.split('、');
       return areas.includes(map.mapid);
     });
 
+    // 匹配玩家版 (自動對應 area)
+    const matchedPlayer = playerDropData.find(p => {
+      if (!p.area) return false;
+      const areas = p.area.split('、');
+      return areas.includes(map.mapid);
+    });
+
+    let result = { ...map };
+
     if (matchedGlory) {
-      return {
-        ...map,
+      result = {
+        ...result,
         drop_glory_high: matchedGlory.more,
         drop_glory_low: matchedGlory.low,
         glory_area: matchedGlory.area
       };
     }
-    return map;
+
+    if (matchedPlayer) {
+      result = {
+        ...result,
+        drop_glory_player: matchedPlayer.drop_content // 🚀 將玩家內容對應到 drop_glory_player
+      };
+    }
+
+    return result;
   });
 
-  console.log("✅ 地圖與光輝資料載入完成");
+  console.log("✅ 地圖、官方與玩家版光輝資料載入完成");
 
   if (document.querySelector("#heroes-table tbody")) {
     initTableSearch();

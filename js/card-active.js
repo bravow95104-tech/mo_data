@@ -102,6 +102,22 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     lastFilteredData = filteredData;
     applyLayout();
+
+    // === 🚀 跨頁面深度連結處理 ===
+    const urlParams = new URLSearchParams(window.location.search);
+    const cardParam = urlParams.get('card');
+    if (cardParam) {
+      const exists = allCardData.some(c => c.card_id === cardParam);
+      if (exists) {
+        if (searchInput) {
+          searchInput.value = cardParam;
+          applyFiltersAndSort(); // 執行搜尋
+        }
+      } else {
+        // 找不到，跳轉到被動技能卡
+        window.location.href = `card-passive.html?card=${encodeURIComponent(cardParam)}`;
+      }
+    }
   }
 
   function applyLayout() {
