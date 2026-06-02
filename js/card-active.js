@@ -92,6 +92,9 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   function applyLayout() {
     const keyword = searchInput ? searchInput.value.trim().toLowerCase() : "";
+    // 強制更新 resizeFlag 確保狀態正確
+    resizeFlag = isBelow768();
+    
     if (resizeFlag) {
       renderCards(lastFilteredData, keyword);
       if (tableContainer) tableContainer.style.display = 'none';
