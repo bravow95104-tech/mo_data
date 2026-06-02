@@ -248,12 +248,17 @@ document.addEventListener("DOMContentLoaded", async () => {
     const foundMaps = mapData.filter(map => (map.drop_skillcard || "").split('、').includes(item.card_id));
     const displayDrop = foundMaps.length > 0 ? foundMaps.map(m => m.mapid).join('、 ') : (item.drop || "未知");
 
+    // 根據是否為手機版決定顯示內容
+    const isMobile = isBelow768();
+
     modalContent.innerHTML = `
       <h2 class="hero-name">${item.card_id}</h2>
       <div id="modal-img-col" style="text-align: center; margin-bottom: 15px;"></div>
+      ${isMobile ? `
       <div class="hero-column right">
         <p><strong>掉落地圖：</strong><br>${displayDrop}</p>
       </div>
+      ` : ''}
     `;
     
     const imgCol = modalContent.querySelector('#modal-img-col');
