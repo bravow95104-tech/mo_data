@@ -11,6 +11,18 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   const isBelow768 = () => window.innerWidth <= 768;
   let resizeFlag = isBelow768();
+  let resizeTimeout;
+
+  window.addEventListener("resize", () => {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(() => {
+      const currentFlag = isBelow768();
+      if (currentFlag !== resizeFlag) {
+        resizeFlag = currentFlag;
+        applyLayout();
+      }
+    }, 150);
+  });
   
   const tableContainer = document.getElementById('card-equip-table');
   const cardContainer = document.getElementById('card-equip-container');
