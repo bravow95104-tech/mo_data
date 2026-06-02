@@ -9,7 +9,6 @@ document.addEventListener("DOMContentLoaded", async () => {
   let lastFilteredData = [];
   let sortConfig = { key: null, direction: 'asc' };
 
-  // === 響應式判斷 ===
   const isBelow768 = () => window.innerWidth <= 768;
   let resizeFlag = isBelow768();
   let resizeTimeout;
@@ -31,7 +30,9 @@ document.addEventListener("DOMContentLoaded", async () => {
   const modalBox = document.getElementById('modalBox');
   const modalContent = document.getElementById('modalContent');
   const closeModalBtn = document.querySelector('#modalBox .close-btn');
+  const searchInput = document.getElementById("searchInput");
 
+  // 1. 載入資料
   try {
     const [cardRes, mapsRes] = await Promise.all([
       supabase.from('card_passive').select('*').order('sort_id', { ascending: true }),
@@ -39,22 +40,21 @@ document.addEventListener("DOMContentLoaded", async () => {
     ]);
 
     if (cardRes.error) throw cardRes.error;
-    if (mapsRes.error) throw mapsRes.error;
-
     allCardData = cardRes.data || [];
     mapData = mapsRes.data || [];
 
     initializeSortIcons();
-    applyFiltersAndSort();
-    updateSortIcons();
 
     // === 🚀 跨頁面深度連結處理 (僅執行一次) ===
     const urlParams = new URLSearchParams(window.location.search);
     const cardParam = urlParams.get('card');
     if (cardParam && searchInput) {
       searchInput.value = cardParam;
-      applyFiltersAndSort(); // 觸發過濾
     }
+
+    applyFiltersAndSort();
+    updateSortIcons();
+
   } catch (err) {
     console.error("❌ 資料載入失敗：", err);
     const tbody = document.querySelector("#card-equip-table tbody");
@@ -62,7 +62,6 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 
   function applyFiltersAndSort() {
-    const searchInput = document.getElementById("searchInput");
     const keyword = searchInput ? searchInput.value.trim().toLowerCase() : "";
 
     let filtered = allCardData.filter(item =>
@@ -97,8 +96,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 
   function applyLayout() {
-    const keywordInput = document.getElementById("searchInput");
-    const keyword = keywordInput ? keywordInput.value.trim().toLowerCase() : "";
+    const keyword = searchInput ? searchInput.value.trim().toLowerCase() : "";
     if (resizeFlag) {
       renderCards(lastFilteredData, keyword);
       if (tableContainer) tableContainer.style.display = 'none';
@@ -120,6 +118,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       return;
     }
 
+    const fragment = document.createDocumentFragment();
     data.forEach(item => {
       const tr = document.createElement("tr");
       const foundMaps = mapData.filter(map => (map.drop_skillcard || "").split('、').includes(item.card_id));
@@ -130,7 +129,8 @@ document.addEventListener("DOMContentLoaded", async () => {
         const td = document.createElement("td");
         const str = String(item[field] || "");
         if (keyword && str.toLowerCase().includes(keyword)) {
-          const regex = new RegExp(`(${keyword.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, "gi");
+          const escaped = keyword.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+          const regex = new RegExp(`(${escaped})`, "gi");
           td.innerHTML = str.replace(regex, "<span class='highlight2'>$1</span>");
         } else {
           td.textContent = str;
@@ -143,8 +143,9 @@ document.addEventListener("DOMContentLoaded", async () => {
       tr.appendChild(dropTd);
 
       tr.addEventListener("click", () => showDetailModal(item));
-      tbody.appendChild(tr);
+      fragment.appendChild(tr);
     });
+    tbody.appendChild(fragment);
   }
 
   function renderCards(data, keyword) {
@@ -161,7 +162,8 @@ document.addEventListener("DOMContentLoaded", async () => {
 
       const highlight = (text) => {
         if (!keyword) return text;
-        const regex = new RegExp(`(${keyword.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, "gi");
+        const escaped = keyword.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+        const regex = new RegExp(`(${escaped})`, "gi");
         return String(text).replace(regex, "<span class='highlight2'>$1</span>");
       };
 
@@ -181,7 +183,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     cardContainer.appendChild(fragment);
   }
 
-  const searchInput = document.getElementById("searchInput");
   if (searchInput) searchInput.addEventListener("input", applyFiltersAndSort);
 
   document.querySelectorAll('#card-equip-table th[data-sort]').forEach(header => {
@@ -232,7 +233,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 
   function encodeFileName(name) {
-    return name.replace(/[^\w\u4e00-\u9fa5()]/g, '');
+    return String(name || "").replace(/[^\w\u4e00-\u9fa5()]/g, '');
   }
 
   function showDetailModal(item) {
@@ -247,22 +248,13 @@ document.addEventListener("DOMContentLoaded", async () => {
     const foundMaps = mapData.filter(map => (map.drop_skillcard || "").split('、').includes(item.card_id));
     const displayDrop = foundMaps.length > 0 ? foundMaps.map(m => m.mapid).join('、 ') : (item.drop || "未知");
 
-    if (resizeFlag) {
-      // 手機版：標題 + 圖片 + 掉落地點 (移除多餘的容器層級)
-      modalContent.innerHTML = `
-        <h2 class="hero-name">${item.card_id}</h2>
-        <div id="modal-img-col" style="text-align: center; margin-bottom: 15px;"></div>
-        <div class="hero-column right">
-          <p><strong>掉落地圖：</strong><br>${displayDrop}</p>
-        </div>
-      `;
-    } else {
-      // 電腦版：標題 + 圖片 (移除多餘的容器層級)
-      modalContent.innerHTML = `
-        <h2 class="hero-name">${item.card_id}</h2>
-        <div id="modal-img-col" style="text-align: center; padding: 20px;"></div>
-      `;
-    }
+    modalContent.innerHTML = `
+      <h2 class="hero-name">${item.card_id}</h2>
+      <div id="modal-img-col" style="text-align: center; margin-bottom: 15px;"></div>
+      <div class="hero-column right">
+        <p><strong>掉落地圖：</strong><br>${displayDrop}</p>
+      </div>
+    `;
     
     const imgCol = modalContent.querySelector('#modal-img-col');
     if (imgCol) imgCol.appendChild(img);
@@ -273,8 +265,8 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 
   function closeModal() {
-    modalOverlay.style.display = 'none';
-    modalBox.style.display = 'none';
+    if (modalOverlay) modalOverlay.style.display = 'none';
+    if (modalBox) modalBox.style.display = 'none';
   }
 
   if (closeModalBtn) closeModalBtn.addEventListener('click', closeModal);
