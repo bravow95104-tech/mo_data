@@ -161,7 +161,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
       const highlight = (text) => {
         if (!keyword) return text;
-        const escaped = keyword.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+        const escaped = String(keyword).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
         const regex = new RegExp(`(${escaped})`, "gi");
         return String(text).replace(regex, "<span class='highlight2'>$1</span>");
       };
