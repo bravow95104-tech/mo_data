@@ -1,25 +1,31 @@
-/* === 導覽列專用樣式 (nav.css) - 精緻科技版 V3 === */
+/* === 導覽列專用樣式 (nav.css) - 穩定居中版 === */
 
-/* === 桌機版導覽列 === */
+/* === 桌機版：全局強制居中 === */
+#nav-container {
+    display: block !important;
+    width: 100% !important;
+    position: relative !important;
+    z-index: 9999 !important;
+}
+
 #nav-container nav {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    width: 100%;
-    background: rgba(51, 153, 255, 0.98);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    color: #fff;
-    padding: 0 40px;
-    height: 60px;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    height: 60px !important;
+    background: rgba(51, 153, 255, 0.98) !important;
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
     display: flex !important;
     align-items: center !important;
-    justify-content: center !important; /* 確保內容居中 */
-    border-radius: 0; 
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
-    z-index: 9999;
+    justify-content: center !important; /* 核心：強制內容水平置中 */
+    padding: 0 !important;
+    margin: 0 !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15) !important;
+    z-index: 10000 !important;
     transform: translateY(-100%);
     transition: transform 0.5s cubic-bezier(0.19, 1, 0.22, 1);
 }
@@ -28,251 +34,166 @@
     transform: translateY(0);
 }
 
+/* 確保 Header 在桌機隱藏 */
 .nav-mobile-header {
-    display: none;
+    display: none !important;
 }
 
+/* 桌機選單容器 */
 .nav-menu {
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
-    gap: 12px;
-    height: 100%;
-    padding: 0;
+    gap: 10px !important;
+    height: 100% !important;
     margin: 0 !important;
-    flex-wrap: nowrap;
+    padding: 0 !important;
 }
 
+/* 桌機連結樣式 */
 #nav-container nav a,
 #nav-container nav .dropdown-toggle {
-    color: white;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 15px;
-    padding: 8px 16px;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    display: flex;
-    align-items: center;
-    height: 36px;
-    background: transparent;
-    white-space: nowrap;
+    color: white !important;
+    text-decoration: none !important;
+    font-weight: 600 !important;
+    font-size: 15px !important;
+    padding: 8px 16px !important;
+    border-radius: 6px !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+    display: flex !important;
+    align-items: center !important;
+    height: 36px !important;
+    white-space: nowrap !important;
+    background: transparent !important;
 }
 
 #nav-container nav a:hover,
 #nav-container nav .dropdown-toggle:hover {
-    background-color: rgba(255, 255, 255, 0.15);
-    transform: translateY(-1px);
+    background-color: rgba(255, 255, 255, 0.15) !important;
 }
 
+/* 桌機專用標籤 */
+.desktop-only {
+    display: flex !important;
+    font-weight: 800 !important;
+    font-size: 20px !important;
+    margin-right: 15px !important;
+    letter-spacing: 1px !important;
+}
+
+/* 下拉選單主體 (桌機) */
 .dropdown {
-    position: relative;
-    display: flex;
-    align-items: center;
-    height: 100%;
+    position: relative !important;
+    display: flex !important;
+    align-items: center !important;
+    height: 100% !important;
 }
 
 .dropdown-content {
     display: none;
-    position: absolute;
-    top: calc(100% - 5px);
-    left: 0;
-    background: #2b7bc4;
-    min-width: 190px;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
-    border-radius: 8px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    padding: 8px 0;
-    overflow: hidden;
-    animation: navFadeIn 0.3s cubic-bezier(0.23, 1, 0.32, 1) forwards;
-    text-align: left !important; /* 核心修正：強制桌機版左對齊 */
-}
-
-@keyframes navFadeIn {
-    from { opacity: 0; transform: translateY(15px); }
-    to { opacity: 1; transform: translateY(0); }
+    position: absolute !important;
+    top: calc(100% - 5px) !important;
+    left: 0 !important;
+    background: #2b7bc4 !important;
+    min-width: 190px !important;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3) !important;
+    border-radius: 8px !important;
+    padding: 8px 0 !important;
+    text-align: left !important; /* 核心修正：強制桌機左對齊 */
 }
 
 .dropdown:hover .dropdown-content {
-    display: block;
+    display: block !important;
+    animation: navFadeIn 0.3s ease forwards !important;
+}
+
+@keyframes navFadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 .dropdown-content a {
     display: block !important;
     padding: 10px 22px !important;
-    color: rgba(255, 255, 255, 0.9) !important;
-    text-decoration: none !important;
+    color: white !important;
+    text-align: left !important; /* 強制每一項都左對齊 */
     font-size: 14px !important;
-    text-align: left !important; /* 確保子項也是左對齊 */
-    transition: all 0.2s ease !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
 }
 
 .dropdown-content a:hover {
     background-color: rgba(255, 255, 255, 0.1) !important;
     padding-left: 26px !important;
-    color: white !important;
 }
 
-/* === 手機版導覽列 (768px 斷點) === */
+/* === 手機版：768px 以下 === */
 @media (max-width: 768px) {
     
-    /* 強制清除所有可能的偏移干擾 */
     html, body {
         overflow-x: hidden !important;
         margin: 0 !important;
-        padding-left: 0 !important;
-        padding-right: 0 !important;
-    }
-
-    #nav-container {
-        display: block !important;
-        position: fixed !important;
-        top: 0 !important;
-        left: 0 !important;
-        width: 100% !important; 
-        z-index: 99999 !important;
-        margin: 0 !important;
-        padding: 0 !important;
     }
 
     #nav-container nav {
         display: block !important;
         background: linear-gradient(135deg, #3399ff 0%, #267acc 100%) !important;
-        width: 100% !important;
-        min-height: 54px !important;
-        position: relative !important;
-        left: 0 !important;
-        margin: 0 !important;
+        height: 54px !important;
         padding: 0 !important;
     }
 
-    /* 2. 手機版 Header：Logo 絕對置中 */
     .nav-mobile-header {
         display: flex !important;
         width: 100% !important;
         height: 54px !important;
         align-items: center !important;
         justify-content: center !important;
-        box-sizing: border-box !important;
         position: relative !important;
-        padding: 0 60px !important; 
     }
 
     .mobile-home-link {
+        display: block !important;
         color: white !important;
-        text-decoration: none !important;
         font-weight: 800 !important;
         font-size: 20px !important;
-        letter-spacing: 1px !important;
-        text-align: center !important;
     }
 
-    /* 漢堡按鈕：釘死在右側，防止偏移 */
     .hamburger-btn {
         position: absolute !important;
         right: 15px !important;
-        top: 50% !important;
-        transform: translateY(-50%) !important;
-        background: none !important;
-        border: none !important;
-        width: 28px !important;
-        height: 18px !important;
-        padding: 0 !important;
-        cursor: pointer !important;
         display: flex !important;
-        flex-direction: column !important;
-        justify-content: space-between !important;
-        z-index: 10 !important;
     }
 
-    .hamburger-btn span {
-        display: block !important;
-        width: 100% !important;
-        height: 3px !important;
-        background-color: white !important;
-        border-radius: 4px !important;
-        transition: all 0.3s ease !important;
-    }
-
-    /* 3. 選單容器：分層佈局 (Split Layout) */
     .nav-menu {
         display: none;
-        flex-direction: column !important;
         position: fixed !important;
         top: 54px !important;
         left: 0 !important;
         width: 100% !important;
         height: calc(100vh - 54px) !important;
         background: #1e5f9e !important;
-        z-index: 1000000 !important;
-        padding: 0 !important;
-        margin: 0 !important;
-        overflow-y: auto !important;
-        opacity: 0;
-        visibility: hidden;
-        transition: all 0.3s ease;
+        flex-direction: column !important;
+        justify-content: flex-start !important;
     }
 
     .nav-menu.active {
         display: flex !important;
-        opacity: 1 !important;
-        visibility: visible !important;
     }
 
-    /* 4. 分層項目設計：大項靠左，子項靠右 */
-    .dropdown {
-        width: 100% !important;
-        display: flex !important;
-        flex-direction: column !important;
-        border-bottom: 1px solid rgba(255,255,255,0.08) !important;
-    }
-
+    /* 隔離手機版的對齊方式 */
     .dropdown-toggle {
-        padding: 16px 20px !important;
-        color: white !important;
+        justify-content: flex-start !important;
+        padding: 18px 25px !important;
         font-size: 17px !important;
-        font-weight: bold !important;
-        width: 100% !important;
-        box-sizing: border-box !important;
-        display: flex !important;
-        justify-content: flex-start !important; 
-        align-items: center !important;
-        background: rgba(255,255,255,0.02) !important;
-    }
-
-    .dropdown-toggle::after {
-        content: '›';
-        margin-left: auto; 
-        font-size: 20px;
-        opacity: 0.5;
-    }
-
-    .dropdown-content {
-        position: static !important;
-        width: 100% !important;
-        background: rgba(0, 0, 0, 0.15) !important;
-        display: none;
-        padding: 0 !important;
     }
 
     .dropdown-content a {
-        padding: 14px 20px !important;
-        font-size: 15px !important;
-        color: rgba(255,255,255,0.85) !important;
-        text-align: right !important; 
-        display: block !important;
-        border-bottom: 1px solid rgba(255,255,255,0.03) !important;
-        text-decoration: none !important;
-        width: 100% !important;
-        box-sizing: border-box !important;
+        text-align: right !important; /* 手機版才靠右 */
+        padding: 12px 25px !important;
     }
 
-    .dropdown-content a:last-child {
-        border-bottom: none !important;
-    }
-
-    .dropdown:hover .dropdown-content {
-        display: block !important;
+    .desktop-only {
+        display: none !important;
     }
 }
