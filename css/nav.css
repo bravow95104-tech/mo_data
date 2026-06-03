@@ -1,4 +1,4 @@
-/* === 導覽列專用樣式 (nav.css) - 精緻科技版 V2 === */
+/* === 導覽列專用樣式 (nav.css) - 精緻科技版 V3 === */
 
 /* === 桌機版導覽列 === */
 #nav-container nav {
@@ -54,6 +54,7 @@
     display: flex;
     align-items: center;
     height: 36px;
+    background: transparent;
 }
 
 #nav-container nav a:hover,
@@ -111,13 +112,23 @@
 /* === 手機版導覽列 (768px 斷點) === */
 @media (max-width: 768px) {
     
+    /* 強制清除所有可能的偏移干擾 */
+    html, body {
+        overflow-x: hidden !important;
+        margin: 0 !important;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+
     #nav-container {
         display: block !important;
         position: fixed !important;
         top: 0 !important;
         left: 0 !important;
-        width: 100% !important;
+        width: 100% !important; /* 使用 100% 避免 100vw 的捲軸問題 */
         z-index: 99999 !important;
+        margin: 0 !important;
+        padding: 0 !important;
     }
 
     #nav-container nav {
@@ -126,19 +137,21 @@
         width: 100% !important;
         min-height: 54px !important;
         position: relative !important;
+        left: 0 !important;
+        margin: 0 !important;
+        padding: 0 !important;
     }
 
-    /* 2. 手機版 Header：解決偏移問題，確保漢堡按鈕正確靠右 */
+    /* 2. 手機版 Header：Logo 絕對置中 */
     .nav-mobile-header {
         display: flex !important;
-        width: 100vw !important; /* 強制視窗寬度 */
+        width: 100% !important;
         height: 54px !important;
-        padding: 0 !important; /* 清除內距，改由內部元素定位 */
         align-items: center !important;
         justify-content: center !important;
         box-sizing: border-box !important;
         position: relative !important;
-        left: 0 !important;
+        padding: 0 60px !important; /* 留出空間給兩側按鈕，確保 Logo 置中不受影響 */
     }
 
     .mobile-home-link {
@@ -147,26 +160,37 @@
         font-weight: 800 !important;
         font-size: 20px !important;
         letter-spacing: 1px !important;
-        z-index: 2 !important;
+        text-align: center !important;
     }
 
-    /* 精美漢堡選單按鈕：使用固定間距確保不超出螢幕 */
+    /* 漢堡按鈕：釘死在右側，防止偏移 */
     .hamburger-btn {
         position: absolute !important;
-        right: 20px !important; /* 距離右側 20px */
+        right: 15px !important;
+        top: 50% !important;
+        transform: translateY(-50%) !important;
         background: none !important;
         border: none !important;
         width: 28px !important;
-        height: 20px !important;
+        height: 18px !important;
         padding: 0 !important;
         cursor: pointer !important;
         display: flex !important;
         flex-direction: column !important;
         justify-content: space-between !important;
-        z-index: 3 !important;
+        z-index: 10 !important;
     }
 
-    /* 3. 選單容器：分層式佈局 (Split Layout) */
+    .hamburger-btn span {
+        display: block !important;
+        width: 100% !important;
+        height: 3px !important;
+        background-color: white !important;
+        border-radius: 4px !important;
+        transition: all 0.3s ease !important;
+    }
+
+    /* 3. 選單容器：分層佈局 (Split Layout) */
     .nav-menu {
         display: none;
         flex-direction: column !important;
@@ -175,7 +199,7 @@
         left: 0 !important;
         width: 100% !important;
         height: calc(100vh - 54px) !important;
-        background: #1e5f9e !important; /* 深藍色基調 */
+        background: #1e5f9e !important;
         z-index: 1000000 !important;
         padding: 0 !important;
         margin: 0 !important;
@@ -191,60 +215,59 @@
         visibility: visible !important;
     }
 
-    /* 4. 分層項目設計：大項在左，小項在右 */
+    /* 4. 分層項目設計：大項靠左，子項靠右 */
     .dropdown {
         width: 100% !important;
         display: flex !important;
         flex-direction: column !important;
-        border-bottom: 1px solid rgba(255,255,255,0.05) !important;
+        border-bottom: 1px solid rgba(255,255,255,0.08) !important;
     }
 
     .dropdown-toggle {
-        padding: 18px 25px !important;
+        padding: 16px 20px !important;
         color: white !important;
         font-size: 17px !important;
         font-weight: bold !important;
         width: 100% !important;
         box-sizing: border-box !important;
         display: flex !important;
-        justify-content: flex-start !important; /* 大項目靠左 */
-        align-items: center;
-        background: rgba(255,255,255,0.03) !important;
+        justify-content: flex-start !important; /* 主選單文字靠左 */
+        align-items: center !important;
+        background: rgba(255,255,255,0.02) !important;
     }
 
     .dropdown-toggle::after {
-        content: '▼';
-        font-size: 10px;
-        margin-left: 10px;
+        content: '›';
+        margin-left: auto; /* 將箭頭推向右邊 */
+        font-size: 20px;
         opacity: 0.5;
     }
 
-    /* 核心修正：子選單出現於右側且帶有明顯區隔 */
     .dropdown-content {
         position: static !important;
         width: 100% !important;
-        background: rgba(0, 0, 0, 0.2) !important;
-        display: none; /* 預設收合 */
-        padding: 5px 0 !important;
+        background: rgba(0, 0, 0, 0.15) !important;
+        display: none;
+        padding: 0 !important;
     }
 
     .dropdown-content a {
-        padding: 12px 25px !important;
+        padding: 14px 20px !important;
         font-size: 15px !important;
-        color: rgba(255,255,255,0.9) !important;
-        text-align: right !important; /* 子項目靠右 */
+        color: rgba(255,255,255,0.85) !important;
+        text-align: right !important; /* 子選單文字靠右 */
         display: block !important;
         border-bottom: 1px solid rgba(255,255,255,0.03) !important;
         text-decoration: none !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
     }
 
     .dropdown-content a:last-child {
         border-bottom: none !important;
     }
 
-    /* 點擊展開邏輯由 hover 模擬 (手機版建議改用 JS，但目前以 CSS 觸發) */
     .dropdown:hover .dropdown-content {
         display: block !important;
     }
-}
 }
