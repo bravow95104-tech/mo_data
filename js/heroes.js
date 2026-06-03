@@ -63,6 +63,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // === DOM 元素快取 ===
   const tableBody = document.querySelector("#heroes-table tbody");
   const searchInput = document.getElementById("searchInput");
+  const heroesSummary = document.getElementById("heroesSummary");
   const clearFiltersBtn = document.getElementById("clearFilters");
   const modalOverlay = document.getElementById("modalOverlay");
   const modalBox = document.getElementById("modalBox");
@@ -111,6 +112,25 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // 輔助函式：確保顯示時不會出現 null 或 undefined
   const clean = (val) => (val === null || val === undefined) ? "" : val;
+
+  function getActiveFilterCount() {
+    return document.querySelectorAll(".filter-btn.active").length;
+  }
+
+  function updateSummary(filteredCount, totalCount) {
+    if (!heroesSummary) return;
+
+    const activeFilters = getActiveFilterCount();
+    const sortLabel = sortConfig.key
+      ? `${sortConfig.key.replaceAll("_", " ").toUpperCase()} ${sortConfig.direction === "asc" ? "ASC" : "DESC"}`
+      : "未排序";
+
+    heroesSummary.innerHTML = `
+      <span class="summary-chip summary-chip-accent">顯示 ${filteredCount} / ${totalCount}</span>
+      <span class="summary-chip">篩選 ${activeFilters} 項</span>
+      <span class="summary-chip">排序 ${sortLabel}</span>
+    `;
+  }
 
   function applyFilters() {
     const keyword = searchInput.value.trim().toLowerCase();
@@ -197,6 +217,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // D. 存起來
     lastFilteredData = filtered;
+    updateSummary(filtered.length, heroesData.length);
 
     // E. 只在「資料真的改變」時 render
     applyLayout();
@@ -205,7 +226,8 @@ document.addEventListener("DOMContentLoaded", () => {
   function applyLayout() {
     if (resizeFlag) {
       heroesTableContainer.style.display = "none";
-      heroesCardContainer.style.display = "flex";
+      heroesCardContainer.style.display = "grid";
+      heroesCardContainer.style.gridTemplateColumns = "repeat(auto-fit, minmax(320px, 1fr))";
       renderCard(lastFilteredData);
     } else {
       heroesTableContainer.style.display = "block";
@@ -223,13 +245,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (data.length === 0) {
       tableBody.innerHTML =
-        '<tr><td colspan="15">找不到符合條件的英雄</td></tr>';
+        '<tr class="hero-empty-state"><td colspan="15">找不到符合條件的英雄</td></tr>';
       return;
     }
 
     const fragment = document.createDocumentFragment();
     data.forEach((hero) => {
       const tr = document.createElement("tr");
+      tr.className = "hero-table-row";
       const fields = [
         "name",
         "glory",
@@ -278,7 +301,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     data.forEach((hero) => {
       const div = document.createElement("div");
-      div.className = "accordion";
+      div.className = "accordion hero-card";
       const safeName = hero.name.replace(/[^\w\u4e00-\u9fa5]/g, "");
 
       function createImageWithFallbacks(basePath, altText) {
@@ -289,7 +312,7 @@ document.addEventListener("DOMContentLoaded", () => {
         return img;
       }
 
-      div.innerHTML = `<h2 class="hero-name" id="modal-title">${clean(hero.name)}</h2>`;
+      div.innerHTML = `<h2 class="hero-name hero-card-title">${clean(hero.name)}</h2>`;
 
       const imgContainer = document.createElement("div");
       imgContainer.className = "hero-images hero-card-images";
