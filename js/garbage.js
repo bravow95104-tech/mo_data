@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   let lastFilteredData = [];
   let searchTimer = null;
 
-  const garbageTable = document.getElementById('garbageTable');
+  const garbageTable = document.getElementById('hero-table-container');
   const cardContainer = document.getElementById('hero-card-container');
   const searchInput = document.getElementById('searchInput');
 
@@ -79,7 +79,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       if (cardContainer) cardContainer.style.display = 'flex';
     } else {
       renderTable(lastFilteredData);
-      if (garbageTable) garbageTable.style.display = 'table';
+      if (garbageTable) garbageTable.style.display = 'block';
       if (cardContainer) cardContainer.style.display = 'none';
     }
   }
@@ -274,4 +274,6 @@ document.addEventListener("DOMContentLoaded", async () => {
       applyFilters();
     });
   }
+});
+}
 });

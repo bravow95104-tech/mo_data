@@ -169,7 +169,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         if (kw) {
           const escaped = kw.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
           const regex = new RegExp(`(${escaped})`, "gi");
-          td.innerHTML = text.replace(regex, "<span class='highlight2'>$1</span>");
+          td.innerHTML = text.replace(regex, "<span class='highlight'>$1</span>");
         } else {
           td.textContent = text;
         }
@@ -208,7 +208,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         if (!kw) return text;
         const escaped = kw.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
         const regex = new RegExp(`(${escaped})`, "gi");
-        return String(text).replace(regex, "<span class='highlight2'>$1</span>");
+        return String(text).replace(regex, "<span class='highlight'>$1</span>");
       };
 
       cardDiv.innerHTML = `

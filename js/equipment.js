@@ -123,7 +123,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (cardContainer) cardContainer.style.display = 'flex';
     } else {
       renderTable(lastFilteredData);
-      if (tableContainer) tableContainer.style.display = 'table';
+      if (tableContainer) tableContainer.style.display = 'block';
       if (cardContainer) cardContainer.style.display = 'none';
     }
   }
@@ -298,14 +298,14 @@ document.addEventListener("DOMContentLoaded", () => {
       .join('');
 
     const illustrateHTML = (equip.illustrate && equip.illustrate.trim() !== "" && equip.illustrate !== null)
-      ? `<div class="hero-column-base hero-column-details" style="grid-column: span 2; border-top: 1px solid #ddd; padding-top: 10px;">
+      ? `<div class="hero-column-base hero-column-details" style="grid-column: span 2; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 10px;">
            <h3 class="modal-sub-title">說明</h3>
            <p style="font-size: 16px; line-height: 1.6;">${String(equip.illustrate).replace(/\^&|&\^/g, "").replace(/\n/g, "<br>")}</p>
          </div>`
       : "";
 
     const gainHTML = (equip.gain && equip.gain.trim() !== "" && equip.gain !== null)
-      ? `<div class="hero-column-base hero-column-details" style="grid-column: span 2; border-top: 1px solid #ddd; padding-top: 10px;">
+      ? `<div class="hero-column-base hero-column-details" style="grid-column: span 2; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 10px;">
            <h3 class="modal-sub-title">詳細效果</h3>
            <p style="font-size: 16px; line-height: 1.8;">${String(equip.gain).replace(/\n/g, "<br>")}</p>
          </div>`
@@ -379,5 +379,7 @@ document.addEventListener("DOMContentLoaded", () => {
       header.parentElement.classList.toggle("collapsed");
     });
   });
+
+});;
 
 });

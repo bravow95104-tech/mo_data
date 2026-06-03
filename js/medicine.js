@@ -115,7 +115,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       if (cardContainer) cardContainer.style.display = 'flex';
     } else {
       renderTable(lastFilteredData);
-      if (heroesTable) heroesTable.style.display = 'table';
+      if (heroesTable) heroesTable.style.display = 'block';
       if (cardContainer) cardContainer.style.display = 'none';
     }
   }
@@ -145,7 +145,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
       if (hero.item) {
         const img = document.createElement('img');
-        const basePath = `/mo_data/pic/medicine/${hero.item}`;
+        const basePath = `../pic/medicine/${hero.item}`;
         const extensions = ['.png', '.jpg', '.bmp'];
         let attempt = 0;
 
@@ -174,10 +174,15 @@ document.addEventListener("DOMContentLoaded", async () => {
 
       fields.forEach(field => {
         const td = document.createElement('td');
-        const value = hero[field] !== undefined ? String(hero[field]) : '';
+        let rawValue = hero[field];
+        // 🔹 處理 null, undefined 或空字串
+        if (rawValue === null || rawValue === undefined || String(rawValue).trim() === "") {
+          rawValue = "-";
+        }
+        const value = String(rawValue);
         const htmlValue = value.replace(/\n/g, '<br>');
 
-        if (keyword && value.toLowerCase().includes(keyword)) {
+        if (keyword && value !== "-" && value.toLowerCase().includes(keyword)) {
           const regex = new RegExp(`(${keyword.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
           td.innerHTML = htmlValue.replace(regex, '<span class="highlight">$1</span>');
         } else {
@@ -226,7 +231,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       cardHeader.style.borderBottom = '1px solid #eee';
 
       const img = document.createElement('img');
-      const basePath = `/mo_data/pic/medicine/${hero.item}`;
+      const basePath = `../pic/medicine/${hero.item}`;
       const extensions = ['.png', '.jpg', '.bmp'];
       let attempt = 0;
       const tryLoadImg = () => {
@@ -256,9 +261,13 @@ document.addEventListener("DOMContentLoaded", async () => {
       const cardBody = document.createElement('div');
       cardBody.style.fontSize = '14px';
       cardBody.style.lineHeight = '1.6';
+      
+      // 處理卡片內的 NULL 顯示
+      const getVal = (v) => (v === null || v === undefined || String(v).trim() === "") ? "-" : v;
+      
       cardBody.innerHTML = `
-        <p><strong>等級：</strong>${highlight(hero.lv || '')}</p>
-        <p><strong>說明：</strong>${highlight(hero.illustrate || '')}</p>
+        <p><strong>等級：</strong>${highlight(getVal(hero.lv))}</p>
+        <p><strong>說明：</strong>${highlight(getVal(hero.illustrate))}</p>
         <p style="text-align:right; color:#3399ff; font-size:12px; margin-top:5px;">查看所需材料 ▾</p>
       `;
 
@@ -280,17 +289,19 @@ document.addEventListener("DOMContentLoaded", async () => {
     if (!modalContent) return;
 
     let materialsHTML = '';
+    const getVal = (v) => (v === null || v === undefined || String(v).trim() === "") ? "-" : v;
+
     for (let i = 1; i <= 5; i++) {
       const mat = hero[`material${i}`];
-      if (mat && mat.trim() !== "" && mat !== "—") {
+      if (mat && mat.trim() !== "" && mat !== "—" && mat !== "-") {
         materialsHTML += `<p><strong>材料 ${i}：</strong>${mat}</p>`;
       }
     }
 
     modalContent.innerHTML = `
-      <h2 class="hero-name">${hero.item}</h2>
+      <h2 class="hero-name">${getVal(hero.item)}</h2>
       <div class="hero-column-details" style="padding: 20px; background:#f9f9f9; border-radius:8px;">
-        <h3 style="margin-top:0; color:#3399ff; border-bottom:1px solid #ddd; padding-bottom:8px;">所需材料 (個 / 組)</h3>
+        <h3 style="margin-top:0; color:#3399ff; border-bottom:1px solid rgba(255,255,255,0.1); padding-bottom:8px;">所需材料 (個 / 組)</h3>
         <div style="font-size: 16px; line-height: 2;">
           ${materialsHTML || '<p>無材料需求</p>'}
         </div>

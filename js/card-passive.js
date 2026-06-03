@@ -131,7 +131,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         if (keyword && str.toLowerCase().includes(keyword)) {
           const escaped = keyword.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
           const regex = new RegExp(`(${escaped})`, "gi");
-          td.innerHTML = str.replace(regex, "<span class='highlight2'>$1</span>");
+          td.innerHTML = str.replace(regex, "<span class='highlight'>$1</span>");
         } else {
           td.textContent = str;
         }
@@ -164,7 +164,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         if (!keyword) return text;
         const escaped = keyword.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
         const regex = new RegExp(`(${escaped})`, "gi");
-        return String(text).replace(regex, "<span class='highlight2'>$1</span>");
+        return String(text).replace(regex, "<span class='highlight'>$1</span>");
       };
 
       const foundMaps = mapData.filter(map => (map.drop_skillcard || "").split('、').includes(card.card_id));
@@ -276,4 +276,6 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   if (closeModalBtn) closeModalBtn.addEventListener('click', closeModal);
   if (modalOverlay) modalOverlay.addEventListener('click', closeModal);
+});
+dal);
 });
