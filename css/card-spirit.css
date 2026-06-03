@@ -1,576 +1,214 @@
+/* 靈具卡專屬樣式 - 升級為玻璃擬態風格 */
+
+:root {
+  --nav-height: 70px;
+  --primary-blue: #4da3ff;
+  --primary-dark: #1e4b8a;
+  --glass-bg: rgba(255, 255, 255, 0.04);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --highlight-yellow: #ffd86b;
+  --text-main: #f7fbff;
+  --text-muted: rgba(247, 251, 255, 0.7);
+}
+
+/* 搜尋區塊 */
+#quick-search-label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  padding: 15px 20px;
+  border-radius: 16px;
+  border: 1px solid var(--glass-border);
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+
+.quick-search-label {
+  font-weight: 600;
+  color: var(--primary-blue);
+  font-size: 16px;
+}
+
+#searchInput1, #searchFirst, #searchSecond, #searchThird {
+  padding: 10px 16px;
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--glass-border);
+  border-radius: 10px;
+  color: white;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  min-width: 150px;
+}
+
+#searchInput1:focus, #searchFirst:focus, #searchSecond:focus, #searchThird:focus {
+  outline: none;
+  border-color: var(--primary-blue);
+  box-shadow: 0 0 10px rgba(77, 163, 255, 0.3);
+}
+
+.filter-actions {
+  margin-bottom: 25px;
+}
+
+.clear-btn {
+  background: rgba(255, 216, 107, 0.1);
+  border: 1px solid rgba(255, 216, 107, 0.3);
+  color: var(--highlight-yellow);
+  border-radius: 8px;
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.clear-btn:hover {
+  background: var(--highlight-yellow);
+  color: #000;
+}
+
+/* 搜尋字詞高亮 */
+.highlight, .highlight2 {
+  background-color: rgba(255, 216, 107, 0.3);
+  color: var(--highlight-yellow);
+  font-weight: bold;
+  border-radius: 4px;
+  padding: 2px 4px;
+}
+
 /* 表格樣式 */
+#card-equip-table-container {
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  border: 1px solid var(--glass-border);
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
 table {
   border-collapse: collapse;
   width: 100%;
-  margin-top: 20px;
-}
-th, td {
-  border: 1px solid #ccc;
-  padding: 8px;
-  text-align: center;
-  font-size: 14px;
-  white-space: normal;
-  vertical-align: middle;
 }
 
-/* 針對掉落地點欄位優化 */
-#card-equip-table td:last-child {
-  text-align: left;
-  max-width: 280px;
-  min-width: 150px;
-  line-height: 1.5;
-  word-break: break-all;
-  padding-left: 12px;
-}
-
-
-tbody tr:hover {
-  background-color: #fff9c0;
-  cursor: pointer;
-}
-
-/* 標題列 (Sticky) */
 thead th {
   position: sticky;
-  top: var(--nav-offset, 0px); /* JS 動態修改 */
-  background-color: #1976d2;
+  top: 0;
   z-index: 100;
-  color: white;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  height: 45px; /* 給予固定高度能更穩定置中 */
+  background: linear-gradient(180deg, rgba(26, 54, 93, 0.95), rgba(10, 23, 43, 0.95));
+  color: var(--primary-blue);
+  padding: 16px 10px;
+  font-weight: 700;
+  border-bottom: 1px solid rgba(77, 163, 255, 0.3);
 }
 
-/* =========================================
-   排序圖示與表頭容器
-   ========================================= */
-#card-equip-table th[data-sort] {
+tbody td {
+  padding: 12px 8px;
+  text-align: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+tbody tr:hover {
+  background: rgba(255, 255, 255, 0.05);
   cursor: pointer;
-  user-select: none;
 }
 
-.header-content {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  width: 100%;
-  line-height: 1;
-}
-
-.sort-icon-container {
-  display: inline-flex;
+/* 手機版卡片 */
+#card-equip-container {
+  display: none;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 12px;
+  gap: 15px;
 }
 
-.sort-arrow {
-  color: rgba(255, 255, 255, 0.3);
-  font-size: 8px;
-  line-height: 1;
-  margin: -1px 0;
-  transition: color 0.2s;
+.card-item {
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  padding: 20px;
 }
 
-/* 排序啟動狀態 */
-th.sorted-asc .arrow-up { color: #ffffff !important; }
-th.sorted-desc .arrow-down { color: #ffffff !important; }
-
-/*快速搜尋*/
-#searchInput {
-  padding: 6px 10px;
-  width: 100%;
-  font-size: 14px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-  max-width: 250px; /* 限制寬度 */
-}
-/*快速搜尋*/
-#searchInput1 {
-  padding: 6px 10px;
-  width: 100%;
-  font-size: 14px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-  max-width: 250px; /* 限制寬度 */
-}
-/*快速搜尋*/
-#searchFirst {
-  padding: 6px 10px;
-  width: 100%;
-  font-size: 14px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-  max-width: 250px; /* 限制寬度 */
-}
-/*快速搜尋*/
-#searchSecond {
-  padding: 6px 10px;
-  width: 100%;
-  font-size: 14px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-  max-width: 250px; /* 限制寬度 */
-}
-/*快速搜尋*/
-#searchThird {
-  padding: 6px 10px;
-  width: 100%;
-  font-size: 14px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-  max-width: 250px; /* 限制寬度 */
-}
-/*快速搜尋*/
-.quick-search-label {
-  font-weight: 600;
-  margin-right: 8px;
-  font-size: 16px;
-  color: #3399ff;
-  vertical-align: middle;
-}
-
-#searchContainer {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-/* 黃色高亮（柔和） */
-.highlight {
-  background-color: #fff9c0;
-  font-weight: bold;
-  border-radius: 3px;
-  padding: 2px 4px;
-}
-
-/* 黃色高亮（高亮） */
-.highlight2 {
-  background-color: #fff9c0;
-  font-weight: bold;
-  border-radius: 3px;
-  padding: 2px 4px;
-}
-
-/* 篩選標籤 */
-.filter-label {
-  font-weight: bold;
-  color: #267acc;
-  margin-right: 8px;
-}
-.filter-btn {
-  background: #e6f0ff;
-  border: 1px solid #3399ff;
-  color: #267acc;
-  border-radius: 4px;
-  padding: 4px 12px;
-  margin: 2px 4px 2px 0;
-  cursor: pointer;
-  font-size: 14px;
-  width: 80px;
-  text-align: center;
-  transition: background 0.2s, color 0.2s;
-}
-.filter-btn:hover,
-.filter-btn.active {
-  background: #fff9c0;
-  color: #b8860b;
-  border: 1.5px solid #ffe066;
-}
-.filter-row {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 8px;
-  align-items: start;
+.card-item h3 {
+  color: var(--primary-blue);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   margin-bottom: 12px;
-}
-
-.filter-label {
-  font-weight: bold;
-  color: #267acc;
-  padding-top: 4px;
-  white-space: nowrap;
-}
-
-.filter-btns {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-}
-
-/* 清除篩選按鈕 */
-.clear-btn {
-  background: #ffefc0;
-  border: 1px solid #ffc107;
-  color: #b8860b;
-  border-radius: 4px;
-  padding: 4px 12px;
-  margin-top: 8px;
-  cursor: pointer;
-  font-size: 14px;
-  transition: background 0.2s, color 0.2s;
-}
-
-.clear-btn:hover {
-  background: #ffc107;
-  color: #fff;
-}
-/* 快速搜尋樣式 */
-.accordion {
-  border: 1px solid #b3d8ff;
-  border-radius: 8px;
-  margin-bottom: 20px;
-  background: #f5faff;
-}
-
-.accordion-header {
-  color: #267acc;
-  margin: 0;
-  padding: 12px 16px;
-  cursor: pointer;
-  font-size: 16px;
-  font-weight: bold;
-  background: #f5faff;
-  border-radius: 8px 8px 0 0;
-  user-select: none;
-  transition: background 0.3s;
-}
-
-.accordion-header:hover {
-  background: #b3d8ff;
-}
-
-.accordion-content {
-  padding: 12px 16px;
-    margin-top: 6px;
-  display: block; /* 預設展開 */
-}
-
-.accordion.collapsed .accordion-content {
-  display: none; /* 收合 */
-}
-
-.accordion.collapsed .accordion-header::after {
-  content: "▸"; /* 收合箭頭 */
-}
-
-.accordion-header::after {
-  content: "▾"; /* 展開箭頭 */
-  float: right;
-}
-
-.filter-label {
-  font-weight: bold;
-  color: #267acc;
-  margin-right: 8px;
-}
-.filter-btn {
-  background: #e6f0ff;
-  border: 1px solid #3399ff;
-  color: #267acc;
-  border-radius: 4px;
-  padding: 4px 12px;
-  margin: 2px 4px 2px 0;
-  cursor: pointer;
-  font-size: 14px;
-  width: 80px;
+  padding-bottom: 8px;
   text-align: center;
-  transition: background 0.2s, color 0.2s;
-}
-.filter-btn:hover,
-.filter-btn.active {
-  background: #fff9c0;
-  color: #b8860b;
-  border: 1.5px solid #ffe066;
-}
-.filter-row {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 8px;
-  align-items: start;
-  margin-bottom: 12px;
 }
 
-.filter-label {
-  font-weight: bold;
-  color: #267acc;
-  padding-top: 4px;
-  white-space: nowrap;
-}
-
-.filter-btns {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-}
-.clear-btn {
-  background: #ffefc0;
-  border: 1px solid #ffc107;
-  color: #b8860b;
-  border-radius: 4px;
-  padding: 4px 12px;
-  margin-top: 8px;
-  cursor: pointer;
-  font-size: 14px;
-}
-.clear-btn:hover {
-  background: #ffc107;
-  color: #fff;
-}
-
-/* Modal 遮罩 */
+/* Modal */
 #modalOverlay {
   display: none;
   position: fixed;
   top: 0; left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(0,0,0,0.5);
+  width: 100vw; height: 100vh;
+  background-color: rgba(6, 11, 19, 0.85);
+  backdrop-filter: blur(8px);
   z-index: 2000;
 }
 
-/* Modal 內容框 */
 #modalBox {
-  width: 80vw;
   display: none;
   position: fixed;
-  top: 50%; left: 50%;
+  top: 55%; left: 50%;
   transform: translate(-50%, -50%);
-  background: white;
-  border-radius: 8px;
-  padding: 10px 5px;
-  max-width: 400px;
-  max-height: 80vh;
+  width: 88vw;
+  max-width: 620px;
+  max-height: 75vh;
   overflow-y: auto;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
   z-index: 2001;
+  background: linear-gradient(135deg, rgba(20, 35, 60, 0.98), rgba(10, 20, 35, 0.98));
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 28px;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
+  color: var(--text-main);
+  padding: 30px 20px;
 }
 
-#modalBox h2 {
-  margin-top: 0;
-  margin-bottom: 15px;
-  font-size: 24px;
-  color: #3399ff;
-  text-align: center;
-}
-
-#modalBox p {
-  margin: 6px 0;
-  font-size: 16px;
-}
-
-#modalBox .close-btn {
-  position: absolute;
-  top: 10px; right: 15px;
+.hero-name {
+  color: var(--primary-blue);
   font-size: 28px;
-  color: #666;
+  font-weight: 800;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 15px;
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+.hero-column {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 18px;
+  border-radius: 16px;
+  margin-bottom: 10px;
+}
+
+.hero-column p strong {
+  color: var(--primary-blue);
+  margin-right: 8px;
+}
+
+.close-btn {
+  position: absolute;
+  top: 15px; right: 20px;
+  font-size: 32px;
+  color: rgba(255, 255, 255, 0.5);
   cursor: pointer;
-  font-weight: bold;
+  transition: all 0.2s;
 }
 
-#modalBox .close-btn:hover {
-  color: #3399ff;
+.close-btn:hover {
+  color: var(--primary-blue);
+  transform: rotate(90deg);
 }
 
-/* Modal 英雄名稱置中 */
-.hero-name {
-  text-align: center;
-  font-size: 24px;
-  color: #3399ff;
-  margin-bottom: 15px;
-  border-bottom: 1px solid #ddd;
-  padding-bottom: 8px;
-}
-
-/* Modal 容器 */
-.hero-details-container {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 20px;
-  padding: 10px;
-  width: 100%;
-  margin: 0 auto;
-  box-sizing: border-box;
-}
-
-/* 單一內容區塊 */
-.hero-column {
-  flex: 1 1 250px;
-  background-color: #f9f9f9;
-  padding: 20px;
-  border-radius: 6px;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
-  text-align: left; /* 改回靠左對齊 */
-}
-
-/* 圖片樣式 */
-.hero-image {
-  display: block;
-  margin: 0 auto;
-  max-width: 100%;
-  height: auto;
-  object-fit: contain;
-}
-
-
-/* 下欄樣式 */
-.hero-column-details {
-  flex: 0 0 90%;             /* 彈性成長，基底寬度48% */
-  min-width: 250px;          /* 最小寬度限制，避免太小擠壓 */
-  box-sizing: border-box;    /* 包含 padding、border */
-  background-color: #f9f9f9; /* 可選：輕微背景色區分 */
-  padding: 20px 20px;
-  border-radius: 6px;        /* 可選：圓角讓框框好看 */
-  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
-}
-#modalContent {
-  padding: 10px;
-  font-size: 16px;
-  color: #333;
-  width: 100%;
-  line-height: 1.5;
-  background-color: #fff;
-  border-radius: 6px;
-  box-sizing: border-box;
-}
-/* 彈窗內容基礎樣式 */
-.hero-details-container {
-    display: flex;
-    gap: 20px; /* 內容與圖片之間的間距 */
-    align-items: flex-start; /* 頂部對齊 */
-}
-
-.hero-column {
-    flex: 1;
-    min-width: 0;
-}
-
-.details-text-column {
-    flex: 2; /* 讓文字欄位寬度大於圖片欄位 */
-}
-
-.image-column {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-}
-
-/* 確保圖片在容器內正常顯示 */
-.hero-image {
-    max-width: 100%;
-    height: auto;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-}
-
-/* 標題與分區間距 */
-.hero-name {
-    margin-top: 0;
-    margin-bottom: 15px;
-    border-bottom: 2px solid #eee;
-    padding-bottom: 5px;
-}
-
-.property-section, .drop-section {
-    margin-top: 15px;
-    padding-top: 5px;
-    border-top: 1px dashed #eee;
-}
-
-h3 {
-    color: #333;
-    margin-bottom: 5px;
-    font-size: 1.1em;
-}
-
-/* =========================================
-   手機版卡片樣式
-   ========================================= */
-#card-equip-container {
-  display: none; /* 預設隱藏，由媒體查詢控制 */
-  flex-direction: column;
-  gap: 15px;
-  margin-top: 20px;
-}
-
-.card-item {
-  background: white;
-  border: 1px solid #b3d8ff;
-  border-radius: 8px;
-  padding: 15px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-}
-
-.card-item h3 {
-  margin: 0 0 10px 0;
-  color: #3399ff;
-  border-bottom: 1px solid #eee;
-  padding-bottom: 8px;
-  font-size: 1.2rem;
-  text-align: center;
-}
-
-.card-item p {
-  margin: 5px 0;
-  font-size: 14px;
-  line-height: 1.4;
-}
-
-.card-item strong {
-  color: #267acc;
-  margin-right: 5px;
-}
-
-/* =========================================
-   響應式切換
-   ========================================= */
 @media (max-width: 768px) {
-  table#card-equip-table {
-    display: none;
+  #card-equip-table, #card-equip-table-container {
+    display: none !important;
   }
-
   #card-equip-container {
     display: flex;
-  }
-  
-  /* 搜尋框與篩選器在手機上的調整 */
-  #searchContainer {
-    flex-direction: column;
-    align-items: stretch;
-  }
-  
-  #searchInput, #searchInput1, #searchFirst, #searchSecond, #searchThird {
-    max-width: none;
-  }
-
-  .filter-row {
-    grid-template-columns: 1fr;
-  }
-  
-  .filter-btn {
-    flex: 1 1 70px;
-  }
-
-  #modalBox {
-    width: 85vw;
-    max-height: 75vh;
-    padding: 15px;
-    border-radius: 12px;
-  }
-
-  .hero-details-container {
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .hero-column {
-    padding: 15px;
   }
 }
