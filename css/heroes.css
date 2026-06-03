@@ -129,6 +129,16 @@
   color: #000;
 }
 
+/* 搜尋字詞高亮 */
+.highlight {
+  background-color: rgba(255, 216, 107, 0.3); /* 半透明黃色底 */
+  color: var(--highlight-yellow);
+  font-weight: bold;
+  border-radius: 4px;
+  padding: 2px 4px;
+  text-shadow: 0 0 8px rgba(255, 216, 107, 0.4);
+}
+
 /* 表格樣式 */
 #hero-table-container {
   background: var(--glass-bg);
