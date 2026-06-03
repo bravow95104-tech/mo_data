@@ -1,326 +1,252 @@
-/* 全站基本樣式 */
+/* 全站基本樣式 - 升級為深色玻璃擬態風格 (Glassmorphism) */
+
+:root {
+    --primary-blue: #4da3ff;
+    --primary-dark: #1e4b8a;
+    --glass-bg: rgba(255, 255, 255, 0.03);
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --text-main: #f7fbff;
+    --text-muted: rgba(247, 251, 255, 0.7);
+    --bg-dark: #060b13;
+}
+
 body {
-    background-color: #f0f4f8; /* 稍深一點的底色減少刺眼感 */
+    background-color: var(--bg-dark);
+    /* 現代深邃藍漸層背景 */
     background-image: 
-        /* 現代科技感：微弱的點狀格線 */
-        radial-gradient(rgba(51, 153, 255, 0.1) 1px, transparent 1px),
-        /* 背景漸層：讓畫面有深度 */
-        radial-gradient(at 0% 0%, rgba(51, 153, 255, 0.05) 0px, transparent 50%),
-        radial-gradient(at 100% 100%, rgba(51, 153, 255, 0.05) 0px, transparent 50%);
-    background-size: 30px 30px, 100% 100%, 100% 100%;
+        radial-gradient(circle at 20% 30%, rgba(18, 61, 110, 0.25) 0%, transparent 45%),
+        radial-gradient(circle at 80% 70%, rgba(51, 153, 255, 0.15) 0%, transparent 45%),
+        /* 科技感點狀格線 */
+        radial-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 100% 100%, 100% 100%, 30px 30px;
     background-attachment: fixed;
     margin: 0;
     -webkit-text-size-adjust: 100%;
-    /* 🚀 修正：頂部留出導覽列高度 (60px) + 內容間距 (30px) = 90px */
-    padding: 90px 40px 30px 40px;
-    font-family: "Microsoft JhengHei", sans-serif;
+    /* 頂部留出導覽列高度 */
+    padding: 100px 40px 30px 40px;
+    font-family: "Noto Sans TC", "Microsoft JhengHei", system-ui, -apple-system, sans-serif;
+    color: var(--text-main);
 }
 
-/* 🚀 導覽列樣式已移至 nav.css */
-
-/* 回到頂部按鈕 */
+/* 回到頂部按鈕 - 升級風格 */
 #backToTop {
     position: fixed;
     bottom: 30px;
     right: 30px;
     display: none;
-    background-color: #3399ff;
+    background: linear-gradient(135deg, var(--primary-blue), var(--primary-dark));
     color: white;
-    border: none;
-    padding: 12px 16px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
     font-size: 18px;
     cursor: pointer;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-    transition: background-color 0.3s ease;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     z-index: 1000;
 }
 
 #backToTop:hover {
-    background-color: #267acc;
+    transform: translateY(-5px) scale(1.1);
+    box-shadow: 0 12px 25px rgba(77, 163, 255, 0.3);
 }
 
-/* ✅ 內容與側邊欄總容器 (修正桌機版佈局) */
+/* ✅ 內容與側邊欄總容器 */
 #content-wrapper {
     display: flex !important;
     flex-direction: row !important;
-    flex-wrap: nowrap !important; /* 核心修正：桌機強制不換行 */
+    flex-wrap: nowrap !important;
     align-items: flex-start;
     justify-content: center;
-    max-width: 1400px;
-    width: 98% !important;
+    max-width: 1440px;
+    width: 100% !important;
     margin: 0 auto;
     padding: 0;
     gap: 30px;
 }
 
-/* ✅ 左側主內容 */
-#content {
-    flex: 0 1 850px !important; /* 控制內容寬度 */
-    max-width: 850px;
-    background: white;
-    padding: 30px 30px;
-    /* 內部 padding 調整為 30px */
-    border-radius: 12px;
-    border: 1px solid rgba(51, 153, 255, 0.1);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-#content:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 30px rgba(51, 153, 255, 0.1);
-}
-
-/* ✅ 右側側邊欄容器 */
-#sidebar-container {
-    flex: 0 0 380px !important; /* 固定側邊欄寬度 */
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-}
-
-/* ✅ 右側側邊欄 */
+/* ✅ 核心玻璃擬態區塊 (主內容、更新日誌、側邊欄) */
+#content, 
+#changelog, 
 .sidebar {
-    background: white;
-    padding: 30px 30px;
-    /* 內部 padding 調整為 30px */
-    border-radius: 12px;
-    border: 1px solid rgba(51, 153, 255, 0.1);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background: var(--glass-bg) !important;
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid var(--glass-border) !important;
+    border-radius: 24px !important;
+    padding: 35px !important;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25) !important;
+    transition: all 0.4s ease !important;
 }
 
+#content:hover, 
+#changelog:hover, 
 .sidebar:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 30px rgba(51, 153, 255, 0.1);
+    transform: translateY(-4px);
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(77, 163, 255, 0.3) !important;
+    box-shadow: 0 20px 45px rgba(77, 163, 255, 0.1) !important;
 }
 
+/* 標題樣式升級 */
+#changelog h2, 
 .sidebar h2 {
-    font-size: 1.4rem;
-    margin-bottom: 20px;
-    border-bottom: 2px solid #3399ff;
-    padding-bottom: 8px;
-    color: #267acc;
+    font-size: 1.6rem;
+    margin-top: 0;
+    margin-bottom: 25px;
+    border-bottom: 2px solid rgba(77, 163, 255, 0.3);
+    padding-bottom: 12px;
+    color: var(--primary-blue);
+    letter-spacing: 0.05em;
+    text-shadow: 0 0 15px rgba(77, 163, 255, 0.2);
 }
 
+/* 列表樣式調整 */
+.changelog-list, 
 .sidebar-list {
     list-style: none;
     padding: 0;
     margin: 0;
 }
 
+.changelog-list li, 
 .sidebar-list li {
     display: flex;
     align-items: flex-start;
-    padding: 12px 0;
-    border-bottom: 1px solid #e1e7ef;
+    padding: 16px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     font-size: 1rem;
-    color: #333;
-    line-height: 1.5;
+    color: var(--text-muted);
+    line-height: 1.6;
 }
 
+.changelog-list li:last-child, 
 .sidebar-list li:last-child {
     border-bottom: none;
 }
 
-/* 內容區塊的日期標籤樣式 (保持不變) */
+/* 日期與標籤樣式 - 呼應導覽列深藍色 */
+.changelog-list .date, 
 .sidebar-list .date,
 .sidebar-list .date2 {
     flex-shrink: 0;
-    width: 110px;
-    background-color: #3399ff;
-    color: white;
-    font-family: "Courier New", Courier, monospace;
+    width: 105px;
+    background: linear-gradient(135deg, #1e4b8a, #0d2a54);
+    color: #ffffff;
+    font-family: "JetBrains Mono", "Courier New", monospace;
     font-weight: 600;
-    font-size: 0.9rem;
-    padding: 4px 8px;
-    border-radius: 6px;
+    font-size: 0.85rem;
+    padding: 6px 4px;
+    border-radius: 8px;
     text-align: center;
     margin-right: 20px;
-    user-select: none;
-    box-shadow: 0 2px 8px rgba(51, 153, 255, 0.3);
-    border: 1px solid #1c7ed6;
+    border: 1px solid rgba(77, 163, 255, 0.2);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 .sidebar-list .date2 {
-    background-color: #5aa9ff;
-    border: 1px solid #a3d0ff;
+    background: linear-gradient(135deg, #2a5a9e, #1a3c75);
+    text-decoration: none;
+    display: inline-block;
 }
 
-/* ✅ 更新日誌區塊 (保持一致性調整) */
-#changelog {
-    flex: 1;
-    background: white;
-    padding: 30px 30px;
-    border-radius: 12px;
-    border: 1px solid rgba(51, 153, 255, 0.1);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+.sidebar-list .date2:hover {
+    color: #ffd86b;
+    border-color: rgba(255, 216, 107, 0.4);
 }
 
-#changelog:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 30px rgba(51, 153, 255, 0.1);
-}
-
-#changelog h2 {
-    font-size: 1.6rem;
-    margin-bottom: 20px;
-    border-bottom: 2px solid #3399ff;
-    padding-bottom: 8px;
-    color: #267acc;
-}
-
-.changelog-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.changelog-list li {
-    display: flex;
-    align-items: flex-start;
-    padding: 12px 0;
-    border-bottom: 1px solid #e1e7ef;
-    font-size: 1rem;
-    color: #333;
-    line-height: 1.5;
-}
-
-.changelog-list li:last-child {
-    border-bottom: none;
-}
-
-/* changelog 的日期標籤樣式 (保持不變) */
-.changelog-list .date,
-.changelog-list .tips {
-    flex-shrink: 0;
-    width: 110px;
-    background-color: #3399ff;
-    color: white;
-    font-family: "Courier New", Courier, monospace;
-    font-weight: 600;
-    font-size: 0.9rem;
-    padding: 4px 8px;
-    border-radius: 6px;
-    text-align: center;
-    margin-right: 20px;
-    user-select: none;
-    box-shadow: 0 2px 8px rgba(51, 153, 255, 0.3);
-}
-
-.changelog-list .tips {
-    background-color: #41bb4b;
-}
-
-/* changelog 的日期標籤樣式 (保持不變) */
+.changelog-list .tips, 
 .sidebar-list .tips {
     flex-shrink: 0;
-    width: 110px;
-    background-color: #3399ff;
-    color: white;
-    font-family: "Courier New", Courier, monospace;
+    width: 105px;
+    background: linear-gradient(135deg, #2d7a31, #1b4d1e);
+    color: #ffffff;
     font-weight: 600;
-    font-size: 0.9rem;
-    padding: 4px 8px;
-    border-radius: 6px;
+    font-size: 0.85rem;
+    padding: 6px 4px;
+    border-radius: 8px;
     text-align: center;
     margin-right: 20px;
-    user-select: none;
-    box-shadow: 0 2px 8px rgba(51, 153, 255, 0.3);
+    border: 1px solid rgba(100, 255, 100, 0.2);
 }
 
-.sidebar-list li:last-child {
-    border-bottom: none;
-}
-
-.sidebar-list .tips {
-    background-color: #41bb4b;
-}
-
-/* 分頁按鈕樣式 */
+/* 分頁按鈕樣式升級 */
 .pagination-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 20px;
-    padding-top: 15px;
-    border-top: 1px solid #e1e7ef;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .pagination-container button {
-    background-color: #3399ff;
-    color: white;
-    border: none;
-    padding: 6px 12px;
-    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.08);
+    color: var(--text-main);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 8px 16px;
+    border-radius: 12px;
     cursor: pointer;
     font-size: 14px;
-    transition: background-color 0.2s;
+    transition: all 0.2s;
+    margin: 0 5px;
 }
 
-.pagination-container button:hover {
-    background-color: #267acc;
+.pagination-container button:hover:not(:disabled) {
+    background: var(--primary-blue);
+    border-color: var(--primary-blue);
+    transform: translateY(-2px);
 }
 
 .pagination-container button:disabled {
-    background-color: #ccc;
+    opacity: 0.3;
     cursor: not-allowed;
 }
 
-/* ✅ 內容與側邊欄容器 */
-
-.info-wrapper {
-    display: flex;
-    justify-content: flex-end;
-}
-
+/* 特別資訊提示框 */
 .Information {
-    background: #ffefc0;
-    border: 1px solid #ffc107;
-    color: #b8860b;
-    border-radius: 6px;
-    padding: 8px 14px;
+    background: rgba(255, 216, 107, 0.1);
+    border: 1px solid rgba(255, 216, 107, 0.3);
+    color: #ffd86b;
+    border-radius: 12px;
+    padding: 10px 18px;
     font-size: 14px;
-    cursor: default;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    backdrop-filter: blur(5px);
 }
 
-/*注意資料*/
-h3.search-tip {
-    font-size: 1.0rem;
-    margin-bottom: 20px;
-    padding-bottom: 8px;
-    color: #267acc;
-}
-
-
-/* === 手機版響應式佈局 (Media Query) === */
-@media (max-width: 768px) {
-    /* 讓 body 在手機版左右縮小一點點間距，但內容撐滿 */
-    body {
-        padding: 80px 10px 30px 10px !important;
-    }
-
-    /* 讓左右內容變成垂直堆疊，並解除壓縮感 */
+/* === 手機版響應式佈局 === */
+@media (max-width: 1024px) {
     #content-wrapper {
         flex-direction: column !important;
-        padding: 0 !important;
-        gap: 20px !important;
+        align-items: stretch;
+        padding: 0 10px;
+    }
+    
+    #sidebar-container {
         width: 100% !important;
-        max-width: 100% !important;
+        flex: none !important;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        padding: 90px 15px 30px 15px !important;
     }
 
-    /* 強制所有區塊撐滿 100% 寬度，防止「背脊壓縮」 */
     #content, 
     #changelog, 
-    .sidebar, 
-    #sidebar-container {
-        flex: none !important;
-        width: 100% !important;
-        max-width: 100% !important;
-        box-sizing: border-box !important;
-        margin: 0 auto !important;
+    .sidebar {
+        padding: 25px 20px !important;
+        border-radius: 20px !important;
+    }
+
+    .changelog-list .date, 
+    .sidebar-list .date,
+    .changelog-list .tips, 
+    .sidebar-list .tips {
+        width: 80px;
+        font-size: 0.75rem;
+        margin-right: 12px;
     }
 }
