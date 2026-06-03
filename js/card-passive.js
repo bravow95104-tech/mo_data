@@ -103,7 +103,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       if (cardContainer) cardContainer.style.display = 'flex';
     } else {
       renderTable(lastFilteredData, keyword);
-      if (tableContainer) tableContainer.style.display = 'table';
+      if (tableContainer) tableContainer.style.display = 'block';
       if (cardContainer) cardContainer.style.display = 'none';
     }
   }
@@ -276,6 +276,4 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   if (closeModalBtn) closeModalBtn.addEventListener('click', closeModal);
   if (modalOverlay) modalOverlay.addEventListener('click', closeModal);
-});
-dal);
 });

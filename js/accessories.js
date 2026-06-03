@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     attr: null
   };
 
-  // 🔹 輔助函式：處理 NULL 值 (必須放在最上方，避免 TDZ 錯誤)
+  // 🔹 輔助函式：處理 NULL 值
   const getVal = (v) => (v === null || v === undefined || String(v).trim() === "") ? "-" : v;
 
   // 🔹 提前初始化 DOM 元素
@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   const modalBox = document.getElementById('modalBox');
   const modalContent = document.getElementById('modalContent');
   const closeModalBtn = document.querySelector('.close-btn');
-  const tableContainer = document.getElementById('heroes-table');
+  const tableContainer = document.getElementById('hero-table-container');
   const cardContainer = document.getElementById('hero-card-container');
   const searchInput = document.getElementById('searchInput');
 
@@ -114,7 +114,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       if (cardContainer) cardContainer.style.display = 'flex';
     } else {
       renderTable(lastFilteredData);
-      if (tableContainer) tableContainer.style.display = 'table';
+      if (tableContainer) tableContainer.style.display = 'block';
       if (cardContainer) cardContainer.style.display = 'none';
     }
   }
@@ -226,7 +226,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       const highlight = (text) => {
         if (!highlightKey || text === "-") return text;
         const regex = new RegExp(`(${highlightKey.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
-        return String(text).replace(regex, '<span class="highlight2">$1</span>');
+        return String(text).replace(regex, '<span class="highlight">$1</span>');
       };
 
       const cardHeader = document.createElement('div');

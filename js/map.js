@@ -120,7 +120,7 @@ window.openMapDetail = function (mapId) {
                 <p><strong>防禦：</strong>${item.def || "-"}　<strong>閃避：</strong>${item.dodge || "-"}</p>
             </div>
             ${hasDrop ? `
-                <div class="hero-column-details">
+                <div class="hero-column-details section-gap">
                     <p><strong>掉落物品：</strong></p>
                     ${item.drop_rubbish ? `<p class="align-row"><strong>◢ 垃圾：</strong><span>${item.drop_rubbish}</span></p>` : ""}
                     ${item.drop_equidcard ? `<p class="align-row"><strong>◢ 裝備卡：</strong><span>${formatTieredContent(item.drop_equidcard, false, 'equip')}</span></p>` : ""}
@@ -131,7 +131,7 @@ window.openMapDetail = function (mapId) {
                     ${item.drop_othrt ? `<p class="align-row"><strong>◢ 其他：</strong><span>${formatTieredContent(item.drop_othrt)}</span></p>` : ""}
                 </div>` : ""
       }
-            <div class="hero-column-details">
+            <div class="hero-column-details section-gap">
                 <p><strong>光輝資訊：</strong></p>
                 <p class="align-row"><strong>◢ 掉落較高：</strong><span>${item.drop_glory_high || "-"}</span></p>
                 <p class="align-row"><strong>◢ 掉落較低：</strong><span>${item.drop_glory_low || "-"}</span></p>
@@ -144,7 +144,7 @@ window.openMapDetail = function (mapId) {
         <h2 class="hero-name">${item.mapid}</h2>
         <img src="${autoImagePath}" class="hero-image" onerror="this.style.display='none'" />
         ${(showApproach || showExplain) ?
-      `<div class="hero-column-details">${detailsHTML}</div>` :
+      `<div class="hero-column-details section-gap">${detailsHTML}</div>` :
       ""
     }
         ${combatAndDropHTML}
