@@ -313,7 +313,7 @@ function showDetailModal(item) {
           <p><strong>屬性：</strong>${item.card_property} + ${item.card_data}</p>
           <p><strong>倍率：</strong>${item.nemultiplier || item.multiplier || '-'}</p>
           <p><strong>專屬英雄：</strong>${item.hero_name}</p>
-          <hr style="margin: 15px 0; border: 0; border-top: 1px solid #ddd;">
+          <hr style="margin: 15px 0; border: 0; border-top: 1px solid rgba(255,255,255,0.1);">
           <p><strong>掉落地圖：</strong>${displayDrop}</p>
         </div>
       </div>

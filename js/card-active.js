@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     }, 150);
   });
   
-  const tableContainer = document.getElementById('card-equip-table');
+  const tableContainer = document.getElementById('card-equip-table-container');
   const cardContainer = document.getElementById('card-equip-container');
   const modalOverlay = document.getElementById('modalOverlay');
   const modalBox = document.getElementById('modalBox');
