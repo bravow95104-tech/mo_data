@@ -26,8 +26,9 @@ function initComboPage(data) {
   const searchInput = document.getElementById("searchInput");
   const filterBtns = document.querySelectorAll(".filter-btn");
   const clearBtn = document.getElementById("clearFilters");
+  const filterAccordion = document.querySelector("#filterContainer");
 
-  // ✅ 加入 equipmentType1 篩選陣列
+  // ✅ 篩選陣列 (對應 HTML data-type)
   let activeFilters = { promotion: [], commonly: [], category: [], equipmenttype1: [] };
 
   function renderList() {
@@ -88,14 +89,14 @@ function initComboPage(data) {
 
     // 無結果
     if (filtered.length === 0) {
-      comboList.innerHTML = `<p style="text-align:center;color:#777;">查無符合條件的資料</p>`;
+      comboList.innerHTML = `<div style="grid-column: 1/-1; text-align:center; padding: 40px; color: var(--text-muted); background: var(--glass-bg); border-radius: 16px;">查無符合條件的組合</div>`;
       return;
     }
 
     // 渲染結果卡片
     filtered.forEach(item => {
       const card = document.createElement("div");
-      card.className = "combo-card active";
+      card.className = "combo-card";
 
       const equipDisplay = [item.equipmenttype1, item.equipmenttype2].filter(Boolean).join(" / ") || "—";
 
@@ -139,7 +140,7 @@ function initComboPage(data) {
   // 🎯 篩選按鈕
   filterBtns.forEach(btn => {
     btn.addEventListener("click", () => {
-      const type = btn.dataset.type;   // 取得 data-type
+      const type = btn.dataset.type;
       const value = btn.dataset.value;
 
       btn.classList.toggle("active");
@@ -158,17 +159,17 @@ function initComboPage(data) {
     activeFilters = { promotion: [], commonly: [], category: [], equipmenttype1: [] };
     filterBtns.forEach(btn => btn.classList.remove("active"));
     searchInput.value = "";
-    console.log("✅ 清除篩選", activeFilters);
     renderList();
   });
 
   // 🪄 初始化渲染
   renderList();
 
-  // 📂 Accordion 展開／收合（事件代理避免漏綁）
-  comboList.addEventListener("click", e => {
-    if (e.target.classList.contains("accordion-header")) {
-      e.target.parentElement.classList.toggle("collapsed");
-    }
-  });
+  // 📂 Accordion 展開／收合
+  if (filterAccordion) {
+    const header = filterAccordion.querySelector(".accordion-header");
+    header.addEventListener("click", () => {
+      filterAccordion.classList.toggle("collapsed");
+    });
+  }
 }
