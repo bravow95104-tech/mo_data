@@ -189,17 +189,45 @@ th.sort-desc .caret-down {
 
 /* Modal 彈出視窗 */
 #modalOverlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
   background-color: rgba(6, 11, 19, 0.85);
   backdrop-filter: blur(8px);
+  z-index: 2000;
 }
 
 #modalBox {
-  background: linear-gradient(135deg, rgba(20, 35, 60, 0.95), rgba(10, 20, 35, 0.95));
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 24px;
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 92vw;
+  max-width: 700px;
+  max-height: 85vh;
+  overflow-y: auto;
+  z-index: 2001;
+  background: linear-gradient(135deg, rgba(20, 35, 60, 0.98), rgba(10, 20, 35, 0.98));
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 28px;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
   color: var(--text-main);
-  padding: 20px;
+  padding: 30px 20px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--primary-blue) transparent;
+}
+
+/* 自定義捲軸樣式 (Chrome/Safari) */
+#modalBox::-webkit-scrollbar {
+  width: 6px;
+}
+#modalBox::-webkit-scrollbar-thumb {
+  background: var(--primary-blue);
+  border-radius: 10px;
 }
 
 .hero-name {
@@ -209,6 +237,19 @@ th.sort-desc .caret-down {
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   padding-bottom: 15px;
   margin-bottom: 25px;
+  text-align: center;
+}
+
+.hero-details-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 5px;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  box-sizing: border-box;
 }
 
 .hero-column-base {
@@ -216,19 +257,45 @@ th.sort-desc .caret-down {
   border: 1px solid rgba(255, 255, 255, 0.05);
   padding: 20px;
   border-radius: 16px;
+  box-sizing: border-box;
+}
+
+.hero-column {
+  flex: 1 1 300px;
+}
+
+.hero-column-details,
+.hero-playerdata {
+  flex: 1 1 100%;
+}
+
+.hero-column-base p {
+  margin: 10px 0;
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--text-muted);
 }
 
 .hero-column-base p strong {
   color: var(--primary-blue);
+  margin-right: 8px;
 }
 
 #modalBox .close-btn {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 32px;
   color: rgba(255, 255, 255, 0.5);
-  transition: color 0.2s;
+  cursor: pointer;
+  transition: all 0.2s;
+  line-height: 1;
+  z-index: 2002;
 }
 
 #modalBox .close-btn:hover {
-  color: white;
+  color: var(--primary-blue);
+  transform: rotate(90deg);
 }
 
 /* 手機版卡片 */
