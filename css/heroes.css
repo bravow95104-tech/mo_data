@@ -730,7 +730,7 @@ h1.heroes-page-title {
 }
 
 #heroes-table thead th {
-  top: calc(var(--nav-offset, 58px) - 10px);
+  top: var(--nav-offset, 58px);
   background: linear-gradient(180deg, rgba(36, 56, 92, 0.98), rgba(18, 31, 55, 0.98));
   color: #f6fbff;
   border-color: rgba(140, 184, 255, 0.12);
@@ -738,6 +738,9 @@ h1.heroes-page-title {
   font-size: 12px;
   letter-spacing: 0.03em;
   text-transform: uppercase;
+  white-space: nowrap;
+  height: 46px;
+  vertical-align: middle;
 }
 
 #heroes-table thead th:first-child,
