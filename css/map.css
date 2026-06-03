@@ -191,12 +191,109 @@
 }
 
 /* 4. 欄位設定選單 */
+.column-settings-container {
+  position: relative;
+  display: inline-block;
+}
+
 .column-settings-menu {
+  display: none; /* 預設隱藏 */
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 0;
+  width: 280px;
   background: linear-gradient(135deg, rgba(20, 35, 60, 0.98), rgba(10, 20, 35, 0.98));
   border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 16px;
   color: var(--text-main);
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+  padding: 18px;
+  z-index: 1100;
+  backdrop-filter: blur(12px);
+}
+
+.column-settings-menu.active {
+  display: block; /* 點擊後顯示 */
+  animation: navDropIn 0.25s ease-out;
+}
+
+.menu-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 10px;
+}
+
+.menu-header h4 {
+  margin: 0;
+  color: var(--primary-blue);
+  font-size: 1rem;
+}
+
+#columnCheckboxes {
+  max-height: 250px;
+  overflow-y: auto;
+  margin-bottom: 15px;
+}
+
+#columnCheckboxes label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 5px;
+  cursor: pointer;
+  font-size: 14px;
+  color: var(--text-muted);
+  transition: color 0.2s;
+}
+
+#columnCheckboxes label:hover {
+  color: white;
+}
+
+#columnCheckboxes input[type="checkbox"] {
+  accent-color: var(--primary-blue);
+  width: 16px;
+  height: 16px;
+}
+
+.menu-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.text-btn-sm {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-size: 12px;
+  cursor: pointer;
+  padding: 4px 8px;
+}
+
+.text-btn-sm:hover {
+  color: var(--primary-blue);
+}
+
+.primary-btn-sm {
+  background: var(--primary-blue);
+  border: none;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.primary-btn-sm:hover {
+  background: #267acc;
+  transform: translateY(-1px);
 }
 
 .menu-header h4 {
