@@ -1,35 +1,56 @@
 /* ============================================================
-   英雄料理數值頁面專用樣式 (heromeal.css)
+   英雄料理與通用 UI 樣式 (heromeal.css) - 升級為玻璃擬態風格
    ============================================================ */
+
+:root {
+  --primary-blue: #4da3ff;
+  --primary-dark: #1e4b8a;
+  --glass-bg: rgba(255, 255, 255, 0.04);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --text-main: #f7fbff;
+  --text-muted: rgba(247, 251, 255, 0.7);
+}
 
 /* --- 基礎 UI 與 動畫 --- */
 .toggle-icon:focus {
   outline: none;
   box-shadow: none;
 }
+
 .card-header {
-  background: #1976d2;
+  background: linear-gradient(135deg, var(--primary-blue), var(--primary-dark));
   color: #fff;
-  padding: 12px 20px;
-  border-radius: 10px 10px 0 0;
+  padding: 14px 20px;
+  border-radius: 16px 16px 0 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
   font-size: 1.15em;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: 1px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
-.card-header .card-title { color: #fff; }
-.card-header .card-toggle {
-  background: transparent;
-  border: none;
+
+.card-header .card-title {
   color: #fff;
-  font-size: 1.2em;
-  cursor: pointer;
-  padding: 0 4px;
-  margin-left: 8px;
-  transition: color 0.2s;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
+
+.card-header .card-toggle {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 6px 10px;
+  border-radius: 8px;
+  transition: all 0.2s;
+}
+
+.card-header .card-toggle:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
 .card-header .toggle-icon {
   display: inline-block;
   transition: transform 0.3s;
@@ -38,61 +59,77 @@
 .card-content {
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  background: rgba(0, 0, 0, 0.2);
 }
+
 .card-ui.open .card-content {
-  max-height: none;
+  max-height: 2000px; /* 足夠大的值 */
   overflow: visible;
 }
-.card-ui.open .toggle-icon { transform: rotate(180deg); }
+
+.card-ui.open .toggle-icon {
+  transform: rotate(180deg);
+}
 
 /* --- 全域排版 --- */
 h1 {
   text-align: center;
-  color: #267acc;
+  color: var(--primary-blue);
   margin: 36px 0;
-  font-size: 2rem;
-  font-weight: bold;
+  font-size: 2.2rem;
+  font-weight: 800;
+  text-shadow: 0 0 15px rgba(77, 163, 255, 0.3);
 }
 
 .meal-table-container,
 .card-table-container {
   margin: 20px auto 40px auto;
-  max-width: 800px;
-  background: #fff;
+  max-width: 900px;
+  background: var(--glass-bg);
+  backdrop-filter: blur(14px);
   border-radius: 18px;
-  box-shadow: 0 4px 24px rgba(51,153,255,0.10);
-  overflow: hidden; 
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  transition: transform 0.3s ease;
 }
 
 /* --- 表格核心樣式 (桌機版) --- */
 .card-table {
   border-collapse: collapse;
   width: 100%;
-  background: #fafdff;
-  font-family: 'Microsoft JhengHei', sans-serif;
+  background: transparent;
+  color: var(--text-main);
 }
-.card-table th, .card-table td {
-  border: 1px solid #cbe6ff;
-  padding: 14px 10px;
+
+.card-table th,
+.card-table td {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 16px 12px;
   text-align: center;
-  font-size: 16px;
+  font-size: 15px;
   vertical-align: middle;
 }
+
 .card-table thead th {
-  background: #e3f2fd;
-  color: #267acc;
-  font-weight: bold;
+  background: rgba(26, 54, 93, 0.6);
+  color: var(--primary-blue);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
-.card-table tbody tr:nth-child(even) { background: #f4faff; }
-.card-table tbody tr:hover { background: #fff9c0; }
+
+.card-table tbody tr:hover {
+  background: rgba(255, 255, 255, 0.03);
+}
 
 .table-description {
-  background: #e3f2fd;
-  color: #267acc;
-  padding: 12px 20px;
-  font-size: 17px;
+  background: rgba(77, 163, 255, 0.05);
+  color: var(--highlight-yellow);
+  padding: 15px 20px;
+  font-size: 16px;
   line-height: 1.6;
-  border-bottom: 2px solid #b3d8ff;
-  font-weight: bold;
+  border-bottom: 1px solid rgba(77, 163, 255, 0.2);
+  font-weight: 600;
 }

@@ -1,39 +1,26 @@
 /* ============================================================
-   通用表格響應式框架 (table-rwd.css) - 穩定強化版
+   通用表格響應式框架 (table-rwd.css) - 玻璃擬態進化版
    ============================================================ */
 
 @media (max-width: 768px) {
   * { box-sizing: border-box; }
 
   .card-table-container {
-    margin: 10px 5px !important;
+    margin: 15px 8px !important;
     padding: 0 !important;
-    border-radius: 8px !important;
+    border-radius: 16px !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
   }
 
   .card-table {
-    display: table !important; /* 預設維持 table，由模式決定是否變更 */
+    display: table !important;
     width: 100% !important;
     border-collapse: collapse !important;
   }
 
-  /* ------------------------------------------------------------
-     模式 1: .rwd-simple (適合 2-3 欄長表格，如：經驗表)
-     保留表格結構，但縮小間距，適合大量數據快速捲動
-     ------------------------------------------------------------ */
-  .card-table.rwd-simple {
-    display: table !important;
-  }
-  .card-table.rwd-simple th,
-  .card-table.rwd-simple td {
-    padding: 8px 4px !important;
-    font-size: 13px !important;
-  }
-
-  /* ------------------------------------------------------------
-     模式 2: .rwd-card (適合 5 欄以上複雜資料)
-     將每一行轉為獨立卡片，強迫第一欄置頂
-     ------------------------------------------------------------ */
+  /* 模式 2: .rwd-card (每一行轉為獨立玻璃卡片) */
   .card-table.rwd-card { display: block !important; }
   .card-table.rwd-card thead { display: none !important; }
   .card-table.rwd-card tbody,
@@ -42,63 +29,60 @@
   .card-table.rwd-card tr {
     display: grid !important;
     grid-template-columns: 1fr 1fr !important;
-    margin-bottom: 15px !important;
-    border: 1px solid #cbe6ff !important;
-    border-radius: 10px !important;
-    background: #fff !important;
+    margin-bottom: 20px !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 16px !important;
+    background: rgba(255, 255, 255, 0.04) !important;
+    backdrop-filter: blur(10px);
     overflow: hidden;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
   }
 
   .card-table.rwd-card td {
     display: flex !important;
     align-items: center;
-    justify-content: space-between; /* 內容左右分開 */
-    padding: 10px 15px !important;
+    justify-content: space-between;
+    padding: 12px 15px !important;
     font-size: 14px !important;
     border: none !important;
-    border-bottom: 0.5px solid #f0f7ff !important;
-    text-align: right !important; /* 數據靠右 */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+    color: rgba(247, 251, 255, 0.8) !important;
   }
 
-  /* 顯示標籤 */
   .card-table.rwd-card td::before,
   .card-table.rwd-stack td::before {
     content: attr(data-label);
-    float: left;
     font-weight: bold;
-    color: #666;
-    margin-right: 10px;
+    color: #4da3ff; /* 亮藍標籤 */
+    margin-right: 15px;
   }
 
-  /* 第一格：標題全寬 */
+  /* 第一格：卡片標題 */
   .card-table.rwd-card td:first-child {
     grid-column: 1 / 3 !important;
-    background: #4ea1d3 !important;
+    background: linear-gradient(135deg, #1e4b8a, #0d2a54) !important;
     color: #fff !important;
-    font-weight: bold !important;
-    font-size: 15px !important;
-    padding: 12px 5px !important;
-    justify-content: center; /* 標題置中 */
+    font-weight: 800 !important;
+    font-size: 16px !important;
+    padding: 14px 10px !important;
+    justify-content: center;
     text-align: center !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2) !important;
   }
-  .card-table.rwd-card td:first-child::before {
-    display: none; /* 第一格通常是等級/標題，不需要重複標籤 */
-  }
+  .card-table.rwd-card td:first-child::before { display: none; }
 
-  /* ------------------------------------------------------------
-     模式 5: .rwd-stack (簡單垂直堆疊，適合 2 欄表格)
-     ------------------------------------------------------------ */
+  /* 模式 5: .rwd-stack (簡單垂直堆疊) */
   .card-table.rwd-stack { display: block !important; }
   .card-table.rwd-stack thead { display: none !important; }
   .card-table.rwd-stack tbody,
   .card-table.rwd-stack tr { display: block !important; width: 100% !important; }
   
   .card-table.rwd-stack tr {
-    margin-bottom: 12px !important;
-    border: 1px solid #cbe6ff !important;
-    border-radius: 8px !important;
-    background: #fff !important;
+    margin-bottom: 15px !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 12px !important;
+    background: rgba(255, 255, 255, 0.04) !important;
+    backdrop-filter: blur(10px);
     overflow: hidden;
   }
 
@@ -107,66 +91,18 @@
     justify-content: space-between;
     align-items: center;
     width: 100% !important;
-    padding: 10px 15px !important;
-    text-align: right !important;
+    padding: 12px 15px !important;
     border: none !important;
-    border-bottom: 0.5px solid #f0f7ff !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+    color: rgba(247, 251, 255, 0.8) !important;
   }
 
   .card-table.rwd-stack td:first-child {
-    background: #e3f2fd !important;
-    color: #267acc !important;
+    background: rgba(77, 163, 255, 0.15) !important;
+    color: #4da3ff !important;
     font-weight: bold !important;
     justify-content: center;
-    text-align: center !important;
+    border-bottom: 1px solid rgba(77, 163, 255, 0.3) !important;
   }
-  .card-table.rwd-stack td:first-child::before {
-    display: none;
-  }
-
-  /* ------------------------------------------------------------
-     模式 3: .rwd-compare (對比模式)
-     ------------------------------------------------------------ */
-  .card-table.rwd-compare { display: grid !important; grid-template-columns: 1fr 1fr !important; }
-  .card-table.rwd-compare thead,
-  .card-table.rwd-compare tbody,
-  .card-table.rwd-compare tr { display: contents !important; }
-  .card-table.rwd-compare th,
-  .card-table.rwd-compare td {
-    padding: 10px 2px !important;
-    font-size: 13px !important;
-    display: flex !important;
-    align-items: center;
-    justify-content: center;
-    border: 0.5px solid #e3f2fd !important;
-  }
-  .card-table.rwd-compare thead tr:first-child th:nth-child(1) { order: 10; grid-column: 1 / 3; background: #1976d2 !important; color: #fff !important; }
-  .card-table.rwd-compare thead tr:nth-child(2) th:nth-child(1),
-  .card-table.rwd-compare thead tr:nth-child(2) th:nth-child(2) { order: 11; background: #e3f2fd; }
-  .card-table.rwd-compare tbody tr td:nth-child(1),
-  .card-table.rwd-compare tbody tr td:nth-child(2) { order: 12; }
-
-  .card-table.rwd-compare thead tr:first-child th:nth-child(2) { 
-    order: 20; grid-column: 1 / 3; 
-    background: #267acc !important; color: #fff !important;
-    margin-top: 15px !important;
-  }
-  .card-table.rwd-compare thead tr:nth-child(2) th:nth-child(3),
-  .card-table.rwd-compare thead tr:nth-child(2) th:nth-child(4) { order: 21; background: #e3f2fd; }
-  .card-table.rwd-compare tbody tr td:nth-child(3),
-  .card-table.rwd-compare tbody tr td:nth-child(4) { order: 22; }
-
-  /* ------------------------------------------------------------
-     模式 4: .rwd-grid (銘文組合小方塊)
-     ------------------------------------------------------------ */
-  .card-table.rwd-grid tbody,
-  .card-table.rwd-grid tr { display: flex !important; flex-wrap: wrap !important; justify-content: center !important; }
-  .card-table.rwd-grid td {
-    flex: 0 0 calc(33.33% - 8px) !important;
-    margin: 4px !important;
-    border: 1px solid #cbe6ff !important;
-    border-radius: 6px !important;
-    font-size: 13px !important;
-    padding: 8px 2px !important;
-  }
+  .card-table.rwd-stack td:first-child::before { display: none; }
 }
