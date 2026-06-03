@@ -378,6 +378,27 @@ tbody tr:hover td {
 
 #heroes-table td:first-child {
   color: var(--primary-blue) !important;
+  white-space: nowrap; /* 強制地圖名稱不換行 */
+  min-width: 140px; /* 保證寬度足夠 */
+  font-weight: 700;
+}
+
+/* 英雄卡、光輝(多)、光輝(少) 欄位字體縮小 */
+#heroes-table th:nth-child(4),
+#heroes-table th:nth-child(5),
+#heroes-table th:nth-child(6),
+#heroes-table td:nth-child(4),
+#heroes-table td:nth-child(5),
+#heroes-table td:nth-child(6) {
+  font-size: 12px;
+  line-height: 1.3;
+}
+
+/* 針對光輝內容較多時限制最大寬度並微調字體 */
+#heroes-table td:nth-child(5),
+#heroes-table td:nth-child(6) {
+  font-size: 11px;
+  max-width: 180px;
 }
 
 /* 6. Modal 彈窗 - 關鍵修正：確保 position: fixed 與置中 */
@@ -424,17 +445,25 @@ tbody tr:hover td {
   margin-bottom: 20px;
 }
 
-.hero-column-details, .hero-defdodge, .hero-approach, .hero-explain {
-  background: rgba(255, 255, 255, 0.03) !important;
-  border: 1px solid rgba(255, 255, 255, 0.05) !important;
-  color: var(--text-muted) !important;
-  padding: 15px;
-  border-radius: 12px;
-  margin-bottom: 10px;
+.hero-column-details p, .hero-defdodge p, .hero-approach p, .hero-explain p {
+  display: flex; /* 啟用彈性佈局 */
+  align-items: flex-start;
+  margin: 12px 0;
+  line-height: 1.7;
 }
 
-.hero-column-details strong, .align-row strong {
+.hero-column-details strong, .align-row strong, .hero-defdodge strong, .hero-approach strong, .hero-explain strong {
   color: var(--primary-blue) !important;
+  flex: 0 0 130px; /* 固定標題寬度，確保冒號對齊 */
+  display: inline-block;
+  white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+  .hero-column-details strong, .hero-defdodge strong, .hero-approach strong, .hero-explain strong {
+    flex: 0 0 100px; /* 手機版縮減寬度 */
+    font-size: 14px;
+  }
 }
 
 .hero-image {
@@ -485,6 +514,21 @@ tbody tr:hover td {
   color: var(--highlight-yellow) !important;
   border-radius: 4px;
   padding: 0 4px;
+}
+
+/* 超連結關鍵字美化 */
+.keyword-link {
+  color: var(--primary-blue);
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border-bottom: 1px solid transparent;
+}
+
+.keyword-link:hover {
+  color: white;
+  border-bottom: 1px dashed var(--primary-blue);
+  text-shadow: 0 0 8px rgba(77, 163, 255, 0.5);
 }
 
 /* 響應式微調 */
