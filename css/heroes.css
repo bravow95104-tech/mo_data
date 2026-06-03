@@ -156,10 +156,10 @@ table {
 
 thead th {
   position: sticky;
-  top: 60px; /* 精準對齊導覽列底部 */
-  z-index: 100;
+  top: 60px; /* 與導覽列底部對齊 */
+  z-index: 999;
   background: linear-gradient(180deg, rgba(26, 54, 93, 0.98), rgba(10, 23, 43, 0.98));
-  backdrop-filter: blur(15px); /* 將模糊效果移到這裡 */
+  backdrop-filter: blur(15px);
   color: var(--primary-blue);
   padding: 16px 10px;
   font-weight: 700;
