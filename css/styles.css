@@ -1,6 +1,14 @@
 /* 全站基本樣式 */
 body {
-    background-color: #f4f8fb;
+    background-color: #f0f4f8; /* 稍深一點的底色減少刺眼感 */
+    background-image: 
+        /* 現代科技感：微弱的點狀格線 */
+        radial-gradient(rgba(51, 153, 255, 0.1) 1px, transparent 1px),
+        /* 背景漸層：讓畫面有深度 */
+        radial-gradient(at 0% 0%, rgba(51, 153, 255, 0.05) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(51, 153, 255, 0.05) 0px, transparent 50%);
+    background-size: 30px 30px, 100% 100%, 100% 100%;
+    background-attachment: fixed;
     margin: 0;
     -webkit-text-size-adjust: 100%;
     /* 🚀 關鍵修復 1：合併計算導航列高度 (約 44px) + 導航列 padding (12px*2) + 內容間距 (30px) */
@@ -223,9 +231,16 @@ body {
     background: white;
     padding: 30px 30px;
     /* 內部 padding 調整為 30px */
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    border-radius: 12px;
+    border: 1px solid rgba(51, 153, 255, 0.1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
     max-width: 800px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#content:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(51, 153, 255, 0.1);
 }
 
 /* ✅ 右側側邊欄容器 */
@@ -241,8 +256,15 @@ body {
     background: white;
     padding: 30px 30px;
     /* 內部 padding 調整為 30px */
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    border-radius: 12px;
+    border: 1px solid rgba(51, 153, 255, 0.1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.sidebar:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(51, 153, 255, 0.1);
 }
 
 .sidebar h2 {
@@ -302,8 +324,15 @@ body {
     flex: 1;
     background: white;
     padding: 30px 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    border-radius: 12px;
+    border: 1px solid rgba(51, 153, 255, 0.1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#changelog:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(51, 153, 255, 0.1);
 }
 
 #changelog h2 {
