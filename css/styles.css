@@ -23,7 +23,7 @@ body {
     margin: 0;
     -webkit-text-size-adjust: 100%;
     /* 頂部留出導覽列高度 */
-    padding: 100px 40px 30px 40px;
+    padding: 80px 40px 30px 40px;
     font-family: "Noto Sans TC", "Microsoft JhengHei", system-ui, -apple-system, sans-serif;
     color: var(--text-main);
 }
