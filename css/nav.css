@@ -7,8 +7,8 @@
     left: 0;
     right: 0;
     width: 100%;
-    /* Glassmorphism: 磨砂玻璃效果 */
-    background: rgba(51, 153, 255, 0.9);
+    /* Glassmorphism: 桌機版保留磨砂效果 */
+    background: rgba(51, 153, 255, 0.95);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     color: #fff;
@@ -36,9 +36,10 @@
 .nav-menu {
     display: flex;
     align-items: center;
-    gap: 5px;
+    gap: 10px;
     height: 100%;
     padding: 0;
+    flex-wrap: nowrap; /* 強制不換行，避免跑到下面 */
 }
 
 #nav-container nav a,
@@ -54,14 +55,13 @@
     display: flex;
     align-items: center;
     height: 36px;
-    background: transparent;
-    border: none;
+    background: transparent !important;
+    border: none !important;
 }
 
 #nav-container nav a:hover,
 #nav-container nav .dropdown-toggle:hover {
-    background-color: rgba(255, 255, 255, 0.15);
-    transform: translateY(-1px);
+    background-color: rgba(255, 255, 255, 0.15) !important;
 }
 
 .dropdown {
@@ -69,7 +69,6 @@
     display: flex;
     align-items: center;
     height: 100%;
-    margin-right: 5px;
 }
 
 .dropdown-content {
@@ -77,12 +76,10 @@
     position: absolute;
     top: calc(100% - 5px);
     left: 0;
-    background: rgba(38, 122, 204, 0.95);
-    backdrop-filter: blur(15px);
+    background: #267acc; /* 桌機版下拉選單也改用實色，增加穩定感 */
     min-width: 180px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
     border-radius: 8px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
     padding: 8px 0;
     overflow: hidden;
     animation: navFadeIn 0.3s ease forwards;
@@ -113,54 +110,9 @@
     background-color: rgba(255, 255, 255, 0.1) !important;
 }
 
-/* === 更多選單 (More Menu) === */
-.more-group-header {
-    background-color: #267acc;
-    color: #fff;
-    padding: 8px 12px;
-    font-size: 13px;
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-top: 5px;
-}
-
-.sub-indent {
-    padding-left: 25px !important;
-    font-size: 14px !important;
-    border-bottom: 1px solid rgba(255,255,255,0.1);
-}
-
+/* 移除「更多」選單的特殊邏輯，簡化佈局 */
 .more-menu {
-    display: none;
-}
-
-@media (max-width: 1300px) and (min-width: 1151px) {
-    .nav-item-sys { display: none; }
-    .more-menu { display: block; }
-    .more-menu .more-item-map, .more-menu .more-item-prod, .more-menu .more-item-other { display: none; }
-    .more-menu .more-item-sys { display: block; }
-}
-
-@media (max-width: 1150px) and (min-width: 1001px) {
-    .nav-item-other, .nav-item-sys { display: none; }
-    .more-menu { display: block; }
-    .more-menu .more-item-map, .more-menu .more-item-prod { display: none; }
-    .more-menu .more-item-other, .more-menu .more-item-sys { display: block; }
-}
-
-@media (max-width: 1000px) and (min-width: 901px) {
-    .nav-item-prod, .nav-item-other, .nav-item-sys { display: none; }
-    .more-menu { display: block; }
-    .more-menu .more-item-map { display: none; }
-    .more-menu .more-item-prod, .more-menu .more-item-other, .more-menu .more-item-sys { display: block; }
-}
-
-@media (max-width: 900px) and (min-width: 769px) {
-    .nav-item-map, .nav-item-prod, .nav-item-other, .nav-item-sys { display: none; }
-    .more-menu { display: block; }
-    .more-menu .more-item-map, .more-menu .more-item-prod, .more-menu .more-item-other, .more-menu .more-item-sys { display: block; }
-    #nav-container nav a, #nav-container nav .dropdown-toggle { padding: 8px 10px; font-size: 15px; }
+    display: none !important; /* 暫時徹底停用更多選單 */
 }
 
 /* === 手機版導覽列 (Media Query) === */
@@ -170,30 +122,23 @@
         position: fixed !important;
         top: 0 !important;
         left: 0 !important;
+        right: 0 !important;
         width: 100% !important;
-        height: auto !important;
         z-index: 99999 !important;
-        margin: 0 !important;
         padding: 0 !important;
-        max-width: none !important;
     }
 
     #nav-container nav {
         display: block !important;
         position: relative !important;
         width: 100% !important;
-        max-width: none !important;
-        background: #3399ff !important;
-        margin: 0 !important;
-        padding: 0 !important;
-        box-shadow: 0 2px 10px rgba(0,0,0,0.2) !important;
-        border-radius: 0 !important;
-        transform: none !important;
-        height: auto !important;
-        min-height: 56px !important;
-        /* 🚀 關鍵修正：徹底移除磨砂玻璃效果，防止透明感 */
+        background: #3399ff !important; /* 100% 不透明藍 */
         backdrop-filter: none !important;
         -webkit-backdrop-filter: none !important;
+        padding: 0 !important;
+        height: auto !important;
+        min-height: 56px !important;
+        transform: none !important;
     }
 
     .nav-mobile-header {
@@ -209,81 +154,58 @@
     }
 
     .nav-menu {
-        display: none;
+        display: none; /* 預設隱藏 */
         flex-direction: column !important;
         width: 100% !important;
-        background-color: #267acc !important; /* 核心修正：確保使用實色 */
+        background: #267acc !important; /* 100% 不透明深藍 */
         position: absolute !important;
         top: 56px !important;
         left: 0 !important;
-        margin: 0 !important;
         padding: 0 !important;
-        box-sizing: border-box !important;
-        box-shadow: 0 10px 20px rgba(0,0,0,0.2) !important;
+        margin: 0 !important;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.3) !important;
         opacity: 1 !important;
         visibility: visible !important;
-        /* 🚀 關鍵修正：徹底移除磨砂玻璃效果 */
         backdrop-filter: none !important;
-        -webkit-backdrop-filter: none !important;
     }
 
     .nav-menu.active {
         display: flex !important;
     }
 
-    .nav-item-map, .nav-item-prod, .nav-item-other, .nav-item-sys {
+    /* 確保所有導航項在手機版都顯示，不分組 */
+    .nav-item-hero, .nav-item-equip, .nav-item-quest, .nav-item-card, 
+    .nav-item-map, .nav-item-prod, .nav-item-other, .nav-item-sys, .nav-item-admin {
         display: block !important;
-    }
-    .more-menu {
-        display: none !important;
-    }
-
-    .dropdown, .nav-link {
         width: 100% !important;
-        box-sizing: border-box !important;
-        background: transparent !important; /* 清除可能的色塊背景 */
-        border: none !important;
-        margin: 0 !important;
     }
 
     .dropdown-toggle, .nav-menu a {
-        padding: 15px 25px !important;
+        padding: 18px 25px !important; /* 加大點擊面積 */
         color: white !important;
-        display: block !important;
+        font-size: 16px !important;
+        background: transparent !important;
+        border: none !important; /* 徹底移除毛邊與邊框 */
         width: 100% !important;
         box-sizing: border-box !important;
         text-align: left !important;
-        height: auto !important;
-        font-size: 16px !important;
-        background: transparent !important;
-        border-bottom: 1px solid rgba(255,255,255,0.05) !important; /* 統一的極淡邊框 */
-        margin: 0 !important;
-        border-radius: 0 !important;
     }
-    
-    /* 核心修正：移除所有灰色背景或毛邊 */
+
     .dropdown-content {
         position: static !important;
         width: 100% !important;
-        background: rgba(0,0,0,0.15) !important; /* 子選單使用更深的顏色區隔 */
+        background: rgba(0, 0, 0, 0.15) !important;
         padding: 0 !important;
-        box-shadow: none !important;
-        border: none !important;
-        animation: none !important;
         display: none;
     }
 
     .dropdown:hover .dropdown-content {
         display: block !important;
     }
-    
-    .dropdown-content a {
-        padding: 12px 45px !important;
-        font-size: 15px !important;
-        border-bottom: 1px solid rgba(255,255,255,0.03) !important;
-    }
 
-    .dropdown-content a:last-child {
-        border-bottom: none !important;
+    .dropdown-content a {
+        padding: 15px 45px !important; /* 子選單內縮 */
+        background: transparent !important;
+        border: none !important;
     }
 }

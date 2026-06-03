@@ -44,24 +44,26 @@ body {
 #content-wrapper {
     display: flex !important;
     flex-direction: row !important;
+    flex-wrap: nowrap !important; /* 核心修正：桌機強制不換行 */
     align-items: flex-start;
     justify-content: center;
-    max-width: 1300px;
+    max-width: 1400px;
+    width: 98% !important;
     margin: 0 auto;
     padding: 0;
-    gap: 40px;
+    gap: 30px;
 }
 
 /* ✅ 左側主內容 */
 #content {
-    flex: 1;
+    flex: 0 1 850px !important; /* 控制內容寬度 */
+    max-width: 850px;
     background: white;
     padding: 30px 30px;
     /* 內部 padding 調整為 30px */
     border-radius: 12px;
     border: 1px solid rgba(51, 153, 255, 0.1);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
-    max-width: 800px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -72,10 +74,10 @@ body {
 
 /* ✅ 右側側邊欄容器 */
 #sidebar-container {
+    flex: 0 0 380px !important; /* 固定側邊欄寬度 */
     display: flex;
     flex-direction: column;
-    gap: 40px;
-    flex: 0.7;
+    gap: 30px;
 }
 
 /* ✅ 右側側邊欄 */
