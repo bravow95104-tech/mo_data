@@ -420,12 +420,12 @@ tbody tr:hover td {
 #modalBox {
   display: none;
   position: fixed;
-  top: 50%;
+  top: 55%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 90vw;
   max-width: 700px;
-  max-height: 85vh;
+  max-height: 72vh;
   overflow-y: auto;
   z-index: 2001;
   background: linear-gradient(135deg, rgba(20, 35, 60, 0.98), rgba(10, 20, 35, 0.98));
