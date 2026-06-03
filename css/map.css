@@ -1,907 +1,332 @@
-/* 全域變數 */
+/* 地圖頁面專屬樣式 - 升級為玻璃擬態風格 */
+
 :root {
-  --nav-height: 0px; /* JS 動態設定 */
-  --primary-color: #3399ff;
-  --primary-dark-color: #267acc;
-  --highlight-bg-color: #fff9c0;
-  --highlight-text-color: #b8860b;
-  --light-bg-color: #f5faff;
-  --border-color: #b3d8ff;
-  --header-bg-color: #1976d2;
-  --header-hover-bg-color: #1565c0;
-  --text-light: #ffffff;
-  --text-dark: #333333;
-  --border-light-gray: #ccc;
-  --modal-shadow: rgba(0, 0, 0, 0.3);
+  --nav-height: 70px;
+  --primary-blue: #4da3ff;
+  --primary-dark: #1e4b8a;
+  --glass-bg: rgba(255, 255, 255, 0.04);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --highlight-yellow: #ffd86b;
+  --text-main: #f7fbff;
+  --text-muted: rgba(247, 251, 255, 0.7);
 }
-/* ================================================= */
-/* 2. 導航列區塊 (頁籤) - 不固定在頂部 */
-/* ================================================= */
+
+/* 1. 頁籤導航區塊 */
 #header-nav {
-    /* ✅ 修正：移除 position: fixed，改為相對定位，讓它跟隨頁面捲動 */
-    position: relative; 
-    width: 100%;
-    background-color: transparent; 
-    box-shadow: none; 
-    
-    /* 增加上邊距，與固定在頂部的主導航列拉開距離 */
-    margin-top: 20px;
-    margin-bottom: 0px;
-    z-index: 1; 
+  position: relative;
+  width: 100%;
+  margin-top: 20px;
+  z-index: 1;
 }
 
-/* 導航列內容容器 (確保頁籤不會超出最大寬度) */
 .tabs-container {
-    max-width: 1200px;
-    margin: 0 auto; 
-    padding: 0 10px;
-    position: relative;
-    display: flex;
-    align-items: center;
-    background-color: #ffffff; /* 將白底移到容器上 */
-    border-radius: 8px 8px 0 0; /* 只有上方圓角 */
-    box-shadow: 0 -2px 10px rgba(0,0,0,0.05), 2px 0 6px rgba(0,0,0,0.1), -2px 0 6px rgba(0,0,0,0.1); /* 給予上方與左右陰影 */
-    border-bottom: 1px solid #e0e0e0;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 10px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  border-radius: 16px 16px 0 0;
+  border: 1px solid var(--glass-border);
+  border-bottom: 1px solid rgba(77, 163, 255, 0.3);
 }
 
-/* 捲動箭頭樣式 */
 .nav-arrow {
-    display: flex; 
-    background: transparent; /* 改為透明，因為容器已經有底色 */
-    border: none;
-    width: 32px;
-    height: 48px; /* 增加高度與頁籤一致 */
-    cursor: pointer;
-    z-index: 10;
-    justify-content: center;
-    align-items: center;
-    color: #267acc;
-    font-size: 16px;
-    transition: color 0.3s;
-    flex-shrink: 0;
+  display: flex;
+  background: transparent;
+  border: none;
+  width: 32px;
+  height: 48px;
+  cursor: pointer;
+  z-index: 10;
+  justify-content: center;
+  align-items: center;
+  color: var(--primary-blue);
+  font-size: 16px;
+  transition: all 0.3s;
+  flex-shrink: 0;
 }
 
 .nav-arrow:hover {
-    color: #3399ff;
-    background: #f0f8ff;
+  color: white;
+  background: rgba(77, 163, 255, 0.1);
 }
 
-.nav-arrow.left {
-    margin-right: 0;
-}
-
-.nav-arrow.right {
-    margin-left: 0;
-}
-
-/* 3. 主內容區塊 */
-.content-wrapper {
-    max-width: 1200px; 
-    margin: 0 auto 20px auto; 
-    background-color: #ffffff; 
-    /* 圓角：只有下方圓角，讓它與上方頁籤結合 */
-    border-radius: 0 0 8px 8px; 
-    padding: 20px; 
-    min-height: 700px; 
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* 強化下方陰影 */
-    border-top: none; /* 移除頂部邊框，確保無縫 */
-}
-
-h1 { 
-    text-align: center; 
-    color: #333; 
-    margin-bottom: 30px; 
-}
-
-/* 4. Tabs 導航樣式 */
-.tabs { 
-    display: flex; 
-    flex: 1; /* 讓頁籤區塊佔滿剩餘空間 */
-    flex-wrap: nowrap; 
-    overflow-x: auto;  
-    -webkit-overflow-scrolling: touch; 
-    background-color: transparent; /* 底色已移至 container */
-    padding: 0; 
-    scrollbar-width: none; 
+.tabs {
+  display: flex;
+  flex: 1;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  scrollbar-width: none;
 }
 
 .tabs::-webkit-scrollbar {
-    display: none; /* 隱藏捲軸 (Chrome/Safari) */
+  display: none;
 }
 
 .tab-button {
-    background-color: transparent; 
-    border: none; 
-    padding: 15px 20px; 
-    cursor: pointer;
-    font-size: 1rem; 
-    color: #666; 
-    transition: all 0.2s ease; 
-    border-bottom: 3px solid transparent; 
-    margin-bottom: -1px; 
-    white-space: nowrap; /* 避免文字斷行 */
-    flex: 0 0 auto; /* 防止縮小 */
+  background: transparent;
+  border: none;
+  padding: 15px 20px;
+  cursor: pointer;
+  font-size: 1rem;
+  color: var(--text-muted);
+  transition: all 0.2s ease;
+  border-bottom: 3px solid transparent;
+  white-space: nowrap;
+  flex: 0 0 auto;
 }
 
-.tab-button:hover { 
-    color: #267acc; 
-    background-color: #f0f8ff; 
+.tab-button:hover {
+  color: var(--primary-blue);
+  background: rgba(255, 255, 255, 0.05);
 }
 
 .tab-button.active {
-    color: #b8860b; 
-    font-weight: bold; 
-    border-bottom: 3px solid #ffd84d; 
-    background-color: transparent; 
+  color: var(--highlight-yellow);
+  font-weight: bold;
+  border-bottom: 3px solid var(--highlight-yellow);
 }
 
-/* 5. Tab 內容與圖片區塊 */
-.tab-content { display: none; padding: 20px 0; }
-.tab-content.active { display: block; }
+/* 2. 主內容包裝 */
+.content-wrapper {
+  max-width: 1200px;
+  margin: 0 auto 20px auto;
+  background: var(--glass-bg);
+  backdrop-filter: blur(14px);
+  border-radius: 0 0 16px 16px;
+  border: 1px solid var(--glass-border);
+  border-top: none;
+  padding: 30px;
+  min-height: 500px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
 
 .map-image-wrapper {
-    text-align: center; 
-    padding: 15px;
-    border-radius: 8px;
-    background-color: #f9fcff; 
-    border: 1px solid #b3d8ff; 
-    overflow-x: auto; /* 允許地圖太寬時滑動 */
+  text-align: center;
+  padding: 15px;
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--glass-border);
+  overflow-x: auto;
 }
 
 .map-image-wrapper img {
-    max-width: 100%; /* 電腦版維持 */
-    height: auto;
-    display: block; 
-    margin: 0 auto; 
-    border-radius: 5px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
 }
 
-/* ================================================= */
-/* 6. Modal (彈窗) 樣式 - 整個彈窗滾動 (標題會跟著捲走) */
-/* ================================================= */
-
-#modalOverlay { 
-    position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
-    background: rgba(0, 0, 0, 0.7); 
-    z-index: 9998; 
-    display: none; 
+/* 3. 搜尋與按鈕 */
+#searchContainer {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  padding: 15px 20px;
+  border-radius: 16px;
+  border: 1px solid var(--glass-border);
+  margin-bottom: 20px;
 }
 
-#modalBox { 
-    position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); 
-    background: #ffffff; 
-    border-radius: 10px; 
-    z-index: 9999; 
-    max-width: 600px; 
-    width: 90%; 
-    max-height: 90vh; /* 限制總高度 */
-    display: none; /* JS 控制顯示 */
-    padding: 20px; /* 恢復 Box 的內邊距 */
-    overflow-y: auto; 
-    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.3); 
+.quick-search-label {
+  font-weight: 600;
+  color: var(--primary-blue);
 }
 
+#searchInput {
+  padding: 10px 16px;
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--glass-border);
+  border-radius: 10px;
+  color: white;
+  flex: 1;
+  max-width: 300px;
+}
+
+#searchInput:focus {
+  outline: none;
+  border-color: var(--primary-blue);
+  box-shadow: 0 0 10px rgba(77, 163, 255, 0.3);
+}
+
+.filter-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.secondary-btn {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--glass-border);
+  color: var(--text-main);
+  padding: 8px 16px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.secondary-btn:hover {
+  background: var(--primary-blue);
+  border-color: var(--primary-blue);
+}
+
+.clear-btn {
+  background: rgba(255, 216, 107, 0.1);
+  border: 1px solid rgba(255, 216, 107, 0.3);
+  color: var(--highlight-yellow);
+  border-radius: 10px;
+  padding: 8px 16px;
+  cursor: pointer;
+}
+
+.clear-btn:hover {
+  background: var(--highlight-yellow);
+  color: #000;
+}
+
+/* 4. 欄位設定選單 */
+.column-settings-menu {
+  background: linear-gradient(135deg, rgba(20, 35, 60, 0.98), rgba(10, 20, 35, 0.98));
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 16px;
+  color: var(--text-main);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+}
+
+.menu-header h4 {
+  color: var(--primary-blue) !important;
+}
+
+/* 5. 表格樣式 */
+#hero-table-container {
+  background: transparent;
+  border-radius: 20px;
+  border: 1px solid var(--glass-border);
+  overflow: visible;
+  margin-bottom: 30px;
+}
+
+table {
+  border-collapse: separate;
+  border-spacing: 0;
+  width: 100%;
+}
+
+thead th {
+  position: sticky;
+  top: 60px;
+  z-index: 100;
+  background: linear-gradient(180deg, rgba(26, 54, 93, 0.98), rgba(10, 23, 43, 0.98));
+  backdrop-filter: blur(15px);
+  color: var(--primary-blue);
+  padding: 15px 10px;
+  border-bottom: 1px solid rgba(77, 163, 255, 0.3);
+}
+
+#hero-table-container table tr:first-child th:first-child { border-top-left-radius: 20px; }
+#hero-table-container table tr:first-child th:last-child { border-top-right-radius: 20px; }
+
+tbody td {
+  padding: 12px 8px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  color: var(--text-muted);
+  background: var(--glass-bg);
+  backdrop-filter: blur(5px);
+}
+
+tbody tr:hover td {
+  background-color: rgba(255, 255, 255, 0.05) !important;
+  color: white;
+}
+
+#heroes-table td:first-child {
+  color: var(--primary-blue) !important;
+}
+
+/* 6. Modal 彈窗 */
+#modalOverlay {
+  background-color: rgba(6, 11, 19, 0.85);
+  backdrop-filter: blur(8px);
+}
+
+#modalBox {
+  background: linear-gradient(135deg, rgba(20, 35, 60, 0.98), rgba(10, 20, 35, 0.98));
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 28px;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
+  color: var(--text-main);
+  padding: 30px 20px;
+}
+
+.hero-name {
+  color: var(--primary-blue) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+.hero-column-details, .hero-defdodge, .hero-approach, .hero-explain {
+  background: rgba(255, 255, 255, 0.03) !important;
+  border: 1px solid rgba(255, 255, 255, 0.05) !important;
+  color: var(--text-muted) !important;
+  box-shadow: none !important;
+}
+
+.hero-column-details strong, .align-row strong {
+  color: var(--primary-blue) !important;
+}
+
+.hero-image {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+#modalBox .close-btn {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+#modalBox .close-btn:hover {
+  color: var(--primary-blue);
+  transform: rotate(90deg);
+}
+
+/* 7. 其他標籤 */
+.lv-badge {
+  background: rgba(77, 163, 255, 0.1);
+  color: var(--primary-blue);
+  border: 1px solid rgba(77, 163, 255, 0.3);
+}
+
+.tier-badge, .table-tier-badge {
+  background: linear-gradient(135deg, var(--primary-blue), var(--primary-dark)) !important;
+}
+
+.highlight {
+  background-color: rgba(255, 216, 107, 0.3) !important;
+  color: var(--highlight-yellow) !important;
+}
+
+/* 響應式微調 */
 @media (max-width: 768px) {
-    #modalBox {
-        top: 10% !important;
-        left: 50% !important;
-        transform: translateX(-50%) !important;
-        width: 85% !important;
-        max-width: 85% !important;
-        max-height: 80vh !important;
-        padding: 20px 15px !important;
-        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4) !important;
-    }
-
-    .map-image-wrapper img {
-        max-width: none !important; /* 讓地圖可以稍微大一點，不被強行縮小到手機寬度 */
-        width: 750px; /* 這裡設定一個合理的最小寬度，確保點擊區不會太小 */
-    }
-}
-
-/* ✅ 標題列樣式 (現在會跟著滾動) */
-.modal-header {
-    display: flex;
-    justify-content: space-between; /* 標題靠左，X 按鈕靠右 */
-    align-items: center; 
-    /* 移除 padding，由 modalBox 提供 */
-    padding: 0; 
-    margin-bottom: 15px; /* 在標題底部增加間隔 */
-    border-bottom: 1px solid #eee; 
-}
-
-/* 針對手機版自定義高亮顏色與表格微調 */
-@media (max-width: 768px) {
-  .highlight {
-    background-color: #fff9c0 !important;
-    color: #b8860b !important;
-    padding: 2px 4px;
-    border-radius: 3px;
+  .content-wrapper {
+    padding: 15px;
+    border-radius: 16px;
   }
   
   #searchContainer {
     flex-direction: column;
     align-items: stretch;
-    margin: 10px;
   }
   
   #searchInput {
-    max-width: 100%;
+    max-width: none;
   }
 
-  .filter-actions {
-    flex-wrap: wrap;
-    gap: 10px;
-    padding: 0 10px;
-  }
-  
   .filter-actions > .secondary-btn {
     flex: 1 1 calc(50% - 10px);
-    margin: 0 !important;
-    text-align: center;
-    font-size: 13px;
   }
-
-  .column-settings-container {
-    flex: 1 1 100%;
-    margin: 0 !important;
-  }
-
-  #columnSettingsBtn {
-    width: 100%;
-  }
-
-  /* Modal 滿版優化 */
-  #modalBox {
-    width: 95% !important;
-    max-width: 95% !important;
-    padding: 15px 10px !important;
-  }
-}
-
-/* 標題樣式 */
-#modalTitle {
-    margin: 0;
-    padding: 0;
-    border: none;
-    font-size: 1.5rem;
-    color: #3399ff;
-    text-align: center;
-}
-
-#modalBox .close-btn {
-  position: absolute;
-  top: 10px; right: 15px;
-  font-size: 28px;
-  color: #666;
-  cursor: pointer;
-  font-weight: bold;
-}
-
-#modalBox .close-btn:hover {
-  color: #3399ff;
-}
-
-/* ❌ 內容區塊樣式 (移除內部滾動設定) */
-#modalContent {
-  padding: 0;
-  font-size: 16px;
-  color: #333;
-  line-height: 1.5;
-  background-color: #fff;
-  border-radius: 6px;
-  box-sizing: border-box;
-}
-#modalBox, #modalContent, .hero-image, .modal-header {
-    box-sizing: border-box;
-}
-
-/* 彈窗內容元素樣式 */
-.hero-column-details { 
-  flex: none; 
-  min-width: auto; 
-  width: 100%; 
-  box-sizing: border-box;
-  background-color: #f9f9f9; 
-  padding: 5px 20px; /* 內容與邊緣的間距 */
-  border-radius: 6px;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
-}
-.hero-image { 
-  max-width: calc(100% - 2px); 
-  height: auto;
-  object-fit: contain; 
-  border-radius: 8px; 
-  display: block !important;
-  margin: 0 auto 20px auto !important;/* 確保圖片居中，並在底部留出間距 */
-}
-.hero-name {
-  text-align: center;
-  font-size: 24px;
-  color: #3399ff;
-  margin-bottom: 20px;
-  border-bottom: 1px solid #ddd !important;
-  padding-bottom: 10px;
-}
-.section-gap { 
-    margin-top: 16px !important; /* 顯著的段落開頭距離，加強效果 */
-}
-.section-gap p {
-    display: flex; /* 讓 P 標籤成為 Flex 容器 */
-    flex-wrap: wrap; /* 內容可以換行 */
-    white-space: pre-wrap; /* 保留換行與空格，且自動換行 */
-}
-
-.section-gap p strong {
-    /* 確保標籤部分有固定寬度，或至少不會壓縮 */
-    flex-shrink: 0; 
-    margin-right: 5px; /* 與內容間的間隔 */
-}
-
-.section-gap p .value {
-    /* 讓內容部分自動佔據剩餘空間，並在需要時換行 */
-    flex-grow: 1; 
-    flex-basis: 0; /* 確保在 flex-wrap 時能正確計算寬度 */
-    min-width: 0; /* 允許內容縮小 */
-    /* 確保文字不會因為換行而縮進 */
-    white-space: normal; 
-    word-break: break-all; /* 長單字也強制換行 */
-}
-
-/* 下欄樣式 */
-.hero-defdodge {
-  flex: 0 0 90%;             /* 彈性成長，基底寬度48% */
-  min-width: 250px;          /* 最小寬度限制，避免太小擠壓 */
-  box-sizing: border-box;    /* 包含 padding、border */
-  background-color: #f9f9f9; /* 可選：輕微背景色區分 */
-  padding: 2px 20px;
-  border-radius: 6px;        /* 可選：圓角讓框框好看 */
-  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
-}
-
-/* 下欄樣式 */
-.hero-approach {
-  flex: 0 0 90%;             /* 彈性成長，基底寬度48% */
-  min-width: 250px;          /* 最小寬度限制，避免太小擠壓 */
-  box-sizing: border-box;    /* 包含 padding、border */
-  background-color: #f9f9f9; /* 可選：輕微背景色區分 */
-  padding: 2px 20px;
-  border-radius: 6px;        /* 可選：圓角讓框框好看 */
-  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
-}
-.pre-formatted-text {
-    white-space: pre-wrap;
-}
-/* 🚀 新增：實現「走法」內容的懸掛縮排 */
-.approach-line-wrap {
-    display: flex;        /* 啟用 Flexbox */
-    white-space: normal;  /* 覆蓋 pre-formatted-text 的換行，讓 Flex 處理 */
-}
-
-/* 走法：標籤本身 */
-.approach-label {
-    /* 確保標籤不換行，且不會被內容擠壓 */
-    flex-shrink: 0; 
-    white-space: nowrap; 
-    font-weight: bold;
-}
-
-/* 走法內容區塊 */
-.approach-content {
-    /* 內容佔據剩餘所有空間 */
-    flex-grow: 1; 
-    
-    /* 關鍵：讓內容區塊內部可以處理 JSON 中的 \n 換行 */
-    white-space: pre-wrap; 
-}
-
-/* ================================================= */
-/* 🚀 新增：說明區塊 (解釋內容) 樣式 */
-/* ================================================= */
-.hero-explain {
-  flex: 0 0 90%;             /* 彈性成長，基底寬度48% */
-  min-width: 250px;          /* 最小寬度限制，避免太小擠壓 */
-  box-sizing: border-box;    /* 包含 padding、border */
-  background-color: #f9f9f9; /* 可選：輕微背景色區分 */
-  padding: 10px 20px;
-  border-radius: 6px;        /* 可選：圓角讓框框好看 */
-  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
-}
-.explain-pre-formatted-text {
-    white-space: pre-wrap;
-}
-
-/* 🚀 新增：實現「走法」內容的懸掛縮排 */
-.explain-line-wrap {
-    display: flex;        /* 啟用 Flexbox */
-    white-space: normal;  /* 覆蓋 pre-formatted-text 的換行，讓 Flex 處理 */
-}
-
-/* 走法：標籤本身 */
-.explain-label {
-    /* 確保標籤不換行，且不會被內容擠壓 */
-    flex-shrink: 0; 
-    white-space: nowrap; 
-    font-weight: bold;
-}
-
-/* 走法內容區塊 */
-.explain-content {
-    /* 內容佔據剩餘所有空間 */
-    flex-grow: 1; 
-    
-    /* 關鍵：讓內容區塊內部可以處理 JSON 中的 \n 換行 */
-    white-space: pre-wrap; 
-}
-
-
-
-/* ================================================= */
-/* 7. RWD 調整 */
-/* ================================================= */
-@media (max-width: 768px) {
-    /* ✅ 修正：手機版 body padding 恢復到全站的 15px */
-    body {
-        padding: 55px 15px 0 15px;
-    }
-    
-    .tab-button { padding: 10px 10px; font-size: 0.9rem; }
-    .tabs { justify-content: space-around; } 
-    .hero-column-details { flex-direction: column; }
-    
-    /* 手機版微調間距 */
-    .content-wrapper { margin-top: 0; }
-    #header-nav { margin-top: 10px; }
-    
-    /* 彈窗微調 */
-    #modalBox { max-width: 95%; }
-}
-
-/* 世界地圖專用的放大容器 */
-.world-map-zoom-container {
-    width: 100%;
-    overflow-x: auto; /* 如果圖片寬度超過螢幕，允許左右滑動 */
-    text-align: center;
-    padding: 10px;
-}
-
-.world-map-large-img {
-    /* 設定為視窗寬度的 75% */
-    width: 75vw; 
-    max-width: 1731px; /* 不超過原始像素大小 */
-    height: auto;
-    border-radius: 4px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-}
-
-/* 針對手機版的微調 */
-@media (max-width: 768px) {
-    .world-map-large-img {
-        width: 100%; /* 手機版則全滿，方便觀看 */
-    }
-    #modalBox[style*="max-width: 85%"] {
-        width: 95% ;
-        max-width: 95% ;
-    }
-}
-
-/* 使用 ID + Class 提高權重 */
-/* 1. 讓外層彈窗成為唯一的捲動主體 */
-#modalBox.modal-large-mode {
-    max-width: 95vw !important;
-    width: 95% !important;
-    overflow-x: auto !important; /* 開啟外層水平捲動 */
-    overflow-y: auto !important; /* 開啟外層垂直捲動 */
-    padding: 10px !important;
-}
-
-/* 2. 讓內層容器只是個純裝飾，不負責捲動 */
-#modalBox.modal-large-mode .world-map-zoom-container {
-    display: inline-block; /* 關鍵：讓容器隨圖片寬度撐開 */
-    min-width: 100%;
-    overflow: visible !important; /* 確保內容不被截斷 */
-}
-
-/* 3. 圖片設定 */
-#modalBox.modal-large-mode .world-map-large-img {
-    display: block;
-    width: auto !important;      /* 維持原圖比例 */
-    max-width: none !important;  /* 允許圖片超出彈窗寬度，進而觸發外層捲動 */
-    height: auto;
-}
-
-/* 讓每一行變成 Flex 容器 */
-.align-row {
-    display: flex;
-    align-items: flex-start; /* 讓內容對齊第一行頂部 */
-    margin: 5px 0;           /* 行與行之間的間距 */
-    line-height: 1.6;        /* 增加行高，閱讀更舒適 */
-}
-
-/* 左側標籤：固定寬度或不收縮 */
-.align-row strong {
-    white-space: nowrap;     /* 標籤不換行 */
-    flex-shrink: 0;          /* 防止標籤被擠壓 */
-    min-width: 100px;        /* 根據你的文字長度調整，確保「◢ 掉落較高：」放得下 */
-    color: #555;             /* 稍微調淡標籤顏色，突出內容 */
-}
-
-/* 右側內容：自動填滿剩餘空間並換行 */
-.align-row span {
-    flex-grow: 1;
-    word-break: break-all;   /* 遇到超長英文或標點符號強制換行 */
-}
-
-
-.filter-actions {
-  display: flex;
-  align-items: center;
-  margin-top: 15px;
-  width: 100%;
-  margin-bottom: 15px;      /* 增加一點下間距 */
-}
-
-/* 讓清除按鈕維持原本樣式，新按鈕可以套用類似但不同色系的樣式 */
-.secondary-btn {
-  padding: 8px 16px;
-  background-color: var(--primary-color); /* 使用你原本的藍色變數 */
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 14px;
-  transition: background 0.3s;
-}
-
-.secondary-btn:hover {
-  background-color: var(--primary-dark-color);
-}
-
-/* 🚀 新增：掉落物分層標籤樣式 */
-.tier-group {
-    margin-top: 10px;
-    margin-bottom: 12px;
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-}
-
-.tier-header {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.tier-badge {
-    background: var(--primary-color);
-    color: white !important;
-    padding: 3px 10px;
-    border-radius: 6px;
-    font-size: 13.5px;
-    font-weight: bold;
-    white-space: nowrap;
-    display: inline-block;
-    box-shadow: 0 2px 4px rgba(51, 153, 255, 0.2);
-    letter-spacing: 0.5px;
-}
-
-.tier-names {
-    color: #475569;
-    font-size: 15px;
-    line-height: 1.6;
-    padding-left: 2px;
-}
-
-/* 🚀 英雄超連結樣式 */
-.hero-link {
-    color: inherit;
-    text-decoration: none;
-    transition: all 0.2s;
-    cursor: pointer;
-}
-
-.hero-link:hover {
-    color: var(--primary-color);
-    border-bottom: 1px dashed var(--primary-color);
-    background-color: rgba(51, 153, 255, 0.05);
-}
-
-/* 🚀 修正：針對 map.html，如果切換按鈕是第一個(或唯一)右側元素，將它推到最右邊 */
-.filter-actions > .secondary-btn:first-child {
-  margin-left: auto;
-}
-
-.clear-btn {
-  background: #ffefc0;
-  border: 1px solid #ffc107;
-  color: var(--highlight-text-color);
-  border-radius: 4px;
-  padding: 4px 12px;
-  margin-top: 8px;
-  cursor: pointer;
-  font-size: 14px;
-  transition:
-    background 0.2s,
-    color 0.2s;
-}
-
-.clear-btn:hover {
-  background: #ffc107;
-  color: var(--text-light);
-}
-
-/* 搜尋與篩選 */
-.quick-search-label {
-  font-weight: 600;
-  margin-right: 8px;
-  font-size: 16px;
-  color: var(--primary-color);
-  vertical-align: middle;
-}
-
-#searchContainer {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-#searchInput {
-  padding: 6px 10px;
-  width: 100%;
-  font-size: 14px;
-  border: 1px solid var(--border-light-gray);
-  border-radius: 4px;
-  box-sizing: border-box;
-  max-width: 250px;
-}
-
-.highlight {
-  background-color: #fff9c0;
-  color: #b8860b;
-  font-weight: bold;
-  border-radius: 3px;
-  padding: 0 2px;
-}
-
-/* 🚀 表格專用：簡潔模式標籤 */
-.table-tier-item {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    margin-bottom: 4px;
-    text-align: left;
-}
-
-.table-tier-badge {
-    background: var(--primary-color);
-    color: white;
-    font-size: 10px;
-    font-weight: bold;
-    padding: 1px 5px;
-    border-radius: 3px;
-    flex-shrink: 0;
-    min-width: 24px;
-    text-align: center;
-}
-
-/* 🚀 等級標籤 (Pill 式樣) */
-.lv-badge {
-    background: #f1f5f9;
-    color: #475569;
-    padding: 2px 10px;
-    border-radius: 12px;
-    font-size: 12px;
-    font-weight: 600;
-    border: 1px solid #e2e8f0;
-}
-
-/* 🚀 表格內容質感提升 */
-#heroes-table td {
-    padding: 12px 8px;
-    transition: all 0.2s;
-    color: #475569; /* 統一資料顏色 */
-}
-
-#heroes-table tr:hover td {
-    background-color: var(--highlight-bg-color) !important; /* 恢復黃底 */
-}
-
-/* 針對第一欄：地圖名稱的字體優化 */
-#heroes-table td:first-child {
-  font-size: 15px;
-  font-weight: bold;
-  color: var(--primary-dark-color);
-  text-align: center;
-}
-
-/* 🚀 欄位間距與排版優化 */
-td[data-label="裝備卡"], 
-td[data-label="技能卡"], 
-td[data-label="英雄卡"],
-td[data-label="垃圾"] {
-    max-width: 300px;
-    font-size: 13.5px;
-    line-height: 1.5;
-    color: #475569;
-}
-
-/* 🚀 彈窗資料內容顏色統一 */
-.align-row span,
-.section-gap p,
-.hero-column-details p,
-.hero-defdodge p {
-    color: #475569;
-}
-
-/* 確保 Strong 標籤維持原本的深色以利對比 */
-.align-row strong,
-.section-gap strong,
-.hero-column-details strong {
-    color: #333;
-}
-
-/* 🚀 新增：自訂欄位設定選單樣式 */
-.column-settings-container {
-  position: relative;
-  margin-left: auto;         /* 🚀 關鍵：將此容器推到最右邊 */
-  margin-right: 10px;        /* 與右側按鈕保持間距 */
-}
-
-.column-settings-menu {
-  display: none;
-  position: absolute;
-  top: 100%;
-  right: 0;
-  background: white;
-  border: 1px solid var(--border-color);
-  border-radius: 8px;
-  padding: 15px;
-  z-index: 1000;
-  min-width: 280px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-}
-
-.column-settings-menu.active {
-  display: block;
-}
-
-.menu-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 1px solid #eee;
-  margin-bottom: 12px;
-  padding-bottom: 8px;
-}
-
-.menu-header h4 {
-  margin: 0;
-  color: var(--primary-dark-color);
-  padding: 0;
-}
-
-#resetDefaultColumns {
-  color: var(--primary-color);
-  font-weight: bold;
-}
-
-#columnCheckboxes {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 8px;
-  margin-bottom: 15px;
-}
-
-.checkbox-item {
-  display: flex;
-  align-items: center;
-  font-size: 14px;
-  cursor: pointer;
-}
-
-.checkbox-item input {
-  margin-right: 8px;
-}
-
-.menu-actions {
-  display: flex;
-  justify-content: flex-end;
-  gap: 10px;
-  border-top: 1px solid #eee;
-  padding-top: 10px;
-}
-
-.primary-btn-sm {
-  background-color: var(--primary-color);
-  color: white;
-  border: none;
-  padding: 5px 12px;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 13px;
-}
-
-.text-btn-sm {
-  background: none;
-  border: none;
-  color: #666;
-  cursor: pointer;
-  font-size: 13px;
-}
-
-.text-btn-sm:hover {
-  text-decoration: underline;
-}
-
-/* 🚀 移除表格固定寬度，讓它根據內容自動調整 */
-table {
-  border-collapse: collapse;
-  width: 100%;
-  margin-top: 20px;
-  table-layout: auto; /* 從 fixed 改回 auto，讓動態欄位更靈活 */
-}
-
-/* 針對第一欄：地圖名稱的字體優化 (增加最小寬度) */
-#heroes-table td:first-child, #heroes-table th:first-child {
-  min-width: 100px;
-}
-
-th,
-td {
-  border: 1px solid var(--border-light-gray);
-  padding: 10px 6px;
-  text-align: center;
-  font-size: 14px;
-  white-space: normal;
-  word-wrap: break-word;    /* 支援長字串斷行 */
-  overflow-wrap: break-word;
-  vertical-align: middle;   /* 垂直居中 */
-}
-
-/* 針對第一欄：地圖名稱的字體優化 */
-#heroes-table td:first-child {
-  font-size: 16px;          /* 🚀 從 14px 放大到 16px */
-  font-weight: bold;        /* 加粗文字 */
-  color: var(--primary-dark-color); /* 使用你變數中的藍色，增加辨識度 */
-  text-align: center;       /* 保持置中 */
-}
-
-/* 針對「光輝」等長文字欄位優化閱讀感 */
-td:nth-child(4),td:nth-child(5), td:nth-child(6) {
-  text-align: left; /* 🚀 長文字左對齊比較好閱讀 */
-  font-size: 13px;  /* 文字多時稍微縮小一點 */
-  line-height: 1.4;
-}
-
-tbody tr:hover {
-  background-color: var(--highlight-bg-color);
-  cursor: pointer;
-}
-
-thead th {
-  position: sticky;
-  top: var(--nav-offset); /* JS 動態修改 */
-  background-color: var(--header-bg-color);
-  z-index: 100;
-  color: var(--text-light);
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-}
-
-th.sortable {
-  cursor: pointer;
-  user-select: none; /* 防止快速點擊時選取到文字 */
-  transition: background 0.2s;
-}
-
-th.sortable:hover {
-  background-color: var(--header-hover-bg-color);
-}
-
-/* 針對手機版確保寬度 */
-@media (max-width: 768px) {
-    #modalBox.modal-large-mode {
-        width: 95% !important;
-        max-width: 95% !important;
-    }
 }

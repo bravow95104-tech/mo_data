@@ -141,29 +141,34 @@
 
 /* 表格樣式 */
 #hero-table-container {
-  background: var(--glass-bg);
-  backdrop-filter: blur(10px);
+  background: transparent;
   border-radius: 20px;
   border: 1px solid var(--glass-border);
-  overflow: hidden;
+  overflow: visible; /* 關鍵：確保標題能浮出容器固定 */
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
 table {
-  border-collapse: collapse;
+  border-collapse: separate; /* 配合圓角 */
+  border-spacing: 0;
   width: 100%;
 }
 
 thead th {
   position: sticky;
-  top: var(--nav-height, 60px);
+  top: 60px; /* 精準對齊導覽列底部 */
   z-index: 100;
-  background: linear-gradient(180deg, rgba(26, 54, 93, 0.95), rgba(10, 23, 43, 0.95));
+  background: linear-gradient(180deg, rgba(26, 54, 93, 0.98), rgba(10, 23, 43, 0.98));
+  backdrop-filter: blur(15px); /* 將模糊效果移到這裡 */
   color: var(--primary-blue);
   padding: 16px 10px;
   font-weight: 700;
   border-bottom: 1px solid rgba(77, 163, 255, 0.3);
 }
+
+/* 確保表格圓角 */
+#hero-table-container table tr:first-child th:first-child { border-top-left-radius: 20px; }
+#hero-table-container table tr:first-child th:last-child { border-top-right-radius: 20px; }
 
 tbody td {
   padding: 12px 8px;
@@ -171,6 +176,8 @@ tbody td {
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   font-size: 14px;
   color: var(--text-muted);
+  background: var(--glass-bg);
+  backdrop-filter: blur(5px);
 }
 
 tbody tr {
