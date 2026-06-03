@@ -730,7 +730,7 @@ h1.heroes-page-title {
 }
 
 #heroes-table thead th {
-  top: var(--nav-offset, 68px);
+  top: calc(var(--nav-offset, 58px) - 10px);
   background: linear-gradient(180deg, rgba(36, 56, 92, 0.98), rgba(18, 31, 55, 0.98));
   color: #f6fbff;
   border-color: rgba(140, 184, 255, 0.12);
@@ -940,7 +940,7 @@ h1.heroes-page-title {
 }
 
 #modalContent .hero-images img {
-  width: min(220px, 48%);
+  width: min(200px, 48%);
 }
 
 .hero-column-base p,
@@ -965,8 +965,8 @@ h1.heroes-page-title {
 }
 
 #modalBox {
-  width: min(92vw, 920px);
-  max-width: 920px;
+  width: min(90vw, 560px);
+  max-width: 560px;
   border: 1px solid rgba(140, 184, 255, 0.18);
   border-radius: 24px;
   background: linear-gradient(180deg, rgba(11, 19, 35, 0.98), rgba(7, 13, 24, 0.99));
@@ -974,7 +974,7 @@ h1.heroes-page-title {
 }
 
 #modalContent {
-  padding: 24px;
+  padding: 20px;
   background: transparent;
   color: #edf4ff;
 }
