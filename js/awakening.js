@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 150);
   });
 
-  const tableContainer = document.getElementById('heroes-table');
+  const tableContainer = document.getElementById('hero-table-container');
   const cardContainer = document.getElementById('awakening-container');
   const searchInput = document.getElementById('searchInput');
 
@@ -78,7 +78,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (cardContainer) cardContainer.style.display = 'flex';
     } else {
       renderTable(lastFilteredData);
-      if (tableContainer) tableContainer.style.display = 'table';
+      if (tableContainer) tableContainer.style.display = 'block';
       if (cardContainer) cardContainer.style.display = 'none';
     }
   }
@@ -106,7 +106,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (keyword && value.toLowerCase().includes(keyword)) {
           const regex = new RegExp(`(${keyword})`, "gi");
-          td.innerHTML = value.replace(regex, '<span class="highlight2">$1</span>');
+          td.innerHTML = value.replace(regex, '<span class="highlight">$1</span>');
         } else {
           td.textContent = value;
         }
@@ -136,7 +136,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const highlight = (text) => {
         if (!keyword) return text;
         const regex = new RegExp(`(${keyword})`, "gi");
-        return String(text).replace(regex, '<span class="highlight2">$1</span>');
+        return String(text).replace(regex, '<span class="highlight">$1</span>');
       };
 
       cardDiv.innerHTML = `
