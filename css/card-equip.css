@@ -203,29 +203,31 @@ tbody tr:hover td {
   color: white;
 }
 
-/* 排序圖示 */
+/* 排序圖示美化 */
 .header-content {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: 6px;
 }
 
 .sort-icon-container {
   display: inline-flex;
   flex-direction: column;
-  gap: 2px;
+  line-height: 0.7;
 }
 
 .sort-arrow {
-  color: rgba(255, 255, 255, 0.2);
-  font-size: 8px;
-  line-height: 1;
+  color: rgba(255, 255, 255, 0.15);
+  font-size: 9px;
+  transition: all 0.2s ease;
 }
 
 th.sorted-asc .arrow-up,
 th.sorted-desc .arrow-down {
   color: var(--primary-blue) !important;
+  text-shadow: 0 0 8px rgba(77, 163, 255, 0.6);
+  transform: scale(1.1);
 }
 
 /* Modal 彈出視窗 */

@@ -160,7 +160,8 @@ thead th {
   background: linear-gradient(180deg, rgba(26, 54, 93, 0.98), rgba(10, 23, 43, 0.98));
   backdrop-filter: blur(15px);
   color: var(--primary-blue);
-  padding: 16px 10px;
+  padding: 12px 6px;
+  font-size: 13px; /* 縮小字體 */
   font-weight: 700;
   border-bottom: 1px solid rgba(77, 163, 255, 0.3);
 }

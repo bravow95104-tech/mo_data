@@ -221,12 +221,37 @@ table {
 thead th {
   position: sticky;
   top: 60px;
-  z-index: 100;
+  z-index: 1000; /* 提升至與導覽列相近層級 */
   background: linear-gradient(180deg, rgba(26, 54, 93, 0.98), rgba(10, 23, 43, 0.98));
   backdrop-filter: blur(15px);
   color: var(--primary-blue);
-  padding: 15px 10px;
+  padding: 12px 6px;
+  font-size: 13px; /* 縮小字體 */
+  font-weight: 700;
   border-bottom: 1px solid rgba(77, 163, 255, 0.3);
+}
+
+/* 地圖排序箭頭美化 */
+th.sortable::after {
+  content: " \2195"; /* 預設上下箭頭符號 */
+  font-size: 10px;
+  opacity: 0.2;
+  margin-left: 5px;
+  transition: all 0.2s;
+}
+
+th.sortable.sorted-asc::after {
+  content: " \2191";
+  opacity: 1;
+  color: var(--primary-blue);
+  text-shadow: 0 0 8px rgba(77, 163, 255, 0.6);
+}
+
+th.sortable.sorted-desc::after {
+  content: " \2193";
+  opacity: 1;
+  color: var(--primary-blue);
+  text-shadow: 0 0 8px rgba(77, 163, 255, 0.6);
 }
 
 #hero-table-container table tr:first-child th:first-child { border-top-left-radius: 20px; }
