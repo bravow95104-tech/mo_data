@@ -65,9 +65,16 @@ function initNavbarBehavior() {
         hamburgerBtn.addEventListener("click", (e) => {
             e.stopPropagation();
             navMenu.classList.toggle("active");
-            navbar.classList.add("visible"); // 確保可見
-            // 選單展開/收合後高度可能變化，延遲更新以確保抓到正確高度
-            setTimeout(updateNavOffset, 300); // 300ms 等待 CSS 過渡
+            navbar.classList.add("visible");
+            setTimeout(updateNavOffset, 300);
+        });
+
+        // 🚀 關鍵修正：點擊選單內的連結後，自動關閉選單 (解決跳轉後選單關不掉的問題)
+        navMenu.addEventListener("click", (e) => {
+            if (e.target.tagName === "A") {
+                navMenu.classList.remove("active");
+                setTimeout(updateNavOffset, 300);
+            }
         });
 
         document.addEventListener("click", (e) => {
