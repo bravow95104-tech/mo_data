@@ -5,12 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>英雄清單 | MoData</title>
     <link rel="stylesheet" href="/mo_data/css/styles.css" />
-    <link rel="stylesheet" href="/mo_data/css/nav.css" />
     <link rel="stylesheet" href="/mo_data/css/heroes.css" />
   </head>
   <body>
     <div id="nav-container"></div>
     <!-- 這是導航列會被載入的位置 -->
+
+    <h1></h1>
 
     <!-- 搜尋框 -->
     <div id="searchContainer">
@@ -21,7 +22,6 @@
         placeholder="搜尋英雄名稱、光輝、裝備卡..."
       />
     </div>
-    <div id="heroesSummary" class="heroes-summary" aria-live="polite"></div>
     <br />
     <!-- 快速搜尋 -->
     <div id="filterContainer" class="accordion">
@@ -115,46 +115,55 @@
       <table id="heroes-table">
         <thead>
           <tr>
-            <th class="sortable" data-col="name">英雄名稱</th>
-            <th>光輝頭尾</th>
-            <th>晉級</th>
+            <th class="sortable" data-col="name">英雄<br />名稱</th>
+            <th>對應<br />光輝</th>
+            <th>拜官</th>
             <th class="sortable" data-col="initial">初始</th>
-            <th class="sortable" data-col="traits">特性</th>
+            <th class="sortable" data-col="traits">素質</th>
             <th>個性</th>
             <th class="sortable" data-col="element">屬性</th>
             <th class="sortable" data-col="str">力量</th>
-            <th class="sortable" data-col="int">智力</th>
+            <th class="sortable" data-col="int">智慧</th>
             <th class="sortable" data-col="vit">體質</th>
             <th class="sortable" data-col="agi">敏捷</th>
-            <th class="sortable" data-col="luk">幸運</th>
-            <th class="sortable" data-col="aggression_before">攻擊前</th>
-            <th>新裝備</th>
-            <th>舊裝備</th>
+            <th class="sortable" data-col="luk">運氣</th>
+            <th class="sortable" data-col="aggression_before">
+              積極度<br />(生變前)
+            </th>
+            <th>裝備卡<br />(新專)</th>
+            <th>裝備卡<br />(舊專)</th>
           </tr>
         </thead>
         <tbody>
-          <!-- 資料由 JS 動態渲染 -->
+          <!-- 資料由 JS 動態載入 -->
         </tbody>
       </table>
     </div>
     <div id="hero-card-container"></div>
 
-    <!-- 頁面底部留白 -->
+    <!-- 留白避免按鈕遮住 -->
     <div class="page-bottom-spacer"></div>
 
-    <!-- 回到頂部 -->
-    <button id="backToTop" title="回到頂部">↑</button>
+    <!-- 回到頂部按鈕 -->
+    <button id="backToTop" title="回到頂部">▲</button>
 
     <!-- Modal HTML -->
     <div id="modalOverlay"></div>
-    <div id="modalBox" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div
+      id="modalBox"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modal-title"
+    >
       <span class="close-btn">&times;</span>
       <div id="modalContent"></div>
     </div>
 
+    <!-- JavaScript -->
+
     <div id="footer-container"></div>
     <!-- 這是頁尾會被載入的位置 -->
-    <script type="module" src="/mo_data/js/heroes.js"></script>
+    <script src="/mo_data/js/heroes.js"></script>
     <script src="/mo_data/js/componentsLoader.js"></script>
   </body>
 </html>
