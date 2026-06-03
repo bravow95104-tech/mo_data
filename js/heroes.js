@@ -1,11 +1,5 @@
-import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm'
-import { SUPABASE_URL, SUPABASE_KEY } from './supabase-config.js'
-
-const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
-
 document.addEventListener("DOMContentLoaded", () => {
   let heroesData = [];
-  let gloryDropsData = []; // 儲存地點掉落資料
   let sortConfig = { key: null, direction: "asc" }; // 記錄排序狀態
   let lastFilteredData = [];
 
@@ -63,7 +57,6 @@ document.addEventListener("DOMContentLoaded", () => {
   // === DOM 元素快取 ===
   const tableBody = document.querySelector("#heroes-table tbody");
   const searchInput = document.getElementById("searchInput");
-  const heroesSummary = document.getElementById("heroesSummary");
   const clearFiltersBtn = document.getElementById("clearFilters");
   const modalOverlay = document.getElementById("modalOverlay");
   const modalBox = document.getElementById("modalBox");
@@ -71,66 +64,109 @@ document.addEventListener("DOMContentLoaded", () => {
   const closeModalBtn = document.querySelector("#modalBox .close-btn");
   const heroesTableContainer = document.getElementById("hero-table-container");
   const heroesCardContainer = document.getElementById("hero-card-container");
-
-  // === 1. 載入資料 (改為從 Supabase 讀取) ===
-  async function loadDataFromSupabase() {
-    try {
-      // 同時抓取英雄與地點資料
-      const [heroesRes, dropsRes] = await Promise.all([
-        supabase.from('heroes').select('*').order('sort_id', { ascending: true }),
-        supabase.from('glory_drop').select('*')
-      ]);
-
-      if (heroesRes.error) throw heroesRes.error;
-      if (dropsRes.error) throw dropsRes.error;
-
-      heroesData = heroesRes.data;
-      gloryDropsData = dropsRes.data;
+  // === 1. 載入 JSON 資料 ===
+  fetch("/mo_data/data/heroes.json")
+    .then((response) => response.json())
+    .then((data) => {
+      heroesData = data;
       applyFilters(); // 初始渲染
-      
-      // === 🚀 跨頁面深度連結處理 ===
-      const urlParams = new URLSearchParams(window.location.search);
-      const heroName = urlParams.get('hero');
-      if (heroName) {
-        // 在所有資料中尋找匹配的英雄
-        const targetHero = heroesData.find(h => h.name === heroName);
-        if (targetHero) {
-          // 稍微延遲確保 DOM 渲染完成再開啟 Modal
-          setTimeout(() => {
-            showDetailModal(targetHero);
-          }, 100);
-        }
-      }
-    } catch (error) {
+    })
+    .catch((error) => {
       console.error("載入英雄資料錯誤:", error);
       if (tableBody)
-        tableBody.innerHTML = '<tr><td colspan="15">無法載入雲端資料</td></tr>';
-    }
-  }
+        tableBody.innerHTML = '<tr><td colspan="15">無法載入英雄資料</td></tr>';
+    });
 
-  loadDataFromSupabase();
+  // === 2. 核心邏輯：套用 搜尋 + 篩選 + 排序 ===
+  // function applyFilters() {
+  //   const keyword = searchInput.value.trim().toLowerCase();
 
-  // 輔助函式：確保顯示時不會出現 null 或 undefined
-  const clean = (val) => (val === null || val === undefined) ? "" : val;
+  //   // A. 取得目前按鈕選取的條件
+  //   const filters = {
+  //     promotion: [],
+  //     personality: [],
+  //     traits: [],
+  //     new_multiplier: [],
+  //   };
+  //   document.querySelectorAll(".filter-btn.active").forEach((btn) => {
+  //     const type = btn.dataset.type;
+  //     const val = btn.dataset.value;
+  //     if (filters[type]) filters[type].push(val);
+  //   });
 
-  function getActiveFilterCount() {
-    return document.querySelectorAll(".filter-btn.active").length;
-  }
+  //   // B. 過濾資料 (搜尋框 + 篩選按鈕)
+  //   let filtered = heroesData.filter((hero) => {
+  //     // 搜尋框條件
+  //     const targetFields = [
+  //       hero.name,
+  //       hero.glory,
+  //       hero.equipment_new,
+  //       hero.equipment_old,
+  //       hero.promotion,
+  //       hero.personality,
+  //       hero.traits,
+  //     ]
+  //       .join(" ")
+  //       .toLowerCase();
+  //     const matchSearch = targetFields.includes(keyword);
 
-  function updateSummary(filteredCount, totalCount) {
-    if (!heroesSummary) return;
+  //     // 按鈕條件 (多選邏輯：同組選多個為 OR, 不同組之間為 AND)
+  //     const okPromotion =
+  //       filters.promotion.length === 0 ||
+  //       filters.promotion.includes(hero.promotion);
+  //     const okPersonality =
+  //       filters.personality.length === 0 ||
+  //       filters.personality.includes(hero.personality);
+  //     const okTraits =
+  //       filters.traits.length === 0 ||
+  //       filters.traits.includes(String(hero.traits));
+  //     const okNewMult =
+  //       filters.new_multiplier.length === 0 ||
+  //       filters.new_multiplier.includes(hero.new_multiplier);
 
-    const activeFilters = getActiveFilterCount();
-    const sortLabel = sortConfig.key
-      ? `${sortConfig.key.replaceAll("_", " ").toUpperCase()} ${sortConfig.direction === "asc" ? "ASC" : "DESC"}`
-      : "未排序";
+  //     return (
+  //       matchSearch && okPromotion && okPersonality && okTraits && okNewMult
+  //     );
+  //   });
 
-    heroesSummary.innerHTML = `
-      <span class="summary-chip summary-chip-accent">顯示 ${filteredCount} / ${totalCount}</span>
-      <span class="summary-chip">篩選 ${activeFilters} 項</span>
-      <span class="summary-chip">排序 ${sortLabel}</span>
-    `;
-  }
+  //   // C. 排序資料
+  //   if (sortConfig.key) {
+  //     filtered.sort((a, b) => {
+  //       let valA = a[sortConfig.key];
+  //       let valB = b[sortConfig.key];
+
+  //       const numA = parseFloat(valA);
+  //       const numB = parseFloat(valB);
+
+  //       if (!isNaN(numA) && !isNaN(numB)) {
+  //         valA = numA;
+  //         valB = numB;
+  //       } else {
+  //         valA = String(valA || "").toLowerCase();
+  //         valB = String(valB || "").toLowerCase();
+  //       }
+
+  //       if (valA < valB) return sortConfig.direction === "asc" ? -1 : 1;
+  //       if (valA > valB) return sortConfig.direction === "asc" ? 1 : -1;
+  //       return 0;
+  //     });
+  //   }
+
+  //   // D. 最終渲染
+
+  //   if (resizeFlag) {
+  //     console.log("在768以下隱藏表格");
+  //     heroesTableContainer.style.display = "none";
+  //     heroesCardContainer.style.display = "flex";
+  //     renderCard(filtered);
+  //   } else {
+  //     console.log("在768以上顯示表格");
+  //     heroesTableContainer.style.display = "block";
+  //     heroesCardContainer.style.display = "none";
+
+  //     renderTable(filtered);
+  //   }
+  // }
 
   function applyFilters() {
     const keyword = searchInput.value.trim().toLowerCase();
@@ -217,7 +253,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // D. 存起來
     lastFilteredData = filtered;
-    updateSummary(filtered.length, heroesData.length);
 
     // E. 只在「資料真的改變」時 render
     applyLayout();
@@ -226,8 +261,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function applyLayout() {
     if (resizeFlag) {
       heroesTableContainer.style.display = "none";
-      heroesCardContainer.style.display = "grid";
-      heroesCardContainer.style.gridTemplateColumns = "repeat(auto-fit, minmax(320px, 1fr))";
+      heroesCardContainer.style.display = "flex";
       renderCard(lastFilteredData);
     } else {
       heroesTableContainer.style.display = "block";
@@ -245,14 +279,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (data.length === 0) {
       tableBody.innerHTML =
-        '<tr class="hero-empty-state"><td colspan="15">找不到符合條件的英雄</td></tr>';
+        '<tr><td colspan="15">找不到符合條件的英雄</td></tr>';
       return;
     }
 
     const fragment = document.createDocumentFragment();
     data.forEach((hero) => {
       const tr = document.createElement("tr");
-      tr.className = "hero-table-row";
       const fields = [
         "name",
         "glory",
@@ -273,9 +306,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       fields.forEach((field) => {
         const td = document.createElement("td");
-        // 如果值是 null 或 undefined，改為顯示空字串
-        const rawValue = hero[field];
-        const value = (rawValue === null || rawValue === undefined) ? "" : String(rawValue);
+        const value = hero[field] !== undefined ? String(hero[field]) : "";
 
         if (keyword && value.toLowerCase().includes(keyword)) {
           const regex = new RegExp(`(${keyword})`, "gi");
@@ -301,7 +332,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     data.forEach((hero) => {
       const div = document.createElement("div");
-      div.className = "accordion hero-card";
+      div.className = "accordion";
       const safeName = hero.name.replace(/[^\w\u4e00-\u9fa5]/g, "");
 
       function createImageWithFallbacks(basePath, altText) {
@@ -312,7 +343,7 @@ document.addEventListener("DOMContentLoaded", () => {
         return img;
       }
 
-      div.innerHTML = `<h2 class="hero-name hero-card-title">${clean(hero.name)}</h2>`;
+      div.innerHTML = `<h2 class="hero-name" id="modal-title">${hero.name}</h2>`;
 
       const imgContainer = document.createElement("div");
       imgContainer.className = "hero-images hero-card-images";
@@ -324,68 +355,46 @@ document.addEventListener("DOMContentLoaded", () => {
       );
       div.appendChild(imgContainer);
 
-      // 輔助函式：根據英雄的光輝動態查找地點
-      function getLocationsForGlory(gloryName) {
-        if (!gloryName) return "無資訊";
-        
-        // 找出哪些 Area 的 more 包含這個光輝
-        const highLocations = gloryDropsData
-          .filter(d => d.more && d.more.split('、').includes(gloryName))
-          .map(d => d.area);
-          
-        // 找出哪些 Area 的 low 包含這個光輝
-        const lowLocations = gloryDropsData
-          .filter(d => d.low && d.low.split('、').includes(gloryName))
-          .map(d => d.area);
-
-        return {
-          high: highLocations.length > 0 ? highLocations.join('、') : "無資訊",
-          low: lowLocations.length > 0 ? lowLocations.join('、') : "無資訊"
-        };
-      }
-
-      const locations = getLocationsForGlory(hero.glory);
-
       const detailHTML = `
       <div class="hero-details-container">
         <div class="hero-column-base hero-column">
-          <p><strong>對應光輝：</strong>${clean(hero.glory)}</p>
-          <p><strong>拜官：</strong>${clean(hero.promotion)}</p>
-          <p><strong>初始：</strong>${clean(hero.initial)}</p>
-          <p><strong>素質：</strong>${clean(hero.traits)}</p>
-          <p><strong>個性：</strong>${clean(hero.personality)}</p>
-          <p><strong>屬性：</strong>${clean(hero.element)}</p>
+          <p><strong>對應光輝：</strong>${hero.glory}</p>
+          <p><strong>拜官：</strong>${hero.promotion}</p>
+          <p><strong>初始：</strong>${hero.initial}</p>
+          <p><strong>素質：</strong>${hero.traits}</p>
+          <p><strong>個性：</strong>${hero.personality}</p>
+          <p><strong>屬性：</strong>${hero.element}</p>
           <hr style="margin: 20px 0; border: 0; border-top: 1px solid #ddd;">
-          <p><strong>力量：</strong>${clean(hero.str)}</p>
-          <p><strong>智慧：</strong>${clean(hero.int)}</p>
-          <p><strong>體質：</strong>${clean(hero.vit)}</p>
-          <p><strong>敏捷：</strong>${clean(hero.agi)}</p>
-          <p><strong>運氣：</strong>${clean(hero.luk)}</p>
+          <p><strong>力量：</strong>${hero.str}</p>
+          <p><strong>智慧：</strong>${hero.int}</p>
+          <p><strong>體質：</strong>${hero.vit}</p>
+          <p><strong>敏捷：</strong>${hero.agi}</p>
+          <p><strong>運氣：</strong>${hero.luk}</p>
         </div>
         <div class="hero-column-base hero-column">
-          <p><strong>積極度(生變前)：</strong>${clean(hero.aggression_before)}</p>
-          <p><strong>積極度(生變後)：</strong>${clean(hero.aggression_after)}</p>
+          <p><strong>積極度(生變前)：</strong>${hero.aggression_before}</p>
+          <p><strong>積極度(生變後)：</strong>${hero.aggression_after}</p>
           <hr style="margin: 20px 0; border: 0; border-top: 1px solid #ddd;">
-          <p><strong>裝備卡(新專)：</strong>${clean(hero.equipment_new)}</p>
-          <p><strong>新專數值：</strong>${clean(hero.equipment_new_data)}</p>
-          <p><strong>新專倍率：</strong>${clean(hero.new_multiplier)}</p>
+          <p><strong>裝備卡(新專)：</strong>${hero.equipment_new}</p>
+          <p><strong>新專數值：</strong>${hero.equipment_new_data}</p>
+          <p><strong>新專倍率：</strong>${hero.new_multiplier}</p>
           <hr style="margin: 20px 0; border: 0; border-top: 1px solid #ddd;">
-          <p><strong>裝備卡(舊專)：</strong>${clean(hero.equipment_old)}</p>
-          <p><strong>舊專數值：</strong>${clean(hero.equipment_old_data)}</p>
+          <p><strong>裝備卡(舊專)：</strong>${hero.equipment_old}</p>
+          <p><strong>舊專數值：</strong>${hero.equipment_old_data}</p>
           <hr style="margin: 20px 0; border: 0; border-top: 1px solid #ddd;">
-          <p><strong>天生技：</strong>${clean(hero.innate_skill)}</p>
-          <p><strong>生變技能：</strong>${clean(hero.transformation_skill)}</p>
+          <p><strong>天生技：</strong>${hero.innate_skill}</p>
+          <p><strong>生變技能：</strong>${hero.transformation_skill}</p>
         </div>
         <div class="hero-column-base hero-column-details">
-          <p><strong>光輝掉落(掉落較多)：</strong>${locations.high}</p>
-          <p><strong>光輝掉落(掉落較低)：</strong>${locations.low}</p>
-          ${hero.player ? `<p><strong>光輝掉落(玩家提供)：</strong>${clean(hero.player)}</p>` : ""}
+          <p><strong>光輝掉落(掉落較多)：</strong>${hero.fall_high}</p>
+          <p><strong>光輝掉落(掉落較低)：</strong>${hero.fall_low}</p>
+          ${hero.player ? `<p><strong>光輝掉落(玩家提供)：</strong>${hero.player}</p>` : ""}
         </div>
         ${
           hero.playerdata
             ? `
       <div class="hero-playerdata">
-        <p><strong>資訊提供：</strong>${clean(hero.playerdata)}</p>
+        <p><strong>資訊提供：</strong>${hero.playerdata}</p>
       </div>
       `
             : ""
@@ -459,22 +468,9 @@ document.addEventListener("DOMContentLoaded", () => {
       return img;
     }
 
-    // 輔助函式：動態查找地點 (複用渲染卡片的邏輯)
-    function getLocationsForGlory(gloryName) {
-      if (!gloryName) return { high: "無資訊", low: "無資訊" };
-      const high = gloryDropsData.filter(d => d.more && d.more.split('、').includes(gloryName)).map(d => d.area);
-      const low = gloryDropsData.filter(d => d.low && d.low.split('、').includes(gloryName)).map(d => d.area);
-      return {
-        high: high.length > 0 ? high.join('、') : "無資訊",
-        low: low.length > 0 ? low.join('、') : "無資訊"
-      };
-    }
-
-    const locations = getLocationsForGlory(hero.glory);
-
     // ✅ 打開前先清空內容並強制歸零
     modalBox.scrollTop = 0;
-    modalContent.innerHTML = `<h2 class="hero-name" id="modal-title">${clean(hero.name)}</h2>`;
+    modalContent.innerHTML = `<h2 class="hero-name" id="modal-title">${hero.name}</h2>`;
 
     const imgContainer = document.createElement("div");
     imgContainer.className = "hero-images";
@@ -489,43 +485,43 @@ document.addEventListener("DOMContentLoaded", () => {
     const detailHTML = `
       <div class="hero-details-container">
         <div class="hero-column-base hero-column">
-          <p><strong>對應光輝：</strong>${clean(hero.glory)}</p>
-          <p><strong>拜官：</strong>${clean(hero.promotion)}</p>
-          <p><strong>初始：</strong>${clean(hero.initial)}</p>
-          <p><strong>素質：</strong>${clean(hero.traits)}</p>
-          <p><strong>個性：</strong>${clean(hero.personality)}</p>
-          <p><strong>屬性：</strong>${clean(hero.element)}</p>
+          <p><strong>對應光輝：</strong>${hero.glory}</p>
+          <p><strong>拜官：</strong>${hero.promotion}</p>
+          <p><strong>初始：</strong>${hero.initial}</p>
+          <p><strong>素質：</strong>${hero.traits}</p>
+          <p><strong>個性：</strong>${hero.personality}</p>
+          <p><strong>屬性：</strong>${hero.element}</p>
           <hr style="margin: 20px 0; border: 0; border-top: 1px solid #ddd;">
-          <p><strong>力量：</strong>${clean(hero.str)}</p>
-          <p><strong>智慧：</strong>${clean(hero.int)}</p>
-          <p><strong>體質：</strong>${clean(hero.vit)}</p>
-          <p><strong>敏捷：</strong>${clean(hero.agi)}</p>
-          <p><strong>運氣：</strong>${clean(hero.luk)}</p>
+          <p><strong>力量：</strong>${hero.str}</p>
+          <p><strong>智慧：</strong>${hero.int}</p>
+          <p><strong>體質：</strong>${hero.vit}</p>
+          <p><strong>敏捷：</strong>${hero.agi}</p>
+          <p><strong>運氣：</strong>${hero.luk}</p>
         </div>
         <div class="hero-column-base hero-column">
-          <p><strong>積極度(生變前)：</strong>${clean(hero.aggression_before)}</p>
-          <p><strong>積極度(生變後)：</strong>${clean(hero.aggression_after)}</p>
+          <p><strong>積極度(生變前)：</strong>${hero.aggression_before}</p>
+          <p><strong>積極度(生變後)：</strong>${hero.aggression_after}</p>
           <hr style="margin: 20px 0; border: 0; border-top: 1px solid #ddd;">
-          <p><strong>裝備卡(新專)：</strong>${clean(hero.equipment_new)}</p>
-          <p><strong>新專數值：</strong>${clean(hero.equipment_new_data)}</p>
-          <p><strong>新專倍率：</strong>${clean(hero.new_multiplier)}</p>
+          <p><strong>裝備卡(新專)：</strong>${hero.equipment_new}</p>
+          <p><strong>新專數值：</strong>${hero.equipment_new_data}</p>
+          <p><strong>新專倍率：</strong>${hero.new_multiplier}</p>
           <hr style="margin: 20px 0; border: 0; border-top: 1px solid #ddd;">
-          <p><strong>裝備卡(舊專)：</strong>${clean(hero.equipment_old)}</p>
-          <p><strong>舊專數值：</strong>${clean(hero.equipment_old_data)}</p>
+          <p><strong>裝備卡(舊專)：</strong>${hero.equipment_old}</p>
+          <p><strong>舊專數值：</strong>${hero.equipment_old_data}</p>
           <hr style="margin: 20px 0; border: 0; border-top: 1px solid #ddd;">
-          <p><strong>天生技：</strong>${clean(hero.innate_skill)}</p>
-          <p><strong>生變技能：</strong>${clean(hero.transformation_skill)}</p>
+          <p><strong>天生技：</strong>${hero.innate_skill}</p>
+          <p><strong>生變技能：</strong>${hero.transformation_skill}</p>
         </div>
         <div class="hero-column-base hero-column-details">
-          <p><strong>光輝掉落(掉落較多)：</strong>${locations.high}</p>
-          <p><strong>光輝掉落(掉落較低)：</strong>${locations.low}</p>
-          ${hero.player ? `<p><strong>光輝掉落(玩家提供)：</strong>${clean(hero.player)}</p>` : ""}
+          <p><strong>光輝掉落(掉落較多)：</strong>${hero.fall_high}</p>
+          <p><strong>光輝掉落(掉落較低)：</strong>${hero.fall_low}</p>
+          ${hero.player ? `<p><strong>光輝掉落(玩家提供)：</strong>${hero.player}</p>` : ""}
         </div>
         ${
           hero.playerdata
             ? `
       <div class="hero-playerdata">
-        <p><strong>資訊提供：</strong>${clean(hero.playerdata)}</p>
+        <p><strong>資訊提供：</strong>${hero.playerdata}</p>
       </div>
       `
             : ""
