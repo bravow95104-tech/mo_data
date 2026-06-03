@@ -203,12 +203,12 @@ th.sort-desc .caret-down {
 #modalBox {
   display: none;
   position: fixed;
-  top: 50%;
+  top: 55%; /* 稍微下移，避免與頂部導覽列過近 */
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 92vw;
-  max-width: 700px;
-  max-height: 85vh;
+  width: 88vw;
+  max-width: 620px; /* 寬度縮小 */
+  max-height: 72vh; /* 高度縮小，確保不被 nav 擋到 */
   overflow-y: auto;
   z-index: 2001;
   background: linear-gradient(135deg, rgba(20, 35, 60, 0.98), rgba(10, 20, 35, 0.98));
@@ -221,23 +221,28 @@ th.sort-desc .caret-down {
   scrollbar-color: var(--primary-blue) transparent;
 }
 
-/* 自定義捲軸樣式 (Chrome/Safari) */
-#modalBox::-webkit-scrollbar {
-  width: 6px;
-}
-#modalBox::-webkit-scrollbar-thumb {
-  background: var(--primary-blue);
-  border-radius: 10px;
+/* 圖片容器置中 */
+.hero-images {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 25px;
+  width: 100%;
 }
 
-.hero-name {
-  color: var(--primary-blue);
-  font-size: 28px;
-  font-weight: 800;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  padding-bottom: 15px;
-  margin-bottom: 25px;
-  text-align: center;
+.hero-images img {
+  max-width: 180px; /* 稍微縮小圖片以符合更小的視窗 */
+  height: auto;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
+}
+
+.hero-images img:hover {
+  transform: scale(1.05);
 }
 
 .hero-details-container {
