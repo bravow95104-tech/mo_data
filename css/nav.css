@@ -1,0 +1,266 @@
+/* === 導覽列專用樣式 (nav.css) === */
+
+/* === 桌機版導覽列 === */
+#nav-container nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    /* Glassmorphism: 磨砂玻璃效果 */
+    background: rgba(51, 153, 255, 0.9);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    color: #fff;
+    padding: 0 40px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0; 
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    z-index: 2000;
+    transform: translateY(-100%);
+    transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+#nav-container nav.visible {
+    transform: translateY(0);
+}
+
+.nav-mobile-header {
+    display: none;
+}
+
+.nav-menu {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    height: 100%;
+    padding: 0;
+}
+
+#nav-container nav a,
+#nav-container nav .dropdown-toggle {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 15px;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    height: 36px;
+}
+
+#nav-container nav a:hover,
+#nav-container nav .dropdown-toggle:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+    transform: translateY(-1px);
+}
+
+.dropdown {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    margin-right: 5px;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: calc(100% - 5px);
+    left: 0;
+    background: rgba(38, 122, 204, 0.95);
+    backdrop-filter: blur(15px);
+    min-width: 180px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 8px 0;
+    overflow: hidden;
+    animation: navFadeIn 0.3s ease forwards;
+}
+
+@keyframes navFadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown-content a {
+    display: block !important;
+    padding: 10px 20px !important;
+    color: white !important;
+    text-decoration: none !important;
+    font-size: 14px !important;
+    border-radius: 0 !important;
+    height: auto !important;
+    transition: background 0.2s !important;
+}
+
+.dropdown-content a:hover {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* === 更多選單 (More Menu) === */
+.more-group-header {
+    background-color: #267acc;
+    color: #fff;
+    padding: 8px 12px;
+    font-size: 13px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 5px;
+}
+
+.sub-indent {
+    padding-left: 25px !important;
+    font-size: 14px !important;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.more-menu {
+    display: none;
+}
+
+@media (max-width: 1300px) and (min-width: 1151px) {
+    .nav-item-sys { display: none; }
+    .more-menu { display: block; }
+    .more-menu .more-item-map, .more-menu .more-item-prod, .more-menu .more-item-other { display: none; }
+    .more-menu .more-item-sys { display: block; }
+}
+
+@media (max-width: 1150px) and (min-width: 1001px) {
+    .nav-item-other, .nav-item-sys { display: none; }
+    .more-menu { display: block; }
+    .more-menu .more-item-map, .more-menu .more-item-prod { display: none; }
+    .more-menu .more-item-other, .more-menu .more-item-sys { display: block; }
+}
+
+@media (max-width: 1000px) and (min-width: 901px) {
+    .nav-item-prod, .nav-item-other, .nav-item-sys { display: none; }
+    .more-menu { display: block; }
+    .more-menu .more-item-map { display: none; }
+    .more-menu .more-item-prod, .more-menu .more-item-other, .more-menu .more-item-sys { display: block; }
+}
+
+@media (max-width: 900px) and (min-width: 769px) {
+    .nav-item-map, .nav-item-prod, .nav-item-other, .nav-item-sys { display: none; }
+    .more-menu { display: block; }
+    .more-menu .more-item-map, .more-menu .more-item-prod, .more-menu .more-item-other, .more-menu .more-item-sys { display: block; }
+    #nav-container nav a, #nav-container nav .dropdown-toggle { padding: 8px 10px; font-size: 15px; }
+}
+
+/* === 手機版導覽列 (Media Query) === */
+@media (max-width: 1024px) {
+    /* 強制導覽列「脫離」所有父層容器的限制 */
+    #nav-container {
+        display: block !important;
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        width: 100% !important;
+        height: auto !important;
+        z-index: 99999 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        max-width: none !important;
+    }
+
+    #nav-container nav {
+        display: block !important;
+        position: relative !important;
+        width: 100% !important;
+        max-width: none !important;
+        background: #3399ff !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.2) !important;
+        border-radius: 0 !important;
+        transform: none !important;
+        height: auto !important;
+    }
+
+    .nav-mobile-header {
+        display: flex !important;
+        width: 100% !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        padding: 0 20px !important;
+        height: 56px !important;
+        box-sizing: border-box !important;
+        background: #3399ff !important;
+    }
+
+    /* 隱藏桌機版選單項目，直到漢堡按鈕被點擊 */
+    .nav-menu {
+        display: none;
+        flex-direction: column !important;
+        width: 100% !important;
+        background: #267acc !important;
+        position: absolute !important;
+        top: 56px !important;
+        left: 0 !important;
+        margin: 0 !important;
+        padding: 10px 0 !important;
+        box-sizing: border-box !important;
+    }
+
+    .nav-menu.active {
+        display: flex !important;
+    }
+
+    /* 確保手機版不顯示桌機的「更多」邏輯 */
+    .nav-item-map, .nav-item-prod, .nav-item-other, .nav-item-sys {
+        display: block !important;
+    }
+    .more-menu {
+        display: none !important;
+    }
+
+    .dropdown, .nav-link {
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
+
+    .dropdown-toggle, .nav-menu a {
+        padding: 15px 25px !important;
+        color: white !important;
+        display: block !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+        text-align: left !important;
+        height: auto !important;
+        font-size: 16px !important;
+    }
+    
+    .dropdown-content {
+        position: static !important;
+        width: 100% !important;
+        background: rgba(0,0,0,0.1) !important;
+        padding: 0 !important;
+        box-shadow: none !important;
+        border: none !important;
+        animation: none !important;
+        display: none;
+    }
+
+    .dropdown:hover .dropdown-content {
+        display: block !important;
+    }
+    
+    .dropdown-content a {
+        padding: 12px 45px !important;
+        font-size: 15px !important;
+    }
+}
