@@ -494,13 +494,22 @@ h3.search-tip {
         padding: 60px 15px 0 15px; /* 增加頂部間距配合新 Header */
     }
 
-    /* 🚀 修正：手機版改回 block 佈局，避免 flex 造成的置中縮小問題 */
+    /* 🚀 核心修正：強制手機版導航列寬度撐滿，無視任何 body 內距或父層限制 */
+    #nav-container,
     #nav-container nav {
         display: block !important;
+        width: 100% !important;
+        max-width: 100vw !important; /* 強制視窗寬度 */
+        left: 0 !important;
+        right: 0 !important;
+        margin: 0 !important;
         padding: 0 !important;
         border-radius: 0 !important;
         height: auto !important;
-        background: #3399ff !important; /* 手機版直接用實色，視覺更穩定 */
+        background: #3399ff !important;
+        position: fixed !important; /* 確保維持固定 */
+        top: 0 !important;
+        box-sizing: border-box !important;
     }
 
     /* === 漢堡選單樣式：現代 App 化調整 === */
@@ -511,11 +520,11 @@ h3.search-tip {
         background-color: #3399ff;
         color: white;
         padding: 0 20px;
-        width: 100%;
-        height: 54px; /* 稍微增加高度，點擊更輕鬆 */
+        width: 100% !important; /* 強制撐滿 */
+        height: 54px;
         position: relative;
         box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        box-sizing: border-box;
+        box-sizing: border-box !important;
     }
 
     .hamburger-btn {
