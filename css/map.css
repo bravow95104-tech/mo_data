@@ -560,9 +560,7 @@ tbody tr:hover td {
     max-height: 85vh;
   }
 }
-ansition: all 0.2s ease;
-  border-bottom: 1px solid transparent;
-}
+
 
 .keyword-link:hover {
   color: white;
