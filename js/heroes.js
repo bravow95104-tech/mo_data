@@ -277,12 +277,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function applyLayout() {
     if (resizeFlag) {
-      heroesTableContainer.style.display = "none";
-      heroesCardContainer.style.display = "flex";
+      if (heroesTableContainer) heroesTableContainer.style.display = "none";
+      if (heroesCardContainer) heroesCardContainer.style.display = "flex";
       renderCard(lastFilteredData);
     } else {
-      heroesTableContainer.style.display = "table";
-      heroesCardContainer.style.display = "none";
+      if (heroesTableContainer) heroesTableContainer.style.display = "block";
+      if (heroesCardContainer) heroesCardContainer.style.display = "none";
+      const table = document.getElementById("heroes-table");
+      if (table) table.style.display = "table";
       renderTable(lastFilteredData);
     }
   }
