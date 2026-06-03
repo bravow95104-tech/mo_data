@@ -69,7 +69,24 @@ document.addEventListener("DOMContentLoaded", () => {
     .then((response) => response.json())
     .then((data) => {
       heroesData = data;
-      applyFilters(); // 初始渲染
+      
+      // 🚀 新增：檢查 URL 是否有 ?hero=名稱 參數
+      const urlParams = new URLSearchParams(window.location.search);
+      const heroParam = urlParams.get('hero');
+      if (heroParam && searchInput) {
+        searchInput.value = heroParam;
+        applyFilters(); // 先過濾
+        
+        // 如果過濾後只有一筆資料且名稱完全相符，自動開啟彈窗
+        if (lastFilteredData.length > 0) {
+          const matchedHero = lastFilteredData.find(h => h.name === heroParam);
+          if (matchedHero) {
+            showDetailModal(matchedHero);
+          }
+        }
+      } else {
+        applyFilters(); // 正常初始渲染
+      }
     })
     .catch((error) => {
       console.error("載入英雄資料錯誤:", error);
@@ -364,7 +381,7 @@ document.addEventListener("DOMContentLoaded", () => {
           <p><strong>素質：</strong>${hero.traits}</p>
           <p><strong>個性：</strong>${hero.personality}</p>
           <p><strong>屬性：</strong>${hero.element}</p>
-          <hr style="margin: 20px 0; border: 0; border-top: 1px solid #ddd;">
+          <hr style="margin: 20px 0; border: 0; border-top: 1px solid rgba(255,255,255,0.1);">
           <p><strong>力量：</strong>${hero.str}</p>
           <p><strong>智慧：</strong>${hero.int}</p>
           <p><strong>體質：</strong>${hero.vit}</p>
@@ -374,14 +391,14 @@ document.addEventListener("DOMContentLoaded", () => {
         <div class="hero-column-base hero-column">
           <p><strong>積極度(生變前)：</strong>${hero.aggression_before}</p>
           <p><strong>積極度(生變後)：</strong>${hero.aggression_after}</p>
-          <hr style="margin: 20px 0; border: 0; border-top: 1px solid #ddd;">
+          <hr style="margin: 20px 0; border: 0; border-top: 1px solid rgba(255,255,255,0.1);">
           <p><strong>裝備卡(新專)：</strong>${hero.equipment_new}</p>
           <p><strong>新專數值：</strong>${hero.equipment_new_data}</p>
           <p><strong>新專倍率：</strong>${hero.new_multiplier}</p>
-          <hr style="margin: 20px 0; border: 0; border-top: 1px solid #ddd;">
+          <hr style="margin: 20px 0; border: 0; border-top: 1px solid rgba(255,255,255,0.1);">
           <p><strong>裝備卡(舊專)：</strong>${hero.equipment_old}</p>
           <p><strong>舊專數值：</strong>${hero.equipment_old_data}</p>
-          <hr style="margin: 20px 0; border: 0; border-top: 1px solid #ddd;">
+          <hr style="margin: 20px 0; border: 0; border-top: 1px solid rgba(255,255,255,0.1);">
           <p><strong>天生技：</strong>${hero.innate_skill}</p>
           <p><strong>生變技能：</strong>${hero.transformation_skill}</p>
         </div>
@@ -491,7 +508,7 @@ document.addEventListener("DOMContentLoaded", () => {
           <p><strong>素質：</strong>${hero.traits}</p>
           <p><strong>個性：</strong>${hero.personality}</p>
           <p><strong>屬性：</strong>${hero.element}</p>
-          <hr style="margin: 20px 0; border: 0; border-top: 1px solid #ddd;">
+          <hr style="margin: 20px 0; border: 0; border-top: 1px solid rgba(255,255,255,0.1);">
           <p><strong>力量：</strong>${hero.str}</p>
           <p><strong>智慧：</strong>${hero.int}</p>
           <p><strong>體質：</strong>${hero.vit}</p>
@@ -501,14 +518,14 @@ document.addEventListener("DOMContentLoaded", () => {
         <div class="hero-column-base hero-column">
           <p><strong>積極度(生變前)：</strong>${hero.aggression_before}</p>
           <p><strong>積極度(生變後)：</strong>${hero.aggression_after}</p>
-          <hr style="margin: 20px 0; border: 0; border-top: 1px solid #ddd;">
+          <hr style="margin: 20px 0; border: 0; border-top: 1px solid rgba(255,255,255,0.1);">
           <p><strong>裝備卡(新專)：</strong>${hero.equipment_new}</p>
           <p><strong>新專數值：</strong>${hero.equipment_new_data}</p>
           <p><strong>新專倍率：</strong>${hero.new_multiplier}</p>
-          <hr style="margin: 20px 0; border: 0; border-top: 1px solid #ddd;">
+          <hr style="margin: 20px 0; border: 0; border-top: 1px solid rgba(255,255,255,0.1);">
           <p><strong>裝備卡(舊專)：</strong>${hero.equipment_old}</p>
           <p><strong>舊專數值：</strong>${hero.equipment_old_data}</p>
-          <hr style="margin: 20px 0; border: 0; border-top: 1px solid #ddd;">
+          <hr style="margin: 20px 0; border: 0; border-top: 1px solid rgba(255,255,255,0.1);">
           <p><strong>天生技：</strong>${hero.innate_skill}</p>
           <p><strong>生變技能：</strong>${hero.transformation_skill}</p>
         </div>

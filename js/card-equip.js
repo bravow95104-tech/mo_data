@@ -48,9 +48,25 @@ document.addEventListener("DOMContentLoaded", async () => {
     allCardData = cardRes.data || [];
     mapData = mapsRes.data || [];
     
-    initializeSortIcons();
-    applyFiltersAndSort(); 
-    updateSortIcons();
+    // 🚀 新增：檢查 URL 是否有 ?card=名稱 參數
+    const urlParams = new URLSearchParams(window.location.search);
+    const cardParam = urlParams.get('card');
+    if (cardParam && searchInput) {
+      searchInput.value = cardParam;
+      applyFiltersAndSort(); // 先過濾
+      
+      // 如果過濾後有匹配資料，自動開啟彈窗
+      if (lastFilteredData.length > 0) {
+        const matched = lastFilteredData.find(c => c.card_id === cardParam);
+        if (matched) {
+          showDetailModal(matched, matched.card_id);
+        }
+      }
+    } else {
+      initializeSortIcons();
+      applyFiltersAndSort(); 
+      updateSortIcons();
+    }
   } catch (err) {
     console.error("❌ Failed to load data:", err)
     if (tableBody) tableBody.innerHTML = '<tr><td colspan="6">無法載入資料</td></tr>';

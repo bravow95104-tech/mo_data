@@ -45,23 +45,26 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     initializeSortIcons();
 
-    // === 🚀 處理跨頁面跳轉 (在此優先處理，僅執行一次) ===
+    // === 🚀 處理跨頁面跳轉 ===
     const urlParams = new URLSearchParams(window.location.search);
     const cardParam = urlParams.get('card');
     if (cardParam) {
       const exists = allCardData.some(c => c.card_id === cardParam);
       if (exists) {
         if (searchInput) searchInput.value = cardParam;
+        applyFiltersAndSort();
+        // 自動開啟彈窗
+        const matched = lastFilteredData.find(c => c.card_id === cardParam);
+        if (matched) showDetailModal(matched);
       } else {
-        // 找不到則跳轉，並終止後續執行
+        // 找不到則跳轉
         window.location.href = `card-passive.html?card=${encodeURIComponent(cardParam)}`;
         return;
       }
+    } else {
+      applyFiltersAndSort();
+      updateSortIcons();
     }
-
-    // 執行初次過濾與渲染
-    applyFiltersAndSort();
-    updateSortIcons();
 
   } catch (err) {
     console.error("❌ 資料載入失敗：", err);
