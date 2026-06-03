@@ -385,20 +385,23 @@ tbody tr:hover td {
 
 /* 英雄卡、光輝(多)、光輝(少) 欄位字體縮小 */
 #heroes-table th:nth-child(4),
-#heroes-table th:nth-child(5),
-#heroes-table th:nth-child(6),
-#heroes-table td:nth-child(4),
-#heroes-table td:nth-child(5),
-#heroes-table td:nth-child(6) {
-  font-size: 12px;
-  line-height: 1.3;
+#heroes-table td:nth-child(4) {
+  font-size: 11px; /* 英雄卡特別縮小 */
+  line-height: 1.2;
 }
 
-/* 針對光輝內容較多時限制最大寬度並微調字體 */
+#heroes-table th:nth-child(5),
+#heroes-table th:nth-child(6),
 #heroes-table td:nth-child(5),
 #heroes-table td:nth-child(6) {
-  font-size: 11px;
-  max-width: 180px;
+  font-size: 10.5px;
+  line-height: 1.2;
+}
+
+/* 針對光輝內容較多時限制最大寬度 */
+#heroes-table td:nth-child(5),
+#heroes-table td:nth-child(6) {
+  max-width: 170px;
 }
 
 /* 6. Modal 彈窗 - 關鍵修正：確保 position: fixed 與置中 */
@@ -522,6 +525,42 @@ tbody tr:hover td {
   text-decoration: none;
   cursor: pointer;
   transition: all 0.2s ease;
+  border-bottom: 1px solid transparent;
+}
+
+.keyword-link:hover {
+  color: white;
+  border-bottom: 1px dashed var(--primary-blue);
+  text-shadow: 0 0 8px rgba(77, 163, 255, 0.5);
+}
+
+/* 響應式微調 */
+@media (max-width: 768px) {
+  .content-wrapper {
+    padding: 15px;
+    border-radius: 16px;
+  }
+  
+  #searchContainer {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  #searchInput {
+    max-width: none;
+  }
+
+  .filter-actions > .secondary-btn {
+    flex: 1 1 calc(50% - 10px);
+  }
+
+  #modalBox {
+    width: 95vw;
+    padding: 20px 15px;
+    max-height: 85vh;
+  }
+}
+ansition: all 0.2s ease;
   border-bottom: 1px solid transparent;
 }
 
