@@ -332,8 +332,8 @@ thead th {
   background: linear-gradient(180deg, rgba(26, 54, 93, 0.98), rgba(10, 23, 43, 0.98));
   backdrop-filter: blur(15px);
   color: var(--primary-blue);
-  padding: 12px 6px;
-  font-size: 12.5px;
+  padding: 10px 6px;
+  font-size: 12px;
   font-weight: 700;
   border-bottom: 1px solid rgba(77, 163, 255, 0.3);
 }
@@ -364,12 +364,12 @@ th.sortable.sorted-desc::after {
 #hero-table-container table tr:first-child th:last-child { border-top-right-radius: 20px; }
 
 tbody td {
-  padding: 12px 8px;
+  padding: 8px 6px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   color: var(--text-muted);
   background: var(--glass-bg);
   backdrop-filter: blur(5px);
-  font-size: 11.5px;
+  font-size: 10.8px;
 }
 
 tbody tr:hover td {
@@ -381,7 +381,8 @@ tbody tr:hover td {
   color: var(--primary-blue) !important;
   white-space: nowrap; /* 強制地圖名稱不換行 */
   min-width: 140px; /* 保證寬度足夠 */
-  font-weight: 700;
+  font-weight: 800;
+  font-size: 14px;
 }
 
 /* 英雄卡、光輝(多)、光輝(少) 欄位字體縮小 */
