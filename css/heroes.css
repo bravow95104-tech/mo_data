@@ -722,19 +722,20 @@ h1.heroes-page-title {
 
 #heroes-table {
   width: 100%;
-  min-width: 1480px;
+  min-width: 0;
   margin-top: 0;
   border-collapse: separate;
   border-spacing: 0;
+  table-layout: fixed;
 }
 
 #heroes-table thead th {
-  top: calc(var(--nav-offset, 68px) + 12px);
+  top: var(--nav-offset, 68px);
   background: linear-gradient(180deg, rgba(36, 56, 92, 0.98), rgba(18, 31, 55, 0.98));
   color: #f6fbff;
   border-color: rgba(140, 184, 255, 0.12);
-  padding: 14px 10px;
-  font-size: 13px;
+  padding: 11px 8px;
+  font-size: 12px;
   letter-spacing: 0.03em;
   text-transform: uppercase;
 }
@@ -761,10 +762,12 @@ h1.heroes-page-title {
 }
 
 #heroes-table tbody td {
-  padding: 11px 10px;
+  padding: 9px 8px;
   color: rgba(234, 241, 250, 0.92);
-  font-size: 13px;
+  font-size: 12px;
   line-height: 1.45;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 #heroes-table tbody tr {
@@ -800,6 +803,54 @@ h1.heroes-page-title {
 .hero-table-row td:first-child {
   font-weight: 800;
   color: #f7fbff;
+}
+
+#heroes-table th:nth-child(1),
+#heroes-table td:nth-child(1) {
+  width: 8%;
+}
+
+#heroes-table th:nth-child(2),
+#heroes-table td:nth-child(2) {
+  width: 8%;
+}
+
+#heroes-table th:nth-child(3),
+#heroes-table td:nth-child(3),
+#heroes-table th:nth-child(4),
+#heroes-table td:nth-child(4),
+#heroes-table th:nth-child(5),
+#heroes-table td:nth-child(5),
+#heroes-table th:nth-child(6),
+#heroes-table td:nth-child(6),
+#heroes-table th:nth-child(7),
+#heroes-table td:nth-child(7) {
+  width: 5%;
+}
+
+#heroes-table th:nth-child(8),
+#heroes-table td:nth-child(8),
+#heroes-table th:nth-child(9),
+#heroes-table td:nth-child(9),
+#heroes-table th:nth-child(10),
+#heroes-table td:nth-child(10),
+#heroes-table th:nth-child(11),
+#heroes-table td:nth-child(11),
+#heroes-table th:nth-child(12),
+#heroes-table td:nth-child(12) {
+  width: 4%;
+}
+
+#heroes-table th:nth-child(13),
+#heroes-table td:nth-child(13) {
+  width: 9%;
+}
+
+#heroes-table th:nth-child(14),
+#heroes-table td:nth-child(14),
+#heroes-table th:nth-child(15),
+#heroes-table td:nth-child(15) {
+  width: 13%;
 }
 
 .highlight {
@@ -856,11 +907,12 @@ h1.heroes-page-title {
 
 .hero-details-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 16px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
   width: 100%;
   max-width: none;
   margin-top: 18px;
+  align-items: start;
 }
 
 .hero-column-base,
@@ -868,8 +920,9 @@ h1.heroes-page-title {
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(140, 184, 255, 0.12);
   border-radius: 18px;
-  padding: 18px;
+  padding: 16px;
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03);
+  min-width: 0;
 }
 
 .hero-column {
@@ -879,6 +932,15 @@ h1.heroes-page-title {
 .hero-column-details,
 .hero-playerdata {
   grid-column: 1 / -1;
+}
+
+#modalContent .hero-images {
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+#modalContent .hero-images img {
+  width: min(220px, 48%);
 }
 
 .hero-column-base p,
