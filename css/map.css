@@ -105,11 +105,11 @@
 }
 
 .tab-content {
-  display: none; /* 預設隱藏 */
+  display: none;
 }
 
 .tab-content.active {
-  display: block; /* 啟用時顯示 */
+  display: block;
   animation: fadeIn 0.4s ease-out;
 }
 
@@ -211,7 +211,7 @@
 }
 
 .column-settings-menu {
-  display: none; /* 預設隱藏 */
+  display: none;
   position: absolute;
   top: calc(100% + 10px);
   left: 0;
@@ -227,7 +227,7 @@
 }
 
 .column-settings-menu.active {
-  display: block; /* 點擊後顯示 */
+  display: block;
   animation: navDropIn 0.25s ease-out;
 }
 
@@ -310,10 +310,6 @@
   transform: translateY(-1px);
 }
 
-.menu-header h4 {
-  color: var(--primary-blue) !important;
-}
-
 /* 5. 表格樣式 */
 #hero-table-container {
   background: transparent;
@@ -332,19 +328,18 @@ table {
 thead th {
   position: sticky;
   top: 60px;
-  z-index: 1000; /* 提升至與導覽列相近層級 */
+  z-index: 1000;
   background: linear-gradient(180deg, rgba(26, 54, 93, 0.98), rgba(10, 23, 43, 0.98));
   backdrop-filter: blur(15px);
   color: var(--primary-blue);
   padding: 12px 6px;
-  font-size: 13px; /* 縮小字體 */
+  font-size: 13px;
   font-weight: 700;
   border-bottom: 1px solid rgba(77, 163, 255, 0.3);
 }
 
-/* 地圖排序箭頭美化 */
 th.sortable::after {
-  content: " \2195"; /* 預設上下箭頭符號 */
+  content: " \2195";
   font-size: 10px;
   opacity: 0.2;
   margin-left: 5px;
@@ -385,31 +380,57 @@ tbody tr:hover td {
   color: var(--primary-blue) !important;
 }
 
-/* 6. Modal 彈窗 */
+/* 6. Modal 彈窗 - 關鍵修正：確保 position: fixed 與置中 */
 #modalOverlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
   background-color: rgba(6, 11, 19, 0.85);
   backdrop-filter: blur(8px);
+  z-index: 2000;
 }
 
 #modalBox {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90vw;
+  max-width: 700px;
+  max-height: 85vh;
+  overflow-y: auto;
+  z-index: 2001;
   background: linear-gradient(135deg, rgba(20, 35, 60, 0.98), rgba(10, 20, 35, 0.98));
   border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 28px;
   box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
   color: var(--text-main);
   padding: 30px 20px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--primary-blue) transparent;
 }
 
 .hero-name {
   color: var(--primary-blue) !important;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+  font-size: 24px;
+  font-weight: 800;
+  text-align: center;
+  padding-bottom: 15px;
+  margin-bottom: 20px;
 }
 
 .hero-column-details, .hero-defdodge, .hero-approach, .hero-explain {
   background: rgba(255, 255, 255, 0.03) !important;
   border: 1px solid rgba(255, 255, 255, 0.05) !important;
   color: var(--text-muted) !important;
-  box-shadow: none !important;
+  padding: 15px;
+  border-radius: 12px;
+  margin-bottom: 10px;
 }
 
 .hero-column-details strong, .align-row strong {
@@ -417,12 +438,23 @@ tbody tr:hover td {
 }
 
 .hero-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
   border: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  display: block;
+  margin: 0 auto 20px auto;
 }
 
 #modalBox .close-btn {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 30px;
   color: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  transition: all 0.2s;
 }
 
 #modalBox .close-btn:hover {
@@ -435,15 +467,24 @@ tbody tr:hover td {
   background: rgba(77, 163, 255, 0.1);
   color: var(--primary-blue);
   border: 1px solid rgba(77, 163, 255, 0.3);
+  padding: 2px 8px;
+  border-radius: 6px;
+  font-size: 12px;
 }
 
 .tier-badge, .table-tier-badge {
   background: linear-gradient(135deg, var(--primary-blue), var(--primary-dark)) !important;
+  color: white;
+  padding: 2px 8px;
+  border-radius: 6px;
+  font-size: 12px;
 }
 
 .highlight {
   background-color: rgba(255, 216, 107, 0.3) !important;
   color: var(--highlight-yellow) !important;
+  border-radius: 4px;
+  padding: 0 4px;
 }
 
 /* 響應式微調 */
@@ -470,9 +511,5 @@ tbody tr:hover td {
     width: 95vw;
     padding: 20px 15px;
     max-height: 85vh;
-  }
-
-  .hero-name {
-    font-size: 22px;
   }
 }
