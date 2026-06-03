@@ -21,8 +21,6 @@
     <br />
     <div class="filter-actions">
       <button id="clearFilters" class="clear-btn">清除篩選</button>
-    </div>
-    <div class="filter-actions">
       <button
         id="switchMode"
         class="secondary-btn"
@@ -36,18 +34,20 @@
     <div id="awakening-container"></div>
 
     <!-- 英雄表格 -->
-    <table id="heroes-table">
-      <thead>
-        <tr>
-          <th>技能名稱</th>
-          <th>獲取機率</th>
-          <th>對應英雄</th>
-        </tr>
-      </thead>
-      <tbody>
-        <!-- 資料由 JS 動態載入 -->
-      </tbody>
-    </table>
+    <div id="hero-table-container">
+      <table id="heroes-table">
+        <thead>
+          <tr>
+            <th>技能名稱</th>
+            <th>獲取機率</th>
+            <th>對應英雄</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- 資料由 JS 動態載入 -->
+        </tbody>
+      </table>
+    </div>
 
     <!-- 留白避免按鈕遮住 -->
     <div style="height: 80px"></div>
