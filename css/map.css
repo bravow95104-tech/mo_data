@@ -333,7 +333,7 @@ thead th {
   backdrop-filter: blur(15px);
   color: var(--primary-blue);
   padding: 12px 6px;
-  font-size: 13px;
+  font-size: 12.5px;
   font-weight: 700;
   border-bottom: 1px solid rgba(77, 163, 255, 0.3);
 }
@@ -369,6 +369,7 @@ tbody td {
   color: var(--text-muted);
   background: var(--glass-bg);
   backdrop-filter: blur(5px);
+  font-size: 11.5px;
 }
 
 tbody tr:hover td {
@@ -495,6 +496,18 @@ tbody tr:hover td {
 }
 
 /* 7. 其他標籤 */
+.section-gap {
+  margin-top: 20px !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding-top: 15px;
+}
+
+.hero-column-details.section-gap:first-of-type {
+  border-top: none;
+  margin-top: 0 !important;
+  padding-top: 0;
+}
+
 .lv-badge {
   background: rgba(77, 163, 255, 0.1);
   color: var(--primary-blue);
