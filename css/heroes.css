@@ -233,7 +233,7 @@ th.sort-desc .caret-down {
 }
 
 .hero-images img {
-  max-width: 180px; /* 稍微縮小圖片以符合更小的視窗 */
+  max-width: 100%; /* 圖片顯示 100% */
   height: auto;
   border-radius: 12px;
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -242,17 +242,16 @@ th.sort-desc .caret-down {
 }
 
 .hero-images img:hover {
-  transform: scale(1.05);
+  transform: scale(1.02);
 }
 
 .hero-details-container {
   display: flex;
-  justify-content: center;
+  justify-content: space-between; /* 左右分散 */
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 15px;
   padding: 5px;
   width: 100%;
-  max-width: 800px;
   margin: 0 auto;
   box-sizing: border-box;
 }
@@ -260,24 +259,25 @@ th.sort-desc .caret-down {
 .hero-column-base {
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.05);
-  padding: 20px;
+  padding: 18px;
   border-radius: 16px;
   box-sizing: border-box;
 }
 
 .hero-column {
-  flex: 1 1 300px;
+  flex: 0 0 calc(50% - 10px); /* 左右兩邊 */
 }
 
 .hero-column-details,
 .hero-playerdata {
-  flex: 1 1 100%;
+  flex: 0 0 100%; /* 底部掉落與資訊維持滿版 */
+  margin-top: 5px;
 }
 
 .hero-column-base p {
-  margin: 10px 0;
+  margin: 8px 0;
   font-size: 15px;
-  line-height: 1.5;
+  line-height: 1.4;
   color: var(--text-muted);
 }
 
@@ -329,4 +329,47 @@ th.sort-desc .caret-down {
 
 .page-bottom-spacer {
   height: 100px;
+}
+
+/* === 手機版響應式修正 === */
+@media (max-width: 768px) {
+  #searchContainer {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  #searchInput {
+    max-width: none;
+  }
+
+  #modalBox {
+    width: 95vw;
+    padding: 20px 15px;
+    top: 50%;
+    max-height: 80vh;
+  }
+
+  .hero-name {
+    font-size: 22px;
+  }
+
+  .hero-images img {
+    max-width: 140px;
+  }
+
+  .hero-column {
+    flex: 1 1 100%;
+  }
+
+  /* 確保手機版卡片容器正確顯示 */
+  #hero-card-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  /* 針對 JS 渲染的卡片進行樣式加強 */
+  #hero-card-container .accordion {
+    margin-bottom: 10px;
+  }
 }
