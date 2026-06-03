@@ -281,7 +281,7 @@ document.addEventListener("DOMContentLoaded", () => {
       heroesCardContainer.style.display = "flex";
       renderCard(lastFilteredData);
     } else {
-      heroesTableContainer.style.display = "block";
+      heroesTableContainer.style.display = "table";
       heroesCardContainer.style.display = "none";
       renderTable(lastFilteredData);
     }
