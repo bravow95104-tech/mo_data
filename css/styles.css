@@ -294,9 +294,31 @@ h3.search-tip {
 }
 
 
-/* 讓內容區塊在手機版更滿版 */
-#content-wrapper {
-    flex-direction: column;
-    padding: 15px 0;
-    gap: 20px;
+/* === 手機版響應式佈局 (Media Query) === */
+@media (max-width: 768px) {
+    /* 讓 body 在手機版左右縮小一點點間距，但內容撐滿 */
+    body {
+        padding: 80px 10px 30px 10px !important;
+    }
+
+    /* 讓左右內容變成垂直堆疊，並解除壓縮感 */
+    #content-wrapper {
+        flex-direction: column !important;
+        padding: 0 !important;
+        gap: 20px !important;
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    /* 強制所有區塊撐滿 100% 寬度，防止「背脊壓縮」 */
+    #content, 
+    #changelog, 
+    .sidebar, 
+    #sidebar-container {
+        flex: none !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+        margin: 0 auto !important;
+    }
 }
