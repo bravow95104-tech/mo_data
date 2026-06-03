@@ -1553,6 +1553,48 @@
     <div id="footer-container"></div>
     <script src="/mo_data/js/componentsLoader.js"></script>
     <script type="module" src="/mo_data/js/map.js"></script>
+    <script>
+      // === 頁籤切換邏輯 ===
+      document.querySelectorAll('.tab-button').forEach(btn => {
+        btn.addEventListener('click', () => {
+          // 移除所有 active 狀態
+          document.querySelectorAll('.tab-button').forEach(b => b.classList.remove('active'));
+          document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+          
+          // 加入目前點選的 active 狀態
+          btn.classList.add('active');
+          const tabId = btn.getAttribute('data-tab');
+          const content = document.getElementById(tabId);
+          if (content) content.classList.add('active');
+          
+          // 重新計算 image map 比例 (如果有的話)
+          if (window.imageMapResize) {
+            window.imageMapResize();
+          }
+        });
+      });
+
+      // === 頁籤捲動導航 ===
+      const tabsScroll = document.getElementById('tabs-scroll');
+      const scrollLeftBtn = document.getElementById('scroll-left');
+      const scrollRightBtn = document.getElementById('scroll-right');
+
+      if (scrollLeftBtn && scrollRightBtn && tabsScroll) {
+        scrollLeftBtn.addEventListener('click', () => {
+          tabsScroll.scrollBy({ left: -200, behavior: 'smooth' });
+        });
+        scrollRightBtn.addEventListener('click', () => {
+          tabsScroll.scrollBy({ left: 200, behavior: 'smooth' });
+        });
+      }
+
+      // 初始化 Image Map
+      window.addEventListener('load', () => {
+        if (window.imageMapResize) {
+          window.imageMapResize();
+        }
+      });
+    </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/image-map-resizer/1.0.10/js/imageMapResizer.min.js"></script>
   </body>
 </html>
