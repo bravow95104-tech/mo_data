@@ -54,6 +54,8 @@
     display: flex;
     align-items: center;
     height: 36px;
+    background: transparent;
+    border: none;
 }
 
 #nav-container nav a:hover,
@@ -104,6 +106,7 @@
     border-radius: 0 !important;
     height: auto !important;
     transition: background 0.2s !important;
+    margin: 0 !important;
 }
 
 .dropdown-content a:hover {
@@ -162,13 +165,11 @@
 
 /* === 手機版導覽列 (Media Query) === */
 @media (max-width: 1024px) {
-    /* 強制導覽列「脫離」所有父層容器的限制 */
     #nav-container {
         display: block !important;
         position: fixed !important;
         top: 0 !important;
         left: 0 !important;
-        right: 0 !important;
         width: 100% !important;
         height: auto !important;
         z-index: 99999 !important;
@@ -189,6 +190,7 @@
         border-radius: 0 !important;
         transform: none !important;
         height: auto !important;
+        min-height: 56px !important;
     }
 
     .nav-mobile-header {
@@ -202,25 +204,26 @@
         background: #3399ff !important;
     }
 
-    /* 隱藏桌機版選單項目，直到漢堡按鈕被點擊 */
     .nav-menu {
         display: none;
         flex-direction: column !important;
         width: 100% !important;
-        background: #267acc !important;
+        background: #267acc !important; /* 核心修正：改為實色不透明 */
         position: absolute !important;
         top: 56px !important;
         left: 0 !important;
         margin: 0 !important;
-        padding: 10px 0 !important;
+        padding: 0 !important;
         box-sizing: border-box !important;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.2) !important;
+        opacity: 1 !important;
+        visibility: visible !important;
     }
 
     .nav-menu.active {
         display: flex !important;
     }
 
-    /* 確保手機版不顯示桌機的「更多」邏輯 */
     .nav-item-map, .nav-item-prod, .nav-item-other, .nav-item-sys {
         display: block !important;
     }
@@ -231,6 +234,9 @@
     .dropdown, .nav-link {
         width: 100% !important;
         box-sizing: border-box !important;
+        background: transparent !important; /* 清除可能的色塊背景 */
+        border: none !important;
+        margin: 0 !important;
     }
 
     .dropdown-toggle, .nav-menu a {
@@ -242,12 +248,17 @@
         text-align: left !important;
         height: auto !important;
         font-size: 16px !important;
+        background: transparent !important;
+        border-bottom: 1px solid rgba(255,255,255,0.05) !important; /* 統一的極淡邊框 */
+        margin: 0 !important;
+        border-radius: 0 !important;
     }
     
+    /* 核心修正：移除所有灰色背景或毛邊 */
     .dropdown-content {
         position: static !important;
         width: 100% !important;
-        background: rgba(0,0,0,0.1) !important;
+        background: rgba(0,0,0,0.15) !important; /* 子選單使用更深的顏色區隔 */
         padding: 0 !important;
         box-shadow: none !important;
         border: none !important;
@@ -262,5 +273,10 @@
     .dropdown-content a {
         padding: 12px 45px !important;
         font-size: 15px !important;
+        border-bottom: 1px solid rgba(255,255,255,0.03) !important;
+    }
+
+    .dropdown-content a:last-child {
+        border-bottom: none !important;
     }
 }

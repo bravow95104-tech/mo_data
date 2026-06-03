@@ -11,10 +11,8 @@ body {
     background-attachment: fixed;
     margin: 0;
     -webkit-text-size-adjust: 100%;
-    /* 🚀 關鍵修復 1：合併計算導航列高度 (約 44px) + 導航列 padding (12px*2) + 內容間距 (30px) */
-    /* 44px (導航列內容高度) + 12px*2 (導航列 padding) = 68px (導航列總高) */
-    /* 我們將 body 頂部留出 68px (導航列總高) + 30px (內容間距) = 98px */
-    padding: 98px 40px 0 40px;
+    /* 🚀 修正：頂部留出導覽列高度 (60px) + 內容間距 (30px) = 90px */
+    padding: 90px 40px 30px 40px;
     font-family: "Microsoft JhengHei", sans-serif;
 }
 
@@ -42,16 +40,15 @@ body {
     background-color: #267acc;
 }
 
-/* ✅ 內容與側邊欄容器 */
+/* ✅ 內容與側邊欄總容器 (修正桌機版佈局) */
 #content-wrapper {
-    display: flex;
+    display: flex !important;
+    flex-direction: row !important;
     align-items: flex-start;
-    justify-content: flex-start;
-    max-width: 1200px;
+    justify-content: center;
+    max-width: 1300px;
     margin: 0 auto;
-    /* 🚀 關鍵修復 3：上 padding/margin 設為 0，間距已在 body 上統一設定 */
     padding: 0;
-    margin-top: 0;
     gap: 40px;
 }
 
