@@ -1,7 +1,13 @@
 <nav>
   <div class="nav-mobile-header">
     <a href="/mo_data/index.html" class="mobile-home-link">MoData</a>
-    <button id="hamburger-btn" class="hamburger-btn">
+    <button
+      id="hamburger-btn"
+      class="hamburger-btn"
+      type="button"
+      aria-label="展開導覽選單"
+      aria-expanded="false"
+    >
       <span></span>
       <span></span>
       <span></span>
@@ -9,89 +15,98 @@
   </div>
 
   <div id="nav-menu" class="nav-menu">
-
     <a href="/mo_data/index.html" class="nav-link desktop-only">MoData</a>
 
     <div class="dropdown nav-item-hero">
-      <div class="dropdown-toggle">英雄 ▼</div>
+      <button type="button" class="dropdown-toggle">
+        英雄 <span class="nav-caret" aria-hidden="true">▾</span>
+      </button>
       <div class="dropdown-content">
-        <a href="/mo_data/hero/heroes.html">英雄清單</a>
-        <a href="/mo_data/hero/hero-meal.html">英雄料理數值</a>
-        <a href="/mo_data/hero/calculation.html">英雄數值計算</a>
-        <a href="/mo_data/hero/awakening.html">覺醒技能</a>
+        <a href="/mo_data/hero/heroes.html">英雄總覽</a>
+        <a href="/mo_data/hero/hero-meal.html">英雄料理</a>
+        <a href="/mo_data/hero/calculation.html">英雄配裝計算</a>
+        <a href="/mo_data/hero/awakening.html">覺醒</a>
       </div>
     </div>
 
     <div class="dropdown nav-item-equip">
-      <div class="dropdown-toggle">裝備 ▼</div>
+      <button type="button" class="dropdown-toggle">
+        裝備 <span class="nav-caret" aria-hidden="true">▾</span>
+      </button>
       <div class="dropdown-content">
-        <a href="/mo_data/equipment/equip-info.html">裝備資訊</a>
+        <a href="/mo_data/equipment/equip-info.html">裝備資料</a>
         <a href="/mo_data/equipment/processing.html">裝備加工</a>
-        <a href="/mo_data/equipment/equip-slotting.html">裝備打洞</a>
-        <a href="/mo_data/equipment/specialstones.html">符石配方</a>
-        <a href="/mo_data/equipment/equip-combo.html">文片組合</a>
-        <a href="/mo_data/equipment/runereset.html">文片重鑄</a>
-        <a href="/mo_data/equipment/rune-combo.html">銘文組合</a>
-        <a href="/mo_data/equipment/refine.html">加工精煉計算</a>
+        <a href="/mo_data/equipment/equip-slotting.html">裝備打孔</a>
+        <a href="/mo_data/equipment/specialstones.html">特殊石</a>
+        <a href="/mo_data/equipment/equip-combo.html">裝備組合</a>
+        <a href="/mo_data/equipment/runereset.html">符文重置</a>
+        <a href="/mo_data/equipment/rune-combo.html">符文組合</a>
+        <a href="/mo_data/equipment/refine.html">裝備淬鍊</a>
       </div>
     </div>
 
     <div class="dropdown nav-item-quest">
-      <div class="dropdown-toggle">任務 ▼</div>
+      <button type="button" class="dropdown-toggle">
+        任務 <span class="nav-caret" aria-hidden="true">▾</span>
+      </button>
       <div class="dropdown-content">
-        <a href="/mo_data/quest/quest.html">一般任務</a>
-        <a href="/mo_data/quest/quest-star.html">星曜任務</a>
-        <a href="/mo_data/quest/quest-job.html">轉職任務</a>
+        <a href="/mo_data/quest/quest.html">任務總覽</a>
+        <a href="/mo_data/quest/quest-star.html">星級任務</a>
+        <a href="/mo_data/quest/quest-job.html">職業任務</a>
         <a href="/mo_data/quest/quest-rebirth.html">轉生任務</a>
       </div>
     </div>
 
     <div class="dropdown nav-item-card">
-      <div class="dropdown-toggle">卡片 ▼</div>
+      <button type="button" class="dropdown-toggle">
+        卡片 <span class="nav-caret" aria-hidden="true">▾</span>
+      </button>
       <div class="dropdown-content">
-        <a href="/mo_data/card/card-equip.html">裝備卡</a>
-        <a href="/mo_data/card/card-active.html">主動技能卡</a>
-        <a href="/mo_data/card/card-passive.html">被動技能卡</a>
-        <a href="/mo_data/card/card-spirit.html">靈具卡</a>
+        <a href="/mo_data/card/card-equip.html">裝備卡片</a>
+        <a href="/mo_data/card/card-active.html">主動卡片</a>
+        <a href="/mo_data/card/card-passive.html">被動卡片</a>
+        <a href="/mo_data/card/card-spirit.html">靈魂卡片</a>
       </div>
     </div>
 
     <div class="dropdown nav-item-map">
-      <a href="/mo_data/map/map.html" class="dropdown-toggle">地圖</a>
+      <a href="/mo_data/map/map.html" class="dropdown-toggle nav-link">地圖</a>
     </div>
 
     <div class="dropdown nav-item-prod">
-      <div class="dropdown-toggle">生產道具 ▼</div>
+      <button type="button" class="dropdown-toggle">
+        生產道具 <span class="nav-caret" aria-hidden="true">▾</span>
+      </button>
       <div class="dropdown-content">
         <a href="/mo_data/production/weapons.html">武器</a>
         <a href="/mo_data/production/equipment.html">防具</a>
         <a href="/mo_data/production/accessories.html">飾品</a>
-        <a href="/mo_data/production/medicine.html">藥品</a>
+        <a href="/mo_data/production/medicine.html">藥水</a>
         <a href="/mo_data/production/items.html">道具</a>
-        <a href="/mo_data/production/works.html">工作</a>
+        <a href="/mo_data/production/works.html">製作</a>
       </div>
     </div>
 
     <div class="dropdown nav-item-other">
-      <div class="dropdown-toggle">其他 ▼</div>
+      <button type="button" class="dropdown-toggle">
+        其他 <span class="nav-caret" aria-hidden="true">▾</span>
+      </button>
       <div class="dropdown-content">
-        <a href="/mo_data/other/ultimate_ability.html">極限能力</a>
-        <a href="/mo_data/other/garbage.html">垃圾名聲</a>
-        <a href="/mo_data/other/exp.html">經驗需求</a>
-        <a href="/mo_data/other/beautiful.html">美容院</a>
+        <a href="/mo_data/other/ultimate_ability.html">終極技能</a>
+        <a href="/mo_data/other/garbage.html">垃圾系統</a>
+        <a href="/mo_data/other/exp.html">經驗值</a>
+        <a href="/mo_data/other/beautiful.html">美觀資料</a>
         <a href="/mo_data/other/family_tech.html">家族科技</a>
-        <a href="/mo_data/other/awakening_exp.html">英雄覺醒等級</a>
+        <a href="/mo_data/other/awakening_exp.html">英雄覺醒經驗</a>
       </div>
     </div>
 
     <div class="dropdown nav-item-sys">
-      <a href="/mo_data/sys/systems.html" class="dropdown-toggle">系統</a>
+      <a href="/mo_data/sys/systems.html" class="dropdown-toggle nav-link">系統</a>
     </div>
 
     <div class="dropdown nav-item-admin">
-      <a href="/mo_data/admin.html" class="nav-link" style="color: #ffc107; font-weight: bold; text-decoration: none; padding: 10px 10px;">🛠登入
-      </a>
+      <a href="/mo_data/admin.html" class="nav-link">登入</a>
     </div>
-
   </div>
 </nav>
