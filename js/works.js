@@ -109,7 +109,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       if (cardContainer) cardContainer.style.display = 'flex';
     } else {
       renderTable(lastFilteredData);
-      if (heroesTable) heroesTable.style.display = 'block';
+      if (heroesTable) heroesTable.style.display = 'table';
       if (cardContainer) cardContainer.style.display = 'none';
     }
   }

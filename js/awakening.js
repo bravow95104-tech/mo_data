@@ -78,7 +78,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (cardContainer) cardContainer.style.display = 'flex';
     } else {
       renderTable(lastFilteredData);
-      if (tableContainer) tableContainer.style.display = 'block';
+      if (tableContainer) tableContainer.style.display = 'table';
       if (cardContainer) cardContainer.style.display = 'none';
     }
   }
