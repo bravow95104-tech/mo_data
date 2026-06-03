@@ -104,6 +104,20 @@
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
+.tab-content {
+  display: none; /* 預設隱藏 */
+}
+
+.tab-content.active {
+  display: block; /* 啟用時顯示 */
+  animation: fadeIn 0.4s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 .map-image-wrapper {
   text-align: center;
   padding: 15px;
@@ -450,5 +464,15 @@ tbody tr:hover td {
 
   .filter-actions > .secondary-btn {
     flex: 1 1 calc(50% - 10px);
+  }
+
+  #modalBox {
+    width: 95vw;
+    padding: 20px 15px;
+    max-height: 85vh;
+  }
+
+  .hero-name {
+    font-size: 22px;
   }
 }
