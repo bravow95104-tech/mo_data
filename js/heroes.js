@@ -133,15 +133,9 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     // B. filter
     let filtered = heroesData.filter((hero) => {
-      const targetFields = [
-        hero.name,
-        hero.glory,
-        hero.equipment_new,
-        hero.equipment_old,
-        hero.promotion,
-        hero.personality,
-        hero.traits,
-      ]
+      // 🚀 搜尋優化：搜尋所有欄位 (包含隱藏或僅在 Modal 顯示的欄位)
+      const targetFields = Object.values(hero)
+        .map(v => String(getVal(v)))
         .join(" ")
         .toLowerCase();
 
