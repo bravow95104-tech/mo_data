@@ -51,7 +51,7 @@
 
 .nav-arrow:hover {
   color: white;
-  background: rgba(77, 163, 255, 0.1);
+  background: rgba(77, 163, 255, 0.2);
 }
 
 .tabs {
@@ -81,7 +81,7 @@
 
 .tab-button:hover {
   color: var(--primary-blue);
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(77, 163, 255, 0.05);
 }
 
 .tab-button.active {
@@ -122,7 +122,7 @@
   text-align: center;
   padding: 15px;
   border-radius: 12px;
-  background: rgba(0, 0, 0, 0.2);
+  background: var(--glass-bg);
   border: 1px solid var(--glass-border);
   overflow-x: auto;
 }
@@ -154,10 +154,10 @@
 
 #searchInput {
   padding: 10px 16px;
-  background: rgba(0, 0, 0, 0.2);
+  background: var(--glass-bg);
   border: 1px solid var(--glass-border);
   border-radius: 10px;
-  color: white;
+  color: var(--text-main);
   flex: 1;
   max-width: 300px;
 }
@@ -176,7 +176,7 @@
 }
 
 .secondary-btn {
-  background: rgba(255, 255, 255, 0.08);
+  background: var(--glass-bg);
   border: 1px solid var(--glass-border);
   color: var(--text-main);
   padding: 8px 16px;
@@ -188,6 +188,7 @@
 .secondary-btn:hover {
   background: var(--primary-blue);
   border-color: var(--primary-blue);
+  color: white !important;
 }
 
 .clear-btn {
@@ -216,11 +217,11 @@
   top: calc(100% + 10px);
   left: 0;
   width: 280px;
-  background: linear-gradient(135deg, rgba(20, 35, 60, 0.98), rgba(10, 20, 35, 0.98));
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: linear-gradient(135deg, var(--nav-bg-1), var(--nav-bg-2));
+  border: 1px solid var(--glass-border);
   border-radius: 16px;
   color: var(--text-main);
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
   padding: 18px;
   z-index: 1100;
   backdrop-filter: blur(12px);
@@ -236,7 +237,7 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 15px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid var(--glass-border);
   padding-bottom: 10px;
 }
 
@@ -264,7 +265,7 @@
 }
 
 #columnCheckboxes label:hover {
-  color: white;
+  color: var(--text-main);
 }
 
 #columnCheckboxes input[type="checkbox"] {
@@ -278,7 +279,7 @@
   justify-content: flex-end;
   gap: 10px;
   padding-top: 10px;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 1px solid var(--glass-border);
 }
 
 .text-btn-sm {
@@ -329,7 +330,7 @@ thead th {
   position: sticky;
   top: 73px; /* 與導覽列底部對齊，預留呼吸空間 */
   z-index: 999;
-  background: linear-gradient(180deg, rgba(26, 54, 93, 0.98), rgba(10, 23, 43, 0.98));
+  background: linear-gradient(180deg, var(--nav-bg-1), var(--nav-bg-2));
   backdrop-filter: blur(15px);
   color: var(--primary-blue);
   padding: 16px 10px;
@@ -373,8 +374,8 @@ tbody td {
 }
 
 tbody tr:hover td {
-  background-color: rgba(255, 255, 255, 0.05) !important;
-  color: white;
+  background-color: rgba(77, 163, 255, 0.1) !important;
+  color: var(--text-main);
 }
 
 #heroes-table td:first-child {
@@ -410,7 +411,7 @@ tbody tr:hover td {
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(6, 11, 19, 0.85);
+  background-color: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(8px);
   z-index: 2000;
 }
@@ -426,10 +427,10 @@ tbody tr:hover td {
   max-height: 72vh;
   overflow-y: auto;
   z-index: 2001;
-  background: linear-gradient(135deg, rgba(20, 35, 60, 0.98), rgba(10, 20, 35, 0.98));
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: linear-gradient(135deg, var(--nav-bg-1), var(--nav-bg-2));
+  border: 1px solid var(--glass-border);
   border-radius: 28px;
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.3);
   color: var(--text-main);
   padding: 30px 20px;
   scrollbar-width: thin;
