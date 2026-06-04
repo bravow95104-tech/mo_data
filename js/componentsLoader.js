@@ -80,7 +80,12 @@ function initNavbarBehavior() {
     if (!hamburgerBtn || !navMenu) return;
 
     function updateNavOffset() {
-        const height = navbar.offsetHeight;
+        // 在手機版，我們只測量標頭(Header)的高度，而不是整個展開選單的高度
+        let height = navbar.offsetHeight;
+        if (window.innerWidth <= 768) {
+            const mobileHeader = document.querySelector(".nav-mobile-header");
+            if (mobileHeader) height = mobileHeader.offsetHeight;
+        }
         document.documentElement.style.setProperty("--nav-offset", height + "px");
         document.documentElement.style.setProperty("--nav-height", height + "px");
     }
