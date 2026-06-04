@@ -125,7 +125,6 @@ document.addEventListener("DOMContentLoaded", async () => {
       }
       if (cardContainer) cardContainer.style.display = 'none';
     }
-    }
   }
 
   const clearBtn = document.getElementById('clearFilters');
