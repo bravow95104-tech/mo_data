@@ -11,12 +11,12 @@
   transform: translateY(-110%);
   opacity: 0;
   width: 100%;
-  background: linear-gradient(135deg, rgba(10, 23, 43, 0.96), rgba(18, 61, 110, 0.94));
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  background: linear-gradient(135deg, var(--nav-bg-1), var(--nav-bg-2));
+  border-bottom: 1px solid var(--glass-border);
   box-shadow: 0 16px 40px rgba(6, 16, 31, 0.18);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
-  transition: transform 0.35s ease, opacity 0.35s ease;
+  transition: transform 0.35s ease, opacity 0.35s ease, background 0.3s ease;
   overflow: visible;
 }
 
@@ -42,11 +42,12 @@
 }
 
 #nav-container nav a,
+#nav-container nav .nav-link,
 #nav-container nav button.dropdown-toggle {
   appearance: none;
   border: 0;
   background: transparent;
-  color: #f7fbff;
+  color: var(--text-main);
   text-decoration: none;
   font: 600 14px/1.1 "Noto Sans TC", "Segoe UI", system-ui, sans-serif;
   letter-spacing: 0.02em;
@@ -75,12 +76,12 @@
 }
 
 .nav-link {
-  color: #f7fbff;
+  color: var(--text-main);
   white-space: nowrap;
 }
 
 .nav-item-admin .nav-link {
-  color: #ffd86b;
+  color: var(--highlight-yellow);
 }
 
 .dropdown {
@@ -114,8 +115,8 @@
   padding: 8px;
   margin: 0;
   border-radius: 18px;
-  background: rgba(12, 24, 44, 0.96);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: var(--nav-bg-1);
+  border: 1px solid var(--glass-border);
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.28);
   z-index: 10001;
 }
@@ -143,15 +144,15 @@
   width: 100%;
   padding: 10px 14px;
   border-radius: 12px;
-  color: rgba(255, 255, 255, 0.82);
+  color: var(--text-muted);
   font-size: 13px;
   white-space: nowrap;
   box-sizing: border-box;
 }
 
 .dropdown-content a:hover {
-  background: rgba(255, 255, 255, 0.08);
-  color: #ffffff;
+  background: var(--glass-bg);
+  color: var(--text-main);
   transform: translateX(2px);
 }
 
@@ -162,7 +163,7 @@
   }
 
   #nav-container nav {
-    background: linear-gradient(180deg, rgba(10, 23, 43, 0.98), rgba(13, 28, 49, 0.98));
+    background: linear-gradient(180deg, var(--nav-bg-1), var(--nav-bg-2));
   }
 
   .nav-mobile-header {
@@ -176,7 +177,7 @@
   }
 
   .mobile-home-link {
-    color: #ffffff;
+    color: var(--text-main);
     text-decoration: none;
     font: 800 18px/1 "Noto Sans TC", "Segoe UI", system-ui, sans-serif;
     letter-spacing: 0.03em;
@@ -185,9 +186,9 @@
   .hamburger-btn {
     width: 44px;
     height: 44px;
-    border: 1px solid rgba(255, 255, 255, 0.12);
+    border: 1px solid var(--glass-border);
     border-radius: 14px;
-    background: rgba(255, 255, 255, 0.08);
+    background: var(--glass-bg);
     display: inline-flex;
     flex-direction: column;
     justify-content: center;
@@ -201,7 +202,7 @@
     width: 100%;
     height: 2px;
     border-radius: 999px;
-    background-color: #ffffff;
+    background-color: var(--text-main);
   }
 
   .nav-menu {
@@ -217,8 +218,8 @@
     padding: 12px 12px 18px;
     box-sizing: border-box;
     overflow-y: auto;
-    background: linear-gradient(180deg, rgba(13, 28, 49, 0.98), rgba(10, 23, 43, 0.98));
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    background: linear-gradient(180deg, var(--nav-bg-2), var(--nav-bg-1));
+    border-top: 1px solid var(--glass-border);
   }
 
   .nav-menu.active {
@@ -233,8 +234,8 @@
     width: 100%;
     flex-direction: column;
     border-radius: 18px;
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: var(--card-bg);
+    border: 1px solid var(--glass-border);
     overflow: hidden;
   }
 
@@ -273,7 +274,7 @@
   .dropdown-content a {
     padding: 12px 14px;
     font-size: 14px;
-    color: rgba(255, 255, 255, 0.82);
+    color: var(--text-muted);
     border-radius: 12px;
   }
 
