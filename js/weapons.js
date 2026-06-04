@@ -76,8 +76,17 @@ document.addEventListener("DOMContentLoaded", () => {
         btn.classList.remove('active');
         activeFilters[type] = null;
       } else {
-        document.querySelectorAll(`.filter-btn[data-type="${type}"]`)
-          .forEach(b => b.classList.remove('active'));
+        // 如果是基礎職業或進階職業，清除這兩組的所有選中狀態 (因為它們共用資料欄位 sort)
+        if (type === 'promotion' || type === 'personality') {
+          document.querySelectorAll('.filter-btn[data-type="promotion"], .filter-btn[data-type="personality"]')
+            .forEach(b => b.classList.remove('active'));
+          activeFilters.promotion = null;
+          activeFilters.personality = null;
+        } else {
+          document.querySelectorAll(`.filter-btn[data-type="${type}"]`)
+            .forEach(b => b.classList.remove('active'));
+        }
+        
         btn.classList.add('active');
         activeFilters[type] = value;
       }
@@ -107,7 +116,7 @@ document.addEventListener("DOMContentLoaded", () => {
         .some(field => String(field || "").toLowerCase().includes(keyword));
 
       const matchPromotion = activeFilters.promotion ? item.sort === activeFilters.promotion : true;
-      const matchPersonality = activeFilters.personality ? item.job === activeFilters.personality : true;
+      const matchPersonality = activeFilters.personality ? item.sort === activeFilters.personality : true;
       const matchJob = activeFilters.job ? item.job === activeFilters.job : true;
       const matchAttr = activeFilters.attr ? (item.illustrate && String(item.illustrate).includes(activeFilters.attr)) : true;
 
