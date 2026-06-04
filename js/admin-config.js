@@ -41,7 +41,7 @@ export const TABLE_CONFIGS = {
         tableCols: ['地區', '掉落較多', '掉落較低', '操作'],
         displayFields: ['area', 'more', 'low'],
         fields: [
-            { id: 'area', label: '地區', type: 'text', required: true, grid: 1 },
+            { id: 'area', label: '地區', type: 'textarea', required: true, grid: 1 },
             { id: 'sort_id', label: '顯示順序', type: 'number', grid: 1 },
             { id: 'more', label: '掉落較多', type: 'textarea', grid: 3 },
             { id: 'low', label: '掉落較低', type: 'textarea', grid: 3 }
