@@ -1,72 +1,88 @@
-/* 系統頁面專用調整 */
+/* 系統頁面專屬調整 - 升級為深色玻璃擬態風格 */
+
+:root {
+    --primary-blue: #4da3ff;
+    --primary-dark: #1e4b8a;
+    --glass-bg: rgba(255, 255, 255, 0.03);
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --text-main: #f7fbff;
+    --text-muted: rgba(247, 251, 255, 0.7);
+}
+
 .system-page {
-    align-items: stretch; /* 讓左右兩邊高度盡量齊平 */
+    align-items: stretch;
 }
 
 .system-sidebar {
-    flex: 0 0 250px; /* 固定左側寬度，不隨縮放擠壓 */
+    flex: 0 0 250px;
+}
+
+.system-sidebar .sidebar-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
 .system-sidebar .sidebar-list li {
     cursor: pointer;
-    transition: background 0.3s;
-    border-radius: 6px;
-    padding: 12px 10px;
-    margin-bottom: 5px;
+    transition: all 0.3s ease;
+    border-radius: 12px;
+    padding: 12px 16px;
+    margin-bottom: 8px;
+    color: var(--text-muted);
+    border: 1px solid transparent;
 }
 
-/* 滑鼠移上去或選中時的藍色高亮 */
+/* 滑鼠移上去時的藍色高亮 */
 .system-sidebar .sidebar-list li:hover {
-    background-color: #eef7ff;
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-main);
+    border-color: rgba(77, 163, 255, 0.2);
+    transform: translateX(5px);
 }
 
 .system-sidebar .sidebar-list li.active {
-    background-color: #3399ff;
+    background: linear-gradient(135deg, var(--primary-blue), var(--primary-dark));
     color: white;
+    border-color: var(--primary-blue);
+    box-shadow: 0 4px 15px rgba(77, 163, 255, 0.3);
 }
 
-.system-sidebar .sidebar-list li.active .tips {
-    background-color: white;
-    color: #3399ff;
-}
-
-/* === RWD 手機版優化 (下拉選單模式) === */
+/* === RWD 手機版優化 === */
 @media (max-width: 768px) {
     #content-wrapper {
         flex-direction: column;
+        padding: 10px;
     }
 
     .system-sidebar {
         flex: none;
         width: 100%;
         position: sticky;
-        top: 68px; /* 🚀 關鍵修正：對應主導航列高度，避免被遮擋 */
+        top: 70px;
         z-index: 100;
-        background: #fff;
-        margin-bottom: 15px;
+        margin-bottom: 20px;
     }
 
     .sidebar {
-        border: 1px solid #b3d8ff;
-        border-radius: 8px;
-        overflow: hidden;
-        margin: 5px 0;
-        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        background: rgba(10, 20, 35, 0.95) !important;
+        backdrop-filter: blur(10px);
+        border: 1px solid var(--glass-border) !important;
+        border-radius: 16px !important;
+        padding: 0 !important;
     }
 
     .sidebar h2 {
-        margin: 0;
-        padding: 12px 15px;
-        font-size: 1rem;
-        cursor: pointer;
-        border-bottom: none;
-        background: #f0f7ff;
+        margin: 0 !important;
+        padding: 15px 20px !important;
+        font-size: 1.1rem !important;
+        color: var(--primary-blue) !important;
+        border-bottom: none !important;
         display: flex;
         justify-content: space-between;
         align-items: center;
     }
 
-    /* 增加下拉箭頭 */
     .sidebar h2::after {
         content: "▼";
         font-size: 0.8rem;
@@ -78,136 +94,154 @@
     }
 
     .system-sidebar.open .sidebar h2 {
-        border-bottom: 1px solid #b3d8ff;
+        border-bottom: 1px solid var(--glass-border) !important;
     }
 
     .sidebar-list {
-        display: none; /* 預設隱藏清單 */
-        max-height: 240px; /* 🚀 縮減選單高度 */
+        display: none;
+        max-height: 300px;
         overflow-y: auto;
-        padding: 5px 10px;
+        padding: 10px !important;
     }
 
     .system-sidebar.open .sidebar-list {
         display: block;
     }
 
-    .system-sidebar .sidebar-list li {
-        padding: 10px 15px;
-        border-bottom: 1px solid #f0f0f0;
-    }
-
-    .system-sidebar .sidebar-list li:last-child {
-        border-bottom: none;
-    }
-
     #content {
-        padding: 10px;
+        padding: 20px !important;
     }
 }
 
-.system-main-content {
-    min-height: 500px;
-    /* 這裡可以繼承你原本 #content 的所有白底圓角陰影樣式 */
+/* === 內容排版設計 === */
+#dynamic-content {
+    color: var(--text-main);
+    line-height: 1.8;
 }
 
-/* === 全域內容容器調整 === */
-#content {
-    line-height: 1.8; /* 增加行距，讓說明文字不擁擠 */
-    color: #444;
-}
-
-/* === 標題設計 === */
-/* 主標題 (h2) - 沿用你的風格但增加一點層次 */
-h2 {
-    font-size: 1.5rem;
-    margin-bottom: 25px;
-    border-bottom: 3px solid #3399ff;
-    padding-bottom: 10px;
-    color: #1a5a96;
+#dynamic-content h2 {
+    font-size: 1.8rem;
+    margin-bottom: 30px;
+    color: var(--primary-blue);
+    border-bottom: 2px solid rgba(77, 163, 255, 0.3);
+    padding-bottom: 12px;
     display: flex;
     align-items: center;
+    font-weight: 800;
 }
 
-/* 小標題 (h3) - 改用側邊色塊設計，比底線更有專業感 */
-h3 {
-    font-size: 1.15rem;
-    margin: 25px 0 15px 0;
-    padding: 4px 12px;
-    border-left: 5px solid #3399ff; /* 側邊粗線 */
-    border-bottom: none; /* 移除原本的底虛線 */
-    background-color: #f0f7ff; /* 淡淡的底色 */
-    color: #267acc;
-    border-radius: 0 4px 4px 0;
+#dynamic-content h3 {
+    font-size: 1.2rem;
+    margin: 30px 0 15px 0;
+    padding: 6px 15px;
+    border-left: 4px solid var(--primary-blue);
+    background: rgba(77, 163, 255, 0.1);
+    color: var(--primary-blue);
+    border-radius: 0 8px 8px 0;
 }
 
-/* h4 設計：用於功能列表或次級說明 */
-h4 {
+#dynamic-content h4 {
     font-size: 1.05rem;
     margin: 20px 0 10px 0;
-    padding: 5px 15px;
-    color: #fff; /* 文字保持白色 */
-    /* 🚀 修復：讓藍色（#5aa9ff）延續到 80%，之後才變透明 */
-    background: linear-gradient(90deg, #5aa9ff 0%, #5aa9ff 80%, transparent 100%);
-    border-left: 4px solid #1a5a96;
+    padding: 4px 12px;
+    color: var(--text-main);
+    background: linear-gradient(90deg, rgba(77, 163, 255, 0.2) 0%, transparent 100%);
+    border-left: 3px solid var(--primary-blue);
     display: inline-block;
-    border-radius: 4px 20px 20px 4px;
-    box-shadow: 2px 2px 5px rgba(0,0,0,0.05);
+    border-radius: 4px;
 }
 
-/* === 表格設計 (強化質感) === */
+/* === 表格設計 === */
 table {
     width: 100%;
-    border-collapse: collapse;
-    margin: 20px 0;
-    background: white;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-    border-radius: 8px;
-    overflow: hidden; /* 確保圓角生效 */
+    border-collapse: separate;
+    border-spacing: 0;
+    margin: 25px 0;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    overflow: hidden;
 }
 
 table th {
-    background-color: #3399ff;
-    color: white;
-    font-weight: 600;
-    padding: 12px 15px;
+    background: rgba(77, 163, 255, 0.15);
+    color: var(--primary-blue);
+    font-weight: 700;
+    padding: 14px 15px;
     text-align: center;
+    border-bottom: 1px solid rgba(77, 163, 255, 0.3);
 }
 
 table td {
-    padding: 10px 15px;
-    border-bottom: 1px solid #eee;
+    padding: 12px 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     text-align: center;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+}
+
+table tr:last-child td {
+    border-bottom: none;
 }
 
 table tbody tr:hover {
-    background-color: #f9fcff; /* 滑鼠經過變色 */
+    background: rgba(255, 255, 255, 0.04);
 }
 
-/* === 圖片裝備設計 === */
-/* 雖然你目前的 HTML 沒圖片，但預留給未來使用 */
+table tbody tr:hover td {
+    color: var(--text-main);
+}
+
+/* === 圖片美化 === */
 .system-img {
     display: block;
     max-width: 100%;
     height: auto;
-    margin: 15px auto;
-    border: 2px solid #ddd;
-    border-radius: 8px;
-    padding: 5px;
-    background: #fff;
+    margin: 20px auto;
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    padding: 8px;
+    background: rgba(0, 0, 0, 0.2);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
 }
 
-/* === 特殊強調文字 === */
+/* === 連結樣式 === */
+#dynamic-content a {
+    color: var(--primary-blue);
+    text-decoration: none;
+    border-bottom: 1px dashed var(--primary-blue);
+    transition: all 0.2s ease;
+}
+
+#dynamic-content a:hover {
+    color: white;
+    border-bottom-style: solid;
+    text-shadow: 0 0 8px rgba(77, 163, 255, 0.5);
+}
+
+/* === 特殊組件 === */
 .highlight {
-    color: #d9534f; /* 警告或注意的紅色 */
+    color: #ff6b6b;
     font-weight: bold;
 }
 
-/* 針對 HTML 中的「※」號進行修飾 */
 .note-text {
-    display: block;
-    padding-left: 1em;
-    text-indent: -1em;
-    color: #666;
-    font-size: 0.95rem;
+    background: rgba(255, 216, 107, 0.1);
+    border-radius: 8px;
+    padding: 10px 15px;
+    color: #ffd86b;
+    font-size: 0.9rem;
+    margin: 15px 0;
+    border-left: 3px solid #ffd86b;
+}
+
+figure {
+    margin: 30px 0;
+}
+
+figcaption {
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-top: 10px;
 }
