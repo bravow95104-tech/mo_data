@@ -13,12 +13,17 @@ function loadComponent(selector, url) {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
+    // --- 主題切換初始化 ---
+    const savedTheme = localStorage.getItem("theme") || "dark";
+    document.documentElement.setAttribute("data-theme", savedTheme);
+
     const pathParts = window.location.pathname.split("/").filter(Boolean);
     const repoName = pathParts.length > 0 ? pathParts[0] : "";
     const baseURL = repoName ? `${window.location.origin}/${repoName}` : window.location.origin;
 
     loadComponent("#nav-container", baseURL + "/components/nav/nav.html").then(() => {
         initNavbarBehavior();
+        initThemeSwitcher(); // 初始化主題切換按鈕
     });
 
     loadComponent("#footer-container", baseURL + "/components/footer/footer.html");
@@ -102,5 +107,29 @@ function initNavbarBehavior() {
         if (navMenu.classList.contains("active") && !navMenu.contains(e.target) && !hamburgerBtn.contains(e.target)) {
             setMenuState(false);
         }
+    });
+}
+
+function initThemeSwitcher() {
+    const toggleBtn = document.getElementById("theme-toggle");
+    if (!toggleBtn) return;
+
+    const themeIcon = document.getElementById("theme-icon");
+    
+    // 更新圖示
+    const updateIcon = (theme) => {
+        themeIcon.textContent = theme === "light" ? "☀️" : "🌙";
+    };
+
+    // 初始化圖示
+    updateIcon(document.documentElement.getAttribute("data-theme"));
+
+    toggleBtn.addEventListener("click", () => {
+        const currentTheme = document.documentElement.getAttribute("data-theme");
+        const newTheme = currentTheme === "light" ? "dark" : "light";
+        
+        document.documentElement.setAttribute("data-theme", newTheme);
+        localStorage.setItem("theme", newTheme);
+        updateIcon(newTheme);
     });
 }
