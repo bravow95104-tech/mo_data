@@ -167,10 +167,17 @@
   #nav-container {
     position: fixed;
     inset: 0 0 auto 0;
+    /* 確保導覽列容器不會限制內容顯示 */
+    height: auto; 
   }
 
   #nav-container nav {
     background: linear-gradient(180deg, var(--nav-bg-1), var(--nav-bg-2));
+    /* 手機版展開時，允許 nav 容器撐開以容納捲軸內容 */
+    max-height: 100vh;
+    max-height: 100dvh;
+    display: flex;
+    flex-direction: column;
   }
 
   .nav-mobile-header {
@@ -181,6 +188,7 @@
     height: 58px;
     padding: 0 14px 0 18px;
     box-sizing: border-box;
+    flex-shrink: 0; /* 確保標頭不會被壓縮 */
   }
 
   .mobile-home-link {
@@ -220,12 +228,13 @@
     gap: 8px;
     width: 100%;
     max-width: none;
-    height: calc(100vh - 58px);
-    height: calc(100dvh - 58px);
-    padding: 12px 12px 18px;
+    /* 關鍵：使用 flex-grow 讓選單佔滿剩餘高度並啟用捲動 */
+    flex: 1;
+    overflow-y: auto; 
+    -webkit-overflow-scrolling: touch; /* 優化 iOS 滾動 */
+    padding: 12px 12px 30px; /* 底部預留更多空間 */
     box-sizing: border-box;
-    overflow-y: auto;
-    background: linear-gradient(180deg, var(--nav-bg-2), var(--nav-bg-1));
+    background: transparent; /* 背景由父層 nav 提供 */
     border-top: 1px solid var(--glass-border);
   }
 
