@@ -102,6 +102,7 @@ function initNavbarBehavior() {
 
     function setMenuState(isOpen) {
         navMenu.classList.toggle("active", isOpen);
+        navbar.classList.toggle("menu-open", isOpen); // 🚀 新增：控制全螢幕展開
         hamburgerBtn.setAttribute("aria-expanded", String(isOpen));
         if (!isOpen) closeDropdowns();
         window.setTimeout(updateNavOffset, 50);
