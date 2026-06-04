@@ -9,8 +9,8 @@ document.addEventListener("DOMContentLoaded", async () => {
   let sortConfig = { key: null, direction: "asc" }; // 記錄排序狀態
   let lastFilteredData = [];
 
-  // 🔹 輔助函式：處理 NULL 值
-  const getVal = (v) => (v === null || v === undefined || String(v).trim() === "" || String(v) === "null") ? "" : v;
+  // 🔹 輔助函式：處理 NULL 值 (確保回傳皆為字串)
+  const getVal = (v) => (v === null || v === undefined || String(v).trim() === "" || String(v) === "null") ? "" : String(v);
 
   // === 判斷斷點是否在768以下 ===
   function isBreakpointBelow768() {
