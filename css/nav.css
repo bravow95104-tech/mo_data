@@ -168,13 +168,33 @@
     position: fixed;
     inset: 0 0 auto 0;
     z-index: 9999;
+    height: 58px; /* 初始高度僅為標頭 */
   }
 
   #nav-container nav {
-    background: linear-gradient(180deg, var(--nav-bg-1), var(--nav-bg-2));
-    height: auto;
-    max-height: none;
-    display: block; /* 回歸區塊佈局避免擠壓 */
+    background: linear-gradient(135deg, var(--nav-bg-1), var(--nav-bg-2));
+    height: 100vh;
+    height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    transform: translateY(-100%); /* 預設完全隱藏 */
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 1; /* 手機版不透過 opacity 控制隱藏 */
+  }
+
+  #nav-container nav.visible {
+    transform: translateY(0);
+  }
+
+  /* 當選單沒開啟時，縮回容器高度，避免擋到頁面點擊 */
+  #nav-container:not(:has(.nav-menu.active)) {
+     height: 58px;
+  }
+  
+  /* 為了相容性，如果瀏覽器不支援 :has，我們讓 nav.visible 控制容器高度 */
+  #nav-container.menu-open {
+     height: 100vh;
+     height: 100dvh;
   }
 
   .nav-mobile-header {
@@ -185,9 +205,9 @@
     height: 58px;
     padding: 0 14px 0 18px;
     box-sizing: border-box;
-    position: relative;
-    z-index: 10;
-    background: inherit;
+    flex-shrink: 0;
+    width: 100%;
+    background: transparent; /* 背景由父層提供 */
   }
 
   .mobile-home-link {
@@ -220,24 +240,22 @@
   }
 
   .nav-menu {
-    display: none;
+    display: none; /* 由 JS 控制 toggle */
     flex-direction: column;
     justify-content: flex-start;
     align-items: stretch;
-    gap: 8px;
+    gap: 12px;
     width: 100%;
     
-    /* 🚀 關鍵修正：強制高度與獨立捲動，不與 Header 競爭空間 */
-    height: calc(100vh - 58px);
-    height: calc(100dvh - 58px);
+    /* 🚀 關鍵修正：滿版高度且獨立捲動 */
+    flex: 1;
     overflow-y: auto !important;
     -webkit-overflow-scrolling: touch;
     
-    padding: 15px 12px 60px; /* 底部留白更多，確保點得到最後一項 */
+    padding: 10px 12px 80px; /* 底部預留充足空間 */
     box-sizing: border-box;
-    background: linear-gradient(180deg, var(--nav-bg-2), var(--nav-bg-1));
+    background: transparent;
     border-top: 1px solid var(--glass-border);
-    position: relative;
   }
 
   .nav-menu.active {
@@ -254,7 +272,8 @@
     border-radius: 18px;
     background: var(--card-bg);
     border: 1px solid var(--glass-border);
-    overflow: hidden;
+    overflow: visible; /* 🚀 移除隱藏，防止剪裁 */
+    flex-shrink: 0; /* 🚀 關鍵：防止被壓縮 */
   }
 
   .dropdown-toggle,
