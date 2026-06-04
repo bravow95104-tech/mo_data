@@ -76,7 +76,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       const { data, error } = await supabase
         .from('heroes')
         .select('*')
-        .order('id', { ascending: true });
+        .order('sort_id', { ascending: true }); // 改為 sort_id 排序
 
       if (error) throw error;
 
@@ -239,7 +239,9 @@ document.addEventListener("DOMContentLoaded", async () => {
       for (let i = 0; i < fields.length; i++) {
         const field = fields[i];
         const td = document.createElement("td");
-        const value = hero[field] !== undefined ? String(hero[field]) : "";
+        // 修正：顯式處理 null/undefined 為空字串
+        const val = hero[field];
+        const value = (val === null || val === undefined) ? "" : String(val);
 
         if (regex && value.toLowerCase().includes(keyword)) {
           td.innerHTML = value.replace(regex, '<span class="highlight">$1</span>');
