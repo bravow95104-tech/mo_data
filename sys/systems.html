@@ -102,6 +102,7 @@
 
                     // 2. 執行載入
                     loadSystemPage(file, title);
+                    document.title = `${title} | MoData`;
 
                     // 3. 手機版點選後自動收合
                     if (window.innerWidth <= 768) {
