@@ -141,6 +141,7 @@
 
 /* 表格樣式 */
 #hero-table-container {
+  width: 100%;
   background: transparent;
   border-radius: 20px;
   border: 1px solid var(--glass-border);
@@ -162,6 +163,7 @@ thead th {
   backdrop-filter: blur(15px);
   color: var(--primary-blue);
   padding: 16px 10px;
+  font-size: 13px;
   font-weight: 700;
   border-bottom: 1px solid rgba(77, 163, 255, 0.3);
 }
@@ -174,7 +176,7 @@ tbody td {
   padding: 12px 8px;
   text-align: center;
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-  font-size: 14px;
+  font-size: 12.5px;
   color: var(--text-muted);
   background: var(--glass-bg);
   backdrop-filter: blur(5px);
