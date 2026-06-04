@@ -19,8 +19,8 @@
     --bg-grid: rgba(255, 255, 255, 0.03);
 
     /* 導覽列與卡片 */
-    --nav-bg-1: rgba(10, 23, 43, 0.96);
-    --nav-bg-2: rgba(18, 61, 110, 0.94);
+    --nav-bg-1: rgba(10, 23, 43, 0.75); /* 降低透明度 */
+    --nav-bg-2: rgba(18, 61, 110, 0.7);
     --card-bg: rgba(255, 255, 255, 0.04);
     --highlight-yellow: #ffd86b;
 }
@@ -29,19 +29,20 @@
 [data-theme="light"] {
     --primary-blue: #0066cc !important;
     --primary-dark: #004080 !important;
-    --glass-bg: rgba(255, 255, 255, 0.8) !important;
-    --glass-border: rgba(0, 0, 0, 0.15) !important;
+    --glass-bg: rgba(255, 255, 255, 0.4) !important; /* 顯著降低不透明度 */
+    --glass-border: rgba(0, 0, 0, 0.08) !important;
     --text-main: #1a202c !important;
     --text-muted: rgba(26, 32, 44, 0.85) !important;
-    --bg-dark: #f5f8fc !important;
+    --bg-dark: #eef2f7 !important;
 
-    --bg-gradient-1: rgba(0, 102, 204, 0.08) !important;
-    --bg-gradient-2: rgba(0, 0, 0, 0.03) !important;
-    --bg-grid: rgba(0, 0, 0, 0.04) !important;
+    /* 強化淺色背景的紋理，讓玻璃模糊更有感 */
+    --bg-gradient-1: rgba(0, 102, 204, 0.15) !important;
+    --bg-gradient-2: rgba(255, 255, 255, 0.8) !important;
+    --bg-grid: rgba(0, 102, 204, 0.06) !important;
 
-    --nav-bg-1: #ffffff !important;
-    --nav-bg-2: #f0f4f8 !important;
-    --card-bg: #ffffff !important;
+    --nav-bg-1: rgba(255, 255, 255, 0.45) !important; /* 導覽列變更透 */
+    --nav-bg-2: rgba(245, 247, 250, 0.4) !important;
+    --card-bg: rgba(255, 255, 255, 0.5) !important;
     --highlight-yellow: #c05621 !important;
 }
 
@@ -169,7 +170,7 @@ body {
     flex-shrink: 0;
     width: 105px;
     background: linear-gradient(135deg, #1e4b8a, #0d2a54);
-    color: #ffffff;
+    color: #ffffff !important; /* 強制白色文字，因為背景固定為深色 */
     font-family: "JetBrains Mono", "Courier New", monospace;
     font-weight: 600;
     font-size: 0.85rem;
