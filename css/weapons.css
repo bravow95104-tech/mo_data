@@ -162,7 +162,8 @@
   background: transparent;
   border-radius: 20px;
   border: 1px solid var(--glass-border);
-  overflow-x: auto; /* 改為 auto 以支援小螢幕橫向捲動，並確保 100% 寬度 */
+  /* 移除 overflow-x: auto 以修復 sticky 標頭失效問題，改用內層包裝或讓 body 滾動 */
+  overflow: visible; 
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
   margin: 20px 0;
 }
@@ -171,9 +172,19 @@
   border-collapse: separate;
   border-spacing: 0;
   width: 100% !important;
-  min-width: 100% !important; /* 強制最小寬度為 100% */
-  table-layout: auto;
+  min-width: 100% !important;
+  table-layout: fixed; /* 改為 fixed 確保標題與內容絕對對齊 */
+  word-wrap: break-word;
 }
+
+/* 設定各欄位寬度比例，避免錯位 */
+#heroes-table th:nth-child(1) { width: 70px; }  /* 圖示 */
+#heroes-table th:nth-child(2) { width: 15%; }  /* 名稱 */
+#heroes-table th:nth-child(3) { width: 80px; }  /* 等級 */
+#heroes-table th:nth-child(4) { width: 100px; } /* 屬性1 */
+#heroes-table th:nth-child(5) { width: 100px; } /* 屬性2 */
+#heroes-table th:nth-child(6) { width: 100px; } /* 耐用 */
+#heroes-table th:nth-child(7) { width: auto; }  /* 說明 (剩餘寬度) */
 
 table {
   width: 100% !important;
@@ -181,8 +192,8 @@ table {
 
 thead th {
   position: sticky;
-  top: 62px;
-  z-index: 999;
+  top: 73px; /* 配合導覽列高度 */
+  z-index: 10;
   background: linear-gradient(180deg, rgba(26, 54, 93, 0.98), rgba(10, 23, 43, 0.98));
   backdrop-filter: blur(15px);
   color: var(--primary-blue);
@@ -190,6 +201,8 @@ thead th {
   font-size: 13px;
   font-weight: 700;
   border-bottom: 1px solid rgba(77, 163, 255, 0.3);
+  /* 修正 sticky 背景與邊框間隙 */
+  background-clip: padding-box; 
 }
 
 #hero-table-container table tr:first-child th:first-child { border-top-left-radius: 20px; }
