@@ -5,6 +5,7 @@ const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
 
 // === 1. 全域變數與全域函數公開 ===
 let mapData = [];
+let heroGloryMap = {}; // 🚀 新增：儲存光輝與英雄的對照表
 
 // 定義所有可能的欄位
 const ALL_COLUMNS = [
@@ -78,6 +79,18 @@ const formatTieredContent = (text, isCompact = false, linkType = null) => {
   return isCompact ? finalNames : finalNames.replace(/\n/g, '<br>');
 };
 
+// === 光輝對照解析器 (支援手機/電腦版) ===
+const formatGloryWithTooltip = (text) => {
+  if (!text || text === "-") return "-";
+  return text.split('、').map(glory => {
+    const trimmed = glory.trim();
+    if (!trimmed) return "";
+    const heroes = heroGloryMap[trimmed] ? heroGloryMap[trimmed].join('、') : "目前無英雄對照";
+    // 使用 title 屬性作為最簡單的提示方式
+    return `<span class="glory-tooltip" title="對應英雄：${heroes}">${trimmed}</span>`;
+  }).join('、');
+};
+
 // --- 公開函數到 window 物件，確保 HTML onclick 能觸發 ---
 window.zoomWorldMap = function (src) {
   const modalBox = document.getElementById("modalBox");
@@ -133,8 +146,8 @@ window.openMapDetail = function (mapId) {
       }
             <div class="hero-column-details section-gap">
                 <p><strong>光輝資訊：</strong></p>
-                <p class="align-row"><strong>◢ 掉落較高：</strong><span>${item.drop_glory_high || "-"}</span></p>
-                <p class="align-row"><strong>◢ 掉落較低：</strong><span>${item.drop_glory_low || "-"}</span></p>
+                <p class="align-row"><strong>◢ 掉落較高：</strong><span>${formatGloryWithTooltip(item.drop_glory_high)}</span></p>
+                <p class="align-row"><strong>◢ 掉落較低：</strong><span>${formatGloryWithTooltip(item.drop_glory_low)}</span></p>
                 ${item.drop_glory_player ? `<p class="align-row"><strong>◢ 玩家提供：</strong><span>${item.drop_glory_player}</span></p>` : ""}
             </div>
         `;
@@ -164,10 +177,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // === 3. 資料載入與對接 ===
 async function loadData() {
-  const [mapRes, gloryRes, playerRes] = await Promise.all([
+  const [mapRes, gloryRes, playerRes, heroRes] = await Promise.all([
     supabase.from('detailed_map').select('*').order('sort_id', { ascending: true }),
     supabase.from('glory_drop').select('*'),
-    supabase.from('glory_drop_player').select('*') // 🚀 新增：載入玩家版資料
+    supabase.from('glory_drop_player').select('*'),
+    supabase.from('heroes').select('name, glory') // 🚀 新增：載入英雄與光輝對照
   ]);
 
   if (mapRes.error) {
@@ -179,7 +193,17 @@ async function loadData() {
 
   const rawMapData = mapRes.data;
   const gloryDropData = gloryRes.data || [];
-  const playerDropData = playerRes.data || []; // 🚀 新增
+  const playerDropData = playerRes.data || [];
+  const heroesData = heroRes.data || []; // 🚀 新增
+
+  // 🚀 建立光輝對英雄的對照表
+  heroGloryMap = {};
+  heroesData.forEach(h => {
+    if (h.glory) {
+      if (!heroGloryMap[h.glory]) heroGloryMap[h.glory] = [];
+      heroGloryMap[h.glory].push(h.name);
+    }
+  });
 
   mapData = rawMapData.map(map => {
     // 匹配官方版
