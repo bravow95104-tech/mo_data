@@ -138,24 +138,50 @@
   padding: 2px 4px;
 }
 
+/* 特殊說明連結 (keyword-link) */
+.keyword-link {
+  color: var(--primary-blue);
+  cursor: pointer;
+  border-bottom: 1px dashed var(--primary-blue);
+  transition: all 0.2s ease;
+  font-weight: 600;
+  padding: 0 2px;
+}
+
+.keyword-link:hover {
+  background: rgba(77, 163, 255, 0.15);
+  border-bottom-style: solid;
+  text-shadow: 0 0 10px rgba(77, 163, 255, 0.5);
+  border-radius: 4px;
+}
+
 /* 表格樣式 */
 #hero-table-container {
+  width: 100% !important;
+  max-width: 100% !important;
   background: transparent;
   border-radius: 20px;
   border: 1px solid var(--glass-border);
-  overflow: visible;
+  overflow-x: auto; /* 改為 auto 以支援小螢幕橫向捲動，並確保 100% 寬度 */
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  margin: 20px 0;
+}
+
+#heroes-table {
+  border-collapse: separate;
+  border-spacing: 0;
+  width: 100% !important;
+  min-width: 100% !important; /* 強制最小寬度為 100% */
+  table-layout: auto;
 }
 
 table {
-  border-collapse: separate;
-  border-spacing: 0;
-  width: 100%;
+  width: 100% !important;
 }
 
 thead th {
   position: sticky;
-  top: 73px;
+  top: 62px;
   z-index: 999;
   background: linear-gradient(180deg, rgba(26, 54, 93, 0.98), rgba(10, 23, 43, 0.98));
   backdrop-filter: blur(15px);
