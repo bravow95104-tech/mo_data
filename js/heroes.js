@@ -1,4 +1,9 @@
-document.addEventListener("DOMContentLoaded", () => {
+import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm'
+import { SUPABASE_URL, SUPABASE_KEY } from './supabase-config.js'
+
+const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
+
+document.addEventListener("DOMContentLoaded", async () => {
   let heroesData = [];
   let sortConfig = { key: null, direction: "asc" }; // 記錄排序狀態
   let lastFilteredData = [];
@@ -64,20 +69,26 @@ document.addEventListener("DOMContentLoaded", () => {
   const closeModalBtn = document.querySelector("#modalBox .close-btn");
   const heroesTableContainer = document.getElementById("hero-table-container");
   const heroesCardContainer = document.getElementById("hero-card-container");
-  // === 1. 載入 JSON 資料 ===
-  fetch("/mo_data/data/heroes.json")
-    .then((response) => response.json())
-    .then((data) => {
-      heroesData = data;
+
+  // === 1. 從 Supabase 載入資料 ===
+  async function loadData() {
+    try {
+      const { data, error } = await supabase
+        .from('heroes')
+        .select('*')
+        .order('id', { ascending: true });
+
+      if (error) throw error;
+
+      heroesData = data || [];
       
-      // 🚀 新增：檢查 URL 是否有 ?hero=名稱 參數
+      // 🚀 檢查 URL 是否有 ?hero=名稱 參數
       const urlParams = new URLSearchParams(window.location.search);
       const heroParam = urlParams.get('hero');
       if (heroParam && searchInput) {
         searchInput.value = heroParam;
-        applyFilters(); // 先過濾
+        applyFilters(); 
         
-        // 如果過濾後只有一筆資料且名稱完全相符，自動開啟彈窗
         if (lastFilteredData.length > 0) {
           const matchedHero = lastFilteredData.find(h => h.name === heroParam);
           if (matchedHero) {
@@ -85,105 +96,16 @@ document.addEventListener("DOMContentLoaded", () => {
           }
         }
       } else {
-        applyFilters(); // 正常初始渲染
+        applyFilters(); 
       }
-    })
-    .catch((error) => {
+    } catch (error) {
       console.error("載入英雄資料錯誤:", error);
       if (tableBody)
         tableBody.innerHTML = '<tr><td colspan="15">無法載入英雄資料</td></tr>';
-    });
+    }
+  }
 
-  // === 2. 核心邏輯：套用 搜尋 + 篩選 + 排序 ===
-  // function applyFilters() {
-  //   const keyword = searchInput.value.trim().toLowerCase();
-
-  //   // A. 取得目前按鈕選取的條件
-  //   const filters = {
-  //     promotion: [],
-  //     personality: [],
-  //     traits: [],
-  //     new_multiplier: [],
-  //   };
-  //   document.querySelectorAll(".filter-btn.active").forEach((btn) => {
-  //     const type = btn.dataset.type;
-  //     const val = btn.dataset.value;
-  //     if (filters[type]) filters[type].push(val);
-  //   });
-
-  //   // B. 過濾資料 (搜尋框 + 篩選按鈕)
-  //   let filtered = heroesData.filter((hero) => {
-  //     // 搜尋框條件
-  //     const targetFields = [
-  //       hero.name,
-  //       hero.glory,
-  //       hero.equipment_new,
-  //       hero.equipment_old,
-  //       hero.promotion,
-  //       hero.personality,
-  //       hero.traits,
-  //     ]
-  //       .join(" ")
-  //       .toLowerCase();
-  //     const matchSearch = targetFields.includes(keyword);
-
-  //     // 按鈕條件 (多選邏輯：同組選多個為 OR, 不同組之間為 AND)
-  //     const okPromotion =
-  //       filters.promotion.length === 0 ||
-  //       filters.promotion.includes(hero.promotion);
-  //     const okPersonality =
-  //       filters.personality.length === 0 ||
-  //       filters.personality.includes(hero.personality);
-  //     const okTraits =
-  //       filters.traits.length === 0 ||
-  //       filters.traits.includes(String(hero.traits));
-  //     const okNewMult =
-  //       filters.new_multiplier.length === 0 ||
-  //       filters.new_multiplier.includes(hero.new_multiplier);
-
-  //     return (
-  //       matchSearch && okPromotion && okPersonality && okTraits && okNewMult
-  //     );
-  //   });
-
-  //   // C. 排序資料
-  //   if (sortConfig.key) {
-  //     filtered.sort((a, b) => {
-  //       let valA = a[sortConfig.key];
-  //       let valB = b[sortConfig.key];
-
-  //       const numA = parseFloat(valA);
-  //       const numB = parseFloat(valB);
-
-  //       if (!isNaN(numA) && !isNaN(numB)) {
-  //         valA = numA;
-  //         valB = numB;
-  //       } else {
-  //         valA = String(valA || "").toLowerCase();
-  //         valB = String(valB || "").toLowerCase();
-  //       }
-
-  //       if (valA < valB) return sortConfig.direction === "asc" ? -1 : 1;
-  //       if (valA > valB) return sortConfig.direction === "asc" ? 1 : -1;
-  //       return 0;
-  //     });
-  //   }
-
-  //   // D. 最終渲染
-
-  //   if (resizeFlag) {
-  //     console.log("在768以下隱藏表格");
-  //     heroesTableContainer.style.display = "none";
-  //     heroesCardContainer.style.display = "flex";
-  //     renderCard(filtered);
-  //   } else {
-  //     console.log("在768以上顯示表格");
-  //     heroesTableContainer.style.display = "block";
-  //     heroesCardContainer.style.display = "none";
-
-  //     renderTable(filtered);
-  //   }
-  // }
+  loadData();
 
   function applyFilters() {
     const keyword = searchInput.value.trim().toLowerCase();
@@ -430,9 +352,23 @@ document.addEventListener("DOMContentLoaded", () => {
     function createImageWithFallbacks(basePath, altText) {
       const img = document.createElement("img");
       img.alt = altText;
+      // 改為相對路徑
       img.src = basePath + ".png";
-      img.onerror = () => (img.style.display = "none"); // Keep this for fallback
-      // ✅ 圖片載入後再次確保置頂
+      img.onerror = () => {
+         const extensions = ['.bmp', '.jpg'];
+         let attempt = 0;
+         const tryNext = () => {
+            if (attempt < extensions.length) {
+                img.src = basePath + extensions[attempt];
+                attempt++;
+            } else {
+                img.style.display = "none";
+            }
+         };
+         img.onerror = tryNext;
+         tryNext();
+      };
+      
       img.onload = () => {
         if (modalBox.style.display === "block") {
           modalBox.scrollTop = 0;
@@ -441,17 +377,16 @@ document.addEventListener("DOMContentLoaded", () => {
       return img;
     }
 
-    // ✅ 打開前先清空內容並強制歸零
     modalBox.scrollTop = 0;
     modalContent.innerHTML = `<h2 class="hero-name" id="modal-title">${hero.name}</h2>`;
 
     const imgContainer = document.createElement("div");
     imgContainer.className = "hero-images";
     imgContainer.appendChild(
-      createImageWithFallbacks(`/mo_data/pic/heroes/${safeName}_正`, "正面"),
+      createImageWithFallbacks(`../pic/heroes/${safeName}_正`, "正面"),
     );
     imgContainer.appendChild(
-      createImageWithFallbacks(`/mo_data/pic/heroes/${safeName}_反`, "反面"),
+      createImageWithFallbacks(`../pic/heroes/${safeName}_反`, "反面"),
     );
     modalContent.appendChild(imgContainer);
 
@@ -506,10 +441,7 @@ document.addEventListener("DOMContentLoaded", () => {
     modalOverlay.style.display = "block";
     modalBox.style.display = "block";
     
-    // ✅ 強制歸零
     modalBox.scrollTop = 0;
-    
-    // ✅ 雙重保險：稍微延遲再歸零一次，對付瀏覽器的自動捲動恢復
     setTimeout(() => {
       modalBox.scrollTop = 0;
     }, 10);
@@ -518,7 +450,6 @@ document.addEventListener("DOMContentLoaded", () => {
   function closeModal() {
     modalOverlay.style.display = "none";
     modalBox.style.display = "none";
-    // ✅ 關鍵：關閉時就歸零，防止「記憶」殘留
     modalBox.scrollTop = 0;
   }
 
