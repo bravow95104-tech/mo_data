@@ -4,10 +4,15 @@ function loadComponent(selector, url) {
     const el = document.querySelector(selector);
     if (!el) return Promise.resolve();
 
+    console.log(`Loading component from: ${url}`);
     return fetch(url)
-        .then((res) => res.text())
+        .then((res) => {
+            if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+            return res.text();
+        })
         .then((html) => {
             el.innerHTML = html;
+            console.log(`Successfully loaded: ${url}`);
         })
         .catch((err) => console.error(`Failed to load ${url}:`, err));
 }
@@ -16,14 +21,29 @@ document.addEventListener("DOMContentLoaded", function () {
     // --- 主題切換初始化 ---
     const savedTheme = localStorage.getItem("theme") || "dark";
     document.documentElement.setAttribute("data-theme", savedTheme);
+    console.log(`Initial theme set to: ${savedTheme}`);
 
-    const pathParts = window.location.pathname.split("/").filter(Boolean);
-    const repoName = pathParts.length > 0 ? pathParts[0] : "";
-    const baseURL = repoName ? `${window.location.origin}/${repoName}` : window.location.origin;
+    // 計算 baseURL - 更加魯棒的寫法
+    const path = window.location.pathname;
+    let baseURL = "";
+    
+    if (path.includes("/mo_data/")) {
+        baseURL = path.substring(0, path.indexOf("/mo_data/")) + "/mo_data";
+    } else {
+        // 如果路徑中沒有 /mo_data/，嘗試根據當前路徑深度計算
+        const depth = path.split("/").filter(Boolean).length;
+        baseURL = depth > 0 ? ".." : ".";
+        // 這裡如果是根目錄，維持空字串或點
+    }
+    
+    // 如果是首頁且沒有子路徑，baseURL 可能是空
+    if (!baseURL || baseURL === "/") baseURL = ".";
+    
+    console.log(`Detected baseURL: ${baseURL}`);
 
     loadComponent("#nav-container", baseURL + "/components/nav/nav.html").then(() => {
         initNavbarBehavior();
-        initThemeSwitcher(); // 初始化主題切換按鈕
+        initThemeSwitcher();
     });
 
     loadComponent("#footer-container", baseURL + "/components/footer/footer.html");
@@ -112,22 +132,27 @@ function initNavbarBehavior() {
 
 function initThemeSwitcher() {
     const toggleBtn = document.getElementById("theme-toggle");
-    if (!toggleBtn) return;
+    if (!toggleBtn) {
+        console.error("Theme toggle button not found!");
+        return;
+    }
 
     const themeIcon = document.getElementById("theme-icon");
-    
-    // 更新圖示
+    console.log("Theme switcher initialized.");
+
     const updateIcon = (theme) => {
-        themeIcon.textContent = theme === "light" ? "☀️" : "🌙";
+        if (themeIcon) {
+            themeIcon.textContent = theme === "light" ? "☀️" : "🌙";
+        }
     };
 
-    // 初始化圖示
     updateIcon(document.documentElement.getAttribute("data-theme"));
 
     toggleBtn.addEventListener("click", () => {
         const currentTheme = document.documentElement.getAttribute("data-theme");
         const newTheme = currentTheme === "light" ? "dark" : "light";
         
+        console.log(`Switching theme to: ${newTheme}`);
         document.documentElement.setAttribute("data-theme", newTheme);
         localStorage.setItem("theme", newTheme);
         updateIcon(newTheme);
