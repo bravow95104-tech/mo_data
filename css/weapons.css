@@ -155,7 +155,7 @@ table {
 
 thead th {
   position: sticky;
-  top: 70px;
+  top: 73px;
   z-index: 999;
   background: linear-gradient(180deg, rgba(26, 54, 93, 0.98), rgba(10, 23, 43, 0.98));
   backdrop-filter: blur(15px);
