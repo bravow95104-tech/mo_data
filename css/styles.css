@@ -1,5 +1,9 @@
 /* 全站基本樣式 - 升級為深色玻璃擬態風格 (Glassmorphism) */
 
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
 :root {
     --primary-blue: #4da3ff;
     --primary-dark: #1e4b8a;
@@ -8,16 +12,47 @@
     --text-main: #f7fbff;
     --text-muted: rgba(247, 251, 255, 0.7);
     --bg-dark: #060b13;
+
+    /* 背景漸層變數 */
+    --bg-gradient-1: rgba(18, 61, 110, 0.25);
+    --bg-gradient-2: rgba(51, 153, 255, 0.15);
+    --bg-grid: rgba(255, 255, 255, 0.03);
+
+    /* 導覽列與卡片 */
+    --nav-bg-1: rgba(10, 23, 43, 0.96);
+    --nav-bg-2: rgba(18, 61, 110, 0.94);
+    --card-bg: rgba(255, 255, 255, 0.04);
+    --highlight-yellow: #ffd86b;
+}
+
+/* 強制覆蓋所有頁面的淺色主題 */
+[data-theme="light"] {
+    --primary-blue: #0066cc !important;
+    --primary-dark: #004080 !important;
+    --glass-bg: rgba(255, 255, 255, 0.8) !important;
+    --glass-border: rgba(0, 0, 0, 0.15) !important;
+    --text-main: #1a202c !important;
+    --text-muted: rgba(26, 32, 44, 0.85) !important;
+    --bg-dark: #f5f8fc !important;
+
+    --bg-gradient-1: rgba(0, 102, 204, 0.08) !important;
+    --bg-gradient-2: rgba(0, 0, 0, 0.03) !important;
+    --bg-grid: rgba(0, 0, 0, 0.04) !important;
+
+    --nav-bg-1: #ffffff !important;
+    --nav-bg-2: #f0f4f8 !important;
+    --card-bg: #ffffff !important;
+    --highlight-yellow: #c05621 !important;
 }
 
 body {
     background-color: var(--bg-dark);
     /* 現代深邃藍漸層背景 */
     background-image: 
-        radial-gradient(circle at 20% 30%, rgba(18, 61, 110, 0.25) 0%, transparent 45%),
-        radial-gradient(circle at 80% 70%, rgba(51, 153, 255, 0.15) 0%, transparent 45%),
+        radial-gradient(circle at 20% 30%, var(--bg-gradient-1) 0%, transparent 45%),
+        radial-gradient(circle at 80% 70%, var(--bg-gradient-2) 0%, transparent 45%),
         /* 科技感點狀格線 */
-        radial-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+        radial-gradient(var(--bg-grid) 1px, transparent 1px);
     background-size: 100% 100%, 100% 100%, 30px 30px;
     background-attachment: fixed;
     margin: 0;
@@ -26,6 +61,7 @@ body {
     padding: 80px 40px 30px 40px;
     font-family: "Noto Sans TC", "Microsoft JhengHei", system-ui, -apple-system, sans-serif;
     color: var(--text-main);
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* 回到頂部按鈕 - 升級風格 */
