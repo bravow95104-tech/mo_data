@@ -388,7 +388,4 @@ document.addEventListener("DOMContentLoaded", () => {
       header.parentElement.classList.toggle("collapsed");
     });
   });
-
-});;
-
 });
