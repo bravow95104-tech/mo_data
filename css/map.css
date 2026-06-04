@@ -529,6 +529,19 @@ tbody tr:hover td {
   padding: 0 4px;
 }
 
+/* 光輝提示樣式 */
+.glory-tooltip {
+  border-bottom: 1px dotted var(--primary-blue);
+  cursor: help;
+  transition: all 0.2s;
+}
+
+.glory-tooltip:hover {
+  color: var(--primary-blue);
+  background: rgba(77, 163, 255, 0.1);
+  border-radius: 4px;
+}
+
 /* 超連結與英雄連結美化 */
 .keyword-link, .hero-link {
   color: var(--primary-blue);
