@@ -366,6 +366,14 @@ th.sort-desc .caret-down {
   transform: rotate(90deg);
 }
 
+/* 手機版卡片 (預設桌面版隱藏) */
+#hero-card-container, #awakening-container {
+  display: none;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 20px;
+}
+
 /* 手機版簡化卡片 (效能優化版) */
 .hero-summary-card {
   background: var(--glass-bg);
@@ -478,6 +486,10 @@ th.sort-desc .caret-down {
 
 /* === 手機版響應式修正 === */
 @media (max-width: 768px) {
+  #heroes-table, #hero-table-container {
+    display: none !important;
+  }
+
   #searchContainer {
     flex-direction: column;
     align-items: stretch;
