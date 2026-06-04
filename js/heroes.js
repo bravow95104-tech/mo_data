@@ -5,8 +5,12 @@ const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
 
 document.addEventListener("DOMContentLoaded", async () => {
   let heroesData = [];
+  let gloryDropData = []; // 🚀 新增：存放光輝掉落資料
   let sortConfig = { key: null, direction: "asc" }; // 記錄排序狀態
   let lastFilteredData = [];
+
+  // 🔹 輔助函式：處理 NULL 值
+  const getVal = (v) => (v === null || v === undefined || String(v).trim() === "" || String(v) === "null") ? "" : v;
 
   // === 判斷斷點是否在768以下 ===
   function isBreakpointBelow768() {
@@ -73,14 +77,17 @@ document.addEventListener("DOMContentLoaded", async () => {
   // === 1. 從 Supabase 載入資料 ===
   async function loadData() {
     try {
-      const { data, error } = await supabase
-        .from('heroes')
-        .select('*')
-        .order('sort_id', { ascending: true }); // 改為 sort_id 排序
+      // 🚀 同時讀取英雄與光輝掉落表
+      const [heroesRes, gloryRes] = await Promise.all([
+        supabase.from('heroes').select('*').order('sort_id', { ascending: true }),
+        supabase.from('glory_drop').select('*')
+      ]);
 
-      if (error) throw error;
+      if (heroesRes.error) throw heroesRes.error;
+      if (gloryRes.error) throw gloryRes.error;
 
-      heroesData = data || [];
+      heroesData = heroesRes.data || [];
+      gloryDropData = gloryRes.data || [];
       
       // 🚀 檢查 URL 是否有 ?hero=名稱 參數
       const urlParams = new URLSearchParams(window.location.search);
@@ -99,9 +106,9 @@ document.addEventListener("DOMContentLoaded", async () => {
         applyFilters(); 
       }
     } catch (error) {
-      console.error("載入英雄資料錯誤:", error);
+      console.error("載入雲端資料錯誤:", error);
       if (tableBody)
-        tableBody.innerHTML = '<tr><td colspan="15">無法載入英雄資料</td></tr>';
+        tableBody.innerHTML = '<tr><td colspan="15">無法載入雲端資料</td></tr>';
     }
   }
 
@@ -239,9 +246,8 @@ document.addEventListener("DOMContentLoaded", async () => {
       for (let i = 0; i < fields.length; i++) {
         const field = fields[i];
         const td = document.createElement("td");
-        // 修正：顯式處理 null/undefined 為空字串
         const val = hero[field];
-        const value = (val === null || val === undefined) ? "" : String(val);
+        const value = getVal(val);
 
         if (regex && value.toLowerCase().includes(keyword)) {
           td.innerHTML = value.replace(regex, '<span class="highlight">$1</span>');
@@ -282,13 +288,13 @@ document.addEventListener("DOMContentLoaded", async () => {
 
       card.innerHTML = `
         <div class="card-header">
-          <span class="hero-name">${highlight(hero.name)}</span>
-          <span class="hero-promotion">${hero.promotion}</span>
+          <span class="hero-name">${highlight(getVal(hero.name))}</span>
+          <span class="hero-promotion">${getVal(hero.promotion)}</span>
         </div>
         <div class="card-body">
-          <p><strong>光輝：</strong>${highlight(hero.glory)}</p>
-          <p><strong>個性：</strong>${hero.personality} | <strong>屬性：</strong>${hero.element}</p>
-          <p><strong>素質：</strong>${hero.traits} | <strong>初始：</strong>${hero.initial}</p>
+          <p><strong>光輝：</strong>${highlight(getVal(hero.glory))}</p>
+          <p><strong>個性：</strong>${getVal(hero.personality)} | <strong>屬性：</strong>${getVal(hero.element)}</p>
+          <p><strong>素質：</strong>${getVal(hero.traits)} | <strong>初始：</strong>${getVal(hero.initial)}</p>
         </div>
         <div class="card-footer">
           <span>點擊查看詳細資訊 ▾</span>
@@ -349,12 +355,11 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   // === 5. Modal 詳細視窗 ===
   function showDetailModal(hero) {
-    const safeName = hero.name.replace(/[^\w\u4e00-\u9fa5]/g, "");
+    const safeName = getVal(hero.name).replace(/[^\w\u4e00-\u9fa5]/g, "");
 
     function createImageWithFallbacks(basePath, altText) {
       const img = document.createElement("img");
       img.alt = altText;
-      // 改為相對路徑
       img.src = basePath + ".png";
       img.onerror = () => {
          const extensions = ['.bmp', '.jpg'];
@@ -379,8 +384,20 @@ document.addEventListener("DOMContentLoaded", async () => {
       return img;
     }
 
+    // 🚀 關鍵邏輯：比對光輝掉落地區
+    const matchedGlory = getVal(hero.glory);
+    const fallHighAreas = gloryDropData
+      .filter(g => g.more && String(g.more).includes(matchedGlory))
+      .map(g => g.area)
+      .join('、');
+    
+    const fallLowAreas = gloryDropData
+      .filter(g => g.low && String(g.low).includes(matchedGlory))
+      .map(g => g.area)
+      .join('、');
+
     modalBox.scrollTop = 0;
-    modalContent.innerHTML = `<h2 class="hero-name" id="modal-title">${hero.name}</h2>`;
+    modalContent.innerHTML = `<h2 class="hero-name" id="modal-title">${getVal(hero.name)}</h2>`;
 
     const imgContainer = document.createElement("div");
     imgContainer.className = "hero-images";
@@ -395,43 +412,43 @@ document.addEventListener("DOMContentLoaded", async () => {
     const detailHTML = `
       <div class="hero-details-container">
         <div class="hero-column-base hero-column">
-          <p><strong>對應光輝：</strong>${hero.glory}</p>
-          <p><strong>拜官：</strong>${hero.promotion}</p>
-          <p><strong>初始：</strong>${hero.initial}</p>
-          <p><strong>素質：</strong>${hero.traits}</p>
-          <p><strong>個性：</strong>${hero.personality}</p>
-          <p><strong>屬性：</strong>${hero.element}</p>
+          <p><strong>對應光輝：</strong>${getVal(hero.glory)}</p>
+          <p><strong>拜官：</strong>${getVal(hero.promotion)}</p>
+          <p><strong>初始：</strong>${getVal(hero.initial)}</p>
+          <p><strong>素質：</strong>${getVal(hero.traits)}</p>
+          <p><strong>個性：</strong>${getVal(hero.personality)}</p>
+          <p><strong>屬性：</strong>${getVal(hero.element)}</p>
           <hr style="margin: 20px 0; border: 0; border-top: 1px solid rgba(255,255,255,0.1);">
-          <p><strong>力量：</strong>${hero.str}</p>
-          <p><strong>智慧：</strong>${hero.int}</p>
-          <p><strong>體質：</strong>${hero.vit}</p>
-          <p><strong>敏捷：</strong>${hero.agi}</p>
-          <p><strong>運氣：</strong>${hero.luk}</p>
+          <p><strong>力量：</strong>${getVal(hero.str)}</p>
+          <p><strong>智慧：</strong>${getVal(hero.int)}</p>
+          <p><strong>體質：</strong>${getVal(hero.vit)}</p>
+          <p><strong>敏捷：</strong>${getVal(hero.agi)}</p>
+          <p><strong>運氣：</strong>${getVal(hero.luk)}</p>
         </div>
         <div class="hero-column-base hero-column">
-          <p><strong>積極度(生變前)：</strong>${hero.aggression_before}</p>
-          <p><strong>積極度(生變後)：</strong>${hero.aggression_after}</p>
+          <p><strong>積極度(生變前)：</strong>${getVal(hero.aggression_before)}</p>
+          <p><strong>積極度(生變後)：</strong>${getVal(hero.aggression_after)}</p>
           <hr style="margin: 20px 0; border: 0; border-top: 1px solid rgba(255,255,255,0.1);">
-          <p><strong>裝備卡(新專)：</strong>${hero.equipment_new}</p>
-          <p><strong>新專數值：</strong>${hero.equipment_new_data}</p>
-          <p><strong>新專倍率：</strong>${hero.new_multiplier}</p>
+          <p><strong>裝備卡(新專)：</strong>${getVal(hero.equipment_new)}</p>
+          <p><strong>新專數值：</strong>${getVal(hero.equipment_new_data)}</p>
+          <p><strong>新專倍率：</strong>${getVal(hero.new_multiplier)}</p>
           <hr style="margin: 20px 0; border: 0; border-top: 1px solid rgba(255,255,255,0.1);">
-          <p><strong>裝備卡(舊專)：</strong>${hero.equipment_old}</p>
-          <p><strong>舊專數值：</strong>${hero.equipment_old_data}</p>
+          <p><strong>裝備卡(舊專)：</strong>${getVal(hero.equipment_old)}</p>
+          <p><strong>舊專數值：</strong>${getVal(hero.equipment_old_data)}</p>
           <hr style="margin: 20px 0; border: 0; border-top: 1px solid rgba(255,255,255,0.1);">
-          <p><strong>天生技：</strong>${hero.innate_skill}</p>
-          <p><strong>生變技能：</strong>${hero.transformation_skill}</p>
+          <p><strong>天生技：</strong>${getVal(hero.innate_skill)}</p>
+          <p><strong>生變技能：</strong>${getVal(hero.transformation_skill)}</p>
         </div>
         <div class="hero-column-base hero-column-details">
-          <p><strong>光輝掉落(掉落較多)：</strong>${hero.fall_high}</p>
-          <p><strong>光輝掉落(掉落較低)：</strong>${hero.fall_low}</p>
-          ${hero.player ? `<p><strong>光輝掉落(玩家提供)：</strong>${hero.player}</p>` : ""}
+          <p><strong>光輝掉落(掉落較多)：</strong>${getVal(fallHighAreas)}</p>
+          <p><strong>光輝掉落(掉落較低)：</strong>${getVal(fallLowAreas)}</p>
+          ${hero.player ? `<p><strong>光輝掉落(玩家提供)：</strong>${getVal(hero.player)}</p>` : ""}
         </div>
         ${
           hero.playerdata
             ? `
       <div class="hero-playerdata">
-        <p><strong>資訊提供：</strong>${hero.playerdata}</p>
+        <p><strong>資訊提供：</strong>${getVal(hero.playerdata)}</p>
       </div>
       `
             : ""
