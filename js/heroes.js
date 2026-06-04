@@ -276,17 +276,19 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function applyLayout() {
-    if (resizeFlag) {
-      if (heroesTableContainer) heroesTableContainer.style.display = "none";
-      if (heroesCardContainer) heroesCardContainer.style.display = "flex";
-      renderCard(lastFilteredData);
-    } else {
-      if (heroesTableContainer) heroesTableContainer.style.display = "block";
-      if (heroesCardContainer) heroesCardContainer.style.display = "none";
-      const table = document.getElementById("heroes-table");
-      if (table) table.style.display = "table";
-      renderTable(lastFilteredData);
-    }
+    requestAnimationFrame(() => {
+      if (resizeFlag) {
+        if (heroesTableContainer) heroesTableContainer.style.display = "none";
+        if (heroesCardContainer) heroesCardContainer.style.display = "flex";
+        renderCard(lastFilteredData);
+      } else {
+        if (heroesTableContainer) heroesTableContainer.style.display = "block";
+        if (heroesCardContainer) heroesCardContainer.style.display = "none";
+        const table = document.getElementById("heroes-table");
+        if (table) table.style.display = "table";
+        renderTable(lastFilteredData);
+      }
+    });
   }
 
   // === 3. 渲染表格 ===
@@ -295,6 +297,7 @@ document.addEventListener("DOMContentLoaded", () => {
     tableBody.innerHTML = "";
 
     const keyword = searchInput.value.trim().toLowerCase();
+    const regex = keyword ? new RegExp(`(${keyword.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, "gi") : null;
 
     if (data.length === 0) {
       tableBody.innerHTML =
@@ -303,41 +306,26 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     const fragment = document.createDocumentFragment();
+    const fields = [
+      "name", "glory", "promotion", "initial", "traits", "personality", "element",
+      "str", "int", "vit", "agi", "luk", "aggression_before", "equipment_new", "equipment_old"
+    ];
+
     data.forEach((hero) => {
       const tr = document.createElement("tr");
-      const fields = [
-        "name",
-        "glory",
-        "promotion",
-        "initial",
-        "traits",
-        "personality",
-        "element",
-        "str",
-        "int",
-        "vit",
-        "agi",
-        "luk",
-        "aggression_before",
-        "equipment_new",
-        "equipment_old",
-      ];
-
-      fields.forEach((field) => {
+      
+      for (let i = 0; i < fields.length; i++) {
+        const field = fields[i];
         const td = document.createElement("td");
         const value = hero[field] !== undefined ? String(hero[field]) : "";
 
-        if (keyword && value.toLowerCase().includes(keyword)) {
-          const regex = new RegExp(`(${keyword})`, "gi");
-          td.innerHTML = value.replace(
-            regex,
-            '<span class="highlight">$1</span>',
-          );
+        if (regex && value.toLowerCase().includes(keyword)) {
+          td.innerHTML = value.replace(regex, '<span class="highlight">$1</span>');
         } else {
           td.textContent = value;
         }
         tr.appendChild(td);
-      });
+      }
 
       tr.addEventListener("click", () => showDetailModal(hero));
       fragment.appendChild(tr);
@@ -345,89 +333,55 @@ document.addEventListener("DOMContentLoaded", () => {
     tableBody.appendChild(fragment);
   }
 
+  // === 渲染手機版卡片 (簡化版以提升效能) ===
   function renderCard(data) {
-    const fragment = document.createDocumentFragment();
+    if (!heroesCardContainer) return;
     heroesCardContainer.innerHTML = "";
 
+    if (data.length === 0) {
+      heroesCardContainer.innerHTML = '<p style="text-align:center; padding:20px; color:var(--text-muted);">找不到符合條件的英雄</p>';
+      return;
+    }
+
+    const keyword = searchInput.value.trim().toLowerCase();
+    const regex = keyword ? new RegExp(`(${keyword.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, "gi") : null;
+    const fragment = document.createDocumentFragment();
+
     data.forEach((hero) => {
-      const div = document.createElement("div");
-      div.className = "accordion";
-      const safeName = hero.name.replace(/[^\w\u4e00-\u9fa5]/g, "");
+      const card = document.createElement("div");
+      card.className = "hero-summary-card"; // 使用新的簡化樣式類名
+      
+      const highlight = (text) => {
+        if (!regex) return text;
+        return String(text).replace(regex, '<span class="highlight">$1</span>');
+      };
 
-      function createImageWithFallbacks(basePath, altText) {
-        const img = document.createElement("img");
-        img.alt = altText;
-        img.src = basePath + ".png";
-        img.onerror = () => (img.style.display = "none"); // Keep this for fallback
-        return img;
-      }
-
-      div.innerHTML = `<h2 class="hero-name" id="modal-title">${hero.name}</h2>`;
-
-      const imgContainer = document.createElement("div");
-      imgContainer.className = "hero-images hero-card-images";
-      imgContainer.appendChild(
-        createImageWithFallbacks(`/mo_data/pic/heroes/${safeName}_正`, "正面"),
-      );
-      imgContainer.appendChild(
-        createImageWithFallbacks(`/mo_data/pic/heroes/${safeName}_反`, "反面"),
-      );
-      div.appendChild(imgContainer);
-
-      const detailHTML = `
-      <div class="hero-details-container">
-        <div class="hero-column-base hero-column">
-          <p><strong>對應光輝：</strong>${hero.glory}</p>
-          <p><strong>拜官：</strong>${hero.promotion}</p>
-          <p><strong>初始：</strong>${hero.initial}</p>
-          <p><strong>素質：</strong>${hero.traits}</p>
-          <p><strong>個性：</strong>${hero.personality}</p>
-          <p><strong>屬性：</strong>${hero.element}</p>
-          <hr style="margin: 20px 0; border: 0; border-top: 1px solid rgba(255,255,255,0.1);">
-          <p><strong>力量：</strong>${hero.str}</p>
-          <p><strong>智慧：</strong>${hero.int}</p>
-          <p><strong>體質：</strong>${hero.vit}</p>
-          <p><strong>敏捷：</strong>${hero.agi}</p>
-          <p><strong>運氣：</strong>${hero.luk}</p>
+      card.innerHTML = `
+        <div class="card-header">
+          <span class="hero-name">${highlight(hero.name)}</span>
+          <span class="hero-promotion">${hero.promotion}</span>
         </div>
-        <div class="hero-column-base hero-column">
-          <p><strong>積極度(生變前)：</strong>${hero.aggression_before}</p>
-          <p><strong>積極度(生變後)：</strong>${hero.aggression_after}</p>
-          <hr style="margin: 20px 0; border: 0; border-top: 1px solid rgba(255,255,255,0.1);">
-          <p><strong>裝備卡(新專)：</strong>${hero.equipment_new}</p>
-          <p><strong>新專數值：</strong>${hero.equipment_new_data}</p>
-          <p><strong>新專倍率：</strong>${hero.new_multiplier}</p>
-          <hr style="margin: 20px 0; border: 0; border-top: 1px solid rgba(255,255,255,0.1);">
-          <p><strong>裝備卡(舊專)：</strong>${hero.equipment_old}</p>
-          <p><strong>舊專數值：</strong>${hero.equipment_old_data}</p>
-          <hr style="margin: 20px 0; border: 0; border-top: 1px solid rgba(255,255,255,0.1);">
-          <p><strong>天生技：</strong>${hero.innate_skill}</p>
-          <p><strong>生變技能：</strong>${hero.transformation_skill}</p>
+        <div class="card-body">
+          <p><strong>光輝：</strong>${highlight(hero.glory)}</p>
+          <p><strong>個性：</strong>${hero.personality} | <strong>屬性：</strong>${hero.element}</p>
+          <p><strong>素質：</strong>${hero.traits} | <strong>初始：</strong>${hero.initial}</p>
         </div>
-        <div class="hero-column-base hero-column-details">
-          <p><strong>光輝掉落(掉落較多)：</strong>${hero.fall_high}</p>
-          <p><strong>光輝掉落(掉落較低)：</strong>${hero.fall_low}</p>
-          ${hero.player ? `<p><strong>光輝掉落(玩家提供)：</strong>${hero.player}</p>` : ""}
+        <div class="card-footer">
+          <span>點擊查看詳細資訊 ▾</span>
         </div>
-        ${
-          hero.playerdata
-            ? `
-      <div class="hero-playerdata">
-        <p><strong>資訊提供：</strong>${hero.playerdata}</p>
-      </div>
-      `
-            : ""
-        }
-      </div>
-    `;
-      div.insertAdjacentHTML("beforeend", detailHTML);
+      `;
 
-      fragment.appendChild(div);
+      card.addEventListener("click", () => showDetailModal(hero));
+      fragment.appendChild(card);
     });
     heroesCardContainer.appendChild(fragment);
   }
   // === 4. 事件監聽 (搜尋、按鈕、排序) ===
-  searchInput.addEventListener("input", applyFilters);
+  let searchDebounceTimer = null;
+  searchInput.addEventListener("input", () => {
+    clearTimeout(searchDebounceTimer);
+    searchDebounceTimer = setTimeout(applyFilters, 250);
+  });
 
   document.querySelectorAll(".filter-btn").forEach((btn) => {
     btn.addEventListener("click", () => {
