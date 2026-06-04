@@ -113,6 +113,14 @@
     }
 }
 
+#content {
+    flex: 1; /* 🚀 關鍵：讓右側自動填滿剩餘空間 */
+    min-height: 700px; /* 🚀 關鍵：設定最小高度，避免框框忽大忽小 */
+    display: flex;
+    flex-direction: column;
+    padding: 40px !important;
+}
+
 /* === 內容排版設計 === */
 #dynamic-content {
     color: var(--text-main);
