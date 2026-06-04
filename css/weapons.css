@@ -34,10 +34,10 @@
   padding: 10px 16px;
   flex: 1;
   max-width: 300px;
-  background: rgba(0, 0, 0, 0.2);
+  background: var(--glass-bg);
   border: 1px solid var(--glass-border);
   border-radius: 10px;
-  color: white;
+  color: var(--text-main);
   font-size: 14px;
   transition: all 0.3s ease;
 }
@@ -46,7 +46,7 @@
   outline: none;
   border-color: var(--primary-blue);
   box-shadow: 0 0 10px rgba(77, 163, 255, 0.3);
-  background: rgba(0, 0, 0, 0.3);
+  background: var(--glass-bg);
 }
 
 /* 摺疊篩選區 */
@@ -93,8 +93,8 @@
 }
 
 .filter-btn {
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
   color: var(--text-main);
   border-radius: 8px;
   padding: 6px 14px;
@@ -194,7 +194,7 @@ thead th {
   position: sticky;
   top: 73px; /* 配合導覽列高度 */
   z-index: 10;
-  background: linear-gradient(180deg, rgba(26, 54, 93, 0.98), rgba(10, 23, 43, 0.98));
+  background: linear-gradient(180deg, var(--nav-bg-1), var(--nav-bg-2));
   backdrop-filter: blur(15px);
   color: var(--primary-blue);
   padding: 16px 10px;
@@ -223,7 +223,7 @@ tbody tr:hover {
 }
 
 tbody tr:hover td {
-  color: white;
+  color: var(--text-main);
 }
 
 /* Modal 彈出視窗 */
@@ -232,7 +232,7 @@ tbody tr:hover td {
   position: fixed;
   top: 0; left: 0;
   width: 100vw; height: 100vh;
-  background-color: rgba(6, 11, 19, 0.85);
+  background-color: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(8px);
   z-index: 2000;
 }
@@ -247,10 +247,10 @@ tbody tr:hover td {
   max-height: 72vh;
   overflow-y: auto;
   z-index: 2001;
-  background: linear-gradient(135deg, rgba(20, 35, 60, 0.98), rgba(10, 20, 35, 0.98));
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: linear-gradient(135deg, var(--nav-bg-1), var(--nav-bg-2));
+  border: 1px solid var(--glass-border);
   border-radius: 28px;
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
   color: var(--text-main);
   padding: 30px 20px;
 }

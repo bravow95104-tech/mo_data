@@ -34,10 +34,10 @@
   padding: 10px 16px;
   flex: 1;
   max-width: 300px;
-  background: rgba(0, 0, 0, 0.2);
+  background: var(--glass-bg);
   border: 1px solid var(--glass-border);
   border-radius: 10px;
-  color: white;
+  color: var(--text-main);
   font-size: 14px;
   transition: all 0.3s ease;
 }
@@ -46,7 +46,7 @@
   outline: none;
   border-color: var(--primary-blue);
   box-shadow: 0 0 10px rgba(77, 163, 255, 0.3);
-  background: rgba(0, 0, 0, 0.3);
+  background: var(--glass-bg);
 }
 
 /* 摺疊篩選區 */
@@ -111,8 +111,8 @@
 }
 
 .filter-btn {
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
   color: var(--text-main);
   border-radius: 8px;
   padding: 6px 14px;
@@ -195,7 +195,7 @@ thead th {
   position: sticky;
   top: 73px; /* 與導覽列底部對齊，預留呼吸空間 */
   z-index: 100;
-  background: linear-gradient(180deg, rgba(26, 54, 93, 0.98), rgba(10, 23, 43, 0.98));
+  background: linear-gradient(180deg, var(--nav-bg-1), var(--nav-bg-2));
   backdrop-filter: blur(15px);
   color: var(--primary-blue);
   padding: 12px 6px;
@@ -229,7 +229,7 @@ tbody tr:hover {
 }
 
 tbody tr:hover td {
-  color: white;
+  color: var(--text-main);
 }
 
 /* 排序箭頭美化 */
@@ -242,9 +242,10 @@ tbody tr:hover td {
 }
 
 .sort-caret-container span {
-  color: rgba(255, 255, 255, 0.15);
+  color: var(--text-muted);
   font-size: 9px;
   transition: all 0.2s ease;
+  opacity: 0.3;
 }
 
 th.sort-asc .caret-up,
@@ -252,6 +253,7 @@ th.sort-desc .caret-down {
   color: var(--primary-blue) !important;
   text-shadow: 0 0 8px rgba(77, 163, 255, 0.6);
   transform: scale(1.1);
+  opacity: 1;
 }
 
 /* Modal 彈出視窗 */
@@ -262,7 +264,7 @@ th.sort-desc .caret-down {
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(6, 11, 19, 0.85);
+  background-color: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(8px);
   z-index: 2000;
 }
@@ -278,10 +280,10 @@ th.sort-desc .caret-down {
   max-height: 72vh; /* 高度縮小，確保不被 nav 擋到 */
   overflow-y: auto;
   z-index: 2001;
-  background: linear-gradient(135deg, rgba(20, 35, 60, 0.98), rgba(10, 20, 35, 0.98));
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: linear-gradient(135deg, var(--nav-bg-1), var(--nav-bg-2));
+  border: 1px solid var(--glass-border);
   border-radius: 28px;
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
   color: var(--text-main);
   padding: 30px 20px;
   scrollbar-width: thin;
