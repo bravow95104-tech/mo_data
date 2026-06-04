@@ -109,18 +109,19 @@ document.addEventListener("DOMContentLoaded", async () => {
     const keyword = searchInput ? searchInput.value.trim().toLowerCase() : "";
     // 強制更新 resizeFlag 確保狀態正確
     resizeFlag = isBelow768();
-    
+
     if (resizeFlag) {
       renderCards(lastFilteredData, keyword);
       if (tableContainer) tableContainer.style.display = 'none';
       if (cardContainer) cardContainer.style.display = 'flex';
     } else {
       renderTable(lastFilteredData, keyword);
-      if (tableContainer) tableContainer.style.display = 'table';
+      if (tableContainer) tableContainer.style.display = 'block';
       if (cardContainer) cardContainer.style.display = 'none';
+      const table = document.getElementById("card-equip-table");
+      if (table) table.style.display = 'table';
     }
   }
-
   function renderTable(data, keyword) {
     const tbody = document.querySelector("#card-equip-table tbody");
     if (!tbody) return;
@@ -237,6 +238,11 @@ document.addEventListener("DOMContentLoaded", async () => {
       applyFiltersAndSort();
     });
   }
+
+  // 🚀 新增：摺疊面板監聽
+  document.querySelectorAll('.accordion-header').forEach(header => {
+    header.addEventListener('click', () => header.parentElement.classList.toggle('collapsed'));
+  });
 
   // 4. 工具函數
   function initializeSortIcons() {

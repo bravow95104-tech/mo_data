@@ -211,6 +211,11 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
   }
 
+  // 🚀 新增：摺疊面板監聽
+  document.querySelectorAll('.accordion-header').forEach(header => {
+    header.addEventListener('click', () => header.parentElement.classList.toggle('collapsed'));
+  });
+
   function initializeSortIcons() {
     document.querySelectorAll('#card-equip-table th[data-sort]').forEach(th => {
       if (th.querySelector('.header-content')) return;

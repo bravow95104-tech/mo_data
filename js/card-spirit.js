@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     }, 150);
   });
 
-  const tableContainer = document.getElementById('card-equip-table');
+  const tableContainer = document.getElementById('card-equip-table-container');
   const cardContainer = document.getElementById('card-equip-container');
   const modalOverlay = document.getElementById('modalOverlay');
   const modalBox = document.getElementById('modalBox');
@@ -130,8 +130,10 @@ document.addEventListener("DOMContentLoaded", async () => {
       if (cardContainer) cardContainer.style.display = 'flex';
     } else {
       renderTable(lastFilteredData);
-      if (tableContainer) tableContainer.style.display = 'table';
+      if (tableContainer) tableContainer.style.display = 'block';
       if (cardContainer) cardContainer.style.display = 'none';
+      const table = document.getElementById("card-equip-table");
+      if (table) table.style.display = 'table';
     }
   }
 
@@ -260,6 +262,11 @@ document.addEventListener("DOMContentLoaded", async () => {
       applyFiltersAndSort();
     });
   }
+
+  // 🚀 新增：摺疊面板監聽
+  document.querySelectorAll('.accordion-header').forEach(header => {
+    header.addEventListener('click', () => header.parentElement.classList.toggle('collapsed'));
+  });
 
   function initializeSortIcons() {
     document.querySelectorAll('#card-equip-table th[data-sort]').forEach(th => {
