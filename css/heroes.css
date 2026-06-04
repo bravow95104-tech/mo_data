@@ -333,22 +333,70 @@ th.sort-desc .caret-down {
   transform: rotate(90deg);
 }
 
-/* 手機版卡片 */
-.card-item {
+/* 手機版簡化卡片 (效能優化版) */
+.hero-summary-card {
   background: var(--glass-bg);
   backdrop-filter: blur(10px);
   border: 1px solid var(--glass-border);
   border-radius: 16px;
-  padding: 20px;
+  padding: 15px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
-.card-item h3 {
-  color: var(--primary-blue);
+.hero-summary-card:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: var(--primary-blue);
+  transform: translateY(-2px);
+}
+
+.hero-summary-card .card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 8px;
 }
 
-.card-item strong {
+.hero-summary-card .hero-name {
+  font-size: 1.2rem;
+  font-weight: 800;
   color: var(--primary-blue);
+  margin: 0;
+}
+
+.hero-summary-card .hero-promotion {
+  font-size: 0.9rem;
+  background: rgba(77, 163, 255, 0.15);
+  color: var(--primary-blue);
+  padding: 2px 8px;
+  border-radius: 6px;
+  border: 1px solid rgba(77, 163, 255, 0.3);
+}
+
+.hero-summary-card .card-body {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.hero-summary-card .card-body p {
+  margin: 4px 0;
+}
+
+.hero-summary-card .card-body strong {
+  color: var(--primary-blue);
+}
+
+.hero-summary-card .card-footer {
+  text-align: right;
+  font-size: 12px;
+  color: var(--primary-blue);
+  opacity: 0.8;
+  margin-top: 5px;
 }
 
 /* 其他修正 */
