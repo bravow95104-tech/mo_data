@@ -2,13 +2,6 @@
 
 :root {
   --nav-height: 70px; /* 預設值，會由 JS 動態修正 */
-  --primary-blue: #4da3ff;
-  --primary-dark: #1e4b8a;
-  --glass-bg: rgba(255, 255, 255, 0.04);
-  --glass-border: rgba(255, 255, 255, 0.1);
-  --highlight-yellow: #ffd86b;
-  --text-main: #f7fbff;
-  --text-muted: rgba(247, 251, 255, 0.7);
 }
 
 /* 搜尋區塊與篩選器 */
@@ -130,6 +123,7 @@
   background: linear-gradient(135deg, var(--primary-blue), var(--primary-dark));
   border-color: var(--primary-blue);
   box-shadow: 0 4px 12px rgba(77, 163, 255, 0.3);
+  color: #ffffff !important; /* 強制白色文字，因為背景固定為藍色漸層 */
 }
 
 .clear-btn {
@@ -225,7 +219,7 @@ tbody tr {
 }
 
 tbody tr:hover {
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(77, 163, 255, 0.1) !important; /* 使用淡藍色高亮取代白色高亮 */
 }
 
 tbody tr:hover td {
@@ -283,7 +277,7 @@ th.sort-desc .caret-down {
   background: linear-gradient(135deg, var(--nav-bg-1), var(--nav-bg-2));
   border: 1px solid var(--glass-border);
   border-radius: 28px;
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.2);
   color: var(--text-main);
   padding: 30px 20px;
   scrollbar-width: thin;
