@@ -384,6 +384,40 @@ th.sort-desc .caret-down {
   gap: 8px;
 }
 
+/* 手機版通用卡片 (覺醒技能使用) */
+.card-item {
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.card-item h3 {
+  color: var(--primary-blue);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  margin-bottom: 5px;
+  padding-bottom: 10px;
+  text-align: center;
+  font-size: 1.3rem;
+  margin-top: 0;
+}
+
+.card-item p {
+  margin: 5px 0;
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.card-item strong {
+  color: var(--primary-blue);
+}
+
 .hero-summary-card:hover {
   background: rgba(255, 255, 255, 0.08);
   border-color: var(--primary-blue);
@@ -477,7 +511,7 @@ th.sort-desc .caret-down {
   }
 
   /* 確保手機版卡片容器正確顯示 */
-  #hero-card-container {
+  #hero-card-container, #awakening-container {
     display: flex;
     flex-direction: column;
     gap: 20px;
