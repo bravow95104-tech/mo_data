@@ -74,6 +74,24 @@
   background: rgba(255, 255, 255, 0.05);
 }
 
+/* 🚀 修正：摺疊狀態的 CSS */
+.accordion.collapsed .accordion-content {
+  display: none;
+}
+
+.accordion.collapsed {
+  margin-bottom: 20px;
+}
+
+.accordion-header::after {
+  content: "▾";
+  transition: transform 0.3s ease;
+}
+
+.accordion.collapsed .accordion-header::after {
+  transform: rotate(-90deg);
+}
+
 .accordion-content {
   padding: 0 20px 20px;
 }
@@ -150,6 +168,7 @@
 
 /* 表格樣式 */
 #hero-table-container, #card-equip-table-container {
+  width: 100%;
   background: transparent;
   border-radius: 20px;
   border: 1px solid var(--glass-border);
