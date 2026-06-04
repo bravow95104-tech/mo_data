@@ -52,8 +52,8 @@
   font: 600 14px/1.1 "Noto Sans TC", "Segoe UI", system-ui, sans-serif;
   letter-spacing: 0.02em;
   border-radius: 999px;
-  padding: 10px 14px;
-  min-height: 40px;
+  padding: 14px 14px;
+  min-height: 44px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
