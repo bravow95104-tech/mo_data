@@ -27,13 +27,24 @@ document.addEventListener("DOMContentLoaded", function () {
     const path = window.location.pathname;
     let baseURL = "";
     
+    // 優先檢查是否有 /mo_data/ 路徑標記 (適用於 GitHub Pages 等部署環境)
     if (path.includes("/mo_data/")) {
         baseURL = path.substring(0, path.indexOf("/mo_data/")) + "/mo_data";
     } else {
-        // 如果路徑中沒有 /mo_data/，嘗試根據當前路徑深度計算
-        const depth = path.split("/").filter(Boolean).length;
-        baseURL = depth > 0 ? ".." : ".";
-        // 這裡如果是根目錄，維持空字串或點
+        // 根據路徑深度自動判斷 (適用於本機開發)
+        // 排除掉檔名後計算層級
+        const segments = path.split("/").filter(s => s.length > 0);
+        // 如果最後一個 segment 看起來像檔案 (有副檔名)，則不計入深度
+        if (segments.length > 0 && segments[segments.length - 1].includes('.')) {
+            segments.pop();
+        }
+        
+        const depth = segments.length;
+        if (depth === 0) {
+            baseURL = ".";
+        } else {
+            baseURL = Array(depth).fill("..").join("/");
+        }
     }
     
     // 如果是首頁且沒有子路徑，baseURL 可能是空
