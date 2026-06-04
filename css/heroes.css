@@ -153,19 +153,38 @@ table {
   border-collapse: separate; /* 配合圓角 */
   border-spacing: 0;
   width: 100%;
+  table-layout: fixed; /* 🚀 效能關鍵：固定佈局讓瀏覽器渲染更快 */
 }
+
+/* 精確設定欄位寬度，避免瀏覽器重新計算 */
+thead th:nth-child(1) { width: 75px; }  /* 英雄名稱 */
+thead th:nth-child(2) { width: 90px; }  /* 對應光輝 */
+thead th:nth-child(3) { width: 60px; }  /* 拜官 */
+thead th:nth-child(4) { width: 60px; }  /* 初始 */
+thead th:nth-child(5) { width: 60px; }  /* 素質 */
+thead th:nth-child(6) { width: 65px; }  /* 個性 */
+thead th:nth-child(7) { width: 50px; }  /* 屬性 */
+thead th:nth-child(8),
+thead th:nth-child(9),
+thead th:nth-child(10),
+thead th:nth-child(11),
+thead th:nth-child(12) { width: 45px; } /* 五圍 (各 45px) */
+thead th:nth-child(13) { width: 75px; }  /* 積極度 */
+thead th:nth-child(14) { width: 14%; } /* 新專 */
+thead th:nth-child(15) { width: 14%; } /* 舊專 */
 
 thead th {
   position: sticky;
   top: 73px; /* 與導覽列底部對齊，預留呼吸空間 */
-  z-index: 999;
+  z-index: 100;
   background: linear-gradient(180deg, rgba(26, 54, 93, 0.98), rgba(10, 23, 43, 0.98));
   backdrop-filter: blur(15px);
   color: var(--primary-blue);
-  padding: 16px 10px;
+  padding: 12px 6px;
   font-size: 13px;
   font-weight: 700;
   border-bottom: 1px solid rgba(77, 163, 255, 0.3);
+  word-wrap: break-word;
 }
 
 /* 確保表格圓角 */
