@@ -1,355 +1,400 @@
-/* ============================================================
-   任務列表卡片化樣式 (支援新結構，維持原始色系)
-   ============================================================ */
+/* 任務列表專屬樣式 - 升級為玻璃擬態風格 */
 
+:root {
+  --nav-height: 70px;
+  --primary-blue: #4da3ff;
+  --primary-dark: #1e4b8a;
+  --glass-bg: rgba(255, 255, 255, 0.04);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --highlight-yellow: #ffd86b;
+  --text-main: #f7fbff;
+  --text-muted: rgba(247, 251, 255, 0.7);
+}
+
+/* 1. 搜尋區塊 */
+#searchContainer {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  padding: 15px 20px;
+  border-radius: 16px;
+  border: 1px solid var(--glass-border);
+  margin-bottom: 20px;
+}
+
+.quick-search-label {
+  font-weight: 600;
+  color: var(--primary-blue);
+  white-space: nowrap;
+}
+
+#searchInput {
+  padding: 10px 16px;
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--glass-border);
+  border-radius: 10px;
+  color: white;
+  flex: 1;
+  max-width: 300px;
+}
+
+#searchInput:focus {
+  outline: none;
+  border-color: var(--primary-blue);
+  box-shadow: 0 0 10px rgba(77, 163, 255, 0.3);
+}
+
+/* 2. 篩選器 (Accordion) */
+.accordion {
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  margin-bottom: 30px;
+  overflow: hidden;
+}
+
+.accordion-header {
+  padding: 15px 20px;
+  color: var(--primary-blue);
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background 0.3s;
+}
+
+.accordion-header:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.accordion-content {
+  padding: 10px 20px 20px;
+}
+
+.accordion.collapsed .accordion-content {
+  display: none;
+}
+
+.accordion-header::after {
+  content: "▾";
+  font-size: 14px;
+  transition: transform 0.3s;
+}
+
+.accordion.collapsed .accordion-header::after {
+  content: "▸";
+}
+
+.filter-group {
+  margin-bottom: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.filter-label {
+  font-weight: bold;
+  color: var(--text-muted);
+  min-width: 80px;
+}
+
+.filter-btn {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--text-main);
+  border-radius: 8px;
+  padding: 6px 14px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+
+.filter-btn:hover {
+  background: rgba(77, 163, 255, 0.15);
+  border-color: var(--primary-blue);
+}
+
+.filter-btn.active {
+  background: linear-gradient(135deg, var(--primary-blue), var(--primary-dark));
+  border-color: var(--primary-blue);
+  box-shadow: 0 4px 12px rgba(77, 163, 255, 0.3);
+}
+
+.filter-actions {
+  display: flex;
+  justify-content: flex-start;
+  padding-top: 10px;
+}
+
+.clear-btn {
+  background: rgba(255, 216, 107, 0.1);
+  border: 1px solid rgba(255, 216, 107, 0.3);
+  color: var(--highlight-yellow);
+  border-radius: 10px;
+  padding: 8px 20px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.clear-btn:hover {
+  background: var(--highlight-yellow);
+  color: #000;
+}
+
+/* 3. 任務卡片樣式 */
 .quest-system-container {
-    max-width: 1000px;
-    margin: 0 auto;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .mission-card {
-  background: #f9fcff;
-  border: 1px solid #b3d8ff;
-  border-radius: 8px;
-  margin-bottom: 25px;
-  box-shadow: 0 2px 8px rgba(51, 153, 255, 0.1);
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  margin-bottom: 30px;
   overflow: hidden;
-  transition: transform 0.2s;
+  transition: all 0.4s ease;
 }
 
 .mission-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(51, 153, 255, 0.15);
+  transform: translateY(-5px);
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(77, 163, 255, 0.3);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
 }
 
 .mission-header {
-  background: #e6f3ff;
-  padding: 12px 16px;
+  padding: 20px 24px;
+  background: rgba(255, 255, 255, 0.02);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   display: flex;
-  justify-content: center; /* 標題置中 */
+  justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid #b3d8ff;
-  position: relative; /* 為了讓標籤定位 */
+  position: relative;
 }
 
 .mission-title {
   margin: 0;
-  color: #1976d2;
-  font-size: 1.25rem;
-  font-weight: bold;
-  text-align: center;
+  color: var(--primary-blue);
+  font-size: 1.4rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
 }
 
 .mission-tag {
-  background: #3399ff;
+  background: linear-gradient(135deg, var(--primary-blue), var(--primary-dark));
   color: #fff;
-  padding: 2px 10px;
-  border-radius: 4px;
+  padding: 4px 12px;
+  border-radius: 8px;
   font-size: 0.85rem;
-  position: absolute; /* 絕對定位 */
-  right: 16px; /* 靠右對齊 */
+  font-weight: bold;
+  box-shadow: 0 4px 10px rgba(77, 163, 255, 0.2);
 }
 
 .mission-body {
-  padding: 16px;
+  padding: 24px;
 }
 
 /* 資訊網格 */
 .info-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
-  margin-bottom: 16px;
-  background: #ffffff;
-  padding: 12px;
-  border-radius: 6px;
-  border: 1px solid #e1f0ff;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+  margin-bottom: 24px;
+  background: rgba(0, 0, 0, 0.15);
+  padding: 18px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .info-item {
   display: flex;
-  align-items: baseline;
-  gap: 8px;
+  align-items: center;
+  gap: 10px;
 }
 
 .info-item .label {
-  color: #267acc;
-  font-weight: bold;
+  color: var(--primary-blue);
+  font-weight: 700;
   font-size: 0.9rem;
   white-space: nowrap;
 }
 
 .info-item .value {
-  color: #333;
+  color: var(--text-main);
+  font-size: 0.95rem;
 }
 
 /* 章節樣式 */
 .mission-section {
-  margin-bottom: 15px;
-  border-bottom: 1px solid #f0f7ff;
-  padding-bottom: 10px;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-.mission-section:last-child {
+.mission-section:last-of-type {
   border-bottom: none;
+  margin-bottom: 0;
 }
 
 .section-title {
-  color: #3399ff;
-  font-weight: bold;
-  margin-bottom: 5px;
-  font-size: 0.95rem;
+  color: var(--primary-blue);
+  font-weight: 800;
+  margin-bottom: 10px;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.section-title::before {
+  content: "";
+  display: inline-block;
+  width: 4px;
+  height: 16px;
+  background: var(--primary-blue);
+  border-radius: 2px;
 }
 
 .section-text {
-  line-height: 1.6;
-  color: #444;
-  padding-left: 5px;
+  line-height: 1.7;
+  color: var(--text-muted);
+  padding-left: 12px;
+  font-size: 0.95rem;
 }
 
 /* 獎勵標籤 */
 .badge-list {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 5px;
+  gap: 10px;
+  margin-bottom: 12px;
 }
 
 .q-badge {
-  padding: 4px 10px;
-  border-radius: 4px;
+  padding: 5px 12px;
+  border-radius: 8px;
   font-size: 0.85rem;
-  font-weight: bold;
+  font-weight: 700;
+  backdrop-filter: blur(5px);
 }
 
-.q-badge-exp { background: #e3f2fd; color: #1976d2; border: 1px solid #bbdefb; }
-.q-badge-money { background: #fff9c4; color: #b8860b; border: 1px solid #fff59d; }
-.q-badge-renown { background: #f3e5f5; color: #7b1fa2; border: 1px solid #e1bee7; }
+.q-badge-exp { 
+  background: rgba(77, 163, 255, 0.1); 
+  color: var(--primary-blue); 
+  border: 1px solid rgba(77, 163, 255, 0.3); 
+}
+.q-badge-money { 
+  background: rgba(255, 216, 107, 0.1); 
+  color: var(--highlight-yellow); 
+  border: 1px solid rgba(255, 216, 107, 0.3); 
+}
+.q-badge-renown { 
+  background: rgba(162, 115, 255, 0.1); 
+  color: #c09bff; 
+  border: 1px solid rgba(162, 115, 255, 0.3); 
+}
 
 .item-reward {
-  margin-top: 8px;
-  color: #b8860b;
-  font-weight: bold;
+  margin-top: 12px;
+  color: var(--highlight-yellow);
+  font-weight: 700;
+  background: rgba(255, 216, 107, 0.05);
+  padding: 10px 15px;
+  border-radius: 10px;
+  border-left: 3px solid var(--highlight-yellow);
+}
+
+.reward-detail {
+  margin-top: 10px;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  font-style: italic;
 }
 
 .mission-img {
-    max-width: 650px;
-    width: 100%;
-    height: auto;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    display: block;
-    margin-top: 10px;
+  max-width: 100%;
+  height: auto;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  display: block;
+  margin-top: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
 }
 
-/*快速搜尋*/
-#searchInput {
-  padding: 6px 10px;
-  width: 100%;
-  font-size: 14px;
-  border: 1px solid #ccc;
+/* 高亮樣式 */
+.highlight, .highlight2 {
+  background-color: rgba(255, 216, 107, 0.25);
+  color: var(--highlight-yellow);
+  font-weight: bold;
   border-radius: 4px;
-  box-sizing: border-box;
-  max-width: 250px; /* 限制寬度 */
-}
-/*快速搜尋*/
-.quick-search-label {
-  font-weight: 600;
-  margin-right: 8px;
-  font-size: 16px;
-  color: #3399ff;
-  vertical-align: middle;
+  padding: 0 4px;
 }
 
-#searchContainer {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-/* 黃色高亮（柔和） */
-.highlight {
-  background-color: #fff9c0;
-  font-weight: bold;
-  border-radius: 3px;
-  padding: 2px 4px;
-}
-
-/* 黃色高亮（高亮） */
-.highlight2 {
-  background-color: #fff9c0;
-  font-weight: bold;
-  border-radius: 3px;
-  padding: 2px 4px;
+.quest-highlight {
+  color: #ff8c42;
+  font-weight: 800;
+  background-color: rgba(255, 140, 66, 0.15);
+  padding: 0 4px;
+  border-radius: 4px;
 }
 
 /* 回到頂部按鈕 */
 #backToTop {
   position: fixed;
-  bottom: 30px;
-  right: 30px;
+  bottom: 40px;
+  right: 40px;
   display: none;
-  background-color: #3399ff;
+  background: linear-gradient(135deg, var(--primary-blue), var(--primary-dark));
   color: white;
   border: none;
-  padding: 12px 16px;
-  border-radius: 50%;
-  font-size: 18px;
+  width: 50px;
+  height: 50px;
+  border-radius: 15px;
+  font-size: 20px;
   cursor: pointer;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-  transition: background-color 0.3s ease;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   z-index: 1000;
 }
+
 #backToTop:hover {
-  background-color: #267acc;
+  transform: translateY(-5px) scale(1.1);
+  box-shadow: 0 15px 30px rgba(77, 163, 255, 0.4);
 }
 
-/* 篩選標籤 */
-.filter-label {
-  font-weight: bold;
-  color: #267acc;
-  margin-right: 8px;
-}
+/* 響應式微調 */
+@media (max-width: 768px) {
+  #searchContainer {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  #searchInput {
+    max-width: none;
+  }
 
-/* 篩選按鈕 */
-.filter-btn {
-  background: #e6f0ff;
-  border: 1px solid #3399ff;
-  color: #267acc;
-  border-radius: 4px;
-  padding: 4px 12px;
-  margin: 2px 4px 2px 0;
-  cursor: pointer;
-  font-size: 14px;
-  transition: background 0.2s, color 0.2s;
-}
+  .mission-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
 
-.filter-btn:hover,
-.filter-btn.active {
-  background: #fff9c0;   /* 柔和亮黃色 */
-  color: #b8860b;
-  border: 1.5px solid #ffe066;
-}
+  .mission-tag {
+    order: -1;
+  }
 
-/* 清除篩選按鈕 */
-.clear-btn {
-  background: #ffefc0;
-  border: 1px solid #ffc107;
-  color: #b8860b;
-  border-radius: 4px;
-  padding: 4px 12px;
-  margin-top: 8px;
-  cursor: pointer;
-  font-size: 14px;
-  transition: background 0.2s, color 0.2s;
-}
+  .info-grid {
+    grid-template-columns: 1fr;
+  }
 
-.clear-btn:hover {
-  background: #ffc107;
-  color: #fff;
-}
-
-/* 文字調整 */
-.hero-column p {
-  margin: 8px 0;
-  font-size: 14px;
-  line-height: 1.4;
-  color: #333;
-}
-
-.hero-column h2 {
-  margin-top: 0;
-  color: #3399ff;
-  text-align: center;
-  font-weight: 600;
-}
-
-/* 調整 table header sticky 時，避免蓋到 nav */
-thead th {
-  position: sticky;
-  top: var(--nav-offset, 0px); /* JS 動態修改 */
-  background-color: #1976d2;
-  z-index: 100;
-  color: white;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-}
-
-/* 快速搜尋樣式 */
-.accordion {
-  border: 1px solid #b3d8ff;
-  border-radius: 8px;
-  margin-bottom: 20px;
-  background: #f5faff;
-}
-
-.accordion-header {
-  color: #267acc;
-  margin: 0;
-  padding: 12px 16px;
-  cursor: pointer;
-  font-size: 16px;
-  font-weight: bold;
-  background: #f5faff;
-  border-radius: 8px 8px 0 0;
-  user-select: none;
-  transition: background 0.3s;
-}
-
-.accordion-header:hover {
-  background: #b3d8ff;
-}
-
-.accordion-content {
-  padding: 12px 16px;
-    margin-top: 6px;
-  display: block; /* 預設展開 */
-}
-
-.accordion.collapsed .accordion-content {
-  display: none; /* 收合 */
-}
-
-.accordion.collapsed .accordion-header::after {
-  content: "▸"; /* 收合箭頭 */
-}
-
-.accordion-header::after {
-  content: "▾"; /* 展開箭頭 */
-  float: right;
-}
-
-/* box內的距離 */
-.section-gap {
-  margin-top: 16px !important; /* 顯著的段落開頭距離，加強效果 */
-}
-
-/*載入英雄圖片*/
-.hero-images {
-  display: flex;
-  justify-content: center;
-  gap: 16px;
-  margin: 12px 0 18px 0;
-}
-
-.hero-images img {
-  width: 220px;
-  height: auto;
-  border-radius: 8px;
-  border: 1px solid #ddd;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-
-.hero-images img:hover {
-  transform: scale(1.05);
-  box-shadow: 0 4px 10px rgba(0,0,0,0.25);
-}
-
-/* 這是被 ^& ... &^ 包裹的文字樣式 */
-.quest-highlight {
-    color: #ff4500; /* 設定成你要的顏色，例如橘紅色 */
-    font-weight: bold;
-    background-color: rgba(255, 69, 0, 0.1); /* 淡淡的底色，增加識別度 */
-    padding: 0 2px;
-    border-radius: 2px;
+  .filter-btn {
+    flex: 1 1 calc(50% - 10px);
+  }
 }
