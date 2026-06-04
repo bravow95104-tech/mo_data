@@ -114,8 +114,17 @@ document.addEventListener("DOMContentLoaded", async () => {
       if (cardContainer) cardContainer.style.display = 'flex';
     } else {
       renderTable(lastFilteredData);
-      if (tableContainer) tableContainer.style.display = 'table';
+      if (tableContainer) {
+        tableContainer.style.display = 'block';
+        tableContainer.style.width = '100%';
+      }
+      const table = document.getElementById("heroes-table");
+      if (table) {
+        table.style.display = 'table';
+        table.style.width = '100%';
+      }
       if (cardContainer) cardContainer.style.display = 'none';
+    }
     }
   }
 
