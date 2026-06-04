@@ -66,8 +66,11 @@ function applyFilters() {
         const cleanId = (task.id || "").replace(/\^&|&\^/g, "");
         const cleanArea = (task.area || "").replace(/\^&|&\^/g, "");
         const cleanAward = (task.award || "").replace(/\^&|&\^/g, "");
+        const cleanRestriction = (task.restriction || "").replace(/\^&|&\^/g, "");
+        const cleanStart = (task.start || "").replace(/\^&|&\^/g, "");
         
-        const searchStr = [cleanId, cleanArea, task.start, cleanAward].join("|").toLowerCase();
+        // 🔍 修改這裡：加入所有可搜尋欄位
+        const searchStr = [cleanId, cleanArea, cleanStart, cleanAward, cleanRestriction].join("|").toLowerCase();
         const matchKeyword = searchStr.includes(keyword);
 
         let matchButton = true;
