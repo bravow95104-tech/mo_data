@@ -147,6 +147,7 @@
   background: linear-gradient(135deg, var(--primary-blue), var(--primary-dark));
   border-color: var(--primary-blue);
   box-shadow: 0 4px 12px rgba(77, 163, 255, 0.3);
+  color: #ffffff !important;
 }
 .clear-btn {
   background: var(--tag-clear-bg);
