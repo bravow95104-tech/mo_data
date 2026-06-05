@@ -2,15 +2,6 @@
    英雄料理與通用 UI 樣式 (heromeal.css) - 升級為玻璃擬態風格
    ============================================================ */
 
-:root {
-  --primary-blue: #4da3ff;
-  --primary-dark: #1e4b8a;
-  --glass-bg: rgba(255, 255, 255, 0.04);
-  --glass-border: rgba(255, 255, 255, 0.1);
-  --text-main: #f7fbff;
-  --text-muted: rgba(247, 251, 255, 0.7);
-}
-
 /* --- 基礎 UI 與 動畫 --- */
 .toggle-icon:focus {
   outline: none;
@@ -60,7 +51,11 @@
   max-height: 0;
   overflow: hidden;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  background: rgba(0, 0, 0, 0.2);
+  background: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] .card-content {
+  background: rgba(255, 255, 255, 0.3);
 }
 
 .card-ui.open .card-content {
@@ -88,9 +83,10 @@ h1 {
   max-width: 900px;
   background: var(--glass-bg);
   backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
   border-radius: 18px;
   border: 1px solid var(--glass-border);
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
   overflow: hidden;
   transition: transform 0.3s ease;
 }
@@ -105,7 +101,7 @@ h1 {
 
 .card-table th,
 .card-table td {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid var(--border-separator);
   padding: 16px 12px;
   text-align: center;
   font-size: 15px;
@@ -113,15 +109,23 @@ h1 {
 }
 
 .card-table thead th {
-  background: rgba(26, 54, 93, 0.6);
+  background: rgba(26, 54, 93, 0.4);
   color: var(--primary-blue);
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 1px;
 }
 
+[data-theme="light"] .card-table thead th {
+  background: rgba(0, 102, 204, 0.08);
+}
+
 .card-table tbody tr:hover {
   background: rgba(255, 255, 255, 0.03);
+}
+
+[data-theme="light"] .card-table tbody tr:hover {
+  background: rgba(0, 102, 204, 0.04);
 }
 
 .table-description {

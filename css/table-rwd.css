@@ -30,9 +30,9 @@
     display: grid !important;
     grid-template-columns: 1fr 1fr !important;
     margin-bottom: 20px !important;
-    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border: 1px solid var(--glass-border) !important;
     border-radius: 16px !important;
-    background: rgba(255, 255, 255, 0.04) !important;
+    background: var(--card-bg) !important;
     backdrop-filter: blur(10px);
     overflow: hidden;
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
@@ -45,29 +45,33 @@
     padding: 12px 15px !important;
     font-size: 14px !important;
     border: none !important;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
-    color: rgba(247, 251, 255, 0.8) !important;
+    border-bottom: 1px solid var(--border-separator) !important;
+    color: var(--text-muted) !important;
+  }
+
+  [data-theme="light"] .card-table.rwd-card td {
+    color: var(--text-main) !important;
   }
 
   .card-table.rwd-card td::before,
   .card-table.rwd-stack td::before {
     content: attr(data-label);
     font-weight: bold;
-    color: #4da3ff; /* 亮藍標籤 */
+    color: var(--primary-blue); /* 亮藍標籤 */
     margin-right: 15px;
   }
 
   /* 第一格：卡片標題 */
   .card-table.rwd-card td:first-child {
     grid-column: 1 / 3 !important;
-    background: linear-gradient(135deg, #1e4b8a, #0d2a54) !important;
-    color: #fff !important;
+    background: var(--tag-date-bg) !important;
+    color: var(--tag-text-color) !important;
     font-weight: 800 !important;
     font-size: 16px !important;
     padding: 14px 10px !important;
     justify-content: center;
     text-align: center !important;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
   }
   .card-table.rwd-card td:first-child::before { display: none; }
 
@@ -79,9 +83,9 @@
   
   .card-table.rwd-stack tr {
     margin-bottom: 15px !important;
-    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border: 1px solid var(--glass-border) !important;
     border-radius: 12px !important;
-    background: rgba(255, 255, 255, 0.04) !important;
+    background: var(--card-bg) !important;
     backdrop-filter: blur(10px);
     overflow: hidden;
   }
@@ -93,16 +97,20 @@
     width: 100% !important;
     padding: 12px 15px !important;
     border: none !important;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
-    color: rgba(247, 251, 255, 0.8) !important;
+    border-bottom: 1px solid var(--border-separator) !important;
+    color: var(--text-muted) !important;
+  }
+
+  [data-theme="light"] .card-table.rwd-stack td {
+    color: var(--text-main) !important;
   }
 
   .card-table.rwd-stack td:first-child {
     background: rgba(77, 163, 255, 0.15) !important;
-    color: #4da3ff !important;
+    color: var(--primary-blue) !important;
     font-weight: bold !important;
     justify-content: center;
-    border-bottom: 1px solid rgba(77, 163, 255, 0.3) !important;
+    border-bottom: 1px solid var(--border-separator) !important;
   }
   .card-table.rwd-stack td:first-child::before { display: none; }
 }
