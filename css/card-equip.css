@@ -149,10 +149,6 @@
   transition: all 0.2s;
 }
 
-  transition: all 0.2s;
-  margin-top: 15px;
-}
-
 .clear-btn:hover {
   background: var(--highlight-yellow);
   color: #000;
