@@ -209,8 +209,7 @@ tbody td {
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   font-size: 12.5px;
   color: var(--text-muted);
-  background: var(--glass-bg);
-  backdrop-filter: blur(5px);
+  background: rgba(255, 255, 255, 0.03); /* 移除毛玻璃，改用微透明背景 */
 }
 
 tbody tr {
@@ -376,8 +375,7 @@ th.sort-desc .caret-down {
 
 /* 手機版簡化卡片 (效能優化版) */
 .hero-summary-card {
-  background: var(--glass-bg);
-  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.05); /* 移除毛玻璃 */
   border: 1px solid var(--glass-border);
   border-radius: 16px;
   padding: 15px;
@@ -390,8 +388,7 @@ th.sort-desc .caret-down {
 
 /* 手機版通用卡片 (覺醒技能使用) */
 .card-item {
-  background: var(--glass-bg);
-  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.05); /* 移除毛玻璃 */
   border: 1px solid var(--glass-border);
   border-radius: 16px;
   padding: 20px;
