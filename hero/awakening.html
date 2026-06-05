@@ -2,6 +2,7 @@
 <html lang="zh-Hant">
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>覺醒技能 | MoData</title>
     <link rel="stylesheet" href="/mo_data/css/styles.css" />
     <link rel="stylesheet" href="/mo_data/css/nav.css" />
@@ -11,7 +12,7 @@
     <div id="nav-container"></div>
     <!-- 這是導航列會被載入的位置 -->
 
-    <h1></h1>
+    <h1>覺醒技能清單</h1>
 
     <!-- 搜尋框 -->
     <div id="searchContainer">
@@ -30,9 +31,6 @@
       </button>
     </div>
 
-    <!-- 卡片容器 (手機版使用) -->
-    <div id="awakening-container"></div>
-
     <!-- 英雄表格 -->
     <div id="hero-table-container">
       <table id="heroes-table">
@@ -49,8 +47,13 @@
       </table>
     </div>
 
+    <!-- 卡片容器 (手機版使用) -->
+    <div id="awakening-container">
+      <p style="text-align:center; padding:20px; color:#999;">載入中...</p>
+    </div>
+
     <!-- 留白避免按鈕遮住 -->
-    <div style="height: 80px"></div>
+    <div class="page-bottom-spacer"></div>
 
     <!-- 回到頂部按鈕 -->
     <button id="backToTop" title="回到頂部">▲</button>
