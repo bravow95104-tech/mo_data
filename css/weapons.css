@@ -2,13 +2,6 @@
 
 :root {
   --nav-height: 70px;
-  --primary-blue: #4da3ff;
-  --primary-dark: #1e4b8a;
-  --glass-bg: rgba(255, 255, 255, 0.04);
-  --glass-border: rgba(255, 255, 255, 0.1);
-  --highlight-yellow: #ffd86b;
-  --text-main: #f7fbff;
-  --text-muted: rgba(247, 251, 255, 0.7);
 }
 
 /* 搜尋區塊與篩選器 */
@@ -130,6 +123,7 @@
   background: linear-gradient(135deg, var(--primary-blue), var(--primary-dark));
   border-color: var(--primary-blue);
   box-shadow: 0 4px 12px rgba(77, 163, 255, 0.3);
+  color: #fff !important;
 }
 
 .clear-btn {
@@ -180,7 +174,6 @@
   background: transparent;
   border-radius: 20px;
   border: 1px solid var(--glass-border);
-  /* 移除 overflow-x: auto 以修復 sticky 標頭失效問題，改用內層包裝或讓 body 滾動 */
   overflow: visible; 
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
   margin: 20px 0;
@@ -191,7 +184,7 @@
   border-spacing: 0;
   width: 100% !important;
   min-width: 100% !important;
-  table-layout: fixed; /* 改為 fixed 確保標題與內容絕對對齊 */
+  table-layout: fixed;
   word-wrap: break-word;
 }
 
@@ -199,18 +192,14 @@
 #heroes-table th:nth-child(1) { width: 70px; }  /* 圖示 */
 #heroes-table th:nth-child(2) { width: 15%; }  /* 名稱 */
 #heroes-table th:nth-child(3) { width: 80px; }  /* 等級 */
-#heroes-table th:nth-child(4) { width: 100px; } /* 屬性1 */
-#heroes-table th:nth-child(5) { width: 100px; } /* 屬性2 */
+#heroes-table th:nth-child(4) { width: 100px; } /* 攻擊 */
+#heroes-table th:nth-child(5) { width: 100px; } /* 命中 */
 #heroes-table th:nth-child(6) { width: 100px; } /* 耐用 */
 #heroes-table th:nth-child(7) { width: auto; }  /* 說明 (剩餘寬度) */
 
-table {
-  width: 100% !important;
-}
-
 thead th {
   position: sticky;
-  top: 73px; /* 配合導覽列高度 */
+  top: 73px;
   z-index: 10;
   background: linear-gradient(180deg, var(--nav-bg-1), var(--nav-bg-2));
   backdrop-filter: blur(15px);
@@ -219,7 +208,6 @@ thead th {
   font-size: 13px;
   font-weight: 700;
   border-bottom: 1px solid rgba(77, 163, 255, 0.3);
-  /* 修正 sticky 背景與邊框間隙 */
   background-clip: padding-box; 
 }
 
@@ -229,15 +217,14 @@ thead th {
 tbody td {
   padding: 12px 8px;
   text-align: center;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid var(--border-separator);
   font-size: 12.5px;
   color: var(--text-muted);
-  background: var(--glass-bg);
-  backdrop-filter: blur(5px);
+  background: rgba(255, 255, 255, 0.03);
 }
 
 tbody tr:hover {
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(77, 163, 255, 0.1) !important;
 }
 
 tbody tr:hover td {
@@ -268,7 +255,7 @@ tbody tr:hover td {
   background: linear-gradient(135deg, var(--nav-bg-1), var(--nav-bg-2));
   border: 1px solid var(--glass-border);
   border-radius: 28px;
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.2);
   color: var(--text-main);
   padding: 30px 20px;
 }
@@ -277,7 +264,7 @@ tbody tr:hover td {
   color: var(--primary-blue);
   font-size: 28px;
   font-weight: 800;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid var(--border-separator);
   padding-bottom: 15px;
   margin-bottom: 25px;
   text-align: center;
@@ -292,7 +279,7 @@ tbody tr:hover td {
 
 .hero-column-base {
   background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-separator);
   padding: 18px;
   border-radius: 16px;
   box-sizing: border-box;
@@ -328,7 +315,7 @@ tbody tr:hover td {
   display: inline-block;
 }
 
-#modalBox .close-btn {
+.close-btn {
   position: absolute;
   top: 15px; right: 20px;
   font-size: 32px;
@@ -337,7 +324,7 @@ tbody tr:hover td {
   transition: all 0.2s;
 }
 
-#modalBox .close-btn:hover {
+.close-btn:hover {
   color: var(--primary-blue);
   transform: rotate(90deg);
 }
@@ -351,7 +338,7 @@ tbody tr:hover td {
 }
 
 .card-item {
-  background: var(--glass-bg);
+  background: var(--card-bg);
   backdrop-filter: blur(10px);
   border: 1px solid var(--glass-border);
   border-radius: 16px;
@@ -362,7 +349,7 @@ tbody tr:hover td {
   display: flex;
   align-items: center;
   gap: 12px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid var(--border-separator);
   padding-bottom: 10px;
   margin-bottom: 10px;
 }
@@ -370,9 +357,9 @@ tbody tr:hover td {
 .card-icon {
   width: 44px;
   height: 44px;
-  background: rgba(0, 0, 0, 0.2);
+  background: rgba(0, 0, 0, 0.1);
   border-radius: 8px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--glass-border);
   object-fit: contain;
 }
 
