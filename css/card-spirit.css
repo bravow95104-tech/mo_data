@@ -2,13 +2,6 @@
 
 :root {
   --nav-height: 70px;
-  --primary-blue: #4da3ff;
-  --primary-dark: #1e4b8a;
-  --glass-bg: rgba(255, 255, 255, 0.04);
-  --glass-border: rgba(255, 255, 255, 0.1);
-  --highlight-yellow: #ffd86b;
-  --text-main: #f7fbff;
-  --text-muted: rgba(247, 251, 255, 0.7);
 }
 
 /* 搜尋區塊 */
@@ -33,10 +26,10 @@
 
 #searchInput1, #searchFirst, #searchSecond, #searchThird {
   padding: 10px 16px;
-  background: rgba(0, 0, 0, 0.2);
+  background: var(--glass-bg);
   border: 1px solid var(--glass-border);
   border-radius: 10px;
-  color: white;
+  color: var(--text-main);
   font-size: 14px;
   transition: all 0.3s ease;
   min-width: 150px;
@@ -46,6 +39,7 @@
   outline: none;
   border-color: var(--primary-blue);
   box-shadow: 0 0 10px rgba(77, 163, 255, 0.3);
+  background: var(--glass-bg);
 }
 
 .filter-actions {
@@ -53,8 +47,8 @@
 }
 
 .clear-btn {
-  background: rgba(255, 216, 107, 0.1);
-  border: 1px solid rgba(255, 216, 107, 0.3);
+  background: var(--tag-clear-bg);
+  border: 1px solid var(--tag-clear-border);
   color: var(--highlight-yellow);
   border-radius: 8px;
   padding: 8px 16px;
@@ -74,6 +68,7 @@
   font-weight: bold;
   border-radius: 4px;
   padding: 2px 4px;
+  text-shadow: 0 0 8px rgba(255, 216, 107, 0.4);
 }
 
 /* 表格樣式 */
@@ -95,7 +90,7 @@ thead th {
   position: sticky;
   top: 73px;
   z-index: 999;
-  background: linear-gradient(180deg, rgba(26, 54, 93, 0.98), rgba(10, 23, 43, 0.98));
+  background: linear-gradient(180deg, var(--nav-bg-1), var(--nav-bg-2));
   backdrop-filter: blur(15px);
   color: var(--primary-blue);
   padding: 16px 10px;
@@ -110,16 +105,19 @@ thead th {
 tbody td {
   padding: 12px 8px;
   text-align: center;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid var(--border-separator);
   font-size: 12.5px;
   color: var(--text-muted);
-  background: var(--glass-bg);
-  backdrop-filter: blur(5px);
+  background: rgba(255, 255, 255, 0.03);
 }
 
 tbody tr:hover {
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(77, 163, 255, 0.1) !important;
   cursor: pointer;
+}
+
+tbody tr:hover td {
+  color: var(--text-main);
 }
 
 /* 手機版卡片 */
@@ -130,7 +128,7 @@ tbody tr:hover {
 }
 
 .card-item {
-  background: var(--glass-bg);
+  background: var(--card-bg);
   backdrop-filter: blur(10px);
   border: 1px solid var(--glass-border);
   border-radius: 16px;
@@ -139,10 +137,20 @@ tbody tr:hover {
 
 .card-item h3 {
   color: var(--primary-blue);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid var(--border-separator);
   margin-bottom: 12px;
   padding-bottom: 8px;
   text-align: center;
+}
+
+.card-item p {
+  margin: 6px 0;
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+.card-item strong {
+  color: var(--primary-blue);
 }
 
 /* Modal */
@@ -151,7 +159,7 @@ tbody tr:hover {
   position: fixed;
   top: 0; left: 0;
   width: 100vw; height: 100vh;
-  background-color: rgba(6, 11, 19, 0.85);
+  background-color: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(8px);
   z-index: 2000;
 }
@@ -166,10 +174,10 @@ tbody tr:hover {
   max-height: 75vh;
   overflow-y: auto;
   z-index: 2001;
-  background: linear-gradient(135deg, rgba(20, 35, 60, 0.98), rgba(10, 20, 35, 0.98));
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: linear-gradient(135deg, var(--nav-bg-1), var(--nav-bg-2));
+  border: 1px solid var(--glass-border);
   border-radius: 28px;
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.2);
   color: var(--text-main);
   padding: 30px 20px;
 }
@@ -178,7 +186,7 @@ tbody tr:hover {
   color: var(--primary-blue);
   font-size: 28px;
   font-weight: 800;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid var(--border-separator);
   padding-bottom: 15px;
   margin-bottom: 25px;
   text-align: center;
@@ -186,10 +194,17 @@ tbody tr:hover {
 
 .hero-column {
   background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-separator);
   padding: 18px;
   border-radius: 16px;
   margin-bottom: 10px;
+}
+
+.hero-column p {
+  margin: 8px 0;
+  font-size: 15px;
+  line-height: 1.4;
+  color: var(--text-muted);
 }
 
 .hero-column p strong {
