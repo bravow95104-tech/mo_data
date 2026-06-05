@@ -93,8 +93,23 @@ document.addEventListener("DOMContentLoaded", async () => {
     const keyword = searchInput ? searchInput.value.trim().toLowerCase() : "";
 
     if (data.length === 0) {
-      tbody.innerHTML = '<tr><td colspan="6">找不到符合條件的道具</td></tr>';
+      tbody.innerHTML = '<tr><td colspan="6" style="text-align:center; padding:20px;">找不到符合條件的道具</td></tr>';
       return;
+    }
+
+    // 🚀 設定表格欄位寬度
+    const table = document.getElementById('garbageTable');
+    if (table && !table.querySelector('colgroup')) {
+      const colgroup = document.createElement('colgroup');
+      colgroup.innerHTML = `
+        <col style="width: 50px;">
+        <col style="width: 50px;">
+        <col style="width: 150px;">
+        <col style="width: 180px;">
+        <col style="width: 180px;">
+        <col style="width: 180px;">
+      `;
+      table.insertBefore(colgroup, table.firstChild);
     }
 
     const fragment = document.createDocumentFragment();
@@ -112,7 +127,8 @@ document.addEventListener("DOMContentLoaded", async () => {
       img.src = `../pic/garbage/${item.name}.bmp`;
       img.alt = item.name;
       img.style.width = '40px';
-      img.style.height = 'auto';
+      img.style.height = '40px';
+      img.style.objectFit = 'contain';
       img.onerror = () => { img.style.display = 'none'; };
       iconTd.appendChild(img);
       tr.appendChild(iconTd);
@@ -175,7 +191,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       cardHeader.style.gap = '8px';
       cardHeader.style.marginBottom = '12px';
       cardHeader.style.paddingBottom = '5px';
-      cardHeader.style.borderBottom = '1px solid #eee'; // 新增分隔線
+      cardHeader.style.borderBottom = '1px solid var(--border-separator)';
 
       const img = document.createElement('img');
       img.src = `../pic/garbage/${encodeURIComponent(itemName)}.bmp`;
@@ -188,7 +204,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       const title = document.createElement('h3');
       title.style.margin = '0';
       title.style.fontSize = '1.1rem';
-      title.style.color = '#3399ff';
+      title.style.color = 'var(--primary-blue)';
       title.style.borderBottom = 'none';
       title.style.textAlign = 'left';
       title.innerHTML = highlight(itemName);
@@ -204,7 +220,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         <p><strong>家族威望：</strong>${item.family}</p>
         <p><strong>個人名聲：</strong>${item.renown}</p>
         <p><strong>貢獻度：</strong>${item.contribute}</p>
-        <p style="text-align:right; color:#3399ff; font-size:12px; margin-top:10px;">點擊查看掉落地圖 ▾</p>
+        <p style="text-align:right; color:var(--primary-blue); font-size:12px; margin-top:10px;">點擊查看掉落地圖 ▾</p>
       `;
 
       card.appendChild(cardHeader);
@@ -235,8 +251,8 @@ document.addEventListener("DOMContentLoaded", async () => {
       modalContent.innerHTML = `
         <h2 class="hero-name">${garbageName}</h2>
         <div class="hero-column-details" style="padding: 20px;">
-          <p style="font-size: 18px; margin-bottom: 10px;"><strong>掉落地圖：</strong></p>
-          <p style="font-size: 16px; line-height: 1.6; color: #333;">${resultText}</p>
+          <p style="font-size: 18px; margin-bottom: 10px; color: var(--primary-blue);"><strong>掉落地圖：</strong></p>
+          <p style="font-size: 16px; line-height: 1.6; color: var(--text-main);">${resultText}</p>
         </div>
       `;
       openModal();

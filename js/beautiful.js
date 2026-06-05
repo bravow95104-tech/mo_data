@@ -128,6 +128,23 @@ document.addEventListener("DOMContentLoaded", async () => {
       return;
     }
 
+    // 🚀 設定表格欄位寬度
+    const table = document.getElementById('heroes-table');
+    if (table && !table.querySelector('colgroup')) {
+      const colgroup = document.createElement('colgroup');
+      colgroup.innerHTML = `
+        <col style="width: 70px;">
+        <col style="width: 120px;">
+        <col style="width: 100px;">
+        <col style="width: 130px;">
+        <col style="width: 130px;">
+        <col style="width: 130px;">
+        <col style="width: 130px;">
+        <col style="width: 130px;">
+      `;
+      table.insertBefore(colgroup, table.firstChild);
+    }
+
     const fragment = document.createDocumentFragment();
 
     data.forEach(hero => {
@@ -135,38 +152,30 @@ document.addEventListener("DOMContentLoaded", async () => {
 
       // 圖片
       const imgTd = document.createElement('td');
-      imgTd.style.width = '50px';
-      imgTd.style.height = '50px';
       imgTd.style.textAlign = 'center';
-      imgTd.style.verticalAlign = 'middle';
 
-      if (hero.id) {
-        const img = document.createElement('img');
-        const basePath = `/mo_data/pic/beautiful/${hero.beauty_id}`;
-        const extensions = ['.png', '.jpg', '.bmp'];
-        let attempt = 0;
+      const img = document.createElement('img');
+      const basePath = `/mo_data/pic/beautiful/${hero.beauty_id}`;
+      const extensions = ['.png', '.jpg', '.bmp'];
+      let attempt = 0;
 
-        img.src = basePath + extensions[attempt];
-        img.style.width = '40px';
-        img.style.height = '40px';
-        img.style.objectFit = 'contain';
-        img.style.display = 'block';
-        img.style.margin = '0 auto';
-        img.style.borderRadius = '4px';
-        img.style.backgroundColor = '#f9f9f9';
+      img.src = basePath + extensions[attempt];
+      img.style.width = '40px';
+      img.style.height = '40px';
+      img.style.objectFit = 'contain';
+      img.style.display = 'block';
+      img.style.margin = '0 auto';
+      img.style.borderRadius = '4px';
 
-        img.onerror = () => {
-          attempt++;
-          if (attempt < extensions.length) {
-            img.src = basePath + extensions[attempt];
-          } else {
-            imgTd.textContent = '—';
-          }
-        };
-        imgTd.appendChild(img);
-      } else {
-        imgTd.textContent = '—';
-      }
+      img.onerror = () => {
+        attempt++;
+        if (attempt < extensions.length) {
+          img.src = basePath + extensions[attempt];
+        } else {
+          imgTd.textContent = '—';
+        }
+      };
+      imgTd.appendChild(img);
       tr.appendChild(imgTd);
 
       const fields = ['beauty_id', 'type', 'material1', 'material2', 'material3', 'material4', 'material5'];
@@ -221,7 +230,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       cardHeader.style.gap = '10px';
       cardHeader.style.marginBottom = '10px';
       cardHeader.style.paddingBottom = '8px';
-      cardHeader.style.borderBottom = '1px solid #eee'; // 新增分隔線
+      cardHeader.style.borderBottom = '1px solid var(--border-separator)';
 
       const img = document.createElement('img');
       const basePath = `/mo_data/pic/beautiful/${hero.beauty_id}`;
@@ -243,10 +252,10 @@ document.addEventListener("DOMContentLoaded", async () => {
       const title = document.createElement('h3');
       title.style.margin = '0';
       title.style.fontSize = '1.1rem';
-      title.style.color = '#3399ff';
-      title.style.borderBottom = 'none'; // 移除底線
-      title.style.textAlign = 'left';    // 靠左對齊
-      title.innerHTML = highlight(hero.id);
+      title.style.color = 'var(--primary-blue)';
+      title.style.borderBottom = 'none';
+      title.style.textAlign = 'left';
+      title.innerHTML = highlight(hero.beauty_id);
 
       cardHeader.appendChild(img);
       cardHeader.appendChild(title);
@@ -257,7 +266,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       cardBody.innerHTML = `
         <p><strong>種類：</strong>${hero.type}</p>
         <p><strong>材料：</strong>點擊查看詳情</p>
-        <p style="text-align:right; color:#3399ff; font-size:12px; margin-top:5px;">查看所需材料 ▾</p>
+        <p style="text-align:right; color:var(--primary-blue); font-size:12px; margin-top:5px;">查看所需材料 ▾</p>
       `;
 
       card.appendChild(cardHeader);
@@ -286,10 +295,10 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 
     modalContent.innerHTML = `
-      <h2 class="hero-name">${hero.id}</h2>
-      <div class="hero-column-details" style="padding: 20px; background:#f9f9f9; border-radius:8px;">
-        <h3 style="margin-top:0; color:#3399ff; border-bottom:1px solid #ddd; padding-bottom:8px;">所需材料</h3>
-        <div style="font-size: 16px; line-height: 2;">
+      <h2 class="hero-name">${hero.beauty_id}</h2>
+      <div class="hero-column-details" style="padding: 20px;">
+        <h3 style="margin-top:0; color:var(--primary-blue); border-bottom:1px solid var(--border-separator); padding-bottom:8px;">所需材料</h3>
+        <div style="font-size: 16px; line-height: 2; color: var(--text-main);">
           ${materialsHTML || '<p>無材料需求</p>'}
         </div>
       </div>
