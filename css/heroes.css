@@ -141,6 +141,53 @@
   color: #000;
 }
 
+/* 篩選操作區 */
+.filter-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+/* 次要按鈕 (如切換模式) */
+.secondary-btn {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  color: var(--text-main);
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.2s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.secondary-btn:hover {
+  background: var(--primary-blue);
+  border-color: var(--primary-blue);
+  color: white !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(77, 163, 255, 0.2);
+}
+
+.switch-mode-btn {
+  margin-left: auto;
+}
+
+@media (max-width: 768px) {
+  .switch-mode-btn {
+    margin-left: 0;
+    width: 100%;
+  }
+  .filter-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
 /* 搜尋字詞高亮 */
 .highlight {
   background-color: rgba(255, 216, 107, 0.3); /* 半透明黃色底 */
