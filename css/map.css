@@ -192,12 +192,13 @@
 }
 
 .clear-btn {
-  background: rgba(255, 216, 107, 0.1);
-  border: 1px solid rgba(255, 216, 107, 0.3);
+  background: var(--tag-clear-bg);
+  border: 1px solid var(--tag-clear-border);
   color: var(--highlight-yellow);
-  border-radius: 10px;
+  border-radius: 8px;
   padding: 8px 16px;
   cursor: pointer;
+  transition: all 0.2s;
 }
 
 .clear-btn:hover {
