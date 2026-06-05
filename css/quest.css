@@ -2,13 +2,6 @@
 
 :root {
   --nav-height: 70px;
-  --primary-blue: #4da3ff;
-  --primary-dark: #1e4b8a;
-  --glass-bg: rgba(255, 255, 255, 0.04);
-  --glass-border: rgba(255, 255, 255, 0.1);
-  --highlight-yellow: #ffd86b;
-  --text-main: #f7fbff;
-  --text-muted: rgba(247, 251, 255, 0.7);
 }
 
 /* 1. 搜尋區塊 */
@@ -32,18 +25,20 @@
 
 #searchInput {
   padding: 10px 16px;
-  background: rgba(0, 0, 0, 0.2);
+  background: var(--glass-bg);
   border: 1px solid var(--glass-border);
   border-radius: 10px;
-  color: white;
+  color: var(--text-main);
   flex: 1;
   max-width: 300px;
+  transition: all 0.3s ease;
 }
 
 #searchInput:focus {
   outline: none;
   border-color: var(--primary-blue);
   box-shadow: 0 0 10px rgba(77, 163, 255, 0.3);
+  background: var(--glass-bg);
 }
 
 /* 2. 篩選器 (Accordion) */
@@ -73,6 +68,9 @@
 
 .accordion-content {
   padding: 10px 20px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
 .accordion.collapsed .accordion-content {
@@ -86,26 +84,40 @@
 }
 
 .accordion.collapsed .accordion-header::after {
-  content: "▸";
+  transform: rotate(-90deg);
 }
 
 .filter-group {
-  margin-bottom: 15px;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   gap: 8px;
 }
 
+.filter-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  width: 100%;
+}
+
+.filter-btns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  flex: 1;
+}
+
 .filter-label {
   font-weight: bold;
   color: var(--text-muted);
   min-width: 80px;
+  padding-top: 6px;
 }
 
 .filter-btn {
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
   color: var(--text-main);
   border-radius: 8px;
   padding: 6px 14px;
@@ -123,6 +135,7 @@
   background: linear-gradient(135deg, var(--primary-blue), var(--primary-dark));
   border-color: var(--primary-blue);
   box-shadow: 0 4px 12px rgba(77, 163, 255, 0.3);
+  color: #fff !important;
 }
 
 .filter-actions {
@@ -132,11 +145,11 @@
 }
 
 .clear-btn {
-  background: rgba(255, 216, 107, 0.1);
-  border: 1px solid rgba(255, 216, 107, 0.3);
+  background: var(--tag-clear-bg);
+  border: 1px solid var(--tag-clear-border);
   color: var(--highlight-yellow);
-  border-radius: 10px;
-  padding: 8px 20px;
+  border-radius: 8px;
+  padding: 8px 16px;
   cursor: pointer;
   transition: all 0.2s;
 }
@@ -153,7 +166,7 @@
 }
 
 .mission-card {
-  background: var(--glass-bg);
+  background: var(--card-bg);
   backdrop-filter: blur(10px);
   border: 1px solid var(--glass-border);
   border-radius: 20px;
@@ -164,15 +177,15 @@
 
 .mission-card:hover {
   transform: translateY(-5px);
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.05);
   border-color: rgba(77, 163, 255, 0.3);
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
 }
 
 .mission-header {
   padding: 20px 24px;
-  background: rgba(255, 255, 255, 0.02);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  background: linear-gradient(180deg, var(--nav-bg-1), var(--nav-bg-2));
+  border-bottom: 1px solid var(--border-separator);
   display: flex;
   justify-content: center; /* 標題置中 */
   align-items: center;
@@ -210,10 +223,14 @@
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 15px;
   margin-bottom: 24px;
-  background: rgba(0, 0, 0, 0.15);
+  background: rgba(0, 0, 0, 0.1);
   padding: 18px;
   border-radius: 14px;
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-separator);
+}
+
+[data-theme="light"] .info-grid {
+  background: rgba(0, 102, 204, 0.04);
 }
 
 .info-item {
@@ -238,7 +255,7 @@
 .mission-section {
   margin-bottom: 20px;
   padding-bottom: 15px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid var(--border-separator);
 }
 
 .mission-section:last-of-type {
@@ -324,11 +341,11 @@
 .mission-img {
   max-width: 100%;
   height: auto;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--glass-border);
   border-radius: 12px;
   display: block;
   margin-top: 15px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
 /* 高亮樣式 */
@@ -391,6 +408,7 @@
 
   .mission-tag {
     order: -1;
+    position: static;
   }
 
   .info-grid {

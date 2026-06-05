@@ -2,13 +2,6 @@
 
 :root {
   --nav-height: 70px;
-  --primary-blue: #4da3ff;
-  --primary-dark: #1e4b8a;
-  --glass-bg: rgba(255, 255, 255, 0.04);
-  --glass-border: rgba(255, 255, 255, 0.1);
-  --highlight-yellow: #ffd86b;
-  --text-main: #f7fbff;
-  --text-muted: rgba(247, 251, 255, 0.7);
 }
 
 .main-container {
@@ -27,20 +20,24 @@
 }
 
 .req-card {
-  background: rgba(0, 0, 0, 0.15);
+  background: rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(5px);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-separator);
   border-radius: 16px;
   padding: 20px;
   text-align: center;
   transition: all 0.3s ease;
 }
 
+[data-theme="light"] .req-card {
+  background: rgba(0, 102, 204, 0.04);
+}
+
 .req-card:hover {
   transform: translateY(-5px);
   background: rgba(255, 255, 255, 0.05);
   border-color: var(--primary-blue);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
 .req-label {
@@ -58,7 +55,7 @@
   color: var(--text-main);
   font-weight: 800;
   display: block;
-  text-shadow: 0 0 10px rgba(77, 163, 255, 0.3);
+  text-shadow: 0 0 10px rgba(77, 163, 255, 0.2);
 }
 
 /* 垂直時間軸 */
@@ -90,7 +87,7 @@
   width: 20px;
   height: 20px;
   background: var(--primary-blue);
-  border: 4px solid #0a172b;
+  border: 4px solid var(--bg-dark);
   border-radius: 50%;
   box-shadow: 0 0 0 2px var(--primary-blue);
   z-index: 2;
@@ -98,7 +95,7 @@
 
 .step-content {
   background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-separator);
   border-radius: 20px;
   padding: 25px;
   transition: all 0.3s ease;
@@ -130,7 +127,7 @@
 
 /* 任務卡片 (通用) */
 .mission-card {
-  background: var(--glass-bg);
+  background: var(--card-bg);
   backdrop-filter: blur(10px);
   border: 1px solid var(--glass-border);
   border-radius: 24px;
@@ -143,9 +140,9 @@
 
 .mission-card:hover {
   transform: translateY(-5px);
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.05);
   border-color: rgba(77, 163, 255, 0.3);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
 }
 
 .mission-card h3 {
@@ -155,7 +152,7 @@
   margin-top: 0;
   margin-bottom: 20px;
   padding-bottom: 15px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid var(--border-separator);
   letter-spacing: 1px;
 }
 
@@ -165,14 +162,18 @@
   border-collapse: separate;
   border-spacing: 0;
   margin: 20px 0;
-  background: rgba(0, 0, 0, 0.15);
+  background: rgba(0, 0, 0, 0.1);
   border-radius: 16px;
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-separator);
   overflow: hidden;
 }
 
+[data-theme="light"] .mission-table {
+  background: rgba(0, 102, 204, 0.04);
+}
+
 .mission-table th {
-  background-color: rgba(77, 163, 255, 0.1);
+  background: linear-gradient(180deg, var(--nav-bg-1), var(--nav-bg-2));
   color: var(--primary-blue);
   font-weight: 800;
   padding: 15px 20px;
@@ -182,7 +183,7 @@
 
 .mission-table td {
   padding: 15px 20px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid var(--border-separator);
   color: var(--text-main);
   line-height: 1.6;
 }
@@ -194,7 +195,7 @@
 /* 座標與強調文字 */
 .coord {
   background: rgba(77, 255, 163, 0.1);
-  color: #4dfa9f;
+  color: #2f855a;
   padding: 2px 8px;
   border-radius: 6px;
   font-family: 'Consolas', monospace;
@@ -202,10 +203,14 @@
   font-size: 0.95rem;
 }
 
+[data-theme="dark"] .coord {
+  color: #4dfa9f;
+}
+
 .highlight {
   color: var(--highlight-yellow);
   font-weight: 800;
-  text-shadow: 0 0 8px rgba(255, 216, 107, 0.3);
+  text-shadow: 0 0 8px rgba(255, 216, 107, 0.2);
 }
 
 /* 圖片處理 */
@@ -213,8 +218,8 @@
   max-width: 100%;
   height: auto;
   border-radius: 16px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
   margin: 20px 0;
 }
 

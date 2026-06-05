@@ -2,13 +2,6 @@
 
 :root {
   --nav-height: 70px;
-  --primary-blue: #4da3ff;
-  --primary-dark: #1e4b8a;
-  --glass-bg: rgba(255, 255, 255, 0.04);
-  --glass-border: rgba(255, 255, 255, 0.1);
-  --highlight-yellow: #ffd86b;
-  --text-main: #f7fbff;
-  --text-muted: rgba(247, 251, 255, 0.7);
 }
 
 .main-container {
@@ -35,8 +28,8 @@
 /* 分頁按鈕 */
 .tab-btn {
   padding: 10px 20px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--glass-border);
+  background: var(--glass-bg);
   color: var(--text-muted);
   border-radius: 12px;
   cursor: pointer;
@@ -46,7 +39,7 @@
 }
 
 .tab-btn:hover {
-  background: rgba(77, 163, 255, 0.15);
+  background: var(--nav-hover-bg);
   color: var(--primary-blue);
   border-color: var(--primary-blue);
   transform: translateY(-2px);
@@ -54,7 +47,7 @@
 
 .tab-btn.active {
   background: linear-gradient(135deg, var(--primary-blue), var(--primary-dark));
-  color: white;
+  color: white !important;
   border-color: var(--primary-blue);
   box-shadow: 0 4px 15px rgba(77, 163, 255, 0.3);
 }
@@ -76,7 +69,7 @@
 
 /* 任務卡片 */
 .mission-card {
-  background: var(--glass-bg);
+  background: var(--card-bg);
   backdrop-filter: blur(10px);
   border: 1px solid var(--glass-border);
   border-radius: 20px;
@@ -89,9 +82,9 @@
 
 .mission-card:hover {
   transform: translateY(-5px);
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.05);
   border-color: rgba(77, 163, 255, 0.3);
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
 }
 
 .mission-card::before {
@@ -112,7 +105,7 @@
   margin-top: 0;
   margin-bottom: 20px;
   padding-bottom: 15px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid var(--border-separator);
   letter-spacing: 1px;
 }
 
@@ -122,15 +115,19 @@
   border-collapse: separate;
   border-spacing: 0;
   margin-top: 15px;
-  background: rgba(0, 0, 0, 0.15);
+  background: rgba(0, 0, 0, 0.1);
   border-radius: 14px;
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-separator);
   overflow: hidden;
+}
+
+[data-theme="light"] .mission-table {
+  background: rgba(0, 102, 204, 0.04);
 }
 
 .mission-table tr td {
   padding: 15px 20px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid var(--border-separator);
   line-height: 1.7;
   color: var(--text-main);
   font-size: 1rem;
@@ -146,7 +143,7 @@
   background-color: rgba(255, 255, 255, 0.02);
   color: var(--primary-blue);
   font-weight: 800;
-  border-right: 1px solid rgba(255, 255, 255, 0.05);
+  border-right: 1px solid var(--border-separator);
   text-align: right;
   vertical-align: top;
   white-space: nowrap;
@@ -166,8 +163,8 @@
   max-width: 100%;
   height: auto;
   border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
 /* 回到頂部按鈕 */
