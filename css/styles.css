@@ -28,6 +28,9 @@
     --tag-date-bg: linear-gradient(135deg, #1e4b8a, #0d2a54);
     --tag-tips-bg: linear-gradient(135deg, #2d7a31, #1b4d1e);
     --tag-text-color: #ffffff;
+
+    /* 分隔線變數 */
+    --border-separator: rgba(255, 255, 255, 0.05);
     }
 
     /* 強制覆蓋所有頁面的淺色主題 */
@@ -53,6 +56,9 @@
     /* 淺色標籤風格 - 柔和一點 */
     --tag-date-bg: linear-gradient(135deg, #4d94ff, #0052cc);
     --tag-tips-bg: linear-gradient(135deg, #48bb78, #2f855a);
+
+    /* 淺色分隔線 - 使用深色透明度 */
+    --border-separator: rgba(0, 0, 0, 0.08);
     }
 
 
@@ -162,7 +168,7 @@ body {
     display: flex;
     align-items: flex-start;
     padding: 16px 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid var(--border-separator);
     font-size: 1rem;
     color: var(--text-muted);
     line-height: 1.6;
@@ -227,7 +233,7 @@ body {
     align-items: center;
     margin-top: 30px;
     padding-top: 20px;
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    border-top: 1px solid var(--border-separator);
 }
 
 .pagination-container button {
