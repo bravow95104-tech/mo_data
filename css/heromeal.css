@@ -59,7 +59,7 @@
 }
 
 .card-ui.open .card-content {
-  max-height: 2000px; /* 足夠大的值 */
+  max-height: 10000px; /* 增加到足夠容納大量資料 (如經驗表) */
   overflow: visible;
 }
 
