@@ -117,8 +117,8 @@
 }
 
 .filter-btn {
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
   color: var(--text-main);
   border-radius: 8px;
   padding: 6px 14px;
@@ -127,6 +127,11 @@
   min-width: 80px;
   text-align: center;
   transition: all 0.2s ease;
+}
+
+[data-theme="light"] .filter-btn {
+  background: rgba(0, 102, 204, 0.05);
+  border-color: rgba(0, 102, 204, 0.15);
 }
 
 .filter-btn:hover {
@@ -184,7 +189,7 @@ thead th {
   position: sticky;
   top: 73px;
   z-index: 999;
-  background: linear-gradient(180deg, rgba(26, 54, 93, 0.98), rgba(10, 23, 43, 0.98));
+  background: linear-gradient(180deg, var(--nav-bg-1), var(--nav-bg-2));
   backdrop-filter: blur(15px);
   color: var(--primary-blue);
   padding: 16px 10px;
@@ -201,11 +206,10 @@ thead th {
 tbody td {
   padding: 12px 8px;
   text-align: center;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid var(--border-separator);
   font-size: 12.5px;
   color: var(--text-muted);
-  background: var(--glass-bg);
-  backdrop-filter: blur(5px);
+  background: rgba(255, 255, 255, 0.03);
 }
 
 tbody tr {
@@ -214,11 +218,11 @@ tbody tr {
 }
 
 tbody tr:hover {
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(77, 163, 255, 0.1) !important;
 }
 
 tbody tr:hover td {
-  color: white;
+  color: var(--text-main);
 }
 
 /* 排序圖示美化 */
@@ -256,7 +260,7 @@ th.sorted-desc .arrow-down {
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(6, 11, 19, 0.85);
+  background-color: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(8px);
   z-index: 2000;
 }
@@ -272,10 +276,10 @@ th.sorted-desc .arrow-down {
   max-height: 72vh;
   overflow-y: auto;
   z-index: 2001;
-  background: linear-gradient(135deg, rgba(20, 35, 60, 0.98), rgba(10, 20, 35, 0.98));
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: linear-gradient(135deg, var(--nav-bg-1), var(--nav-bg-2));
+  border: 1px solid var(--glass-border);
   border-radius: 28px;
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.2);
   color: var(--text-main);
   padding: 30px 20px;
 }
@@ -284,7 +288,7 @@ th.sorted-desc .arrow-down {
   color: var(--primary-blue);
   font-size: 28px;
   font-weight: 800;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid var(--border-separator);
   padding-bottom: 15px;
   margin-bottom: 25px;
   text-align: center;
@@ -299,7 +303,7 @@ th.sorted-desc .arrow-down {
 
 .hero-column {
   background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-separator);
   padding: 18px;
   border-radius: 16px;
   flex: 0 0 calc(50% - 10px);
@@ -352,7 +356,7 @@ th.sorted-desc .arrow-down {
 }
 
 .card-item {
-  background: var(--glass-bg);
+  background: var(--card-bg);
   backdrop-filter: blur(10px);
   border: 1px solid var(--glass-border);
   border-radius: 16px;
@@ -361,7 +365,7 @@ th.sorted-desc .arrow-down {
 
 .card-item h3 {
   color: var(--primary-blue);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid var(--border-separator);
   margin-bottom: 12px;
   padding-bottom: 8px;
   text-align: center;
