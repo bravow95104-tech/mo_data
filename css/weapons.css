@@ -87,6 +87,9 @@
 
 .accordion-content {
   padding: 0 20px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px; /* 使用 gap 替代 <br>，排版更緊湊 */
 }
 
 .filter-group {
@@ -94,13 +97,27 @@
   flex-wrap: wrap;
   align-items: center;
   gap: 8px;
-  margin-top: 15px;
+}
+
+.filter-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  width: 100%;
+}
+
+.filter-btns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  flex: 1;
 }
 
 .filter-label {
   font-weight: bold;
   color: var(--text-muted);
   min-width: 80px;
+  padding-top: 6px; /* 對齊按鈕高度 */
 }
 
 .filter-btn {
