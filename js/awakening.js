@@ -4,6 +4,7 @@ import { SUPABASE_URL, SUPABASE_KEY } from './supabase-config.js'
 const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
 
 document.addEventListener("DOMContentLoaded", async () => {
+  console.log("Awakening.js: DOMContentLoaded");
   let heroesData = [];
   let lastFilteredData = [];
 
@@ -17,13 +18,16 @@ document.addEventListener("DOMContentLoaded", async () => {
   let resizeFlag = isBreakpointBelow768();
   let resizeTimeout = null;
 
+  console.log("Awakening.js: Initial resizeFlag:", resizeFlag, "width:", window.innerWidth);
+
   window.addEventListener("resize", () => {
     if (resizeTimeout) clearTimeout(resizeTimeout);
     resizeTimeout = setTimeout(() => {
       const isBelowNow = isBreakpointBelow768();
       if (isBelowNow !== resizeFlag) {
+        console.log("Awakening.js: Resize detected, new width:", window.innerWidth, "isBelowNow:", isBelowNow);
         resizeFlag = isBelowNow;
-        requestAnimationFrame(applyLayout);
+        applyLayout();
       }
     }, 150);
   });
@@ -35,12 +39,14 @@ document.addEventListener("DOMContentLoaded", async () => {
   // 載入資料 (改為從 Supabase 讀取)
   async function loadAwakeningFromSupabase() {
     try {
+      console.log("Awakening.js: Fetching data...");
       const { data, error } = await supabase
         .from('awakening')
         .select('*')
         .order('sort_id', { ascending: true });
 
       if (error) throw error;
+      console.log("Awakening.js: Data fetched, count:", data ? data.length : 0);
 
       // 預先處理搜尋用字串
       heroesData = (data || []).map(hero => ({
@@ -49,10 +55,15 @@ document.addEventListener("DOMContentLoaded", async () => {
       }));
       
       lastFilteredData = heroesData;
-      applyFiltersAndSort();
+
+      // 延遲一點點執行，確保 iPhone Viewport 穩定
+      setTimeout(() => {
+        console.log("Awakening.js: Initial applyFiltersAndSort");
+        applyFiltersAndSort();
+      }, 300);
 
     } catch (error) {
-      console.error('載入覺醒資料錯誤:', error);
+      console.error('Awakening.js: 載入覺醒資料錯誤:', error);
       const errorMsg = '無法載入雲端覺醒資料';
       const tbody = document.querySelector('#heroes-table tbody');
       if (tbody) tbody.innerHTML = `<tr><td colspan="3">${errorMsg}</td></tr>`;
@@ -73,6 +84,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   function applyFiltersAndSort() {
     const keyword = searchInput.value ? searchInput.value.trim().toLowerCase() : "";
+    console.log("Awakening.js: applyFiltersAndSort, keyword:", keyword);
 
     lastFilteredData = heroesData.filter(hero => {
       if (keyword && !hero._searchStr.includes(keyword)) return false;
@@ -83,23 +95,22 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 
   function applyLayout() {
-    requestAnimationFrame(() => {
-      if (resizeFlag) {
-        if (tableContainer) tableContainer.style.display = 'none';
-        if (cardContainer) {
-          cardContainer.style.display = 'flex';
-          renderCards(lastFilteredData);
-        }
-      } else {
-        if (tableContainer) {
-          tableContainer.style.display = 'block';
-          const table = document.getElementById("heroes-table");
-          if (table) table.style.display = "table";
-          renderTable(lastFilteredData);
-        }
-        if (cardContainer) cardContainer.style.display = 'none';
+    console.log("Awakening.js: applyLayout, resizeFlag:", resizeFlag);
+    if (resizeFlag) {
+      if (tableContainer) tableContainer.style.display = 'none';
+      if (cardContainer) {
+        cardContainer.style.display = 'flex';
+        renderCards(lastFilteredData);
       }
-    });
+    } else {
+      if (tableContainer) {
+        tableContainer.style.display = 'block';
+        const table = document.getElementById("heroes-table");
+        if (table) table.style.display = "table";
+        renderTable(lastFilteredData);
+      }
+      if (cardContainer) cardContainer.style.display = 'none';
+    }
   }
 
   // 產生表格函式 (電腦版)
