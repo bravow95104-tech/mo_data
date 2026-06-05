@@ -2,13 +2,6 @@
 
 :root {
   --nav-height: 70px;
-  --primary-blue: #4da3ff;
-  --primary-dark: #1e4b8a;
-  --glass-bg: rgba(255, 255, 255, 0.04);
-  --glass-border: rgba(255, 255, 255, 0.1);
-  --highlight-yellow: #ffd86b;
-  --text-main: #f7fbff;
-  --text-muted: rgba(247, 251, 255, 0.7);
 }
 
 /* 1. 搜尋區塊 */
@@ -33,18 +26,20 @@
 
 #searchInput {
   padding: 10px 16px;
-  background: rgba(0, 0, 0, 0.2);
+  background: var(--glass-bg);
   border: 1px solid var(--glass-border);
   border-radius: 10px;
-  color: white;
+  color: var(--text-main);
   flex: 1;
   max-width: 300px;
+  transition: all 0.3s ease;
 }
 
 #searchInput:focus {
   outline: none;
   border-color: var(--primary-blue);
   box-shadow: 0 0 10px rgba(77, 163, 255, 0.3);
+  background: var(--glass-bg);
 }
 
 /* 2. 篩選器 (Accordion) */
@@ -89,7 +84,7 @@
 }
 
 .accordion.collapsed .accordion-header::after {
-  content: "▸";
+  transform: rotate(-90deg);
 }
 
 .filter-group {
@@ -116,8 +111,8 @@
 }
 
 .filter-btn {
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
   color: var(--text-main);
   border-radius: 8px;
   padding: 6px 14px;
@@ -137,6 +132,7 @@
   background: linear-gradient(135deg, var(--primary-blue), var(--primary-dark));
   border-color: var(--primary-blue);
   box-shadow: 0 4px 12px rgba(77, 163, 255, 0.3);
+  color: #fff !important;
 }
 
 .filter-actions {
@@ -146,10 +142,10 @@
 }
 
 .clear-btn {
-  background: rgba(255, 216, 107, 0.1);
-  border: 1px solid rgba(255, 216, 107, 0.3);
+  background: var(--tag-clear-bg);
+  border: 1px solid var(--tag-clear-border);
   color: var(--highlight-yellow);
-  border-radius: 10px;
+  border-radius: 8px;
   padding: 8px 20px;
   cursor: pointer;
   transition: all 0.2s;
@@ -169,7 +165,7 @@
 }
 
 .combo-card {
-  background: var(--glass-bg);
+  background: var(--card-bg);
   backdrop-filter: blur(10px);
   border: 1px solid var(--glass-border);
   border-radius: 20px;
@@ -181,9 +177,9 @@
 
 .combo-card:hover {
   transform: translateY(-5px);
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(77, 163, 255, 0.05);
   border-color: rgba(77, 163, 255, 0.3);
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
 }
 
 .combo-card::before {
@@ -210,7 +206,7 @@
   color: var(--text-muted);
   margin-bottom: 16px;
   padding-bottom: 12px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid var(--border-separator);
 }
 
 .combo-category strong {
