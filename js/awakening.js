@@ -7,6 +7,9 @@ document.addEventListener("DOMContentLoaded", () => {
   let heroesData = [];
   let lastFilteredData = [];
 
+  // 🔹 輔助函式：處理 NULL 值
+  const getVal = (v) => (v === null || v === undefined || String(v).trim() === "" || String(v) === "null") ? "" : String(v);
+
   // === 響應式判斷 ===
   const isBelow768 = () => window.innerWidth <= 768;
   let resizeFlag = isBelow768();
@@ -18,7 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const currentFlag = isBelow768();
       if (currentFlag !== resizeFlag) {
         resizeFlag = currentFlag;
-        applyLayout();
+        requestAnimationFrame(applyLayout);
       }
     }, 150);
   });
@@ -37,9 +40,27 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (error) throw error;
 
-      heroesData = data;
-      lastFilteredData = data;
+      // 預先處理搜尋用字串
+      heroesData = (data || []).map(hero => ({
+        ...hero,
+        _searchStr: [hero.skill_name, hero.heros].map(v => getVal(v).toLowerCase()).join(' ')
+      }));
+      
+      lastFilteredData = heroesData;
+      
+      // 🚀 關鍵：在載入資料後再次確認響應式狀態，並延遲執行以確保行動裝置 Viewport 穩定
+      resizeFlag = isBelow768();
       applyLayout();
+      
+      // 針對部分手機瀏覽器延遲修正
+      setTimeout(() => {
+        const currentFlag = isBelow768();
+        if (currentFlag !== resizeFlag) {
+          resizeFlag = currentFlag;
+          applyLayout();
+        }
+      }, 300);
+
     } catch (error) {
       console.error('載入覺醒資料錯誤:', error);
       const tbody = document.querySelector('#heroes-table tbody');
@@ -51,8 +72,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // 搜尋框邏輯
   if (searchInput) {
+    let searchDebounce;
     searchInput.addEventListener('input', () => {
-      applyFiltersAndSort();
+      clearTimeout(searchDebounce);
+      searchDebounce = setTimeout(applyFiltersAndSort, 250);
     });
   }
 
@@ -60,27 +83,27 @@ document.addEventListener("DOMContentLoaded", () => {
     const keyword = searchInput.value.trim().toLowerCase();
 
     lastFilteredData = heroesData.filter(hero => {
-      const targetFields = [
-        hero.skill_name,
-        hero.heros
-      ].join(' ').toLowerCase();
-
-      return targetFields.includes(keyword);
+      if (keyword && !hero._searchStr.includes(keyword)) return false;
+      return true;
     });
 
     applyLayout();
   }
 
   function applyLayout() {
-    if (resizeFlag) {
-      renderCards(lastFilteredData);
-      if (tableContainer) tableContainer.style.display = 'none';
-      if (cardContainer) cardContainer.style.display = 'flex';
-    } else {
-      renderTable(lastFilteredData);
-      if (tableContainer) tableContainer.style.display = 'table';
-      if (cardContainer) cardContainer.style.display = 'none';
-    }
+    requestAnimationFrame(() => {
+      if (resizeFlag) {
+        renderCards(lastFilteredData);
+        if (tableContainer) tableContainer.style.display = 'none';
+        if (cardContainer) cardContainer.style.display = 'flex';
+      } else {
+        renderTable(lastFilteredData);
+        if (tableContainer) tableContainer.style.display = 'block';
+        if (cardContainer) cardContainer.style.display = 'none';
+        const table = document.getElementById("heroes-table");
+        if (table) table.style.display = "table";
+      }
+    });
   }
 
   // 產生表格函式 (電腦版)
@@ -96,24 +119,26 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
+    const fragment = document.createDocumentFragment();
+    const fields = ['skill_name', 'probability', 'heros'];
+
     data.forEach(hero => {
       const tr = document.createElement('tr');
-      const fields = ['skill_name', 'probability', 'heros'];
-
       fields.forEach(field => {
         const td = document.createElement('td');
-        const value = hero[field] !== undefined ? String(hero[field]) : '';
+        const value = getVal(hero[field]);
 
         if (keyword && value.toLowerCase().includes(keyword)) {
-          const regex = new RegExp(`(${keyword})`, "gi");
+          const regex = new RegExp(`(${keyword.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, "gi");
           td.innerHTML = value.replace(regex, '<span class="highlight">$1</span>');
         } else {
           td.textContent = value;
         }
         tr.appendChild(td);
       });
-      tbody.appendChild(tr);
+      fragment.appendChild(tr);
     });
+    tbody.appendChild(fragment);
   }
 
   // 產生卡片函式 (手機版)
@@ -135,14 +160,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const highlight = (text) => {
         if (!keyword) return text;
-        const regex = new RegExp(`(${keyword})`, "gi");
+        const regex = new RegExp(`(${keyword.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, "gi");
         return String(text).replace(regex, '<span class="highlight">$1</span>');
       };
 
       cardDiv.innerHTML = `
-        <h3>${highlight(hero.skill_name)}</h3>
-        <p><strong>獲取機率：</strong>${hero.probability || '-'}</p>
-        <p><strong>對應英雄：</strong>${highlight(hero.heros || '-')}</p>
+        <h3>${highlight(getVal(hero.skill_name))}</h3>
+        <p><strong>獲取機率：</strong>${getVal(hero.probability) || '-'}</p>
+        <p><strong>對應英雄：</strong>${highlight(getVal(hero.heros) || '-')}</p>
       `;
       fragment.appendChild(cardDiv);
     });
