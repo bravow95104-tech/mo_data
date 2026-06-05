@@ -72,13 +72,14 @@
 
 #nav-container nav a:hover,
 #nav-container nav button.dropdown-toggle:hover {
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--nav-hover-bg);
   transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 #nav-container nav a:focus-visible,
 #nav-container nav button.dropdown-toggle:focus-visible {
-  outline: 2px solid rgba(77, 163, 255, 0.9);
+  outline: 2px solid var(--primary-blue);
   outline-offset: 2px;
 }
 
@@ -158,9 +159,9 @@
 }
 
 .dropdown-content a:hover {
-  background: var(--glass-bg);
-  color: var(--text-main);
-  transform: translateX(2px);
+  background: var(--nav-hover-bg);
+  color: var(--primary-blue);
+  transform: translateX(4px);
 }
 
 @media (max-width: 768px) {
