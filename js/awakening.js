@@ -3,7 +3,7 @@ import { SUPABASE_URL, SUPABASE_KEY } from './supabase-config.js'
 
 const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
   let heroesData = [];
   let lastFilteredData = [];
 
@@ -11,14 +11,21 @@ document.addEventListener("DOMContentLoaded", () => {
   const getVal = (v) => (v === null || v === undefined || String(v).trim() === "" || String(v) === "null") ? "" : String(v);
 
   // === 響應式判斷 ===
-  const mobileQuery = window.matchMedia('(max-width: 768px)');
-  const isBelow768 = () => mobileQuery.matches;
-  let resizeFlag = isBelow768();
+  function isBreakpointBelow768() {
+    return window.innerWidth <= 768;
+  }
+  let resizeFlag = isBreakpointBelow768();
+  let resizeTimeout = null;
 
-  // 監聽媒體查詢變化
-  mobileQuery.addEventListener('change', (e) => {
-    resizeFlag = e.matches;
-    applyLayout();
+  window.addEventListener("resize", () => {
+    if (resizeTimeout) clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(() => {
+      const isBelowNow = isBreakpointBelow768();
+      if (isBelowNow !== resizeFlag) {
+        resizeFlag = isBelowNow;
+        requestAnimationFrame(applyLayout);
+      }
+    }, 150);
   });
 
   const tableContainer = document.getElementById('hero-table-container');
@@ -28,14 +35,6 @@ document.addEventListener("DOMContentLoaded", () => {
   // 載入資料 (改為從 Supabase 讀取)
   async function loadAwakeningFromSupabase() {
     try {
-      // 初始顯示載入狀態
-      if (cardContainer) cardContainer.innerHTML = '<p style="text-align:center; padding:20px; color:#999;">載入中...</p>';
-      const tbody = document.querySelector('#heroes-table tbody');
-      if (tbody) tbody.innerHTML = '<tr><td colspan="3">載入中...</td></tr>';
-      
-      // 先執行一次佈局切換，確保載入中文字在正確容器顯示
-      applyLayout();
-
       const { data, error } = await supabase
         .from('awakening')
         .select('*')
@@ -50,24 +49,14 @@ document.addEventListener("DOMContentLoaded", () => {
       }));
       
       lastFilteredData = heroesData;
-      
-      // 確保狀態同步並套用佈局
-      resizeFlag = isBelow768();
-      applyLayout();
+      applyFiltersAndSort();
 
     } catch (error) {
       console.error('載入覺醒資料錯誤:', error);
-      const errorMsg = '無法載入雲端覺醒資料，請檢查網路連線';
-      
+      const errorMsg = '無法載入雲端覺醒資料';
       const tbody = document.querySelector('#heroes-table tbody');
       if (tbody) tbody.innerHTML = `<tr><td colspan="3">${errorMsg}</td></tr>`;
-      
-      if (cardContainer) {
-        cardContainer.innerHTML = `<p style="text-align:center; padding:20px; color:#ff4d4d;">${errorMsg}</p>`;
-      }
-      
-      resizeFlag = isBelow768();
-      applyLayout();
+      if (cardContainer) cardContainer.innerHTML = `<p style="text-align:center; padding:20px; color:#ff4d4d;">${errorMsg}</p>`;
     }
   }
 
@@ -83,7 +72,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function applyFiltersAndSort() {
-    const keyword = searchInput.value.trim().toLowerCase();
+    const keyword = searchInput.value ? searchInput.value.trim().toLowerCase() : "";
 
     lastFilteredData = heroesData.filter(hero => {
       if (keyword && !hero._searchStr.includes(keyword)) return false;
@@ -96,15 +85,19 @@ document.addEventListener("DOMContentLoaded", () => {
   function applyLayout() {
     requestAnimationFrame(() => {
       if (resizeFlag) {
-        renderCards(lastFilteredData);
         if (tableContainer) tableContainer.style.display = 'none';
-        if (cardContainer) cardContainer.style.display = 'flex';
+        if (cardContainer) {
+          cardContainer.style.display = 'flex';
+          renderCards(lastFilteredData);
+        }
       } else {
-        renderTable(lastFilteredData);
-        if (tableContainer) tableContainer.style.display = 'block';
+        if (tableContainer) {
+          tableContainer.style.display = 'block';
+          const table = document.getElementById("heroes-table");
+          if (table) table.style.display = "table";
+          renderTable(lastFilteredData);
+        }
         if (cardContainer) cardContainer.style.display = 'none';
-        const table = document.getElementById("heroes-table");
-        if (table) table.style.display = "table";
       }
     });
   }
@@ -115,7 +108,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!tbody) return;
     tbody.innerHTML = '';
 
-    const keyword = searchInput.value.trim().toLowerCase();
+    const keyword = searchInput.value ? searchInput.value.trim().toLowerCase() : "";
 
     if (data.length === 0) {
       tbody.innerHTML = '<tr><td colspan="3">找不到符合條件的覺醒</td></tr>';
@@ -149,7 +142,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!cardContainer) return;
     cardContainer.innerHTML = '';
 
-    const keyword = searchInput.value.trim().toLowerCase();
+    const keyword = searchInput.value ? searchInput.value.trim().toLowerCase() : "";
 
     if (data.length === 0) {
       cardContainer.innerHTML = '<p style="text-align:center; padding:20px; color:#999;">找不到符合條件的覺醒</p>';
@@ -182,8 +175,14 @@ document.addEventListener("DOMContentLoaded", () => {
   if (clearFiltersBtn) {
     clearFiltersBtn.addEventListener('click', () => {
       searchInput.value = '';
-      lastFilteredData = heroesData;
-      applyLayout();
+      applyFiltersAndSort();
     });
   }
+
+  // Accordion (如果有使用的話)
+  document.querySelectorAll(".accordion-header").forEach((header) => {
+    header.addEventListener("click", () => {
+      header.parentElement.classList.toggle("collapsed");
+    });
+  });
 });
