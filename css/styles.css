@@ -23,6 +23,11 @@
     --nav-bg-2: rgba(18, 61, 110, 0.8);
     --card-bg: rgba(255, 255, 255, 0.04);
     --highlight-yellow: #ffd86b;
+
+    /* 更新日誌標籤變數 */
+    --tag-date-bg: linear-gradient(135deg, #1e4b8a, #0d2a54);
+    --tag-tips-bg: linear-gradient(135deg, #2d7a31, #1b4d1e);
+    --tag-text-color: #ffffff;
     }
 
     /* 強制覆蓋所有頁面的淺色主題 */
@@ -44,6 +49,10 @@
     --nav-bg-2: rgba(245, 247, 250, 0.6) !important;
     --card-bg: rgba(255, 255, 255, 0.5) !important;
     --highlight-yellow: #c05621 !important;
+
+    /* 淺色標籤風格 - 柔和一點 */
+    --tag-date-bg: linear-gradient(135deg, #4d94ff, #0052cc);
+    --tag-tips-bg: linear-gradient(135deg, #48bb78, #2f855a);
     }
 
 
@@ -164,14 +173,14 @@ body {
     border-bottom: none;
 }
 
-/* 日期與標籤樣式 - 呼應導覽列深藍色 */
+/* 日期與標籤樣式 - 支援主題切換 */
 .changelog-list .date, 
 .sidebar-list .date,
 .sidebar-list .date2 {
     flex-shrink: 0;
     width: 105px;
-    background: linear-gradient(135deg, #1e4b8a, #0d2a54);
-    color: #ffffff !important; /* 強制白色文字，因為背景固定為深色 */
+    background: var(--tag-date-bg);
+    color: var(--tag-text-color) !important;
     font-family: "JetBrains Mono", "Courier New", monospace;
     font-weight: 600;
     font-size: 0.85rem;
@@ -179,34 +188,36 @@ body {
     border-radius: 8px;
     text-align: center;
     margin-right: 20px;
-    border: 1px solid rgba(77, 163, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 .sidebar-list .date2 {
-    background: linear-gradient(135deg, #2a5a9e, #1a3c75);
+    background: var(--tag-date-bg);
+    opacity: 0.9;
     text-decoration: none;
     display: inline-block;
 }
 
 .sidebar-list .date2:hover {
-    color: #ffd86b;
+    color: var(--highlight-yellow) !important;
     border-color: rgba(255, 216, 107, 0.4);
+    opacity: 1;
 }
 
 .changelog-list .tips, 
 .sidebar-list .tips {
     flex-shrink: 0;
     width: 105px;
-    background: linear-gradient(135deg, #2d7a31, #1b4d1e);
-    color: #ffffff;
+    background: var(--tag-tips-bg);
+    color: var(--tag-text-color) !important;
     font-weight: 600;
     font-size: 0.85rem;
     padding: 6px 4px;
     border-radius: 8px;
     text-align: center;
     margin-right: 20px;
-    border: 1px solid rgba(100, 255, 100, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 /* 分頁按鈕樣式升級 */
