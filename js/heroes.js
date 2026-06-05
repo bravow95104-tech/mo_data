@@ -86,7 +86,14 @@ document.addEventListener("DOMContentLoaded", async () => {
       if (heroesRes.error) throw heroesRes.error;
       if (gloryRes.error) throw gloryRes.error;
 
-      heroesData = heroesRes.data || [];
+      // 🚀 預先處理搜尋用的字串，避免在 filter 迴圈中重複運算
+      heroesData = (heroesRes.data || []).map(hero => ({
+        ...hero,
+        _searchStr: Object.values(hero)
+          .map(v => String(getVal(v)).toLowerCase())
+          .join(" ")
+      }));
+      
       gloryDropData = gloryRes.data || [];
       
       // 🚀 檢查 URL 是否有 ?hero=名稱 參數
@@ -133,13 +140,8 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     // B. filter
     let filtered = heroesData.filter((hero) => {
-      // 🚀 搜尋優化：搜尋所有欄位 (包含隱藏或僅在 Modal 顯示的欄位)
-      const targetFields = Object.values(hero)
-        .map(v => String(getVal(v)))
-        .join(" ")
-        .toLowerCase();
-
-      if (!targetFields.includes(keyword)) return false;
+      // 使用預先產生的搜尋字串
+      if (keyword && !hero._searchStr.includes(keyword)) return false;
 
       if (
         filters.promotion.length &&
@@ -234,28 +236,33 @@ document.addEventListener("DOMContentLoaded", async () => {
       "str", "int", "vit", "agi", "luk", "aggression_before", "equipment_new", "equipment_old"
     ];
 
-    data.forEach((hero) => {
+    data.forEach((hero, index) => {
       const tr = document.createElement("tr");
+      tr.dataset.index = index; // 供事件委託使用
       
+      let rowHTML = "";
       for (let i = 0; i < fields.length; i++) {
-        const field = fields[i];
-        const td = document.createElement("td");
-        const val = hero[field];
-        const value = getVal(val);
-
+        const value = getVal(hero[fields[i]]);
         if (regex && value.toLowerCase().includes(keyword)) {
-          td.innerHTML = value.replace(regex, '<span class="highlight">$1</span>');
+          rowHTML += `<td>${value.replace(regex, '<span class="highlight">$1</span>')}</td>`;
         } else {
-          td.textContent = value;
+          rowHTML += `<td>${value}</td>`;
         }
-        tr.appendChild(td);
       }
-
-      tr.addEventListener("click", () => showDetailModal(hero));
+      tr.innerHTML = rowHTML;
       fragment.appendChild(tr);
     });
     tableBody.appendChild(fragment);
   }
+
+  // 使用事件委託處理表格點擊
+  tableBody.addEventListener("click", (e) => {
+    const tr = e.target.closest("tr");
+    if (tr && tr.dataset.index !== undefined) {
+      const hero = lastFilteredData[parseInt(tr.dataset.index)];
+      if (hero) showDetailModal(hero);
+    }
+  });
 
   // === 渲染手機版卡片 (簡化版以提升效能) ===
   function renderCard(data) {
@@ -271,9 +278,10 @@ document.addEventListener("DOMContentLoaded", async () => {
     const regex = keyword ? new RegExp(`(${keyword.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, "gi") : null;
     const fragment = document.createDocumentFragment();
 
-    data.forEach((hero) => {
+    data.forEach((hero, index) => {
       const card = document.createElement("div");
-      card.className = "hero-summary-card"; // 使用新的簡化樣式類名
+      card.className = "hero-summary-card";
+      card.dataset.index = index;
       
       const highlight = (text) => {
         if (!regex) return text;
@@ -294,12 +302,19 @@ document.addEventListener("DOMContentLoaded", async () => {
           <span>點擊查看詳細資訊 ▾</span>
         </div>
       `;
-
-      card.addEventListener("click", () => showDetailModal(hero));
       fragment.appendChild(card);
     });
     heroesCardContainer.appendChild(fragment);
   }
+
+  // 使用事件委託處理卡片點擊
+  heroesCardContainer.addEventListener("click", (e) => {
+    const card = e.target.closest(".hero-summary-card");
+    if (card && card.dataset.index !== undefined) {
+      const hero = lastFilteredData[parseInt(card.dataset.index)];
+      if (hero) showDetailModal(hero);
+    }
+  });
   // === 4. 事件監聽 (搜尋、按鈕、排序) ===
   let searchDebounceTimer = null;
   searchInput.addEventListener("input", () => {
