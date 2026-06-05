@@ -11,19 +11,14 @@ document.addEventListener("DOMContentLoaded", () => {
   const getVal = (v) => (v === null || v === undefined || String(v).trim() === "" || String(v) === "null") ? "" : String(v);
 
   // === 響應式判斷 ===
-  const isBelow768 = () => window.innerWidth <= 768;
+  const mobileQuery = window.matchMedia('(max-width: 768px)');
+  const isBelow768 = () => mobileQuery.matches;
   let resizeFlag = isBelow768();
-  let resizeTimeout;
 
-  window.addEventListener("resize", () => {
-    clearTimeout(resizeTimeout);
-    resizeTimeout = setTimeout(() => {
-      const currentFlag = isBelow768();
-      if (currentFlag !== resizeFlag) {
-        resizeFlag = currentFlag;
-        requestAnimationFrame(applyLayout);
-      }
-    }, 150);
+  // 監聽媒體查詢變化
+  mobileQuery.addEventListener('change', (e) => {
+    resizeFlag = e.matches;
+    applyLayout();
   });
 
   const tableContainer = document.getElementById('hero-table-container');
@@ -33,6 +28,14 @@ document.addEventListener("DOMContentLoaded", () => {
   // 載入資料 (改為從 Supabase 讀取)
   async function loadAwakeningFromSupabase() {
     try {
+      // 初始顯示載入狀態
+      if (cardContainer) cardContainer.innerHTML = '<p style="text-align:center; padding:20px; color:#999;">載入中...</p>';
+      const tbody = document.querySelector('#heroes-table tbody');
+      if (tbody) tbody.innerHTML = '<tr><td colspan="3">載入中...</td></tr>';
+      
+      // 先執行一次佈局切換，確保載入中文字在正確容器顯示
+      applyLayout();
+
       const { data, error } = await supabase
         .from('awakening')
         .select('*')
@@ -48,23 +51,23 @@ document.addEventListener("DOMContentLoaded", () => {
       
       lastFilteredData = heroesData;
       
-      // 🚀 關鍵：在載入資料後再次確認響應式狀態，並延遲執行以確保行動裝置 Viewport 穩定
+      // 確保狀態同步並套用佈局
       resizeFlag = isBelow768();
       applyLayout();
-      
-      // 針對部分手機瀏覽器延遲修正
-      setTimeout(() => {
-        const currentFlag = isBelow768();
-        if (currentFlag !== resizeFlag) {
-          resizeFlag = currentFlag;
-          applyLayout();
-        }
-      }, 300);
 
     } catch (error) {
       console.error('載入覺醒資料錯誤:', error);
+      const errorMsg = '無法載入雲端覺醒資料，請檢查網路連線';
+      
       const tbody = document.querySelector('#heroes-table tbody');
-      if (tbody) tbody.innerHTML = '<tr><td colspan="3">無法載入雲端覺醒資料</td></tr>';
+      if (tbody) tbody.innerHTML = `<tr><td colspan="3">${errorMsg}</td></tr>`;
+      
+      if (cardContainer) {
+        cardContainer.innerHTML = `<p style="text-align:center; padding:20px; color:#ff4d4d;">${errorMsg}</p>`;
+      }
+      
+      resizeFlag = isBelow768();
+      applyLayout();
     }
   }
 
