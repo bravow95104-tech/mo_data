@@ -270,7 +270,7 @@ thead th {
 tbody td {
   padding: 12px 8px;
   text-align: center;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid var(--border-separator);
   font-size: 12.5px;
   color: var(--text-muted);
   background: rgba(255, 255, 255, 0.03); /* 移除毛玻璃，改用微透明背景 */
