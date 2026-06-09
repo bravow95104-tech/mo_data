@@ -275,6 +275,32 @@ tbody tr:hover td {
   box-shadow: 0 25px 60px rgba(0, 0, 0, 0.2);
   color: var(--text-main);
   padding: 30px 20px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--primary-blue) transparent;
+}
+
+/* 圖片容器置中 */
+.hero-images {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 25px;
+  width: 100%;
+}
+
+.hero-images img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
+}
+
+.hero-images img:hover {
+  transform: scale(1.02);
 }
 
 .hero-name {
@@ -408,8 +434,10 @@ tbody tr:hover td {
   }
 
   #modalBox {
-    width: 92vw;
+    width: 95vw;
     padding: 20px 15px;
+    top: 50%;
+    max-height: 80vh;
   }
 
   .hero-column {
