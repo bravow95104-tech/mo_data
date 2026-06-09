@@ -380,7 +380,41 @@
             document.getElementById('userEmail').innerText = session.user.email;
             initSidebar();
             loadTableData();
+            setupAuthListener();
+            setupHeartbeat();
         }
+    }
+
+    // 監聽登入狀態變化
+    function setupAuthListener() {
+        supabase.auth.onAuthStateChange((event, session) => {
+            if (event === 'SIGNED_OUT' || !session) {
+                alert('登入已過期或已在其他地方登出，請重新登入。');
+                window.location.href = 'login.html';
+            }
+        });
+    }
+
+    // 定期驗證連線 (每 10 分鐘)
+    function setupHeartbeat() {
+        setInterval(async () => {
+            const { data: { session }, error } = await supabase.auth.getSession();
+            if (error || !session) {
+                alert('連線已中斷或登入過期，為了確保資料安全，請重新登入。');
+                window.location.href = 'login.html';
+            }
+        }, 10 * 60 * 1000); 
+    }
+
+    // 儲存前的登入檢查
+    async function verifySessionBeforeAction() {
+        const { data: { session } } = await supabase.auth.getSession();
+        if (!session) {
+            alert('登入已失效，請先重新登入後再進行操作，以免資料遺失。');
+            window.location.href = 'login.html';
+            return false;
+        }
+        return true;
     }
 
     // 初始化側邊欄
@@ -529,7 +563,8 @@
         }).join('');
     }
 
-    window.openAddModal = () => {
+    window.openAddModal = async () => {
+        if (!await verifySessionBeforeAction()) return;
         renderEditForm();
         document.getElementById('modalTitle').innerText = '新增' + TABLE_CONFIGS[currentTable].title;
         document.getElementById('edit-id').value = '';
@@ -540,7 +575,8 @@
         document.getElementById('editModal').style.display = 'block';
     };
 
-    window.openEditModal = (id) => {
+    window.openEditModal = async (id) => {
+        if (!await verifySessionBeforeAction()) return;
         const item = allData.find(d => d.id == id);
         if (!item) return;
 
@@ -567,6 +603,7 @@
     };
 
     window.deleteItem = async (id) => {
+        if (!await verifySessionBeforeAction()) return;
         if (!confirm('確定要刪除這筆資料嗎？此動作無法復原。')) return;
 
         const config = TABLE_CONFIGS[currentTable];
@@ -589,6 +626,7 @@
 
     document.getElementById('editForm').onsubmit = async (e) => {
         e.preventDefault();
+        if (!await verifySessionBeforeAction()) return;
         const id = document.getElementById('edit-id').value;
         const updates = {};
         const config = TABLE_CONFIGS[currentTable];
