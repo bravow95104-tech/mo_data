@@ -314,23 +314,41 @@
     <div class="content">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px;">
             <h2 id="pageTitle" style="margin: 0; font-size: 24px; color: #1e293b;">儀表板</h2>
-            <div id="pageActions">
+            <div id="pageActions" style="display: none;">
                 <button id="addBtn" class="btn btn-primary" onclick="openAddModal()"><i class="fas fa-plus"></i> 新增資料</button>
             </div>
         </div>
         
-        <div class="stats-grid">
+        <!-- 儀表板視圖 -->
+        <div id="dashboardView" class="stats-grid">
             <div class="stat-card">
-                <div style="color: #64748b; font-size: 13px; font-weight: 600;">總英雄筆數</div>
-                <div style="font-size: 28px; font-weight: bold; margin-top: 5px; color: var(--primary);" id="stat-count">---</div>
+                <div style="color: #64748b; font-size: 13px; font-weight: 600;"><i class="fas fa-user-ninja"></i> 英雄總數</div>
+                <div style="font-size: 28px; font-weight: bold; margin-top: 5px; color: var(--primary);" id="dash-heroes">---</div>
             </div>
             <div class="stat-card" style="border-left-color: #10b981;">
-                <div style="color: #64748b; font-size: 13px; font-weight: 600;">最後更新資料</div>
-                <div style="font-size: 16px; font-weight: bold; margin-top: 12px;" id="stat-latest">無資料</div>
+                <div style="color: #64748b; font-size: 13px; font-weight: 600;"><i class="fa-solid fa-khanda"></i> 裝備總數</div>
+                <div style="font-size: 28px; font-weight: bold; margin-top: 5px; color: #10b981;" id="dash-equips">---</div>
+            </div>
+            <div class="stat-card" style="border-left-color: #f59e0b;">
+                <div style="color: #64748b; font-size: 13px; font-weight: 600;"><i class="fas fa-clone"></i> 卡片總數</div>
+                <div style="font-size: 28px; font-weight: bold; margin-top: 5px; color: #f59e0b;" id="dash-cards">---</div>
+            </div>
+            <div class="stat-card" style="border-left-color: #8b5cf6;">
+                <div style="color: #64748b; font-size: 13px; font-weight: 600;"><i class="fas fa-map-marked-alt"></i> 地圖資訊</div>
+                <div style="font-size: 28px; font-weight: bold; margin-top: 5px; color: #8b5cf6;" id="dash-maps">---</div>
+            </div>
+            <div class="stat-card" style="border-left-color: #ef4444;">
+                <div style="color: #64748b; font-size: 13px; font-weight: 600;"><i class="fas fa-scroll"></i> 一般任務</div>
+                <div style="font-size: 28px; font-weight: bold; margin-top: 5px; color: #ef4444;" id="dash-quests">---</div>
+            </div>
+            <div class="stat-card" style="border-left-color: #64748b;">
+                <div style="color: #64748b; font-size: 13px; font-weight: 600;"><i class="fas fa-file-alt"></i> 更新日誌</div>
+                <div style="font-size: 28px; font-weight: bold; margin-top: 5px; color: #64748b;" id="dash-changelogs">---</div>
             </div>
         </div>
 
-        <div class="table-card">
+        <!-- 表格視圖 -->
+        <div id="tableView" class="table-card" style="display: none;">
             <table id="dataTable">
                 <thead id="tableHead">
                     <!-- 表頭會由 JS 動態產生 -->
@@ -369,7 +387,7 @@
     import { TABLE_CONFIGS } from './js/admin-config.js'
 
     const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
-    let currentTable = 'heroes';
+    let currentTable = 'dashboard';
     let allData = [];
 
     let inactivityTimer;
@@ -401,7 +419,14 @@
         } else {
             document.getElementById('userEmail').innerText = session.user.email;
             initSidebar();
-            loadTableData();
+            
+            // 根據初始 currentTable 載入對應視圖
+            if (currentTable === 'dashboard') {
+                loadDashboardData();
+            } else {
+                loadTableData();
+            }
+
             setupAuthListener();
             setupHeartbeat();
             setupActivityListeners(); // 啟動閒置監控
@@ -440,25 +465,61 @@
         return true;
     }
 
+    // 載入儀表板統計數據
+    async function loadDashboardData() {
+        document.getElementById('pageTitle').innerText = '儀表板概覽';
+        document.getElementById('dashboardView').style.display = 'grid';
+        document.getElementById('tableView').style.display = 'none';
+        document.getElementById('pageActions').style.display = 'none';
+
+        const tables = {
+            heroes: ['heroes'],
+            equips: ['weapons', 'equipment', 'accessories'],
+            cards: ['card_equip', 'card_active', 'card_passive', 'card_spirit'],
+            maps: ['detailed_map'],
+            quests: ['quest'],
+            changelogs: ['changelog']
+        };
+
+        for (const [key, tableNames] of Object.entries(tables)) {
+            let total = 0;
+            for (const name of tableNames) {
+                const { count, error } = await supabase
+                    .from(name)
+                    .select('*', { count: 'exact', head: true });
+                if (!error) total += count;
+            }
+            document.getElementById(`dash-${key}`).innerText = total;
+        }
+    }
+
     // 初始化側邊欄
     function initSidebar() {
         document.querySelectorAll('.nav-item').forEach(item => {
             item.onclick = function() {
                 const page = this.dataset.page;
+                
+                document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
+                this.classList.add('active');
+
                 if (page === 'dashboard') {
-                    alert('儀表板功能開發中'); return;
+                    currentTable = 'dashboard';
+                    loadDashboardData();
+                    return;
                 }
                 
                 if (!TABLE_CONFIGS[page]) {
                     alert(this.innerText + ' 配置尚未在 admin-config.js 定義'); return;
                 }
 
-                document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
-                this.classList.add('active');
-                
                 currentTable = page;
                 document.getElementById('pageTitle').innerText = TABLE_CONFIGS[page].title;
                 document.getElementById('addBtn').innerHTML = `<i class="fas fa-plus"></i> 新增${TABLE_CONFIGS[page].title.replace('管理', '')}`;
+                
+                document.getElementById('dashboardView').style.display = 'none';
+                document.getElementById('tableView').style.display = 'block';
+                document.getElementById('pageActions').style.display = 'block';
+
                 loadTableData();
             };
         });
