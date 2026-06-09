@@ -109,7 +109,9 @@ document.addEventListener("DOMContentLoaded", async () => {
       if (cardContainer) cardContainer.style.display = 'flex';
     } else {
       renderTable(lastFilteredData);
-      if (heroesTable) heroesTable.style.display = 'table';
+      if (heroesTable) heroesTable.style.display = 'block';
+      const table = document.getElementById("heroes-table");
+      if (table) table.style.display = "table";
       if (cardContainer) cardContainer.style.display = 'none';
     }
   }
@@ -131,6 +133,8 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     data.forEach(hero => {
       const tr = document.createElement('tr');
+      tr.style.cursor = 'pointer';
+      tr.addEventListener('click', () => showProductionModal(hero));
 
       // === 圖片 ===
       const imgTd = document.createElement('td');
@@ -208,12 +212,16 @@ document.addEventListener("DOMContentLoaded", async () => {
     data.forEach(hero => {
       const card = document.createElement('div');
       card.className = 'card-item';
+      card.style.cursor = 'pointer';
+      card.addEventListener('click', () => showProductionModal(hero));
 
       const highlight = (text) => {
         if (!keyword) return text;
         const regex = new RegExp(`(${keyword.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
         return String(text).replace(regex, '<span class="highlight">$1</span>');
       };
+
+      // ... (rest of card code)
 
       // 卡片標題區域 (含圖示)
       const cardHeader = document.createElement('div');
@@ -272,6 +280,94 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     cardContainer.appendChild(fragment);
   }
+
+  // === Modal 邏輯 ===
+  const modalOverlay = document.getElementById('modalOverlay');
+  const modalBox = document.getElementById('modalBox');
+  const modalContent = document.getElementById('modalContent');
+  const closeModalBtn = document.querySelector('.close-btn');
+
+  async function showProductionModal(work) {
+    if (!modalContent) return;
+    
+    modalContent.innerHTML = `
+      <h2 style="color: var(--primary-blue); border-bottom: 2px solid var(--primary-blue); padding-bottom: 10px; margin-bottom: 20px;">
+        ${work.name} - 製作清單
+      </h2>
+      <p style="text-align: center; padding: 20px;">正在檢索相關裝備...</p>
+    `;
+    openModal();
+
+    try {
+      // 同時檢索三個表，材料欄位 material1 ~ material11 包含該工作名稱
+      const tableConfigs = [
+        { name: 'weapons', label: '⚔️ 武器' },
+        { name: 'equipment', label: '🛡️ 防具' },
+        { name: 'accessories', label: '📿 飾品' }
+      ];
+
+      const results = await Promise.all(tableConfigs.map(async (cfg) => {
+        // 因為 Supabase 的 or 查詢較為複雜，這裡簡單化：抓取所有資料後在前端過濾，
+        // 或者使用多個 or 條件。考慮到效能，我們用 or 條件。
+        const orFilter = Array.from({length: 11}, (_, i) => `material${i+1}.eq."${work.name}"`).join(',');
+        const { data, error } = await supabase
+          .from(cfg.name)
+          .select('item')
+          .or(orFilter);
+        
+        return { label: cfg.label, items: data || [] };
+      }));
+
+      let html = `<h2 style="color: var(--primary-blue); border-bottom: 2px solid var(--primary-blue); padding-bottom: 10px; margin-bottom: 20px;">${work.name} - 製作清單</h2>`;
+      
+      let hasAny = false;
+      results.forEach(res => {
+        html += `<div class="production-category">
+          <h3>${res.label}</h3>
+          <div class="production-list">`;
+        
+        if (res.items.length > 0) {
+          hasAny = true;
+          html += res.items.map(i => `<div class="production-item">${i.item}</div>`).join('');
+        } else {
+          html += `<p class="no-data">目前無相關製作資料</p>`;
+        }
+        
+        html += `</div></div>`;
+      });
+
+      if (!hasAny) {
+        html = `<h2 style="color: var(--primary-blue); border-bottom: 2px solid var(--primary-blue); padding-bottom: 10px; margin-bottom: 20px;">${work.name}</h2>
+                <p style="text-align: center; padding: 40px; color: var(--text-muted);">此材料目前沒有對應的裝備製作資料。</p>`;
+      }
+
+      modalContent.innerHTML = html;
+
+    } catch (err) {
+      console.error("檢索製作清單失敗:", err);
+      modalContent.innerHTML = `<p style="color: red; text-align: center; padding: 20px;">檢索失敗，請稍後再試。</p>`;
+    }
+  }
+
+  function openModal() {
+    modalOverlay.style.display = "block";
+    modalBox.style.display = "block";
+    modalBox.scrollTop = 0;
+  }
+
+  function closeModal() {
+    modalOverlay.style.display = "none";
+    modalBox.style.display = "none";
+  }
+
+  if (closeModalBtn) closeModalBtn.addEventListener("click", closeModal);
+  if (modalOverlay) modalOverlay.addEventListener("click", closeModal);
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && modalBox.style.display === "block") {
+      closeModal();
+    }
+  });
 
   // === Accordion 展開／收合 ===
   document.querySelectorAll('.accordion-header').forEach(header => {
