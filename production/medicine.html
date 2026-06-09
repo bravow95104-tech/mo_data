@@ -7,6 +7,31 @@
     <link rel="stylesheet" href="/mo_data/css/styles.css" />
     <link rel="stylesheet" href="/mo_data/css/nav.css" />
     <link rel="stylesheet" href="/mo_data/css/weapons.css" />
+    <style>
+      /* 針對藥品頁面優化欄位寬度 */
+      #heroes-table {
+        table-layout: auto !important; /* 讓瀏覽器根據內容自動調整寬度 */
+      }
+      #heroes-table th:nth-child(1) { width: 60px !important; }  /* 圖示 */
+      #heroes-table th:nth-child(2) { width: 120px !important; } /* 名稱 */
+      #heroes-table th:nth-child(3) { width: 60px !important; }  /* 等級 */
+      
+      /* 材料 1-5 與 說明 設為自動寬度，並避免文字過度換行 */
+      #heroes-table th:nth-child(4),
+      #heroes-table th:nth-child(5),
+      #heroes-table th:nth-child(6),
+      #heroes-table th:nth-child(7),
+      #heroes-table th:nth-child(8) {
+        width: auto !important;
+        white-space: nowrap;
+      }
+      
+      /* 說明欄位可以自動換行 */
+      #heroes-table th:nth-child(9) {
+        width: auto !important;
+        min-width: 200px;
+      }
+    </style>
   </head>
   <body>
     <div id="nav-container"></div>
