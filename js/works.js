@@ -318,37 +318,37 @@ document.addEventListener("DOMContentLoaded", async () => {
         
         if (res.items.length > 0) {
           hasAny = true;
-          // 去重處理
-          const seen = new Set();
-          const uniqueItems = res.items.filter(i => {
-            const k = `${i.item}-${i.lv}`;
-            if (seen.has(k)) return false;
-            seen.add(k);
-            return true;
+          // 按等級分組
+          const groups = {};
+          res.items.forEach(i => {
+            const lv = i.lv || '未知';
+            if (!groups[lv]) groups[lv] = new Set();
+            groups[lv].add(i.item);
           });
 
-          html += `
-            <table class="modal-table">
-              <thead>
-                <tr>
-                  <th style="text-align: left;">名稱</th>
-                  <th style="width: 80px; text-align: center;">等級</th>
-                </tr>
-              </thead>
-              <tbody>
-                ${uniqueItems.map(i => `
-                  <tr>
-                    <td>
-                      <a href="${res.link}?search=${encodeURIComponent(i.item)}" class="modal-link">
-                        ${i.item}
-                      </a>
-                    </td>
-                    <td style="text-align: center;">${i.lv || '-'}</td>
-                  </tr>
-                `).join('')}
-              </tbody>
-            </table>
-          `;
+          // 排序等級（由小到大）
+          const sortedLvs = Object.keys(groups).sort((a, b) => {
+            const numA = parseInt(a) || 0;
+            const numB = parseInt(b) || 0;
+            return numA - numB;
+          });
+
+          html += `<div class="production-grouped-list">`;
+          sortedLvs.forEach(lv => {
+            const itemsHtml = Array.from(groups[lv]).map(itemName => `
+              <a href="${res.link}?search=${encodeURIComponent(itemName)}" class="hero-link">
+                ${itemName}
+              </a>
+            `).join('、');
+            
+            html += `
+              <div style="margin-bottom: 12px; display: flex; align-items: baseline; gap: 10px;">
+                <span style="color: var(--highlight-yellow); font-weight: bold; min-width: 50px; font-size: 14px;">[Lv.${lv}]</span>
+                <div style="line-height: 1.8;">${itemsHtml}</div>
+              </div>
+            `;
+          });
+          html += `</div>`;
         } else {
           html += `<p class="no-data">目前無相關製作資料</p>`;
         }
