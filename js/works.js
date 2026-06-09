@@ -6,8 +6,8 @@ const supabase = createClient(SUPABASE_URL, SUPABASE_KEY)
 document.addEventListener("DOMContentLoaded", async () => {
   let heroesData = [];
   let lastFilteredData = [];
-  let searchTimer = null; // ✅ 防抖動用變數
-  let activeFilter = null; // ✅ 記錄目前的篩選條件
+  let searchTimer = null; 
+  let activeFilter = null; 
 
   const heroesTable = document.getElementById('heroes-table');
   const cardContainer = document.getElementById('hero-card-container');
@@ -81,7 +81,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     const keyword = searchInput ? searchInput.value.trim().toLowerCase() : "";
 
     const filtered = heroesData.filter(hero => {
-      // 🔹 搜尋條件
       const targetFields = [
         hero.type,
         hero.name,
@@ -90,7 +89,6 @@ document.addEventListener("DOMContentLoaded", async () => {
       ].join(' ').toLowerCase();
       const matchesKeyword = targetFields.includes(keyword);
 
-      // 🔹 篩選條件
       const matchesFilter = !activeFilter || (
         activeFilter.type === "promotion" && hero.type === activeFilter.value
       );
@@ -136,7 +134,6 @@ document.addEventListener("DOMContentLoaded", async () => {
       tr.style.cursor = 'pointer';
       tr.addEventListener('click', () => showProductionModal(hero));
 
-      // === 圖片 ===
       const imgTd = document.createElement('td');
       imgTd.style.width = '50px';
       imgTd.style.height = '50px';
@@ -221,16 +218,13 @@ document.addEventListener("DOMContentLoaded", async () => {
         return String(text).replace(regex, '<span class="highlight">$1</span>');
       };
 
-      // ... (rest of card code)
-
-      // 卡片標題區域 (含圖示)
       const cardHeader = document.createElement('div');
       cardHeader.style.display = 'flex';
       cardHeader.style.alignItems = 'center';
       cardHeader.style.gap = '10px';
       cardHeader.style.marginBottom = '10px';
       cardHeader.style.paddingBottom = '8px';
-      cardHeader.style.borderBottom = '1px solid #eee'; // 新增分隔線
+      cardHeader.style.borderBottom = '1px solid #eee'; 
 
       const img = document.createElement('img');
       const safeName = hero.name ? hero.name.replace(/[\\\/:*?"<>|]/g, '') : '';
@@ -299,7 +293,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     openModal();
 
     try {
-      // 同時檢索三個表，材料欄位 material1 ~ material11 包含該工作名稱
       const tableConfigs = [
         { name: 'weapons', label: '⚔️ 武器' },
         { name: 'equipment', label: '🛡️ 防具' },
@@ -307,7 +300,6 @@ document.addEventListener("DOMContentLoaded", async () => {
       ];
 
       const results = await Promise.all(tableConfigs.map(async (cfg) => {
-        // 使用 ilike 並加上 % 萬用字元，以匹配包含數量的字串（例如 "銅石" 匹配 "銅石5"）
         const orFilter = Array.from({length: 11}, (_, i) => `material${i+1}.ilike.%${work.name}%`).join(',');
         const { data, error } = await supabase
           .from(cfg.name)
@@ -327,7 +319,8 @@ document.addEventListener("DOMContentLoaded", async () => {
         
         if (res.items.length > 0) {
           hasAny = true;
-          html += res.items.map(i => `<div class="production-item">${i.item}</div>`).join('');
+          const uniqueItems = [...new Set(res.items.map(i => i.item))];
+          html += uniqueItems.map(item => `<div class="production-item">${item}</div>`).join('');
         } else {
           html += `<p class="no-data">目前無相關製作資料</p>`;
         }
@@ -368,7 +361,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
   });
 
-  // === Accordion 展開／收合 ===
   document.querySelectorAll('.accordion-header').forEach(header => {
     header.addEventListener('click', () => {
       const accordion = header.parentElement;
