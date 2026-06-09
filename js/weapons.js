@@ -37,6 +37,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const tableContainer = document.getElementById('heroes-table');
   const cardContainer = document.getElementById('hero-card-container');
 
+  const searchInput = document.getElementById('searchInput');
+
   // === 從 Supabase 載入資料 ===
   async function loadData() {
     const { data, error } = await supabase
@@ -52,7 +54,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     heroesData = data || [];
-    applyFilters();
+    handleUrlSearch(); // 載入資料後，先檢查 URL 參數
+    applyFilters();    // 再執行過濾
   }
 
   loadData();
@@ -63,12 +66,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const searchKey = urlParams.get('search');
     if (searchKey && searchInput) {
       searchInput.value = searchKey;
-      // 等待資料載入後會自動觸發 applyFilters，但這裡保險起見在資料載入後再處理
     }
   }
-  handleUrlSearch();
-
-  const searchInput = document.getElementById('searchInput');
 
   if (searchInput) {
     searchInput.addEventListener('input', () => {

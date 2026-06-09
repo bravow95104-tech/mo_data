@@ -20,6 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const closeModalBtn = document.querySelector('.close-btn');
   const tableContainer = document.getElementById('heroes-table');
   const cardContainer = document.getElementById('hero-card-container');
+  const searchInput = document.getElementById('searchInput');
 
   // === 響應式判斷 ===
   const isBelow768 = () => window.innerWidth <= 768;
@@ -52,7 +53,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     heroesData = data || [];
-    applyFilters();
+    handleUrlSearch(); // 載入資料後，先檢查 URL 參數
+    applyFilters();    // 再執行過濾
   }
 
   loadData();
@@ -65,9 +67,6 @@ document.addEventListener("DOMContentLoaded", () => {
       searchInput.value = searchKey;
     }
   }
-  handleUrlSearch();
-
-  const searchInput = document.getElementById('searchInput');
   if (searchInput) {
     searchInput.addEventListener('input', () => {
       clearTimeout(searchTimer);

@@ -51,8 +51,9 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     // 確保只顯示類別為「飾品」的資料
     heroesData = (data || []).filter(item => item.class && String(item.class).trim() === "飾品");
-    applyFilters();
-    handleUrlSearch();
+    
+    handleUrlSearch(); // 載入資料後，先檢查 URL 參數
+    applyFilters();    // 再執行過濾
   } catch (error) {
     console.error('載入飾品資料錯誤:', error);
     const tbody = document.querySelector('#heroes-table tbody');
