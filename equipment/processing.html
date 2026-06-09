@@ -9,12 +9,26 @@
     <link rel="stylesheet" href="/mo_data/css/nav.css" />
     <link rel="stylesheet" href="/mo_data/css/heromeal.css" />
     <link rel="stylesheet" href="/mo_data/css/table-rwd.css" />
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+    </style>
   </head>
   <body>
     <div id="nav-container"></div>
 
+    <!-- 快速連結按鈕 -->
+    <div class="quick-links">
+      <a href="#basic-weapon" class="quick-link-btn">基礎武器</a>
+      <a href="#basic-armor" class="quick-link-btn">基礎裝備</a>
+      <a href="#advanced-weapon" class="quick-link-btn">進階武器</a>
+      <a href="#advanced-armor" class="quick-link-btn">進階裝備</a>
+      <a href="#accessory-processing" class="quick-link-btn">飾品加工</a>
+    </div>
+
     <!-- 基礎職業武器加工 -->
-    <div class="card-table-container card-ui open">
+    <div id="basic-weapon" class="card-table-container card-ui open">
       <div class="card-header">
         <span class="card-title">基礎職業 - 武器加工</span>
         <button class="card-toggle" aria-label="收合/展開">
@@ -43,7 +57,7 @@
     </div>
 
     <!-- 基礎職業裝備加工 -->
-    <div class="card-table-container card-ui open">
+    <div id="basic-armor" class="card-table-container card-ui open">
       <div class="card-header">
         <span class="card-title">基礎職業 - 裝備加工</span>
         <button class="card-toggle" aria-label="收合/展開">
@@ -75,7 +89,7 @@
     </div>
 
     <!-- 進階職業武器加工 -->
-    <div class="card-table-container card-ui open">
+    <div id="advanced-weapon" class="card-table-container card-ui open">
       <div class="card-header">
         <span class="card-title">進階職業 - 武器加工</span>
         <button class="card-toggle" aria-label="收合/展開">
@@ -108,7 +122,7 @@
     </div>
 
     <!-- 進階職業裝備加工 -->
-    <div class="card-table-container card-ui open">
+    <div id="advanced-armor" class="card-table-container card-ui open">
       <div class="card-header">
         <span class="card-title">進階職業 - 裝備加工</span>
         <button class="card-toggle" aria-label="收合/展開">
@@ -140,7 +154,7 @@
     </div>
 
     <!-- 飾品加工 -->
-    <div class="card-table-container card-ui open">
+    <div id="accessory-processing" class="card-table-container card-ui open">
       <div class="card-header">
         <span class="card-title">飾品加工</span>
         <button class="card-toggle" aria-label="收合/展開">

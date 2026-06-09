@@ -9,13 +9,24 @@
     <link rel="stylesheet" href="/mo_data/css/nav.css" />
     <link rel="stylesheet" href="/mo_data/css/heromeal.css" />
     <link rel="stylesheet" href="/mo_data/css/table-rwd.css" />
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+    </style>
   </head>
   <body>
     <div id="nav-container"></div>
     <!-- 這是導航列會被載入的位置 -->
 
+    <!-- 快速連結按鈕 -->
+    <div class="quick-links">
+      <a href="#recipe-lv1" class="quick-link-btn">配方 Lv1</a>
+      <a href="#recipe-lv2" class="quick-link-btn">配方 Lv2</a>
+    </div>
+
     <!-- 配方Lv1 -->
-    <div class="card-table-container card-ui open">
+    <div id="recipe-lv1" class="card-table-container card-ui open">
       <div class="card-header">
         <span class="card-title">配方Lv1</span>
         <button class="card-toggle" aria-label="收合/展開">
@@ -109,7 +120,7 @@
       </div>
     </div>
 <!-- 配方Lv2 -->
-    <div class="card-table-container card-ui open">
+    <div id="recipe-lv2" class="card-table-container card-ui open">
       <div class="card-header">
         <span class="card-title">配方Lv2</span>
         <button class="card-toggle" aria-label="收合/展開">

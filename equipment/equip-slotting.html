@@ -9,13 +9,24 @@
     <link rel="stylesheet" href="/mo_data/css/nav.css" />
     <link rel="stylesheet" href="/mo_data/css/heromeal.css" />
     <link rel="stylesheet" href="/mo_data/css/table-rwd.css" />
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+    </style>
   </head>
   <body>
     <div id="nav-container"></div>
     <!-- 這是導航列會被載入的位置 -->
 
+    <!-- 快速連結按鈕 -->
+    <div class="quick-links">
+      <a href="#slotting-cost" class="quick-link-btn">打洞費用</a>
+      <a href="#max-slots" class="quick-link-btn">最大洞數</a>
+    </div>
+
     <!-- 基礎職業武器加工 -->
-    <div class="card-table-container card-ui open">
+    <div id="slotting-cost" class="card-table-container card-ui open">
       <div class="card-header">
         <span class="card-title">打洞費用</span>
         <button class="card-toggle" aria-label="收合/展開">
@@ -73,7 +84,7 @@
     </div>
 
     <!-- 打洞可能出現的最大洞數 -->
-    <div class="card-table-container card-ui open">
+    <div id="max-slots" class="card-table-container card-ui open">
       <div class="card-header">
         <span class="card-title">打洞可能出現的最大洞數</span>
         <button class="card-toggle" aria-label="收合/展開">
