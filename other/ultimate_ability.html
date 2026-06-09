@@ -9,13 +9,27 @@
     <link rel="stylesheet" href="/mo_data/css/nav.css" />
     <link rel="stylesheet" href="/mo_data/css/heromeal.css" />
     <link rel="stylesheet" href="/mo_data/css/table-rwd.css" />
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+    </style>
   </head>
   <body>
     <div id="nav-container"></div>
     <!-- 這是導航列會被載入的位置 -->
 
+    <!-- 快速連結按鈕 -->
+    <div class="quick-links">
+      <a href="#ultimate-lv" class="quick-link-btn">極限等級</a>
+      <a href="#attr-point" class="quick-link-btn">屬性點</a>
+      <a href="#skill-point" class="quick-link-btn">技能點</a>
+      <a href="#max-lv-limit" class="quick-link-btn">等級上限</a>
+      <a href="#ability-attr" class="quick-link-btn">能力屬性</a>
+    </div>
+
     <!-- 極限等級 -->
-    <div class="card-table-container card-ui open">
+    <div id="ultimate-lv" class="card-table-container card-ui open">
       <div class="card-header">
         <span class="card-title">極限等級</span>
         <button class="card-toggle" aria-label="收合/展開">
@@ -88,7 +102,7 @@
     </div>
 
     <!-- 屬性點 -->
-    <div class="card-table-container card-ui open">
+    <div id="attr-point" class="card-table-container card-ui open">
       <div class="card-header">
         <span class="card-title">屬性點(每一次極限等級提升可換一次)</span>
         <button class="card-toggle" aria-label="收合/展開">
@@ -161,7 +175,7 @@
     </div>
 
         <!-- 技能點 -->
-    <div class="card-table-container card-ui open">
+    <div id="skill-point" class="card-table-container card-ui open">
       <div class="card-header">
         <span class="card-title">技能點</span>
         <button class="card-toggle" aria-label="收合/展開">
@@ -203,7 +217,7 @@
     </div>
 
             <!-- 極限能力 -->
-    <div class="card-table-container card-ui open">
+    <div id="max-lv-limit" class="card-table-container card-ui open">
       <div class="card-header">
         <span class="card-title">極限能力等級上限</span>
         <button class="card-toggle" aria-label="收合/展開">
@@ -245,7 +259,7 @@
     </div>
 
             <!-- 極限能力屬性 -->
-    <div class="card-table-container card-ui open">
+    <div id="ability-attr" class="card-table-container card-ui open">
       <div class="card-header">
         <span class="card-title">極限能力屬性</span>
         <button class="card-toggle" aria-label="收合/展開">

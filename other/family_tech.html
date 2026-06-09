@@ -9,12 +9,26 @@
     <link rel="stylesheet" href="/mo_data/css/nav.css" />
     <link rel="stylesheet" href="/mo_data/css/heromeal.css" />
     <link rel="stylesheet" href="/mo_data/css/table-rwd.css" />
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+    </style>
   </head>
   <body>
     <div id="nav-container"></div>
 
+    <!-- 快速連結按鈕 -->
+    <div class="quick-links">
+      <a href="#family-travel" class="quick-link-btn">家族旅行需求</a>
+      <a href="#travel-location" class="quick-link-btn">家族旅行地點</a>
+      <a href="#extra-challenge" class="quick-link-btn">附加挑戰</a>
+      <a href="#golden-hunt" class="quick-link-btn">黃金狩獵</a>
+      <a href="#family-buff" class="quick-link-btn">家族增益</a>
+    </div>
+
     <!-- 家族旅行 -->
-    <div class="card-table-container card-ui open">
+    <div id="family-travel" class="card-table-container card-ui open">
       <div class="card-header">
         <span class="card-title">家族旅行需求</span>
         <button class="card-toggle" aria-label="收合/展開">
@@ -44,7 +58,7 @@
     </div>
 
     <!-- 家族旅行地點 -->
-    <div class="card-table-container card-ui open">
+    <div id="travel-location" class="card-table-container card-ui open">
       <div class="card-header">
         <span class="card-title">家族旅行地點</span>
         <button class="card-toggle" aria-label="收合/展開">
@@ -91,7 +105,7 @@
     </div>
 
     <!-- 附加挑戰 -->
-    <div class="card-table-container card-ui open">
+    <div id="extra-challenge" class="card-table-container card-ui open">
       <div class="card-header">
         <span class="card-title">附加挑戰 </span>
         <button class="card-toggle" aria-label="收合/展開">
@@ -124,7 +138,7 @@
     </div>
 
     <!-- 黃金狩獵 -->
-    <div class="card-table-container card-ui open">
+    <div id="golden-hunt" class="card-table-container card-ui open">
       <div class="card-header">
         <span class="card-title">黃金狩獵</span>
         <button class="card-toggle" aria-label="收合/展開">
@@ -158,7 +172,7 @@
     </div>
 
     <!-- 經驗/歷練/冒險 (統一模式) -->
-    <div class="card-table-container card-ui open">
+    <div id="family-buff" class="card-table-container card-ui open">
       <div class="card-header">
         <span class="card-title">家族增益 (經驗/歷練/冒險)</span>
         <button class="card-toggle" aria-label="收合/展開">

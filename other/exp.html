@@ -9,11 +9,22 @@
     <link rel="stylesheet" href="/mo_data/css/nav.css" />
     <link rel="stylesheet" href="/mo_data/css/heromeal.css" />
     <link rel="stylesheet" href="/mo_data/css/table-rwd.css" />
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+    </style>
   </head>
   <body>
     <div id="nav-container"></div>
 
-    <div class="card-table-container card-ui open">
+    <!-- 快速連結按鈕 -->
+    <div class="quick-links">
+      <a href="#char-hero-exp" class="quick-link-btn">角色英雄經驗</a>
+      <a href="#hero-ascend-exp" class="quick-link-btn">英雄升變經驗</a>
+    </div>
+
+    <div id="char-hero-exp" class="card-table-container card-ui open">
       <div class="card-header">
         <span class="card-title">角色英雄-升級經驗</span>
         <button class="card-toggle" aria-label="收合/展開">
@@ -128,13 +139,13 @@
             <tr><td>97</td><td>30177723</td></tr>
             <tr><td>98</td><td>31528057</td></tr>
             <tr><td>99</td><td>32907459</td></tr>
-            <tr><td>100</td><td>快去轉生或者410</td></tr>
+            <tr><td data-label="等級">100</td><td data-label="經驗">快去轉生或者410</td></tr>
           </tbody>
         </table>
       </div>
     </div>
 
-    <div class="card-table-container card-ui open">
+    <div id="hero-ascend-exp" class="card-table-container card-ui open">
       <div class="card-header">
         <span class="card-title">英雄升變-升級經驗</span>
         <button class="card-toggle" aria-label="收合/展開">
@@ -248,6 +259,7 @@
     <div id="footer-container"></div>
     <script src="/mo_data/js/componentsLoader.js"></script>
     <script>
+      // 卡片收合動畫
       document.querySelectorAll(".card-toggle").forEach(function (btn) {
         btn.addEventListener("click", function (e) {
           e.preventDefault();
@@ -272,8 +284,13 @@
           }
         });
       });
+
+      // 🚀 初始化預設展開的卡片
+      document.querySelectorAll(".card-ui.open .card-content").forEach(function (content) {
+        content.style.maxHeight = "none";
+        content.style.overflow = "visible";
+      });
     </script>
     <button id="backToTop" title="回到頂部">▲</button>
-    <script src="/mo_data/js/hero-meal.js"></script>
   </body>
 </html>
