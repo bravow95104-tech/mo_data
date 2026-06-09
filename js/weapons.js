@@ -112,7 +112,13 @@ document.addEventListener("DOMContentLoaded", () => {
   function applyFilters() {
     const keyword = searchInput ? searchInput.value.trim().toLowerCase() : "";
     const filtered = heroesData.filter(item => {
-      const matchesSearch = [item.item, item.illustrate]
+      const materialFields = [
+        item.material1, item.material2, item.material3, item.material4,
+        item.material5, item.material6, item.material7, item.material8,
+        item.material9, item.material10, item.material11
+      ];
+
+      const matchesSearch = [item.item, item.illustrate, ...materialFields]
         .some(field => String(field || "").toLowerCase().includes(keyword));
 
       const matchPromotion = activeFilters.promotion ? item.sort === activeFilters.promotion : true;
