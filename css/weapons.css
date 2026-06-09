@@ -425,3 +425,87 @@ tbody tr:hover td {
     max-width: none;
   }
 }
+
+/* --- 製作清單彈窗相關樣式 (用於 works.html) --- */
+.production-category {
+  margin-top: 20px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 15px;
+}
+
+.production-category h3 {
+  color: var(--primary-blue);
+  border-bottom: 1px solid var(--glass-border);
+  padding-bottom: 8px;
+  margin-bottom: 12px;
+  font-size: 1.1rem;
+}
+
+.no-data {
+  color: var(--text-muted);
+  font-size: 14px;
+  font-style: italic;
+}
+
+.modal-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 5px;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.modal-table th, .modal-table td {
+  padding: 10px 15px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.modal-table th {
+  background: rgba(77, 163, 255, 0.1);
+  color: var(--highlight-yellow);
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.modal-table tr:last-child td {
+  border-bottom: none;
+}
+
+.modal-table tr:hover td {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.modal-link {
+  color: var(--primary-blue);
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.2s;
+}
+
+.modal-link:hover {
+  color: var(--highlight-yellow);
+  text-decoration: underline;
+}
+
+/* 英雄/裝備連結樣式 (複用 map.js 風格) */
+.hero-link {
+  color: var(--primary-blue);
+  text-decoration: none;
+  border-bottom: 1px dashed var(--primary-blue);
+  transition: all 0.2s ease;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.hero-link:hover {
+  color: var(--highlight-yellow);
+  border-bottom: 1px solid var(--highlight-yellow);
+  transform: translateY(-1px);
+}
+
+.production-grouped-list {
+  padding: 10px 5px;
+}
