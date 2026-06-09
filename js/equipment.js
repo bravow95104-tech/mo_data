@@ -57,6 +57,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
   loadData();
 
+  // === 處理 URL 搜尋參數 ===
+  function handleUrlSearch() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const searchKey = urlParams.get('search');
+    if (searchKey && searchInput) {
+      searchInput.value = searchKey;
+    }
+  }
+  handleUrlSearch();
+
   const searchInput = document.getElementById('searchInput');
   if (searchInput) {
     searchInput.addEventListener('input', () => {

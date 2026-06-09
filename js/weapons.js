@@ -57,6 +57,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
   loadData();
 
+  // === 處理 URL 搜尋參數 ===
+  function handleUrlSearch() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const searchKey = urlParams.get('search');
+    if (searchKey && searchInput) {
+      searchInput.value = searchKey;
+      // 等待資料載入後會自動觸發 applyFilters，但這裡保險起見在資料載入後再處理
+    }
+  }
+  handleUrlSearch();
+
   const searchInput = document.getElementById('searchInput');
 
   if (searchInput) {

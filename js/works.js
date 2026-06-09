@@ -294,19 +294,19 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     try {
       const tableConfigs = [
-        { name: 'weapons', label: '⚔️ 武器' },
-        { name: 'equipment', label: '🛡️ 防具' },
-        { name: 'accessories', label: '📿 飾品' }
+        { name: 'weapons', label: '⚔️ 武器', link: 'weapons.html' },
+        { name: 'equipment', label: '🛡️ 防具', link: 'equipment.html' },
+        { name: 'accessories', label: '📿 飾品', link: 'accessories.html' }
       ];
 
       const results = await Promise.all(tableConfigs.map(async (cfg) => {
         const orFilter = Array.from({length: 11}, (_, i) => `material${i+1}.ilike.%${work.name}%`).join(',');
         const { data, error } = await supabase
           .from(cfg.name)
-          .select('item')
+          .select('item, lv')
           .or(orFilter);
         
-        return { label: cfg.label, items: data || [] };
+        return { label: cfg.label, link: cfg.link, items: data || [] };
       }));
 
       let html = `<h2 style="color: var(--primary-blue); border-bottom: 2px solid var(--primary-blue); padding-bottom: 10px; margin-bottom: 20px;">${work.name} - 製作清單</h2>`;
@@ -314,18 +314,46 @@ document.addEventListener("DOMContentLoaded", async () => {
       let hasAny = false;
       results.forEach(res => {
         html += `<div class="production-category">
-          <h3>${res.label}</h3>
-          <div class="production-list">`;
+          <h3>${res.label}</h3>`;
         
         if (res.items.length > 0) {
           hasAny = true;
-          const uniqueItems = [...new Set(res.items.map(i => i.item))];
-          html += uniqueItems.map(item => `<div class="production-item">${item}</div>`).join('');
+          // 去重處理
+          const seen = new Set();
+          const uniqueItems = res.items.filter(i => {
+            const k = `${i.item}-${i.lv}`;
+            if (seen.has(k)) return false;
+            seen.add(k);
+            return true;
+          });
+
+          html += `
+            <table class="modal-table">
+              <thead>
+                <tr>
+                  <th style="text-align: left;">名稱</th>
+                  <th style="width: 80px; text-align: center;">等級</th>
+                </tr>
+              </thead>
+              <tbody>
+                ${uniqueItems.map(i => `
+                  <tr>
+                    <td>
+                      <a href="${res.link}?search=${encodeURIComponent(i.item)}" class="modal-link">
+                        ${i.item}
+                      </a>
+                    </td>
+                    <td style="text-align: center;">${i.lv || '-'}</td>
+                  </tr>
+                `).join('')}
+              </tbody>
+            </table>
+          `;
         } else {
           html += `<p class="no-data">目前無相關製作資料</p>`;
         }
         
-        html += `</div></div>`;
+        html += `</div>`;
       });
 
       if (!hasAny) {
