@@ -307,9 +307,8 @@ document.addEventListener("DOMContentLoaded", async () => {
       ];
 
       const results = await Promise.all(tableConfigs.map(async (cfg) => {
-        // 因為 Supabase 的 or 查詢較為複雜，這裡簡單化：抓取所有資料後在前端過濾，
-        // 或者使用多個 or 條件。考慮到效能，我們用 or 條件。
-        const orFilter = Array.from({length: 11}, (_, i) => `material${i+1}.eq."${work.name}"`).join(',');
+        // 使用 ilike 並加上 % 萬用字元，以匹配包含數量的字串（例如 "銅石" 匹配 "銅石5"）
+        const orFilter = Array.from({length: 11}, (_, i) => `material${i+1}.ilike.%${work.name}%`).join(',');
         const { data, error } = await supabase
           .from(cfg.name)
           .select('item')
