@@ -145,7 +145,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
       if (hero.item) {
         const img = document.createElement('img');
-        const basePath = `../pic/medicine/${hero.item}`;
+        const basePath = `/mo_data/pic/medicine/${hero.item}`;
         const extensions = ['.png', '.jpg', '.bmp'];
         let attempt = 0;
 
@@ -300,8 +300,8 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     modalContent.innerHTML = `
       <h2 class="hero-name">${getVal(hero.item)}</h2>
-      <div class="hero-column-details" style="padding: 20px; background:#f9f9f9; border-radius:8px;">
-        <h3 style="margin-top:0; color:#3399ff; border-bottom:1px solid rgba(255,255,255,0.1); padding-bottom:8px;">所需材料 (個 / 組)</h3>
+      <div class="hero-column-details" style="padding: 20px; border-radius:8px;">
+        <h3 class="modal-sub-title">所需材料 (個 / 組)</h3>
         <div style="font-size: 16px; line-height: 2;">
           ${materialsHTML || '<p>無材料需求</p>'}
         </div>
