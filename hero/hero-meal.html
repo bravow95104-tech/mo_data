@@ -9,13 +9,28 @@
     <link rel="stylesheet" href="/mo_data/css/nav.css" />
     <link rel="stylesheet" href="/mo_data/css/heromeal.css" />
     <link rel="stylesheet" href="/mo_data/css/table-rwd.css" />
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+    </style>
   </head>
   <body>
     <div id="nav-container"></div>
     <!-- 這是導航列會被載入的位置 -->
 
+    <!-- 快速連結按鈕 -->
+    <div class="quick-links">
+      <a href="#promotion-materials" class="quick-link-btn">拜官材料</a>
+      <a href="#meal-1020" class="quick-link-btn">1020卡</a>
+      <a href="#meal-950" class="quick-link-btn">950卡</a>
+      <a href="#meal-870" class="quick-link-btn">870卡</a>
+      <a href="#meal-770" class="quick-link-btn">770卡</a>
+      <a href="#meal-750" class="quick-link-btn">750卡</a>
+    </div>
+
     <!-- 英雄拜官料理表格 -->
-    <div class="card-table-container card-ui open">
+    <div id="promotion-materials" class="card-table-container card-ui open">
       <div class="card-header">
         <span class="card-title">英雄料理拜官材料</span>
         <button class="card-toggle" aria-label="收合/展開">
@@ -74,7 +89,7 @@
       </div>
     </div>
     <!-- 1020卡/950卡 數值表 -->
-    <div class="card-table-container card-ui open">
+    <div id="meal-1020" class="card-table-container card-ui open">
       <div class="card-header">
         <span class="card-title">1020卡(佛跳牆)</span>
         <button class="card-toggle" aria-label="收合/展開">
@@ -130,7 +145,7 @@
       </div>
     </div>
 
-    <div class="card-table-container card-ui open">
+    <div id="meal-950" class="card-table-container card-ui open">
       <div class="card-header">
         <span class="card-title">950卡(烏龍麵)</span>
         <button class="card-toggle" aria-label="收合/展開">
@@ -205,7 +220,7 @@
       </div>
     </div>
     <!-- 870卡 / 870卡(1蝦) 數值表 -->
-    <div class="card-table-container card-ui open">
+    <div id="meal-870" class="card-table-container card-ui open">
       <div class="card-header">
         <span class="card-title">870卡(什錦湯)</span>
         <button class="card-toggle" aria-label="收合/展開">
@@ -280,7 +295,7 @@
       </div>
     </div>
     <!-- 770卡 / 770卡(2蝦) 數值表 -->
-    <div class="card-table-container card-ui open">
+    <div id="meal-770" class="card-table-container card-ui open">
       <div class="card-header">
         <span class="card-title">770卡(茶碗蒸)</span>
         <button class="card-toggle" aria-label="收合/展開">
@@ -355,7 +370,7 @@
       </div>
     </div>
     <!-- 750卡 / 750卡(3蝦) 數值表 -->
-    <div class="card-table-container card-ui open">
+    <div id="meal-750" class="card-table-container card-ui open">
       <div class="card-header">
         <span class="card-title">750卡(陽春麵)</span>
         <button class="card-toggle" aria-label="收合/展開">
