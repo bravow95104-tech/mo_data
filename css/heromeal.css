@@ -89,6 +89,57 @@ h1 {
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
   overflow: hidden;
   transition: transform 0.3s ease;
+  scroll-margin-top: 100px; /* 避免跳轉時被導航列擋住 */
+}
+
+/* --- 快速連結按鈕 --- */
+.quick-links {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin: 30px auto 10px auto;
+  flex-wrap: wrap;
+  max-width: 900px;
+  padding: 0 20px;
+}
+
+.quick-link-btn {
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+  color: var(--text-main);
+  padding: 10px 20px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.quick-link-btn:hover {
+  background: var(--primary-blue);
+  border-color: var(--primary-blue);
+  color: white !important;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(77, 163, 255, 0.3);
+}
+
+@media (max-width: 768px) {
+  .quick-links {
+    gap: 8px;
+    margin: 20px auto 0 auto;
+  }
+  .quick-link-btn {
+    padding: 8px 14px;
+    font-size: 13px;
+    flex: 1 1 calc(50% - 10px); /* 手機版兩兩一排 */
+    min-width: 120px;
+  }
 }
 
 /* --- 表格核心樣式 (桌機版) --- */
