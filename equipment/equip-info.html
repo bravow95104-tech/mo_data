@@ -9,13 +9,25 @@
     <link rel="stylesheet" href="/mo_data/css/nav.css" />
     <link rel="stylesheet" href="/mo_data/css/heromeal.css" />
     <link rel="stylesheet" href="/mo_data/css/table-rwd.css" />
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+    </style>
   </head>
   <body>
     <div id="nav-container"></div>
     <!-- 這是導航列會被載入的位置 -->
 
+    <!-- 快速連結按鈕 -->
+    <div class="quick-links">
+      <a href="#buy-location" class="quick-link-btn">裝備購買地點</a>
+      <a href="#weapon-prefix" class="quick-link-btn">武器字首</a>
+      <a href="#armor-prefix" class="quick-link-btn">防具字首</a>
+    </div>
+
     <!-- 裝備購買地點 -->
-    <div class="card-table-container card-ui open">
+    <div id="buy-location" class="card-table-container card-ui open">
       <div class="card-header">
         <span class="card-title">裝備購買地點</span>
         <button class="card-toggle" aria-label="收合/展開">
@@ -69,7 +81,7 @@
     </div>
 
     <!-- 武器字首 -->
-    <div class="card-table-container card-ui open">
+    <div id="weapon-prefix" class="card-table-container card-ui open">
       <div class="card-header">
         <span class="card-title">武器字首</span>
         <button class="card-toggle" aria-label="收合/展開">
@@ -146,7 +158,7 @@
       </div>
     </div>
 <!-- 防具字首 -->
-    <div class="card-table-container card-ui open">
+    <div id="armor-prefix" class="card-table-container card-ui open">
       <div class="card-header">
         <span class="card-title">防具字首</span>
         <button class="card-toggle" aria-label="收合/展開">
