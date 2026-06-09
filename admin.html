@@ -277,7 +277,8 @@
         <div class="nav-item" data-page="detailed_map"><i class="fas fa-map-marked-alt"></i> 地圖資訊</div>
         
         <div class="nav-group">生產與道具</div>
-        <div class="nav-item" data-page="weapons"><i class="fa-solid fa-sword"></i> 武器</div>
+        <div class="nav-item" data-page="weapons"><i class="fa-solid fa-gavel"></i> 武器</div>
+
         <div class="nav-item" data-page="equipment"><i class="fas fa-shield-alt"></i> 防具</div>
         <div class="nav-item" data-page="accessories"><i class="fas fa-gem"></i> 飾品</div>
         <div class="nav-item" data-page="medicine"><i class="fas fa-flask"></i> 藥品</div>
@@ -371,6 +372,27 @@
     let currentTable = 'heroes';
     let allData = [];
 
+    let inactivityTimer;
+
+    // 重設閒置計時器
+    function resetInactivityTimer() {
+        clearTimeout(inactivityTimer);
+        inactivityTimer = setTimeout(async () => {
+            alert('您已閒置超過 10 分鐘，系統將自動登出以保護資料安全。');
+            await supabase.auth.signOut();
+            window.location.href = 'login.html';
+        }, 10 * 60 * 1000); // 10 分鐘
+    }
+
+    // 監聽使用者活動
+    function setupActivityListeners() {
+        const events = ['mousedown', 'mousemove', 'keypress', 'scroll', 'touchstart'];
+        events.forEach(name => {
+            document.addEventListener(name, resetInactivityTimer, true);
+        });
+        resetInactivityTimer(); // 初始啟動
+    }
+
     // 檢查登入狀態
     async function checkAuth() {
         const { data: { session } } = await supabase.auth.getSession();
@@ -382,6 +404,7 @@
             loadTableData();
             setupAuthListener();
             setupHeartbeat();
+            setupActivityListeners(); // 啟動閒置監控
         }
     }
 
