@@ -414,5 +414,27 @@ export const TABLE_CONFIGS = {
             { id: 'drop_combo_new', label: '新文片掉落', type: 'textarea', grid: 1, group: '文片掉落' }
         ]
     },
+    quests: {
+        title: '任務管理',
+        tableName: 'quests',
+        tableCols: ['任務ID', '地區', '限制', '塞選條件', '操作'],
+        displayFields: ['quest_id', 'area', 'restriction', 'star'],
+        fields: [
+            { id: 'quest_id', label: '任務ID (名稱)', type: 'text', required: true, grid: 1 },
+            { id: 'sort_id', label: '顯示順序', type: 'number', grid: 1 },
+            { id: 'area', label: '地區', type: 'text', grid: 1 },
+            { id: 'star', label: '塞選條件', type: 'text', grid: 1 },
+            { id: 'start', label: '開始 (NPC/地點)', type: 'text', grid: 2 },
+            { id: 'restriction', label: '限制條件', type: 'text', grid: 2 },
+            { id: 'award', label: '獎勵內容', type: 'textarea', grid: 3 },
+            { id: 'process', label: '任務流程', type: 'textarea', grid: 3 },
+            { id: 'process_exp', label: '經驗值', type: 'text', grid: 1, group: '獲得數值' },
+            { id: 'process_renown', label: '名聲', type: 'text', grid: 1, group: '獲得數值' },
+            { id: 'process_money', label: '金錢', type: 'text', grid: 1, group: '獲得數值' },
+            { id: 'process_item', label: '獲得道具', type: 'textarea', grid: 2, group: '獲得數值' },
+            { id: 'remark', label: '備註', type: 'textarea', grid: 3 },
+            { id: 'image', label: '圖片連結', type: 'text', grid: 3 }
+        ]
+    },
     // 未來可以在此處直接新增 equipment, items, maps 等配置
 };
