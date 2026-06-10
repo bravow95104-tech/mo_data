@@ -31,24 +31,27 @@ document.addEventListener("DOMContentLoaded", () => {
 
     loadQuests();
 
-    // 2. 監聽搜尋與篩選邏輯 (保持不變)
+    // 2. 監聽搜尋與篩選邏輯
     const searchInput = document.getElementById('searchInput');
     if (searchInput) {
         searchInput.addEventListener('input', () => {
-            // 加入簡單的防抖
             clearTimeout(window.searchTimer);
             window.searchTimer = setTimeout(applyFilters, 300);
         });
     }
 
+    // --- 摺疊選單邏輯 ---
+    document.querySelectorAll(".accordion-header").forEach((header) => {
+        header.addEventListener("click", () => {
+            header.parentElement.classList.toggle("collapsed");
+        });
+    });
+
+    // --- 篩選按鈕邏輯 (支援多選) ---
     document.querySelectorAll('.filter-btn').forEach(btn => {
         btn.addEventListener('click', () => {
-            if (btn.classList.contains('active')) {
-                btn.classList.remove('active');
-            } else {
-                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-            }
+            // 切換目前的按鈕狀態
+            btn.classList.toggle('active');
             applyFilters();
         });
     });
@@ -73,17 +76,23 @@ function formatContent(text) {
 }
 
 /**
- * ✅ 核心：搜尋過濾
+ * ✅ 核心：搜尋過濾 (支援多條件)
  */
 function applyFilters() {
     const searchInput = document.getElementById('searchInput');
     const keyword = searchInput ? searchInput.value.trim().toLowerCase() : "";
     
-    const activeBtn = document.querySelector('.filter-btn.active');
-    const activeType = activeBtn ? activeBtn.dataset.type : null;
-    const activeValue = activeBtn ? activeBtn.dataset.value : null;
+    // 取得所有啟用的篩選條件
+    const activeFilters = {};
+    document.querySelectorAll('.filter-btn.active').forEach(btn => {
+        const type = btn.dataset.type;
+        const val = btn.dataset.value;
+        if (!activeFilters[type]) activeFilters[type] = [];
+        activeFilters[type].push(val);
+    });
 
     const filtered = allQuestData.filter(task => {
+        // 1. 關鍵字搜尋
         const cleanId = (task.id || "").replace(/\^&|&\^/g, "");
         const cleanArea = (task.area || "").replace(/\^&|&\^/g, "");
         const cleanAward = (task.award || "").replace(/\^&|&\^/g, "");
@@ -95,12 +104,15 @@ function applyFilters() {
         const searchStr = [cleanId, cleanArea, cleanStart, cleanAward, cleanRestriction, cleanProcess, cleanRemark].join("|").toLowerCase();
         const matchKeyword = searchStr.includes(keyword);
 
+        // 2. 多條件篩選 (各群組內為 OR, 群組間為 AND)
         let matchButton = true;
-        if (activeType === 'process_renown') {
-            matchButton = String(task.process_renown || "") === activeValue;
-        } else if (activeType === 'star') {
-            // 這裡 task.star 可能是標籤或連續任務名稱
-            matchButton = String(task.star || "") === activeValue;
+        for (const type in activeFilters) {
+            const values = activeFilters[type];
+            const taskValue = String(task[type] || "");
+            if (!values.includes(taskValue)) {
+                matchButton = false;
+                break;
+            }
         }
 
         return matchKeyword && matchButton;
