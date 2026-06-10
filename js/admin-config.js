@@ -189,8 +189,8 @@ export const TABLE_CONFIGS = {
     accessories: {
         title: '飾品管理',
         tableName: 'accessories',
-        tableCols: ['名稱','部位', '等級', '說明', '操作'],
-        displayFields: ['item','sort', 'lv', 'illustrate'],
+        tableCols: ['名稱','部位', '等級', '說明','材料1', '操作'],
+        displayFields: ['item','sort', 'lv','material1', 'illustrate'],
         fields: [
             { id: 'item', label: '名稱', type: 'text', required: true, grid: 1 },
             { id: 'sort_id', label: '顯示順序', type: 'number', grid: 1 },
