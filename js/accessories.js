@@ -61,6 +61,15 @@ document.addEventListener("DOMContentLoaded", async () => {
     if (cardContainer) cardContainer.innerHTML = '<p style="text-align:center; color:red; padding:20px;">無法載入雲端資料</p>';
   }
 
+  // === 處理 URL 搜尋參數 ===
+  function handleUrlSearch() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const searchKey = urlParams.get('search');
+    if (searchKey && searchInput) {
+      searchInput.value = searchKey;
+    }
+  }
+
   if (searchInput) {
     searchInput.addEventListener('input', () => {
       clearTimeout(searchTimer);
@@ -217,6 +226,9 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
         tr.appendChild(td);
       });
+      // 點擊行顯示詳情
+      tr.style.cursor = 'pointer';
+      tr.addEventListener('click', () => showDetailModal(hero, hero.item));
       fragment.appendChild(tr);
     });
     tbody.appendChild(fragment);
@@ -307,12 +319,18 @@ document.addEventListener("DOMContentLoaded", async () => {
     cardContainer.appendChild(fragment);
   }
 
-  // === Modal 1: 完整資訊 (手機版點擊卡片) ===
+  // === Modal 1: 完整資訊 (手機版點擊卡片 或 電腦版點擊行) ===
   function showDetailModal(equip, titleName) {
     if (!modalContent) return;
 
+    // 製作材料 HTML
+    const materialsHTML = [1, 2, 3, 4, 5]
+      .map(num => (equip[`material${num}`] && String(equip[`material${num}`]).trim() !== "" && equip[`material${num}`] !== null) 
+        ? `<p><strong>材料 ${num}：</strong>${equip[`material${num}`]}</p>` : '')
+      .join('');
+
     const illustrateHTML = `
-      <div class="hero-column-accessories">
+      <div class="hero-column-base hero-column">
         <h3 class="modal-sub-title">完整說明</h3>
         <p style="font-size: 16px; line-height: 1.6;">
           ${getVal(equip.illustrate).replace(/\^&|&\^/g, "").replace(/\n/g, "<br>")}
@@ -321,9 +339,9 @@ document.addEventListener("DOMContentLoaded", async () => {
     `;
 
     const gainHTML = (equip.gain && String(equip.gain).trim() !== "")
-      ? `<div class="hero-column-accessories-details" style="margin-top:15px;">
+      ? `<div class="hero-column-base hero-column-details" style="grid-column: span 2; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 10px;">
            <h3 class="modal-sub-title">詳細效果</h3>
-           <p style="font-size: 16px; line-height: 1.8; margin: 0; padding: 5px 0;">
+           <p style="font-size: 16px; line-height: 1.8;">
              ${String(equip.gain).replace(/\n/g, "<br>")}
            </p>
          </div>`
@@ -331,9 +349,20 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     modalContent.innerHTML = `
       <h2 class="hero-name">${getVal(titleName)}</h2>
-      <div class="hero-details-container" style="max-width: 100%; justify-content: center; flex-direction:column;">
-           ${illustrateHTML}
-           ${gainHTML}
+      <div class="hero-details-container">
+        <div class="hero-column-base hero-column">
+          <h3 class="modal-sub-title">基礎數值</h3>
+          <p><strong>等級：</strong>${getVal(equip.lv)}</p>
+          <p><strong>防禦：</strong>${getVal(equip.property1)}</p>
+          <p><strong>閃避：</strong>${getVal(equip.property2)}</p>
+          <p><strong>耐用：</strong>${getVal(equip.durability)}</p>
+        </div>
+        <div class="hero-column-base hero-column">
+          <h3 class="modal-sub-title">製作材料</h3>
+          ${materialsHTML || '<p>暫無材料資訊</p>'}
+        </div>
+        ${illustrateHTML}
+        ${gainHTML}
       </div>
     `;
     openModal();
