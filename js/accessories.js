@@ -226,9 +226,11 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
         tr.appendChild(td);
       });
-      // 點擊行顯示詳情
-      tr.style.cursor = 'pointer';
-      tr.addEventListener('click', () => showDetailModal(hero, hero.item));
+      // 點擊行顯示詳情 (僅在有材料資訊時才可點開)
+      if (hero.material1 && String(hero.material1).trim() !== "" && hero.material1 !== null) {
+          tr.style.cursor = 'pointer';
+          tr.addEventListener('click', () => showDetailModal(hero, hero.item));
+      }
       fragment.appendChild(tr);
     });
     tbody.appendChild(fragment);
@@ -291,7 +293,9 @@ document.addEventListener("DOMContentLoaded", async () => {
       const isLongDesc = cleanIllustrate.length > 50;
       const hasGain = hero.gain && String(hero.gain).trim() !== "";
       const hasLinks = hero.illustrate && String(hero.illustrate).includes('^&');
-      const shouldBeClickable = hasGain || hasLinks || isLongDesc;
+      const hasMaterials = hero.material1 && String(hero.material1).trim() !== "" && hero.material1 !== null;
+      
+      const shouldBeClickable = hasMaterials; // 只有在有材料資訊時才可點開
 
       const cardBody = document.createElement('div');
       cardBody.className = 'card-body';
@@ -301,7 +305,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         <p><strong>閃避值：</strong>${getVal(hero.property2)}</p>
         <p><strong>耐用度：</strong>${getVal(hero.durability)}</p>
         <p><strong>說明：</strong>${highlight(cleanIllustrate.substring(0, 50))}${isLongDesc ? '...' : ''}</p>
-        ${shouldBeClickable ? '<p style="text-align:right; color:#3399ff; font-size:12px; margin-top:5px;">查看完整資訊 ▾</p>' : ''}
+        ${shouldBeClickable ? '<p style="text-align:right; color:#3399ff; font-size:12px; margin-top:5px;">查看製作配方 ▾</p>' : ''}
       `;
 
       card.appendChild(cardHeader);
