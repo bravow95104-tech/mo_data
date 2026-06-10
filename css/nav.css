@@ -268,7 +268,7 @@
   }
 
   .nav-menu > .nav-link.desktop-only {
-    display: none;
+    display: none !important;
   }
 
   .dropdown {
