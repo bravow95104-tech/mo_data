@@ -1,18 +1,45 @@
+import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm'
+import { SUPABASE_URL, SUPABASE_KEY } from './supabase-config.js'
+
+const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
 let allQuestData = [];
 
 document.addEventListener("DOMContentLoaded", () => {
-    // 1. 載入資料
-    fetch("/mo_data/data/quest.json")
-        .then(res => res.json())
-        .then(data => {
-            allQuestData = data;
-            renderQuests(allQuestData); // 初次渲染
-        })
-        .catch(err => console.error("❌ 載入失敗：", err));
+    // 1. 從 Supabase 載入資料
+    async function loadQuests() {
+        try {
+            const { data, error } = await supabase
+                .from('quests')
+                .select('*')
+                .order('sort_id', { ascending: true });
+
+            if (error) throw error;
+
+            // 將 quest_id 映射回 id 以保持與現有程式碼相容
+            allQuestData = data.map(item => ({
+                ...item,
+                id: item.quest_id 
+            }));
+
+            renderQuests(allQuestData);
+        } catch (err) {
+            console.error("❌ 載入失敗：", err);
+            const container = document.getElementById("starContainer");
+            if (container) container.innerHTML = "<div class='no-results'>無法載入任務資料，請稍後再試。</div>";
+        }
+    }
+
+    loadQuests();
 
     // 2. 監聽搜尋與篩選邏輯 (保持不變)
     const searchInput = document.getElementById('searchInput');
-    if (searchInput) searchInput.addEventListener('input', applyFilters);
+    if (searchInput) {
+        searchInput.addEventListener('input', () => {
+            // 加入簡單的防抖
+            clearTimeout(window.searchTimer);
+            window.searchTimer = setTimeout(applyFilters, 300);
+        });
+    }
 
     document.querySelectorAll('.filter-btn').forEach(btn => {
         btn.addEventListener('click', () => {
@@ -38,20 +65,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
 /**
  * ✅ 核心：文字處理函式
- * 功能：處理換行、並將 ^&關鍵字&^ 轉換為 <span class="quest-highlight">關鍵字</span>
  */
 function formatContent(text) {
     if (!text) return "-";
-    // 1. 先處理換行
     let formatted = text.replace(/\n/g, "<br>");
-    // 2. 正規表達式匹配 ^&...&^ 並替換
-    // Regex 解釋: \^& 匹配符號起始，(.*?) 抓取中間文字，&\^ 匹配符號結尾
     return formatted.replace(/\^&(.*?)&\^/g, '<span class="quest-highlight">$1</span>');
 }
 
 /**
  * ✅ 核心：搜尋過濾
- * 修正：搜尋時必須將 JSON 裡的 ^& 和 &^ 拿掉，否則使用者搜尋不到被標記的字
  */
 function applyFilters() {
     const searchInput = document.getElementById('searchInput');
@@ -62,21 +84,22 @@ function applyFilters() {
     const activeValue = activeBtn ? activeBtn.dataset.value : null;
 
     const filtered = allQuestData.filter(task => {
-        // 取得純文字（移除符號後再比對搜尋）
         const cleanId = (task.id || "").replace(/\^&|&\^/g, "");
         const cleanArea = (task.area || "").replace(/\^&|&\^/g, "");
         const cleanAward = (task.award || "").replace(/\^&|&\^/g, "");
         const cleanRestriction = (task.restriction || "").replace(/\^&|&\^/g, "");
         const cleanStart = (task.start || "").replace(/\^&|&\^/g, "");
+        const cleanProcess = (task.process || "").replace(/\^&|&\^/g, "");
+        const cleanRemark = (task.remark || "").replace(/\^&|&\^/g, "");
         
-        // 🔍 修改這裡：加入所有可搜尋欄位
-        const searchStr = [cleanId, cleanArea, cleanStart, cleanAward, cleanRestriction].join("|").toLowerCase();
+        const searchStr = [cleanId, cleanArea, cleanStart, cleanAward, cleanRestriction, cleanProcess, cleanRemark].join("|").toLowerCase();
         const matchKeyword = searchStr.includes(keyword);
 
         let matchButton = true;
         if (activeType === 'process_renown') {
             matchButton = String(task.process_renown || "") === activeValue;
         } else if (activeType === 'star') {
+            // 這裡 task.star 可能是標籤或連續任務名稱
             matchButton = String(task.star || "") === activeValue;
         }
 
@@ -97,7 +120,6 @@ function renderQuests(data) {
         return;
     }
 
-    // 建立隔離容器
     const questWrapper = document.createElement("div");
     questWrapper.className = "quest-system-container";
     container.appendChild(questWrapper);
@@ -106,7 +128,6 @@ function renderQuests(data) {
         const card = document.createElement("div");
         card.className = "mission-card";
 
-        // 💰 獎勵處理 - 轉換為 Badge 模式
         const rewardBadges = [];
         if (task.process_exp)    rewardBadges.push(`<span class="q-badge q-badge-exp">經驗：${task.process_exp}</span>`);
         if (task.process_money)  rewardBadges.push(`<span class="q-badge q-badge-money">金錢：${task.process_money} 元</span>`);
@@ -127,7 +148,8 @@ function renderQuests(data) {
 
         let imageSection = "";
         if (task.image) {
-            const imgSrc = `/mo_data/pic/quest/${task.image.toLowerCase()}`;
+            // 處理可能是完整 URL 或檔名的情況
+            const imgSrc = task.image.startsWith('http') ? task.image : `/mo_data/pic/quest/${task.image.toLowerCase()}`;
             imageSection = `<div class="mission-section img-section"><div class="section-title">任務參考圖</div><img src="${imgSrc}" class="mission-img" onerror="this.closest('.img-section').style.display='none'"></div>`;
         }
 
