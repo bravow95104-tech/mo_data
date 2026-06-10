@@ -27,6 +27,34 @@
         .nav-item.active { background: var(--primary); color: white; border-radius: 0 25px 25px 0; margin-right: 15px; }
         .nav-item i { width: 20px; text-align: center; }
 
+        /* 搜尋框容器 */
+        .search-box {
+            display: flex;
+            align-items: center;
+            background: #f1f5f9;
+            padding: 8px 16px;
+            border-radius: 10px;
+            width: 350px;
+            transition: all 0.2s;
+            border: 1px solid transparent;
+        }
+        .search-box:focus-within {
+            background: white;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+        #clearSearch {
+            color: #94a3b8;
+            cursor: pointer;
+            display: none;
+            font-size: 14px;
+            margin-left: 10px;
+            transition: color 0.2s;
+        }
+        #clearSearch:hover {
+            color: #64748b;
+        }
+
         /* 主要區塊 */
         .main { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
         .header { height: 70px; background: white; border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; padding: 0 30px; box-shadow: 0 1px 2px rgba(0,0,0,0.03); }
@@ -300,7 +328,8 @@
     <div class="header">
         <div class="search-box">
             <i class="fas fa-search" style="color:#94a3b8"></i>
-            <input type="text" id="globalSearch" placeholder="在當前頁面中搜尋..." style="border:none; outline:none; margin-left:10px; width:300px; font-size: 15px;">
+            <input type="text" id="globalSearch" placeholder="在當前頁面中搜尋..." style="border:none; outline:none; margin-left:10px; width:300px; font-size: 15px; background: transparent;">
+            <i class="fas fa-times-circle" id="clearSearch"></i>
         </div>
         <div style="display: flex; align-items: center; gap: 20px;">
             <div style="text-align: right;">
@@ -501,6 +530,19 @@
                 
                 document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
                 this.classList.add('active');
+
+                // 🚀 自動滾動到最上面
+                window.scrollTo(0, 0);
+                const contentArea = document.querySelector('.content');
+                if (contentArea) contentArea.scrollTop = 0;
+
+                // 🚀 清空搜尋內容
+                const globalSearch = document.getElementById('globalSearch');
+                if (globalSearch) {
+                    globalSearch.value = '';
+                    const clearBtn = document.getElementById('clearSearch');
+                    if (clearBtn) clearBtn.style.display = 'none';
+                }
 
                 if (page === 'dashboard') {
                     currentTable = 'dashboard';
@@ -740,7 +782,16 @@
 
     document.getElementById('globalSearch').oninput = (e) => {
         const kw = e.target.value.toLowerCase();
+        const clearBtn = document.getElementById('clearSearch');
+        if (clearBtn) clearBtn.style.display = kw ? 'block' : 'none';
         renderTable(allData.filter(d => Object.values(d).some(v => String(v).toLowerCase().includes(kw))));
+    };
+
+    document.getElementById('clearSearch').onclick = () => {
+        const globalSearch = document.getElementById('globalSearch');
+        globalSearch.value = '';
+        document.getElementById('clearSearch').style.display = 'none';
+        renderTable(allData);
     };
 
     document.getElementById('logoutBtn').onclick = async () => {
