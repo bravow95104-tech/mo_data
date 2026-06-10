@@ -281,26 +281,48 @@ document.addEventListener("DOMContentLoaded", async () => {
   const modalContent = document.getElementById('modalContent');
   const closeModalBtn = document.querySelector('.close-btn');
 
+  // 輔助函式：建立具備回退機制的圖片
+  function createImageWithFallbacks(basePath, altText) {
+    const img = document.createElement("img");
+    img.alt = altText;
+    img.src = basePath + ".png";
+    img.onerror = () => {
+      const extensions = ['.bmp', '.jpg'];
+      let attempt = 0;
+      const tryNext = () => {
+        if (attempt < extensions.length) {
+          img.src = basePath + extensions[attempt];
+          attempt++;
+        } else {
+          img.style.display = "none";
+        }
+      };
+      img.onerror = tryNext;
+      tryNext();
+    };
+    return img;
+  }
+
   async function showProductionModal(work) {
     if (!modalContent) return;
     
+    modalBox.scrollTop = 0;
     modalContent.innerHTML = `
-      <h2 style="color: var(--primary-blue); border-bottom: 2px solid var(--primary-blue); padding-bottom: 10px; margin-bottom: 20px;">
-        ${work.name} - 製作清單
-      </h2>
-      <p style="text-align: center; padding: 20px;">正在檢索相關裝備...</p>
+      <h2 class="hero-name" id="modal-title">${work.name} - 製作清單</h2>
+      <p style="text-align: center; padding: 20px; color: var(--text-muted);">正在檢索相關裝備...</p>
     `;
     openModal();
 
     try {
       const tableConfigs = [
-        { name: 'weapons', label: '⚔️ 武器', link: 'weapons.html' },
-        { name: 'equipment', label: '🛡️ 防具', link: 'equipment.html' },
-        { name: 'accessories', label: '📿 飾品', link: 'accessories.html' }
+        { name: 'weapons', label: '⚔️ 武器', link: 'weapons.html', maxMat: 11 },
+        { name: 'equipment', label: '🛡️ 防具', link: 'equipment.html', maxMat: 11 },
+        { name: 'accessories', label: '📿 飾品', link: 'accessories.html', maxMat: 5 },
+        { name: 'medicine', label: '🧪 藥品', link: 'medicine.html', maxMat: 5 }
       ];
 
       const results = await Promise.all(tableConfigs.map(async (cfg) => {
-        const orFilter = Array.from({length: 11}, (_, i) => `material${i+1}.ilike.%${work.name}%`).join(',');
+        const orFilter = Array.from({length: cfg.maxMat}, (_, i) => `material${i+1}.ilike.%${work.name}%`).join(',');
         const { data, error } = await supabase
           .from(cfg.name)
           .select('item, lv')
@@ -309,11 +331,22 @@ document.addEventListener("DOMContentLoaded", async () => {
         return { label: cfg.label, link: cfg.link, items: data || [] };
       }));
 
-      let html = `<h2 style="color: var(--primary-blue); border-bottom: 2px solid var(--primary-blue); padding-bottom: 10px; margin-bottom: 20px;">${work.name} - 製作清單</h2>`;
+      // 重置內容
+      modalContent.innerHTML = `<h2 class="hero-name" id="modal-title">${work.name} - 製作清單</h2>`;
       
+      // 顯示圖片
+      const safeName = work.name ? work.name.replace(/[\\\/:*?"<>|]/g, '') : '';
+      if (safeName) {
+        const imgContainer = document.createElement("div");
+        imgContainer.className = "hero-images";
+        imgContainer.appendChild(createImageWithFallbacks(`/mo_data/pic/works/${safeName}`, work.name));
+        modalContent.appendChild(imgContainer);
+      }
+
+      let categoriesHtml = "";
       let hasAny = false;
       results.forEach(res => {
-        html += `<div class="production-category">
+        categoriesHtml += `<div class="production-category">
           <h3>${res.label}</h3>`;
         
         if (res.items.length > 0) {
@@ -333,7 +366,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             return numA - numB;
           });
 
-          html += `<div class="production-grouped-list">`;
+          categoriesHtml += `<div class="production-grouped-list">`;
           sortedLvs.forEach(lv => {
             const itemsHtml = Array.from(groups[lv]).map(itemName => `
               <a href="${res.link}?search=${encodeURIComponent(itemName)}" class="hero-link">
@@ -341,27 +374,27 @@ document.addEventListener("DOMContentLoaded", async () => {
               </a>
             `).join('、');
             
-            html += `
+            categoriesHtml += `
               <div style="margin-bottom: 12px; display: flex; align-items: baseline; gap: 10px;">
                 <span style="color: var(--highlight-yellow); font-weight: bold; min-width: 50px; font-size: 14px;">[Lv.${lv}]</span>
                 <div style="line-height: 1.8;">${itemsHtml}</div>
               </div>
             `;
           });
-          html += `</div>`;
+          categoriesHtml += `</div>`;
         } else {
-          html += `<p class="no-data">目前無相關製作資料</p>`;
+          categoriesHtml += `<p class="no-data">目前無相關製作資料</p>`;
         }
         
-        html += `</div>`;
+        categoriesHtml += `</div>`;
       });
 
       if (!hasAny) {
-        html = `<h2 style="color: var(--primary-blue); border-bottom: 2px solid var(--primary-blue); padding-bottom: 10px; margin-bottom: 20px;">${work.name}</h2>
+        categoriesHtml = `
                 <p style="text-align: center; padding: 40px; color: var(--text-muted);">此材料目前沒有對應的裝備製作資料。</p>`;
       }
 
-      modalContent.innerHTML = html;
+      modalContent.insertAdjacentHTML("beforeend", categoriesHtml);
 
     } catch (err) {
       console.error("檢索製作清單失敗:", err);
