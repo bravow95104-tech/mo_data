@@ -342,7 +342,12 @@
 
     <div class="content">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px;">
-            <h2 id="pageTitle" style="margin: 0; font-size: 24px; color: #1e293b;">儀表板</h2>
+            <div>
+                <h2 id="pageTitle" style="margin: 0; font-size: 24px; color: #1e293b;">儀表板</h2>
+                <div id="statInfo" style="display: none; font-size: 14px; color: #64748b; margin-top: 4px;">
+                    共 <span id="stat-count" style="font-weight: 600; color: var(--primary);">0</span> 筆資料
+                </div>
+            </div>
             <div id="pageActions" style="display: none;">
                 <button id="addBtn" class="btn btn-primary" onclick="openAddModal()"><i class="fas fa-plus"></i> 新增資料</button>
             </div>
@@ -546,6 +551,7 @@
 
                 if (page === 'dashboard') {
                     currentTable = 'dashboard';
+                    document.getElementById('statInfo').style.display = 'none';
                     loadDashboardData();
                     return;
                 }
@@ -555,12 +561,15 @@
                 }
 
                 currentTable = page;
+                allData = []; // 🚀 切換頁面時先清空舊資料，避免新增時 sort_id 抓到上一頁的
                 document.getElementById('pageTitle').innerText = TABLE_CONFIGS[page].title;
                 document.getElementById('addBtn').innerHTML = `<i class="fas fa-plus"></i> 新增${TABLE_CONFIGS[page].title.replace('管理', '')}`;
                 
                 document.getElementById('dashboardView').style.display = 'none';
                 document.getElementById('tableView').style.display = 'block';
                 document.getElementById('pageActions').style.display = 'block';
+                document.getElementById('statInfo').style.display = 'block';
+                document.getElementById('stat-count').innerText = '...';
 
                 loadTableData();
             };
@@ -593,7 +602,9 @@
         const { data, error } = await query;
 
         if (error) {
-            alert('載入失敗: ' + error.message); return;
+            alert('載入失敗: ' + error.message); 
+            document.getElementById('stat-count').innerText = '錯誤';
+            return;
         }
 
         let processedData = data;
@@ -611,7 +622,9 @@
 
         allData = processedData;
         renderTable(processedData);
-        document.getElementById('stat-count').innerText = processedData.length;
+        if (document.getElementById('stat-count')) {
+            document.getElementById('stat-count').innerText = processedData.length;
+        }
     }
 
     function renderTable(data) {
@@ -691,12 +704,22 @@
 
     window.openAddModal = async () => {
         if (!await verifySessionBeforeAction()) return;
+        
+        // 🚀 如果資料還在載入中，提示使用者
+        if (allData.length === 0 && document.getElementById('stat-count').innerText === '...') {
+            alert('資料正在載入中，請稍候再試');
+            return;
+        }
+
         renderEditForm();
         document.getElementById('modalTitle').innerText = '新增' + TABLE_CONFIGS[currentTable].title;
         document.getElementById('edit-id').value = '';
         document.getElementById('editForm').reset();
+        
+        // 🚀 更聰明的 sort_id 計算：取最大值 + 1，而不是單純長度 + 1
         if (document.getElementById('edit-sort_id')) {
-            document.getElementById('edit-sort_id').value = allData.length + 1;
+            const maxSortId = allData.length > 0 ? Math.max(...allData.map(d => parseInt(d.sort_id) || 0)) : 0;
+            document.getElementById('edit-sort_id').value = maxSortId + 1;
         }
         document.getElementById('editModal').style.display = 'block';
     };
