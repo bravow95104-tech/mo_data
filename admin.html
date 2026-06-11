@@ -409,7 +409,9 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn" style="background:#f1f5f9;" onclick="closeModal()">取消</button>
-                <button type="submit" class="btn btn-primary">儲存資料至雲端</button>
+                <button type="submit" id="submitBtn" class="btn btn-primary">
+                    <span id="btnText">儲存資料至雲端</span>
+                </button>
             </div>
         </form>
     </div>
@@ -424,7 +426,10 @@
     let currentTable = 'dashboard';
     let allData = [];
 
-    let inactivityTimer;
+    // 狀態管理
+    let isSubmitting = false;
+
+    // ... (resetInactivityTimer, setupActivityListeners, checkAuth etc. unchanged)
 
     // 重設閒置計時器
     function resetInactivityTimer() {
@@ -775,7 +780,11 @@
 
     document.getElementById('editForm').onsubmit = async (e) => {
         e.preventDefault();
+        if (isSubmitting) return; // 防止重複點擊
         if (!await verifySessionBeforeAction()) return;
+        
+        const submitBtn = document.getElementById('submitBtn');
+        const btnText = document.getElementById('btnText');
         const id = document.getElementById('edit-id').value;
         const updates = {};
         const config = TABLE_CONFIGS[currentTable];
@@ -795,12 +804,45 @@
             updates[f.id] = f.type === 'number' ? parseInt(val || 0) : val;
         });
 
-        let res = id ? 
-            await supabase.from(config.tableName).update(updates).eq('id', id) : 
-            await supabase.from(config.tableName).insert([updates]);
+        try {
+            isSubmitting = true;
+            submitBtn.disabled = true;
+            btnText.innerText = '正在處理資料...';
 
-        if (res.error) alert('失敗: ' + res.error.message);
-        else { alert('✅ 成功！'); closeModal(); loadTableData(); }
+            // 🚀 執行自動排序推擠邏輯
+            const targetSortId = updates.sort_id;
+            const needsPush = allData.some(d => d.sort_id === targetSortId && d.id !== id);
+
+            if (needsPush) {
+                const toPush = allData
+                    .filter(d => d.sort_id >= targetSortId && d.id !== id)
+                    .map(d => ({ ...d, sort_id: (parseInt(d.sort_id) || 0) + 1 }));
+                
+                if (toPush.length > 0) {
+                    btnText.innerText = `正在推擠 ${toPush.length} 筆資料排序...`;
+                    // 使用 upsert 進行批次更新
+                    const { error: pushError } = await supabase.from(config.tableName).upsert(toPush);
+                    if (pushError) throw new Error('排序推擠失敗: ' + pushError.message);
+                }
+            }
+
+            btnText.innerText = '正在儲存主資料...';
+            let res = id ? 
+                await supabase.from(config.tableName).update(updates).eq('id', id) : 
+                await supabase.from(config.tableName).insert([updates]);
+
+            if (res.error) throw res.error;
+
+            alert('✅ 成功儲存！排序已自動調整。');
+            closeModal();
+            loadTableData();
+        } catch (err) {
+            alert('❌ 失敗: ' + err.message);
+        } finally {
+            isSubmitting = false;
+            submitBtn.disabled = false;
+            btnText.innerText = '儲存資料至雲端';
+        }
     };
 
     document.getElementById('globalSearch').oninput = (e) => {
