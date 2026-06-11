@@ -428,8 +428,7 @@
 
     // 狀態管理
     let isSubmitting = false;
-
-    // ... (resetInactivityTimer, setupActivityListeners, checkAuth etc. unchanged)
+    let inactivityTimer;
 
     // 重設閒置計時器
     function resetInactivityTimer() {
