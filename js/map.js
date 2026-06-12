@@ -499,4 +499,7 @@ function bindModalEvents() {
   const closeBtn = document.querySelector(".close-btn");
   if (overlay) overlay.addEventListener("click", closeModal);
   if (closeBtn) closeBtn.addEventListener("click", closeModal);
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") closeModal();
+  });
 }

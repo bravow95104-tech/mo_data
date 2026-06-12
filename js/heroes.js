@@ -483,6 +483,9 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   closeModalBtn.addEventListener("click", closeModal);
   modalOverlay.addEventListener("click", closeModal);
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") closeModal();
+  });
 
   // Accordion
   document.querySelectorAll(".accordion-header").forEach((header) => {

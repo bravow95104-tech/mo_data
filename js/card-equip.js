@@ -241,6 +241,9 @@ document.addEventListener("DOMContentLoaded", async () => {
   if (modalOverlay && modalBox && closeModalBtn) {
     modalOverlay.addEventListener('click', closeModal);
     closeModalBtn.addEventListener('click', closeModal);
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeModal();
+    });
   }
 });
 

@@ -406,6 +406,9 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
   if (closeModalBtn) closeModalBtn.addEventListener("click", closeModal);
   if (modalOverlay) modalOverlay.addEventListener("click", closeModal);
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") closeModal();
+  });
   document.querySelectorAll('.accordion-header').forEach(header => {
     header.addEventListener('click', () => header.parentElement.classList.toggle('collapsed'));
   });
