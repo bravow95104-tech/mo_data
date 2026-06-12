@@ -625,7 +625,15 @@
         }
 
         allData = processedData;
-        renderTable(processedData);
+        
+        // 🚀 維持搜尋關鍵字：如果搜尋框有字，重新載入後自動套用過濾
+        const kw = document.getElementById('globalSearch')?.value.toLowerCase();
+        if (kw) {
+            renderTable(allData.filter(d => Object.values(d).some(v => String(v).toLowerCase().includes(kw))));
+        } else {
+            renderTable(processedData);
+        }
+
         if (document.getElementById('stat-count')) {
             document.getElementById('stat-count').innerText = processedData.length;
         }
