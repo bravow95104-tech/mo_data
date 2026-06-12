@@ -197,6 +197,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       const fields = ['item', 'lv', 'property1', 'property2', 'durability', 'illustrate'];
       fields.forEach(field => {
         const td = document.createElement('td');
+        if (field === 'item') td.classList.add('table-title-cell');
         let value = getVal(hero[field]);
         const highlightKey = activeFilters.attr || keyword;
 

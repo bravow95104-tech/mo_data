@@ -141,6 +141,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       const fields = ['card_id', 'card_lv', 'card_property', 'card_class', 'card_mp', 'directions'];
       fields.forEach(field => {
         const td = document.createElement("td");
+        if (field === 'card_id') td.classList.add('table-title-cell');
         const str = String(item[field] || "");
         
         if (keyword && str.toLowerCase().includes(keyword)) {

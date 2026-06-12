@@ -174,6 +174,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
       fields.forEach(field => {
         const td = document.createElement('td');
+        if (field === 'item') td.classList.add('table-title-cell');
         let rawValue = hero[field];
         // 🔹 處理 null, undefined 或空字串
         if (rawValue === null || rawValue === undefined || String(rawValue).trim() === "") {

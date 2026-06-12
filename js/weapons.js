@@ -197,6 +197,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const fields = ['item', 'lv', 'property1', 'property2', 'durability', 'illustrate'];
       fields.forEach(field => {
         const td = document.createElement('td');
+        if (field === 'item') td.classList.add('table-title-cell');
         let value = (item[field] !== null && item[field] !== undefined) ? String(item[field]) : '-';
 
         if (field === 'illustrate') {

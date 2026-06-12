@@ -133,7 +133,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     if (table && !table.querySelector('colgroup')) {
       const colgroup = document.createElement('colgroup');
       colgroup.innerHTML = `
-        <col style="width: 70px;">
+        <col style="width: 50px;">
         <col style="width: 120px;">
         <col style="width: 100px;">
         <col style="width: 130px;">
@@ -181,6 +181,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       const fields = ['beauty_id', 'type', 'material1', 'material2', 'material3', 'material4', 'material5'];
       fields.forEach(field => {
         const td = document.createElement('td');
+        if (field === 'beauty_id') td.classList.add('table-title-cell');
         const value = hero[field] !== undefined ? String(hero[field]) : '';
         const htmlValue = value.replace(/\n/g, '<br>');
 

@@ -137,6 +137,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
       fields.forEach(field => {
         const td = document.createElement('td');
+        if (field === 'name') td.classList.add('table-title-cell');
         const rawValue = item[field] !== undefined ? String(item[field]) : '';
         const htmlValue = rawValue.replace(/\n/g, '<br>');
 

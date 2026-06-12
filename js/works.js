@@ -176,6 +176,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       const fields = ['type', 'lv', 'name', 'area'];
       fields.forEach(field => {
         const td = document.createElement('td');
+        if (field === 'name') td.classList.add('table-title-cell');
         const value = hero[field] ? String(hero[field]) : '';
         const htmlValue = value.replace(/\n/g, '<br>');
 

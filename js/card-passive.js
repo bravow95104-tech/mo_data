@@ -128,7 +128,8 @@ document.addEventListener("DOMContentLoaded", async () => {
 
       const fields = ['card_id', 'card_lv', 'card_class', 'directions'];
       fields.forEach(field => {
-        const td = document.createElement("td");
+        const td = document.createElement('td');
+        if (field === 'card_id') td.classList.add('table-title-cell');
         const str = String(item[field] || "");
         if (keyword && str.toLowerCase().includes(keyword)) {
           const escaped = keyword.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');

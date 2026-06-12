@@ -242,11 +242,14 @@ document.addEventListener("DOMContentLoaded", async () => {
       
       let rowHTML = "";
       for (let i = 0; i < fields.length; i++) {
-        const value = getVal(hero[fields[i]]);
+        const field = fields[i];
+        const value = getVal(hero[field]);
+        const cellClass = (field === 'name') ? ' class="table-title-cell"' : '';
+        
         if (regex && value.toLowerCase().includes(keyword)) {
-          rowHTML += `<td>${value.replace(regex, '<span class="highlight">$1</span>')}</td>`;
+          rowHTML += `<td${cellClass}>${value.replace(regex, '<span class="highlight">$1</span>')}</td>`;
         } else {
-          rowHTML += `<td>${value}</td>`;
+          rowHTML += `<td${cellClass}>${value}</td>`;
         }
       }
       tr.innerHTML = rowHTML;

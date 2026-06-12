@@ -159,9 +159,10 @@ document.addEventListener("DOMContentLoaded", async () => {
       let displayDrop = foundMaps.length > 0 ? foundMaps.map(m => m.mapid).join("、 ") : (item.drop || "-");
 
       const fields = ['card_id', 'card_lv', 'property_first', 'property_second', 'property_third'];
-      fields.forEach((field, index) => {
-        const td = document.createElement("td");
-        let text = String(item[field] || "");
+      fields.forEach(field => {
+        const td = document.createElement('td');
+        if (field === 'card_id') td.classList.add('table-title-cell');
+        const str = String(item[field] || "");
         let kw = "";
         if (index === 0) kw = searchName ? searchName.value.trim() : "";
         else if (index === 2) kw = searchFirst ? searchFirst.value.trim() : "";
