@@ -428,7 +428,10 @@
 
     // 狀態管理
     let isSubmitting = false;
+    let isDirty = false; // 🚀 追蹤資料是否被修改
     let inactivityTimer;
+
+    // ... (resetInactivityTimer, setupActivityListeners, checkAuth etc. unchanged)
 
     // 重設閒置計時器
     function resetInactivityTimer() {
@@ -733,6 +736,8 @@
             const maxSortId = allData.length > 0 ? Math.max(...allData.map(d => parseInt(d.sort_id) || 0)) : 0;
             document.getElementById('edit-sort_id').value = maxSortId + 1;
         }
+        
+        isDirty = false; // 🚀 重設修改狀態
         document.getElementById('editModal').style.display = 'block';
     };
 
@@ -760,6 +765,7 @@
             }
         });
 
+        isDirty = false; // 🚀 填充資料後重設修改狀態
         document.getElementById('editModal').style.display = 'block';
     };
 
@@ -781,9 +787,38 @@
         }
     };
 
-    window.closeModal = () => {
+    window.closeModal = (force = false) => {
+        // 🚀 如果資料被修改過且不是強制關閉，則彈出確認
+        if (!force && isDirty) {
+            if (!confirm('您有尚未儲存的變更，確定要取消並關閉嗎？')) {
+                return;
+            }
+        }
         document.getElementById('editModal').style.display = 'none';
+        isDirty = false;
     };
+
+    // 🚀 監聽表單輸入變更
+    document.addEventListener('input', (e) => {
+        if (e.target.closest('#editForm')) {
+            isDirty = true;
+        }
+    });
+    document.addEventListener('change', (e) => {
+        if (e.target.closest('#editForm')) {
+            isDirty = true;
+        }
+    });
+
+    // 🚀 按下 ESC 鍵關閉 Modal
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            const modal = document.getElementById('editModal');
+            if (modal && modal.style.display === 'block') {
+                closeModal();
+            }
+        }
+    });
 
     document.getElementById('editForm').onsubmit = async (e) => {
         e.preventDefault();
@@ -841,7 +876,7 @@
             if (res.error) throw res.error;
 
             alert('✅ 成功儲存！排序已自動調整。');
-            closeModal();
+            closeModal(true); // 🚀 儲存成功後「強制關閉」不跳警告
             loadTableData();
         } catch (err) {
             alert('❌ 失敗: ' + err.message);
