@@ -38,6 +38,12 @@
 
     /* 導覽列互動變數 */
     --nav-hover-bg: rgba(255, 255, 255, 0.1);
+
+    /* 彈窗標題顏色 */
+    --modal-title-color: #ffd86b;
+
+    /* 表格名稱/標題文字顏色 */
+    --table-title-text: #ffd86b;
     }
 
     /* 強制覆蓋所有頁面的淺色主題 */
@@ -73,7 +79,19 @@
 
     /* 淺色導覽列互動 - 使用明顯的淺藍色背景 */
     --nav-hover-bg: rgba(0, 102, 204, 0.08);
+
+    /* 彈窗標題顏色 - 淺色模式下使用較深的藍色或橘色 */
+    --modal-title-color: #0066cc !important;
+
+    /* 表格名稱/標題文字顏色 - 淺色模式 */
+    --table-title-text: #c05621 !important;
     }
+
+/* 表格主名稱欄位樣式 */
+.table-title-cell {
+    color: var(--table-title-text) !important;
+    font-weight: bold !important;
+}
 
 
 body {
@@ -95,9 +113,93 @@ body {
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* 回到頂部按鈕 - 升級風格 */
-#backToTop {
+/* 廣告橫幅樣式 */
+.ad-banner {
     position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(10, 23, 43, 0.95);
+    border-top: 1px solid var(--glass-border);
+    backdrop-filter: blur(10px);
+    z-index: 9999;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* 廣告內容容器 */
+.ad-content {
+    width: 100%;
+    max-width: 1200px;
+    padding: 15px 20px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    transition: height 0.4s ease, opacity 0.3s ease;
+}
+
+.ad-content img {
+    max-height: 90px;
+    max-width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+.ad-tag {
+    position: absolute;
+    top: 5px;
+    left: 10px;
+    background: var(--tag-tips-bg);
+    color: #fff;
+    font-size: 10px;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+/* 切換按鈕 */
+.ad-toggle-btn {
+    position: absolute;
+    top: -36px;
+    right: 20px;
+    width: 40px;
+    height: 36px;
+    background: rgba(10, 23, 43, 0.95);
+    border: 1px solid var(--glass-border);
+    border-bottom: none;
+    border-radius: 8px 8px 0 0;
+    color: var(--primary-blue);
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(10px);
+    font-size: 18px;
+    transition: 0.3s;
+}
+
+.ad-toggle-btn:hover {
+    color: #fff;
+    background: var(--primary-dark);
+}
+
+/* 收合狀態 */
+.ad-banner.minimized {
+    transform: translateY(100%);
+}
+
+.ad-banner.minimized .ad-toggle-btn {
+    color: var(--highlight-yellow);
+}
+
+/* 手機版調整 */
+@media (max-width: 768px) {
+    .ad-content { padding: 10px; }
+    .ad-content img { max-height: 60px; }
+    .ad-toggle-btn { right: 10px; width: 36px; height: 32px; top: -32px; }
+}
     bottom: 30px;
     right: 30px;
     display: none;
