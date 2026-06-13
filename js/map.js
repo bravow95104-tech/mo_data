@@ -112,11 +112,15 @@ window.showResourceMarker = function(x, y, name, maxX, maxY) {
   const left = ((x / finalMaxX) * 100).toFixed(2);
   const top = ((y / finalMaxY) * 100).toFixed(2);
 
-  // 🚀 動態換成資源圖示，如果沒有圖則顯示預設紅點
+  // 🚀 自動切換格式：先試 PNG，失敗試 JPG，再失敗顯示預設紅點
+  const pngPath = `/mo_data/pic/works/${name}.png`;
+  const jpgPath = `/mo_data/pic/works/${name}.jpg`;
+  const defaultPath = `/mo_data/pic/sys/marker.png`;
+
   ping.innerHTML = `
-    <img src="/mo_data/pic/works/${name}.png" 
+    <img src="${pngPath}" 
          style="width:100%; height:100%; object-fit:contain; filter: drop-shadow(0 0 5px #fff);" 
-         onerror="this.src='/mo_data/pic/sys/marker.png'; this.onerror=null;">
+         onerror="if(this.src.includes('.png')){this.src='${jpgPath}';}else{this.src='${defaultPath}';this.onerror=null;}">
   `;
 
   ping.style.left = `${left}%`;
