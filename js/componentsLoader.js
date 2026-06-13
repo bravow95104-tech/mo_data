@@ -148,30 +148,32 @@ function initNavbarBehavior() {
 }
 
 function initThemeSwitcher() {
-    const toggleBtn = document.getElementById("theme-toggle");
-    if (!toggleBtn) {
-        console.error("Theme toggle button not found!");
+    const toggleBtns = document.querySelectorAll(".theme-toggle-btn");
+    if (toggleBtns.length === 0) {
+        console.error("Theme toggle buttons not found!");
         return;
     }
 
-    const themeIcon = document.getElementById("theme-icon");
-    console.log("Theme switcher initialized.");
+    const themeIcons = document.querySelectorAll(".theme-icon");
+    console.log("Theme switcher initialized with", toggleBtns.length, "buttons.");
 
-    const updateIcon = (theme) => {
-        if (themeIcon) {
-            themeIcon.textContent = theme === "light" ? "☀️" : "🌙";
-        }
+    const updateIcons = (theme) => {
+        themeIcons.forEach(icon => {
+            icon.textContent = theme === "light" ? "☀️" : "🌙";
+        });
     };
 
-    updateIcon(document.documentElement.getAttribute("data-theme"));
+    updateIcons(document.documentElement.getAttribute("data-theme"));
 
-    toggleBtn.addEventListener("click", () => {
-        const currentTheme = document.documentElement.getAttribute("data-theme");
-        const newTheme = currentTheme === "light" ? "dark" : "light";
-        
-        console.log(`Switching theme to: ${newTheme}`);
-        document.documentElement.setAttribute("data-theme", newTheme);
-        localStorage.setItem("theme", newTheme);
-        updateIcon(newTheme);
+    toggleBtns.forEach(btn => {
+        btn.addEventListener("click", () => {
+            const currentTheme = document.documentElement.getAttribute("data-theme");
+            const newTheme = currentTheme === "light" ? "dark" : "light";
+            
+            console.log(`Switching theme to: ${newTheme}`);
+            document.documentElement.setAttribute("data-theme", newTheme);
+            localStorage.setItem("theme", newTheme);
+            updateIcons(newTheme);
+        });
     });
 }
