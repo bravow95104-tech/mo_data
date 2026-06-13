@@ -173,7 +173,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       }
       tr.appendChild(imgTd);
 
-      const fields = ['type', 'lv', 'name', 'area'];
+      const fields = ['name','type', 'lv', 'area'];
       fields.forEach(field => {
         const td = document.createElement('td');
         if (field === 'name') td.classList.add('table-title-cell');
