@@ -419,13 +419,14 @@ export const TABLE_CONFIGS = {
     map_resources: {
         title: '地圖點位管理',
         tableName: 'map_resources',
-        tableCols: ['所屬地圖', '資源名稱', 'X座標', 'Y座標', '操作'],
-        displayFields: ['map_id', 'resource_name', 'x', 'y'],
+        tableCols: ['所屬地圖', '資源名稱', '遊戲座標', '操作'],
+        displayFields: ['map_id', 'resource_name', 'game_coords'],
         fields: [
             { id: 'map_id', label: '所屬地圖 (完全對應)', type: 'text', required: true, grid: 1 },
             { id: 'resource_name', label: '資源名稱', type: 'text', required: true, grid: 1 },
-            { id: 'x', label: '遊戲 X 座標', type: 'number', required: true, grid: 1 },
-            { id: 'y', label: '遊戲 Y 座標', type: 'number', required: true, grid: 1 },
+            { id: 'game_coords', label: '遊戲真實座標 (顯示給玩家看)', type: 'text', placeholder: '例如: 20, 36', grid: 1 },
+            { id: 'x', label: '圖片像素 X (定位用)', type: 'number', required: true, grid: 1 },
+            { id: 'y', label: '圖片像素 Y (定位用)', type: 'number', required: true, grid: 1 },
             { id: 'category', label: '類別', type: 'select', options: ['挖礦', '狩獵', '伐木', '紡織', '採砂', '採集', '其他'], grid: 1 },
             { id: 'sort_id', label: '顯示順序', type: 'number', grid: 1 }
         ]
