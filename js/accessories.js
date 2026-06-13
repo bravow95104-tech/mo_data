@@ -293,10 +293,10 @@ document.addEventListener("DOMContentLoaded", async () => {
       const cleanIllustrate = getVal(rawIllustrate);
       const isLongDesc = cleanIllustrate.length > 50;
       const hasGain = hero.gain && String(hero.gain).trim() !== "";
-      const hasLinks = hero.illustrate && String(hero.illustrate).includes('^&');
       const hasMaterials = hero.material1 && String(hero.material1).trim() !== "" && hero.material1 !== null;
       
-      const shouldBeClickable = hasMaterials; // 只有在有材料資訊時才可點開
+      // 🚀 改為：只要有說明、效果或材料，就允許點開查看完整資訊
+      const shouldBeClickable = isLongDesc || hasGain || hasMaterials;
 
       const cardBody = document.createElement('div');
       cardBody.className = 'card-body';
@@ -306,7 +306,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         <p><strong>閃避值：</strong>${getVal(hero.property2)}</p>
         <p><strong>耐用度：</strong>${getVal(hero.durability)}</p>
         <p><strong>說明：</strong>${highlight(cleanIllustrate.substring(0, 50))}${isLongDesc ? '...' : ''}</p>
-        ${shouldBeClickable ? '<p style="text-align:right; color:#3399ff; font-size:12px; margin-top:5px;">查看製作配方 ▾</p>' : ''}
+        ${shouldBeClickable ? `<p style="text-align:right; color:#3399ff; font-size:12px; margin-top:5px;">${hasMaterials ? '查看製作配方' : '查看詳細資訊'} ▾</p>` : ''}
       `;
 
       card.appendChild(cardHeader);
