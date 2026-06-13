@@ -571,20 +571,21 @@ tbody tr:hover td {
 /* 8. 動態標點與閃爍效果 */
 .map-image-relative-wrapper {
   position: relative;
-  display: inline-flex; /* 🚀 改為 inline-flex 確保完全緊貼內容 */
-  max-width: 100%;
+  display: table; /* 🚀 使用 table 確保容器寬高完全等於圖片渲染寬高 */
   margin: 0 auto;
-  line-height: 0; /* 🚀 移除圖片下方的微小行高間隙 */
+  line-height: 0;
+  max-width: 100%;
 }
 
 .hero-image {
   max-width: 100%;
   height: auto;
+  display: block;
   border-radius: 12px;
   border: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-  display: block;
-  margin: 0 !important; /* 🚀 移除所有 Margin，防止容器被撐大 */
+  margin: 0 !important;
+  box-sizing: border-box; /* 🚀 確保邊框包含在寬度內 */
 }
 
 .resource-ping {
