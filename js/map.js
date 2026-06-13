@@ -159,7 +159,7 @@ window.openMapDetail = function (mapId) {
           ${resources.map(r => `
             <button class="resource-btn" onclick="showResourceMarker(${r.x}, ${r.y}, '${r.resource_name}', ${item.game_max_x}, ${item.game_max_y})">
               <img src="/mo_data/pic/works/${r.resource_name}.png" style="width:20px;height:20px;object-fit:contain;" onerror="this.style.display='none'">
-              ${r.resource_name} (${r.x}, ${r.y})
+              ${r.resource_name} ${r.game_coords ? `(${r.game_coords})` : ''}
             </button>
           `).join('')}
         </div>
