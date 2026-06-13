@@ -571,9 +571,20 @@ tbody tr:hover td {
 /* 8. 動態標點與閃爍效果 */
 .map-image-relative-wrapper {
   position: relative;
-  display: inline-block; /* 確保容器寬度等於圖片寬度 */
+  display: inline-flex; /* 🚀 改為 inline-flex 確保完全緊貼內容 */
   max-width: 100%;
   margin: 0 auto;
+  line-height: 0; /* 🚀 移除圖片下方的微小行高間隙 */
+}
+
+.hero-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  display: block;
+  margin: 0 !important; /* 🚀 移除所有 Margin，防止容器被撐大 */
 }
 
 .resource-ping {
@@ -585,7 +596,8 @@ tbody tr:hover td {
   pointer-events: none;
   filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.9));
   animation: resource-blink 1.2s infinite ease-in-out;
-  display: none; /* 預設隱藏 */
+  display: none;
+  line-height: normal; /* 恢復正常行高給內部的圖 */
 }
 
 @keyframes resource-blink {
