@@ -72,6 +72,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
       fields.forEach(field => {
         const td = document.createElement('td');
+        if (field.key === 'item') td.classList.add('table-title-cell');
         const rawValue = item[field.key] ? String(item[field.key]) : '—';
         const htmlValue = rawValue.replace(/\n/g, '<br>');
 
