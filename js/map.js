@@ -101,17 +101,26 @@ window.zoomWorldMap = function (src) {
 // 🚀 核心功能：顯示資源標記
 window.showResourceMarker = function(x, y, name, maxX, maxY) {
   const ping = document.getElementById('resource-ping');
-  if (!ping) return;
+  const img = document.querySelector('.map-image-relative-wrapper .hero-image');
+  if (!ping || !img) return;
 
-  // 💡 調整為「像素換算模式」：
-  // X 座標比例 = 點擊 X / 圖片總寬
-  // Y 座標比例 = 點擊 Y / 圖片總高 (移除 1 - 比例，因為像素是從頂部往下算)
-  const left = (x / (maxX || 1));
-  const top = (y / (maxY || 1));
+  // 💡 自動比例偵測邏輯
+  const finalMaxX = (maxX && maxX > 1) ? maxX : img.naturalWidth;
+  const finalMaxY = (maxY && maxY > 1) ? maxY : img.naturalHeight;
 
-  // 轉換為百分比並套用樣式
-  ping.style.left = `${left * 100}%`;
-  ping.style.top = `${top * 100}%`;
+  // 計算百分比 (取小數點後兩位)
+  const left = ((x / finalMaxX) * 100).toFixed(2);
+  const top = ((y / finalMaxY) * 100).toFixed(2);
+
+  // 🚀 動態換成資源圖示，如果沒有圖則顯示預設紅點
+  ping.innerHTML = `
+    <img src="/mo_data/pic/works/${name}.png" 
+         style="width:100%; height:100%; object-fit:contain; filter: drop-shadow(0 0 5px #fff);" 
+         onerror="this.src='/mo_data/pic/sys/marker.png'; this.onerror=null;">
+  `;
+
+  ping.style.left = `${left}%`;
+  ping.style.top = `${top}%`;
   ping.style.display = 'block';
 
   // 自動捲動到圖片位置
