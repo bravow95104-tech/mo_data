@@ -322,7 +322,10 @@ function renderTable(data, keyword = "") {
 
     activeColumns.forEach((colId, index) => {
       const td = document.createElement("td");
-      if (colId === 'mapid') td.classList.add('table-title-cell');
+      if (colId === 'mapid') {
+        td.classList.add('table-title-cell');
+        td.style.textAlign = 'center'; // 🚀 置中地圖名稱
+      }
       const colInfo = ALL_COLUMNS.find(c => c.id === colId);
       td.setAttribute("data-label", colInfo ? colInfo.label : colId);
 
