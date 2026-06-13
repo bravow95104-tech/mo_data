@@ -590,15 +590,15 @@ tbody tr:hover td {
 
 .resource-ping {
   position: absolute;
-  width: 50px;
-  height: 50px;
+  width: 35px; /* 🚀 從 50px 縮小到 35px */
+  height: 35px;
   transform: translate(-50%, -50%);
   z-index: 100;
   pointer-events: none;
-  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.9));
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.8));
   animation: resource-blink 1.2s infinite ease-in-out;
   display: none;
-  line-height: normal; /* 恢復正常行高給內部的圖 */
+  line-height: normal;
 }
 
 @keyframes resource-blink {
