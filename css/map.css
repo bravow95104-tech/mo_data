@@ -568,6 +568,71 @@ tbody tr:hover td {
   text-shadow: 0 0 8px rgba(77, 163, 255, 0.5);
 }
 
+/* 8. 動態標點與閃爍效果 */
+.map-image-relative-wrapper {
+  position: relative;
+  display: inline-block; /* 確保容器寬度等於圖片寬度 */
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.resource-ping {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  transform: translate(-50%, -50%);
+  z-index: 100;
+  pointer-events: none;
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.9));
+  animation: resource-blink 1.2s infinite ease-in-out;
+  display: none; /* 預設隱藏 */
+}
+
+@keyframes resource-blink {
+  0% { transform: translate(-50%, -50%) scale(0.7); opacity: 0.4; }
+  50% { transform: translate(-50%, -50%) scale(1.4); opacity: 1; }
+  100% { transform: translate(-50%, -50%) scale(0.7); opacity: 0.4; }
+}
+
+.resource-btn {
+  background: rgba(77, 163, 255, 0.15);
+  border: 1px solid var(--primary-blue);
+  color: var(--text-main);
+  padding: 8px 14px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 14px;
+  margin: 5px;
+  transition: all 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.resource-btn:hover, .resource-btn.active {
+  background: var(--primary-blue);
+  color: white !important;
+  box-shadow: 0 0 15px rgba(77, 163, 255, 0.4);
+}
+
+.resource-group {
+  margin-top: 20px;
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 12px;
+  border: 1px solid var(--glass-border);
+}
+
+.resource-group-title {
+  font-size: 14px;
+  color: var(--primary-blue);
+  margin-bottom: 10px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
 /* 響應式微調 */
 @media (max-width: 768px) {
   .content-wrapper {
