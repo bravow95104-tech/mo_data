@@ -5,7 +5,8 @@ const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
 
 // === 1. 全域變數與全域函數公開 ===
 let mapData = [];
-let heroGloryMap = {}; // 🚀 新增：儲存光輝與英雄的對照表
+let resourceData = []; // 🚀 新增：儲存所有資源點位
+let heroGloryMap = {}; 
 
 // 定義所有可能的欄位
 const ALL_COLUMNS = [
@@ -44,10 +45,8 @@ const formatTieredContent = (text, isCompact = false, linkType = null) => {
       if (linkType === 'hero') {
         targetPage = "../hero/heroes.html?hero=";
       } else if (linkType === 'equip') {
-        // 預設去裝備卡頁面
         targetPage = "../card/card-equip.html?card=";
       } else if (linkType === 'skill') {
-        // 預設去主動技能卡頁面
         targetPage = "../card/card-active.html?card=";
       }
       
@@ -55,7 +54,6 @@ const formatTieredContent = (text, isCompact = false, linkType = null) => {
     }).join('、');
   };
 
-  // 檢查是否包含分層格式
   const tierRegex = /第\d+層[：:]/g;
   if (tierRegex.test(str)) {
     const lines = str.split(/\n|<br>/i);
@@ -79,19 +77,16 @@ const formatTieredContent = (text, isCompact = false, linkType = null) => {
   return isCompact ? finalNames : finalNames.replace(/\n/g, '<br>');
 };
 
-// === 光輝對照解析器 (支援手機/電腦版) ===
 const formatGloryWithTooltip = (text) => {
   if (!text || text === "-") return "-";
   return text.split('、').map(glory => {
     const trimmed = glory.trim();
     if (!trimmed) return "";
     const heroes = heroGloryMap[trimmed] ? heroGloryMap[trimmed].join('、') : "目前無英雄對照";
-    // 使用 title 屬性作為最簡單的提示方式
     return `<span class="glory-tooltip" title="對應英雄：${heroes}">${trimmed}</span>`;
   }).join('、');
 };
 
-// --- 公開函數到 window 物件，確保 HTML onclick 能觸發 ---
 window.zoomWorldMap = function (src) {
   const modalBox = document.getElementById("modalBox");
   if (!modalBox) return;
@@ -103,27 +98,67 @@ window.zoomWorldMap = function (src) {
   showModal();
 };
 
+// 🚀 核心功能：顯示資源標記
+window.showResourceMarker = function(x, y, name, maxX, maxY) {
+  const ping = document.getElementById('resource-ping');
+  if (!ping) return;
+
+  // 💡 調整為「像素換算模式」：
+  // X 座標比例 = 點擊 X / 圖片總寬
+  // Y 座標比例 = 點擊 Y / 圖片總高 (移除 1 - 比例，因為像素是從頂部往下算)
+  const left = (x / (maxX || 1));
+  const top = (y / (maxY || 1));
+
+  // 轉換為百分比並套用樣式
+  ping.style.left = `${left * 100}%`;
+  ping.style.top = `${top * 100}%`;
+  ping.style.display = 'block';
+
+  // 自動捲動到圖片位置
+  const wrapper = document.querySelector('.map-image-relative-wrapper');
+  if (wrapper) {
+      wrapper.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+};
+
 window.openMapDetail = function (mapId) {
   const item = mapData.find(m => m.mapid === mapId);
-  if (!item) {
-      console.warn("找不到地圖資料:", mapId);
-      return;
-  }
+  if (!item) return;
 
   const modalContent = document.getElementById("modalContent");
   const autoImagePath = `/mo_data/pic/map/${item.mapid}.jpg`;
+
+  // 獲取該地圖的資源點位
+  const resources = resourceData.filter(r => r.map_id === item.mapid);
 
   // 判斷邏輯
   const approachA = item.approach_a || "";
   const isTown = approachA.includes("城鎮");
   const showApproach = approachA.includes("要");
   const showExplain = approachA.includes("說明");
+  
+  let resourceButtonsHTML = "";
+  if (resources.length > 0) {
+    resourceButtonsHTML = `
+      <div class="resource-group section-gap">
+        <div class="resource-group-title"><i class="fas fa-hammer"></i> 採集資源點 (點擊查看位置)</div>
+        <div class="resource-list">
+          ${resources.map(r => `
+            <button class="resource-btn" onclick="showResourceMarker(${r.x}, ${r.y}, '${r.resource_name}', ${item.game_max_x}, ${item.game_max_y})">
+              <img src="/mo_data/pic/works/${r.resource_name}.png" style="width:20px;height:20px;object-fit:contain;" onerror="this.style.display='none'">
+              ${r.resource_name} (${r.x}, ${r.y})
+            </button>
+          `).join('')}
+        </div>
+      </div>
+    `;
+  }
+
   const detailsHTML = `
     ${showApproach ? `<div class="section-gap"><p><strong>走法：</strong>${item.approach || "-"}</p></div>` : ""}
     ${showExplain ? `<div class="section-gap"><p><strong>說明：</strong>${item.illustrate || "-"}</p></div>` : ""}
 `.trim();
 
-  // 掉落與戰鬥區塊 (條件隱藏)
   let combatAndDropHTML = '';
   if (!isTown) {
     const hasDrop = !!(item.drop_rubbish || item.drop_hero || item.drop_equidcard || item.drop_skillcard || item.drop_combo_old || item.drop_combo_new || item.drop_othrt);
@@ -155,7 +190,15 @@ window.openMapDetail = function (mapId) {
 
   modalContent.innerHTML = `
         <h2 class="hero-name">${item.mapid}</h2>
-        <img src="${autoImagePath}" class="hero-image" onerror="this.style.display='none'" />
+        <div class="map-image-wrapper">
+          <div class="map-image-relative-wrapper">
+            <img src="${autoImagePath}" class="hero-image" onerror="this.style.display='none'" />
+            <div id="resource-ping" class="resource-ping">
+              <img src="/mo_data/pic/sys/marker.png" style="width:100%;height:100%;object-fit:contain;">
+            </div>
+          </div>
+        </div>
+        ${resourceButtonsHTML}
         ${(showApproach || showExplain) ?
       `<div class="hero-column-details section-gap">${detailsHTML}</div>` :
       ""
@@ -177,11 +220,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // === 3. 資料載入與對接 ===
 async function loadData() {
-  const [mapRes, gloryRes, playerRes, heroRes] = await Promise.all([
+  const [mapRes, gloryRes, playerRes, heroRes, resourceRes] = await Promise.all([
     supabase.from('detailed_map').select('*').order('sort_id', { ascending: true }),
     supabase.from('glory_drop').select('*'),
     supabase.from('glory_drop_player').select('*'),
-    supabase.from('heroes').select('name, glory') // 🚀 新增：載入英雄與光輝對照
+    supabase.from('heroes').select('name, glory'),
+    supabase.from('map_resources').select('*').order('sort_id', { ascending: true })
   ]);
 
   if (mapRes.error) {
@@ -192,11 +236,11 @@ async function loadData() {
   }
 
   const rawMapData = mapRes.data;
+  resourceData = resourceRes.data || [];
   const gloryDropData = gloryRes.data || [];
   const playerDropData = playerRes.data || [];
-  const heroesData = heroRes.data || []; // 🚀 新增
+  const heroesData = heroRes.data || [];
 
-  // 🚀 建立光輝對英雄的對照表
   heroGloryMap = {};
   heroesData.forEach(h => {
     if (h.glory) {
@@ -206,14 +250,12 @@ async function loadData() {
   });
 
   mapData = rawMapData.map(map => {
-    // 匹配官方版
     const matchedGlory = gloryDropData.find(g => {
       if (!g.area) return false;
       const areas = g.area.split('、');
       return areas.includes(map.mapid);
     });
 
-    // 匹配玩家版 (自動對應 area)
     const matchedPlayer = playerDropData.find(p => {
       if (!p.area) return false;
       const areas = p.area.split('、');
@@ -234,14 +276,12 @@ async function loadData() {
     if (matchedPlayer) {
       result = {
         ...result,
-        drop_glory_player: matchedPlayer.drop_content // 🚀 將玩家內容對應到 drop_glory_player
+        drop_glory_player: matchedPlayer.drop_content
       };
     }
 
     return result;
   });
-
-  console.log("✅ 地圖、官方與玩家版光輝資料載入完成");
 
   if (document.querySelector("#heroes-table tbody")) {
     initTableSearch();
@@ -249,7 +289,6 @@ async function loadData() {
   }
 }
 
-// === 4. 表格與搜尋邏輯 ===
 function initTableSearch() {
   const searchInput = document.getElementById("searchInput");
   const clearBtn = document.getElementById('clearFilters');
@@ -324,14 +363,12 @@ function renderTable(data, keyword = "") {
       const td = document.createElement("td");
       if (colId === 'mapid') {
         td.classList.add('table-title-cell');
-        td.style.textAlign = 'center'; // 🚀 置中地圖名稱
+        td.style.textAlign = 'center';
       }
       const colInfo = ALL_COLUMNS.find(c => c.id === colId);
       td.setAttribute("data-label", colInfo ? colInfo.label : colId);
 
       let val = item[colId];
-      
-      // 使用智慧解析器，並判斷是否需要簡潔模式
       const isDropCol = colId.startsWith('drop_');
       let content = formatTieredContent(val, isDropCol);
 
@@ -354,7 +391,6 @@ function renderTable(data, keyword = "") {
   tbody.appendChild(fragment);
 }
 
-// === 5. 欄位設定 ===
 function initColumnSettings() {
   const btn = document.getElementById("columnSettingsBtn");
   const menu = document.getElementById("columnSettingsMenu");
@@ -431,7 +467,6 @@ function loadColumnSettings() {
   }
 }
 
-// === 6. 地圖互動邏輯 ===
 function initMapTabs() {
   const tabButtons = document.querySelectorAll(".tab-button");
   const scrollLeftBtn = document.getElementById("scroll-left");
@@ -477,7 +512,6 @@ function initImageMapResizer() {
   } catch (e) { console.warn("Resizer skipped"); }
 }
 
-// === 7. Modal 控制 ===
 function showModal() {
   const modalBox = document.getElementById("modalBox");
   const overlay = document.getElementById("modalOverlay");
