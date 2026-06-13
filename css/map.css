@@ -374,6 +374,16 @@ tbody td {
   font-size: 10px; /* 統一資料字體為 10px */
 }
 
+/* 🚀 淺色模式優化：增加分隔線可見度 */
+[data-theme="light"] tbody td {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  color: var(--text-main);
+}
+
+[data-theme="light"] thead th {
+  border-bottom: 1px solid rgba(0, 102, 204, 0.2);
+}
+
 tbody tr:hover td {
   background-color: rgba(77, 163, 255, 0.1) !important;
   color: var(--text-main);
