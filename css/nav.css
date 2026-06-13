@@ -222,6 +222,12 @@
     letter-spacing: 0.03em;
   }
 
+  .mobile-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
   .hamburger-btn {
     width: 44px;
     height: 44px;
@@ -267,8 +273,22 @@
     display: flex !important;
   }
 
-  .nav-menu > .nav-link.desktop-only {
+  .nav-menu > .nav-link.desktop-only,
+  .nav-item-theme.desktop-only {
     display: none !important;
+  }
+
+  /* 🚀 確保手機版標頭內的按鈕樣式一致 */
+  .theme-toggle-btn.nav-link {
+    display: inline-flex !important;
+    min-height: 44px !important;
+    width: 44px;
+    padding: 0 !important;
+    justify-content: center;
+    border: 1px solid var(--glass-border) !important;
+    background: var(--glass-bg) !important;
+    border-radius: 14px !important;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
   }
 
   .dropdown {
@@ -322,5 +342,12 @@
 
   .dropdown-content a:hover {
     transform: none;
+  }
+}
+
+/* 🚀 電腦版隱藏手機專用的 Actions */
+@media (min-width: 769px) {
+  .mobile-actions {
+    display: none !important;
   }
 }
