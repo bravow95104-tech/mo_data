@@ -386,12 +386,14 @@ export const TABLE_CONFIGS = {
     detailed_map: {
         title: '地圖資訊',
         tableName: 'detailed_map',
-        tableCols: ['地圖名稱','特別顯示', '等級', '說明', '操作'],
-        displayFields: ['mapid','approach_a', 'lv', 'illustrate'],
+        tableCols: ['地圖名稱','特別顯示', '等級', '最大X', '最大Y', '操作'],
+        displayFields: ['mapid','approach_a', 'lv', 'game_max_x', 'game_max_y'],
         fields: [
             { id: 'mapid', label: '地圖名稱', type: 'text', required: true, grid: 1, group: '基礎資訊' },
             { id: 'sort_id', label: '顯示順序', type: 'number', grid: 1, group: '基礎資訊' },
             { id: 'maplv', label: '地圖等級', type: 'text', grid: 1, group: '基礎資訊' },
+            { id: 'game_max_x', label: '遊戲最大X (比例尺)', type: 'number', grid: 1, group: '基礎資訊' },
+            { id: 'game_max_y', label: '遊戲最大Y (比例尺)', type: 'number', grid: 1, group: '基礎資訊' },
 
             { id: 'def', label: '建議防禦', type: 'number', grid: 1, group: '地圖數值' },
             { id: 'dodge', label: '建議閃避', type: 'number', grid: 1, group: '地圖數值' },
@@ -412,6 +414,20 @@ export const TABLE_CONFIGS = {
             
             { id: 'drop_combo_old', label: '舊文片掉落', type: 'textarea', grid: 1, group: '文片掉落' },
             { id: 'drop_combo_new', label: '新文片掉落', type: 'textarea', grid: 1, group: '文片掉落' }
+        ]
+    },
+    map_resources: {
+        title: '地圖點位管理',
+        tableName: 'map_resources',
+        tableCols: ['所屬地圖', '資源名稱', 'X座標', 'Y座標', '操作'],
+        displayFields: ['map_id', 'resource_name', 'x', 'y'],
+        fields: [
+            { id: 'map_id', label: '所屬地圖 (完全對應)', type: 'text', required: true, grid: 1 },
+            { id: 'resource_name', label: '資源名稱', type: 'text', required: true, grid: 1 },
+            { id: 'x', label: '遊戲 X 座標', type: 'number', required: true, grid: 1 },
+            { id: 'y', label: '遊戲 Y 座標', type: 'number', required: true, grid: 1 },
+            { id: 'category', label: '類別', type: 'select', options: ['挖礦', '狩獵', '伐木', '紡織', '採砂', '採集', '其他'], grid: 1 },
+            { id: 'sort_id', label: '顯示順序', type: 'number', grid: 1 }
         ]
     },
     quests: {
@@ -436,5 +452,4 @@ export const TABLE_CONFIGS = {
             { id: 'image', label: '圖片連結', type: 'text', grid: 3 }
         ]
     },
-    // 未來可以在此處直接新增 equipment, items, maps 等配置
 };
