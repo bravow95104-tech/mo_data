@@ -590,21 +590,21 @@ tbody tr:hover td {
 
 .resource-ping {
   position: absolute;
-  width: 35px; /* 🚀 從 50px 縮小到 35px */
-  height: 35px;
+  width: 25px; /* 🚀 進一步縮小到 25px，精準標點 */
+  height: 25px;
   transform: translate(-50%, -50%);
   z-index: 100;
   pointer-events: none;
-  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.8));
-  animation: resource-blink 1.2s infinite ease-in-out;
+  filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.9));
+  animation: resource-blink 1.5s infinite ease-in-out;
   display: none;
   line-height: normal;
 }
 
 @keyframes resource-blink {
-  0% { transform: translate(-50%, -50%) scale(0.7); opacity: 0.4; }
-  50% { transform: translate(-50%, -50%) scale(1.4); opacity: 1; }
-  100% { transform: translate(-50%, -50%) scale(0.7); opacity: 0.4; }
+  0% { transform: translate(-50%, -50%) scale(0.8); opacity: 0.5; }
+  50% { transform: translate(-50%, -50%) scale(1.1); opacity: 1; } /* 縮小閃爍幅度 */
+  100% { transform: translate(-50%, -50%) scale(0.8); opacity: 0.5; }
 }
 
 .resource-btn {
