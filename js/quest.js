@@ -21,6 +21,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 id: item.quest_id 
             }));
 
+            // 🚀 產生動態地區篩選按鈕
+            renderAreaFilters(allQuestData);
+
             renderQuests(allQuestData);
         } catch (err) {
             console.error("❌ 載入失敗：", err);
@@ -30,6 +33,27 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     loadQuests();
+
+    // 🚀 動態地區按鈕生成
+    function renderAreaFilters(data) {
+        const areaContainer = document.getElementById('areaFilterContainer');
+        if (!areaContainer) return;
+
+        // 提取所有唯一地區，排除空白
+        const uniqueAreas = [...new Set(data.map(q => q.area).filter(a => a && a.trim() !== ""))].sort();
+        
+        areaContainer.innerHTML = uniqueAreas.map(area => `
+            <button class="filter-btn" data-type="area" data-value="${area}">${area}</button>
+        `).join('');
+
+        // 為新產生的按鈕綁定事件
+        areaContainer.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                btn.classList.toggle('active');
+                applyFilters();
+            });
+        });
+    }
 
     // 2. 監聽搜尋與篩選邏輯
     const searchInput = document.getElementById('searchInput');
