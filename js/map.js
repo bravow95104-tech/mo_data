@@ -299,6 +299,35 @@ async function loadData() {
     initTableSearch();
     initColumnSettings();
   }
+
+  // 🚀 智慧連動邏輯：檢查網址參數是否有導航請求
+  const urlParams = new URLSearchParams(window.location.search);
+  const targetMap = urlParams.get('map');
+  const targetResource = urlParams.get('resource');
+  const targetX = urlParams.get('x');
+  const targetY = urlParams.get('y');
+
+  if (targetMap) {
+    // 延遲一下下，確保資料已完全渲染
+    setTimeout(() => {
+      openMapDetail(targetMap);
+      if (targetX && targetY && targetResource) {
+        // 再次延遲確保 Modal 內容已載入
+        setTimeout(() => {
+          const item = mapData.find(m => m.mapid === targetMap);
+          if (item) {
+            window.showResourceMarker(
+              parseFloat(targetX), 
+              parseFloat(targetY), 
+              targetResource, 
+              item.game_max_x, 
+              item.game_max_y
+            );
+          }
+        }, 300);
+      }
+    }, 500);
+  }
 }
 
 function initTableSearch() {
