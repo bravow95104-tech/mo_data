@@ -30,15 +30,27 @@ document.addEventListener("DOMContentLoaded", async () => {
   });
 
   // === 載入資料 ===
+  let resourceMapping = {}; // 🚀 存放 資源名稱 -> [地點(座標), ...]
+
   try {
-    const { data, error } = await supabase
-      .from('works')
-      .select('*')
-      .order('sort_id', { ascending: true });
+    const [worksRes, resourceRes] = await Promise.all([
+      supabase.from('works').select('*').order('sort_id', { ascending: true }),
+      supabase.from('map_resources').select('resource_name, map_id, game_coords')
+    ]);
 
-    if (error) throw error;
+    if (worksRes.error) throw worksRes.error;
+    
+    heroesData = worksRes.data || [];
+    
+    // 🚀 建立資源與地點的映射
+    if (resourceRes.data) {
+      resourceRes.data.forEach(r => {
+        if (!resourceMapping[r.resource_name]) resourceMapping[r.resource_name] = [];
+        const locStr = `${r.map_id}${r.game_coords ? `(${r.game_coords})` : ''}`;
+        resourceMapping[r.resource_name].push(locStr);
+      });
+    }
 
-    heroesData = data || [];
     applyFilters();
   } catch (error) {
     console.error('載入工作資料錯誤:', error);
@@ -177,7 +189,17 @@ document.addEventListener("DOMContentLoaded", async () => {
       fields.forEach(field => {
         const td = document.createElement('td');
         if (field === 'name') td.classList.add('table-title-cell');
-        const value = hero[field] ? String(hero[field]) : '';
+        
+        let value = hero[field] ? String(hero[field]) : '';
+        
+        // 🚀 智慧產地處理：如果是 'area' 欄位，優先使用動態映射的點位
+        if (field === 'area') {
+          const dynamicLocs = resourceMapping[hero.name];
+          if (dynamicLocs && dynamicLocs.length > 0) {
+            value = dynamicLocs.join('、');
+          }
+        }
+
         const htmlValue = value.replace(/\n/g, '<br>');
 
         if (keyword && value.toLowerCase().includes(keyword)) {
