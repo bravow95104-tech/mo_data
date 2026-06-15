@@ -159,7 +159,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       let displayDrop = foundMaps.length > 0 ? foundMaps.map(m => m.mapid).join("、 ") : (item.drop || "-");
 
       const fields = ['card_id', 'card_lv', 'property_first', 'property_second', 'property_third'];
-      fields.forEach(field => {
+      fields.forEach((field, index) => {
         const td = document.createElement('td');
         if (field === 'card_id') td.classList.add('table-title-cell');
         const str = String(item[field] || "");
@@ -172,9 +172,9 @@ document.addEventListener("DOMContentLoaded", async () => {
         if (kw) {
           const escaped = kw.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
           const regex = new RegExp(`(${escaped})`, "gi");
-          td.innerHTML = text.replace(regex, "<span class='highlight'>$1</span>");
+          td.innerHTML = str.replace(regex, "<span class='highlight'>$1</span>");
         } else {
-          td.textContent = text;
+          td.textContent = str;
         }
         tr.appendChild(td);
       });
