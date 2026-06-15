@@ -87,6 +87,85 @@
     --table-title-text: #c05621 !important;
     }
 
+/* --- 提示按鈕 (Hint Button) --- */
+.hint-btn {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+    margin-left: 10px;
+    vertical-align: middle;
+}
+
+.hint-circle {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: var(--primary-blue);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 14px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    transition: transform 0.2s ease;
+}
+
+.hint-btn:hover .hint-circle {
+    transform: scale(1.1);
+}
+
+.hint-tooltip {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(10px);
+    background: var(--nav-bg-1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    color: var(--text-main);
+    padding: 12px 18px;
+    border-radius: 12px;
+    white-space: pre-wrap; /* 支援換行 */
+    min-width: 200px;
+    max-width: 300px;
+    display: none;
+    z-index: 2000;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    border: 1px solid var(--glass-border);
+    margin-top: 10px;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    text-align: left;
+}
+
+.hint-tooltip.show {
+    display: block;
+    animation: fadeInHint 0.3s ease-out;
+}
+
+@keyframes fadeInHint {
+    from { opacity: 0; transform: translateX(-50%) translateY(20px); }
+    to { opacity: 1; transform: translateX(-50%) translateY(10px); }
+}
+
+/* 響應式調整 */
+@media (max-width: 768px) {
+    .hint-tooltip {
+        left: auto;
+        right: -10px;
+        transform: translateY(10px);
+    }
+    @keyframes fadeInHint {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(10px); }
+    }
+}
+
 /* 表格主名稱欄位樣式 */
 .table-title-cell {
     color: var(--table-title-text) !important;
