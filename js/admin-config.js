@@ -321,6 +321,17 @@ export const TABLE_CONFIGS = {
             { id: 'url', label: '連結 URL', type: 'text', grid: 3 }
         ]
     },
+    page_hints: {
+        title: '頁面提示管理',
+        tableName: 'page_hints',
+        tableCols: ['頁面路徑', '提示文字', '操作'],
+        displayFields: ['page_path', 'hint_text'],
+        fields: [
+            { id: 'page_path', label: '頁面路徑 (如: /equipment/refine.html)', type: 'text', required: true, grid: 2 },
+            { id: 'sort_id', label: '顯示順序', type: 'number', grid: 1 },
+            { id: 'hint_text', label: '提示文字', type: 'textarea', required: true, grid: 3 }
+        ]
+    },
     weapons: {
         title: '武器管理',
         tableName: 'weapons',
