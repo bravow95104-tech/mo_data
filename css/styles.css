@@ -94,6 +94,7 @@
     align-items: center !important;
     width: 100% !important;
     position: relative !important;
+    z-index: 10005 !important;
 }
 
 .dynamic-hint.hint-btn {
