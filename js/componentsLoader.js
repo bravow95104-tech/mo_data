@@ -225,23 +225,22 @@ async function initDynamicHint() {
 function injectHintButton(text, customSelector = null) {
     let target = null;
     
+    // 1. 優先使用後台設定的選擇器
     if (customSelector) {
         target = document.querySelector(customSelector);
     }
     
+    // 2. 如果沒設定選擇器，則尋找 HTML 中手動放置的標記點
     if (!target) {
-        // 支援您提到的 <hi> 標籤或是預設標題
-        target = document.querySelector("hi") ||
-                 document.getElementById("dynamic-hint-target") || 
-                 document.querySelector(".hero-card h2") || 
-                 document.querySelector("h2") || 
-                 document.querySelector("h1");
+        target = document.getElementById("dynamic-hint-target");
     }
     
+    // 如果都找不到，就不顯示，避免亂跑
     if (!target) return;
 
     // 避免重複注入
-    if (target.parentNode.querySelector(".dynamic-hint") || target.querySelector(".dynamic-hint")) return;
+    if (target.querySelector(".dynamic-hint")) return;
+    if (target.id !== "dynamic-hint-target" && target.parentNode.querySelector(".dynamic-hint")) return;
 
     // 建立提示按鈕 HTML
     const hintBtn = document.createElement("button");
