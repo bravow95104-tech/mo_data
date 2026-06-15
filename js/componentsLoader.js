@@ -59,6 +59,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
     loadComponent("#footer-container", baseURL + "/components/footer/footer.html");
 
+    // --- 動態提示 (Hint) 初始化 ---
+    initDynamicHint();
+
     const backToTopBtn = document.getElementById("backToTop");
     if (backToTopBtn) {
         window.addEventListener("scroll", () => {
@@ -182,19 +185,14 @@ function initThemeSwitcher() {
  * 動態從 Supabase 載入頁面提示 (Hint)
  */
 async function initDynamicHint() {
-    // 這裡我們直接使用 fetch 調用 Supabase REST API，避免載入龐大的 SDK
     const SUPABASE_URL = 'https://zyupyyqrqxhqczjcxeva.supabase.co';
     const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inp5dXB5eXFycXhocWN6amN4ZXZhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODAxMDkzNDQsImV4cCI6MjA5NTY4NTM0NH0._5Jc-Nge1rwTyqRv6cErmpO31zFgx8z8nZxeM576j_0';
     
-    // 獲取目前路徑，例如 /equipment/refine.html
-    // 如果是在根目錄或 GitHub Pages，路徑可能包含 /mo_data/，我們取最後一部分
     let path = window.location.pathname;
     if (path.includes("/mo_data/")) {
         path = path.substring(path.indexOf("/mo_data/") + 8);
     }
     
-    // 如果路徑以 / 開頭，去掉它以符合資料庫存儲格式（或根據您存儲的格式調整）
-    // 建議存儲格式為 /equipment/refine.html
     if (!path.startsWith("/")) path = "/" + path;
     if (path.endsWith("/")) path += "index.html";
     if (path === "/") path = "/index.html";
@@ -224,18 +222,27 @@ async function initDynamicHint() {
 /**
  * 在頁面中注入提示按鈕
  */
-function injectHintButton(text) {
-    // 嘗試尋找合適的注入點：優先找 .hero-card h2, 其次是 h1, h2
-    let target = document.querySelector(".hero-card h2") || 
+function injectHintButton(text, customSelector = null) {
+    let target = null;
+    
+    if (customSelector) {
+        target = document.querySelector(customSelector);
+    }
+    
+    if (!target) {
+        target = document.getElementById("dynamic-hint-target") || 
+                 document.querySelector(".hero-card h2") || 
                  document.querySelector("h2") || 
                  document.querySelector("h1");
+    }
     
     if (!target) {
         console.warn("No target found for hint button injection.");
         return;
     }
 
-    // 建立提示按鈕 HTML
+    if (target.parentNode.querySelector(".dynamic-hint")) return;
+
     const hintBtn = document.createElement("button");
     hintBtn.className = "hint-btn hint-position dynamic-hint";
     hintBtn.type = "button";
@@ -245,40 +252,25 @@ function injectHintButton(text) {
         <div class="hint-tooltip" role="tooltip">${text}</div>
     `;
 
-    // 點擊觸發顯示/隱藏
     hintBtn.addEventListener("click", (e) => {
         e.stopPropagation();
         const tooltip = hintBtn.querySelector(".hint-tooltip");
         tooltip.classList.toggle("show");
     });
 
-    // 點擊其他地方隱藏
     document.addEventListener("click", () => {
         const tooltip = hintBtn.querySelector(".hint-tooltip");
         if (tooltip) tooltip.classList.remove("show");
     });
 
-    // 注入到目標元素的後方 (作為兄弟節點)
-    target.style.display = "inline-block"; // 確保 h2 不會佔滿整行，讓按鈕能在旁邊
-    target.style.verticalAlign = "middle";
-    target.parentNode.insertBefore(hintBtn, target.nextSibling);
-    
-    // 確保父容器有 position: relative 以便 tooltip 定位
-    if (window.getComputedStyle(target.parentNode).position === "static") {
-        target.parentNode.style.position = "relative";
-    }
-}
-如果目標是空標籤 (ID 為 dynamic-hint-target)，則直接放進去
     if (target.id === "dynamic-hint-target") {
         target.appendChild(hintBtn);
     } else {
-        // 否則放在目標元素的後方
         target.style.display = "inline-block";
         target.style.verticalAlign = "middle";
         target.parentNode.insertBefore(hintBtn, target.nextSibling);
     }
     
-    // 確保父容器有 position: relative 以便 tooltip 定位
     if (window.getComputedStyle(target.parentNode).position === "static") {
         target.parentNode.style.position = "relative";
     }
