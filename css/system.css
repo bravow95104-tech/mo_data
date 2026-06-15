@@ -1,14 +1,5 @@
 /* 系統頁面專屬調整 - 升級為深色玻璃擬態風格 */
 
-:root {
-    --primary-blue: #4da3ff;
-    --primary-dark: #1e4b8a;
-    --glass-bg: rgba(255, 255, 255, 0.03);
-    --glass-border: rgba(255, 255, 255, 0.08);
-    --text-main: #f7fbff;
-    --text-muted: rgba(247, 251, 255, 0.7);
-}
-
 .system-page {
     align-items: stretch;
 }
@@ -234,13 +225,13 @@ table tbody tr:hover td {
 }
 
 .note-text {
-    background: rgba(255, 216, 107, 0.1);
+    background: var(--tag-clear-bg);
     border-radius: 8px;
     padding: 10px 15px;
-    color: #ffd86b;
+    color: var(--highlight-yellow);
     font-size: 0.9rem;
     margin: 15px 0;
-    border-left: 3px solid #ffd86b;
+    border-left: 3px solid var(--highlight-yellow);
 }
 
 figure {

@@ -327,7 +327,7 @@ body {
 
 .sidebar-list .date2:hover {
     color: var(--highlight-yellow) !important;
-    border-color: rgba(255, 216, 107, 0.4);
+    border-color: var(--tag-clear-border);
     opacity: 1;
 }
 
@@ -381,9 +381,9 @@ body {
 
 /* 特別資訊提示框 */
 .Information {
-    background: rgba(255, 216, 107, 0.1);
-    border: 1px solid rgba(255, 216, 107, 0.3);
-    color: #ffd86b;
+    background: var(--tag-clear-bg);
+    border: 1px solid var(--tag-clear-border);
+    color: var(--highlight-yellow);
     border-radius: 12px;
     padding: 10px 18px;
     font-size: 14px;
