@@ -417,7 +417,7 @@ export const TABLE_CONFIGS = {
         ]
     },
     map_resources: {
-        title: '地圖點位管理',
+        title: '採集點位管理',
         tableName: 'map_resources',
         tableCols: ['所屬地圖', '資源名稱', '遊戲座標', '操作'],
         displayFields: ['map_id', 'resource_name', 'game_coords'],
