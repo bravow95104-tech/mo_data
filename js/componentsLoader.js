@@ -230,21 +230,22 @@ function injectHintButton(text, customSelector = null) {
     }
     
     if (!target) {
-        target = document.getElementById("dynamic-hint-target") || 
+        // 支援您提到的 <hi> 標籤或是預設標題
+        target = document.querySelector("hi") ||
+                 document.getElementById("dynamic-hint-target") || 
                  document.querySelector(".hero-card h2") || 
                  document.querySelector("h2") || 
                  document.querySelector("h1");
     }
     
-    if (!target) {
-        console.warn("No target found for hint button injection.");
-        return;
-    }
+    if (!target) return;
 
-    if (target.parentNode.querySelector(".dynamic-hint")) return;
+    // 避免重複注入
+    if (target.parentNode.querySelector(".dynamic-hint") || target.querySelector(".dynamic-hint")) return;
 
+    // 建立提示按鈕 HTML
     const hintBtn = document.createElement("button");
-    hintBtn.className = "hint-btn hint-position dynamic-hint";
+    hintBtn.className = "hint-btn dynamic-hint";
     hintBtn.type = "button";
     hintBtn.setAttribute("aria-label", "提示說明");
     hintBtn.innerHTML = `
@@ -252,9 +253,16 @@ function injectHintButton(text, customSelector = null) {
         <div class="hint-tooltip" role="tooltip">${text}</div>
     `;
 
+    // 點擊觸發顯示/隱藏
     hintBtn.addEventListener("click", (e) => {
         e.stopPropagation();
         const tooltip = hintBtn.querySelector(".hint-tooltip");
+        
+        // 關閉其他開啟的提示
+        document.querySelectorAll(".hint-tooltip.show").forEach(t => {
+            if (t !== tooltip) t.classList.remove("show");
+        });
+        
         tooltip.classList.toggle("show");
     });
 
@@ -263,15 +271,15 @@ function injectHintButton(text, customSelector = null) {
         if (tooltip) tooltip.classList.remove("show");
     });
 
-    if (target.id === "dynamic-hint-target") {
-        target.appendChild(hintBtn);
-    } else {
-        target.style.display = "inline-block";
-        target.style.verticalAlign = "middle";
-        target.parentNode.insertBefore(hintBtn, target.nextSibling);
-    }
+    // --- 新的佈局邏輯 ---
+    // 將目標元素設為 Flex 容器，讓內容在左、按鈕在右
+    target.classList.add("hint-target-wrapper");
     
-    if (window.getComputedStyle(target.parentNode).position === "static") {
-        target.parentNode.style.position = "relative";
+    // 如果目標是 <hi> 或標題，我們把按鈕放進去（放在文字後面）
+    target.appendChild(hintBtn);
+    
+    // 確保父容器有定位
+    if (window.getComputedStyle(target).position === "static") {
+        target.style.position = "relative";
     }
 }
