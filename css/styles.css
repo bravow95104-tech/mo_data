@@ -166,12 +166,6 @@
     to { opacity: 1; transform: translateY(12px); }
 }
 
-/* 針對 <hi> 標籤的預設樣式（如果有的話） */
-hi {
-    display: block;
-    width: 100%;
-}
-
 /* 響應式調整 */
 @media (max-width: 768px) {
     .hint-tooltip {
