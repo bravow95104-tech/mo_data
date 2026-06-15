@@ -329,6 +329,7 @@ export const TABLE_CONFIGS = {
         fields: [
             { id: 'page_path', label: '頁面路徑 (如: /equipment/refine.html)', type: 'text', required: true, grid: 2 },
             { id: 'sort_id', label: '顯示順序', type: 'number', grid: 1 },
+            { id: 'target_selector', label: '目標選擇器 (可選，如: .hero-card h2 或 #my-id)', type: 'text', grid: 3, placeholder: '留空則自動尋找標題' },
             { id: 'hint_text', label: '提示文字', type: 'textarea', required: true, grid: 3 }
         ]
     },

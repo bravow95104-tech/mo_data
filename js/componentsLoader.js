@@ -214,7 +214,7 @@ async function initDynamicHint() {
         const data = await response.json();
         if (data && data.length > 0) {
             const hint = data[0];
-            injectHintButton(hint.hint_text);
+            injectHintButton(hint.hint_text, hint.target_selector);
         }
     } catch (err) {
         console.error("Failed to fetch page hint:", err);
@@ -262,6 +262,21 @@ function injectHintButton(text) {
     target.style.display = "inline-block"; // 確保 h2 不會佔滿整行，讓按鈕能在旁邊
     target.style.verticalAlign = "middle";
     target.parentNode.insertBefore(hintBtn, target.nextSibling);
+    
+    // 確保父容器有 position: relative 以便 tooltip 定位
+    if (window.getComputedStyle(target.parentNode).position === "static") {
+        target.parentNode.style.position = "relative";
+    }
+}
+如果目標是空標籤 (ID 為 dynamic-hint-target)，則直接放進去
+    if (target.id === "dynamic-hint-target") {
+        target.appendChild(hintBtn);
+    } else {
+        // 否則放在目標元素的後方
+        target.style.display = "inline-block";
+        target.style.verticalAlign = "middle";
+        target.parentNode.insertBefore(hintBtn, target.nextSibling);
+    }
     
     // 確保父容器有 position: relative 以便 tooltip 定位
     if (window.getComputedStyle(target.parentNode).position === "static") {
