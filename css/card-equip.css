@@ -215,6 +215,15 @@ tbody td {
   font-size: 12.5px;
   color: var(--text-muted);
   background: rgba(255, 255, 255, 0.03);
+  word-break: break-all; /* 強制換行 */
+}
+
+/* 針對主動技能卡掉落地點縮小寬度 */
+#card-equip-table th:last-child,
+#card-equip-table td:last-child {
+  max-width: 150px;
+  min-width: 120px;
+  white-space: normal; /* 允許換行 */
 }
 
 tbody tr {
