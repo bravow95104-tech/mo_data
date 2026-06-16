@@ -31,6 +31,16 @@ document.addEventListener("DOMContentLoaded", async () => {
   const modalContent = document.getElementById('modalContent');
   const closeModalBtn = document.querySelector('#modalBox .close-btn');
 
+  // --- 🚀 新增：地圖連結格式化 ---
+  const formatMapLinks = (text) => {
+    if (!text || text === "-") return "-";
+    return text.split(/[、,]\s*/).map(mapName => {
+      const trimmed = mapName.trim();
+      if (!trimmed) return "";
+      return `<a href="../map/detailed_map.html?map=${encodeURIComponent(trimmed)}" class="hero-link">${trimmed}</a>`;
+    }).join('、');
+  };
+
   // 1. 載入資料
   try {
     const [cardRes, mapsRes] = await Promise.all([
@@ -180,10 +190,16 @@ document.addEventListener("DOMContentLoaded", async () => {
       });
 
       const dropTd = document.createElement("td");
-      dropTd.textContent = displayDrop;
+      dropTd.innerHTML = formatMapLinks(displayDrop);
+      dropTd.addEventListener("click", (e) => {
+        if (e.target.tagName === 'A') e.stopPropagation();
+      });
       tr.appendChild(dropTd);
 
-      tr.addEventListener("click", () => showDetailModal(item));
+      tr.addEventListener("click", (e) => {
+        if (e.target.tagName === 'A') return;
+        showDetailModal(item);
+      });
       fragment.appendChild(tr);
     });
     tbody.appendChild(fragment);
@@ -220,8 +236,12 @@ document.addEventListener("DOMContentLoaded", async () => {
         <p><strong>第一屬性：</strong>${highlight(card.property_first, searchFirst ? searchFirst.value.trim() : "")}</p>
         <p><strong>第二屬性：</strong>${highlight(card.property_second, searchSecond ? searchSecond.value.trim() : "")}</p>
         <p><strong>第三屬性：</strong>${highlight(card.property_third, searchThird ? searchThird.value.trim() : "")}</p>
+        <p><strong>掉落地圖：</strong>${formatMapLinks(displayDrop)}</p>
       `;
-      cardDiv.addEventListener('click', () => showDetailModal(card));
+      cardDiv.addEventListener('click', (e) => {
+        if (e.target.tagName === 'A') return;
+        showDetailModal(card);
+      });
       fragment.appendChild(cardDiv);
     });
     cardContainer.appendChild(fragment);
@@ -316,9 +336,13 @@ document.addEventListener("DOMContentLoaded", async () => {
       <div id="modal-img-col" style="text-align: center; margin-bottom: 15px;"></div>
       ${isMobile ? `
       <div class="hero-column right">
-        <p><strong>掉落地圖：</strong><br>${displayDrop}</p>
+        <p><strong>掉落地圖：</strong><br>${formatMapLinks(displayDrop)}</p>
       </div>
-      ` : ''}
+      ` : `
+      <div class="hero-column right" style="width: 100%; flex: 1 1 100%;">
+        <p><strong>掉落地圖：</strong>${formatMapLinks(displayDrop)}</p>
+      </div>
+      `}
     `;
     
     const imgCol = modalContent.querySelector('#modal-img-col');

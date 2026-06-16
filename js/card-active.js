@@ -32,6 +32,18 @@ document.addEventListener("DOMContentLoaded", async () => {
   const closeModalBtn = document.querySelector('#modalBox .close-btn');
   const searchInput = document.getElementById("searchInput");
 
+  // --- 🚀 新增：地圖連結格式化 ---
+  const formatMapLinks = (text) => {
+    if (!text || text === "-") return "-";
+    // 支援、或逗號分隔
+    return text.split(/[、,]\s*/).map(mapName => {
+      const trimmed = mapName.trim();
+      if (!trimmed) return "";
+      // 串接到地圖頁面，並帶上 map 參數
+      return `<a href="../map/detailed_map.html?map=${encodeURIComponent(trimmed)}" class="hero-link">${trimmed}</a>`;
+    }).join('、');
+  };
+
   // 1. 載入資料
   try {
     const [cardRes, mapsRes] = await Promise.all([
@@ -155,10 +167,16 @@ document.addEventListener("DOMContentLoaded", async () => {
       });
 
       const dropTd = document.createElement("td");
-      dropTd.textContent = displayDrop;
+      dropTd.innerHTML = formatMapLinks(displayDrop);
+      dropTd.addEventListener("click", (e) => {
+        if (e.target.tagName === 'A') e.stopPropagation();
+      });
       tr.appendChild(dropTd);
 
-      tr.addEventListener("click", () => showDetailModal(item));
+      tr.addEventListener("click", (e) => {
+        if (e.target.tagName === 'A') return;
+        showDetailModal(item);
+      });
       fragment.appendChild(tr);
     });
     tbody.appendChild(fragment);
@@ -193,9 +211,12 @@ document.addEventListener("DOMContentLoaded", async () => {
         <p><strong>拜官：</strong>${highlight(card.card_class || '-')}</p>
         <p><strong>消耗MP：</strong>${card.card_mp || '-'}</p>
         <p><strong>說明：</strong>${highlight(card.directions || '-')}</p>
-        <p><strong>掉落地圖：</strong>${displayDrop}</p>
+        <p><strong>掉落地圖：</strong>${formatMapLinks(displayDrop)}</p>
       `;
-      cardDiv.addEventListener('click', () => showDetailModal(card));
+      cardDiv.addEventListener('click', (e) => {
+        if (e.target.tagName === 'A') return;
+        showDetailModal(card);
+      });
       fragment.appendChild(cardDiv);
     });
     cardContainer.appendChild(fragment);

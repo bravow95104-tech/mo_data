@@ -142,10 +142,16 @@ document.addEventListener("DOMContentLoaded", async () => {
       });
 
       const dropTd = document.createElement("td");
-      dropTd.textContent = displayDrop;
+      dropTd.innerHTML = formatMapLinks(displayDrop);
+      dropTd.addEventListener("click", (e) => {
+        if (e.target.tagName === 'A') e.stopPropagation();
+      });
       tr.appendChild(dropTd);
 
-      tr.addEventListener("click", () => showDetailModal(item));
+      tr.addEventListener("click", (e) => {
+        if (e.target.tagName === 'A') return;
+        showDetailModal(item);
+      });
       fragment.appendChild(tr);
     });
     tbody.appendChild(fragment);
@@ -178,9 +184,12 @@ document.addEventListener("DOMContentLoaded", async () => {
         <p><strong>等級：</strong>${card.card_lv || '-'}</p>
         <p><strong>拜官：</strong>${highlight(card.card_class || '-')}</p>
         <p><strong>說明：</strong>${highlight(card.directions || '-')}</p>
-        <p><strong>掉落地圖：</strong>${highlight(displayDrop)}</p>
+        <p><strong>掉落地圖：</strong>${formatMapLinks(displayDrop)}</p>
       `;
-      cardDiv.addEventListener('click', () => showDetailModal(card));
+      cardDiv.addEventListener('click', (e) => {
+        if (e.target.tagName === 'A') return;
+        showDetailModal(card);
+      });
       fragment.appendChild(cardDiv);
     });
     cardContainer.appendChild(fragment);
@@ -264,9 +273,13 @@ document.addEventListener("DOMContentLoaded", async () => {
       <div id="modal-img-col" style="text-align: center; margin-bottom: 15px;"></div>
       ${isMobile ? `
       <div class="hero-column right">
-        <p><strong>掉落地圖：</strong><br>${displayDrop}</p>
+        <p><strong>掉落地圖：</strong><br>${formatMapLinks(displayDrop)}</p>
       </div>
-      ` : ''}
+      ` : `
+      <div class="hero-column right" style="width: 100%; flex: 1 1 100%;">
+        <p><strong>掉落地圖：</strong>${formatMapLinks(displayDrop)}</p>
+      </div>
+      `}
     `;
     
     const imgCol = modalContent.querySelector('#modal-img-col');
