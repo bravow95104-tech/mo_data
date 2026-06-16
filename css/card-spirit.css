@@ -234,3 +234,19 @@ tbody tr:hover td {
     display: flex;
   }
 }
+
+/* 英雄/裝備連結樣式 (複用 map.js 風格) */
+.hero-link {
+  color: var(--primary-blue);
+  text-decoration: none;
+  border-bottom: 1px dashed var(--primary-blue);
+  transition: all 0.2s ease;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.hero-link:hover {
+  color: var(--highlight-yellow);
+  border-bottom: 1px solid var(--highlight-yellow);
+  transform: translateY(-1px);
+}
