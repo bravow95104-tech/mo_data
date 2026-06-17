@@ -310,9 +310,13 @@ document.addEventListener("DOMContentLoaded", async () => {
       <div id="modal-img-col" style="text-align: center; margin-bottom: 15px;"></div>
       ${isMobile ? `
       <div class="hero-column right">
-        <p><strong>掉落地圖：</strong><br>${displayDrop}</p>
+        <p><strong>掉落地圖：</strong><br>${formatMapLinks(displayDrop)}</p>
       </div>
-      ` : ''}
+      ` : `
+      <div class="hero-column right" style="width: 100%; flex: 1 1 100%;">
+        <p><strong>掉落地圖：</strong>${formatMapLinks(displayDrop)}</p>
+      </div>
+      `}
     `;
     const imgCol = modalContent.querySelector('#modal-img-col');
     if (imgCol) imgCol.appendChild(img);

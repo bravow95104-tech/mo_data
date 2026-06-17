@@ -32,6 +32,18 @@ document.addEventListener("DOMContentLoaded", async () => {
   const closeModalBtn = document.querySelector('#modalBox .close-btn');
   const searchInput = document.getElementById("searchInput");
 
+  // --- 🚀 新增：地圖連結格式化 ---
+  const formatMapLinks = (text) => {
+    if (!text || text === "-") return "-";
+    // 支援、或逗號分隔
+    return text.split(/[、,]\s*/).map(mapName => {
+      const trimmed = mapName.trim();
+      if (!trimmed) return "";
+      // 串接到地圖頁面，並帶上 map 參數
+      return `<a href="../map/detailed_map.html?map=${encodeURIComponent(trimmed)}" class="hero-link">${trimmed}</a>`;
+    }).join('、');
+  };
+
   // 1. 載入資料
   try {
     const [cardRes, mapsRes] = await Promise.all([

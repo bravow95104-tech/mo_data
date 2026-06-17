@@ -35,6 +35,18 @@ document.addEventListener("DOMContentLoaded", async () => {
   const modalContent = document.getElementById('modalContent');
   const closeModalBtn = document.querySelector('#modalBox .close-btn');
 
+  // --- 🚀 新增：地圖連結格式化 ---
+  const formatMapLinks = (text) => {
+    if (!text || text === "-") return "-";
+    // 支援、或逗號分隔
+    return text.split(/[、,]\s*/).map(mapName => {
+      const trimmed = mapName.trim();
+      if (!trimmed) return "";
+      // 串接到地圖頁面，並帶上 map 參數
+      return `<a href="../map/detailed_map.html?map=${encodeURIComponent(trimmed)}" class="hero-link">${trimmed}</a>`;
+    }).join('、');
+  };
+
   // 1. 載入資料
   try {
     const [cardRes, mapsRes] = await Promise.all([
@@ -318,7 +330,7 @@ function showDetailModal(item) {
       <h2 class="hero-name">${item.card_id}</h2>
       <div id="modal-img-col" style="text-align: center; margin-bottom: 20px;"></div>
       <div class="hero-column right" style="flex: 1 1 100%;">
-        <p><strong>掉落地圖：</strong><br>${displayDrop}</p>
+        <p><strong>掉落地圖：</strong><br>${formatMapLinks(displayDrop)}</p>
       </div>
     `;
   } else {
@@ -334,7 +346,7 @@ function showDetailModal(item) {
           <p><strong>倍率：</strong>${item.nemultiplier || item.multiplier || '-'}</p>
           <p><strong>專屬英雄：</strong>${item.hero_name}</p>
           <hr style="margin: 15px 0; border: 0; border-top: 1px solid var(--border-separator);">
-          <p><strong>掉落地圖：</strong>${displayDrop}</p>
+          <p><strong>掉落地圖：</strong>${formatMapLinks(displayDrop)}</p>
         </div>
       </div>
     `;

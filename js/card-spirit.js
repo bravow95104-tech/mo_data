@@ -230,6 +230,9 @@ document.addEventListener("DOMContentLoaded", async () => {
         return String(text).replace(regex, "<span class='highlight'>$1</span>");
       };
 
+      const foundMaps = mapData.filter(map => (map.drop_equidcard || "").split("、").includes(card.card_id));
+      let displayDrop = foundMaps.length > 0 ? foundMaps.map(m => m.mapid).join("、 ") : (card.drop || "-");
+
       cardDiv.innerHTML = `
         <h3>${highlight(card.card_id, searchName ? searchName.value.trim() : "")}</h3>
         <p><strong>等級：</strong>${card.card_lv || '-'}</p>
