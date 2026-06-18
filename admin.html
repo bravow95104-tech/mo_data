@@ -186,6 +186,20 @@
         .table-card { overflow-x: auto; }
         table { min-width: 720px; }
 
+        /* 手機板按鈕文字隱藏 */
+        @media (max-width: 768px) {
+            .btn-text {
+                display: none;
+            }
+            .btn-edit, .btn-delete {
+                min-width: auto !important;
+                padding: 6px 10px !important;
+            }
+            .btn i {
+                margin: 0 !important;
+            }
+        }
+
         @media (max-width: 900px) {
             body { flex-direction: column; }
             .sidebar {
@@ -658,10 +672,10 @@
                 ${config.displayFields.map(f => `<td>${item[f] || '-'}</td>`).join('')}
                 <td>
                     <button class="btn btn-edit" onclick="openEditModal('${item.id}')">
-                        <i class="fas fa-edit"></i> 編輯
+                        <i class="fas fa-edit"></i> <span class="btn-text">編輯</span>
                     </button>
                     <button class="btn btn-delete" onclick="deleteItem('${item.id}')">
-                        <i class="fas fa-trash-alt"></i> 刪除
+                        <i class="fas fa-trash-alt"></i> <span class="btn-text">刪除</span>
                     </button>
                 </td>
             </tr>
