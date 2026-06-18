@@ -295,7 +295,7 @@ export const TABLE_CONFIGS = {
             { id: 'date', label: '日期', type: 'text', placeholder: 'YYYY-MM-DD', required: true, grid: 1 },
             { id: 'sort_id', label: '顯示順序', type: 'number', grid: 1 },
             { id: 'is_tips', label: '是否為 Tips', type: 'select', options: ['是', '否'], grid: 1 },
-            { id: 'content', label: '內容', type: 'textarea', required: true, grid: 3 }
+            { id: 'content', label: '內容(^&特殊文字&^)', type: 'textarea', required: true, grid: 3 }
         ]
     },
     thank: {
