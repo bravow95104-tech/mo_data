@@ -87,6 +87,17 @@ const formatGloryWithTooltip = (text) => {
   }).join('、');
 };
 
+// === 自定義語法解析 (^&文字&^ -> 變色) ===
+const parseCustomSyntax = (text) => {
+  if (!text) return "";
+  return String(text).replace(/\^&([\s\S]*?)&\^/g, '<span class="colored-text">$1</span>');
+};
+
+const formatDescription = (text) => {
+  if (!text) return "-";
+  return parseCustomSyntax(text).replace(/\n/g, '<br>');
+};
+
 window.zoomWorldMap = function (src) {
   const modalBox = document.getElementById("modalBox");
   if (!modalBox) return;
@@ -167,8 +178,8 @@ window.openMapDetail = function (mapId) {
   }
 
   const detailsHTML = `
-    ${showApproach ? `<div class="section-gap"><p><strong>走法：</strong>${item.approach || "-"}</p></div>` : ""}
-    ${showExplain ? `<div class="section-gap"><p><strong>說明：</strong>${item.illustrate || "-"}</p></div>` : ""}
+    ${showApproach ? `<div class="section-gap"><p><strong>走法：</strong>${formatDescription(item.approach)}</p></div>` : ""}
+    ${showExplain ? `<div class="section-gap"><p><strong>說明：</strong>${formatDescription(item.illustrate)}</p></div>` : ""}
 `.trim();
 
   let combatAndDropHTML = '';
