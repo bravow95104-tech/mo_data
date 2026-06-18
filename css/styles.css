@@ -44,6 +44,9 @@
 
     /* 表格名稱/標題文字顏色 */
     --table-title-text: #ffd86b;
+
+    /* 自定義變色文字顏色 */
+    --custom-colored-text: #00ffff;
     }
 
     /* 強制覆蓋所有頁面的淺色主題 */
@@ -85,6 +88,9 @@
 
     /* 表格名稱/標題文字顏色 - 淺色模式 */
     --table-title-text: #c05621 !important;
+
+    /* 自定義變色文字顏色 - 淺色模式下使用較深的青藍色 */
+    --custom-colored-text: #008b8b !important;
     }
 
 /* --- 提示按鈕 (Hint Button) --- */
@@ -481,6 +487,13 @@ body {
     padding: 10px 18px;
     font-size: 14px;
     backdrop-filter: blur(5px);
+}
+
+/* 自定義變色文字 ^&...&^ */
+.colored-text {
+    color: var(--custom-colored-text) !important;
+    font-weight: bold;
+    text-shadow: 0 0 5px rgba(0, 255, 255, 0.3);
 }
 
 /* === 手機版響應式佈局 === */
