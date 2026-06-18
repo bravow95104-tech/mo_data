@@ -240,6 +240,9 @@
     gap: 4px;
     padding: 0 11px;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    position: relative;
+    z-index: 10002;
+    cursor: pointer;
   }
 
   .hamburger-btn span {
@@ -248,6 +251,20 @@
     height: 2px;
     border-radius: 999px;
     background-color: var(--text-main);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+
+  /* 🚀 新增：漢堡選單變形為 X */
+  .hamburger-btn[aria-expanded="true"] span:nth-child(1) {
+    transform: translateY(6px) rotate(45deg);
+  }
+
+  .hamburger-btn[aria-expanded="true"] span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .hamburger-btn[aria-expanded="true"] span:nth-child(3) {
+    transform: translateY(-6px) rotate(-45deg);
   }
 
   .nav-menu {
