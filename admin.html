@@ -193,10 +193,80 @@
             }
             .btn-edit, .btn-delete {
                 min-width: auto !important;
-                padding: 6px 10px !important;
+                padding: 8px 12px !important;
+                flex: 1;
+                justify-content: center;
             }
             .btn i {
                 margin: 0 !important;
+            }
+
+            /* 轉為卡片佈局 */
+            #tableView {
+                background: transparent;
+                box-shadow: none;
+                padding: 0;
+            }
+            table, thead, tbody, th, td, tr {
+                display: block;
+                width: 100% !important;
+            }
+            thead {
+                display: none;
+            }
+            table {
+                min-width: 0 !important;
+            }
+            #tableBody tr {
+                background: white;
+                margin-bottom: 16px;
+                border-radius: 12px;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+                border: 1px solid var(--border);
+                overflow: hidden;
+            }
+            #tableBody td {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 12px 16px;
+                border-bottom: 1px solid #f1f5f9;
+                max-width: none;
+                text-align: right;
+                white-space: normal;
+                position: relative !important;
+                right: auto !important;
+                box-shadow: none !important;
+            }
+            #tableBody td::before {
+                content: attr(data-label);
+                font-weight: 600;
+                color: #64748b;
+                font-size: 13px;
+                text-align: left;
+                flex: 1;
+            }
+            /* 卡片標題色塊 */
+            #tableBody td:first-child {
+                background: #f8fafc;
+                font-weight: bold;
+                color: var(--primary);
+                justify-content: center;
+                text-align: center;
+            }
+            #tableBody td:first-child::before {
+                display: none;
+            }
+            /* 操作按鈕區塊 */
+            #tableBody td:last-child {
+                background: #fff;
+                padding: 12px;
+                gap: 8px;
+                border-bottom: none;
+                justify-content: flex-end;
+            }
+            #tableBody td:last-child::before {
+                display: none;
             }
         }
 
@@ -661,6 +731,7 @@
     function renderTable(data) {
         const config = TABLE_CONFIGS[currentTable];
         const tbody = document.getElementById('tableBody');
+        const headers = config.tableCols;
         
         if (data.length === 0) {
             tbody.innerHTML = '<tr><td colspan="10" style="text-align: center; padding: 40px;">無資料</td></tr>';
@@ -669,8 +740,10 @@
 
         tbody.innerHTML = data.map(item => `
             <tr>
-                ${config.displayFields.map(f => `<td>${item[f] || '-'}</td>`).join('')}
-                <td>
+                ${config.displayFields.map((f, i) => `
+                    <td data-label="${headers[i] || ''}">${item[f] || '-'}</td>
+                `).join('')}
+                <td data-label="操作">
                     <button class="btn btn-edit" onclick="openEditModal('${item.id}')">
                         <i class="fas fa-edit"></i> <span class="btn-text">編輯</span>
                     </button>
