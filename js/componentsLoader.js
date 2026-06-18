@@ -99,6 +99,8 @@ function initNavbarBehavior() {
             const toggle = dropdown.querySelector(".dropdown-toggle");
             if (toggle && toggle.tagName === "BUTTON") {
                 toggle.setAttribute("aria-expanded", "false");
+                // 🚀 新增：在手機版強制失焦，避免 :focus-within 導致選單關不掉
+                if (window.innerWidth <= 768) toggle.blur();
             }
         });
     }
