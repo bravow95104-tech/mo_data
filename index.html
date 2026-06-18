@@ -58,6 +58,12 @@
       document.addEventListener("DOMContentLoaded", async function () {
         const baseURL = "."; // 修正為相對路徑
 
+        // --- 自定義語法解析 (^&文字&^ -> 變色) ---
+        function parseCustomSyntax(text) {
+          if (!text) return "";
+          return text.replace(/\^&([\s\S]*?)&\^/g, '<span class="colored-text">$1</span>');
+        }
+
         // --- 更新日誌分頁設定 ---
         const ITEMS_PER_PAGE = 25;
         let changelogLines = [];
@@ -75,7 +81,7 @@
           pageLines.forEach((item) => {
             const li = document.createElement("li");
             const safeContent = item.content
-              ? String(item.content).replace(/\n/g, "<br>")
+              ? parseCustomSyntax(String(item.content).replace(/\n/g, "<br>"))
               : "";
 
             if (item.is_tips === "是") {
@@ -85,6 +91,7 @@
             }
             list.appendChild(li);
           });
+          // ... rest of the function unchanged
 
           // 渲染分頁按鈕
           const totalPages = Math.ceil(changelogLines.length / ITEMS_PER_PAGE);
@@ -157,7 +164,7 @@
           list.innerHTML = "";
           data.forEach((item) => {
             const li = document.createElement("li");
-            li.innerHTML = `<span class="tips">${item.category}</span>${item.names.replace(/\n/g, "<br>")}`;
+            li.innerHTML = `<span class="tips">${item.category}</span>${parseCustomSyntax(item.names.replace(/\n/g, "<br>"))}`;
             list.appendChild(li);
           });
         } catch (err) {
@@ -180,7 +187,7 @@
             const li = document.createElement("li");
             li.innerHTML = `
               <span class="date">${item.date}</span>
-              <a href="${item.url || "#"}" target="_blank" rel="noopener noreferrer" class="date2">${item.title}</a>
+              <a href="${item.url || "#"}" target="_blank" rel="noopener noreferrer" class="date2">${parseCustomSyntax(item.title)}</a>
             `;
             list.appendChild(li);
           });
