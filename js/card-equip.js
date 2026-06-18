@@ -35,18 +35,6 @@ document.addEventListener("DOMContentLoaded", async () => {
   const modalContent = document.getElementById('modalContent');
   const closeModalBtn = document.querySelector('#modalBox .close-btn');
 
-  // --- 🚀 新增：地圖連結格式化 ---
-  const formatMapLinks = (text) => {
-    if (!text || text === "-") return "-";
-    // 支援、或逗號分隔
-    return text.split(/[、,]\s*/).map(mapName => {
-      const trimmed = mapName.trim();
-      if (!trimmed) return "";
-      // 串接到地圖頁面，並帶上 map 參數
-      return `<a href="../map/detailed_map.html?map=${encodeURIComponent(trimmed)}" class="hero-link">${trimmed}</a>`;
-    }).join('、');
-  };
-
   // 1. 載入資料
   try {
     const [cardRes, mapsRes] = await Promise.all([
@@ -60,25 +48,26 @@ document.addEventListener("DOMContentLoaded", async () => {
     allCardData = cardRes.data || [];
     mapData = mapsRes.data || [];
     
+    initializeSortIcons();
+
     // 🚀 新增：檢查 URL 是否有 ?card=名稱 參數
     const urlParams = new URLSearchParams(window.location.search);
     const cardParam = urlParams.get('card');
-    if (cardParam && searchInput) {
-      searchInput.value = cardParam;
-      applyFiltersAndSort(); // 先過濾
+    if (cardParam) {
+      if (searchInput) searchInput.value = cardParam;
+      applyFiltersAndSort(); 
       
-      // 如果過濾後有匹配資料，自動開啟彈窗
-      if (lastFilteredData.length > 0) {
-        const matched = lastFilteredData.find(c => c.card_id === cardParam);
-        if (matched) {
-          showDetailModal(matched, matched.card_id);
-        }
+      const targetCard = allCardData.find(c => c.card_id === cardParam);
+      if (targetCard) {
+        setTimeout(() => showDetailModal(targetCard), 100);
+      } else {
+        // 找不到，跳轉到靈具卡頁面
+        window.location.href = `card-spirit.html?card=${encodeURIComponent(cardParam)}`;
       }
     } else {
-      initializeSortIcons();
       applyFiltersAndSort(); 
-      updateSortIcons();
     }
+    updateSortIcons();
   } catch (err) {
     console.error("❌ Failed to load data:", err)
     if (tableBody) tableBody.innerHTML = '<tr><td colspan="6">無法載入資料</td></tr>';
@@ -128,19 +117,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     
     lastFilteredData = filteredData;
     applyLayout();
-
-    // === 🚀 跨頁面深度連結處理 ===
-    const urlParams = new URLSearchParams(window.location.search);
-    const cardParam = urlParams.get('card');
-    if (cardParam) {
-      const targetCard = allCardData.find(c => c.card_id === cardParam);
-      if (targetCard) {
-        setTimeout(() => showDetailModal(targetCard), 100);
-      } else {
-        // 找不到，跳轉到靈具卡頁面
-        window.location.href = `card-spirit.html?card=${encodeURIComponent(cardParam)}`;
-      }
-    }
   }
 
   // 3. 佈局切換
@@ -282,6 +258,18 @@ function updateSortIcons() {
     if (th.dataset.sort === sortConfig.key) th.classList.add(`sorted-${sortConfig.direction}`);
   });
 }
+
+// --- 🚀 新增：地圖連結格式化 ---
+const formatMapLinks = (text) => {
+  if (!text || text === "-") return "-";
+  // 支援、或逗號分隔
+  return text.split(/[、,]\s*/).map(mapName => {
+    const trimmed = mapName.trim();
+    if (!trimmed) return "";
+    // 串接到地圖頁面，並帶上 map 參數
+    return `<a href="../map/detailed_map.html?map=${encodeURIComponent(trimmed)}" class="hero-link">${trimmed}</a>`;
+  }).join('、');
+};
 
 function showDetailModal(item) {
   const overlay = document.getElementById('modalOverlay');
