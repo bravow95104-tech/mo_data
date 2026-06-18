@@ -150,10 +150,19 @@ function initNavbarBehavior() {
             const dropdown = toggle.closest(".dropdown");
             if (!dropdown) return;
 
-            const willOpen = !dropdown.classList.contains("open");
+            const isAlreadyOpen = dropdown.classList.contains("open");
+            
+            // 先關閉所有的選單
             closeDropdowns();
-            dropdown.classList.toggle("open", willOpen);
-            toggle.setAttribute("aria-expanded", String(willOpen));
+            
+            // 如果原本是關閉的，就打開它；如果原本就是打開的，此時已經被關閉，就不用再打開
+            if (!isAlreadyOpen) {
+                dropdown.classList.add("open");
+                toggle.setAttribute("aria-expanded", "true");
+            } else {
+                toggle.setAttribute("aria-expanded", "false");
+            }
+            
             window.setTimeout(updateNavOffset, 50);
             return;
         }
