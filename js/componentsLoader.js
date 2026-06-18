@@ -104,16 +104,34 @@ function initNavbarBehavior() {
     }
 
     function setMenuState(isOpen) {
+        const navContainer = document.getElementById("nav-container");
         navMenu.classList.toggle("active", isOpen);
-        navbar.classList.toggle("menu-open", isOpen); // 🚀 新增：控制全螢幕展開
+        navbar.classList.toggle("menu-open", isOpen);
+        if (navContainer) navContainer.classList.toggle("menu-open", isOpen);
+        
         hamburgerBtn.setAttribute("aria-expanded", String(isOpen));
+        
+        // 🚀 新增：防止底層頁面滾動
+        if (isOpen) {
+            document.body.style.overflow = "hidden";
+        } else {
+            document.body.style.overflow = "";
+        }
+
         if (!isOpen) closeDropdowns();
         window.setTimeout(updateNavOffset, 50);
     }
 
     navbar.classList.add("visible");
     updateNavOffset();
-    window.addEventListener("resize", updateNavOffset);
+    
+    window.addEventListener("resize", () => {
+        updateNavOffset();
+        // 如果切換回電腦版，自動關閉手機選單
+        if (window.innerWidth > 768 && navMenu.classList.contains("active")) {
+            setMenuState(false);
+        }
+    });
 
     hamburgerBtn.addEventListener("click", (e) => {
         e.stopPropagation();
