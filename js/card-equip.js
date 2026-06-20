@@ -11,7 +11,7 @@ let sortConfig = { key: null, direction: 'asc' };
 // --- 🚀 新增：地圖連結格式化 ---
 function formatMapLinks(text) {
   if (!text || text === "-") return "-";
-  const excludeWords = ["未知", "儲值活動贈送", "無", "暫無資料"];
+  const excludeWords = ["未知", "儲值活動贈送", "抽包", "紫箱"];
   // 支援、或逗號分隔
   return text.split(/[、,]\s*/).map(mapName => {
     const trimmed = mapName.trim();
