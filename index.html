@@ -92,10 +92,18 @@
               : "";
 
             if (item.is_tips === "是") {
-              li.innerHTML = `<span class="tips">Tips</span>${safeContent}`;
-            } else {
-              li.innerHTML = `<span class="date">${item.date}</span>${safeContent}`;
-            }
+  // 將 safeContent 用一個 span 包裹，並設定為 inline 正常的文字流
+  li.innerHTML = `
+    <span class="tips">Tips</span>
+    <span style="display: inline; white-space: normal; word-break: break-all;">${safeContent}</span>
+  `;
+} else {
+  // 同樣將 safeContent 包裹起來
+  li.innerHTML = `
+    <span class="date">${item.date}</span>
+    <span style="display: inline; white-space: normal; word-break: break-all;">${safeContent}</span>
+  `;
+}
             list.appendChild(li);
           });
           // ... rest of the function unchanged
