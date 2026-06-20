@@ -465,4 +465,16 @@ export const TABLE_CONFIGS = {
             { id: 'image', label: '圖片連結', type: 'text', grid: 3 }
         ]
     },
+
+    map_polygon_zones: {
+        title: '地圖區域管理',
+        tableName: 'map_polygon_zones',
+        tableCols: ['所屬地圖', '區域名稱', '點位', '操作'],
+        displayFields: ['map_name', 'zone_name', 'point'],
+        fields: [
+            { id: 'map_name', label: '所屬地圖 (完全對應)', type: 'text', required: true, grid: 1 },
+            { id: 'zone_name', label: '區域名稱', type: 'text', required: true, grid: 1 },
+            { id: 'point', label: '點位', type: 'textarea', placeholder: '例如: [[100,100]],', grid: 2 },
+        ]
+    },
 };
