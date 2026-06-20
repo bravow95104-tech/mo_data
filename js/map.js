@@ -145,6 +145,45 @@ window.showResourceMarker = function(x, y, name, maxX, maxY) {
   }
 };
 
+// --- 💡 核心關鍵：當 Modalbox 顯示完成後，呼叫這個函數去 Supabase 撈資料 ---
+async function loadModalZoneButtons(mapName, maxX, maxY) {
+  const zoneContainer = document.getElementById('modal-zone-list');
+  if (!zoneContainer || !mapName) return;
+
+  try {
+    // 從我們剛建立好的資料表撈取這張地圖的所有區域
+    const { data: zones, error } = await supabase
+      .from('map_polygon_zones')
+      .select('zone_name, points')
+      .eq('map_name', mapName);
+
+    if (error) throw error;
+
+    if (!zones || zones.length === 0) {
+      zoneContainer.innerHTML = '<span style="color: #888; font-size: 14px;">此地圖暫無區域資料</span>';
+      return;
+    }
+
+    // 2. 順利撈到資料，動態生成區域按鈕
+    zoneContainer.innerHTML = zones.map(zone => {
+      // 將 points 陣列轉成字串，方便直接當成 onclick 的參數傳遞
+      const pointsStr = JSON.stringify(zone.points);
+      
+      return `
+        <button class="resource-btn zone-btn" 
+                style="border-color: #ff4d4d; color: #ff4d4d;"
+                onclick="showResourcePolyRange(${pointsStr}, ${maxX}, ${maxY})">
+          [區域] ${zone.zone_name}
+        </button>
+      `;
+    }).join('');
+
+  } catch (err) {
+    console.error("載入區域按鈕失敗:", err.message);
+    zoneContainer.innerHTML = '<span style="color: #ff4d4d; font-size: 14px;">區域載入失敗</span>';
+  }
+}
+
 window.openMapDetail = function (mapId) {
   const item = mapData.find(m => m.mapid === mapId);
   if (!item) return;
@@ -161,21 +200,33 @@ window.openMapDetail = function (mapId) {
   const showApproach = approachA.includes("要");
   const showExplain = approachA.includes("說明");
   
-  let resourceButtonsHTML = "";
-  if (resources.length > 0) {
-    resourceButtonsHTML = `
-      <div class="resource-group section-gap">
+let resourceButtonsHTML = "";
+
+// 只要有採集資源，或是預期有區域範圍（這裡用 item 存在來判斷），就渲染大容器
+if (resources.length > 0 || item) {
+  resourceButtonsHTML = `
+    <div class="resource-group section-gap">
+      
+      ${resources.length > 0 ? `
         <div class="resource-group-title"><i class="fas fa-hammer"></i> 採集資源點 (點擊查看位置)</div>
-        <div class="resource-list">
+        <div class="resource-list" style="margin-bottom: 15px;">
           ${resources.map(r => `
             <button class="resource-btn" onclick="showResourceMarker(${r.x}, ${r.y}, '${r.resource_name}', ${item.game_max_x}, ${item.game_max_y})">
               ${r.resource_name} ${r.game_coords ? `(${r.game_coords})` : ''}
             </button>
           `).join('')}
         </div>
+      ` : ''}
+
+      <div class="zone-group-title" style="margin-top: 10px; font-weight: bold; color: var(--text-color);">
+        <i class="fas fa-layer-group"></i> 區域範圍顯示
       </div>
-    `;
-  }
+      <div class="zone-list" id="modal-zone-list">
+        <span style="color: #888; font-size: 14px;">偵測區域中...</span>
+      </div>
+
+    </div> `;
+}
 
   const detailsHTML = `
     ${showApproach ? `<div class="section-gap"><p><strong>走法：</strong>${formatDescription(item.approach)}</p></div>` : ""}
