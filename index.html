@@ -62,6 +62,8 @@
         function parseCustomSyntax(text) {
           if (!text) return "";
           return text.replace(/\^&([\s\S]*?)&\^/g, '<span class="colored-text">$1</span>');
+          // 2. 關鍵修正：在外層包一個強制的 block 容器，洗掉所有外層 Flexbox 或排版干擾
+  return `<div style="display: block !important; width: 100% !important; white-space: normal !important; word-break: break-all !important;">${parsedText}</div>`;
         }
 
         // --- 更新日誌分頁設定 ---
