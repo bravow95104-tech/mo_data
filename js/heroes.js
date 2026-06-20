@@ -33,6 +33,21 @@ document.addEventListener("DOMContentLoaded", async () => {
     }, 150);
   });
 
+// --- 🚀 新增：地圖連結格式化 ---
+function formatMapLinks(text) {
+  if (!text || text === "-") return "-";
+  const excludeWords = ["未知", "儲值活動贈送", "抽包", "紫箱"];
+  // 支援、或逗號分隔
+  return text.split(/[、,]\s*/).map(mapName => {
+    const trimmed = mapName.trim();
+    if (!trimmed) return "";
+    if (excludeWords.includes(trimmed)) {
+      return trimmed; // 直接回傳純文字，不加超連結
+    }
+    // 串接到地圖頁面，並帶上 map 參數
+    return `<a href="../map/detailed_map.html?map=${encodeURIComponent(trimmed)}" class="hero-link">${trimmed}</a>`;
+  }).join('、');
+}
   // === 動態新增排序箭頭 (最終修正版) ===
   document.querySelectorAll("th.sortable").forEach((th) => {
     // 防止重複執行
@@ -452,7 +467,7 @@ document.addEventListener("DOMContentLoaded", async () => {
           <p><strong>生變技能：</strong>${getVal(hero.transformation_skill)}</p>
         </div>
         <div class="hero-column-base hero-column-details">
-          <p><strong>光輝掉落(掉落較多)：</strong>${getVal(fallHighAreas)}</p>
+          <p><strong>光輝掉落(掉落較多)：</strong>${getVal(fallHighAreas)}${formatMapLinks(fallHighAreas)}</p>
           <p><strong>光輝掉落(掉落較低)：</strong>${getVal(fallLowAreas)}</p>
           ${hero.player ? `<p><strong>光輝掉落(玩家提供)：</strong>${getVal(hero.player)}</p>` : ""}
         </div>
