@@ -281,6 +281,11 @@ if (resources.length > 0 || item) {
     `;
 
   showModal();
+  setTimeout(() => {
+    if (typeof loadModalZoneButtons === "function") {
+      loadModalZoneButtons(item.mapid, item.game_max_x, item.game_max_y);
+    }
+  }, 50);
 };
 
 // === 2. 核心初始化 ===
