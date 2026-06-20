@@ -229,7 +229,7 @@ async function loadModalZoneButtons(mapName, maxX, maxY) {
         <button class="resource-btn zone-btn" 
                 style="border-color: #ff4d4d; color: #ff4d4d;"
                 onclick="showResourcePolyRange(${pointsStr}, ${maxX}, ${maxY})">
-          [區域] ${zone.zone_name}
+           ${zone.zone_name}
         </button>
       `;
     }).join('');
@@ -274,7 +274,7 @@ if (resources.length > 0 || item) {
         </div>
       ` : ''}
 
-      <div class="zone-group-title" style="margin-top: 10px; font-weight: bold; color: var(--text-color);">
+      <div class="zone-group-title">
         <i class="fas fa-layer-group"></i> 區域範圍顯示
       </div>
       <div class="zone-list" id="modal-zone-list">
