@@ -833,32 +833,35 @@
     };
 
     window.openEditModal = async (id) => {
-        if (!await verifySessionBeforeAction()) return;
-        const item = allData.find(d => d.id == id);
-        if (!item) return;
+    if (!await verifySessionBeforeAction()) return;
+    const item = allData.find(d => d.id == id);
+    if (!item) return;
 
-        renderEditForm();
-        const titleText = item.name || item.item || item.skillName || item.items || item.skillname || item.mapid || '未命名';
-        document.getElementById('modalTitle').innerText = '編輯：' + titleText;
-        document.getElementById('edit-id').value = item.id;
-        
-        TABLE_CONFIGS[currentTable].fields.forEach(f => {
-            const el = document.getElementById('edit-' + f.id);
-            if (el) {
-                if (f.type === 'checkbox') {
-                    const values = (item[f.id] || '').split('、');
-                    el.querySelectorAll('input[type="checkbox"]').forEach(cb => {
-                        cb.checked = values.includes(cb.value);
-                    });
-                } else {
-                    el.value = item[f.id] || (f.type === 'number' ? 0 : '');
-                }
+    renderEditForm();
+    const titleText = item.name || item.item || item.skillName || item.items || item.skillname || item.mapid || '未命名';
+    document.getElementById('modalTitle').innerText = '編輯：' + titleText;
+    document.getElementById('edit-id').value = item.id;
+    
+    TABLE_CONFIGS[currentTable].fields.forEach(f => {
+        const el = document.getElementById('edit-' + f.id);
+        if (el) {
+            if (f.type === 'checkbox') {
+                const values = (item[f.id] || '').split('、');
+                el.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+                    cb.checked = values.includes(cb.value);
+                });
+            } else if (f.id === 'points' && typeof item[f.id] === 'object' && item[f.id] !== null) {
+                // 🚀 新增關鍵修正：如果是 points 欄位且是個物件（陣列），就用 JSON.stringify 還原成帶括號的字串
+                el.value = JSON.stringify(item[f.id]);
+            } else {
+                el.value = item[f.id] || (f.type === 'number' ? 0 : '');
             }
-        });
+        }
+    });
 
-        isDirty = false; // 🚀 填充資料後重設修改狀態
-        document.getElementById('editModal').style.display = 'block';
-    };
+    isDirty = false; // 🚀 填充資料後重設修改狀態
+    document.getElementById('editModal').style.display = 'block';
+};
 
     window.deleteItem = async (id) => {
         if (!await verifySessionBeforeAction()) return;
@@ -923,19 +926,30 @@
         const config = TABLE_CONFIGS[currentTable];
         
         config.fields.forEach(f => {
-            const el = document.getElementById('edit-' + f.id);
-            if (!el) return;
-            let val = '';
-            
-            if (f.type === 'checkbox') {
-                const checked = Array.from(el.querySelectorAll('input[type="checkbox"]:checked')).map(cb => cb.value);
-                val = checked.join('、');
-            } else {
-                val = el.value;
-            }
-            
-            updates[f.id] = f.type === 'number' ? parseInt(val || 0) : val;
-        });
+    const el = document.getElementById('edit-' + f.id);
+    if (!el) return;
+    
+    // 🚀 核心安全防護：如果是 points 欄位，特殊處理 JSON 解析
+    if (f.id === 'points') {
+        try {
+            // 把文字框的 "[[100,100],[200,200]]" 轉回真正的 JS 二維陣列物件
+            updates[f.id] = JSON.parse(el.value.trim() || '[]');
+        } catch (e) {
+            alert('❌ 點位格式輸入錯誤！\n請確保欄位內容符合標準 JSON 陣列格式。\n範例：[[100,100],[200,150]]');
+            throw e; // 阻斷提交流程，防止將錯誤格式存入雲端
+        }
+    } else {
+        // 🔒 其他所有欄位完美維持你原本的舊邏輯，安全度 100%
+        let val = '';
+        if (f.type === 'checkbox') {
+            const checked = Array.from(el.querySelectorAll('input[type="checkbox"]:checked')).map(cb => cb.value);
+            val = checked.join('、');
+        } else {
+            val = el.value;
+        }
+        updates[f.id] = f.type === 'number' ? parseInt(val || 0) : val;
+    }
+});
 
         try {
             isSubmitting = true;
