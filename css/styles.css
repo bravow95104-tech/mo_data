@@ -494,9 +494,9 @@ body {
     color: var(--custom-colored-text) !important;
     font-weight: bold;
     text-shadow: 0 0 5px rgba(0, 255, 255, 0.3);
-    display: inline-block;
-    vertical-align: bottom;
-    word-break: break-word;
+    display: inline;
+    word-break: break-all;
+    overflow-wrap: anywhere;
 }
 
 /* === 手機版響應式佈局 === */
