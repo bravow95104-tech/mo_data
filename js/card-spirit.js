@@ -34,9 +34,14 @@ document.addEventListener("DOMContentLoaded", async () => {
   // --- 🚀 新增：地圖連結格式化 ---
   const formatMapLinks = (text) => {
     if (!text || text === "-") return "-";
+    const excludeWords = ["未知", "儲值活動", "活動", "暫無資料"];
     return text.split(/[、,]\s*/).map(mapName => {
       const trimmed = mapName.trim();
       if (!trimmed) return "";
+      // 2. 檢查目前這個字詞是否在排除清單內
+    if (excludeWords.includes(trimmed)) {
+      return trimmed; // 直接回傳純文字，不加超連結
+    }
       return `<a href="../map/detailed_map.html?map=${encodeURIComponent(trimmed)}" class="hero-link">${trimmed}</a>`;
     }).join('、');
   };
