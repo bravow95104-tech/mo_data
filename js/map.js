@@ -144,42 +144,48 @@ window.showResourceMarker = function(x, y, name, maxX, maxY) {
       wrapper.scrollIntoView({ behavior: 'smooth', block: 'center' });
   }
 };
+
 // 🚀 新增：在畫布上繪製不規則範圍的函數
 window.showResourcePolyRange = function(points, maxX, maxY) {
-    // 1. 先清除舊的單點 Marker（如果你有的話）與舊的範圍線
-    if (typeof clearResourceMarker === "function") clearResourceMarker();
+    // 1. 先清除舊的範圍線
     if (typeof clearResourcePolyRange === "function") clearResourcePolyRange();
 
-    // 2. 尋找你的地圖圖片容器，用來計算相對比例與附加 SVG 畫布
+    // 2. 尋找地圖的實際圖片（用來獲取網頁上縮放後的實際寬高）
+    const mapImg = document.querySelector('.map-image-relative-wrapper .hero-image');
     const wrapper = document.querySelector('.map-image-relative-wrapper');
-    if (!wrapper) {
-        console.error("找不到地圖容器 .map-image-relative-wrapper");
+    
+    if (!mapImg || !wrapper) {
+        console.error("找不到地圖圖片或容器");
         return;
     }
 
-    // 3. 建立一個滿版的 SVG 畫布來畫紅線範圍
+    // 🚀 核心修正：獲取圖片當前在網頁上的實際顯示像素（Pixel）寬高
+    const currentWidth = mapImg.clientWidth;
+    const currentHeight = mapImg.clientHeight;
+
+    // 3. 建立滿版 SVG 畫布
     const svgNamespace = "http://www.w3.org/2000/svg";
     const svg = document.createElementNS(svgNamespace, "svg");
     svg.setAttribute("id", "resource-polygon-svg");
     svg.style.position = "absolute";
-    svg.style.left = "0";
-    svg.style.top = "0";
-    svg.style.width = "100%";
-    svg.style.height = "100%";
-    svg.style.pointerEvents = "none"; // 讓滑鼠點擊可以穿透，不干擾原本的操作
+    svg.style.left = mapImg.offsetLeft + "px"; // 對齊圖片的起點
+    svg.style.top = mapImg.offsetTop + "px";
+    svg.style.width = currentWidth + "px";     // 完美貼合圖片實際寬高
+    svg.style.height = currentHeight + "px";
+    svg.style.pointerEvents = "none";
 
-    // 4. 將遊戲坐標轉換為網頁百分比坐標 (與你原本的 Marker 換算邏輯相同)
+    // 🚀 核心修正：將遊戲坐標換算成真實的像素坐標（不帶 % 號）
     const convertedPoints = points.map(pt => {
-        const pctX = (pt[0] / maxX) * 100;
-        const pctY = (pt[1] / maxY) * 100;
-        return `${pctX}%,${pctY}%`;
+        const pixelX = (pt[0] / maxX) * currentWidth;
+        const pixelY = (pt[1] / maxY) * currentHeight;
+        return `${pixelX},${pixelY}`; // 這裡是純數字，例如 "120.5,250.3"
     }).join(" ");
 
-    // 5. 建立 SVG 的 polygon (多邊形) 標籤
+    // 5. 建立 SVG 的 polygon 標籤
     const polygon = document.createElementNS(svgNamespace, "polygon");
     polygon.setAttribute("points", convertedPoints);
     
-    // 🎨 設定紅線範圍的樣式 (半透明紅底 + 實線紅框)
+    // 🎨 設定紅線範圍的樣式
     polygon.setAttribute("fill", "rgba(255, 77, 77, 0.35)");
     polygon.setAttribute("stroke", "#ff4d4d");
     polygon.setAttribute("stroke-width", "2");
