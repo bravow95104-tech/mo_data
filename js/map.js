@@ -186,7 +186,7 @@ window.showResourcePolyRange = function(points, maxX, maxY) {
     polygon.setAttribute("points", convertedPoints);
     
     // 🎨 設定紅線範圍的樣式
-    polygon.setAttribute("fill", "rgba(255, 77, 77, 0.35)");
+    polygon.setAttribute("fill", "rgba(255, 77, 77, 0.15)");
     polygon.setAttribute("stroke", "#ff4d4d");
     polygon.setAttribute("stroke-width", "2");
 
