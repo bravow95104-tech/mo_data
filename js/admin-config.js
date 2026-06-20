@@ -470,11 +470,11 @@ export const TABLE_CONFIGS = {
         title: '地圖區域管理',
         tableName: 'map_polygon_zones',
         tableCols: ['所屬地圖', '區域名稱', '點位', '操作'],
-        displayFields: ['map_name', 'zone_name', 'point'],
+        displayFields: ['map_name', 'zone_name', 'points'],
         fields: [
             { id: 'map_name', label: '所屬地圖 (完全對應)', type: 'text', required: true, grid: 1 },
             { id: 'zone_name', label: '區域名稱', type: 'text', required: true, grid: 1 },
-            { id: 'point', label: '點位', type: 'textarea', placeholder: '例如: [[100,100]],', grid: 2 },
+            { id: 'points', label: '點位', type: 'textarea', placeholder: '例如: [[100,100]],', grid: 2 },
         ]
     },
 };
