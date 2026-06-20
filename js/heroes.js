@@ -467,8 +467,8 @@ function formatMapLinks(text) {
           <p><strong>生變技能：</strong>${getVal(hero.transformation_skill)}</p>
         </div>
         <div class="hero-column-base hero-column-details">
-          <p><strong>光輝掉落(掉落較多)：</strong>${getVal(fallHighAreas)}${formatMapLinks(fallHighAreas)}</p>
-          <p><strong>光輝掉落(掉落較低)：</strong>${getVal(fallLowAreas)}</p>
+          <p><strong>光輝掉落(掉落較多)：</strong>${formatMapLinks(fallHighAreas)}</p>
+          <p><strong>光輝掉落(掉落較低)：</strong>${formatMapLinks(fallLowAreas)}</p>
           ${hero.player ? `<p><strong>光輝掉落(玩家提供)：</strong>${getVal(hero.player)}</p>` : ""}
         </div>
         ${
