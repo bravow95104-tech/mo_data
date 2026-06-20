@@ -494,9 +494,10 @@ body {
     color: var(--custom-colored-text) !important;
     font-weight: bold;
     text-shadow: 0 0 5px rgba(0, 255, 255, 0.3);
-    display: inline;
-    word-break: break-all;
-    overflow-wrap: anywhere;
+    display: inline !important;
+    white-space: normal !important; /* 覆寫父層的 nowrap */
+    word-break: break-all !important;
+    overflow-wrap: anywhere !important;
 }
 
 /* === 手機版響應式佈局 === */
