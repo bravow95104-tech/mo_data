@@ -8,6 +8,22 @@ let mapData = [];
 let lastFilteredData = []; // 存儲最後過濾出的資料
 let sortConfig = { key: null, direction: 'asc' };
 
+// --- 🚀 新增：地圖連結格式化 ---
+function formatMapLinks(text) {
+  if (!text || text === "-") return "-";
+  const excludeWords = ["未知", "儲值活動贈送", "無", "暫無資料"];
+  // 支援、或逗號分隔
+  return text.split(/[、,]\s*/).map(mapName => {
+    const trimmed = mapName.trim();
+    if (!trimmed) return "";
+    if (excludeWords.includes(trimmed)) {
+      return trimmed; // 直接回傳純文字，不加超連結
+    }
+    // 串接到地圖頁面，並帶上 map 參數
+    return `<a href="../map/detailed_map.html?map=${encodeURIComponent(trimmed)}" class="hero-link">${trimmed}</a>`;
+  }).join('、');
+}
+
 document.addEventListener("DOMContentLoaded", async () => {
   // === 響應式判斷 ===
   const isBelow768 = () => window.innerWidth <= 768;
@@ -259,18 +275,6 @@ function updateSortIcons() {
   });
 }
 
-// --- 🚀 新增：地圖連結格式化 ---
-const formatMapLinks = (text) => {
-  if (!text || text === "-") return "-";
-  // 支援、或逗號分隔
-  return text.split(/[、,]\s*/).map(mapName => {
-    const trimmed = mapName.trim();
-    if (!trimmed) return "";
-    // 串接到地圖頁面，並帶上 map 參數
-    return `<a href="../map/detailed_map.html?map=${encodeURIComponent(trimmed)}" class="hero-link">${trimmed}</a>`;
-  }).join('、');
-};
-
 function showDetailModal(item) {
   const overlay = document.getElementById('modalOverlay');
   const modalBox = document.getElementById('modalBox');
@@ -286,11 +290,20 @@ function showDetailModal(item) {
   img.style.objectFit = 'contain';
 
   const encodeFileName = (name) => encodeURIComponent(String(name || ''));
+  const id = encodeFileName(item.card_id);
+  const prop = encodeFileName(item.card_property);
+  
   const imageCandidates = [
-    `/mo_data/pic/card-equip/${encodeFileName(item.card_id)}_${encodeFileName(item.card_property)}.png`,
-    `/mo_data/pic/card-equip/${encodeFileName(item.card_id)}.png`,
-    `/mo_data/pic/card-equip/${encodeFileName(item.card_id)}_${encodeFileName(item.card_property)}.jpg`,
-    `/mo_data/pic/card-equip/${encodeFileName(item.card_id)}.jpg`,
+    `/mo_data/pic/card-equip/已上傳/${id}_${prop}.png`,
+    `/mo_data/pic/card-equip/已上傳/${id}.png`,
+    `/mo_data/pic/card-equip/已上傳/${id}卡_${prop}.png`,
+    `/mo_data/pic/card-equip/已上傳/${id}卡.png`,
+    `/mo_data/pic/card-equip/已上傳/${id}_${prop}.jpg`,
+    `/mo_data/pic/card-equip/已上傳/${id}.jpg`,
+    `/mo_data/pic/card-equip/${id}_${prop}.png`,
+    `/mo_data/pic/card-equip/${id}.png`,
+    `/mo_data/pic/card-equip/${id}_${prop}.jpg`,
+    `/mo_data/pic/card-equip/${id}.jpg`,
   ];
 
   let index = 0;
