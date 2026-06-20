@@ -144,6 +144,56 @@ window.showResourceMarker = function(x, y, name, maxX, maxY) {
       wrapper.scrollIntoView({ behavior: 'smooth', block: 'center' });
   }
 };
+// 🚀 新增：在畫布上繪製不規則範圍的函數
+window.showResourcePolyRange = function(points, maxX, maxY) {
+    // 1. 先清除舊的單點 Marker（如果你有的話）與舊的範圍線
+    if (typeof clearResourceMarker === "function") clearResourceMarker();
+    if (typeof clearResourcePolyRange === "function") clearResourcePolyRange();
+
+    // 2. 尋找你的地圖圖片容器，用來計算相對比例與附加 SVG 畫布
+    const wrapper = document.querySelector('.map-image-relative-wrapper');
+    if (!wrapper) {
+        console.error("找不到地圖容器 .map-image-relative-wrapper");
+        return;
+    }
+
+    // 3. 建立一個滿版的 SVG 畫布來畫紅線範圍
+    const svgNamespace = "http://www.w3.org/2000/svg";
+    const svg = document.createElementNS(svgNamespace, "svg");
+    svg.setAttribute("id", "resource-polygon-svg");
+    svg.style.position = "absolute";
+    svg.style.left = "0";
+    svg.style.top = "0";
+    svg.style.width = "100%";
+    svg.style.height = "100%";
+    svg.style.pointerEvents = "none"; // 讓滑鼠點擊可以穿透，不干擾原本的操作
+
+    // 4. 將遊戲坐標轉換為網頁百分比坐標 (與你原本的 Marker 換算邏輯相同)
+    const convertedPoints = points.map(pt => {
+        const pctX = (pt[0] / maxX) * 100;
+        const pctY = (pt[1] / maxY) * 100;
+        return `${pctX}%,${pctY}%`;
+    }).join(" ");
+
+    // 5. 建立 SVG 的 polygon (多邊形) 標籤
+    const polygon = document.createElementNS(svgNamespace, "polygon");
+    polygon.setAttribute("points", convertedPoints);
+    
+    // 🎨 設定紅線範圍的樣式 (半透明紅底 + 實線紅框)
+    polygon.setAttribute("fill", "rgba(255, 77, 77, 0.35)");
+    polygon.setAttribute("stroke", "#ff4d4d");
+    polygon.setAttribute("stroke-width", "2");
+
+    // 6. 塞進畫面
+    svg.appendChild(polygon);
+    wrapper.appendChild(svg);
+};
+
+// 🚀 新增：清除紅線範圍的函數 (關閉 Modalbox 或點擊其他資源時呼叫)
+window.clearResourcePolyRange = function() {
+    const oldSvg = document.getElementById("resource-polygon-svg");
+    if (oldSvg) oldSvg.remove();
+};
 
 // --- 💡 核心關鍵：當 Modalbox 顯示完成後，呼叫這個函數去 Supabase 撈資料 ---
 async function loadModalZoneButtons(mapName, maxX, maxY) {
