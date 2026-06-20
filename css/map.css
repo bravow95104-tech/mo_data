@@ -646,6 +646,16 @@ tbody tr:hover td {
   gap: 6px;
 }
 
+.zone-group-title {
+  font-size: 14px;
+  color: var(--primary-blue);
+  margin-bottom: 10px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
 /* 響應式微調 */
 @media (max-width: 768px) {
   .content-wrapper {
