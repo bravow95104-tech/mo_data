@@ -495,9 +495,8 @@ body {
     font-weight: bold;
     text-shadow: 0 0 5px rgba(0, 255, 255, 0.3);
     display: inline !important;
-    white-space: normal !important; /* 覆寫父層的 nowrap */
-    word-break: break-all !important;
-    overflow-wrap: anywhere !important;
+    line-height: inherit !important; /* 繼承父層行高，避免獨立計算導致重疊 */
+    white-space: normal !important;
 }
 
 /* === 手機版響應式佈局 === */
