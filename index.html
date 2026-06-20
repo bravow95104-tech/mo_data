@@ -60,11 +60,16 @@
 
         // --- 自定義語法解析 (^&文字&^ -> 變色) ---
         function parseCustomSyntax(text) {
-          if (!text) return "";
-          return text.replace(/\^&([\s\S]*?)&\^/g, '<span class="colored-text">$1</span>');
-          // 2. 關鍵修正：在外層包一個強制的 block 容器，洗掉所有外層 Flexbox 或排版干擾
-  return `<div style="display: block !important; width: 100% !important; white-space: normal !important; word-break: break-all !important;">${parsedText}</div>`;
-        }
+  if (!text) return "";
+  
+  // 先把前後空白去掉，並確保只針對明確的 ^& 和 &^ 做替換
+  let cleanedText = text.trim();
+  
+  // 使用更精準的匹配，防止它把括號或逗號黏進去
+  return cleanedText.replace(/\^&([^\^&]+)&\^/g, function(match, p1) {
+    return `<span class="colored-text">${p1}</span>`;
+  });
+}
 
         // --- 更新日誌分頁設定 ---
         const ITEMS_PER_PAGE = 25;
