@@ -485,8 +485,9 @@ export const TABLE_CONFIGS = {
         fields: [
             { id: 'map_id', label: '所屬地圖 (完全對應)', type: 'text', required: true, grid: 1 },
             { id: 'sort_id', label: '排序', type: 'text', required: true, grid: 1 },
-            { id: 'zone_name', label: '區域名稱', type: 'textarea', grid: 2 },
+            { id: 'zone_name', label: '區域名稱', type: 'text', grid: 2 },
             { id: 'drop_rubbish', label: '垃圾掉落物', type: 'textarea', grid: 2, group: '掉落' },
+            { id: 'drop_product', label: '產物', type: 'textarea', grid: 2, group: '掉落' },
             { id: 'drop_heroes', label: '英雄卡', type: 'textarea', grid: 2, group: '掉落' },
             { id: 'drop_other', label: '其他', type: 'textarea', grid: 2, group: '掉落' },
         ]

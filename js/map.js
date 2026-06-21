@@ -218,61 +218,81 @@ window.clearResourcePolyRange = function() {
 };
 
 // --- 💡 核心關鍵：當 Modalbox 顯示完成後，呼叫這個函數去 Supabase 撈資料 ---
-async function loadModalZoneButtons(mapName, maxX, maxY, mainTableRubbish) {
+async function loadModalZoneButtons(mapName, maxX, maxY, mainTableRubbish, mainTableProduct) {
   const zoneContainer = document.getElementById('modal-zone-list');
   const zoneSection = document.getElementById('zone-section');
+  
+  // 🚀 抓取「垃圾」與「產物」的 DOM 元素
   const rubbishElement = document.getElementById('dynamic-drop-rubbish');
   const rubbishRow = document.getElementById('dynamic-drop-rubbish-row');
+  const productElement = document.getElementById('dynamic-drop-product');
+  const productRow = document.getElementById('dynamic-drop-product-row');
   
   if (!zoneContainer || !zoneSection || !mapName) return;
 
   try {
-    // 🚀 1. 同時撈取「點位表」與「區域掉落表」
+    // 1. 同時撈取「點位表」與「區域掉落表」 (🚀 select 補上 drop_product)
     const [zonesRes, dropsRes] = await Promise.all([
       supabase.from('map_polygon_zones').select('zone_name, points').eq('map_name', mapName),
-      supabase.from('map_zone_drops').select('zone_name, drop_rubbish').eq('map_id', mapName).order('sort_id', { ascending: true })
+      supabase.from('map_zone_drops').select('zone_name, drop_rubbish, drop_product').eq('map_id', mapName).order('sort_id', { ascending: true })
     ]);
 
     if (zonesRes.error) throw zonesRes.error;
     
-    // 🚀 【核心修正】：一撈完立刻定義這兩個變數，確保下面所有程式碼都讀得到！
     const zones = zonesRes.data;
     const drops = dropsRes.data || [];
 
-    // 2. 檢查：如果兩個表都完全沒資料，就隱藏整個區域區塊並收工
+    // 2. 檢查：如果全部都沒資料，就隱藏整個區域區塊並把垃圾、產物行收起來
     if ((!zones || zones.length === 0) && drops.length === 0) {
       zoneSection.style.display = 'none';
-      if (rubbishRow) rubbishRow.style.display = 'none'; // 連帶隱藏垃圾行
+      if (rubbishRow) rubbishRow.style.display = 'none';
+      if (productRow) productRow.style.display = 'none';
       return;
     }
 
-    // 有資料就打開大容器
     zoneSection.style.display = 'block';
 
-    // 🚀 3. 處理「還沒選區域」的預設垃圾顯示：原先資料 + 剛剛建立好的
+    // 🛠️ 3. 【核心邏輯 - 垃圾處理】：原先資料 + 剛剛建立好的
     if (rubbishElement && rubbishRow) {
         const newZoneRubbishArray = drops.map(d => d.drop_rubbish).filter(r => r);
-        
         let combinedRubbish = mainTableRubbish;
         if (newZoneRubbishArray.length > 0) {
-            const allNewRubbishStr = newZoneRubbishArray.join(', ');
-            combinedRubbish = mainTableRubbish ? `${mainTableRubbish}, ${allNewRubbishStr}` : allNewRubbishStr;
+            combinedRubbish = mainTableRubbish ? `${mainTableRubbish}, ${newZoneRubbishArray.join(', ')}` : newZoneRubbishArray.join(', ');
         }
-        
-        // 去重與重整格式
         const uniqueRubbish = Array.from(new Set(combinedRubbish.split(/[,，、\s]+/))).filter(r => r).join('、');
         
         if (uniqueRubbish) {
             rubbishElement.innerHTML = uniqueRubbish;
-            rubbishRow.style.display = ''; // 顯示垃圾行
-            rubbishElement.setAttribute('data-default', uniqueRubbish);
+            rubbishRow.style.display = ''; // 顯示
+            rubbishElement.setAttribute('data-default', uniqueRubbish); // 備份預設值
         } else {
-            rubbishRow.style.display = 'none';
+            rubbishRow.style.display = 'none'; // 隱藏
             rubbishElement.setAttribute('data-default', '');
         }
     }
 
-    // 4. 點位分組邏輯（同名合併）
+    // 🛠️ 4. 【核心邏輯 - 產物處理】：原先資料 + 剛剛建立好的 (🚀 新增)
+    if (productElement && productRow) {
+        // 蒐集新表各分區的產物
+        const newZoneProductArray = drops.map(d => d.drop_product).filter(p => p);
+        let combinedProduct = mainTableProduct;
+        if (newZoneProductArray.length > 0) {
+            combinedProduct = mainTableProduct ? `${mainTableProduct}, ${newZoneProductArray.join(', ')}` : newZoneProductArray.join(', ');
+        }
+        // 去重
+        const uniqueProduct = Array.from(new Set(combinedProduct.split(/[,，、\s]+/))).filter(p => p).join('、');
+        
+        if (uniqueProduct) {
+            productElement.innerHTML = uniqueProduct;
+            productRow.style.display = ''; // 顯示
+            productElement.setAttribute('data-default', uniqueProduct); // 備份預設值
+        } else {
+            productRow.style.display = 'none'; // 隱藏
+            productElement.setAttribute('data-default', '');
+        }
+    }
+
+    // 5. 點位分組邏輯（同名合併）
     const groupedZones = {};
     if (zones && zones.length > 0) {
         zones.forEach(zone => {
@@ -281,18 +301,20 @@ async function loadModalZoneButtons(mapName, maxX, maxY, mainTableRubbish) {
         });
     }
 
-    // 5. 動態生成區域按鈕
+    // 6. 動態生成區域按鈕
     zoneContainer.innerHTML = Object.keys(groupedZones).map(zoneName => {
       const multiPointsStr = JSON.stringify(groupedZones[zoneName]);
       
-      // 🚀 這裡就能百分之百安全地讀取到 drops 了！
+      // 找出這個區域對應的專屬垃圾與專屬產物
       const matchedDrop = drops.find(d => d.zone_name === zoneName);
       const zoneDropRubbish = matchedDrop ? matchedDrop.drop_rubbish : '';
+      const zoneDropProduct = matchedDrop ? matchedDrop.drop_product : ''; // 🚀 新增
 
+      // 🚀 將專屬垃圾、專屬產物一起打包丟進 switchZoneDisplay
       return `
         <button class="resource-btn zone-btn" 
                 style="border-color: #ff4d4d; color: #ff4d4d;"
-                onclick="switchZoneDisplay(${multiPointsStr}, '${zoneDropRubbish}', ${maxX}, ${maxY})">
+                onclick="switchZoneDisplay(${multiPointsStr}, '${zoneDropRubbish}', '${zoneDropProduct}', ${maxX}, ${maxY})">
           ${zoneName}
         </button>
       `;
@@ -304,23 +326,37 @@ async function loadModalZoneButtons(mapName, maxX, maxY, mainTableRubbish) {
   }
 }
 
-window.switchZoneDisplay = function(points, zoneDropRubbish, maxX, maxY) {
+window.switchZoneDisplay = function(points, zoneDropRubbish, zoneDropProduct, maxX, maxY) {
+    // 1. 劃分紅線範圍
     if (typeof showResourcePolyRange === "function") {
         showResourcePolyRange(points, maxX, maxY);
     }
 
+    // 2. 切換垃圾顯示
     const rubbishElement = document.getElementById('dynamic-drop-rubbish');
-    const rubbishRow = document.getElementById('dynamic-drop-rubbish-row'); // 🚀 抓取整行 p
-    
+    const rubbishRow = document.getElementById('dynamic-drop-rubbish-row');
     if (rubbishElement && rubbishRow) {
         if (zoneDropRubbish) {
             rubbishElement.innerHTML = zoneDropRubbish;
-            rubbishRow.style.display = ''; // 🚀 確保有資料時它是打開顯示的
+            rubbishRow.style.display = '';
             rubbishElement.style.color = "#ff4d4d";
             rubbishElement.style.fontWeight = "bold";
         } else {
-            // 🚀 如果此分區完全沒有任何垃圾掉落，直接將這一行整行隱藏，不留白！
-            rubbishRow.style.display = 'none';
+            rubbishRow.style.display = 'none'; // 該區沒垃圾就隱藏
+        }
+    }
+
+    // 3. 切換產物顯示 (🚀 新增)
+    const productElement = document.getElementById('dynamic-drop-product');
+    const productRow = document.getElementById('dynamic-drop-product-row');
+    if (productElement && productRow) {
+        if (zoneDropProduct) {
+            productElement.innerHTML = zoneDropProduct;
+            productRow.style.display = '';
+            productElement.style.color = "#ff4d4d";
+            productElement.style.fontWeight = "bold";
+        } else {
+            productRow.style.display = 'none'; // 該區沒產物就隱藏
         }
     }
 };
@@ -389,6 +425,10 @@ if (resources.length > 0 || item) {
             <strong>◢ 垃圾：</strong>
             <span id="dynamic-drop-rubbish"></span>
         </p>
+        <p class="align-row" id="dynamic-drop-product-row" style="display: none;">
+    <strong>◢ 產物：</strong>
+    <span id="dynamic-drop-product"></span>
+</p>
                     ${item.drop_equidcard ? `<p class="align-row"><strong>◢ 裝備卡：</strong><span>${formatTieredContent(item.drop_equidcard, false, 'equip')}</span></p>` : ""}
                     ${item.drop_skillcard ? `<p class="align-row"><strong>◢ 技能卡：</strong><span>${formatTieredContent(item.drop_skillcard, false, 'skill')}</span></p>` : ""}
                     ${item.drop_hero ? `<p class="align-row"><strong>◢ 英雄卡：</strong><span>${formatTieredContent(item.drop_hero, false, 'hero')}</span></p>` : ""}
@@ -427,7 +467,13 @@ if (resources.length > 0 || item) {
   showModal();
   setTimeout(() => {
     if (typeof loadModalZoneButtons === "function") {
-        loadModalZoneButtons(item.mapid, item.game_max_x, item.game_max_y, item.drop_rubbish || "");
+        loadModalZoneButtons(
+            item.mapid, 
+            item.game_max_x, 
+            item.game_max_y, 
+            item.drop_rubbish || "",  // 第 4 個參數
+            item.drop_product || ""   // 第 5 個參數 (🚀 新增)
+        );
     }
 }, 50);
 };
