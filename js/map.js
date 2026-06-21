@@ -214,7 +214,9 @@ window.clearResourcePolyRange = function() {
 // --- 💡 核心關鍵：當 Modalbox 顯示完成後，呼叫這個函數去 Supabase 撈資料 ---
 async function loadModalZoneButtons(mapName, maxX, maxY) {
   const zoneContainer = document.getElementById('modal-zone-list');
-  if (!zoneContainer || !mapName) return;
+  const zoneSection = document.getElementById('zone-section'); // 🚀 抓取外層大容器
+  
+  if (!zoneContainer || !zoneSection || !mapName) return;
 
   try {
     const { data: zones, error } = await supabase
@@ -224,38 +226,41 @@ async function loadModalZoneButtons(mapName, maxX, maxY) {
 
     if (error) throw error;
 
+    // 🚀 核心邏輯：如果真的沒有任何區域資料，就直接維持隱藏並結束
     if (!zones || zones.length === 0) {
-      zoneContainer.innerHTML = '<span style="color: #888; font-size: 14px;">此地圖暫無區域資料</span>';
+      zoneSection.style.display = 'none'; 
       return;
     }
 
-    // 🚀 【核心邏輯】：把相同名字的區域分組，將多個不連貫的 points 合併成一個陣列的陣列
+    // 🚀 有資料！立刻把整個區域區塊顯示出來
+    zoneSection.style.display = 'block';
+
+    // 進行同名區域分組（維持你之前超讚的同名合併功能）
     const groupedZones = {};
     zones.forEach(zone => {
       if (!groupedZones[zone.zone_name]) {
         groupedZones[zone.zone_name] = [];
       }
-      // 不管是單個多邊形 [[x,y]...] 還是多個，通通集中進去
       groupedZones[zone.zone_name].push(zone.points);
     });
 
-    // 2. 動態生成區域按鈕
+    // 動態生成區域按鈕
     zoneContainer.innerHTML = Object.keys(groupedZones).map(zoneName => {
-      // 這裡把該區域所有的多邊形陣列轉成字串
       const multiPointsStr = JSON.stringify(groupedZones[zoneName]);
       
       return `
-  <button class="resource-btn zone-btn" 
-          style="border-color: #ff4d4d; color: #ff4d4d;"
-          onclick="showResourcePolyRange(${multiPointsStr}, ${maxX}, ${maxY})">
-    ${zoneName}
-  </button>
-`;
+        <button class="resource-btn zone-btn" 
+                style="border-color: #ff4d4d; color: #ff4d4d;"
+                onclick="showResourcePolyRange(${multiPointsStr}, ${maxX}, ${maxY})">
+          ${zoneName}
+        </button>
+      `;
     }).join('');
 
   } catch (err) {
     console.error("載入區域按鈕失敗:", err.message);
-    zoneContainer.innerHTML = '<span style="color: #ff4d4d; font-size: 14px;">區域載入失敗</span>';
+    // 萬一出錯了，保險起見也把該區塊藏起來
+    zoneSection.style.display = 'none';
   }
 }
 
@@ -292,12 +297,12 @@ if (resources.length > 0 || item) {
           `).join('')}
         </div>
       ` : ''}
-
-      <div class="zone-group-title">
-        <i class="fas fa-layer-group"></i> 區域範圍顯示 (點擊查看範圍)
-      </div>
-      <div class="zone-list" id="modal-zone-list">
-        <span style="color: #888; font-size: 14px;">偵測區域中...</span>
+<div id="zone-section" style="display: none; margin-top: 10px;">
+        <div class="zone-group-title" style="font-weight: bold; color: var(--text-color);">
+          <i class="fas fa-layer-group"></i> 區域範圍顯示 (點擊查看範圍)
+        </div>
+        <div class="zone-list" id="modal-zone-list" style="margin-top: 5px;">
+          </div>
       </div>
 
     </div> `;
