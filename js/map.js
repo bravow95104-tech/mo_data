@@ -150,7 +150,7 @@ window.showResourcePolyRange = function(points, maxX, maxY) {
     // 1. 先清除舊的範圍線
     if (typeof clearResourcePolyRange === "function") clearResourcePolyRange();
 
-    // 2. 尋找地圖的實際圖片（用來獲取網頁上縮放後的實際寬高）
+    // 2. 尋找地圖的實際圖片
     const mapImg = document.querySelector('.map-image-relative-wrapper .hero-image');
     const wrapper = document.querySelector('.map-image-relative-wrapper');
     
@@ -159,7 +159,6 @@ window.showResourcePolyRange = function(points, maxX, maxY) {
         return;
     }
 
-    // 🚀 核心修正：獲取圖片當前在網頁上的實際顯示像素（Pixel）寬高
     const currentWidth = mapImg.clientWidth;
     const currentHeight = mapImg.clientHeight;
 
@@ -168,30 +167,41 @@ window.showResourcePolyRange = function(points, maxX, maxY) {
     const svg = document.createElementNS(svgNamespace, "svg");
     svg.setAttribute("id", "resource-polygon-svg");
     svg.style.position = "absolute";
-    svg.style.left = mapImg.offsetLeft + "px"; // 對齊圖片的起點
+    svg.style.left = mapImg.offsetLeft + "px"; 
     svg.style.top = mapImg.offsetTop + "px";
-    svg.style.width = currentWidth + "px";     // 完美貼合圖片實際寬高
+    svg.style.width = currentWidth + "px";     
     svg.style.height = currentHeight + "px";
     svg.style.pointerEvents = "none";
 
-    // 🚀 核心修正：將遊戲坐標換算成真實的像素坐標（不帶 % 號）
-    const convertedPoints = points.map(pt => {
-        const pixelX = (pt[0] / maxX) * currentWidth;
-        const pixelY = (pt[1] / maxY) * currentHeight;
-        return `${pixelX},${pixelY}`; // 這裡是純數字，例如 "120.5,250.3"
-    }).join(" ");
+    // 🚀 核心升級：自動判定丟進來的是「單一區域點位」還是「多個區域點位的集合」
+    // 如果 points[0][0] 還是個陣列，代表它是被分組過後的 [ [[x,y],[x,y]], [[x,y],[x,y]] ] 複合陣列
+    const isMultiPolygon = Array.isArray(points[0]) && Array.isArray(points[0][0]);
+    const polygonList = isMultiPolygon ? points : [points];
 
-    // 5. 建立 SVG 的 polygon 標籤
-    const polygon = document.createElementNS(svgNamespace, "polygon");
-    polygon.setAttribute("points", convertedPoints);
-    
-    // 🎨 設定紅線範圍的樣式
-    polygon.setAttribute("fill", "rgba(255, 77, 77, 0.15)");
-    polygon.setAttribute("stroke", "#ff4d4d");
-    polygon.setAttribute("stroke-width", "2");
+    // 🚀 4. 使用迴圈把清單內所有的多邊形碎塊通通畫在同一個畫布上
+    polygonList.forEach(polyPoints => {
+        if (!polyPoints || polyPoints.length === 0) return;
+
+        // 將遊戲坐標換算成真實的像素坐標
+        const convertedPoints = polyPoints.map(pt => {
+            const pixelX = (pt[0] / maxX) * currentWidth;
+            const pixelY = (pt[1] / maxY) * currentHeight;
+            return `${pixelX},${pixelY}`; 
+        }).join(" ");
+
+        // 5. 建立 SVG 的 polygon 標籤
+        const polygon = document.createElementNS(svgNamespace, "polygon");
+        polygon.setAttribute("points", convertedPoints);
+        
+        // 🎨 設定紅線範圍的樣式（已改為超清爽 0.15 透明度）
+        polygon.setAttribute("fill", "rgba(255, 77, 77, 0.15)");
+        polygon.setAttribute("stroke", "#ff4d4d");
+        polygon.setAttribute("stroke-width", "1.5");
+
+        svg.appendChild(polygon);
+    });
 
     // 6. 塞進畫面
-    svg.appendChild(polygon);
     wrapper.appendChild(svg);
 };
 
@@ -207,7 +217,6 @@ async function loadModalZoneButtons(mapName, maxX, maxY) {
   if (!zoneContainer || !mapName) return;
 
   try {
-    // 從我們剛建立好的資料表撈取這張地圖的所有區域
     const { data: zones, error } = await supabase
       .from('map_polygon_zones')
       .select('zone_name, points')
@@ -220,16 +229,26 @@ async function loadModalZoneButtons(mapName, maxX, maxY) {
       return;
     }
 
-    // 2. 順利撈到資料，動態生成區域按鈕
-    zoneContainer.innerHTML = zones.map(zone => {
-      // 將 points 陣列轉成字串，方便直接當成 onclick 的參數傳遞
-      const pointsStr = JSON.stringify(zone.points);
+    // 🚀 【核心邏輯】：把相同名字的區域分組，將多個不連貫的 points 合併成一個陣列的陣列
+    const groupedZones = {};
+    zones.forEach(zone => {
+      if (!groupedZones[zone.zone_name]) {
+        groupedZones[zone.zone_name] = [];
+      }
+      // 不管是單個多邊形 [[x,y]...] 還是多個，通通集中進去
+      groupedZones[zone.zone_name].push(zone.points);
+    });
+
+    // 2. 動態生成區域按鈕
+    zoneContainer.innerHTML = Object.keys(groupedZones).map(zoneName => {
+      // 這裡把該區域所有的多邊形陣列轉成字串
+      const multiPointsStr = JSON.stringify(groupedZones[zoneName]);
       
       return `
         <button class="resource-btn zone-btn" 
                 style="border-color: #ff4d4d; color: #ff4d4d;"
-                onclick="showResourcePolyRange(${pointsStr}, ${maxX}, ${maxY})">
-           ${zone.zone_name}
+                onclick="showMultiResourcePolyRange(${multiPointsStr}, ${maxX}, ${maxY})">
+          [區域] ${zoneName}
         </button>
       `;
     }).join('');
@@ -275,7 +294,7 @@ if (resources.length > 0 || item) {
       ` : ''}
 
       <div class="zone-group-title">
-        <i class="fas fa-layer-group"></i> 區域範圍顯示
+        <i class="fas fa-layer-group"></i> 區域範圍顯示 (點擊查看範圍)
       </div>
       <div class="zone-list" id="modal-zone-list">
         <span style="color: #888; font-size: 14px;">偵測區域中...</span>
