@@ -293,7 +293,7 @@ async function loadModalZoneButtons(mapName, maxX, maxY, mainTableRubbish) {
         <button class="resource-btn zone-btn" 
                 style="border-color: #ff4d4d; color: #ff4d4d;"
                 onclick="switchZoneDisplay(${multiPointsStr}, '${zoneDropRubbish}', ${maxX}, ${maxY})">
-          [區域] ${zoneName}
+          ${zoneName}
         </button>
       `;
     }).join('');
@@ -383,6 +383,8 @@ if (resources.length > 0 || item) {
                 <p><strong>防禦：</strong>${item.def || "-"}　<strong>閃避：</strong>${item.dodge || "-"}</p>
             </div>
             ${hasDrop ? `
+              <div class="hero-column-details section-gap">
+                    <p><strong>掉落物品：</strong></p>
                 <p class="align-row" id="dynamic-drop-rubbish-row" style="display: none;">
             <strong>◢ 垃圾：</strong>
             <span id="dynamic-drop-rubbish"></span>
