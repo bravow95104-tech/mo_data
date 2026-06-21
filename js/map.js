@@ -268,7 +268,7 @@ async function loadModalZoneButtons(mapName, maxX, maxY, mainRubbish, mainProduc
         if (uniqueItems.length > 0) {
             // 🚀 重點：卡片類一律用半形逗號串接，交給 formatTieredContent 解析成超連結
             if (isCardType) {
-                const cleanRawStr = uniqueItems.join(',');
+                const cleanRawStr = uniqueItems.join('、');
                 el.innerHTML = formatTieredContent(cleanRawStr, false, cardTypeParam);
                 el.setAttribute('data-default', cleanRawStr); 
             } else {
@@ -338,7 +338,7 @@ window.switchZoneDisplay = function(points, maxX, maxY, zoneRubbish, zoneProduct
         if (zoneValue) {
             if (isCardType) {
                 // 🚀 核心修正：先把分區填寫的內容轉為標準逗號格式，再丟進 format 函式產出超連結
-                const cleanZoneValue = zoneValue.split(/[,，、\s]+/).filter(x => x).join(',');
+                const cleanZoneValue = zoneValue.split(/[,，、\s]+/).filter(x => x).join('、');
                 el.innerHTML = formatTieredContent(cleanZoneValue, false, cardTypeParam);
             } else {
                 el.innerHTML = zoneValue.split(/[,，、\s]+/).filter(x => x).join('、');
