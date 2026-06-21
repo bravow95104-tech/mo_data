@@ -253,41 +253,33 @@ async function loadModalZoneButtons(mapName, maxX, maxY, mainRubbish, mainProduc
         const row = document.getElementById(rowId);
         if (!el || !row) return;
 
-        // 1. 統一蒐集所有資料（包含主表與分區表）
         let allItems = [];
-        
-        // 先把主表的放進去（依照你的習慣，主表可能用逗號或頓號，我們統一先用正則拆開）
         if (mainValue) {
             allItems = allItems.concat(mainValue.split(/[,，、\s]+/));
         }
-        
-        // 再把各分區表的放進去
         zoneValuesArray.forEach(val => {
             if (val) {
                 allItems = allItems.concat(val.split(/[,，、\s]+/));
             }
         });
 
-        // 2. 自動去重，並過濾掉空文字
         const uniqueItems = Array.from(new Set(allItems)).filter(x => x);
 
-        // 3. 🚀 關鍵：根據類型進行不同的還原渲染
         if (uniqueItems.length > 0) {
+            // 🚀 為了保險起見，我們把所有切開的英雄/物品名稱，用你原本最习惯的「半形逗號 ,」串回去
+            const cleanRawStr = uniqueItems.join(',');
+
             if (isCardType) {
-                // 🔹 卡片類型（英雄、其他）：必須用「半形逗號」串接成原始字串，再交給你的 format 函式
-                // 這樣才能百分之百還原你原本的超連結、顏色與點擊查詢功能！
-                const cleanRawStr = uniqueItems.join(',');
+                // 🚀 這裡呼叫你原本的 format 函式。
+                // 如果是英雄，cardTypeParam 會是 'hero'。請確認跟你原本主表的參數一模一樣！
                 el.innerHTML = formatTieredContent(cleanRawStr, false, cardTypeParam);
-                el.setAttribute('data-default', cleanRawStr); // 備份成逗號字串
             } else {
-                // 🔹 純文字類型（垃圾、產物）：維持畫面上用頓號「、」美化顯示
-                const textStr = uniqueItems.join('、');
-                el.innerHTML = textStr;
-                el.setAttribute('data-default', textStr);
+                el.innerHTML = uniqueItems.join('、');
             }
-            row.style.display = ''; // 秀出這一行
+            row.style.display = ''; 
+            el.setAttribute('data-default', cleanRawStr); 
         } else {
-            row.style.display = 'none'; // 沒資料就隱藏
+            row.style.display = 'none'; 
             el.setAttribute('data-default', '');
         }
     }
