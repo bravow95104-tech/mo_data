@@ -247,33 +247,47 @@ async function loadModalZoneButtons(mapName, maxX, maxY, mainRubbish, mainProduc
 
     //-- 🚀 2. 【核心大一統：萬用合併排版工具】
     //-- 參數說明：elementId, rowId, 主表資料, 分區表資料陣列, 是否為卡片類型, 卡片類型參數
+    // 🚀 萬用合併排版工具（已修正卡片類型的串接與超連結保留）
     function setupDynamicRow(elementId, rowId, mainValue, zoneValuesArray, isCardType, cardTypeParam) {
         const el = document.getElementById(elementId);
         const row = document.getElementById(rowId);
         if (!el || !row) return;
 
-        let combined = mainValue;
-        if (zoneValuesArray.length > 0) {
-            const zonesStr = zoneValuesArray.join(', ');
-            combined = mainValue ? `${mainValue}, ${zonesStr}` : zonesStr;
+        // 1. 統一蒐集所有資料（包含主表與分區表）
+        let allItems = [];
+        
+        // 先把主表的放進去（依照你的習慣，主表可能用逗號或頓號，我們統一先用正則拆開）
+        if (mainValue) {
+            allItems = allItems.concat(mainValue.split(/[,，、\s]+/));
         }
-
-        // 切開、去重、過濾空值
-        const uniqueItems = Array.from(new Set(combined.split(/[,，、\s]+/))).filter(x => x);
-        const uniqueRawStr = uniqueItems.join(',');
-
-        if (uniqueRawStr) {
-            if (isCardType) {
-                // 🔹 卡片類型（英雄、其他）：丟進 formatTieredContent 美化
-                el.innerHTML = formatTieredContent(uniqueRawStr, false, cardTypeParam);
-            } else {
-                // 🔹 純文字類型（垃圾、產物）：用「、」頓號串接
-                el.innerHTML = uniqueItems.join('、');
+        
+        // 再把各分區表的放進去
+        zoneValuesArray.forEach(val => {
+            if (val) {
+                allItems = allItems.concat(val.split(/[,，、\s]+/));
             }
-            row.style.display = ''; // 顯示整行
-            el.setAttribute('data-default', uniqueRawStr); //-- 備份未解析的原始字串，清除時可用
+        });
+
+        // 2. 自動去重，並過濾掉空文字
+        const uniqueItems = Array.from(new Set(allItems)).filter(x => x);
+
+        // 3. 🚀 關鍵：根據類型進行不同的還原渲染
+        if (uniqueItems.length > 0) {
+            if (isCardType) {
+                // 🔹 卡片類型（英雄、其他）：必須用「半形逗號」串接成原始字串，再交給你的 format 函式
+                // 這樣才能百分之百還原你原本的超連結、顏色與點擊查詢功能！
+                const cleanRawStr = uniqueItems.join(',');
+                el.innerHTML = formatTieredContent(cleanRawStr, false, cardTypeParam);
+                el.setAttribute('data-default', cleanRawStr); // 備份成逗號字串
+            } else {
+                // 🔹 純文字類型（垃圾、產物）：維持畫面上用頓號「、」美化顯示
+                const textStr = uniqueItems.join('、');
+                el.innerHTML = textStr;
+                el.setAttribute('data-default', textStr);
+            }
+            row.style.display = ''; // 秀出這一行
         } else {
-            row.style.display = 'none'; //-- 沒資料就完美隱藏
+            row.style.display = 'none'; // 沒資料就隱藏
             el.setAttribute('data-default', '');
         }
     }
@@ -315,12 +329,10 @@ async function loadModalZoneButtons(mapName, maxX, maxY, mainRubbish, mainProduc
 }
 
 window.switchZoneDisplay = function(points, maxX, maxY, zoneRubbish, zoneProduct, zoneHero, zoneOther) {
-    // 1. 劃分紅線範圍
     if (typeof showResourcePolyRange === "function") {
         showResourcePolyRange(points, maxX, maxY);
     }
 
-    // 💡 萬用分區切換小工具
     function toggleRowValue(elementId, rowId, zoneValue, isCardType, cardTypeParam) {
         const el = document.getElementById(elementId);
         const row = document.getElementById(rowId);
@@ -328,17 +340,18 @@ window.switchZoneDisplay = function(points, maxX, maxY, zoneRubbish, zoneProduct
 
         if (zoneValue) {
             if (isCardType) {
-                el.innerHTML = formatTieredContent(zoneValue, false, cardTypeParam);
+                // 🚀 核心修正：先把分區填寫的內容轉為標準逗號格式，再丟進 format 函式產出超連結
+                const cleanZoneValue = zoneValue.split(/[,，、\s]+/).filter(x => x).join(',');
+                el.innerHTML = formatTieredContent(cleanZoneValue, false, cardTypeParam);
             } else {
-                el.innerHTML = zoneValue.split(/[,，、\s]+/).join('、');
+                el.innerHTML = zoneValue.split(/[,，、\s]+/).filter(x => x).join('、');
             }
-            row.style.display = ''; // 有分區專屬就打開
+            row.style.display = '';
         } else {
-            row.style.display = 'none'; // 該分區沒有這項就直接藏整行
+            row.style.display = 'none';
         }
     }
 
-    // 🚀 精準個別切換
     toggleRowValue('dynamic-drop-rubbish', 'dynamic-drop-rubbish-row', zoneRubbish, false);
     toggleRowValue('dynamic-drop-product', 'dynamic-drop-product-row', zoneProduct, false);
     toggleRowValue('dynamic-drop-hero',    'dynamic-drop-hero-row',    zoneHero,    true, 'hero');
@@ -488,36 +501,33 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 window.resetZoneSelection = function() {
-    // 1. 🚀 清除地圖上的 SVG 紅線範圍
     if (typeof clearResourcePolyRange === "function") {
         clearResourcePolyRange();
     }
 
-    // 2. 🚀 還原垃圾掉落物為「預設總和」，並確保行一併顯示出來
-    const rubbishElement = document.getElementById('dynamic-drop-rubbish');
-    const rubbishRow = document.getElementById('dynamic-drop-rubbish-row');
-    if (rubbishElement && rubbishRow) {
-        const defaultRubbish = rubbishElement.getAttribute('data-default');
-        if (defaultRubbish) {
-            rubbishElement.innerHTML = defaultRubbish;
-            rubbishRow.style.display = ''; // 確保有資料就顯示
+    function restoreRow(elementId, rowId, isCardType, cardTypeParam) {
+        const el = document.getElementById(elementId);
+        const row = document.getElementById(rowId);
+        if (!el || !row) return;
+
+        const defRaw = el.getAttribute('data-default');
+        if (defRaw) {
+            if (isCardType) {
+                // 🚀 核心修正：直接還原超連結
+                el.innerHTML = formatTieredContent(defRaw, false, cardTypeParam);
+            } else {
+                el.innerHTML = defRaw;
+            }
+            row.style.display = '';
         } else {
-            rubbishRow.style.display = 'none'; // 若本來就沒垃圾就藏起來
+            row.style.display = 'none';
         }
     }
 
-    // 3. 🚀 還原產物掉落物為「預設總和」，並確保行一併顯示出來
-    const productElement = document.getElementById('dynamic-drop-product');
-    const productRow = document.getElementById('dynamic-drop-product-row');
-    if (productElement && productRow) {
-        const defaultProduct = productElement.getAttribute('data-default');
-        if (defaultProduct) {
-            productElement.innerHTML = defaultProduct;
-            productRow.style.display = '';
-        } else {
-            productRow.style.display = 'none';
-        }
-    }
+    restoreRow('dynamic-drop-rubbish', 'dynamic-drop-rubbish-row', false);
+    restoreRow('dynamic-drop-product', 'dynamic-drop-product-row', false);
+    restoreRow('dynamic-drop-hero',    'dynamic-drop-hero-row',    true, 'hero');
+    restoreRow('dynamic-drop-othrt',    'dynamic-drop-othrt-row',    true);
 };
 
 // === 3. 資料載入與對接 ===
