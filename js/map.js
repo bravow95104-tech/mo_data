@@ -493,6 +493,39 @@ document.addEventListener("DOMContentLoaded", () => {
   bindModalEvents();
 });
 
+window.resetZoneSelection = function() {
+    // 1. 🚀 清除地圖上的 SVG 紅線範圍
+    if (typeof clearResourcePolyRange === "function") {
+        clearResourcePolyRange();
+    }
+
+    // 2. 🚀 還原垃圾掉落物為「預設總和」，並確保行一併顯示出來
+    const rubbishElement = document.getElementById('dynamic-drop-rubbish');
+    const rubbishRow = document.getElementById('dynamic-drop-rubbish-row');
+    if (rubbishElement && rubbishRow) {
+        const defaultRubbish = rubbishElement.getAttribute('data-default');
+        if (defaultRubbish) {
+            rubbishElement.innerHTML = defaultRubbish;
+            rubbishRow.style.display = ''; // 確保有資料就顯示
+        } else {
+            rubbishRow.style.display = 'none'; // 若本來就沒垃圾就藏起來
+        }
+    }
+
+    // 3. 🚀 還原產物掉落物為「預設總和」，並確保行一併顯示出來
+    const productElement = document.getElementById('dynamic-drop-product');
+    const productRow = document.getElementById('dynamic-drop-product-row');
+    if (productElement && productRow) {
+        const defaultProduct = productElement.getAttribute('data-default');
+        if (defaultProduct) {
+            productElement.innerHTML = defaultProduct;
+            productRow.style.display = '';
+        } else {
+            productRow.style.display = 'none';
+        }
+    }
+};
+
 // === 3. 資料載入與對接 ===
 async function loadData() {
   const [mapRes, gloryRes, playerRes, heroRes, resourceRes] = await Promise.all([
