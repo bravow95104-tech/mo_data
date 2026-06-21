@@ -143,6 +143,12 @@ window.showResourceMarker = function(x, y, name, maxX, maxY) {
   if (wrapper) {
       wrapper.scrollIntoView({ behavior: 'smooth', block: 'center' });
   }
+  const rubbishElement = document.getElementById('dynamic-drop-rubbish');
+    if (rubbishElement && rubbishElement.getAttribute('data-default')) {
+        rubbishElement.innerHTML = rubbishElement.getAttribute('data-default');
+        rubbishElement.style.color = ""; // 還原原本的文字顏色
+        rubbishElement.style.fontWeight = "";
+    }
 };
 
 // 🚀 新增：在畫布上繪製不規則範圍的函數
@@ -212,35 +218,60 @@ window.clearResourcePolyRange = function() {
 };
 
 // --- 💡 核心關鍵：當 Modalbox 顯示完成後，呼叫這個函數去 Supabase 撈資料 ---
-async function loadModalZoneButtons(mapName, maxX, maxY) {
+async function loadModalZoneButtons(mapName, maxX, maxY, mainTableRubbish) {
   const zoneContainer = document.getElementById('modal-zone-list');
-  const zoneSection = document.getElementById('zone-section'); // 🚀 抓取外層大容器
-  
+  const zoneSection = document.getElementById('zone-section');
   if (!zoneContainer || !zoneSection || !mapName) return;
 
   try {
-    const { data: zones, error } = await supabase
-      .from('map_polygon_zones')
-      .select('zone_name, points')
-      .eq('map_name', mapName);
+    // 🚀 同時撈點位表與新建立的區域掉落表（排序好）
+    const [zonesRes, dropsRes] = await Promise.all([
+      supabase.from('map_polygon_zones').select('zone_name, points').eq('map_name', mapName),
+      supabase.from('map_zone_drops').select('zone_name, drop_rubbish').eq('map_id', mapName).order('sort_id', { ascending: true })
+    ]);
 
-    if (error) throw error;
+    if (zonesRes.error) throw zonesRes.error;
+    const zones = zonesRes.data;
+    const drops = dropsRes.data || [];
 
-    // 🚀 核心邏輯：如果真的沒有任何區域資料，就直接維持隱藏並結束
-    if (!zones || zones.length === 0) {
-      zoneSection.style.display = 'none'; 
+    // 如果點位和分區掉落都沒資料，就隱藏整個區域範圍區塊
+    if ((!zones || zones.length === 0) && drops.length === 0) {
+      zoneSection.style.display = 'none';
       return;
     }
 
-    // 🚀 有資料！立刻把整個區域區塊顯示出來
     zoneSection.style.display = 'block';
 
-    // 進行同名區域分組（維持你之前超讚的同名合併功能）
+    // 🚀【核心邏輯】處理「還沒選區域」的畫面：原先資料 + 剛剛建立好的
+    const rubbishElement = document.getElementById('dynamic-drop-rubbish');
+    if (rubbishElement) {
+        // 蒐集所有新建立的分區垃圾資料（過濾掉空的）
+        const newZoneRubbishArray = drops.map(d => d.drop_rubbish).filter(r => r);
+        
+        // 把原本主表的垃圾，跟新表的垃圾合併再一起
+        let combinedRubbish = mainTableRubbish;
+        if (newZoneRubbishArray.length > 0) {
+            // 用逗號把大家串起來（你可以根據原本資料的間隔符號調整，例如空一格或逗號）
+            const allNewRubbishStr = newZoneRubbishArray.join(', ');
+            combinedRubbish = mainTableRubbish 
+                ? `${mainTableRubbish}, ${allNewRubbishStr}` 
+                : allNewRubbishStr;
+        }
+        
+        // 🚀 自動去重（防止重複顯示同樣的物品名稱，讓畫面更乾淨）
+        const uniqueRubbish = Array.from(new Set(combinedRubbish.split(/[,，、\s]+/))).filter(r => r).join('、');
+        
+        // 渲染到畫面上作為預設全區總和
+        rubbishElement.innerHTML = uniqueRubbish || "無";
+        
+        // 順便把這個「全區總和」存進這個 DOM 的自訂屬性中，等一下按鈕切換時可以用來還原
+        rubbishElement.setAttribute('data-default', uniqueRubbish || "無");
+    }
+
+    // 點位分組邏輯（維持你的超讚同名合併功能）
     const groupedZones = {};
     zones.forEach(zone => {
-      if (!groupedZones[zone.zone_name]) {
-        groupedZones[zone.zone_name] = [];
-      }
+      if (!groupedZones[zone.zone_name]) { groupedZones[zone.zone_name] = []; }
       groupedZones[zone.zone_name].push(zone.points);
     });
 
@@ -248,21 +279,72 @@ async function loadModalZoneButtons(mapName, maxX, maxY) {
     zoneContainer.innerHTML = Object.keys(groupedZones).map(zoneName => {
       const multiPointsStr = JSON.stringify(groupedZones[zoneName]);
       
+      // 找出這個區域在 map_zone_drops 裡填寫的專屬垃圾
+      const matchedDrop = drops.find(d => d.zone_name === zoneName);
+      const zoneDropRubbish = matchedDrop ? matchedDrop.drop_rubbish : '';
+
+      // 🚀 把專屬垃圾丟進 switchZoneDisplay 函式
       return `
         <button class="resource-btn zone-btn" 
                 style="border-color: #ff4d4d; color: #ff4d4d;"
-                onclick="showResourcePolyRange(${multiPointsStr}, ${maxX}, ${maxY})">
-          ${zoneName}
+                onclick="switchZoneDisplay(${multiPointsStr}, '${zoneDropRubbish}', ${maxX}, ${maxY})">
+           ${zoneName}
         </button>
       `;
     }).join('');
 
   } catch (err) {
-    console.error("載入區域按鈕失敗:", err.message);
-    // 萬一出錯了，保險起見也把該區塊藏起來
+    console.error("載入區域失敗:", err.message);
     zoneSection.style.display = 'none';
   }
+  const rubbishElement = document.getElementById('dynamic-drop-rubbish');
+const rubbishRow = document.getElementById('dynamic-drop-rubbish-row'); // 🚀 抓取整行 p
+
+if (rubbishElement && rubbishRow) {
+    const newZoneRubbishArray = drops.map(d => d.drop_rubbish).filter(r => r);
+    
+    let combinedRubbish = mainTableRubbish;
+    if (newZoneRubbishArray.length > 0) {
+        const allNewRubbishStr = newZoneRubbishArray.join(', ');
+        combinedRubbish = mainTableRubbish ? `${mainTableRubbish}, ${allNewRubbishStr}` : allNewRubbishStr;
+    }
+    
+    // 去重處理
+    const uniqueRubbish = Array.from(new Set(combinedRubbish.split(/[,，、\s]+/))).filter(r => r).join('、');
+    
+    // 🚀【核心優化判斷】：如果有整合出任何垃圾資料
+    if (uniqueRubbish) {
+        rubbishElement.innerHTML = uniqueRubbish;
+        rubbishRow.style.display = ''; // 🔓 移除 display: none，恢復顯示（依據你的 CSS 可能是 flex 或 block）
+        rubbishElement.setAttribute('data-default', uniqueRubbish);
+    } else {
+        // 如果連原本主表+新表都完全沒垃圾資料，就維持隱藏
+        rubbishRow.style.display = 'none';
+        rubbishElement.setAttribute('data-default', '');
+    }
 }
+}
+
+window.switchZoneDisplay = function(points, zoneDropRubbish, maxX, maxY) {
+    if (typeof showResourcePolyRange === "function") {
+        showResourcePolyRange(points, maxX, maxY);
+    }
+
+    const rubbishElement = document.getElementById('dynamic-drop-rubbish');
+    const rubbishRow = document.getElementById('dynamic-drop-rubbish-row'); // 🚀 抓取整行 p
+    
+    if (rubbishElement && rubbishRow) {
+        if (zoneDropRubbish) {
+            rubbishElement.innerHTML = zoneDropRubbish;
+            rubbishRow.style.display = ''; // 🚀 確保有資料時它是打開顯示的
+            rubbishElement.style.color = "#ff4d4d";
+            rubbishElement.style.fontWeight = "bold";
+        } else {
+            // 🚀 如果此分區完全沒有任何垃圾掉落，直接將這一行整行隱藏，不留白！
+            rubbishRow.style.display = 'none';
+        }
+    }
+};
 
 window.openMapDetail = function (mapId) {
   const item = mapData.find(m => m.mapid === mapId);
@@ -322,9 +404,10 @@ if (resources.length > 0 || item) {
                 <p><strong>防禦：</strong>${item.def || "-"}　<strong>閃避：</strong>${item.dodge || "-"}</p>
             </div>
             ${hasDrop ? `
-                <div class="hero-column-details section-gap">
-                    <p><strong>掉落物品：</strong></p>
-                    ${item.drop_rubbish ? `<p class="align-row"><strong>◢ 垃圾：</strong><span>${item.drop_rubbish}</span></p>` : ""}
+                <p class="align-row" id="dynamic-drop-rubbish-row" style="display: none;">
+            <strong>◢ 垃圾：</strong>
+            <span id="dynamic-drop-rubbish"></span>
+        </p>
                     ${item.drop_equidcard ? `<p class="align-row"><strong>◢ 裝備卡：</strong><span>${formatTieredContent(item.drop_equidcard, false, 'equip')}</span></p>` : ""}
                     ${item.drop_skillcard ? `<p class="align-row"><strong>◢ 技能卡：</strong><span>${formatTieredContent(item.drop_skillcard, false, 'skill')}</span></p>` : ""}
                     ${item.drop_hero ? `<p class="align-row"><strong>◢ 英雄卡：</strong><span>${formatTieredContent(item.drop_hero, false, 'hero')}</span></p>` : ""}
@@ -363,9 +446,9 @@ if (resources.length > 0 || item) {
   showModal();
   setTimeout(() => {
     if (typeof loadModalZoneButtons === "function") {
-      loadModalZoneButtons(item.mapid, item.game_max_x, item.game_max_y);
+        loadModalZoneButtons(item.mapid, item.game_max_x, item.game_max_y, item.drop_rubbish || "");
     }
-  }, 50);
+}, 50);
 };
 
 // === 2. 核心初始化 ===
