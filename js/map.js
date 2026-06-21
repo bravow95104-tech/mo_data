@@ -309,8 +309,8 @@ if (resources.length > 0 || item) {
 }
 
   const detailsHTML = `
-    ${showApproach ? `<div class="section-gap"><p><strong>走法：</strong>${formatDescription(item.approach)}</p></div>` : ""}
-    ${showExplain ? `<div class="section-gap"><p><strong>說明：</strong>${formatDescription(item.illustrate)}</p></div>` : ""}
+  ${showApproach ? `<p style="margin-bottom: 8px;"><strong>走法：</strong>${formatDescription(item.approach)}</p>` : ""}
+  ${showExplain ? `<p style="margin-bottom: 0;"><strong>說明：</strong>${formatDescription(item.illustrate)}</p>` : ""}
 `.trim();
 
   let combatAndDropHTML = '';
