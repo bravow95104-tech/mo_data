@@ -477,4 +477,18 @@ export const TABLE_CONFIGS = {
             { id: 'points', label: '點位[[XY],[XY],[XY],[XY],[XY],[XY]]', type: 'textarea', placeholder: '例如: [[100,100]],', grid: 2 },
         ]
     },
+    map_zone_drops: {
+        title: '地圖區域掉落表',
+        tableName: 'map_zone_drops',
+        tableCols: ['所屬地圖', '區域名稱', '排序', '操作'],
+        displayFields: ['map_id', 'zone_name', 'sort_id'],
+        fields: [
+            { id: 'map_id', label: '所屬地圖 (完全對應)', type: 'text', required: true, grid: 1 },
+            { id: 'sort_id', label: '排序', type: 'text', required: true, grid: 1 },
+            { id: 'zone_name', label: '區域名稱', type: 'textarea', grid: 2 },
+            { id: 'drop_rubbish', label: '垃圾掉落物', type: 'textarea', grid: 2, group: '掉落' },
+            { id: 'drop_heroes', label: '英雄卡', type: 'textarea', grid: 2, group: '掉落' },
+            { id: 'drop_other', label: '其他', type: 'textarea', grid: 2, group: '掉落' },
+        ]
+    },
 };
