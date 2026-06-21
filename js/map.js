@@ -218,6 +218,7 @@ window.clearResourcePolyRange = function() {
 };
 
 // --- 💡 核心關鍵：當 Modalbox 顯示完成後，呼叫這個函數去 Supabase 撈資料 ---
+// 🚀 請確保這裡的接收參數順序，跟你在 openMapDetail 傳進去的一模一樣！
 async function loadModalZoneButtons(mapName, maxX, maxY, mainRubbish, mainProduct, mainHero, mainOther) {
   const zoneContainer = document.getElementById('modal-zone-list');
   const zoneSection = document.getElementById('zone-section');
@@ -225,7 +226,7 @@ async function loadModalZoneButtons(mapName, maxX, maxY, mainRubbish, mainProduc
   if (!zoneContainer || !zoneSection || !mapName) return;
 
   try {
-    //-- 🚀 1. 一口氣撈取 Supabase 的五個分區專屬欄位
+    // 1. 撈取 Supabase 資料
     const [zonesRes, dropsRes] = await Promise.all([
       supabase.from('map_polygon_zones').select('zone_name, points').eq('map_name', mapName),
       supabase.from('map_zone_drops')
@@ -238,25 +239,24 @@ async function loadModalZoneButtons(mapName, maxX, maxY, mainRubbish, mainProduc
     const zones = zonesRes.data;
     const drops = dropsRes.data || [];
 
-    // 如果全部都沒資料，就隱藏整個區域範圍區塊並收工
     if ((!zones || zones.length === 0) && drops.length === 0) {
       zoneSection.style.display = 'none';
       return;
     }
     zoneSection.style.display = 'block';
 
-    //-- 🚀 2. 【核心大一統：萬用合併排版工具】
-    //-- 參數說明：elementId, rowId, 主表資料, 分區表資料陣列, 是否為卡片類型, 卡片類型參數
-    // 🚀 萬用合併排版工具（已修正卡片類型的串接與超連結保留）
+    // 2. 萬用工具：確保卡片類型用【半形逗號】串接，才能觸發你的超連結
     function setupDynamicRow(elementId, rowId, mainValue, zoneValuesArray, isCardType, cardTypeParam) {
         const el = document.getElementById(elementId);
         const row = document.getElementById(rowId);
         if (!el || !row) return;
 
         let allItems = [];
+        // 如果原本主表的英雄是用頓號、或是逗號，先拆開
         if (mainValue) {
             allItems = allItems.concat(mainValue.split(/[,，、\s]+/));
         }
+        // 把新填寫的分區英雄也拆開塞進去
         zoneValuesArray.forEach(val => {
             if (val) {
                 allItems = allItems.concat(val.split(/[,，、\s]+/));
@@ -266,38 +266,43 @@ async function loadModalZoneButtons(mapName, maxX, maxY, mainRubbish, mainProduc
         const uniqueItems = Array.from(new Set(allItems)).filter(x => x);
 
         if (uniqueItems.length > 0) {
-            // 🚀 為了保險起見，我們把所有切開的英雄/物品名稱，用你原本最习惯的「半形逗號 ,」串回去
-            const cleanRawStr = uniqueItems.join(',');
-
+            // 🚀 重點：卡片類一律用半形逗號串接，交給 formatTieredContent 解析成超連結
             if (isCardType) {
-                // 🚀 這裡呼叫你原本的 format 函式。
-                // 如果是英雄，cardTypeParam 會是 'hero'。請確認跟你原本主表的參數一模一樣！
+                const cleanRawStr = uniqueItems.join(',');
                 el.innerHTML = formatTieredContent(cleanRawStr, false, cardTypeParam);
+                el.setAttribute('data-default', cleanRawStr); 
             } else {
-                el.innerHTML = uniqueItems.join('、');
+                // 純文字類（垃圾、產物）用頓號顯示
+                const textStr = uniqueItems.join('、');
+                el.innerHTML = textStr;
+                el.setAttribute('data-default', textStr);
             }
             row.style.display = ''; 
-            el.setAttribute('data-default', cleanRawStr); 
         } else {
             row.style.display = 'none'; 
             el.setAttribute('data-default', '');
         }
     }
 
-    //-- 🚀 3. 讓四個欄位排隊進去「自動合併去重」 (垃圾、產物、英雄、其他)
+    // 🚀 3. 【嚴格對齊呼叫】
+    // 請檢查 mainHero 是否確實收到了 item.drop_hero
     setupDynamicRow('dynamic-drop-rubbish', 'dynamic-drop-rubbish-row', mainRubbish, drops.map(d => d.drop_rubbish).filter(x => x), false);
     setupDynamicRow('dynamic-drop-product', 'dynamic-drop-product-row', mainProduct, drops.map(d => d.drop_product).filter(x => x), false);
+    
+    // 🚀 英雄卡：第 5 個參數傳 true，第 6 個參數傳 'hero'
     setupDynamicRow('dynamic-drop-hero',    'dynamic-drop-hero-row',    mainHero,    drops.map(d => d.drop_heroes).filter(x => x),  true, 'hero');
+    
+    // 🚀 其他：第 5 個參數傳 true，後面留空
     setupDynamicRow('dynamic-drop-othrt',    'dynamic-drop-othrt-row',    mainOther,   drops.map(d => d.drop_other).filter(x => x),   true);
 
-    //-- 4. 點位分組邏輯（同名合併）
+    // 4. 點位分組
     const groupedZones = {};
     zones.forEach(zone => {
       if (!groupedZones[zone.zone_name]) { groupedZones[zone.zone_name] = []; }
       groupedZones[zone.zone_name].push(zone.points);
     });
 
-    //-- 5. 動態生成區域按鈕：把 4 個分區專屬資料全部塞進 onclick
+    // 5. 生成按鈕
     zoneContainer.innerHTML = Object.keys(groupedZones).map(zoneName => {
       const multiPointsStr = JSON.stringify(groupedZones[zoneName]);
       const d = drops.find(d => d.zone_name === zoneName) || {};
@@ -309,7 +314,7 @@ async function loadModalZoneButtons(mapName, maxX, maxY, mainRubbish, mainProduc
                   '${d.drop_product || ""}', 
                   '${d.drop_heroes || ""}', 
                   '${d.drop_other || ""}')">
-          [區域] ${zoneName}
+           ${zoneName}
         </button>
       `;
     }).join('');
