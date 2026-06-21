@@ -218,104 +218,92 @@ window.clearResourcePolyRange = function() {
 };
 
 // --- 💡 核心關鍵：當 Modalbox 顯示完成後，呼叫這個函數去 Supabase 撈資料 ---
-async function loadModalZoneButtons(mapName, maxX, maxY, mainTableRubbish, mainTableProduct) {
+async function loadModalZoneButtons(mapName, maxX, maxY, mainRubbish, mainProduct, mainHero, mainOther) {
   const zoneContainer = document.getElementById('modal-zone-list');
   const zoneSection = document.getElementById('zone-section');
-  
-  // 🚀 抓取「垃圾」與「產物」的 DOM 元素
-  const rubbishElement = document.getElementById('dynamic-drop-rubbish');
-  const rubbishRow = document.getElementById('dynamic-drop-rubbish-row');
-  const productElement = document.getElementById('dynamic-drop-product');
-  const productRow = document.getElementById('dynamic-drop-product-row');
   
   if (!zoneContainer || !zoneSection || !mapName) return;
 
   try {
-    // 1. 同時撈取「點位表」與「區域掉落表」 (🚀 select 補上 drop_product)
+    //-- 🚀 1. 一口氣撈取 Supabase 的五個分區專屬欄位
     const [zonesRes, dropsRes] = await Promise.all([
       supabase.from('map_polygon_zones').select('zone_name, points').eq('map_name', mapName),
-      supabase.from('map_zone_drops').select('zone_name, drop_rubbish, drop_product').eq('map_id', mapName).order('sort_id', { ascending: true })
+      supabase.from('map_zone_drops')
+              .select('zone_name, drop_rubbish, drop_product, drop_heroes, drop_other')
+              .eq('map_id', mapName)
+              .order('sort_id', { ascending: true })
     ]);
 
     if (zonesRes.error) throw zonesRes.error;
-    
     const zones = zonesRes.data;
     const drops = dropsRes.data || [];
 
-    // 2. 檢查：如果全部都沒資料，就隱藏整個區域區塊並把垃圾、產物行收起來
+    // 如果全部都沒資料，就隱藏整個區域範圍區塊並收工
     if ((!zones || zones.length === 0) && drops.length === 0) {
       zoneSection.style.display = 'none';
-      if (rubbishRow) rubbishRow.style.display = 'none';
-      if (productRow) productRow.style.display = 'none';
       return;
     }
-
     zoneSection.style.display = 'block';
 
-    // 🛠️ 3. 【核心邏輯 - 垃圾處理】：原先資料 + 剛剛建立好的
-    if (rubbishElement && rubbishRow) {
-        const newZoneRubbishArray = drops.map(d => d.drop_rubbish).filter(r => r);
-        let combinedRubbish = mainTableRubbish;
-        if (newZoneRubbishArray.length > 0) {
-            combinedRubbish = mainTableRubbish ? `${mainTableRubbish}, ${newZoneRubbishArray.join(', ')}` : newZoneRubbishArray.join(', ');
+    //-- 🚀 2. 【核心大一統：萬用合併排版工具】
+    //-- 參數說明：elementId, rowId, 主表資料, 分區表資料陣列, 是否為卡片類型, 卡片類型參數
+    function setupDynamicRow(elementId, rowId, mainValue, zoneValuesArray, isCardType, cardTypeParam) {
+        const el = document.getElementById(elementId);
+        const row = document.getElementById(rowId);
+        if (!el || !row) return;
+
+        let combined = mainValue;
+        if (zoneValuesArray.length > 0) {
+            const zonesStr = zoneValuesArray.join(', ');
+            combined = mainValue ? `${mainValue}, ${zonesStr}` : zonesStr;
         }
-        const uniqueRubbish = Array.from(new Set(combinedRubbish.split(/[,，、\s]+/))).filter(r => r).join('、');
-        
-        if (uniqueRubbish) {
-            rubbishElement.innerHTML = uniqueRubbish;
-            rubbishRow.style.display = ''; // 顯示
-            rubbishElement.setAttribute('data-default', uniqueRubbish); // 備份預設值
+
+        // 切開、去重、過濾空值
+        const uniqueItems = Array.from(new Set(combined.split(/[,，、\s]+/))).filter(x => x);
+        const uniqueRawStr = uniqueItems.join(',');
+
+        if (uniqueRawStr) {
+            if (isCardType) {
+                // 🔹 卡片類型（英雄、其他）：丟進 formatTieredContent 美化
+                el.innerHTML = formatTieredContent(uniqueRawStr, false, cardTypeParam);
+            } else {
+                // 🔹 純文字類型（垃圾、產物）：用「、」頓號串接
+                el.innerHTML = uniqueItems.join('、');
+            }
+            row.style.display = ''; // 顯示整行
+            el.setAttribute('data-default', uniqueRawStr); //-- 備份未解析的原始字串，清除時可用
         } else {
-            rubbishRow.style.display = 'none'; // 隱藏
-            rubbishElement.setAttribute('data-default', '');
+            row.style.display = 'none'; //-- 沒資料就完美隱藏
+            el.setAttribute('data-default', '');
         }
     }
 
-    // 🛠️ 4. 【核心邏輯 - 產物處理】：原先資料 + 剛剛建立好的 (🚀 新增)
-    if (productElement && productRow) {
-        // 蒐集新表各分區的產物
-        const newZoneProductArray = drops.map(d => d.drop_product).filter(p => p);
-        let combinedProduct = mainTableProduct;
-        if (newZoneProductArray.length > 0) {
-            combinedProduct = mainTableProduct ? `${mainTableProduct}, ${newZoneProductArray.join(', ')}` : newZoneProductArray.join(', ');
-        }
-        // 去重
-        const uniqueProduct = Array.from(new Set(combinedProduct.split(/[,，、\s]+/))).filter(p => p).join('、');
-        
-        if (uniqueProduct) {
-            productElement.innerHTML = uniqueProduct;
-            productRow.style.display = ''; // 顯示
-            productElement.setAttribute('data-default', uniqueProduct); // 備份預設值
-        } else {
-            productRow.style.display = 'none'; // 隱藏
-            productElement.setAttribute('data-default', '');
-        }
-    }
+    //-- 🚀 3. 讓四個欄位排隊進去「自動合併去重」 (垃圾、產物、英雄、其他)
+    setupDynamicRow('dynamic-drop-rubbish', 'dynamic-drop-rubbish-row', mainRubbish, drops.map(d => d.drop_rubbish).filter(x => x), false);
+    setupDynamicRow('dynamic-drop-product', 'dynamic-drop-product-row', mainProduct, drops.map(d => d.drop_product).filter(x => x), false);
+    setupDynamicRow('dynamic-drop-hero',    'dynamic-drop-hero-row',    mainHero,    drops.map(d => d.drop_heroes).filter(x => x),  true, 'hero');
+    setupDynamicRow('dynamic-drop-othrt',    'dynamic-drop-othrt-row',    mainOther,   drops.map(d => d.drop_other).filter(x => x),   true);
 
-    // 5. 點位分組邏輯（同名合併）
+    //-- 4. 點位分組邏輯（同名合併）
     const groupedZones = {};
-    if (zones && zones.length > 0) {
-        zones.forEach(zone => {
-          if (!groupedZones[zone.zone_name]) { groupedZones[zone.zone_name] = []; }
-          groupedZones[zone.zone_name].push(zone.points);
-        });
-    }
+    zones.forEach(zone => {
+      if (!groupedZones[zone.zone_name]) { groupedZones[zone.zone_name] = []; }
+      groupedZones[zone.zone_name].push(zone.points);
+    });
 
-    // 6. 動態生成區域按鈕
+    //-- 5. 動態生成區域按鈕：把 4 個分區專屬資料全部塞進 onclick
     zoneContainer.innerHTML = Object.keys(groupedZones).map(zoneName => {
       const multiPointsStr = JSON.stringify(groupedZones[zoneName]);
-      
-      // 找出這個區域對應的專屬垃圾與專屬產物
-      const matchedDrop = drops.find(d => d.zone_name === zoneName);
-      const zoneDropRubbish = matchedDrop ? matchedDrop.drop_rubbish : '';
-      const zoneDropProduct = matchedDrop ? matchedDrop.drop_product : ''; // 🚀 新增
+      const d = drops.find(d => d.zone_name === zoneName) || {};
 
-      // 🚀 將專屬垃圾、專屬產物一起打包丟進 switchZoneDisplay
       return `
-        <button class="resource-btn zone-btn" 
-                style="border-color: #ff4d4d; color: #ff4d4d;"
-                onclick="switchZoneDisplay(${multiPointsStr}, '${zoneDropRubbish}', '${zoneDropProduct}', ${maxX}, ${maxY})">
-          ${zoneName}
+        <button class="resource-btn zone-btn" style="border-color: #ff4d4d; color: #ff4d4d;"
+                onclick="switchZoneDisplay(${multiPointsStr}, ${maxX}, ${maxY}, 
+                  '${d.drop_rubbish || ""}', 
+                  '${d.drop_product || ""}', 
+                  '${d.drop_heroes || ""}', 
+                  '${d.drop_other || ""}')">
+          [區域] ${zoneName}
         </button>
       `;
     }).join('');
@@ -326,35 +314,35 @@ async function loadModalZoneButtons(mapName, maxX, maxY, mainTableRubbish, mainT
   }
 }
 
-window.switchZoneDisplay = function(points, zoneDropRubbish, zoneDropProduct, maxX, maxY) {
+window.switchZoneDisplay = function(points, maxX, maxY, zoneRubbish, zoneProduct, zoneHero, zoneOther) {
     // 1. 劃分紅線範圍
     if (typeof showResourcePolyRange === "function") {
         showResourcePolyRange(points, maxX, maxY);
     }
 
-    // 2. 切換垃圾顯示
-    const rubbishElement = document.getElementById('dynamic-drop-rubbish');
-    const rubbishRow = document.getElementById('dynamic-drop-rubbish-row');
-    if (rubbishElement && rubbishRow) {
-        if (zoneDropRubbish) {
-            rubbishElement.innerHTML = zoneDropRubbish;
-            rubbishRow.style.display = '';
+    // 💡 萬用分區切換小工具
+    function toggleRowValue(elementId, rowId, zoneValue, isCardType, cardTypeParam) {
+        const el = document.getElementById(elementId);
+        const row = document.getElementById(rowId);
+        if (!el || !row) return;
+
+        if (zoneValue) {
+            if (isCardType) {
+                el.innerHTML = formatTieredContent(zoneValue, false, cardTypeParam);
+            } else {
+                el.innerHTML = zoneValue.split(/[,，、\s]+/).join('、');
+            }
+            row.style.display = ''; // 有分區專屬就打開
         } else {
-            rubbishRow.style.display = 'none'; // 該區沒垃圾就隱藏
+            row.style.display = 'none'; // 該分區沒有這項就直接藏整行
         }
     }
 
-    // 3. 切換產物顯示 (🚀 新增)
-    const productElement = document.getElementById('dynamic-drop-product');
-    const productRow = document.getElementById('dynamic-drop-product-row');
-    if (productElement && productRow) {
-        if (zoneDropProduct) {
-            productElement.innerHTML = zoneDropProduct;
-            productRow.style.display = '';
-        } else {
-            productRow.style.display = 'none'; // 該區沒產物就隱藏
-        }
-    }
+    // 🚀 精準個別切換
+    toggleRowValue('dynamic-drop-rubbish', 'dynamic-drop-rubbish-row', zoneRubbish, false);
+    toggleRowValue('dynamic-drop-product', 'dynamic-drop-product-row', zoneProduct, false);
+    toggleRowValue('dynamic-drop-hero',    'dynamic-drop-hero-row',    zoneHero,    true, 'hero');
+    toggleRowValue('dynamic-drop-othrt',    'dynamic-drop-othrt-row',    zoneOther,   true);
 };
 
 window.openMapDetail = function (mapId) {
@@ -437,10 +425,14 @@ if (resources.length > 0 || item) {
 </p>
                     ${item.drop_equidcard ? `<p class="align-row"><strong>◢ 裝備卡：</strong><span>${formatTieredContent(item.drop_equidcard, false, 'equip')}</span></p>` : ""}
                     ${item.drop_skillcard ? `<p class="align-row"><strong>◢ 技能卡：</strong><span>${formatTieredContent(item.drop_skillcard, false, 'skill')}</span></p>` : ""}
-                    ${item.drop_hero ? `<p class="align-row"><strong>◢ 英雄卡：</strong><span>${formatTieredContent(item.drop_hero, false, 'hero')}</span></p>` : ""}
+                    <p class="align-row" id="dynamic-drop-hero-row" style="display: none;">
+            <strong>◢ 英雄卡：</strong><span id="dynamic-drop-hero"></span>
+        </p>
                     ${item.drop_combo_old ? `<p class="align-row"><strong>◢ 舊文片：</strong><span>${formatTieredContent(item.drop_combo_old)}</span></p>` : ""}
                     ${item.drop_combo_new ? `<p class="align-row"><strong>◢ 新文片：</strong><span>${formatTieredContent(item.drop_combo_new)}</span></p>` : ""}
-                    ${item.drop_othrt ? `<p class="align-row"><strong>◢ 其他：</strong><span>${formatTieredContent(item.drop_othrt)}</span></p>` : ""}
+                    <p class="align-row" id="dynamic-drop-othrt-row" style="display: none;">
+            <strong>◢ 其他：</strong><span id="dynamic-drop-othrt"></span>
+        </p>
                 </div>` : ""
       }
             <div class="hero-column-details section-gap">
@@ -478,7 +470,9 @@ if (resources.length > 0 || item) {
             item.game_max_x, 
             item.game_max_y, 
             item.drop_rubbish || "",  // 第 4 個參數
-            item.drop_product || ""   // 第 5 個參數 (🚀 新增)
+            item.drop_product || "",   // 第 5 個參數 (🚀 新增)
+            item.drop_hero || "",       // 參數 6 (🚀 新增)
+            item.drop_othrt || ""       // 參數 9 (🚀 新增)
         );
     }
 }, 50);
