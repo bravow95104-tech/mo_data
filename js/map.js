@@ -339,8 +339,6 @@ window.switchZoneDisplay = function(points, zoneDropRubbish, zoneDropProduct, ma
         if (zoneDropRubbish) {
             rubbishElement.innerHTML = zoneDropRubbish;
             rubbishRow.style.display = '';
-            rubbishElement.style.color = "#ff4d4d";
-            rubbishElement.style.fontWeight = "bold";
         } else {
             rubbishRow.style.display = 'none'; // 該區沒垃圾就隱藏
         }
@@ -353,8 +351,6 @@ window.switchZoneDisplay = function(points, zoneDropRubbish, zoneDropProduct, ma
         if (zoneDropProduct) {
             productElement.innerHTML = zoneDropProduct;
             productRow.style.display = '';
-            productElement.style.color = "#ff4d4d";
-            productElement.style.fontWeight = "bold";
         } else {
             productRow.style.display = 'none'; // 該區沒產物就隱藏
         }
@@ -396,12 +392,22 @@ if (resources.length > 0 || item) {
     ` : ''}
 
     <div id="zone-section" class="resource-group section-gap" style="display: none; margin-top: 10px;">
-      <div class="zone-group-title" style="font-weight: bold; color: var(--text-color);">
-        <i class="fas fa-layer-group"></i> 區域範圍顯示 (點擊查看範圍)
-      </div>
-      <div class="zone-list" id="modal-zone-list" style="margin-top: 5px;">
-        </div>
+  
+  <div class="zone-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
+    <div class="zone-group-title" style="font-weight: bold; color: var(--text-color); margin-bottom: 0;">
+      <i class="fas fa-layer-group"></i> 區域範圍顯示 (點擊查看範圍)
     </div>
+    
+    <button class="resource-btn" 
+            style="margin: 0; padding: 2px 8px; font-size: 12px; border-color: #888; color: #888; background: transparent;"
+            onclick="resetZoneSelection()">
+      <i class="fas fa-eraser"></i> 清除範圍
+    </button>
+  </div>
+
+  <div class="zone-list" id="modal-zone-list" style="margin-top: 5px;">
+    </div>
+</div>
   `;
 }
 
