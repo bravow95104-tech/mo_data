@@ -282,30 +282,30 @@ window.openMapDetail = function (mapId) {
   
 let resourceButtonsHTML = "";
 
-// 只要有採集資源，或是預期有區域範圍（這裡用 item 存在來判斷），就渲染大容器
+// 只要有採集資源，或者是地圖物件存在，我們就初始化字串
 if (resources.length > 0 || item) {
   resourceButtonsHTML = `
-    <div class="resource-group section-gap">
-      
-      ${resources.length > 0 ? `
+    ${resources.length > 0 ? `
+      <div class="resource-group section-gap">
         <div class="resource-group-title"><i class="fas fa-hammer"></i> 採集資源點 (點擊查看位置)</div>
-        <div class="resource-list" style="margin-bottom: 15px;">
+        <div class="resource-list">
           ${resources.map(r => `
             <button class="resource-btn" onclick="showResourceMarker(${r.x}, ${r.y}, '${r.resource_name}', ${item.game_max_x}, ${item.game_max_y})">
               ${r.resource_name} ${r.game_coords ? `(${r.game_coords})` : ''}
             </button>
           `).join('')}
         </div>
-      ` : ''}
-<div id="zone-section" style="display: none; margin-top: 10px;">
-        <div class="zone-group-title" style="font-weight: bold; color: var(--text-color);">
-          <i class="fas fa-layer-group"></i> 區域範圍顯示 (點擊查看範圍)
-        </div>
-        <div class="zone-list" id="modal-zone-list" style="margin-top: 5px;">
-          </div>
       </div>
+    ` : ''}
 
-    </div> `;
+    <div id="zone-section" class="resource-group section-gap" style="display: none; margin-top: 10px;">
+      <div class="zone-group-title" style="font-weight: bold; color: var(--text-color);">
+        <i class="fas fa-layer-group"></i> 區域範圍顯示 (點擊查看範圍)
+      </div>
+      <div class="zone-list" id="modal-zone-list" style="margin-top: 5px;">
+        </div>
+    </div>
+  `;
 }
 
   const detailsHTML = `
