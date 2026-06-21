@@ -474,7 +474,7 @@ export const TABLE_CONFIGS = {
         fields: [
             { id: 'map_name', label: '所屬地圖 (完全對應)', type: 'text', required: true, grid: 1 },
             { id: 'zone_name', label: '區域名稱', type: 'text', required: true, grid: 1 },
-            { id: 'points', label: '點位', type: 'textarea', placeholder: '例如: [[100,100]],', grid: 2 },
+            { id: 'points', label: '點位[[XY],[XY],[XY],[XY],[XY],[XY]]', type: 'textarea', placeholder: '例如: [[100,100]],', grid: 2 },
         ]
     },
 };
