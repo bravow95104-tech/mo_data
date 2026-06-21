@@ -245,12 +245,12 @@ async function loadModalZoneButtons(mapName, maxX, maxY) {
       const multiPointsStr = JSON.stringify(groupedZones[zoneName]);
       
       return `
-        <button class="resource-btn zone-btn" 
-                style="border-color: #ff4d4d; color: #ff4d4d;"
-                onclick="showMultiResourcePolyRange(${multiPointsStr}, ${maxX}, ${maxY})">
-          [區域] ${zoneName}
-        </button>
-      `;
+  <button class="resource-btn zone-btn" 
+          style="border-color: #ff4d4d; color: #ff4d4d;"
+          onclick="showResourcePolyRange(${multiPointsStr}, ${maxX}, ${maxY})">
+    ${zoneName}
+  </button>
+`;
     }).join('');
 
   } catch (err) {
