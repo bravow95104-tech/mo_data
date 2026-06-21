@@ -226,7 +226,7 @@ async function loadModalZoneButtons(mapName, maxX, maxY, mainRubbish, mainProduc
   if (!zoneContainer || !zoneSection || !mapName) return;
 
   try {
-    // 1. 撈取 Supabase 資料
+    // 1. 同時撈取點位表與區域掉落物表
     const [zonesRes, dropsRes] = await Promise.all([
       supabase.from('map_polygon_zones').select('zone_name, points').eq('map_name', mapName),
       supabase.from('map_zone_drops')
@@ -236,27 +236,27 @@ async function loadModalZoneButtons(mapName, maxX, maxY, mainRubbish, mainProduc
     ]);
 
     if (zonesRes.error) throw zonesRes.error;
-    const zones = zonesRes.data;
+    const zones = zonesRes.data || [];
     const drops = dropsRes.data || [];
 
-    if ((!zones || zones.length === 0) && drops.length === 0) {
-      zoneSection.style.display = 'none';
-      return;
+    // 🚀 核心修正：區域功能區塊（按鈕區）的顯示判定
+    // 只有當「有畫點位」或「新表有分區掉落」時，才把 [區域範圍顯示] 區塊秀出來
+    if (zones.length > 0 || drops.length > 0) {
+      zoneSection.style.display = 'block';
+    } else {
+      zoneSection.style.display = 'none'; // 沒分區資料時，純粹隱藏按鈕區，【不中斷程式】！
     }
-    zoneSection.style.display = 'block';
 
-    // 2. 萬用工具：確保卡片類型用【半形逗號】串接，才能觸發你的超連結
+    // 2. 萬用工具：將主表與分區表合併去重
     function setupDynamicRow(elementId, rowId, mainValue, zoneValuesArray, isCardType, cardTypeParam) {
         const el = document.getElementById(elementId);
         const row = document.getElementById(rowId);
         if (!el || !row) return;
 
         let allItems = [];
-        // 如果原本主表的英雄是用頓號、或是逗號，先拆開
         if (mainValue) {
             allItems = allItems.concat(mainValue.split(/[,，、\s]+/));
         }
-        // 把新填寫的分區英雄也拆開塞進去
         zoneValuesArray.forEach(val => {
             if (val) {
                 allItems = allItems.concat(val.split(/[,，、\s]+/));
@@ -266,62 +266,55 @@ async function loadModalZoneButtons(mapName, maxX, maxY, mainRubbish, mainProduc
         const uniqueItems = Array.from(new Set(allItems)).filter(x => x);
 
         if (uniqueItems.length > 0) {
-            // 🚀 重點：卡片類一律用半形逗號串接，交給 formatTieredContent 解析成超連結
+            const cleanRawStr = uniqueItems.join('、');
             if (isCardType) {
-                const cleanRawStr = uniqueItems.join('、');
                 el.innerHTML = formatTieredContent(cleanRawStr, false, cardTypeParam);
-                el.setAttribute('data-default', cleanRawStr); 
             } else {
-                // 純文字類（垃圾、產物）用頓號顯示
-                const textStr = uniqueItems.join('、');
-                el.innerHTML = textStr;
-                el.setAttribute('data-default', textStr);
+                el.innerHTML = cleanRawStr;
             }
             row.style.display = ''; 
+            el.setAttribute('data-default', cleanRawStr); 
         } else {
             row.style.display = 'none'; 
             el.setAttribute('data-default', '');
         }
     }
 
-    // 🚀 3. 【嚴格對齊呼叫】
-    // 請檢查 mainHero 是否確實收到了 item.drop_hero
+    // 🚀 3. 讓四個欄位排隊進去渲染（現在就算 drops 是空的，也能保證抓到主表 mainHero / mainOther 順利顯示！）
     setupDynamicRow('dynamic-drop-rubbish', 'dynamic-drop-rubbish-row', mainRubbish, drops.map(d => d.drop_rubbish).filter(x => x), false);
     setupDynamicRow('dynamic-drop-product', 'dynamic-drop-product-row', mainProduct, drops.map(d => d.drop_product).filter(x => x), false);
-    
-    // 🚀 英雄卡：第 5 個參數傳 true，第 6 個參數傳 'hero'
     setupDynamicRow('dynamic-drop-hero',    'dynamic-drop-hero-row',    mainHero,    drops.map(d => d.drop_heroes).filter(x => x),  true, 'hero');
-    
-    // 🚀 其他：第 5 個參數傳 true，後面留空
     setupDynamicRow('dynamic-drop-othrt',    'dynamic-drop-othrt-row',    mainOther,   drops.map(d => d.drop_other).filter(x => x),   true);
 
-    // 4. 點位分組
-    const groupedZones = {};
-    zones.forEach(zone => {
-      if (!groupedZones[zone.zone_name]) { groupedZones[zone.zone_name] = []; }
-      groupedZones[zone.zone_name].push(zone.points);
-    });
+    // 4. 動態生成區域按鈕（只有在有點位時才執行分組與生成）
+    if (zones.length > 0) {
+        const groupedZones = {};
+        zones.forEach(zone => {
+          if (!groupedZones[zone.zone_name]) { groupedZones[zone.zone_name] = []; }
+          groupedZones[zone.zone_name].push(zone.points);
+        });
 
-    // 5. 生成按鈕
-    zoneContainer.innerHTML = Object.keys(groupedZones).map(zoneName => {
-      const multiPointsStr = JSON.stringify(groupedZones[zoneName]);
-      const d = drops.find(d => d.zone_name === zoneName) || {};
+        zoneContainer.innerHTML = Object.keys(groupedZones).map(zoneName => {
+          const multiPointsStr = JSON.stringify(groupedZones[zoneName]);
+          const d = drops.find(d => d.zone_name === zoneName) || {};
 
-      return `
-        <button class="resource-btn zone-btn" style="border-color: #ff4d4d; color: #ff4d4d;"
-                onclick="switchZoneDisplay(${multiPointsStr}, ${maxX}, ${maxY}, 
-                  '${d.drop_rubbish || ""}', 
-                  '${d.drop_product || ""}', 
-                  '${d.drop_heroes || ""}', 
-                  '${d.drop_other || ""}')">
-           ${zoneName}
-        </button>
-      `;
-    }).join('');
+          return `
+            <button class="resource-btn zone-btn" style="border-color: #ff4d4d; color: #ff4d4d;"
+                    onclick="switchZoneDisplay(${multiPointsStr}, ${maxX}, ${maxY}, 
+                      '${d.drop_rubbish || ""}', 
+                      '${d.drop_product || ""}', 
+                      '${d.drop_heroes || ""}', 
+                      '${d.drop_other || ""}')">
+              ${zoneName}
+            </button>
+          `;
+        }).join('');
+    } else {
+        zoneContainer.innerHTML = ''; // 沒點位就清空按鈕
+    }
 
   } catch (err) {
     console.error("載入區域失敗:", err.message);
-    zoneSection.style.display = 'none';
   }
 }
 
