@@ -259,27 +259,32 @@ async function showDropMaps(garbageName) {
     let resultText = "目前無地圖掉落資料";
 
     if (foundDrops && foundDrops.length > 0) {
-      // 3. 精準精確二次過濾：利用 Set 去重，並格式化名稱
-      const formattedMapNames = [];
+      // 3. 精準二次過濾：利用陣列儲存物件，方便後面產出帶參數的超連結
+      const linksArray = [];
 
       foundDrops.forEach(item => {
-        // 將該筆分區資料的垃圾欄位打碎檢查，確保是完全符合的名字
         const dropList = (item.drop_rubbish || "").split(/[,，、\s]+/);
         
         if (dropList.includes(garbageName)) {
-          // 🚀 核心排版邏輯：如果區域名稱是 "全區"，就只顯示地圖名；如果是 A區/B區，就加上 _區域名稱
-          if (item.zone_name && item.zone_name !== '全區') {
-            formattedMapNames.push(`${item.map_id}_${item.zone_name}`);
+          const mapId = item.map_id;
+          const zoneName = item.zone_name || '全區';
+
+          if (zoneName !== '全區') {
+            // 🚀 A區/B區：網址同時帶上 map 和 zone
+            const url = `/mo_data/map/detailed_map.html?map=${encodeURIComponent(mapId)}&zone=${encodeURIComponent(zoneName)}`;
+            linksArray.push(`<a href="${url}" class="hero-link" style="color: #ff4d4d; border-bottom: 1px dashed #ff4d4d; margin-right: 5px;">${mapId}_${zoneName}</a>`);
           } else {
-            formattedMapNames.push(item.map_id);
+            // 🚀 全區：網址只帶 map
+            const url = `/mo_data/map/detailed_map.html?map=${encodeURIComponent(mapId)}`;
+            linksArray.push(`<a href="${url}" class="hero-link" style="margin-right: 5px;">${mapId}</a>`);
           }
         }
       });
 
-      // 4. 將結果陣列進行去重，並用頓號串接
-      const uniqueMaps = Array.from(new Set(formattedMapNames));
-      if (uniqueMaps.length > 0) {
-        resultText = uniqueMaps.join('、');
+      // 4. 去除重複的超連結標籤，並用頓號「、」串接
+      const uniqueLinks = Array.from(new Set(linksArray));
+      if (uniqueLinks.length > 0) {
+        resultText = uniqueLinks.join('、');
       }
     }
 
