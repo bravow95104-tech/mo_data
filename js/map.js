@@ -222,11 +222,9 @@ window.clearResourcePolyRange = function() {
 async function loadModalZoneButtons(mapName, maxX, maxY, mainRubbish, mainProduct, mainHero, mainOther) {
   const zoneContainer = document.getElementById('modal-zone-list');
   const zoneSection = document.getElementById('zone-section');
-  
   if (!zoneContainer || !zoneSection || !mapName) return;
 
   try {
-    // 1. 同時撈取點位表與區域掉落物表
     const [zonesRes, dropsRes] = await Promise.all([
       supabase.from('map_polygon_zones').select('zone_name, points').eq('map_name', mapName),
       supabase.from('map_zone_drops')
@@ -239,32 +237,29 @@ async function loadModalZoneButtons(mapName, maxX, maxY, mainRubbish, mainProduc
     const zones = zonesRes.data || [];
     const drops = dropsRes.data || [];
 
-    // 🚀 核心修正：區域功能區塊（按鈕區）的顯示判定
-    // 只有當「有畫點位」或「新表有分區掉落」時，才把 [區域範圍顯示] 區塊秀出來
-    if (zones.length > 0 || drops.length > 0) {
+    // 🚀 核心優化：過濾掉「全區」這筆資料後，再來判斷要不要顯示按鈕區塊
+    const realZonesHasButtons = zones.filter(z => z.zone_name !== '全區');
+    const realDropsHasButtons = drops.filter(d => d.zone_name !== '全區');
+
+    if (realZonesHasButtons.length > 0 || realDropsHasButtons.length > 0) {
       zoneSection.style.display = 'block';
     } else {
-      zoneSection.style.display = 'none'; // 沒分區資料時，純粹隱藏按鈕區，【不中斷程式】！
+      zoneSection.style.display = 'none';
     }
 
-    // 2. 萬用工具：將主表與分區表合併去重
+    // 2. 萬用工具：合併主表 + 分區表所有掉落（包含「全區」填寫的也會一起被合併進去去重！）
     function setupDynamicRow(elementId, rowId, mainValue, zoneValuesArray, isCardType, cardTypeParam) {
         const el = document.getElementById(elementId);
         const row = document.getElementById(rowId);
         if (!el || !row) return;
 
         let allItems = [];
-        if (mainValue) {
-            allItems = allItems.concat(mainValue.split(/[,，、\s]+/));
-        }
+        if (mainValue) allItems = allItems.concat(mainValue.split(/[,，、\s]+/));
         zoneValuesArray.forEach(val => {
-            if (val) {
-                allItems = allItems.concat(val.split(/[,，、\s]+/));
-            }
+            if (val) allItems = allItems.concat(val.split(/[,，、\s]+/));
         });
 
         const uniqueItems = Array.from(new Set(allItems)).filter(x => x);
-
         if (uniqueItems.length > 0) {
             const cleanRawStr = uniqueItems.join('、');
             if (isCardType) {
@@ -280,37 +275,49 @@ async function loadModalZoneButtons(mapName, maxX, maxY, mainRubbish, mainProduc
         }
     }
 
-    // 🚀 3. 讓四個欄位排隊進去渲染（現在就算 drops 是空的，也能保證抓到主表 mainHero / mainOther 順利顯示！）
     setupDynamicRow('dynamic-drop-rubbish', 'dynamic-drop-rubbish-row', mainRubbish, drops.map(d => d.drop_rubbish).filter(x => x), false);
     setupDynamicRow('dynamic-drop-product', 'dynamic-drop-product-row', mainProduct, drops.map(d => d.drop_product).filter(x => x), false);
     setupDynamicRow('dynamic-drop-hero',    'dynamic-drop-hero-row',    mainHero,    drops.map(d => d.drop_heroes).filter(x => x),  true, 'hero');
     setupDynamicRow('dynamic-drop-othrt',    'dynamic-drop-othrt-row',    mainOther,   drops.map(d => d.drop_other).filter(x => x),   true);
 
-    // 4. 動態生成區域按鈕（只有在有點位時才執行分組與生成）
+    // 4. 動態生成區域按鈕
     if (zones.length > 0) {
         const groupedZones = {};
         zones.forEach(zone => {
+          // 🚀 核心修正 1：如果有點位資料名字叫「全區」，直接跳過不加入分組，不給它做按鈕！
+          if (zone.zone_name === '全區') return;
+          
           if (!groupedZones[zone.zone_name]) { groupedZones[zone.zone_name] = []; }
           groupedZones[zone.zone_name].push(zone.points);
         });
+
+        // 🚀 核心修正 2：先在 drops 裡把「全區」的那一包撈出來備用
+        const globalDrop = drops.find(d => d.zone_name === '全區') || {};
 
         zoneContainer.innerHTML = Object.keys(groupedZones).map(zoneName => {
           const multiPointsStr = JSON.stringify(groupedZones[zoneName]);
           const d = drops.find(d => d.zone_name === zoneName) || {};
 
+          // 🚀 核心修正 3：傳進 switchZoneDisplay 的時候，自動把「當前區域的掉落」跟「全區掉落」黏在一起！
+          // 這樣點擊 A 區時，畫面就會呈現：A區掉落 + 全區掉落，而不會漏掉全區的東西
+          const finalRubbish = [d.drop_rubbish, globalDrop.drop_rubbish].filter(x => x).join(',');
+          const finalProduct = [d.drop_product, globalDrop.drop_product].filter(x => x).join(',');
+          const finalHero    = [d.drop_heroes,  globalDrop.drop_heroes].filter(x => x).join(',');
+          const finalOther   = [d.drop_other,   globalDrop.drop_other].filter(x => x).join(',');
+
           return `
             <button class="resource-btn zone-btn" style="border-color: #ff4d4d; color: #ff4d4d;"
                     onclick="switchZoneDisplay(${multiPointsStr}, ${maxX}, ${maxY}, 
-                      '${d.drop_rubbish || ""}', 
-                      '${d.drop_product || ""}', 
-                      '${d.drop_heroes || ""}', 
-                      '${d.drop_other || ""}')">
+                      '${finalRubbish}', 
+                      '${finalProduct}', 
+                      '${finalHero}', 
+                      '${finalOther}')">
               ${zoneName}
             </button>
           `;
         }).join('');
     } else {
-        zoneContainer.innerHTML = ''; // 沒點位就清空按鈕
+        zoneContainer.innerHTML = '';
     }
 
   } catch (err) {
@@ -329,14 +336,20 @@ window.switchZoneDisplay = function(points, maxX, maxY, zoneRubbish, zoneProduct
         if (!el || !row) return;
 
         if (zoneValue) {
-            if (isCardType) {
-                // 🚀 核心修正：先把分區填寫的內容轉為標準逗號格式，再丟進 format 函式產出超連結
-                const cleanZoneValue = zoneValue.split(/[,，、\s]+/).filter(x => x).join('、');
-                el.innerHTML = formatTieredContent(cleanZoneValue, false, cardTypeParam);
+            // 🚀 核心修正：將「分區+全區」混合的資料進行去重處理，防止重複出現
+            const uniqueItems = Array.from(new Set(zoneValue.split(/[,，、\s]+/))).filter(x => x);
+            const cleanZoneValue = uniqueItems.join('、');
+
+            if (uniqueItems.length > 0) {
+                if (isCardType) {
+                    el.innerHTML = formatTieredContent(cleanZoneValue, false, cardTypeParam);
+                } else {
+                    el.innerHTML = cleanZoneValue;
+                }
+                row.style.display = '';
             } else {
-                el.innerHTML = zoneValue.split(/[,，、\s]+/).filter(x => x).join('、');
+                row.style.display = 'none';
             }
-            row.style.display = '';
         } else {
             row.style.display = 'none';
         }
