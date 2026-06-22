@@ -272,7 +272,7 @@ async function showDropMaps(garbageName) {
           if (zoneName !== '全區') {
             // 🚀 A區/B區：網址同時帶上 map 和 zone
             const url = `/mo_data/map/detailed_map.html?map=${encodeURIComponent(mapId)}&zone=${encodeURIComponent(zoneName)}`;
-            linksArray.push(`<a href="${url}" class="hero-link" style="color: #ff4d4d; border-bottom: 1px dashed #ff4d4d; margin-right: 5px;">${mapId}_${zoneName}</a>`);
+            linksArray.push(`<a href="${url}" class="hero-link" style="margin-right: 5px;">${mapId}_${zoneName}</a>`);
           } else {
             // 🚀 全區：網址只帶 map
             const url = `/mo_data/map/detailed_map.html?map=${encodeURIComponent(mapId)}`;
