@@ -235,7 +235,10 @@ async function loadModalZoneButtons(mapName, maxX, maxY, mainRubbish, mainProduc
 
   try {
     const [zonesRes, dropsRes] = await Promise.all([
-      supabase.from('map_polygon_zones').select('zone_name, points').eq('map_name', mapName),
+      supabase.from('map_polygon_zones')
+        .select('zone_name, points, sort_id') // 順便把 sort_id 撈出來
+        .eq('map_name', mapName)
+        .order('sort_id', { ascending: true }),
       supabase.from('map_zone_drops')
               .select('zone_name, drop_rubbish, drop_product, drop_heroes, drop_other')
               .eq('map_id', mapName)
