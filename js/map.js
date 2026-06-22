@@ -257,6 +257,7 @@ async function loadModalZoneButtons(mapName, maxX, maxY, mainRubbish, mainProduc
     }
 
     // 2. 萬用工具：合併主表 + 分區表所有掉落（包含「全區」填寫的也會一起被合併進去去重！）
+    // 2. 萬用工具：合併主表 + 分區表所有掉落
     function setupDynamicRow(elementId, rowId, mainValue, zoneValuesArray, isCardType, cardTypeParam) {
         const el = document.getElementById(elementId);
         const row = document.getElementById(rowId);
@@ -271,11 +272,11 @@ async function loadModalZoneButtons(mapName, maxX, maxY, mainRubbish, mainProduc
         const uniqueItems = Array.from(new Set(allItems)).filter(x => x);
         if (uniqueItems.length > 0) {
             const cleanRawStr = uniqueItems.join('、');
-            if (isCardType) {
-                el.innerHTML = formatTieredContent(cleanRawStr, false, cardTypeParam);
-            } else {
-                el.innerHTML = cleanRawStr;
-            }
+            
+            // 🚀 終極修正點：不管他是不是卡片，通通都要走 formatTieredContent 去解「1區、2區」！
+            // 如果不是卡片類型，第三個參數 linkType 就傳 null，但它依然能幫我們解出 1區、2區 的 Badge 排版！
+            el.innerHTML = formatTieredContent(cleanRawStr, false, isCardType ? cardTypeParam : null);
+            
             row.style.display = ''; 
             el.setAttribute('data-default', cleanRawStr); 
         } else {
