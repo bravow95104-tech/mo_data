@@ -232,33 +232,76 @@ document.addEventListener("DOMContentLoaded", async () => {
     cardContainer.appendChild(fragment);
   }
 
-  // 🚀 核心功能：尋找並顯示掉落地圖
-  function showDropMaps(garbageName) {
-    if (!mapData || mapData.length === 0) return;
+// 🚀 核心功能：尋找並顯示掉落地圖（改為查詢 Supabase 新分區表）
+async function showDropMaps(garbageName) {
+  const modalContent = document.getElementById('modalContent');
+  if (!modalContent) return;
 
-    const foundMaps = mapData.filter(map => {
-      const dropStr = map.drop_rubbish || "";
-      const dropList = dropStr.split('、');
-      return dropList.includes(garbageName);
-    });
+  // 1. 先秀出 Loading 狀態，提升使用者體驗
+  modalContent.innerHTML = `
+    <h2 class="hero-name">${garbageName}</h2>
+    <div class="hero-column-details" style="padding: 20px; text-align: center;">
+      <p style="color: var(--text-muted);"><i class="fas fa-spinner fa-spin"></i> 正在查詢掉落地圖...</p>
+    </div>
+  `;
+  openModal();
 
-    const mapNames = foundMaps.map(m => m.mapid);
-    const resultText = mapNames.length > 0 
-      ? mapNames.join('、') 
-      : "目前無地圖掉落資料";
+  try {
+    // 2. 🚀 直接向 Supabase 新表查詢包含該垃圾名稱的資料
+    // 用 ilike 包含模糊比對（如 %玻璃彈珠%），確保頓號分隔也能被撈到
+    const { data: foundDrops, error } = await supabase
+      .from('map_zone_drops')
+      .select('map_id, zone_name, drop_rubbish')
+      .ilike('drop_rubbish', `%${garbageName}%`);
 
-    const modalContent = document.getElementById('modalContent');
-    if (modalContent) {
-      modalContent.innerHTML = `
-        <h2 class="hero-name">${garbageName}</h2>
-        <div class="hero-column-details" style="padding: 20px;">
-          <p style="font-size: 18px; margin-bottom: 10px; color: var(--primary-blue);"><strong>掉落地圖：</strong></p>
-          <p style="font-size: 16px; line-height: 1.6; color: var(--text-main);">${resultText}</p>
-        </div>
-      `;
-      openModal();
+    if (error) throw error;
+
+    let resultText = "目前無地圖掉落資料";
+
+    if (foundDrops && foundDrops.length > 0) {
+      // 3. 精準精確二次過濾：利用 Set 去重，並格式化名稱
+      const formattedMapNames = [];
+
+      foundDrops.forEach(item => {
+        // 將該筆分區資料的垃圾欄位打碎檢查，確保是完全符合的名字
+        const dropList = (item.drop_rubbish || "").split(/[,，、\s]+/);
+        
+        if (dropList.includes(garbageName)) {
+          // 🚀 核心排版邏輯：如果區域名稱是 "全區"，就只顯示地圖名；如果是 A區/B區，就加上 _區域名稱
+          if (item.zone_name && item.zone_name !== '全區') {
+            formattedMapNames.push(`${item.map_id}_${item.zone_name}`);
+          } else {
+            formattedMapNames.push(item.map_id);
+          }
+        }
+      });
+
+      // 4. 將結果陣列進行去重，並用頓號串接
+      const uniqueMaps = Array.from(new Set(formattedMapNames));
+      if (uniqueMaps.length > 0) {
+        resultText = uniqueMaps.join('、');
+      }
     }
+
+    // 5. 渲染出最終的精美 Modal 畫面
+    modalContent.innerHTML = `
+      <h2 class="hero-name">${garbageName}</h2>
+      <div class="hero-column-details" style="padding: 20px;">
+        <p style="font-size: 18px; margin-bottom: 10px; color: var(--primary-blue);"><strong>掉落地圖：</strong></p>
+        <p style="font-size: 16px; line-height: 1.6; color: var(--text-main); font-weight: bold;">${resultText}</p>
+      </div>
+    `;
+
+  } catch (err) {
+    console.error("查詢掉落地圖失敗:", err.message);
+    modalContent.innerHTML = `
+      <h2 class="hero-name">${garbageName}</h2>
+      <div class="hero-column-details" style="padding: 20px; color: red;">
+        <p><strong>查詢失敗：</strong> 暫時無法取得地圖資料。</p>
+      </div>
+    `;
   }
+}
 
   // === Modal 控制 ===
   const modalOverlay = document.getElementById('modalOverlay');
