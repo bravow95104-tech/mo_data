@@ -485,7 +485,7 @@ if (resources.length > 0 || item) {
             item.mapid, 
             item.game_max_x, 
             item.game_max_y, 
-            item.drop_rubbish || "",  // 第 4 個參數
+            "",                       // 🚀 把 item.drop_rubbish || "" 改成空字串
             item.drop_product || "",   // 第 5 個參數 (🚀 新增)
             item.drop_hero || "",       // 參數 6 (🚀 新增)
             item.drop_othrt || ""       // 參數 9 (🚀 新增)
