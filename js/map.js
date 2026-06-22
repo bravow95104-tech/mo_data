@@ -329,7 +329,7 @@ async function loadModalZoneButtons(mapName, maxX, maxY, mainRubbish, mainProduc
         setTimeout(() => {
             // 3. 尋找畫面上所有的區域按鈕，看看有沒有人的文字剛好包含「[區域] A區」
             const allButtons = Array.from(document.querySelectorAll('.zone-btn'));
-            const matchedBtn = allButtons.find(btn => btn.innerText.includes(`[區域] ${targetZone}`));
+            const matchedBtn = allButtons.find(btn => btn.innerText.includes(`${targetZone}`));
 
             if (matchedBtn) {
                 console.log(`[自動導航] 偵測到網址要求點亮: ${targetZone}，自動觸發點擊！`);
