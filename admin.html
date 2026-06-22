@@ -810,30 +810,41 @@
     }
 
     window.openAddModal = async () => {
-        if (!await verifySessionBeforeAction()) return;
-        
-        // 🚀 如果資料還在載入中，提示使用者
-        if (allData.length === 0 && document.getElementById('stat-count').innerText === '...') {
-            alert('資料正在載入中，請稍候再試');
-            return;
-        }
+    if (!await verifySessionBeforeAction()) return;
+    
+    // 🚀 如果資料還在載入中，提示使用者
+    if (allData.length === 0 && document.getElementById('stat-count').innerText === '...') {
+        alert('資料正在載入中，請稍候再試');
+        return;
+    }
 
-        renderEditForm();
-        document.getElementById('modalTitle').innerText = '新增' + TABLE_CONFIGS[currentTable].title;
-        document.getElementById('edit-id').value = '';
-        document.getElementById('editForm').reset();
+    renderEditForm();
+    document.getElementById('modalTitle').innerText = '新增' + TABLE_CONFIGS[currentTable].title;
+    document.getElementById('edit-id').value = '';
+    document.getElementById('editForm').reset();
+    
+    // 🚀 更聰明的 sort_id 計算：取最大值 + 1，而不是單純長度 + 1
+    if (document.getElementById('edit-sort_id')) {
+        const maxSortId = allData.length > 0 ? Math.max(...allData.map(d => parseInt(d.sort_id) || 0)) : 0;
+        document.getElementById('edit-sort_id').value = maxSortId + 1;
+    }
+    
+    isDirty = false; // 🚀 重設修改狀態
+    
+    // 🚀 【新增關鍵修正】讓新增視窗點開時也全面置頂
+    const editModal = document.getElementById('editModal');
+    if (editModal) {
+        editModal.style.display = 'block';
         
-        // 🚀 更聰明的 sort_id 計算：取最大值 + 1，而不是單純長度 + 1
-        if (document.getElementById('edit-sort_id')) {
-            const maxSortId = allData.length > 0 ? Math.max(...allData.map(d => parseInt(d.sort_id) || 0)) : 0;
-            document.getElementById('edit-sort_id').value = maxSortId + 1;
-        }
-        
-        isDirty = false; // 🚀 重設修改狀態
-        document.getElementById('editModal').style.display = 'block';
-    };
+        setTimeout(() => {
+            editModal.scrollTop = 0; // 外殼置頂
+            const innerContent = editModal.querySelector('.modal-content') || document.getElementById('modalContent');
+            if (innerContent) innerContent.scrollTop = 0; // 內部容器置頂
+        }, 10);
+    }
+};
 
-    window.openEditModal = async (id) => {
+window.openEditModal = async (id) => {
     if (!await verifySessionBeforeAction()) return;
     const item = allData.find(d => d.id == id);
     if (!item) return;
@@ -861,12 +872,21 @@
     });
 
     isDirty = false; // 🚀 填充資料後重設修改狀態
+    
     const editModal = document.getElementById('editModal');
     if (editModal) {
         editModal.style.display = 'block';
-        editModal.scrollTop = 0; // 🚀 關鍵新增：強制讓彈窗外殼的捲軸回到最上方
+        
+        // 🚀 使用微型延時，確保 DOM 表單渲染完畢後精準置頂
+        setTimeout(() => {
+            editModal.scrollTop = 0; // 外殼置頂
+            
+            // 如果內部有滾動容器，也可以順便清（例如 id 為 modalContent 的地方）
+            const innerContent = editModal.querySelector('.modal-content') || document.getElementById('modalContent');
+            if (innerContent) innerContent.scrollTop = 0;
+        }, 10);
     }
-    document.getElementById('editModal').style.display = 'block';
+    // 💡 刪除了原本重複在最底下的 display = 'block' 行，讓程式更乾淨！
 };
 
     window.deleteItem = async (id) => {
