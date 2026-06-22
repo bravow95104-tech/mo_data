@@ -56,24 +56,24 @@ const formatTieredContent = (text, isCompact = false, linkType = null) => {
 
   // 🚀 升級版正則：同時支援「第X層：」、「第X關：」、「X區：」或「A區:」
   // 匹配：第數字層、第數字關，或者是 任何中英文字母/數字+區
-  const tierRegex = /(第\d+[層關]|[A-Za-z0-9\u4e00-\u9fa5]+區)[：:]/g;
+  // 🚀 核心修正：拿掉這裡的 g 修飾符，避免 lastIndex 指針殘留導致後面行數失效
+  const tierRegex = /(第\d+[層關]|[A-Za-z0-9\u4e00-\u9fa5]+區)[：:]/;
 
   if (tierRegex.test(str)) {
     const lines = str.split(/\n|<br>/i);
     return lines.map(line => {
-      // 🚀 這裡同步修改，把前半段的標籤與後半段的名字切開
+      // 每一行都建立一個乾淨的局部正則進行精準比對
       const match = line.match(/(第\d+[層關]|[A-Za-z0-9\u4e00-\u9fa5]+區)[：:](.*)/);
       if (match) {
-        const tier = match[1]; // 這裡會拿到「第1層」或「A區」、「東區」
+        const tier = match[1]; // 這裡會拿到「1區」、「2區」等
         const names = wrapLinks(match[2].trim());
         
         if (isCompact) {
-          // 💡 縮寫邏輯：如果是「第1層」變成 T1；如果是「A區」就保留原本的「A區」或變「A」
           let shortTier = tier.replace("第", "T").replace("層", "");
           return `<div class="table-tier-item"><span class="table-tier-badge">${shortTier}</span> ${names}</div>`;
         }
         
-        // 🎨 這裡維持你原本漂亮的區塊排版，Badge 會直接顯示「第1層」或「A區」！
+        // 🎨 這樣 1區、2區、3區... 每一行就都能完美拿到這個精美區塊排版了！
         return `<div class="tier-group"><div class="tier-header"><span class="tier-badge">${tier}</span></div><div class="tier-names">${names}</div></div>`;
       }
       
