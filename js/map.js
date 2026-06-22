@@ -321,26 +321,34 @@ async function loadModalZoneButtons(mapName, maxX, maxY, mainRubbish, mainProduc
     }
     // === 🚀 核心進階：自動偵測網址參數並點亮分區 ===
     // 1. 取得網址列中的 zone 參數
+    // ===================================================================
+    // 🚀 【終極加強防搶拍版】核心進階：偵測網址參數並模擬點擊
+    // ===================================================================
     const urlParams = new URLSearchParams(window.location.search);
-    const targetZone = urlParams.get('zone'); // 會拿到 "A區"
+    const targetZone = urlParams.get('zone'); 
 
     if (targetZone) {
-        // 2. 延時一下下（確保 DOM 已經完全渲染，按鈕已經長在網頁上）
+        // 💡 修正點 1：將時間拉長到 800ms，確保地圖所有常規初始化（與清除動作）都已經徹底做完
         setTimeout(() => {
-            // 3. 尋找畫面上所有的區域按鈕，看看有沒有人的文字剛好包含「[區域] A區」
             const allButtons = Array.from(document.querySelectorAll('.zone-btn'));
             const matchedBtn = allButtons.find(btn => btn.innerText.includes(`${targetZone}`));
 
+            console.log("【自動導航除錯】畫面上所有的區域按鈕有：", allButtons.map(b => b.innerText));
+
             if (matchedBtn) {
-                console.log(`[自動導航] 偵測到網址要求點亮: ${targetZone}，自動觸發點擊！`);
-                // 4. 🚀 施展魔法：自動模擬玩家動手去點擊這個按鈕！
-                matchedBtn.click();
+                console.log(`【自動導航】成功找到按鈕，準備點擊: [區域] ${targetZone}`);
                 
-                // 5. 貼心小視覺：讓這個按鈕稍微閃爍或改變背景色，讓玩家知道它正亮著
+                // 💡 修正點 2：先強制套用高亮視覺，防止 click 被其他非同步事件洗掉顏色
                 matchedBtn.style.backgroundColor = '#ff4d4d';
                 matchedBtn.style.color = '#ffffff';
+                matchedBtn.style.borderColor = '#ff4d4d';
+
+                // 🚀 執行模擬點擊（劃出紅線、切換掉落物文字）
+                matchedBtn.click(); 
+            } else {
+                console.warn(`【自動導航警告】網址要求點亮「${targetZone}」，但畫面上找不到對應的按鈕！`);
             }
-        }, 300); // 300毫秒防同步阻礙，最安全
+        }, 800); 
     }
   } catch (err) {
     console.error("載入區域失敗:", err.message);
