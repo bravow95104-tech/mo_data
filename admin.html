@@ -861,6 +861,11 @@
     });
 
     isDirty = false; // 🚀 填充資料後重設修改狀態
+    const editModal = document.getElementById('editModal');
+    if (editModal) {
+        editModal.style.display = 'block';
+        editModal.scrollTop = 0; // 🚀 關鍵新增：強制讓彈窗外殼的捲軸回到最上方
+    }
     document.getElementById('editModal').style.display = 'block';
 };
 
