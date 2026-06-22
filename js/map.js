@@ -54,20 +54,29 @@ const formatTieredContent = (text, isCompact = false, linkType = null) => {
     }).join('、');
   };
 
-  const tierRegex = /第\d+層[：:]/g;
+  // 🚀 升級版正則：同時支援「第X層：」、「第X關：」、「X區：」或「A區:」
+  // 匹配：第數字層、第數字關，或者是 任何中英文字母/數字+區
+  const tierRegex = /(第\d+[層關]|[A-Za-z0-9\u4e00-\u9fa5]+區)[：:]/g;
+
   if (tierRegex.test(str)) {
     const lines = str.split(/\n|<br>/i);
     return lines.map(line => {
-      const match = line.match(/(第\d+層)[：:](.*)/);
+      // 🚀 這裡同步修改，把前半段的標籤與後半段的名字切開
+      const match = line.match(/(第\d+[層關]|[A-Za-z0-9\u4e00-\u9fa5]+區)[：:](.*)/);
       if (match) {
-        const tier = match[1];
+        const tier = match[1]; // 這裡會拿到「第1層」或「A區」、「東區」
         const names = wrapLinks(match[2].trim());
+        
         if (isCompact) {
-          const shortTier = tier.replace("第", "T").replace("層", "");
+          // 💡 縮寫邏輯：如果是「第1層」變成 T1；如果是「A區」就保留原本的「A區」或變「A」
+          let shortTier = tier.replace("第", "T").replace("層", "");
           return `<div class="table-tier-item"><span class="table-tier-badge">${shortTier}</span> ${names}</div>`;
         }
+        
+        // 🎨 這裡維持你原本漂亮的區塊排版，Badge 會直接顯示「第1層」或「A區」！
         return `<div class="tier-group"><div class="tier-header"><span class="tier-badge">${tier}</span></div><div class="tier-names">${names}</div></div>`;
       }
+      
       const normalNames = wrapLinks(line.trim());
       return normalNames ? `<div>${normalNames}</div>` : "";
     }).join('');
