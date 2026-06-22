@@ -246,6 +246,29 @@ async function loadModalZoneButtons(mapName, maxX, maxY, mainRubbish, mainProduc
     } else {
       zoneSection.style.display = 'none';
     }
+    // === 🚀 核心進階：自動偵測網址參數並點亮分區 ===
+    // 1. 取得網址列中的 zone 參數
+    const urlParams = new URLSearchParams(window.location.search);
+    const targetZone = urlParams.get('zone'); // 會拿到 "A區"
+
+    if (targetZone) {
+        // 2. 延時一下下（確保 DOM 已經完全渲染，按鈕已經長在網頁上）
+        setTimeout(() => {
+            // 3. 尋找畫面上所有的區域按鈕，看看有沒有人的文字剛好包含「[區域] A區」
+            const allButtons = Array.from(document.querySelectorAll('.zone-btn'));
+            const matchedBtn = allButtons.find(btn => btn.innerText.includes(`[區域] ${targetZone}`));
+
+            if (matchedBtn) {
+                console.log(`[自動導航] 偵測到網址要求點亮: ${targetZone}，自動觸發點擊！`);
+                // 4. 🚀 施展魔法：自動模擬玩家動手去點擊這個按鈕！
+                matchedBtn.click();
+                
+                // 5. 貼心小視覺：讓這個按鈕稍微閃爍或改變背景色，讓玩家知道它正亮著
+                matchedBtn.style.backgroundColor = '#ff4d4d';
+                matchedBtn.style.color = '#ffffff';
+            }
+        }, 300); // 300毫秒防同步阻礙，最安全
+    }
 
     // 2. 萬用工具：合併主表 + 分區表所有掉落（包含「全區」填寫的也會一起被合併進去去重！）
     function setupDynamicRow(elementId, rowId, mainValue, zoneValuesArray, isCardType, cardTypeParam) {
