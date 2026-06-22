@@ -258,27 +258,43 @@ async function loadModalZoneButtons(mapName, maxX, maxY, mainRubbish, mainProduc
 
     // 2. 萬用工具：合併主表 + 分區表所有掉落（包含「全區」填寫的也會一起被合併進去去重！）
     // 2. 萬用工具：合併主表 + 分區表所有掉落
+    // 2. 萬用工具：合併主表 + 分區表所有掉落
     function setupDynamicRow(elementId, rowId, mainValue, zoneValuesArray, isCardType, cardTypeParam) {
         const el = document.getElementById(elementId);
         const row = document.getElementById(rowId);
         if (!el || !row) return;
 
-        let allItems = [];
-        if (mainValue) allItems = allItems.concat(mainValue.split(/[,，、\s]+/));
-        zoneValuesArray.forEach(val => {
-            if (val) allItems = allItems.concat(val.split(/[,，、\s]+/));
-        });
+        // 🚀 核心修正：檢查這包資料是不是包含「層/區」排版的複雜字串
+        const hasTierFormat = /(第\d+[層關]|[A-Za-z0-9\u4e00-\u9fa5]+區)[：:]/.test(mainValue || "") || 
+                              zoneValuesArray.some(val => /(第\d+[層關]|[A-Za-z0-9\u4e00-\u9fa5]+區)[：:]/.test(val || ""));
 
-        const uniqueItems = Array.from(new Set(allItems)).filter(x => x);
-        if (uniqueItems.length > 0) {
-            const cleanRawStr = uniqueItems.join('、');
-            
-            // 🚀 終極修正點：不管他是不是卡片，通通都要走 formatTieredContent 去解「1區、2區」！
-            // 如果不是卡片類型，第三個參數 linkType 就傳 null，但它依然能幫我們解出 1區、2區 的 Badge 排版！
-            el.innerHTML = formatTieredContent(cleanRawStr, false, isCardType ? cardTypeParam : null);
-            
+        let finalRenderStr = "";
+
+        if (hasTierFormat) {
+            // 🎯 情況 A：如果包含「第幾層/幾區」，我們保留換行結構，改用「換行 \n」把各區資料接起來
+            let combinedLines = [];
+            if (mainValue) combinedLines.push(mainValue.trim());
+            zoneValuesArray.forEach(val => {
+                if (val) combinedLines.push(val.trim());
+            });
+            // 用換行符串接，這樣 formatTieredContent 裡面的 split(/\n/) 就能完美切開每一層！
+            finalRenderStr = combinedLines.join('\n');
+        } else {
+            // 🎯 情況 B：普通的純物品（如垃圾、產物），維持原本的打碎、去重、頓號串接
+            let allItems = [];
+            if (mainValue) allItems = allItems.concat(mainValue.split(/[,，、\s]+/));
+            zoneValuesArray.forEach(val => {
+                if (val) allItems = allItems.concat(val.split(/[,，、\s]+/));
+            });
+            const uniqueItems = Array.from(new Set(allItems)).filter(x => x);
+            finalRenderStr = uniqueItems.join('、');
+        }
+
+        if (finalRenderStr) {
+            // 丟進智慧格式化解析器
+            el.innerHTML = formatTieredContent(finalRenderStr, false, isCardType ? cardTypeParam : null);
             row.style.display = ''; 
-            el.setAttribute('data-default', cleanRawStr); 
+            el.setAttribute('data-default', finalRenderStr); 
         } else {
             row.style.display = 'none'; 
             el.setAttribute('data-default', '');
