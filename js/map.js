@@ -443,7 +443,7 @@ async function loadModalZoneButtons(mapName, maxX, maxY, mainRubbish, mainProduc
                     data-def="${zoneDef}"
                     data-dodge="${zoneDodge}"
                     data-element="${zoneElement}"
-                    onclick="window.executeZoneClick(this)">  ${zoneName}
+                    onclick="window.executeZoneClick(this)">  
               ${zoneName}
             </button>
           `;
