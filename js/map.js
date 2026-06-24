@@ -399,7 +399,7 @@ async function loadModalZoneButtons(mapName, maxX, maxY, mainRubbish, mainProduc
 
           // 🚀 究極改造：捨棄容易爆炸的 onclick 大參數傳參，改用 data-* 儲存資料，並呼叫 handleZoneButtonClick(this)
           return `
-            <button class="resource-btn zone-btn" 
+            <button class="resource-btn zone-btn zone-click-btn"
                     id="zone-btn-${index}"
                     style="border-color: #ff4d4d; color: #ff4d4d;"
                     data-points="${safePoints}"
@@ -411,8 +411,7 @@ async function loadModalZoneButtons(mapName, maxX, maxY, mainRubbish, mainProduc
                     data-other="${finalOther}"
                     data-def="${zoneDef}"
                     data-dodge="${zoneDodge}"
-                    data-element="${zoneElement}"
-                    onclick="handleZoneButtonClick(this)">
+                    data-element="${zoneElement}">
               ${zoneName}
             </button>
           `;
