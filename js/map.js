@@ -309,6 +309,64 @@ async function loadModalZoneButtons(mapName, maxX, maxY, mainRubbish, mainProduc
     setupDynamicRow('dynamic-drop-hero',    'dynamic-drop-hero-row',    mainHero,    drops.map(d => d.drop_heroes).filter(x => x),  true, 'hero');
     setupDynamicRow('dynamic-drop-othrt',    'dynamic-drop-othrt-row',    mainOther,   drops.map(d => d.drop_other).filter(x => x),   true);
 
+    // =======================================================================
+    // 🚀 核心新插入點：處理 [防禦]、[閃避]、[戰場五行] 的初始全顯示（智慧去重與區間化）
+    // =======================================================================
+    function getSmartStatusRange(mainValue, zoneValuesArray) {
+        let allValues = [];
+        if (mainValue) allValues.push(mainValue.toString().trim());
+        zoneValuesArray.forEach(val => {
+            if (val) allValues.push(val.toString().trim());
+        });
+
+        let uniqueValues = Array.from(new Set(allValues)).filter(x => x && x !== '-');
+        if (uniqueValues.length === 0) return "-";
+        if (uniqueValues.length === 1) return uniqueValues[0];
+
+        let allNumbers = [];
+        uniqueValues.forEach(str => {
+            let nums = str.match(/\d+/g);
+            if (nums) { nums.forEach(n => allNumbers.push(parseInt(n))); }
+        });
+
+        if (allNumbers.length > 0) {
+            const min = Math.min(...allNumbers);
+            const max = Math.max(...allNumbers);
+            return min === max ? `${min}` : `${min} ~ ${max}`;
+        }
+        return uniqueValues.join('、');
+    }
+
+    // 🎯 1. 計算並取得智慧去重/區間化後的值
+    const defaultDefStr   = getSmartStatusRange(item.def, zones.map(z => z.def));
+    const defaultDodgeStr = getSmartStatusRange(item.dodge, zones.map(z => z.dodge));
+
+    // 🎯 2. 計算五行文字去重 (假設地圖主表五行欄位是 item.map_element，若沒有就留空)
+    let allElements = [];
+    if (item.map_element) allElements.push(item.map_element.trim());
+    zones.forEach(z => {
+        if (z.element) allElements.push(z.element.trim());
+    });
+    const defaultElementStr = Array.from(new Set(allElements)).filter(x => x && x !== '-').join('、') || "-";
+
+    // 🎯 3. 將這些完美的初始全顯示值綁定到前端 DOM 與 data-default
+    const defEl = document.getElementById('dynamic-def');
+    const dodgeEl = document.getElementById('dynamic-dodge');
+    const elementEl = document.getElementById('dynamic-element');
+
+    if (defEl) {
+        defEl.innerText = defaultDefStr;
+        defEl.setAttribute('data-default', defaultDefStr);
+    }
+    if (dodgeEl) {
+        dodgeEl.innerText = defaultDodgeStr;
+        dodgeEl.setAttribute('data-default', defaultDodgeStr);
+    }
+    if (elementEl) {
+        elementEl.innerText = defaultElementStr;
+        elementEl.setAttribute('data-default', defaultElementStr);
+    }
+    // =======================================================================
     // 4. 動態生成區域按鈕
     if (zones.length > 0) {
         const groupedZones = {};
@@ -329,10 +387,10 @@ async function loadModalZoneButtons(mapName, maxX, maxY, mainRubbish, mainProduc
 
           // 🚀 核心修正 3：傳進 switchZoneDisplay 的時候，自動把「當前區域的掉落」跟「全區掉落」黏在一起！
           // 這樣點擊 A 區時，畫面就會呈現：A區掉落 + 全區掉落，而不會漏掉全區的東西
-          const finalRubbish = [d.drop_rubbish, globalDrop.drop_rubbish].filter(x => x).join(',');
-          const finalProduct = [d.drop_product, globalDrop.drop_product].filter(x => x).join(',');
-          const finalHero    = [d.drop_heroes,  globalDrop.drop_heroes].filter(x => x).join(',');
-          const finalOther   = [d.drop_other,   globalDrop.drop_other].filter(x => x).join(',');
+          const finalRubbish = [d.drop_rubbish, globalDrop.drop_rubbish].filter(x => x).join(',').replace(/[\r\n]+/g, '、');
+          const finalProduct = [d.drop_product, globalDrop.drop_product].filter(x => x).join(',').replace(/[\r\n]+/g, '、');
+          const finalHero    = [d.drop_heroes,  globalDrop.drop_heroes].filter(x => x).join(',').replace(/[\r\n]+/g, '、');
+          const finalOther   = [d.drop_other,   globalDrop.drop_other].filter(x => x).join(',').replace(/[\r\n]+/g, '、');
 
           return `
             <button class="resource-btn zone-btn" style="border-color: #ff4d4d; color: #ff4d4d;"
@@ -482,10 +540,19 @@ if (resources.length > 0 || item) {
   let combatAndDropHTML = '';
   if (!isTown) {
     const hasDrop = !!(item.drop_rubbish || item.drop_hero || item.drop_equidcard || item.drop_skillcard || item.drop_combo_old || item.drop_combo_new || item.drop_othrt);
+    
     combatAndDropHTML = `
             <div class="hero-defdodge section-gap">
                 <p><strong>怪物等級：</strong>${item.maplv || "-"}</p>
-                <p><strong>防禦：</strong>${item.def || "-"}　<strong>閃避：</strong>${item.dodge || "-"}</p>
+                
+                <p>
+                  <strong>防禦：</strong><span id="dynamic-def" data-default="${item.def || '-'}">${item.def || "-"}</span> 
+                  <strong>閃避：</strong><span id="dynamic-dodge" data-default="${item.dodge || '-'}">${item.dodge || "-"}</span>
+                </p>
+                
+                <p>
+                  <strong>戰場五行：</strong><span id="dynamic-element" data-default="-">-</span>
+                </p>
             </div>
             ${hasDrop ? `
               <div class="hero-column-details section-gap">
