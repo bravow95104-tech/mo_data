@@ -195,7 +195,7 @@ export const TABLE_CONFIGS = {
             { id: 'item', label: '名稱', type: 'text', required: true, grid: 1 },
             { id: 'sort_id', label: '顯示順序', type: 'number', grid: 1 },
             { id: 'class', label: '分類', type: 'select', options: ['飾品'], grid: 1 },
-            { id: 'sort', label: '部位', type: 'select', options: ['嘴巴','頭飾','眼鏡','座騎'], grid: 1 },
+            { id: 'sort', label: '部位', type: 'select', options: ['嘴巴','頭飾','眼鏡','座騎',''], grid: 1 },
             { id: 'type', label: '類型(暫無作用 原意分類道具)', type: 'text', grid: 1 },
             { id: 'lv', label: '等級', type: 'text', grid: 1 },
             { id: 'property1', label: '屬性1(防禦/攻擊)', type: 'text', grid: 1 },
