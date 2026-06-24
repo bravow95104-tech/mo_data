@@ -458,18 +458,23 @@ tbody tr:hover td {
   margin-bottom: 20px;
 }
 
-.hero-column-details p, .hero-defdodge p ,.hero-approach p, .hero-explain p {
+.hero-column-details p, .hero-approach p, .hero-explain p {
   display: flex; /* 啟用彈性佈局 */
   align-items: flex-start;
   margin: 12px 0;
   line-height: 1.7;
 }
 
+/* 🎯 專門把標題與黑色數值的橫向間距拉近 */
+.hero-defdodge p {
+  display: flex;         /* 🚀 保持你喜歡的 Flex 佈局與上下間距 */
+  justify-content: flex-start; /* 🚀 確保所有東西都往左邊靠齊，不亂撐開 */
+  gap: 4px;             /* 🚀 核心修正：標題與數字之間只留 4px 的小空隙（你可以自由調整成 2px 或 6px） */
+}
 
-/* 🎯 幫防禦與閃避中間拉開一點舒適的距離 */
+/* 🎯 獨立微調：讓「防禦數字」與右邊「閃避標題」之間維持舒適的距離 */
 .hero-defdodge #dynamic-def {
-  margin-right: 30px;  /* 🚀 讓「防禦：XX」跟右邊的「閃避：XX」維持 25px 的漂亮間隔 */
-  display: inline-block;
+  margin-right: 30px;    /* 🚀 只有這裡推開 30px，讓防禦和閃避分開 */
 }
 
 .hero-column-details strong, .align-row strong, .hero-defdodge strong, .hero-approach strong, .hero-explain strong {
