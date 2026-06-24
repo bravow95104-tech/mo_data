@@ -658,7 +658,9 @@ if (resources.length > 0 || item) {
         <div class="map-image-wrapper">
           <div class="map-image-relative-wrapper">
             <img src="${autoImagePath}" class="hero-image" onerror="this.style.display='none'" />
-            
+            <div id="resource-ping" class="resource-ping">
+              <img src="/mo_data/pic/sys/marker.png" style="width:100%;height:100%;object-fit:contain;">
+            </div>
           </div>
         </div>
         ${resourceButtonsHTML}
