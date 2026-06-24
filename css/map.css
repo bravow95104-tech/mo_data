@@ -465,23 +465,31 @@ tbody tr:hover td {
   line-height: 1.7;
 }
 
-/* 🎯 專門把標題與黑色數值的橫向間距拉近 */
-.hero-defdodge p {
-  display: flex;         /* 🚀 保持你喜歡的 Flex 佈局與上下間距 */
-  justify-content: flex-start; /* 🚀 確保所有東西都往左邊靠齊，不亂撐開 */
-  gap: 4px;             /* 🚀 核心修正：標題與數字之間只留 4px 的小空隙（你可以自由調整成 2px 或 6px） */
-}
-
-/* 🎯 獨立微調：讓「防禦數字」與右邊「閃避標題」之間維持舒適的距離 */
-.hero-defdodge #dynamic-def {
-  margin-right: 30px;    /* 🚀 只有這裡推開 30px，讓防禦和閃避分開 */
-}
-
 .hero-column-details strong, .align-row strong, .hero-defdodge strong, .hero-approach strong, .hero-explain strong {
   color: var(--primary-blue) !important;
-  flex: 0 0 130px; /* 固定標題寬度，確保冒號對齊 */
+  flex: 0 0 100px; /* 固定標題寬度，確保冒號對齊 */
   display: inline-block;
   white-space: nowrap;
+}
+
+/* 🎯 1. 徹底打破 130px 的詛咒！讓數值區的標題寬度自動縮回，字多寬就多寬 */
+.hero-defdodge strong {
+  flex: 0 0 auto !important; /* 🚀 核心修正：取消固定的 130px，綠色空格立刻消失！ */
+  display: inline !important;
+}
+
+/* 🎯 2. 控制標題與後面黑色數字的距離，以及防禦跟閃避的間距 */
+.hero-defdodge p {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 6px; /* 🚀 標題「防禦：」與數字「120」之間的橫向距離，現在由這裡精準控制 */
+}
+
+/* 🎯 3. 只有防禦的數字右邊要推開，去和「閃避」拉開距離 */
+.hero-defdodge #dynamic-def {
+  margin-right: 30px !important; /* 🚀 讓防禦數字與右邊的【閃避：】維持 30px 漂亮間距 */
+  display: inline-block;
 }
 
 @media (max-width: 768px) {
