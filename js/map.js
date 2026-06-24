@@ -260,8 +260,6 @@ async function loadModalZoneButtons(mapName, maxX, maxY, mainRubbish, mainProduc
     }
 
     // 2. 萬用工具：合併主表 + 分區表所有掉落（包含「全區」填寫的也會一起被合併進去去重！）
-    // 2. 萬用工具：合併主表 + 分區表所有掉落
-    // 2. 萬用工具：合併主表 + 分區表所有掉落
     function setupDynamicRow(elementId, rowId, mainValue, zoneValuesArray, isCardType, cardTypeParam) {
         const el = document.getElementById(elementId);
         const row = document.getElementById(rowId);
@@ -310,7 +308,7 @@ async function loadModalZoneButtons(mapName, maxX, maxY, mainRubbish, mainProduc
     setupDynamicRow('dynamic-drop-othrt',    'dynamic-drop-othrt-row',    mainOther,   drops.map(d => d.drop_other).filter(x => x),   true);
 
 // =======================================================================
-    // 🚀 免 item 修正版：處理 [防禦]、[閃避]、[戰場五行] 的初始全顯示（智慧去重與區間化）
+    // 🚀 免 item 修正版（對接 map_zone_drops 升級版）
     // =======================================================================
     function getSmartStatusRange(mainValue, zoneValuesArray) {
         let allValues = [];
@@ -337,7 +335,7 @@ async function loadModalZoneButtons(mapName, maxX, maxY, mainRubbish, mainProduc
         return uniqueValues.join('、');
     }
 
-    // 🎯 1. 既然沒有 item，我們直接從剛渲染好的 DOM 節點去抓取原本主表的基礎防禦和閃避！
+    // 🎯 1. 從剛渲染好的 DOM 節點去抓取原本主表的基礎防禦和閃避！
     const defEl = document.getElementById('dynamic-def');
     const dodgeEl = document.getElementById('dynamic-dodge');
     const elementEl = document.getElementById('dynamic-element');
@@ -346,15 +344,15 @@ async function loadModalZoneButtons(mapName, maxX, maxY, mainRubbish, mainProduc
     const mainDodge = dodgeEl ? dodgeEl.getAttribute('data-default') : "-";
     const mainElement = elementEl ? elementEl.getAttribute('data-default') : "-";
 
-    // 🎯 2. 計算並取得結合各分區後的智慧去重/區間化後的值
-    const defaultDefStr   = getSmartStatusRange(mainDef, zones.map(z => z.def));
-    const defaultDodgeStr = getSmartStatusRange(mainDodge, zones.map(z => z.dodge));
+    // 🎯 2. 關鍵修正：改從 drops 陣列去撈取各分區的 def 與 dodge 進行去重/區間化
+    const defaultDefStr   = getSmartStatusRange(mainDef, drops.map(d => d.def));
+    const defaultDodgeStr = getSmartStatusRange(mainDodge, drops.map(d => d.dodge));
 
-    // 🎯 3. 計算五行文字去重
+    // 🎯 3. 關鍵修正：改從 drops 陣列去撈取各分區的 element（五行）文字去重
     let allElements = [];
     if (mainElement && mainElement !== '-') allElements.push(mainElement.trim());
-    zones.forEach(z => {
-        if (z.element) allElements.push(z.element.trim());
+    drops.forEach(d => {
+        if (d.element) allElements.push(d.element.trim());
     });
     const defaultElementStr = Array.from(new Set(allElements)).filter(x => x && x !== '-' && x !== 'null').join('、') || "-";
 
@@ -363,7 +361,7 @@ async function loadModalZoneButtons(mapName, maxX, maxY, mainRubbish, mainProduc
     if (dodgeEl) dodgeEl.innerText = defaultDodgeStr;
     if (elementEl) {
         elementEl.innerText = defaultElementStr;
-        elementEl.setAttribute('data-default', defaultElementStr); // 同步更新 data-default 供切換備用
+        elementEl.setAttribute('data-default', defaultElementStr); 
     }
     // =======================================================================
     // 4. 動態生成區域按鈕
@@ -380,24 +378,41 @@ async function loadModalZoneButtons(mapName, maxX, maxY, mainRubbish, mainProduc
         // 🚀 核心修正 2：先在 drops 裡把「全區」的那一包撈出來備用
         const globalDrop = drops.find(d => d.zone_name === '全區') || {};
 
-        zoneContainer.innerHTML = Object.keys(groupedZones).map(zoneName => {
+        // 💡 這裡加上 (zoneName, index)，提供按鈕獨立且唯一的 id 作為辨識
+        zoneContainer.innerHTML = Object.keys(groupedZones).map((zoneName, index) => {
           const multiPointsStr = JSON.stringify(groupedZones[zoneName]);
           const d = drops.find(d => d.zone_name === zoneName) || {};
 
-          // 🚀 核心修正 3：傳進 switchZoneDisplay 的時候，自動把「當前區域的掉落」跟「全區掉落」黏在一起！
-          // 這樣點擊 A 區時，畫面就會呈現：A區掉落 + 全區掉落，而不會漏掉全區的東西
+          // 🚀 核心修正 3：自動把「當前區域的掉落」跟「全區掉落」黏在一起，並拔除致命的隱形換行
           const finalRubbish = [d.drop_rubbish, globalDrop.drop_rubbish].filter(x => x).join(',').replace(/[\r\n]+/g, '、');
           const finalProduct = [d.drop_product, globalDrop.drop_product].filter(x => x).join(',').replace(/[\r\n]+/g, '、');
           const finalHero    = [d.drop_heroes,  globalDrop.drop_heroes].filter(x => x).join(',').replace(/[\r\n]+/g, '、');
           const finalOther   = [d.drop_other,   globalDrop.drop_other].filter(x => x).join(',').replace(/[\r\n]+/g, '、');
 
+          // 🚀 核心優化（對接 map_zone_drops 新欄位）：直接從當前分區的 drop 資料物件 (d) 撈取三大戰鬥數據
+          const zoneDef     = d.def || "";
+          const zoneDodge   = d.dodge || "";
+          const zoneElement = d.element || "";
+
+          // 🚀 安全防禦：將座標字串中的雙引號轉義為 HTML 實體字元，絕對不破壞 HTML 標籤結構
+          const safePoints = multiPointsStr.replace(/"/g, '&quot;');
+
+          // 🚀 究極改造：捨棄容易爆炸的 onclick 大參數傳參，改用 data-* 儲存資料，並呼叫 handleZoneButtonClick(this)
           return `
-            <button class="resource-btn zone-btn" style="border-color: #ff4d4d; color: #ff4d4d;"
-                    onclick="switchZoneDisplay(${multiPointsStr}, ${maxX}, ${maxY}, 
-                      '${finalRubbish}', 
-                      '${finalProduct}', 
-                      '${finalHero}', 
-                      '${finalOther}')">
+            <button class="resource-btn zone-btn" 
+                    id="zone-btn-${index}"
+                    style="border-color: #ff4d4d; color: #ff4d4d;"
+                    data-points="${safePoints}"
+                    data-maxx="${maxX}"
+                    data-maxy="${maxY}"
+                    data-rubbish="${finalRubbish}"
+                    data-product="${finalProduct}"
+                    data-hero="${finalHero}"
+                    data-other="${finalOther}"
+                    data-def="${zoneDef}"
+                    data-dodge="${zoneDodge}"
+                    data-element="${zoneElement}"
+                    onclick="handleZoneButtonClick(this)">
               ${zoneName}
             </button>
           `;
