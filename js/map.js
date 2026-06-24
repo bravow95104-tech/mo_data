@@ -27,14 +27,14 @@ const ALL_COLUMNS = [
 
 let activeColumns = [];
 
-// 🎯 利用事件委派 (Event Delegation) 統一監聽所有分區按鈕點擊，完全免疫 is not defined 錯誤！
+// 🎯 監聽所有分區按鈕的點擊事件（用來取代舊的行內 onclick）
 document.addEventListener('click', function(e) {
-    // 找到點擊的目標是否為分區按鈕 (或是點到按鈕內部的文字)
+    // 檢查點擊的目標或其祖先有沒有包含 .zone-click-btn
     const btnElement = e.target.closest('.zone-click-btn');
-    if (!btnElement) return; // 如果不是點分區按鈕，就什麼都不做
+    if (!btnElement) return;
 
     try {
-        // 1. 從 Dataset 抽出資料
+        // 1. 解析 Dataset 中儲存的各項資料
         const points = JSON.parse(btnElement.getAttribute('data-points'));
         const maxX = parseFloat(btnElement.getAttribute('data-maxx'));
         const maxY = parseFloat(btnElement.getAttribute('data-maxy'));
@@ -43,19 +43,19 @@ document.addEventListener('click', function(e) {
         const hero = btnElement.getAttribute('data-hero') || "";
         const other = btnElement.getAttribute('data-other') || "";
         
-        // 2. 抽出新搬家過去的戰鬥數據
+        // 2. 抽出對接 map_zone_drops 的戰鬥數據
         const zoneDef = btnElement.getAttribute('data-def') || "";
         const zoneDodge = btnElement.getAttribute('data-dodge') || "";
         const zoneElement = btnElement.getAttribute('data-element') || "";
 
-        // 3. 安全傳給負責更新畫面的下一棒
+        // 3. 呼叫 switchZoneDisplay 進行畫面抽換
         if (typeof window.switchZoneDisplay === "function") {
             window.switchZoneDisplay(points, maxX, maxY, rubbish, product, hero, other, zoneDef, zoneDodge, zoneElement);
         } else if (typeof switchZoneDisplay === "function") {
             switchZoneDisplay(points, maxX, maxY, rubbish, product, hero, other, zoneDef, zoneDodge, zoneElement);
         }
     } catch (err) {
-        console.error("【分區點擊解析失敗】:", err.message);
+        console.error("【分區按鈕點擊解析失敗】:", err.message);
     }
 });
 
@@ -539,15 +539,12 @@ window.switchZoneDisplay = function(points, maxX, maxY, zoneRubbish, zoneProduct
     const elementEl = document.getElementById('dynamic-element');
 
     if (defEl) {
-        // 如果該分區有填防禦，顯示分區防禦；沒填則自動切回預設值 (全顯示的智慧區間)
         defEl.innerText = zoneDef.trim() !== "" ? zoneDef : defEl.getAttribute('data-default');
     }
     if (dodgeEl) {
-        // 如果該分區有填閃避，顯示分區閃避；沒填則自動切回預設值 (全顯示的智慧區間)
         dodgeEl.innerText = zoneDodge.trim() !== "" ? zoneDodge : dodgeEl.getAttribute('data-default');
     }
     if (elementEl) {
-        // 如果該分區有填五行，顯示分區五行；沒填則自動切回預設值 (全顯示的去重五行)
         elementEl.innerText = zoneElement.trim() !== "" ? zoneElement : elementEl.getAttribute('data-default');
     }
 };
