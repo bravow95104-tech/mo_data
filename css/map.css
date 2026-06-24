@@ -458,11 +458,25 @@ tbody tr:hover td {
   margin-bottom: 20px;
 }
 
-.hero-column-details p, .hero-defdodge p, .hero-approach p, .hero-explain p {
+.hero-column-details p, .hero-approach p, .hero-explain p {
   display: flex; /* 啟用彈性佈局 */
   align-items: flex-start;
   margin: 12px 0;
   line-height: 1.7;
+}
+
+/* 🎯 專門優化地圖資訊區塊的段落間距 */
+.hero-defdodge p {
+  display: block;      /* 🚀 核心修正：把 flex 改回 block，讓文字自然流動，防禦閃避才不會排版錯亂 */
+  margin: 6px 0;       /* 🚀 核心修正：把 12px 砍半成 6px，行高立刻緊湊、變好看了！ */
+  line-height: 1.5;    /* 微調行高 */
+  font-size: 14.5px;   /* 讓字體大小適中 */
+}
+
+/* 🎯 幫防禦與閃避中間拉開一點舒適的距離 */
+.hero-defdodge #dynamic-def {
+  margin-right: 25px;  /* 🚀 讓「防禦：XX」跟右邊的「閃避：XX」維持 25px 的漂亮間隔 */
+  display: inline-block;
 }
 
 .hero-column-details strong, .align-row strong, .hero-defdodge strong, .hero-approach strong, .hero-explain strong {
