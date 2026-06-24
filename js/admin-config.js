@@ -475,6 +475,9 @@ export const TABLE_CONFIGS = {
             { id: 'map_name', label: '所屬地圖 (完全對應)', type: 'text', required: true, grid: 1 },
             { id: 'zone_name', label: '區域名稱', type: 'text', required: true, grid: 1 },
             { id: 'sort_id', label: '排序', type: 'text', required: true, grid: 1 },
+            { id: 'def', label: '防禦力', type: 'text', grid: 1 , group: '基礎' },
+            { id: 'dodge', label: '閃避', type: 'text', grid: 1 , group: '基礎' },
+            { id: 'element', label: '戰場五行', type: 'text', grid: 1 , group: '基礎' },
             { id: 'points', label: '點位[[XY],[XY],[XY],[XY],[XY],[XY]]', type: 'textarea', placeholder: '例如: [[100,100]],', grid: 2 },
         ]
     },
