@@ -309,8 +309,8 @@ async function loadModalZoneButtons(mapName, maxX, maxY, mainRubbish, mainProduc
     setupDynamicRow('dynamic-drop-hero',    'dynamic-drop-hero-row',    mainHero,    drops.map(d => d.drop_heroes).filter(x => x),  true, 'hero');
     setupDynamicRow('dynamic-drop-othrt',    'dynamic-drop-othrt-row',    mainOther,   drops.map(d => d.drop_other).filter(x => x),   true);
 
-    // =======================================================================
-    // 🚀 核心新插入點：處理 [防禦]、[閃避]、[戰場五行] 的初始全顯示（智慧去重與區間化）
+// =======================================================================
+    // 🚀 免 item 修正版：處理 [防禦]、[閃避]、[戰場五行] 的初始全顯示（智慧去重與區間化）
     // =======================================================================
     function getSmartStatusRange(mainValue, zoneValuesArray) {
         let allValues = [];
@@ -319,7 +319,7 @@ async function loadModalZoneButtons(mapName, maxX, maxY, mainRubbish, mainProduc
             if (val) allValues.push(val.toString().trim());
         });
 
-        let uniqueValues = Array.from(new Set(allValues)).filter(x => x && x !== '-');
+        let uniqueValues = Array.from(new Set(allValues)).filter(x => x && x !== '-' && x !== 'null');
         if (uniqueValues.length === 0) return "-";
         if (uniqueValues.length === 1) return uniqueValues[0];
 
@@ -337,34 +337,33 @@ async function loadModalZoneButtons(mapName, maxX, maxY, mainRubbish, mainProduc
         return uniqueValues.join('、');
     }
 
-    // 🎯 1. 計算並取得智慧去重/區間化後的值
-    const defaultDefStr   = getSmartStatusRange(item.def, zones.map(z => z.def));
-    const defaultDodgeStr = getSmartStatusRange(item.dodge, zones.map(z => z.dodge));
-
-    // 🎯 2. 計算五行文字去重 (假設地圖主表五行欄位是 item.map_element，若沒有就留空)
-    let allElements = [];
-    if (item.map_element) allElements.push(item.map_element.trim());
-    zones.forEach(z => {
-        if (z.element) allElements.push(z.element.trim());
-    });
-    const defaultElementStr = Array.from(new Set(allElements)).filter(x => x && x !== '-').join('、') || "-";
-
-    // 🎯 3. 將這些完美的初始全顯示值綁定到前端 DOM 與 data-default
+    // 🎯 1. 既然沒有 item，我們直接從剛渲染好的 DOM 節點去抓取原本主表的基礎防禦和閃避！
     const defEl = document.getElementById('dynamic-def');
     const dodgeEl = document.getElementById('dynamic-dodge');
     const elementEl = document.getElementById('dynamic-element');
 
-    if (defEl) {
-        defEl.innerText = defaultDefStr;
-        defEl.setAttribute('data-default', defaultDefStr);
-    }
-    if (dodgeEl) {
-        dodgeEl.innerText = defaultDodgeStr;
-        dodgeEl.setAttribute('data-default', defaultDodgeStr);
-    }
+    const mainDef = defEl ? defEl.getAttribute('data-default') : "-";
+    const mainDodge = dodgeEl ? dodgeEl.getAttribute('data-default') : "-";
+    const mainElement = elementEl ? elementEl.getAttribute('data-default') : "-";
+
+    // 🎯 2. 計算並取得結合各分區後的智慧去重/區間化後的值
+    const defaultDefStr   = getSmartStatusRange(mainDef, zones.map(z => z.def));
+    const defaultDodgeStr = getSmartStatusRange(mainDodge, zones.map(z => z.dodge));
+
+    // 🎯 3. 計算五行文字去重
+    let allElements = [];
+    if (mainElement && mainElement !== '-') allElements.push(mainElement.trim());
+    zones.forEach(z => {
+        if (z.element) allElements.push(z.element.trim());
+    });
+    const defaultElementStr = Array.from(new Set(allElements)).filter(x => x && x !== '-' && x !== 'null').join('、') || "-";
+
+    // 🎯 4. 將這些完美的初始全顯示值覆寫回去
+    if (defEl) defEl.innerText = defaultDefStr;
+    if (dodgeEl) dodgeEl.innerText = defaultDodgeStr;
     if (elementEl) {
         elementEl.innerText = defaultElementStr;
-        elementEl.setAttribute('data-default', defaultElementStr);
+        elementEl.setAttribute('data-default', defaultElementStr); // 同步更新 data-default 供切換備用
     }
     // =======================================================================
     // 4. 動態生成區域按鈕
