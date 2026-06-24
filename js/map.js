@@ -456,7 +456,8 @@ async function loadModalZoneButtons(mapName, maxX, maxY, mainRubbish, mainProduc
   }
 }
 
-window.switchZoneDisplay = function(points, maxX, maxY, zoneRubbish, zoneProduct, zoneHero, zoneOther) {
+// 🚀 升級版：補上最後三個參數 zoneDef, zoneDodge, zoneElement，預設給空字串
+window.switchZoneDisplay = function(points, maxX, maxY, zoneRubbish, zoneProduct, zoneHero, zoneOther, zoneDef = "", zoneDodge = "", zoneElement = "") {
     if (typeof showResourcePolyRange === "function") {
         showResourcePolyRange(points, maxX, maxY);
     }
@@ -467,7 +468,7 @@ window.switchZoneDisplay = function(points, maxX, maxY, zoneRubbish, zoneProduct
         if (!el || !row) return;
 
         if (zoneValue) {
-            // 🚀 核心修正：將「分區+全區」混合的資料進行去重處理，防止重複出現
+            // 🚀 將「分區+全區」混合的資料進行去重處理，防止重複出現
             const uniqueItems = Array.from(new Set(zoneValue.split(/[,，、\s]+/))).filter(x => x);
             const cleanZoneValue = uniqueItems.join('、');
 
@@ -486,10 +487,31 @@ window.switchZoneDisplay = function(points, maxX, maxY, zoneRubbish, zoneProduct
         }
     }
 
+    // 1. 處理原本的四大掉落物欄位更新
     toggleRowValue('dynamic-drop-rubbish', 'dynamic-drop-rubbish-row', zoneRubbish, false);
     toggleRowValue('dynamic-drop-product', 'dynamic-drop-product-row', zoneProduct, false);
     toggleRowValue('dynamic-drop-hero',    'dynamic-drop-hero-row',    zoneHero,    true, 'hero');
     toggleRowValue('dynamic-drop-othrt',    'dynamic-drop-othrt-row',    zoneOther,   true);
+
+    // =======================================================================
+    // 🚀 2. 核心新增：點擊分區時，動態更新 [防禦]、[閃避]、[戰場五行] 文字
+    // =======================================================================
+    const defEl = document.getElementById('dynamic-def');
+    const dodgeEl = document.getElementById('dynamic-dodge');
+    const elementEl = document.getElementById('dynamic-element');
+
+    if (defEl) {
+        // 如果該分區有填防禦，顯示分區防禦；沒填則自動切回預設值 (全顯示的智慧區間)
+        defEl.innerText = zoneDef.trim() !== "" ? zoneDef : defEl.getAttribute('data-default');
+    }
+    if (dodgeEl) {
+        // 如果該分區有填閃避，顯示分區閃避；沒填則自動切回預設值 (全顯示的智慧區間)
+        dodgeEl.innerText = zoneDodge.trim() !== "" ? zoneDodge : dodgeEl.getAttribute('data-default');
+    }
+    if (elementEl) {
+        // 如果該分區有填五行，顯示分區五行；沒填則自動切回預設值 (全顯示的去重五行)
+        elementEl.innerText = zoneElement.trim() !== "" ? zoneElement : elementEl.getAttribute('data-default');
+    }
 };
 
 window.openMapDetail = function (mapId) {
