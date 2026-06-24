@@ -368,19 +368,16 @@ async function loadModalZoneButtons(mapName, maxX, maxY, mainRubbish, mainProduc
     }
 
     // 🎯 1. 從剛渲染好的 DOM 節點去抓取原本主表的基礎防禦和閃避！
-    const defEl = document.getElementById('dynamic-def');
-    const dodgeEl = document.getElementById('dynamic-dodge');
-    const elementEl = document.getElementById('dynamic-element');
+    const globalDropData = drops.find(d => d.zone_name === '全區') || {};
+    const mainDef     = globalDropData.def || "-";
+    const mainDodge   = globalDropData.dodge || "-";
+    const mainElement = globalDropData.element || "-";
 
-    const mainDef = defEl ? defEl.getAttribute('data-default') : "-";
-    const mainDodge = dodgeEl ? dodgeEl.getAttribute('data-default') : "-";
-    const mainElement = elementEl ? elementEl.getAttribute('data-default') : "-";
-
-    // 🎯 2. 關鍵修正：改從 drops 陣列去撈取各分區的 def 與 dodge 進行去重/區間化
+    // 🎯 2. 計算結合「全區 + 各分區」後的智慧去重/區間化值
     const defaultDefStr   = getSmartStatusRange(mainDef, drops.map(d => d.def));
     const defaultDodgeStr = getSmartStatusRange(mainDodge, drops.map(d => d.dodge));
 
-    // 🎯 3. 關鍵修正：改從 drops 陣列去撈取各分區的 element（五行）文字去重
+    // 🎯 3. 計算五行文字去重
     let allElements = [];
     if (mainElement && mainElement !== '-') allElements.push(mainElement.trim());
     drops.forEach(d => {
@@ -388,12 +385,22 @@ async function loadModalZoneButtons(mapName, maxX, maxY, mainRubbish, mainProduc
     });
     const defaultElementStr = Array.from(new Set(allElements)).filter(x => x && x !== '-' && x !== 'null').join('、') || "-";
 
-    // 🎯 4. 將這些完美的初始全顯示值覆寫回去
-    if (defEl) defEl.innerText = defaultDefStr;
-    if (dodgeEl) dodgeEl.innerText = defaultDodgeStr;
+    // 🎯 4. 將算好的「完美全地圖綜合區間」覆寫進網頁，並鎖定為 data-default
+    const defEl = document.getElementById('dynamic-def');
+    const dodgeEl = document.getElementById('dynamic-dodge');
+    const elementEl = document.getElementById('dynamic-element');
+
+    if (defEl) {
+        defEl.innerText = defaultDefStr;
+        defEl.setAttribute('data-default', defaultDefStr); // 🚀 鎖定預設綜合值
+    }
+    if (dodgeEl) {
+        dodgeEl.innerText = defaultDodgeStr;
+        dodgeEl.setAttribute('data-default', defaultDodgeStr); // 🚀 鎖定預設綜合值
+    }
     if (elementEl) {
         elementEl.innerText = defaultElementStr;
-        elementEl.setAttribute('data-default', defaultElementStr); 
+        elementEl.setAttribute('data-default', defaultElementStr); // 🚀 鎖定預設綜合值
     }
     // =======================================================================
     // 4. 動態生成區域按鈕
@@ -610,17 +617,15 @@ if (resources.length > 0 || item) {
     
     combatAndDropHTML = `
             <div class="hero-defdodge section-gap">
-                <p><strong>怪物等級：</strong>${item.maplv || "-"}</p>
-                
-                <p>
-                  <strong>防禦：</strong><span id="dynamic-def" data-default="${item.def || '-'}">${item.def || "-"}</span> 
-                  <strong>閃避：</strong><span id="dynamic-dodge" data-default="${item.dodge || '-'}">${item.dodge || "-"}</span>
-                </p>
-                
-                <p>
-                  <strong>戰場五行：</strong><span id="dynamic-element" data-default="-">-</span>
-                </p>
-            </div>
+    <p><strong>怪物等級：</strong>${item.maplv || "-"}</p>
+    <p>
+      <strong>防禦：</strong><span id="dynamic-def" data-default="-">-</span> 
+      <strong>閃避：</strong><span id="dynamic-dodge" data-default="-">-</span>
+    </p>
+    <p>
+      <strong>戰場五行：</strong><span id="dynamic-element" data-default="-">-</span>
+    </p>
+</div>
             ${hasDrop ? `
               <div class="hero-column-details section-gap">
                     <p><strong>掉落物品：</strong></p>
