@@ -27,19 +27,9 @@ const ALL_COLUMNS = [
 
 let activeColumns = [];
 
-// 🎯 監聽所有分區按鈕的點擊事件（用來取代舊的行內 onclick）
-document.addEventListener('click', function(e) {
-    // 💡 測試點擊有沒有成功送進這裡
-    console.log("【全域點擊測試】點到了這個標籤:", e.target);
-
-    const btnElement = e.target.closest('.zone-click-btn');
-    if (!btnElement) {
-        console.log("【全域點擊測試】點到的東西沒有 .zone-click-btn class，跳過不處理。");
-        return;
-    }
-
-    console.log("【成功捕捉分區按鈕！】開始解析資料...");
-
+// 🚀 掛在 window 最頂端，HTML 的 onclick 絕對找得到，且不受冒泡阻斷影響！
+window.executeZoneClick = function(btnElement) {
+    console.log("【直球對決】成功點到分區按鈕，開始切換數據...");
     try {
         const points = JSON.parse(btnElement.getAttribute('data-points'));
         const maxX = parseFloat(btnElement.getAttribute('data-maxx'));
@@ -53,19 +43,13 @@ document.addEventListener('click', function(e) {
         const zoneDodge = btnElement.getAttribute('data-dodge') || "";
         const zoneElement = btnElement.getAttribute('data-element') || "";
 
-        console.log("【解析成功】準備送去 switchZoneDisplay:", { zoneDef, zoneDodge, zoneElement });
-
         if (typeof window.switchZoneDisplay === "function") {
             window.switchZoneDisplay(points, maxX, maxY, rubbish, product, hero, other, zoneDef, zoneDodge, zoneElement);
-        } else if (typeof switchZoneDisplay === "function") {
-            switchZoneDisplay(points, maxX, maxY, rubbish, product, hero, other, zoneDef, zoneDodge, zoneElement);
-        } else {
-            console.error("❌ 糟糕！找不到 switchZoneDisplay 函式！");
         }
     } catch (err) {
-        console.error("【分區按鈕點擊解析失敗】:", err.message);
+        console.error("【分區點擊解析失敗】:", err.message);
     }
-});
+};
 
 // === 智慧格式化解析器 (支援全域共用) ===
 const formatTieredContent = (text, isCompact = false, linkType = null) => {
@@ -458,7 +442,8 @@ async function loadModalZoneButtons(mapName, maxX, maxY, mainRubbish, mainProduc
                     data-other="${finalOther}"
                     data-def="${zoneDef}"
                     data-dodge="${zoneDodge}"
-                    data-element="${zoneElement}">
+                    data-element="${zoneElement}"
+                    onclick="window.executeZoneClick(this)">  ${zoneName}
               ${zoneName}
             </button>
           `;
@@ -694,7 +679,7 @@ if (resources.length > 0 || item) {
             item.drop_othrt || ""       // 參數 9 (🚀 新增)
         );
     }
-}, 50);
+}, 150);
 };
 
 // === 2. 核心初始化 ===
@@ -719,7 +704,6 @@ window.resetZoneSelection = function() {
         const defRaw = el.getAttribute('data-default');
         if (defRaw) {
             if (isCardType) {
-                // 🚀 核心修正：直接還原超連結
                 el.innerHTML = formatTieredContent(defRaw, false, cardTypeParam);
             } else {
                 el.innerHTML = defRaw;
@@ -730,10 +714,26 @@ window.resetZoneSelection = function() {
         }
     }
 
+    // 還原四大掉落物
     restoreRow('dynamic-drop-rubbish', 'dynamic-drop-rubbish-row', false);
     restoreRow('dynamic-drop-product', 'dynamic-drop-product-row', false);
     restoreRow('dynamic-drop-hero',    'dynamic-drop-hero-row',    true, 'hero');
-    restoreRow('dynamic-drop-othrt',    'dynamic-drop-othrt-row',    true);
+    restoreRow('dynamic-drop-othrt',   'dynamic-drop-othrt-row',   true);
+
+    // 🚀 核心新增：清除範圍時，戰鬥數值也要還原成 data-default 鎖定的全區綜合區間值！
+    const defEl = document.getElementById('dynamic-def');
+    const dodgeEl = document.getElementById('dynamic-dodge');
+    const elementEl = document.getElementById('dynamic-element');
+
+    if (defEl && defEl.getAttribute('data-default')) {
+        defEl.innerText = defEl.getAttribute('data-default');
+    }
+    if (dodgeEl && dodgeEl.getAttribute('data-default')) {
+        dodgeEl.innerText = dodgeEl.getAttribute('data-default');
+    }
+    if (elementEl && elementEl.getAttribute('data-default')) {
+        elementEl.innerText = elementEl.getAttribute('data-default');
+    }
 };
 
 // === 3. 資料載入與對接 ===
