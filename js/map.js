@@ -29,12 +29,18 @@ let activeColumns = [];
 
 // 🎯 監聽所有分區按鈕的點擊事件（用來取代舊的行內 onclick）
 document.addEventListener('click', function(e) {
-    // 檢查點擊的目標或其祖先有沒有包含 .zone-click-btn
+    // 💡 測試點擊有沒有成功送進這裡
+    console.log("【全域點擊測試】點到了這個標籤:", e.target);
+
     const btnElement = e.target.closest('.zone-click-btn');
-    if (!btnElement) return;
+    if (!btnElement) {
+        console.log("【全域點擊測試】點到的東西沒有 .zone-click-btn class，跳過不處理。");
+        return;
+    }
+
+    console.log("【成功捕捉分區按鈕！】開始解析資料...");
 
     try {
-        // 1. 解析 Dataset 中儲存的各項資料
         const points = JSON.parse(btnElement.getAttribute('data-points'));
         const maxX = parseFloat(btnElement.getAttribute('data-maxx'));
         const maxY = parseFloat(btnElement.getAttribute('data-maxy'));
@@ -43,16 +49,18 @@ document.addEventListener('click', function(e) {
         const hero = btnElement.getAttribute('data-hero') || "";
         const other = btnElement.getAttribute('data-other') || "";
         
-        // 2. 抽出對接 map_zone_drops 的戰鬥數據
         const zoneDef = btnElement.getAttribute('data-def') || "";
         const zoneDodge = btnElement.getAttribute('data-dodge') || "";
         const zoneElement = btnElement.getAttribute('data-element') || "";
 
-        // 3. 呼叫 switchZoneDisplay 進行畫面抽換
+        console.log("【解析成功】準備送去 switchZoneDisplay:", { zoneDef, zoneDodge, zoneElement });
+
         if (typeof window.switchZoneDisplay === "function") {
             window.switchZoneDisplay(points, maxX, maxY, rubbish, product, hero, other, zoneDef, zoneDodge, zoneElement);
         } else if (typeof switchZoneDisplay === "function") {
             switchZoneDisplay(points, maxX, maxY, rubbish, product, hero, other, zoneDef, zoneDodge, zoneElement);
+        } else {
+            console.error("❌ 糟糕！找不到 switchZoneDisplay 函式！");
         }
     } catch (err) {
         console.error("【分區按鈕點擊解析失敗】:", err.message);
