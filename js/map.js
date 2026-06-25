@@ -385,9 +385,9 @@ async function loadModalZoneButtons(mapName, maxX, maxY, mainRubbish, mainProduc
     // 🚀 真正做到單個字詞級別的精準去重
     const defaultElementStr = Array.from(new Set(allElementsArray))
         .map(x => x.trim())
-        .filter(x => x && x !== '-' && x !== 'null' && x !== '無')
+        .filter(x => x && x !== '-' && x !== 'null') // 💡 保留「無」，它就不會被殺掉了！
         .join('、') || "-";
-        
+
     // 🎯 4. 將算好的「完美全地圖綜合區間」覆寫進網頁，並鎖定為 data-default
     const defEl = document.getElementById('dynamic-def');
     const dodgeEl = document.getElementById('dynamic-dodge');
