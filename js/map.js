@@ -369,14 +369,25 @@ async function loadModalZoneButtons(mapName, maxX, maxY, mainRubbish, mainProduc
     const defaultDefStr   = getSmartStatusRange(mainDef, drops.map(d => d.def));
     const defaultDodgeStr = getSmartStatusRange(mainDodge, drops.map(d => d.dodge));
 
-    // 🎯 3. 計算五行文字去重
-    let allElements = [];
-    if (mainElement && mainElement !== '-') allElements.push(mainElement.trim());
+    // 🎯 3. 計算五行文字去重（升級打碎去重版）
+    let allElementsArray = [];
+    
+    // 合併主表（全區）與所有分區的五行字串
+    if (mainElement && mainElement !== '-') {
+        allElementsArray = allElementsArray.concat(mainElement.split(/[,，、\s]+/));
+    }
     drops.forEach(d => {
-        if (d.element) allElements.push(d.element.trim());
+        if (d.element && d.element !== '-') {
+            allElementsArray = allElementsArray.concat(d.element.split(/[,，、\s]+/));
+        }
     });
-    const defaultElementStr = Array.from(new Set(allElements)).filter(x => x && x !== '-' && x !== 'null').join('、') || "-";
 
+    // 🚀 真正做到單個字詞級別的精準去重
+    const defaultElementStr = Array.from(new Set(allElementsArray))
+        .map(x => x.trim())
+        .filter(x => x && x !== '-' && x !== 'null' && x !== '無')
+        .join('、') || "-";
+        
     // 🎯 4. 將算好的「完美全地圖綜合區間」覆寫進網頁，並鎖定為 data-default
     const defEl = document.getElementById('dynamic-def');
     const dodgeEl = document.getElementById('dynamic-dodge');
