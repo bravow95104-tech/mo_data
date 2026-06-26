@@ -55,14 +55,18 @@ document.addEventListener("DOMContentLoaded", async () => {
   try {
     const [cardRes, mapsRes] = await Promise.all([
       supabase.from('card_equip').select('*').order('sort_id', { ascending: true }),
-      supabase.from('detailed_map').select('mapid, drop_equidcard')
+      supabase.from('map_zone_drops').select('map_id, drop_equidcard')
     ]);
 
     if (cardRes.error) throw cardRes.error;
     if (mapsRes.error) throw mapsRes.error;
     
     allCardData = cardRes.data || [];
-    mapData = mapsRes.data || [];
+    // 🚀 將新表的 map_id 轉換對齊原本變數所預期的 mapid 欄位名稱
+    mapData = (mapsRes.data || []).map(m => ({
+      mapid: m.map_id,
+      drop_equidcard: m.drop_equidcard
+    }));
     
     initializeSortIcons();
 
