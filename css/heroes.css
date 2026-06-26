@@ -559,6 +559,39 @@ th.sort-desc .caret-down {
   border-bottom: 1px solid var(--highlight-yellow);
   transform: translateY(-1px);
 }
+/* 🚀 專屬安全牌：只在容器內含垃圾表格時才修正圓角，絕對不影響其他頁面 */
+
+/* 1. 表格節點分離配置 */
+#hero-table-container:has(#garbageTable) #garbageTable {
+  border-collapse: separate;
+  border-spacing: 0;
+  width: 100%;
+}
+
+/* 2. 左上角與右上角（Th 的邊緣） */
+#hero-table-container:has(#garbageTable) #garbageTable thead tr:first-child th:first-child {
+  border-top-left-radius: 20px;
+}
+#hero-table-container:has(#garbageTable) #garbageTable thead tr:first-child th:last-child {
+  border-top-right-radius: 20px;
+}
+
+/* 3. 左下角與右下角（最後一列 Td 的邊緣） */
+#hero-table-container:has(#garbageTable) #garbageTable tbody tr:last-child td:first-child {
+  border-bottom-left-radius: 20px;
+}
+#hero-table-container:has(#garbageTable) #garbageTable tbody tr:last-child td:last-child {
+  border-bottom-right-radius: 20px;
+}
+
+/* 4. 順手加上垃圾圖片本身的圓角與微外框 */
+#garbageTable td img {
+  border-radius: 6px !important;
+  border: 1px solid #ddd;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  display: inline-block;
+  vertical-align: middle;
+}
 
 /* === 手機版響應式修正 === */
 @media (max-width: 768px) {
