@@ -113,11 +113,12 @@
 
     /* === 展開折疊核心控制 === */
     .quest-card-body {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.3s cubic-bezier(0, 1, 0, 1);
-      padding: 0 20px;
-    }
+  max-height: 0;
+  overflow: hidden;
+  /* ⚙️ 調整：將貝茲曲線改回經典的 ease，讓速度最自然 */
+  transition: max-height 0.3s ease, padding 0.3s ease; 
+  padding: 0 20px;
+}
 
     /* 激活展開狀態 */
     .random-quest-card.active {
@@ -125,8 +126,6 @@
     }
 
     .random-quest-card.active .quest-card-body {
-      max-height: 500px;
-      transition: max-height 0.3s cubic-bezier(1, 0, 1, 0);
       padding-bottom: 20px;
     }
 
@@ -206,7 +205,24 @@
       font-size: 12px;
       color: var(--text-main);
     }
+/* 🎯 解決快速搜尋條件小標題跳行的神丹 */
+#filterContainer .filter-row {
+  display: flex;
+  align-items: center; /* 讓標題與按鈕垂直居中對齊 */
+  flex-wrap: nowrap;   /* 強制整行不換行 */
+}
 
+#filterContainer .filter-label {
+  white-space: nowrap; /* 🔥 核心：強制「任務地區：」文字絕對不准換行 */
+  min-width: 80px;     /* 給它一個剛好足夠字數展開的固定最小寬度 */
+  display: inline-block;
+}
+
+#filterContainer .filter-btns {
+  display: flex;
+  flex-wrap: wrap;     /* 按鈕寬度不夠時，讓「按鈕們」自己往下一行掉，而不是擠文字 */
+  gap: 8px;
+}
     /* ==========================================================================
        ☀️ 白天模式完美調校相容 (Light Mode Override)
        ========================================================================== */
@@ -214,7 +230,7 @@
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
     }
     body.light-mode .quest-main-pic {
-      background: rgba(255, 255, 255, 0.8);
+      background: rgba(255, 255, 255, 0.911);
     }
     body.light-mode .quest-target-box, 
     body.light-mode .quest-reward-box {
