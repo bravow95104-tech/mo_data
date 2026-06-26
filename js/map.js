@@ -9,6 +9,7 @@ let resourceData = []; // 🚀 新增：儲存所有資源點位
 let heroGloryMap = {}; 
 
 // 定義所有可能的欄位
+// 定義所有可能的欄位
 const ALL_COLUMNS = [
   { id: 'mapid', label: '地圖名稱', default: true },
   { id: 'drop_equidcard', label: '裝備卡', default: true },
@@ -22,7 +23,7 @@ const ALL_COLUMNS = [
   { id: 'dodge', label: '閃避', default: false },
   { id: 'drop_combo_old', label: '舊文片', default: false },
   { id: 'drop_combo_new', label: '新文片', default: false },
-  { id: 'drop_othrt', label: '其他掉落', default: false }
+  { id: 'drop_other', label: '其他掉落', default: false }
 ];
 
 let activeColumns = [];
@@ -653,8 +654,8 @@ if (resources.length > 0 || item) {
 
   let combatAndDropHTML = '';
   if (!isTown) {
-    const hasDrop = !!(item.drop_rubbish || item.drop_equidcard || item.drop_skillcard || item.drop_combo_old || item.drop_combo_new || item.drop_othrt);
-    
+    // 🚀 修正點：將舊的 drop_othrt 修正為新表的欄位名稱對照（雖然由新表接管後，這裡通常恆為 true 或直接渲染框架）
+    const hasDrop = !!(item.drop_rubbish || item.drop_equidcard || item.drop_skillcard || item.drop_combo_old || item.drop_combo_new || item.drop_other);
     combatAndDropHTML = `
       <div class="hero-defdodge section-gap">
         <p><strong>怪物等級：</strong>${item.maplv || "-"}</p>
@@ -740,7 +741,7 @@ if (resources.length > 0 || item) {
             "",                       // 🚀 把 item.drop_rubbish || "" 改成空字串(改新表)
             item.drop_product || "",   // 第 5 個參數 (🚀 新增)
             "",       // 參數 6 (刪除英雄)(改新表)
-            item.drop_othrt || ""       // 參數 9 (🚀 新增)
+            item.drop_other || ""       // 參數 9 (🚀 新增)
         );
     }
 }, 150);
