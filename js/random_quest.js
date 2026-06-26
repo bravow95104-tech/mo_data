@@ -190,7 +190,7 @@ function renderQuestCards() {
               <div class="reward-title">🎁 任務獎勵</div>
               <div class="reward-row">
                 <div class="reward-exp">經驗值：<span>${q.exp ? '+' + Number(q.exp).toLocaleString() : '-'}</span></div>
-                <div class="reward-items">
+                <div class="reward-items">物品：<span>
                   ${rewardTagsHTML || '<span class="text-secondary">-</span>'}
                 </div>
               </div>
@@ -208,21 +208,20 @@ function renderQuestCards() {
 
 function initAccordion() {
   const header = document.querySelector(".accordion-header");
+  const content = document.querySelector(".accordion-content");
   
-  if (header) {
-    header.addEventListener("click", function() {
-      // 取得標題的下一個兄弟元素（也就是內文區塊）
-      const content = this.nextElementSibling;
-      
-      this.classList.toggle("active");
-      
-      if (content) {
-        if (content.style.display === "block") {
-          content.style.display = "none";
-        } else {
-          content.style.display = "block";
-        }
-      }
+  if (header && content) {
+    // 1. 只有點擊標題時，才切換 active 狀態（開或合）
+    header.addEventListener("click", (e) => {
+      // 確保不是點到裡面的怪東西
+      content.classList.toggle("active");
+      header.classList.toggle("active");
+    });
+
+    // 2. 關鍵防坑：當點擊內容區塊（例如按鈕、文字）時，阻止事件往上冒泡
+    // 這樣點擊任何地區按鈕，整個大選單就絕對不會莫名其妙閉合了！
+    content.addEventListener("click", (e) => {
+      e.stopPropagation(); 
     });
   }
 }
