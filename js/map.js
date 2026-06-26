@@ -656,46 +656,60 @@ if (resources.length > 0 || item) {
     const hasDrop = !!(item.drop_rubbish || item.drop_equidcard || item.drop_skillcard || item.drop_combo_old || item.drop_combo_new || item.drop_othrt);
     
     combatAndDropHTML = `
-            <div class="hero-defdodge section-gap">
-    <p><strong>怪物等級：</strong>${item.maplv || "-"}</p>
-    <p>
-      <strong>防禦：</strong><span id="dynamic-def" data-default="-">-</span> 
-      <strong>閃避：</strong><span id="dynamic-dodge" data-default="-">-</span>
-    </p>
-    <p>
-      <strong>戰場五行：</strong><span id="dynamic-element" data-default="-">-</span>
-    </p>
-</div>
-            ${hasDrop ? `
-              <div class="hero-column-details section-gap">
-                    <p><strong>掉落物品：</strong></p>
-                <p class="align-row" id="dynamic-drop-rubbish-row" style="display: none;">
-            <strong>◢ 垃圾：</strong>
-            <span id="dynamic-drop-rubbish"></span>
+      <div class="hero-defdodge section-gap">
+        <p><strong>怪物等級：</strong>${item.maplv || "-"}</p>
+        <p>
+          <strong>防禦：</strong><span id="dynamic-def" data-default="-">-</span> 
+          <strong>閃避：</strong><span id="dynamic-dodge" data-default="-">-</span>
         </p>
+        <p>
+          <strong>戰場五行：</strong><span id="dynamic-element" data-default="-">-</span>
+        </p>
+      </div>
+      
+      <div class="hero-column-details section-gap">
+        <p><strong>掉落物品：</strong></p>
+        
+        <p class="align-row" id="dynamic-drop-rubbish-row" style="display: none;">
+          <strong>◢ 垃圾：</strong> <span id="dynamic-drop-rubbish"></span>
+        </p>
+        
         <p class="align-row" id="dynamic-drop-product-row" style="display: none;">
-    <strong>◢ 產物：</strong>
-    <span id="dynamic-drop-product"></span>
-</p>
-                    ${item.drop_equidcard ? `<p class="align-row"><strong>◢ 裝備卡：</strong><span>${formatTieredContent(item.drop_equidcard, false, 'equip')}</span></p>` : ""}
-                    ${item.drop_skillcard ? `<p class="align-row"><strong>◢ 技能卡：</strong><span>${formatTieredContent(item.drop_skillcard, false, 'skill')}</span></p>` : ""}
-                    <p class="align-row" id="dynamic-drop-hero-row" style="display: none;">
-            <strong>◢ 英雄卡：</strong><span id="dynamic-drop-hero"></span>
+          <strong>◢ 產物：</strong> <span id="dynamic-drop-product"></span>
         </p>
-                    ${item.drop_combo_old ? `<p class="align-row"><strong>◢ 舊文片：</strong><span>${formatTieredContent(item.drop_combo_old)}</span></p>` : ""}
-                    ${item.drop_combo_new ? `<p class="align-row"><strong>◢ 新文片：</strong><span>${formatTieredContent(item.drop_combo_new)}</span></p>` : ""}
-                    <p class="align-row" id="dynamic-drop-othrt-row" style="display: none;">
-            <strong>◢ 其他：</strong><span id="dynamic-drop-othrt"></span>
+        
+        <p class="align-row" id="dynamic-drop-equidcard-row" style="display: none;">
+          <strong>◢ 裝備卡：</strong> <span id="dynamic-drop-equidcard"></span>
         </p>
-                </div>` : ""
-      }
-            <div class="hero-column-details section-gap">
-                <p><strong>光輝資訊：</strong></p>
-                <p class="align-row"><strong>◢ 掉落較高：</strong><span>${formatGloryWithTooltip(item.drop_glory_high)}</span></p>
-                <p class="align-row"><strong>◢ 掉落較低：</strong><span>${formatGloryWithTooltip(item.drop_glory_low)}</span></p>
-                ${item.drop_glory_player ? `<p class="align-row"><strong>◢ 玩家提供：</strong><span>${item.drop_glory_player}</span></p>` : ""}
-            </div>
-        `;
+        
+        <p class="align-row" id="dynamic-drop-skillcard-row" style="display: none;">
+          <strong>◢ 技能卡：</strong> <span id="dynamic-drop-skillcard"></span>
+        </p>
+        
+        <p class="align-row" id="dynamic-drop-hero-row" style="display: none;">
+          <strong>◢ 英雄卡：</strong> <span id="dynamic-drop-hero"></span>
+        </p>
+        
+        <p class="align-row" id="dynamic-drop-combo_old-row" style="display: none;">
+          <strong>◢ 舊文片：</strong> <span id="dynamic-drop-combo_old"></span>
+        </p>
+        
+        <p class="align-row" id="dynamic-drop-combo_new-row" style="display: none;">
+          <strong>◢ 新文片：</strong> <span id="dynamic-drop-combo_new"></span>
+        </p>
+        
+        <p class="align-row" id="dynamic-drop-other-row" style="display: none;">
+          <strong>◢ 其他：</strong> <span id="dynamic-drop-other"></span>
+        </p>
+      </div>
+      
+      <div class="hero-column-details section-gap">
+        <p><strong>光輝資訊：</strong></p>
+        <p class="align-row"><strong>◢ 掉落較高：</strong><span>${formatGloryWithTooltip(item.drop_glory_high)}</span></p>
+        <p class="align-row"><strong>◢ 掉落較低：</strong><span>${formatGloryWithTooltip(item.drop_glory_low)}</span></p>
+        ${item.drop_glory_player ? `<p class="align-row"><strong>◢ 玩家提供：</strong><span>${item.drop_glory_player}</span></p>` : ""}
+      </div>
+    `;
   }
 
   modalContent.innerHTML = `
