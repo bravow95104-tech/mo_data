@@ -288,43 +288,66 @@
    🎯 隨機任務內容專屬：拯救白天模式卡片內部小標題（深灰變清晰）
    ========================================================================== */
 
-      /* 1. 徹底解決白天模式下（淺色）隨機任務卡片內部的深灰色背景與字體顏色不清晰 */
-      body.light-mode #starContainer .random-quest-card .quest-card-body {
-        /* 讓卡片內部展開後的底色變成透亮、乾淨的半透明白色 */
-        background: rgba(255, 255, 255, 0.5) !important;
-        backdrop-filter: blur(5px);
-        -webkit-backdrop-filter: blur(5px);
-      }
+     /* ==========================================================================
+   🎯 隨機任務內容專屬：拯救白天模式卡片內部區塊（萬能模式適配版）
+   ========================================================================== */
 
-      /* 2. 針對隨機任務內部的「目標怪物、蒐集道具」區塊底色優化 */
-      body.light-mode #starContainer .quest-target-box,
-      body.light-mode #starContainer .quest-reward-box {
-        background: rgba(
-          255,
-          255,
-          255,
-          0.4
-        ) !important; /* 換成明亮的透白底色 */
-        border: 1px solid rgba(0, 0, 0, 0.06) !important; /* 給予淡淡的邊框區隔 */
-      }
+/* 1. 讓卡片內部展開後的內層大底色在白天模式變成透亮舒服的半透明白 */
+body.light-mode .random-quest-card .quest-card-body,
+[data-theme="light"] .random-quest-card .quest-card-body,
+.light-theme .random-quest-card .quest-card-body {
+  background: rgba(255, 255, 255, 0.6) !important;
+  backdrop-filter: blur(8px) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
+}
 
-      /* 3. ✨ 核心：讓「目標怪物：」、「蒐集道具：」這些字體在白天清晰易讀 */
-      body.light-mode #starContainer .target-label {
-        color: #2b4660 !important; /* 換成深藍灰色，在白底上對比度極高、非常清晰 */
-        font-weight: bold;
-      }
+/* 2. 徹底重寫：讓 .quest-target-box 與 .quest-reward-box 在白天不再是突兀的死灰底色 */
+body.light-mode .random-quest-card .quest-target-box,
+body.light-mode .random-quest-card .quest-reward-box,
+[data-theme="light"] .random-quest-card .quest-target-box,
+[data-theme="light"] .random-quest-card .quest-reward-box,
+.light-theme .random-quest-card .quest-target-box,
+.light-theme .random-quest-card .quest-reward-box {
+  /* 🔥 核心核心：用極淡的透明藍白光取代原本的深灰 background: rgba(0,0,0,0.15) */
+  background: rgba(255, 255, 255, 0.85) !important; 
+  border: 1px solid rgba(0, 0, 0, 0.08) !important;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.02); /* 加上極淡內陰影增加層次 */
+}
 
-      /* 4. 讓右側的「🎁 任務結算獎勵」標題也更清晰 */
-      body.light-mode #starContainer .reward-title {
-        color: #1a365d !important;
-        font-weight: bold;
-      }
+/* 3. 讓「目標怪物：」、「蒐集道具：」、「所需數量：」小標題在白天清晰好讀 */
+body.light-mode .random-quest-card .target-label,
+[data-theme="light"] .random-quest-card .target-label,
+.light-theme .random-quest-card .target-label {
+  color: #3b5e82 !important; /* 精緻的深鋼藍色 */
+  font-weight: bold !important;
+}
 
-      /* 5. 讓後面的文字數值也清晰 */
-      body.light-mode #starContainer .target-value,
-      body.light-mode #starContainer .reward-exp {
-        color: #333333 !important;
-      }
+/* 4. 讓右側的「🎁 任務獎勵」標題也對比度更完美 */
+body.light-mode .random-quest-card .reward-title,
+[data-theme="light"] .random-quest-card .reward-title,
+.light-theme .random-quest-card .reward-title {
+  color: #c2410c !important; /* 質感的深暖橘色 */
+  font-weight: bold !important;
+}
+
+/* 5. 讓真實任務內容（如：虎頭金鷹、經驗值文字）在白天白底下也能清晰呈現 */
+body.light-mode .random-quest-card .target-value,
+body.light-mode .random-quest-card .reward-exp,
+[data-theme="light"] .random-quest-card .target-value,
+[data-theme="light"] .random-quest-card .reward-exp,
+.light-theme .random-quest-card .target-value,
+.light-theme .random-quest-card .reward-exp {
+  color: #1f2937 !important; /* 深邃灰黑字，絕對好讀 */
+}
+
+/* 6. 讓獎勵物品的小標籤在白天也更加明顯 */
+body.light-mode .random-quest-card .reward-item-tag,
+[data-theme="light"] .random-quest-card .reward-item-tag,
+.light-theme .random-quest-card .reward-item-tag {
+  background: #f3f4f6 !important;
+  border: 1px solid #e5e7eb !important;
+  color: #1f2937 !important;
+}
     </style>
   </head>
   <body>
