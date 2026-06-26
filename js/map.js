@@ -455,21 +455,30 @@ async function loadModalZoneButtons(mapName, maxX, maxY, mainRubbish, mainProduc
     const targetZone = urlParams.get('zone'); 
 
     // ===================================================================
-    // 🎯 2. 智慧全區解鎖：如果網址沒有指定 zone，且新表其實有「全區」的掉落資料，強制亮起對應列
+    // 🎯 2. 智慧全區解鎖（加強除錯與相容版）
     // ===================================================================
     if (!targetZone) {
-        const globalDrop = drops.find(d => d.zone_name === '全區');
+        // 💡 修正點：使用 .trim() 防止資料庫裡有「全區 」帶空白字元的情況
+        const globalDrop = drops.find(d => d.zone_name && d.zone_name.trim() === '全區');
+        
+        console.log("【全區智慧除錯】當前地圖的所有 drops 資料：", drops);
+        console.log("【全區智慧除錯】抓到的 globalDrop 全區物件為：", globalDrop);
+
         if (globalDrop) {
-            console.log("【全區智慧連動】偵測到新表含有全區資料，自動亮起對應掉落列！");
-            
             const verifyAndShowRow = (elementId, rowId, value) => {
                 const row = document.getElementById(rowId);
-                if (row && value && value !== '-' && value !== 'null') {
+                const el = document.getElementById(elementId);
+                
+                // 💡 修正點：放寬顯示條件。只要 data-default 有綜合去重過後的文字，就必須強制亮起來！
+                const hasDefaultValue = el && el.getAttribute('data-default') && el.getAttribute('data-default') !== '-';
+                
+                if (row && (hasDefaultValue || (value && value.toString().trim() !== '-' && value.toString().trim() !== 'null'))) {
                     row.style.display = ''; // 強制拔掉 display: none 讓它顯示
+                    console.log(`【全區智慧連動】成功讓 [${elementId}] 這一列現形！`);
                 }
             };
 
-            // 檢查新表的八大欄位，只要全區有填，初始就現形
+            // 檢查新表的八大欄位，只要全區有填或原本有綜合資料，初始就現形
             verifyAndShowRow('dynamic-drop-rubbish',   'dynamic-drop-rubbish-row',   globalDrop.drop_rubbish);
             verifyAndShowRow('dynamic-drop-product',   'dynamic-drop-product-row',   globalDrop.drop_product);
             verifyAndShowRow('dynamic-drop-equidcard', 'dynamic-drop-equidcard-row', globalDrop.drop_equidcard);
@@ -478,6 +487,26 @@ async function loadModalZoneButtons(mapName, maxX, maxY, mainRubbish, mainProduc
             verifyAndShowRow('dynamic-drop-combo_old', 'dynamic-drop-combo_old-row', globalDrop.drop_combo_old);
             verifyAndShowRow('dynamic-drop-combo_new', 'dynamic-drop-combo_new-row', globalDrop.drop_combo_new);
             verifyAndShowRow('dynamic-drop-other',     'dynamic-drop-other-row',     globalDrop.drop_other);
+        } else {
+            // 💡 萬一這張地圖在 map_zone_drops 連一筆「全區」都沒有，那就強制把所有有初始資料的列通通亮起來
+            console.warn("【全區智慧警告】這張地圖在新表完全找不到「全區」資料！啟動後備強制顯示機制。");
+            drops.forEach(d => {
+                const showRowIfHasData = (elId, rowId) => {
+                    const el = document.getElementById(elId);
+                    const row = document.getElementById(rowId);
+                    if (el && row && el.getAttribute('data-default') && el.getAttribute('data-default') !== '-') {
+                        row.style.display = '';
+                    }
+                };
+                showRowIfHasData('dynamic-drop-rubbish',   'dynamic-drop-rubbish-row');
+                showRowIfHasData('dynamic-drop-product',   'dynamic-drop-product-row');
+                showRowIfHasData('dynamic-drop-equidcard', 'dynamic-drop-equidcard-row');
+                showRowIfHasData('dynamic-drop-skillcard', 'dynamic-drop-skillcard-row');
+                showRowIfHasData('dynamic-drop-hero',      'dynamic-drop-hero-row');
+                showRowIfHasData('dynamic-drop-combo_old', 'dynamic-drop-combo_old-row');
+                showRowIfHasData('dynamic-drop-combo_new', 'dynamic-drop-combo_new-row');
+                showRowIfHasData('dynamic-drop-other',     'dynamic-drop-other-row');
+            });
         }
     }
 
