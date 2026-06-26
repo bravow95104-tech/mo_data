@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>隨機任務 | MoData</title>
+
+  <link rel="stylesheet" href="/mo_data/css/styles.css" />
+  <link rel="stylesheet" href="/mo_data/css/nav.css" />
+  <link rel="stylesheet" href="/mo_data/css/quest.css" />
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    /* ==========================================================================
+       🚀 專屬擴充：隨機任務「橫式收放小卡片」專用 CSS (相容白天黑夜模式)
+       ========================================================================== */
+    
+    /* 隨機任務大外殼卡片 (基礎黑夜模式) */
+    .random-quest-card {
+      background: var(--glass-bg);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid var(--glass-border);
+      border-radius: 16px;
+      margin-bottom: 15px;
+      overflow: hidden;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .random-quest-card:hover {
+      transform: translateY(-2px);
+      border-color: var(--primary-blue);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    /* 橫式卡片頭部佈局 */
+    .quest-card-header {
+      display: flex;
+      align-items: center;
+      padding: 16px 20px;
+      gap: 16px;
+    }
+
+    /* 左側縮圖框 */
+    .quest-main-pic {
+      width: 52px;
+      height: 52px;
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px solid var(--glass-border);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .quest-img-thumb {
+      width: 40px;
+      height: 40px;
+      object-fit: contain;
+      border-radius: 6px;
+    }
+
+    /* 標題與基礎資料區 */
+    .quest-main-info {
+      flex-grow: 1;
+    }
+
+    .quest-title-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 6px;
+    }
+
+    .quest-title {
+      margin: 0;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    /* 隨機任務專屬紫色流光標籤 */
+    .quest-type-badge {
+      background: linear-gradient(135deg, #a855f7, #7c3aed);
+      color: #fff;
+      font-size: 11px;
+      padding: 2px 8px;
+      border-radius: 6px;
+      font-weight: bold;
+    }
+
+    .quest-lv-tag {
+      color: var(--highlight-yellow);
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    .quest-sub-row {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    /* 右側下拉箭頭動畫 */
+    .quest-arrow {
+      color: var(--text-muted);
+      transition: transform 0.3s ease;
+      font-size: 16px;
+    }
+
+    /* === 展開折疊核心控制 === */
+    .quest-card-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s cubic-bezier(0, 1, 0, 1);
+      padding: 0 20px;
+    }
+
+    /* 激活展開狀態 */
+    .random-quest-card.active {
+      border-color: var(--primary-blue);
+    }
+
+    .random-quest-card.active .quest-card-body {
+      max-height: 500px;
+      transition: max-height 0.3s cubic-bezier(1, 0, 1, 0);
+      padding-bottom: 20px;
+    }
+
+    .random-quest-card.active .quest-arrow {
+      transform: rotate(180deg);
+      color: var(--primary-blue);
+    }
+
+    /* 分隔線 */
+    .quest-divider {
+      height: 1px;
+      background: var(--glass-border);
+      margin-bottom: 15px;
+    }
+
+    /* 展開後的網格排版 */
+    .quest-detail-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    @media (max-width: 600px) {
+      .quest-detail-grid { grid-template-columns: 1fr; }
+    }
+
+    /* 內部詳細資料面板 */
+    .quest-target-box, .quest-reward-box {
+      background: rgba(0, 0, 0, 0.15);
+      border: 1px solid var(--glass-border);
+      border-radius: 12px;
+      padding: 14px;
+    }
+
+    .target-item {
+      margin-bottom: 8px;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+    }
+    .target-item:last-child { margin-bottom: 0; }
+    .target-label { color: var(--text-muted); width: 85px; flex-shrink: 0; }
+    .target-value { color: var(--text-main); }
+    .target-value-num { color: #4ade80; font-weight: bold; }
+
+    /* 獎勵區排版 */
+    .reward-title {
+      font-size: 14px;
+      color: var(--highlight-yellow);
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .reward-row {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .reward-exp {
+      font-size: 14px;
+      color: var(--text-main);
+    }
+    .reward-exp span { color: var(--primary-blue); font-weight: bold; }
+
+    .reward-items {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .reward-item-tag {
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 12px;
+      color: var(--text-main);
+    }
+
+    /* ==========================================================================
+       ☀️ 白天模式完美調校相容 (Light Mode Override)
+       ========================================================================== */
+    body.light-mode .random-quest-card {
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+    }
+    body.light-mode .quest-main-pic {
+      background: rgba(255, 255, 255, 0.8);
+    }
+    body.light-mode .quest-target-box, 
+    body.light-mode .quest-reward-box {
+      background: rgba(0, 0, 0, 0.03);
+    }
+    body.light-mode .reward-item-tag {
+      background: #ffffff;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="nav-container"></div>
+  <script src="/mo_data/js/componentsLoader.js"></script>
+  <br />
+
+  <div id="searchContainer">
+    <label for="searchInput" class="quick-search-label">快速搜尋</label>
+    <input
+      type="text"
+      id="searchInput"
+      placeholder="搜尋任務名稱、地區、種類、怪物..."
+    />
+  </div>
+  <br />
+
+  <div id="filterContainer" class="accordion">
+    <h3 class="accordion-header">快速搜尋條件(可多條件搜尋) ▾</h3>
+    <div class="accordion-content">
+      
+      <div class="filter-group">
+        <div class="filter-row">
+          <span class="filter-label">任務地區：</span>
+          <div id="areaFilterContainer" class="filter-btns">
+            </div>
+        </div>
+      </div>
+
+      <div class="filter-group">
+        <div class="filter-row">
+          <span class="filter-label">任務種類：</span>
+          <div id="typeFilterContainer" class="filter-btns">
+            </div>
+        </div>
+      </div>
+
+      <div class="filter-actions">
+        <button id="clearFiltersBtn" class="clear-btn">清除所有條件</button>
+      </div>
+
+    </div>
+  </div>
+
+  <div id="starContainer">
+    <div class="no-results"><i class="fa-solid fa-spinner fa-spin"></i> 正在向冒險者公會索取隨機公告...</div>
+  </div>
+
+  <button id="backToTop" title="回到頂部">▲</button>
+  <script type="module" src="/mo_data/js/random_quest.js"></script>
+</body>
+</html>
