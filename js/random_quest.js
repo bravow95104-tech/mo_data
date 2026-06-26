@@ -208,11 +208,21 @@ function renderQuestCards() {
 
 function initAccordion() {
   const header = document.querySelector(".accordion-header");
-  const content = document.querySelector(".accordion-content");
-  if (header && content) {
-    header.addEventListener("click", () => {
-      content.classList.toggle("active");
-      header.classList.toggle("active");
+  
+  if (header) {
+    header.addEventListener("click", function() {
+      // 取得標題的下一個兄弟元素（也就是內文區塊）
+      const content = this.nextElementSibling;
+      
+      this.classList.toggle("active");
+      
+      if (content) {
+        if (content.style.display === "block") {
+          content.style.display = "none";
+        } else {
+          content.style.display = "block";
+        }
+      }
     });
   }
 }
