@@ -449,9 +449,13 @@ async function loadModalZoneButtons(mapName, maxX, maxY, mainRubbish, mainProduc
     } else {
         zoneContainer.innerHTML = '';
     }
-// ===================================================================
-    // 🎯 核心修正：如果網址沒有指定 zone，且畫面上沒有分區按鈕，
-    //    但新表其實有「全區」的掉落資料，我們要強制把這些 row 亮起來！
+
+    // 🚀 1. 先行宣告網址參數變數，供後續所有邏輯安全使用
+    const urlParams = new URLSearchParams(window.location.search);
+    const targetZone = urlParams.get('zone'); 
+
+    // ===================================================================
+    // 🎯 2. 智慧全區解鎖：如果網址沒有指定 zone，且新表其實有「全區」的掉落資料，強制亮起對應列
     // ===================================================================
     if (!targetZone) {
         const globalDrop = drops.find(d => d.zone_name === '全區');
@@ -476,12 +480,10 @@ async function loadModalZoneButtons(mapName, maxX, maxY, mainRubbish, mainProduc
             verifyAndShowRow('dynamic-drop-other',     'dynamic-drop-other-row',     globalDrop.drop_other);
         }
     }
-    // ===================================================================
-    // 🚀 【終極加強防搶拍版】核心進階：偵測網址參數並模擬點擊
-    // ===================================================================
-    const urlParams = new URLSearchParams(window.location.search);
-    const targetZone = urlParams.get('zone'); 
 
+    // ===================================================================
+    // 🚀 3. 【終極加強防搶拍版】核心進階：偵測網址參數並模擬點擊
+    // ===================================================================
     if (targetZone) {
         // 💡 修正點 1：將時間拉長到 800ms，確保地圖所有常規初始化（與清除動作）都已經徹底做完
         setTimeout(() => {
