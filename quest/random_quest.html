@@ -205,18 +205,6 @@
       font-size: 12px;
       color: var(--text-main);
     }
-/* 🎯 解決快速搜尋條件小標題跳行的神丹 */
-#filterContainer .filter-row {
-  display: flex;
-  align-items: center; /* 讓標題與按鈕垂直居中對齊 */
-  flex-wrap: nowrap;   /* 強制整行不換行 */
-}
-
-#filterContainer .filter-label {
-  white-space: nowrap; /* 🔥 核心：強制「任務地區：」文字絕對不准換行 */
-  min-width: 80px;     /* 給它一個剛好足夠字數展開的固定最小寬度 */
-  display: inline-block;
-}
 
 #filterContainer .filter-btns {
   display: flex;
@@ -243,6 +231,20 @@
 .quest-target-box .target-value-num {
   flex: 1;             /* 讓後面的真實內容（如：虎頭金鷹）把剩下的空間撐滿 */
   text-align: left;
+}
+#filterContainer .filter-row {
+  display: flex;
+  /* ⚙️ 調整：改為對齊頂部，這樣按鈕變多行時，標題依然會釘在第一行 */
+  align-items: flex-start; 
+  flex-wrap: nowrap;   
+}
+
+#filterContainer .filter-label {
+  white-space: nowrap; 
+  min-width: 80px;     
+  display: inline-block;
+  /* ⚙️ 調整：加上一點點上方推距，讓標題字的高度完美對齊按鈕文字 */
+  padding-top: 6px;    
 }
     /* ==========================================================================
        ☀️ 白天模式完美調校相容 (Light Mode Override)
