@@ -213,7 +213,7 @@ function initAccordion() {
   
   if (accordion && header && content) {
     // 1. 預設先讓它閉合（加入 collapsed 類別）
-    accordion.classList.add("collapsed");
+    //accordion.classList.add("collapsed");
 
     // 2. 點擊標題列時切換 .collapsed 類別
     header.addEventListener("click", function() {
