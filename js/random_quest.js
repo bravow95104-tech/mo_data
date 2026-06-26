@@ -144,7 +144,7 @@ function renderQuestCards() {
   }
 
   container.innerHTML = filteredData.map(q => {
-    const rewardArray = q.rewards ? q.rewards.split(/[、,]/) : [];
+    const rewardArray = q.rewards ? q.rewards.split(/[,]/) : [];
     const rewardTagsHTML = rewardArray.map(item => 
       item.trim() ? `<span class="reward-item-tag">${item.trim()}</span>` : ''
     ).join('');
@@ -207,20 +207,21 @@ function renderQuestCards() {
 }
 
 function initAccordion() {
-  const header = document.querySelector(".accordion-header");
-  const content = document.querySelector(".accordion-content");
+  const accordion = document.getElementById("filterContainer");
+  const header = accordion ? accordion.querySelector(".accordion-header") : null;
+  const content = accordion ? accordion.querySelector(".accordion-content") : null;
   
-  if (header && content) {
-    // 1. 只有點擊標題時，才切換 active 狀態（開或合）
-    header.addEventListener("click", (e) => {
-      // 確保不是點到裡面的怪東西
-      content.classList.toggle("active");
-      header.classList.toggle("active");
+  if (accordion && header && content) {
+    // 1. 預設先讓它閉合（加入 collapsed 類別）
+    accordion.classList.add("collapsed");
+
+    // 2. 點擊標題列時切換 .collapsed 類別
+    header.addEventListener("click", function() {
+      accordion.classList.toggle("collapsed");
     });
 
-    // 2. 關鍵防坑：當點擊內容區塊（例如按鈕、文字）時，阻止事件往上冒泡
-    // 這樣點擊任何地區按鈕，整個大選單就絕對不會莫名其妙閉合了！
-    content.addEventListener("click", (e) => {
+    // 3. 防冒泡：點擊裡面的按鈕時，不要觸發到最外層的閉合事件
+    content.addEventListener("click", function(e) {
       e.stopPropagation(); 
     });
   }
