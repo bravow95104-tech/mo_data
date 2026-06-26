@@ -801,17 +801,20 @@ window.resetZoneSelection = function() {
 
 // === 3. 資料載入與對接 ===
 async function loadData() {
-  const [mapRes, gloryRes, playerRes, heroRes, resourceRes] = await Promise.all([
+  const tbody = document.querySelector('#heroes-table tbody');
+  
+  // 🚀 核心修改：在初始化撈資料時，把新表 'map_zone_drops' 一起撈回來！
+  const [mapRes, gloryRes, playerRes, heroRes, resourceRes, zoneDropsRes] = await Promise.all([
     supabase.from('detailed_map').select('*').order('sort_id', { ascending: true }),
     supabase.from('glory_drop').select('*'),
     supabase.from('glory_drop_player').select('*'),
     supabase.from('heroes').select('name, glory'),
-    supabase.from('map_resources').select('*').order('sort_id', { ascending: true })
+    supabase.from('map_resources').select('*').order('sort_id', { ascending: true }),
+    supabase.from('map_zone_drops').select('*') // 🚀 新增：撈取所有分區與全區掉落
   ]);
 
   if (mapRes.error) {
     console.error('載入地圖資料錯誤:', mapRes.error);
-    const tbody = document.querySelector('#heroes-table tbody');
     if (tbody) tbody.innerHTML = '<tr><td colspan="15">無法載入地圖資料</td></tr>';
     return;
   }
@@ -821,6 +824,7 @@ async function loadData() {
   const gloryDropData = gloryRes.data || [];
   const playerDropData = playerRes.data || [];
   const heroesData = heroRes.data || [];
+  const allZoneDrops = zoneDropsRes.data || []; // 🚀 新增
 
   heroGloryMap = {};
   heroesData.forEach(h => {
@@ -830,20 +834,41 @@ async function loadData() {
     }
   });
 
+  // 🚀 核心大融合邏輯：讓大表格資料直接繼承新表的掉落物
   mapData = rawMapData.map(map => {
-    const matchedGlory = gloryDropData.find(g => {
-      if (!g.area) return false;
-      const areas = g.area.split('、');
-      return areas.includes(map.mapid);
-    });
+    const matchedGlory = gloryDropData.find(g => g.area && g.area.split('、').includes(map.mapid));
+    const matchedPlayer = playerDropData.find(p => p.area && p.area.split('、').includes(map.mapid));
 
-    const matchedPlayer = playerDropData.find(p => {
-      if (!p.area) return false;
-      const areas = p.area.split('、');
-      return areas.includes(map.mapid);
-    });
+    // 🎯 智慧合併：找到這張地圖在新表裡面的所有掉落物紀錄
+    const thisMapDrops = allZoneDrops.filter(d => d.map_id === map.mapid);
+    
+    // 優先找「全區」，如果找不到，就把所有分區的資料撈出來黏在一起做大去重（這樣就算不建全區大表格也有資料）
+    const globalDrop = thisMapDrops.find(d => d.zone_name && d.zone_name.trim() === '全區');
 
     let result = { ...map };
+
+    // 🚀 八大欄位智慧注入 mapData 物件中，讓表格與搜尋直接對接！
+    const mergeColumn = (colName) => {
+        if (globalDrop && globalDrop[colName]) {
+            return globalDrop[colName]; // 有全區，大表格直接顯示全區
+        } else {
+            // 沒有全區，就搜集所有分區的該欄位文字，並做去重合併
+            let items = [];
+            thisMapDrops.forEach(d => {
+                if (d[colName]) items = items.concat(d[colName].split(/[,，、\s]+/));
+            });
+            return Array.from(new Set(items)).filter(x => x).join('、') || "";
+        }
+    };
+
+    result.drop_rubbish   = mergeColumn('drop_rubbish');
+    result.drop_product   = mergeColumn('drop_product');
+    result.drop_equidcard = mergeColumn('drop_equidcard');
+    result.drop_skillcard = mergeColumn('drop_skillcard');
+    result.drop_heroes    = mergeColumn('drop_heroes'); // 完美的 drop_heroes
+    result.drop_combo_old = mergeColumn('drop_combo_old');
+    result.drop_combo_new = mergeColumn('drop_combo_new');
+    result.drop_other     = mergeColumn('drop_other');   // 完美的 drop_other
 
     if (matchedGlory) {
       result = {
@@ -854,12 +879,7 @@ async function loadData() {
       };
     }
 
-    if (matchedPlayer) {
-      result = {
-        ...result,
-        drop_glory_player: matchedPlayer.drop_content
-      };
-    }
+    if (matchedPlayer) { result.drop_glory_player = matchedPlayer.drop_content; }
 
     return result;
   });
@@ -869,7 +889,7 @@ async function loadData() {
     initColumnSettings();
   }
 
-  // 🚀 智慧連動邏輯：檢查網址參數是否有導航請求
+  // 智慧連動網址導航 (維持不變)
   const urlParams = new URLSearchParams(window.location.search);
   const targetMap = urlParams.get('map');
   const targetResource = urlParams.get('resource');
@@ -877,21 +897,13 @@ async function loadData() {
   const targetY = urlParams.get('y');
 
   if (targetMap) {
-    // 延遲一下下，確保資料已完全渲染
     setTimeout(() => {
-      openMapDetail(targetMap);
+      window.openMapDetail(targetMap);
       if (targetX && targetY && targetResource) {
-        // 再次延遲確保 Modal 內容已載入
         setTimeout(() => {
           const item = mapData.find(m => m.mapid === targetMap);
           if (item) {
-            window.showResourceMarker(
-              parseFloat(targetX), 
-              parseFloat(targetY), 
-              targetResource, 
-              item.game_max_x, 
-              item.game_max_y
-            );
+            window.showResourceMarker(parseFloat(targetX), parseFloat(targetY), targetResource, item.game_max_x, item.game_max_y);
           }
         }, 300);
       }
@@ -925,11 +937,12 @@ function applyFilters(keyword) {
     return (
       (item.mapid && item.mapid.toLowerCase().includes(keyword)) ||
       (item.drop_rubbish && item.drop_rubbish.includes(keyword)) ||
-      (item.drop_hero && item.drop_hero.includes(keyword)) ||
+      (item.drop_heroes && item.drop_heroes.includes(keyword)) || // 🚀 修正：drop_hero -> drop_heroes
       (item.drop_equidcard && item.drop_equidcard.includes(keyword)) ||
       (item.drop_skillcard && item.drop_skillcard.includes(keyword)) ||
       (item.drop_combo_old && item.drop_combo_old.includes(keyword)) ||
       (item.drop_combo_new && item.drop_combo_new.includes(keyword)) ||
+      (item.drop_other && item.drop_other.includes(keyword)) ||     // 🚀 新增：支援新表「其他」欄位關鍵字搜尋
       (item.drop_glory_high && item.drop_glory_high.includes(keyword)) ||
       (item.maplv && String(item.maplv).includes(keyword))
     );
@@ -978,8 +991,11 @@ function renderTable(data, keyword = "") {
       const colInfo = ALL_COLUMNS.find(c => c.id === colId);
       td.setAttribute("data-label", colInfo ? colInfo.label : colId);
 
-      let val = item[colId];
-      const isDropCol = colId.startsWith('drop_');
+      // 🚀 優化點 1：確保欄位沒資料時不會顯示為 undefined
+      let val = item[colId] || ""; 
+      
+      // 🚀 優化點 2：擴大判定，除了 drop_ 開頭，防禦和閃避也納入 formatTieredContent 的排版優化範圍
+      const isDropCol = colId.startsWith('drop_') || colId === 'def' || colId === 'dodge';
       let content = formatTieredContent(val, isDropCol);
 
       if (keyword && content !== "-" && content.toLowerCase().includes(keyword.toLowerCase())) {
