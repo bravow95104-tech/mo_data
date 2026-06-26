@@ -41,7 +41,7 @@ async function loadRandomQuests() {
   try {
     const { data, error } = await supabase
       .from('random_quest')
-      .select('*')
+      .select('id, sort_id, quest_name, quest_type, quest_lv, location, target_monster, collect_item, amount, exp, rewards, map_id, zone_name')
       .order('sort_id', { ascending: true });
 
     if (error) throw error;
