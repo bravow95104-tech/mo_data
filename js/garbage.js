@@ -200,6 +200,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       img.style.width = '40px';
       img.style.height = '40px';
       img.style.objectFit = 'contain';
+      img.style.borderRadius = '6px';
       img.onerror = () => { img.style.display = 'none'; };
 
       const title = document.createElement('h3');
