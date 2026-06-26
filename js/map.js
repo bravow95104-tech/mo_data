@@ -614,7 +614,7 @@ if (resources.length > 0 || item) {
 
   let combatAndDropHTML = '';
   if (!isTown) {
-    const hasDrop = !!(item.drop_rubbish || item.drop_hero || item.drop_equidcard || item.drop_skillcard || item.drop_combo_old || item.drop_combo_new || item.drop_othrt);
+    const hasDrop = !!(item.drop_rubbish || item.drop_equidcard || item.drop_skillcard || item.drop_combo_old || item.drop_combo_new || item.drop_othrt);
     
     combatAndDropHTML = `
             <div class="hero-defdodge section-gap">
@@ -684,9 +684,9 @@ if (resources.length > 0 || item) {
             item.mapid, 
             item.game_max_x, 
             item.game_max_y, 
-            "",                       // 🚀 把 item.drop_rubbish || "" 改成空字串
+            "",                       // 🚀 把 item.drop_rubbish || "" 改成空字串(改新表)
             item.drop_product || "",   // 第 5 個參數 (🚀 新增)
-            "",       // 參數 6 (刪除英雄)
+            "",       // 參數 6 (刪除英雄)(改新表)
             item.drop_othrt || ""       // 參數 9 (🚀 新增)
         );
     }
