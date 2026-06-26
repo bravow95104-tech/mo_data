@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   try {
     const [cardRes, mapsRes] = await Promise.all([
       supabase.from('card_passive').select('*').order('sort_id', { ascending: true }),
-      supabase.from('map_zone_drops').select('mapid, drop_skillcard')
+      supabase.from('map_zone_drops').select('map_id, drop_skillcard')
     ]);
 
     if (cardRes.error) throw cardRes.error;
