@@ -184,6 +184,18 @@ function renderQuestCards() {
                 <span class="target-label"><i class="fa-solid fa-calculator"></i> 所需數量：</span>
                 <span class="target-value-num">${q.amount || '-'}</span>
               </div>
+              
+              ${q.map_id ? `
+              <div class="target-item" style="margin-top: 12px;">
+                <span class="target-label"><i class="fa-solid fa-compass"></i> 地圖位置：</span>
+                <button class="map-location-btn" 
+                        data-map-id="${q.map_id}" 
+                        data-zone-name="${q.zone_name || ''}"
+                        onclick="event.stopPropagation(); handleMapLocation(this);">
+                  <i class="fa-solid fa-map-marked-alt"></i> 前往 ${q.zone_name || '查看地圖'}
+                </button>
+              </div>
+              ` : ''}
             </div>
             
             <div class="quest-reward-box">
@@ -237,3 +249,13 @@ function initBackToTop() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   });
 }
+// 🎯 放自 random_quest.js 最下方的處理函式：
+window.handleMapLocation = function(button) {
+  const mapId = button.getAttribute("data-map-id");
+  const zoneName = button.getAttribute("data-zone-name");
+  
+  if (mapId) {
+    // 跳轉到地圖頁面，並透過網址參數帶過去 (例如 map.html?mapId=1&zone=妖邪洞一層)
+    window.location.href = `/mo_data/map.html?mapId=${mapId}&zone=${encodeURIComponent(zoneName)}`;
+  }
+};
