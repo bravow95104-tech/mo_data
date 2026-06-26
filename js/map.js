@@ -34,17 +34,27 @@ window.executeZoneClick = function(btnElement) {
         const points = JSON.parse(btnElement.getAttribute('data-points'));
         const maxX = parseFloat(btnElement.getAttribute('data-maxx'));
         const maxY = parseFloat(btnElement.getAttribute('data-maxy'));
+        
+        // 🚀 完整擴充所有的掉落物屬性
         const rubbish = btnElement.getAttribute('data-rubbish') || "";
         const product = btnElement.getAttribute('data-product') || "";
-        const hero = btnElement.getAttribute('data-hero') || "";
-        const other = btnElement.getAttribute('data-other') || "";
+        const equip   = btnElement.getAttribute('data-equip') || "";
+        const skill   = btnElement.getAttribute('data-skill') || "";
+        const hero    = btnElement.getAttribute('data-hero') || "";
+        const comboOld = btnElement.getAttribute('data-comboold') || "";
+        const comboNew = btnElement.getAttribute('data-combonew') || "";
+        const other   = btnElement.getAttribute('data-other') || "";
         
         const zoneDef = btnElement.getAttribute('data-def') || "";
         const zoneDodge = btnElement.getAttribute('data-dodge') || "";
         const zoneElement = btnElement.getAttribute('data-element') || "";
 
         if (typeof window.switchZoneDisplay === "function") {
-            window.switchZoneDisplay(points, maxX, maxY, rubbish, product, hero, other, zoneDef, zoneDodge, zoneElement);
+            window.switchZoneDisplay(
+                points, maxX, maxY, 
+                rubbish, product, equip, skill, hero, comboOld, comboNew, other, 
+                zoneDef, zoneDodge, zoneElement
+            );
         }
     } catch (err) {
         console.error("【分區點擊解析失敗】:", err.message);
@@ -260,11 +270,12 @@ async function loadModalZoneButtons(mapName, maxX, maxY, mainRubbish, mainProduc
   try {
     const [zonesRes, dropsRes] = await Promise.all([
       supabase.from('map_polygon_zones')
-        .select('zone_name, points, sort_id') // 順便把 sort_id 撈出來
+        .select('zone_name, points, sort_id')
         .eq('map_name', mapName)
         .order('sort_id', { ascending: true }),
       supabase.from('map_zone_drops')
-        .select('zone_name, drop_rubbish, drop_product, drop_heroes, drop_other, def, dodge, element')
+        // 🚀 核心修正：把新舊所有的掉落物與數值欄位全部撈出來！
+        .select('zone_name, drop_rubbish, drop_product, drop_heroes, drop_other, def, dodge, element, drop_equidcard, drop_skillcard, drop_combo_old, drop_combo_new')
         .eq('map_id', mapName)
         .order('sort_id', { ascending: true })
     ]);
@@ -273,7 +284,6 @@ async function loadModalZoneButtons(mapName, maxX, maxY, mainRubbish, mainProduc
     const zones = zonesRes.data || [];
     const drops = dropsRes.data || [];
 
-    // 🚀 核心優化：過濾掉「全區」這筆資料後，再來判斷要不要顯示按鈕區塊
     const realZonesHasButtons = zones.filter(z => z.zone_name !== '全區');
     const realDropsHasButtons = drops.filter(d => d.zone_name !== '全區');
 
@@ -289,23 +299,19 @@ async function loadModalZoneButtons(mapName, maxX, maxY, mainRubbish, mainProduc
         const row = document.getElementById(rowId);
         if (!el || !row) return;
 
-        // 🚀 核心修正：檢查這包資料是不是包含「層/區」排版的複雜字串
         const hasTierFormat = /(第\d+[層關]|[A-Za-z0-9\u4e00-\u9fa5]+區)[：:]/.test(mainValue || "") || 
                               zoneValuesArray.some(val => /(第\d+[層關]|[A-Za-z0-9\u4e00-\u9fa5]+區)[：:]/.test(val || ""));
 
         let finalRenderStr = "";
 
         if (hasTierFormat) {
-            // 🎯 情況 A：如果包含「第幾層/幾區」，我們保留換行結構，改用「換行 \n」把各區資料接起來
             let combinedLines = [];
             if (mainValue) combinedLines.push(mainValue.trim());
             zoneValuesArray.forEach(val => {
                 if (val) combinedLines.push(val.trim());
             });
-            // 用換行符串接，這樣 formatTieredContent 裡面的 split(/\n/) 就能完美切開每一層！
             finalRenderStr = combinedLines.join('\n');
         } else {
-            // 🎯 情況 B：普通的純物品（如垃圾、產物），維持原本的打碎、去重、頓號串接
             let allItems = [];
             if (mainValue) allItems = allItems.concat(mainValue.split(/[,，、\s]+/));
             zoneValuesArray.forEach(val => {
@@ -316,7 +322,6 @@ async function loadModalZoneButtons(mapName, maxX, maxY, mainRubbish, mainProduc
         }
 
         if (finalRenderStr) {
-            // 丟進智慧格式化解析器
             el.innerHTML = formatTieredContent(finalRenderStr, false, isCardType ? cardTypeParam : null);
             row.style.display = ''; 
             el.setAttribute('data-default', finalRenderStr); 
@@ -326,10 +331,15 @@ async function loadModalZoneButtons(mapName, maxX, maxY, mainRubbish, mainProduc
         }
     }
 
-    setupDynamicRow('dynamic-drop-rubbish', 'dynamic-drop-rubbish-row', mainRubbish, drops.map(d => d.drop_rubbish).filter(x => x), false);
-    setupDynamicRow('dynamic-drop-product', 'dynamic-drop-product-row', mainProduct, drops.map(d => d.drop_product).filter(x => x), false);
-    setupDynamicRow('dynamic-drop-hero',    'dynamic-drop-hero-row',    mainHero,    drops.map(d => d.drop_heroes).filter(x => x),  true, 'hero');
-    setupDynamicRow('dynamic-drop-othrt',    'dynamic-drop-othrt-row',    mainOther,   drops.map(d => d.drop_other).filter(x => x),   true);
+    // 🚀 核心優化：所有掉落物欄位全面對接新表（主表參數留空，全部用 drops.map 撈出新表資料做初始化去重）
+    setupDynamicRow('dynamic-drop-rubbish',   'dynamic-drop-rubbish-row',   "", drops.map(d => d.drop_rubbish).filter(x => x), false);
+    setupDynamicRow('dynamic-drop-product',   'dynamic-drop-product-row',   "", drops.map(d => d.drop_product).filter(x => x), false);
+    setupDynamicRow('dynamic-drop-equidcard', 'dynamic-drop-equidcard-row', "", drops.map(d => d.drop_equidcard).filter(x => x), true, 'equip');
+    setupDynamicRow('dynamic-drop-skillcard', 'dynamic-drop-skillcard-row', "", drops.map(d => d.drop_skillcard).filter(x => x), true, 'skill');
+    setupDynamicRow('dynamic-drop-hero',      'dynamic-drop-hero-row',      "", drops.map(d => d.drop_heroes).filter(x => x), true, 'hero');
+    setupDynamicRow('dynamic-drop-combo_old', 'dynamic-drop-combo_old-row', "", drops.map(d => d.drop_combo_old).filter(x => x), false);
+    setupDynamicRow('dynamic-drop-combo_new', 'dynamic-drop-combo_new-row', "", drops.map(d => d.drop_combo_new).filter(x => x), false);
+    setupDynamicRow('dynamic-drop-other',     'dynamic-drop-other-row',     "", drops.map(d => d.drop_other).filter(x => x), false);
 
 // =======================================================================
     // 🚀 免 item 修正版（對接 map_zone_drops 升級版）
@@ -337,9 +347,7 @@ async function loadModalZoneButtons(mapName, maxX, maxY, mainRubbish, mainProduc
     function getSmartStatusRange(mainValue, zoneValuesArray) {
         let allValues = [];
         if (mainValue) allValues.push(mainValue.toString().trim());
-        zoneValuesArray.forEach(val => {
-            if (val) allValues.push(val.toString().trim());
-        });
+        zoneValuesArray.forEach(val => { if (val) allValues.push(val.toString().trim()); });
 
         let uniqueValues = Array.from(new Set(allValues)).filter(x => x && x !== '-' && x !== 'null');
         if (uniqueValues.length === 0) return "-";
@@ -359,87 +367,62 @@ async function loadModalZoneButtons(mapName, maxX, maxY, mainRubbish, mainProduc
         return uniqueValues.join('、');
     }
 
-    // 🎯 1. 從剛渲染好的 DOM 節點去抓取原本主表的基礎防禦和閃避！
     const globalDropData = drops.find(d => d.zone_name === '全區') || {};
     const mainDef     = globalDropData.def || "-";
     const mainDodge   = globalDropData.dodge || "-";
     const mainElement = globalDropData.element || "-";
 
-    // 🎯 2. 計算結合「全區 + 各分區」後的智慧去重/區間化值
     const defaultDefStr   = getSmartStatusRange(mainDef, drops.map(d => d.def));
     const defaultDodgeStr = getSmartStatusRange(mainDodge, drops.map(d => d.dodge));
 
-    // 🎯 3. 計算五行文字去重（升級打碎去重版）
     let allElementsArray = [];
-    
-    // 合併主表（全區）與所有分區的五行字串
-    if (mainElement && mainElement !== '-') {
-        allElementsArray = allElementsArray.concat(mainElement.split(/[,，、\s]+/));
-    }
+    if (mainElement && mainElement !== '-') allElementsArray = allElementsArray.concat(mainElement.split(/[,，、\s]+/));
     drops.forEach(d => {
-        if (d.element && d.element !== '-') {
-            allElementsArray = allElementsArray.concat(d.element.split(/[,，、\s]+/));
-        }
+        if (d.element && d.element !== '-') allElementsArray = allElementsArray.concat(d.element.split(/[,，、\s]+/));
     });
+    const defaultElementStr = Array.from(new Set(allElementsArray)).map(x => x.trim()).filter(x => x && x !== '-' && x !== 'null').join('、') || "-";
 
-    // 🚀 真正做到單個字詞級別的精準去重
-    const defaultElementStr = Array.from(new Set(allElementsArray))
-        .map(x => x.trim())
-        .filter(x => x && x !== '-' && x !== 'null') // 💡 保留「無」，它就不會被殺掉了！
-        .join('、') || "-";
-
-    // 🎯 4. 將算好的「完美全地圖綜合區間」覆寫進網頁，並鎖定為 data-default
     const defEl = document.getElementById('dynamic-def');
     const dodgeEl = document.getElementById('dynamic-dodge');
     const elementEl = document.getElementById('dynamic-element');
 
-    if (defEl) {
-        defEl.innerText = defaultDefStr;
-        defEl.setAttribute('data-default', defaultDefStr); // 🚀 鎖定預設綜合值
-    }
-    if (dodgeEl) {
-        dodgeEl.innerText = defaultDodgeStr;
-        dodgeEl.setAttribute('data-default', defaultDodgeStr); // 🚀 鎖定預設綜合值
-    }
-    if (elementEl) {
-        elementEl.innerText = defaultElementStr;
-        elementEl.setAttribute('data-default', defaultElementStr); // 🚀 鎖定預設綜合值
-    }
+    if (defEl) { defEl.innerText = defaultDefStr; defEl.setAttribute('data-default', defaultDefStr); }
+    if (dodgeEl) { dodgeEl.innerText = defaultDodgeStr; dodgeEl.setAttribute('data-default', defaultDodgeStr); }
+    if (elementEl) { elementEl.innerText = defaultElementStr; elementEl.setAttribute('data-default', defaultElementStr); }
+
     // =======================================================================
+    // 4. 動態生成區域按鈕
     // 4. 動態生成區域按鈕
     if (zones.length > 0) {
         const groupedZones = {};
         zones.forEach(zone => {
-          // 🚀 核心修正 1：如果有點位資料名字叫「全區」，直接跳過不加入分組，不給它做按鈕！
           if (zone.zone_name === '全區') return;
-          
           if (!groupedZones[zone.zone_name]) { groupedZones[zone.zone_name] = []; }
           groupedZones[zone.zone_name].push(zone.points);
         });
 
-        // 🚀 核心修正 2：先在 drops 裡把「全區」的那一包撈出來備用
         const globalDrop = drops.find(d => d.zone_name === '全區') || {};
 
-        // 💡 這裡加上 (zoneName, index)，提供按鈕獨立且唯一的 id 作為辨識
         zoneContainer.innerHTML = Object.keys(groupedZones).map((zoneName, index) => {
           const multiPointsStr = JSON.stringify(groupedZones[zoneName]);
           const d = drops.find(d => d.zone_name === zoneName) || {};
 
-          // 🚀 核心修正 3：自動把「當前區域的掉落」跟「全區掉落」黏在一起，並拔除致命的隱形換行
-          const finalRubbish = [d.drop_rubbish, globalDrop.drop_rubbish].filter(x => x).join(',').replace(/[\r\n]+/g, '、');
-          const finalProduct = [d.drop_product, globalDrop.drop_product].filter(x => x).join(',').replace(/[\r\n]+/g, '、');
-          const finalHero    = [d.drop_heroes,  globalDrop.drop_heroes].filter(x => x).join(',').replace(/[\r\n]+/g, '、');
-          const finalOther   = [d.drop_other,   globalDrop.drop_other].filter(x => x).join(',').replace(/[\r\n]+/g, '、');
+          // 🚀 核心修正：將所有新欄位通通與全區資料合併，並傳入按鈕 data 屬性
+          const finalRubbish   = [d.drop_rubbish,   globalDrop.drop_rubbish].filter(x => x).join(',').replace(/[\r\n]+/g, '、');
+          const finalProduct   = [d.drop_product,   globalDrop.drop_product].filter(x => x).join(',').replace(/[\r\n]+/g, '、');
+          const finalEquip     = [d.drop_equidcard, globalDrop.drop_equidcard].filter(x => x).join(',').replace(/[\r\n]+/g, '、');
+          const finalSkill     = [d.drop_skillcard, globalDrop.drop_skillcard].filter(x => x).join(',').replace(/[\r\n]+/g, '、');
+          const finalHero      = [d.drop_heroes,    globalDrop.drop_heroes].filter(x => x).join(',').replace(/[\r\n]+/g, '、');
+          const finalComboOld  = [d.drop_combo_old, globalDrop.drop_combo_old].filter(x => x).join(',').replace(/[\r\n]+/g, '、');
+          const finalComboNew  = [d.drop_combo_new, globalDrop.drop_combo_new].filter(x => x).join(',').replace(/[\r\n]+/g, '、');
+          const finalOther     = [d.drop_other,     globalDrop.drop_other].filter(x => x).join(',').replace(/[\r\n]+/g, '、');
 
-          // 🚀 核心優化（對接 map_zone_drops 新欄位）：直接從當前分區的 drop 資料物件 (d) 撈取三大戰鬥數據
           const zoneDef     = d.def || "";
           const zoneDodge   = d.dodge || "";
           const zoneElement = d.element || "";
 
-          // 🚀 安全防禦：將座標字串中的雙引號轉義為 HTML 實體字元，絕對不破壞 HTML 標籤結構
           const safePoints = multiPointsStr.replace(/"/g, '&quot;');
 
-          // 🚀 究極改造：捨棄容易爆炸的 onclick 大參數傳參，改用 data-* 儲存資料，並呼叫 handleZoneButtonClick(this)
           return `
             <button class="resource-btn zone-btn zone-click-btn"
                     id="zone-btn-${index}"
@@ -449,12 +432,16 @@ async function loadModalZoneButtons(mapName, maxX, maxY, mainRubbish, mainProduc
                     data-maxy="${maxY}"
                     data-rubbish="${finalRubbish}"
                     data-product="${finalProduct}"
+                    data-equip="${finalEquip}"
+                    data-skill="${finalSkill}"
                     data-hero="${finalHero}"
+                    data-comboold="${finalComboOld}"
+                    data-combonew="${finalComboNew}"
                     data-other="${finalOther}"
                     data-def="${zoneDef}"
                     data-dodge="${zoneDodge}"
                     data-element="${zoneElement}"
-                    onclick="window.executeZoneClick(this)">  
+                    onclick="window.executeZoneClick(this)">
               ${zoneName}
             </button>
           `;
@@ -462,8 +449,7 @@ async function loadModalZoneButtons(mapName, maxX, maxY, mainRubbish, mainProduc
     } else {
         zoneContainer.innerHTML = '';
     }
-    // === 🚀 核心進階：自動偵測網址參數並點亮分區 ===
-    // 1. 取得網址列中的 zone 參數
+
     // ===================================================================
     // 🚀 【終極加強防搶拍版】核心進階：偵測網址參數並模擬點擊
     // ===================================================================
@@ -493,13 +479,14 @@ async function loadModalZoneButtons(mapName, maxX, maxY, mainRubbish, mainProduc
             }
         }, 800); 
     }
+
   } catch (err) {
     console.error("載入區域失敗:", err.message);
   }
-}
+} // 🚀 這是整個 async function loadModalZoneButtons 的完美句點
 
 // 🚀 升級版：補上最後三個參數 zoneDef, zoneDodge, zoneElement，預設給空字串
-window.switchZoneDisplay = function(points, maxX, maxY, zoneRubbish, zoneProduct, zoneHero, zoneOther, zoneDef = "", zoneDodge = "", zoneElement = "") {
+window.switchZoneDisplay = function(points, maxX, maxY, zoneRubbish, zoneProduct, zoneEquip, zoneSkill, zoneHero, zoneComboOld, zoneComboNew, zoneOther, zoneDef = "", zoneDodge = "", zoneElement = "") {
     if (typeof showResourcePolyRange === "function") {
         showResourcePolyRange(points, maxX, maxY);
     }
@@ -510,7 +497,6 @@ window.switchZoneDisplay = function(points, maxX, maxY, zoneRubbish, zoneProduct
         if (!el || !row) return;
 
         if (zoneValue) {
-            // 🚀 將「分區+全區」混合的資料進行去重處理，防止重複出現
             const uniqueItems = Array.from(new Set(zoneValue.split(/[,，、\s]+/))).filter(x => x);
             const cleanZoneValue = uniqueItems.join('、');
 
@@ -518,7 +504,7 @@ window.switchZoneDisplay = function(points, maxX, maxY, zoneRubbish, zoneProduct
                 if (isCardType) {
                     el.innerHTML = formatTieredContent(cleanZoneValue, false, cardTypeParam);
                 } else {
-                    el.innerHTML = cleanZoneValue;
+                    el.innerHTML = formatTieredContent(cleanZoneValue, false, null); // 支援分區後的關卡層級排版
                 }
                 row.style.display = '';
             } else {
@@ -529,28 +515,24 @@ window.switchZoneDisplay = function(points, maxX, maxY, zoneRubbish, zoneProduct
         }
     }
 
-    // 1. 處理原本的四大掉落物欄位更新
-    toggleRowValue('dynamic-drop-rubbish', 'dynamic-drop-rubbish-row', zoneRubbish, false);
-    toggleRowValue('dynamic-drop-product', 'dynamic-drop-product-row', zoneProduct, false);
-    toggleRowValue('dynamic-drop-hero',    'dynamic-drop-hero-row',    zoneHero,    true, 'hero');
-    toggleRowValue('dynamic-drop-othrt',    'dynamic-drop-othrt-row',    zoneOther,   true);
+    // 🚀 1. 八大掉落欄位切換連動完全體
+    toggleRowValue('dynamic-drop-rubbish',   'dynamic-drop-rubbish-row',   zoneRubbish,   false);
+    toggleRowValue('dynamic-drop-product',   'dynamic-drop-product-row',   zoneProduct,   false);
+    toggleRowValue('dynamic-drop-equidcard', 'dynamic-drop-equidcard-row', zoneEquip,     true, 'equip');
+    toggleRowValue('dynamic-drop-skillcard', 'dynamic-drop-skillcard-row', zoneSkill,     true, 'skill');
+    toggleRowValue('dynamic-drop-hero',      'dynamic-drop-hero-row',      zoneHero,      true, 'hero');
+    toggleRowValue('dynamic-drop-combo_old', 'dynamic-drop-combo_old-row', zoneComboOld,  false);
+    toggleRowValue('dynamic-drop-combo_new', 'dynamic-drop-combo_new-row', zoneComboNew,  false);
+    toggleRowValue('dynamic-drop-other',     'dynamic-drop-other-row',     zoneOther,     false);
 
-    // =======================================================================
-    // 🚀 2. 核心新增：點擊分區時，動態更新 [防禦]、[閃避]、[戰場五行] 文字
-    // =======================================================================
+    // 🚀 2. 戰鬥數據切換連動
     const defEl = document.getElementById('dynamic-def');
     const dodgeEl = document.getElementById('dynamic-dodge');
     const elementEl = document.getElementById('dynamic-element');
 
-    if (defEl) {
-        defEl.innerText = zoneDef.trim() !== "" ? zoneDef : defEl.getAttribute('data-default');
-    }
-    if (dodgeEl) {
-        dodgeEl.innerText = zoneDodge.trim() !== "" ? zoneDodge : dodgeEl.getAttribute('data-default');
-    }
-    if (elementEl) {
-        elementEl.innerText = zoneElement.trim() !== "" ? zoneElement : elementEl.getAttribute('data-default');
-    }
+    if (defEl) { defEl.innerText = zoneDef.trim() !== "" ? zoneDef : defEl.getAttribute('data-default'); }
+    if (dodgeEl) { dodgeEl.innerText = zoneDodge.trim() !== "" ? zoneDodge : dodgeEl.getAttribute('data-default'); }
+    if (elementEl) { elementEl.innerText = zoneElement.trim() !== "" ? zoneElement : elementEl.getAttribute('data-default'); }
 };
 
 window.openMapDetail = function (mapId) {
@@ -717,7 +699,7 @@ window.resetZoneSelection = function() {
             if (isCardType) {
                 el.innerHTML = formatTieredContent(defRaw, false, cardTypeParam);
             } else {
-                el.innerHTML = defRaw;
+                el.innerHTML = formatTieredContent(defRaw, false, null);
             }
             row.style.display = '';
         } else {
@@ -725,26 +707,24 @@ window.resetZoneSelection = function() {
         }
     }
 
-    // 還原四大掉落物
-    restoreRow('dynamic-drop-rubbish', 'dynamic-drop-rubbish-row', false);
-    restoreRow('dynamic-drop-product', 'dynamic-drop-product-row', false);
-    restoreRow('dynamic-drop-hero',    'dynamic-drop-hero-row',    true, 'hero');
-    restoreRow('dynamic-drop-othrt',   'dynamic-drop-othrt-row',   true);
+    // 🚀 還原全掉落物綜合值
+    restoreRow('dynamic-drop-rubbish',   'dynamic-drop-rubbish-row',   false);
+    restoreRow('dynamic-drop-product',   'dynamic-drop-product-row',   false);
+    restoreRow('dynamic-drop-equidcard', 'dynamic-drop-equidcard-row', true, 'equip');
+    restoreRow('dynamic-drop-skillcard', 'dynamic-drop-skillcard-row', true, 'skill');
+    restoreRow('dynamic-drop-hero',      'dynamic-drop-hero-row',      true, 'hero');
+    restoreRow('dynamic-drop-combo_old', 'dynamic-drop-combo_old-row', false);
+    restoreRow('dynamic-drop-combo_new', 'dynamic-drop-combo_new-row', false);
+    restoreRow('dynamic-drop-other',     'dynamic-drop-other-row',     false);
 
-    // 🚀 核心新增：清除範圍時，戰鬥數值也要還原成 data-default 鎖定的全區綜合區間值！
+    // 還原戰鬥數值
     const defEl = document.getElementById('dynamic-def');
     const dodgeEl = document.getElementById('dynamic-dodge');
     const elementEl = document.getElementById('dynamic-element');
 
-    if (defEl && defEl.getAttribute('data-default')) {
-        defEl.innerText = defEl.getAttribute('data-default');
-    }
-    if (dodgeEl && dodgeEl.getAttribute('data-default')) {
-        dodgeEl.innerText = dodgeEl.getAttribute('data-default');
-    }
-    if (elementEl && elementEl.getAttribute('data-default')) {
-        elementEl.innerText = elementEl.getAttribute('data-default');
-    }
+    if (defEl && defEl.getAttribute('data-default')) { defEl.innerText = defEl.getAttribute('data-default'); }
+    if (dodgeEl && dodgeEl.getAttribute('data-default')) { dodgeEl.innerText = dodgeEl.getAttribute('data-default'); }
+    if (elementEl && elementEl.getAttribute('data-default')) { elementEl.innerText = elementEl.getAttribute('data-default'); }
 };
 
 // === 3. 資料載入與對接 ===
