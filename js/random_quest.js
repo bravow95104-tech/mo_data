@@ -256,6 +256,6 @@ window.handleMapLocation = function(button) {
   
   if (mapId) {
     // 跳轉到地圖頁面，並透過網址參數帶過去 (例如 map.html?mapId=1&zone=妖邪洞一層)
-    window.location.href = `/mo_data/map.html?mapId=${mapId}&zone=${encodeURIComponent(zoneName)}`;
+    window.location.href = `/mo_data/map/detailed_map.html?mapId=${mapId}&zone=${encodeURIComponent(zoneName)}`;
   }
 };
