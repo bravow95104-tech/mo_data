@@ -50,14 +50,42 @@ document.addEventListener("DOMContentLoaded", async () => {
   try {
     const [cardRes, mapsRes] = await Promise.all([
       supabase.from('card_spirit').select('*').order('sort_id', { ascending: true }),
-      supabase.from('detailed_map').select('mapid, drop_equidcard')
+      // 🚀 復原最精簡狀態：只撈新表中有關裝備卡/靈具卡反查需要的欄位
+      supabase.from('map_zone_drops').select('map_id, drop_equidcard')
     ]);
 
     if (cardRes.error) throw cardRes.error;
-    allCardData = cardRes.data || [];
-    mapData = mapsRes.data || [];
+    if (mapsRes.error) throw mapsRes.error;
     
+    allCardData = cardRes.data || [];
+    
+    // 🚀 前端地圖大融合：將相同地圖在各個分區撈到的裝備卡字串通通黏在一起去重
+    const rawMaps = mapsRes.data || [];
+    const mergedMapGroup = {};
+
+    rawMaps.forEach(m => {
+      if (!m.map_id) return;
+      if (!mergedMapGroup[m.map_id]) {
+        mergedMapGroup[m.map_id] = [];
+      }
+      if (m.drop_equidcard) {
+        const tokens = m.drop_equidcard.split(/[,，、\s]+/);
+        mergedMapGroup[m.map_id] = mergedMapGroup[m.map_id].concat(tokens);
+      }
+    });
+
+    // 重新包裝成原本邏輯預期的 mapData 陣列格式
+    mapData = Object.keys(mergedMapGroup).map(mapId => {
+      const uniqueCards = Array.from(new Set(mergedMapGroup[mapId])).filter(x => x);
+      return {
+        mapid: mapId, // 對齊原本代碼習慣的 mapid
+        drop_equidcard: uniqueCards.join('、') // 重新組合成由「、」分隔的去重字串
+      };
+    });
+    
+    // 🚀 關鍵：百分之百復原，把靈具卡自己的資料 (allCardData) 送進去解析屬性選單！
     populateDatalists(allCardData);
+    
     initializeSortIcons();
 
     // === 🚀 跨頁面深度連結處理 (僅執行一次) ===
