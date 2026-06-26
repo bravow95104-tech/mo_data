@@ -10,20 +10,22 @@ let activeFilters = {
   search: ""
 };
 
-// === 🚀 完美絲滑版：動態計算實際高度與收放 ===
-window.toggleQuestCard = function(cardElement) {
+// === 🚀 修正版：限定點擊標題列才觸發收放 ===
+window.toggleQuestCard = function(headerElement) {
+  // 透過 header 找到它的上一層，也就是大外殼 .random-quest-card
+  const cardElement = headerElement.parentElement; 
   const cardBody = cardElement.querySelector('.quest-card-body');
   if (!cardBody) return;
 
   cardElement.classList.toggle('active');
 
   if (cardElement.classList.contains('active')) {
-    // 展開時：計算真實內文總高度
+    // 展開
     cardBody.style.maxHeight = cardBody.scrollHeight + "px";
   } else {
-    // 收合時：確保從真實高度完美歸零
+    // 收合
     cardBody.style.maxHeight = cardBody.scrollHeight + "px";
-    cardBody.offsetHeight; // 強制刷新瀏覽器佈局
+    cardBody.offsetHeight; // 強制刷新
     cardBody.style.maxHeight = "0";
   }
 };
@@ -54,6 +56,7 @@ async function loadRandomQuests() {
   }
 }
 
+// ─── 修正點：精準抓取 data-value 讓按鈕篩選發揮作用 ───
 function renderFilterButtons() {
   const areaContainer = document.getElementById("areaFilterContainer");
   const typeContainer = document.getElementById("typeFilterContainer");
@@ -73,10 +76,11 @@ function renderFilterButtons() {
     ).join('');
   }
 
+  // 修正：修正 getAttribute 確保點擊後能精準過濾
   document.querySelectorAll(".filter-btn").forEach(btn => {
     btn.addEventListener("click", function() {
       const type = this.getAttribute("data-type");
-      const value = this.getAttribute("value" || "data-value");
+      const value = this.getAttribute("data-value"); // ✨ 修正這一行
 
       if (this.classList.contains("active")) {
         this.classList.remove("active");
@@ -113,6 +117,7 @@ function initSearchInput() {
   }
 }
 
+// ─── 優化點：重整內容排版，使標籤與冒號貼合、寬度彈性不跳行 ───
 function renderQuestCards() {
   const container = document.getElementById("starContainer");
   if (!container) return;
@@ -145,8 +150,8 @@ function renderQuestCards() {
     ).join('');
 
     return `
-      <div class="random-quest-card" onclick="toggleQuestCard(this)">
-        <div class="quest-card-header">
+      <div class="random-quest-card">
+        <div class="quest-card-header" onclick="toggleQuestCard(this)">
           <div class="quest-main-info">
             <div class="quest-title-row">
               <span class="quest-type-badge">${q.quest_type || '隨機'}</span>
@@ -168,21 +173,21 @@ function renderQuestCards() {
           <div class="quest-detail-grid">
             <div class="quest-target-box">
               <div class="target-item">
-                <span class="target-label"><i class="fa-solid fa-skull-crossbones"></i> 目標怪物</span>：
+                <span class="target-label"><i class="fa-solid fa-skull-crossbones"></i> 目標怪物：</span>
                 <span class="target-value">${q.target_monster || '-'}</span>
               </div>
               <div class="target-item">
-                <span class="target-label"><i class="fa-solid fa-box-open"></i> 蒐集道具</span>：
+                <span class="target-label"><i class="fa-solid fa-box-open"></i> 蒐集道具：</span>
                 <span class="target-value">${q.collect_item || '-'}</span>
               </div>
               <div class="target-item">
-                <span class="target-label"><i class="fa-solid fa-calculator"></i> 所需數量</span>：
+                <span class="target-label"><i class="fa-solid fa-calculator"></i> 所需數量：</span>
                 <span class="target-value-num">${q.amount || '-'}</span>
               </div>
             </div>
             
             <div class="quest-reward-box">
-              <div class="reward-title">🎁 任務結算獎勵</div>
+              <div class="reward-title">🎁 任務獎勵</div>
               <div class="reward-row">
                 <div class="reward-exp">經驗值：<span>${q.exp ? '+' + Number(q.exp).toLocaleString() : '-'}</span></div>
                 <div class="reward-items">
