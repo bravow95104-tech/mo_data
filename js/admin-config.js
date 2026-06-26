@@ -494,6 +494,10 @@ export const TABLE_CONFIGS = {
             { id: 'drop_product', label: '產物', type: 'textarea', grid: 2, group: '掉落' },
             { id: 'drop_heroes', label: '英雄卡', type: 'textarea', grid: 2, group: '掉落' },
             { id: 'drop_other', label: '其他', type: 'textarea', grid: 2, group: '掉落' },
+            { id: 'drop_equidcard', label: '裝備卡', type: 'text', grid: 1, group: '掉落' },
+            { id: 'drop_skillcard', label: '技能卡', type: 'text', grid: 2, group: '掉落' },
+            { id: 'drop_combo_old', label: '舊文片', type: 'text', grid: 2, group: '掉落' },
+            { id: 'drop_combo_new', label: '新文片', type: 'text', grid: 2, group: '掉落' },
         ]
     },
 };
