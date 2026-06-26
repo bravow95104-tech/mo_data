@@ -449,7 +449,33 @@ async function loadModalZoneButtons(mapName, maxX, maxY, mainRubbish, mainProduc
     } else {
         zoneContainer.innerHTML = '';
     }
+// ===================================================================
+    // 🎯 核心修正：如果網址沒有指定 zone，且畫面上沒有分區按鈕，
+    //    但新表其實有「全區」的掉落資料，我們要強制把這些 row 亮起來！
+    // ===================================================================
+    if (!targetZone) {
+        const globalDrop = drops.find(d => d.zone_name === '全區');
+        if (globalDrop) {
+            console.log("【全區智慧連動】偵測到新表含有全區資料，自動亮起對應掉落列！");
+            
+            const verifyAndShowRow = (elementId, rowId, value) => {
+                const row = document.getElementById(rowId);
+                if (row && value && value !== '-' && value !== 'null') {
+                    row.style.display = ''; // 強制拔掉 display: none 讓它顯示
+                }
+            };
 
+            // 檢查新表的八大欄位，只要全區有填，初始就現形
+            verifyAndShowRow('dynamic-drop-rubbish',   'dynamic-drop-rubbish-row',   globalDrop.drop_rubbish);
+            verifyAndShowRow('dynamic-drop-product',   'dynamic-drop-product-row',   globalDrop.drop_product);
+            verifyAndShowRow('dynamic-drop-equidcard', 'dynamic-drop-equidcard-row', globalDrop.drop_equidcard);
+            verifyAndShowRow('dynamic-drop-skillcard', 'dynamic-drop-skillcard-row', globalDrop.drop_skillcard);
+            verifyAndShowRow('dynamic-drop-hero',      'dynamic-drop-hero-row',      globalDrop.drop_heroes);
+            verifyAndShowRow('dynamic-drop-combo_old', 'dynamic-drop-combo_old-row', globalDrop.drop_combo_old);
+            verifyAndShowRow('dynamic-drop-combo_new', 'dynamic-drop-combo_new-row', globalDrop.drop_combo_new);
+            verifyAndShowRow('dynamic-drop-other',     'dynamic-drop-other-row',     globalDrop.drop_other);
+        }
+    }
     // ===================================================================
     // 🚀 【終極加強防搶拍版】核心進階：偵測網址參數並模擬點擊
     // ===================================================================
