@@ -408,15 +408,15 @@ async function loadModalZoneButtons(mapName, maxX, maxY, mainRubbish, mainProduc
           const multiPointsStr = JSON.stringify(groupedZones[zoneName]);
           const d = drops.find(d => d.zone_name === zoneName) || {};
 
-          // 🚀 核心修正：將所有新欄位通通與全區資料合併，並傳入按鈕 data 屬性
-          const finalRubbish   = [d.drop_rubbish,   globalDrop.drop_rubbish].filter(x => x).join(',').replace(/[\r\n]+/g, '、');
-          const finalProduct   = [d.drop_product,   globalDrop.drop_product].filter(x => x).join(',').replace(/[\r\n]+/g, '、');
-          const finalEquip     = [d.drop_equidcard, globalDrop.drop_equidcard].filter(x => x).join(',').replace(/[\r\n]+/g, '、');
-          const finalSkill     = [d.drop_skillcard, globalDrop.drop_skillcard].filter(x => x).join(',').replace(/[\r\n]+/g, '、');
-          const finalHero      = [d.drop_heroes,    globalDrop.drop_heroes].filter(x => x).join(',').replace(/[\r\n]+/g, '、');
-          const finalComboOld  = [d.drop_combo_old, globalDrop.drop_combo_old].filter(x => x).join(',').replace(/[\r\n]+/g, '、');
-          const finalComboNew  = [d.drop_combo_new, globalDrop.drop_combo_new].filter(x => x).join(',').replace(/[\r\n]+/g, '、');
-          const finalOther     = [d.drop_other,     globalDrop.drop_other].filter(x => x).join(',').replace(/[\r\n]+/g, '、');
+          // === 🚀 修改後：點選分區時，只保留該分區自己的掉落物 (移除全區合併) ===
+const finalRubbish   = [d.drop_rubbish].filter(x => x).join(',').replace(/[\r\n]+/g, '、');
+const finalProduct   = [d.drop_product].filter(x => x).join(',').replace(/[\r\n]+/g, '、');
+const finalEquip     = [d.drop_equidcard].filter(x => x).join(',').replace(/[\r\n]+/g, '、');
+const finalSkill     = [d.drop_skillcard].filter(x => x).join(',').replace(/[\r\n]+/g, '、');
+const finalHero      = [d.drop_heroes].filter(x => x).join(',').replace(/[\r\n]+/g, '、');
+const finalComboOld  = [d.drop_combo_old].filter(x => x).join(',').replace(/[\r\n]+/g, '、');
+const finalComboNew  = [d.drop_combo_new].filter(x => x).join(',').replace(/[\r\n]+/g, '、');
+const finalOther     = [d.drop_other].filter(x => x).join(',').replace(/[\r\n]+/g, '、');
 
           const zoneDef     = d.def || "";
           const zoneDodge   = d.dodge || "";
@@ -756,11 +756,17 @@ document.addEventListener("DOMContentLoaded", () => {
   bindModalEvents();
 });
 
+// === 🚀 升級完美版：清除範圍按鈕點擊事件 ===
 window.resetZoneSelection = function() {
+    // 1. 先清除地圖上的 SVG 紅線不規則範圍
     if (typeof clearResourcePolyRange === "function") {
         clearResourcePolyRange();
     }
 
+    // 2. 拔掉所有區域按鈕的亮起狀態 (zone-btn)
+    document.querySelectorAll('.zone-btn').forEach(b => b.classList.remove('active'));
+
+    // 3. 🎯 核心重設：直接抓取一開始在初始狀態存進格子的 `data-default`（也就是你 loadData 時大融合的全區基礎資料）
     function restoreRow(elementId, rowId, isCardType, cardTypeParam) {
         const el = document.getElementById(elementId);
         const row = document.getElementById(rowId);
@@ -779,7 +785,7 @@ window.resetZoneSelection = function() {
         }
     }
 
-    // 🚀 還原全掉落物綜合值
+    // 還原八大掉落物區塊到最初狀態
     restoreRow('dynamic-drop-rubbish',   'dynamic-drop-rubbish-row',   false);
     restoreRow('dynamic-drop-product',   'dynamic-drop-product-row',   false);
     restoreRow('dynamic-drop-equidcard', 'dynamic-drop-equidcard-row', true, 'equip');
@@ -789,7 +795,7 @@ window.resetZoneSelection = function() {
     restoreRow('dynamic-drop-combo_new', 'dynamic-drop-combo_new-row', false);
     restoreRow('dynamic-drop-other',     'dynamic-drop-other-row',     false);
 
-    // 還原戰鬥數值
+    // 還原戰鬥數值（防禦、閃避、戰場五行）
     const defEl = document.getElementById('dynamic-def');
     const dodgeEl = document.getElementById('dynamic-dodge');
     const elementEl = document.getElementById('dynamic-element');
