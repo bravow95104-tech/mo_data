@@ -53,39 +53,60 @@ document.addEventListener("DOMContentLoaded", async () => {
   try {
     const [cardRes, mapsRes] = await Promise.all([
       supabase.from('card_active').select('*').order('sort_id', { ascending: true }),
+      // 🚀 核心修正：改去撈新表 map_zone_drops
       supabase.from('map_zone_drops').select('map_id, drop_skillcard')
     ]);
 
     if (cardRes.error) throw cardRes.error;
+    if (mapsRes.error) throw mapsRes.error;
+    
     allCardData = cardRes.data || [];
-    mapData = mapsRes.data || [];
+    
+    // 🚀 核心大融合：解決新表「多區多列」造成主動技能卡反查失敗的問題
+    const rawMaps = mapsRes.data || [];
+    const mergedMapGroup = {};
 
+    // 將相同地圖在各個分區撈到的技能卡字串通通黏在一起去重
+    rawMaps.forEach(m => {
+      if (!m.map_id) return;
+      if (!mergedMapGroup[m.map_id]) {
+        mergedMapGroup[m.map_id] = [];
+      }
+      if (m.drop_skillcard) {
+        const tokens = m.drop_skillcard.split(/[,，、\s]+/);
+        mergedMapGroup[m.map_id] = mergedMapGroup[m.map_id].concat(tokens);
+      }
+    });
+
+    // 重新包裝成原本邏輯預期的 mapData 陣列格式
+    mapData = Object.keys(mergedMapGroup).map(mapId => {
+      const uniqueCards = Array.from(new Set(mergedMapGroup[mapId])).filter(x => x);
+      return {
+        mapid: mapId, // 對齊原本代碼習慣的 mapid
+        drop_skillcard: uniqueCards.join('、') // 重新組合成由「、」分隔的去重字串
+      };
+    });
+    
     initializeSortIcons();
 
-    // === 🚀 處理跨頁面跳轉 ===
+    // 檢查 URL 參數
     const urlParams = new URLSearchParams(window.location.search);
     const cardParam = urlParams.get('card');
     if (cardParam) {
-      const exists = allCardData.some(c => c.card_id === cardParam);
-      if (exists) {
-        if (searchInput) searchInput.value = cardParam;
-        applyFiltersAndSort();
-        // 自動開啟彈窗
-        const matched = lastFilteredData.find(c => c.card_id === cardParam);
-        if (matched) showDetailModal(matched);
-      } else {
-        // 找不到則跳轉
-        window.location.href = `card-passive.html?card=${encodeURIComponent(cardParam)}`;
-        return;
+      if (searchInput) searchInput.value = cardParam;
+      applyFiltersAndSort(); 
+      
+      const targetCard = allCardData.find(c => c.card_id === cardParam);
+      if (targetCard) {
+        setTimeout(() => showDetailModal(targetCard), 100);
       }
     } else {
-      applyFiltersAndSort();
-      updateSortIcons();
+      applyFiltersAndSort(); 
     }
-
+    updateSortIcons();
   } catch (err) {
-    console.error("❌ 資料載入失敗：", err);
-    if (cardContainer) cardContainer.innerHTML = `<p style='text-align:center; padding:20px; color:red;'>無法載入資料 (${err.message})</p>`;
+    console.error("❌ Failed to load data:", err)
+    if (tableBody) tableBody.innerHTML = '<tr><td colspan="6">無法載入資料</td></tr>';
   }
 
   // 2. 核心邏輯

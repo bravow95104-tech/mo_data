@@ -53,29 +53,61 @@ document.addEventListener("DOMContentLoaded", async () => {
   try {
     const [cardRes, mapsRes] = await Promise.all([
       supabase.from('card_passive').select('*').order('sort_id', { ascending: true }),
+      // 🚀 核心修正：撈取新表的 map_id 與技能卡欄位
       supabase.from('map_zone_drops').select('map_id, drop_skillcard')
     ]);
 
     if (cardRes.error) throw cardRes.error;
+    if (mapsRes.error) throw mapsRes.error;
+    
     allCardData = cardRes.data || [];
-    mapData = mapsRes.data || [];
+    
+    // 🚀 核心大融合：解決新表「多區多列」造成反查失敗的問題
+    const rawMaps = mapsRes.data || [];
+    const mergedMapGroup = {};
 
+    // 將相同地圖(map_id)在各個分區撈到的技能卡字串，通通黏在一起去重
+    rawMaps.forEach(m => {
+      if (!m.map_id) return;
+      if (!mergedMapGroup[m.map_id]) {
+        mergedMapGroup[m.map_id] = [];
+      }
+      if (m.drop_skillcard) {
+        // 依標點符號切開
+        const tokens = m.drop_skillcard.split(/[,，、\s]+/);
+        mergedMapGroup[m.map_id] = mergedMapGroup[m.map_id].concat(tokens);
+      }
+    });
+
+    // 重新包裝成原本邏輯預期的 mapData 陣列格式
+    mapData = Object.keys(mergedMapGroup).map(mapId => {
+      const uniqueCards = Array.from(new Set(mergedMapGroup[mapId])).filter(x => x);
+      return {
+        mapid: mapId, // 對齊原本代碼習慣的 mapid
+        drop_skillcard: uniqueCards.join('、') // 重新組合成由「、」分隔的去重字串
+      };
+    });
+    
     initializeSortIcons();
 
-    // === 🚀 跨頁面深度連結處理 (僅執行一次) ===
+    // 檢查 URL 參數
     const urlParams = new URLSearchParams(window.location.search);
     const cardParam = urlParams.get('card');
-    if (cardParam && searchInput) {
-      searchInput.value = cardParam;
+    if (cardParam) {
+      if (searchInput) searchInput.value = cardParam;
+      applyFiltersAndSort(); 
+      
+      const targetCard = allCardData.find(c => c.card_id === cardParam);
+      if (targetCard) {
+        setTimeout(() => showDetailModal(targetCard), 100);
+      }
+    } else {
+      applyFiltersAndSort(); 
     }
-
-    applyFiltersAndSort();
     updateSortIcons();
-
   } catch (err) {
-    console.error("❌ 資料載入失敗：", err);
-    const tbody = document.querySelector("#card-equip-table tbody");
-    if (tbody) tbody.innerHTML = "<tr><td colspan='5'>無法載入資料</td></tr>";
+    console.error("❌ Failed to load data:", err)
+    if (tableBody) tableBody.innerHTML = '<tr><td colspan="6">無法載入資料</td></tr>';
   }
 
   function applyFiltersAndSort() {
