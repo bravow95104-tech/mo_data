@@ -169,7 +169,7 @@
     .target-item:last-child { margin-bottom: 0; }
     .target-label { color: var(--text-muted); width: 85px; flex-shrink: 0; }
     .target-value { color: var(--text-main); }
-    .target-value-num { color: #4ade80; font-weight: bold; }
+    .target-value-num { color: #338a52; font-weight: bold; }
 
     /* 獎勵區排版 */
     .reward-title {
@@ -223,6 +223,27 @@
   flex-wrap: wrap;     /* 按鈕寬度不夠時，讓「按鈕們」自己往下一行掉，而不是擠文字 */
   gap: 8px;
 }
+/* 🎯 徹底解決隨機任務卡片內小標題跳行的設定 */
+.quest-target-box .target-item {
+  display: flex;
+  align-items: center; /* 讓圖標、文字、與後面的數值完美在同一條水平線上 */
+  margin-bottom: 8px;  /* 讓每一項保持一點舒適的上下間距 */
+}
+
+.quest-target-box .target-label {
+  white-space: nowrap; /* 🔥 核心：強制「目標怪物：」、「蒐集道具：」絕對不準斷行 */
+  min-width: 105px;    /* ⚙️ 重點：給予足夠展開 4 個字 + 圖標 + 冒號的黃金寬度 */
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;            /* 讓 FontAwesome 圖標與文字之間有一點小空隙，比較美觀 */
+  color: var(--text-muted); /* 維持你原本的文字顏色 */
+}
+
+.quest-target-box .target-value,
+.quest-target-box .target-value-num {
+  flex: 1;             /* 讓後面的真實內容（如：虎頭金鷹）把剩下的空間撐滿 */
+  text-align: left;
+}
     /* ==========================================================================
        ☀️ 白天模式完美調校相容 (Light Mode Override)
        ========================================================================== */
@@ -258,7 +279,7 @@
   <br />
 
   <div id="filterContainer" class="accordion">
-    <h3 class="accordion-header">快速搜尋條件(可多條件搜尋) ▾</h3>
+    <h3 class="accordion-header">快速搜尋條件(可多條件搜尋) </h3>
     <div class="accordion-content">
       
       <div class="filter-group">
@@ -285,10 +306,11 @@
   </div>
 
   <div id="starContainer">
-    <div class="no-results"><i class="fa-solid fa-spinner fa-spin"></i> 正在向冒險者公會索取隨機公告...</div>
+    <div class="no-results"><i class="fa-solid fa-spinner fa-spin"></i> 正在索取隨機任務內容...</div>
   </div>
 
   <button id="backToTop" title="回到頂部">▲</button>
   <script type="module" src="/mo_data/js/random_quest.js"></script>
+  <div id="footer-container"></div>
 </body>
 </html>
