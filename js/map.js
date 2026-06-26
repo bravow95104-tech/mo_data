@@ -15,7 +15,7 @@ const ALL_COLUMNS = [
   { id: 'drop_equidcard', label: '裝備卡', default: true },
   { id: 'drop_skillcard', label: '技能卡', default: true },
   { id: 'drop_rubbish', label: '垃圾', default: true },
-  { id: 'drop_hero', label: '英雄卡', default: true },
+  { id: 'drop_heroes', label: '英雄卡', default: true },
   { id: 'drop_glory_high', label: '光輝(多)', default: true },
   { id: 'drop_glory_low', label: '光輝(少)', default: true },
   { id: 'maplv', label: '怪物等級', default: false },
