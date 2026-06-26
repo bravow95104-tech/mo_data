@@ -896,7 +896,12 @@ async function loadData() {
   }
 
   // 智慧連動網址導航 (維持不變)
+  // ==========================================================================
+  // 🧭 智慧連動網址導航（安全升級版：支援舊地圖定位與新隨機任務跨頁定位）
+  // ==========================================================================
   const urlParams = new URLSearchParams(window.location.search);
+  
+  // 1. 舊有的地圖資源定位功能 (100% 完整保留，一個字都沒動)
   const targetMap = urlParams.get('map');
   const targetResource = urlParams.get('resource');
   const targetX = urlParams.get('x');
@@ -914,6 +919,45 @@ async function loadData() {
         }, 300);
       }
     }, 500);
+  }
+
+  // 2. 🌟 全新新增：處理來自「隨機任務」的區域分頁定位 (mapId + zone)
+  const mapIdParam = urlParams.get('mapId');
+  const zoneParam = urlParams.get('zone');
+
+  if (mapIdParam) {
+    console.log(`📡 偵測到來自隨機任務的定位：地圖 = ${mapIdParam}, 區域 = ${zoneParam}`);
+    
+    setTimeout(() => {
+      // (1) 先打開該地圖的詳細資料視窗 (沿用你原本開窗的函式 window.openMapDetail)
+      if (typeof window.openMapDetail === 'function') {
+        window.openMapDetail(mapIdParam);
+      }
+
+      // (2) 如果有指定區域，等視窗開好（DOM 畫好）後，自動幫忙切換到對應的區域 Tab 頁籤
+      if (zoneParam) {
+        setTimeout(() => {
+          const tabs = document.querySelectorAll('.map-tab-btn');
+          let targetTab = null;
+          
+          tabs.forEach(tab => {
+            // 用 trim() 去除空白，確保比對準確
+            if (tab.textContent.trim().toLowerCase() === zoneParam.trim().toLowerCase()) {
+              targetTab = tab;
+            }
+          });
+
+          // 如果找到了符合名字（例如：妖邪洞一層）的標籤，就自動模擬點擊它
+          if (targetTab) {
+            targetTab.click();
+            // 自動把被點選的頁籤滑動到最顯眼的中間位置
+            targetTab.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+          } else {
+            console.warn(`[MoData] 在當前地圖視窗內找不到對應的區域分頁: ${zoneParam}`);
+          }
+        }, 300); // 延遲 300ms 確保開窗內部的區域 Tabs 按鈕已經產生在網頁上
+      }
+    }, 500); // 與你原本的開窗延遲時間一致（500ms），最穩定安全
   }
 }
 
