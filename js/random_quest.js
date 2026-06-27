@@ -12,7 +12,6 @@ let activeFilters = {
 
 // === 🚀 修正版：限定點擊標題列才觸發收放 ===
 window.toggleQuestCard = function(headerElement) {
-  // 透過 header 找到它的上一層，也就是大外殼 .random-quest-card
   const cardElement = headerElement.parentElement; 
   const cardBody = cardElement.querySelector('.quest-card-body');
   if (!cardBody) return;
@@ -20,12 +19,10 @@ window.toggleQuestCard = function(headerElement) {
   cardElement.classList.toggle('active');
 
   if (cardElement.classList.contains('active')) {
-    // 展開
     cardBody.style.maxHeight = cardBody.scrollHeight + "px";
   } else {
-    // 收合
     cardBody.style.maxHeight = cardBody.scrollHeight + "px";
-    cardBody.offsetHeight; // 強制刷新
+    cardBody.offsetHeight; 
     cardBody.style.maxHeight = "0";
   }
 };
@@ -56,7 +53,6 @@ async function loadRandomQuests() {
   }
 }
 
-// ─── 修正點：精準抓取 data-value 讓按鈕篩選發揮作用 ───
 function renderFilterButtons() {
   const areaContainer = document.getElementById("areaFilterContainer");
   const typeContainer = document.getElementById("typeFilterContainer");
@@ -76,11 +72,10 @@ function renderFilterButtons() {
     ).join('');
   }
 
-  // 修正：修正 getAttribute 確保點擊後能精準過濾
   document.querySelectorAll(".filter-btn").forEach(btn => {
     btn.addEventListener("click", function() {
       const type = this.getAttribute("data-type");
-      const value = this.getAttribute("data-value"); // ✨ 修正這一行
+      const value = this.getAttribute("data-value");
 
       if (this.classList.contains("active")) {
         this.classList.remove("active");
@@ -125,7 +120,6 @@ function getTagClass(type) {
     return 'tag-common';
 }
 
-// ─── 優化點：重整內容排版，使標籤與冒號貼合、寬度彈性不跳行 ───
 function renderQuestCards() {
   const container = document.getElementById("starContainer");
   if (!container) return;
@@ -164,10 +158,12 @@ function renderQuestCards() {
               <span class="quest-type-tag ${getTagClass(q.quest_type)}">${q.quest_type || '隨機'}</span>
               <h3 class="quest-title">${q.quest_name}</h3>
               <span class="quest-lv-tag">${q.quest_lv ? 'Lv.' + q.quest_lv : ''}</span>
+              
+              <span class="vertical-divider"></span>
               <img id="${uniqueId}" 
-               src="/mo_data/pic/random_quest/default.png" 
-               class="quest-type-icon" 
-               alt="${q.collect_item}">
+                   src="/mo_data/pic/random_quest/default.png" 
+                   class="quest-type-icon" 
+                   alt="${q.collect_item || 'item'}">
             </div>
             <div class="quest-sub-row">
               <span><i class="fa-solid fa-map-location-dot"></i> 地點：${q.location || '-'}</span>
@@ -223,9 +219,11 @@ function renderQuestCards() {
       </div>
     `;
   }).join('');
-filteredData.forEach(q => {
+
+  // 執行非同步圖片檢查
+  filteredData.forEach(q => {
     if (q.collect_item) {
-      const uniqueId = `icon-${q.id || ''}`; // 確保ID對應
+      const uniqueId = `icon-${q.id || ''}`;
       checkAndSetIcon(uniqueId, q.collect_item);
     }
   });
@@ -233,7 +231,7 @@ filteredData.forEach(q => {
   if (typeof window.formatMapLinks === 'function') {
     window.formatMapLinks();
   }
-}
+} // <--- 這裡正確閉合 renderQuestCards 函式
 
 function initAccordion() {
   const accordion = document.getElementById("filterContainer");
@@ -241,15 +239,9 @@ function initAccordion() {
   const content = accordion ? accordion.querySelector(".accordion-content") : null;
   
   if (accordion && header && content) {
-    // 1. 預設先讓它閉合（加入 collapsed 類別）
-    //accordion.classList.add("collapsed");
-
-    // 2. 點擊標題列時切換 .collapsed 類別
     header.addEventListener("click", function() {
       accordion.classList.toggle("collapsed");
     });
-
-    // 3. 防冒泡：點擊裡面的按鈕時，不要觸發到最外層的閉合事件
     content.addEventListener("click", function(e) {
       e.stopPropagation(); 
     });
@@ -266,41 +258,35 @@ function initBackToTop() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   });
 }
-// 🎯 放自 random_quest.js 最下方的處理函式：
+
 window.handleMapLocation = function(button) {
   const mapId = button.getAttribute("data-map-id");
   const zoneName = button.getAttribute("data-zone-name");
   
   if (mapId) {
-    // 跳轉到地圖頁面，並透過網址參數帶過去 (例如 map.html?mapId=1&zone=妖邪洞一層)
     window.location.href = `/mo_data/map/detailed_map.html?mapId=${mapId}&zone=${encodeURIComponent(zoneName)}`;
   }
-  
 };
 
-// 在 random_quest.js 加入這個智慧尋找函式
-async function getBestIconPath(itemName) {
+// === ✨ 獨立拉到最外層的智慧尋找函式 ===
+async function checkAndSetIcon(elementId, itemName) {
+    const imgElement = document.getElementById(elementId);
+    if (!imgElement) return;
+
     const baseUrl = '/mo_data/pic/random_quest/';
-    
-    // 優先順序陣列：紅藥水 -> 紅藥水-1 -> ... -> 紅藥水-5
     const candidates = [
-        `${itemName}.png`,
-        `${itemName}-1.png`,
-        `${itemName}-2.png`,
-        `${itemName}-3.png`,
-        `${itemName}-4.png`,
-        `${itemName}-5.png`
+        `${itemName}.png`, `${itemName}-1.png`, `${itemName}-2.png`,
+        `${itemName}-3.png`, `${itemName}-4.png`, `${itemName}-5.png`
     ];
 
     for (let filename of candidates) {
         const fullPath = baseUrl + encodeURIComponent(filename);
         try {
-            // 使用 HEAD 請求，只確認檔案是否存在，不下載圖片內容 (快且省流量)
             const response = await fetch(fullPath, { method: 'HEAD' });
-            if (response.ok) return fullPath; // 找到第一張存在的就回傳
-        } catch (e) {
-            continue; // 沒找到就繼續下一個
-        }
+            if (response.ok) {
+                imgElement.src = fullPath;
+                break;
+            }
+        } catch (e) { continue; }
     }
-    return baseUrl + 'default.png'; // 真的都沒找到回傳預設圖
 }
