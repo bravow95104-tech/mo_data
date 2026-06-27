@@ -513,6 +513,7 @@ export const TABLE_CONFIGS = {
             { id: 'location', label: '地點', type: 'text', grid: 1 , group: '基本資料'},
             { id: 'target_monster', label: '任務怪物', type: 'text', grid: 1 , group: '基本資料'},
             { id: 'collect_item', label: '掉落物品', type: 'text', grid: 1,  group: '基本資料'},
+            { id: 'amount', label: '數量需求', type: 'text', grid: 1,  group: '基本資料'},
             { id: 'exp', label: '經驗', type: 'text', grid: 1, group: '獎勵' },
             { id: 'rewards', label: '道具', type: 'textarea', grid: 1, group: '獎勵' },
             { id: 'map_id', label: '對應地圖(完全對照)', type: 'text', grid: 1, group: '地圖導航' },
