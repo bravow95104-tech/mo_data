@@ -985,7 +985,8 @@ window.openEditModal = async (id) => {
 
             // 🚀 執行自動排序推擠邏輯
             const targetSortId = updates.sort_id;
-            const needsPush = allData.some(d => d.sort_id === targetSortId && d.id !== id);
+            const targetSortIdNum = parseInt(updates.sort_id);
+const needsPush = allData.some(d => parseInt(d.sort_id) === targetSortIdNum && d.id !== id)
 
             if (needsPush) {
                 const toPush = allData
