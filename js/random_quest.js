@@ -160,7 +160,7 @@ function renderQuestCards() {
               <span class="quest-lv-tag">${q.quest_lv ? 'Lv.' + q.quest_lv : ''}</span>
               
               <span class="vertical-divider"></span>
-              <img id="${uniqueId}" 
+<div id="${uniqueId}" class="quest-icon-container"></div>
                    src="/mo_data/pic/random_quest/default.png" 
                    class="quest-type-icon" 
                    alt="${q.collect_item || 'item'}">
@@ -268,25 +268,51 @@ window.handleMapLocation = function(button) {
   }
 };
 
-// === ✨ 獨立拉到最外層的智慧尋找函式 ===
+// === ✨ 修正版：支援顯示多張圖片的智慧尋找函式 ===
 async function checkAndSetIcon(elementId, itemName) {
-    const imgElement = document.getElementById(elementId);
-    if (!imgElement) return;
+    const containerElement = document.getElementById(elementId);
+    if (!containerElement) return;
 
     const baseUrl = '/mo_data/pic/random_quest/';
+    
+    // 檢查清單：包含原本名稱，以及 -1 到 -5
     const candidates = [
-        `${itemName}.png`, `${itemName}-1.png`, `${itemName}-2.png`,
-        `${itemName}-3.png`, `${itemName}-4.png`, `${itemName}-5.png`
+        `${itemName}.png`, 
+        `${itemName}-1.png`, 
+        `${itemName}-2.png`,
+        `${itemName}-3.png`, 
+        `${itemName}-4.png`, 
+        `${itemName}-5.png`
     ];
+
+    let foundAny = false;
 
     for (let filename of candidates) {
         const fullPath = baseUrl + encodeURIComponent(filename);
         try {
+            // 使用 HEAD 快速檢查檔案是否存在
             const response = await fetch(fullPath, { method: 'HEAD' });
             if (response.ok) {
-                imgElement.src = fullPath;
-                break;
+                // 只要存在，就建立一個全新的 img 標籤塞進容器裡
+                const img = document.createElement('img');
+                img.src = fullPath;
+                img.className = 'quest-type-icon';
+                img.alt = filename;
+                
+                containerElement.appendChild(img);
+                foundAny = true;
             }
-        } catch (e) { continue; }
+        } catch (e) { 
+            continue; 
+        }
+    }
+
+    // 防呆：如果連原本的圖或 -1~-5 全都找不到，就顯示一張 default.png
+    if (!foundAny) {
+        const defaultImg = document.createElement('img');
+        defaultImg.src = baseUrl + 'default.png';
+        defaultImg.className = 'quest-type-icon';
+        defaultImg.alt = 'default';
+        containerElement.appendChild(defaultImg);
     }
 }
