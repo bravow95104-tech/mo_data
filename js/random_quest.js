@@ -169,16 +169,14 @@ function renderQuestCards() {
         <div class="quest-card-header" onclick="toggleQuestCard(this)">
           <div class="quest-main-info">
             <div class="quest-title-row">
-
-            <img src="${iconPath}" 
+              <span class="quest-type-tag ${getTagClass(q.quest_type)}">${q.quest_type || '隨機'}</span>
+              <h3 class="quest-title">${q.quest_name}</h3>
+              <span class="quest-lv-tag">${q.quest_lv ? 'Lv.' + q.quest_lv : ''}</span>
+              <img src="${iconPath}" 
                    class="quest-type-icon" 
                    loading="lazy" 
                    onerror="this.onerror=null; this.src='/mo_data/pic/random_quest/default.png';" 
                    alt="${q.collect_item || 'item'}">
-
-              <span class="quest-type-tag ${getTagClass(q.quest_type)}">${q.quest_type || '隨機'}</span>
-              <h3 class="quest-title">${q.quest_name}</h3>
-              <span class="quest-lv-tag">${q.quest_lv ? 'Lv.' + q.quest_lv : ''}</span>
             </div>
             <div class="quest-sub-row">
               <span><i class="fa-solid fa-map-location-dot"></i> 地點：${q.location || '-'}</span>
