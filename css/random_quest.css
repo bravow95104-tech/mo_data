@@ -144,8 +144,7 @@
 
       /* 內部詳細資料面板 */
       .quest-target-box,
-      .quest-reward-box,
-      .reward-items {
+      .quest-reward-box {
         background: rgba(0, 0, 0, 0.15);
         border: 1px solid var(--glass-border);
         border-radius: 12px;
@@ -188,7 +187,8 @@
         gap: 8px;
       }
 
-      .reward-exp {
+      .reward-exp,
+      .reward-items {
         font-size: 14px;
         color: var(--text-main);
       }
@@ -197,11 +197,11 @@
         font-weight: bold;
       }
 
-      .reward-items {
+      /*.reward-items {
         display: flex;
         flex-wrap: wrap;
         gap: 6px;
-      }
+      }*/
 
       .reward-item-tag {
         background: var(--glass-bg);
