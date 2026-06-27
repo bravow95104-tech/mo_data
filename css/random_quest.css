@@ -197,11 +197,11 @@
         font-weight: bold;
       }
 
-      /*.reward-items {
+      .reward-items {
         display: flex;
         flex-wrap: wrap;
         gap: 6px;
-      }*/
+      }
 
       .reward-item-tag {
         background: var(--glass-bg);
