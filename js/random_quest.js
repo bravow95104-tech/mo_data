@@ -154,7 +154,7 @@ function renderQuestCards() {
         <div class="quest-card-header" onclick="toggleQuestCard(this)">
           <div class="quest-main-info">
             <div class="quest-title-row">
-              <span class="quest-type-badge">${q.quest_type || '隨機'}</span>
+              <span class="quest-type-tag ${getTagClass(q.quest_type)}">${q.quest_type || '隨機'}</span>
               <h3 class="quest-title">${q.quest_name}</h3>
               <span class="quest-lv-tag">${q.quest_lv ? 'Lv.' + q.quest_lv : ''}</span>
             </div>
@@ -258,15 +258,13 @@ window.handleMapLocation = function(button) {
     // 跳轉到地圖頁面，並透過網址參數帶過去 (例如 map.html?mapId=1&zone=妖邪洞一層)
     window.location.href = `/mo_data/map/detailed_map.html?mapId=${mapId}&zone=${encodeURIComponent(zoneName)}`;
   }
+  
 };
-// 在產生任務小卡片的 HTML 渲染邏輯中：
+// 確保它在檔案中是獨立存在的函式，不要放在別的函式內
 function getTagClass(type) {
+    if (!type) return 'tag-common';
     if (type.includes('一般')) return 'tag-common';
     if (type.includes('稀有')) return 'tag-rare';
     if (type.includes('菁英')) return 'tag-elite';
-    return 'tag-common'; // 預設
+    return 'tag-common'; 
 }
-
-// 渲染時使用：
-const typeClass = getTagClass(quest.quest_type);
-const tagHtml = `<span class="quest-type-tag ${typeClass}">${quest.quest_type}</span>`;
