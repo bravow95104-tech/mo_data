@@ -267,31 +267,32 @@
       body.light-mode .reward-item-tag {
         background: #ffffff;
       }
-     /* ==========================================================================
-   🎯 隨機任務內容專屬：拯救白天模式卡片內部區塊（萬能模式適配版）
+
+/* ==========================================================================
+   ☀️ 萬能白天模式適配（Light Mode Override）
    ========================================================================== */
 
-/* 1. 讓卡片內部展開後的內層大底色在白天模式變成透亮舒服的半透明白 */
+/* 1. 卡片展開後的底色與毛玻璃質感 */
 body.light-mode .random-quest-card .quest-card-body,
 [data-theme="light"] .random-quest-card .quest-card-body,
 .light-theme .random-quest-card .quest-card-body {
   background: rgba(255, 255, 255, 0.6) !important;
   backdrop-filter: blur(8px) !important;
   -webkit-backdrop-filter: blur(8px) !important;
-  padding: 16px 20px !important;
+  /* 加入分隔線，解決收合與顯示問題 */
+  border-top: 1px solid rgba(0, 0, 0, 0.15) !important;
 }
 
-/* 2. 徹底重寫：讓 .quest-target-box 與 .quest-reward-box 在白天不再是突兀的死灰底色 */
+/* 2. 內部小方框 (目標與獎勵) 的透亮白設計 */
 body.light-mode .random-quest-card .quest-target-box,
 body.light-mode .random-quest-card .quest-reward-box,
 [data-theme="light"] .random-quest-card .quest-target-box,
 [data-theme="light"] .random-quest-card .quest-reward-box,
 .light-theme .random-quest-card .quest-target-box,
 .light-theme .random-quest-card .quest-reward-box {
-  /* 🔥 核心核心：用極淡的透明藍白光取代原本的深灰 background: rgba(0,0,0,0.15) */
   background: rgba(255, 255, 255, 0.85) !important; 
   border: 1px solid rgba(0, 0, 0, 0.08) !important;
-  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.02); /* 加上極淡內陰影增加層次 */
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.02) !important;
 }
 
 /* 3. 讓「目標怪物：」、「蒐集道具：」、「所需數量：」小標題在白天清晰好讀 */
