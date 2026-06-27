@@ -152,17 +152,9 @@ function renderQuestCards() {
   }
 
   container.innerHTML = filteredData.map(q => {
-    // 1. 準備好所有變數 (先處理邏輯)
     const rewardArray = q.rewards ? q.rewards.split(/[,]/) : [];
-    const rewardTagsHTML = rewardArray.map(item => 
-        item.trim() ? `<span class="reward-item-tag">${item.trim()}</span>` : ''
-    ).join('');
-
-    const iconPath = q.collect_item 
-        ? `/mo_data/pic/random_quest/${encodeURIComponent(q.collect_item)}.png` 
-        : '/mo_data/pic/random_quest/default.png';
-
-    const typeClass = getTagClass(q.quest_type);
+    const rewardTagsHTML = rewardArray.map(item => item.trim() ? `<span class="reward-item-tag">${item.trim()}</span>` : '').join('');
+    const uniqueId = `icon-${q.id || Math.random().toString(36).substr(2, 9)}`;
     
     return `
       <div class="random-quest-card">
@@ -172,11 +164,10 @@ function renderQuestCards() {
               <span class="quest-type-tag ${getTagClass(q.quest_type)}">${q.quest_type || '隨機'}</span>
               <h3 class="quest-title">${q.quest_name}</h3>
               <span class="quest-lv-tag">${q.quest_lv ? 'Lv.' + q.quest_lv : ''}</span>
-              <img src="${iconPath}" 
-                   class="quest-type-icon" 
-                   loading="lazy" 
-                   onerror="this.onerror=null; this.src='/mo_data/pic/random_quest/default.png';" 
-                   alt="${q.collect_item || 'item'}">
+              <img id="${uniqueId}" 
+               src="/mo_data/pic/random_quest/default.png" 
+               class="quest-type-icon" 
+               alt="${q.collect_item}">
             </div>
             <div class="quest-sub-row">
               <span><i class="fa-solid fa-map-location-dot"></i> 地點：${q.location || '-'}</span>
@@ -232,6 +223,12 @@ function renderQuestCards() {
       </div>
     `;
   }).join('');
+filteredData.forEach(q => {
+    if (q.collect_item) {
+      const uniqueId = `icon-${q.id || ''}`; // 確保ID對應
+      checkAndSetIcon(uniqueId, q.collect_item);
+    }
+  });
 
   if (typeof window.formatMapLinks === 'function') {
     window.formatMapLinks();
@@ -280,3 +277,30 @@ window.handleMapLocation = function(button) {
   }
   
 };
+
+// 在 random_quest.js 加入這個智慧尋找函式
+async function getBestIconPath(itemName) {
+    const baseUrl = '/mo_data/pic/random_quest/';
+    
+    // 優先順序陣列：紅藥水 -> 紅藥水-1 -> ... -> 紅藥水-5
+    const candidates = [
+        `${itemName}.png`,
+        `${itemName}-1.png`,
+        `${itemName}-2.png`,
+        `${itemName}-3.png`,
+        `${itemName}-4.png`,
+        `${itemName}-5.png`
+    ];
+
+    for (let filename of candidates) {
+        const fullPath = baseUrl + encodeURIComponent(filename);
+        try {
+            // 使用 HEAD 請求，只確認檔案是否存在，不下載圖片內容 (快且省流量)
+            const response = await fetch(fullPath, { method: 'HEAD' });
+            if (response.ok) return fullPath; // 找到第一張存在的就回傳
+        } catch (e) {
+            continue; // 沒找到就繼續下一個
+        }
+    }
+    return baseUrl + 'default.png'; // 真的都沒找到回傳預設圖
+}
