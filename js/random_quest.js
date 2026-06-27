@@ -149,12 +149,13 @@ function renderQuestCards() {
       item.trim() ? `<span class="reward-item-tag">${item.trim()}</span>` : ''
     ).join('');
 
+    const iconPath = q.collect_item ? `assets/items/${q.collect_item}.png` : 'assets/items/default.png';
     return `
       <div class="random-quest-card">
         <div class="quest-card-header" onclick="toggleQuestCard(this)">
           <div class="quest-main-info">
             <div class="quest-title-row">
-            
+
             <img src="${iconPath}" 
                class="quest-type-icon" 
                onerror="this.src='assets/items/default.png'" 
