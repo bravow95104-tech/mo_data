@@ -416,16 +416,16 @@ export const TABLE_CONFIGS = {
             { id: 'approach', label: '迷宮走法', type: 'textarea', grid: 3, group: '地圖導航' },
             { id: 'illustrate', label: '說明', type: 'text', grid: 2, group: '地圖導航' },
             
-            { id: 'drop_rubbish', label: '垃圾掉落', type: 'textarea', grid: 1, group: '一般掉落' },
-            { id: 'drop_othrt', label: '其他掉落', type: 'textarea', grid: 1, group: '一般掉落' },
-            { id: 'drop_glory_player', label: '光輝(玩家提供)', type: 'text', grid: 1, group: '一般掉落' },
+            { id: 'drop_rubbish', label: '垃圾掉落(廢除)', type: 'textarea', grid: 1, group: '一般掉落' },
+            { id: 'drop_othrt', label: '其他掉落(廢除)', type: 'textarea', grid: 1, group: '一般掉落' },
+            { id: 'drop_glory_player', label: '光輝(玩家提供)(廢除)', type: 'text', grid: 1, group: '一般掉落' },
             
-            { id: 'drop_hero', label: '英雄卡掉落', type: 'textarea', grid: 1, group: '卡片掉落' },
-            { id: 'drop_equidcard', label: '裝備卡掉落', type: 'textarea', grid: 1, group: '卡片掉落' },
-            { id: 'drop_skillcard', label: '技能卡掉落', type: 'textarea', grid: 1, group: '卡片掉落' },
+            { id: 'drop_hero', label: '英雄卡掉落(廢除)', type: 'textarea', grid: 1, group: '卡片掉落' },
+            { id: 'drop_equidcard', label: '裝備卡掉落(廢除)', type: 'textarea', grid: 1, group: '卡片掉落' },
+            { id: 'drop_skillcard', label: '技能卡掉落(廢除)', type: 'textarea', grid: 1, group: '卡片掉落' },
             
-            { id: 'drop_combo_old', label: '舊文片掉落', type: 'textarea', grid: 1, group: '文片掉落' },
-            { id: 'drop_combo_new', label: '新文片掉落', type: 'textarea', grid: 1, group: '文片掉落' }
+            { id: 'drop_combo_old', label: '舊文片掉落(廢除)', type: 'textarea', grid: 1, group: '文片掉落' },
+            { id: 'drop_combo_new', label: '新文片掉落(廢除)', type: 'textarea', grid: 1, group: '文片掉落' }
         ]
     },
     map_resources: {
@@ -498,6 +498,25 @@ export const TABLE_CONFIGS = {
             { id: 'drop_combo_old', label: '舊文片', type: 'textarea', grid: 1, group: '掉落' },
             { id: 'drop_combo_new', label: '新文片', type: 'textarea', grid: 1, group: '掉落' },
             { id: 'drop_other', label: '其他', type: 'textarea', grid: 1, group: '掉落' },
+        ]
+    },
+    random_quest: {
+        title: '隨機任務',
+        tableName: 'random_quest',
+        tableCols: ['任務名稱', '地點', '排序', '操作'],
+        displayFields: ['quest_name', 'location', 'sort_id'],
+        fields: [
+            { id: 'quest_name', label: '任務名稱', type: 'text', required: true, grid: 1 , group: '基本資料'},
+            { id: 'sort_id', label: '排序', type: 'text', required: true, grid: 1 , group: '基本資料'},
+            { id: 'quest_type', label: '任務種類', type: 'select',options: ['一般任務', '稀有任務', '菁英任務', ''], grid: 1 , group: '基本資料'},
+            { id: 'quest_lv', label: '任務等級', type: 'text', grid: 1 , group: '基本資料'},
+            { id: 'location', label: '地點', type: 'text', grid: 1 , group: '基本資料'},
+            { id: 'target_monster', label: '任務怪物', type: 'text', grid: 1 , group: '基本資料'},
+            { id: 'collect_item', label: '掉落物品', type: 'text', grid: 1,  group: '基本資料'},
+            { id: 'exp', label: '經驗', type: 'text', grid: 1, group: '獎勵' },
+            { id: 'rewards', label: '道具', type: 'textarea', grid: 1, group: '獎勵' },
+            { id: 'map_id', label: '對應地圖(完全對照)', type: 'textarea', grid: 1, group: '地圖導航' },
+            { id: 'zone_name', label: '區域名稱(完全對照)', type: 'textarea', grid: 1, group: '地圖導航' },
         ]
     },
 };
