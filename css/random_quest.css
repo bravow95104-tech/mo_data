@@ -69,16 +69,6 @@
         color: var(--text-main);
       }
 
-      /* 隨機任務專屬紫色流光標籤 */
-      .quest-type-badge {
-        background: linear-gradient(135deg, #a855f7, #7c3aed);
-        color: #fff;
-        font-size: 11px;
-        padding: 2px 8px;
-        border-radius: 6px;
-        font-weight: bold;
-      }
-
       .quest-lv-tag {
         color: var(--highlight-yellow);
         font-weight: bold;
@@ -354,3 +344,21 @@ body.light-mode .map-location-btn,
   color: #ffffff !important;
   box-shadow: 0 2px 6px rgba(14, 165, 233, 0.2);
 }
+
+/* 任務標籤顏色階級 */
+.quest-type-tag {
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+/* 一般任務：白/灰 */
+.tag-common { background: rgba(255, 255, 255, 0.1); color: #e5e7eb; border: 1px solid rgba(255, 255, 255, 0.2); }
+
+/* 稀有任務：藍 */
+.tag-rare { background: rgba(59, 130, 246, 0.2); color: #60a5fa; border: 1px solid rgba(59, 130, 246, 0.4); }
+
+/* 菁英任務：紫/橘 */
+.tag-elite { background: rgba(168, 85, 247, 0.2); color: #c084fc; border: 1px solid rgba(168, 85, 247, 0.4); }
