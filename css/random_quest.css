@@ -365,3 +365,27 @@ body.light-mode .map-location-btn,
 
 /* 菁英任務：紫/橘 */
 .tag-elite { background: rgba(168, 85, 247, 0.2); color: #c084fc; border: 1px solid rgba(168, 85, 247, 0.4); }
+
+/* 標題行容器 */
+.quest-title-row {
+    display: flex;
+    align-items: center; /* 垂直居中 */
+    gap: 10px;
+}
+
+/* 道具圖片 40px */
+.quest-type-icon {
+    width: 40px !important;
+    height: 40px !important;
+    object-fit: contain;
+    border-radius: 4px; /* 加個圓角更像遊戲 UI */
+}
+
+/* 綠色分隔線 */
+.vertical-divider {
+    width: 2px;
+    height: 28px;
+    background-color: #94cfbc; /* 綠色 */
+    margin: 0 4px;
+    border-radius: 2px;
+}
