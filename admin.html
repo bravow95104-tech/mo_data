@@ -942,83 +942,83 @@ window.openEditModal = async (id) => {
     });
 
     document.getElementById('editForm').onsubmit = async (e) => {
-        e.preventDefault();
-        if (isSubmitting) return; // 防止重複點擊
-        if (!await verifySessionBeforeAction()) return;
-        
-        const submitBtn = document.getElementById('submitBtn');
-        const btnText = document.getElementById('btnText');
-        const id = document.getElementById('edit-id').value;
-        const updates = {};
-        const config = TABLE_CONFIGS[currentTable];
-        
-        config.fields.forEach(f => {
-    const el = document.getElementById('edit-' + f.id);
-    if (!el) return;
+    e.preventDefault();
+    if (isSubmitting) return;
+    if (!await verifySessionBeforeAction()) return;
     
-    // 🚀 核心安全防護：如果是 points 欄位，特殊處理 JSON 解析
-    if (f.id === 'points') {
-        try {
-            // 把文字框的 "[[100,100],[200,200]]" 轉回真正的 JS 二維陣列物件
-            updates[f.id] = JSON.parse(el.value.trim() || '[]');
-        } catch (e) {
-            alert('❌ 點位格式輸入錯誤！\n請確保欄位內容符合標準 JSON 陣列格式。\n範例：[[100,100],[200,150]]');
-            throw e; // 阻斷提交流程，防止將錯誤格式存入雲端
-        }
-    } else {
-        // 🔒 其他所有欄位完美維持你原本的舊邏輯，安全度 100%
-        let val = '';
-        if (f.type === 'checkbox') {
-            const checked = Array.from(el.querySelectorAll('input[type="checkbox"]:checked')).map(cb => cb.value);
-            val = checked.join('、');
-        } else {
-            val = el.value;
-        }
-        updates[f.id] = f.type === 'number' ? parseInt(val || 0) : val;
-    }
-});
-
-        try {
-            isSubmitting = true;
-            submitBtn.disabled = true;
-            btnText.innerText = '正在處理資料...';
-
-            // 🚀 執行自動排序推擠邏輯
-            const targetSortId = updates.sort_id;
-            const targetSortIdNum = parseInt(updates.sort_id);
-const needsPush = allData.some(d => parseInt(d.sort_id) === targetSortIdNum && d.id !== id)
-
-            if (needsPush) {
-                const toPush = allData
-                    .filter(d => d.sort_id >= targetSortId && d.id !== id)
-                    .map(d => ({ ...d, sort_id: (parseInt(d.sort_id) || 0) + 1 }));
-                
-                if (toPush.length > 0) {
-                    btnText.innerText = `正在推擠 ${toPush.length} 筆資料排序...`;
-                    // 使用 upsert 進行批次更新
-                    const { error: pushError } = await supabase.from(config.tableName).upsert(toPush);
-                    if (pushError) throw new Error('排序推擠失敗: ' + pushError.message);
-                }
+    const submitBtn = document.getElementById('submitBtn');
+    const btnText = document.getElementById('btnText');
+    const id = document.getElementById('edit-id').value;
+    const config = TABLE_CONFIGS[currentTable];
+    const updates = {};
+    
+    // 1. 整理表單資料
+    config.fields.forEach(f => {
+        const el = document.getElementById('edit-' + f.id);
+        if (!el) return;
+        
+        if (f.id === 'points') {
+            try {
+                updates[f.id] = JSON.parse(el.value.trim() || '[]');
+            } catch (e) {
+                alert('❌ 點位格式輸入錯誤！');
+                throw e;
             }
-
-            btnText.innerText = '正在儲存主資料...';
-            let res = id ? 
-                await supabase.from(config.tableName).update(updates).eq('id', id) : 
-                await supabase.from(config.tableName).insert([updates]);
-
-            if (res.error) throw res.error;
-
-            alert('✅ 成功儲存！排序已自動調整。');
-            closeModal(true); // 🚀 儲存成功後「強制關閉」不跳警告
-            loadTableData();
-        } catch (err) {
-            alert('❌ 失敗: ' + err.message);
-        } finally {
-            isSubmitting = false;
-            submitBtn.disabled = false;
-            btnText.innerText = '儲存資料至雲端';
+        } else {
+            let val = (f.type === 'checkbox') ? 
+                      Array.from(el.querySelectorAll('input[type="checkbox"]:checked')).map(cb => cb.value).join('、') : 
+                      el.value;
+            updates[f.id] = (f.type === 'number') ? parseInt(val || 0) : val;
         }
-    };
+    });
+
+    try {
+        isSubmitting = true;
+        submitBtn.disabled = true;
+        btnText.innerText = '正在處理資料...';
+
+        // 2. 🚀 【排序推擠邏輯】必須放在儲存主資料之前
+        const targetSortId = parseInt(updates.sort_id) || 0;
+        
+        // 檢查是否有撞號 (排除自己)
+        const needsPush = allData.some(d => parseInt(d.sort_id) === targetSortId && String(d.id) !== String(id));
+
+        if (needsPush) {
+            // 找出所有需要往後推的資料
+            const toPush = allData
+                .filter(d => parseInt(d.sort_id) >= targetSortId && String(d.id) !== String(id))
+                .map(d => ({ 
+                    ...d, 
+                    sort_id: parseInt(d.sort_id) + 1 
+                }));
+            
+            if (toPush.length > 0) {
+                btnText.innerText = `正在推擠 ${toPush.length} 筆資料...`;
+                // 批次更新這些被推擠的資料
+                const { error: pushError } = await supabase.from(config.tableName).upsert(toPush);
+                if (pushError) throw new Error('排序推擠失敗: ' + pushError.message);
+            }
+        }
+
+        // 3. 儲存主資料
+        btnText.innerText = '正在儲存主資料...';
+        let res = id ? 
+            await supabase.from(config.tableName).update(updates).eq('id', id) : 
+            await supabase.from(config.tableName).insert([updates]);
+
+        if (res.error) throw res.error;
+
+        alert('✅ 成功儲存！排序已自動調整。');
+        closeModal(true); 
+        loadTableData();
+    } catch (err) {
+        alert('❌ 失敗: ' + err.message);
+    } finally {
+        isSubmitting = false;
+        submitBtn.disabled = false;
+        btnText.innerText = '儲存資料至雲端';
+    }
+};
 
     document.getElementById('globalSearch').oninput = (e) => {
         const kw = e.target.value.toLowerCase();
