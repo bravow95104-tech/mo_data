@@ -117,6 +117,14 @@ function initSearchInput() {
   }
 }
 
+function getTagClass(type) {
+    if (!type) return 'tag-common';
+    if (type.includes('一般')) return 'tag-common';
+    if (type.includes('稀有')) return 'tag-rare';
+    if (type.includes('菁英')) return 'tag-elite';
+    return 'tag-common';
+}
+
 // ─── 優化點：重整內容排版，使標籤與冒號貼合、寬度彈性不跳行 ───
 function renderQuestCards() {
   const container = document.getElementById("starContainer");
@@ -144,12 +152,18 @@ function renderQuestCards() {
   }
 
   container.innerHTML = filteredData.map(q => {
+    // 1. 準備好所有變數 (先處理邏輯)
     const rewardArray = q.rewards ? q.rewards.split(/[,]/) : [];
     const rewardTagsHTML = rewardArray.map(item => 
-      item.trim() ? `<span class="reward-item-tag">${item.trim()}</span>` : ''
+        item.trim() ? `<span class="reward-item-tag">${item.trim()}</span>` : ''
     ).join('');
 
-    const iconPath = q.collect_item ? `assets/items/${q.collect_item}.png` : 'assets/items/default.png';
+    const iconPath = q.collect_item 
+        ? `/mo_data/pic/random_quest/${encodeURIComponent(q.collect_item)}.png` 
+        : '/mo_data/pic/random_quest/default.png';
+
+    const typeClass = getTagClass(q.quest_type);
+    
     return `
       <div class="random-quest-card">
         <div class="quest-card-header" onclick="toggleQuestCard(this)">
@@ -157,9 +171,10 @@ function renderQuestCards() {
             <div class="quest-title-row">
 
             <img src="${iconPath}" 
-               class="quest-type-icon" 
-               onerror="this.src='assets/items/default.png'" 
-               alt="${q.collect_item}">
+                   class="quest-type-icon" 
+                   loading="lazy" 
+                   onerror="this.onerror=null; this.src='/mo_data/pic/random_quest/default.png';" 
+                   alt="${q.collect_item || 'item'}">
 
               <span class="quest-type-tag ${getTagClass(q.quest_type)}">${q.quest_type || '隨機'}</span>
               <h3 class="quest-title">${q.quest_name}</h3>
@@ -267,11 +282,3 @@ window.handleMapLocation = function(button) {
   }
   
 };
-// 確保它在檔案中是獨立存在的函式，不要放在別的函式內
-function getTagClass(type) {
-    if (!type) return 'tag-common';
-    if (type.includes('一般')) return 'tag-common';
-    if (type.includes('稀有')) return 'tag-rare';
-    if (type.includes('菁英')) return 'tag-elite';
-    return 'tag-common'; 
-}
