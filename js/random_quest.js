@@ -154,6 +154,12 @@ function renderQuestCards() {
         <div class="quest-card-header" onclick="toggleQuestCard(this)">
           <div class="quest-main-info">
             <div class="quest-title-row">
+            
+            <img src="${iconPath}" 
+               class="quest-type-icon" 
+               onerror="this.src='assets/items/default.png'" 
+               alt="${q.collect_item}">
+
               <span class="quest-type-tag ${getTagClass(q.quest_type)}">${q.quest_type || '隨機'}</span>
               <h3 class="quest-title">${q.quest_name}</h3>
               <span class="quest-lv-tag">${q.quest_lv ? 'Lv.' + q.quest_lv : ''}</span>
