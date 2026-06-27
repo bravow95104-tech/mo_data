@@ -197,18 +197,12 @@
         font-weight: bold;
       }
 
-      /*.reward-items {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 6px;
-      }*/
-
       .reward-item-tag {
         background: var(--glass-bg);
         border: 1px solid var(--glass-border);
         padding: 4px 10px;
         border-radius: 6px;
-        font-size: 12px;
+        font-size: 14px;
         color: var(--text-main);
       }
 
