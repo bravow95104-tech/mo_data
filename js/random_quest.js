@@ -161,9 +161,7 @@ function renderQuestCards() {
               
               <span class="vertical-divider"></span>
 <div id="${uniqueId}" class="quest-icon-container"></div>
-                   src="/mo_data/pic/random_quest/default.png" 
-                   class="quest-type-icon" 
-                   alt="${q.collect_item || 'item'}">
+                  
             </div>
             <div class="quest-sub-row">
               <span><i class="fa-solid fa-map-location-dot"></i> 地點：${q.location || '-'}</span>
