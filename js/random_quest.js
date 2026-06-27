@@ -259,3 +259,14 @@ window.handleMapLocation = function(button) {
     window.location.href = `/mo_data/map/detailed_map.html?mapId=${mapId}&zone=${encodeURIComponent(zoneName)}`;
   }
 };
+// 在產生任務小卡片的 HTML 渲染邏輯中：
+function getTagClass(type) {
+    if (type.includes('一般')) return 'tag-common';
+    if (type.includes('稀有')) return 'tag-rare';
+    if (type.includes('菁英')) return 'tag-elite';
+    return 'tag-common'; // 預設
+}
+
+// 渲染時使用：
+const typeClass = getTagClass(quest.quest_type);
+const tagHtml = `<span class="quest-type-tag ${typeClass}">${quest.quest_type}</span>`;
