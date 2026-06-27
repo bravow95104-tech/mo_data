@@ -354,9 +354,12 @@ body.light-mode .map-location-btn,
     text-transform: uppercase;
 }
 
-/* 一般任務：白/灰 */
-.tag-common { background: rgba(255, 255, 255, 0.1); color: #e5e7eb; border: 1px solid rgba(255, 255, 255, 0.2); }
-
+/* 一般任務：改為舒適的綠色系 */
+.tag-common { 
+  background: rgba(16, 185, 129, 0.15) !important; 
+  color: #059669 !important; 
+  border: 1px solid rgba(16, 185, 129, 0.3) !important; 
+}
 /* 稀有任務：藍 */
 .tag-rare { background: rgba(59, 130, 246, 0.2); color: #60a5fa; border: 1px solid rgba(59, 130, 246, 0.4); }
 
