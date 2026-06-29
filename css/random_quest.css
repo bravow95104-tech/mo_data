@@ -395,6 +395,5 @@ body.light-mode .map-location-btn,
     display: flex;
     justify-content: center;  /* 水平居中 */
     align-items: center;      /* 垂直居中 */
-    min-height: 150px;        /* 給予一個基礎高度，轉圈圈與文字在畫面中央才好看 */
     width: 100%;
 }
