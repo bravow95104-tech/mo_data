@@ -390,10 +390,3 @@ body.light-mode .map-location-btn,
     border-radius: 2px;
 }
 
-/* 讓載入中提示區塊完全居中 */
-#starContainer {
-    display: flex;
-    justify-content: center;  /* 水平居中 */
-    align-items: center;      /* 垂直居中 */
-    width: 100%;
-}
