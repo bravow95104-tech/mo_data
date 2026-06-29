@@ -389,3 +389,20 @@ body.light-mode .map-location-btn,
     margin: 0 4px;
     border-radius: 2px;
 }
+
+/* 讓載入中提示區塊完全居中 */
+#starContainer {
+    display: flex;
+    justify-content: center;  /* 水平居中 */
+    align-items: center;      /* 垂直居中 */
+    min-height: 150px;        /* 給予一個基礎高度，轉圈圈與文字在畫面中央才好看 */
+    width: 100%;
+}
+
+.no-results {
+    display: inline-flex;
+    align-items: center;      /* 確保 FontAwesome 圖示跟文字在同一條水平線上 */
+    gap: 10px;                /* 圖示與文字之間的舒適間距 */
+    font-size: 16px;          /* 可依需求調整字體大小 */
+    color: var(--text-muted); /* 沿用你原本定義的文字顏色 */
+}
