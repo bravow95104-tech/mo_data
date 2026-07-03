@@ -2,6 +2,7 @@
 import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm'
 import { SUPABASE_URL, SUPABASE_KEY } from './supabase-config.js'
 
+// 初始化你的 supabase 客戶端
 const supabase = createClient(SUPABASE_URL, SUPABASE_KEY)
 
 document.addEventListener("DOMContentLoaded", async () => {
@@ -43,7 +44,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     try {
         // 從 Supabase 撈取已啟用的系統清單
-        let { data: gameSystems, error } = await _supabase
+        let { data: gameSystems, error } = await supabase
             .from('game_systems')
             .select('*')
             .eq('is_active', true)
