@@ -18,24 +18,7 @@
             <div class="sidebar">
                 <h2>遊戲系統</h2>
                 <ul class="sidebar-list" id="system-menu">
-                    <li class="active" data-file="over_soul.html">Over Soul合體技</li>
-                    <li data-file="refining_transfer.html">天工造化</li>
-                    <li data-file="newride.html">「四象」譜系竹馬</li>
-                    <li data-file="exp_up.html">經驗祝福卡</li>
-                    <li data-file="tower.html">七寶琉璃塔</li>
-                    <li data-file="wolfkinglantern.html">狼王轉燈</li>
-                    <li data-file="pass.html">通行證</li>
-                    <li data-file="family_dungeon.html">家族副本</li>
-                    <li data-file="renew_hero.html">生變英雄</li>
-                    <li data-file="spirit_card.html">強化靈具卡</li>
-                    <li data-file="equipment_card.html">強化裝備卡</li>
-                    <li data-file="heroholder.html">英雄卡包</li>
-                    <!-- <li data-file="seed.html">蟠桃種子</li> -->
-                    <li data-file="egg.html">轉蛋系統</li>
-                    <!-- <li data-file="city.html">城寨攻城</li> -->
-                    <li data-file="marry.html">結婚系統</li>
-                    <li data-file="family.html">家族系統</li>
-                    <li data-file="command.html">情感指令</li>
+                    
                 </ul>
             </div>
         </aside>
@@ -52,71 +35,6 @@
 
     <div id="footer-container"></div>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const sidebar = document.getElementById('system-sidebar');
-            const sidebarTitle = sidebar.querySelector('h2');
-            const menuItems = document.querySelectorAll('#system-menu li');
-            const contentDisplay = document.getElementById('dynamic-content');
-
-            // 手機版：點擊標題切換展開/收合
-            sidebarTitle.addEventListener('click', () => {
-                if (window.innerWidth <= 768) {
-                    sidebar.classList.toggle('open');
-                }
-            });
-
-            // 載入內容的函式
-            function loadSystemPage(fileName, titleText) {
-                // 更新標題顯示 (手機版)
-                if (window.innerWidth <= 768 && titleText) {
-                    sidebarTitle.innerHTML = `系統：${titleText}`;
-                } else {
-                    sidebarTitle.innerHTML = "遊戲系統";
-                }
-
-                fetch(`/mo_data/sys/${fileName}`)
-                    .then(response => {
-                        if (!response.ok) throw new Error('找不到內容檔案');
-                        return response.text();
-                    })
-                    .then(html => {
-                        contentDisplay.innerHTML = html;
-                        // 捲動回內容頂部
-                        if (window.innerWidth <= 768) {
-                            window.scrollTo({ top: sidebar.offsetTop, behavior: 'smooth' });
-                        }
-                    })
-                    .catch(error => {
-                        contentDisplay.innerHTML = `<h3 class="search-tip">錯誤：無法讀取內容 (${fileName})</h3>`;
-                    });
-            }
-
-            // 選單點擊事件
-            menuItems.forEach(item => {
-                item.addEventListener('click', () => {
-                    const title = item.innerText;
-                    const file = item.getAttribute('data-file');
-
-                    // 1. 切換 active 樣式
-                    menuItems.forEach(i => i.classList.remove('active'));
-                    item.classList.add('active');
-
-                    // 2. 執行載入
-                    loadSystemPage(file, title);
-                    document.title = `${title} | MoData`;
-
-                    // 3. 手機版點選後自動收合
-                    if (window.innerWidth <= 768) {
-                        sidebar.classList.remove('open');
-                    }
-                });
-            });
-
-            // 初始載入第一項內容
-            const firstItem = menuItems[0];
-            loadSystemPage(firstItem.getAttribute('data-file'), firstItem.innerText);
-        });
-    </script>
+    <script src="/mo_data/js/system.js"></script>
 </body>
 </html>
