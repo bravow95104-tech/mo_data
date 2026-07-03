@@ -521,7 +521,7 @@ export const TABLE_CONFIGS = {
         ]
     },
     game_systems: {
-        title: '系統清單',
+        title: '遊戲系統清單管理',
         tableName: 'game_systems',
         tableCols: ['順序', '名稱', '排序', '操作'],
         displayFields: ['id', 'title', 'file_name'],
