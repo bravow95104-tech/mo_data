@@ -1,0 +1,15 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "lazy",
+            "type": "shell",
+            "command": "git add . && git commit -m '網頁與圖片快速更新' && git push origin main",
+            "problemMatcher": [],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        }
+    ]
+}
