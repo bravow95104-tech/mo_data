@@ -1,14 +1,8 @@
 // /mo_data/js/system.js
+import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm'
+import { SUPABASE_URL, SUPABASE_KEY } from './supabase-config.js'
 
-// 1. 初始化 Supabase 客戶端 (請將底下的 '你的_SUPABASE_URL' 與 '你的_ANON_KEY' 換成你專案實際的資料)
-const _supabaseUrl = '你的_SUPABASE_URL'; 
-const _supabaseAnonKey = '你的_ANON_KEY';
-
-// 如果你之前在其他地方已經建立了全域的 supabase 實例，可以直接指向它：
-// const _supabase = window.supabaseClient; (舉例)
-// 否則，請在這邊直接建立實例：
-const _supabase = supabase.createClient(_supabaseUrl, _supabaseAnonKey);
-
+const supabase = createClient(SUPABASE_URL, SUPABASE_KEY)
 
 document.addEventListener("DOMContentLoaded", async () => {
     const sidebar = document.getElementById('system-sidebar');
