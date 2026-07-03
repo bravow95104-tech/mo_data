@@ -11,8 +11,9 @@ document.addEventListener("DOMContentLoaded", async () => {
     const menuContainer = document.getElementById('system-menu');
     const contentDisplay = document.getElementById('dynamic-content');
     
-    // 取得搜尋輸入框節點
+    // 取得搜尋輸入框與清除按鈕節點
     const searchInput = document.getElementById('system-search-input');
+    const clearBtn = document.getElementById('search-clear-btn');
 
     // 手機版：點擊標題切換展開/收合
     sidebarTitle.addEventListener('click', () => {
@@ -43,6 +44,19 @@ document.addEventListener("DOMContentLoaded", async () => {
             .catch(error => {
                 contentDisplay.innerHTML = `<h3 class="search-tip">錯誤：無法讀取內容 (${fileName})</h3>`;
             });
+    }
+
+    // 過濾選單項目的重用函式
+    function filterMenuItems(keyword) {
+        const listItems = menuContainer.querySelectorAll('li');
+        listItems.forEach(li => {
+            const text = li.innerText.toLowerCase();
+            if (text.includes(keyword)) {
+                li.style.display = ''; 
+            } else {
+                li.style.display = 'none'; 
+            }
+        });
     }
 
     try {
@@ -88,21 +102,30 @@ document.addEventListener("DOMContentLoaded", async () => {
         loadSystemPage(gameSystems[0].file_name, gameSystems[0].title);
 
         // ==========================================
-        // 🌟 新增：前端即時搜尋過濾邏輯
+        // 🌟 新增：包含清除按鈕的即時搜尋過濾邏輯
         // ==========================================
-        if (searchInput) {
+        if (searchInput && clearBtn) {
+            // 監聽輸入框變化
             searchInput.addEventListener('input', (e) => {
-                const keyword = e.target.value.toLowerCase().trim(); // 取得小寫且去空白的關鍵字
-                const listItems = menuContainer.querySelectorAll('li');
+                const keyword = e.target.value.toLowerCase().trim();
+                
+                // 如果有輸入文字就顯示 X，沒有就隱藏
+                if (keyword.length > 0) {
+                    clearBtn.style.display = 'block';
+                } else {
+                    clearBtn.style.display = 'none';
+                }
 
-                listItems.forEach(li => {
-                    const text = li.innerText.toLowerCase();
-                    if (text.includes(keyword)) {
-                        li.style.display = ''; // 符合關鍵字則顯示 (恢復預設 display)
-                    } else {
-                        li.style.display = 'none'; // 不符合則隱藏
-                    }
-                });
+                // 執行過濾
+                filterMenuItems(keyword);
+            });
+
+            // 監聽 X 按鈕點擊事件
+            clearBtn.addEventListener('click', () => {
+                searchInput.value = '';        // 清空輸入框文字
+                clearBtn.style.display = 'none'; // 隱藏 X 按鈕
+                filterMenuItems('');           // 恢復還原所有選單項目
+                searchInput.focus();           // 讓游標自動點回輸入框
             });
         }
 
