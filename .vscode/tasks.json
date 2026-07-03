@@ -4,12 +4,18 @@
         {
             "label": "lazy",
             "type": "shell",
-            "command": "git add . && git commit -m '網頁與圖片快速更新' && git push origin main",
+            "command": "git add . && git commit -m \"網頁與圖片快速更新\" && git push origin main",
             "problemMatcher": [],
             "group": {
                 "kind": "build",
                 "isDefault": true
             }
+        },
+        {
+            "label": "強迫 GitHub 重新部署",
+            "type": "shell",
+            "command": "git commit --allow-empty -m \"📡 伺服器抽風，強迫重新部署\" && git push origin main",
+            "problemMatcher": []
         }
     ]
 }

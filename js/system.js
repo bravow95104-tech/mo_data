@@ -10,6 +10,9 @@ document.addEventListener("DOMContentLoaded", async () => {
     const sidebarTitle = sidebar.querySelector('h2');
     const menuContainer = document.getElementById('system-menu');
     const contentDisplay = document.getElementById('dynamic-content');
+    
+    // 取得搜尋輸入框節點
+    const searchInput = document.getElementById('system-search-input');
 
     // 手機版：點擊標題切換展開/收合
     sidebarTitle.addEventListener('click', () => {
@@ -81,10 +84,30 @@ document.addEventListener("DOMContentLoaded", async () => {
             menuContainer.appendChild(li);
         });
 
+        // 初始載入第一項內容
         loadSystemPage(gameSystems[0].file_name, gameSystems[0].title);
+
+        // ==========================================
+        // 🌟 新增：前端即時搜尋過濾邏輯
+        // ==========================================
+        if (searchInput) {
+            searchInput.addEventListener('input', (e) => {
+                const keyword = e.target.value.toLowerCase().trim(); // 取得小寫且去空白的關鍵字
+                const listItems = menuContainer.querySelectorAll('li');
+
+                listItems.forEach(li => {
+                    const text = li.innerText.toLowerCase();
+                    if (text.includes(keyword)) {
+                        li.style.display = ''; // 符合關鍵字則顯示 (恢復預設 display)
+                    } else {
+                        li.style.display = 'none'; // 不符合則隱藏
+                    }
+                });
+            });
+        }
 
     } catch (err) {
         console.error('資料載入失敗:', err);
-        menuContainer.innerHTML = `<li style="color: red;">選單載入錯誤1</li>`;
+        menuContainer.innerHTML = `<li style="color: red;">選單載入錯誤</li>`;
     }
 });
