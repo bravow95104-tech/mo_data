@@ -17,14 +17,21 @@
         <aside id="system-sidebar" class="system-sidebar">
             <div class="sidebar">
                 <h2>遊戲系統</h2>
-                <!-- 新增搜尋框區塊 -->
-        <div class="search-box-container" style="padding: 10px 0;">
+        <!-- 修改後的搜尋框區塊（加入清除按鈕） -->
+        <div class="search-box-container" style="padding: 10px 0; position: relative;">
             <input 
                 type="text" 
                 id="system-search-input" 
                 placeholder="搜尋系統名稱..." 
-                style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;"
+                style="width: 100%; padding: 8px 30px 8px 8px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;"
             />
+            <!-- 圓圈 X 按鈕 (預設隱藏 display: none) -->
+            <span 
+                id="search-clear-btn" 
+                style="position: absolute; right: 8px; top: 50%; transform: translateY(-50%); cursor: pointer; color: #999; font-size: 16px; display: none; user-select: none;"
+            >
+                &#x2716;
+            </span>
         </div>
                 <ul class="sidebar-list" id="system-menu">
                     
