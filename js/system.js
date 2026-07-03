@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             .from('game_systems')
             .select('*')
             .eq('is_active', true)
-            .order('sort_order', { ascending: true });
+            .order('sort_order', { ascending: false });
 
         if (error) throw error;
         
