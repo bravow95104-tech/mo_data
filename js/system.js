@@ -1,13 +1,20 @@
 // /mo_data/js/system.js
 
+// 1. 初始化 Supabase 客戶端 (請將底下的 '你的_SUPABASE_URL' 與 '你的_ANON_KEY' 換成你專案實際的資料)
+const _supabaseUrl = '你的_SUPABASE_URL'; 
+const _supabaseAnonKey = '你的_ANON_KEY';
+
+// 如果你之前在其他地方已經建立了全域的 supabase 實例，可以直接指向它：
+// const _supabase = window.supabaseClient; (舉例)
+// 否則，請在這邊直接建立實例：
+const _supabase = supabase.createClient(_supabaseUrl, _supabaseAnonKey);
+
+
 document.addEventListener("DOMContentLoaded", async () => {
     const sidebar = document.getElementById('system-sidebar');
     const sidebarTitle = sidebar.querySelector('h2');
-    const menuContainer = document.getElementById('system-menu'); // 改拿外層 UL
+    const menuContainer = document.getElementById('system-menu');
     const contentDisplay = document.getElementById('dynamic-content');
-
-    // 請確保這裡的 _supabase 實例已經在全域或此處正確初始化
-    // 例如：const _supabase = supabase.createClient('URL', 'KEY');
 
     // 手機版：點擊標題切換展開/收合
     sidebarTitle.addEventListener('click', () => {
@@ -18,7 +25,6 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     // 載入內容的函式
     function loadSystemPage(fileName, titleText) {
-        // 更新標題顯示 (手機版)
         if (window.innerWidth <= 768 && titleText) {
             sidebarTitle.innerHTML = `系統：${titleText}`;
         } else {
@@ -32,7 +38,6 @@ document.addEventListener("DOMContentLoaded", async () => {
             })
             .then(html => {
                 contentDisplay.innerHTML = html;
-                // 捲動回內容頂部
                 if (window.innerWidth <= 768) {
                     window.scrollTo({ top: sidebar.offsetTop, behavior: 'smooth' });
                 }
@@ -43,7 +48,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 
     try {
-        // 從 Supabase 撈取已啟用的系統清單，並依排序權重升冪排列
+        // 從 Supabase 撈取已啟用的系統清單
         let { data: gameSystems, error } = await _supabase
             .from('game_systems')
             .select('*')
@@ -57,29 +62,22 @@ document.addEventListener("DOMContentLoaded", async () => {
             return;
         }
 
-        // 清空原 HTML 內殘留的死資料（保險起見）
         menuContainer.innerHTML = '';
 
-        // 動態產生選單 <li> 並綁定點擊事件
         gameSystems.forEach((item, index) => {
             const li = document.createElement('li');
             li.setAttribute('data-file', item.file_name);
             li.innerText = item.title;
             
-            // 預設高亮第一個項目
             if (index === 0) li.classList.add('active'); 
 
-            // 選單點擊事件
             li.addEventListener('click', () => {
-                // 1. 切換 active 樣式 (向父層選單內的 li 查尋來切換)
                 menuContainer.querySelectorAll('li').forEach(i => i.classList.remove('active'));
                 li.classList.add('active');
 
-                // 2. 執行載入
                 loadSystemPage(item.file_name, item.title);
                 document.title = `${item.title} | MoData`;
 
-                // 3. 手機版點選後自動收合
                 if (window.innerWidth <= 768) {
                     sidebar.classList.remove('open');
                 }
@@ -88,7 +86,6 @@ document.addEventListener("DOMContentLoaded", async () => {
             menuContainer.appendChild(li);
         });
 
-        // 初始載入第一項內容
         loadSystemPage(gameSystems[0].file_name, gameSystems[0].title);
 
     } catch (err) {
