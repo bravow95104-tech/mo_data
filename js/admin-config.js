@@ -523,13 +523,13 @@ export const TABLE_CONFIGS = {
     game_systems: {
         title: '遊戲系統清單管理',
         tableName: 'game_systems',
-        tableCols: ['順序', '名稱', '排序', '操作'],
-        displayFields: ['id', 'title', 'file_name'],
+        tableCols: ['順序', '名稱', '檔案名稱', '操作'],
+        displayFields: ['sort_id', 'title', 'file_name'],
         fields: [
             { id: 'id', label: '順序', type: 'text', required: true, grid: 1 },
             { id: 'title', label: '名稱', type: 'text', required: true, grid: 1 },
             { id: 'file_name', label: '檔案名稱.HTML', type: 'text', grid: 1 },
-            { id: 'sort_order', label: '排序', type: 'text', grid: 1 },
+            { id: 'sort_id', label: '排序', type: 'text', grid: 1 },
         ]
     },
 };
