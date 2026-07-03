@@ -85,6 +85,6 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     } catch (err) {
         console.error('資料載入失敗:', err);
-        menuContainer.innerHTML = `<li style="color: red;">選單載入錯誤</li>`;
+        menuContainer.innerHTML = `<li style="color: red;">選單載入錯誤1</li>`;
     }
 });

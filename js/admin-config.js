@@ -528,7 +528,7 @@ export const TABLE_CONFIGS = {
         fields: [
             { id: 'id', label: '順序', type: 'text', required: true, grid: 1 },
             { id: 'title', label: '名稱', type: 'text', required: true, grid: 1 },
-            { id: 'file_name', label: '檔案名稱.HTML', type: 'text', grid: 1 },
+            { id: 'file_name', label: '檔案名稱HTML', type: 'text', grid: 1 },
             { id: 'sort_id', label: '排序', type: 'text', grid: 1 },
         ]
     },
