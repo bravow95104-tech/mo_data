@@ -180,6 +180,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         const td = document.createElement('td');
         if (field === 'card_id') td.classList.add('table-title-cell');
         const str = String(item[field] || "");
+        if (field === 'directions') td.classList.add('directions-cell');
         if (keyword && str.toLowerCase().includes(keyword)) {
           const escaped = keyword.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
           const regex = new RegExp(`(${escaped})`, "gi");
