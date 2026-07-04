@@ -102,7 +102,7 @@ export const TABLE_CONFIGS = {
             { id: 'check_use', label: '確認用', type: 'text', grid: 1 },
             { id: 'new_old', label: '新舊', type: 'select', options: ['','新專','舊專','馬卡'], grid: 1 },
             { id: 'card_id', label: '卡片ID', type: 'text', grid: 1 },
-            { id: 'card_property', label: '卡片屬性', type: 'select', options: ['力量','智慧','體質','敏捷','運氣','HP','MP',''], grid: 1 },
+            { id: 'card_property', label: '卡片屬性', type: 'select', options: ['力量','智慧','體質','敏捷','運氣','HP','MP','防禦力','閃避值',''], grid: 1 },
             { id: 'card_data', label: '卡片數據', type: 'text', grid: 1 },
             { id: 'card_lv', label: '卡片等級', type: 'text', grid: 1 },
             { id: 'card_class', label: '拜官', type: 'select', options: ['全職','武者','響馬','仙士','策士','工匠',''], grid: 1 },
