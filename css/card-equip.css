@@ -434,5 +434,4 @@ th.sorted-desc .arrow-down {
 /* 讓換行符號 \n 能在網頁上正常換行 */
 .directions-cell {
     white-space: pre-line;
-    text-align: left; /* 換行後通常靠左對齊比較好看 */
 }
