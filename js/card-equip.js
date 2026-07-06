@@ -298,16 +298,8 @@ function showDetailModal(item) {
   const prop = encodeFileName(item.card_property);
   
   const imageCandidates = [
-    `/mo_data/pic/card-equip/已上傳/${id}_${prop}.png`,
-    `/mo_data/pic/card-equip/已上傳/${id}.png`,
-    `/mo_data/pic/card-equip/已上傳/${id}卡_${prop}.png`,
-    `/mo_data/pic/card-equip/已上傳/${id}卡.png`,
-    `/mo_data/pic/card-equip/已上傳/${id}_${prop}.jpg`,
-    `/mo_data/pic/card-equip/已上傳/${id}.jpg`,
     `/mo_data/pic/card-equip/${id}_${prop}.png`,
     `/mo_data/pic/card-equip/${id}.png`,
-    `/mo_data/pic/card-equip/${id}_${prop}.jpg`,
-    `/mo_data/pic/card-equip/${id}.jpg`,
   ];
 
   let index = 0;
