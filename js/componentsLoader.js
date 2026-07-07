@@ -276,17 +276,25 @@ function injectHintButton(text, customSelector = null) {
     hintBtn.className = "hint-btn dynamic-hint";
     hintBtn.type = "button";
     hintBtn.setAttribute("aria-label", "提示說明");
+    
+    // 【重點修改 1】：這裡加上了 show，讓網頁一載入就預設打開！
     hintBtn.innerHTML = `
         <span class="hint-circle">!</span>
-        <div class="hint-tooltip" role="tooltip">${text}</div>
+        <div class="hint-tooltip show" role="tooltip">${text}</div>
     `;
 
-     //點擊觸發顯示/隱藏
+    const tooltip = hintBtn.querySelector(".hint-tooltip");
+
+    // 【重點修改 2】：點擊提示框「文字區域」時不要關閉，停止事件冒泡
+    tooltip.addEventListener("click", (e) => {
+        e.stopPropagation();
+    });
+
+    // 點擊「按鈕 (! 圖示)」時，觸發顯示 / 隱藏切換
     hintBtn.addEventListener("click", (e) => {
         e.stopPropagation();
-        const tooltip = hintBtn.querySelector(".hint-tooltip");
         
-        // 關閉其他開啟的提示
+        // 關閉網頁上其他有開啟的提示
         document.querySelectorAll(".hint-tooltip.show").forEach(t => {
             if (t !== tooltip) t.classList.remove("show");
         });
@@ -294,21 +302,15 @@ function injectHintButton(text, customSelector = null) {
         tooltip.classList.toggle("show");
     });
 
+    // 點擊網頁其他空白處時，自動關閉提示框
     document.addEventListener("click", () => {
-    // 這裡通常沒問題，但如果載入後立刻觸發，會導致提示框一出現就消失
-    // 如果需要的話，可以加一個延遲，或者確認是否需要此功能
-    const tooltip = hintBtn.querySelector(".hint-tooltip");
-    if (tooltip) tooltip.classList.remove("show");
-});
+        if (tooltip) tooltip.classList.remove("show");
+    });
 
-    // --- 新的佈局邏輯 ---
-    // 將目標元素設為 Flex 容器，讓內容在左、按鈕在右
+    // --- 佈局邏輯 ---
     target.classList.add("hint-target-wrapper");
-    
-    // 如果目標是 <hi> 或標題，我們把按鈕放進去（放在文字後面）
     target.appendChild(hintBtn);
     
-    // 確保父容器有定位
     if (window.getComputedStyle(target).position === "static") {
         target.style.position = "relative";
     }
