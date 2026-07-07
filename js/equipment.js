@@ -181,7 +181,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const img = document.createElement('img');
       img.className = 'card-icon';
       const basePath = `/mo_data/pic/equipment/${hero.item}`;
-      const extensions = ['.png', '.bmp', '.jpg'];
+      const extensions = ['.png'];
       let attempt = 0;
       img.src = basePath + extensions[attempt];
       img.onerror = () => {

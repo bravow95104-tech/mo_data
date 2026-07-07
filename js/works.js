@@ -160,7 +160,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
       if (hero.name) {
         const safeName = hero.name.replace(/[\\\/:*?"<>|]/g, '');
-        const extensions = ['.png', '.bmp', '.jpg'];
+        const extensions = ['.png'];
         let attempt = 0;
 
         const img = document.createElement('img');

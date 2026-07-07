@@ -176,7 +176,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (item.item) {
         const img = document.createElement('img');
         const basePath = `/mo_data/pic/weapons/${item.item}`;
-        const extensions = ['.png', '.bmp', '.jpg'];
+        const extensions = ['.png'];
         let attempt = 0;
         img.src = basePath + extensions[attempt];
         img.style.cssText = 'width:40px; height:40px; object-fit:contain; display:block; margin:0 auto; background:#f8f8f8; border-radius:4px; border:1px solid #eee;';

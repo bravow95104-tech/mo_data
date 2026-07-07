@@ -146,7 +146,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       if (hero.item) {
         const img = document.createElement('img');
         const basePath = `/mo_data/pic/medicine/${hero.item}`;
-        const extensions = ['.png', '.jpg', '.bmp'];
+        const extensions = ['.png'];
         let attempt = 0;
 
         const tryLoad = () => {

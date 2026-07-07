@@ -102,7 +102,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       if (hero.items) {
         const img = document.createElement('img');
         const itemName = String(hero.items).trim();
-        const extensions = ['.png', '.jpg', '.bmp'];
+        const extensions = ['.png'];
         let attempt = 0;
         
         const tryLoad = () => {
