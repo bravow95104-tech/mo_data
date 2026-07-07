@@ -156,7 +156,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
       const img = document.createElement('img');
       const basePath = `/mo_data/pic/beautiful/${hero.beauty_id}`;
-      const extensions = ['.png', '.jpg', '.bmp'];
+      const extensions = ['.png'];
       let attempt = 0;
 
       img.src = basePath + extensions[attempt];
@@ -235,7 +235,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
       const img = document.createElement('img');
       const basePath = `/mo_data/pic/beautiful/${hero.beauty_id}`;
-      const extensions = ['.png', '.jpg', '.bmp'];
+      const extensions = ['.png'];
       let attempt = 0;
       img.src = basePath + extensions[attempt];
       img.style.width = '40px';

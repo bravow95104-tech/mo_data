@@ -182,7 +182,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       cardHeader.style.borderBottom = '1px solid #eee';
 
       const img = document.createElement('img');
-      const extensions = ['.png', '.jpg', '.bmp'];
+      const extensions = ['.png'];
       let attempt = 0;
       const tryLoadImg = () => {
         img.src = `../pic/items/${encodeURIComponent(itemName)}${extensions[attempt]}`;

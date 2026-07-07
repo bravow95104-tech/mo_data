@@ -233,7 +233,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
       const img = document.createElement('img');
       const basePath = `../pic/medicine/${hero.item}`;
-      const extensions = ['.png', '.jpg', '.bmp'];
+      const extensions = ['.png'];
       let attempt = 0;
       const tryLoadImg = () => {
         img.src = basePath + extensions[attempt];

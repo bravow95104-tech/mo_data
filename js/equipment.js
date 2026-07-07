@@ -249,7 +249,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (hero.item) {
         const img = document.createElement('img');
         const basePath = `/mo_data/pic/equipment/${hero.item}`;
-        const extensions = ['.png', '.bmp', '.jpg'];
+        const extensions = ['.png'];
         let attempt = 0;
         img.src = basePath + extensions[attempt];
         img.style.cssText = 'width:40px; height:40px; object-fit:contain; display:block; margin:0 auto; background:#f9f9f9; border-radius:4px; border:1px solid #eee;';

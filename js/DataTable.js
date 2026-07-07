@@ -260,7 +260,7 @@ class DataTable {
 
     // === 圖片渲染助手 (含回退邏輯) ===
     renderImage(container, item) {
-        const { basePath, key, extensions = ['.png', '.bmp', '.jpg'] } = this.options.imageConfig;
+        const { basePath, key, extensions = ['.png'] } = this.options.imageConfig;
         const fileName = item[key];
         if (!fileName) {
             container.textContent = '—';
