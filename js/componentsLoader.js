@@ -281,7 +281,7 @@ function injectHintButton(text, customSelector = null) {
         <div class="hint-tooltip" role="tooltip">${text}</div>
     `;
 
-    // 點擊觸發顯示/隱藏
+     //點擊觸發顯示/隱藏
     hintBtn.addEventListener("click", (e) => {
         e.stopPropagation();
         const tooltip = hintBtn.querySelector(".hint-tooltip");
@@ -295,9 +295,11 @@ function injectHintButton(text, customSelector = null) {
     });
 
     document.addEventListener("click", () => {
-        const tooltip = hintBtn.querySelector(".hint-tooltip");
-        if (tooltip) tooltip.classList.remove("show");
-    });
+    // 這裡通常沒問題，但如果載入後立刻觸發，會導致提示框一出現就消失
+    // 如果需要的話，可以加一個延遲，或者確認是否需要此功能
+    const tooltip = hintBtn.querySelector(".hint-tooltip");
+    if (tooltip) tooltip.classList.remove("show");
+});
 
     // --- 新的佈局邏輯 ---
     // 將目標元素設為 Flex 容器，讓內容在左、按鈕在右

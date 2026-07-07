@@ -154,13 +154,17 @@
     white-space: pre-wrap !important;
     min-width: 250px !important;
     max-width: 350px !important;
-    display: block ;
+
     z-index: 9999 !important;
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6) !important;
     border: 1px solid var(--glass-border) !important;
     font-size: 0.95rem !important;
     line-height: 1.6 !important;
     text-align: left !important;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease;
+    display: block !important; /* 保持顯示但設為透明 */
 }
 
 .dynamic-hint .hint-tooltip.show {
