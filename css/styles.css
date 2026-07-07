@@ -161,13 +161,13 @@
     font-size: 0.95rem !important;
     line-height: 1.6 !important;
     text-align: left !important;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s ease;
-    display: block !important; /* 保持顯示但設為透明 */
+    
+    /* --- 修改重點：預設完全隱藏 (不要用 opacity: 0) --- */
+    display: none !important; 
 }
 
 .dynamic-hint .hint-tooltip.show {
+    /* --- 修改重點：加上 show 時顯示，並執行你的淡入動畫 --- */
     display: block !important;
     animation: fadeInHintLeft 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
 }
