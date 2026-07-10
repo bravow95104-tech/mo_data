@@ -19,8 +19,8 @@
     --bg-grid: rgba(255, 255, 255, 0.03);
 
     /* 導覽列與卡片 */
-    --nav-bg-1: rgba(10, 23, 43, 0.8); /* 調高一點，增加辨識度 */
-    --nav-bg-2: rgba(18, 61, 110, 0.8);
+    --nav-bg-1: rgba(10, 23, 43, 0.9); /* 調高一點，增加辨識度 */
+    --nav-bg-2: rgba(18, 61, 110, 0.9);
     --card-bg: rgba(255, 255, 255, 0.04);
     --highlight-yellow: #ffd86b;
 
@@ -64,8 +64,8 @@
     --bg-gradient-2: rgba(255, 255, 255, 0.8) !important;
     --bg-grid: rgba(0, 102, 204, 0.06) !important;
 
-    --nav-bg-1: rgba(255, 255, 255, 0.8) !important; /* 顯著回正，確保下拉選單易讀 */
-    --nav-bg-2: rgba(245, 247, 250, 0.8) !important;
+    --nav-bg-1: rgba(255, 255, 255, 0.9) !important; /* 顯著回正，確保下拉選單易讀 */
+    --nav-bg-2: rgba(245, 247, 250, 0.9) !important;
     --card-bg: rgba(255, 255, 255, 0.5) !important;
     --highlight-yellow: #c05621 !important;
 
