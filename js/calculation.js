@@ -194,7 +194,7 @@ document.addEventListener("DOMContentLoaded", () => {
           if (radio.value === "2x") multiplier = 2;
           else if (radio.value === "2.5x") multiplier = 2.5;
         }
-         equipTotal += math.floor(val * multiplier);
+        equipTotal += val * multiplier;
       });
       const transformedPoint = isTransformed ? 800 : 0;
       const transformedRemainingPoints = isTransformed ? 2520 : 1720;
