@@ -529,6 +529,7 @@ export const TABLE_CONFIGS = {
             { id: 'title', label: '名稱', type: 'text', required: true, grid: 1 },
             { id: 'file_name', label: '檔案名稱HTML', type: 'text', grid: 1 },
             { id: 'sort_id', label: '排序', type: 'text', grid: 1 },
+            { id: 'aliases', label: '關鍵字定義', type: 'text', grid: 2 },
         ]
     },
 };
