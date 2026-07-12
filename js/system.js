@@ -82,37 +82,32 @@ document.addEventListener("DOMContentLoaded", async () => {
         menuContainer.innerHTML = '';
 
         gameSystems.forEach((item, index) => {
-            const li = document.createElement('li');
-            li.setAttribute('data-file', item.file_name);
-            
-            // ==========================================
-            // 🛠️ 修正：將 Supabase 的 aliases 陣列轉成字串，藏進 data-aliases 屬性
-            // ==========================================
-            if (item.aliases && Array.isArray(item.aliases)) {
-                // 將陣列 ['琉璃塔', '爬塔', '塔'] 轉為字串 '琉璃塔,爬塔,塔'
-                li.setAttribute('data-aliases', item.aliases.join(','));
-            } else {
-                li.setAttribute('data-aliases', '');
-            }
+    const li = document.createElement('li');
+    li.setAttribute('data-file', item.file_name);
+    
+    // ==========================================
+    // 🛠️ 確保這裡是這樣寫：因為已經是純文字，直接塞入字串即可
+    // ==========================================
+    li.setAttribute('data-aliases', item.aliases || ''); 
 
-            li.innerText = item.title;
-            
-            if (index === 0) li.classList.add('active'); 
+    li.innerText = item.title;
+    
+    if (index === 0) li.classList.add('active'); 
 
-            li.addEventListener('click', () => {
-                menuContainer.querySelectorAll('li').forEach(i => i.classList.remove('active'));
-                li.classList.add('active');
+    li.addEventListener('click', () => {
+        menuContainer.querySelectorAll('li').forEach(i => i.classList.remove('active'));
+        li.classList.add('active');
 
-                loadSystemPage(item.file_name, item.title);
-                document.title = `${item.title} | MoData`;
+        loadSystemPage(item.file_name, item.title);
+        document.title = `${item.title} | MoData`;
 
-                if (window.innerWidth <= 768) {
-                    sidebar.classList.remove('open');
-                }
-            });
+        if (window.innerWidth <= 768) {
+            sidebar.classList.remove('open');
+        }
+    });
 
-            menuContainer.appendChild(li);
-        });
+    menuContainer.appendChild(li);
+});
 
         // 初始載入第一項內容
         loadSystemPage(gameSystems[0].file_name, gameSystems[0].title);
