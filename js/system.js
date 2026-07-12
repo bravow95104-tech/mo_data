@@ -46,12 +46,17 @@ document.addEventListener("DOMContentLoaded", async () => {
             });
     }
 
-    // 過濾選單項目的重用函式
+    // ==========================================
+    // 🛠️ 修正：過濾選單項目的重用函式（同時比對名稱與隱藏別名）
+    // ==========================================
     function filterMenuItems(keyword) {
         const listItems = menuContainer.querySelectorAll('li');
         listItems.forEach(li => {
-            const text = li.innerText.toLowerCase();
-            if (text.includes(keyword)) {
+            const text = li.innerText.toLowerCase(); // 原本顯示的標題
+            const aliases = (li.getAttribute('data-aliases') || '').toLowerCase(); // 讀取隱藏的別名字串
+            
+            // 只要標題本身包含關鍵字，或是隱藏別名包含關鍵字，就顯示出來
+            if (text.includes(keyword) || aliases.includes(keyword)) {
                 li.style.display = ''; 
             } else {
                 li.style.display = 'none'; 
@@ -79,6 +84,17 @@ document.addEventListener("DOMContentLoaded", async () => {
         gameSystems.forEach((item, index) => {
             const li = document.createElement('li');
             li.setAttribute('data-file', item.file_name);
+            
+            // ==========================================
+            // 🛠️ 修正：將 Supabase 的 aliases 陣列轉成字串，藏進 data-aliases 屬性
+            // ==========================================
+            if (item.aliases && Array.isArray(item.aliases)) {
+                // 將陣列 ['琉璃塔', '爬塔', '塔'] 轉為字串 '琉璃塔,爬塔,塔'
+                li.setAttribute('data-aliases', item.aliases.join(','));
+            } else {
+                li.setAttribute('data-aliases', '');
+            }
+
             li.innerText = item.title;
             
             if (index === 0) li.classList.add('active'); 
