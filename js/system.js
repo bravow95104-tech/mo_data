@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             sidebarTitle.innerHTML = "遊戲系統";
         }
 
-        fetch(`/mo_data/sys/${fileName}`)
+        fetch(`/mo_data/${fileName}`)
             .then(response => {
                 if (!response.ok) throw new Error('找不到內容檔案');
                 return response.text();
