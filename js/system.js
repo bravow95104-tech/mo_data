@@ -81,36 +81,51 @@ document.addEventListener("DOMContentLoaded", async () => {
 
         menuContainer.innerHTML = '';
 
+        // 🌟 修正點 1：先獲取網址參數，以便在渲染清單時就知道哪一個該亮起 active
+        const urlParams = new URLSearchParams(window.location.search);
+        const targetSysFile = urlParams.get('sys'); 
+        // 檢查撈出的清單有沒有符合這個網址參數的項目
+        const matchedSystem = gameSystems.find(item => item.file_name === targetSysFile);
+
         gameSystems.forEach((item, index) => {
-    const li = document.createElement('li');
-    li.setAttribute('data-file', item.file_name);
-    
-    // ==========================================
-    // 🛠️ 確保這裡是這樣寫：因為已經是純文字，直接塞入字串即可
-    // ==========================================
-    li.setAttribute('data-aliases', item.aliases || ''); 
+            const li = document.createElement('li');
+            li.setAttribute('data-file', item.file_name);
+            li.setAttribute('data-aliases', item.aliases || ''); 
+            li.innerText = item.title;
+            
+            // 🌟 修正點 2：active 樣式判斷。如果網址參數有對應到，就亮對應項；否則預設亮第一項
+            if (matchedSystem) {
+                if (item.file_name === matchedSystem.file_name) li.classList.add('active');
+            } else {
+                if (index === 0) li.classList.add('active');
+            }
 
-    li.innerText = item.title;
-    
-    if (index === 0) li.classList.add('active'); 
+            li.addEventListener('click', () => {
+                menuContainer.querySelectorAll('li').forEach(i => i.classList.remove('active'));
+                li.classList.add('active');
 
-    li.addEventListener('click', () => {
-        menuContainer.querySelectorAll('li').forEach(i => i.classList.remove('active'));
-        li.classList.add('active');
+                loadSystemPage(item.file_name, item.title);
+                document.title = `${item.title} | MoData`;
 
-        loadSystemPage(item.file_name, item.title);
-        document.title = `${item.title} | MoData`;
+                // 當手動點選選單時，清除網址上的 Query 參數，讓網址列保持乾淨（選填，體驗較佳）
+                const newUrl = window.location.protocol + "//" + window.location.host + window.location.pathname;
+                window.history.pushState({ path: newUrl }, '', newUrl);
 
-        if (window.innerWidth <= 768) {
-            sidebar.classList.remove('open');
+                if (window.innerWidth <= 768) {
+                    sidebar.classList.remove('open');
+                }
+            });
+
+            menuContainer.appendChild(li);
+        });
+
+        // 🌟 修正點 3：移除重複的 loadSystemPage，統一由這段邏輯決定初始載入哪一頁
+        if (matchedSystem) {
+            loadSystemPage(matchedSystem.file_name, matchedSystem.title);
+            document.title = `${matchedSystem.title} | MoData`;
+        } else {
+            loadSystemPage(gameSystems[0].file_name, gameSystems[0].title);
         }
-    });
-
-    menuContainer.appendChild(li);
-});
-
-        // 初始載入第一項內容
-        loadSystemPage(gameSystems[0].file_name, gameSystems[0].title);
 
         // ==========================================
         // 🌟 新增：包含清除按鈕的即時搜尋過濾邏輯
