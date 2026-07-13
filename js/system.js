@@ -30,6 +30,10 @@ function loadSystemPage(fileName, titleText) {
         sidebarTitle.innerHTML = "遊戲系統";
     }
 
+    // 取得當前 system.html 所在的絕對目錄路徑，與 fileName 結合
+    const currentDir = window.location.pathname.substring(0, window.location.pathname.lastIndexOf('/') + 1);
+    const fullFetchPath = currentDir + fileName;
+
     // 🌟 修正：因為 system.html 本身就在 sys 資料夾裡了，
     // 這裡直接 fetch 子網頁的檔案名稱 (fileName) 即可，不需要再加前綴！
     fetch(`${fileName}`) 
@@ -44,7 +48,7 @@ function loadSystemPage(fileName, titleText) {
             }
         })
         .catch(error => {
-            contentDisplay.innerHTML = `<h3 class="search-tip">錯誤：無法讀取內容 (${fileName})</h3>`;
+            contentDisplay.innerHTML = `<h3 class="search-tip" style="color:red;">錯誤：無法讀取內容<br>請求路徑：${fullFetchPath}<br>原因：${error.message}</h3>`;
         });
 }
 
@@ -110,8 +114,8 @@ function loadSystemPage(fileName, titleText) {
                 document.title = `${item.title} | MoData`;
 
                 // 當手動點選選單時，清除網址上的 Query 參數，讓網址列保持乾淨（選填，體驗較佳）
-                const newUrl = window.location.protocol + "//" + window.location.host + window.location.pathname;
-                window.history.pushState({ path: newUrl }, '', newUrl);
+                //const newUrl = window.location.protocol + "//" + window.location.host + window.location.pathname;
+                //window.history.pushState({ path: newUrl }, '', newUrl);
 
                 if (window.innerWidth <= 768) {
                     sidebar.classList.remove('open');
