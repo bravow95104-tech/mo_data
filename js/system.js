@@ -22,29 +22,31 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
     });
 
-    // 載入內容的函式
-    function loadSystemPage(fileName, titleText) {
-        if (window.innerWidth <= 768 && titleText) {
-            sidebarTitle.innerHTML = `系統：${titleText}`;
-        } else {
-            sidebarTitle.innerHTML = "遊戲系統";
-        }
-
-        fetch(`/mo_data/${fileName}`)
-            .then(response => {
-                if (!response.ok) throw new Error('找不到內容檔案');
-                return response.text();
-            })
-            .then(html => {
-                contentDisplay.innerHTML = html;
-                if (window.innerWidth <= 768) {
-                    window.scrollTo({ top: sidebar.offsetTop, behavior: 'smooth' });
-                }
-            })
-            .catch(error => {
-                contentDisplay.innerHTML = `<h3 class="search-tip">錯誤：無法讀取內容 (${fileName})</h3>`;
-            });
+    // === 請在 system.js 中找到這段並修改 ===
+function loadSystemPage(fileName, titleText) {
+    if (window.innerWidth <= 768 && titleText) {
+        sidebarTitle.innerHTML = `系統：${titleText}`;
+    } else {
+        sidebarTitle.innerHTML = "遊戲系統";
     }
+
+    // 🌟 修正：因為 system.html 本身就在 sys 資料夾裡了，
+    // 這裡直接 fetch 子網頁的檔案名稱 (fileName) 即可，不需要再加前綴！
+    fetch(`${fileName}`) 
+        .then(response => {
+            if (!response.ok) throw new Error('找不到內容檔案');
+            return response.text();
+        })
+        .then(html => {
+            contentDisplay.innerHTML = html;
+            if (window.innerWidth <= 768) {
+                window.scrollTo({ top: sidebar.offsetTop, behavior: 'smooth' });
+            }
+        })
+        .catch(error => {
+            contentDisplay.innerHTML = `<h3 class="search-tip">錯誤：無法讀取內容 (${fileName})</h3>`;
+        });
+}
 
     // ==========================================
     // 🛠️ 修正：過濾選單項目的重用函式（同時比對名稱與隱藏別名）
