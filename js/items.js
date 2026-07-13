@@ -75,8 +75,8 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     if (!sysError && systemsData) {
       systemsData.forEach(sys => {
-        LINK_MAP[sys.title] = `/mo_data/sys/system.html?sys=${sys.file_name}`;
-        LINK_MAP[`系統>${sys.title}`] = `/mo_data/sys/system.html?sys=${sys.file_name}`;
+        LINK_MAP[sys.title] = `/mo_data/sys/systems.html?sys=${sys.file_name}`;
+        LINK_MAP[`系統>${sys.title}`] = `/mo_data/sys/systems.html?sys=${sys.file_name}`;
       });
     }
 
