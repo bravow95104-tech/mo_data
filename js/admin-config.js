@@ -415,16 +415,7 @@ export const TABLE_CONFIGS = {
             { id: 'approach_a', label: '特別顯示(洞窟暫無作用)', type: 'checkbox', options: ['要','城鎮','說明','洞窟'], grid: 1, group: '地圖導航' },
             { id: 'approach', label: '迷宮走法', type: 'textarea', grid: 3, group: '地圖導航' },
             { id: 'illustrate', label: '說明', type: 'text', grid: 2, group: '地圖導航' },
-            
-            { id: 'drop_rubbish', label: '垃圾掉落(廢除)', type: 'textarea', grid: 1, group: '一般掉落' },
-            { id: 'drop_othrt', label: '其他掉落(廢除)', type: 'textarea', grid: 1, group: '一般掉落' },
-            { id: 'drop_glory_player', label: '光輝(玩家提供)(廢除)', type: 'text', grid: 1, group: '一般掉落' },
-            
-            { id: 'drop_hero', label: '英雄卡掉落(廢除)', type: 'textarea', grid: 1, group: '卡片掉落' },
-            { id: 'drop_equidcard', label: '裝備卡掉落(廢除)', type: 'textarea', grid: 1, group: '卡片掉落' },
-            { id: 'drop_skillcard', label: '技能卡掉落(廢除)', type: 'textarea', grid: 1, group: '卡片掉落' },
-            
-            { id: 'drop_combo_old', label: '舊文片掉落(廢除)', type: 'textarea', grid: 1, group: '文片掉落' },
+
         ]
     },
     map_resources: {
