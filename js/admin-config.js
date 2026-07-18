@@ -425,7 +425,6 @@ export const TABLE_CONFIGS = {
             { id: 'drop_skillcard', label: '技能卡掉落(廢除)', type: 'textarea', grid: 1, group: '卡片掉落' },
             
             { id: 'drop_combo_old', label: '舊文片掉落(廢除)', type: 'textarea', grid: 1, group: '文片掉落' },
-            { id: 'drop_combo_new', label: '新文片掉落(廢除)', type: 'textarea', grid: 1, group: '文片掉落' }
         ]
     },
     map_resources: {
