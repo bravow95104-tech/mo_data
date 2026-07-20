@@ -22,46 +22,92 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
     });
 
-    // === 請在 system.js 中找到這段並修改 ===
-function loadSystemPage(fileName, titleText) {
-    if (window.innerWidth <= 768 && titleText) {
-        sidebarTitle.innerHTML = `系統：${titleText}`;
-    } else {
-        sidebarTitle.innerHTML = "洞窟走法";
+    // === 載入內容頁面函式 ===
+    function loadSystemPage(fileName, titleText) {
+        if (window.innerWidth <= 768 && titleText) {
+            sidebarTitle.innerHTML = `系統：${titleText}`;
+        } else {
+            sidebarTitle.innerHTML = "洞窟走法";
+        }
+
+        const currentDir = window.location.pathname.substring(0, window.location.pathname.lastIndexOf('/') + 1);
+        const fullFetchPath = currentDir + `description/${fileName}`;
+
+        fetch(`./description/${fileName}`)
+            .then(response => {
+                if (!response.ok) throw new Error('找不到內容檔案');
+                return response.text();
+            })
+            .then(html => {
+                contentDisplay.innerHTML = html;
+                if (window.innerWidth <= 768) {
+                    window.scrollTo({ top: sidebar.offsetTop, behavior: 'smooth' });
+                }
+            })
+            .catch(error => {
+                contentDisplay.innerHTML = `<h3 class="search-tip" style="color:red;">錯誤：無法讀取內容<br>請求路徑：${fullFetchPath}<br>原因：${error.message}</h3>`;
+            });
     }
 
-    // 取得當前 system.html 所在的絕對目錄路徑，與 fileName 結合
-    const currentDir = window.location.pathname.substring(0, window.location.pathname.lastIndexOf('/') + 1);
-    const fullFetchPath = currentDir + fileName;
+    // ==========================================
+    // 🛠️ 互動地圖傳點事件代理 (Event Delegation)
+    // ==========================================
+    
+    // 1. 點擊傳點標籤：自動平滑捲動到目標樓層與對應傳點
+    document.addEventListener('click', (e) => {
+        const portal = e.target.closest('.portal-tag');
+        if (!portal) return;
 
-    // 🌟 修正：因為 system.html 本身就在 sys 資料夾裡了，
-    // 這裡直接 fetch 子網頁的檔案名稱 (fileName) 即可，不需要再加前綴！
-    fetch(`./description/${fileName}`)
-        .then(response => {
-            if (!response.ok) throw new Error('找不到內容檔案');
-            return response.text();
-        })
-        .then(html => {
-            contentDisplay.innerHTML = html;
-            if (window.innerWidth <= 768) {
-                window.scrollTo({ top: sidebar.offsetTop, behavior: 'smooth' });
+        const portalCode = portal.getAttribute('data-portal');
+        const targetFloorId = portal.getAttribute('data-target-floor');
+
+        if (targetFloorId) {
+            const targetFloor = document.getElementById(targetFloorId);
+            if (targetFloor) {
+                // 平滑捲動到目標樓層
+                targetFloor.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                
+                // 自動閃爍高亮目標傳點 2 秒
+                const targetPortals = targetFloor.querySelectorAll(`[data-portal="${portalCode}"]`);
+                targetPortals.forEach(el => el.classList.add('active'));
+                setTimeout(() => {
+                    targetPortals.forEach(el => el.classList.remove('active'));
+                }, 2000);
             }
-        })
-        .catch(error => {
-            contentDisplay.innerHTML = `<h3 class="search-tip" style="color:red;">錯誤：無法讀取內容<br>請求路徑：${fullFetchPath}<br>原因：${error.message}</h3>`;
+        }
+    });
+
+    // 2. 滑鼠懸停/移出：同步高亮對應傳點
+    document.addEventListener('mouseover', (e) => {
+        const portal = e.target.closest('.portal-tag');
+        if (!portal) return;
+
+        const portalCode = portal.getAttribute('data-portal');
+        if (portalCode) {
+            document.querySelectorAll(`[data-portal="${portalCode}"]`).forEach(el => {
+                el.classList.add('active');
+            });
+        }
+    });
+
+    document.addEventListener('mouseout', (e) => {
+        const portal = e.target.closest('.portal-tag');
+        if (!portal) return;
+
+        document.querySelectorAll('.portal-tag').forEach(el => {
+            el.classList.remove('active');
         });
-}
+    });
 
     // ==========================================
-    // 🛠️ 修正：過濾選單項目的重用函式（同時比對名稱與隱藏別名）
+    // 🛠️ 過濾選單項目的重用函式
     // ==========================================
     function filterMenuItems(keyword) {
         const listItems = menuContainer.querySelectorAll('li');
         listItems.forEach(li => {
-            const text = li.innerText.toLowerCase(); // 原本顯示的標題
-            const aliases = (li.getAttribute('data-aliases') || '').toLowerCase(); // 讀取隱藏的別名字串
+            const text = li.innerText.toLowerCase(); 
+            const aliases = (li.getAttribute('data-aliases') || '').toLowerCase(); 
             
-            // 只要標題本身包含關鍵字，或是隱藏別名包含關鍵字，就顯示出來
             if (text.includes(keyword) || aliases.includes(keyword)) {
                 li.style.display = ''; 
             } else {
@@ -87,10 +133,8 @@ function loadSystemPage(fileName, titleText) {
 
         menuContainer.innerHTML = '';
 
-        // 🌟 修正點 1：先獲取網址參數，以便在渲染清單時就知道哪一個該亮起 active
         const urlParams = new URLSearchParams(window.location.search);
         const targetSysFile = urlParams.get('sys'); 
-        // 檢查撈出的清單有沒有符合這個網址參數的項目
         const matchedSystem = gameSystems.find(item => item.file_name === targetSysFile);
 
         gameSystems.forEach((item, index) => {
@@ -99,7 +143,6 @@ function loadSystemPage(fileName, titleText) {
             li.setAttribute('data-aliases', item.aliases || ''); 
             li.innerText = item.title;
             
-            // 🌟 修正點 2：active 樣式判斷。如果網址參數有對應到，就亮對應項；否則預設亮第一項
             if (matchedSystem) {
                 if (item.file_name === matchedSystem.file_name) li.classList.add('active');
             } else {
@@ -113,10 +156,6 @@ function loadSystemPage(fileName, titleText) {
                 loadSystemPage(item.file_name, item.title);
                 document.title = `${item.title} | MoData`;
 
-                // 當手動點選選單時，清除網址上的 Query 參數，讓網址列保持乾淨（選填，體驗較佳）
-                //const newUrl = window.location.protocol + "//" + window.location.host + window.location.pathname;
-                //window.history.pushState({ path: newUrl }, '', newUrl);
-
                 if (window.innerWidth <= 768) {
                     sidebar.classList.remove('open');
                 }
@@ -125,7 +164,6 @@ function loadSystemPage(fileName, titleText) {
             menuContainer.appendChild(li);
         });
 
-        // 🌟 修正點 3：移除重複的 loadSystemPage，統一由這段邏輯決定初始載入哪一頁
         if (matchedSystem) {
             loadSystemPage(matchedSystem.file_name, matchedSystem.title);
             document.title = `${matchedSystem.title} | MoData`;
@@ -134,30 +172,26 @@ function loadSystemPage(fileName, titleText) {
         }
 
         // ==========================================
-        // 🌟 新增：包含清除按鈕的即時搜尋過濾邏輯
+        // 🌟 即時搜尋過濾邏輯
         // ==========================================
         if (searchInput && clearBtn) {
-            // 監聽輸入框變化
             searchInput.addEventListener('input', (e) => {
                 const keyword = e.target.value.toLowerCase().trim();
                 
-                // 如果有輸入文字就顯示 X，沒有就隱藏
                 if (keyword.length > 0) {
                     clearBtn.style.display = 'block';
                 } else {
                     clearBtn.style.display = 'none';
                 }
 
-                // 執行過濾
                 filterMenuItems(keyword);
             });
 
-            // 監聽 X 按鈕點擊事件
             clearBtn.addEventListener('click', () => {
-                searchInput.value = '';        // 清空輸入框文字
-                clearBtn.style.display = 'none'; // 隱藏 X 按鈕
-                filterMenuItems('');           // 恢復還原所有選單項目
-                searchInput.focus();           // 讓游標自動點回輸入框
+                searchInput.value = '';        
+                clearBtn.style.display = 'none'; 
+                filterMenuItems('');           
+                searchInput.focus();           
             });
         }
 
