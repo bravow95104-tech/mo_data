@@ -26,19 +26,19 @@ export const INTERNAL_CONNECTIONS = {
         // 例如：A, B, F 是一區；C, D, E 是一區；G, J 是一區（彼此不通）
         'red-A': ['red-B', 'red-C'],
         'red-B': ['red-A', 'red-C'],
-        'red-F': ['red-A', 'red-B'],
+        'red-F': ['red-G'],
 
         'red-C': ['red-A', 'red-B'],
         'red-D': ['red-E'],
         'red-E': ['red-D'], // 要去 E，必須從 C 或 D 近進來！
 
         'red-G': ['red-F'],
-        'red-J': ['red-G']
+        'red-J': []
     },
     'floor-corridor': {
-        'red-G': ['red-J', 'yellow-A', 'yellow-C'],
+        'red-G': [ 'yellow-A', 'yellow-C'],
         'red-J': ['red-I'],
-        'red-H': ['red-J', 'yellow-C'],
+        'red-H': ['yellow-A', 'yellow-C'],
         'red-I': ['red-J'],
         'red-E': [],
 
@@ -92,7 +92,7 @@ export const PORTAL_TELEPORTS = {
         'yellow-A': { targetFloor: 'floor-main', targetPortal: 'yellow-A' },
         'yellow-B': { targetFloor: 'floor-main', targetPortal: 'yellow-B' },
         'yellow-C': { targetFloor: 'floor-main', targetPortal: 'yellow-C' },
-        'yellow-K': { targetFloor: 'floor-main', targetPortal: 'yellow-K' }
+        'yellow-D': { targetFloor: 'floor-main', targetPortal: 'yellow-D' }
     },
     'floor-path': {
         'red-H': { targetFloor: 'floor-corridor', targetPortal: 'red-H' },
