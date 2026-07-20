@@ -1,28 +1,106 @@
-<h2>皇陵</h2> 
+<h2>皇陵走法 - 傳點連動高亮</h2> 
 <div class="note-text">
-    紅字對應紅字傳點，黃字對應黃字傳點。
+    💡 滑鼠移到或點擊傳點按鈕，可同步高亮對應傳點；點擊按鈕可平滑捲動至該樓層！
 </div>
-<figure>
-    <img src="../pic/map/description/imperialmausoleum/皇陵前殿.jpg" class="system-img" alt="皇陵走法">
+
+<!-- 皇陵前殿 -->
+<figure id="floor-front" class="map-figure">
+    <div class="img-wrapper">
+        <img src="../pic/map/description/imperialmausoleum/皇陵前殿.jpg" class="system-img" alt="皇陵前殿">
+        
+        <!-- 傳點標記 (利用 position: absolute 定位在圖片對應位置) -->
+        <!-- data-portal 表示傳點代號，相同代號會一起高亮 -->
+        <div class="portal-tag red" data-portal="red-1" style="top: 35%; left: 45%;" onclick="jumpToPortal('red-1', 'floor-mid')">紅1 (往中殿)</div>
+        <div class="portal-tag yellow" data-portal="yellow-1" style="top: 70%; left: 80%;" onclick="jumpToPortal('yellow-1', 'floor-mid')">黃1 (往中殿)</div>
+    </div>
     <figcaption>▲ 皇陵前殿</figcaption>
 </figure>
 
-<figure>
-    <img src="../pic/map/description/imperialmausoleum/皇陵中殿.jpg" class="system-img" alt="皇陵走法">
+<!-- 皇陵中殿 -->
+<figure id="floor-mid" class="map-figure">
+    <div class="img-wrapper">
+        <img src="../pic/map/description/imperialmausoleum/皇陵中殿.jpg" class="system-img" alt="皇陵中殿">
+        
+        <!-- 對應的傳點 -->
+        <div class="portal-tag red" data-portal="red-1" style="top: 20%; left: 15%;" onclick="jumpToPortal('red-1', 'floor-front')">紅1 (往前殿)</div>
+        <div class="portal-tag yellow" data-portal="yellow-1" style="top: 60%; left: 30%;" onclick="jumpToPortal('yellow-1', 'floor-front')">黃1 (往前殿)</div>
+    </div>
     <figcaption>▲ 皇陵中殿</figcaption>
 </figure>
 
-<figure>
-    <img src="../pic/map/description/imperialmausoleum/皇陵迴廊.jpg" class="system-img" alt="皇陵走法">
-    <figcaption>▲ 皇陵迴廊</figcaption>
-</figure>
+<style>
+/* 容器相對定位 */
+.img-wrapper {
+    position: relative;
+    display: inline-block;
+    max-width: 100%;
+}
 
-<figure>
-    <img src="../pic/map/description/imperialmausoleum/皇陵通道.jpg" class="system-img" alt="皇陵走法">
-    <figcaption>▲ 皇陵通道</figcaption>
-</figure>
+.system-img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
 
-<figure>
-    <img src="../pic/map/description/imperialmausoleum/皇陵正殿.jpg" class="system-img" alt="皇陵走法">
-    <figcaption>▲ 皇陵正殿</figcaption>
-</figure>
+/* 傳點標記基本樣式 */
+.portal-tag {
+    position: absolute;
+    padding: 4px 8px;
+    font-size: 13px;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+    user-select: none;
+    transition: transform 0.2s, box-shadow 0.2s, background-color 0.2s;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.5);
+}
+
+/* 顏色樣式 */
+.portal-tag.red { background: #e74c3c; color: white; }
+.portal-tag.yellow { background: #f1c40f; color: #2c3e50; }
+
+/* 懸停與高亮效果 (透過 JS 動態加上 .active) */
+.portal-tag:hover, .portal-tag.active {
+    transform: scale(1.25);
+    z-index: 10;
+    box-shadow: 0 0 12px 4px #2ecc71; /* 綠色強光發亮 */
+}
+</style>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const portals = document.querySelectorAll('.portal-tag');
+
+    portals.forEach(portal => {
+        // 滑鼠移入：高亮所有 data-portal 相同的標記
+        portal.addEventListener('mouseenter', () => {
+            const targetGroup = portal.getAttribute('data-portal');
+            document.querySelectorAll(`[data-portal="${targetGroup}"]`).forEach(el => {
+                el.classList.add('active');
+            });
+        });
+
+        // 滑鼠移出：取消高亮
+        portal.addEventListener('mouseleave', () => {
+            document.querySelectorAll('.portal-tag').forEach(el => {
+                el.classList.remove('active');
+            });
+        });
+    });
+});
+
+// 點擊傳點自動捲動到目標樓層與目標傳點
+function jumpToPortal(portalCode, targetFloorId) {
+    const targetFloor = document.getElementById(targetFloorId);
+    if (targetFloor) {
+        targetFloor.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        
+        // 自動高亮目標傳點 2 秒
+        const targetPortals = targetFloor.querySelectorAll(`[data-portal="${portalCode}"]`);
+        targetPortals.forEach(el => el.classList.add('active'));
+        setTimeout(() => {
+            targetPortals.forEach(el => el.classList.remove('active'));
+        }, 2000);
+    }
+}
+</script>
