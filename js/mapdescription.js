@@ -1,9 +1,7 @@
+// \js\mapdescription.js
 import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm'
 import { SUPABASE_URL, SUPABASE_KEY } from './supabase-config.js'
-// 🌟 1. 補上 INTERNAL_CONNECTIONS 匯入
-import { FLOOR_NAMES, INTERNAL_CONNECTIONS, findRealShortestPath } from '../js/map-data.js';
 
-// 初始化你的 supabase 客戶端
 const supabase = createClient(SUPABASE_URL, SUPABASE_KEY)
 
 document.addEventListener("DOMContentLoaded", async () => {
@@ -12,22 +10,24 @@ document.addEventListener("DOMContentLoaded", async () => {
     const menuContainer = document.getElementById('system-menu');
     const contentDisplay = document.getElementById('dynamic-content');
     
-    // 取得搜尋輸入框與清除按鈕節點
     const searchInput = document.getElementById('system-search-input');
     const clearBtn = document.getElementById('search-clear-btn');
 
-    // 手機版：點擊標題切換展開/收合
+    // 全域變數：儲存當前讀取到的地圖 JS 資料模組
+    let currentMapModule = null;
+
     sidebarTitle?.addEventListener('click', () => {
         if (window.innerWidth <= 768) {
             sidebar.classList.toggle('open');
         }
     });
 
-    // 🌟 2. 動態更新傳點選單函式
+    // === 動態更新傳點下拉選單選項 ===
     function updatePortalOptions(floorSelectId, portalSelectId) {
+        if (!currentMapModule) return;
+
         const floorSelect = document.getElementById(floorSelectId);
         const portalSelect = document.getElementById(portalSelectId);
-        
         if (!floorSelect || !portalSelect) return;
 
         const floor = floorSelect.value;
@@ -35,14 +35,14 @@ document.addEventListener("DOMContentLoaded", async () => {
         
         portalSelect.innerHTML = '';
 
-        // 如果是起點且選擇前殿，才顯示綠色入口
         if (isStart && floor === 'floor-front') {
             portalSelect.innerHTML += '<option value="green-start" selected>🟢 綠色入口 (預設)</option>';
         } else if (!isStart) {
             portalSelect.innerHTML += '<option value="" selected>✨ 任意門 (到達即可)</option>';
         }
 
-        const portals = Object.keys(INTERNAL_CONNECTIONS[floor] || {});
+        const connections = currentMapModule.INTERNAL_CONNECTIONS || {};
+        const portals = Object.keys(connections[floor] || {});
         portals.forEach(p => {
             if (p !== 'green-start') {
                 portalSelect.innerHTML += `<option value="${p}">${p}</option>`;
@@ -51,42 +51,50 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 
     // === 載入內容頁面函式 ===
-    function loadSystemPage(fileName, titleText) {
+    async function loadSystemPage(fileName, titleText) {
         if (window.innerWidth <= 768 && titleText) {
             sidebarTitle.innerHTML = `走法：${titleText}`;
         } else {
             sidebarTitle.innerHTML = "洞窟走法";
         }
 
-        const currentDir = window.location.pathname.substring(0, window.location.pathname.lastIndexOf('/') + 1);
-        const fullFetchPath = currentDir + `description/${fileName}`;
+        try {
+            // 1. 讀取 HTML 描述檔
+            const response = await fetch(`./description/${fileName}`);
+            if (!response.ok) throw new Error(`找不到內容檔案 (HTTP ${response.status})`);
+            const html = await response.text();
+            contentDisplay.innerHTML = html;
 
-        fetch(`./description/${fileName}`)
-            .then(response => {
-                if (!response.ok) throw new Error('找不到內容檔案');
-                return response.text();
-            })
-            .then(html => {
-                contentDisplay.innerHTML = html;
+            // 2. 🌟 關鍵：動態 import 對應的地圖資料 JS 檔
+            // 例：'imperialmausoleum.html' 轉為 'imperialmausoleum'
+            const mapKey = fileName.replace('.html', ''); 
+            
+            try {
+                // 從 /js/map-data/ 資料夾載入對應檔名的 JS
+                currentMapModule = await import(`../js/map-data/${mapKey}.js`);
+                console.log(`✅ 成功動態載入地圖模組: ${mapKey}.js`);
+            } catch (jsErr) {
+                console.warn(`⚠️ 該地圖 (${mapKey}) 沒有獨立的 JS 尋路資料檔，或路徑有誤。`, jsErr);
+                currentMapModule = null;
+            }
 
-                // 🌟 3. HTML 載入後，自動初始化一次傳點下拉選單
-                updatePortalOptions('start-floor-select', 'start-portal-select');
-                updatePortalOptions('end-floor-select', 'end-portal-select');
+            // 3. 初始化傳點選單
+            updatePortalOptions('start-floor-select', 'start-portal-select');
+            updatePortalOptions('end-floor-select', 'end-portal-select');
 
-                if (window.innerWidth <= 768) {
-                    window.scrollTo({ top: sidebar.offsetTop, behavior: 'smooth' });
-                }
-            })
-            .catch(error => {
-                contentDisplay.innerHTML = `<h3 class="search-tip" style="color:red;">錯誤：無法讀取內容<br>請求路徑：${fullFetchPath}<br>原因：${error.message}</h3>`;
-            });
+            if (window.innerWidth <= 768) {
+                window.scrollTo({ top: sidebar.offsetTop, behavior: 'smooth' });
+            }
+
+        } catch (error) {
+            console.error("載入失敗:", error);
+            contentDisplay.innerHTML = `<h3 style="color:red;">錯誤：無法讀取內容<br>原因：${error.message}</h3>`;
+        }
     }
 
     // ==========================================
-    // 🛠️ 互動地圖傳點事件代理 (Event Delegation)
+    // 🛠️ 互動地圖傳點事件代理 (點擊 & Hover 高亮)
     // ==========================================
-    
-    // 1. 點擊傳點標籤：自動平滑捲動到目標樓層與對應傳點
     document.addEventListener('click', (e) => {
         const portal = e.target.closest('.portal-tag');
         if (!portal) return;
@@ -97,10 +105,8 @@ document.addEventListener("DOMContentLoaded", async () => {
         if (targetFloorId) {
             const targetFloor = document.getElementById(targetFloorId);
             if (targetFloor) {
-                // 平滑捲動到目標樓層
                 targetFloor.scrollIntoView({ behavior: 'smooth', block: 'center' });
                 
-                // 自動閃爍高亮目標傳點 2 秒
                 const targetPortals = targetFloor.querySelectorAll(`[data-portal="${portalCode}"]`);
                 targetPortals.forEach(el => el.classList.add('active'));
                 setTimeout(() => {
@@ -110,16 +116,13 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
     });
 
-    // 2. 滑鼠懸停/移出：同步高亮對應傳點
     document.addEventListener('mouseover', (e) => {
         const portal = e.target.closest('.portal-tag');
         if (!portal) return;
 
         const portalCode = portal.getAttribute('data-portal');
         if (portalCode) {
-            document.querySelectorAll(`[data-portal="${portalCode}"]`).forEach(el => {
-                el.classList.add('active');
-            });
+            document.querySelectorAll(`[data-portal="${portalCode}"]`).forEach(el => el.classList.add('active'));
         }
     });
 
@@ -127,13 +130,11 @@ document.addEventListener("DOMContentLoaded", async () => {
         const portal = e.target.closest('.portal-tag');
         if (!portal) return;
 
-        document.querySelectorAll('.portal-tag').forEach(el => {
-            el.classList.remove('active');
-        });
+        document.querySelectorAll('.portal-tag').forEach(el => el.classList.remove('active'));
     });
 
     // ==========================================
-    // 🛠️ 樓層下拉選單變更事件代理 (自動更新傳點選單)
+    // 🛠️ 下拉選單連動事件代理
     // ==========================================
     document.addEventListener('change', (e) => {
         if (e.target && e.target.id === 'start-floor-select') {
@@ -145,10 +146,15 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
 
     // ==========================================
-    // 🛠️ 尋路搜尋按鈕事件代理
+    // 🛠️ 尋路搜尋按鈕觸發事件代理
     // ==========================================
     document.addEventListener('click', (e) => {
         if (e.target && e.target.id === 'search-route-btn') {
+            if (!currentMapModule) {
+                alert("此地圖尚未設定尋路資料檔！");
+                return;
+            }
+
             const startSelect = document.getElementById('start-floor-select');
             const endSelect = document.getElementById('end-floor-select');
             const startPortalSelect = document.getElementById('start-portal-select');
@@ -159,11 +165,9 @@ document.addEventListener("DOMContentLoaded", async () => {
 
             const startFloor = startSelect.value;
             const endFloor = endSelect.value;
-            // 🌟 抓取傳點選單的值，若沒選或抓不到則填寫預設值
             const startPortal = startPortalSelect?.value || 'green-start';
             const endPortal = endPortalSelect?.value || null;
 
-            // 清除舊有高亮
             document.querySelectorAll('.portal-tag').forEach(el => el.classList.remove('active'));
 
             if (startFloor === endFloor && startPortal === endPortal) {
@@ -171,20 +175,20 @@ document.addEventListener("DOMContentLoaded", async () => {
                 return;
             }
 
-            // 🌟 呼叫尋路函式 (精準帶入 4 個參數)
-            const path = findRealShortestPath(startFloor, endFloor, startPortal, endPortal);
+            // 🌟 呼叫動態載入的模組演算法
+            const path = currentMapModule.findRealShortestPath(startFloor, endFloor, startPortal, endPortal);
 
             if (!path || path.length === 0) {
                 resultBox.innerHTML = '❌ 找不到連通路線！';
                 return;
             }
 
-            // 組合顯示文字
-            let html = `<strong>💡 從「${FLOOR_NAMES[startFloor] || startFloor}」前往「${FLOOR_NAMES[endFloor] || endFloor}」的最佳走法：</strong><br>`;
+            const floorNames = currentMapModule.FLOOR_NAMES || {};
+            let html = `<strong>💡 從「${floorNames[startFloor] || startFloor}」前往「${floorNames[endFloor] || endFloor}」的最佳走法：</strong><br>`;
             
             path.forEach((step, index) => {
-                const fromName = FLOOR_NAMES[step.fromFloor] || step.fromFloor;
-                const toName = FLOOR_NAMES[step.toFloor] || step.toFloor;
+                const fromName = floorNames[step.fromFloor] || step.fromFloor;
+                const toName = floorNames[step.toFloor] || step.toFloor;
                 
                 if (step.isFinalWalk) {
                     html += `${index + 1}. 在 <b>${fromName}</b> 走至傳點 [<span style="color:#e74c3c; font-weight:bold;">${step.walkToPortal}</span>] 抵達終點<br>`;
@@ -192,7 +196,6 @@ document.addEventListener("DOMContentLoaded", async () => {
                     html += `${index + 1}. 在 <b>${fromName}</b> 走向傳點 [<span style="color:#e74c3c; font-weight:bold;">${step.walkToPortal}</span>] ➔ 進入 <b>${toName}</b><br>`;
                 }
 
-                // 自動高亮整條路徑上經過的所有傳點！
                 document.querySelectorAll(`[data-portal="${step.walkToPortal}"]`).forEach(el => {
                     el.classList.add('active');
                 });
@@ -203,7 +206,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
 
     // ==========================================
-    // 🛠️ 過濾選單項目的重用函式
+    // 🛠️ 選單搜尋過濾函式
     // ==========================================
     function filterMenuItems(keyword) {
         const listItems = menuContainer.querySelectorAll('li');
@@ -219,8 +222,10 @@ document.addEventListener("DOMContentLoaded", async () => {
         });
     }
 
+    // ==========================================
+    // 🛠️ Supabase 讀取側邊欄選單
+    // ==========================================
     try {
-        // 從 Supabase 撈取已啟用的系統清單
         let { data: gameSystems, error } = await supabase
             .from('mapdescription')
             .select('*')
@@ -274,19 +279,10 @@ document.addEventListener("DOMContentLoaded", async () => {
             loadSystemPage(gameSystems[0].file_name, gameSystems[0].title);
         }
 
-        // ==========================================
-        // 🌟 即時搜尋過濾邏輯
-        // ==========================================
         if (searchInput && clearBtn) {
             searchInput.addEventListener('input', (e) => {
                 const keyword = e.target.value.toLowerCase().trim();
-                
-                if (keyword.length > 0) {
-                    clearBtn.style.display = 'block';
-                } else {
-                    clearBtn.style.display = 'none';
-                }
-
+                clearBtn.style.display = keyword.length > 0 ? 'block' : 'none';
                 filterMenuItems(keyword);
             });
 
