@@ -24,15 +24,15 @@ export const INTERNAL_CONNECTIONS = {
     'floor-mid': {
         // 🌟 這裡就是關鍵！根據地圖真實障礙物來設：
         // 例如：A, B, F 是一區；C, D, E 是一區；G, J 是一區（彼此不通）
-        'red-A': ['red-B', 'red-c'],
-        'red-B': ['red-A', 'red-c'],
+        'red-A': ['red-B', 'red-C'],
+        'red-B': ['red-A', 'red-C'],
         'red-F': ['red-A', 'red-B'],
 
-        'red-C': ['red-a', 'red-b'],
+        'red-C': ['red-A', 'red-B'],
         'red-D': ['red-E'],
         'red-E': ['red-D'], // 要去 E，必須從 C 或 D 近進來！
 
-        'red-G': ['red-f'],
+        'red-G': ['red-F'],
         'red-J': ['red-G']
     },
     'floor-corridor': {
@@ -45,7 +45,7 @@ export const INTERNAL_CONNECTIONS = {
         'yellow-A': ['yellow-C','red-G','red-H'],
         'yellow-B': [],
         'yellow-C': ['yellow-A', 'red-G','red-H'],
-        'yellow-K': []
+        'yellow-D': []
     },
     'floor-path': {
         'red-H': ['red-I', 'red-K'],
