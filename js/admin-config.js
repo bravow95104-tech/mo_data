@@ -522,4 +522,16 @@ export const TABLE_CONFIGS = {
             { id: 'aliases', label: '關鍵字定義', type: 'text', grid: 2 },
         ]
     },
+    mapdescription: {
+        title: '洞窟走法管理',
+        tableName: 'mapdescription',
+        tableCols: ['順序', '名稱', '檔案名稱', '操作'],
+        displayFields: ['sort_id', 'title', 'file_name'],
+        fields: [
+            { id: 'title', label: '名稱', type: 'text', required: true, grid: 1 },
+            { id: 'file_name', label: '檔案名稱HTML', type: 'text', grid: 1 },
+            { id: 'sort_id', label: '排序', type: 'text', grid: 1 },
+            { id: 'aliases', label: '關鍵字定義', type: 'text', grid: 2 },
+        ]
+    },
 };

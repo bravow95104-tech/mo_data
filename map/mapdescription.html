@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>地圖說明 | MoData</title>
+    <title>洞窟走法 | MoData</title>
     <link rel="stylesheet" href="/mo_data/css/styles.css" />
     <link rel="stylesheet" href="/mo_data/css/nav.css" />
     <link rel="stylesheet" href="/mo_data/css/system.css" />
@@ -17,17 +17,31 @@
         <aside id="system-sidebar" class="system-sidebar">
             <div class="sidebar">
                 <h2>洞窟走法</h2>
+        <!-- 修改後的搜尋框區塊（加入清除按鈕） -->
+        <div class="search-box-container" style="padding: 10px 0; position: relative;">
+            <input 
+                type="text" 
+                id="system-search-input" 
+                placeholder="搜尋名稱..." 
+                style="width: 100%; padding: 8px 30px 8px 8px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;"
+            />
+            <!-- 圓圈 X 按鈕 (預設隱藏 display: none) -->
+            <span 
+                id="search-clear-btn" 
+                style="position: absolute; right: 8px; top: 50%; transform: translateY(-50%); cursor: pointer; color: #999; font-size: 16px; display: none; user-select: none;"
+            >
+                &#x2716;
+            </span>
+        </div>
                 <ul class="sidebar-list" id="system-menu">
-                    <li class="active" data-file="evilcave.html">妖邪洞</li>
-                    <li data-file="shuracave.html">修羅洞</li>
-                    <li data-file="imperialmausoleum.html">皇陵</li>
+                    
                 </ul>
             </div>
         </aside>
 
         <section id="content">
             <div id="dynamic-content">
-                <div class="loading-text">正在載入內容...</div>
+                <div class="loading-text">正在載入走法內容...</div>
             </div>
         </section>
 
@@ -37,71 +51,6 @@
 
     <div id="footer-container"></div>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const sidebar = document.getElementById('system-sidebar');
-            const sidebarTitle = sidebar.querySelector('h2');
-            const menuItems = document.querySelectorAll('#system-menu li');
-            const contentDisplay = document.getElementById('dynamic-content');
-
-            // 手機版：點擊標題切換展開/收合
-            sidebarTitle.addEventListener('click', () => {
-                if (window.innerWidth <= 768) {
-                    sidebar.classList.toggle('open');
-                }
-            });
-
-            // 載入內容的函式
-            function loadSystemPage(fileName, titleText) {
-                // 更新標題顯示 (手機版)
-                if (window.innerWidth <= 768 && titleText) {
-                    sidebarTitle.innerHTML = `系統：${titleText}`;
-                } else {
-                    sidebarTitle.innerHTML = "洞窟走法";
-                }
-
-                fetch(`/mo_data/map/description/${fileName}`)
-                    .then(response => {
-                        if (!response.ok) throw new Error('找不到內容檔案');
-                        return response.text();
-                    })
-                    .then(html => {
-                        contentDisplay.innerHTML = html;
-                        // 捲動回內容頂部
-                        if (window.innerWidth <= 768) {
-                            window.scrollTo({ top: sidebar.offsetTop, behavior: 'smooth' });
-                        }
-                    })
-                    .catch(error => {
-                        contentDisplay.innerHTML = `<h3 class="search-tip">錯誤：無法讀取內容 (${fileName})</h3>`;
-                    });
-            }
-
-            // 選單點擊事件
-            menuItems.forEach(item => {
-                item.addEventListener('click', () => {
-                    const title = item.innerText;
-                    const file = item.getAttribute('data-file');
-
-                    // 1. 切換 active 樣式
-                    menuItems.forEach(i => i.classList.remove('active'));
-                    item.classList.add('active');
-
-                    // 2. 執行載入
-                    loadSystemPage(file, title);
-                    document.title = `${title} | MoData`;
-
-                    // 3. 手機版點選後自動收合
-                    if (window.innerWidth <= 768) {
-                        sidebar.classList.remove('open');
-                    }
-                });
-            });
-
-            // 初始載入第一項內容
-            const firstItem = menuItems[0];
-            loadSystemPage(firstItem.getAttribute('data-file'), firstItem.innerText);
-        });
-    </script>
+    <script type="module" src="/mo_data/js/system.js"></script>
 </body>
 </html>
