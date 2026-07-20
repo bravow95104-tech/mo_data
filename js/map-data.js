@@ -112,58 +112,78 @@ export const PORTAL_TELEPORTS = {
 /**
  * 精確考量「同圖步行」與「跨圖傳送」的最短路徑演算法 (支援 green-start 入口)
  */
-export function findRealShortestPath(startFloor, endFloor, startPortal = 'green-start') {
-    if (startFloor === endFloor) return [];
+/**
+ * 全功能精準尋路演算法 (支援指定起點/終點傳點)
+ * @param {string} startFloor 起始樓層 (例: 'floor-corridor')
+ * @param {string} endFloor 目標樓層 (例: 'floor-main')
+ * @param {string|null} startPortal 起始傳點 (例: 'red-H' 或 'green-start'，若給 null 則自動允許任意起點)
+ * @param {string|null} endPortal 目標傳點 (例: 'red-K'，若給 null 則只要抵達 endFloor 即可)
+ */
+export function findRealShortestPath(startFloor, endFloor, startPortal = 'green-start', endPortal = null) {
+    // 如果起終點樓層與傳點完全相同，不用走
+    if (startFloor === endFloor && startPortal === endPortal && startPortal !== null) return [];
 
-    // 🌟 將原先的 null 改為 startPortal (預設帶入 'green-start')
+    // Queue 結構：[當前樓層, 當前所在的傳點, 路徑歷史]
     let queue = [[startFloor, startPortal, []]];
     let visited = new Set();
 
     while (queue.length > 0) {
         let [curFloor, curPortal, path] = queue.shift();
 
-        // 標記該 (樓層, 傳點) 組合已探索
         const stateKey = `${curFloor}:${curPortal}`;
         if (visited.has(stateKey)) continue;
         visited.add(stateKey);
 
-        // 1. 取得當前傳點在該樓層能「步行」到的所有傳點 (包含自己)
+        // 1. 取得當前點「步行」能到的傳點清單
         let availablePortals = [];
         if (curPortal === null) {
+            // 未指定起點傳點時，開放該圖所有傳點作為起點
             availablePortals = Object.keys(PORTAL_TELEPORTS[curFloor] || {});
         } else {
             const reachableInternal = INTERNAL_CONNECTIONS[curFloor]?.[curPortal] || [];
             availablePortals = Array.from(new Set([curPortal, ...reachableInternal]));
         }
 
-        // 2. 針對每一個可走路到達的傳點，嘗試進行「跨樓層傳送」
+        // 2. 嘗試踏上傳點並進行「跨樓層傳送」
         for (let pCode of availablePortals) {
-            // 💡 綠色起始點 (green-start) 在 PORTAL_TELEPORTS 沒有跨圖設定，會在這邊自動過濾掉，非常安全！
+            // 🎯 特殊判定：如果目標就是「當前樓層的某個傳點」（例如在同樓層走路就到了目標點）
+            if (curFloor === endFloor && endPortal && pCode === endPortal) {
+                return [...path, {
+                    fromFloor: curFloor,
+                    walkToPortal: pCode,
+                    toFloor: curFloor,
+                    targetPortal: pCode,
+                    isFinalWalk: true // 標記為步行抵達終點
+                }];
+            }
+
             const teleportInfo = PORTAL_TELEPORTS[curFloor]?.[pCode];
             if (!teleportInfo) continue;
 
             const nextFloor = teleportInfo.targetFloor;
             const nextPortal = teleportInfo.targetPortal;
 
-            // 新的步驟紀錄
             const newStep = {
                 fromFloor: curFloor,
-                walkToPortal: pCode, // 在當前樓層走到的傳點 (例如從 green-start 走到 red-A)
+                walkToPortal: pCode,
                 toFloor: nextFloor,
                 targetPortal: nextPortal
             };
 
             const newPath = [...path, newStep];
 
-            // 🎯 如果傳送過去的目標樓層就是終點樓層，尋路成功！
+            // 🎯 終點判定：
+            // 情況 A：指定了 endPortal -> 傳送過去的目標樓層 AND 目標傳點都要對上
+            // 情況 B：沒指定 endPortal -> 只要目標樓層對上即可
             if (nextFloor === endFloor) {
-                return newPath;
+                if (!endPortal || nextPortal === endPortal) {
+                    return newPath;
+                }
             }
 
-            // 繼續搜尋下一層
             queue.push([nextFloor, nextPortal, newPath]);
         }
     }
 
-    return null; // 無法到達
+    return null; // 找不到連通路線
 }
