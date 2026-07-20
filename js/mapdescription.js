@@ -1,7 +1,8 @@
 // /mo_data/js/system.js
 import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm'
 import { SUPABASE_URL, SUPABASE_KEY } from './supabase-config.js'
-import { FLOOR_NAMES, findShortestPath } from '../js/map-data.js';
+// 🌟 1. 改成匯入新版精準尋路函式 findRealShortestPath
+import { FLOOR_NAMES, findRealShortestPath } from '../js/map-data.js';
 
 // 初始化你的 supabase 客戶端
 const supabase = createClient(SUPABASE_URL, SUPABASE_KEY)
@@ -17,7 +18,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const clearBtn = document.getElementById('search-clear-btn');
 
     // 手機版：點擊標題切換展開/收合
-    sidebarTitle.addEventListener('click', () => {
+    sidebarTitle?.addEventListener('click', () => {
         if (window.innerWidth <= 768) {
             sidebar.classList.toggle('open');
         }
@@ -26,7 +27,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     // === 載入內容頁面函式 ===
     function loadSystemPage(fileName, titleText) {
         if (window.innerWidth <= 768 && titleText) {
-            sidebarTitle.innerHTML = `系統：${titleText}`;
+            sidebarTitle.innerHTML = `走法：${titleText}`;
         } else {
             sidebarTitle.innerHTML = "洞窟走法";
         }
@@ -98,6 +99,55 @@ document.addEventListener("DOMContentLoaded", async () => {
         document.querySelectorAll('.portal-tag').forEach(el => {
             el.classList.remove('active');
         });
+    });
+
+    // ==========================================
+    // 🛠️ 尋路搜尋按鈕事件代理
+    // ==========================================
+    document.addEventListener('click', (e) => {
+        if (e.target && e.target.id === 'search-route-btn') {
+            const startSelect = document.getElementById('start-floor-select');
+            const endSelect = document.getElementById('end-floor-select');
+            const resultBox = document.getElementById('route-result');
+
+            if (!startSelect || !endSelect || !resultBox) return;
+
+            const startFloor = startSelect.value;
+            const endFloor = endSelect.value;
+
+            // 清除舊有高亮
+            document.querySelectorAll('.portal-tag').forEach(el => el.classList.remove('active'));
+
+            if (startFloor === endFloor) {
+                resultBox.innerHTML = '⚠️ 起點與終點相同，無需移動！';
+                return;
+            }
+
+            // 🌟 2. 呼叫新版精準尋路函式
+            const path = findRealShortestPath(startFloor, endFloor);
+
+            if (!path || path.length === 0) {
+                resultBox.innerHTML = '❌ 找不到連通路線！';
+                return;
+            }
+
+            // 🌟 3. 根據新版資料結構組合顯示文字
+            let html = `<strong>💡 從「${FLOOR_NAMES[startFloor] || startFloor}」前往「${FLOOR_NAMES[endFloor] || endFloor}」的最佳走法：</strong><br>`;
+            
+            path.forEach((step, index) => {
+                const fromName = FLOOR_NAMES[step.fromFloor] || step.fromFloor;
+                const toName = FLOOR_NAMES[step.toFloor] || step.toFloor;
+                
+                html += `${index + 1}. 在 <b>${fromName}</b> 走向傳點 [<span style="color:#e74c3c; font-weight:bold;">${step.walkToPortal}</span>] ➔ 進入 <b>${toName}</b><br>`;
+
+                // 自動高亮整條路徑上經過的所有傳點！
+                document.querySelectorAll(`[data-portal="${step.walkToPortal}"]`).forEach(el => {
+                    el.classList.add('active');
+                });
+            });
+
+            resultBox.innerHTML = html;
+        }
     });
 
     // ==========================================
@@ -204,64 +254,20 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 // ==========================================
 // 🛠️ 開發者自動取點助手 (點圖片直接輸出 style 程式碼)
+// 💡 完成所有座標填寫後，可將此段註解掉
 // ==========================================
+/*
 document.addEventListener('click', (e) => {
-    // 檢查點擊的是不是地圖圖片
     if (e.target.classList.contains('system-img')) {
         const img = e.target;
         const rect = img.getBoundingClientRect();
         
-        // 自動計算相對圖片的百分比位置
         const left = (((e.clientX - rect.left) / rect.width) * 100).toFixed(1);
         const top = (((e.clientY - rect.top) / rect.height) * 100).toFixed(1);
         
-        // 直接印在 F12 主控台 (Console)
         console.log(`style="top: ${top}%; left: ${left}%;"`);
-        
-        // 畫面上跳出提示，方便直接複製！
         navigator.clipboard.writeText(`style="top: ${top}%; left: ${left}%;"`);
         alert(`已複製位置到剪貼簿！\nstyle="top: ${top}%; left: ${left}%;"`);
     }
 });
-
-// 全域事件代理或 DOMContentLoaded 中綁定尋路按鈕
-document.addEventListener('click', (e) => {
-    if (e.target && e.target.id === 'search-route-btn') {
-        const startSelect = document.getElementById('start-floor-select');
-        const endSelect = document.getElementById('end-floor-select');
-        const resultBox = document.getElementById('route-result');
-
-        if (!startSelect || !endSelect || !resultBox) return;
-
-        const startFloor = startSelect.value;
-        const endFloor = endSelect.value;
-
-        // 清除舊有高亮
-        document.querySelectorAll('.portal-tag').forEach(el => el.classList.remove('active'));
-
-        if (startFloor === endFloor) {
-            resultBox.innerHTML = '⚠️ 起點與終點相同，無需移動！';
-            return;
-        }
-
-        const path = findShortestPath(startFloor, endFloor);
-
-        if (!path || path.length === 0) {
-            resultBox.innerHTML = '❌ 找不到連通路線！';
-            return;
-        }
-
-        // 組合路線說明文字
-        let html = `<strong>💡 從「${FLOOR_NAMES[startFloor]}」前往「${FLOOR_NAMES[endFloor]}」的最快路線：</strong><br>`;
-        path.forEach((step, index) => {
-            html += `${index + 1}. 從 <b>${FLOOR_NAMES[step.from]}</b> 走傳點 [<span style="color:#e74c3c;">${step.label}</span>] ➔ 跳轉至 <b>${FLOOR_NAMES[step.to]}</b><br>`;
-
-            // 自動高亮整條路徑上經過的所有傳點！
-            document.querySelectorAll(`[data-portal="${step.via}"]`).forEach(el => {
-                el.classList.add('active');
-            });
-        });
-
-        resultBox.innerHTML = html;
-    }
-});
+*/
