@@ -15,6 +15,7 @@ export const FLOOR_NAMES = {
 export const INTERNAL_CONNECTIONS = {
     'floor-front': {
         // 假設前殿是一整區，所有傳點彼此都能走通
+        'green-start': ['red-A', 'red-B', 'red-D'],
         'red-A': ['red-B', 'red-D',],
         'red-B': ['red-A', 'red-D',],
         'red-C': ['red-F'],
@@ -109,13 +110,13 @@ export const PORTAL_TELEPORTS = {
 };
 
 /**
- * 精確考量「同圖步行」與「跨圖傳送」的最短路徑演算法
+ * 精確考量「同圖步行」與「跨圖傳送」的最短路徑演算法 (支援 green-start 入口)
  */
-export function findRealShortestPath(startFloor, endFloor) {
+export function findRealShortestPath(startFloor, endFloor, startPortal = 'green-start') {
     if (startFloor === endFloor) return [];
 
-    // Queue 節點結構：[當前樓層, 當前所在的傳點(若為null表示起點可自由選擇區域), 經過的路徑歷史]
-    let queue = [[startFloor, null, []]];
+    // 🌟 將原先的 null 改為 startPortal (預設帶入 'green-start')
+    let queue = [[startFloor, startPortal, []]];
     let visited = new Set();
 
     while (queue.length > 0) {
@@ -126,18 +127,18 @@ export function findRealShortestPath(startFloor, endFloor) {
         if (visited.has(stateKey)) continue;
         visited.add(stateKey);
 
-        // 1. 如果尚未指定當前傳點（起點剛開始），枚舉該樓層的所有可用傳點作為起點
+        // 1. 取得當前傳點在該樓層能「步行」到的所有傳點 (包含自己)
         let availablePortals = [];
         if (curPortal === null) {
             availablePortals = Object.keys(PORTAL_TELEPORTS[curFloor] || {});
         } else {
-            // 在同樓層內，可透過「走路」到達的其他傳點 + 當前傳點自己
             const reachableInternal = INTERNAL_CONNECTIONS[curFloor]?.[curPortal] || [];
-            availablePortals = [curPortal, ...reachableInternal];
+            availablePortals = Array.from(new Set([curPortal, ...reachableInternal]));
         }
 
         // 2. 針對每一個可走路到達的傳點，嘗試進行「跨樓層傳送」
         for (let pCode of availablePortals) {
+            // 💡 綠色起始點 (green-start) 在 PORTAL_TELEPORTS 沒有跨圖設定，會在這邊自動過濾掉，非常安全！
             const teleportInfo = PORTAL_TELEPORTS[curFloor]?.[pCode];
             if (!teleportInfo) continue;
 
@@ -147,7 +148,7 @@ export function findRealShortestPath(startFloor, endFloor) {
             // 新的步驟紀錄
             const newStep = {
                 fromFloor: curFloor,
-                walkToPortal: pCode, // 在當前樓層走到的傳點
+                walkToPortal: pCode, // 在當前樓層走到的傳點 (例如從 green-start 走到 red-A)
                 toFloor: nextFloor,
                 targetPortal: nextPortal
             };
