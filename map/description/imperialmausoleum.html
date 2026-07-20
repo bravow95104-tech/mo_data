@@ -8,10 +8,9 @@
     <div class="img-wrapper">
         <img src="../pic/map/description/imperialmausoleum/皇陵前殿.jpg" class="system-img" alt="皇陵前殿">
         
-        <!-- 傳點標記 (利用 position: absolute 定位在圖片對應位置) -->
-        <!-- data-portal 表示傳點代號，相同代號會一起高亮 -->
-        <div class="portal-tag red" data-portal="red-1" style="top: 35%; left: 45%;" onclick="jumpToPortal('red-1', 'floor-mid')">紅1 (往中殿)</div>
-        <div class="portal-tag yellow" data-portal="yellow-1" style="top: 70%; left: 80%;" onclick="jumpToPortal('yellow-1', 'floor-mid')">黃1 (往中殿)</div>
+        <!-- 🌟 改用 data-target-floor 替代 onclick，去掉 jumpToPortal -->
+        <div class="portal-tag red" data-portal="red-1" data-target-floor="floor-mid" style="top: 35%; left: 45%;">紅1 (往中殿)</div>
+        <div class="portal-tag yellow" data-portal="yellow-1" data-target-floor="floor-mid" style="top: 70%; left: 80%;">黃1 (往中殿)</div>
     </div>
     <figcaption>▲ 皇陵前殿</figcaption>
 </figure>
@@ -21,122 +20,96 @@
     <div class="img-wrapper">
         <img src="../pic/map/description/imperialmausoleum/皇陵中殿.jpg" class="system-img" alt="皇陵中殿">
         
-        <!-- 對應的傳點 -->
-        <div class="portal-tag red" data-portal="red-1" style="top: 20%; left: 15%;" onclick="jumpToPortal('red-1', 'floor-front')">紅1 (往前殿)</div>
-        <div class="portal-tag yellow" data-portal="yellow-1" style="top: 60%; left: 30%;" onclick="jumpToPortal('yellow-1', 'floor-front')">黃1 (往前殿)</div>
+        <div class="portal-tag red" data-portal="red-1" data-target-floor="floor-front" style="top: 20%; left: 15%;">紅1 (往前殿)</div>
+        <div class="portal-tag yellow" data-portal="yellow-1" data-target-floor="floor-front" style="top: 60%; left: 30%;">黃1 (往前殿)</div>
     </div>
     <figcaption>▲ 皇陵中殿</figcaption>
 </figure>
 
-<!-- 皇陵迴廊 -->
-<figure id="floor-mid" class="map-figure">
+<!-- 皇陵迴廊 (🌟 修正 ID 為 floor-corridor) -->
+<figure id="floor-corridor" class="map-figure">
     <div class="img-wrapper">
         <img src="../pic/map/description/imperialmausoleum/皇陵迴廊.jpg" class="system-img" alt="皇陵迴廊">
         
-        <!-- 對應的傳點 -->
-        <div class="portal-tag red" data-portal="red-1" style="top: 20%; left: 15%;" onclick="jumpToPortal('red-1', 'floor-front')">紅1 (往前殿)</div>
-        <div class="portal-tag yellow" data-portal="yellow-1" style="top: 60%; left: 30%;" onclick="jumpToPortal('yellow-1', 'floor-front')">黃1 (往前殿)</div>
+        <div class="portal-tag red" data-portal="red-2" data-target-floor="floor-mid" style="top: 20%; left: 15%;">紅2 (往中殿)</div>
+        <div class="portal-tag yellow" data-portal="yellow-2" data-target-floor="floor-main" style="top: 60%; left: 30%;">黃2 (往正殿)</div>
     </div>
     <figcaption>▲ 皇陵迴廊</figcaption>
 </figure>
 
-<!-- 皇陵通道 -->
-<figure id="floor-mid" class="map-figure">
+<!-- 皇陵通道 (🌟 修正 ID 為 floor-path) -->
+<figure id="floor-path" class="map-figure">
     <div class="img-wrapper">
         <img src="../pic/map/description/imperialmausoleum/皇陵通道.jpg" class="system-img" alt="皇陵通道">
         
-        <!-- 對應的傳點 -->
-        <div class="portal-tag red" data-portal="red-1" style="top: 20%; left: 15%;" onclick="jumpToPortal('red-1', 'floor-front')">紅1 (往前殿)</div>
-        <div class="portal-tag yellow" data-portal="yellow-1" style="top: 60%; left: 30%;" onclick="jumpToPortal('yellow-1', 'floor-front')">黃1 (往前殿)</div>
+        <div class="portal-tag red" data-portal="red-3" data-target-floor="floor-mid" style="top: 20%; left: 15%;">紅3 (往中殿)</div>
     </div>
     <figcaption>▲ 皇陵通道</figcaption>
 </figure>
 
-<!-- 皇陵正殿 -->
-<figure id="floor-mid" class="map-figure">
+<!-- 皇陵正殿 (🌟 修正 ID 為 floor-main) -->
+<figure id="floor-main" class="map-figure">
     <div class="img-wrapper">
         <img src="../pic/map/description/imperialmausoleum/皇陵正殿.jpg" class="system-img" alt="皇陵正殿">
         
-        <!-- 對應的傳點 -->
-        <div class="portal-tag red" data-portal="red-1" style="top: 20%; left: 15%;" onclick="jumpToPortal('red-1', 'floor-front')">紅1 (往前殿)</div>
-        <div class="portal-tag yellow" data-portal="yellow-1" style="top: 60%; left: 30%;" onclick="jumpToPortal('yellow-1', 'floor-front')">黃1 (往前殿)</div>
+        <div class="portal-tag yellow" data-portal="yellow-2" data-target-floor="floor-corridor" style="top: 60%; left: 30%;">黃2 (往迴廊)</div>
     </div>
     <figcaption>▲ 皇陵正殿</figcaption>
 </figure>
 
 <style>
-/* 容器相對定位 */
+/* 🌟 讓 figure 本身變成 Flex 容器，圖片與文字才會絕對水平置中 */
+.map-figure {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 20px auto;
+    text-align: center;
+    width: 100%;
+}
+
+/* 容器相對定位，寬度緊貼圖片 */
 .img-wrapper {
     position: relative;
     display: inline-block;
     max-width: 100%;
+    margin: 0 auto;
 }
 
 .system-img {
     width: 100%;
+    max-width: 100%;
     height: auto;
     display: block;
+    margin: 0 auto;
+    border-radius: 6px;
 }
 
 /* 傳點標記基本樣式 */
 .portal-tag {
     position: absolute;
+    transform: translate(-50%, -50%); /* 🌟 讓 top/left 的點精準對齊標籤中心 */
     padding: 4px 8px;
     font-size: 13px;
     font-weight: bold;
     border-radius: 4px;
     cursor: pointer;
     user-select: none;
+    white-space: nowrap;               /* 防止文字斷行 */
     transition: transform 0.2s, box-shadow 0.2s, background-color 0.2s;
     box-shadow: 0 2px 6px rgba(0,0,0,0.5);
+    z-index: 5;
 }
 
 /* 顏色樣式 */
 .portal-tag.red { background: #e74c3c; color: white; }
 .portal-tag.yellow { background: #f1c40f; color: #2c3e50; }
 
-/* 懸停與高亮效果 (透過 JS 動態加上 .active) */
+/* 懸停與高亮效果 (透過 mapdescription.js 動態加上 .active) */
 .portal-tag:hover, .portal-tag.active {
-    transform: scale(1.25);
+    transform: translate(-50%, -50%) scale(1.25);
     z-index: 10;
     box-shadow: 0 0 12px 4px #2ecc71; /* 綠色強光發亮 */
 }
 </style>
-
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-    const portals = document.querySelectorAll('.portal-tag');
-
-    portals.forEach(portal => {
-        // 滑鼠移入：高亮所有 data-portal 相同的標記
-        portal.addEventListener('mouseenter', () => {
-            const targetGroup = portal.getAttribute('data-portal');
-            document.querySelectorAll(`[data-portal="${targetGroup}"]`).forEach(el => {
-                el.classList.add('active');
-            });
-        });
-
-        // 滑鼠移出：取消高亮
-        portal.addEventListener('mouseleave', () => {
-            document.querySelectorAll('.portal-tag').forEach(el => {
-                el.classList.remove('active');
-            });
-        });
-    });
-});
-
-// 點擊傳點自動捲動到目標樓層與目標傳點
-function jumpToPortal(portalCode, targetFloorId) {
-    const targetFloor = document.getElementById(targetFloorId);
-    if (targetFloor) {
-        targetFloor.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        
-        // 自動高亮目標傳點 2 秒
-        const targetPortals = targetFloor.querySelectorAll(`[data-portal="${portalCode}"]`);
-        targetPortals.forEach(el => el.classList.add('active'));
-        setTimeout(() => {
-            targetPortals.forEach(el => el.classList.remove('active'));
-        }, 2000);
-    }
-}
-</script>
