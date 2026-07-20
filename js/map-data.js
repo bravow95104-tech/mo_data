@@ -187,37 +187,3 @@ export function findRealShortestPath(startFloor, endFloor, startPortal = 'green-
 
     return null; // 找不到連通路線
 }
-
-// 動態更新傳點選單
-function updatePortalOptions(floorSelectId, portalSelectId) {
-    const floor = document.getElementById(floorSelectId).value;
-    const portalSelect = document.getElementById(portalSelectId);
-    
-    // 清空現有選項
-    portalSelect.innerHTML = floorSelectId === 'start-floor-select' 
-        ? '<option value="green-start">🟢 綠色入口 (預設)</option>' 
-        : '<option value="">✨ 任意門 (到達即可)</option>';
-
-    const portals = Object.keys(INTERNAL_CONNECTIONS[floor] || {});
-    portals.forEach(p => {
-        if (p !== 'green-start') {
-            portalSelect.innerHTML += `<option value="${p}">${p}</option>`;
-        }
-    });
-}
-
-// 監聽樓層下拉選單變更
-document.getElementById('start-floor-select').addEventListener('change', () => updatePortalOptions('start-floor-select', 'start-portal-select'));
-document.getElementById('end-floor-select').addEventListener('change', () => updatePortalOptions('end-floor-select', 'end-portal-select'));
-
-// 點擊搜尋按鈕
-document.getElementById('search-route-btn').addEventListener('click', () => {
-    const startFloor = document.getElementById('start-floor-select').value;
-    const startPortal = document.getElementById('start-portal-select').value || 'green-start';
-    const endFloor = document.getElementById('end-floor-select').value;
-    const endPortal = document.getElementById('end-portal-select').value || null;
-
-    const route = findRealShortestPath(startFloor, endFloor, startPortal, endPortal);
-    
-    // 渲染搜尋結果...
-});
