@@ -200,3 +200,25 @@ document.addEventListener("DOMContentLoaded", async () => {
         menuContainer.innerHTML = `<li style="color: red;">選單載入錯誤</li>`;
     }
 });
+
+// ==========================================
+// 🛠️ 開發者自動取點助手 (點圖片直接輸出 style 程式碼)
+// ==========================================
+document.addEventListener('click', (e) => {
+    // 檢查點擊的是不是地圖圖片
+    if (e.target.classList.contains('system-img')) {
+        const img = e.target;
+        const rect = img.getBoundingClientRect();
+        
+        // 自動計算相對圖片的百分比位置
+        const left = (((e.clientX - rect.left) / rect.width) * 100).toFixed(1);
+        const top = (((e.clientY - rect.top) / rect.height) * 100).toFixed(1);
+        
+        // 直接印在 F12 主控台 (Console)
+        console.log(`style="top: ${top}%; left: ${left}%;"`);
+        
+        // 畫面上跳出提示，方便直接複製！
+        navigator.clipboard.writeText(`style="top: ${top}%; left: ${left}%;"`);
+        alert(`已複製位置到剪貼簿！\nstyle="top: ${top}%; left: ${left}%;"`);
+    }
+});
