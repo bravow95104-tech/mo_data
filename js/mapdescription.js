@@ -36,7 +36,7 @@ function loadSystemPage(fileName, titleText) {
 
     // 🌟 修正：因為 system.html 本身就在 sys 資料夾裡了，
     // 這裡直接 fetch 子網頁的檔案名稱 (fileName) 即可，不需要再加前綴！
-    fetch(`${fileName}`) 
+    fetch(`description/${fileName}`) 
         .then(response => {
             if (!response.ok) throw new Error('找不到內容檔案');
             return response.text();
