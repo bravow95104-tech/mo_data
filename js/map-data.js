@@ -36,7 +36,7 @@ export const INTERNAL_CONNECTIONS = {
         'red-J': []
     },
     'floor-corridor': {
-        'red-G': [ 'yellow-A', 'yellow-C','red-H'],
+        'red-G': ['yellow-A', 'yellow-C','red-H'],
         'red-J': ['red-I'],
         'red-H': ['yellow-A', 'yellow-C','red-G'],
         'red-I': ['red-J'],
@@ -66,14 +66,14 @@ export const INTERNAL_CONNECTIONS = {
  * 點擊該傳點，會直接傳送到目標樓層的同名傳點
  */
 export const PORTAL_TELEPORTS = {
-    'floor-front': {
+    'floor-front': {/**前**/
         'red-A': { targetFloor: 'floor-mid', targetPortal: 'red-A' },
         'red-B': { targetFloor: 'floor-mid', targetPortal: 'red-B' },
         'red-C': { targetFloor: 'floor-mid', targetPortal: 'red-C' },
         'red-D': { targetFloor: 'floor-mid', targetPortal: 'red-D' },
         'red-F': { targetFloor: 'floor-mid', targetPortal: 'red-F' }
     },
-    'floor-mid': {
+    'floor-mid': {/**中**/
         'red-A': { targetFloor: 'floor-front', targetPortal: 'red-A' },
         'red-B': { targetFloor: 'floor-front', targetPortal: 'red-B' },
         'red-C': { targetFloor: 'floor-front', targetPortal: 'red-C' },
@@ -83,18 +83,18 @@ export const PORTAL_TELEPORTS = {
         'red-G': { targetFloor: 'floor-corridor', targetPortal: 'red-G' },
         'red-J': { targetFloor: 'floor-corridor', targetPortal: 'red-J' }
     },
-    'floor-corridor': {
+    'floor-corridor': {/**迴廊**/
         'red-G': { targetFloor: 'floor-mid', targetPortal: 'red-G' },
         'red-J': { targetFloor: 'floor-mid', targetPortal: 'red-J' },
         'red-E': { targetFloor: 'floor-mid', targetPortal: 'red-E' },
         'red-H': { targetFloor: 'floor-path', targetPortal: 'red-H' },
         'red-I': { targetFloor: 'floor-path', targetPortal: 'red-I' },
-        'yellow-A': { targetFloor: 'floor-main', targetPortal: 'yellow-A' },
-        'yellow-B': { targetFloor: 'floor-main', targetPortal: 'yellow-B' },
-        'yellow-C': { targetFloor: 'floor-main', targetPortal: 'yellow-C' },
-        'yellow-D': { targetFloor: 'floor-main', targetPortal: 'yellow-D' }
+        'yellow-A': { targetFloor: 'floor-path', targetPortal: 'yellow-A' },
+        'yellow-B': { targetFloor: 'floor-path', targetPortal: 'yellow-B' },
+        'yellow-C': { targetFloor: 'floor-path', targetPortal: 'yellow-C' },
+        'yellow-D': { targetFloor: 'floor-path', targetPortal: 'yellow-D' }
     },
-    'floor-path': {
+    'floor-path': {/**通道**/
         'red-H': { targetFloor: 'floor-corridor', targetPortal: 'red-H' },
         'red-I': { targetFloor: 'floor-corridor', targetPortal: 'red-I' },
         'red-K': { targetFloor: 'floor-main', targetPortal: 'red-K' },
