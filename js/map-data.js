@@ -36,9 +36,9 @@ export const INTERNAL_CONNECTIONS = {
         'red-J': []
     },
     'floor-corridor': {
-        'red-G': [ 'yellow-A', 'yellow-C'],
+        'red-G': [ 'yellow-A', 'yellow-C','red-H'],
         'red-J': ['red-I'],
-        'red-H': ['yellow-A', 'yellow-C'],
+        'red-H': ['yellow-A', 'yellow-C','red-G'],
         'red-I': ['red-J'],
         'red-E': [],
 
