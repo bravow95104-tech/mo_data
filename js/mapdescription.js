@@ -1,6 +1,7 @@
 // /mo_data/js/system.js
 import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm'
 import { SUPABASE_URL, SUPABASE_KEY } from './supabase-config.js'
+import { FLOOR_NAMES, findShortestPath } from '../js/map-data.js';
 
 // 初始化你的 supabase 客戶端
 const supabase = createClient(SUPABASE_URL, SUPABASE_KEY)
@@ -220,5 +221,47 @@ document.addEventListener('click', (e) => {
         // 畫面上跳出提示，方便直接複製！
         navigator.clipboard.writeText(`style="top: ${top}%; left: ${left}%;"`);
         alert(`已複製位置到剪貼簿！\nstyle="top: ${top}%; left: ${left}%;"`);
+    }
+});
+
+// 全域事件代理或 DOMContentLoaded 中綁定尋路按鈕
+document.addEventListener('click', (e) => {
+    if (e.target && e.target.id === 'search-route-btn') {
+        const startSelect = document.getElementById('start-floor-select');
+        const endSelect = document.getElementById('end-floor-select');
+        const resultBox = document.getElementById('route-result');
+
+        if (!startSelect || !endSelect || !resultBox) return;
+
+        const startFloor = startSelect.value;
+        const endFloor = endSelect.value;
+
+        // 清除舊有高亮
+        document.querySelectorAll('.portal-tag').forEach(el => el.classList.remove('active'));
+
+        if (startFloor === endFloor) {
+            resultBox.innerHTML = '⚠️ 起點與終點相同，無需移動！';
+            return;
+        }
+
+        const path = findShortestPath(startFloor, endFloor);
+
+        if (!path || path.length === 0) {
+            resultBox.innerHTML = '❌ 找不到連通路線！';
+            return;
+        }
+
+        // 組合路線說明文字
+        let html = `<strong>💡 從「${FLOOR_NAMES[startFloor]}」前往「${FLOOR_NAMES[endFloor]}」的最快路線：</strong><br>`;
+        path.forEach((step, index) => {
+            html += `${index + 1}. 從 <b>${FLOOR_NAMES[step.from]}</b> 走傳點 [<span style="color:#e74c3c;">${step.label}</span>] ➔ 跳轉至 <b>${FLOOR_NAMES[step.to]}</b><br>`;
+
+            // 自動高亮整條路徑上經過的所有傳點！
+            document.querySelectorAll(`[data-portal="${step.via}"]`).forEach(el => {
+                el.classList.add('active');
+            });
+        });
+
+        resultBox.innerHTML = html;
     }
 });

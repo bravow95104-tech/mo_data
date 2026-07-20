@@ -1,4 +1,38 @@
 <h2>皇陵</h2> 
+<!-- 🌟 互動式走法搜尋器 UI -->
+<div class="route-finder-card">
+    <div class="route-finder-header">🗺️ 洞窟走法導航搜尋器</div>
+    <div class="route-controls">
+        <div class="select-group">
+            <label for="start-floor-select">起點：</label>
+            <select id="start-floor-select">
+                <option value="floor-front">皇陵前殿</option>
+                <option value="floor-mid">皇陵中殿</option>
+                <option value="floor-corridor">皇陵迴廊</option>
+                <option value="floor-path">皇陵通道</option>
+                <option value="floor-main">皇陵正殿</option>
+            </select>
+        </div>
+
+        <div class="select-group">
+            <label for="end-floor-select">終點：</label>
+            <select id="end-floor-select">
+                <option value="floor-main" selected>皇陵正殿</option>
+                <option value="floor-path">皇陵通道</option>
+                <option value="floor-corridor">皇陵迴廊</option>
+                <option value="floor-mid">皇陵中殿</option>
+                <option value="floor-front">皇陵前殿</option>
+            </select>
+        </div>
+
+        <button id="search-route-btn" class="search-btn">搜尋最佳路線</button>
+    </div>
+
+    <!-- 顯示走法結果區域 -->
+    <div id="route-result" class="route-result-box">
+        💡 請選擇起點與終點，點擊「搜尋最佳路線」！
+    </div>
+</div>
 <div class="note-text">
     💡 滑鼠移到或點擊傳點按鈕，可同步高亮對應傳點；點擊按鈕可平滑捲動至該樓層！(功能僅做為測試使用)
 </div>
@@ -138,4 +172,70 @@
     z-index: 10;
     box-shadow: 0 0 12px 4px #2ecc71; /* 綠色強光發亮 */
 }
+
+/* 尋路器卡片樣式 */
+.route-finder-card {
+    background: #2a2a2a;
+    border: 1px solid #444;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 20px;
+    color: #fff;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.route-finder-header {
+    font-size: 16px;
+    font-weight: bold;
+    color: #f1c40f;
+    margin-bottom: 12px;
+}
+
+.route-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.select-group {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.select-group select {
+    padding: 6px 10px;
+    border-radius: 4px;
+    background: #333;
+    color: #fff;
+    border: 1px solid #555;
+    font-size: 14px;
+}
+
+.search-btn {
+    padding: 6px 16px;
+    background: #2ecc71;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.search-btn:hover {
+    background: #27ae60;
+}
+
+.route-result-box {
+    background: #1e1e1e;
+    padding: 10px 12px;
+    border-radius: 6px;
+    font-size: 14px;
+    line-height: 1.6;
+    border-left: 4px solid #f1c40f;
+}
 </style>
+
