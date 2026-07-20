@@ -1,8 +1,7 @@
-// /mo_data/js/system.js
 import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm'
 import { SUPABASE_URL, SUPABASE_KEY } from './supabase-config.js'
-// 🌟 1. 改成匯入新版精準尋路函式 findRealShortestPath
-import { FLOOR_NAMES, findRealShortestPath } from '../js/map-data.js';
+// 🌟 1. 補上 INTERNAL_CONNECTIONS 匯入
+import { FLOOR_NAMES, INTERNAL_CONNECTIONS, findRealShortestPath } from '../js/map-data.js';
 
 // 初始化你的 supabase 客戶端
 const supabase = createClient(SUPABASE_URL, SUPABASE_KEY)
@@ -24,6 +23,33 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
     });
 
+    // 🌟 2. 動態更新傳點選單函式
+    function updatePortalOptions(floorSelectId, portalSelectId) {
+        const floorSelect = document.getElementById(floorSelectId);
+        const portalSelect = document.getElementById(portalSelectId);
+        
+        if (!floorSelect || !portalSelect) return;
+
+        const floor = floorSelect.value;
+        const isStart = floorSelectId === 'start-floor-select';
+        
+        portalSelect.innerHTML = '';
+
+        // 如果是起點且選擇前殿，才顯示綠色入口
+        if (isStart && floor === 'floor-front') {
+            portalSelect.innerHTML += '<option value="green-start" selected>🟢 綠色入口 (預設)</option>';
+        } else if (!isStart) {
+            portalSelect.innerHTML += '<option value="" selected>✨ 任意門 (到達即可)</option>';
+        }
+
+        const portals = Object.keys(INTERNAL_CONNECTIONS[floor] || {});
+        portals.forEach(p => {
+            if (p !== 'green-start') {
+                portalSelect.innerHTML += `<option value="${p}">${p}</option>`;
+            }
+        });
+    }
+
     // === 載入內容頁面函式 ===
     function loadSystemPage(fileName, titleText) {
         if (window.innerWidth <= 768 && titleText) {
@@ -42,6 +68,11 @@ document.addEventListener("DOMContentLoaded", async () => {
             })
             .then(html => {
                 contentDisplay.innerHTML = html;
+
+                // 🌟 3. HTML 載入後，自動初始化一次傳點下拉選單
+                updatePortalOptions('start-floor-select', 'start-portal-select');
+                updatePortalOptions('end-floor-select', 'end-portal-select');
+
                 if (window.innerWidth <= 768) {
                     window.scrollTo({ top: sidebar.offsetTop, behavior: 'smooth' });
                 }
@@ -102,43 +133,64 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
 
     // ==========================================
+    // 🛠️ 樓層下拉選單變更事件代理 (自動更新傳點選單)
+    // ==========================================
+    document.addEventListener('change', (e) => {
+        if (e.target && e.target.id === 'start-floor-select') {
+            updatePortalOptions('start-floor-select', 'start-portal-select');
+        }
+        if (e.target && e.target.id === 'end-floor-select') {
+            updatePortalOptions('end-floor-select', 'end-portal-select');
+        }
+    });
+
+    // ==========================================
     // 🛠️ 尋路搜尋按鈕事件代理
     // ==========================================
     document.addEventListener('click', (e) => {
         if (e.target && e.target.id === 'search-route-btn') {
             const startSelect = document.getElementById('start-floor-select');
             const endSelect = document.getElementById('end-floor-select');
+            const startPortalSelect = document.getElementById('start-portal-select');
+            const endPortalSelect = document.getElementById('end-portal-select');
             const resultBox = document.getElementById('route-result');
 
             if (!startSelect || !endSelect || !resultBox) return;
 
             const startFloor = startSelect.value;
             const endFloor = endSelect.value;
+            // 🌟 抓取傳點選單的值，若沒選或抓不到則填寫預設值
+            const startPortal = startPortalSelect?.value || 'green-start';
+            const endPortal = endPortalSelect?.value || null;
 
             // 清除舊有高亮
             document.querySelectorAll('.portal-tag').forEach(el => el.classList.remove('active'));
 
-            if (startFloor === endFloor) {
-                resultBox.innerHTML = '⚠️ 起點與終點相同，無需移動！';
+            if (startFloor === endFloor && startPortal === endPortal) {
+                resultBox.innerHTML = '⚠️ 起點與終點完全相同，無需移動！';
                 return;
             }
 
-            // 🌟 2. 呼叫新版精準尋路函式
-            const path = findRealShortestPath(startFloor, endFloor);
+            // 🌟 呼叫尋路函式 (精準帶入 4 個參數)
+            const path = findRealShortestPath(startFloor, endFloor, startPortal, endPortal);
 
             if (!path || path.length === 0) {
                 resultBox.innerHTML = '❌ 找不到連通路線！';
                 return;
             }
 
-            // 🌟 3. 根據新版資料結構組合顯示文字
+            // 組合顯示文字
             let html = `<strong>💡 從「${FLOOR_NAMES[startFloor] || startFloor}」前往「${FLOOR_NAMES[endFloor] || endFloor}」的最佳走法：</strong><br>`;
             
             path.forEach((step, index) => {
                 const fromName = FLOOR_NAMES[step.fromFloor] || step.fromFloor;
                 const toName = FLOOR_NAMES[step.toFloor] || step.toFloor;
                 
-                html += `${index + 1}. 在 <b>${fromName}</b> 走向傳點 [<span style="color:#e74c3c; font-weight:bold;">${step.walkToPortal}</span>] ➔ 進入 <b>${toName}</b><br>`;
+                if (step.isFinalWalk) {
+                    html += `${index + 1}. 在 <b>${fromName}</b> 走至傳點 [<span style="color:#e74c3c; font-weight:bold;">${step.walkToPortal}</span>] 抵達終點<br>`;
+                } else {
+                    html += `${index + 1}. 在 <b>${fromName}</b> 走向傳點 [<span style="color:#e74c3c; font-weight:bold;">${step.walkToPortal}</span>] ➔ 進入 <b>${toName}</b><br>`;
+                }
 
                 // 自動高亮整條路徑上經過的所有傳點！
                 document.querySelectorAll(`[data-portal="${step.walkToPortal}"]`).forEach(el => {
