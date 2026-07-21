@@ -95,3 +95,129 @@
     <img src="../pic/map/description/shuracave/4.jpg" class="system-img" alt="修羅洞走法">
     <!-- <figcaption>▲ 靈具卡強化介面</figcaption> -->
 </figure>
+
+<style>
+/* 🌟 讓 figure 本身變成 Flex 容器，圖片與文字才會絕對水平置中 */
+.map-figure {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 20px auto;
+    text-align: center;
+    width: 100%;
+}
+
+/* 容器相對定位，寬度緊貼圖片 */
+.img-wrapper {
+    position: relative;
+    display: inline-block;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+.system-img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    border-radius: 6px;
+}
+
+/* 傳點標記基本樣式 */
+.portal-tag {
+    position: absolute;
+    transform: translate(-50%, -50%); /* 🌟 讓 top/left 的點精準對齊標籤中心 */
+    padding: 4px 8px;
+    font-size: 13px;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+    user-select: none;
+    white-space: nowrap;               /* 防止文字斷行 */
+    transition: transform 0.2s, box-shadow 0.2s, background-color 0.2s;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.5);
+    z-index: 5;
+}
+
+/* 顏色樣式 */
+.portal-tag.red { background: #e74c3c; color: white; }
+.portal-tag.yellow { background: #f1c40f; color: #2c3e50; }
+
+/* 懸停與高亮效果 (透過 mapdescription.js 動態加上 .active) */
+.portal-tag:hover, .portal-tag.active {
+    transform: translate(-50%, -50%) scale(1.25);
+    z-index: 10;
+    box-shadow: 0 0 12px 4px #2ecc71; /* 綠色強光發亮 */
+}
+
+/* 尋路器卡片樣式 */
+.route-finder-card {
+    background: #2a2a2a;
+    border: 1px solid #444;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 20px;
+    color: #fff;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.route-finder-header {
+    font-size: 16px;
+    font-weight: bold;
+    color: #f1c40f;
+    margin-bottom: 12px;
+}
+
+.route-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.select-group {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.select-group select {
+    padding: 6px 10px;
+    border-radius: 4px;
+    background: #333;
+    color: #fff;
+    border: 1px solid #555;
+    font-size: 14px;
+}
+
+.search-btn {
+    padding: 6px 16px;
+    background: #2ecc71;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.search-btn:hover {
+    background: #27ae60;
+}
+
+.route-result-box {
+    background: #1e1e1e;
+    padding: 10px 12px;
+    border-radius: 6px;
+    font-size: 14px;
+    line-height: 1.6;
+    border-left: 4px solid #f1c40f;
+}
+.portal-tag.green { 
+    background: #2ecc71; 
+    color: white; 
+}
+</style>
