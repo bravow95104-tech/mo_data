@@ -130,8 +130,10 @@ export const INTERNAL_CONNECTIONS = {
 },
 
     'shura-煉獄': {
-        'green-start': [] // 終點層入口，若無內部其他傳點可給空陣列
-    }
+    'green-start': ['portal-A', 'portal-G'],
+    'portal-A': ['green-start', 'portal-G'],
+    'portal-G': ['green-start', 'portal-A']
+}
 };
 
 
@@ -271,8 +273,9 @@ export const PORTAL_TELEPORTS = {
     'portal-A-white': { targetFloor: 'shura-entrance', targetPortal: 'portal-A' }
 },
     'shura-煉獄': {
-        'green-start': { targetFloor: 'shura-狂亂-I', targetPortal: 'portal-G-red' } // 踩入口傳點可回狂亂 I 區
-    }
+    'portal-A': { targetFloor: 'shura-entrance', targetPortal: 'portal-A' },
+    'portal-G': { targetFloor: 'shura-狂亂-B', targetPortal: 'portal-b' }
+}
 };
 
 /**
