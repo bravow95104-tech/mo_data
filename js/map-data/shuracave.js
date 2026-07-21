@@ -144,6 +144,7 @@ export const INTERNAL_CONNECTIONS = {
 
     // 9. 右下角 (I區 - 通往煉獄)
     'shura-狂亂-I': {
+        'portal-i': ['portal-b', 'portal-A-white', 'portal-B-red', 'portal-G-red'],
         'portal-b': ['portal-A-white', 'portal-B-red', 'portal-G-red'],
         'portal-A-white': ['portal-b', 'portal-B-red', 'portal-G-red'],
         'portal-B-red': ['portal-b', 'portal-A-white', 'portal-G-red'],
@@ -303,6 +304,8 @@ export function findRealShortestPath(startFloor, endFloor, startPortal = 'green-
 
     while (queue.length > 0) {
         let [curFloor, curPortal, path] = queue.shift();
+
+        console.log(`🔍 搜尋中：當前樓層 [${curFloor}] | 當前傳點 [${curPortal}]`);
 
         const stateKey = `${curFloor}:${curPortal}`;
         if (visited.has(stateKey)) continue;
