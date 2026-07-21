@@ -15,7 +15,7 @@ export const FLOOR_NAMES = {
     'shura-狂亂-G': '修羅洞_狂亂_G區',
     'shura-狂亂-H': '修羅洞_狂亂_H區',
     'shura-狂亂-I': '修羅洞_狂亂_I區',
-    'shura-煉獄': '修羅洞_煉獄',
+    //'shura-煉獄': '修羅洞_煉獄',
 };
 
 // 🌟 2. 區塊內部的傳點連通 (Internal Connections)
