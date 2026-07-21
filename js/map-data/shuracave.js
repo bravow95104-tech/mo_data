@@ -5,7 +5,6 @@ export const FLOOR_NAMES = {
     'shura-迷惘-B': '修羅洞_迷惘_B區',
     'shura-迷惘-C': '修羅洞_迷惘_C區',
     'shura-迷惘-D': '修羅洞_迷惘_D區',
-    'shura-迷惘-E': '修羅洞_迷惘_E區',
     'shura-迷惘-F': '修羅洞_迷惘_F區',
     'shura-狂亂-A': '修羅洞_狂亂_A區',
     'shura-狂亂-B': '修羅洞_狂亂_B區',
