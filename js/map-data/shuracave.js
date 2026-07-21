@@ -5,7 +5,7 @@ export const FLOOR_NAMES = {
     'shura-迷惘-B': '修羅洞_迷惘_B區',
     'shura-迷惘-C': '修羅洞_迷惘_C區',
     'shura-迷惘-D': '修羅洞_迷惘_D區',
-    'shura-迷惘-F': '修羅洞_迷惘_E區',
+    'shura-迷惘-E': '修羅洞_迷惘_E區',
     'shura-狂亂-A': '修羅洞_狂亂_A區',
     'shura-狂亂-B': '修羅洞_狂亂_B區',
     'shura-狂亂-C': '修羅洞_狂亂_C區',
@@ -15,7 +15,7 @@ export const FLOOR_NAMES = {
     'shura-狂亂-G': '修羅洞_狂亂_G區',
     'shura-狂亂-H': '修羅洞_狂亂_H區',
     'shura-狂亂-I': '修羅洞_狂亂_I區',
-    //'shura-煉獄': '修羅洞_煉獄',
+    'shura-煉獄': '修羅洞_煉獄',
 };
 
 // 🌟 2. 區塊內部的傳點連通 (Internal Connections)
@@ -148,8 +148,14 @@ export const INTERNAL_CONNECTIONS = {
         'portal-A-white': ['portal-b', 'portal-B-red', 'portal-G-red'],
         'portal-B-red': ['portal-b', 'portal-A-white', 'portal-G-red'],
         'portal-G-red': ['portal-b', 'portal-A-white', 'portal-B-red'] // 🌟 紅色 G 通往煉獄
+    },
+
+    'shura-煉獄': {
+        'green-start': [] // 終點層入口，若無內部其他傳點可給空陣列
     }
 };
+
+
 
 // 🌟 3. 跨區塊 / 跨樓層傳送關係 (Portal Teleports)
 export const PORTAL_TELEPORTS = {
@@ -271,6 +277,9 @@ export const PORTAL_TELEPORTS = {
         'portal-A-white': { targetFloor: 'shura-迷惘-A', targetPortal: 'portal-A' },
         'portal-B-red': { targetFloor: 'shura-迷惘-B', targetPortal: 'portal-B' },
         'portal-G-red': { targetFloor: 'shura-煉獄', targetPortal: 'green-start' } // 🌟 進入煉獄層！
+    },
+    'shura-煉獄': {
+        'green-start': { targetFloor: 'shura-狂亂-I', targetPortal: 'portal-G-red' } // 踩入口傳點可回狂亂 I 區
     }
 };
 
