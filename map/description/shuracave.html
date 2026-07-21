@@ -1,5 +1,81 @@
 <h2>修羅洞</h2> 
 
+<div class="route-finder-card">
+    <div class="route-finder-header">🗺️ 洞窟走法導航搜尋器(測試中)</div>
+    <div class="route-controls">
+        <!-- 起點樓層與傳點 -->
+        <div class="select-group">
+            <label for="start-floor-select">起點樓層：</label>
+            <select id="start-floor-select">
+                <option value="shura-entrance" selected>修羅洞_入口</option>
+                <option value="shura-迷惘-A">修羅洞_迷惘_1區</option>
+                <option value="shura-迷惘-B">修羅洞_迷惘_2區</option>
+                <option value="shura-迷惘-C">修羅洞_迷惘_3區</option>
+                <option value="shura-迷惘-D">修羅洞_迷惘_4區</option>
+                <option value="shura-迷惘-F">修羅洞_迷惘_5區</option>
+                <option value="shura-狂亂-A">修羅洞_狂亂_A區</option>
+                <option value="shura-狂亂-B">修羅洞_狂亂_B區</option>
+                <option value="shura-狂亂-C">修羅洞_狂亂_C區</option>
+                <option value="shura-狂亂-D">修羅洞_狂亂_D區</option>
+                <option value="shura-狂亂-E">修羅洞_狂亂_E區</option>
+                <option value="shura-狂亂-F">修羅洞_狂亂_F區</option>
+                <option value="shura-狂亂-G">修羅洞_狂亂_G區</option>
+                <option value="shura-狂亂-H">修羅洞_狂亂_H區</option>
+                <option value="shura-狂亂-I">修羅洞_狂亂_I區</option>
+                <option value="shura-煉獄">修羅洞_煉獄</option>
+            </select>
+        </div>
+
+        <div class="select-group">
+            <label for="start-portal-select">起點傳點：</label>
+            <select id="start-portal-select">
+                <option value="green-start" selected>🟢 綠色入口 (預設)</option>
+                <!-- 動態由 JS 渲染該樓層的傳點選項 -->
+            </select>
+        </div>
+
+        <!-- 終點樓層與傳點 -->
+        <div class="select-group">
+            <label for="target-floor-select">終點樓層：</label>
+            <select id="target-floor-select">
+                <option value="shura-entrance">修羅洞_入口</option>
+                <option value="shura-迷惘-A">修羅洞_迷惘_1區</option>
+                <option value="shura-迷惘-B">修羅洞_迷惘_2區</option>
+                <option value="shura-迷惘-C">修羅洞_迷惘_3區</option>
+                <option value="shura-迷惘-D">修羅洞_迷惘_4區</option>
+                <option value="shura-迷惘-F">修羅洞_迷惘_5區</option>
+                <option value="shura-狂亂-A">修羅洞_狂亂_A區</option>
+                <option value="shura-狂亂-B">修羅洞_狂亂_B區</option>
+                <option value="shura-狂亂-C">修羅洞_狂亂_C區</option>
+                <option value="shura-狂亂-D">修羅洞_狂亂_D區</option>
+                <option value="shura-狂亂-E">修羅洞_狂亂_E區</option>
+                <option value="shura-狂亂-F">修羅洞_狂亂_F區</option>
+                <option value="shura-狂亂-G">修羅洞_狂亂_G區</option>
+                <option value="shura-狂亂-H">修羅洞_狂亂_H區</option>
+                <option value="shura-狂亂-I">修羅洞_狂亂_I區</option>
+                <option value="shura-煉獄" selected>修羅洞_煉獄</option>
+            </select>
+        </div>
+
+        <div class="select-group">
+            <label for="target-portal-select">終點目標：</label>
+            <select id="target-portal-select">
+                <!-- 動態由 JS 渲染該樓層的傳點選項 -->
+            </select>
+        </div>
+    </div>
+
+    <!-- 搜尋按鈕區 -->
+    <div class="route-actions">
+        <button id="find-route-btn" class="btn-find">🔍 開始規劃最佳路線</button>
+    </div>
+
+    <!-- 路線結果顯示區 -->
+    <div id="route-result-container" class="route-result hidden">
+        <!-- 路線結果將由 JS 渲染於此 -->
+    </div>
+</div>
+
 <figure>
     <img src="../pic/map/description/shuracave/1.jpg" class="system-img" alt="修羅洞走法">
     <!--  <figcaption>▲ 靈具卡強化介面</figcaption> -->
