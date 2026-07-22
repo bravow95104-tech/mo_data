@@ -627,7 +627,7 @@ window.openMapDetail = function (mapId) {
   // 判斷邏輯
   const approachA = item.approach_a || "";
   const isTown = approachA.includes("城鎮");
-  const showApproach = approachA.includes("要");
+  const showApproach = approachA.includes("洞窟") || approachA.includes("要");
   const showExplain = approachA.includes("說明");
   
 let resourceButtonsHTML = "";
@@ -668,10 +668,17 @@ if (resources.length > 0 || item) {
   `;
 }
 
+  // 🚀 2. 將 approach 欄位的文字 (例如 "鬼煞洞") 轉成跳轉至 mapdescription.html 的連結
+  const approachText = item.approach ? item.approach.trim() : "";
+  const approachLink = approachText 
+    ? `<a href="mapdescription.html?search=${encodeURIComponent(approachText)}" class="hero-link">${approachText}</a>`
+    : "-";
+
+  // 🚀 3. 組合 HTML
   const detailsHTML = `
-  ${showApproach ? `<p style="margin-bottom: 8px;"><strong>走法：</strong>${formatDescription(item.approach)}</p>` : ""}
-  ${showExplain ? `<p style="margin-bottom: 0;"><strong>說明：</strong>${formatDescription(item.illustrate)}</p>` : ""}
-`.trim();
+    ${showApproach ? `<p style="margin-bottom: 8px;"><strong>走法：</strong>${approachLink}</p>` : ""}
+    ${showExplain ? `<p style="margin-bottom: 0;"><strong>說明：</strong>${formatDescription(item.illustrate)}</p>` : ""}
+  `.trim();
 
   let combatAndDropHTML = '';
   if (!isTown) {

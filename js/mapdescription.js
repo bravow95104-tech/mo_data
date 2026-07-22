@@ -239,6 +239,9 @@ document.addEventListener("DOMContentLoaded", async () => {
     // ==========================================
     // 🛠️ Supabase 讀取側邊欄選單
     // ==========================================
+    // ==========================================
+    // 🛠️ Supabase 讀取側邊欄選單
+    // ==========================================
     try {
         let { data: gameSystems, error } = await supabase
             .from('mapdescription')
@@ -257,6 +260,10 @@ document.addEventListener("DOMContentLoaded", async () => {
 
         const urlParams = new URLSearchParams(window.location.search);
         const targetSysFile = urlParams.get('sys'); 
+        
+        // 🚀 抓取網址中的 search 關鍵字 (例如 ?search=鬼煞洞)
+        const searchKeyword = urlParams.get('search'); 
+
         const matchedSystem = gameSystems.find(item => item.file_name === targetSysFile);
 
         gameSystems.forEach((item, index) => {
@@ -293,6 +300,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             loadSystemPage(gameSystems[0].file_name, gameSystems[0].title);
         }
 
+        // 🚀 初始化搜尋框事件與 URL 關鍵字自動過濾
         if (searchInput && clearBtn) {
             searchInput.addEventListener('input', (e) => {
                 const keyword = e.target.value.toLowerCase().trim();
@@ -306,6 +314,13 @@ document.addEventListener("DOMContentLoaded", async () => {
                 filterMenuItems('');           
                 searchInput.focus();           
             });
+
+            // ✨ 如果網址帶有 ?search=xxx 參數，自動填入搜尋框並過濾清單
+            if (searchKeyword) {
+                searchInput.value = searchKeyword;
+                clearBtn.style.display = 'block';
+                filterMenuItems(searchKeyword.toLowerCase().trim());
+            }
         }
 
     } catch (err) {
