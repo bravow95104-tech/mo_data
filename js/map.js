@@ -671,7 +671,7 @@ if (resources.length > 0 || item) {
   // 🚀 2. 將 approach 欄位的文字 (例如 "鬼煞洞") 轉成跳轉至 mapdescription.html 的連結
   const approachText = item.approach ? item.approach.trim() : "";
   const approachLink = approachText 
-    ? `<a href="mapdescription.html?search=${encodeURIComponent(approachText)}" class="hero-link">${approachText}</a>`
+    ? `<a href="mapdescription.html?search=${encodeURIComponent(approachText)}"target="_blank" class="hero-link">${approachText}</a>`
     : "-";
 
   // 🚀 3. 組合 HTML
