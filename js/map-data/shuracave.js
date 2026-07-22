@@ -65,8 +65,9 @@ export const INTERNAL_CONNECTIONS = {
 
 // 迷惘 - 中區 (F區) 🌟 這裡原本少寫很多！
 'shura-迷惘-F': {
-    'portal-A': ['portal-B'], 
-    'portal-B': ['portal-A']
+    'portal-f': ['portal-A', 'portal-B'],
+    'portal-A': ['portal-f', 'portal-B'],
+    'portal-B': ['portal-f', 'portal-A']
 },
 
 'shura-狂亂-A': {
@@ -189,8 +190,8 @@ export const PORTAL_TELEPORTS = {
 
 // 迷惘 - 中區 (F區) 🌟 根據右上角說明：A->入口A, B->狂亂B
 'shura-迷惘-F': {
-    'portal-A': { targetFloor: 'shura-entrance', targetPortal: 'portal-A' }, // 大寫 A 通往修羅洞入口 A
-    'portal-B': { targetFloor: 'shura-狂亂-B', targetPortal: 'portal-B-red' }  // 大寫 B 通往修羅洞狂亂 B
+    'portal-A': { targetFloor: 'shura-entrance', targetPortal: 'portal-A' },
+    'portal-B': { targetFloor: 'shura-狂亂-B', targetPortal: 'portal-b' } // 🌟 確保 targetPortal 跟狂亂 B 區定義的 key 一致
 },
 
     // ----------------------------------------------------
