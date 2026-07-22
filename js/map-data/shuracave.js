@@ -529,3 +529,22 @@ export function formatPathInstructions(pathSteps) {
 
     return outputHtml;
 }
+
+// 渲染傳點下拉選單的函數
+function updatePortalOptions(floorKey, selectElement) {
+    selectElement.innerHTML = ''; // 清空舊選項
+
+    // 取得該樓層的所有傳點 key
+    const availablePortals = Object.keys(PORTAL_TELEPORTS[floorKey] || {});
+
+    availablePortals.forEach(portalKey => {
+        const option = document.createElement('option');
+        option.value = portalKey; // 傳給演算法計算的依然是 key (如 'portal-A-white')
+        
+        // 🌟 核心修改：優先讀取 PORTAL_LABELS 中文名稱，若找不到才顯示原本 key
+        const labelText = PORTAL_LABELS[floorKey]?.[portalKey] || portalKey;
+        
+        option.textContent = labelText; // 👈 這裡改顯示中文名稱！
+        selectElement.appendChild(option);
+    });
+}
