@@ -198,61 +198,68 @@ export const PORTAL_TELEPORTS = {
     // ----------------------------------------------------
     // 2. 修羅洞 - 狂亂區 (九宮格 A~I 區)
     // ----------------------------------------------------
-    // 狂亂 - 左上 (A區)
-'shura-狂亂-A': {
-    'portal-b': { targetFloor: 'shura-狂亂-B', targetPortal: 'portal-b' },
-    'portal-A-white': { targetFloor: 'shura-entrance', targetPortal: 'portal-A' },
-    'portal-A-green': { targetFloor: 'shura-狂亂-A', targetPortal: 'portal-a' },
-    'portal-g': { targetFloor: 'shura-狂亂-G', targetPortal: 'portal-g' },
-    'portal-D-red': { targetFloor: 'shura-迷惘-D', targetPortal: 'portal-d' }
-},
+// 狂亂 - 左上 (A區)
+    'shura-狂亂-A': {
+        'portal-a': { targetFloor: 'shura-狂亂-B', targetPortal: 'portal-b' },       // 🌟 補上落腳點 portal-a
+        'portal-b': { targetFloor: 'shura-狂亂-B', targetPortal: 'portal-b' },
+        'portal-A-white': { targetFloor: 'shura-entrance', targetPortal: 'portal-A' },
+        'portal-A-green': { targetFloor: 'shura-狂亂-A', targetPortal: 'portal-a' },
+        'portal-g': { targetFloor: 'shura-狂亂-G', targetPortal: 'portal-g' },
+        'portal-D-red': { targetFloor: 'shura-迷惘-D', targetPortal: 'portal-d' }
+    },
 
 // 狂亂 - 中間核心 (B區)
-'shura-狂亂-B': {
-    'portal-a': { targetFloor: 'shura-狂亂-A', targetPortal: 'portal-a' },
-    'portal-c': { targetFloor: 'shura-狂亂-C', targetPortal: 'portal-c' },
-    'portal-d': { targetFloor: 'shura-狂亂-D', targetPortal: 'portal-d' },
-    'portal-e': { targetFloor: 'shura-狂亂-E', targetPortal: 'portal-e' },
-    'portal-f': { targetFloor: 'shura-狂亂-F', targetPortal: 'portal-f' },
-    'portal-g': { targetFloor: 'shura-狂亂-G', targetPortal: 'portal-g' },
-    'portal-h': { targetFloor: 'shura-狂亂-H', targetPortal: 'portal-h' },
-    'portal-i': { targetFloor: 'shura-狂亂-I', targetPortal: 'portal-i' }
-},
+    'shura-狂亂-B': {
+        'portal-a': { targetFloor: 'shura-狂亂-A', targetPortal: 'portal-a' },
+        'portal-b': { targetFloor: 'shura-狂亂-B', targetPortal: 'portal-b' },       // 🌟 補上落腳點 portal-b
+        'portal-c': { targetFloor: 'shura-狂亂-C', targetPortal: 'portal-c' },
+        'portal-d': { targetFloor: 'shura-狂亂-D', targetPortal: 'portal-d' },
+        'portal-e': { targetFloor: 'shura-狂亂-E', targetPortal: 'portal-e' },
+        'portal-f': { targetFloor: 'shura-狂亂-F', targetPortal: 'portal-f' },
+        'portal-g': { targetFloor: 'shura-狂亂-G', targetPortal: 'portal-g' },
+        'portal-h': { targetFloor: 'shura-狂亂-H', targetPortal: 'portal-h' },
+        'portal-i': { targetFloor: 'shura-狂亂-I', targetPortal: 'portal-i' }
+    },
 
 // 狂亂 - 中上 (C區)
-'shura-狂亂-C': {
-    'portal-A-white': { targetFloor: 'shura-entrance', targetPortal: 'portal-A' },
-    'portal-b': { targetFloor: 'shura-狂亂-B', targetPortal: 'portal-b' },
-    'portal-D-red': { targetFloor: 'shura-迷惘-D', targetPortal: 'portal-d' },
-    'portal-e': { targetFloor: 'shura-狂亂-E', targetPortal: 'portal-e' }
-},
+    'shura-狂亂-C': {
+        'portal-c': { targetFloor: 'shura-狂亂-B', targetPortal: 'portal-b' },       // 🌟 補上落腳點 portal-c
+        'portal-A-white': { targetFloor: 'shura-entrance', targetPortal: 'portal-A' },
+        'portal-b': { targetFloor: 'shura-狂亂-B', targetPortal: 'portal-b' },
+        'portal-D-red': { targetFloor: 'shura-迷惘-D', targetPortal: 'portal-d' },
+        'portal-e': { targetFloor: 'shura-狂亂-E', targetPortal: 'portal-e' }
+    },
 
-// 狂亂 - 右上 (D區)
-'shura-狂亂-D': {
-    'portal-i': { targetFloor: 'shura-狂亂-I', targetPortal: 'portal-i' },
-    'portal-b': { targetFloor: 'shura-狂亂-B', targetPortal: 'portal-b' },
-    'portal-C-red': { targetFloor: 'shura-迷惘-C', targetPortal: 'portal-c' },
-    'portal-A-white': { targetFloor: 'shura-entrance', targetPortal: 'portal-A' }
-},
+    // 狂亂 - 右上 (D區)
+    'shura-狂亂-D': {
+        'portal-d': { targetFloor: 'shura-狂亂-B', targetPortal: 'portal-b' },       // 🌟 補上落腳點 portal-d
+        'portal-i': { targetFloor: 'shura-狂亂-I', targetPortal: 'portal-i' },
+        'portal-b': { targetFloor: 'shura-狂亂-B', targetPortal: 'portal-b' },
+        'portal-C-red': { targetFloor: 'shura-迷惘-C', targetPortal: 'portal-c' },
+        'portal-A-white': { targetFloor: 'shura-entrance', targetPortal: 'portal-A' }
+    },
 
 // 狂亂 - 中左 (E區)
-'shura-狂亂-E': {
-    'portal-h': { targetFloor: 'shura-狂亂-H', targetPortal: 'portal-h' },
-    'portal-A-red': { targetFloor: 'shura-迷惘-A', targetPortal: 'portal-a' },
-    'portal-A-white': { targetFloor: 'shura-entrance', targetPortal: 'portal-A' },
-    'portal-b': { targetFloor: 'shura-狂亂-B', targetPortal: 'portal-b' }
-},
+    'shura-狂亂-E': {
+        'portal-e': { targetFloor: 'shura-狂亂-B', targetPortal: 'portal-b' },       // 🌟 補上落腳點 portal-e
+        'portal-h': { targetFloor: 'shura-狂亂-H', targetPortal: 'portal-h' },
+        'portal-A-red': { targetFloor: 'shura-迷惘-A', targetPortal: 'portal-a' },
+        'portal-A-white': { targetFloor: 'shura-entrance', targetPortal: 'portal-A' },
+        'portal-b': { targetFloor: 'shura-狂亂-B', targetPortal: 'portal-b' }
+    },
 
-// 狂亂 - 中右 (F區)
-'shura-狂亂-F': {
-    'portal-b': { targetFloor: 'shura-狂亂-B', targetPortal: 'portal-b' },
-    'portal-C-red': { targetFloor: 'shura-迷惘-C', targetPortal: 'portal-c' },
-    'portal-A-white': { targetFloor: 'shura-entrance', targetPortal: 'portal-A' },
-    'portal-a': { targetFloor: 'shura-狂亂-A', targetPortal: 'portal-a' }
-},
+    // 狂亂 - 中右 (F區)
+    'shura-狂亂-F': {
+        'portal-f': { targetFloor: 'shura-狂亂-B', targetPortal: 'portal-b' },       // 🌟 補上落腳點 portal-f
+        'portal-b': { targetFloor: 'shura-狂亂-B', targetPortal: 'portal-b' },
+        'portal-C-red': { targetFloor: 'shura-迷惘-C', targetPortal: 'portal-c' },
+        'portal-A-white': { targetFloor: 'shura-entrance', targetPortal: 'portal-A' },
+        'portal-a': { targetFloor: 'shura-狂亂-A', targetPortal: 'portal-a' }
+    },
 
 // 狂亂 - 左下 (G區)
 'shura-狂亂-G': {
+    'portal-g': { targetFloor: 'shura-狂亂-B', targetPortal: 'portal-b' },
     'portal-A-red': { targetFloor: 'shura-迷惘-A', targetPortal: 'portal-a' },
     'portal-b': { targetFloor: 'shura-狂亂-B', targetPortal: 'portal-b' },
     'portal-d': { targetFloor: 'shura-狂亂-D', targetPortal: 'portal-d' },
@@ -261,6 +268,7 @@ export const PORTAL_TELEPORTS = {
 
 // 狂亂 - 中下 (H區)
 'shura-狂亂-H': {
+    'portal-h': { targetFloor: 'shura-狂亂-B', targetPortal: 'portal-b' },
     'portal-A-white': { targetFloor: 'shura-entrance', targetPortal: 'portal-A' },
     'portal-f': { targetFloor: 'shura-狂亂-F', targetPortal: 'portal-f' },
     'portal-B-red': { targetFloor: 'shura-迷惘-B', targetPortal: 'portal-b' },
@@ -269,6 +277,7 @@ export const PORTAL_TELEPORTS = {
 
 // 狂亂 - 右下 (I區)
 'shura-狂亂-I': {
+    'portal-i': { targetFloor: 'shura-煉獄', targetPortal: 'green-start' },
     'portal-B-red': { targetFloor: 'shura-迷惘-B', targetPortal: 'portal-b' },
     'portal-G-red': { targetFloor: 'shura-煉獄', targetPortal: 'portal-G' },
     'portal-b': { targetFloor: 'shura-狂亂-B', targetPortal: 'portal-b' },
