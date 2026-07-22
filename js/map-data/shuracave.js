@@ -138,6 +138,7 @@ export const PORTAL_LABELS = {
 
     // 狂亂 I 區 (右下)
     'shura-狂亂-I': {
+        'portal-i': '綠色 i (右下)',
         'portal-b': '綠色 b (左下)',
         'portal-G-red': '紅色 G (右上)',
         'portal-B-red': '紅色 B (左上)',
@@ -258,10 +259,11 @@ export const INTERNAL_CONNECTIONS = {
     'portal-b': ['portal-A-white', 'portal-f', 'portal-B-red']
 },
 'shura-狂亂-I': {
-    'portal-B-red': ['portal-G-red', 'portal-b', 'portal-A-white'],
-    'portal-G-red': ['portal-B-red', 'portal-b', 'portal-A-white'],
-    'portal-b': ['portal-B-red', 'portal-G-red', 'portal-A-white'],
-    'portal-A-white': ['portal-B-red', 'portal-G-red', 'portal-b']
+    'portal-i': ['portal-G-red', 'portal-B-red', 'portal-b', 'portal-A-white'],
+    'portal-B-red': ['portal-i', 'portal-G-red', 'portal-b', 'portal-A-white'],
+    'portal-G-red': ['portal-i', 'portal-B-red', 'portal-b', 'portal-A-white'],
+    'portal-b': ['portal-i', 'portal-B-red', 'portal-G-red', 'portal-A-white'],
+    'portal-A-white': ['portal-i', 'portal-B-red', 'portal-G-red', 'portal-b']
 },
 
     'shura-煉獄': {
@@ -410,9 +412,9 @@ export const PORTAL_TELEPORTS = {
 
 // 狂亂 - 右下 (I區)
 'shura-狂亂-I': {
-    'portal-i': { targetFloor: 'shura-煉獄', targetPortal: 'portal-G-red' },
+    'portal-i': { targetFloor: 'shura-煉獄', targetPortal: 'green-start' },
+    'portal-G-red': { targetFloor: 'shura-煉獄', targetPortal: 'green-start' },
     'portal-B-red': { targetFloor: 'shura-迷惘-B', targetPortal: 'portal-b' },
-    'portal-G-red': { targetFloor: 'shura-煉獄', targetPortal: 'portal-G-red' }, // 🌟 將 targetPortal 改為 'portal-G-red'
     'portal-b': { targetFloor: 'shura-狂亂-B', targetPortal: 'portal-b' },
     'portal-A-white': { targetFloor: 'shura-entrance', targetPortal: 'portal-A' }
 },
