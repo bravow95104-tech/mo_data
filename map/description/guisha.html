@@ -1,0 +1,227 @@
+<h2>鬼煞洞</h2> 
+
+<div class="route-finder-card">
+    <div class="route-finder-header">🗺️ 洞窟走法導航搜尋器</div>
+    <div class="route-controls">
+        <!-- 起點樓層與傳點 -->
+        <div class="select-group">
+            <label for="start-floor-select">起點樓層：</label>
+            <select id="start-floor-select">
+                <option value="guisha-1" selected>鬼煞洞第一層</option>
+                <option value="guisha-2">鬼煞洞第二層</option>
+                <option value="guisha-3">鬼煞洞第三層</option>
+            </select>
+        </div>
+
+        <div class="select-group">
+            <label for="start-portal-select">起點傳點：</label>
+            <select id="start-portal-select">
+                <option value="green-start" selected>🟢 飛鶴山 (入口)</option>
+                <!-- 動態由 JS 渲染該樓層的傳點選項 -->
+            </select>
+        </div>
+
+        <!-- 終點樓層與傳點 -->
+        <div class="select-group">
+            <label for="end-floor-select">終點樓層：</label>
+            <select id="end-floor-select">
+                <option value="guisha-1">鬼煞洞第一層</option>
+                <option value="guisha-2">鬼煞洞第二層</option>
+                <option value="guisha-3" selected>鬼煞洞第三層</option>
+            </select>
+        </div>
+
+        <div class="select-group">
+            <label for="end-portal-select">終點目標：</label>
+            <select id="end-portal-select">
+                <!-- 動態由 JS 渲染該樓層的傳點選項 -->
+            </select>
+        </div>
+    </div>
+
+    <!-- 搜尋按鈕區 -->
+    <div class="route-actions">
+        <button id="search-route-btn" class="search-btn">搜尋最佳路線</button>
+    </div>
+
+    <!-- 路線結果顯示區 -->
+    <div id="route-result" class="route-result-box">
+        💡 請選擇起點與終點，點擊「搜尋最佳路線」！
+    </div>
+</div>
+
+<div class="note-text">
+    💡 資料可能有誤，提供相對應的文字；感謝資料提供！
+</div>
+
+<!-- 鬼煞洞第一層 -->
+<figure id="guisha-1" class="map-figure">
+    <div class="img-wrapper">
+        <img src="../pic/map/description/guishacave/鬼煞洞第一層.png" class="system-img" alt="鬼煞洞第一層">
+
+        <!-- 傳點標籤 (位置 style 請依據實測定位微調)
+        <div class="portal-tag green" data-portal="green-start" style="top: 90%; left: 50%;">飛鶴山入口</div>
+        <div class="portal-tag yellow" data-portal="portal-2-1" data-target-floor="guisha-2" style="top: 10%; left: 80%;">2層-1</div>
+        <div class="portal-tag yellow" data-portal="portal-2-2" data-target-floor="guisha-2" style="top: 10%; left: 20%;">2層-2</div>
+        <div class="portal-tag yellow" data-portal="portal-2-3" data-target-floor="guisha-2" style="top: 65%; left: 70%;">2層-3</div>
+        <div class="portal-tag yellow" data-portal="portal-2-4" data-target-floor="guisha-2" style="top: 65%; left: 30%;">2層-4</div>
+        <div class="portal-tag yellow" data-portal="portal-2-5" data-target-floor="guisha-2" style="top: 80%; left: 70%;">2層-5</div>
+        <div class="portal-tag yellow" data-portal="portal-2-6" data-target-floor="guisha-2" style="top: 80%; left: 30%;">2層-6</div>
+        <div class="portal-tag red" data-portal="portal-guigu" style="top: 45%; left: 50%;">鬼谷仙人居</div>
+        -->
+    </div>
+    <figcaption>▲ 鬼煞洞第一層</figcaption>
+</figure>
+
+<!-- 鬼煞洞第二層 -->
+<figure id="guisha-2" class="map-figure">
+    <div class="img-wrapper">
+        <img src="../pic/map/description/guishacave/鬼煞洞第二層.png" class="system-img" alt="鬼煞洞第二層">
+
+        <!-- 傳點標籤
+        <div class="portal-tag yellow" data-portal="portal-1-1" data-target-floor="guisha-1" style="top: 10%; left: 80%;">1層-1</div>
+        <div class="portal-tag yellow" data-portal="portal-1-2" data-target-floor="guisha-1" style="top: 10%; left: 20%;">1層-2</div>
+        <div class="portal-tag yellow" data-portal="portal-1-3" data-target-floor="guisha-1" style="top: 65%; left: 70%;">1層-3</div>
+        <div class="portal-tag yellow" data-portal="portal-1-4" data-target-floor="guisha-1" style="top: 65%; left: 30%;">1層-4</div>
+        <div class="portal-tag yellow" data-portal="portal-1-5" data-target-floor="guisha-1" style="top: 80%; left: 70%;">1層-5</div>
+        <div class="portal-tag yellow" data-portal="portal-1-6" data-target-floor="guisha-1" style="top: 80%; left: 30%;">1層-6</div>
+        <div class="portal-tag red" data-portal="portal-3" data-target-floor="guisha-3" style="top: 5%; left: 50%;">鬼煞洞第三層</div>
+        -->
+    </div>
+    <figcaption>▲ 鬼煞洞第二層</figcaption>
+</figure>
+
+<!-- 鬼煞洞第三層 -->
+<figure id="guisha-3" class="map-figure">
+    <div class="img-wrapper">
+        <img src="../pic/map/description/guishacave/鬼煞洞第三層.png" class="system-img" alt="鬼煞洞第三層">
+
+        <!-- 傳點標籤
+        <div class="portal-tag green" data-portal="portal-2" data-target-floor="guisha-2" style="top: 85%; left: 50%;">第二層</div>
+        -->
+    </div>
+    <figcaption>▲ 鬼煞洞第三層</figcaption>
+</figure>
+
+<style>
+/* 🌟 讓 figure 本身變成 Flex 容器，圖片與文字才會絕對水平置中 */
+.map-figure {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 20px auto;
+    text-align: center;
+    width: 100%;
+}
+
+/* 容器相對定位，寬度緊貼圖片 */
+.img-wrapper {
+    position: relative;
+    display: inline-block;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+.system-img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    border-radius: 6px;
+}
+
+/* 傳點標記基本樣式 */
+.portal-tag {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    padding: 4px 8px;
+    font-size: 13px;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+    user-select: none;
+    white-space: nowrap;
+    transition: transform 0.2s, box-shadow 0.2s, background-color 0.2s;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.5);
+    z-index: 5;
+}
+
+/* 顏色樣式 */
+.portal-tag.red { background: #e74c3c; color: white; }
+.portal-tag.yellow { background: #f1c40f; color: #2c3e50; }
+.portal-tag.green { background: #2ecc71; color: white; }
+
+/* 懸停與高亮效果 */
+.portal-tag:hover, .portal-tag.active {
+    transform: translate(-50%, -50%) scale(1.25);
+    z-index: 10;
+    box-shadow: 0 0 12px 4px #2ecc71;
+}
+
+/* 尋路器卡片樣式 */
+.route-finder-card {
+    background: #2a2a2a;
+    border: 1px solid #444;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 20px;
+    color: #fff;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.route-finder-header {
+    font-size: 16px;
+    font-weight: bold;
+    color: #f1c40f;
+    margin-bottom: 12px;
+}
+
+.route-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.select-group {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.select-group select {
+    padding: 6px 10px;
+    border-radius: 4px;
+    background: #333;
+    color: #fff;
+    border: 1px solid #555;
+    font-size: 14px;
+}
+
+.search-btn {
+    padding: 6px 16px;
+    background: #2ecc71;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.search-btn:hover {
+    background: #27ae60;
+}
+
+.route-result-box {
+    background: #1e1e1e;
+    padding: 10px 12px;
+    border-radius: 6px;
+    font-size: 14px;
+    line-height: 1.6;
+    border-left: 4px solid #f1c40f;
+}
+</style>
