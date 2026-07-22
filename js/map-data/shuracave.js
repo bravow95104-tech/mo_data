@@ -164,6 +164,7 @@ export const INTERNAL_CONNECTIONS = {
 
 // 迷惘 - 左區 (A)
 'shura-迷惘-A': {
+    'portal-a': ['portal-b', 'portal-c', 'portal-d', 'portal-f'],
     'portal-A': ['portal-b', 'portal-c', 'portal-d', 'portal-f'], // 🌟 注意 A 是大寫 (回入口)
     'portal-b': ['portal-A', 'portal-c', 'portal-d', 'portal-f'],
     'portal-c': ['portal-A', 'portal-b', 'portal-d', 'portal-f'],
@@ -264,10 +265,10 @@ export const INTERNAL_CONNECTIONS = {
 },
 
     'shura-煉獄': {
-    'green-start': ['portal-A', 'portal-G'],
-    'portal-A': ['green-start', 'portal-G'],
-    'portal-G': ['green-start', 'portal-A']
-}
+    'green-start': ['portal-A-white', 'portal-G-red'],
+    'portal-A-white': ['green-start', 'portal-G-red'],
+    'portal-G-red': ['green-start', 'portal-A-white']
+},
 };
 
 
@@ -409,15 +410,16 @@ export const PORTAL_TELEPORTS = {
 
 // 狂亂 - 右下 (I區)
 'shura-狂亂-I': {
-    'portal-i': { targetFloor: 'shura-煉獄', targetPortal: 'green-start' },
+    'portal-i': { targetFloor: 'shura-煉獄', targetPortal: 'portal-G-red' },
     'portal-B-red': { targetFloor: 'shura-迷惘-B', targetPortal: 'portal-b' },
-    'portal-G-red': { targetFloor: 'shura-煉獄', targetPortal: 'portal-G' },
+    'portal-G-red': { targetFloor: 'shura-煉獄', targetPortal: 'portal-G-red' }, // 🌟 將 targetPortal 改為 'portal-G-red'
     'portal-b': { targetFloor: 'shura-狂亂-B', targetPortal: 'portal-b' },
     'portal-A-white': { targetFloor: 'shura-entrance', targetPortal: 'portal-A' }
 },
+
     'shura-煉獄': {
-    'portal-A': { targetFloor: 'shura-entrance', targetPortal: 'portal-A' },
-    'portal-G': { targetFloor: 'shura-狂亂-B', targetPortal: 'portal-b' }
+    'portal-A-white': { targetFloor: 'shura-entrance', targetPortal: 'portal-A' },
+    'portal-G-red': { targetFloor: 'shura-狂亂-B', targetPortal: 'portal-b' }
 }
 };
 
