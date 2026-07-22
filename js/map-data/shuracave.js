@@ -412,8 +412,8 @@ export const PORTAL_TELEPORTS = {
 
 // 狂亂 - 右下 (I區)
 'shura-狂亂-I': {
-    'portal-i': { targetFloor: 'shura-煉獄', targetPortal: 'green-start' },
-    'portal-G-red': { targetFloor: 'shura-煉獄', targetPortal: 'green-start' },
+    'portal-i': { targetFloor: 'shura-狂亂-B', targetPortal: 'portal-i' },     // 👈 小寫 i 是回狂亂 B
+    'portal-G-red': { targetFloor: 'shura-煉獄', targetPortal: 'green-start' }, // 🌟 踩紅色 G 才去煉獄
     'portal-B-red': { targetFloor: 'shura-迷惘-B', targetPortal: 'portal-b' },
     'portal-b': { targetFloor: 'shura-狂亂-B', targetPortal: 'portal-b' },
     'portal-A-white': { targetFloor: 'shura-entrance', targetPortal: 'portal-A' }
