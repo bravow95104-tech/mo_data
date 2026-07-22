@@ -79,6 +79,7 @@ export const INTERNAL_CONNECTIONS = {
 },
 'shura-狂亂-B': {
     'portal-a': ['portal-c', 'portal-d', 'portal-e', 'portal-f', 'portal-g', 'portal-h', 'portal-i'],
+    'portal-b': ['portal-a', 'portal-c', 'portal-d', 'portal-e', 'portal-f', 'portal-g', 'portal-h', 'portal-i'],
     'portal-c': ['portal-a', 'portal-d', 'portal-e', 'portal-f', 'portal-g', 'portal-h', 'portal-i'],
     'portal-d': ['portal-a', 'portal-c', 'portal-e', 'portal-f', 'portal-g', 'portal-h', 'portal-i'],
     'portal-e': ['portal-a', 'portal-c', 'portal-d', 'portal-f', 'portal-g', 'portal-h', 'portal-i'],
