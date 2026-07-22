@@ -35,7 +35,7 @@ export const PORTAL_LABELS = {
 // 🌟 3. 樓層內部連通關係
 export const INTERNAL_CONNECTIONS = {
     'guisha-1': {
-        'green-start': ['portal-feishan', 'portal-guigu', 'portal-A', 'portal-B', 'portal-C', 'portal-D', 'portal-E', 'portal-F'],
+        'green-start': ['portal-feishan', 'portal-guigu', 'portal-A', 'portal-B', 'portal-D', 'portal-E'],
         'portal-feishan': ['portal-guigu', 'portal-A', 'portal-B', 'portal-D', 'portal-E'],//飛鶴山
         'portal-guigu': ['portal-feishan', 'portal-A', 'portal-B', 'portal-D', 'portal-E'],
         'portal-A': ['portal-feishan', 'portal-guigu', 'portal-B', 'portal-D', 'portal-E'],
