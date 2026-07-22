@@ -35,17 +35,26 @@ document.addEventListener("DOMContentLoaded", async () => {
         
         portalSelect.innerHTML = '';
 
-        if (isStart && floor === 'floor-front') {
-            portalSelect.innerHTML += '<option value="green-start" selected>🟢 綠色入口 (預設)</option>';
+        // 讀取當前地圖模組的資料
+        const connections = currentMapModule.INTERNAL_CONNECTIONS || {}; //[cite: 5, 6]
+        const portalLabels = currentMapModule.PORTAL_LABELS || {};       // 🌟 皇陵沒有這項也不會錯[cite: 5, 6]
+        const floorPortalLabels = portalLabels[floor] || {};
+        const portals = Object.keys(connections[floor] || {});          //[cite: 5, 6, 7]
+
+        // 判斷是否包含預設起點 (green-start)
+        const hasGreenStart = portals.includes('green-start');          //[cite: 5, 6]
+
+        if (isStart && hasGreenStart) {
+            portalSelect.innerHTML += '<option value="green-start" selected>🟢 綠色入口 (預設)</option>'; //
         } else if (!isStart) {
-            portalSelect.innerHTML += '<option value="" selected>✨ 任意門 (到達即可)</option>';
+            portalSelect.innerHTML += '<option value="" selected>✨ 任意門 (到達即可)</option>'; //
         }
 
-        const connections = currentMapModule.INTERNAL_CONNECTIONS || {};
-        const portals = Object.keys(connections[floor] || {});
         portals.forEach(p => {
             if (p !== 'green-start') {
-                portalSelect.innerHTML += `<option value="${p}">${p}</option>`;
+                // 🌟 核心技巧：有中文顯示中文 (修羅洞)，沒中文顯示原始 Code (皇陵)
+                const labelText = floorPortalLabels[p] || p; 
+                portalSelect.innerHTML += `<option value="${p}">${labelText}</option>`;
             }
         });
     }
@@ -184,16 +193,21 @@ document.addEventListener("DOMContentLoaded", async () => {
             }
 
             const floorNames = currentMapModule.FLOOR_NAMES || {};
-            let html = `<strong>💡 從「${floorNames[startFloor] || startFloor}」前往「${floorNames[endFloor] || endFloor}」的最佳走法：</strong><br>`;
+            const portalLabels = currentMapModule.PORTAL_LABELS || {}; // 🌟 新增這行：讀取傳點中文表
+
+            let html = `<strong>💡 從「${floorNames[startFloor] || startFloor}」前往「${floorNames[endFloor] || endFloor}」的最佳走法：</strong><br>`; //[cite: 7]
             
             path.forEach((step, index) => {
-                const fromName = floorNames[step.fromFloor] || step.fromFloor;
-                const toName = floorNames[step.toFloor] || step.toFloor;
+                const fromName = floorNames[step.fromFloor] || step.fromFloor; 
+                const toName = floorNames[step.toFloor] || step.toFloor; 
                 
+                // 🌟 取得傳點顯示名稱 (有中文用中文，無中文用 key)
+                const portalText = portalLabels[step.fromFloor]?.[step.walkToPortal] || step.walkToPortal;
+
                 if (step.isFinalWalk) {
-                    html += `${index + 1}. 在 <b>${fromName}</b> 走至傳點 [<span style="color:#e74c3c; font-weight:bold;">${step.walkToPortal}</span>] 抵達終點<br>`;
+                    html += `${index + 1}. 在 <b>${fromName}</b> 走至傳點 [<span style="color:#e74c3c; font-weight:bold;">${portalText}</span>] 抵達終點<br>`;
                 } else {
-                    html += `${index + 1}. 在 <b>${fromName}</b> 走向傳點 [<span style="color:#e74c3c; font-weight:bold;">${step.walkToPortal}</span>] ➔ 進入 <b>${toName}</b><br>`;
+                    html += `${index + 1}. 在 <b>${fromName}</b> 走向傳點 [<span style="color:#e74c3c; font-weight:bold;">${portalText}</span>] ➔ 進入 <b>${toName}</b><br>`;
                 }
 
                 document.querySelectorAll(`[data-portal="${step.walkToPortal}"]`).forEach(el => {
