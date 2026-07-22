@@ -18,6 +18,138 @@ export const FLOOR_NAMES = {
     'shura-煉獄': '修羅洞_煉獄',
 };
 
+export const PORTAL_LABELS = {
+    // 修羅洞入口
+    'shura-entrance': {
+    'green-start': '入口中央',
+    'portal-A': '紅色 A',
+    'portal-B': '紅色 B',
+    'portal-C': '紅色 C',
+    'portal-D': '紅色 D',
+    'portal-E': '紅色 E'
+},
+
+    // 迷惘 A 區 (左)
+    'shura-迷惘-A': {
+        'portal-b': '藍色 b (左上)',
+        'portal-c': '藍色 c (右上)',
+        'portal-d': '藍色 d (右下)',
+        'portal-f': '藍色 f (左下)'
+    },
+
+    // 迷惘 B 區 (下)
+    'shura-迷惘-B': {
+        'portal-a': '藍色 a (右上)',
+        'portal-c': '藍色 c (左下)',
+        'portal-d': '藍色 d (左上)',
+        'portal-f': '藍色 f (右下)'
+    },
+
+    // 迷惘 C 區 (右)
+    'shura-迷惘-C': {
+        'portal-a': '藍色 a (左上)',
+        'portal-b': '藍色 b (右下)',
+        'portal-d': '藍色 d (左下)',
+        'portal-f': '藍色 f (右上)'
+    },
+
+    // 迷惘 D 區 (上)
+    'shura-迷惘-D': {
+        'portal-a': '藍色 a (右下)',
+        'portal-b': '藍色 b (右上)',
+        'portal-c': '藍色 c (左下)',
+        'portal-f': '藍色 f (左上)'
+    },
+
+    // 迷惘 F 區 (中)
+    'shura-迷惘-F': {
+        'portal-A': '白色 A (回入口 A)',
+        'portal-B': '白色 B (前往狂亂 B)'
+    },
+
+    // 狂亂 A 區 (左上)
+    'shura-狂亂-A': {
+        'portal-b': '綠色 b (左上)',
+        'portal-A-green': '綠色 A (區塊標記)',
+        'portal-g': '綠色 g (左下)',
+        'portal-A-white': '白色 A (右上)',
+        'portal-D-red': '紅色 D (右下)'
+    },
+
+    // 狂亂 B 區 (中間核心)
+    'shura-狂亂-B': {
+        'portal-a': '綠色 a (左上)',
+        'portal-c': '綠色 c (正上)',
+        'portal-d': '綠色 d (右上)',
+        'portal-e': '綠色 e (左中)',
+        'portal-f': '綠色 f (右中)',
+        'portal-g': '綠色 g (左下)',
+        'portal-h': '綠色 h (正下)',
+        'portal-i': '綠色 i (右下)'
+    },
+
+    // 狂亂 C 區 (中上)
+    'shura-狂亂-C': {
+        'portal-b': '綠色 b (右上)',
+        'portal-e': '綠色 e (右下)',
+        'portal-A-white': '白色 A (左上)',
+        'portal-D-red': '紅色 D (左下)'
+    },
+
+    // 狂亂 D 區 (右上 - 郝厲害所在區)
+    'shura-狂亂-D': {
+        'portal-i': '綠色 i (左上)',
+        'portal-b': '綠色 b (右上)',
+        'portal-C-red': '紅色 C (左下)',
+        'portal-A-white': '白色 A (右下)'
+    },
+
+    // 狂亂 E 區 (中左)
+    'shura-狂亂-E': {
+        'portal-h': '綠色 h (左上)',
+        'portal-b': '綠色 b (右下)',
+        'portal-A-red': '紅色 A (右上)',
+        'portal-A-white': '白色 A (左下)'
+    },
+
+    // 狂亂 F 區 (中右)
+    'shura-狂亂-F': {
+        'portal-b': '綠色 b (左上)',
+        'portal-a': '綠色 a (右下)',
+        'portal-C-red': '紅色 C (右上)',
+        'portal-A-white': '白色 A (左下)'
+    },
+
+    // 狂亂 G 區 (左下)
+    'shura-狂亂-G': {
+        'portal-b': '綠色 b (右上)',
+        'portal-d': '綠色 d (左下)',
+        'portal-A-red': '紅色 A (左上)',
+        'portal-A-white': '白色 A (右下)'
+    },
+
+    // 狂亂 H 區 (中下)
+    'shura-狂亂-H': {
+        'portal-f': '綠色 f (右上)',
+        'portal-b': '綠色 b (右下)',
+        'portal-A-white': '白色 A (左上)',
+        'portal-B-red': '紅色 B (左下)'
+    },
+
+    // 狂亂 I 區 (右下)
+    'shura-狂亂-I': {
+        'portal-b': '綠色 b (左下)',
+        'portal-G-red': '紅色 G (右上)',
+        'portal-B-red': '紅色 B (左上)',
+        'portal-A-white': '白色 A (右下)'
+    },
+
+    'shura-煉獄': {
+        'portal-A-white': '白色 A (中央左下)',
+        'portal-G-red': '紅色 G (左下)'
+    }
+};
+
 // 🌟 2. 區塊內部的傳點連通 (Internal Connections)
 export const INTERNAL_CONNECTIONS = {
     // 入口大廳
@@ -368,4 +500,30 @@ export function findRealShortestPath(startFloor, endFloor, startPortal = 'green-
     }
 
     return null; // 找不到連通路線
+}
+
+/**
+ * 將演算法回傳的路徑轉化為玩家看得懂的步驟說明
+ */
+export function formatPathInstructions(pathSteps) {
+    if (!pathSteps || pathSteps.length === 0) return '已在目的地或無可用路線';
+
+    let outputHtml = `💡 <b>從「${FLOOR_NAMES[pathSteps[0].fromFloor]}」前往「${FLOOR_NAMES[pathSteps[pathSteps.length - 1].toFloor]}」的最佳走法：</b><br><br>`;
+
+    pathSteps.forEach((step, index) => {
+        const fromFloorName = FLOOR_NAMES[step.fromFloor] || step.fromFloor;
+        const toFloorName = FLOOR_NAMES[step.toFloor] || step.toFloor;
+        
+        // 優先讀取對照表名稱，沒有的話就顯示原本 key
+        const portalLabel = PORTAL_LABELS[step.fromFloor]?.[step.walkToPortal] 
+                          || `傳點 [${step.walkToPortal}]`;
+
+        if (step.isFinalWalk) {
+            outputHtml += `${index + 1}. 在 <b>${fromFloorName}</b> 內部走到 <b>${portalLabel}</b> 抵達目的地。<br>`;
+        } else {
+            outputHtml += `${index + 1}. 在 <b>${fromFloorName}</b> 踩 <b>${portalLabel}</b> ➔ 進入 <b>${toFloorName}</b><br>`;
+        }
+    });
+
+    return outputHtml;
 }
