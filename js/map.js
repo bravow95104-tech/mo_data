@@ -139,7 +139,28 @@ const parseCustomSyntax = (text) => {
 
 const formatDescription = (text) => {
   if (!text) return "-";
-  return parseCustomSyntax(text).replace(/\n/g, '<br>');
+  
+  let parsedText = parseCustomSyntax(text);
+
+  // 🚀 自動比對 mapData 中的所有地圖名稱，自動轉為可點擊的超連結
+  if (Array.isArray(mapData) && mapData.length > 0) {
+    mapData.forEach(m => {
+      if (m.mapid && parsedText.includes(m.mapid)) {
+        const mapRegex = new RegExp(m.mapid, 'g');
+        
+        // 判斷當前頁面是否為 mapdescription.html
+        const isMapPage = window.location.pathname.includes('mapdescription.html');
+        
+        const linkHTML = isMapPage 
+          ? `<a href="javascript:void(0)" class="hero-link" onclick="window.openMapDetail('${m.mapid}')">${m.mapid}</a>`
+          : `<a href="mapdescription.html?map=${encodeURIComponent(m.mapid)}" class="hero-link">${m.mapid}</a>`;
+
+        parsedText = parsedText.replace(mapRegex, linkHTML);
+      }
+    });
+  }
+
+  return parsedText.replace(/\n/g, '<br>');
 };
 
 window.zoomWorldMap = function (src) {
