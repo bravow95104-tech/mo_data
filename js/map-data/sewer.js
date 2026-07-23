@@ -11,8 +11,7 @@ export const FLOOR_NAMES = {
 // 2. 傳點中文標籤
 export const PORTAL_LABELS = {
     "sewer-1": {
-        "green-start": "🟢 拓水道 (入口)",
-        "a": "a (往 汴水道)",
+        "a": "a (往 拓水道)",
         "b": "b (往 2層B)",
         "c": "c (往 2層C)"
     },
@@ -50,9 +49,9 @@ export const PORTAL_LABELS = {
 export const INTERNAL_CONNECTIONS = {
     "sewer-1": {
         "green-start": ["a", "b", "c"],
-        "a": ["green-start", "b", "c"],
-        "b": ["green-start", "a", "c"],
-        "c": ["green-start", "a", "b"]
+        "a": ["b", "c"],
+        "b": ["a", "c"],
+        "c": ["a", "b"]
     },
     "sewer-2": {
         "b": ["d"],
