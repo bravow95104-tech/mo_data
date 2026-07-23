@@ -258,13 +258,23 @@ document.addEventListener("DOMContentLoaded", async () => {
 
         menuContainer.innerHTML = '';
 
-        const urlParams = new URLSearchParams(window.location.search);
-        const targetSysFile = urlParams.get('sys'); 
-        
-        // 🚀 抓取網址中的 search 關鍵字 (例如 ?search=鬼煞洞)
-        const searchKeyword = urlParams.get('search'); 
+const urlParams = new URLSearchParams(window.location.search);
+const targetSysFile = urlParams.get('sys'); 
 
-        const matchedSystem = gameSystems.find(item => item.file_name === targetSysFile);
+// 🚀 抓取網址中的 search 關鍵字 (例如 ?search=鬼煞洞)
+const searchKeyword = urlParams.get('search')?.toLowerCase().trim(); 
+
+// 1. 優先透過 sys 檔名尋找
+let matchedSystem = gameSystems.find(item => item.file_name === targetSysFile);
+
+// 🚀 2. 如果沒有 sys 參數，但有 search 關鍵字，自動比對 title 或 aliases 找出第一筆符合的洞窟！
+if (!matchedSystem && searchKeyword) {
+    matchedSystem = gameSystems.find(item => {
+        const titleMatch = item.title && item.title.toLowerCase().includes(searchKeyword);
+        const aliasMatch = item.aliases && item.aliases.toLowerCase().includes(searchKeyword);
+        return titleMatch || aliasMatch;
+    });
+}
 
         gameSystems.forEach((item, index) => {
             const li = document.createElement('li');
@@ -272,6 +282,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             li.setAttribute('data-aliases', item.aliases || ''); 
             li.innerText = item.title;
             
+            // 高亮選中的選單
             if (matchedSystem) {
                 if (item.file_name === matchedSystem.file_name) li.classList.add('active');
             } else {
