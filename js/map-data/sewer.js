@@ -2,20 +2,21 @@
 
 // 1. 樓層中文名稱映射
 export const FLOOR_NAMES = {
-    "floor-1": "地下水道第1層",
-    "floor-2": "地下水道第2層",
-    "floor-3": "地下水道第3層",
-    "floor-4": "地下水道第4層"
+    "sewer-1": "地下水道第1層",
+    "sewer-2": "地下水道第2層",
+    "sewer-3": "地下水道第3層",
+    "sewer-4": "地下水道第4層"
 };
 
-// 2. 傳點中文標籤 (當演算法印出路線時顯示)
+// 2. 傳點中文標籤
 export const PORTAL_LABELS = {
-    "floor-1": {
-        "a": "a (往 拓水道)",
+    "sewer-1": {
+        "green-start": "🟢 汴水道 (入口)",
+        "a": "a (往 汴水道)",
         "b": "b (往 2層B)",
         "c": "c (往 2層C)"
     },
-    "floor-2": {
+    "sewer-2": {
         "b": "b (往 1層b)",
         "c": "c (往 1層c)",
         "d": "d (往 3層d)",
@@ -24,7 +25,7 @@ export const PORTAL_LABELS = {
         "g": "g (往 3層g)",
         "h": "h (往 3層h)"
     },
-    "floor-3": {
+    "sewer-3": {
         "d": "d (往 2層d)",
         "e": "e (往 2層e)",
         "f": "f (往 2層f)",
@@ -37,7 +38,7 @@ export const PORTAL_LABELS = {
         "i": "i (往 4層i)",
         "n": "n (往 4層n)"
     },
-    "floor-4": {
+    "sewer-4": {
         "l": "l (往 3層l)",
         "m": "m (往 3層m)",
         "n": "n (往 3層n)",
@@ -47,13 +48,13 @@ export const PORTAL_LABELS = {
 
 // 3. 內部雙向圖連通表 (內部最短路徑演算法的核心)
 export const INTERNAL_CONNECTIONS = {
-    "floor-1": {
+    "sewer-1": {
         "green-start": ["a", "b", "c"],
         "a": ["green-start", "b", "c"],
         "b": ["green-start", "a", "c"],
         "c": ["green-start", "a", "b"]
     },
-    "floor-2": {
+    "sewer-2": {
         // 2層為非全連通區域：
         // 區塊1: b ↔ d
         // 區塊2: c (獨立)
@@ -67,7 +68,7 @@ export const INTERNAL_CONNECTIONS = {
         "g": ["h"],
         "h": ["g"]
     },
-    "floor-3": {
+    "sewer-3": {
         // 3層為迷宮大區域，外圍廊道與中央迷宮連通
         // 特別注意：J 與 k 是同層對傳點！
         "d": ["e", "J"],
@@ -82,7 +83,7 @@ export const INTERNAL_CONNECTIONS = {
         "i": ["n","h"],
         "n": ["i","h"]
     },
-    "floor-4": {
+    "sewer-4": {
         // 4層為4個獨立房間 (l, m, n, i)
         "l": [],
         "m": [],
@@ -93,11 +94,11 @@ export const INTERNAL_CONNECTIONS = {
 
 // 4. 跨樓層傳送對應表
 export const PORTAL_DESTINATIONS = {
-    "floor-1": {
+    "sewer-1": {
         "b": { targetFloor: "floor-2", targetPortal: "b" },
         "c": { targetFloor: "floor-2", targetPortal: "c" }
     },
-    "floor-2": {
+    "sewer-2": {
         "b": { targetFloor: "floor-1", targetPortal: "b" },
         "c": { targetFloor: "floor-1", targetPortal: "c" },
         "d": { targetFloor: "floor-3", targetPortal: "d" },
@@ -106,7 +107,7 @@ export const PORTAL_DESTINATIONS = {
         "g": { targetFloor: "floor-3", targetPortal: "g" },
         "h": { targetFloor: "floor-3", targetPortal: "h" }
     },
-    "floor-3": {
+    "sewer-3": {
         "d": { targetFloor: "floor-2", targetPortal: "d" },
         "e": { targetFloor: "floor-2", targetPortal: "e" },
         "f": { targetFloor: "floor-2", targetPortal: "f" },
@@ -119,7 +120,7 @@ export const PORTAL_DESTINATIONS = {
         "i": { targetFloor: "floor-4", targetPortal: "i" },
         "n": { targetFloor: "floor-4", targetPortal: "n" }
     },
-    "floor-4": {
+    "sewer-4": {
         "l": { targetFloor: "floor-3", targetPortal: "l" },
         "m": { targetFloor: "floor-3", targetPortal: "m" },
         "n": { targetFloor: "floor-3", targetPortal: "n" },
@@ -234,21 +235,23 @@ export function formatPathInstructions(pathSteps) {
     return outputHtml;
 }
 
-// 渲染傳點下拉選單的函數
-function updatePortalOptions(floorKey, selectElement) {
+// 5. 渲染傳點下拉選單的函數 (已修復變數名稱為 PORTAL_DESTINATIONS)
+export function updatePortalOptions(floorKey, selectElement) {
     selectElement.innerHTML = ''; // 清空舊選項
 
-    // 取得該樓層的所有傳點 key
-    const availablePortals = Object.keys(PORTAL_TELEPORTS[floorKey] || {});
+    // 優先從 INTERNAL_CONNECTIONS 與 PORTAL_DESTINATIONS 收集該樓層所有可用傳點
+    const internalKeys = Object.keys(INTERNAL_CONNECTIONS[floorKey] || {});
+    const destinationKeys = Object.keys(PORTAL_DESTINATIONS[floorKey] || {});
+    const availablePortals = Array.from(new Set([...internalKeys, ...destinationKeys]));
 
     availablePortals.forEach(portalKey => {
         const option = document.createElement('option');
-        option.value = portalKey; // 傳給演算法計算的依然是 key (如 'portal-A-white')
+        option.value = portalKey;
         
-        // 🌟 核心修改：優先讀取 PORTAL_LABELS 中文名稱，若找不到才顯示原本 key
+        // 優先讀取 PORTAL_LABELS 中文名稱
         const labelText = PORTAL_LABELS[floorKey]?.[portalKey] || portalKey;
         
-        option.textContent = labelText; // 👈 這裡改顯示中文名稱！
+        option.textContent = labelText;
         selectElement.appendChild(option);
     });
 }
