@@ -627,7 +627,8 @@ window.openMapDetail = function (mapId) {
   // 判斷邏輯
   const approachA = item.approach_a || "";
   const isTown = approachA.includes("城鎮");
-  const isCave = approachA.includes("洞窟"); // 🚀 專門判斷是否為洞窟
+  const isCave = approachA.includes("洞窟");
+  const showApproach = approachA.includes("洞窟") || approachA.includes("要"); // 控制是否顯示走法
   const showExplain = approachA.includes("說明");
   
 let resourceButtonsHTML = "";
@@ -674,17 +675,17 @@ if (resources.length > 0 || item) {
 
   if (approachText) {
     if (isCave) {
-      // 勾選/包含洞窟時，轉為超連結
+      // 有「洞窟」：顯示超連結
       approachDisplay = `<a href="mapdescription.html?search=${encodeURIComponent(approachText)}" target="_blank" class="hero-link">${approachText}</a>`;
     } else {
-      // 未勾選洞窟時，僅顯示純文字
+      // 一般「要」或其他情況：僅顯示純文字
       approachDisplay = approachText;
     }
   }
 
   // 🚀 3. 組合 HTML
   const detailsHTML = `
-    ${approachText ? `<p style="margin-bottom: 8px;"><strong>走法：</strong>${approachDisplay}</p>` : ""}
+    ${showApproach && approachText ? `<p style="margin-bottom: 8px;"><strong>走法：</strong>${approachDisplay}</p>` : ""}
     ${showExplain ? `<p style="margin-bottom: 0;"><strong>說明：</strong>${formatDescription(item.illustrate)}</p>` : ""}
   `.trim();
 
