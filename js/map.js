@@ -627,7 +627,7 @@ window.openMapDetail = function (mapId) {
   // 判斷邏輯
   const approachA = item.approach_a || "";
   const isTown = approachA.includes("城鎮");
-  const showApproach = approachA.includes("洞窟") || approachA.includes("要");
+  const isCave = approachA.includes("洞窟"); // 🚀 專門判斷是否為洞窟
   const showExplain = approachA.includes("說明");
   
 let resourceButtonsHTML = "";
@@ -670,13 +670,21 @@ if (resources.length > 0 || item) {
 
   // 🚀 2. 將 approach 欄位的文字 (例如 "鬼煞洞") 轉成跳轉至 mapdescription.html 的連結
   const approachText = item.approach ? item.approach.trim() : "";
-  const approachLink = approachText 
-    ? `<a href="mapdescription.html?search=${encodeURIComponent(approachText)}"target="_blank" class="hero-link">${approachText}</a>`
-    : "-";
+  let approachDisplay = "-";
+
+  if (approachText) {
+    if (isCave) {
+      // 勾選/包含洞窟時，轉為超連結
+      approachDisplay = `<a href="mapdescription.html?search=${encodeURIComponent(approachText)}" target="_blank" class="hero-link">${approachText}</a>`;
+    } else {
+      // 未勾選洞窟時，僅顯示純文字
+      approachDisplay = approachText;
+    }
+  }
 
   // 🚀 3. 組合 HTML
   const detailsHTML = `
-    ${showApproach ? `<p style="margin-bottom: 8px;"><strong>走法：</strong>${approachLink}</p>` : ""}
+    ${approachText ? `<p style="margin-bottom: 8px;"><strong>走法：</strong>${approachDisplay}</p>` : ""}
     ${showExplain ? `<p style="margin-bottom: 0;"><strong>說明：</strong>${formatDescription(item.illustrate)}</p>` : ""}
   `.trim();
 
