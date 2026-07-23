@@ -1,0 +1,253 @@
+<h2>地下水道</h2> 
+
+<div class="route-finder-card">
+    <div class="route-finder-header">🗺️ 洞窟走法導航搜尋器</div>
+    <div class="route-controls">
+        <!-- 起點樓層與傳點 -->
+        <div class="select-group">
+            <label for="start-floor-select">起點樓層：</label>
+            <select id="start-floor-select">
+                <option value="sewer-1" selected>地下水道第1層</option>
+                <option value="sewer-2">地下水道第2層</option>
+                <option value="sewer-3">地下水道第3層</option>
+                <option value="sewer-4">地下水道第4層</option>
+            </select>
+        </div>
+
+        <div class="select-group">
+            <label for="start-portal-select">起點傳點：</label>
+            <select id="start-portal-select">
+                <option value="green-start" selected>🟢 汴水道 (入口)</option>
+                <!-- 動態由 JS 渲染該樓層的傳點選項 -->
+            </select>
+        </div>
+
+        <!-- 終點樓層與傳點 -->
+        <div class="select-group">
+            <label for="end-floor-select">終點樓層：</label>
+            <select id="end-floor-select">
+                <option value="sewer-1">地下水道第1層</option>
+                <option value="sewer-2">地下水道第2層</option>
+                <option value="sewer-3">地下水道第3層</option>
+                <option value="sewer-4" selected>地下水道第4層</option>
+            </select>
+        </div>
+
+        <div class="select-group">
+            <label for="end-portal-select">終點目標：</label>
+            <select id="end-portal-select">
+                <!-- 動態由 JS 渲染該樓層的傳點選項 -->
+            </select>
+        </div>
+    </div>
+
+    <!-- 搜尋按鈕區 -->
+    <div class="route-actions">
+        <button id="search-route-btn" class="search-btn">搜尋最佳路線</button>
+    </div>
+
+    <!-- 路線結果顯示區 -->
+    <div id="route-result" class="route-result-box">
+        💡 請選擇起點與終點，點擊「搜尋最佳路線」！
+    </div>
+</div>
+
+<div class="note-text">
+    💡 資料可能有誤，提供相對應的文字！
+</div>
+
+<!-- 地下水道第1層 -->
+<figure id="sewer-1" class="map-figure">
+    <div class="img-wrapper">
+        <img src="../pic/map/description/sewer/地下水道第1層.jpg" class="system-img" alt="地下水道第1層">
+
+        <!-- 傳點標籤 (座標 style 可依實測定位微調) -->
+        <!--
+        <div class="portal-tag green" data-portal="a" style="top: 15%; left: 10%;">a (往 汴水道)</div>
+        <div class="portal-tag yellow" data-portal="b" data-target-floor="sewer-2" style="top: 15%; left: 45%;">b (往 2層B)</div>
+        <div class="portal-tag yellow" data-portal="c" data-target-floor="sewer-2" style="top: 15%; left: 60%;">c (往 2層C)</div>
+        -->
+    </div>
+    <figcaption>▲ 地下水道第1層</figcaption>
+</figure>
+
+<!-- 地下水道第2層 -->
+<figure id="sewer-2" class="map-figure">
+    <div class="img-wrapper">
+        <img src="../pic/map/description/sewer/地下水道第2層.jpg" class="system-img" alt="地下水道第2層">
+
+        <!-- 傳點標籤 -->
+        <!--
+        <div class="portal-tag yellow" data-portal="b" data-target-floor="sewer-1" style="top: 30%; left: 30%;">b (往 1層b)</div>
+        <div class="portal-tag yellow" data-portal="c" data-target-floor="sewer-1" style="top: 30%; left: 50%;">c (往 1層c)</div>
+        <div class="portal-tag yellow" data-portal="d" data-target-floor="sewer-3" style="top: 15%; left: 35%;">d (往 3層d)</div>
+        <div class="portal-tag yellow" data-portal="e" data-target-floor="sewer-3" style="top: 45%; left: 60%;">e (往 3層e)</div>
+        <div class="portal-tag yellow" data-portal="f" data-target-floor="sewer-3" style="top: 45%; left: 10%;">f (往 3層f)</div>
+        <div class="portal-tag yellow" data-portal="g" data-target-floor="sewer-3" style="top: 60%; left: 30%;">g (往 3層g)</div>
+        <div class="portal-tag yellow" data-portal="h" data-target-floor="sewer-3" style="top: 50%; left: 20%;">h (往 3層h)</div>
+        -->
+    </div>
+    <figcaption>▲ 地下水道第2層</figcaption>
+</figure>
+
+<!-- 地下水道第3層 -->
+<figure id="sewer-3" class="map-figure">
+    <div class="img-wrapper">
+        <img src="../pic/map/description/sewer/地下水道第3層.jpg" class="system-img" alt="地下水道第3層">
+
+        <!-- 傳點標籤 -->
+        <!--
+        <div class="portal-tag yellow" data-portal="d" data-target-floor="sewer-2" style="top: 5%; left: 45%;">d (往 2層d)</div>
+        <div class="portal-tag yellow" data-portal="e" data-target-floor="sewer-2" style="top: 55%; left: 65%;">e (往 2層e)</div>
+        <div class="portal-tag yellow" data-portal="f" data-target-floor="sewer-2" style="top: 35%; left: 5%;">f (往 2層f)</div>
+        <div class="portal-tag yellow" data-portal="g" data-target-floor="sewer-2" style="top: 85%; left: 30%;">g (往 2層g)</div>
+        <div class="portal-tag yellow" data-portal="h" data-target-floor="sewer-2" style="top: 75%; left: 18%;">h (往 2層h)</div>
+        <div class="portal-tag blue" data-portal="J" data-target-floor="sewer-3" style="top: 70%; left: 32%;">J (往 同層k)</div>
+        <div class="portal-tag blue" data-portal="k" data-target-floor="sewer-3" style="top: 15%; left: 55%;">k (往 同層J)</div>
+        <div class="portal-tag red" data-portal="l" data-target-floor="sewer-4" style="top: 10%; left: 38%;">l (往 4層l)</div>
+        <div class="portal-tag red" data-portal="m" data-target-floor="sewer-4" style="top: 40%; left: 58%;">m (往 4層m)</div>
+        <div class="portal-tag red" data-portal="i" data-target-floor="sewer-4" style="top: 75%; left: 30%;">i (往 4層i)</div>
+        <div class="portal-tag red" data-portal="n" data-target-floor="sewer-4" style="top: 50%; left: 12%;">n (往 4層n)</div>
+        -->
+    </div>
+    <figcaption>▲ 地下水道第3層</figcaption>
+</figure>
+
+<!-- 地下水道第4層 -->
+<figure id="sewer-4" class="map-figure">
+    <div class="img-wrapper">
+        <img src="../pic/map/description/sewer/地下水道第4層.jpg" class="system-img" alt="地下水道第4層">
+
+        <!-- 傳點標籤 -->
+        <!--
+        <div class="portal-tag red" data-portal="l" data-target-floor="sewer-3" style="top: 20%; left: 30%;">l (往 3層l)</div>
+        <div class="portal-tag red" data-portal="m" data-target-floor="sewer-3" style="top: 50%; left: 55%;">m (往 3層m)</div>
+        <div class="portal-tag red" data-portal="n" data-target-floor="sewer-3" style="top: 50%; left: 10%;">n (往 3層n)</div>
+        <div class="portal-tag red" data-portal="i" data-target-floor="sewer-3" style="top: 80%; left: 30%;">i (往 3層i)</div>
+        -->
+    </div>
+    <figcaption>▲ 地下水道第4層</figcaption>
+</figure>
+
+<style>
+/* 🌟 讓 figure 本身變成 Flex 容器，圖片與文字才會絕對水平置中 */
+.map-figure {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 20px auto;
+    text-align: center;
+    width: 100%;
+}
+
+/* 容器相對定位，寬度緊貼圖片 */
+.img-wrapper {
+    position: relative;
+    display: inline-block;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+.system-img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    border-radius: 6px;
+}
+
+/* 傳點標記基本樣式 */
+.portal-tag {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    padding: 4px 8px;
+    font-size: 13px;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+    user-select: none;
+    white-space: nowrap;
+    transition: transform 0.2s, box-shadow 0.2s, background-color 0.2s;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.5);
+    z-index: 5;
+}
+
+/* 顏色樣式 */
+.portal-tag.red { background: #e74c3c; color: white; }
+.portal-tag.yellow { background: #f1c40f; color: #2c3e50; }
+.portal-tag.green { background: #2ecc71; color: white; }
+
+/* 懸停與高亮效果 */
+.portal-tag:hover, .portal-tag.active {
+    transform: translate(-50%, -50%) scale(1.25);
+    z-index: 10;
+    box-shadow: 0 0 12px 4px #2ecc71;
+}
+
+/* 尋路器卡片樣式 */
+.route-finder-card {
+    background: #2a2a2a;
+    border: 1px solid #444;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 20px;
+    color: #fff;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.route-finder-header {
+    font-size: 16px;
+    font-weight: bold;
+    color: #f1c40f;
+    margin-bottom: 12px;
+}
+
+.route-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.select-group {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.select-group select {
+    padding: 6px 10px;
+    border-radius: 4px;
+    background: #333;
+    color: #fff;
+    border: 1px solid #555;
+    font-size: 14px;
+}
+
+.search-btn {
+    padding: 6px 16px;
+    background: #2ecc71;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.search-btn:hover {
+    background: #27ae60;
+}
+
+.route-result-box {
+    background: #1e1e1e;
+    padding: 10px 12px;
+    border-radius: 6px;
+    font-size: 14px;
+    line-height: 1.6;
+    border-left: 4px solid #f1c40f;
+}
+</style>
