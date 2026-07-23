@@ -142,10 +142,14 @@ const formatDescription = (text) => {
   
   let parsedText = parseCustomSyntax(text);
 
-  // 🚀 自動比對 mapData 中的所有地圖名稱，自動轉為可點擊的超連結
+  // 🚀 做法 A：僅針對真正具有走法介紹（洞窟、要）的地圖轉為超連結
   if (Array.isArray(mapData) && mapData.length > 0) {
     mapData.forEach(m => {
-      if (m.mapid && parsedText.includes(m.mapid)) {
+      // 🌟 核心過濾：檢查 approach_a 欄位，排除「京城」等普通城鎮
+      const approachA = m.approach_a || "";
+      const isCave = approachA.includes("洞窟") || approachA.includes("要");
+
+      if (isCave && m.mapid && parsedText.includes(m.mapid)) {
         const mapRegex = new RegExp(m.mapid, 'g');
         
         // 判斷當前頁面是否為 mapdescription.html
@@ -153,7 +157,7 @@ const formatDescription = (text) => {
         
         const linkHTML = isMapPage 
           ? `<a href="javascript:void(0)" class="hero-link" onclick="window.openMapDetail('${m.mapid}')">${m.mapid}</a>`
-          : `<a href="mapdescription.html?map=${encodeURIComponent(m.mapid)}" class="hero-link">${m.mapid}</a>`;
+          : `<a href="mapdescription.html?search=${encodeURIComponent(m.mapid)}" class="hero-link">${m.mapid}</a>`;
 
         parsedText = parsedText.replace(mapRegex, linkHTML);
       }
