@@ -129,14 +129,11 @@ export const PORTAL_DESTINATIONS = {
 };
 
 /**
- * 精確考量「同圖步行」與「跨圖傳送」的最短路徑演算法 (支援 green-start 入口)
- */
-/**
  * 全功能精準尋路演算法 (支援指定起點/終點傳點)
- * @param {string} startFloor 起始樓層 (例: 'floor-corridor')
- * @param {string} endFloor 目標樓層 (例: 'floor-main')
- * @param {string|null} startPortal 起始傳點 (例: 'red-H' 或 'green-start'，若給 null 則自動允許任意起點)
- * @param {string|null} endPortal 目標傳點 (例: 'red-K'，若給 null 則只要抵達 endFloor 即可)
+ * @param {string} startFloor 起始樓層 (例: 'sewer-1')
+ * @param {string} endFloor 目標樓層 (例: 'sewer-4')
+ * @param {string|null} startPortal 起始傳點 (例: 'green-start')
+ * @param {string|null} endPortal 目標傳點 (例: 'i')
  */
 export function findRealShortestPath(startFloor, endFloor, startPortal = 'green-start', endPortal = null) {
     // 如果起終點樓層與傳點完全相同，不用走
@@ -149,8 +146,6 @@ export function findRealShortestPath(startFloor, endFloor, startPortal = 'green-
     while (queue.length > 0) {
         let [curFloor, curPortal, path] = queue.shift();
 
-        console.log(`🔍 搜尋中：當前樓層 [${curFloor}] | 當前傳點 [${curPortal}]`);
-
         const stateKey = `${curFloor}:${curPortal}`;
         if (visited.has(stateKey)) continue;
         visited.add(stateKey);
@@ -158,8 +153,8 @@ export function findRealShortestPath(startFloor, endFloor, startPortal = 'green-
         // 1. 取得當前點「步行」能到的傳點清單
         let availablePortals = [];
         if (curPortal === null) {
-            // 未指定起點傳點時，開放該圖所有傳點作為起點
-            availablePortals = Object.keys(PORTAL_TELEPORTS[curFloor] || {});
+            // 未指定起點傳點時，開放該圖所有傳點作為起點 (修正 PORTAL_DESTINATIONS)
+            availablePortals = Object.keys(PORTAL_DESTINATIONS[curFloor] || {});
         } else {
             const reachableInternal = INTERNAL_CONNECTIONS[curFloor]?.[curPortal] || [];
             availablePortals = Array.from(new Set([curPortal, ...reachableInternal]));
@@ -178,7 +173,8 @@ export function findRealShortestPath(startFloor, endFloor, startPortal = 'green-
                 }];
             }
 
-            const teleportInfo = PORTAL_TELEPORTS[curFloor]?.[pCode];
+            // 🌟 核心修正點：將原本的 PORTAL_TELEPORTS 改為 PORTAL_DESTINATIONS
+            const teleportInfo = PORTAL_DESTINATIONS[curFloor]?.[pCode];
             if (!teleportInfo) continue;
 
             const nextFloor = teleportInfo.targetFloor;
