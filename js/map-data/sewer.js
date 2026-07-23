@@ -11,7 +11,7 @@ export const FLOOR_NAMES = {
 // 2. 傳點中文標籤
 export const PORTAL_LABELS = {
     "sewer-1": {
-        "green-start": "🟢 汴水道 (入口)",
+        "green-start": "🟢 拓水道 (入口)",
         "a": "a (往 汴水道)",
         "b": "b (往 2層B)",
         "c": "c (往 2層C)"
@@ -46,7 +46,7 @@ export const PORTAL_LABELS = {
     }
 };
 
-// 3. 內部雙向圖連通表 (內部最短路徑演算法的核心)
+// 3. 內部雙向圖連通表
 export const INTERNAL_CONNECTIONS = {
     "sewer-1": {
         "green-start": ["a", "b", "c"],
@@ -55,11 +55,6 @@ export const INTERNAL_CONNECTIONS = {
         "c": ["green-start", "a", "b"]
     },
     "sewer-2": {
-        // 2層為非全連通區域：
-        // 區塊1: b ↔ d
-        // 區塊2: c (獨立)
-        // 區塊3: f ↔ e
-        // 區塊4: g ↔ h
         "b": ["d"],
         "d": ["b"],
         "c": [],
@@ -69,8 +64,6 @@ export const INTERNAL_CONNECTIONS = {
         "h": ["g"]
     },
     "sewer-3": {
-        // 3層為迷宮大區域，外圍廊道與中央迷宮連通
-        // 特別注意：J 與 k 是同層對傳點！
         "d": ["e", "J"],
         "e": ["d", "J"],
         "f": ["g"],
@@ -84,7 +77,6 @@ export const INTERNAL_CONNECTIONS = {
         "n": ["i","h"]
     },
     "sewer-4": {
-        // 4層為4個獨立房間 (l, m, n, i)
         "l": [],
         "m": [],
         "n": [],
@@ -92,54 +84,48 @@ export const INTERNAL_CONNECTIONS = {
     }
 };
 
-// 4. 跨樓層傳送對應表
+// 4. 跨樓層傳送對應表 (已全數修復為 sewer-1 ~ sewer-4)
 export const PORTAL_DESTINATIONS = {
     "sewer-1": {
-        "b": { targetFloor: "floor-2", targetPortal: "b" },
-        "c": { targetFloor: "floor-2", targetPortal: "c" }
+        "b": { targetFloor: "sewer-2", targetPortal: "b" },
+        "c": { targetFloor: "sewer-2", targetPortal: "c" }
     },
     "sewer-2": {
-        "b": { targetFloor: "floor-1", targetPortal: "b" },
-        "c": { targetFloor: "floor-1", targetPortal: "c" },
-        "d": { targetFloor: "floor-3", targetPortal: "d" },
-        "e": { targetFloor: "floor-3", targetPortal: "e" },
-        "f": { targetFloor: "floor-3", targetPortal: "f" },
-        "g": { targetFloor: "floor-3", targetPortal: "g" },
-        "h": { targetFloor: "floor-3", targetPortal: "h" }
+        "b": { targetFloor: "sewer-1", targetPortal: "b" },
+        "c": { targetFloor: "sewer-1", targetPortal: "c" },
+        "d": { targetFloor: "sewer-3", targetPortal: "d" },
+        "e": { targetFloor: "sewer-3", targetPortal: "e" },
+        "f": { targetFloor: "sewer-3", targetPortal: "f" },
+        "g": { targetFloor: "sewer-3", targetPortal: "g" },
+        "h": { targetFloor: "sewer-3", targetPortal: "h" }
     },
     "sewer-3": {
-        "d": { targetFloor: "floor-2", targetPortal: "d" },
-        "e": { targetFloor: "floor-2", targetPortal: "e" },
-        "f": { targetFloor: "floor-2", targetPortal: "f" },
-        "g": { targetFloor: "floor-2", targetPortal: "g" },
-        "h": { targetFloor: "floor-2", targetPortal: "h" },
-        "J": { targetFloor: "floor-3", targetPortal: "k" }, // 同層互傳
-        "k": { targetFloor: "floor-3", targetPortal: "J" }, // 同層互傳
-        "l": { targetFloor: "floor-4", targetPortal: "l" },
-        "m": { targetFloor: "floor-4", targetPortal: "m" },
-        "i": { targetFloor: "floor-4", targetPortal: "i" },
-        "n": { targetFloor: "floor-4", targetPortal: "n" }
+        "d": { targetFloor: "sewer-2", targetPortal: "d" },
+        "e": { targetFloor: "sewer-2", targetPortal: "e" },
+        "f": { targetFloor: "sewer-2", targetPortal: "f" },
+        "g": { targetFloor: "sewer-2", targetPortal: "g" },
+        "h": { targetFloor: "sewer-2", targetPortal: "h" },
+        "J": { targetFloor: "sewer-3", targetPortal: "k" },
+        "k": { targetFloor: "sewer-3", targetPortal: "J" },
+        "l": { targetFloor: "sewer-4", targetPortal: "l" },
+        "m": { targetFloor: "sewer-4", targetPortal: "m" },
+        "i": { targetFloor: "sewer-4", targetPortal: "i" },
+        "n": { targetFloor: "sewer-4", targetPortal: "n" }
     },
     "sewer-4": {
-        "l": { targetFloor: "floor-3", targetPortal: "l" },
-        "m": { targetFloor: "floor-3", targetPortal: "m" },
-        "n": { targetFloor: "floor-3", targetPortal: "n" },
-        "i": { targetFloor: "floor-3", targetPortal: "i" }
+        "l": { targetFloor: "sewer-3", targetPortal: "l" },
+        "m": { targetFloor: "sewer-3", targetPortal: "m" },
+        "n": { targetFloor: "sewer-3", targetPortal: "n" },
+        "i": { targetFloor: "sewer-3", targetPortal: "i" }
     }
 };
 
 /**
  * 全功能精準尋路演算法 (支援指定起點/終點傳點)
- * @param {string} startFloor 起始樓層 (例: 'sewer-1')
- * @param {string} endFloor 目標樓層 (例: 'sewer-4')
- * @param {string|null} startPortal 起始傳點 (例: 'green-start')
- * @param {string|null} endPortal 目標傳點 (例: 'i')
  */
 export function findRealShortestPath(startFloor, endFloor, startPortal = 'green-start', endPortal = null) {
-    // 如果起終點樓層與傳點完全相同，不用走
     if (startFloor === endFloor && startPortal === endPortal && startPortal !== null) return [];
 
-    // Queue 結構：[當前樓層, 當前所在的傳點, 路徑歷史]
     let queue = [[startFloor, startPortal, []]];
     let visited = new Set();
 
@@ -153,7 +139,6 @@ export function findRealShortestPath(startFloor, endFloor, startPortal = 'green-
         // 1. 取得當前點「步行」能到的傳點清單
         let availablePortals = [];
         if (curPortal === null) {
-            // 未指定起點傳點時，開放該圖所有傳點作為起點 (修正 PORTAL_DESTINATIONS)
             availablePortals = Object.keys(PORTAL_DESTINATIONS[curFloor] || {});
         } else {
             const reachableInternal = INTERNAL_CONNECTIONS[curFloor]?.[curPortal] || [];
@@ -162,18 +147,17 @@ export function findRealShortestPath(startFloor, endFloor, startPortal = 'green-
 
         // 2. 嘗試踏上傳點並進行「跨樓層傳送」
         for (let pCode of availablePortals) {
-            // 🎯 特殊判定：如果目標就是「當前樓層的某個傳點」（例如在同樓層走路就到了目標點）
+            // 特殊判定：如果目標就是當前樓層的某個傳點
             if (curFloor === endFloor && endPortal && pCode === endPortal) {
                 return [...path, {
                     fromFloor: curFloor,
                     walkToPortal: pCode,
                     toFloor: curFloor,
                     targetPortal: pCode,
-                    isFinalWalk: true // 標記為步行抵達終點
+                    isFinalWalk: true
                 }];
             }
 
-            // 🌟 核心修正點：將原本的 PORTAL_TELEPORTS 改為 PORTAL_DESTINATIONS
             const teleportInfo = PORTAL_DESTINATIONS[curFloor]?.[pCode];
             if (!teleportInfo) continue;
 
@@ -189,9 +173,7 @@ export function findRealShortestPath(startFloor, endFloor, startPortal = 'green-
 
             const newPath = [...path, newStep];
 
-            // 🎯 終點判定：
-            // 情況 A：指定了 endPortal -> 傳送過去的目標樓層 AND 目標傳點都要對上
-            // 情況 B：沒指定 endPortal -> 只要目標樓層對上即可
+            // 終點判定
             if (nextFloor === endFloor) {
                 if (!endPortal || nextPortal === endPortal) {
                     return newPath;
@@ -202,11 +184,11 @@ export function findRealShortestPath(startFloor, endFloor, startPortal = 'green-
         }
     }
 
-    return null; // 找不到連通路線
+    return null;
 }
 
 /**
- * 將演算法回傳的路徑轉化為玩家看得懂的步驟說明
+ * 將演算法回傳的路徑轉化為文字說明
  */
 export function formatPathInstructions(pathSteps) {
     if (!pathSteps || pathSteps.length === 0) return '已在目的地或無可用路線';
@@ -217,7 +199,6 @@ export function formatPathInstructions(pathSteps) {
         const fromFloorName = FLOOR_NAMES[step.fromFloor] || step.fromFloor;
         const toFloorName = FLOOR_NAMES[step.toFloor] || step.toFloor;
         
-        // 優先讀取對照表名稱，沒有的話就顯示原本 key
         const portalLabel = PORTAL_LABELS[step.fromFloor]?.[step.walkToPortal] 
                           || `傳點 [${step.walkToPortal}]`;
 
@@ -231,11 +212,10 @@ export function formatPathInstructions(pathSteps) {
     return outputHtml;
 }
 
-// 5. 渲染傳點下拉選單的函數 (已修復變數名稱為 PORTAL_DESTINATIONS)
+// 5. 渲染傳點下拉選單的函數
 export function updatePortalOptions(floorKey, selectElement) {
-    selectElement.innerHTML = ''; // 清空舊選項
+    selectElement.innerHTML = ''; 
 
-    // 優先從 INTERNAL_CONNECTIONS 與 PORTAL_DESTINATIONS 收集該樓層所有可用傳點
     const internalKeys = Object.keys(INTERNAL_CONNECTIONS[floorKey] || {});
     const destinationKeys = Object.keys(PORTAL_DESTINATIONS[floorKey] || {});
     const availablePortals = Array.from(new Set([...internalKeys, ...destinationKeys]));
@@ -244,7 +224,6 @@ export function updatePortalOptions(floorKey, selectElement) {
         const option = document.createElement('option');
         option.value = portalKey;
         
-        // 優先讀取 PORTAL_LABELS 中文名稱
         const labelText = PORTAL_LABELS[floorKey]?.[portalKey] || portalKey;
         
         option.textContent = labelText;
