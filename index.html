@@ -56,169 +56,194 @@
     <div id="footer-container"></div>
 
     <script type="module">
-      import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm";
-      import { SUPABASE_URL, SUPABASE_KEY } from "./js/supabase-config.js";
+  import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm";
+  import { SUPABASE_URL, SUPABASE_KEY } from "./js/supabase-config.js";
 
-      const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
+  const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
 
-      // 動態載入文字檔並渲染
-      document.addEventListener("DOMContentLoaded", async function () {
-        const baseURL = "."; // 修正為相對路徑
+  // 動態載入文字檔並渲染
+  document.addEventListener("DOMContentLoaded", async function () {
+    const baseURL = "."; // 修正為相對路徑
 
-        // --- 自定義語法解析 (^&文字&^ -> 變色) ---
-        function parseCustomSyntax(text) {
-  if (!text) return "";
-  
-  // 先把前後空白去掉，並確保只針對明確的 ^& 和 &^ 做替換
-  let cleanedText = text.trim();
-  
-  // 使用更精準的匹配，防止它把括號或逗號黏進去
-  return cleanedText.replace(/\^&([^\^&]+)&\^/g, function(match, p1) {
-    return `<span class="colored-text">${p1}</span>`;
-  });
-}
-
-        // --- 更新日誌分頁設定 ---
-        const ITEMS_PER_PAGE = 25;
-        let changelogLines = [];
-        let currentChangelogPage = 1;
-
-        function renderChangelog(page) {
-          const list = document.getElementById("changelog-list");
-          const pagination = document.getElementById("changelog-pagination");
-          list.innerHTML = "";
-
-          const start = (page - 1) * ITEMS_PER_PAGE;
-          const end = start + ITEMS_PER_PAGE;
-          const pageLines = changelogLines.slice(start, end);
-
-          pageLines.forEach((item) => {
-            const li = document.createElement("li");
-            const safeContent = item.content
-              ? parseCustomSyntax(String(item.content).replace(/\n/g, "<br>"))
-              : "";
-
-            if (item.is_tips === "是") {
-  // 將 safeContent 用一個 span 包裹，並設定為 inline 正常的文字流
-  li.innerHTML = `
-    <span class="tips">Tips</span>
-    <span style="display: inline; white-space: normal; word-break: break-all;">${safeContent}</span>
-  `;
-} else {
-  // 同樣將 safeContent 包裹起來
-  li.innerHTML = `
-    <span class="date">${item.date}</span>
-    <span style="display: inline; white-space: normal; word-break: break-all;">${safeContent}</span>
-  `;
-}
-            list.appendChild(li);
-          });
-          // ... rest of the function unchanged
-
-          // 渲染分頁按鈕
-          const totalPages = Math.ceil(changelogLines.length / ITEMS_PER_PAGE);
-          if (totalPages > 1) {
-            pagination.innerHTML = "";
-
-            // 上一頁
-            const prevBtn = document.createElement("button");
-            prevBtn.textContent = "◀";
-            prevBtn.disabled = page === 1;
-            prevBtn.onclick = () => {
-              currentChangelogPage--;
-              renderChangelog(currentChangelogPage);
-              window.scrollTo({ top: 0, behavior: "smooth" });
-            };
-            pagination.appendChild(prevBtn);
-
-            // 頁碼資訊
-            const pageInfo = document.createElement("span");
-            pageInfo.textContent = ` 第 ${page} / ${totalPages} 頁 `;
-            pageInfo.style.margin = "0 15px";
-            pageInfo.style.fontWeight = "bold";
-            pagination.appendChild(pageInfo);
-
-            // 下一頁
-            const nextBtn = document.createElement("button");
-            nextBtn.textContent = "▶";
-            nextBtn.disabled = page === totalPages;
-            nextBtn.onclick = () => {
-              currentChangelogPage++;
-              renderChangelog(currentChangelogPage);
-              window.scrollTo({ top: 0, behavior: "smooth" });
-            };
-            pagination.appendChild(nextBtn);
-          }
-        }
-
-        // 1. 載入更新日誌 (Supabase)
-        try {
-          const { data, error } = await supabase
-            .from("changelog")
-            .select("*");
-
-          if (error) throw error;
-
-          // 🚀 強制前端排序：Tips 置頂，其餘按 sort_id 降冪
-          changelogLines = data.sort((a, b) => {
-            const aTip = a.is_tips === "是" ? 1 : 0;
-            const bTip = b.is_tips === "是" ? 1 : 0;
-            if (aTip !== bTip) return bTip - aTip; // Tips 優先
-            return (b.sort_id || 0) - (a.sort_id || 0); // 其餘按 ID 倒序
-          });
-
-          renderChangelog(1);
-        } catch (err) {
-          console.error("載入更新日誌失敗:", err);
-          document.getElementById("changelog-list").innerHTML =
-            "<li>載入失敗。</li>";
-        }
-
-        // 2. 載入特別感謝 (Supabase)
-        try {
-          const { data, error } = await supabase
-            .from("thanks")
-            .select("*")
-            .order("sort_id", { ascending: true });
-
-          if (error) throw error;
-          const list = document.getElementById("thanks-list");
-          list.innerHTML = "";
-          data.forEach((item) => {
-            const li = document.createElement("li");
-            li.innerHTML = `<span class="tips">${item.category}</span>${parseCustomSyntax(item.names.replace(/\n/g, "<br>"))}`;
-            list.appendChild(li);
-          });
-        } catch (err) {
-          console.error("載入特別感謝失敗:", err);
-          document.getElementById("thanks-list").innerHTML =
-            "<li>載入失敗。</li>";
-        }
-
-        // 3. 載入改版資訊 (Supabase)
-        try {
-          const { data, error } = await supabase
-            .from("releases")
-            .select("*")
-            .order("sort_id", { ascending: false });
-
-          if (error) throw error;
-          const list = document.getElementById("release-list");
-          list.innerHTML = "";
-          data.forEach((item) => {
-            const li = document.createElement("li");
-            li.innerHTML = `
-              <span class="date">${item.date}</span>
-              <a href="${item.url || "#"}" target="_blank" rel="noopener noreferrer" class="date2">${parseCustomSyntax(item.title)}</a>
-            `;
-            list.appendChild(li);
-          });
-        } catch (err) {
-          console.error("載入改版資訊失敗:", err);
-          document.getElementById("release-list").innerHTML =
-            "<li>載入失敗。</li>";
-        }
+    // --- 自定義語法解析 (^&文字&^ -> 變色) ---
+    function parseCustomSyntax(text) {
+      if (!text) return "";
+      let cleanedText = text.trim();
+      return cleanedText.replace(/\^&([^\^&]+)&\^/g, function(match, p1) {
+        return `<span class="colored-text">${p1}</span>`;
       });
-    </script>
+    }
+
+    // --- 更新日誌分頁設定 ---
+    const ITEMS_PER_PAGE = 25;
+    let changelogLines = [];
+    let currentChangelogPage = 1;
+
+    function renderChangelog(page) {
+      const list = document.getElementById("changelog-list");
+      const pagination = document.getElementById("changelog-pagination");
+      list.innerHTML = "";
+
+      const start = (page - 1) * ITEMS_PER_PAGE;
+      const end = start + ITEMS_PER_PAGE;
+      const pageLines = changelogLines.slice(start, end);
+
+      pageLines.forEach((item) => {
+        const li = document.createElement("li");
+        const safeContent = item.content
+          ? parseCustomSyntax(String(item.content).replace(/\n/g, "<br>"))
+          : "";
+
+        if (item.is_tips === "是") {
+          li.innerHTML = `
+            <span class="tips">Tips</span>
+            <span style="display: inline; white-space: normal; word-break: break-all;">${safeContent}</span>
+          `;
+        } else {
+          li.innerHTML = `
+            <span class="date">${item.date}</span>
+            <span style="display: inline; white-space: normal; word-break: break-all;">${safeContent}</span>
+          `;
+        }
+        list.appendChild(li);
+      });
+
+      const totalPages = Math.ceil(changelogLines.length / ITEMS_PER_PAGE);
+      if (totalPages > 1) {
+        pagination.innerHTML = "";
+
+        const prevBtn = document.createElement("button");
+        prevBtn.textContent = "◀";
+        prevBtn.disabled = page === 1;
+        prevBtn.onclick = () => {
+          currentChangelogPage--;
+          renderChangelog(currentChangelogPage);
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        };
+        pagination.appendChild(prevBtn);
+
+        const pageInfo = document.createElement("span");
+        pageInfo.textContent = ` 第 ${page} / ${totalPages} 頁 `;
+        pageInfo.style.margin = "0 15px";
+        pageInfo.style.fontWeight = "bold";
+        pagination.appendChild(pageInfo);
+
+        const nextBtn = document.createElement("button");
+        nextBtn.textContent = "▶";
+        nextBtn.disabled = page === totalPages;
+        nextBtn.onclick = () => {
+          currentChangelogPage++;
+          renderChangelog(currentChangelogPage);
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        };
+        pagination.appendChild(nextBtn);
+      }
+    }
+
+    // 1. 載入更新日誌 (Supabase)
+    try {
+      const { data, error } = await supabase
+        .from("changelog")
+        .select("*");
+
+      if (error) throw error;
+
+      changelogLines = data.sort((a, b) => {
+        const aTip = a.is_tips === "是" ? 1 : 0;
+        const bTip = b.is_tips === "是" ? 1 : 0;
+        if (aTip !== bTip) return bTip - aTip;
+        return (b.sort_id || 0) - (a.sort_id || 0);
+      });
+
+      renderChangelog(1);
+    } catch (err) {
+      console.error("載入更新日誌失敗:", err);
+      document.getElementById("changelog-list").innerHTML =
+        "<li>載入失敗。</li>";
+    }
+
+    // 2. 載入特別感謝 (Supabase)
+    try {
+      const { data, error } = await supabase
+        .from("thanks")
+        .select("*")
+        .order("sort_id", { ascending: true });
+
+      if (error) throw error;
+      const list = document.getElementById("thanks-list");
+      list.innerHTML = "";
+      data.forEach((item) => {
+        const li = document.createElement("li");
+        li.innerHTML = `<span class="tips">${item.category}</span>${parseCustomSyntax(item.names.replace(/\n/g, "<br>"))}`;
+        list.appendChild(li);
+      });
+    } catch (err) {
+      console.error("載入特別感謝失敗:", err);
+      document.getElementById("thanks-list").innerHTML =
+        "<li>載入失敗。</li>";
+    }
+
+    // 3. 載入限時官方活動 (Supabase) 🆕
+    try {
+      // 這裡直接 select("*")，因為 Supabase RLS 策略會自動幫一般訪客過濾掉已結束/已停用的活動
+      const { data, error } = await supabase
+        .from("events")
+        .select("*")
+        .order("start_date", { ascending: true });
+
+      if (error) throw error;
+
+      const list = document.getElementById("events-list");
+      list.innerHTML = "";
+
+      if (!data || data.length === 0) {
+        list.innerHTML = "<li>目前無進行中的活動。</li>";
+      } else {
+        data.forEach((item) => {
+          const li = document.createElement("li");
+          
+          // 格式化日期顯示 (例如 2026-07-29 轉成 07/29)
+          const startDateStr = item.start_date ? item.start_date.slice(5, 10).replace('-', '/') : '';
+          const endDateStr = item.end_date ? item.end_date.slice(5, 10).replace('-', '/') : '';
+          const dateRange = `${startDateStr}~${endDateStr}`;
+
+          li.innerHTML = `
+            <span class="date">${dateRange}</span>
+            <a href="${item.url || "#"}" target="_blank" rel="noopener noreferrer" class="date2">${parseCustomSyntax(item.title)}</a>
+          `;
+          list.appendChild(li);
+        });
+      }
+    } catch (err) {
+      console.error("載入活動資訊失敗:", err);
+      document.getElementById("events-list").innerHTML =
+        "<li>載入失敗。</li>";
+    }
+
+    // 4. 載入改版資訊 (Supabase)
+    try {
+      const { data, error } = await supabase
+        .from("releases")
+        .select("*")
+        .order("sort_id", { ascending: false });
+
+      if (error) throw error;
+      const list = document.getElementById("release-list");
+      list.innerHTML = "";
+      data.forEach((item) => {
+        const li = document.createElement("li");
+        li.innerHTML = `
+          <span class="date">${item.date}</span>
+          <a href="${item.url || "#"}" target="_blank" rel="noopener noreferrer" class="date2">${parseCustomSyntax(item.title)}</a>
+        `;
+        list.appendChild(li);
+      });
+    } catch (err) {
+      console.error("載入改版資訊失敗:", err);
+      document.getElementById("release-list").innerHTML =
+        "<li>載入失敗。</li>";
+    }
+  });
+</script>
   </body>
 </html>
