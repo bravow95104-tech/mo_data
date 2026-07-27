@@ -503,6 +503,57 @@ body {
     white-space: normal !important;
 }
 
+/* 官方限時活動專屬樣式 */
+#events-list li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+  background: rgba(255, 255, 255, 0.05); /* 輕微底色 */
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.2s ease;
+}
+
+#events-list li:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+/* 日期標籤：維持精緻小按鈕/膠囊感 */
+#events-list .date {
+  flex-shrink: 0; /* 防止日期被壓扁 */
+  background: #1d3557; /* 醒目的深藍或金黃色 */
+  color: #e0e1dd;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+/* 活動標題連結：取消獨立按鈕框，改為乾淨的單行文字 */
+#events-list .event-title,
+#events-list a {
+  background: transparent !important; /* 清除獨立按鈕背景 */
+  border: none !important;
+  box-shadow: none !important;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 0.95rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; /* 文字太長時自動顯示 ... */
+  display: block;
+  flex: 1;
+}
+
+#events-list a:hover {
+  color: #ffb703; /* 滑過時變色，例如金黃色 */
+  text-decoration: underline;
+}
+
 /* === 手機版響應式佈局 === */
 @media (max-width: 1024px) {
     #content-wrapper {
