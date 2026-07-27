@@ -232,18 +232,25 @@ function renderQuestCards() {
 } // <--- 這裡正確閉合 renderQuestCards 函式
 
 function initAccordion() {
-  const accordion = document.getElementById("filterContainer");
-  const header = accordion ? accordion.querySelector(".accordion-header") : null;
-  const content = accordion ? accordion.querySelector(".accordion-content") : null;
-  
-  if (accordion && header && content) {
-    header.addEventListener("click", function() {
-      accordion.classList.toggle("collapsed");
-    });
-    content.addEventListener("click", function(e) {
-      e.stopPropagation(); 
-    });
-  }
+  // 抓取頁面上所有的 accordion 區塊
+  const accordions = document.querySelectorAll(".accordion");
+
+  accordions.forEach(accordion => {
+    const header = accordion.querySelector(".accordion-header");
+    const content = accordion.querySelector(".accordion-content");
+
+    if (header) {
+      header.addEventListener("click", function() {
+        accordion.classList.toggle("collapsed");
+      });
+    }
+
+    if (content) {
+      content.addEventListener("click", function(e) {
+        e.stopPropagation(); 
+      });
+    }
+  });
 }
 
 function initBackToTop() {
