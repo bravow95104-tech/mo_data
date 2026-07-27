@@ -195,10 +195,24 @@
       const list = document.getElementById("events-list");
       list.innerHTML = "";
 
-      if (!data || data.length === 0) {
+      const now = new Date(); // 取得目前的實際時間
+
+      // 過濾出尚未超過「結束日 14:00」的活動
+      const validEvents = (data || []).filter((item) => {
+        if (!item.end_date) return true;
+
+        // 自動拼上 14:00:00 結束時間 (預設 +08:00 台灣時區)
+        // 例如 item.end_date 為 "2026-08-05"，組合後變成 "2026-08-05T14:00:00+08:00"
+        const eventEndTime = new Date(`${item.end_date}T14:00:00+08:00`);
+
+        // 如果「現在時間」已經超過「結束當天的 14:00」，就自動下架過濾掉
+        return now < eventEndTime;
+      });
+
+      if (validEvents.length === 0) {
         list.innerHTML = "<li>目前無進行中的活動。</li>";
       } else {
-        data.forEach((item) => {
+        validEvents.forEach((item) => {
           const li = document.createElement("li");
           
           // 格式化日期顯示 (例如 2026-07-29 轉成 07/29)
@@ -208,7 +222,7 @@
 
           li.innerHTML = `
             <span class="date">${dateRange}</span>
-            <a href="${item.url || "#"}" target="_blank" rel="noopener noreferrer" class="date2">${parseCustomSyntax(item.title)}</a>
+            <a href="${item.url || "#"}" target="_blank" rel="noopener noreferrer" class="event-title">${parseCustomSyntax(item.title)}</a>
           `;
           list.appendChild(li);
         });
@@ -219,6 +233,7 @@
         "<li>載入失敗。</li>";
     }
 
+    
     // 4. 載入改版資訊 (Supabase)
     try {
       const { data, error } = await supabase
