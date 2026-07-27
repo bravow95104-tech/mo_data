@@ -197,16 +197,20 @@
 
       const now = new Date(); // 取得目前的實際時間
 
-      // 過濾出尚未超過「結束日 14:00」的活動
+      // 自動雙向過濾：必須在「開始日 16:00」之後，且在「結束日 14:00」之前
       const validEvents = (data || []).filter((item) => {
-        if (!item.end_date) return true;
+        // 設定開始時間為當天 16:00:00
+        const eventStartTime = item.start_date 
+          ? new Date(`${item.start_date}T16:00:00+08:00`) 
+          : new Date(0); // 若無開始日期則預設直接生效
 
-        // 自動拼上 14:00:00 結束時間 (預設 +08:00 台灣時區)
-        // 例如 item.end_date 為 "2026-08-05"，組合後變成 "2026-08-05T14:00:00+08:00"
-        const eventEndTime = new Date(`${item.end_date}T14:00:00+08:00`);
+        // 設定結束時間為當天 14:00:00
+        const eventEndTime = item.end_date 
+          ? new Date(`${item.end_date}T14:00:00+08:00`) 
+          : new Date(8640000000000000); // 若無結束日期則預設永久生效
 
-        // 如果「現在時間」已經超過「結束當天的 14:00」，就自動下架過濾掉
-        return now < eventEndTime;
+        // 時間必須介於開始 16:00 到結束 14:00 之間才顯示
+        return now >= eventStartTime && now < eventEndTime;
       });
 
       if (validEvents.length === 0) {
@@ -233,7 +237,6 @@
         "<li>載入失敗。</li>";
     }
 
-    
     // 4. 載入改版資訊 (Supabase)
     try {
       const { data, error } = await supabase
