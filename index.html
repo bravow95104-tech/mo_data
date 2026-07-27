@@ -185,7 +185,6 @@
 
     // 3. 載入限時官方活動 (Supabase)
     try {
-      // 這裡按 start_date 排序 (升冪：即將到來/進行中的活動按開始日期排列)
       const { data, error } = await supabase
         .from("events")
         .select("*")
@@ -203,8 +202,8 @@
           const li = document.createElement("li");
           
           // 格式化日期顯示 (例如 2026-07-29 轉成 07/29)
-          const startDateStr = item.start_date ? item.start_date.slice(5, 10).replace('-', '/') : '';
-          const endDateStr = item.end_date ? item.end_date.slice(5, 10).replace('-', '/') : '';
+          const startDateStr = item.start_date ? item.start_date.slice(5).replace('-', '/') : '';
+          const endDateStr = item.end_date ? item.end_date.slice(5).replace('-', '/') : '';
           const dateRange = `${startDateStr}~${endDateStr}`;
 
           li.innerHTML = `
