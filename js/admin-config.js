@@ -539,8 +539,8 @@ export const TABLE_CONFIGS = {
     events: {
         title: '官方活動管理',
         tableName: 'events',
-        tableCols: ['順序', '名稱', '檔案名稱', '操作'],
-        displayFields: ['sort_id', 'title', 'file_name'],
+        tableCols: ['活動名稱', '開始日期', '活動結束時間', '操作'],
+        displayFields: ['title', 'start_date', 'end_date timestamptz'],
         fields: [
             { id: 'title', label: '活動名稱', type: 'text', required: true, grid: 1 },
             { id: 'url', label: '活動連結', type: 'text', grid: 2 },
