@@ -183,9 +183,9 @@
         "<li>載入失敗。</li>";
     }
 
-    // 3. 載入限時官方活動 (Supabase) 🆕
+    // 3. 載入限時官方活動 (Supabase)
     try {
-      // 這裡直接 select("*")，因為 Supabase RLS 策略會自動幫一般訪客過濾掉已結束/已停用的活動
+      // 這裡按 start_date 排序 (升冪：即將到來/進行中的活動按開始日期排列)
       const { data, error } = await supabase
         .from("events")
         .select("*")
