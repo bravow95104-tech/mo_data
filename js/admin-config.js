@@ -535,4 +535,18 @@ export const TABLE_CONFIGS = {
             { id: 'is_active', label: '開啟與否', grid: 2 ,type: 'select',options: ['TRUE', 'FLASE','']},
         ]
     },
+
+    events: {
+        title: '官方活動管理',
+        tableName: 'events',
+        tableCols: ['順序', '名稱', '檔案名稱', '操作'],
+        displayFields: ['sort_id', 'title', 'file_name'],
+        fields: [
+            { id: 'title', label: '活動名稱', type: 'text', required: true, grid: 1 },
+            { id: 'url', label: '活動連結', type: 'text', grid: 2 },
+            { id: 'start_date', label: '開始日期', type: 'text', grid: 1 },
+            { id: 'end_date timestamptz', label: '活動結束時間 (例如 2026-08-05 10:00:00+08)', type: 'text', grid: 2 },
+            { id: 'is_active', label: '手動啟用/停用開關', grid: 2 ,type: 'text'},
+        ]
+    },
 };
