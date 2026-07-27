@@ -591,7 +591,10 @@ body.dark-theme #events-list a,
 [data-theme="dark"] #events-list a {
   color: #f8f9fa !important; /* 深色模式下採用亮色字 */
 }
-
+#events-list a:hover {
+  color: #ffb703 !important; /* 加 !important 確保強制蓋過預設顏色 */
+  text-decoration: underline;
+}
 /* === 手機版響應式佈局 === */
 @media (max-width: 1024px) {
     #content-wrapper {
