@@ -503,29 +503,34 @@ body {
     white-space: normal !important;
 }
 
-/* 官方限時活動專屬樣式 */
+/* ==========================================
+   官方限時活動區塊（支援日/夜間模式）
+   ========================================== */
+
+/* 卡片外框：使用相對的主題變數，或支援淺色背景 */
 #events-list li {
   display: flex;
   align-items: center;
   gap: 10px;
   margin-bottom: 10px;
-  background: rgba(255, 255, 255, 0.05); /* 輕微底色 */
   padding: 8px 12px;
   border-radius: 8px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  
+  /* 預設使用繼承的主題顏色，若無變數則提供相容色彩 */
+  background-color: var(--card-bg, rgba(0, 0, 0, 0.04)); 
+  border: 1px solid var(--border-color, rgba(0, 0, 0, 0.1));
   transition: all 0.2s ease;
 }
 
 #events-list li:hover {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: rgba(255, 255, 255, 0.25);
+  background-color: var(--card-hover-bg, rgba(0, 0, 0, 0.08));
 }
 
-/* 日期標籤：維持精緻小按鈕/膠囊感 */
+/* 日期標籤：深色底白字，不論日夜間都能清晰顯示 */
 #events-list .date {
-  flex-shrink: 0; /* 防止日期被壓扁 */
-  background: #1d3557; /* 醒目的深藍或金黃色 */
-  color: #e0e1dd;
+  flex-shrink: 0;
+  background-color: #1d3557;
+  color: #ffffff;
   padding: 4px 8px;
   border-radius: 6px;
   font-size: 0.85rem;
@@ -533,25 +538,58 @@ body {
   white-space: nowrap;
 }
 
-/* 活動標題連結：取消獨立按鈕框，改為乾淨的單行文字 */
+/* 活動標題連結：文字顏色繼承主要文字色彩 (var(--text-color)) */
 #events-list .event-title,
 #events-list a {
-  background: transparent !important; /* 清除獨立按鈕背景 */
+  background: transparent !important;
   border: none !important;
   box-shadow: none !important;
-  color: #ffffff;
+  
+  /* 關鍵點：跟隨主題的文字顏色，沒設定變數則使用預設 currentColor */
+  color: var(--text-color, currentColor) !important; 
   text-decoration: none;
   font-size: 0.95rem;
+  font-weight: 500;
+  
   white-space: nowrap;
   overflow: hidden;
-  text-overflow: ellipsis; /* 文字太長時自動顯示 ... */
+  text-overflow: ellipsis; /* 文字過長自動加 ... */
   display: block;
   flex: 1;
 }
 
 #events-list a:hover {
-  color: #ffb703; /* 滑過時變色，例如金黃色 */
+  color: #e63946 !important; /* 滑過時的強調色 */
   text-decoration: underline;
+}
+
+/* ------------------------------------------
+   如果你的白天/黑夜是用 Class (如 .light-theme / .dark-theme) 控制
+   也可以直接顯式指定以下樣式：
+   ------------------------------------------ */
+
+/* 白天 / 淺色模式 */
+body.light-theme #events-list li,
+[data-theme="light"] #events-list li {
+  background-color: #f8f9fa;
+  border-color: #dee2e6;
+}
+
+body.light-theme #events-list a,
+[data-theme="light"] #events-list a {
+  color: #212529 !important; /* 淺色模式下採用深色字 */
+}
+
+/* 黑夜 / 深色模式 */
+body.dark-theme #events-list li,
+[data-theme="dark"] #events-list li {
+  background-color: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+body.dark-theme #events-list a,
+[data-theme="dark"] #events-list a {
+  color: #f8f9fa !important; /* 深色模式下採用亮色字 */
 }
 
 /* === 手機版響應式佈局 === */
