@@ -199,17 +199,14 @@
 
       // 自動雙向過濾：必須在「開始日 16:00」之後，且在「結束日 14:00」之前
       const validEvents = (data || []).filter((item) => {
-        // 設定開始時間為當天 16:00:00
         const eventStartTime = item.start_date 
           ? new Date(`${item.start_date}T16:00:00+08:00`) 
-          : new Date(0); // 若無開始日期則預設直接生效
+          : new Date(0);
 
-        // 設定結束時間為當天 14:00:00
         const eventEndTime = item.end_date 
           ? new Date(`${item.end_date}T14:00:00+08:00`) 
-          : new Date(8640000000000000); // 若無結束日期則預設永久生效
+          : new Date(8640000000000000);
 
-        // 時間必須介於開始 16:00 到結束 14:00 之間才顯示
         return now >= eventStartTime && now < eventEndTime;
       });
 
@@ -224,8 +221,25 @@
           const endDateStr = item.end_date ? item.end_date.slice(5).replace('-', '/') : '';
           const dateRange = `${startDateStr}~${endDateStr}`;
 
+          // --- 計算剩餘天數邏輯 ---
+          let countdownBadge = "";
+          if (item.end_date) {
+            const eventEndTime = new Date(`${item.end_date}T14:00:00+08:00`);
+            const diffTime = eventEndTime - now; // 剩餘毫秒數
+            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); // 向上取整換算為天數
+
+            if (diffDays === 1) {
+              // 剩餘不到 24 小時/當天
+              countdownBadge = `<span class="badge-urgent">🔥 今日結束</span>`;
+            } else if (diffDays <= 3 && diffDays > 1) {
+              // 2~3 天內顯示倒數
+              countdownBadge = `<span class="badge-warning">⚡ 剩 ${diffDays} 天</span>`;
+            }
+          }
+
           li.innerHTML = `
             <span class="date">${dateRange}</span>
+            ${countdownBadge}
             <a href="${item.url || "#"}" target="_blank" rel="noopener noreferrer" class="event-title">${parseCustomSyntax(item.title)}</a>
           `;
           list.appendChild(li);
