@@ -392,7 +392,7 @@ export const TABLE_CONFIGS = {
             { id: 'material10', label: '材料10', type: 'text', grid: 1 , group: '材料'},
             { id: 'material11', label: '材料11', type: 'text', grid: 1 , group: '材料'},
             { id: 'illustrate', label: '說明(如要觸發modelbox請增加^&12&^)', type: 'textarea', grid: 3 },
-            { id: 'gain', label: '特殊效果說明(modelbox)', type: 'text', grid: 1 },
+            { id: 'gain', label: '特殊效果說明(modelbox)', type: 'textarea', grid: 3 },
         ]
     },
     detailed_map: {
