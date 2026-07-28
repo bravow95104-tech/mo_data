@@ -197,17 +197,13 @@
 
       const now = new Date(); // 取得目前的實際時間
 
-      // 自動雙向過濾：必須在「開始日 16:00」之後，且在「結束日 14:00」之前
+      // 過濾：只要「尚未結束 (現在時間 < 結束日 14:00)」的活動都保留 (包含進行中 & 即將到來)
       const validEvents = (data || []).filter((item) => {
-        const eventStartTime = item.start_date 
-          ? new Date(`${item.start_date}T16:00:00+08:00`) 
-          : new Date(0);
-
         const eventEndTime = item.end_date 
           ? new Date(`${item.end_date}T14:00:00+08:00`) 
           : new Date(8640000000000000);
 
-        return now >= eventStartTime && now < eventEndTime;
+        return now < eventEndTime;
       });
 
       if (validEvents.length === 0) {
@@ -221,25 +217,36 @@
           const endDateStr = item.end_date ? item.end_date.slice(5).replace('-', '/') : '';
           const dateRange = `${startDateStr}~${endDateStr}`;
 
-          // --- 計算剩餘天數邏輯 ---
-          let countdownBadge = "";
-          if (item.end_date) {
-            const eventEndTime = new Date(`${item.end_date}T14:00:00+08:00`);
-            const diffTime = eventEndTime - now; // 剩餘毫秒數
-            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); // 向上取整換算為天數
+          // 時間物件轉換
+          const eventStartTime = item.start_date 
+            ? new Date(`${item.start_date}T16:00:00+08:00`) 
+            : new Date(0);
+          const eventEndTime = item.end_date 
+            ? new Date(`${item.end_date}T14:00:00+08:00`) 
+            : new Date(8640000000000000);
+
+          let statusBadge = "";
+
+          // --- 判斷活動狀態 ---
+          if (now < eventStartTime) {
+            // 情況 A：即將到來 (尚未到開始日 16:00)
+            const diffUpcoming = Math.ceil((eventStartTime - now) / (1000 * 60 * 60 * 24));
+            statusBadge = `<span class="badge-upcoming">⌛ 即將到來 (${diffUpcoming}天後)</span>`;
+          } else {
+            // 情況 B：進行中 (計算剩餘天數)
+            const diffTime = eventEndTime - now;
+            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
 
             if (diffDays === 1) {
-              // 剩餘不到 24 小時/當天
-              countdownBadge = `<span class="badge-urgent">🔥 今日結束</span>`;
+              statusBadge = `<span class="badge-urgent">🔥 今日結束</span>`;
             } else if (diffDays <= 3 && diffDays > 1) {
-              // 2~3 天內顯示倒數
-              countdownBadge = `<span class="badge-warning">⚡ 剩 ${diffDays} 天</span>`;
+              statusBadge = `<span class="badge-warning">⚡ 剩 ${diffDays} 天</span>`;
             }
           }
 
           li.innerHTML = `
             <span class="date">${dateRange}</span>
-            ${countdownBadge}
+            ${statusBadge}
             <a href="${item.url || "#"}" target="_blank" rel="noopener noreferrer" class="event-title">${parseCustomSyntax(item.title)}</a>
           `;
           list.appendChild(li);

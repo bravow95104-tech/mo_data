@@ -594,6 +594,18 @@ body {
   100% { opacity: 1; }
 }
 
+/* 即將到來標籤 (藍色或藍綠色系) */
+.badge-upcoming {
+  background-color: #3498db; /* 清爽藍色 */
+  color: #ffffff;
+  font-size: 0.75rem;
+  font-weight: bold;
+  padding: 2px 6px;
+  border-radius: 4px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
 /* ------------------------------------------
    如果你的白天/黑夜是用 Class (如 .light-theme / .dark-theme) 控制
    也可以直接顯式指定以下樣式：
