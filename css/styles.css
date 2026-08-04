@@ -606,6 +606,16 @@ body {
   flex-shrink: 0;
 }
 
+/* 讓側邊欄活動列表的標題超出時顯示 ... */
+#events-list .event-title {
+  display: inline-block;
+  max-width: 180px;        /* 依據側邊欄實際寬度調整 */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  vertical-align: middle;
+}
+
 /* ------------------------------------------
    如果你的白天/黑夜是用 Class (如 .light-theme / .dark-theme) 控制
    也可以直接顯式指定以下樣式：
