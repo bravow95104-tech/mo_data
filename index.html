@@ -184,79 +184,96 @@
     }
 
     // 3. 載入限時官方活動 (Supabase)
-    try {
-      const { data, error } = await supabase
-        .from("events")
-        .select("*")
-        .order("start_date", { ascending: true });
+try {
+  const { data, error } = await supabase
+    .from("events")
+    .select("*")
+    .order("start_date", { ascending: true });
 
-      if (error) throw error;
+  if (error) throw error;
 
-      const list = document.getElementById("events-list");
-      list.innerHTML = "";
+  const list = document.getElementById("events-list");
+  list.innerHTML = "";
 
-      const now = new Date(); // 取得目前的實際時間
+  const now = new Date(); // 取得目前的實際時間
 
-      // 過濾：只要「尚未結束 (現在時間 < 結束日 14:00)」的活動都保留 (包含進行中 & 即將到來)
-      const validEvents = (data || []).filter((item) => {
-        const eventEndTime = item.end_date 
-          ? new Date(`${item.end_date}T14:00:00+08:00`) 
-          : new Date(8640000000000000);
+  // 過濾：只要「尚未結束 (現在時間 < 結束日 14:00)」的活動都保留
+  const validEvents = (data || []).filter((item) => {
+    const eventEndTime = item.end_date 
+      ? new Date(`${item.end_date}T14:00:00+08:00`) 
+      : new Date(8640000000000000);
 
-        return now < eventEndTime;
-      });
+    return now < eventEndTime;
+  });
 
-      if (validEvents.length === 0) {
-        list.innerHTML = "<li>目前無進行中的活動。</li>";
+  if (validEvents.length === 0) {
+    list.innerHTML = "<li>目前無進行中的活動。</li>";
+  } else {
+    validEvents.forEach((item) => {
+      const li = document.createElement("li");
+      
+      // 格式化日期顯示 (例如 2026-07-29 轉成 07/29)
+      const startDateStr = item.start_date ? item.start_date.slice(5).replace('-', '/') : '';
+      const endDateStr = item.end_date ? item.end_date.slice(5).replace('-', '/') : '';
+      const dateRange = `${startDateStr}~${endDateStr}`;
+
+      // 時間物件轉換
+      const eventStartTime = item.start_date 
+        ? new Date(`${item.start_date}T16:00:00+08:00`) 
+        : new Date(0);
+      const eventEndTime = item.end_date 
+        ? new Date(`${item.end_date}T14:00:00+08:00`) 
+        : new Date(8640000000000000);
+
+      let statusBadge = "";
+
+      // --- 判斷活動狀態 ---
+      if (now < eventStartTime) {
+        // 情況 A：即將到來 (尚未到開始日 16:00)
+        // 計算距離開始還有幾天 (精確至天數)
+        const diffUpcoming = Math.ceil((eventStartTime - now) / (1000 * 60 * 60 * 24));
+        statusBadge = `<span class="badge-upcoming">⌛ 即將到來 (${diffUpcoming}天後)</span>`;
       } else {
-        validEvents.forEach((item) => {
-          const li = document.createElement("li");
-          
-          // 格式化日期顯示 (例如 2026-07-29 轉成 07/29)
-          const startDateStr = item.start_date ? item.start_date.slice(5).replace('-', '/') : '';
-          const endDateStr = item.end_date ? item.end_date.slice(5).replace('-', '/') : '';
-          const dateRange = `${startDateStr}~${endDateStr}`;
+        // 情況 B：進行中
+        // 判斷結束日期是否為「今天」
+        const todayStr = now.toISOString().split('T')[0];
+        
+        if (item.end_date === todayStr) {
+          statusBadge = `<span class="badge-urgent">🔥 今日結束</span>`;
+        } else {
+          // 計算剩餘日曆天數
+          const endDay = new Date(`${item.end_date}T23:59:59+08:00`);
+          const diffDays = Math.ceil((endDay - now) / (1000 * 60 * 60 * 24));
 
-          // 時間物件轉換
-          const eventStartTime = item.start_date 
-            ? new Date(`${item.start_date}T16:00:00+08:00`) 
-            : new Date(0);
-          const eventEndTime = item.end_date 
-            ? new Date(`${item.end_date}T14:00:00+08:00`) 
-            : new Date(8640000000000000);
-
-          let statusBadge = "";
-
-          // --- 判斷活動狀態 ---
-          if (now < eventStartTime) {
-            // 情況 A：即將到來 (尚未到開始日 16:00)
-            const diffUpcoming = Math.ceil((eventStartTime - now) / (1000 * 60 * 60 * 24));
-            statusBadge = `<span class="badge-upcoming">⌛ 即將到來 (${diffUpcoming}天後)</span>`;
-          } else {
-            // 情況 B：進行中 (計算剩餘天數)
-            const diffTime = eventEndTime - now;
-            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-
-            if (diffDays === 1) {
-              statusBadge = `<span class="badge-urgent">🔥 今日結束</span>`;
-            } else if (diffDays <= 3 && diffDays > 1) {
-              statusBadge = `<span class="badge-warning">⚡ 剩 ${diffDays} 天</span>`;
-            }
+          if (diffDays <= 3 && diffDays > 0) {
+            statusBadge = `<span class="badge-warning">⚡ 剩 ${diffDays} 天</span>`;
           }
-
-          li.innerHTML = `
-            <span class="date">${dateRange}</span>
-            ${statusBadge}
-            <a href="${item.url || "#"}" target="_blank" rel="noopener noreferrer" class="event-title">${parseCustomSyntax(item.title)}</a>
-          `;
-          list.appendChild(li);
-        });
+        }
       }
-    } catch (err) {
-      console.error("載入活動資訊失敗:", err);
-      document.getElementById("events-list").innerHTML =
-        "<li>載入失敗。</li>";
-    }
+
+      // 純文字版標題（給 title 屬性使用，避免包含 HTML 標籤）
+      const rawTitle = item.title ? item.title.replace(/\^&|&\^/g, '') : '';
+      const parsedTitle = parseCustomSyntax(item.title);
+
+      li.innerHTML = `
+        <span class="date">${dateRange}</span>
+        ${statusBadge}
+        <a href="${item.url || "#"}" 
+           target="_blank" 
+           rel="noopener noreferrer" 
+           class="event-title" 
+           title="${rawTitle}">
+           ${parsedTitle}
+        </a>
+      `;
+      list.appendChild(li);
+    });
+  }
+} catch (err) {
+  console.error("載入活動資訊失敗:", err);
+  document.getElementById("events-list").innerHTML =
+    "<li>載入失敗。</li>";
+}
 
     // 4. 載入改版資訊 (Supabase)
     try {
