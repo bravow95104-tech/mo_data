@@ -678,9 +678,11 @@ if (resources.length > 0 || item) {
   let approachDisplay = "-";
 
   if (approachText) {
+    const formattedText = approachText.replace(/\r?\n/g, '<br>');
+
     if (isCave) {
       // 有「洞窟」：顯示超連結
-      approachDisplay = `<a href="mapdescription.html?search=${encodeURIComponent(approachText)}" target="_blank" class="hero-link">${approachText}</a>`;
+      approachDisplay = `<a href="mapdescription.html?search=${encodeURIComponent(approachText)}" target="_blank" class="hero-link">${formattedText}</a>`;
     } else {
       // 一般「要」或其他情況：僅顯示純文字
       approachDisplay = approachText;
