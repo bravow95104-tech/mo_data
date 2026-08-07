@@ -94,7 +94,7 @@ function formatMapLinks(text) {
   async function loadData() {
     try {
       // 🚀 同時讀取英雄與光輝掉落表
-      const [heroesRes, gloryRes] = await Promise.all([
+      const [heroesRes, gloryRes, gloryPlayerRes] = await Promise.all([
         supabase.from('heroes').select('*').order('sort_id', { ascending: true }),
         supabase.from('glory_drop').select('*'),
         supabase.from('glory_drop_player').select('*')
