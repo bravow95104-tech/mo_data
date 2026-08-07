@@ -751,7 +751,7 @@ if (resources.length > 0 || item) {
         <p><strong>光輝資訊：</strong></p>
         <p class="align-row"><strong>◢ 掉落較高：</strong><span>${formatGloryWithTooltip(item.drop_glory_high)}</span></p>
         <p class="align-row"><strong>◢ 掉落較低：</strong><span>${formatGloryWithTooltip(item.drop_glory_low)}</span></p>
-        ${item.drop_glory_player ? `<p class="align-row"><strong>◢ 玩家提供：</strong><span>${item.drop_glory_player}</span></p>` : ""}
+        ${item.drop_glory_player ? `<p class="align-row"><strong>◢ 玩家提供：</strong><span>${formatGloryWithTooltip(item.drop_glory_player)}</span></p>` : ""}
       </div>
     `;
   }
