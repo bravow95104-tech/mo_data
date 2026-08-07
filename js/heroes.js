@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   let gloryDropData = []; // 🚀 新增：存放光輝掉落資料
   let sortConfig = { key: null, direction: "asc" }; // 記錄排序狀態
   let lastFilteredData = [];
+  let gloryDropPlayerData = [];
 
   // 🔹 輔助函式：處理 NULL 值 (確保回傳皆為字串)
   const getVal = (v) => (v === null || v === undefined || String(v).trim() === "" || String(v) === "null") ? "" : String(v);
@@ -95,11 +96,13 @@ function formatMapLinks(text) {
       // 🚀 同時讀取英雄與光輝掉落表
       const [heroesRes, gloryRes] = await Promise.all([
         supabase.from('heroes').select('*').order('sort_id', { ascending: true }),
-        supabase.from('glory_drop').select('*')
+        supabase.from('glory_drop').select('*'),
+        supabase.from('glory_drop_player').select('*')
       ]);
 
       if (heroesRes.error) throw heroesRes.error;
       if (gloryRes.error) throw gloryRes.error;
+      if (gloryPlayerRes.error) throw gloryPlayerRes.error;
 
       // 🚀 預先處理搜尋用的字串，避免在 filter 迴圈中重複運算
       heroesData = (heroesRes.data || []).map(hero => ({
@@ -110,6 +113,7 @@ function formatMapLinks(text) {
       }));
       
       gloryDropData = gloryRes.data || [];
+      gloryDropPlayerData = gloryPlayerRes.data || [];
       
       // 🚀 檢查 URL 是否有 ?hero=名稱 參數
       const urlParams = new URLSearchParams(window.location.search);
@@ -422,6 +426,12 @@ function formatMapLinks(text) {
       .filter(g => g.low && String(g.low).includes(matchedGlory))
       .map(g => g.area)
       .join('、');
+    
+    // 🚀 新增：比對玩家提供光輝掉落 (對應 drop_content 欄位，並取出 area)
+    const fallPlayerAreas = gloryDropPlayerData
+      .filter(g => g.drop_content && String(g.drop_content).includes(matchedGlory))
+      .map(g => g.area)
+      .join('、');
 
     modalBox.scrollTop = 0;
     modalContent.innerHTML = `<h2 class="hero-name" id="modal-title">${getVal(hero.name)}</h2>`;
@@ -469,7 +479,7 @@ function formatMapLinks(text) {
         <div class="hero-column-base hero-column-details">
           <p><strong>光輝掉落(掉落較多)：</strong>${formatMapLinks(fallHighAreas)}</p>
           <p><strong>光輝掉落(掉落較低)：</strong>${formatMapLinks(fallLowAreas)}</p>
-          ${hero.player ? `<p><strong>光輝掉落(玩家提供)：</strong>${getVal(hero.player)}</p>` : ""}
+          ${fallPlayerAreas ? `<p><strong>光輝掉落(玩家提供)：</strong>${formatMapLinks(fallPlayerAreas)}</p>` : ""}
         </div>
         ${
           hero.playerdata
