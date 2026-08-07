@@ -691,7 +691,7 @@ if (resources.length > 0 || item) {
 
   // 🚀 3. 組合 HTML
   const detailsHTML = `
-    ${showApproach && approachText ? `<p style="margin-bottom: 8px;"><strong>走法：</strong>${approachDisplay}</p>` : ""}
+    ${showApproach && approachText ? `<p style="margin-bottom: 8px; white-space: pre-line;"><strong>走法：</strong>${approachDisplay}</p>` : ""}
     ${showExplain ? `<p style="margin-bottom: 0;"><strong>說明：</strong>${formatDescription(item.illustrate)}</p>` : ""}
   `.trim();
 
