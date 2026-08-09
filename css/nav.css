@@ -151,8 +151,13 @@
   z-index: 10001;
 }
 
-.dropdown:hover .dropdown-content,
+/*.dropdown:hover .dropdown-content,
 .dropdown:focus-within .dropdown-content,
+.dropdown.open > .dropdown-content {
+  display: block;
+  animation: navDropIn 0.18s ease-out;
+}*/
+/* ✅ 改成只有 .open 時才顯示選單 */
 .dropdown.open > .dropdown-content {
   display: block;
   animation: navDropIn 0.18s ease-out;
