@@ -114,6 +114,28 @@
   transform: rotate(180deg);
 }
 
+/* 電腦版選單項目的高亮底線樣式 */
+#nav-menu a.active,
+#nav-menu .dropdown-toggle.active {
+    color: #10B981; /* 綠色文字 */
+    font-weight: bold;
+    position: relative;
+}
+
+/* 底部小線條 (就像瑪奇 Mobile 頂部選單) */
+#nav-menu a.active::after,
+#nav-menu .dropdown-toggle.active::after {
+    content: "";
+    position: absolute;
+    bottom: -4px; /* 依據導覽列 padding 調整距離 */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%; /* 線條長度 */
+    height: 3px; /* 線條粗細 */
+    background-color: #10B981; /* 綠色條狀 */
+    border-radius: 2px;
+}
+
 .dropdown-content {
   display: none;
   position: absolute;

@@ -55,6 +55,7 @@ document.addEventListener("DOMContentLoaded", function () {
     loadComponent("#nav-container", baseURL + "/components/nav/nav.html").then(() => {
         initNavbarBehavior();
         initThemeSwitcher();
+        setActiveNavLink();
     });
 
     loadComponent("#footer-container", baseURL + "/components/footer/footer.html");
@@ -314,4 +315,45 @@ function injectHintButton(text, customSelector = null) {
     if (window.getComputedStyle(target).position === "static") {
         target.style.position = "relative";
     }
+}
+
+/**
+ * 自動比對當前網址路徑，並為導覽列對應的 <a> 標籤加上 .active 類別
+ */
+function setActiveNavLink() {
+    const navMenu = document.getElementById("nav-menu");
+    if (!navMenu) return;
+
+    // 取得當前頁面檔名 (例如: "map.html" 或 "index.html")
+    let currentPath = window.location.pathname;
+    
+    // 清理路徑，只留最後的檔名/目錄
+    let currentPage = currentPath.split("/").pop();
+    if (!currentPage || currentPage === "") {
+        currentPage = "index.html"; // 預設首頁
+    }
+
+    const navLinks = navMenu.querySelectorAll("a");
+
+    navLinks.forEach((link) => {
+        const href = link.getAttribute("href");
+        if (!href) return;
+
+        // 取得連結對應的檔名
+        const linkPage = href.split("/").pop();
+
+        // 比對檔名是否一致
+        if (linkPage === currentPage) {
+            link.classList.add("active");
+
+            // 🚀 如果該連結在下拉選單內 (.dropdown)，順便讓父級選單按鈕也高亮！
+            const parentDropdown = link.closest(".dropdown");
+            if (parentDropdown) {
+                const parentToggle = parentDropdown.querySelector(".dropdown-toggle");
+                if (parentToggle) {
+                    parentToggle.classList.add("active");
+                }
+            }
+        }
+    });
 }
