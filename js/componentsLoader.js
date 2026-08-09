@@ -84,7 +84,6 @@ function initNavbarBehavior() {
     if (!hamburgerBtn || !navMenu) return;
 
     function updateNavOffset() {
-        // 在手機版，我們只測量標頭(Header)的高度，而不是整個展開選單的高度
         let height = navbar.offsetHeight;
         if (window.innerWidth <= 768) {
             const mobileHeader = document.querySelector(".nav-mobile-header");
@@ -98,10 +97,9 @@ function initNavbarBehavior() {
         navMenu.querySelectorAll(".dropdown.open").forEach((dropdown) => {
             dropdown.classList.remove("open");
             const toggle = dropdown.querySelector(".dropdown-toggle");
-            if (toggle && toggle.tagName === "BUTTON") {
+            if (toggle) {
                 toggle.setAttribute("aria-expanded", "false");
-                // 🚀 新增：在手機版強制失焦，避免 :focus-within 導致選單關不掉
-                if (window.innerWidth <= 768) toggle.blur();
+                toggle.blur(); // 強制失焦
             }
         });
     }
@@ -114,7 +112,6 @@ function initNavbarBehavior() {
         
         hamburgerBtn.setAttribute("aria-expanded", String(isOpen));
         
-        // 🚀 新增：防止底層頁面滾動
         if (isOpen) {
             document.body.style.overflow = "hidden";
         } else {
@@ -130,7 +127,6 @@ function initNavbarBehavior() {
     
     window.addEventListener("resize", () => {
         updateNavOffset();
-        // 如果切換回電腦版，自動關閉手機選單
         if (window.innerWidth > 768 && navMenu.classList.contains("active")) {
             setMenuState(false);
         }
@@ -144,37 +140,44 @@ function initNavbarBehavior() {
 
     navMenu.addEventListener("click", (e) => {
         const toggle = e.target.closest(".dropdown-toggle");
-        if (toggle && toggle.tagName === "BUTTON") {
-            e.preventDefault();
-            e.stopPropagation();
-
+        if (toggle) {
+            // 只有當此 dropdown 裡面有子選單 (.dropdown-content) 時才攔截預設行為
             const dropdown = toggle.closest(".dropdown");
-            if (!dropdown) return;
+            const hasContent = dropdown && dropdown.querySelector(".dropdown-content");
 
-            // 1. 先記錄當前這個選單原本是否已經開啟
-            const isAlreadyOpen = dropdown.classList.contains("open");
-            
-            // 2. 關閉所有開啟的選單
-            closeDropdowns();
-            
-            // 3. 如果原本是關閉的，才把它打開；如果原本是開啟的，剛才 closeDropdowns() 已經關掉了，就不再動作
-            if (!isAlreadyOpen) {
-                dropdown.classList.add("open");
-                toggle.setAttribute("aria-expanded", "true");
+            if (hasContent) {
+                e.preventDefault();
+                e.stopPropagation();
+
+                const isAlreadyOpen = dropdown.classList.contains("open");
+                
+                // 關閉其他已開啟的選單
+                closeDropdowns();
+                
+                // 如果原本是關閉的，就打開；如果是開啟的，剛才 closeDropdowns() 已經順利收合了
+                if (!isAlreadyOpen) {
+                    dropdown.classList.add("open");
+                    toggle.setAttribute("aria-expanded", "true");
+                }
+
+                window.setTimeout(updateNavOffset, 50);
+                return;
             }
-
-            window.setTimeout(updateNavOffset, 50);
-            return;
         }
 
+        // 點擊一般的子連結 (<a>) 時，關閉手機選單
         if (e.target.tagName === "A") {
             setMenuState(false);
         }
     });
 
+    // 點擊頁面其他空白處時自動收合選單
     document.addEventListener("click", (e) => {
-        if (navMenu.classList.contains("active") && !navMenu.contains(e.target) && !hamburgerBtn.contains(e.target)) {
-            setMenuState(false);
+        if (!navMenu.contains(e.target) && !hamburgerBtn.contains(e.target)) {
+            closeDropdowns();
+            if (navMenu.classList.contains("active")) {
+                setMenuState(false);
+            }
         }
     });
 }
