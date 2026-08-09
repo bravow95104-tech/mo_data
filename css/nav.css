@@ -162,6 +162,21 @@
   display: block;
   animation: navDropIn 0.18s ease-out;
 }
+/* --- 手機版 (768px 以下)：只靠點擊 (.open) 展開與收合 --- */
+@media (max-width: 768px) {
+  .dropdown.open > .dropdown-content {
+    display: block;
+  }
+}
+
+/* --- 電腦版 (769px 以上)：滑鼠移過去 (:hover) 或 點擊 (.open) 都能展開 --- */
+@media (min-width: 769px) {
+  .dropdown:hover > .dropdown-content,
+  .dropdown.open > .dropdown-content {
+    display: block;
+    animation: navDropIn 0.18s ease-out;
+  }
+}
 
 @keyframes navDropIn {
   from {
