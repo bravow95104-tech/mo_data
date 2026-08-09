@@ -359,10 +359,32 @@ body {
 #content:hover, 
 #changelog:hover, 
 .sidebar:hover {
-    transform: translateY(-4px);
+    transform: none !important; /* 🚫 關閉四大區塊的上移浮動 */
     background: rgba(255, 255, 255, 0.05) !important;
     border: 1px solid rgba(77, 163, 255, 0.3) !important;
     box-shadow: 0 20px 45px rgba(77, 163, 255, 0.1) !important;
+}
+
+/* 1. 增加 transition 動畫（讓位移變平滑） */
+.changelog-list li, 
+.sidebar-list li {
+    display: flex;
+    align-items: flex-start;
+    padding: 16px 12px; /* 建議左右加一點 padding，浮動時視覺比較好看 */
+    border-bottom: 1px solid var(--border-separator);
+    font-size: 1rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+    border-radius: 8px; /* 加上圓角 */
+    transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease; /* 👈 補上這行動畫 */
+}
+
+/* 2. 新增單行 (li) 的 hover 浮動效果 */
+.changelog-list li:hover, 
+.sidebar-list li:hover {
+    transform: translateY(-3px); /* 向上浮動 3px */
+    background-color: rgba(255, 255, 255, 0.06); /* 稍微打亮背景 */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* 加上輕微陰影增強浮動立體感 */
 }
 
 /* 標題樣式升級 */
