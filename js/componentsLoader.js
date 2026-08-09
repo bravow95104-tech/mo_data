@@ -151,19 +151,18 @@ function initNavbarBehavior() {
             const dropdown = toggle.closest(".dropdown");
             if (!dropdown) return;
 
+            // 1. 先記錄當前這個選單原本是否已經開啟
             const isAlreadyOpen = dropdown.classList.contains("open");
             
-            // 先關閉所有的選單
+            // 2. 關閉所有開啟的選單
             closeDropdowns();
             
-            // 如果原本是關閉的，就打開它；如果原本就是打開的，此時已經被關閉，就不用再打開
+            // 3. 如果原本是關閉的，才把它打開；如果原本是開啟的，剛才 closeDropdowns() 已經關掉了，就不再動作
             if (!isAlreadyOpen) {
                 dropdown.classList.add("open");
                 toggle.setAttribute("aria-expanded", "true");
-            } else {
-                toggle.setAttribute("aria-expanded", "false");
             }
-            
+
             window.setTimeout(updateNavOffset, 50);
             return;
         }
