@@ -390,7 +390,7 @@ body {
 /* 標題樣式升級 */
 #changelog h2, 
 .sidebar h2 {
-    font-size: 1.6rem;
+    font-size: 1.3rem;
     margin-top: 0;
     margin-bottom: 25px;
     border-bottom: 2px solid rgba(77, 163, 255, 0.3);
