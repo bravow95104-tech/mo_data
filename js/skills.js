@@ -43,11 +43,11 @@ async function fetchJobs() {
   jobSelect.value = currentJob
 }
 
-// 2. 撈取技能 (嚴格區分轉職前與轉職後)
+// 2. 撈取技能 (動態對應 parent_id 的共用技能)
 async function fetchSkills(jobId) {
   if (!jobId) return
 
-  // 撈取當前選擇職業的 job_tier 與 parent_id
+  // 1. 撈取當前選擇職業的詳細資訊
   const { data: jobData } = await supabase
     .from('job_classes')
     .select('*')
@@ -58,18 +58,24 @@ async function fetchSkills(jobId) {
 
   let targetJobIds = []
 
-  // 判斷是否為進階職 (job_tier === 2)
+  // 2. 判斷是否為轉職後 (job_tier === 2)
   if (jobData.job_tier === 2) {
-    // 轉職後：基礎職 + 進階職 + 進階共用
-    const parentJobId = jobData.parent_id || 'swordsman'
+    // 取得基礎職 ID (例如 sorcerer)
+    const parentJobId = jobData.parent_id 
+    
+    // 動態拼出對應的進階共用 ID (例如 sorcerer_adv_common)
     const commonJobId = `${parentJobId}_adv_common`
+    
+    // 撈取：[基礎職, 當前轉職, 對應的進階共用]
     targetJobIds = [parentJobId, jobId, commonJobId]
   } else {
-    // 轉職前 (基礎職)：僅包含基礎職自己，絕對不含 common
+    // 基礎職 (job_tier === 1，例如 sorcerer)：只撈取自己！
     targetJobIds = [jobId]
   }
 
-  // 查詢資料庫
+  console.log('當前查詢的 targetJobIds:', targetJobIds) // 方便你在 F12 Console 觀察
+
+  // 3. 查詢 Supabase 技能表
   const { data } = await supabase
     .from('skills')
     .select('*')
@@ -77,8 +83,7 @@ async function fetchSkills(jobId) {
 
   if (data) {
     allSkills = data
-    // 重新撈取技能時，把 currentTab 重置，避免吃到上個職業的頁籤名稱
-    currentTab = ''
+    currentTab = '' // 重置頁籤
     renderTabs()
     renderTabTree()
   }
