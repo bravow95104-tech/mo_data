@@ -175,3 +175,96 @@ body {
   font-weight: bold;
   font-size: 1.4rem;
 }
+
+/* 頂部狀態列樣式 */
+.status-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #1a0f0a;
+  padding: 10px 15px;
+  border-radius: 6px;
+  border: 1px solid #5c3a21;
+  margin-bottom: 20px;
+}
+
+.job-select-wrapper select {
+  background: var(--card-bg);
+  color: var(--text-gold);
+  border: 1px solid var(--border-gold);
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.points-badge {
+  background: #000;
+  border: 1px solid var(--border-gold);
+  padding: 3px 12px;
+  border-radius: 12px;
+}
+
+.point-label {
+  color: #ff5252;
+  font-weight: bold;
+  font-size: 0.8rem;
+  margin-right: 6px;
+}
+
+.point-value {
+  color: #fff;
+  font-weight: bold;
+}
+
+.btn-reset {
+  background: #8b0000;
+  color: #fff;
+  border: 1px solid #ff6b6b;
+  padding: 4px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn-reset:hover {
+  background: #b22222;
+}
+
+/* Tooltip 浮動面板樣式 */
+.skill-tooltip {
+  position: fixed;
+  z-index: 9999;
+  background: rgba(26, 15, 10, 0.95);
+  border: 2px solid var(--border-gold);
+  border-radius: 6px;
+  padding: 10px 14px;
+  max-width: 240px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.8);
+  pointer-events: none; /* 防止遮擋滑鼠事件 */
+}
+
+.skill-tooltip.hidden {
+  display: none;
+}
+
+.tt-title {
+  color: var(--text-gold);
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.tt-type, .tt-req {
+  font-size: 0.75rem;
+  color: #a8927a;
+  margin-top: 2px;
+}
+
+.tt-divider {
+  border: none;
+  border-top: 1px solid #5c3a21;
+  margin: 6px 0;
+}
+
+.tt-desc {
+  font-size: 0.8rem;
+  color: #f0e6d2;
+  line-height: 1.3;
+}

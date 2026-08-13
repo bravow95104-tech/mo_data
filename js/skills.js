@@ -14,6 +14,7 @@ const jobSelect = document.getElementById('jobSelect')
 const treeContainer = document.getElementById('treeContainer')
 const remainingPointsEl = document.getElementById('remainingPoints')
 const resetBtn = document.getElementById('resetBtn')
+const tooltip = document.getElementById('tooltip') // ✅ 補上 Tooltip DOM
 
 async function init() {
   await fetchJobs()
@@ -47,7 +48,6 @@ async function fetchSkills(jobId) {
 
   if (data) {
     allSkills = data
-    // ✅ 改呼叫多欄式的渲染函式
     renderMultiColumnTree()
   }
 }
@@ -56,7 +56,6 @@ async function fetchSkills(jobId) {
 function renderMultiColumnTree() {
   if (remainingPointsEl) remainingPointsEl.innerText = remainingPoints
 
-  // 1. 依照 skill_type 分群 (武技、強化...)
   const groupedSkills = {}
   allSkills.forEach(skill => {
     const type = skill.skill_type || '通用'
@@ -66,11 +65,8 @@ function renderMultiColumnTree() {
 
   const defaultIcon = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='54' height='54'><rect width='54' height='54' fill='%23ffd369'/><text x='50%' y='55%' dominant-baseline='middle' text-anchor='middle' font-size='12' font-weight='bold'>SKILL</text></svg>"
 
-  // 2. 繪製每一欄
   treeContainer.innerHTML = Object.keys(groupedSkills).map(type => {
     const skillsInGroup = groupedSkills[type]
-
-    // 依照 grid_y 或 ID 排序
     skillsInGroup.sort((a, b) => (a.grid_y || 0) - (b.grid_y || 0))
 
     return `
@@ -80,7 +76,6 @@ function renderMultiColumnTree() {
         ${skillsInGroup.map(skill => {
           const level = allocatedPoints[skill.id] || 0
           
-          // 前置條件檢查
           let isLocked = false
           if (skill.req_skill_id) {
             const reqLevel = allocatedPoints[skill.req_skill_id] || 0
@@ -89,12 +84,10 @@ function renderMultiColumnTree() {
 
           return `
             <div class="skill-tree-node ${isLocked ? 'locked' : ''}">
-              <!-- Icon 框，附帶 Hover Tooltip 訊息 -->
-              <div class="node-icon-box" title="${skill.name}\n${skill.description || '暫無說明'}">
+              <div class="node-icon-box" data-id="${skill.id}">
                 <img src="${skill.icon_url || defaultIcon}" alt="${skill.name}">
               </div>
               
-              <!-- 點數控制盒 (+ / - 按鈕) -->
               <div class="node-control-box">
                 <button class="btn-step" data-action="minus" data-id="${skill.id}">-</button>
                 <div class="node-level-num">${level}</div>
@@ -108,7 +101,6 @@ function renderMultiColumnTree() {
   }).join('')
 }
 
-// 加減點數邏輯
 function updatePoint(skillId, delta) {
   const skill = allSkills.find(s => s.id === skillId)
   if (!skill) return
@@ -116,7 +108,6 @@ function updatePoint(skillId, delta) {
   const cur = allocatedPoints[skillId] || 0
   const next = cur + delta
 
-  // 防呆：不能小於 0、不能超過上限、剩餘點數不足不能加點
   if (next < 0 || next > (skill.max_level || 10)) return
   if (delta > 0 && remainingPoints <= 0) return
 
@@ -125,9 +116,7 @@ function updatePoint(skillId, delta) {
   renderMultiColumnTree()
 }
 
-// 事件綁定
 function bindEvents() {
-  // 切換職業
   jobSelect.addEventListener('change', e => {
     currentJob = e.target.value
     allocatedPoints = {}
@@ -135,14 +124,12 @@ function bindEvents() {
     fetchSkills(currentJob)
   })
 
-  // 重置按鈕
   resetBtn.addEventListener('click', () => {
     allocatedPoints = {}
     remainingPoints = 120
     renderMultiColumnTree()
   })
 
-  // ✅ 修正：監聽新版的加減按鈕點擊 (+ / -)
   treeContainer.addEventListener('click', e => {
     const btn = e.target.closest('.btn-step')
     if (!btn) return
@@ -152,6 +139,35 @@ function bindEvents() {
       updatePoint(id, 1)
     } else if (action === 'minus') {
       updatePoint(id, -1)
+    }
+  })
+
+  // ✅ 補上 Tooltip 浮動說明監聽
+  treeContainer.addEventListener('mouseover', e => {
+    const iconBox = e.target.closest('.node-icon-box')
+    if (!iconBox) return
+
+    const skill = allSkills.find(s => s.id === iconBox.dataset.id)
+    if (!skill || !tooltip) return
+
+    document.getElementById('ttName').innerText = skill.name
+    document.getElementById('ttType').innerText = `${skill.skill_type || '技能'} (${skill.activation_type || '主動'})`
+    document.getElementById('ttReq').innerText = skill.req_character_level ? `需求角色等級: Lv.${skill.req_character_level}` : ''
+    document.getElementById('ttDesc').innerText = skill.description || '暫無說明'
+
+    tooltip.classList.remove('hidden')
+  })
+
+  treeContainer.addEventListener('mousemove', e => {
+    if (tooltip && !tooltip.classList.contains('hidden')) {
+      tooltip.style.left = `${e.clientX + 15}px`
+      tooltip.style.top = `${e.clientY + 15}px`
+    }
+  })
+
+  treeContainer.addEventListener('mouseout', e => {
+    if (e.target.closest('.node-icon-box') && tooltip) {
+      tooltip.classList.add('hidden')
     }
   })
 }

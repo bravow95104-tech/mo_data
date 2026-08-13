@@ -9,19 +9,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   </head>
 <body>
-<div id="nav-container"></div>
-    <script src="/mo_data/js/componentsLoader.js"></script>
-  <!-- 遊戲介面主框 -->
-  <div class="game-window">
-    
-    <!-- 1. 頂部系別頁籤 -->
-    <nav id="tabsContainer" class="tabs-nav">
-      <!-- 由 JS 動態繪製 (例如：斬刀技、御武術、武技...) -->
-    </nav>
+  <div id="nav-container"></div>
+  <script src="/mo_data/js/componentsLoader.js"></script>
 
-    <!-- 2. 頂部資訊列 (職業選擇 & 點數) -->
+  <!-- 遊戲介面主框 (改用 simulator-container 讓 CSS 抓得到) -->
+  <div class="simulator-container">
+    
+    <!-- 頂部資訊列 (職業選擇 & 點數) -->
     <div class="status-bar">
       <div class="job-select-wrapper">
+        <label for="jobSelect">選擇職業：</label>
         <select id="jobSelect"></select>
       </div>
       <div class="points-badge">
@@ -31,16 +28,16 @@
       <button id="resetBtn" class="btn-reset">重置</button>
     </div>
 
-    <!-- 3. 技能樹核心區塊 -->
-<main class="tree-viewport">
-  <div id="treeContainer" class="tree-columns-wrapper">
-    <!-- 技能直欄由 JS 動態生成 -->
-  </div>
-</main>
+    <!-- 技能樹核心區塊 -->
+    <main class="tree-viewport">
+      <div id="treeContainer" class="tree-columns-wrapper">
+        <!-- 技能直欄由 JS 動態生成 -->
+      </div>
+    </main>
 
   </div>
 
-  <!-- 4. Hover 技能說明 Tooltip -->
+  <!-- Hover 技能說明 Tooltip -->
   <div id="tooltip" class="skill-tooltip hidden">
     <div id="ttName" class="tt-title">技能名稱</div>
     <div id="ttType" class="tt-type">型態 / 種類</div>
@@ -51,9 +48,8 @@
 
   <!-- 導入 ES Module 主程式 -->
   <script type="module" src="/mo_data/js/skills.js"></script>
+
+  <button id="backToTop" title="回到頂部">▲</button>
+  <div id="footer-container"></div>
 </body>
-
-<button id="backToTop" title="回到頂部">▲</button>
-
-    <div id="footer-container"></div>
 </html>
