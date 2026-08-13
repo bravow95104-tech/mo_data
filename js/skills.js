@@ -3,175 +3,193 @@ import { SUPABASE_URL, SUPABASE_KEY } from './supabase-config.js'
 
 const supabase = createClient(SUPABASE_URL, SUPABASE_KEY)
 
-// ------------------------------------
-// 全域狀態管理 (State)
-// ------------------------------------
-let allSkills = []           // 當前頁面的技能清單
-let jobMap = {}              // 職業對照表
-let allocatedPoints = {}     // 點數分配配額，例：{ sk_sw_01: 5 }
-let remainingPoints = 120    // 剩餘點數
-let currentJob = 'valkyrie'  // 預設二轉職業
+// 狀態管理
+let allSkills = []
+let allocatedPoints = {}
+let remainingPoints = 120
+let currentJob = 'valkyrie'
+let currentTab = '' // 當前選擇的技能頁籤 (skill_type)
 
-// DOM 元素快取
-const jobSelectEl = document.getElementById('jobSelect')
-const skillsContainerEl = document.getElementById('skillsContainer')
+// DOM 快取
+const tabsContainer = document.getElementById('tabsContainer')
+const jobSelect = document.getElementById('jobSelect')
+const treeContainer = document.getElementById('treeContainer')
 const remainingPointsEl = document.getElementById('remainingPoints')
-const resetBtnEl = document.getElementById('resetBtn')
+const resetBtn = document.getElementById('resetBtn')
+const tooltip = document.getElementById('tooltip')
 
-// ------------------------------------
-// 初始化程序
-// ------------------------------------
 async function init() {
   await fetchJobs()
   await fetchSkills(currentJob)
   bindEvents()
 }
 
-// ------------------------------------
-// 資料撈取邏輯 (Supabase)
-// ------------------------------------
-// 1. 撈取職業
+// 撈取職業
 async function fetchJobs() {
-  const { data, error } = await supabase.from('job_classes').select('*')
-  if (error) return console.error('無法取得職業資料:', error)
+  const { data } = await supabase.from('job_classes').select('*')
+  if (!data) return
 
-  // 整理成 Map 方便查詢父職業
-  data.forEach(job => { jobMap[job.id] = job })
-
-  // 渲染二轉職業選單
-  const secondTierJobs = data.filter(job => job.job_tier === 2)
-  jobSelectEl.innerHTML = secondTierJobs
-    .map(job => `<option value="${job.id}">${job.name}</option>`)
+  const secondTierJobs = data.filter(j => j.job_tier === 2)
+  jobSelect.innerHTML = secondTierJobs
+    .map(j => `<option value="${j.id}">${j.name}</option>`)
     .join('')
 
-  if (secondTierJobs.length > 0) {
-    currentJob = secondTierJobs[0].id
-  }
+  if (secondTierJobs.length > 0) currentJob = secondTierJobs[0].id
 }
 
-// 2. 撈取指定職業對應的所有技能（一轉 + 二轉 + 二轉共通）
+// 撈取技能
 async function fetchSkills(jobId) {
-  const selectedJob = jobMap[jobId]
-  if (!selectedJob) return
+  const { data: jobData } = await supabase.from('job_classes').select('*').eq('id', jobId).single()
+  const parentJobId = jobData ? jobData.parent_id : 'swordsman'
+  const commonJobId = `${parentJobId}_adv_common`
 
-  const parentJobId = selectedJob.parent_id
-  const commonJobId = `${parentJobId}_adv_common` // 對應方案 A 的二轉共通 ID 命名慣例
-
-  // 向 Supabase 查詢 3 個職業 ID 的技能
-  const { data, error } = await supabase
+  const { data } = await supabase
     .from('skills')
     .select('*')
     .in('job_id', [parentJobId, jobId, commonJobId])
 
-  if (error) return console.error('無法取得技能資料:', error)
-
-  allSkills = data
-  renderSkills()
+  if (data) {
+    allSkills = data
+    renderTabs()
+    renderTree()
+  }
 }
 
-// ------------------------------------
-// 點數與邏輯運算
-// ------------------------------------
-function updateSkillPoint(skillId, delta) {
-  const skill = allSkills.find(s => s.id === skillId)
-  if (!skill) return
-
-  const currentLevel = allocatedPoints[skillId] || 0
-  const newLevel = currentLevel + delta
-
-  // 防呆 1：範圍限制
-  if (newLevel < 0 || newLevel > skill.max_level) return
-
-  // 防呆 2：點數不夠
-  if (delta > 0 && remainingPoints <= 0) return
-
-  // 防呆 3：前置技能檢查
-  if (delta > 0 && skill.req_skill_id) {
-    const reqLevel = allocatedPoints[skill.req_skill_id] || 0
-    if (reqLevel < skill.req_skill_level) {
-      const reqSkill = allSkills.find(s => s.id === skill.req_skill_id)
-      const reqName = reqSkill ? reqSkill.name : skill.req_skill_id
-      alert(`前置技能未達標！【${reqName}】需要達到 Lv.${skill.req_skill_level}`)
-      return
-    }
+// 渲染頂部頁籤
+function renderTabs() {
+  // 提取不重複的 skill_type
+  const types = [...new Set(allSkills.map(s => s.skill_type))]
+  if (types.length > 0 && !types.includes(currentTab)) {
+    currentTab = types[0]
   }
 
-  // 更新 State
-  allocatedPoints[skillId] = newLevel
-  remainingPoints -= delta
-
-  renderSkills()
+  tabsContainer.innerHTML = types.map(type => `
+    <button class="tab-btn ${type === currentTab ? 'active' : ''}" data-type="${type}">
+      ${type}
+    </button>
+  `).join('')
 }
 
-function resetPoints() {
-  allocatedPoints = {}
-  remainingPoints = 120
-  renderSkills()
-}
-
-// ------------------------------------
-// UI 畫面渲染 (Render)
-// ------------------------------------
-function renderSkills() {
+// 渲染技能樹
+function renderTree() {
   remainingPointsEl.innerText = remainingPoints
 
-  skillsContainerEl.innerHTML = allSkills.map(skill => {
+  // 過濾出目前頁籤的技能
+  const activeSkills = allSkills.filter(s => s.skill_type === currentTab)
+
+  treeContainer.innerHTML = activeSkills.map(skill => {
     const level = allocatedPoints[skill.id] || 0
 
-    // 判斷前置條件是否滿足
+    // 檢查前置條件
     let isLocked = false
     if (skill.req_skill_id) {
       const reqLevel = allocatedPoints[skill.req_skill_id] || 0
       if (reqLevel < skill.req_skill_level) isLocked = true
     }
 
+    // 座標預設：如果 Supabase 沒填 grid_x/y，自動按順序排版
+    const x = skill.grid_x || 1
+    const y = skill.grid_y || 1
+    const iconSrc = skill.icon_url || 'https://via.placeholder.com/56/ffd369/000000?text=Skill'
+
     return `
-      <div class="skill-card ${isLocked ? 'locked' : ''} ${level > 0 ? 'available' : ''}">
-        <div>
-          <div class="skill-title">
-            <span>${skill.name}</span>
-            <span class="level-display">${level} / ${skill.max_level}</span>
-          </div>
-          <div class="skill-type">${skill.skill_type} | ${skill.activation_type || '主動'}</div>
-          <div class="skill-desc">${skill.description || '暫無說明'}</div>
+      <div class="skill-node ${isLocked ? 'locked' : ''}" style="--x: ${x}; --y: ${y};">
+        <div class="icon-box" data-id="${skill.id}">
+          <img src="${iconSrc}" alt="${skill.name}">
         </div>
+        <div class="level-badge">${level}/${skill.max_level}</div>
         
-        <div class="skill-controls">
-          <button class="btn btn-point" data-action="minus" data-id="${skill.id}">-</button>
-          <span style="font-size: 0.8rem; color: var(--text-muted)">
-            ${skill.req_character_level ? '角色需求 Lv.' + skill.req_character_level : ''}
-          </span>
-          <button class="btn btn-point" data-action="plus" data-id="${skill.id}" ${isLocked ? 'disabled' : ''}>+</button>
-        </div>
+        ${!isLocked && remainingPoints > 0 && level < skill.max_level ? `
+          <button class="btn-add" data-id="${skill.id}">+</button>
+        ` : ''}
       </div>
     `
   }).join('')
 }
 
-// ------------------------------------
-// 事件監聽 (Event Delegation)
-// ------------------------------------
+// 加減點數
+function updatePoint(skillId, delta) {
+  const skill = allSkills.find(s => s.id === skillId)
+  if (!skill) return
+
+  const cur = allocatedPoints[skillId] || 0
+  const next = cur + delta
+
+  if (next < 0 || next > skill.max_level) return
+  if (delta > 0 && remainingPoints <= 0) return
+
+  allocatedPoints[skillId] = next
+  remainingPoints -= delta
+  renderTree()
+}
+
+// 事件綁定
 function bindEvents() {
+  // 切換頁籤
+  tabsContainer.addEventListener('click', e => {
+    if (e.target.classList.contains('tab-btn')) {
+      currentTab = e.target.dataset.type
+      renderTabs()
+      renderTree()
+    }
+  })
+
   // 切換職業
-  jobSelectEl.addEventListener('change', (e) => {
+  jobSelect.addEventListener('change', e => {
     currentJob = e.target.value
-    resetPoints()
+    allocatedPoints = {}
+    remainingPoints = 120
     fetchSkills(currentJob)
   })
 
-  // 重置按鈕
-  resetBtnEl.addEventListener('click', resetPoints)
+  // 重置
+  resetBtn.addEventListener('click', () => {
+    allocatedPoints = {}
+    remainingPoints = 120
+    renderTree()
+  })
 
-  // 技能 +/- 按鈕 (使用代理監聽)
-  skillsContainerEl.addEventListener('click', (e) => {
-    const btn = e.target.closest('.btn-point')
-    if (!btn) return
+  // 左鍵加點（點擊加號按鈕）與 右鍵退點（點擊 Icon 框）
+  treeContainer.addEventListener('click', e => {
+    if (e.target.classList.contains('btn-add')) {
+      updatePoint(e.target.dataset.id, 1)
+    }
+  })
 
-    const { action, id } = btn.dataset
-    if (action === 'plus') updateSkillPoint(id, 1)
-    if (action === 'minus') updateSkillPoint(id, -1)
+  treeContainer.addEventListener('contextmenu', e => {
+    e.preventDefault() // 阻擋預設右鍵選單
+    const iconBox = e.target.closest('.icon-box')
+    if (iconBox) {
+      updatePoint(iconBox.dataset.id, -1)
+    }
+  })
+
+  // Hover Tooltip 浮動說明
+  treeContainer.addEventListener('mouseover', e => {
+    const iconBox = e.target.closest('.icon-box')
+    if (!iconBox) return
+
+    const skill = allSkills.find(s => s.id === iconBox.dataset.id)
+    if (!skill) return
+
+    document.getElementById('ttName').innerText = skill.name
+    document.getElementById('ttType').innerText = `${skill.skill_type} (${skill.activation_type || '主動'})`
+    document.getElementById('ttReq').innerText = skill.req_character_level ? `需求角色等級: Lv.${skill.req_character_level}` : ''
+    document.getElementById('ttDesc').innerText = skill.description || '暫無說明'
+
+    tooltip.classList.remove('hidden')
+  })
+
+  treeContainer.addEventListener('mousemove', e => {
+    tooltip.style.left = `${e.clientX + 15}px`
+    tooltip.style.top = `${e.clientY + 15}px`
+  })
+
+  treeContainer.addEventListener('mouseout', e => {
+    if (e.target.closest('.icon-box')) {
+      tooltip.classList.add('hidden')
+    }
   })
 }
 
-// 啟動應用程式
 init()
