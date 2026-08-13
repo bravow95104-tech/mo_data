@@ -5,7 +5,6 @@
   --border-gold: #d4af37;
   --text-gold: #ffda79;
   --line-color: #8a6d4b;
-  --line-active: #ffda79;
 }
 
 body {
@@ -14,189 +13,58 @@ body {
   font-family: "Microsoft JhengHei", sans-serif;
   margin: 0;
   padding: 0;
-  
-  /* ✅ 改為垂直 Flex 佈局 */
   display: flex;
   flex-direction: column;
-  align-items: center; /* 讓內容水平置中 */
-  
-  /* ✅ 確保 body 至少跟螢幕一樣高，把 Footer 壓在最底下 */
+  align-items: center;
   min-height: 100vh;
 }
 
-/* 主面板間距調整 */
 .simulator-container {
   background: var(--panel-bg);
   border: 3px solid var(--border-gold);
   border-radius: 12px;
-  padding: 20px;
+  padding: 24px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
-  min-width: 600px;
-  
-  /* ✅ 用 margin 上下推開導航列與 Footer */
+  min-width: 450px;
   margin-top: 80px;
   margin-bottom: 40px;
 }
 
-/* 頁尾佔滿寬度並自動貼底 */
-#footer-container {
-  width: 100%;
-  margin-top: auto; /* 當內容不夠高時，自動把 Footer 推到頁面最底部 */
-}
-
-.simulator-title {
-  color: var(--text-gold);
-  font-size: 1.5rem;
-  margin-bottom: 5px;
-  text-align: center;
-}
-
-.simulator-subtitle {
-  color: #a8927a;
-  font-size: 0.85rem;
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-/* 技能樹網格地圖區塊 */
-.tree-columns-wrapper {
-  display: grid;
-  /* 假設最多 5 欄，每欄固定寬度/間距 */
-  grid-template-columns: repeat(5, 80px); 
-  grid-auto-rows: 90px; /* 每列固定高度 */
-  gap: 20px 30px; /* 橫向與縱向的間距 */
+/* 頁籤選單 (Tabs) */
+.tabs-nav {
+  display: flex;
   justify-content: center;
-  position: relative;
-}
-
-/* 單個系別直欄 (如: 武技、強化) */
-.skill-column {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.column-header {
-  font-size: 1.2rem;
-  font-weight: bold;
-  color: var(--text-gold);
+  gap: 10px;
+  margin-bottom: 20px;
   border-bottom: 2px solid var(--border-gold);
-  padding-bottom: 5px;
-  margin-bottom: 15px;
-  width: 100%;
-  text-align: center;
+  padding-bottom: 10px;
 }
 
-/* 技能節點 */
-.skill-tree-node {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: relative;
-  /* 讓節點自動對齊到 grid-column 和 grid-row 指定的位置 */
-}
-
-/* 向下箭頭連線 (替代傳統文字 | ) */
-.skill-tree-node:not(:last-child)::after {
-  content: '↓';
-  position: absolute;
-  bottom: -22px;
-  color: var(--line-color);
+.tab-btn {
+  background: var(--card-bg);
+  color: #a8927a;
+  border: 1px solid var(--line-color);
+  padding: 8px 18px;
+  border-radius: 6px 6px 0 0;
   font-weight: bold;
-  font-size: 1.1rem;
-}
-
-/* 技能 Icon 主框 */
-.node-icon-box {
-  width: 54px;
-  height: 54px;
-  background: #ffd369;
-  border: 2px solid var(--border-gold);
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+  font-size: 0.95rem;
   cursor: pointer;
-  transition: transform 0.1s, filter 0.2s;
+  transition: all 0.2s;
 }
 
-.node-icon-box:hover {
-  transform: scale(1.05);
-}
-
-.node-icon-box img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-/* 點數控制盒 (數字 + / - 按鈕) */
-.node-control-box {
-  display: flex;
-  align-items: center;
-  background: #1a0f0a;
-  border: 1px solid #5c3a21;
-  border-radius: 4px;
-  margin-top: 6px;
-  overflow: hidden;
-}
-
-.node-level-num {
-  padding: 2px 8px;
-  font-weight: bold;
-  color: #fff;
-  font-size: 0.9rem;
-  min-width: 20px;
-  text-align: center;
-}
-
-.btn-step {
-  background: #3d271d;
+.tab-btn:hover {
   color: var(--text-gold);
-  border: none;
-  width: 22px;
-  height: 22px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background 0.2s;
+  border-color: var(--border-gold);
 }
 
-.btn-step:hover {
+.tab-btn.active {
   background: var(--border-gold);
   color: #000;
+  border-color: var(--border-gold);
+  box-shadow: 0 -2px 10px rgba(212, 175, 55, 0.4);
 }
 
-/* 鎖定狀態 (前置未達成) */
-.skill-tree-node.locked .node-icon-box {
-  filter: grayscale(100%);
-  opacity: 0.4;
-}
-
-.skill-tree-node.locked .btn-step {
-  opacity: 0.3;
-  cursor: not-allowed;
-}
-
-/* 底部點數統計 */
-.bottom-bar {
-  margin-top: 25px;
-  padding-top: 15px;
-  border-top: 2px solid #3d271d;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.used-points {
-  font-size: 1.1rem;
-}
-
-.used-points span {
-  color: var(--text-gold);
-  font-weight: bold;
-  font-size: 1.4rem;
-}
-
-/* 頂部狀態列樣式 */
+/* 狀態列 */
 .status-bar {
   display: flex;
   justify-content: space-between;
@@ -205,7 +73,7 @@ body {
   padding: 10px 15px;
   border-radius: 6px;
   border: 1px solid #5c3a21;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
 }
 
 .job-select-wrapper select {
@@ -244,11 +112,100 @@ body {
   cursor: pointer;
 }
 
-.btn-reset:hover {
-  background: #b22222;
+/* 單一乾淨直欄 */
+.skill-single-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px; /* 技能間的上下距離 */
+  padding: 10px 0;
 }
 
-/* Tooltip 浮動面板樣式 */
+/* 技能節點 */
+.skill-tree-node {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+/* 經典向下箭頭連線 */
+.skill-tree-node:not(:last-child)::after {
+  content: '↓';
+  position: absolute;
+  bottom: -24px;
+  color: var(--line-color);
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.node-icon-box {
+  width: 56px;
+  height: 56px;
+  background: #ffd369;
+  border: 2px solid var(--border-gold);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+  cursor: pointer;
+  transition: transform 0.15s;
+}
+
+.node-icon-box:hover {
+  transform: scale(1.08);
+}
+
+.node-icon-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.node-control-box {
+  display: flex;
+  align-items: center;
+  background: #1a0f0a;
+  border: 1px solid #5c3a21;
+  border-radius: 4px;
+  margin-top: 6px;
+  overflow: hidden;
+}
+
+.node-level-num {
+  padding: 2px 8px;
+  font-weight: bold;
+  color: #fff;
+  font-size: 0.9rem;
+  min-width: 20px;
+  text-align: center;
+}
+
+.btn-step {
+  background: #3d271d;
+  color: var(--text-gold);
+  border: none;
+  width: 22px;
+  height: 22px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.btn-step:hover {
+  background: var(--border-gold);
+  color: #000;
+}
+
+.skill-tree-node.locked .node-icon-box {
+  filter: grayscale(100%);
+  opacity: 0.4;
+}
+
+.skill-tree-node.locked .btn-step {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+/* Tooltip */
 .skill-tooltip {
   position: fixed;
   z-index: 9999;
@@ -258,33 +215,13 @@ body {
   padding: 10px 14px;
   max-width: 240px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.8);
-  pointer-events: none; /* 防止遮擋滑鼠事件 */
+  pointer-events: none;
 }
 
-.skill-tooltip.hidden {
-  display: none;
-}
+.skill-tooltip.hidden { display: none; }
+.tt-title { color: var(--text-gold); font-weight: bold; }
+.tt-type, .tt-req { font-size: 0.75rem; color: #a8927a; }
+.tt-divider { border: none; border-top: 1px solid #5c3a21; margin: 6px 0; }
+.tt-desc { font-size: 0.8rem; color: #f0e6d2; }
 
-.tt-title {
-  color: var(--text-gold);
-  font-weight: bold;
-  font-size: 1rem;
-}
-
-.tt-type, .tt-req {
-  font-size: 0.75rem;
-  color: #a8927a;
-  margin-top: 2px;
-}
-
-.tt-divider {
-  border: none;
-  border-top: 1px solid #5c3a21;
-  margin: 6px 0;
-}
-
-.tt-desc {
-  font-size: 0.8rem;
-  color: #f0e6d2;
-  line-height: 1.3;
-}
+#footer-container { width: 100%; margin-top: auto; }

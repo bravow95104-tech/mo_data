@@ -8,13 +8,15 @@ let allSkills = []
 let allocatedPoints = {}
 let remainingPoints = 120
 let currentJob = 'valkyrie'
+let currentTab = '' // 當前選中的頁籤 (skill_type)
 
 // DOM 快取
+const tabsContainer = document.getElementById('tabsContainer')
 const jobSelect = document.getElementById('jobSelect')
 const treeContainer = document.getElementById('treeContainer')
 const remainingPointsEl = document.getElementById('remainingPoints')
 const resetBtn = document.getElementById('resetBtn')
-const tooltip = document.getElementById('tooltip') // ✅ 補上 Tooltip DOM
+const tooltip = document.getElementById('tooltip')
 
 async function init() {
   await fetchJobs()
@@ -48,60 +50,63 @@ async function fetchSkills(jobId) {
 
   if (data) {
     allSkills = data
-    renderMultiColumnTree()
+    renderTabs()
+    renderTabTree()
   }
 }
 
-// 渲染多欄式技能樹
-function renderMultiColumnTree() {
+// 1. 渲染頂部頁籤
+function renderTabs() {
+  const types = [...new Set(allSkills.map(s => s.skill_type || '通用'))]
+  
+  if (types.length > 0 && !types.includes(currentTab)) {
+    currentTab = types[0]
+  }
+
+  tabsContainer.innerHTML = types.map(type => `
+    <button class="tab-btn ${type === currentTab ? 'active' : ''}" data-type="${type}">
+      ${type}
+    </button>
+  `).join('')
+}
+
+// 2. 渲染當前頁籤的垂直技能樹
+function renderTabTree() {
   if (remainingPointsEl) remainingPointsEl.innerText = remainingPoints
 
-  const groupedSkills = {}
-  allSkills.forEach(skill => {
-    const type = skill.skill_type || '通用'
-    if (!groupedSkills[type]) groupedSkills[type] = []
-    groupedSkills[type].push(skill)
-  })
+  // 過濾出目前頁籤的技能，並依照 grid_y 由小到大排序 (決定由上到下順序)
+  const activeSkills = allSkills
+    .filter(s => (s.skill_type || '通用') === currentTab)
+    .sort((a, b) => (a.grid_y || 0) - (b.grid_y || 0))
 
   const defaultIcon = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='54' height='54'><rect width='54' height='54' fill='%23ffd369'/><text x='50%' y='55%' dominant-baseline='middle' text-anchor='middle' font-size='12' font-weight='bold'>SKILL</text></svg>"
 
-  treeContainer.innerHTML = Object.keys(groupedSkills).map(type => {
-    const skillsInGroup = groupedSkills[type]
-    skillsInGroup.sort((a, b) => (a.grid_y || 0) - (b.grid_y || 0))
-
-    return `
-      <div class="skill-column">
-        <div class="column-header">${type}</div>
+  treeContainer.innerHTML = `
+    <div class="skill-single-column">
+      ${activeSkills.map(skill => {
+        const level = allocatedPoints[skill.id] || 0
         
-        ${skillsInGroup.map(skill => {
-          const level = allocatedPoints[skill.id] || 0
-          
-          let isLocked = false
-          if (skill.req_skill_id) {
-            const reqLevel = allocatedPoints[skill.req_skill_id] || 0
-            if (reqLevel < skill.req_skill_level) isLocked = true
-          }
+        let isLocked = false
+        if (skill.req_skill_id) {
+          const reqLevel = allocatedPoints[skill.req_skill_id] || 0
+          if (reqLevel < skill.req_skill_level) isLocked = true
+        }
 
-          return `
-  <div class="skill-tree-node ${isLocked ? 'locked' : ''}" 
-       style="grid-column: ${skill.grid_x || 1}; grid-row: ${skill.grid_y || 1};">
-    <!-- Icon 框 -->
-    <div class="node-icon-box" data-id="${skill.id}">
-      <img src="${skill.icon_url || defaultIcon}" alt="${skill.name}">
+        return `
+          <div class="skill-tree-node ${isLocked ? 'locked' : ''}">
+            <div class="node-icon-box" data-id="${skill.id}">
+              <img src="${skill.icon_url || defaultIcon}" alt="${skill.name}">
+            </div>
+            <div class="node-control-box">
+              <button class="btn-step" data-action="minus" data-id="${skill.id}">-</button>
+              <div class="node-level-num">${level}</div>
+              <button class="btn-step" data-action="plus" data-id="${skill.id}">+</button>
+            </div>
+          </div>
+        `
+      }).join('')}
     </div>
-    
-    <!-- 點數控制盒 -->
-    <div class="node-control-box">
-      <button class="btn-step" data-action="minus" data-id="${skill.id}">-</button>
-      <div class="node-level-num">${level}</div>
-      <button class="btn-step" data-action="plus" data-id="${skill.id}">+</button>
-    </div>
-  </div>
-`
-        }).join('')}
-      </div>
-    `
-  }).join('')
+  `
 }
 
 function updatePoint(skillId, delta) {
@@ -116,10 +121,18 @@ function updatePoint(skillId, delta) {
 
   allocatedPoints[skillId] = next
   remainingPoints -= delta
-  renderMultiColumnTree()
+  renderTabTree()
 }
 
 function bindEvents() {
+  tabsContainer.addEventListener('click', e => {
+    if (e.target.classList.contains('tab-btn')) {
+      currentTab = e.target.dataset.type
+      renderTabs()
+      renderTabTree()
+    }
+  })
+
   jobSelect.addEventListener('change', e => {
     currentJob = e.target.value
     allocatedPoints = {}
@@ -130,22 +143,18 @@ function bindEvents() {
   resetBtn.addEventListener('click', () => {
     allocatedPoints = {}
     remainingPoints = 120
-    renderMultiColumnTree()
+    renderTabTree()
   })
 
   treeContainer.addEventListener('click', e => {
     const btn = e.target.closest('.btn-step')
     if (!btn) return
-
     const { action, id } = btn.dataset
-    if (action === 'plus') {
-      updatePoint(id, 1)
-    } else if (action === 'minus') {
-      updatePoint(id, -1)
-    }
+    if (action === 'plus') updatePoint(id, 1)
+    if (action === 'minus') updatePoint(id, -1)
   })
 
-  // ✅ 補上 Tooltip 浮動說明監聽
+  // Tooltip 監聽
   treeContainer.addEventListener('mouseover', e => {
     const iconBox = e.target.closest('.node-icon-box')
     if (!iconBox) return
