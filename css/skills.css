@@ -7,31 +7,28 @@
   --line-color: #8a6d4b;
 }
 
-body {
-  background-color: var(--bg-game);
-  color: #f0e6d2;
-  font-family: "Microsoft JhengHei", sans-serif;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  min-height: 100vh;
-}
+/* ⚠️ 拿掉 body 的 flex 改動，避免污染 styles.css 的全域頁面佈局 */
 
+/* 技能模擬器主主容器 (增加抗衝突隔離) */
 .simulator-container {
   background: var(--panel-bg);
   border: 3px solid var(--border-gold);
   border-radius: 12px;
   padding: 24px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
-  min-width: 450px;
-  margin-top: 80px;
-  margin-bottom: 40px;
+  width: 100%;
+  max-width: 550px;
+  margin: 80px auto 40px auto; /* 使用 margin auto 自動水平居中 */
+  box-sizing: border-box;
+}
+
+/* 強制把 simulator 內的所有元素 sizing 統一 */
+.simulator-container * {
+  box-sizing: border-box;
 }
 
 /* 頁籤選單 (Tabs) */
-.tabs-nav {
+.simulator-container .tabs-nav {
   display: flex;
   justify-content: center;
   gap: 10px;
@@ -40,7 +37,7 @@ body {
   padding-bottom: 10px;
 }
 
-.tab-btn {
+.simulator-container .tab-btn {
   background: var(--card-bg);
   color: #a8927a;
   border: 1px solid var(--line-color);
@@ -50,14 +47,16 @@ body {
   font-size: 0.95rem;
   cursor: pointer;
   transition: all 0.2s;
+  height: auto; /* 防止被全域 styles.css 的 button 高度限制 */
+  line-height: normal;
 }
 
-.tab-btn:hover {
+.simulator-container .tab-btn:hover {
   color: var(--text-gold);
   border-color: var(--border-gold);
 }
 
-.tab-btn.active {
+.simulator-container .tab-btn.active {
   background: var(--border-gold);
   color: #000;
   border-color: var(--border-gold);
@@ -65,7 +64,7 @@ body {
 }
 
 /* 狀態列 */
-.status-bar {
+.simulator-container .status-bar {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -76,7 +75,7 @@ body {
   margin-bottom: 25px;
 }
 
-.job-select-wrapper select {
+.simulator-container .job-select-wrapper select {
   background: var(--card-bg);
   color: var(--text-gold);
   border: 1px solid var(--border-gold);
@@ -84,26 +83,26 @@ body {
   border-radius: 4px;
 }
 
-.points-badge {
+.simulator-container .points-badge {
   background: #000;
   border: 1px solid var(--border-gold);
   padding: 3px 12px;
   border-radius: 12px;
 }
 
-.point-label {
+.simulator-container .point-label {
   color: #ff5252;
   font-weight: bold;
   font-size: 0.8rem;
   margin-right: 6px;
 }
 
-.point-value {
+.simulator-container .point-value {
   color: #fff;
   font-weight: bold;
 }
 
-.btn-reset {
+.simulator-container .btn-reset {
   background: #8b0000;
   color: #fff;
   border: 1px solid #ff6b6b;
@@ -113,16 +112,16 @@ body {
 }
 
 /* 單一乾淨直欄 */
-.skill-single-column {
+.simulator-container .skill-single-column {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 28px; /* 技能間的上下距離 */
+  gap: 28px;
   padding: 10px 0;
 }
 
 /* 技能節點 */
-.skill-tree-node {
+.simulator-container .skill-tree-node {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -130,7 +129,7 @@ body {
 }
 
 /* 經典向下箭頭連線 */
-.skill-tree-node:not(:last-child)::after {
+.simulator-container .skill-tree-node:not(:last-child)::after {
   content: '↓';
   position: absolute;
   bottom: -24px;
@@ -139,7 +138,7 @@ body {
   font-size: 1.2rem;
 }
 
-.node-icon-box {
+.simulator-container .node-icon-box {
   width: 56px;
   height: 56px;
   background: #ffd369;
@@ -151,17 +150,18 @@ body {
   transition: transform 0.15s;
 }
 
-.node-icon-box:hover {
+.simulator-container .node-icon-box:hover {
   transform: scale(1.08);
 }
 
-.node-icon-box img {
+.simulator-container .node-icon-box img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  display: block;
 }
 
-.node-control-box {
+.simulator-container .node-control-box {
   display: flex;
   align-items: center;
   background: #1a0f0a;
@@ -171,7 +171,7 @@ body {
   overflow: hidden;
 }
 
-.node-level-num {
+.simulator-container .node-level-num {
   padding: 2px 8px;
   font-weight: bold;
   color: #fff;
@@ -180,48 +180,30 @@ body {
   text-align: center;
 }
 
-.btn-step {
+.simulator-container .btn-step {
   background: #3d271d;
   color: var(--text-gold);
   border: none;
   width: 22px;
   height: 22px;
+  padding: 0;
+  line-height: 22px;
   font-weight: bold;
   cursor: pointer;
+  border-radius: 0;
 }
 
-.btn-step:hover {
+.simulator-container .btn-step:hover {
   background: var(--border-gold);
   color: #000;
 }
 
-.skill-tree-node.locked .node-icon-box {
+.simulator-container .skill-tree-node.locked .node-icon-box {
   filter: grayscale(100%);
   opacity: 0.4;
 }
 
-.skill-tree-node.locked .btn-step {
+.simulator-container .skill-tree-node.locked .btn-step {
   opacity: 0.3;
   cursor: not-allowed;
 }
-
-/* Tooltip */
-.skill-tooltip {
-  position: fixed;
-  z-index: 9999;
-  background: rgba(26, 15, 10, 0.95);
-  border: 2px solid var(--border-gold);
-  border-radius: 6px;
-  padding: 10px 14px;
-  max-width: 240px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.8);
-  pointer-events: none;
-}
-
-.skill-tooltip.hidden { display: none; }
-.tt-title { color: var(--text-gold); font-weight: bold; }
-.tt-type, .tt-req { font-size: 0.75rem; color: #a8927a; }
-.tt-divider { border: none; border-top: 1px solid #5c3a21; margin: 6px 0; }
-.tt-desc { font-size: 0.8rem; color: #f0e6d2; }
-
-#footer-container { width: 100%; margin-top: auto; }
