@@ -207,3 +207,48 @@
   opacity: 0.3;
   cursor: not-allowed;
 }
+
+/* Tooltip 浮動說明視窗 (獨立在 simulator 外，需獨立設定) */
+.skill-tooltip {
+  position: fixed;
+  z-index: 99999; /* 提高權重，確保浮在頂部導航列與所有元件之上 */
+  background: rgba(26, 15, 10, 0.95);
+  border: 2px solid var(--border-gold);
+  border-radius: 6px;
+  padding: 10px 14px;
+  max-width: 260px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.9);
+  pointer-events: none; /* 關鍵：避免 Tooltip 擋住滑鼠游標，導致 mouseout / mousemove 閃爍 */
+  box-sizing: border-box;
+}
+
+.skill-tooltip.hidden {
+  display: none !important;
+}
+
+.skill-tooltip .tt-title {
+  color: var(--text-gold);
+  font-weight: bold;
+  font-size: 1rem;
+  margin-bottom: 2px;
+}
+
+.skill-tooltip .tt-type,
+.skill-tooltip .tt-req {
+  font-size: 0.75rem;
+  color: #a8927a;
+  margin-top: 2px;
+}
+
+.skill-tooltip .tt-divider {
+  border: none;
+  border-top: 1px solid #5c3a21;
+  margin: 8px 0;
+}
+
+.skill-tooltip .tt-desc {
+  font-size: 0.8rem;
+  color: #f0e6d2;
+  line-height: 1.4;
+  white-space: pre-line; /* 支援說明文字換行 */
+}
