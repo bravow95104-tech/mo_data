@@ -1,0 +1,134 @@
+:root {
+  --bg-dark: #121418;
+  --card-bg: #1e222b;
+  --border-color: #3d4452;
+  --accent-gold: #e5b560;
+  --text-main: #e1e6ed;
+  --text-muted: #8b94a0;
+}
+
+body {
+  background-color: var(--bg-dark);
+  color: var(--text-main);
+  font-family: "Segoe UI", "Microsoft JhengHei", sans-serif;
+  margin: 0;
+  padding: 20px;
+}
+
+/* 頂部控制列 */
+.app-header {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.job-selector select {
+  background: #2a303c;
+  color: var(--text-main);
+  border: 1px solid var(--border-color);
+  padding: 6px 12px;
+  border-radius: 4px;
+  outline: none;
+}
+
+.points-badge {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: var(--accent-gold);
+}
+
+/* 技能網格容器 */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 15px;
+}
+
+/* 技能卡片 */
+.skill-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all 0.2s ease;
+}
+
+.skill-card.available {
+  border-color: var(--accent-gold);
+}
+
+.skill-card.locked {
+  opacity: 0.4;
+  filter: grayscale(80%);
+}
+
+.skill-title {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: var(--accent-gold);
+  display: flex;
+  justify-content: space-between;
+}
+
+.skill-type {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+.skill-desc {
+  font-size: 0.9rem;
+  margin: 12px 0;
+  min-height: 40px;
+  color: #b0b8c4;
+  line-height: 1.4;
+}
+
+/* 按鈕與控制區 */
+.skill-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.btn {
+  background: #2a303c;
+  border: 1px solid var(--border-color);
+  color: var(--text-main);
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn:hover:not(:disabled) {
+  background: var(--accent-gold);
+  color: #000;
+}
+
+.btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.btn-point {
+  width: 32px;
+  height: 32px;
+}
+
+.btn-reset {
+  padding: 8px 16px;
+}
+
+.level-display {
+  font-weight: bold;
+}

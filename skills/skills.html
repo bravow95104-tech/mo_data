@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>天外 Online - 技能配點器</title>
+  <link rel="stylesheet" href="/mo_data/css/skills.css">
+</head>
+<body>
+
+  <header class="app-header">
+    <div class="job-selector">
+      <label for="jobSelect">選擇職業：</label>
+      <select id="jobSelect">
+        <!-- 由 JS 動態渲染 -->
+      </select>
+    </div>
+
+    <div class="points-badge">
+      剩餘點數：<span id="remainingPoints">120</span> / 120
+    </div>
+
+    <button id="resetBtn" class="btn btn-reset">重置配點</button>
+  </header>
+
+  <main class="app-main">
+    <!-- 技能卡片列表區塊 -->
+    <div id="skillsContainer" class="skills-grid">
+      <!-- 由 JS 動態渲染 -->
+    </div>
+  </main>
+
+  <!-- 導入 ES Module 主程式 -->
+  <script type="module" src="/mo_data/js/skills.js"></script>
+</body>
+</html>
