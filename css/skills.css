@@ -12,13 +12,19 @@ body {
   background-color: var(--bg-game);
   color: #f0e6d2;
   font-family: "Microsoft JhengHei", sans-serif;
-  padding: 20px;
-  padding-top: 100px;
+  margin: 0;
+  padding: 0;
+  
+  /* ✅ 改為垂直 Flex 佈局 */
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center; /* 讓內容水平置中 */
+  
+  /* ✅ 確保 body 至少跟螢幕一樣高，把 Footer 壓在最底下 */
+  min-height: 100vh;
 }
 
-/* 主面板 */
+/* 主面板間距調整 */
 .simulator-container {
   background: var(--panel-bg);
   border: 3px solid var(--border-gold);
@@ -26,6 +32,16 @@ body {
   padding: 20px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
   min-width: 600px;
+  
+  /* ✅ 用 margin 上下推開導航列與 Footer */
+  margin-top: 80px;
+  margin-bottom: 40px;
+}
+
+/* 頁尾佔滿寬度並自動貼底 */
+#footer-container {
+  width: 100%;
+  margin-top: auto; /* 當內容不夠高時，自動把 Footer 推到頁面最底部 */
 }
 
 .simulator-title {
