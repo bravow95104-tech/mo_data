@@ -192,4 +192,60 @@ function bindEvents() {
   })
 }
 
+// 渲染多欄式技能樹
+function renderMultiColumnTree() {
+  const container = document.getElementById('treeContainer')
+  
+  // 1. 依照 skill_type 分群 (例如: { "武技": [...], "強化": [...] })
+  const groupedSkills = {}
+  allSkills.forEach(skill => {
+    const type = skill.skill_type || '通用'
+    if (!groupedSkills[type]) groupedSkills[type] = []
+    groupedSkills[type].push(skill)
+  })
+
+  // 2. 繪製每一欄
+  container.innerHTML = Object.keys(groupedSkills).map(type => {
+    const skillsInGroup = groupedSkills[type]
+
+    // 依照 grid_y 或預設順序排序
+    skillsInGroup.sort((a, b) => (a.grid_y || 0) - (b.grid_y || 0))
+
+    return `
+      <div class="skill-column">
+        <div class="column-header">${type}</div>
+        
+        ${skillsInGroup.map(skill => {
+          const level = allocatedPoints[skill.id] || 0
+          
+          // 前置鎖定判斷
+          let isLocked = false
+          if (skill.req_skill_id) {
+            const reqLevel = allocatedPoints[skill.req_skill_id] || 0
+            if (reqLevel < skill.req_skill_level) isLocked = true
+          }
+
+          const defaultIcon = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='54' height='54'><rect width='54' height='54' fill='%23ffd369'/><text x='50%' y='55%' dominant-baseline='middle' text-anchor='middle' font-size='12' font-weight='bold'>SKILL</text></svg>"
+
+          return `
+            <div class="skill-tree-node ${isLocked ? 'locked' : ''}">
+              <!-- Icon -->
+              <div class="node-icon-box" title="${skill.name}\n${skill.description || ''}">
+                <img src="${skill.icon_url || defaultIcon}" alt="${skill.name}">
+              </div>
+              
+              <!-- 點數控制列 (+ / - 按鈕與數字) -->
+              <div class="node-control-box">
+                <button class="btn-step" data-action="minus" data-id="${skill.id}">-</button>
+                <div class="node-level-num">${level}</div>
+                <button class="btn-step" data-action="plus" data-id="${skill.id}">+</button>
+              </div>
+            </div>
+          `
+        }).join('')}
+      </div>
+    `
+  }).join('')
+}
+
 init()
