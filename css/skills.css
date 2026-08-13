@@ -13,6 +13,7 @@ body {
   color: #f0e6d2;
   font-family: "Microsoft JhengHei", sans-serif;
   padding: 20px;
+  padding-top: 100px;
   display: flex;
   justify-content: center;
 }
