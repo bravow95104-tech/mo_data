@@ -83,18 +83,21 @@ function renderMultiColumnTree() {
           }
 
           return `
-            <div class="skill-tree-node ${isLocked ? 'locked' : ''}">
-              <div class="node-icon-box" data-id="${skill.id}">
-                <img src="${skill.icon_url || defaultIcon}" alt="${skill.name}">
-              </div>
-              
-              <div class="node-control-box">
-                <button class="btn-step" data-action="minus" data-id="${skill.id}">-</button>
-                <div class="node-level-num">${level}</div>
-                <button class="btn-step" data-action="plus" data-id="${skill.id}">+</button>
-              </div>
-            </div>
-          `
+  <div class="skill-tree-node ${isLocked ? 'locked' : ''}" 
+       style="grid-column: ${skill.grid_x || 1}; grid-row: ${skill.grid_y || 1};">
+    <!-- Icon 框 -->
+    <div class="node-icon-box" data-id="${skill.id}">
+      <img src="${skill.icon_url || defaultIcon}" alt="${skill.name}">
+    </div>
+    
+    <!-- 點數控制盒 -->
+    <div class="node-control-box">
+      <button class="btn-step" data-action="minus" data-id="${skill.id}">-</button>
+      <div class="node-level-num">${level}</div>
+      <button class="btn-step" data-action="plus" data-id="${skill.id}">+</button>
+    </div>
+  </div>
+`
         }).join('')}
       </div>
     `

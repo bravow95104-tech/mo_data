@@ -58,10 +58,13 @@ body {
   margin-bottom: 20px;
 }
 
-/* 多欄技能樹容器 */
+/* 技能樹網格地圖區塊 */
 .tree-columns-wrapper {
-  display: flex;
-  gap: 40px; /* 系別之間的間距 */
+  display: grid;
+  /* 假設最多 5 欄，每欄固定寬度/間距 */
+  grid-template-columns: repeat(5, 80px); 
+  grid-auto-rows: 90px; /* 每列固定高度 */
+  gap: 20px 30px; /* 橫向與縱向的間距 */
   justify-content: center;
   position: relative;
 }
@@ -84,13 +87,13 @@ body {
   text-align: center;
 }
 
-/* 技能節點元件 */
+/* 技能節點 */
 .skill-tree-node {
   display: flex;
   flex-direction: column;
   align-items: center;
   position: relative;
-  margin-bottom: 25px; /* 上下技能節點間距 */
+  /* 讓節點自動對齊到 grid-column 和 grid-row 指定的位置 */
 }
 
 /* 向下箭頭連線 (替代傳統文字 | ) */
