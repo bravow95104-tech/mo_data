@@ -6,7 +6,7 @@ const supabase = createClient(SUPABASE_URL, SUPABASE_KEY)
 // 狀態管理
 let allSkills = []
 let allocatedPoints = {}
-let remainingPoints = 120
+let remainingPoints = 200
 let currentJob = 'valkyrie'
 let currentTab = '' // 當前選中的頁籤 (skill_type)
 
@@ -37,16 +37,36 @@ async function fetchJobs() {
   if (secondTierJobs.length > 0) currentJob = secondTierJobs[0].id
 }
 
-// 撈取技能
+// 撈取技能 (包含基礎職與進階職共用邏輯判斷)
 async function fetchSkills(jobId) {
-  const { data: jobData } = await supabase.from('job_classes').select('*').eq('id', jobId).single()
-  const parentJobId = jobData ? jobData.parent_id : 'swordsman'
-  const commonJobId = `${parentJobId}_adv_common`
+  // 1. 先抓取當前選擇職業的詳細資訊 (拿到 parent_id 與 job_tier)
+  const { data: jobData } = await supabase
+    .from('job_classes')
+    .select('*')
+    .eq('id', jobId)
+    .single()
 
+  if (!jobData) return
+
+  let targetJobIds = []
+
+  // 2. 判斷是否為進階職 (轉職後)
+  if (jobData.job_tier === 2) {
+    // 轉職後：包含「基礎職技能」、「進階職技能」、「進階共用技能」
+    const parentJobId = jobData.parent_id || 'swordsman'
+    const commonJobId = `${parentJobId}_adv_common`
+    
+    targetJobIds = [parentJobId, jobId, commonJobId]
+  } else {
+    // 轉職前 (基礎職 job_tier === 1)：只包含「該基礎職自己的技能」，絕不包含進階共用！
+    targetJobIds = [jobId]
+  }
+
+  // 3. 向 Supabase 撈取符合條件的技能
   const { data } = await supabase
     .from('skills')
     .select('*')
-    .in('job_id', [parentJobId, jobId, commonJobId])
+    .in('job_id', targetJobIds)
 
   if (data) {
     allSkills = data
@@ -136,13 +156,13 @@ function bindEvents() {
   jobSelect.addEventListener('change', e => {
     currentJob = e.target.value
     allocatedPoints = {}
-    remainingPoints = 120
+    remainingPoints = 200
     fetchSkills(currentJob)
   })
 
   resetBtn.addEventListener('click', () => {
     allocatedPoints = {}
-    remainingPoints = 120
+    remainingPoints = 200
     renderTabTree()
   })
 
