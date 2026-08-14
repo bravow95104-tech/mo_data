@@ -7,17 +7,73 @@
   --line-color: #8a6d4b;
 }
 
-/* 技能模擬器主容器 */
-.simulator-container {
-  background: var(--panel-bg);
-  border: 3px solid var(--border-gold);
-  border-radius: 12px;
-  padding: 24px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
-  width: 100%;
-  max-width: 650px;
-  margin: 80px auto 40px auto;
-  box-sizing: border-box;
+/* ==========================================
+   💊 技能等級控制列 (膠囊外殼造型優化)
+   ========================================== */
+
+.simulator-container .node-status-line {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  margin-top: 6px;
+  
+  /* 膠囊造型核心：深色半透明背景 + 邊框 */
+  background: rgba(20, 10, 5, 0.92);
+  border: 1px solid var(--border-gold);
+  border-radius: 20px;
+  padding: 2px 6px;
+  
+  /* 關鍵！確保擋住後方 SVG 線條並增加陰影 */
+  position: relative;
+  z-index: 5;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.8);
+}
+
+/* 等級文字 (0/10) 美化 */
+.simulator-container .level-text {
+  color: #5cbeff;
+  font-weight: bold;
+  font-size: 0.8rem;
+  text-shadow: 1px 1px 2px #000;
+  min-width: 32px;
+  text-align: center;
+  user-select: none;
+}
+
+/* 加號與減號按鈕 (圓角微調以搭配膠囊) */
+.simulator-container .btn-step {
+  background: #ffcc00;
+  color: #d30000;
+  border: 1px solid #d30000;
+  font-weight: bold;
+  font-size: 0.8rem;
+  width: 18px;
+  height: 18px;
+  line-height: 16px;
+  text-align: center;
+  padding: 0;
+  cursor: pointer;
+  border-radius: 50%; /* 改成圓形按鈕更有膠囊搭配感 */
+  transition: all 0.15s ease;
+  user-select: none;
+}
+
+.simulator-container .btn-minus {
+  background: #444;
+  color: #ccc;
+  border-color: #666;
+}
+
+.simulator-container .btn-step:hover:not(.disabled) {
+  background: #fff;
+  transform: scale(1.1);
+}
+
+.simulator-container .btn-step.disabled {
+  opacity: 0.25;
+  cursor: not-allowed;
+  filter: grayscale(100%);
 }
 
 .simulator-container * {
