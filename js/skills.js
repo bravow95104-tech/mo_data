@@ -470,7 +470,7 @@ function bindEvents() {
     if (action === 'minus') updatePoint(id, -1)
   })
 
-  // 5. Tooltip 滑鼠事件
+  // 5. Tooltip 滑鼠事件 (調整順序 + 當前級與下一級對比)
 treeContainer.addEventListener('mouseover', e => {
   const iconBox = e.target.closest('.node-icon-box')
   if (!iconBox) return
@@ -478,39 +478,74 @@ treeContainer.addEventListener('mouseover', e => {
   const skill = allSkills.find(s => s.id === iconBox.dataset.id)
   if (!skill || !tooltip) return
 
-  // 1. 保留你原本的基本欄位
+  // 1. 基本資訊 (名稱, 類型, 需求等級)
   document.getElementById('ttName').innerText = skill.name
   document.getElementById('ttType').innerText = `${skill.skill_type || '技能'} (${skill.activation_type || '主動'})`
   document.getElementById('ttReq').innerText = skill.req_character_level ? `需求角色等級: Lv.${skill.req_character_level}` : ''
   
-  // 2. 取得玩家目前點了幾點 (沒點預設看 Lv.1 的數值)
+  // 2. 取得等級狀態
   const currentLevel = allocatedPoints[skill.id] || 0
-  const displayLevel = currentLevel > 0 ? currentLevel : 1
+  const maxLevel = skill.max_level || 10
   
-  // 3. 從資料庫抓對應等級的數據
-  const levelInfo = skill.skill_levels?.find(l => l.level === displayLevel)
-
-  // 4. 動態組合「CD/MP/威力」等明細字串
-  let statsHtml = ''
-  if (levelInfo) {
+  // 3. 判斷輔助函式 (非空檢查)
+  const hasValue = (val) => val !== null && val !== undefined && val !== ''
+  
+  // 格式化數值的內部函式
+  const formatStats = (lvlData) => {
+    if (!lvlData) return ''
     const stats = []
-    if (levelInfo.cooldown) stats.push(`CD: ${levelInfo.cooldown}秒`)
-    if (levelInfo.mp_cost) stats.push(`MP: ${levelInfo.mp_cost}`)
-    if (levelInfo.hp_cost) stats.push(`HP: ${levelInfo.hp_cost}`)
-    if (levelInfo.power_rate) stats.push(`威力: ${levelInfo.power_rate}%`)
+    if (hasValue(lvlData.cooldown)) stats.push(`CD: ${lvlData.cooldown}秒`)
+    if (hasValue(lvlData.mp_cost)) stats.push(`MP: ${lvlData.mp_cost}`)
+    if (hasValue(lvlData.hp_cost)) stats.push(`HP: ${lvlData.hp_cost}`)
+    if (hasValue(lvlData.power_rate)) stats.push(`威力: ${lvlData.power_rate}%`)
+    return stats.join(' | ')
+  }
 
-    if (stats.length > 0) {
-      statsHtml = `<div style="color: #5cbeff; font-weight: bold; margin-bottom: 6px; font-size: 0.8rem;">
-        [Lv.${displayLevel} 效果] ${stats.join(' | ')}
-      </div>`
+  // --- A. 組合文字說明 ---
+  const descText = skill.description || '暫無說明'
+
+  // --- B. 組合當前等級效果 (亮藍色) ---
+  let currentStatsHtml = ''
+  if (currentLevel > 0) {
+    const curInfo = skill.skill_levels?.find(l => l.level === currentLevel)
+    const curStatsStr = formatStats(curInfo)
+    if (curStatsStr) {
+      currentStatsHtml = `
+        <div style="color: #5cbeff; font-weight: bold; margin-top: 6px; font-size: 0.82rem;">
+          [Lv.${currentLevel} 效果] ${curStatsStr}
+        </div>`
     }
   }
 
-  // 5. 組合最終敘述：如果有等級專屬說明就用等級說明，不然就用預設說明
-  const descText = levelInfo?.description || skill.description || '暫無說明'
-  
-  // 渲染到原本的 ttDesc 中（包含等級數值 + 文字敘述）
-  document.getElementById('ttDesc').innerHTML = statsHtml + descText
+  // --- C. 組合下一級效果預覽 (淡藍色/半透明) ---
+  let nextStatsHtml = ''
+  if (currentLevel < maxLevel) {
+    const nextLevel = currentLevel + 1
+    const nextInfo = skill.skill_levels?.find(l => l.level === nextLevel)
+    const nextStatsStr = formatStats(nextInfo)
+    
+    if (nextStatsStr) {
+      // 標籤顯示：如果目前是 0 級，顯示 [Lv.1 效果]；如果已有等級，顯示 [下一級 Lv.X 效果]
+      const labelText = currentLevel === 0 ? `[Lv.1 效果]` : `[下一級 Lv.${nextLevel}]`
+      
+      nextStatsHtml = `
+        <div style="color: #8acaff; opacity: 0.8; font-size: 0.8rem; margin-top: 4px;">
+          ${labelText} ${nextStatsStr}
+        </div>`
+    }
+  }
+
+  // --- D. 拼裝下半部完整 HTML ---
+  // 有等級資料才畫最底部的分隔線
+  const hasAnyLevelData = currentStatsHtml || nextStatsHtml
+  const bottomDivider = hasAnyLevelData ? '<hr class="tt-divider" style="margin: 8px 0; border-color: #5c3a21;">' : ''
+
+  document.getElementById('ttDesc').innerHTML = `
+    <div>${descText}</div>
+    ${bottomDivider}
+    ${currentStatsHtml}
+    ${nextStatsHtml}
+  `
 
   tooltip.classList.remove('hidden')
 })
