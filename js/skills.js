@@ -107,60 +107,100 @@ function renderTabs() {
   `).join('')
 }
 
-// 渲染經典天外風格技能樹
+// 渲染技能樹 (含 SVG 自動動態連線)
 function renderTabTree() {
   if (remainingPointsEl) remainingPointsEl.innerText = remainingPoints
 
-  // 1. 過濾當前頁籤技能
+  // 1. 當前頁籤技能
   const activeSkills = allSkills.filter(s => (s.skill_type || '通用') === currentTab)
-
   const defaultIcon = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='54' height='54'><rect width='54' height='54' fill='%23ffd369'/><text x='50%' y='55%' dominant-baseline='middle' text-anchor='middle' font-size='12' font-weight='bold'>SKILL</text></svg>"
 
-  // 2. 直接繪製大網格容器
+  // 2. 計算網格中的座標像素 (基於格子寬 80、高 85、gap-x 50、gap-y 20)
+  const getPos = (x, y) => {
+    const colWidth = 80 + 50 // 格子寬 + gapX
+    const rowHeight = 85 + 20 // 格子高 + gapY
+    return {
+      // 算出每格圖示正中央的 X 軸像素
+      cx: (x - 1) * colWidth + 40 + 20, // 20 為 padding-left
+      // 圖示頂部與底部的 Y 軸像素
+      topY: (y - 1) * rowHeight + 20, 
+      bottomY: (y - 1) * rowHeight + 56 + 20 // 56 為圖示高度
+    }
+  }
+
+  // 3. 自動計算並產生 SVG 連線 Path
+  let svgPaths = ''
+  activeSkills.forEach(skill => {
+    if (!skill.req_skill_id) return
+
+    // 找到前置技能
+    const parent = activeSkills.find(s => s.id === skill.req_skill_id)
+    if (!parent) return
+
+    const pX = parent.grid_x ?? parent.x ?? 1
+    const pY = parent.grid_y ?? parent.y ?? 1
+    const cX = skill.grid_x ?? skill.x ?? 1
+    const cY = skill.grid_y ?? skill.y ?? 1
+
+    const start = getPos(pX, pY)
+    const end = getPos(cX, cY)
+
+    // 同一欄 (直線向下，不論跨了幾格都會自動拉長)
+    if (pX === cX) {
+      svgPaths += `<path d="M ${start.cx} ${start.bottomY} L ${end.cx} ${end.topY}" stroke="#8a6d4b" stroke-width="2" fill="none" />`
+    } else {
+      // 跨欄/分歧 (折線：先垂直向下、再水平折向目標欄、再垂直接進目標頂部)
+      const midY = start.bottomY + 12 // 拐角轉折處的高度
+      svgPaths += `<path d="M ${start.cx} ${start.bottomY} V ${midY} H ${end.cx} V ${end.topY}" stroke="#8a6d4b" stroke-width="2" fill="none" />`
+    }
+  })
+
+  // 4. 渲染 HTML (包含 SVG 背景層與技能網格)
   treeContainer.innerHTML = `
-    <div class="skill-tree-grid">
-      ${activeSkills.map(skill => {
-        const level = allocatedPoints[skill.id] || 0
-        const maxLevel = skill.max_level || 10
-        
-        // 前置技能判定
-        let isLocked = false
-        if (skill.req_skill_id) {
-          const reqLevel = allocatedPoints[skill.req_skill_id] || 0
-          if (reqLevel < skill.req_skill_level) isLocked = true
-        }
+    <div class="skill-tree-wrapper" style="position: relative;">
+      
+      <!-- 動態畫線 SVG 層 -->
+      <svg class="tree-svg-layer" style="position: absolute; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:1;">
+        ${svgPaths}
+      </svg>
 
-        const x = skill.grid_x || 1
-        const y = skill.grid_y || 1
+      <!-- 技能網格層 -->
+      <div class="skill-tree-grid" style="position: relative; z-index: 2;">
+        ${activeSkills.map(skill => {
+          const level = allocatedPoints[skill.id] || 0
+          const maxLevel = skill.max_level || 10
+          
+          let isLocked = false
+          if (skill.req_skill_id) {
+            const reqLevel = allocatedPoints[skill.req_skill_id] || 0
+            if (reqLevel < skill.req_skill_level) isLocked = true
+          }
 
-        // 判斷是否為分歧點 (例如破碎擊 Y=2, X=1 分歧出 刀技修鍊 Y=3, X=2)
-        const isBranchRight = (x === 2 && y === 3) 
+          const x = skill.grid_x ?? skill.x ?? 1
+          const y = skill.grid_y ?? skill.y ?? 1
 
-        return `
-          <div class="grid-skill-node ${isLocked ? 'locked' : ''} ${isBranchRight ? 'branch-from-left' : ''}" 
-               style="grid-column: ${x}; grid-row: ${y};">
-            
-            <!-- 技能圖示 -->
-            <div class="node-icon-box" data-id="${skill.id}">
-              <img src="${skill.icon_url || defaultIcon}" alt="${skill.name}">
+          return `
+            <div class="grid-skill-node ${isLocked ? 'locked' : ''}" 
+                 style="grid-column: ${x}; grid-row: ${y};">
+              
+              <div class="node-icon-box" data-id="${skill.id}">
+                <img src="${skill.icon_url || defaultIcon}" alt="${skill.name}">
+              </div>
+
+              <div class="node-status-line">
+                <button class="btn-step btn-minus ${level <= 0 ? 'disabled' : ''}" 
+                        data-action="minus" data-id="${skill.id}">-</button>
+                        
+                <span class="level-text">${level}/${maxLevel}</span>
+
+                <button class="btn-step btn-add ${level >= maxLevel || remainingPoints <= 0 || isLocked ? 'disabled' : ''}" 
+                        data-action="plus" data-id="${skill.id}">+</button>
+              </div>
+              
             </div>
-
-            <!-- 等級與加/減點按鈕 UI -->
-            <div class="node-status-line">
-              <!-- 減號按鈕 (已點過點數才可以退點) -->
-              <button class="btn-step btn-minus ${level <= 0 ? 'disabled' : ''}" 
-                      data-action="minus" data-id="${skill.id}">-</button>
-                      
-              <span class="level-text">${level}/${maxLevel}</span>
-
-              <!-- 加號按鈕 -->
-              <button class="btn-step btn-add ${level >= maxLevel || remainingPoints <= 0 || isLocked ? 'disabled' : ''}" 
-                      data-action="plus" data-id="${skill.id}">+</button>
-            </div>
-            
-          </div>
-        `
-      }).join('')}
+          `
+        }).join('')}
+      </div>
     </div>
   `
 }
