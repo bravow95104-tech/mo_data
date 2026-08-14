@@ -72,7 +72,7 @@ async function fetchSkills(jobId) {
     const commonJobId = `${parentJobId}_adv_common`
     
     // 撈取：[基礎職, 當前轉職, 對應的進階共用]
-    targetJobIds = [parentJobId, jobId, commonJobId]
+    targetJobIds = [parentJobId, jobId, commonJobId, 'global_adv_common']
   } else {
     // 基礎職 (job_tier === 1，例如 sorcerer)：只撈取自己！
     currentParentJobId = jobId
