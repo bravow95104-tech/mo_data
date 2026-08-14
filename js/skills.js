@@ -237,48 +237,59 @@ currentTabSkills = allSkills.filter(s => (s.skill_type || '通用') === currentT
 })
 }
 
-// 動態繪製 SVG 畫線函數 (天外原版: 先水平後垂直 L 型對齊)
+// 動態繪製 SVG 畫線函數 (嚴格依據資料庫 req_skill_id 精準連線 + Console 除錯)
 function drawLines() {
   const svg = document.getElementById('skillLinesSvg')
   if (!svg) return
   svg.innerHTML = '' // 清空舊線
 
-  const activeSkills = (currentTabSkills && currentTabSkills.length > 0)
-    ? currentTabSkills
-    : allSkills.filter(s => (s.skill_type || '通用') === currentTab)
+  // 1. 抓取當前頁籤渲染的所有技能
+  const activeSkills = currentTabSkills || []
+  if (activeSkills.length === 0) return
 
-  if (!activeSkills || activeSkills.length === 0) return
+  console.log('=== 🎨 開始繪製技能樹連線 ===')
 
-  // 遍歷所有技能，依據 req_skill_id (或 parent_id) 畫線
   activeSkills.forEach(childSkill => {
+    // 🔥 優先抓取資料庫的 req_skill_id，若無則降級抓 parent_id
     const parentId = childSkill.req_skill_id || childSkill.parent_id
+
+    // 如果沒有前置技能 (例如健身術)，直接跳過不畫線
     if (!parentId) return
 
+    // 尋找子技能與父技能在 DOM 上的圖示方塊 (.node-icon-box)
     const childBox = document.querySelector(`.node-icon-box[data-id="${childSkill.id}"]`)
     const parentBox = document.querySelector(`.node-icon-box[data-id="${parentId}"]`)
 
-    if (!childBox || !parentBox) return
+    // 🛑 除錯檢查：如果找不到父技能 DOM 節點 (可能是跨頁籤了，或是 ID 拼錯)
+    if (!parentBox) {
+      console.warn(`⚠️ 技能【${childSkill.name}】(ID: ${childSkill.id}) 的前置技能 ID 為【${parentId}】，但畫面上找不到該父技能！(可能在不同頁籤)`)
+      return
+    }
+
+    if (!childBox) return
 
     const containerRect = svg.getBoundingClientRect()
     const cRect = childBox.getBoundingClientRect()
     const pRect = parentBox.getBoundingClientRect()
 
-    // 子技能：正上方中央
+    // 子技能：圖片正上方中央 (終點)
     const cx = cRect.left + cRect.width / 2 - containerRect.left
     const cy = cRect.top - containerRect.top
 
-    // 父技能：正下方中央
+    // 父技能：圖片正下方中央 (起點)
     const px = pRect.left + pRect.width / 2 - containerRect.left
     const py = pRect.bottom - containerRect.top
 
-    // 1. 直線情況 (X 軸對齊，例如：健身術 -> 挑釁 / 挑釁 -> 格檔)
+    console.log(`🔗 成功連線：【父:${parentId}】(X:${Math.round(px)}, Y:${Math.round(py)}) ➡️ 【子:${childSkill.name}】(X:${Math.round(cx)}, Y:${Math.round(cy)})`)
+
+    // --- 根據座標繪製天外原版 L 型/直線 ---
+    
+    // A. 上下垂直對齊 (X 軸幾乎重合) -> 繪製直線
     if (Math.abs(px - cx) < 8) {
       createLine(svg, px, py, cx, cy)
     } 
-    // 2. L 型折線 (例如：健身術 -> 運氣調息 / 挑釁 -> 武勁勢)
+    // B. X 軸錯開 -> 從父技能直角橫拉 (H)，再垂直直衝子技能頭頂 (V)
     else {
-      // 依天外原版邏輯：
-      // 從父技能底部 (px, py) 出發 -> 水平橫移到子技能 X 軸 (cx) -> 一路垂直向下插入子技能頭頂 (cy)
       const pathD = `M ${px} ${py} H ${cx} V ${cy}`
       createPath(svg, pathD)
     }
