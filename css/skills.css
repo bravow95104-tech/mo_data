@@ -47,6 +47,26 @@
   height: auto;
   line-height: normal;
 }
+/* 頁籤容器外層 */
+#tabsContainer {
+  display: flex;
+  flex-wrap: nowrap;          /* 絕不換行 */
+  overflow-x: auto;           /* 超出寬度時顯示橫向滾動條 */
+  gap: 8px;                   /* 按鈕之間的間距 */
+  padding-bottom: 8px;        /* 留一點空間給滾動條 */
+  
+  /* 美化滾動條 (隱藏傳統粗糙滾動條) */
+  scrollbar-width: thin;
+  scrollbar-color: #ffd369 transparent;
+}
+
+/* 頁籤按鈕本體 */
+.tab-btn {
+  white-space: nowrap;        /* 關鍵：強制文字不換行！ */
+  flex-shrink: 0;             /* 關鍵：防止按鈕被擠壓變形 */
+  padding: 8px 16px;          /* 保持適當的按鈕內襯 */
+  min-width: fit-content;     /* 依文字長度自動延伸寬度 */
+}
 
 .simulator-container .tab-btn:hover {
   color: var(--text-gold);
