@@ -6,7 +6,8 @@ const supabase = createClient(SUPABASE_URL, SUPABASE_KEY)
 // 狀態管理
 let allSkills = []
 let allocatedPoints = {}
-let remainingPoints = 200
+let maxPoints = 200        // 動態計算出來的總點數上限 (預設 200)
+let remainingPoints = 200  // 剩餘可點點數
 let currentJob = '' 
 let currentParentJobId = ''
 let currentTab = ''
@@ -25,6 +26,7 @@ const baseJobPointsTextEl = document.getElementById('baseJobPointsText') // 若�
 async function init() {
   await fetchJobs()
   await fetchSkills(currentJob)
+  calculateMaxPoints() // 👈 補上這行，讓初始化時自動計算轉生/極限點數
   bindEvents()
 }
 
@@ -95,6 +97,37 @@ async function fetchSkills(jobId) {
     renderTabTree()
   }
 }
+
+// 🆕 計算當前最大點數上限
+function calculateMaxPoints() {
+  const rebirthSelect = document.getElementById('rebirthSelect')
+  const limitLevelCheck = document.getElementById('limitLevelCheck')
+
+  const rebirthPoints = rebirthSelect ? parseInt(rebirthSelect.value, 10) * 10 : 0
+  const limitPoints = (limitLevelCheck && limitLevelCheck.checked) ? 10 : 0
+
+  // 基礎 200 + 轉生點數 (0~30) + 極限點數 (0 或 10)
+  maxPoints = 200 + rebirthPoints + limitPoints
+
+  // 計算目前已經投資了多少點
+  const usedPoints = Object.values(allocatedPoints).reduce((sum, pts) => sum + pts, 0)
+
+  // 更新剩餘點數
+  remainingPoints = maxPoints - usedPoints
+
+  // 防呆：如果調低轉生次數導致剩餘點數變負數，可以在這裡提示或處理
+  if (remainingPoints < 0) {
+    alert('總點數上限降低，已超過目前分配點數，請調整配點！')
+  }
+
+  // 更新 DOM 總點數顯示
+  const totalMaxPointsEl = document.getElementById('totalMaxPoints')
+  if (totalMaxPointsEl) totalMaxPointsEl.innerText = maxPoints
+
+  // 重新渲染介面與按鈕狀態
+  renderTabTree()
+}
+
 // 動態渲染技能頁籤 (Tabs)
 function renderTabs() {
   if (!tabsContainer || !allSkills || allSkills.length === 0) return
@@ -149,7 +182,7 @@ function renderTabs() {
 // 渲染技能樹 (含 DOM 實體座標精準算線)
 function renderTabTree() {
     // 1. 計算點數
-  const totalUsed = 200 - remainingPoints // 總已點點數
+  const totalUsed = maxPoints - remainingPoints // 總已點點數
 
   // 計算「基礎職業」累積點數 (對照 120 點門檻)
   let baseJobUsed = 0
@@ -416,14 +449,14 @@ function bindEvents() {
   jobSelect.addEventListener('change', e => {
     currentJob = e.target.value
     allocatedPoints = {}
-    remainingPoints = 200
+    calculateMaxPoints()
     fetchSkills(currentJob)
   })
 
   // 3. 重置按鈕[cite: 5]
   resetBtn.addEventListener('click', () => {
     allocatedPoints = {}
-    remainingPoints = 200
+    calculateMaxPoints()
     renderTabTree()
   })
 
@@ -465,6 +498,22 @@ function bindEvents() {
       tooltip.classList.add('hidden')
     }
   })
+
+  // 🆕 監聽轉生次數切換
+  const rebirthSelect = document.getElementById('rebirthSelect')
+  if (rebirthSelect) {
+    rebirthSelect.addEventListener('change', () => {
+      calculateMaxPoints()
+    })
+  }
+
+  // 🆕 監聽極限等級勾選
+  const limitLevelCheck = document.getElementById('limitLevelCheck')
+  if (limitLevelCheck) {
+    limitLevelCheck.addEventListener('change', () => {
+      calculateMaxPoints()
+    })
+  }
 
   // 🔥 6. 視窗縮放事件 (獨立放在最外層，只綁定一次！)
   window.addEventListener('resize', () => {
