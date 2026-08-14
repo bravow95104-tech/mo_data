@@ -237,7 +237,7 @@ currentTabSkills = allSkills.filter(s => (s.skill_type || '通用') === currentT
 })
 }
 
-// 動態繪製 SVG 畫線函數 (天外原版: 子技能獨立尋根連線版)
+// 動態繪製 SVG 畫線函數 (天外原版: 先水平後垂直 L 型對齊)
 function drawLines() {
   const svg = document.getElementById('skillLinesSvg')
   if (!svg) return
@@ -249,14 +249,12 @@ function drawLines() {
 
   if (!activeSkills || activeSkills.length === 0) return
 
-  // 遍歷「每一個技能」，只要它有前置技能，就單獨畫一條線連回父技能
+  // 遍歷所有技能，依據 req_skill_id (或 parent_id) 畫線
   activeSkills.forEach(childSkill => {
     const parentId = childSkill.req_skill_id || childSkill.parent_id
     if (!parentId) return
 
-    // 1. 抓取子技能 Icon 頂部中央座標
     const childBox = document.querySelector(`.node-icon-box[data-id="${childSkill.id}"]`)
-    // 2. 抓取父技能 Icon 底部中央座標
     const parentBox = document.querySelector(`.node-icon-box[data-id="${parentId}"]`)
 
     if (!childBox || !parentBox) return
@@ -273,20 +271,15 @@ function drawLines() {
     const px = pRect.left + pRect.width / 2 - containerRect.left
     const py = pRect.bottom - containerRect.top
 
-    // --- 連線繪製邏輯 ---
-
-    // A. 兩者垂直對齊 (X 軸幾乎重合) -> 直接畫一條垂直線
+    // 1. 直線情況 (X 軸對齊，例如：健身術 -> 挑釁 / 挑釁 -> 格檔)
     if (Math.abs(px - cx) < 8) {
       createLine(svg, px, py, cx, cy)
     } 
-    // B. X 軸錯開 (例如 健身術 -> 運氣調息，或 挑釁 -> 武勁勢)
+    // 2. L 型折線 (例如：健身術 -> 運氣調息 / 挑釁 -> 武勁勢)
     else {
-      // 依天外線條特性：從子技能頂部先垂直向上拉一段距離，再水平折向父技能下方，最後垂直連上父技能
-      // 中間轉折的高度 (midY) 取兩者 Y 軸正中間
-      const midY = py + (cy - py) / 2
-
-      // 路徑：從父技能底 (px, py) -> 垂直下降到 midY -> 水平拉到 cx -> 垂直下降到子技能頭頂 (cx, cy)
-      const pathD = `M ${px} ${py} V ${midY} H ${cx} V ${cy}`
+      // 依天外原版邏輯：
+      // 從父技能底部 (px, py) 出發 -> 水平橫移到子技能 X 軸 (cx) -> 一路垂直向下插入子技能頭頂 (cy)
+      const pathD = `M ${px} ${py} H ${cx} V ${cy}`
       createPath(svg, pathD)
     }
   })
