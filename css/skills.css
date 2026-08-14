@@ -252,3 +252,40 @@
   line-height: 1.4;
   white-space: pre-line; /* 支援說明文字換行 */
 }
+
+/* 技能樹主容器 (垂直由上到下推疊 Row) */
+.simulator-container .tree-rows-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px; /* 每層 Y 之間的垂直距離 */
+  padding: 15px 0;
+}
+
+/* 每一個 Y 軸層級 (橫向由左到右擺放 X 技能) */
+.simulator-container .tree-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px; /* 同一層內，平行技能 (X1, X2) 之間的橫向間距 */
+  width: 100%;
+  position: relative;
+}
+
+/* 技能節點 */
+.simulator-container .skill-tree-node {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+/* 向上或向下的連線/箭頭 (非最後一層時呈現) */
+.simulator-container .tree-row:not(:last-child) .skill-tree-node::after {
+  content: '↓';
+  position: absolute;
+  bottom: -26px;
+  color: var(--line-color);
+  font-weight: bold;
+  font-size: 1.1rem;
+}

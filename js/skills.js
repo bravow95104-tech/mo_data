@@ -24,7 +24,7 @@ async function init() {
   bindEvents()
 }
 
-// 1. 撈取所有職業 (確保基礎職與轉職後職都有放入下拉選單)
+// 1. 撈取下拉選單 (排除 _adv_common 這些內部用的共用類別)
 async function fetchJobs() {
   const { data } = await supabase
     .from('job_classes')
@@ -33,13 +33,14 @@ async function fetchJobs() {
 
   if (!data || data.length === 0) return
 
-  // 整理選單：分組顯示或直接依階級排列
-  jobSelect.innerHTML = data
+  // 過濾掉 id 結尾包含 _adv_common 的項目，只留真正能選的職業
+  const selectableJobs = data.filter(j => !j.id.endsWith('_adv_common'))
+
+  jobSelect.innerHTML = selectableJobs
     .map(j => `<option value="${j.id}">${j.job_tier === 1 ? '[基礎] ' : '[轉職] '}${j.name}</option>`)
     .join('')
 
-  // 預設選取第一個職業
-  currentJob = data[0].id
+  currentJob = selectableJobs[0].id
   jobSelect.value = currentJob
 }
 
@@ -106,38 +107,58 @@ function renderTabs() {
   `).join('')
 }
 
-// 4. 渲染當前頁籤的垂直技能樹
+// 渲染當前頁籤的技能樹 (支援 XY 橫向並排與縱向延伸)
 function renderTabTree() {
   if (remainingPointsEl) remainingPointsEl.innerText = remainingPoints
 
-  // 過濾出當前頁籤的技能，並依 grid_y 由小到大排序
-  const activeSkills = allSkills
-    .filter(s => (s.skill_type || '通用') === currentTab)
-    .sort((a, b) => (a.grid_y || 0) - (b.grid_y || 0))
+  // 1. 過濾出當前頁籤的技能
+  const activeSkills = allSkills.filter(s => (s.skill_type || '通用') === currentTab)
+
+  // 2. 按 grid_y (縱向高度) 將技能進行分組 { 1: [skillA, skillB], 2: [skillC] }
+  const rowsGrouped = {}
+  activeSkills.forEach(skill => {
+    const y = skill.grid_y || 1
+    if (!rowsGrouped[y]) rowsGrouped[y] = []
+    rowsGrouped[y].push(skill)
+  })
+
+  // 3. 取得所有出現過的 Y 軸並由小到大排序 (決定由上到下的層級)
+  const sortedYKeys = Object.keys(rowsGrouped).sort((a, b) => Number(a) - Number(b))
 
   const defaultIcon = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='54' height='54'><rect width='54' height='54' fill='%23ffd369'/><text x='50%' y='55%' dominant-baseline='middle' text-anchor='middle' font-size='12' font-weight='bold'>SKILL</text></svg>"
 
+  // 4. 渲染 HTML
   treeContainer.innerHTML = `
-    <div class="skill-single-column">
-      ${activeSkills.map(skill => {
-        const level = allocatedPoints[skill.id] || 0
-        
-        let isLocked = false
-        if (skill.req_skill_id) {
-          const reqLevel = allocatedPoints[skill.req_skill_id] || 0
-          if (reqLevel < skill.req_skill_level) isLocked = true
-        }
+    <div class="tree-rows-container">
+      ${sortedYKeys.map(yKey => {
+        // 同一層內的技能，依據 grid_x 由左到右排序
+        const skillsInRow = rowsGrouped[yKey].sort((a, b) => (a.grid_x || 1) - (b.grid_x || 1))
 
         return `
-          <div class="skill-tree-node ${isLocked ? 'locked' : ''}">
-            <div class="node-icon-box" data-id="${skill.id}">
-              <img src="${skill.icon_url || defaultIcon}" alt="${skill.name}">
-            </div>
-            <div class="node-control-box">
-              <button class="btn-step" data-action="minus" data-id="${skill.id}">-</button>
-              <div class="node-level-num">${level}</div>
-              <button class="btn-step" data-action="plus" data-id="${skill.id}">+</button>
-            </div>
+          <!-- 每一個 Y 軸代表一個橫向 Row -->
+          <div class="tree-row" data-y="${yKey}">
+            ${skillsInRow.map(skill => {
+              const level = allocatedPoints[skill.id] || 0
+              
+              let isLocked = false
+              if (skill.req_skill_id) {
+                const reqLevel = allocatedPoints[skill.req_skill_id] || 0
+                if (reqLevel < skill.req_skill_level) isLocked = true
+              }
+
+              return `
+                <div class="skill-tree-node ${isLocked ? 'locked' : ''}" style="grid-column-start: ${skill.grid_x || 1};">
+                  <div class="node-icon-box" data-id="${skill.id}">
+                    <img src="${skill.icon_url || defaultIcon}" alt="${skill.name}">
+                  </div>
+                  <div class="node-control-box">
+                    <button class="btn-step" data-action="minus" data-id="${skill.id}">-</button>
+                    <div class="node-level-num">${level}</div>
+                    <button class="btn-step" data-action="plus" data-id="${skill.id}">+</button>
+                  </div>
+                </div>
+              `
+            }).join('')}
           </div>
         `
       }).join('')}
