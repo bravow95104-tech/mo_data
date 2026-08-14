@@ -406,6 +406,11 @@
         <div class="nav-group">其他</div>
         <div class="nav-item" data-page="garbage"><i class="fas fa-trash-alt"></i> 垃圾名聲</div>
         <div class="nav-item" data-page="beautiful"><i class="fas fa-cut"></i> 美容院</div>
+
+        <div class="nav-group">技能</div>
+        <div class="nav-item" data-page="jobs"><i class="fas fa-trash-alt"></i> 職業資料管理</div>
+        <div class="nav-item" data-page="skills"><i class="fas fa-cut"></i> 技能主資料管理</div>
+        <div class="nav-item" data-page="skill_levels"><i class="fas fa-cut"></i> 技能各等級數據管理</div>
         
         <div class="nav-group">系統</div>
         <div class="nav-item" data-page="game_systems"><i class="fas fa-file-alt"></i> 遊戲系統清單管理</div>
@@ -524,6 +529,84 @@
     let isDirty = false; // 🚀 追蹤資料是否被修改
     let inactivityTimer;
 
+    let relationDataCache = {};
+
+// 載入當前表格所有設定了 relation 的目標資料表
+async function loadRelationData() {
+    const config = TABLE_CONFIGS[currentTable];
+    relationDataCache = {};
+
+    for (const field of config.fields) {
+        if (field.relation) {
+            const targetKey = field.relation.targetTable;
+            const targetConfig = TABLE_CONFIGS[targetKey];
+            if (targetConfig) {
+                // 從 Supabase 抓取 skills 表的資料
+                const { data, error } = await supabase.from(targetConfig.tableName).select('*');
+                if (!error && data) {
+                    relationDataCache[targetKey] = data;
+                }
+            }
+        }
+    }
+}
+
+// 根據 ID 抓取 skill 的名稱
+function getRelationName(field, idValue) {
+    if (!field.relation || !relationDataCache[field.relation.targetTable]) {
+        return idValue;
+    }
+    const targetData = relationDataCache[field.relation.targetTable];
+    const match = targetData.find(item => String(item[field.relation.idField]) === String(idValue));
+    // 找到就顯示「技能名稱 (ID: x)」，找不到則提示未找到
+    return match ? `${match[field.relation.nameField]} (ID: ${idValue})` : `${idValue} (未知技能)`;
+}
+async function loadTableData() {
+    const config = TABLE_CONFIGS[currentTable];
+    
+    // 💡 載入關聯表（如 skills）的最新資料
+    await loadRelationData();
+
+    // 抓取 skill_levels 資料
+    const { data, error } = await supabase.from(config.tableName).select('*').order('id', { ascending: true });
+    if (error) {
+        alert('載入失敗: ' + error.message);
+        return;
+    }
+    
+    allData = data || [];
+    renderTable();
+}
+
+function renderTable() {
+    const config = TABLE_CONFIGS[currentTable];
+    const tbody = document.getElementById('table-body');
+    tbody.innerHTML = '';
+
+    allData.forEach(row => {
+        const tr = document.createElement('tr');
+        
+        let cellsHTML = config.displayFields.map(fieldId => {
+            let val = row[fieldId] ?? '';
+            const fieldConfig = config.fields.find(f => f.id === fieldId);
+            
+            // 💡 如果該欄位有設定 relation (如 skill_id)，轉成技能名稱顯示！
+            if (fieldConfig && fieldConfig.relation && val !== '') {
+                val = `<span style="font-weight:bold; color:#2563eb;">${getRelationName(fieldConfig, val)}</span>`;
+            }
+
+            return `<td>${val}</td>`;
+        }).join('');
+
+        tr.innerHTML = cellsHTML + `
+            <td>
+                <button onclick="openEditModal(${row.id})" class="btn-edit">編輯</button>
+                <button onclick="deleteData(${row.id})" class="btn-delete">刪除</button>
+            </td>
+        `;
+        tbody.appendChild(tr);
+    });
+}
     // ... (resetInactivityTimer, setupActivityListeners, checkAuth etc. unchanged)
 
     // 重設閒置計時器

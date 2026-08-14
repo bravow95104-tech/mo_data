@@ -590,27 +590,41 @@ export const TABLE_CONFIGS = {
         ]
     },
     skill_levels: {
-        title: '技能各等級數據管理',
-        tableName: 'skill_levels',
-        tableCols: ['技能ID', '等級', '冷卻(s)', 'MP消耗', '威力%', '操作'],
-        displayFields: ['skill_id', 'level', 'cooldown', 'mp_cost', 'power_rate'],
-        fields: [
-            { id: 'skill_id', label: '對應技能ID (對應 skills.id)', type: 'text', required: true, grid: 1, group: '核心設定' },
-            { id: 'level', label: '技能等級 (1-10)', type: 'number', required: true, grid: 1, group: '核心設定' },
-            { id: 'sort_id', label: '顯示順序', type: 'number', grid: 1, group: '核心設定' },
+    title: '技能各等級數據管理',
+    tableName: 'skill_levels',
+    // 💡 1. 將表頭名稱改成更直覺的名稱
+    tableCols: ['所屬技能', '等級', '冷卻(s)', 'MP消耗', '威力%', '操作'],
+    displayFields: ['skill_id', 'level', 'cooldown', 'mp_cost', 'power_rate'],
+    fields: [
+        { 
+            id: 'skill_id', 
+            label: '對應技能', 
+            type: 'select', // 💡 2. 改為下拉選單類型
+            required: true, 
+            grid: 1, 
+            group: '核心設定',
+            // 💡 3. 新增關聯對照設定
+            relation: {
+                targetTable: 'skills', // 對照 TABLE_CONFIGS 中的 skills 設定
+                idField: 'id',         // 對照的欄位 ID
+                nameField: 'name'      // 要抓取顯示的技能名稱欄位
+            }
+        },
+        { id: 'level', label: '技能等級 (1-10)', type: 'number', required: true, grid: 1, group: '核心設定' },
+        { id: 'sort_id', label: '顯示順序', type: 'number', grid: 1, group: '核心設定' },
 
-            { id: 'cooldown', label: '冷卻時間 (秒)', type: 'number', grid: 1, group: '消耗與冷卻' },
-            { id: 'mp_cost', label: 'MP 消耗', type: 'number', grid: 1, group: '消耗與冷卻' },
-            { id: 'hp_cost', label: 'HP 消耗', type: 'number', grid: 1, group: '消耗與冷卻' },
-            { id: 'sp_cost', label: 'SP 消耗', type: 'number', grid: 1, group: '消耗與冷卻' },
+        { id: 'cooldown', label: '冷卻時間 (秒)', type: 'number', grid: 1, group: '消耗與冷卻' },
+        { id: 'mp_cost', label: 'MP 消耗', type: 'number', grid: 1, group: '消耗與冷卻' },
+        { id: 'hp_cost', label: 'HP 消耗', type: 'number', grid: 1, group: '消耗與冷卻' },
+        { id: 'sp_cost', label: 'SP 消耗', type: 'number', grid: 1, group: '消耗與冷卻' },
 
-            { id: 'cast_time', label: '吟唱/施法時間 (秒)', type: 'number', grid: 1, group: '效果數值' },
-            { id: 'duration', label: '持續時間 (秒)', type: 'number', grid: 1, group: '效果數值' },
-            { id: 'power_rate', label: '威力倍率/傷害 (%)', type: 'text', grid: 1, group: '效果數值' },
-            { id: 'target_count', label: '影響目標數量', type: 'number', grid: 1, group: '效果數值' },
+        { id: 'cast_time', label: '吟唱/施法時間 (秒)', type: 'number', grid: 1, group: '效果數值' },
+        { id: 'duration', label: '持續時間 (秒)', type: 'number', grid: 1, group: '效果數值' },
+        { id: 'power_rate', label: '威力倍率/傷害 (%)', type: 'text', grid: 1, group: '效果數值' },
+        { id: 'target_count', label: '影響目標數量', type: 'number', grid: 1, group: '效果數值' },
 
-            { id: 'description', label: '該等級專屬說明', type: 'textarea', grid: 3, group: '額外說明' },
-            { id: 'extra_data', label: '額外 JSON 數據', type: 'textarea', grid: 3, group: '額外說明' }
-        ]
-    },
+        { id: 'description', label: '該等級專屬說明', type: 'textarea', grid: 3, group: '額外說明' },
+        { id: 'extra_data', label: '額外 JSON 數據', type: 'textarea', grid: 3, group: '額外說明' }
+    ]
+}
 };
