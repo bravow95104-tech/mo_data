@@ -234,50 +234,109 @@ function renderTabTree() {
 
 // 動態繪製 SVG 畫線函數
 function drawLines() {
-  const svg = document.getElementById('treeSvg')
-  const grid = document.getElementById('skillGrid')
-  if (!svg || !grid) return
+  const svg = document.getElementById('skillLinesSvg')
+  if (!svg) return
+  svg.innerHTML = '' // 清空舊線
 
-  const activeSkills = allSkills.filter(s => (s.skill_type || '通用') === currentTab)
-  let svgPaths = ''
-
-  activeSkills.forEach(skill => {
-    if (!skill.req_skill_id) return
-
-    // 找到目標 DOM 與前置 DOM
-    const currentEl = document.getElementById(`node-${skill.id}`)
-    const parentEl = document.getElementById(`node-${skill.req_skill_id}`)
-
-    if (!currentEl || !parentEl) return
-
-    // 直接取得相對於 skill-tree-wrapper 的物理像素位置
-    const parentIcon = parentEl.querySelector('.node-icon-box')
-    const currentIcon = currentEl.querySelector('.node-icon-box')
-
-    if (!parentIcon || !currentIcon) return
-
-    // 計算前置技能底部中央像素
-    const startX = parentEl.offsetLeft + parentIcon.offsetLeft + (parentIcon.offsetWidth / 2)
-    const startY = parentEl.offsetTop + parentIcon.offsetTop + parentIcon.offsetHeight
-
-    // 計算目標技能頂部中央像素
-    const endX = currentEl.offsetLeft + currentIcon.offsetLeft + (currentIcon.offsetWidth / 2)
-    const endY = currentEl.offsetTop + currentIcon.offsetTop
-
-    const pX = parseInt(currentEl.dataset.x)
-    const pParentX = parseInt(parentEl.dataset.x)
-
-    if (pX === pParentX) {
-      // 同一欄：直線向下 (自動延伸長度)
-      svgPaths += `<path d="M ${startX} ${startY} L ${endX} ${endY}" stroke="#8a6d4b" stroke-width="2" fill="none" />`
-    } else {
-      // 跨欄：拐角折線 (先下、後橫折、再下)
-      const midY = startY + (endY - startY) / 2
-      svgPaths += `<path d="M ${startX} ${startY} V ${midY} H ${endX} V ${endY}" stroke="#8a6d4b" stroke-width="2" fill="none" />`
+  // 1. 將技能依 parent_id 分組
+  const parentMap = {}
+  currentTabSkills.forEach(skill => {
+    if (skill.parent_id) {
+      if (!parentMap[skill.parent_id]) parentMap[skill.parent_id] = []
+      parentMap[skill.parent_id].push(skill)
     }
   })
 
-  svg.innerHTML = svgPaths
+  // 2. 遍歷每個父技能，繪製連接線
+  Object.keys(parentMap).forEach(parentId => {
+    const parentNode = document.querySelector(`[data-id="${parentId}"]`)
+    if (!parentNode) return
+
+    const children = parentMap[parentId]
+    const parentRect = parentNode.getBoundingClientRect()
+    const containerRect = svg.getBoundingClientRect()
+
+    // 父技能底部中央座標
+    const px = parentRect.left + parentRect.width / 2 - containerRect.left
+    const py = parentRect.bottom - containerRect.top
+
+    // 如果只有一個子技能，直接畫 straight line 或 L 型線
+    if (children.length === 1) {
+      const childNode = document.querySelector(`[data-id="${children[0].id}"]`)
+      if (childNode) {
+        const cRect = childNode.getBoundingClientRect()
+        const cx = cRect.left + cRect.width / 2 - containerRect.left
+        const cy = cRect.top - containerRect.top
+        
+        // 判斷是正下方還是斜向
+        if (Math.abs(px - cx) < 10) {
+          createLine(svg, px, py, cx, cy) // 直線
+        } else {
+          // L 型折線
+          const midY = py + (cy - py) / 2
+          createPath(svg, `M ${px} ${py} V ${midY} H ${cx} V ${cy}`)
+        }
+      }
+      return
+    }
+
+    // 🔥 如果有多個子技能（如合體技樹狀圖）：畫主幹線分叉
+    // 找出所有子技能的最頂與最底 Y 座標
+    let minCy = Infinity, maxCy = -Infinity
+    const childCoords = []
+
+    children.forEach(child => {
+      const cNode = document.querySelector(`[data-id="${child.id}"]`)
+      if (cNode) {
+        const cRect = cNode.getBoundingClientRect()
+        const cx = cRect.left - containerRect.left // 連到子技能左側
+        const cy = cRect.top + cRect.height / 2 - containerRect.top
+        childCoords.push({ cx, cy })
+        if (cy < minCy) minCy = cy
+        if (cy > maxCy) maxCy = cy
+      }
+    })
+
+    if (childCoords.length === 0) return
+
+    // 主幹豎線的 X 軸位置 (介於父技能與子技能之間)
+    const midX = px + 30 
+
+    // A. 父技能向下連到主幹
+    let pathD = `M ${px} ${py} V ${minCy - 15} H ${midX}`
+
+    // B. 主幹垂直豎線 (從第一個子技能高度連到最後一個)
+    pathD += ` V ${maxCy}`
+
+    // C. 從主幹橫向連到各個子技能
+    childCoords.forEach(({ cx, cy }) => {
+      pathD += ` M ${midX} ${cy} H ${cx}`
+    })
+
+    createPath(svg, pathD)
+  })
+}
+
+// 輔助函式：創建 SVG Path
+function createPath(svg, d) {
+  const path = document.createElementNS('http://www.w3.org/2000/svg', 'path')
+  path.setAttribute('d', d)
+  path.setAttribute('stroke', '#d4af37') // 金色線條
+  path.setAttribute('stroke-width', '2')
+  path.setAttribute('fill', 'none')
+  svg.appendChild(path)
+}
+
+// 輔助函式：創建直線
+function createLine(svg, x1, y1, x2, y2) {
+  const line = document.createElementNS('http://www.w3.org/2000/svg', 'line')
+  line.setAttribute('x1', x1)
+  line.setAttribute('y1', y1)
+  line.setAttribute('x2', x2)
+  line.setAttribute('y2', y2)
+  line.setAttribute('stroke', '#d4af37')
+  line.setAttribute('stroke-width', '2')
+  svg.appendChild(line)
 }
 
 // 點數加減邏輯 (含跨職業自動前置補點)
