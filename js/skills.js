@@ -18,6 +18,8 @@ const treeContainer = document.getElementById('treeContainer')
 const remainingPointsEl = document.getElementById('remainingPoints')
 const resetBtn = document.getElementById('resetBtn')
 const tooltip = document.getElementById('tooltip')
+const usedPointsEl = document.getElementById('usedPoints')
+const baseJobPointsTextEl = document.getElementById('baseJobPointsText') // 若有加子標籤的話
 
 async function init() {
   await fetchJobs()
@@ -127,6 +129,31 @@ function renderTabs() {
 
 // 渲染技能樹 (含 DOM 實體座標精準算線)
 function renderTabTree() {
+    // 1. 計算點數
+  const totalUsed = 200 - remainingPoints // 總已點點數
+
+  // 計算「基礎職業」累積點數 (對照 120 點門檻)
+  let baseJobUsed = 0
+  allSkills.forEach(s => {
+    if (s.job_id === currentParentJobId) {
+      baseJobUsed += (allocatedPoints[s.id] || 0)
+    }
+  })
+
+  // 2. 更新 DOM 顯示
+  if (remainingPointsEl) remainingPointsEl.innerText = remainingPoints
+  if (usedPointsEl) usedPointsEl.innerText = totalUsed
+  
+  if (baseJobPointsTextEl) {
+    baseJobPointsTextEl.innerText = `(基礎: ${baseJobUsed}/120)`
+    // 如果基礎點數已經滿 120，可以順便變色 highlight
+    if (baseJobUsed >= 120) {
+      baseJobPointsTextEl.style.color = '#00ff88' // 綠色代表達標
+    } else {
+      baseJobPointsTextEl.style.color = '#aaa'
+    }
+  }
+
   if (remainingPointsEl) remainingPointsEl.innerText = remainingPoints
 
   const activeSkills = allSkills.filter(s => (s.skill_type || '通用') === currentTab)

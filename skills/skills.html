@@ -25,8 +25,24 @@
       </div>
       <div class="points-badge">
         <span class="point-label">POINT</span>
-        <span id="remainingPoints" class="point-value">120</span>
+        <span id="remainingPoints" class="point-value">200</span>
       </div>
+      <!-- 範例：放在 POINT 旁邊 -->
+<div class="point-status-bar">
+  <!-- 新增：已點點數 -->
+  <div class="point-badge used">
+    <span class="label">已用點數</span>
+    <span class="value" id="usedPoints">0</span>
+    <!-- 選擇性：加上基礎職累積提示，方便對照 120 點門檻 -->
+    <span class="sub-label" id="baseJobPointsText">(基礎: 0/120)</span>
+  </div>
+
+  <!-- 原本：剩餘點數 -->
+  <div class="point-badge remaining">
+    <span class="label">POINT</span>
+    <span class="value" id="remainingPoints">200</span>
+  </div>
+</div>
       <button id="resetBtn" class="btn-reset">重置</button>
     </div>
 
