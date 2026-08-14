@@ -237,7 +237,7 @@ currentTabSkills = allSkills.filter(s => (s.skill_type || '通用') === currentT
 })
 }
 
-// 動態繪製 SVG 畫線函數 (縱向技能樹專用精準版)
+// 動態繪製 SVG 畫線函數 (嚴格限定 Icon 邊界 + 避免橫向溢出版)
 function drawLines() {
   const svg = document.getElementById('skillLinesSvg')
   if (!svg) return
@@ -261,69 +261,69 @@ function drawLines() {
 
   // 2. 遍歷每個父技能，繪製連接線
   Object.keys(parentMap).forEach(parentId => {
-    const parentNode = document.querySelector(`.node-icon-box[data-id="${parentId}"]`) 
-                       || document.getElementById(`node-${parentId}`)
-    if (!parentNode) return
+    // ⚠️ 關鍵 1：必須只抓取 .node-icon-box (圖示本身)，不要抓到包含按鈕的 outer node
+    const parentBox = document.querySelector(`.node-icon-box[data-id="${parentId}"]`)
+    if (!parentBox) return
 
     const children = parentMap[parentId]
-    const parentRect = parentNode.getBoundingClientRect()
+    const parentRect = parentBox.getBoundingClientRect()
     const containerRect = svg.getBoundingClientRect()
 
-    // 父技能「正下方中央」座標
+    // 父技能「圖片正下方中央」
     const px = parentRect.left + parentRect.width / 2 - containerRect.left
     const py = parentRect.bottom - containerRect.top
 
-    // A. 一對一連線 (直向下連)
-    if (children.length === 1) {
-      const childNode = document.querySelector(`.node-icon-box[data-id="${children[0].id}"]`)
-                        || document.getElementById(`node-${children[0].id}`)
-      if (childNode) {
-        const cRect = childNode.getBoundingClientRect()
-        // 子技能「正上方中央」座標
+    // 收集所有子技能的 Icon 正確座標
+    const childCoords = []
+    children.forEach(child => {
+      const childBox = document.querySelector(`.node-icon-box[data-id="${child.id}"]`)
+      if (childBox) {
+        const cRect = childBox.getBoundingClientRect()
+        // 子技能「圖片正上方中央」
         const cx = cRect.left + cRect.width / 2 - containerRect.left
         const cy = cRect.top - containerRect.top
-
-        // 如果 X 軸幾乎重合，畫垂直直線；否則畫 ⚡ 折線
-        if (Math.abs(px - cx) < 5) {
-          createLine(svg, px, py, cx, cy)
-        } else {
-          const midY = py + (cy - py) / 2
-          createPath(svg, `M ${px} ${py} V ${midY} H ${cx} V ${cy}`)
-        }
-      }
-      return
-    }
-
-    // B. 一對多連線 (向下 T 型 / 樹狀分叉)
-    let minCx = Infinity, maxCx = -Infinity
-    let minCy = Infinity
-    const childCoords = []
-
-    children.forEach(child => {
-      const cNode = document.querySelector(`.node-icon-box[data-id="${child.id}"]`)
-                    || document.getElementById(`node-${child.id}`)
-      if (cNode) {
-        const cRect = cNode.getBoundingClientRect()
-        const cx = cRect.left + cRect.width / 2 - containerRect.left // 頂部中央
-        const cy = cRect.top - containerRect.top
         childCoords.push({ cx, cy })
-
-        if (cx < minCx) minCx = cx
-        if (cx > maxCx) maxCx = cx
-        if (cy < minCy) minCy = cy
       }
     })
 
     if (childCoords.length === 0) return
 
-    // 計算橫向幹線的 Y 軸位置 (位於父技能底部與子技能頂部的正中間)
+    // --- 連線繪製邏輯 ---
+
+    // 情境 A：單一子技能（1對1）
+    if (childCoords.length === 1) {
+      const { cx, cy } = childCoords[0]
+      // X 軸幾乎同一直線 -> 畫垂直線
+      if (Math.abs(px - cx) < 5) {
+        createLine(svg, px, py, cx, cy)
+      } else {
+        // 垂直與橫向 90 度折線 (S型/Z型)
+        const midY = py + (cy - py) / 2
+        createPath(svg, `M ${px} ${py} V ${midY} H ${cx} V ${cy}`)
+      }
+      return
+    }
+
+    // 情境 B：多個子技能（1對多分叉）
+    // ⚠️ 關鍵 2：橫線的左右邊界只到「該父技能所屬的子技能」的最左與最右，決不往外延伸！
+    let minCx = Infinity
+    let maxCx = -Infinity
+    let minCy = Infinity
+
+    childCoords.forEach(({ cx, cy }) => {
+      if (cx < minCx) minCx = cx
+      if (cx > maxCx) maxCx = cx
+      if (cy < minCy) minCy = cy
+    })
+
+    // 中間高度分叉點
     const midY = py + (minCy - py) / 2
 
-    // 1. 父技能往下拉到中間高度
+    // 1. 父技能往下延伸到中間高度
     let pathD = `M ${px} ${py} V ${midY}`
-    // 2. 橫向橫跨最左子技能到最右子技能
+    // 2. 橫線只在該組子技能的 minCx 到 maxCx 之間，不會畫過頭
     pathD += ` M ${minCx} ${midY} H ${maxCx}`
-    // 3. 從橫向幹線往下接到各個子技能頂部
+    // 3. 橫線向下接到各個子技能頂部
     childCoords.forEach(({ cx, cy }) => {
       pathD += ` M ${cx} ${midY} V ${cy}`
     })
