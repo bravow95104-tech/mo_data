@@ -241,7 +241,7 @@ function drawLines() {
   svg.innerHTML = svgPaths
 }
 
-// 點數加減邏輯
+// 點數加減邏輯 (含跨職業自動前置補點)
 function updatePoint(skillId, delta) {
   const skill = allSkills.find(s => s.id === skillId)
   if (!skill) return
@@ -250,29 +250,78 @@ function updatePoint(skillId, delta) {
   const maxLevel = skill.max_level || 10
   const newLevel = currentLevel + delta
 
-  // 1. 退點限制：不能低於 0
+  // 1. 退點限制
   if (newLevel < 0) return
 
-  // 2. 加點限制：不能超過單一技能上限
+  // 2. 單技能上限
   if (delta > 0 && newLevel > maxLevel) return
 
-  // 3. 剩餘點數檢查
-  if (delta > 0 && remainingPoints <= 0) return
+  // 3. 🔥 加點時的「自動前置補點」與「轉職門檻」檢查
+  if (delta > 0) {
+    const requiredAdds = {}
 
-  // 4. 🔥 轉職技能解鎖門檻檢查 (基礎技能累積需滿 120 點)
-  const isAdvSkill = skill.job_id !== currentParentJobId // 判斷是否為轉職後技能
-  const totalAllocated = 200 - remainingPoints          // 目前已使用的總點數
+    // 遞迴收集所有未達標的前置技能 (可跨基礎/轉職)
+    function collectPrereqs(targetSkillId) {
+      const target = allSkills.find(s => s.id === targetSkillId)
+      if (!target || !target.req_skill_id) return
 
-  if (delta > 0 && isAdvSkill && totalAllocated < 120) {
-    alert(`轉職技能需要先在基礎/進階通用技能投資滿 120 點！（目前已投資 ${totalAllocated}/120 點）`)
-    return
+      const parentId = target.req_skill_id
+      const minReqLevel = target.req_skill_level || 1
+      const currentParentLevel = (allocatedPoints[parentId] || 0) + (requiredAdds[parentId] || 0)
+
+      if (currentParentLevel < minReqLevel) {
+        const needed = minReqLevel - currentParentLevel
+        requiredAdds[parentId] = (requiredAdds[parentId] || 0) + needed
+      }
+
+      collectPrereqs(parentId)
+    }
+
+    collectPrereqs(skillId)
+
+    // 計算完成此技能與所有前置補點共需幾點
+    let totalNeededPoints = delta
+    Object.values(requiredAdds).forEach(pts => totalNeededPoints += pts)
+
+    // A. 剩餘總點數檢查
+    if (remainingPoints < totalNeededPoints) {
+      alert(`點數不足！完成此技能及其前置需求共需要 ${totalNeededPoints} 點（目前剩餘 ${remainingPoints} 點）。`)
+      return
+    }
+
+    // B. 🔥 檢查點擊的是否為轉職技能 (含轉職通用)
+    const isAdvSkill = skill.job_id !== currentParentJobId
+
+    if (isAdvSkill) {
+      // 計算「基礎職業技能」在補完點後累積消耗了多少點
+      let baseJobAllocated = 0
+      allSkills.forEach(s => {
+        if (s.job_id === currentParentJobId) {
+          const currentPts = allocatedPoints[s.id] || 0
+          const addPts = requiredAdds[s.id] || 0
+          baseJobAllocated += (currentPts + addPts)
+        }
+      })
+
+      // 基礎技能累積未滿 120 點，不給點轉職技能
+      if (baseJobAllocated < 120) {
+        alert(`無法點擊轉職技能！基礎職業技能累積需滿 120 點（補點後目前僅 ${baseJobAllocated}/120 點）。`)
+        return
+      }
+    }
+
+    // C. 執行自動補點
+    for (const [reqId, pts] of Object.entries(requiredAdds)) {
+      allocatedPoints[reqId] = (allocatedPoints[reqId] || 0) + pts
+      remainingPoints -= pts
+    }
   }
 
-  // 5. 更新點數
+  // 4. 更新目標技能點數
   allocatedPoints[skillId] = newLevel
   remainingPoints -= delta
 
-  // 重新渲染畫面
+  // 5. 重新渲染
   renderTabTree()
 }
 
