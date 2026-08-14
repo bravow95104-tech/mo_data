@@ -579,14 +579,15 @@ export const TABLE_CONFIGS = {
             { id: 'job_id', label: '對應職業ID (對應 jobs.id)', type: 'text', required: true, grid: 1, group: '基礎資訊' },
             { id: 'sort_id', label: '顯示順序', type: 'number', grid: 1, group: '基礎資訊' },
 
-            { id: 'type', label: '技能類型', type: 'select', options: ['主動', '被動', '狀態', '生活'], grid: 1, group: '樹狀設定' },
+            { id: 'activation_type', label: '技能類型', type: 'text', grid: 1, group: '樹狀設定' },
             { id: 'max_level', label: '最高等級', type: 'number', grid: 1, group: '樹狀設定' },
-            { id: 'req_level', label: '需求角色等級', type: 'number', grid: 1, group: '樹狀設定' },
-            { id: 'prereq_skills', label: '前置技能需求', type: 'text', placeholder: '如: sk_sw_01:3', grid: 1, group: '樹狀設定' },
+            { id: 'req_character_level', label: '需求角色等級', type: 'number', grid: 1, group: '樹狀設定' },
+            { id: 'req_skill_id', label: '前置技能需求', type: 'text', placeholder: '如: sk_sw_01:3', grid: 1, group: '樹狀設定' },
+            { id: 'req_skill_level', label: '前置技能需求等級', type: 'text', placeholder: '如: sk_sw_01:3', grid: 1, group: '樹狀設定' },
 
             { id: 'grid_x', label: '網格 X 座標 (技能樹用)', type: 'number', grid: 1, group: '技能樹排版' },
             { id: 'grid_y', label: '網格 Y 座標 (技能樹用)', type: 'number', grid: 1, group: '技能樹排版' },
-            { id: 'icon_url', label: '圖示路徑/名稱', type: 'text', grid: 2, group: '技能樹排版' },
+            { id: 'icon_url', label: '圖示路徑/名稱(無作用)', type: 'text', grid: 2, group: '技能樹排版' },
 
             { id: 'description', label: '技能簡介', type: 'textarea', grid: 3, group: '其他' }
         ]
