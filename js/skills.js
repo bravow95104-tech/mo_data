@@ -237,23 +237,21 @@ currentTabSkills = allSkills.filter(s => (s.skill_type || '通用') === currentT
 })
 }
 
-// 動態繪製 SVG 畫線函數 (修復欄位名稱 + 座標精準版)
+// 動態繪製 SVG 畫線函數 (縱向技能樹專用精準版)
 function drawLines() {
   const svg = document.getElementById('skillLinesSvg')
   if (!svg) return
   svg.innerHTML = '' // 清空舊線
 
-  // 防呆：如果 currentTabSkills 沒拿到，自動從 allSkills 現算
   const activeSkills = (currentTabSkills && currentTabSkills.length > 0)
     ? currentTabSkills
     : allSkills.filter(s => (s.skill_type || '通用') === currentTab)
 
   if (!activeSkills || activeSkills.length === 0) return
 
-  // 1. 將技能依前置技能 (同時支援 req_skill_id 與 parent_id) 分組
+  // 1. 將技能依前置技能 (req_skill_id 或 parent_id) 分組
   const parentMap = {}
   activeSkills.forEach(skill => {
-    // 關鍵修復：優先讀取 req_skill_id，若無則讀取 parent_id
     const parentId = skill.req_skill_id || skill.parent_id
     if (parentId) {
       if (!parentMap[parentId]) parentMap[parentId] = []
@@ -263,7 +261,6 @@ function drawLines() {
 
   // 2. 遍歷每個父技能，繪製連接線
   Object.keys(parentMap).forEach(parentId => {
-    // 抓取 DOM 節點 (優先找 icon-box，找不到找 outer node)
     const parentNode = document.querySelector(`.node-icon-box[data-id="${parentId}"]`) 
                        || document.getElementById(`node-${parentId}`)
     if (!parentNode) return
@@ -272,31 +269,34 @@ function drawLines() {
     const parentRect = parentNode.getBoundingClientRect()
     const containerRect = svg.getBoundingClientRect()
 
-    // 父技能底部中央座標
+    // 父技能「正下方中央」座標
     const px = parentRect.left + parentRect.width / 2 - containerRect.left
     const py = parentRect.bottom - containerRect.top
 
-    // 一對一連線
+    // A. 一對一連線 (直向下連)
     if (children.length === 1) {
       const childNode = document.querySelector(`.node-icon-box[data-id="${children[0].id}"]`)
                         || document.getElementById(`node-${children[0].id}`)
       if (childNode) {
         const cRect = childNode.getBoundingClientRect()
+        // 子技能「正上方中央」座標
         const cx = cRect.left + cRect.width / 2 - containerRect.left
         const cy = cRect.top - containerRect.top
-        
-        if (Math.abs(px - cx) < 10) {
-          createLine(svg, px, py, cx, cy) // 垂直直線
+
+        // 如果 X 軸幾乎重合，畫垂直直線；否則畫 ⚡ 折線
+        if (Math.abs(px - cx) < 5) {
+          createLine(svg, px, py, cx, cy)
         } else {
           const midY = py + (cy - py) / 2
-          createPath(svg, `M ${px} ${py} V ${midY} H ${cx} V ${cy}`) // 折線
+          createPath(svg, `M ${px} ${py} V ${midY} H ${cx} V ${cy}`)
         }
       }
       return
     }
 
-    // 一對多樹狀分叉連線
-    let minCy = Infinity, maxCy = -Infinity
+    // B. 一對多連線 (向下 T 型 / 樹狀分叉)
+    let minCx = Infinity, maxCx = -Infinity
+    let minCy = Infinity
     const childCoords = []
 
     children.forEach(child => {
@@ -307,19 +307,25 @@ function drawLines() {
         const cx = cRect.left + cRect.width / 2 - containerRect.left // 頂部中央
         const cy = cRect.top - containerRect.top
         childCoords.push({ cx, cy })
+
+        if (cx < minCx) minCx = cx
+        if (cx > maxCx) maxCx = cx
         if (cy < minCy) minCy = cy
-        if (cy > maxCy) maxCy = cy
       }
     })
 
     if (childCoords.length === 0) return
 
+    // 計算橫向幹線的 Y 軸位置 (位於父技能底部與子技能頂部的正中間)
     const midY = py + (minCy - py) / 2
 
-    // 繪製從父技能往下延伸，橫向分叉到各子技能的階梯線
+    // 1. 父技能往下拉到中間高度
     let pathD = `M ${px} ${py} V ${midY}`
+    // 2. 橫向橫跨最左子技能到最右子技能
+    pathD += ` M ${minCx} ${midY} H ${maxCx}`
+    // 3. 從橫向幹線往下接到各個子技能頂部
     childCoords.forEach(({ cx, cy }) => {
-      pathD += ` M ${px} ${midY} H ${cx} V ${cy}`
+      pathD += ` M ${cx} ${midY} V ${cy}`
     })
 
     createPath(svg, pathD)
