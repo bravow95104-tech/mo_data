@@ -553,9 +553,9 @@ export const TABLE_CONFIGS = {
     // --------------------------------------------------
     // 技能與職業系統管理
     // --------------------------------------------------
-    jobs: {
+    job_classes: {
         title: '職業資料管理',
-        tableName: 'jobs',
+        tableName: 'job_classes',
         tableCols: ['職業ID', '職業名稱', '類型', '排序', '操作'],
         displayFields: ['id', 'name', 'type', 'sort_id'],
         fields: [
