@@ -87,7 +87,7 @@ async function fetchSkills(jobId) {
   // 3. 查詢 Supabase 技能表
   const { data } = await supabase
     .from('skills')
-    .select('*')
+    .select(`*,skill_levels (*)`)
     .in('job_id', targetJobIds)
 
   if (data) {
@@ -470,21 +470,50 @@ function bindEvents() {
     if (action === 'minus') updatePoint(id, -1)
   })
 
-  // 5. Tooltip 滑鼠事件[cite: 5]
-  treeContainer.addEventListener('mouseover', e => {
-    const iconBox = e.target.closest('.node-icon-box')
-    if (!iconBox) return
+  // 5. Tooltip 滑鼠事件
+treeContainer.addEventListener('mouseover', e => {
+  const iconBox = e.target.closest('.node-icon-box')
+  if (!iconBox) return
 
-    const skill = allSkills.find(s => s.id === iconBox.dataset.id)
-    if (!skill || !tooltip) return
+  const skill = allSkills.find(s => s.id === iconBox.dataset.id)
+  if (!skill || !tooltip) return
 
-    document.getElementById('ttName').innerText = skill.name
-    document.getElementById('ttType').innerText = `${skill.skill_type || '技能'} (${skill.activation_type || '主動'})`
-    document.getElementById('ttReq').innerText = skill.req_character_level ? `需求角色等級: Lv.${skill.req_character_level}` : ''
-    document.getElementById('ttDesc').innerText = skill.description || '暫無說明'
+  // 1. 保留你原本的基本欄位
+  document.getElementById('ttName').innerText = skill.name
+  document.getElementById('ttType').innerText = `${skill.skill_type || '技能'} (${skill.activation_type || '主動'})`
+  document.getElementById('ttReq').innerText = skill.req_character_level ? `需求角色等級: Lv.${skill.req_character_level}` : ''
+  
+  // 2. 取得玩家目前點了幾點 (沒點預設看 Lv.1 的數值)
+  const currentLevel = allocatedPoints[skill.id] || 0
+  const displayLevel = currentLevel > 0 ? currentLevel : 1
+  
+  // 3. 從資料庫抓對應等級的數據
+  const levelInfo = skill.skill_levels?.find(l => l.level === displayLevel)
 
-    tooltip.classList.remove('hidden')
-  })
+  // 4. 動態組合「CD/MP/威力」等明細字串
+  let statsHtml = ''
+  if (levelInfo) {
+    const stats = []
+    if (levelInfo.cooldown) stats.push(`CD: ${levelInfo.cooldown}秒`)
+    if (levelInfo.mp_cost) stats.push(`MP: ${levelInfo.mp_cost}`)
+    if (levelInfo.hp_cost) stats.push(`HP: ${levelInfo.hp_cost}`)
+    if (levelInfo.power_rate) stats.push(`威力: ${levelInfo.power_rate}%`)
+
+    if (stats.length > 0) {
+      statsHtml = `<div style="color: #5cbeff; font-weight: bold; margin-bottom: 6px; font-size: 0.8rem;">
+        [Lv.${displayLevel} 效果] ${stats.join(' | ')}
+      </div>`
+    }
+  }
+
+  // 5. 組合最終敘述：如果有等級專屬說明就用等級說明，不然就用預設說明
+  const descText = levelInfo?.description || skill.description || '暫無說明'
+  
+  // 渲染到原本的 ttDesc 中（包含等級數值 + 文字敘述）
+  document.getElementById('ttDesc').innerHTML = statsHtml + descText
+
+  tooltip.classList.remove('hidden')
+})
 
   treeContainer.addEventListener('mousemove', e => {
     if (tooltip && !tooltip.classList.contains('hidden')) {
