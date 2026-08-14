@@ -535,17 +535,12 @@ treeContainer.addEventListener('mouseover', e => {
     }
   }
 
-  // --- D. 拼裝下半部完整 HTML ---
-  // 有等級資料才畫最底部的分隔線
+  // --- D. 拼裝下半部完整 HTML (緊湊組合，防止產生多餘空行) ---
   const hasAnyLevelData = currentStatsHtml || nextStatsHtml
   const bottomDivider = hasAnyLevelData ? '<hr class="tt-divider" style="margin: 8px 0; border-color: #5c3a21;">' : ''
 
-  document.getElementById('ttDesc').innerHTML = `
-    <div>${descText}</div>
-    ${bottomDivider}
-    ${currentStatsHtml}
-    ${nextStatsHtml}
-  `
+  // 壓成一行，避免 Template string 裡面的跳行變成空白元素
+  document.getElementById('ttDesc').innerHTML = `<div>${descText}</div>${bottomDivider}${currentStatsHtml}${nextStatsHtml}`
 
   tooltip.classList.remove('hidden')
 })
