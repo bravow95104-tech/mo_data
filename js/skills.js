@@ -6,8 +6,9 @@ const supabase = createClient(SUPABASE_URL, SUPABASE_KEY)
 // 狀態管理
 let allSkills = []
 let allocatedPoints = {}
-let remainingPoints = 120
+let remainingPoints = 200
 let currentJob = '' 
+let currentParentJobId = ''
 let currentTab = ''
 
 // DOM 快取
@@ -63,6 +64,7 @@ async function fetchSkills(jobId) {
   if (jobData.job_tier === 2) {
     // 取得基礎職 ID (例如 sorcerer)
     const parentJobId = jobData.parent_id 
+    currentParentJobId = parentJobId
     
     // 動態拼出對應的進階共用 ID (例如 sorcerer_adv_common)
     const commonJobId = `${parentJobId}_adv_common`
@@ -71,6 +73,7 @@ async function fetchSkills(jobId) {
     targetJobIds = [parentJobId, jobId, commonJobId]
   } else {
     // 基礎職 (job_tier === 1，例如 sorcerer)：只撈取自己！
+    currentParentJobId = jobId
     targetJobIds = [jobId]
   }
 
@@ -146,6 +149,14 @@ function renderTabTree() {
           if (skill.req_skill_id) {
             const reqLevel = allocatedPoints[skill.req_skill_id] || 0
             if (reqLevel < skill.req_skill_level) isLocked = true
+          }
+
+          // B. 🔥 判斷是否為轉職技能且未達 120 點門檻
+          const totalAllocated = 200 - remainingPoints // 目前已消耗總點數
+          const isAdvSkill = skill.job_id !== currentParentJobId // 非基礎職技能即為轉職技能
+
+          if (isAdvSkill && totalAllocated < 120) {
+            isLocked = true
           }
 
           const x = skill.grid_x ?? skill.x ?? 1
@@ -230,18 +241,38 @@ function drawLines() {
   svg.innerHTML = svgPaths
 }
 
+// 點數加減邏輯
 function updatePoint(skillId, delta) {
   const skill = allSkills.find(s => s.id === skillId)
   if (!skill) return
 
-  const cur = allocatedPoints[skillId] || 0
-  const next = cur + delta
+  const currentLevel = allocatedPoints[skillId] || 0
+  const maxLevel = skill.max_level || 10
+  const newLevel = currentLevel + delta
 
-  if (next < 0 || next > (skill.max_level || 10)) return
+  // 1. 退點限制：不能低於 0
+  if (newLevel < 0) return
+
+  // 2. 加點限制：不能超過單一技能上限
+  if (delta > 0 && newLevel > maxLevel) return
+
+  // 3. 剩餘點數檢查
   if (delta > 0 && remainingPoints <= 0) return
 
-  allocatedPoints[skillId] = next
+  // 4. 🔥 轉職技能解鎖門檻檢查 (基礎技能累積需滿 120 點)
+  const isAdvSkill = skill.job_id !== currentParentJobId // 判斷是否為轉職後技能
+  const totalAllocated = 200 - remainingPoints          // 目前已使用的總點數
+
+  if (delta > 0 && isAdvSkill && totalAllocated < 120) {
+    alert(`轉職技能需要先在基礎/進階通用技能投資滿 120 點！（目前已投資 ${totalAllocated}/120 點）`)
+    return
+  }
+
+  // 5. 更新點數
+  allocatedPoints[skillId] = newLevel
   remainingPoints -= delta
+
+  // 重新渲染畫面
   renderTabTree()
 }
 
@@ -257,13 +288,13 @@ function bindEvents() {
   jobSelect.addEventListener('change', e => {
     currentJob = e.target.value
     allocatedPoints = {}
-    remainingPoints = 120
+    remainingPoints = 200
     fetchSkills(currentJob)
   })
 
   resetBtn.addEventListener('click', () => {
     allocatedPoints = {}
-    remainingPoints = 120
+    remainingPoints = 200
     renderTabTree()
   })
 
