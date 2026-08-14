@@ -561,7 +561,9 @@ export const TABLE_CONFIGS = {
         fields: [
             { id: 'id', label: '職業ID (如 swordsman)', type: 'text', required: true, grid: 1 },
             { id: 'name', label: '職業名稱', type: 'text', required: true, grid: 1 },
-            { id: 'type', label: '職業類型', type: 'select', options: ['基礎職業', '進階職業', '英雄職業'], grid: 1 },
+            { id: 'parent_id', label: '轉職前後', type: 'text', required: true, grid: 1 },
+            { id: 'job_tier', label: '1=轉職前,2=轉職後', type: 'text', required: true, grid: 1 },
+            { id: 'req_first_job_points', label: '原先用意是技能點數(暫無使用)', type: 'text', required: true, grid: 1 },
             { id: 'sort_id', label: '顯示順序', type: 'number', grid: 1 },
             { id: 'description', label: '職業說明', type: 'textarea', grid: 3 }
         ]
