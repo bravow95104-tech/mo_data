@@ -145,10 +145,16 @@ function renderTabTree() {
               <img src="${skill.icon_url || defaultIcon}" alt="${skill.name}">
             </div>
 
-            <!-- 等級與加點按鈕 UI (比照原圖風格) -->
+            <!-- 等級與加/減點按鈕 UI -->
             <div class="node-status-line">
+              <!-- 減號按鈕 (已點過點數才可以退點) -->
+              <button class="btn-step btn-minus ${level <= 0 ? 'disabled' : ''}" 
+                      data-action="minus" data-id="${skill.id}">-</button>
+                      
               <span class="level-text">${level}/${maxLevel}</span>
-              <button class="btn-add ${level >= maxLevel || remainingPoints <= 0 || isLocked ? 'disabled' : ''}" 
+
+              <!-- 加號按鈕 -->
+              <button class="btn-step btn-add ${level >= maxLevel || remainingPoints <= 0 || isLocked ? 'disabled' : ''}" 
                       data-action="plus" data-id="${skill.id}">+</button>
             </div>
             
@@ -196,9 +202,11 @@ function bindEvents() {
     renderTabTree()
   })
 
+  // 點擊事件處理
   treeContainer.addEventListener('click', e => {
     const btn = e.target.closest('.btn-step')
-    if (!btn) return
+    if (!btn || btn.classList.contains('disabled')) return // 避開被禁用的按鈕
+    
     const { action, id } = btn.dataset
     if (action === 'plus') updatePoint(id, 1)
     if (action === 'minus') updatePoint(id, -1)

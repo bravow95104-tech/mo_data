@@ -355,8 +355,8 @@
   text-shadow: 1px 1px 2px #000;
 }
 
-/* 加號 + 按鈕 (還原遊戲小紅黃按鈕感) */
-.simulator-container .btn-add {
+/* 加號/減號 按鈕共用樣式 */
+.simulator-container .btn-step {
   background: #ffcc00;
   color: #d30000;
   border: 1px solid #d30000;
@@ -364,18 +364,25 @@
   font-size: 0.8rem;
   width: 18px;
   height: 18px;
-  line-height: 16px;
+  line-height: 15px;
   text-align: center;
   padding: 0;
   cursor: pointer;
   border-radius: 2px;
 }
 
-.simulator-container .btn-add:hover:not(.disabled) {
+/* 減號稍微做個顏色區隔 */
+.simulator-container .btn-minus {
+  background: #e0e0e0;
+  color: #333;
+  border-color: #666;
+}
+
+.simulator-container .btn-step:hover:not(.disabled) {
   background: #fff;
 }
 
-.simulator-container .btn-add.disabled {
+.simulator-container .btn-step.disabled {
   opacity: 0.3;
   cursor: not-allowed;
   filter: grayscale(100%);
