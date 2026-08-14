@@ -25,20 +25,27 @@
 }
 
 /* 頂部頁籤選單 (Tabs) */
-.simulator-container .tabs-nav {
+.simulator-container #tabsContainer {
   display: flex;
-  justify-content: center;
-  gap: 10px;
+  flex-wrap: nowrap;          /* 強制不換行 */
+  overflow-x: auto;           /* 開啟橫向滾動 */
+  gap: 8px;
+  padding: 6px 12px 10px 12px;/* 左右留安全緩衝，解決「金」字卡邊問題 */
   margin-bottom: 20px;
   border-bottom: 2px solid var(--border-gold);
-  padding-bottom: 10px;
+  box-sizing: border-box;
+  width: 100%;
+  
+  /* 美化滾動條 */
+  scrollbar-width: thin;
+  scrollbar-color: #ffd369 transparent;
 }
 
 .simulator-container .tab-btn {
   background: var(--card-bg);
   color: #a8927a;
   border: 1px solid var(--line-color);
-  padding: 8px 18px;
+  padding: 6px 16px;
   border-radius: 6px 6px 0 0;
   font-weight: bold;
   font-size: 0.95rem;
@@ -46,32 +53,13 @@
   transition: all 0.2s;
   height: auto;
   line-height: normal;
-}
-/* 1. 頁籤容器：加上左右內襯 (padding) 與邊界對齊 */
-#tabsContainer {
-  display: flex;
-  flex-wrap: nowrap;
-  overflow-x: auto;
-  gap: 8px;
   
-  /* 🔥 關鍵：加上左右 Padding，讓第一個與最後一個按鈕不卡邊 */
-  padding: 6px 12px 10px 12px; 
-  
-  box-sizing: border-box;     /* 確保 padding 不會撐破容器 */
-  width: 100%;
-  
-  /* 滾動條美化 */
-  scrollbar-width: thin;
-  scrollbar-color: #ffd369 transparent;
-}
-
-/* 2. 頁籤按鈕：防止按鈕縮小並維持內襯 */
-.tab-btn {
+  /* 防擠壓與不換行設定 */
   white-space: nowrap;        /* 強制文字不換行 */
-  flex-shrink: 0;             /* 強制不縮放按鈕 */
-  padding: 6px 16px;
+  flex-shrink: 0;             /* 強制按鈕不被擠壓變形 */
   box-sizing: border-box;
 }
+
 
 .simulator-container .tab-btn:hover {
   color: var(--text-gold);
