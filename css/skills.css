@@ -249,3 +249,30 @@
   line-height: 1.4;
   white-space: pre-line;
 }
+
+.point-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid #ffd369;
+  padding: 4px 12px;
+  border-radius: 20px;
+  color: #fff;
+  font-size: 14px;
+}
+
+.point-badge.used {
+  border-color: #888; /* 已用點數用較沉穩的顏色 */
+}
+
+.point-badge .value {
+  color: #ffd369;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.point-badge .sub-label {
+  font-size: 12px;
+  margin-left: 4px;
+}
