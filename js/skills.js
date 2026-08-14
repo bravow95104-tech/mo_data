@@ -236,7 +236,7 @@ currentTabSkills = allSkills.filter(s => (s.skill_type || '通用') === currentT
 // 動態繪製 SVG 畫線函數
 function drawLines() {
   const svg = document.getElementById('skillLinesSvg')
-  if (!svg || !currentTabSkills) return
+  if (!svg || !currentTabSkills || currentTabSkills.length === 0) return
   svg.innerHTML = '' // 清空舊線
 
   // 1. 將技能依 parent_id 分組
@@ -250,7 +250,6 @@ function drawLines() {
 
   // 2. 遍歷每個父技能，繪製連接線
   Object.keys(parentMap).forEach(parentId => {
-    // 透過 data-id 抓取圖示框節點
     const parentNode = document.querySelector(`.node-icon-box[data-id="${parentId}"]`)
     if (!parentNode) return
 
@@ -298,7 +297,9 @@ function drawLines() {
 
     if (childCoords.length === 0) return
 
-    const midX = px + 25 // 主幹豎線的 X 軸向右偏移量
+    // 動態計算 midX：取父技能與子技能之間的中心點
+    const firstCX = childCoords[0].cx
+    const midX = px < firstCX ? px + (firstCX - px) / 2 : px - 25
 
     // A. 父技能向下連到主幹
     let pathD = `M ${px} ${py} V ${minCy - 10} H ${midX}`
