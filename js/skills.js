@@ -10,6 +10,7 @@ let remainingPoints = 200
 let currentJob = '' 
 let currentParentJobId = ''
 let currentTab = ''
+let currentTabSkills = []
 
 // DOM 快取
 const tabsContainer = document.getElementById('tabsContainer')
@@ -174,19 +175,19 @@ function renderTabTree() {
 
   if (remainingPointsEl) remainingPointsEl.innerText = remainingPoints
 
-  const activeSkills = allSkills.filter(s => (s.skill_type || '通用') === currentTab)
+currentTabSkills = allSkills.filter(s => (s.skill_type || '通用') === currentTab)
+  
   const defaultIcon = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='54' height='54'><rect width='54' height='54' fill='%23ffd369'/><text x='50%' y='55%' dominant-baseline='middle' text-anchor='middle' font-size='12' font-weight='bold'>SKILL</text></svg>"
-
   // 1. 先繪製 HTML 結構
   treeContainer.innerHTML = `
     <div class="skill-tree-wrapper" style="position: relative;">
-      <!-- SVG 畫線層 -->
-      <svg class="tree-svg-layer" id="treeSvg" style="position: absolute; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:1;">
+      <!-- 🔥 將 SVG ID 統一改為 skillLinesSvg -->
+      <svg class="tree-svg-layer" id="skillLinesSvg" style="position: absolute; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:1;">
       </svg>
 
       <!-- 技能網格層 -->
       <div class="skill-tree-grid" id="skillGrid" style="position: relative; z-index: 2;">
-        ${activeSkills.map(skill => {
+        ${currentTabSkills.map(skill => {
           const level = allocatedPoints[skill.id] || 0
           const maxLevel = skill.max_level || 10
           
@@ -235,7 +236,7 @@ function renderTabTree() {
 // 動態繪製 SVG 畫線函數
 function drawLines() {
   const svg = document.getElementById('skillLinesSvg')
-  if (!svg) return
+  if (!svg || !currentTabSkills) return
   svg.innerHTML = '' // 清空舊線
 
   // 1. 將技能依 parent_id 分組
@@ -249,7 +250,8 @@ function drawLines() {
 
   // 2. 遍歷每個父技能，繪製連接線
   Object.keys(parentMap).forEach(parentId => {
-    const parentNode = document.querySelector(`[data-id="${parentId}"]`)
+    // 透過 data-id 抓取圖示框節點
+    const parentNode = document.querySelector(`.node-icon-box[data-id="${parentId}"]`)
     if (!parentNode) return
 
     const children = parentMap[parentId]
@@ -260,33 +262,30 @@ function drawLines() {
     const px = parentRect.left + parentRect.width / 2 - containerRect.left
     const py = parentRect.bottom - containerRect.top
 
-    // 如果只有一個子技能，直接畫 straight line 或 L 型線
+    // 如果只有一個子技能
     if (children.length === 1) {
-      const childNode = document.querySelector(`[data-id="${children[0].id}"]`)
+      const childNode = document.querySelector(`.node-icon-box[data-id="${children[0].id}"]`)
       if (childNode) {
         const cRect = childNode.getBoundingClientRect()
         const cx = cRect.left + cRect.width / 2 - containerRect.left
         const cy = cRect.top - containerRect.top
         
-        // 判斷是正下方還是斜向
         if (Math.abs(px - cx) < 10) {
           createLine(svg, px, py, cx, cy) // 直線
         } else {
-          // L 型折線
           const midY = py + (cy - py) / 2
-          createPath(svg, `M ${px} ${py} V ${midY} H ${cx} V ${cy}`)
+          createPath(svg, `M ${px} ${py} V ${midY} H ${cx} V ${cy}`) // L 型折線
         }
       }
       return
     }
 
-    // 🔥 如果有多個子技能（如合體技樹狀圖）：畫主幹線分叉
-    // 找出所有子技能的最頂與最底 Y 座標
+    // 多個子技能：畫主幹線分叉
     let minCy = Infinity, maxCy = -Infinity
     const childCoords = []
 
     children.forEach(child => {
-      const cNode = document.querySelector(`[data-id="${child.id}"]`)
+      const cNode = document.querySelector(`.node-icon-box[data-id="${child.id}"]`)
       if (cNode) {
         const cRect = cNode.getBoundingClientRect()
         const cx = cRect.left - containerRect.left // 連到子技能左側
@@ -299,13 +298,12 @@ function drawLines() {
 
     if (childCoords.length === 0) return
 
-    // 主幹豎線的 X 軸位置 (介於父技能與子技能之間)
-    const midX = px + 30 
+    const midX = px + 25 // 主幹豎線的 X 軸向右偏移量
 
     // A. 父技能向下連到主幹
-    let pathD = `M ${px} ${py} V ${minCy - 15} H ${midX}`
+    let pathD = `M ${px} ${py} V ${minCy - 10} H ${midX}`
 
-    // B. 主幹垂直豎線 (從第一個子技能高度連到最後一個)
+    // B. 主幹垂直豎線
     pathD += ` V ${maxCy}`
 
     // C. 從主幹橫向連到各個子技能
