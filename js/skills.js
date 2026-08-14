@@ -230,7 +230,9 @@ currentTabSkills = allSkills.filter(s => (s.skill_type || '通用') === currentT
   `
 
   // 2. 渲染完成後，動態量測 DOM 節點的真實座標並繪製 SVG
-  setTimeout(drawLines, 0)
+  requestAnimationFrame(() => {
+  requestAnimationFrame(drawLines)
+})
 }
 
 // 動態繪製 SVG 畫線函數
@@ -427,6 +429,7 @@ function updatePoint(skillId, delta) {
 }
 
 function bindEvents() {
+  // 1. 頁籤點擊事件[cite: 5]
   tabsContainer.addEventListener('click', e => {
     if (e.target.classList.contains('tab-btn')) {
       currentTab = e.target.dataset.type
@@ -435,6 +438,7 @@ function bindEvents() {
     }
   })
 
+  // 2. 職業下拉選單改變[cite: 5]
   jobSelect.addEventListener('change', e => {
     currentJob = e.target.value
     allocatedPoints = {}
@@ -442,23 +446,24 @@ function bindEvents() {
     fetchSkills(currentJob)
   })
 
+  // 3. 重置按鈕[cite: 5]
   resetBtn.addEventListener('click', () => {
     allocatedPoints = {}
     remainingPoints = 200
     renderTabTree()
   })
 
-  // 點擊事件處理
+  // 4. 技能樹點擊 (+/-)[cite: 5]
   treeContainer.addEventListener('click', e => {
     const btn = e.target.closest('.btn-step')
-    if (!btn || btn.classList.contains('disabled')) return // 避開被禁用的按鈕
+    if (!btn || btn.classList.contains('disabled')) return
     
     const { action, id } = btn.dataset
     if (action === 'plus') updatePoint(id, 1)
     if (action === 'minus') updatePoint(id, -1)
   })
 
-  // Tooltip 滑鼠事件
+  // 5. Tooltip 滑鼠事件[cite: 5]
   treeContainer.addEventListener('mouseover', e => {
     const iconBox = e.target.closest('.node-icon-box')
     if (!iconBox) return
@@ -485,6 +490,11 @@ function bindEvents() {
     if (e.target.closest('.node-icon-box') && tooltip) {
       tooltip.classList.add('hidden')
     }
+  })
+
+  // 🔥 6. 視窗縮放事件 (獨立放在最外層，只綁定一次！)
+  window.addEventListener('resize', () => {
+    requestAnimationFrame(drawLines)
   })
 }
 

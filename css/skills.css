@@ -289,3 +289,28 @@
   font-size: 12px;
   margin-left: 4px;
 }
+
+/* 讓外層容器自動根據內容撐開高度 */
+.simulator-container .skill-tree-wrapper {
+  position: relative;
+  width: 100%;
+  min-height: 400px; /* 設一個基礎最小高度 */
+}
+
+/* 強制 SVG 畫布填滿整個容器，且不要擋到滑鼠點擊 */
+.simulator-container .tree-svg-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1; /* 位於背景層 */
+  overflow: visible; /* 避免線條超出一點點被裁切 */
+}
+
+/* 讓網格層位於 SVG 之上 */
+.simulator-container .skill-tree-grid {
+  position: relative;
+  z-index: 2;
+}
