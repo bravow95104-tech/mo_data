@@ -7,26 +7,7 @@
   --line-color: #8a6d4b;
 }
 
-/* ⚠️ 拿掉 body 的 flex 改動，避免污染 styles.css 的全域頁面佈局 */
-/* 技能樹整體網格 */
-.simulator-container .skill-tree-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 80px); /* 2 欄，每欄 80px */
-  grid-auto-rows: 85px;             /* 每行高度固定 85px */
-  justify-content: center;
-  gap: 20px 50px;                    /* 上下間距 20px，左右間距 50px */
-  padding: 20px;
-}
-
-.simulator-container .grid-skill-node {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: relative;
-  justify-self: center;
-}
-
-/* 技能模擬器主主容器 (增加抗衝突隔離) */
+/* 技能模擬器主容器 */
 .simulator-container {
   background: var(--panel-bg);
   border: 3px solid var(--border-gold);
@@ -35,16 +16,15 @@
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
   width: 100%;
   max-width: 550px;
-  margin: 80px auto 40px auto; /* 使用 margin auto 自動水平居中 */
+  margin: 80px auto 40px auto;
   box-sizing: border-box;
 }
 
-/* 強制把 simulator 內的所有元素 sizing 統一 */
 .simulator-container * {
   box-sizing: border-box;
 }
 
-/* 頁籤選單 (Tabs) */
+/* 頂部頁籤選單 (Tabs) */
 .simulator-container .tabs-nav {
   display: flex;
   justify-content: center;
@@ -64,7 +44,7 @@
   font-size: 0.95rem;
   cursor: pointer;
   transition: all 0.2s;
-  height: auto; /* 防止被全域 styles.css 的 button 高度限制 */
+  height: auto;
   line-height: normal;
 }
 
@@ -80,7 +60,7 @@
   box-shadow: 0 -2px 10px rgba(212, 175, 55, 0.4);
 }
 
-/* 狀態列 */
+/* 狀態控制列 */
 .simulator-container .status-bar {
   display: flex;
   justify-content: space-between;
@@ -128,33 +108,27 @@
   cursor: pointer;
 }
 
-/* 單一乾淨直欄 */
-.simulator-container .skill-single-column {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 28px;
-  padding: 10px 0;
+/* 技能樹大網格容器 (統一固定參數，方便 SVG 動態算線) */
+.simulator-container .skill-tree-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 80px); /* 固定 2 欄，每欄 80px */
+  grid-auto-rows: 85px;                   /* 每列高度固定 85px */
+  justify-content: center;
+  gap: 20px 50px;                          /* Y間距 20px, X間距 50px */
+  padding: 20px;
+  position: relative;
 }
 
-/* 技能節點 */
-.simulator-container .skill-tree-node {
+/* 單個技能節點外殼 */
+.simulator-container .grid-skill-node {
   display: flex;
   flex-direction: column;
   align-items: center;
   position: relative;
+  justify-self: center;
 }
 
-/* 經典向下箭頭連線 */
-.simulator-container .skill-tree-node:not(:last-child)::after {
-  content: '↓';
-  position: absolute;
-  bottom: -24px;
-  color: var(--line-color);
-  font-weight: bold;
-  font-size: 1.2rem;
-}
-
+/* 技能圖示框 */
 .simulator-container .node-icon-box {
   width: 56px;
   height: 56px;
@@ -178,64 +152,70 @@
   display: block;
 }
 
-.simulator-container .node-control-box {
-  display: flex;
-  align-items: center;
-  background: #1a0f0a;
-  border: 1px solid #5c3a21;
-  border-radius: 4px;
-  margin-top: 6px;
-  overflow: hidden;
-}
-
-.simulator-container .node-level-num {
-  padding: 2px 8px;
-  font-weight: bold;
-  color: #fff;
-  font-size: 0.9rem;
-  min-width: 20px;
-  text-align: center;
-}
-
-.simulator-container .btn-step {
-  background: #3d271d;
-  color: var(--text-gold);
-  border: none;
-  width: 22px;
-  height: 22px;
-  padding: 0;
-  line-height: 22px;
-  font-weight: bold;
-  cursor: pointer;
-  border-radius: 0;
-}
-
-.simulator-container .btn-step:hover {
-  background: var(--border-gold);
-  color: #000;
-}
-
-.simulator-container .skill-tree-node.locked .node-icon-box {
+/* 技能鎖定狀態 */
+.simulator-container .grid-skill-node.locked .node-icon-box {
   filter: grayscale(100%);
   opacity: 0.4;
 }
 
-.simulator-container .skill-tree-node.locked .btn-step {
-  opacity: 0.3;
-  cursor: not-allowed;
+/* 等級與按鈕控制列 */
+.simulator-container .node-status-line {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 4px;
 }
 
-/* Tooltip 浮動說明視窗 (獨立在 simulator 外，需獨立設定) */
+.simulator-container .level-text {
+  color: #5cbeff;
+  font-weight: bold;
+  font-size: 0.85rem;
+  text-shadow: 1px 1px 2px #000;
+}
+
+/* 加號與減號按鈕 */
+.simulator-container .btn-step {
+  background: #ffcc00;
+  color: #d30000;
+  border: 1px solid #d30000;
+  font-weight: bold;
+  font-size: 0.8rem;
+  width: 18px;
+  height: 18px;
+  line-height: 15px;
+  text-align: center;
+  padding: 0;
+  cursor: pointer;
+  border-radius: 2px;
+}
+
+.simulator-container .btn-minus {
+  background: #e0e0e0;
+  color: #333;
+  border-color: #666;
+}
+
+.simulator-container .btn-step:hover:not(.disabled) {
+  background: #fff;
+}
+
+.simulator-container .btn-step.disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+  filter: grayscale(100%);
+}
+
+/* Tooltip 浮動說明視窗 */
 .skill-tooltip {
   position: fixed;
-  z-index: 99999; /* 提高權重，確保浮在頂部導航列與所有元件之上 */
+  z-index: 99999;
   background: rgba(26, 15, 10, 0.95);
   border: 2px solid var(--border-gold);
   border-radius: 6px;
   padding: 10px 14px;
   max-width: 260px;
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.9);
-  pointer-events: none; /* 關鍵：避免 Tooltip 擋住滑鼠游標，導致 mouseout / mousemove 閃爍 */
+  pointer-events: none;
   box-sizing: border-box;
 }
 
@@ -267,140 +247,5 @@
   font-size: 0.8rem;
   color: #f0e6d2;
   line-height: 1.4;
-  white-space: pre-line; /* 支援說明文字換行 */
-}
-
-/* 技能樹主容器 (垂直由上到下推疊 Row) */
-.simulator-container .tree-rows-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 32px; /* 每層 Y 之間的垂直距離 */
-  padding: 15px 0;
-}
-
-/* 每一個 Y 軸層級 (橫向由左到右擺放 X 技能) */
-.simulator-container .tree-row {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 40px; /* 同一層內，平行技能 (X1, X2) 之間的橫向間距 */
-  width: 100%;
-  position: relative;
-}
-
-/* 技能節點 */
-.simulator-container .skill-tree-node {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: relative;
-}
-
-/* 向上或向下的連線/箭頭 (非最後一層時呈現) */
-.simulator-container .tree-row:not(:last-child) .skill-tree-node::after {
-  content: '↓';
-  position: absolute;
-  bottom: -26px;
-  color: var(--line-color);
-  font-weight: bold;
-  font-size: 1.1rem;
-}
-
-/* 技能樹整體大網格 (固定 2 欄，縱向無限延伸) */
-.simulator-container .skill-tree-grid {
-  display: grid;
-  grid-template-columns: 80px 80px; /* 固定左右兩欄寬度 */
-  grid-auto-rows: minmax(100px, auto); /* 每層固定高度 */
-  justify-content: center;
-  gap: 20px 40px; /* 縱向間距 20px, 橫向欄位間距 40px */
-  padding: 20px 0;
-  position: relative;
-}
-
-/* 技能節點外殼 */
-.simulator-container .grid-skill-node {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: relative;
-  justify-self: center;
-}
-
-/* 垂直向下連線 (預設連線) */
-.simulator-container .grid-skill-node::before {
-  content: '';
-  position: absolute;
-  top: -22px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 2px;
-  height: 22px;
-  background-color: var(--line-color);
-  z-index: 1;
-}
-
-/* 第 1 層 (Y=1) 不需要向上連線 */
-.simulator-container .grid-skill-node[style*="grid-row: 1"]::before {
-  display: none;
-}
-
-/* 右欄分歧線 (例如刀技修鍊橫向接到左欄的破碎擊) */
-.simulator-container .grid-skill-node.branch-from-left::after {
-  content: '';
-  position: absolute;
-  top: -11px;
-  left: -42px; /* 向左延伸覆蓋兩欄間距 */
-  width: 42px;
-  height: 2px;
-  background-color: var(--line-color);
-  z-index: 1;
-}
-
-/* 等級與加號列 */
-.simulator-container .node-status-line {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  margin-top: 4px;
-}
-
-.simulator-container .level-text {
-  color: #5cbeff;
-  font-weight: bold;
-  font-size: 0.85rem;
-  text-shadow: 1px 1px 2px #000;
-}
-
-/* 加號/減號 按鈕共用樣式 */
-.simulator-container .btn-step {
-  background: #ffcc00;
-  color: #d30000;
-  border: 1px solid #d30000;
-  font-weight: bold;
-  font-size: 0.8rem;
-  width: 18px;
-  height: 18px;
-  line-height: 15px;
-  text-align: center;
-  padding: 0;
-  cursor: pointer;
-  border-radius: 2px;
-}
-
-/* 減號稍微做個顏色區隔 */
-.simulator-container .btn-minus {
-  background: #e0e0e0;
-  color: #333;
-  border-color: #666;
-}
-
-.simulator-container .btn-step:hover:not(.disabled) {
-  background: #fff;
-}
-
-.simulator-container .btn-step.disabled {
-  opacity: 0.3;
-  cursor: not-allowed;
-  filter: grayscale(100%);
+  white-space: pre-line;
 }
