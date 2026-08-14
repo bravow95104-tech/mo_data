@@ -89,6 +89,38 @@ async function fetchSkills(jobId) {
     renderTabTree()
   }
 }
+// 動態渲染技能頁籤 (Tabs)
+function renderTabs() {
+  if (!tabsContainer || !allSkills || allSkills.length === 0) return
+
+  // 1. 從當前職業的所有技能中，收集出不重複的 skill_type 列表
+  const rawTypes = [...new Set(allSkills.map(s => s.skill_type || '通用'))]
+
+  // 2. 頁籤排序邏輯 (可依遊戲習慣自訂順序)
+  const typeOrder = ['武技', '強化技', '五行', '咒術', '符打術', '天壇術', '遁甲學', '通用']
+  const categories = rawTypes.sort((a, b) => {
+    const idxA = typeOrder.indexOf(a)
+    const idxB = typeOrder.indexOf(b)
+    if (idxA !== -1 && idxB !== -1) return idxA - idxB
+    if (idxA !== -1) return -1
+    if (idxB !== -1) return 1
+    return a.localeCompare(b, 'zh-TW')
+  })
+
+  // 3. 如果預設當前頁籤為空，或是當前頁籤不在該職業的分類裡，預設選第一個
+  if (!currentTab || !categories.includes(currentTab)) {
+    currentTab = categories[0]
+  }
+
+  // 4. 渲染 HTML 頁籤按鈕
+  tabsContainer.innerHTML = categories
+    .map(type => `
+      <button class="tab-btn ${type === currentTab ? 'active' : ''}" data-type="${type}">
+        ${type}
+      </button>
+    `)
+    .join('')
+}
 
 // 渲染技能樹 (含 DOM 實體座標精準算線)
 function renderTabTree() {
