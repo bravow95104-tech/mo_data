@@ -208,7 +208,9 @@ currentTabSkills = allSkills.filter(s => (s.skill_type || '通用') === currentT
                  style="grid-column: ${x}; grid-row: ${y};">
               
               <div class="node-icon-box" data-id="${skill.id}">
-                <img src="${skill.icon_url || defaultIcon}" alt="${skill.name}">
+                <img src="/mo_data/pic/skills/${skill.name}.png" 
+       alt="${skill.name}" 
+       onerror="this.onerror=null; this.src='${defaultIcon}';">
               </div>
 
               <div class="node-status-line">
