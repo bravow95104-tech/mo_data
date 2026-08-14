@@ -289,3 +289,94 @@
   font-weight: bold;
   font-size: 1.1rem;
 }
+
+/* 技能樹整體大網格 (固定 2 欄，縱向無限延伸) */
+.simulator-container .skill-tree-grid {
+  display: grid;
+  grid-template-columns: 80px 80px; /* 固定左右兩欄寬度 */
+  grid-auto-rows: minmax(100px, auto); /* 每層固定高度 */
+  justify-content: center;
+  gap: 20px 40px; /* 縱向間距 20px, 橫向欄位間距 40px */
+  padding: 20px 0;
+  position: relative;
+}
+
+/* 技能節點外殼 */
+.simulator-container .grid-skill-node {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  justify-self: center;
+}
+
+/* 垂直向下連線 (預設連線) */
+.simulator-container .grid-skill-node::before {
+  content: '';
+  position: absolute;
+  top: -22px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 22px;
+  background-color: var(--line-color);
+  z-index: 1;
+}
+
+/* 第 1 層 (Y=1) 不需要向上連線 */
+.simulator-container .grid-skill-node[style*="grid-row: 1"]::before {
+  display: none;
+}
+
+/* 右欄分歧線 (例如刀技修鍊橫向接到左欄的破碎擊) */
+.simulator-container .grid-skill-node.branch-from-left::after {
+  content: '';
+  position: absolute;
+  top: -11px;
+  left: -42px; /* 向左延伸覆蓋兩欄間距 */
+  width: 42px;
+  height: 2px;
+  background-color: var(--line-color);
+  z-index: 1;
+}
+
+/* 等級與加號列 */
+.simulator-container .node-status-line {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 4px;
+}
+
+.simulator-container .level-text {
+  color: #5cbeff;
+  font-weight: bold;
+  font-size: 0.85rem;
+  text-shadow: 1px 1px 2px #000;
+}
+
+/* 加號 + 按鈕 (還原遊戲小紅黃按鈕感) */
+.simulator-container .btn-add {
+  background: #ffcc00;
+  color: #d30000;
+  border: 1px solid #d30000;
+  font-weight: bold;
+  font-size: 0.8rem;
+  width: 18px;
+  height: 18px;
+  line-height: 16px;
+  text-align: center;
+  padding: 0;
+  cursor: pointer;
+  border-radius: 2px;
+}
+
+.simulator-container .btn-add:hover:not(.disabled) {
+  background: #fff;
+}
+
+.simulator-container .btn-add.disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+  filter: grayscale(100%);
+}

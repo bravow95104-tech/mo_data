@@ -107,58 +107,51 @@ function renderTabs() {
   `).join('')
 }
 
-// 渲染當前頁籤的技能樹 (支援 XY 橫向並排與縱向延伸)
+// 渲染經典天外風格技能樹
 function renderTabTree() {
   if (remainingPointsEl) remainingPointsEl.innerText = remainingPoints
 
-  // 1. 過濾出當前頁籤的技能
+  // 1. 過濾當前頁籤技能
   const activeSkills = allSkills.filter(s => (s.skill_type || '通用') === currentTab)
-
-  // 2. 按 grid_y (縱向高度) 將技能進行分組 { 1: [skillA, skillB], 2: [skillC] }
-  const rowsGrouped = {}
-  activeSkills.forEach(skill => {
-    const y = skill.grid_y || 1
-    if (!rowsGrouped[y]) rowsGrouped[y] = []
-    rowsGrouped[y].push(skill)
-  })
-
-  // 3. 取得所有出現過的 Y 軸並由小到大排序 (決定由上到下的層級)
-  const sortedYKeys = Object.keys(rowsGrouped).sort((a, b) => Number(a) - Number(b))
 
   const defaultIcon = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='54' height='54'><rect width='54' height='54' fill='%23ffd369'/><text x='50%' y='55%' dominant-baseline='middle' text-anchor='middle' font-size='12' font-weight='bold'>SKILL</text></svg>"
 
-  // 4. 渲染 HTML
+  // 2. 直接繪製大網格容器
   treeContainer.innerHTML = `
-    <div class="tree-rows-container">
-      ${sortedYKeys.map(yKey => {
-        // 同一層內的技能，依據 grid_x 由左到右排序
-        const skillsInRow = rowsGrouped[yKey].sort((a, b) => (a.grid_x || 1) - (b.grid_x || 1))
+    <div class="skill-tree-grid">
+      ${activeSkills.map(skill => {
+        const level = allocatedPoints[skill.id] || 0
+        const maxLevel = skill.max_level || 10
+        
+        // 前置技能判定
+        let isLocked = false
+        if (skill.req_skill_id) {
+          const reqLevel = allocatedPoints[skill.req_skill_id] || 0
+          if (reqLevel < skill.req_skill_level) isLocked = true
+        }
+
+        const x = skill.grid_x || 1
+        const y = skill.grid_y || 1
+
+        // 判斷是否為分歧點 (例如破碎擊 Y=2, X=1 分歧出 刀技修鍊 Y=3, X=2)
+        const isBranchRight = (x === 2 && y === 3) 
 
         return `
-          <!-- 每一個 Y 軸代表一個橫向 Row -->
-          <div class="tree-row" data-y="${yKey}">
-            ${skillsInRow.map(skill => {
-              const level = allocatedPoints[skill.id] || 0
-              
-              let isLocked = false
-              if (skill.req_skill_id) {
-                const reqLevel = allocatedPoints[skill.req_skill_id] || 0
-                if (reqLevel < skill.req_skill_level) isLocked = true
-              }
+          <div class="grid-skill-node ${isLocked ? 'locked' : ''} ${isBranchRight ? 'branch-from-left' : ''}" 
+               style="grid-column: ${x}; grid-row: ${y};">
+            
+            <!-- 技能圖示 -->
+            <div class="node-icon-box" data-id="${skill.id}">
+              <img src="${skill.icon_url || defaultIcon}" alt="${skill.name}">
+            </div>
 
-              return `
-                <div class="skill-tree-node ${isLocked ? 'locked' : ''}" style="grid-column-start: ${skill.grid_x || 1};">
-                  <div class="node-icon-box" data-id="${skill.id}">
-                    <img src="${skill.icon_url || defaultIcon}" alt="${skill.name}">
-                  </div>
-                  <div class="node-control-box">
-                    <button class="btn-step" data-action="minus" data-id="${skill.id}">-</button>
-                    <div class="node-level-num">${level}</div>
-                    <button class="btn-step" data-action="plus" data-id="${skill.id}">+</button>
-                  </div>
-                </div>
-              `
-            }).join('')}
+            <!-- 等級與加點按鈕 UI (比照原圖風格) -->
+            <div class="node-status-line">
+              <span class="level-text">${level}/${maxLevel}</span>
+              <button class="btn-add ${level >= maxLevel || remainingPoints <= 0 || isLocked ? 'disabled' : ''}" 
+                      data-action="plus" data-id="${skill.id}">+</button>
+            </div>
+            
           </div>
         `
       }).join('')}
