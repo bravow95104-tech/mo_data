@@ -90,82 +90,22 @@ async function fetchSkills(jobId) {
   }
 }
 
-// 3. 渲染頂部頁籤
-function renderTabs() {
-  // 取得當前技能池裡所有的 skill_type
-  const types = [...new Set(allSkills.map(s => s.skill_type || '通用'))]
-  
-  // 如果原本選的頁籤不在目前職業的 types 裡，預設切換到第一個頁籤
-  if (!types.includes(currentTab)) {
-    currentTab = types[0] || ''
-  }
-
-  tabsContainer.innerHTML = types.map(type => `
-    <button class="tab-btn ${type === currentTab ? 'active' : ''}" data-type="${type}">
-      ${type}
-    </button>
-  `).join('')
-}
-
-// 渲染技能樹 (含 SVG 自動動態連線)
+// 渲染技能樹 (含 DOM 實體座標精準算線)
 function renderTabTree() {
   if (remainingPointsEl) remainingPointsEl.innerText = remainingPoints
 
-  // 1. 當前頁籤技能
   const activeSkills = allSkills.filter(s => (s.skill_type || '通用') === currentTab)
   const defaultIcon = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='54' height='54'><rect width='54' height='54' fill='%23ffd369'/><text x='50%' y='55%' dominant-baseline='middle' text-anchor='middle' font-size='12' font-weight='bold'>SKILL</text></svg>"
 
-  // 2. 計算網格中的座標像素 (基於格子寬 80、高 85、gap-x 50、gap-y 20)
-  const getPos = (x, y) => {
-    const colWidth = 80 + 50 // 格子寬 + gapX
-    const rowHeight = 85 + 20 // 格子高 + gapY
-    return {
-      // 算出每格圖示正中央的 X 軸像素
-      cx: (x - 1) * colWidth + 40 + 20, // 20 為 padding-left
-      // 圖示頂部與底部的 Y 軸像素
-      topY: (y - 1) * rowHeight + 20, 
-      bottomY: (y - 1) * rowHeight + 56 + 20 // 56 為圖示高度
-    }
-  }
-
-  // 3. 自動計算並產生 SVG 連線 Path
-  let svgPaths = ''
-  activeSkills.forEach(skill => {
-    if (!skill.req_skill_id) return
-
-    // 找到前置技能
-    const parent = activeSkills.find(s => s.id === skill.req_skill_id)
-    if (!parent) return
-
-    const pX = parent.grid_x ?? parent.x ?? 1
-    const pY = parent.grid_y ?? parent.y ?? 1
-    const cX = skill.grid_x ?? skill.x ?? 1
-    const cY = skill.grid_y ?? skill.y ?? 1
-
-    const start = getPos(pX, pY)
-    const end = getPos(cX, cY)
-
-    // 同一欄 (直線向下，不論跨了幾格都會自動拉長)
-    if (pX === cX) {
-      svgPaths += `<path d="M ${start.cx} ${start.bottomY} L ${end.cx} ${end.topY}" stroke="#8a6d4b" stroke-width="2" fill="none" />`
-    } else {
-      // 跨欄/分歧 (折線：先垂直向下、再水平折向目標欄、再垂直接進目標頂部)
-      const midY = start.bottomY + 12 // 拐角轉折處的高度
-      svgPaths += `<path d="M ${start.cx} ${start.bottomY} V ${midY} H ${end.cx} V ${end.topY}" stroke="#8a6d4b" stroke-width="2" fill="none" />`
-    }
-  })
-
-  // 4. 渲染 HTML (包含 SVG 背景層與技能網格)
+  // 1. 先繪製 HTML 結構
   treeContainer.innerHTML = `
     <div class="skill-tree-wrapper" style="position: relative;">
-      
-      <!-- 動態畫線 SVG 層 -->
-      <svg class="tree-svg-layer" style="position: absolute; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:1;">
-        ${svgPaths}
+      <!-- SVG 畫線層 -->
+      <svg class="tree-svg-layer" id="treeSvg" style="position: absolute; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:1;">
       </svg>
 
       <!-- 技能網格層 -->
-      <div class="skill-tree-grid" style="position: relative; z-index: 2;">
+      <div class="skill-tree-grid" id="skillGrid" style="position: relative; z-index: 2;">
         ${activeSkills.map(skill => {
           const level = allocatedPoints[skill.id] || 0
           const maxLevel = skill.max_level || 10
@@ -181,6 +121,8 @@ function renderTabTree() {
 
           return `
             <div class="grid-skill-node ${isLocked ? 'locked' : ''}" 
+                 id="node-${skill.id}"
+                 data-x="${x}" data-y="${y}"
                  style="grid-column: ${x}; grid-row: ${y};">
               
               <div class="node-icon-box" data-id="${skill.id}">
@@ -203,6 +145,57 @@ function renderTabTree() {
       </div>
     </div>
   `
+
+  // 2. 渲染完成後，動態量測 DOM 節點的真實座標並繪製 SVG
+  setTimeout(drawLines, 0)
+}
+
+// 動態繪製 SVG 畫線函數
+function drawLines() {
+  const svg = document.getElementById('treeSvg')
+  const grid = document.getElementById('skillGrid')
+  if (!svg || !grid) return
+
+  const activeSkills = allSkills.filter(s => (s.skill_type || '通用') === currentTab)
+  let svgPaths = ''
+
+  activeSkills.forEach(skill => {
+    if (!skill.req_skill_id) return
+
+    // 找到目標 DOM 與前置 DOM
+    const currentEl = document.getElementById(`node-${skill.id}`)
+    const parentEl = document.getElementById(`node-${skill.req_skill_id}`)
+
+    if (!currentEl || !parentEl) return
+
+    // 直接取得相對於 skill-tree-wrapper 的物理像素位置
+    const parentIcon = parentEl.querySelector('.node-icon-box')
+    const currentIcon = currentEl.querySelector('.node-icon-box')
+
+    if (!parentIcon || !currentIcon) return
+
+    // 計算前置技能底部中央像素
+    const startX = parentEl.offsetLeft + parentIcon.offsetLeft + (parentIcon.offsetWidth / 2)
+    const startY = parentEl.offsetTop + parentIcon.offsetTop + parentIcon.offsetHeight
+
+    // 計算目標技能頂部中央像素
+    const endX = currentEl.offsetLeft + currentIcon.offsetLeft + (currentIcon.offsetWidth / 2)
+    const endY = currentEl.offsetTop + currentIcon.offsetTop
+
+    const pX = parseInt(currentEl.dataset.x)
+    const pParentX = parseInt(parentEl.dataset.x)
+
+    if (pX === pParentX) {
+      // 同一欄：直線向下 (自動延伸長度)
+      svgPaths += `<path d="M ${startX} ${startY} L ${endX} ${endY}" stroke="#8a6d4b" stroke-width="2" fill="none" />`
+    } else {
+      // 跨欄：拐角折線 (先下、後橫折、再下)
+      const midY = startY + (endY - startY) / 2
+      svgPaths += `<path d="M ${startX} ${startY} V ${midY} H ${endX} V ${endY}" stroke="#8a6d4b" stroke-width="2" fill="none" />`
+    }
+  })
+
+  svg.innerHTML = svgPaths
 }
 
 function updatePoint(skillId, delta) {
