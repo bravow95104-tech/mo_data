@@ -145,25 +145,18 @@ function renderTabTree() {
           const level = allocatedPoints[skill.id] || 0
           const maxLevel = skill.max_level || 10
           
-          let isLocked = false
+          // 判斷前置技能是否未達標 (僅作為樣式輔助，不再鎖死按鈕)
+          let isReqNotMet = false
           if (skill.req_skill_id) {
             const reqLevel = allocatedPoints[skill.req_skill_id] || 0
-            if (reqLevel < skill.req_skill_level) isLocked = true
-          }
-
-          // B. 🔥 判斷是否為轉職技能且未達 120 點門檻
-          const totalAllocated = 200 - remainingPoints // 目前已消耗總點數
-          const isAdvSkill = skill.job_id !== currentParentJobId // 非基礎職技能即為轉職技能
-
-          if (isAdvSkill && totalAllocated < 120) {
-            isLocked = true
+            if (reqLevel < skill.req_skill_level) isReqNotMet = true
           }
 
           const x = skill.grid_x ?? skill.x ?? 1
           const y = skill.grid_y ?? skill.y ?? 1
 
           return `
-            <div class="grid-skill-node ${isLocked ? 'locked' : ''}" 
+            <div class="grid-skill-node ${isReqNotMet ? 'not-met' : ''}" 
                  id="node-${skill.id}"
                  data-x="${x}" data-y="${y}"
                  style="grid-column: ${x}; grid-row: ${y};">
@@ -178,7 +171,8 @@ function renderTabTree() {
                         
                 <span class="level-text">${level}/${maxLevel}</span>
 
-                <button class="btn-step btn-add ${level >= maxLevel || remainingPoints <= 0 || isLocked ? 'disabled' : ''}" 
+                <!-- 🔥 這裡把 isLocked 拿掉！只要滿級或點數為 0 才禁用 -->
+                <button class="btn-step btn-add ${level >= maxLevel || remainingPoints <= 0 ? 'disabled' : ''}" 
                         data-action="plus" data-id="${skill.id}">+</button>
               </div>
               
