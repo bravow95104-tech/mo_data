@@ -561,22 +561,7 @@ function getRelationName(field, idValue) {
     // 找到就顯示「技能名稱 (ID: x)」，找不到則提示未找到
     return match ? `${match[field.relation.nameField]} (ID: ${idValue})` : `${idValue} (未知技能)`;
 }
-async function loadTableData() {
-    const config = TABLE_CONFIGS[currentTable];
-    
-    // 💡 載入關聯表（如 skills）的最新資料
-    await loadRelationData();
 
-    // 抓取 skill_levels 資料
-    const { data, error } = await supabase.from(config.tableName).select('*').order('id', { ascending: true });
-    if (error) {
-        alert('載入失敗: ' + error.message);
-        return;
-    }
-    
-    allData = data || [];
-    renderTable();
-}
 
 function renderTable() {
     const config = TABLE_CONFIGS[currentTable];
@@ -759,64 +744,25 @@ function renderTable() {
         });
     }
 
-    // 載入資料
-    async function loadTableData() {
-        const config = TABLE_CONFIGS[currentTable];
-        const tbody = document.getElementById('tableBody');
-        const thead = document.getElementById('tableHead');
-        
-        tbody.innerHTML = '<tr><td colspan="10" style="text-align: center; padding: 40px;">正在載入...</td></tr>';
-        thead.innerHTML = `<tr>${config.tableCols.map(c => `<th>${c}<div class="resizer"></div></th>`).join('')}</tr>`;
+    // 替換掉原本的 loadTableData 函式
+async function loadTableData() {
+    const config = TABLE_CONFIGS[currentTable];
+    
+    // 1. 載入當前頁面所需的所有關聯資料（如技能名稱）
+    await loadRelationData();
 
-        // 綁定調整寬度事件
-        initResizableColumns();
-
-        let query = supabase.from(config.tableName).select('*');
-
-        // 針對更新日誌做特殊排序：Tips 置頂，其餘按 sort_id 降冪
-        if (currentTable === 'changelog') {
-            query = query
-                .order('is_tips', { ascending: false }) // '是' 排在 '否' 之前
-                .order('sort_id', { ascending: false }); // 數字大的（新的）在前面
-        } else {
-            query = query.order('sort_id', { ascending: true });
-        }
-
-        const { data, error } = await query;
-
-        if (error) {
-            alert('載入失敗: ' + error.message); 
-            document.getElementById('stat-count').innerText = '錯誤';
-            return;
-        }
-
-        let processedData = data;
-        // 針對更新日誌進行「絕對置頂」排序
-        if (currentTable === 'changelog') {
-            processedData = data.sort((a, b) => {
-                const aTip = a.is_tips === '是' ? 1 : 0;
-                const bTip = b.is_tips === '是' ? 1 : 0;
-                // 1. 先比是否為 Tips (1 在前)
-                if (aTip !== bTip) return bTip - aTip;
-                // 2. 同樣是 Tips 或同樣不是，則比 sort_id (大在前)
-                return (b.sort_id || 0) - (a.sort_id || 0);
-            });
-        }
-
-        allData = processedData;
-        
-        // 🚀 維持搜尋關鍵字：如果搜尋框有字，重新載入後自動套用過濾
-        const kw = document.getElementById('globalSearch')?.value.toLowerCase();
-        if (kw) {
-            renderTable(allData.filter(d => Object.values(d).some(v => String(v).toLowerCase().includes(kw))));
-        } else {
-            renderTable(processedData);
-        }
-
-        if (document.getElementById('stat-count')) {
-            document.getElementById('stat-count').innerText = processedData.length;
-        }
+    // 2. 抓取主要資料表的資料
+    const { data, error } = await supabase.from(config.tableName).select('*').order('id', { ascending: true });
+    
+    if (error) {
+        alert("載入資料失敗：" + error.message);
+        return;
     }
+    
+    tableData = data;
+    renderTableHeader();
+    renderTableBody();
+}
 
     function renderTable(data) {
         const config = TABLE_CONFIGS[currentTable];
