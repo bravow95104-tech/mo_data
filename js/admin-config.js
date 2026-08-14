@@ -549,4 +549,68 @@ export const TABLE_CONFIGS = {
             { id: 'is_active', label: '手動啟用/停用開關', grid: 2 ,type: 'select',options: ['TRUE', 'FLASE','']},
         ]
     },
+
+    // --------------------------------------------------
+    // 技能與職業系統管理
+    // --------------------------------------------------
+    jobs: {
+        title: '職業資料管理',
+        tableName: 'jobs',
+        tableCols: ['職業ID', '職業名稱', '類型', '排序', '操作'],
+        displayFields: ['id', 'name', 'type', 'sort_id'],
+        fields: [
+            { id: 'id', label: '職業ID (如 swordsman)', type: 'text', required: true, grid: 1 },
+            { id: 'name', label: '職業名稱', type: 'text', required: true, grid: 1 },
+            { id: 'type', label: '職業類型', type: 'select', options: ['基礎職業', '進階職業', '英雄職業'], grid: 1 },
+            { id: 'sort_id', label: '顯示順序', type: 'number', grid: 1 },
+            { id: 'description', label: '職業說明', type: 'textarea', grid: 3 }
+        ]
+    },
+    skills: {
+        title: '技能主資料管理',
+        tableName: 'skills',
+        tableCols: ['技能ID', '技能名稱', '對應職業', '最高等級', '操作'],
+        displayFields: ['id', 'name', 'job_id', 'max_level'],
+        fields: [
+            { id: 'id', label: '技能ID (如 sk_sw_01)', type: 'text', required: true, grid: 1, group: '基礎資訊' },
+            { id: 'name', label: '技能名稱', type: 'text', required: true, grid: 1, group: '基礎資訊' },
+            { id: 'job_id', label: '對應職業ID (對應 jobs.id)', type: 'text', required: true, grid: 1, group: '基礎資訊' },
+            { id: 'sort_id', label: '顯示順序', type: 'number', grid: 1, group: '基礎資訊' },
+
+            { id: 'type', label: '技能類型', type: 'select', options: ['主動', '被動', '狀態', '生活'], grid: 1, group: '樹狀設定' },
+            { id: 'max_level', label: '最高等級', type: 'number', grid: 1, group: '樹狀設定' },
+            { id: 'req_level', label: '需求角色等級', type: 'number', grid: 1, group: '樹狀設定' },
+            { id: 'prereq_skills', label: '前置技能需求', type: 'text', placeholder: '如: sk_sw_01:3', grid: 1, group: '樹狀設定' },
+
+            { id: 'grid_x', label: '網格 X 座標 (技能樹用)', type: 'number', grid: 1, group: '技能樹排版' },
+            { id: 'grid_y', label: '網格 Y 座標 (技能樹用)', type: 'number', grid: 1, group: '技能樹排版' },
+            { id: 'icon_url', label: '圖示路徑/名稱', type: 'text', grid: 2, group: '技能樹排版' },
+
+            { id: 'description', label: '技能簡介', type: 'textarea', grid: 3, group: '其他' }
+        ]
+    },
+    skill_levels: {
+        title: '技能各等級數據管理',
+        tableName: 'skill_levels',
+        tableCols: ['技能ID', '等級', '冷卻(s)', 'MP消耗', '威力%', '操作'],
+        displayFields: ['skill_id', 'level', 'cooldown', 'mp_cost', 'power_rate'],
+        fields: [
+            { id: 'skill_id', label: '對應技能ID (對應 skills.id)', type: 'text', required: true, grid: 1, group: '核心設定' },
+            { id: 'level', label: '技能等級 (1-10)', type: 'number', required: true, grid: 1, group: '核心設定' },
+            { id: 'sort_id', label: '顯示順序', type: 'number', grid: 1, group: '核心設定' },
+
+            { id: 'cooldown', label: '冷卻時間 (秒)', type: 'number', grid: 1, group: '消耗與冷卻' },
+            { id: 'mp_cost', label: 'MP 消耗', type: 'number', grid: 1, group: '消耗與冷卻' },
+            { id: 'hp_cost', label: 'HP 消耗', type: 'number', grid: 1, group: '消耗與冷卻' },
+            { id: 'sp_cost', label: 'SP 消耗', type: 'number', grid: 1, group: '消耗與冷卻' },
+
+            { id: 'cast_time', label: '吟唱/施法時間 (秒)', type: 'number', grid: 1, group: '效果數值' },
+            { id: 'duration', label: '持續時間 (秒)', type: 'number', grid: 1, group: '效果數值' },
+            { id: 'power_rate', label: '威力倍率/傷害 (%)', type: 'text', grid: 1, group: '效果數值' },
+            { id: 'target_count', label: '影響目標數量', type: 'number', grid: 1, group: '效果數值' },
+
+            { id: 'description', label: '該等級專屬說明', type: 'textarea', grid: 3, group: '額外說明' },
+            { id: 'extra_data', label: '額外 JSON 數據', type: 'textarea', grid: 3, group: '額外說明' }
+        ]
+    },
 };
