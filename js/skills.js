@@ -510,10 +510,7 @@ treeContainer.addEventListener('mouseover', e => {
     const curInfo = skill.skill_levels?.find(l => l.level === currentLevel)
     const curStatsStr = formatStats(curInfo)
     if (curStatsStr) {
-      currentStatsHtml = `
-        <div style="color: #5cbeff; font-weight: bold; margin-top: 6px; font-size: 0.82rem;">
-          [Lv.${currentLevel} 效果] ${curStatsStr}
-        </div>`
+      currentStatsHtml = `<div style="color: #5cbeff; font-weight: bold; margin-top: 4px; font-size: 0.82rem;">[Lv.${currentLevel} 效果] ${curStatsStr}</div>`
     }
   }
 
@@ -525,22 +522,16 @@ treeContainer.addEventListener('mouseover', e => {
     const nextStatsStr = formatStats(nextInfo)
     
     if (nextStatsStr) {
-      // 標籤顯示：如果目前是 0 級，顯示 [Lv.1 效果]；如果已有等級，顯示 [下一級 Lv.X 效果]
       const labelText = currentLevel === 0 ? `[Lv.1 效果]` : `[下一級 Lv.${nextLevel}]`
-      
-      nextStatsHtml = `
-        <div style="color: #8acaff; opacity: 0.8; font-size: 0.8rem; margin-top: 4px;">
-          ${labelText} ${nextStatsStr}
-        </div>`
+      nextStatsHtml = `<div style="color: #8acaff; opacity: 0.8; font-size: 0.8rem; margin-top: 3px;">${labelText} ${nextStatsStr}</div>`
     }
   }
 
-  // --- D. 拼裝下半部完整 HTML (緊湊組合，防止產生多餘空行) ---
+  // --- D. 緊湊串接 ---
   const hasAnyLevelData = currentStatsHtml || nextStatsHtml
-  const bottomDivider = hasAnyLevelData ? '<hr class="tt-divider" style="margin: 8px 0; border-color: #5c3a21;">' : ''
+  const bottomDivider = hasAnyLevelData ? '<hr class="tt-divider" style="margin: 6px 0; border: none; border-top: 1px solid #5c3a21;">' : ''
 
-  // 壓成一行，避免 Template string 裡面的跳行變成空白元素
-  document.getElementById('ttDesc').innerHTML = `<div>${descText}</div>${bottomDivider}${currentStatsHtml}${nextStatsHtml}`
+  document.getElementById('ttDesc').innerHTML = descText + bottomDivider + currentStatsHtml + nextStatsHtml
 
   tooltip.classList.remove('hidden')
 })
