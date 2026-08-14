@@ -237,7 +237,7 @@ currentTabSkills = allSkills.filter(s => (s.skill_type || '通用') === currentT
 })
 }
 
-// 動態繪製 SVG 畫線函數 (嚴格限定 Icon 邊界 + 避免橫向溢出版)
+// 動態繪製 SVG 畫線函數 (天外原版: 子技能獨立尋根連線版)
 function drawLines() {
   const svg = document.getElementById('skillLinesSvg')
   if (!svg) return
@@ -249,86 +249,46 @@ function drawLines() {
 
   if (!activeSkills || activeSkills.length === 0) return
 
-  // 1. 將技能依前置技能 (req_skill_id 或 parent_id) 分組
-  const parentMap = {}
-  activeSkills.forEach(skill => {
-    const parentId = skill.req_skill_id || skill.parent_id
-    if (parentId) {
-      if (!parentMap[parentId]) parentMap[parentId] = []
-      parentMap[parentId].push(skill)
-    }
-  })
+  // 遍歷「每一個技能」，只要它有前置技能，就單獨畫一條線連回父技能
+  activeSkills.forEach(childSkill => {
+    const parentId = childSkill.req_skill_id || childSkill.parent_id
+    if (!parentId) return
 
-  // 2. 遍歷每個父技能，繪製連接線
-  Object.keys(parentMap).forEach(parentId => {
-    // ⚠️ 關鍵 1：必須只抓取 .node-icon-box (圖示本身)，不要抓到包含按鈕的 outer node
+    // 1. 抓取子技能 Icon 頂部中央座標
+    const childBox = document.querySelector(`.node-icon-box[data-id="${childSkill.id}"]`)
+    // 2. 抓取父技能 Icon 底部中央座標
     const parentBox = document.querySelector(`.node-icon-box[data-id="${parentId}"]`)
-    if (!parentBox) return
 
-    const children = parentMap[parentId]
-    const parentRect = parentBox.getBoundingClientRect()
+    if (!childBox || !parentBox) return
+
     const containerRect = svg.getBoundingClientRect()
+    const cRect = childBox.getBoundingClientRect()
+    const pRect = parentBox.getBoundingClientRect()
 
-    // 父技能「圖片正下方中央」
-    const px = parentRect.left + parentRect.width / 2 - containerRect.left
-    const py = parentRect.bottom - containerRect.top
+    // 子技能：正上方中央
+    const cx = cRect.left + cRect.width / 2 - containerRect.left
+    const cy = cRect.top - containerRect.top
 
-    // 收集所有子技能的 Icon 正確座標
-    const childCoords = []
-    children.forEach(child => {
-      const childBox = document.querySelector(`.node-icon-box[data-id="${child.id}"]`)
-      if (childBox) {
-        const cRect = childBox.getBoundingClientRect()
-        // 子技能「圖片正上方中央」
-        const cx = cRect.left + cRect.width / 2 - containerRect.left
-        const cy = cRect.top - containerRect.top
-        childCoords.push({ cx, cy })
-      }
-    })
-
-    if (childCoords.length === 0) return
+    // 父技能：正下方中央
+    const px = pRect.left + pRect.width / 2 - containerRect.left
+    const py = pRect.bottom - containerRect.top
 
     // --- 連線繪製邏輯 ---
 
-    // 情境 A：單一子技能（1對1）
-    if (childCoords.length === 1) {
-      const { cx, cy } = childCoords[0]
-      // X 軸幾乎同一直線 -> 畫垂直線
-      if (Math.abs(px - cx) < 5) {
-        createLine(svg, px, py, cx, cy)
-      } else {
-        // 垂直與橫向 90 度折線 (S型/Z型)
-        const midY = py + (cy - py) / 2
-        createPath(svg, `M ${px} ${py} V ${midY} H ${cx} V ${cy}`)
-      }
-      return
+    // A. 兩者垂直對齊 (X 軸幾乎重合) -> 直接畫一條垂直線
+    if (Math.abs(px - cx) < 8) {
+      createLine(svg, px, py, cx, cy)
+    } 
+    // B. X 軸錯開 (例如 健身術 -> 運氣調息，或 挑釁 -> 武勁勢)
+    else {
+      // 依天外線條特性：從子技能頂部先垂直向上拉一段距離，再水平折向父技能下方，最後垂直連上父技能
+      // 中間轉折的高度 (midY) 取兩者 Y 軸正中間
+      const midY = py + (cy - py) / 2
+
+      // 路徑：從父技能底 (px, py) -> 垂直下降到 midY -> 水平拉到 cx -> 垂直下降到子技能頭頂 (cx, cy)
+      const pathD = `M ${px} ${py} V ${midY} H ${cx} V ${cy}`
+      createPath(svg, pathD)
     }
-
-    // 情境 B：多個子技能（1對多分叉）
-    // ⚠️ 關鍵 2：橫線的左右邊界只到「該父技能所屬的子技能」的最左與最右，決不往外延伸！
-    let minCx = Infinity
-    let maxCx = -Infinity
-    let minCy = Infinity
-
-    childCoords.forEach(({ cx, cy }) => {
-      if (cx < minCx) minCx = cx
-      if (cx > maxCx) maxCx = cx
-      if (cy < minCy) minCy = cy
-    })
-
-    // 中間高度分叉點
-    const midY = py + (minCy - py) / 2
-
-    // 1. 父技能往下延伸到中間高度
-    let pathD = `M ${px} ${py} V ${midY}`
-    // 2. 橫線只在該組子技能的 minCx 到 maxCx 之間，不會畫過頭
-    pathD += ` M ${minCx} ${midY} H ${maxCx}`
-    // 3. 橫線向下接到各個子技能頂部
-    childCoords.forEach(({ cx, cy }) => {
-      pathD += ` M ${cx} ${midY} V ${cy}`
-    })
-
-    createPath(svg, pathD)
   })
 }
 
