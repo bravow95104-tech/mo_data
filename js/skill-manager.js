@@ -13,29 +13,65 @@ function initSkillManagerModal() {
     if (document.getElementById('skillManagerModal')) return;
 
     const modalHTML = `
-    <div id="skillManagerModal" class="modal" style="display:none; z-index: 2000;">
-        <div class="modal-content" style="max-width: 900px; max-height: 90vh; overflow-y: auto;">
-            <span class="close" onclick="closeSkillManager()">&times;</span>
-            <h2 style="margin-bottom: 20px; border-bottom: 2px solid #4a90e2; padding-bottom: 10px;">
+    <!-- 1. 滿版半透明灰色遮罩背景 -->
+    <div id="skillManagerModal" class="skill-modal-backdrop" style="
+        display: none; 
+        position: fixed; 
+        top: 0; 
+        left: 0; 
+        width: 100vw; 
+        height: 100vh; 
+        background: rgba(0, 0, 0, 0.65); 
+        backdrop-filter: blur(3px);
+        z-index: 9999;
+    ">
+        <!-- 2. 畫面正中央懸浮視窗 -->
+        <div class="skill-modal-container" style="
+            position: absolute; 
+            top: 50%; 
+            left: 50%; 
+            transform: translate(-50%, -50%); 
+            width: 90%; 
+            max-width: 950px; 
+            max-height: 85vh; 
+            background: #ffffff; 
+            border-radius: 12px; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3); 
+            padding: 25px; 
+            overflow-y: auto; 
+            box-sizing: border-box;
+            color: #333;
+        ">
+            <!-- 關閉按鈕 -->
+            <span class="close" onclick="closeSkillManager()" style="
+                position: absolute; 
+                right: 20px; 
+                top: 15px; 
+                font-size: 28px; 
+                font-weight: bold; 
+                cursor: pointer; 
+                color: #888;
+            ">&times;</span>
+
+            <h2 style="margin-top: 0; margin-bottom: 20px; border-bottom: 2px solid #4a90e2; padding-bottom: 10px; color: #222;">
                 ⚔️ 技能進階編輯器
             </h2>
 
             <!-- 上半部：主技能設定 -->
-            <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
+            <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin-bottom: 20px; border: 1px solid #e9ecef;">
                 <h3 style="margin-top:0; font-size: 1.1em; color: #333;">📖 基礎技能設定</h3>
-                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px;">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
                     <div>
                         <label style="display:block; font-weight:bold; margin-bottom:5px;">技能 ID (不可改)</label>
-                        <input type="text" id="sm-skill-id" readonly style="width:100%; padding:8px; background:#e9ecef; border:1px solid #ccc; border-radius:4px;">
+                        <input type="text" id="sm-skill-id" readonly style="width:100%; padding:8px; background:#e9ecef; border:1px solid #ccc; border-radius:4px; box-sizing: border-box;">
                     </div>
                     <div>
                         <label style="display:block; font-weight:bold; margin-bottom:5px;">技能名稱</label>
-                        <input type="text" id="sm-skill-name" style="width:100%; padding:8px; border:1px solid #ccc; border-radius:4px;">
+                        <input type="text" id="sm-skill-name" style="width:100%; padding:8px; border:1px solid #ccc; border-radius:4px; box-sizing: border-box;">
                     </div>
                     <div>
                         <label style="display:block; font-weight:bold; margin-bottom:5px;">最高等級 (Max Level)</label>
-                        <!-- 當修改最高等級時，自動重新計算下方的表格列數 -->
-                        <input type="number" id="sm-skill-max-level" min="1" max="30" onchange="generateLevelRows()" style="width:100%; padding:8px; border:1px solid #ccc; border-radius:4px;">
+                        <input type="number" id="sm-skill-max-level" min="1" max="30" onchange="generateLevelRows()" style="width:100%; padding:8px; border:1px solid #ccc; border-radius:4px; box-sizing: border-box;">
                     </div>
                 </div>
             </div>
@@ -59,13 +95,14 @@ function initSkillManagerModal() {
                             </tr>
                         </thead>
                         <tbody id="sm-levels-tbody">
-                            <!-- 這裡會由 JS 迴圈動態產生 -->
+                            <!-- 這裡由 JS 迴圈動態產生 -->
                         </tbody>
                     </table>
                 </div>
             </div>
 
-            <div style="margin-top: 30px; text-align: right;">
+            <!-- 底部操作按鈕 -->
+            <div style="margin-top: 25px; text-align: right;">
                 <button onclick="closeSkillManager()" style="padding: 10px 20px; background: #6c757d; color: white; border: none; border-radius: 4px; cursor: pointer; margin-right: 10px;">取消</button>
                 <button onclick="saveSkillAndLevels()" style="padding: 10px 20px; background: #28a745; color: white; border: none; border-radius: 4px; cursor: pointer; font-weight: bold;">💾 儲存所有變更</button>
             </div>
