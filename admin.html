@@ -501,7 +501,7 @@
             <button onclick="closeModal()" style="background:none; border:none; font-size:24px; cursor:pointer; color:#94a3b8;">&times;</button>
         </div>
         <form id="editForm">
-            <input type="hidden" id="edit-id">
+            <input type="hidden" id="current-record-id">
             <div class="form-grid" id="dynamicFormGrid">
                 <!-- 由 JS 動態產生欄位 -->
             </div>
@@ -829,7 +829,7 @@
 
     renderEditForm();
     document.getElementById('modalTitle').innerText = '新增' + TABLE_CONFIGS[currentTable].title;
-    document.getElementById('edit-id').value = '';
+    document.getElementById('current-record-id').value = '';
     document.getElementById('editForm').reset();
     
     // 🚀 更聰明的 sort_id 計算：取最大值 + 1，而不是單純長度 + 1
@@ -861,7 +861,7 @@ window.openEditModal = async (id) => {
     renderEditForm();
     const titleText = item.name || item.item || item.skillName || item.items || item.skillname || item.mapid || '未命名';
     document.getElementById('modalTitle').innerText = '編輯：' + titleText;
-    document.getElementById('edit-id').value = item.id;
+    document.getElementById('current-record-id').value = item.id;
     
     TABLE_CONFIGS[currentTable].fields.forEach(f => {
         const el = document.getElementById('edit-' + f.id);
@@ -956,7 +956,7 @@ window.openEditModal = async (id) => {
     
     const submitBtn = document.getElementById('submitBtn');
     const btnText = document.getElementById('btnText');
-    const id = document.getElementById('edit-id').value;
+    const id = document.getElementById('current-record-id').value;
     const config = TABLE_CONFIGS[currentTable];
     const updates = {};
     
