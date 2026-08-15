@@ -625,7 +625,7 @@ export const TABLE_CONFIGS = {
 
         { id: 'cast_time', label: '吟唱/施法時間 (秒)', type: 'number', grid: 1, group: '效果數值' },
         { id: 'duration', label: '持續時間 (秒)', type: 'number', grid: 1, group: '效果數值' },
-        { id: 'power_rate', label: '威力倍率/傷害 (%)', type: 'text', grid: 1, group: '效果數值' },
+        { id: 'power_rate', label: '威力倍率/傷害 (%)', type: 'number', grid: 1, group: '效果數值' },
         { id: 'target_count', label: '影響目標數量', type: 'number', grid: 1, group: '效果數值' },
 
         { id: 'description', label: '該等級專屬說明', type: 'textarea', grid: 3, group: '額外說明' },
