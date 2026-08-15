@@ -4,7 +4,7 @@
 import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm'
 import { SUPABASE_URL, SUPABASE_KEY } from './supabase-config.js'
 
-const supabase = createClient(SUPABASE_URL, SUPABASE_KEY)
+const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
 let currentSkillLevelsData = []; // 暫存從資料庫撈回來的各等級資料
 
 // 1. 動態注入專屬 Modal HTML
@@ -28,11 +28,9 @@ function initSkillManagerModal() {
                 ⚔️ 技能進階編輯器
             </h2>
 
-            <!-- 💡 上半部：改為動態渲染容器 -->
+            <!-- 上半部：基礎技能設定 -->
             <div style="background: #f8f9fa; padding: 20px; border-radius: 8px; margin-bottom: 20px; border: 1px solid #e9ecef;">
                 <h3 style="margin-top:0; font-size: 1.1em; color: #333; border-bottom: 1px dashed #ccc; padding-bottom: 8px;">📖 基礎技能設定</h3>
-                
-                <!-- 這裡會由 JS 讀取 TABLE_CONFIGS 動態帶入所有欄位 -->
                 <div id="sm-base-fields-container"></div>
             </div>
 
@@ -71,11 +69,10 @@ function initSkillManagerModal() {
 }
 
 // 2. 開啟編輯器並讀取資料
-async function openSkillManager(skillId) {
+export async function openSkillManager(skillId) {
     initSkillManagerModal(); 
     
     try {
-        console.log("開始讀取技能資料...", skillId);
         const [skillRes, levelsRes] = await Promise.all([
             supabase.from('skills').select('*').eq('id', skillId).single(),
             supabase.from('skill_levels').select('*').eq('skill_id', skillId).order('level', { ascending: true })
@@ -85,15 +82,11 @@ async function openSkillManager(skillId) {
         const skillData = skillRes.data || {};
         currentSkillLevelsData = levelsRes.data || [];
 
-        // 💡 讀取 TABLE_CONFIGS 中的 skills 欄位定義
         const configs = window.TABLE_CONFIGS || (typeof TABLE_CONFIGS !== 'undefined' ? TABLE_CONFIGS : null);
         const skillConfig = configs ? configs.skills : null;
-        
-        console.log("讀取到的 skillConfig:", skillConfig); // 加這行方便除錯
         const container = document.getElementById('sm-base-fields-container');
 
         if (skillConfig && skillConfig.fields) {
-            // 1. 根據 group 分類欄位
             const groups = {};
             skillConfig.fields.forEach(f => {
                 const groupName = f.group || '一般設定';
@@ -101,7 +94,6 @@ async function openSkillManager(skillId) {
                 groups[groupName].push(f);
             });
 
-            // 2. 動態生成 HTML
             container.innerHTML = Object.keys(groups).map(groupName => {
                 const fieldsHtml = groups[groupName].map(f => {
                     const value = skillData[f.id] ?? '';
@@ -125,165 +117,100 @@ async function openSkillManager(skillId) {
 
                 return `
                     <div style="margin-bottom: 12px;">
-                        <div style="font-weight:bold; color:#4a90e2; font-size:0.9em; margin-bottom:6px;">📌 ${groupName}</div>
-                        <div style="display:grid; grid-template-columns: repeat(4, 1fr); gap: 10px;">
-                            ${fieldsHtml}
-                        </div>
+                        <div style="font-weight:bold; color:#4a90e2; font-size:0.9em; margin-bottom: 8px;">${groupName}</div>
+                        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;">${fieldsHtml}</div>
                     </div>
                 `;
             }).join('');
         }
 
-        // 渲染下半部等級表格
         generateLevelRows();
-
-        // 顯示 Modal
         document.getElementById('skillManagerModal').style.display = 'block';
 
     } catch (err) {
-        console.error("讀取技能數據失敗:", err);
-        alert("讀取技能數據失敗，請檢查 F12 Console。");
+        alert('載入技能資料失敗: ' + err.message);
     }
 }
 
-// 3. 根據「最高等級」動態產生對應的輸入列
-function generateLevelRows() {
-    // 💡 修正 id：改為抓取 sm-skill-max_level
-    const maxLevelEl = document.getElementById('sm-skill-max_level') || document.getElementById('sm-skill-max-level');
-    const maxLevel = parseInt(maxLevelEl ? maxLevelEl.value : 1) || 1;
-    
+// 3. 動態渲染 skill_levels 表格列
+export function generateLevelRows() {
+    const maxLevel = parseInt(document.getElementById('sm-skill-max_level')?.value || 1);
     const tbody = document.getElementById('sm-levels-tbody');
-    if (!tbody) return;
-    
-    tbody.innerHTML = ''; // 清空原本的列表
+    let html = '';
 
-    // 從 Lv 1 跑到最高等級
-    for (let i = 1; i <= maxLevel; i++) {
-        const existingData = currentSkillLevelsData.find(d => d.level === i) || {};
+    for (let lvl = 1; lvl <= maxLevel; lvl++) {
+        const existData = currentSkillLevelsData.find(d => d.level === lvl) || {};
 
-        const tr = document.createElement('tr');
-        tr.style.borderBottom = "1px solid #dee2e6";
-        
-        tr.innerHTML = `
-            <td style="padding: 8px 10px; font-weight: bold; color: #4a90e2;">
-                Lv ${i}
-                <input type="hidden" class="sm-lvl-input" data-level="${i}" data-field="id" value="${existingData.id || ''}">
-            </td>
-            <td style="padding: 8px;"><input type="number" step="0.1" class="sm-lvl-input" data-level="${i}" data-field="cooldown" value="${existingData.cooldown || 0}" style="width: 70px; padding: 4px;"></td>
-            <td style="padding: 8px;"><input type="number" class="sm-lvl-input" data-level="${i}" data-field="mp_cost" value="${existingData.mp_cost || 0}" style="width: 70px; padding: 4px;"></td>
-            <td style="padding: 8px;"><input type="text" class="sm-lvl-input" data-level="${i}" data-field="power_rate" value="${existingData.power_rate || '0'}" style="width: 90px; padding: 4px;"></td>
-            <td style="padding: 8px;"><input type="number" step="0.1" class="sm-lvl-input" data-level="${i}" data-field="cast_time" value="${existingData.cast_time || 0}" style="width: 70px; padding: 4px;"></td>
-            <td style="padding: 8px;"><input type="text" class="sm-lvl-input" data-level="${i}" data-field="description" value="${existingData.description || ''}" style="width: 95%; padding: 4px;" placeholder="該等級說明..."></td>
+        html += `
+            <tr style="border-bottom: 1px solid #eee;">
+                <td style="padding: 8px 10px; font-weight: bold; background: #fdfdfd;">Lv.${lvl}</td>
+                <td style="padding: 6px;"><input type="number" step="0.1" class="sm-lvl-cooldown" data-lvl="${lvl}" value="${existData.cooldown ?? 0}" style="width: 70px; padding: 4px;"></td>
+                <td style="padding: 6px;"><input type="number" class="sm-lvl-mp_cost" data-lvl="${lvl}" value="${existData.mp_cost ?? 0}" style="width: 70px; padding: 4px;"></td>
+                <td style="padding: 6px;"><input type="text" class="sm-lvl-power_rate" data-lvl="${lvl}" value="${existData.power_rate ?? ''}" style="width: 90px; padding: 4px;"></td>
+                <td style="padding: 6px;"><input type="number" step="0.1" class="sm-lvl-cast_time" data-lvl="${lvl}" value="${existData.cast_time ?? 0}" style="width: 70px; padding: 4px;"></td>
+                <td style="padding: 6px;"><input type="text" class="sm-lvl-description" data-lvl="${lvl}" value="${existData.description ?? ''}" style="width: 100%; padding: 4px; box-sizing: border-box;"></td>
+            </tr>
         `;
-        tbody.appendChild(tr);
     }
+    tbody.innerHTML = html;
 }
 
-// 4. 關閉視窗
-function closeSkillManager() {
-    document.getElementById('skillManagerModal').style.display = 'none';
+// 4. 關閉彈窗
+export function closeSkillManager() {
+    const modal = document.getElementById('skillManagerModal');
+    if (modal) modal.style.display = 'none';
 }
 
-// 5. 儲存邏輯
-async function saveSkillAndLevels() {
-    try {
-        const skillId = document.getElementById('sm-skill-id') ? document.getElementById('sm-skill-id').value : '';
-        const skillConfig = (typeof TABLE_CONFIGS !== 'undefined' && TABLE_CONFIGS.skills) ? TABLE_CONFIGS.skills : null;
-        
-        // 動態收集上半部所有技能主表的欄位數值
-        const updateSkillData = {};
-        if (skillConfig && skillConfig.fields) {
-            skillConfig.fields.forEach(f => {
-                const el = document.getElementById(`sm-skill-${f.id}`);
-                if (el) {
-                    let val = el.value.trim();
-                    
-                    // 💡 防錯核心：所有數字欄位或留空的欄位，只要傳入空字串，一律轉為 null
-                    if (val === '') {
-                        val = null;
-                    } else if (f.type === 'number' || !isNaN(val)) {
-                        // 若型態為 number 或純數字字串，轉成數字型態
-                        val = Number(val);
-                    }
-                    
-                    updateSkillData[f.id] = val;
-                }
-            });
+// 5. 儲存 Skills 與 Skill_levels
+export async function saveSkillAndLevels() {
+    const skillId = document.getElementById('sm-skill-id').value;
+    const maxLevel = parseInt(document.getElementById('sm-skill-max_level').value || 1);
+
+    const configs = window.TABLE_CONFIGS || (typeof TABLE_CONFIGS !== 'undefined' ? TABLE_CONFIGS : null);
+    const skillConfig = configs.skills;
+
+    // 收集主表資料
+    const skillUpdates = {};
+    skillConfig.fields.forEach(f => {
+        const el = document.getElementById(`sm-skill-${f.id}`);
+        if (el) {
+            skillUpdates[f.id] = (f.type === 'number') ? (parseInt(el.value) || 0) : el.value;
         }
+    });
 
-        console.log("準備寫入 skills 的資料:", updateSkillData);
-
-        // 1. 更新主表 (skills)
-        const { error: skillError } = await supabase
-            .from('skills')
-            .update(updateSkillData)
-            .eq('id', skillId);
-
-        if (skillError) {
-            console.error("skills 更新失敗，原因：", skillError);
-            throw skillError;
-        }
-
-        // 2. 收集下半部 (skill_levels)
-        const rows = document.querySelectorAll('#sm-levels-tbody tr');
-        const levelsToUpsert = [];
-
-        rows.forEach(row => {
-            const inputs = row.querySelectorAll('.sm-lvl-input');
-            let rowData = { skill_id: skillId };
-
-            inputs.forEach(input => {
-                const field = input.getAttribute('data-field');
-                const level = parseInt(input.getAttribute('data-level'), 10);
-                rowData.level = level;
-
-                let val = input.value.trim();
-
-                if (field === 'id') {
-                    // 只有當 id 有實質內容時才放入 (避免 id 送出 "" 或 null)
-                    if (val !== '' && val !== 'undefined' && val !== 'null') {
-                        rowData.id = isNaN(val) ? val : parseInt(val, 10); 
-                    }
-                } else if (field === 'cooldown' || field === 'cast_time') {
-                    rowData[field] = val !== '' ? parseFloat(val) : 0;
-                } else if (field === 'mp_cost' || field === 'power_rate') {
-                    rowData[field] = val !== '' ? (isNaN(val) ? val : parseInt(val, 10)) : 0;
-                } else {
-                    rowData[field] = val;
-                }
-            });
-
-            levelsToUpsert.push(rowData);
+    // 收集副表資料
+    const levelUpdates = [];
+    for (let lvl = 1; lvl <= maxLevel; lvl++) {
+        levelUpdates.push({
+            skill_id: skillId,
+            level: lvl,
+            cooldown: parseFloat(document.querySelector(`.sm-lvl-cooldown[data-lvl="${lvl}"]`)?.value || 0),
+            mp_cost: parseInt(document.querySelector(`.sm-lvl-mp_cost[data-lvl="${lvl}"]`)?.value || 0),
+            power_rate: document.querySelector(`.sm-lvl-power_rate[data-lvl="${lvl}"]`)?.value || '',
+            cast_time: parseFloat(document.querySelector(`.sm-lvl-cast_time[data-lvl="${lvl}"]`)?.value || 0),
+            description: document.querySelector(`.sm-lvl-description[data-lvl="${lvl}"]`)?.value || ''
         });
+    }
 
-        console.log("準備寫入 skill_levels 的資料:", levelsToUpsert);
+    try {
+        // 更新 Skills 主表
+        const { error: skillErr } = await supabase.from('skills').upsert(skillUpdates);
+        if (skillErr) throw skillErr;
 
-        // 3. 批次寫入等級表
-        const { error: levelsError } = await supabase
-            .from('skill_levels')
-            .upsert(levelsToUpsert);
+        // 更新 Skill_levels 副表
+        const { error: lvlErr } = await supabase.from('skill_levels').upsert(levelUpdates, { onConflict: 'skill_id,level' });
+        if (lvlErr) throw lvlErr;
 
-        if (levelsError) {
-            console.error("skill_levels 更新失敗，原因：", levelsError);
-            throw levelsError;
-        }
-
-        alert("🎉 所有技能數據與等級數值儲存成功！");
+        alert('✅ 技能與各等級數據儲存成功！');
         closeSkillManager();
-
-        if (typeof loadTableData === 'function') {
-            loadTableData();
-        }
+        if (typeof window.loadTableData === 'function') window.loadTableData();
 
     } catch (err) {
-        console.error("儲存失敗:", err);
-        alert(`儲存失敗: ${err.message || '請檢查 F12 Console'}`);
+        alert('❌ 儲存失敗: ' + err.message);
     }
 }
 
-// ==========================================
-// 🔗 將需要讓 HTML 或其他腳本呼叫的函式暴露至 window 全域
-// ==========================================
+// 🚀 將重要函式掛載至全局全域 (window)，讓 HTML 觸發能直接抓到
 window.openSkillManager = openSkillManager;
 window.closeSkillManager = closeSkillManager;
 window.generateLevelRows = generateLevelRows;
