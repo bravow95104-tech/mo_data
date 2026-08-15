@@ -191,23 +191,27 @@ async function saveSkillAndLevels() {
         const skillConfig = (typeof TABLE_CONFIGS !== 'undefined' && TABLE_CONFIGS.skills) ? TABLE_CONFIGS.skills : null;
         
         // 動態收集上半部所有技能主表的欄位數值
-const updateSkillData = {};
-if (skillConfig && skillConfig.fields) {
-    skillConfig.fields.forEach(f => {
-        const el = document.getElementById(`sm-skill-${f.id}`);
-        if (el) {
-            let val = el.value;
-            // 只要是 number 類型或是原本值為空字串，處理空字串轉 null
-            if (f.type === 'number') {
-                val = (val !== '' && !isNaN(val)) ? Number(val) : null;
-            } else if (val === '') {
-                // 如果其他非 string 欄位在 HTML 中給了空字串，避免爆 22P02
-                // 若欄位允許 null 建議傳 null，若為 NOT NULL 建議改傳 null 或處理
-            }
-            updateSkillData[f.id] = val;
+        const updateSkillData = {};
+        if (skillConfig && skillConfig.fields) {
+            skillConfig.fields.forEach(f => {
+                const el = document.getElementById(`sm-skill-${f.id}`);
+                if (el) {
+                    let val = el.value.trim();
+                    
+                    // 💡 防錯核心：所有數字欄位或留空的欄位，只要傳入空字串，一律轉為 null
+                    if (val === '') {
+                        val = null;
+                    } else if (f.type === 'number' || !isNaN(val)) {
+                        // 若型態為 number 或純數字字串，轉成數字型態
+                        val = Number(val);
+                    }
+                    
+                    updateSkillData[f.id] = val;
+                }
+            });
         }
-    });
-}
+
+        console.log("準備寫入 skills 的資料:", updateSkillData);
 
         // 1. 更新主表 (skills)
         const { error: skillError } = await supabase
@@ -215,46 +219,54 @@ if (skillConfig && skillConfig.fields) {
             .update(updateSkillData)
             .eq('id', skillId);
 
-        if (skillError) throw skillError;
+        if (skillError) {
+            console.error("skills 更新失敗，原因：", skillError);
+            throw skillError;
+        }
 
         // 2. 收集下半部 (skill_levels)
         const rows = document.querySelectorAll('#sm-levels-tbody tr');
         const levelsToUpsert = [];
 
         rows.forEach(row => {
-    const inputs = row.querySelectorAll('.sm-lvl-input');
-    let rowData = { skill_id: skillId };
+            const inputs = row.querySelectorAll('.sm-lvl-input');
+            let rowData = { skill_id: skillId };
 
-    inputs.forEach(input => {
-        const field = input.getAttribute('data-field');
-        const level = parseInt(input.getAttribute('data-level'), 10);
-        rowData.level = level;
+            inputs.forEach(input => {
+                const field = input.getAttribute('data-field');
+                const level = parseInt(input.getAttribute('data-level'), 10);
+                rowData.level = level;
 
-        let val = input.value.trim(); // 建議加上 trim() 去除空白
+                let val = input.value.trim();
 
-        if (field === 'id') {
-            // 只有當 id 真正有值且不為空字串時才放入 rowData
-            if (val !== '' && val !== 'undefined' && val !== 'null') {
-                rowData.id = isNaN(val) ? val : parseInt(val, 10); 
-            }
-        } else if (field === 'cooldown' || field === 'cast_time') {
-            rowData[field] = val !== '' ? parseFloat(val) : 0;
-        } else if (field === 'mp_cost' || field === 'power_rate') { // 💡 如果 power_rate 資料庫也是整數，記得加在這裡
-            rowData[field] = val !== '' ? parseInt(val, 10) : 0;
-        } else {
-            rowData[field] = val;
-        }
-    });
+                if (field === 'id') {
+                    // 只有當 id 有實質內容時才放入 (避免 id 送出 "" 或 null)
+                    if (val !== '' && val !== 'undefined' && val !== 'null') {
+                        rowData.id = isNaN(val) ? val : parseInt(val, 10); 
+                    }
+                } else if (field === 'cooldown' || field === 'cast_time') {
+                    rowData[field] = val !== '' ? parseFloat(val) : 0;
+                } else if (field === 'mp_cost' || field === 'power_rate') {
+                    rowData[field] = val !== '' ? (isNaN(val) ? val : parseInt(val, 10)) : 0;
+                } else {
+                    rowData[field] = val;
+                }
+            });
 
-    levelsToUpsert.push(rowData);
-});
+            levelsToUpsert.push(rowData);
+        });
+
+        console.log("準備寫入 skill_levels 的資料:", levelsToUpsert);
 
         // 3. 批次寫入等級表
         const { error: levelsError } = await supabase
             .from('skill_levels')
             .upsert(levelsToUpsert);
 
-        if (levelsError) throw levelsError;
+        if (levelsError) {
+            console.error("skill_levels 更新失敗，原因：", levelsError);
+            throw levelsError;
+        }
 
         alert("🎉 所有技能數據與等級數值儲存成功！");
         closeSkillManager();
@@ -265,7 +277,7 @@ if (skillConfig && skillConfig.fields) {
 
     } catch (err) {
         console.error("儲存失敗:", err);
-        alert("儲存失敗，請檢查 F12 Console。");
+        alert(`儲存失敗: ${err.message || '請檢查 F12 Console'}`);
     }
 }
 
