@@ -772,8 +772,8 @@
         const config = TABLE_CONFIGS[currentTable];
         const grid = document.getElementById('dynamicFormGrid');
         
-        // 🛡️ 絕對防呆：如果該分頁沒有設定 fields（例如 skill_levels），直接跳過不動作
-        if (!config || !config.fields) {
+        // 🛡️ 防呆 1：如果沒有設定檔或沒有 fields，直接清空並離開，絕對不往下跑 .map()
+        if (!config || !config.fields || !Array.isArray(config.fields)) {
             if (grid) grid.innerHTML = '';
             return;
         }
@@ -791,16 +791,19 @@
             const fieldsHtml = groups[groupName].map(f => {
                 let input = '';
                 if (f.type === 'select') {
-                    input = `<select id="edit-${f.id}">${f.options.map(o => `<option value="${o}">${o}</option>`).join('')}</select>`;
+                    // 🛡️ 防呆 2：確保 options 存在
+                    const options = f.options || [];
+                    input = `<select id="edit-${f.id}">${options.map(o => `<option value="${o}">${o}</option>`).join('')}</select>`;
                 } else if (f.type === 'checkbox') {
-                    input = `<div id="edit-${f.id}" class="checkbox-group">${f.options.map(o => `
+                    const options = f.options || [];
+                    input = `<div id="edit-${f.id}" class="checkbox-group">${options.map(o => `
                         <label class="checkbox-item">
                             <input type="checkbox" value="${o}"> ${o}
                         </label>`).join('')}</div>`;
                 } else if (f.type === 'textarea') {
                     input = `<textarea id="edit-${f.id}" rows="4" style="resize: vertical; min-height: 80px;"></textarea>`;
                 } else {
-                    input = `<input type="${f.type}" id="edit-${f.id}" ${f.required ? 'required' : ''}>`;
+                    input = `<input type="${f.type || 'text'}" id="edit-${f.id}" ${f.required ? 'required' : ''}>`;
                 }
                 
                 return `
