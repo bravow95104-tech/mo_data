@@ -102,6 +102,7 @@ async function fetchSkills(jobId) {
 function calculateMaxPoints() {
   const rebirthSelect = document.getElementById('rebirthSelect')
   const limitLevelCheck = document.getElementById('limitLevelCheck')
+  const skipBaseJobCheck = document.getElementById('skipBaseJobCheck') // 👈 抓取跳過基礎技能 Checkbox
 
   const rebirthPoints = rebirthSelect ? parseInt(rebirthSelect.value, 10) * 10 : 0
   const limitPoints = (limitLevelCheck && limitLevelCheck.checked) ? 10 : 0
@@ -112,12 +113,15 @@ function calculateMaxPoints() {
   // 計算目前已經投資了多少點
   const usedPoints = Object.values(allocatedPoints).reduce((sum, pts) => sum + pts, 0)
 
-  // 更新剩餘點數
-  remainingPoints = maxPoints - usedPoints
+  // 🔥 如果勾選了「自動扣除 120 點」，扣除點數需加上 120
+  const autoDeductPoints = (skipBaseJobCheck && skipBaseJobCheck.checked) ? 120 : 0
 
-  // 防呆：如果調低轉生次數導致剩餘點數變負數，可以在這裡提示或處理
+  // 更新剩餘點數
+  remainingPoints = maxPoints - usedPoints - autoDeductPoints
+
+  // 防呆：如果調低轉生或勾選扣點導致點數變成負數
   if (remainingPoints < 0) {
-    alert('總點數上限降低，已超過目前分配點數，請調整配點！')
+    alert('剩餘點數不足（可能點數上限降低或點數不足 120 點），請調整配點！')
   }
 
   // 更新 DOM 總點數顯示
@@ -403,6 +407,10 @@ function updatePoint(skillId, delta) {
     const isAdvSkill = skill.job_id !== currentParentJobId
 
     if (isAdvSkill) {
+      // 檢查是否有勾選自動扣除 120 點
+      const skipBaseJobCheck = document.getElementById('skipBaseJobCheck')
+      const isSkipped = skipBaseJobCheck && skipBaseJobCheck.checked
+
       // 計算「基礎職業技能」在補完點後累積消耗了多少點
       let baseJobAllocated = 0
       allSkills.forEach(s => {
@@ -413,9 +421,9 @@ function updatePoint(skillId, delta) {
         }
       })
 
-      // 基礎技能累積未滿 120 點，不給點轉職技能
-      if (baseJobAllocated < 120) {
-        alert(`無法點擊轉職技能！基礎職業技能累積需滿 120 點（補點後目前僅 ${baseJobAllocated}/120 點）。`)
+      // 🔥 既沒有點滿 120 點基礎技能，也沒有勾選「自動扣除 120 點」時才檔下！
+      if (baseJobAllocated < 120 && !isSkipped) {
+        alert(`無法點擊轉職技能！基礎職業技能累積需滿 120 點（目前僅 ${baseJobAllocated}/120 點），或請勾選「自動扣除 120 點技能點」。`)
         return
       }
     }
@@ -561,6 +569,14 @@ treeContainer.addEventListener('mouseover', e => {
   const limitLevelCheck = document.getElementById('limitLevelCheck')
   if (limitLevelCheck) {
     limitLevelCheck.addEventListener('change', () => {
+      calculateMaxPoints()
+    })
+  }
+
+  // 🆕 監聯「自動扣除 120 點」切換
+  const skipBaseJobCheck = document.getElementById('skipBaseJobCheck')
+  if (skipBaseJobCheck) {
+    skipBaseJobCheck.addEventListener('change', () => {
       calculateMaxPoints()
     })
   }
