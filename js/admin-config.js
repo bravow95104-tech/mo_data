@@ -578,6 +578,7 @@ export const TABLE_CONFIGS = {
             { id: 'name', label: '技能名稱', type: 'text', required: true, grid: 1, group: '基礎資訊' },
             { id: 'job_id', label: '對應職業ID (對應 jobs.id)', type: 'text', required: true, grid: 1, group: '基礎資訊' },
             { id: 'sort_id', label: '顯示順序', type: 'number', grid: 1, group: '基礎資訊' },
+            { id: 'skill_type', label: '技能種類', type: 'text', grid: 1, group: '基礎資訊' },
 
             { id: 'activation_type', label: '技能類型', type: 'text', grid: 1, group: '樹狀設定' },
             { id: 'max_level', label: '最高等級', type: 'number', grid: 1, group: '樹狀設定' },

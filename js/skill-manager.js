@@ -161,14 +161,19 @@ export function closeSkillManager() {
     if (modal) modal.style.display = 'none';
 }
 
-// 5. 儲存 Skills 與 Skill_levels (全自動容錯防錯版)
+// 5. 儲存 Skills 與 Skill_levels (解決 NOT NULL 限制問題)
 export async function saveSkillAndLevels() {
-    const skillId = document.getElementById('sm-skill-id').value;
+    const skillId = document.getElementById('sm-skill-id')?.value;
     const maxLevelInput = document.getElementById('sm-skill-max_level')?.value;
     const maxLevel = parseInt(maxLevelInput, 10) || 1;
 
     const configs = window.TABLE_CONFIGS || (typeof TABLE_CONFIGS !== 'undefined' ? TABLE_CONFIGS : null);
-    const skillConfig = configs.skills;
+    const skillConfig = configs ? configs.skills : null;
+
+    if (!skillConfig) {
+        alert('❌ 找不到 skills 表的設定檔 (TABLE_CONFIGS.skills)');
+        return;
+    }
 
     // 收集主表資料 (skills)
     const skillUpdates = {};
@@ -177,14 +182,11 @@ export async function saveSkillAndLevels() {
         if (el) {
             let val = el.value.trim();
 
-            // 核心修正：自動防止傳送空字串 "" 給資料庫
-            if (val === '') {
-                // 如果是 id 就維持空值，其他欄位預設轉為 null 或 0，避免整數欄位報錯
-                skillUpdates[f.id] = (f.id === 'id') ? '' : null;
-            } else if (f.type === 'number' || (!isNaN(val) && val !== '')) {
-                // 如果 config 有指定 number，或是字串本身可以轉成純數字，自動轉 Number
-                skillUpdates[f.id] = Number(val);
+            if (f.type === 'number') {
+                // 數字欄位：如果留白則給 0，避免整數轉型錯誤
+                skillUpdates[f.id] = val === '' ? 0 : Number(val);
             } else {
+                // 字串/選單欄位：維持字串，避免傳 null 觸發 NOT NULL 限制
                 skillUpdates[f.id] = val;
             }
         }
