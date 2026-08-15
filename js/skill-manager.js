@@ -183,14 +183,16 @@ export async function saveSkillAndLevels() {
             let val = el.value.trim();
 
             if (f.type === 'number') {
-                // 數字欄位：如果留白則給 0，避免整數轉型錯誤
-                skillUpdates[f.id] = val === '' ? 0 : Number(val);
+                // 1. 如果設定檔明確標示為 number，空字串轉 null (或 0)
+                skillUpdates[f.id] = val === '' ? null : Number(val);
             } else {
-                // 字串/選單欄位：維持字串，避免傳 null 觸發 NOT NULL 限制
-                skillUpdates[f.id] = val;
+                // 2. 如果非 number，但欄位填了空字串 ""，一律轉成 null
+                // 這樣就算 admin-config.js 型態寫錯，也不會拿 "" 去硬塞 Supabase 的整數欄位
+                skillUpdates[f.id] = val === '' ? null : val;
             }
         }
     });
+ 
 
     // 收集副表資料 (skill_levels)
     const levelUpdates = [];
