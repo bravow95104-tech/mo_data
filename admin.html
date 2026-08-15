@@ -520,6 +520,8 @@
     import { SUPABASE_URL, SUPABASE_KEY } from './js/supabase-config.js'
     import { TABLE_CONFIGS } from './js/admin-config.js'
 
+    window.TABLE_CONFIGS = TABLE_CONFIGS;
+    
     const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
     let currentTable = 'dashboard';
     let allData = [];

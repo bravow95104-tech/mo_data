@@ -86,7 +86,10 @@ async function openSkillManager(skillId) {
         currentSkillLevelsData = levelsRes.data || [];
 
         // 💡 讀取 TABLE_CONFIGS 中的 skills 欄位定義
-        const skillConfig = (typeof TABLE_CONFIGS !== 'undefined' && TABLE_CONFIGS.skills) ? TABLE_CONFIGS.skills : null;
+        const configs = window.TABLE_CONFIGS || (typeof TABLE_CONFIGS !== 'undefined' ? TABLE_CONFIGS : null);
+        const skillConfig = configs ? configs.skills : null;
+        
+        console.log("讀取到的 skillConfig:", skillConfig); // 加這行方便除錯
         const container = document.getElementById('sm-base-fields-container');
 
         if (skillConfig && skillConfig.fields) {
