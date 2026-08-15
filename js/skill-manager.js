@@ -216,3 +216,11 @@ async function saveSkillAndLevels() {
         alert("儲存失敗，請檢查 F12 Console 錯誤訊息。");
     }
 }
+
+// ==========================================
+// 🔗 將需要讓 HTML 或其他腳本呼叫的函式暴露至 window 全域
+// ==========================================
+window.openSkillManager = openSkillManager;
+window.closeSkillManager = closeSkillManager;
+window.generateLevelRows = generateLevelRows;
+window.saveSkillAndLevels = saveSkillAndLevels;
