@@ -771,13 +771,13 @@
     function renderEditForm() {
         const config = TABLE_CONFIGS[currentTable];
         const grid = document.getElementById('dynamicFormGrid');
-
-        // 🛡️ 防呆：如果該分頁沒有 fields 設定，直接跳過，避免報錯
+        
+        // 🛡️ 絕對防呆：如果該分頁沒有設定 fields（例如 skill_levels），直接跳過不動作
         if (!config || !config.fields) {
-            grid.innerHTML = '';
+            if (grid) grid.innerHTML = '';
             return;
         }
-        
+
         // 1. 先根據 group 對欄位進行分類
         const groups = {};
         config.fields.forEach(f => {
