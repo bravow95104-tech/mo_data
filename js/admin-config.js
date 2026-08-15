@@ -613,6 +613,7 @@ export const TABLE_CONFIGS = {
                 nameField: 'name'      // 要抓取顯示的技能名稱欄位
             }
         },
+        { id: 'id', label: '編碼', type: 'number', required: true, grid: 1, group: '核心設定' },
         { id: 'level', label: '技能等級 (1-10)', type: 'number', required: true, grid: 1, group: '核心設定' },
         { id: 'sort_id', label: '顯示順序', type: 'number', grid: 1, group: '核心設定' },
 
