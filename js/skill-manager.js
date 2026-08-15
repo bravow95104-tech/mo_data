@@ -191,19 +191,23 @@ async function saveSkillAndLevels() {
         const skillConfig = (typeof TABLE_CONFIGS !== 'undefined' && TABLE_CONFIGS.skills) ? TABLE_CONFIGS.skills : null;
         
         // 動態收集上半部所有技能主表的欄位數值
-        const updateSkillData = {};
-        if (skillConfig && skillConfig.fields) {
-            skillConfig.fields.forEach(f => {
-                const el = document.getElementById(`sm-skill-${f.id}`);
-                if (el) {
-                    let val = el.value;
-                    if (f.type === 'number') {
-                        val = val !== '' ? Number(val) : null;
-                    }
-                    updateSkillData[f.id] = val;
-                }
-            });
+const updateSkillData = {};
+if (skillConfig && skillConfig.fields) {
+    skillConfig.fields.forEach(f => {
+        const el = document.getElementById(`sm-skill-${f.id}`);
+        if (el) {
+            let val = el.value;
+            // 只要是 number 類型或是原本值為空字串，處理空字串轉 null
+            if (f.type === 'number') {
+                val = (val !== '' && !isNaN(val)) ? Number(val) : null;
+            } else if (val === '') {
+                // 如果其他非 string 欄位在 HTML 中給了空字串，避免爆 22P02
+                // 若欄位允許 null 建議傳 null，若為 NOT NULL 建議改傳 null 或處理
+            }
+            updateSkillData[f.id] = val;
         }
+    });
+}
 
         // 1. 更新主表 (skills)
         const { error: skillError } = await supabase
@@ -218,28 +222,32 @@ async function saveSkillAndLevels() {
         const levelsToUpsert = [];
 
         rows.forEach(row => {
-            const inputs = row.querySelectorAll('.sm-lvl-input');
-            let rowData = { skill_id: skillId };
+    const inputs = row.querySelectorAll('.sm-lvl-input');
+    let rowData = { skill_id: skillId };
 
-            inputs.forEach(input => {
-                const field = input.getAttribute('data-field');
-                const level = parseInt(input.getAttribute('data-level'));
-                rowData.level = level;
+    inputs.forEach(input => {
+        const field = input.getAttribute('data-field');
+        const level = parseInt(input.getAttribute('data-level'), 10);
+        rowData.level = level;
 
-                let val = input.value;
-                if (field === 'id') {
-                    if (val) rowData.id = val;
-                } else if (field === 'cooldown' || field === 'cast_time') {
-                    rowData[field] = parseFloat(val) || 0;
-                } else if (field === 'mp_cost') {
-                    rowData[field] = parseInt(val) || 0;
-                } else {
-                    rowData[field] = val;
-                }
-            });
+        let val = input.value.trim(); // 建議加上 trim() 去除空白
 
-            levelsToUpsert.push(rowData);
-        });
+        if (field === 'id') {
+            // 只有當 id 真正有值且不為空字串時才放入 rowData
+            if (val !== '' && val !== 'undefined' && val !== 'null') {
+                rowData.id = isNaN(val) ? val : parseInt(val, 10); 
+            }
+        } else if (field === 'cooldown' || field === 'cast_time') {
+            rowData[field] = val !== '' ? parseFloat(val) : 0;
+        } else if (field === 'mp_cost' || field === 'power_rate') { // 💡 如果 power_rate 資料庫也是整數，記得加在這裡
+            rowData[field] = val !== '' ? parseInt(val, 10) : 0;
+        } else {
+            rowData[field] = val;
+        }
+    });
+
+    levelsToUpsert.push(rowData);
+});
 
         // 3. 批次寫入等級表
         const { error: levelsError } = await supabase
