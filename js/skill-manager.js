@@ -145,23 +145,25 @@ async function openSkillManager(skillId) {
 
 // 3. 根據「最高等級」動態產生對應的輸入列
 function generateLevelRows() {
-    const maxLevel = parseInt(document.getElementById('sm-skill-max-level').value) || 1;
+    // 💡 修正 id：改為抓取 sm-skill-max_level
+    const maxLevelEl = document.getElementById('sm-skill-max_level') || document.getElementById('sm-skill-max-level');
+    const maxLevel = parseInt(maxLevelEl ? maxLevelEl.value : 1) || 1;
+    
     const tbody = document.getElementById('sm-levels-tbody');
+    if (!tbody) return;
+    
     tbody.innerHTML = ''; // 清空原本的列表
 
     // 從 Lv 1 跑到最高等級
     for (let i = 1; i <= maxLevel; i++) {
-        // 尋找資料庫撈回來的資料中，有沒有這個等級的舊資料？
         const existingData = currentSkillLevelsData.find(d => d.level === i) || {};
 
         const tr = document.createElement('tr');
         tr.style.borderBottom = "1px solid #dee2e6";
         
-        // 建立每一格的 input，並利用 data-level 和 data-field 標記它們，方便儲存時抓取
         tr.innerHTML = `
             <td style="padding: 8px 10px; font-weight: bold; color: #4a90e2;">
                 Lv ${i}
-                <!-- 隱藏欄位記錄該等級原始的 UUID (如果有的話) -->
                 <input type="hidden" class="sm-lvl-input" data-level="${i}" data-field="id" value="${existingData.id || ''}">
             </td>
             <td style="padding: 8px;"><input type="number" step="0.1" class="sm-lvl-input" data-level="${i}" data-field="cooldown" value="${existingData.cooldown || 0}" style="width: 70px; padding: 4px;"></td>
@@ -182,7 +184,7 @@ function closeSkillManager() {
 // 5. 儲存邏輯
 async function saveSkillAndLevels() {
     try {
-        const skillId = document.getElementById('sm-skill-id').value;
+        const skillId = document.getElementById('sm-skill-id') ? document.getElementById('sm-skill-id').value : '';
         const skillConfig = (typeof TABLE_CONFIGS !== 'undefined' && TABLE_CONFIGS.skills) ? TABLE_CONFIGS.skills : null;
         
         // 動態收集上半部所有技能主表的欄位數值
