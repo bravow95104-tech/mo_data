@@ -161,7 +161,7 @@ export function closeSkillManager() {
     if (modal) modal.style.display = 'none';
 }
 
-// 5. 儲存 Skills 與 Skill_levels (修復空數值轉換問題)
+// 5. 儲存 Skills 與 Skill_levels (全自動容錯防錯版)
 export async function saveSkillAndLevels() {
     const skillId = document.getElementById('sm-skill-id').value;
     const maxLevelInput = document.getElementById('sm-skill-max_level')?.value;
@@ -175,13 +175,17 @@ export async function saveSkillAndLevels() {
     skillConfig.fields.forEach(f => {
         const el = document.getElementById(`sm-skill-${f.id}`);
         if (el) {
-            const rawVal = el.value.trim();
+            let val = el.value.trim();
 
-            // 判斷欄位型態，解決傳送空字串 "" 給數字欄位導致 400 錯誤的問題
-            if (f.type === 'number') {
-                skillUpdates[f.id] = rawVal === '' ? 0 : Number(rawVal);
+            // 核心修正：自動防止傳送空字串 "" 給資料庫
+            if (val === '') {
+                // 如果是 id 就維持空值，其他欄位預設轉為 null 或 0，避免整數欄位報錯
+                skillUpdates[f.id] = (f.id === 'id') ? '' : null;
+            } else if (f.type === 'number' || (!isNaN(val) && val !== '')) {
+                // 如果 config 有指定 number，或是字串本身可以轉成純數字，自動轉 Number
+                skillUpdates[f.id] = Number(val);
             } else {
-                skillUpdates[f.id] = rawVal;
+                skillUpdates[f.id] = val;
             }
         }
     });
@@ -196,15 +200,17 @@ export async function saveSkillAndLevels() {
         levelUpdates.push({
             skill_id: skillId,
             level: lvl,
-            cooldown: cooldownVal === '' ? 0 : parseFloat(cooldownVal),
-            mp_cost: mpCostVal === '' ? 0 : parseInt(mpCostVal, 10),
+            cooldown: (cooldownVal === '' || isNaN(cooldownVal)) ? 0 : parseFloat(cooldownVal),
+            mp_cost: (mpCostVal === '' || isNaN(mpCostVal)) ? 0 : parseInt(mpCostVal, 10),
             power_rate: document.querySelector(`.sm-lvl-power_rate[data-lvl="${lvl}"]`)?.value.trim() || '',
-            cast_time: castTimeVal === '' ? 0 : parseFloat(castTimeVal),
+            cast_time: (castTimeVal === '' || isNaN(castTimeVal)) ? 0 : parseFloat(castTimeVal),
             description: document.querySelector(`.sm-lvl-description[data-lvl="${lvl}"]`)?.value.trim() || ''
         });
     }
 
     try {
+        console.log("📤 準備寫入 skills 表的 Payload:", skillUpdates);
+
         // 更新 Skills 主表
         const { error: skillErr } = await supabase.from('skills').upsert(skillUpdates);
         if (skillErr) throw skillErr;
@@ -218,6 +224,7 @@ export async function saveSkillAndLevels() {
         if (typeof window.loadTableData === 'function') window.loadTableData();
 
     } catch (err) {
+        console.error("❌ 儲存失敗完整錯誤:", err);
         alert('❌ 儲存失敗: ' + err.message);
     }
 }
