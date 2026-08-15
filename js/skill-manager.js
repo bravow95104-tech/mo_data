@@ -171,7 +171,7 @@ function generateLevelRows() {
             </td>
             <td style="padding: 8px;"><input type="number" step="0.1" class="sm-lvl-input" data-level="${i}" data-field="cooldown" value="${existingData.cooldown || 0}" style="width: 70px; padding: 4px;"></td>
             <td style="padding: 8px;"><input type="number" class="sm-lvl-input" data-level="${i}" data-field="mp_cost" value="${existingData.mp_cost || 0}" style="width: 70px; padding: 4px;"></td>
-            <td style="padding: 8px;"><input type="text" class="sm-lvl-input" data-level="${i}" data-field="power_rate" value="${existingData.power_rate || '100'}" style="width: 90px; padding: 4px;"></td>
+            <td style="padding: 8px;"><input type="text" class="sm-lvl-input" data-level="${i}" data-field="power_rate" value="${existingData.power_rate || '0'}" style="width: 90px; padding: 4px;"></td>
             <td style="padding: 8px;"><input type="number" step="0.1" class="sm-lvl-input" data-level="${i}" data-field="cast_time" value="${existingData.cast_time || 0}" style="width: 70px; padding: 4px;"></td>
             <td style="padding: 8px;"><input type="text" class="sm-lvl-input" data-level="${i}" data-field="description" value="${existingData.description || ''}" style="width: 95%; padding: 4px;" placeholder="該等級說明..."></td>
         `;
