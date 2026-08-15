@@ -161,34 +161,46 @@ export function closeSkillManager() {
     if (modal) modal.style.display = 'none';
 }
 
-// 5. 儲存 Skills 與 Skill_levels
+// 5. 儲存 Skills 與 Skill_levels (修復空數值轉換問題)
 export async function saveSkillAndLevels() {
     const skillId = document.getElementById('sm-skill-id').value;
-    const maxLevel = parseInt(document.getElementById('sm-skill-max_level').value || 1);
+    const maxLevelInput = document.getElementById('sm-skill-max_level')?.value;
+    const maxLevel = parseInt(maxLevelInput, 10) || 1;
 
     const configs = window.TABLE_CONFIGS || (typeof TABLE_CONFIGS !== 'undefined' ? TABLE_CONFIGS : null);
     const skillConfig = configs.skills;
 
-    // 收集主表資料
+    // 收集主表資料 (skills)
     const skillUpdates = {};
     skillConfig.fields.forEach(f => {
         const el = document.getElementById(`sm-skill-${f.id}`);
         if (el) {
-            skillUpdates[f.id] = (f.type === 'number') ? (parseInt(el.value) || 0) : el.value;
+            const rawVal = el.value.trim();
+
+            // 判斷欄位型態，解決傳送空字串 "" 給數字欄位導致 400 錯誤的問題
+            if (f.type === 'number') {
+                skillUpdates[f.id] = rawVal === '' ? 0 : Number(rawVal);
+            } else {
+                skillUpdates[f.id] = rawVal;
+            }
         }
     });
 
-    // 收集副表資料
+    // 收集副表資料 (skill_levels)
     const levelUpdates = [];
     for (let lvl = 1; lvl <= maxLevel; lvl++) {
+        const cooldownVal = document.querySelector(`.sm-lvl-cooldown[data-lvl="${lvl}"]`)?.value.trim();
+        const mpCostVal = document.querySelector(`.sm-lvl-mp_cost[data-lvl="${lvl}"]`)?.value.trim();
+        const castTimeVal = document.querySelector(`.sm-lvl-cast_time[data-lvl="${lvl}"]`)?.value.trim();
+
         levelUpdates.push({
             skill_id: skillId,
             level: lvl,
-            cooldown: parseFloat(document.querySelector(`.sm-lvl-cooldown[data-lvl="${lvl}"]`)?.value || 0),
-            mp_cost: parseInt(document.querySelector(`.sm-lvl-mp_cost[data-lvl="${lvl}"]`)?.value || 0),
-            power_rate: document.querySelector(`.sm-lvl-power_rate[data-lvl="${lvl}"]`)?.value || '',
-            cast_time: parseFloat(document.querySelector(`.sm-lvl-cast_time[data-lvl="${lvl}"]`)?.value || 0),
-            description: document.querySelector(`.sm-lvl-description[data-lvl="${lvl}"]`)?.value || ''
+            cooldown: cooldownVal === '' ? 0 : parseFloat(cooldownVal),
+            mp_cost: mpCostVal === '' ? 0 : parseInt(mpCostVal, 10),
+            power_rate: document.querySelector(`.sm-lvl-power_rate[data-lvl="${lvl}"]`)?.value.trim() || '',
+            cast_time: castTimeVal === '' ? 0 : parseFloat(castTimeVal),
+            description: document.querySelector(`.sm-lvl-description[data-lvl="${lvl}"]`)?.value.trim() || ''
         });
     }
 
