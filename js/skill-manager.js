@@ -147,8 +147,72 @@ function closeSkillManager() {
     document.getElementById('skillManagerModal').style.display = 'none';
 }
 
-// 5. 儲存邏輯 (下一步實作)
+// 5. 批次儲存主技能與各等級數值
 async function saveSkillAndLevels() {
-    alert("介面渲染成功！準備進入下一步：實作批次儲存邏輯。");
-    console.log("按下儲存按鈕");
+    try {
+        const skillId = document.getElementById('sm-skill-id').value;
+        const skillName = document.getElementById('sm-skill-name').value;
+        const maxLevel = parseInt(document.getElementById('sm-skill-max-level').value) || 1;
+
+        // 1. 更新主表 (skills) 的名稱與最高等級
+        const { error: skillError } = await supabase
+            .from('skills')
+            .update({ 
+                name: skillName, 
+                max_level: maxLevel 
+            })
+            .eq('id', skillId);
+
+        if (skillError) throw skillError;
+
+        // 2. 收集下半部表格裡所有的等級數值輸入
+        const rows = document.querySelectorAll('#sm-levels-tbody tr');
+        const levelsToUpsert = [];
+
+        rows.forEach(row => {
+            const inputs = row.querySelectorAll('.sm-lvl-input');
+            let rowData = {
+                skill_id: skillId
+            };
+
+            inputs.forEach(input => {
+                const field = input.getAttribute('data-field');
+                const level = parseInt(input.getAttribute('data-level'));
+                rowData.level = level;
+
+                let val = input.value;
+                // 依欄位屬性進行型別轉換
+                if (field === 'id') {
+                    if (val) rowData.id = val; // 如果原本有 UUID 就帶進去做 Upsert 更新
+                } else if (field === 'cooldown' || field === 'cast_time') {
+                    rowData[field] = parseFloat(val) || 0;
+                } else if (field === 'mp_cost') {
+                    rowData[field] = parseInt(val) || 0;
+                } else {
+                    rowData[field] = val; // power_rate, description 保持字串
+                }
+            });
+
+            levelsToUpsert.push(rowData);
+        });
+
+        // 3. 使用 Supabase 的 upsert 批次寫入（依據主鍵或唯一鍵更新/新增）
+        const { error: levelsError } = await supabase
+            .from('skill_levels')
+            .upsert(levelsToUpsert);
+
+        if (levelsError) throw levelsError;
+
+        alert("🎉 所有技能與等級數據儲存成功！");
+        closeSkillManager();
+        
+        // 重新載入背景的主表格資料（假設你的主畫面有這個重新載入函式）
+        if (typeof loadTableData === 'function') {
+            loadTableData();
+        }
+
+    } catch (err) {
+        console.error("儲存失敗:", err);
+        alert("儲存失敗，請檢查 F12 Console 錯誤訊息。");
+    }
 }
