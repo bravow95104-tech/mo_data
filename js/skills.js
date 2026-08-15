@@ -503,8 +503,13 @@ treeContainer.addEventListener('mouseover', e => {
   const currentLevel = allocatedPoints[skill.id] || 0
   const maxLevel = skill.max_level || 10
   
-  // 3. 判斷輔助函式 (非空檢查)
-  const hasValue = (val) => val !== null && val !== undefined && val !== ''
+  // 3. 判斷輔助函式 (排除 null, undefined, '', 以及 0)
+  const hasValue = (val) => {
+    if (val === null || val === undefined || val === '') return false;
+    // 轉成數字檢查，如果大於 0 才算有資料
+    const num = Number(val);
+    return !isNaN(num) && num > 0;
+  }
   
   // 格式化數值的內部函式
   const formatStats = (lvlData) => {
