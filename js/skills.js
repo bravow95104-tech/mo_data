@@ -188,13 +188,20 @@ function renderTabTree() {
     // 1. 計算點數
   const totalUsed = maxPoints - remainingPoints // 總已點點數
 
-  // 計算「基礎職業」累積點數 (對照 120 點門檻)
-  let baseJobUsed = 0
+  // 抓取「自動扣除 120 點」的 Checkbox 狀態
+  const skipBaseJobCheck = document.getElementById('skipBaseJobCheck')
+  const isSkipped = skipBaseJobCheck && skipBaseJobCheck.checked
+
+  // 計算「基礎職業」實際分配的點數
+  let rawBaseJobUsed = 0
   allSkills.forEach(s => {
     if (s.job_id === currentParentJobId) {
-      baseJobUsed += (allocatedPoints[s.id] || 0)
+      rawBaseJobUsed += (allocatedPoints[s.id] || 0)
     }
   })
+
+  // 🔥 若勾選「自動扣除 120 點」，顯示數值直接採 120 點算；否則呈現實際配點數
+  const baseJobUsed = isSkipped ? 120 : rawBaseJobUsed
 
   // 2. 更新 DOM 顯示
   if (remainingPointsEl) remainingPointsEl.innerText = remainingPoints
@@ -202,7 +209,8 @@ function renderTabTree() {
   
   if (baseJobPointsTextEl) {
     baseJobPointsTextEl.innerText = `(基礎: ${baseJobUsed}/120)`
-    // 如果基礎點數已經滿 120，可以順便變色 highlight
+    
+    // 只要滿 120 點（包含自動扣除達標），即轉為高亮綠色
     if (baseJobUsed >= 120) {
       baseJobPointsTextEl.style.color = '#00ff88' // 綠色代表達標
     } else {
