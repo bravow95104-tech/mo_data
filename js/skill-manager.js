@@ -1,7 +1,10 @@
 // ==========================================
 // 專屬技能與等級母子表編輯器 (Skill Manager)
 // ==========================================
+import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm'
+import { SUPABASE_URL, SUPABASE_KEY } from './supabase-config.js'
 
+const supabase = createClient(SUPABASE_URL, SUPABASE_KEY)
 let currentSkillLevelsData = []; // 暫存從資料庫撈回來的各等級資料
 
 // 1. 動態注入專屬的 Modal HTML 到畫面上
