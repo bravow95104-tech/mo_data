@@ -854,6 +854,15 @@
 };
 
 window.openEditModal = async (id) => {
+    // --- 💡 新增的攔截點開始 ---
+    // 如果現在正在看的是 'skills' 頁面，就把工作交給 skill-manager.js
+    if (currentPage === 'skills') {
+        if (typeof openSkillManager === 'function') {
+            openSkillManager(id);
+            return; // 終止原本的通用編輯邏輯
+        }
+    }
+    
     if (!await verifySessionBeforeAction()) return;
     const item = allData.find(d => d.id == id);
     if (!item) return;
@@ -1081,6 +1090,6 @@ window.openEditModal = async (id) => {
 
     checkAuth();
 </script>
-
+<script src="/mo_data/js/skill-manager.js"></script>
 </body>
 </html>
