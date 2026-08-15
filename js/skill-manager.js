@@ -200,13 +200,17 @@ export async function saveSkillAndLevels() {
         const cooldownVal = document.querySelector(`.sm-lvl-cooldown[data-lvl="${lvl}"]`)?.value.trim();
         const mpCostVal = document.querySelector(`.sm-lvl-mp_cost[data-lvl="${lvl}"]`)?.value.trim();
         const castTimeVal = document.querySelector(`.sm-lvl-cast_time[data-lvl="${lvl}"]`)?.value.trim();
+        const powerRateVal = document.querySelector(`.sm-lvl-power_rate[data-lvl="${lvl}"]`)?.value.trim();
 
         levelUpdates.push({
             skill_id: skillId,
             level: lvl,
             cooldown: (cooldownVal === '' || isNaN(cooldownVal)) ? 0 : parseFloat(cooldownVal),
             mp_cost: (mpCostVal === '' || isNaN(mpCostVal)) ? 0 : parseInt(mpCostVal, 10),
-            power_rate: document.querySelector(`.sm-lvl-power_rate[data-lvl="${lvl}"]`)?.value.trim() || '',
+            
+            // 💡 修正這裡：power_rate 如果是空字串，轉成 null 或 0（看你的遊戲邏輯，建議轉 0）
+            power_rate: (powerRateVal === '' || isNaN(powerRateVal)) ? 0 : parseFloat(powerRateVal),
+            
             cast_time: (castTimeVal === '' || isNaN(castTimeVal)) ? 0 : parseFloat(castTimeVal),
             description: document.querySelector(`.sm-lvl-description[data-lvl="${lvl}"]`)?.value.trim() || ''
         });
