@@ -104,6 +104,11 @@ function calculateMaxPoints() {
   const limitLevelCheck = document.getElementById('limitLevelCheck')
   const skipBaseJobCheck = document.getElementById('skipBaseJobCheck') // 👈 抓取跳過基礎技能 Checkbox
 
+  // 🔥 關鍵新增：如果勾選了極限等級，自動強制將轉生選單切換為 3 次
+  if (limitLevelCheck && limitLevelCheck.checked && rebirthSelect) {
+    rebirthSelect.value = "3"
+  }
+
   const rebirthPoints = rebirthSelect ? parseInt(rebirthSelect.value, 10) * 10 : 0
   const limitPoints = (limitLevelCheck && limitLevelCheck.checked) ? 10 : 0
 
