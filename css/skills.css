@@ -267,8 +267,8 @@
 }
 
 .simulator-container .node-icon-box {
-  width: 56px;
-  height: 56px;
+  width: 45px;
+  height: 45px;
   background: #ffd369;
   border: 2px solid var(--border-gold);
   border-radius: 8px;
