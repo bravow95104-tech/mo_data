@@ -228,7 +228,7 @@ function renderTabTree() {
 
 currentTabSkills = allSkills.filter(s => (s.skill_type || '通用') === currentTab)
   
-  const defaultIcon = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='54' height='54'><rect width='45' height='45' fill='%23ffd369'/><text x='50%' y='55%' dominant-baseline='middle' text-anchor='middle' font-size='12' font-weight='bold'>SKILL</text></svg>"
+  const defaultIcon = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='54' height='54'><rect width='45' height='45' fill='%23ffd369'/><text x='50%' y='55%' dominant-baseline='middle' text-anchor='middle' font-size='10' font-weight='bold'>SKILL</text></svg>"
   // 1. 先繪製 HTML 結構
   treeContainer.innerHTML = `
     <div class="skill-tree-wrapper" style="position: relative;">
