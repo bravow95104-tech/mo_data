@@ -75,53 +75,81 @@
 }
 
 /* ==========================================
-   🎛️ 頂部控制列 (Status Bar / Simulator Controls)
+   🎛️ 頂部控制列 (Status Bar)
    ========================================== */
-.simulator-container .status-bar,
-.simulator-container .simulator-controls {
+.simulator-container .status-bar {
   display: flex;
-  flex-wrap: wrap;             
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px 16px;             
+  flex-direction: column;
+  gap: 12px;
   background: rgba(26, 15, 10, 0.9);
-  padding: 12px 16px;
+  padding: 16px;
   border-radius: 8px;
   border: 1px solid var(--border-gold);
   margin-bottom: 25px;
   box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
-/* 左側控制組 (職業 / 轉生 / 極限) */
-.simulator-container .control-group,
-.simulator-container .simulator-controls > div:not(.point-summary) {
+/* 上層設定卡片容器 */
+.simulator-container .controls-config-group {
   display: flex;
-  align-items: center;
   flex-wrap: wrap;
-  gap: 10px 14px;
+  gap: 8px 10px;
+  align-items: center;
 }
 
-.simulator-container label {
-  color: var(--text-gold);
-  font-size: 0.88rem;
-  font-weight: bold;
-  white-space: nowrap;        
+/* 獨立控制小框 (Config Card) */
+.simulator-container .config-card {
+  display: inline-flex;
+  align-items: center;
+  background: rgba(42, 26, 18, 0.6);
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  border-radius: 6px;
+  padding: 6px 12px;
+  transition: border-color 0.2s, background-color 0.2s;
+}
+
+.simulator-container .config-card:hover {
+  border-color: var(--border-gold);
+  background: rgba(61, 39, 29, 0.8);
+}
+
+/* 下層動作列 (點數 + 重置鈕) */
+.simulator-container .controls-action-group {
   display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 4px;
+}
+
+.simulator-container .point-status-bar {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+/* 下拉選單與 Checkbox 微調 */
+.simulator-container .config-card label {
+  color: var(--text-gold);
+  font-size: 0.85rem;
+  font-weight: bold;
+  white-space: nowrap;
+  display: inline-flex;
   align-items: center;
   gap: 6px;
   cursor: pointer;
+  margin: 0;
 }
 
-.simulator-container select {
+.simulator-container .config-card select {
   background: var(--card-bg);
   color: #fff;
   border: 1px solid var(--border-gold);
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-size: 0.88rem;
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-size: 0.85rem;
   outline: none;
   cursor: pointer;
-  transition: border-color 0.2s, box-shadow 0.2s;
+  margin-left: 4px;
 }
 
 .simulator-container select:hover,

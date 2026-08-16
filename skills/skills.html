@@ -18,48 +18,65 @@
   <nav id="tabsContainer" class="tabs-nav"></nav>
     
     <!-- 頂部資訊列 (職業選擇 & 點數) -->
-    <div class="status-bar">
-      <div class="job-select-wrapper">
-        <label for="jobSelect">選擇職業：</label>
-        <select id="jobSelect"></select>
+<div class="status-bar">
+  
+  <!-- 上層：設定選項區塊 (卡片式小框包覆) -->
+  <div class="controls-config-group">
+    
+    <!-- 選擇職業小框 -->
+    <div class="config-card">
+      <label for="jobSelect">選擇職業：</label>
+      <select id="jobSelect"></select>
+    </div>
+
+    <!-- 轉生次數小框 -->
+    <div class="config-card">
+      <label for="rebirthSelect">轉生次數：</label>
+      <select id="rebirthSelect">
+        <option value="0">未轉生 (+0點)</option>
+        <option value="1">轉生 1 次 (+10點)</option>
+        <option value="2">轉生 2 次 (+20點)</option>
+        <option value="3">轉生 3 次 (+30點)</option>
+      </select>
+    </div>
+
+    <!-- 極限等級小框 -->
+    <div class="config-card">
+      <label class="checkbox-label" for="limitLevelCheck">
+        <input type="checkbox" id="limitLevelCheck"> 開放極限 410 (+10點)
+      </label>
+    </div>
+
+    <!-- 自動扣除門檻小框 -->
+    <div class="config-card">
+      <label class="checkbox-label" for="skipBaseJobCheck">
+        <input type="checkbox" id="skipBaseJobCheck"> 自動扣除 120 點基礎技能點 (直接解鎖轉職)
+      </label>
+    </div>
+
+  </div>
+
+  <!-- 下層：點數與重置按鈕 -->
+  <div class="controls-action-group">
+    <div class="point-status-bar">
+      <!-- 已點點數 -->
+      <div class="point-badge used">
+        <span class="label">已用點數</span>
+        <span class="value" id="usedPoints">0</span>
+        <span class="sub-label" id="baseJobPointsText">(基礎: 0/120)</span>
       </div>
 
-      <!-- 🆕 新增：轉生次數 -->
-  <label for="rebirthSelect">轉生次數：</label>
-  <select id="rebirthSelect">
-    <option value="0">未轉生 (+0點)</option>
-    <option value="1">轉生 1 次 (+10點)</option>
-    <option value="2">轉生 2 次 (+20點)</option>
-    <option value="3">轉生 3 次 (+30點)</option>
-  </select>
-
-  <!-- 🆕 新增：極限等級 -->
-  <label class="checkbox-label">
-    <input type="checkbox" id="limitLevelCheck"> 開放極限 410 (+10點)
-  </label>
-
-  <label style="margin-left: 10px; cursor: pointer;">
-  <input type="checkbox" id="skipBaseJobCheck"> 自動扣除 120 點基礎技能點 (直接解鎖轉職)
-</label>
-
-      <!-- 範例：放在 POINT 旁邊 -->
-<div class="point-status-bar">
-  <!-- 新增：已點點數 -->
-  <div class="point-badge used">
-    <span class="label">已用點數</span>
-    <span class="value" id="usedPoints">0</span>
-    <!-- 選擇性：加上基礎職累積提示，方便對照 120 點門檻 -->
-    <span class="sub-label" id="baseJobPointsText">(基礎: 0/120)</span>
-  </div>
-
-  <!-- 原本：剩餘點數 -->
-  <div class="point-badge remaining">
-    <span class="label">可用點數</span>
-    <span class="value" id="remainingPoints">200</span>
-  </div>
-</div>
-      <button id="resetBtn" class="btn-reset">重置</button>
+      <!-- 剩餘點數 -->
+      <div class="point-badge remaining">
+        <span class="label">可用點數</span>
+        <span class="value" id="remainingPoints">200</span>
+      </div>
     </div>
+
+    <button id="resetBtn" class="btn-reset">重置</button>
+  </div>
+
+</div>
 
     <!-- 技能樹核心區塊 -->
     <main class="tree-viewport">
