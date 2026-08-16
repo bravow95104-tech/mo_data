@@ -35,6 +35,7 @@ async function fetchJobs() {
   const { data } = await supabase
     .from('job_classes')
     .select('*')
+    .order('sort_id', { ascending: true })
     .order('job_tier', { ascending: true })
 
   if (!data || data.length === 0) return
