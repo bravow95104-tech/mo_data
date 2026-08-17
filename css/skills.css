@@ -486,3 +486,29 @@
 [data-theme="light"] .skill-tooltip .tt-desc {
   color: #2d3748;
 }
+
+/* 膠囊外殼背景修正 */
+[data-theme="light"] .simulator-container .node-status-line {
+  background: rgba(255, 255, 255, 0.95);
+  border-color: var(--border-gold);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+/* 顯示數值文字顏色修正 */
+[data-theme="light"] .simulator-container .level-text {
+  color: #0066cc;
+  text-shadow: none;
+}
+
+/* 減號按鈕 (-) 修正 */
+[data-theme="light"] .simulator-container .btn-minus {
+  background: #e2e8f0;
+  color: #4a5568;
+  border-color: #cbd5e1;
+}
+
+/* 減號按鈕 hover 效果 */
+[data-theme="light"] .simulator-container .btn-minus:hover:not(.disabled) {
+  background: #cbd5e1;
+  color: #1a202c;
+}
