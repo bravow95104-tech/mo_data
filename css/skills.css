@@ -405,3 +405,84 @@
   line-height: 1.4;
   white-space: pre-line;
 }
+
+/* ==========================================
+   ☀️ 技能模擬器 - 白天 (Light Mode) 相容修正
+   ========================================== */
+[data-theme="light"] {
+  /* 覆蓋技能樹專屬變數 */
+  --bg-game: #f4f5f7;
+  --panel-bg: rgba(255, 255, 255, 0.85);
+  --card-bg: #ffffff;
+  --border-gold: #c05621;
+  --text-gold: #9c4221;       /* 改為深橘褐色，解決原本亮黃色文字在淺色背景看不到的問題 */
+  --line-color: #cbd5e1;
+}
+
+/* 頂部控制列與小框改為淺色透光背景 */
+[data-theme="light"] .simulator-container .status-bar {
+  background: rgba(245, 247, 250, 0.9);
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.05);
+}
+
+[data-theme="light"] .simulator-container .config-card {
+  background: rgba(255, 255, 255, 0.8);
+  border-color: rgba(192, 86, 33, 0.3);
+}
+
+[data-theme="light"] .simulator-container .config-card:hover {
+  background: #ffffff;
+}
+
+/* 下拉選單與 Label 文字色彩修正 */
+[data-theme="light"] .simulator-container .config-card select {
+  background: #ffffff;
+  color: #2d3748;             /* 改為深色字，防止下拉選單變成白字白底 */
+  border-color: var(--border-gold);
+}
+
+/* 點數徽章修正 */
+[data-theme="light"] .simulator-container .point-badge {
+  background: rgba(255, 255, 255, 0.9);
+  color: #2d3748;
+  border-color: var(--border-gold);
+}
+
+[data-theme="light"] .simulator-container .point-badge .sub-label {
+  color: #718096;
+}
+
+/* 頁籤選單 (Tabs) 修正 */
+[data-theme="light"] .simulator-container .tab-btn {
+  background: rgba(255, 255, 255, 0.6);
+  color: #4a5568;
+}
+
+[data-theme="light"] .simulator-container .tab-btn.active {
+  background: var(--border-gold);
+  color: #ffffff;
+}
+
+/* Tooltip 浮動說明視窗修正 */
+[data-theme="light"] .skill-tooltip {
+  background: rgba(255, 255, 255, 0.96);
+  border-color: var(--border-gold);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+[data-theme="light"] .skill-tooltip .tt-title {
+  color: var(--text-gold);
+}
+
+[data-theme="light"] .skill-tooltip .tt-type,
+[data-theme="light"] .skill-tooltip .tt-req {
+  color: #718096;
+}
+
+[data-theme="light"] .skill-tooltip .tt-divider {
+  border-top-color: #e2e8f0;
+}
+
+[data-theme="light"] .skill-tooltip .tt-desc {
+  color: #2d3748;
+}
