@@ -352,10 +352,12 @@ function showDetailModal(item) {
 
   overlay.style.display = 'block';
   modalBox.style.display = 'block';
+  document.body.style.overflow = "hidden";
   modalBox.scrollTop = 0;
 }
 
 function closeModal() {
   document.getElementById('modalOverlay').style.display = 'none';
   document.getElementById('modalBox').style.display = 'none';
+  document.body.style.overflow = "";// 🚀 關鍵修改：解鎖底層背景滾動
 }
