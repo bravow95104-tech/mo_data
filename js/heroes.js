@@ -495,12 +495,15 @@ function formatMapLinks(text) {
     modalContent.insertAdjacentHTML("beforeend", detailHTML);
 
     modalOverlay.style.display = "block";
-    modalBox.style.display = "block";
-    
+  modalBox.style.display = "block";
+  
+  // 🚀 關鍵修改：鎖定底層背景滾動
+  document.body.style.overflow = "hidden";
+
+  modalBox.scrollTop = 0;
+  setTimeout(() => {
     modalBox.scrollTop = 0;
-    setTimeout(() => {
-      modalBox.scrollTop = 0;
-    }, 10);
+  }, 10);
   }
 
   function closeModal() {
