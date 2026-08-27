@@ -370,11 +370,11 @@ body {
 .sidebar-list li {
     display: flex;
     align-items: flex-start;
-    padding: 16px 12px; /* 建議左右加一點 padding，浮動時視覺比較好看 */
+    padding: 16px 8px !important;
     border-bottom: 1px solid var(--border-separator);
-    font-size: 1rem;
+    font-size: 0.98rem !important;
     color: var(--text-muted);
-    line-height: 1.6;
+    line-height: 1.7 !important;
     border-radius: 8px; /* 加上圓角 */
     transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease; /* 👈 補上這行動畫 */
 }
@@ -438,7 +438,7 @@ body {
     padding: 3px 14px !important;
     border-radius: 9999px !important;
     text-align: center;
-    margin-right: 20px;
+    margin-right: 18px !important;
     border: 1px solid rgba(144, 202, 249, 0.3) !important;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
