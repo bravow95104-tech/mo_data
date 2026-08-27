@@ -1237,6 +1237,7 @@ function showModal() {
   if (overlay) overlay.style.display = "block";
   if (modalBox) {
     modalBox.style.display = "block";
+    document.body.style.overflow = "hidden";
     modalBox.scrollTop = 0;
   }
 }
@@ -1249,6 +1250,7 @@ function closeModal() {
       box.classList.remove("modal-large-mode");
   }
   if (overlay) overlay.style.display = "none";
+  document.body.style.overflow = "";
 }
 
 function bindModalEvents() {
