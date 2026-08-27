@@ -702,3 +702,30 @@ body.dark-theme #events-list a,
         margin-right: 12px;
     }
 }
+
+/* === 淺色模式專用細節修正 === */
+[data-theme="light"] .changelog-list .date,
+[data-theme="light"] .sidebar-list .date,
+[data-theme="light"] .sidebar-list .date2 {
+    background: #e3f2fd !important;      /* 柔和清爽的淺藍底 */
+    color: #1565c0 !important;           /* 深藍字，提高對比與閱讀性 */
+    border: 1px solid #bbdefb !important;
+}
+
+[data-theme="light"] .changelog-list .tips,
+[data-theme="light"] .sidebar-list .tips {
+    background: #e8f5e9 !important;      /* 柔和淺綠底 */
+    color: #2e7d32 !important;           /* 深綠字 */
+    border: 1px solid #c8e6c9 !important;
+}
+
+/* 徹底清除淺色模式下右下角活動區塊的底色 */
+[data-theme="light"] #events-list li {
+    background-color: transparent !important;
+    border: none !important;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08) !important;
+}
+
+[data-theme="light"] #events-list li:hover {
+    background-color: rgba(0, 0, 0, 0.03) !important;
+}
