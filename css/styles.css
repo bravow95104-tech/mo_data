@@ -411,11 +411,12 @@ body {
 .changelog-list li, 
 .sidebar-list li {
     display: flex;
-    align-items: center; /* 改為垂直居中，視覺上更和諧 */
-    padding: 18px 16px !important; /* 原本是 16px 0，拉大上下留白並補上左右邊距 */
+    align-items: flex-start;
+    padding: 16px 0;
     border-bottom: 1px solid var(--border-separator);
-    font-size: 1.05rem !important; /* 稍微加大字體 */
-    line-height: 1.8 !important;   /* 拉大行高 */
+    font-size: 1rem;
+    color: var(--text-muted);
+    line-height: 1.6;
 }
 
 .changelog-list li:last-child, 
@@ -427,15 +428,19 @@ body {
 .changelog-list .date, 
 .sidebar-list .date,
 .sidebar-list .date2 {
-    width: auto !important;         /* 取消固定 105px 寬度，改為自動適應內容 */
-    min-width: 80px;                /* 設定最小寬度保持齊整 */
-    padding: 4px 16px !important;   /* 增加左右內邊距，變成好看的長膠囊 */
-    margin-right: 24px !important;  /* 拉開標籤與右側文字的距離（原本 20px） */
-    border-radius: 9999px !important;/* 完全圓弧膠囊 */
-    font-size: 0.85rem;
-    font-weight: 500;               /* 字體稍微調細，減少壓迫感 */
-    text-align: center;
     flex-shrink: 0;
+    width: 105px;
+    background: var(--tag-date-bg);
+    color: var(--tag-text-color) !important;
+    font-family: "JetBrains Mono", "Courier New", monospace;
+    font-weight: 600;
+    font-size: 0.85rem;
+    padding: 6px 4px;
+    border-radius: 8px;
+    text-align: center;
+    margin-right: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 .sidebar-list .date2 {
