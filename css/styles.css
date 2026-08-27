@@ -351,7 +351,7 @@ body {
     -webkit-backdrop-filter: blur(14px);
     border: 1px solid var(--glass-border) !important;
     border-radius: 24px !important;
-    padding: 35px !important;
+    padding: 40px !important;
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25) !important;
     transition: all 0.4s ease !important;
 }
@@ -426,9 +426,7 @@ body {
 /* 日期與標籤樣式 - 支援主題切換 */
 .changelog-list .date, 
 .sidebar-list .date,
-.sidebar-list .date2,
-.changelog-list .tips, 
-.sidebar-list .tips {
+.sidebar-list .date2 {
     width: auto !important;         /* 取消固定 105px 寬度，改為自動適應內容 */
     min-width: 80px;                /* 設定最小寬度保持齊整 */
     padding: 4px 16px !important;   /* 增加左右內邊距，變成好看的長膠囊 */
