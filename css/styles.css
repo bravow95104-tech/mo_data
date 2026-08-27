@@ -430,8 +430,8 @@ body {
 .sidebar-list .date2 {
     flex-shrink: 0;
     width: 105px;
-    background: var(--tag-date-bg);
-    color: var(--tag-text-color) !important;
+    background: rgba(30, 75, 138, 0.3) !important;
+    color: #90caf9 !important;
     font-family: "JetBrains Mono", "Courier New", monospace;
     font-weight: 600;
     font-size: 0.85rem;
@@ -439,7 +439,7 @@ body {
     border-radius: 8px;
     text-align: center;
     margin-right: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(144, 202, 249, 0.3) !important;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
@@ -460,15 +460,15 @@ body {
 .sidebar-list .tips {
     flex-shrink: 0;
     width: 105px;
-    background: var(--tag-tips-bg);
-    color: var(--tag-text-color) !important;
+    background: rgba(46, 125, 50, 0.25) !important;
+    color: #81c784 !important;
     font-weight: 600;
     font-size: 0.85rem;
     padding: 6px 4px;
     border-radius: 8px;
     text-align: center;
     margin-right: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(129, 199, 132, 0.3) !important;
 }
 
 /* 分頁按鈕樣式升級 */
