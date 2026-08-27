@@ -459,13 +459,13 @@ body {
 .changelog-list .tips, 
 .sidebar-list .tips {
     flex-shrink: 0;
-    width: 105px;
+    width: auto !important;
     background: rgba(46, 125, 50, 0.25) !important;
     color: #81c784 !important;
-    font-weight: 600;
-    font-size: 0.85rem;
-    padding: 6px 4px;
-    border-radius: 8px;
+    font-size: 0.82rem !important;
+    font-weight: 500 !important;
+    padding: 3px 14px !important;
+    border-radius: 9999px !important;
     text-align: center;
     margin-right: 20px;
     border: 1px solid rgba(129, 199, 132, 0.3) !important;
@@ -535,13 +535,11 @@ body {
   align-items: center;
   gap: 10px;
   margin-bottom: 10px;
-  padding: 8px 12px;
-  border-radius: 8px;
-  
-  /* 預設使用繼承的主題顏色，若無變數則提供相容色彩 */
-  background-color: var(--card-bg, rgba(0, 0, 0, 0.04)); 
-  border: 1px solid var(--border-color, rgba(0, 0, 0, 0.1));
+  padding: 12px 0 !important;
+  border-radius: 0 !important;
+  border: none !important;
   transition: all 0.2s ease;
+  border-bottom: 1px solid var(--border-separator) !important;
 }
 
 #events-list li:hover {
