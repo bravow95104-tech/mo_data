@@ -317,12 +317,14 @@ async function showDropMaps(garbageName) {
   function openModal() {
     if (modalOverlay) modalOverlay.style.display = 'block';
     if (modalBox) modalBox.style.display = 'block';
+    document.body.style.overflow = "hidden";
     if (modalBox) modalBox.scrollTop = 0;
   }
 
   function closeModal() {
     if (modalOverlay) modalOverlay.style.display = 'none';
     if (modalBox) modalBox.style.display = 'none';
+    document.body.style.overflow = "";// 🚀 關鍵修改：解鎖底層背景滾動
   }
 
   if (closeBtn) closeBtn.addEventListener('click', closeModal);

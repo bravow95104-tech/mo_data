@@ -396,6 +396,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   function openModal() {
     modalOverlay.style.display = "block";
     modalBox.style.display = "block";
+    document.body.style.overflow = "hidden";
     setTimeout(() => {
       modalBox.scrollTop = 0;
     }, 0);
@@ -404,6 +405,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   function closeModal() {
     modalOverlay.style.display = "none";
     modalBox.style.display = "none";
+    document.body.style.overflow = "";// 🚀 關鍵修改：解鎖底層背景滾動
   }
   if (closeModalBtn) closeModalBtn.addEventListener("click", closeModal);
   if (modalOverlay) modalOverlay.addEventListener("click", closeModal);
