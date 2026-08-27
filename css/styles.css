@@ -529,21 +529,20 @@ body {
    官方限時活動區塊（支援日/夜間模式）
    ========================================== */
 
-/* 卡片外框：使用相對的主題變數，或支援淺色背景 */
+/* 清除限時官方活動列表的背景色與框線 */
 #events-list li {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 10px;
-  padding: 12px 0 !important;
-  border-radius: 0 !important;
-  border: none !important;
-  transition: all 0.2s ease;
-  border-bottom: 1px solid var(--border-separator) !important;
+    background-color: transparent !important;
+    background: none !important;
+    border: none !important;
+    border-bottom: 1px solid var(--border-separator) !important; /* 只保留底部微弱分隔線 */
+    border-radius: 0 !important;
+    padding: 12px 4px !important;
 }
 
+/* 確保滑過時是微微打亮，而不是顯現整塊底色 */
 #events-list li:hover {
-  background-color: var(--card-hover-bg, rgba(0, 0, 0, 0.08));
+    background-color: rgba(255, 255, 255, 0.04) !important;
+    border-radius: 8px !important;
 }
 
 /* 日期標籤：深色底白字，不論日夜間都能清晰顯示 */
