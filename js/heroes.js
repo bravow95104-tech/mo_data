@@ -510,6 +510,8 @@ function formatMapLinks(text) {
     modalOverlay.style.display = "none";
     modalBox.style.display = "none";
     modalBox.scrollTop = 0;
+
+    document.body.style.overflow = "";// 🚀 關鍵修改：解鎖底層背景滾動
   }
 
   closeModalBtn.addEventListener("click", closeModal);
