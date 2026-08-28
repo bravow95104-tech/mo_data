@@ -757,3 +757,10 @@ body.dark-theme #events-list a,
   border: 1px solid var(--glass-border);
   margin-bottom: 20px;
 }
+
+.quick-search-label {
+  color: var(--text-main);
+  font-size: 14px;
+  font-weight: 600;
+  white-space: nowrap; /* 避免文字斷行 */
+}
