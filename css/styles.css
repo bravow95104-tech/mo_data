@@ -337,7 +337,7 @@ body {
     justify-content: center;
     max-width: 1440px;
     width: 100% !important;
-    margin: 0 auto;
+    margin: 30px auto 0 auto !important; /* 👈 第一個數字改成 30px 或 40px */
     padding: 0;
     gap: 30px;
 }
@@ -349,7 +349,7 @@ body {
 }
 
 #sidebar-container {
-    width: 360px !important;      /* 固定右側欄位寬度為 360px */
+    width: 400px !important;      /* 固定右側欄位寬度為 360px */
     flex-shrink: 0 !important;    /* 鎖定寬度，不允許被縮小 */
     display: flex;
     flex-direction: column;
