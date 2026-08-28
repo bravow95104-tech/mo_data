@@ -743,3 +743,23 @@ body.dark-theme #events-list a,
 [data-theme="light"] #events-list li:hover {
     background-color: rgba(0, 0, 0, 0.03) !important;
 }
+
+
+#searchInput {
+  padding: 10px 16px;
+  flex: 1;
+  max-width: 300px;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 10px;
+  color: var(--text-main);
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+#searchInput:focus {
+  outline: none;
+  border-color: var(--primary-blue);
+  box-shadow: 0 0 10px rgba(77, 163, 255, 0.3);
+  background: var(--glass-bg);
+}
