@@ -341,6 +341,19 @@ body {
     padding: 0;
     gap: 30px;
 }
+/* === 新增：鎖定更新日誌與側邊欄的寬度 === */
+#changelog {
+    flex: 1 1 0% !important;     /* 讓左側更新日誌自動填滿剩餘空間 */
+    min-width: 0 !important;      /* 防止內文過長時強制撐開容器 */
+}
+
+#sidebar-container {
+    width: 360px !important;      /* 固定右側欄位寬度為 360px */
+    flex-shrink: 0 !important;    /* 鎖定寬度，不允許被縮小 */
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
 
 /* ✅ 核心玻璃擬態區塊 (主內容、更新日誌、側邊欄) */
 #content, 
