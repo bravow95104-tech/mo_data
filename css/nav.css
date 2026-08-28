@@ -127,7 +127,7 @@
 #nav-menu .dropdown-toggle.active::after {
     content: "";
     position: absolute;
-    bottom: -4px; /* 依據導覽列 padding 調整距離 */
+    bottom: 4px; /* 依據導覽列 padding 調整距離 */
     left: 50%;
     transform: translateX(-50%);
     width: 80%; /* 線條長度 */
