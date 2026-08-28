@@ -345,7 +345,7 @@ body {
 #changelog {
     flex: 1 1 0% !important;     /* 讓左側更新日誌自動填滿剩餘空間 */
     min-width: 0 !important;      /* 防止內文過長時強制撐開容器 */
-    max-width: 700px !important;
+    max-width: 650px !important;
 }
 
 #sidebar-container {
