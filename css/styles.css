@@ -759,8 +759,7 @@ body.dark-theme #events-list a,
 }
 
 .quick-search-label {
-  color: var(--text-main);
-  font-size: 14px;
   font-weight: 600;
-  white-space: nowrap; /* 避免文字斷行 */
+  color: var(--primary-blue);
+  font-size: 16px;
 }
