@@ -743,23 +743,3 @@ body.dark-theme #events-list a,
 [data-theme="light"] #events-list li:hover {
     background-color: rgba(0, 0, 0, 0.03) !important;
 }
-
-
-/* 搜尋區塊與篩選器 */
-#searchContainer {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  background: var(--glass-bg);
-  backdrop-filter: blur(10px);
-  padding: 15px 20px;
-  border-radius: 16px;
-  border: 1px solid var(--glass-border);
-  margin-bottom: 20px;
-}
-
-.quick-search-label {
-  font-weight: 600;
-  color: var(--primary-blue);
-  font-size: 16px;
-}
