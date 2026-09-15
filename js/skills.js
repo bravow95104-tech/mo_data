@@ -103,9 +103,10 @@ async function fetchSkills(jobId) {
 function calculateMaxPoints() {
   const rebirthSelect = document.getElementById('rebirthSelect')
   const limitLevelCheck = document.getElementById('limitLevelCheck')
-  const skipBaseJobCheck = document.getElementById('skipBaseJobCheck') // 👈 抓取跳過基礎技能 Checkbox
+  const limitExtraPointsInput = document.getElementById('limitExtraPoints') // 👈 新增：極限突破點數輸入框
+  const skipBaseJobCheck = document.getElementById('skipBaseJobCheck')
 
-  // 🔥 關鍵新增：如果勾選了極限等級，自動強制將轉生選單切換為 3 次
+  // 🔥 如果勾選了極限等級，自動強制將轉生選單切換為 3 次
   if (limitLevelCheck && limitLevelCheck.checked && rebirthSelect) {
     rebirthSelect.value = "3"
   }
@@ -113,19 +114,30 @@ function calculateMaxPoints() {
   const rebirthPoints = rebirthSelect ? parseInt(rebirthSelect.value, 10) * 10 : 0
   const limitPoints = (limitLevelCheck && limitLevelCheck.checked) ? 10 : 0
 
-  // 基礎 200 + 轉生點數 (0~30) + 極限點數 (0 或 10)
-  maxPoints = 200 + rebirthPoints + limitPoints
+  // 🚀 新增：取得極限突破額外點數 (限制在 0~25 之間，防呆處理)
+  let extraPoints = 0
+  if (limitExtraPointsInput) {
+    extraPoints = parseInt(limitExtraPointsInput.value, 10) || 0
+    if (extraPoints < 0) extraPoints = 0
+    if (extraPoints > 25) {
+      extraPoints = 25
+      limitExtraPointsInput.value = 25
+    }
+  }
+
+  // 基礎 200 + 轉生點數 (0~30) + 極限點數 (0 或 10) + 極限突破額外點數 (0~25)
+  maxPoints = 200 + rebirthPoints + limitPoints + extraPoints
 
   // 計算目前已經投資了多少點
   const usedPoints = Object.values(allocatedPoints).reduce((sum, pts) => sum + pts, 0)
 
-  // 🔥 如果勾選了「自動扣除 120 點」，扣除點數需加上 120
+  // 如果勾選了「自動扣除 120 點」，扣除點數需加上 120
   const autoDeductPoints = (skipBaseJobCheck && skipBaseJobCheck.checked) ? 120 : 0
 
   // 更新剩餘點數
   remainingPoints = maxPoints - usedPoints - autoDeductPoints
 
-  // 防呆：如果調低轉生或勾選扣點導致點數變成負數
+  // 防呆：如果調低點數導致剩餘點數變成負數
   if (remainingPoints < 0) {
     alert('剩餘點數不足（可能點數上限降低或點數不足 120 點），請調整配點！')
   }
@@ -604,6 +616,21 @@ treeContainer.addEventListener('mouseover', e => {
   window.addEventListener('resize', () => {
     requestAnimationFrame(drawLines)
   })
+
+  // 🆕 監聽極限突破點數 (0~25) 輸入
+const limitExtraPointsInput = document.getElementById('limitExtraPoints')
+if (limitExtraPointsInput) {
+  limitExtraPointsInput.addEventListener('input', (e) => {
+    // 防呆：避免輸入空字串時被強制轉成 0 影響輸入
+    if (e.target.value === '') return
+    calculateMaxPoints()
+  })
+
+  limitExtraPointsInput.addEventListener('change', () => {
+    // change 事件 (失焦時) 確保空值或非法值被修正為 0~25
+    calculateMaxPoints()
+  })
+}
 }
 
 init()
