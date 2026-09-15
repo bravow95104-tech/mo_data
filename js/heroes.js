@@ -90,53 +90,58 @@ function formatMapLinks(text) {
   const heroesTableContainer = document.getElementById("hero-table-container");
   const heroesCardContainer = document.getElementById("hero-card-container");
 
+  let cardEquipMap = {};
+
   // === 1. 從 Supabase 載入資料 ===
   async function loadData() {
-    try {
-      // 🚀 同時讀取英雄與光輝掉落表
-      const [heroesRes, gloryRes, gloryPlayerRes] = await Promise.all([
-        supabase.from('heroes').select('*').order('sort_id', { ascending: true }),
-        supabase.from('glory_drop').select('*'),
-        supabase.from('glory_drop_player').select('*')
-      ]);
+  try {
+    // 🚀 1. 併行讀取 heroes, glory_drop, glory_drop_player 以及 card_equip
+    const [heroesRes, gloryRes, gloryPlayerRes, cardEquipRes] = await Promise.all([
+      supabase.from('heroes').select('*').order('sort_id', { ascending: true }),
+      supabase.from('glory_drop').select('*'),
+      supabase.from('glory_drop_player').select('*'),
+      supabase.from('card_equip').select('card_id, card_property, card_data, nemultiplier') // 讀取卡片表
+    ]);
 
-      if (heroesRes.error) throw heroesRes.error;
-      if (gloryRes.error) throw gloryRes.error;
-      if (gloryPlayerRes.error) throw gloryPlayerRes.error;
+    if (heroesRes.error) throw heroesRes.error;
+    if (gloryRes.error) throw gloryRes.error;
+    if (gloryPlayerRes.error) throw gloryPlayerRes.error;
+    if (cardEquipRes.error) throw cardEquipRes.error;
 
-      // 🚀 預先處理搜尋用的字串，避免在 filter 迴圈中重複運算
-      heroesData = (heroesRes.data || []).map(hero => ({
-        ...hero,
-        _searchStr: Object.values(hero)
-          .map(v => String(getVal(v)).toLowerCase())
-          .join(" ")
-      }));
-      
-      gloryDropData = gloryRes.data || [];
-      gloryDropPlayerData = gloryPlayerRes.data || [];
-      
-      // 🚀 檢查 URL 是否有 ?hero=名稱 參數
-      const urlParams = new URLSearchParams(window.location.search);
-      const heroParam = urlParams.get('hero');
-      if (heroParam && searchInput) {
-        searchInput.value = heroParam;
-        applyFilters(); 
-        
-        if (lastFilteredData.length > 0) {
-          const matchedHero = lastFilteredData.find(h => h.name === heroParam);
-          if (matchedHero) {
-            showDetailModal(matchedHero);
-          }
-        }
-      } else {
-        applyFilters(); 
+    // 🚀 2. 將 card_equip 建立成 Fast Lookup Map
+    cardEquipMap = {};
+    (cardEquipRes.data || []).forEach(item => {
+      cardEquipMap[String(item.card_id)] = item;
+    });
+
+    heroesData = (heroesRes.data || []).map(hero => ({
+      ...hero,
+      _searchStr: Object.values(hero)
+        .map(v => String(getVal(v)).toLowerCase())
+        .join(" ")
+    }));
+    
+    gloryDropData = gloryRes.data || [];
+    gloryDropPlayerData = gloryPlayerRes.data || [];
+
+    // URL 參數邏輯保持不變...
+    const urlParams = new URLSearchParams(window.location.search);
+    const heroParam = urlParams.get('hero');
+    if (heroParam && searchInput) {
+      searchInput.value = heroParam;
+      applyFilters(); 
+      if (lastFilteredData.length > 0) {
+        const matchedHero = lastFilteredData.find(h => h.name === heroParam);
+        if (matchedHero) showDetailModal(matchedHero);
       }
-    } catch (error) {
-      console.error("載入雲端資料錯誤:", error);
-      if (tableBody)
-        tableBody.innerHTML = '<tr><td colspan="15">無法載入雲端資料</td></tr>';
+    } else {
+      applyFilters(); 
     }
+  } catch (error) {
+    console.error("載入雲端資料錯誤:", error);
+    if (tableBody) tableBody.innerHTML = '<tr><td colspan="15">無法載入雲端資料</td></tr>';
   }
+}
 
   loadData();
 
@@ -433,6 +438,21 @@ function formatMapLinks(text) {
       .map(g => g.area)
       .join('、');
 
+      // 1. 取得新專卡片資料 (card_equip)
+const newEquipInfo = cardEquipMap[String(hero.equipment_new)] || {};
+// 組合 card_property + card_data
+const newEquipAttr = [newEquipInfo.card_property, newEquipInfo.card_data]
+  .filter(Boolean)
+  .join(' ');
+const newMultiplierVal = getVal(newEquipInfo.nemultiplier);
+
+// 2. 取得舊專卡片資料 (card_equip)
+const oldEquipInfo = cardEquipMap[String(hero.equipment_old)] || {};
+// 組合 card_property + card_data
+const oldEquipAttr = [oldEquipInfo.card_property, oldEquipInfo.card_data]
+  .filter(Boolean)
+  .join(' ');
+
     modalBox.scrollTop = 0;
     modalContent.innerHTML = `<h2 class="hero-name" id="modal-title">${getVal(hero.name)}</h2>`;
 
@@ -467,11 +487,11 @@ function formatMapLinks(text) {
           <p><strong>積極度(生變後)：</strong>${getVal(hero.aggression_after)}</p>
           <hr style="margin: 20px 0; border: 0; border-top: 1px solid rgba(255,255,255,0.1);">
           <p><strong>裝備卡(新專)：</strong>${getVal(hero.equipment_new)}</p>
-          <p><strong>新專數值：</strong>${getVal(hero.equipment_new_data)}</p>
-          <p><strong>新專倍率：</strong>${getVal(hero.new_multiplier)}</p>
+          <p><strong>新專數值：</strong>${newEquipAttr || "-"}</p>
+<p><strong>新專倍率：</strong>${newMultiplierVal || "-"}</p>
           <hr style="margin: 20px 0; border: 0; border-top: 1px solid rgba(255,255,255,0.1);">
           <p><strong>裝備卡(舊專)：</strong>${getVal(hero.equipment_old)}</p>
-          <p><strong>舊專數值：</strong>${getVal(hero.equipment_old_data)}</p>
+<p><strong>舊專數值：</strong>${oldEquipAttr || "-"}</p>
           <hr style="margin: 20px 0; border: 0; border-top: 1px solid rgba(255,255,255,0.1);">
           <p><strong>天生技：</strong>${getVal(hero.innate_skill)}</p>
           <p><strong>生變技能：</strong>${getVal(hero.transformation_skill)}</p>
