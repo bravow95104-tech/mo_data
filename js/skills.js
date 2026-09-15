@@ -103,16 +103,8 @@ async function fetchSkills(jobId) {
 function calculateMaxPoints() {
   const rebirthSelect = document.getElementById('rebirthSelect')
   const limitLevelCheck = document.getElementById('limitLevelCheck')
-  const limitExtraPointsInput = document.getElementById('limitExtraPoints') // 👈 新增：極限突破點數輸入框
+  const limitExtraPointsInput = document.getElementById('limitExtraPoints')
   const skipBaseJobCheck = document.getElementById('skipBaseJobCheck')
-
-  // 🔥 如果勾選了極限等級，自動強制將轉生選單切換為 3 次
-  if (limitLevelCheck && limitLevelCheck.checked && rebirthSelect) {
-    rebirthSelect.value = "3"
-  }
-
-  const rebirthPoints = rebirthSelect ? parseInt(rebirthSelect.value, 10) * 10 : 0
-  const limitPoints = (limitLevelCheck && limitLevelCheck.checked) ? 10 : 0
 
   // 🚀 新增：取得極限突破額外點數 (限制在 0~25 之間，防呆處理)
   let extraPoints = 0
@@ -124,6 +116,19 @@ function calculateMaxPoints() {
       limitExtraPointsInput.value = 25
     }
   }
+
+  // 🔥 關鍵新增：只要「勾選極限等級」或「輸入突破點數 > 0」，自動強制將轉生選單切換為 3 次
+  if (rebirthSelect) {
+    const isLimitChecked = limitLevelCheck && limitLevelCheck.checked
+    const hasExtraPoints = extraPoints > 0
+
+    if (isLimitChecked || hasExtraPoints) {
+      rebirthSelect.value = "3"
+    }
+  }
+
+  const rebirthPoints = rebirthSelect ? parseInt(rebirthSelect.value, 10) * 10 : 0
+  const limitPoints = (limitLevelCheck && limitLevelCheck.checked) ? 10 : 0
 
   // 基礎 200 + 轉生點數 (0~30) + 極限點數 (0 或 10) + 極限突破額外點數 (0~25)
   maxPoints = 200 + rebirthPoints + limitPoints + extraPoints
