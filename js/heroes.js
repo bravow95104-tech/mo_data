@@ -441,7 +441,7 @@ function formatMapLinks(text) {
       // 1. 取得新專卡片資料 (card_equip)
 const newEquipInfo = cardEquipMap[String(hero.equipment_new)] || {};
 // 組合 card_property + card_data
-const newEquipAttr = [newEquipInfo.card_property, newEquipInfo.card_data]
+const newEquipAttr = [newEquipInfo.card_property,"+", newEquipInfo.card_data]
   .filter(Boolean)
   .join(' ');
 const newMultiplierVal = getVal(newEquipInfo.nemultiplier);
@@ -449,7 +449,7 @@ const newMultiplierVal = getVal(newEquipInfo.nemultiplier);
 // 2. 取得舊專卡片資料 (card_equip)
 const oldEquipInfo = cardEquipMap[String(hero.equipment_old)] || {};
 // 組合 card_property + card_data
-const oldEquipAttr = [oldEquipInfo.card_property, oldEquipInfo.card_data]
+const oldEquipAttr = [oldEquipInfo.card_property,"+", oldEquipInfo.card_data]
   .filter(Boolean)
   .join(' ');
 
