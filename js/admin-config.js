@@ -16,9 +16,12 @@ export const TABLE_CONFIGS = {
             { id: 'vit', label: '體質 (VIT)', type: 'number', grid: 1 , group: '基本數值'},
             { id: 'agi', label: '敏捷 (AGI)', type: 'number', grid: 1 , group: '基本數值'},
             { id: 'luk', label: '幸運 (LUK)', type: 'number', grid: 1 , group: '基本數值'},
+            { id: 'aggression_before', label: '積極度(前)', type: 'number', grid: 1 , group: '基本數值'},
+            { id: 'aggression_after', label: '積極度(後)', type: 'number', grid: 1 , group: '基本數值'},
             { id: 'equipment_new', label: '裝備卡(新專)', type: 'text', grid: 1 },
-            { id: 'new_multiplier', label: '新專倍率', type: 'text', grid: 1 },
-            { id: 'transformation_skill', label: '生變技能', type: 'text', grid: 1 },
+            { id: 'equipment_old', label: '裝備卡(舊專)', type: 'text', grid: 1 },
+            { id: 'innate_skill', label: '天生技能(前)', type: 'text', grid: 1 },
+            { id: 'transformation_skill', label: '生變技能(後)', type: 'text', grid: 1 },
             { id: 'player', label: '光輝掉落(玩家提供)', type: 'text', grid: 1 },
             { id: 'playerdata', label: '資訊提供者', type: 'text', grid: 1 }
         ]
