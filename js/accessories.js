@@ -135,7 +135,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     // 3. 過濾完後將資料交給 pager，pager 會自動重置頁碼並觸發 applyLayout()
     pager.setData(lastFilteredData);
 
-    applyLayout();
   }
 
   // 4. 修改 applyLayout 接收分頁後的資料
