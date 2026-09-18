@@ -93,6 +93,91 @@
     --custom-colored-text: #008b8b !important;
     }
 
+    /* ==========================================
+   通用分頁控制項樣式 (支援黑夜與白天模式)
+   ========================================== */
+
+/* 分頁外層容器 */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    margin: 30px 0 10px 0;
+    padding: 15px 0;
+    width: 100%;
+}
+
+/* 頁碼資訊文字 (第 X / Y 頁) */
+.pagination .page-info {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--text-muted); /* 自動使用白天/黑夜的副文字顏色 */
+    padding: 0 8px;
+    letter-spacing: 0.03em;
+}
+
+/* 分頁按鈕基本樣式 (預設：黑夜/深色玻璃擬態) */
+.pagination .page-btn {
+    background: var(--card-bg);
+    color: var(--text-main);
+    border: 1px solid var(--glass-border);
+    padding: 8px 18px;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* 按鈕 Hover 效果 */
+.pagination .page-btn:hover:not(:disabled) {
+    background: var(--primary-blue);
+    color: #ffffff;
+    border-color: var(--primary-blue);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(77, 163, 255, 0.3);
+}
+
+/* 按鈕 Active (點擊時) */
+.pagination .page-btn:active:not(:disabled) {
+    transform: translateY(0);
+}
+
+/* 停用狀態 (第一頁的上一頁 / 最後一頁的下一頁) */
+.pagination .page-btn:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+    border-color: transparent;
+    box-shadow: none;
+}
+
+/* ------------------------------------------
+   淺色主題（白天模式）專屬微調
+   ------------------------------------------ */
+[data-theme="light"] .pagination .page-btn {
+    background: rgba(255, 255, 255, 0.85);
+    color: var(--text-main);
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+[data-theme="light"] .pagination .page-btn:hover:not(:disabled) {
+    background: var(--primary-blue);
+    color: #ffffff;
+    border-color: var(--primary-blue);
+    box-shadow: 0 4px 14px rgba(0, 102, 204, 0.25);
+}
+
+[data-theme="light"] .pagination .page-btn:disabled {
+    background: rgba(0, 0, 0, 0.05);
+    color: rgba(0, 0, 0, 0.3);
+    border-color: transparent;
+}
+
 /* --- 提示按鈕 (Hint Button) --- */
 .hint-target-wrapper {
     display: flex !important;

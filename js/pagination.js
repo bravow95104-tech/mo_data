@@ -57,11 +57,11 @@ export class Pagination {
       return;
     }
 
-    let html = `<div class="pagination" style="display:flex; justify-content:center; align-items:center; gap:8px; margin:20px 0;">`;
-    html += `<button class="page-btn" ${this.currentPage === 1 ? 'disabled' : ''} data-page="${this.currentPage - 1}">上一頁</button>`;
-    html += `<span class="page-info" style="font-size:14px; color:#666;">第 ${this.currentPage} / ${totalPages} 頁 (共 ${this.data.length} 筆)</span>`;
-    html += `<button class="page-btn" ${this.currentPage === totalPages ? 'disabled' : ''} data-page="${this.currentPage + 1}">下一頁</button>`;
-    html += `</div>`;
+let html = `<div class="pagination">`;
+html += `<button class="page-btn" ${this.currentPage === 1 ? 'disabled' : ''} data-page="${this.currentPage - 1}">上一頁</button>`;
+html += `<span class="page-info">第 ${this.currentPage} / ${totalPages} 頁 (共 ${this.data.length} 筆)</span>`;
+html += `<button class="page-btn" ${this.currentPage === totalPages ? 'disabled' : ''} data-page="${this.currentPage + 1}">下一頁</button>`;
+html += `</div>`;
 
     container.innerHTML = html;
 
