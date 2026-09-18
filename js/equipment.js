@@ -1,5 +1,6 @@
 import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm'
 import { SUPABASE_URL, SUPABASE_KEY } from './supabase-config.js'
+import { Pagination } from '/mo_data/js/pagination.js';
 
 const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
 
@@ -13,6 +14,17 @@ document.addEventListener("DOMContentLoaded", () => {
     job: null,
     attr: null
   };
+
+  // 🚀 2. 初始化分頁組件 (預設每頁 15 筆，渲染容器掛在 #paginationContainer)
+  const pagination = new Pagination({
+    itemsPerPage: 15,
+    containerId: 'paginationContainer',
+    onPageChange: (currentPageData) => {
+      // 當切換頁碼時，只渲染當前頁面的資料
+      lastFilteredData = currentPageData;
+      applyLayout();
+    }
+  });
 
   const modalOverlay = document.getElementById('modalOverlay');
   const modalBox = document.getElementById('modalBox');
@@ -136,8 +148,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       return matchesSearch && matchPromotion && matchPersonality && matchJob && matchAttr;
     });
-    lastFilteredData = filtered;
-    applyLayout();
+    pagination.setData(filtered);
   }
 
   function applyLayout() {
