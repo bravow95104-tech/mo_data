@@ -1,0 +1,49 @@
+/* /mo_data/css/pagination.css */
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    margin: 30px 0 10px 0;
+    padding: 15px 0;
+    width: 100%;
+}
+
+.pagination .page-info {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--text-muted);
+}
+
+.pagination .page-btn {
+    background: var(--card-bg);
+    color: var(--text-main);
+    border: 1px solid var(--glass-border);
+    padding: 8px 18px;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    backdrop-filter: blur(8px);
+    transition: all 0.25s ease;
+}
+
+.pagination .page-btn:hover:not(:disabled) {
+    background: var(--primary-blue);
+    color: #ffffff;
+    border-color: var(--primary-blue);
+    transform: translateY(-2px);
+}
+
+.pagination .page-btn:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+}
+
+/* 白天模式微調 */
+[data-theme="light"] .pagination .page-btn {
+    background: rgba(255, 255, 255, 0.85);
+    color: var(--text-main);
+    border: 1px solid rgba(0, 0, 0, 0.12);
+}
