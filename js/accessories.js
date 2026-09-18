@@ -1,5 +1,6 @@
 import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm'
 import { SUPABASE_URL, SUPABASE_KEY } from './supabase-config.js'
+import { Pagination } from '/mo_data/js/pagination.js'; // 👈 引入分頁模組
 
 const supabase = createClient(SUPABASE_URL, SUPABASE_KEY)
 
@@ -14,6 +15,16 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   // 🔹 輔助函式：處理 NULL 值
   const getVal = (v) => (v === null || v === undefined || String(v).trim() === "") ? "-" : v;
+
+  // 2. 初始化 Pagination 實例
+  const pager = new Pagination({
+    pageSize: 20, // 每頁顯示 20 筆
+    containerId: 'pagination-container',
+    onPageChange: (pagedData) => {
+      // 頁碼變更時，只渲染當頁資料
+      applyLayout(pagedData);
+    }
+  });
 
   // 🔹 提前初始化 DOM 元素
   const modalOverlay = document.getElementById('modalOverlay');
@@ -121,16 +132,20 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
 
     lastFilteredData = filtered;
+    // 3. 過濾完後將資料交給 pager，pager 會自動重置頁碼並觸發 applyLayout()
+    pager.setData(lastFilteredData);
+
     applyLayout();
   }
 
-  function applyLayout() {
+  // 4. 修改 applyLayout 接收分頁後的資料
+  function applyLayout(dataToRender = lastFilteredData) {
     if (resizeFlag) {
-      renderCards(lastFilteredData);
+      renderCards(dataToRender);
       if (tableContainer) tableContainer.style.display = 'none';
       if (cardContainer) cardContainer.style.display = 'flex';
     } else {
-      renderTable(lastFilteredData);
+      renderTable(dataToRender);
       if (tableContainer) {
         tableContainer.style.display = 'block';
         tableContainer.style.width = '100%';
