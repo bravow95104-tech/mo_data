@@ -348,7 +348,7 @@ document.addEventListener("DOMContentLoaded", () => {
       : "";
 
     modalContent.innerHTML = `
-      ${hero.item}<h2 class="hero-name">${equip.item || '-'}</h2>
+      <h2 class="hero-name">${equip.item || '-'}</h2>
       <div class="hero-details-container">
         <div class="hero-column-base hero-column">
         <h3 class="modal-sub-title">基礎數值</h3>
