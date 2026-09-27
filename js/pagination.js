@@ -57,11 +57,16 @@ export class Pagination {
       return;
     }
 
-let html = `<div class="pagination">`;
-html += `<button class="page-btn" ${this.currentPage === 1 ? 'disabled' : ''} data-page="${this.currentPage - 1}">上一頁</button>`;
-html += `<span class="page-info">第 ${this.currentPage} / ${totalPages} 頁 (共 ${this.data.length} 筆)</span>`;
-html += `<button class="page-btn" ${this.currentPage === totalPages ? 'disabled' : ''} data-page="${this.currentPage + 1}">下一頁</button>`;
-html += `</div>`;
+    const isFirstPage = this.currentPage === 1;
+    const isLastPage = this.currentPage === totalPages;
+
+    let html = `<div class="pagination">`;
+    html += `<button class="page-btn" ${isFirstPage ? 'disabled' : ''} data-page="1" aria-label="第一頁">第一頁</button>`;
+    html += `<button class="page-btn" ${isFirstPage ? 'disabled' : ''} data-page="${this.currentPage - 1}">上一頁</button>`;
+    html += `<span class="page-info">第 ${this.currentPage} / ${totalPages} 頁 (共 ${this.data.length} 筆)</span>`;
+    html += `<button class="page-btn" ${isLastPage ? 'disabled' : ''} data-page="${this.currentPage + 1}">下一頁</button>`;
+    html += `<button class="page-btn" ${isLastPage ? 'disabled' : ''} data-page="${totalPages}" aria-label="最後一頁">最後一頁</button>`;
+    html += `</div>`;
 
     container.innerHTML = html;
 
