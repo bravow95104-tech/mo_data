@@ -626,16 +626,26 @@ export const TABLE_CONFIGS = {
 },
 
 world_drop_tiers: {
-        title: '世界掉落',
-        tableName: 'world_drop_tiers',
-        tableCols: ['ID', '最低等級', '最高等級', '掉落物', '操作'],
-        displayFields: ['sort_id', 'min_lv', 'max_lv', 'drop_content'],
-        fields: [
-            { id: 'id', label: 'ID (系統自動產生)', type: 'text', readOnly: true, grid: 1, group: '基礎資訊' },
-            { id: 'sort_id', label: 'sort_id', type: 'text', required: true, grid: 1, group: '基礎資訊' },
-            { id: 'min_lv', label: '最低等級', type: 'number', required: true, grid: 1, group: '基礎資訊' },
-            { id: 'max_lv', label: '最高等級', type: 'number', required: true, grid: 1, group: '基礎資訊' },
-            { id: 'drop_content', label: '掉落物', type: 'textarea', grid: 3, group: '掉落' },
-        ]
-    }
+    title: '世界掉落',
+    tableName: 'world_drop_tiers',
+    tableCols: ['ID', '排序', '最低等級', '最高等級', '裝備卡', '主動技能卡', '英雄卡', '操作'],
+    displayFields: ['id', 'sort_id', 'min_lv', 'max_lv', 'drop_card_equip', 'drop_card_active', 'drop_card_hero'],
+    fields: [
+        { id: 'id', label: 'ID (系統自動產生)', type: 'text', readOnly: true, grid: 1, group: '基礎資訊' },
+        { id: 'sort_id', label: '排序 (sort_id)', type: 'number', required: true, grid: 1, group: '基礎資訊' },
+        { id: 'min_lv', label: '最低等級', type: 'number', required: true, grid: 1, group: '基礎資訊' },
+        { id: 'max_lv', label: '最高等級', type: 'number', required: true, grid: 1, group: '基礎資訊' },
+        
+        { id: 'drop_transform', label: '變身劑 / 還我漂漂水', type: 'textarea', grid: 3, group: '變身類' },
+        
+        { id: 'drop_card_equip', label: '裝備卡', type: 'textarea', grid: 3, group: '卡片類' },
+        { id: 'drop_card_active', label: '主動技能卡', type: 'textarea', grid: 3, group: '卡片類' },
+        { id: 'drop_card_passive', label: '被動技能卡', type: 'textarea', grid: 3, group: '卡片類' },
+        { id: 'drop_card_hero', label: '英雄卡', type: 'textarea', grid: 3, group: '卡片類' },
+        
+        { id: 'drop_recipes', label: '配方書 / 講義 / 文片', type: 'textarea', grid: 3, group: '配方與文片' },
+        { id: 'drop_materials', label: '材料類 (符石/種子/珍珠粉/寶石)', type: 'textarea', grid: 3, group: '材料與消耗品' },
+        { id: 'drop_other', label: '其他類 (電池/香/藥丸/修為丹)', type: 'textarea', grid: 3, group: '材料與消耗品' },
+    ]
+}
 };
