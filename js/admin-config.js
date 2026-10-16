@@ -628,10 +628,9 @@ export const TABLE_CONFIGS = {
 world_drop_tiers: {
     title: '世界掉落',
     tableName: 'world_drop_tiers',
-    tableCols: ['ID', '排序', '最低等級', '最高等級', '裝備卡', '主動技能卡', '英雄卡', '操作'],
-    displayFields: ['id', 'sort_id', 'min_lv', 'max_lv', 'drop_card_equip', 'drop_card_active', 'drop_card_hero'],
+    tableCols: ['排序', '最低等級', '最高等級', '裝備卡', '主動技能卡', '英雄卡', '操作'],
+    displayFields: [ 'sort_id', 'min_lv', 'max_lv', 'drop_card_equip', 'drop_card_active', 'drop_card_hero'],
     fields: [
-        { id: 'id', label: 'ID (系統自動產生)', type: 'text', readOnly: true, grid: 1, group: '基礎資訊' },
         { id: 'sort_id', label: '排序 (sort_id)', type: 'number', required: true, grid: 1, group: '基礎資訊' },
         { id: 'min_lv', label: '最低等級', type: 'number', required: true, grid: 1, group: '基礎資訊' },
         { id: 'max_lv', label: '最高等級', type: 'number', required: true, grid: 1, group: '基礎資訊' },
