@@ -644,8 +644,8 @@ world_drop_tiers: {
         
         { id: 'drop_recipes', label: '配方書', type: 'textarea', grid: 3, group: '配方與文片' },
         { id: 'drop_texts', label: '文片', type: 'textarea', grid: 3, group: '配方與文片' },
-        
-        { id: 'drop_materials', label: '材料類 (符石/種子/珍珠粉/寶石)', type: 'textarea', grid: 3, group: '材料與消耗品' },
+
+        { id: 'drop_materials', label: '材料類 (符石/種子/珍珠粉/生變/寶石)', type: 'textarea', grid: 3, group: '材料與消耗品' },
         { id: 'drop_other', label: '其他類 (電池/香/藥丸/修為丹)', type: 'textarea', grid: 3, group: '材料與消耗品' },
     ]
 }

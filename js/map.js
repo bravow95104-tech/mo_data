@@ -1113,7 +1113,6 @@ function renderWorldDropContent(mapLv) {
     // 4. 對合併後的每個分類進行陣列去重 (Array.from(new Set(...)))
     let html = '';
     const dropFields = [
-        { key: 'drop_transform', label: '變身劑 / 還我漂漂水', link: null },
         { key: 'drop_card_equip', label: '裝備卡', link: 'equip' },
         { key: 'drop_card_active', label: '主動技能卡', link: 'skill' },
         { key: 'drop_card_passive', label: '被動技能卡', link: 'skill' },
@@ -1121,7 +1120,8 @@ function renderWorldDropContent(mapLv) {
         { key: 'drop_recipes', label: '配方書', link: null },
         { key: 'drop_texts', label: '文片', link: null },
         { key: 'drop_materials', label: '材料類', link: null },
-        { key: 'drop_other', label: '其他類', link: null }
+        { key: 'drop_other', label: '其他類', link: null },
+        { key: 'drop_transform', label: '變身劑 / 還我漂漂水', link: null }
     ];
 
     dropFields.forEach(field => {
