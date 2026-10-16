@@ -805,7 +805,7 @@
                 } else if (f.type === 'textarea') {
                     input = `<textarea id="edit-${f.id}" rows="4" style="resize: vertical; min-height: 80px;"></textarea>`;
                 } else {
-                    input = `<input type="${f.type || 'text'}" id="edit-${f.id}" ${f.required ? 'required' : ''}>`;
+                    input = `<input type="${f.type || 'text'}" id="edit-${f.id}" ${f.required ? 'required' : ''} ${f.readOnly ? 'readonly style="background:#f1f5f9; cursor:not-allowed;"' : ''}>`;
                 }
                 
                 return `
