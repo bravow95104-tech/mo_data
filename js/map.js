@@ -7,6 +7,7 @@ const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
 let mapData = [];
 let resourceData = []; // 🚀 新增：儲存所有資源點位
 let heroGloryMap = {}; 
+let worldDropTiersData = [];
 
 // 定義所有可能的欄位
 // 定義所有可能的欄位
@@ -568,6 +569,27 @@ const finalOther     = [d.drop_other].filter(x => x).join(',').replace(/[\r\n]+/
   }
 } // 🚀 這是整個 async function loadModalZoneButtons 的完美句點
 
+
+window.switchDropTab = function(type) {//切換容器
+  const localContainer = document.getElementById('local-drop-container');
+  const worldContainer = document.getElementById('world-drop-container');
+  const btnLocal = document.getElementById('btn-drop-local');
+  const btnWorld = document.getElementById('btn-drop-world');
+
+  if (type === 'local') {
+    localContainer.style.display = 'block';
+    worldContainer.style.display = 'none';
+    btnLocal.classList.add('active');
+    btnWorld.classList.remove('active');
+  } else {
+    localContainer.style.display = 'none';
+    worldContainer.style.display = 'block';
+    btnWorld.classList.add('active');
+    btnLocal.classList.remove('active');
+  }
+};
+
+
 // 🚀 升級版：補上最後三個參數 zoneDef, zoneDodge, zoneElement，預設給空字串
 window.switchZoneDisplay = function(points, maxX, maxY, zoneRubbish, zoneProduct, zoneEquip, zoneSkill, zoneHero, zoneComboOld, zoneComboNew, zoneOther, zoneDef = "", zoneDodge = "", zoneElement = "") {
     if (typeof showResourcePolyRange === "function") {
@@ -712,6 +734,15 @@ if (resources.length > 0 || item) {
       </div>
       
       <div class="hero-column-details section-gap">
+
+      <!-- 🚀 切換按鈕 -->
+        <div class="drop-switch-tabs" style="display: flex; gap: 10px; margin-bottom: 15px;">
+          <button class="resource-btn drop-tab-btn active" onclick="switchDropTab('local')" id="btn-drop-local">區域掉落</button>
+          <button class="resource-btn drop-tab-btn" onclick="switchDropTab('world')" id="btn-drop-world">世界掉落</button>
+        </div>
+
+        <!-- 🚀 容器 A：區域掉落（預設顯示） -->
+        <div id="local-drop-container" style="display: block;">
         <p><strong>掉落物品：</strong></p>
         
         <p class="align-row" id="dynamic-drop-rubbish-row" style="display: none;">
@@ -746,7 +777,17 @@ if (resources.length > 0 || item) {
           <strong>◢ 其他：</strong> <span id="dynamic-drop-other"></span>
         </p>
       </div>
-      
+      </div>
+
+      <!-- 🚀 容器 B：世界掉落（預設隱藏，切換過去時顯示） -->
+        <div id="world-drop-container" style="display: none;">
+          <p><strong>世界掉落 (依等級區間)：</strong></p>
+          <div id="world-drop-content-area">
+            <!-- 這裡會透過 JS 動態填入該等級區間對應的變身劑、各類卡片、配方書、材料等細分內容 -->
+          </div>
+        </div>
+      </div>
+
       <div class="hero-column-details section-gap">
         <p><strong>光輝資訊：</strong></p>
         <p class="align-row"><strong>◢ 掉落較高：</strong><span>${formatGloryWithTooltip(item.drop_glory_high)}</span></p>
@@ -862,6 +903,8 @@ async function loadData() {
     supabase.from('map_zone_drops').select('*'), // 🚀 新增：撈取所有分區與全區掉落
     supabase.from('world_drop_tiers').select('*') // 🚀 新增：撈取世界掉寶區間表10/16
   ]);
+
+  worldDropTiersData = worldDropRes.data || [];
 
   if (mapRes.error) {
     console.error('載入地圖資料錯誤:', mapRes.error);
