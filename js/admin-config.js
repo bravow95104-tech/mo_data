@@ -631,6 +631,7 @@ world_drop_tiers: {
         tableCols: ['ID', '最低等級', '最高等級', '掉落物', '操作'],
         displayFields: ['sort_id', 'min_lv', 'max_lv', 'drop_content'],
         fields: [
+            { id: 'id', label: 'ID (系統自動產生)', type: 'text', readOnly: true, grid: 1, group: '基礎資訊' },
             { id: 'sort_id', label: 'sort_id', type: 'text', required: true, grid: 1, group: '基礎資訊' },
             { id: 'min_lv', label: '最低等級', type: 'number', required: true, grid: 1, group: '基礎資訊' },
             { id: 'max_lv', label: '最高等級', type: 'number', required: true, grid: 1, group: '基礎資訊' },
