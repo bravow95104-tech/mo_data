@@ -894,7 +894,7 @@ async function loadData() {
   const tbody = document.querySelector('#heroes-table tbody');
   
   // 🚀 核心修改：在初始化撈資料時，把新表 'map_zone_drops' 一起撈回來！
-  const [mapRes, gloryRes, playerRes, heroRes, resourceRes, zoneDropsRes] = await Promise.all([
+  const [mapRes, gloryRes, playerRes, heroRes, resourceRes, zoneDropsRes, worldDropRes] = await Promise.all([
     supabase.from('detailed_map').select('*').order('sort_id', { ascending: true }),
     supabase.from('glory_drop').select('*'),
     supabase.from('glory_drop_player').select('*'),
