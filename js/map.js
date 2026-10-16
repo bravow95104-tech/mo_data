@@ -816,6 +816,8 @@ if (resources.length > 0 || item) {
     `;
 
   showModal();
+  renderWorldDropContent(item.maplv);
+  
   setTimeout(() => {
     if (typeof loadModalZoneButtons === "function") {
         loadModalZoneButtons(
