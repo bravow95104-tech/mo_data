@@ -623,5 +623,18 @@ export const TABLE_CONFIGS = {
         { id: 'description', label: '該等級專屬說明', type: 'textarea', grid: 3, group: '額外說明' },
         { id: 'extra_data', label: '額外 JSON 數據', type: 'textarea', grid: 3, group: '額外說明' }
     ]
-}
+},
+
+world_drop_tiers: {
+        title: '世界掉落',
+        tableName: 'world_drop_tiers',
+        tableCols: ['ID', '最低等級', '最高等級', '掉落物', '操作'],
+        displayFields: ['id', 'min_lv', 'max_lv', 'drop_content'],
+        fields: [
+            { id: 'id', label: 'ID', type: 'text', required: true, grid: 1, group: '基礎資訊' },
+            { id: 'min_lv', label: '最低等級', type: 'number', required: true, grid: 1, group: '基礎資訊' },
+            { id: 'max_lv', label: '最高等級', type: 'number', required: true, grid: 1, group: '基礎資訊' },
+            { id: 'drop_content', label: '掉落物', type: 'textarea', grid: 3, group: '掉落' },
+        ]
+    }
 };

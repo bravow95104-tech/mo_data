@@ -859,7 +859,8 @@ async function loadData() {
     supabase.from('glory_drop_player').select('*'),
     supabase.from('heroes').select('name, glory'),
     supabase.from('map_resources').select('*').order('sort_id', { ascending: true }),
-    supabase.from('map_zone_drops').select('*') // 🚀 新增：撈取所有分區與全區掉落
+    supabase.from('map_zone_drops').select('*'), // 🚀 新增：撈取所有分區與全區掉落
+    supabase.from('world_drop_tiers').select('*') // 🚀 新增：撈取世界掉寶區間表10/16
   ]);
 
   if (mapRes.error) {
