@@ -1048,6 +1048,67 @@ async function loadData() {
   }
 }
 
+
+function renderWorldDropContent(mapLv) {
+    const container = document.getElementById('world-drop-content-area');
+    if (!container) return;
+
+    // 如果地圖等級是空字串或格式不對，顯示提示
+    if (!mapLv) {
+        container.innerHTML = `<p style="color: #94a3b8;">此地圖無怪物等級資料</p>`;
+        return;
+    }
+
+    // 解析地圖等級（例如 "34-44" 取出最小等級或平均等級來比對，或者用 min_lv / max_lv 區間涵蓋）
+    // 假設 maplv 格式可能是 "34-44" 或單一數字 "35"
+    let lvNum = parseInt(mapLv); 
+    if (isNaN(lvNum)) {
+        const nums = mapLv.match(/\d+/g);
+        if (nums) lvNum = parseInt(nums[0]);
+    }
+
+    // 從全域變數 worldDropTiersData 中尋找符合 min_lv <= lvNum <= max_lv 的區間資料
+    const matchedTier = worldDropTiersData.find(tier => {
+        return lvNum >= parseInt(tier.min_lv) && lvNum <= parseInt(tier.max_lv);
+    });
+
+    if (!matchedTier) {
+        container.innerHTML = `<p style="color: #94a3b8;">此等級區間無世界掉落資料</p>`;
+        return;
+    }
+
+    // 依據我們剛才拆分好的新表欄位，逐一檢查並組裝 HTML
+    let html = '';
+    
+    // 定義要顯示的欄位與其對應的標題、連結類型
+    const dropFields = [
+        { key: 'drop_transform', label: '變身劑 / 還我漂漂水', link: null },
+        { key: 'drop_card_equip', label: '裝備卡', link: 'equip' },
+        { key: 'drop_card_active', label: '主動技能卡', link: 'skill' },
+        { key: 'drop_card_passive', label: '被動技能卡', link: 'skill' },
+        { key: 'drop_card_hero', label: '英雄卡', link: 'hero' },
+        { key: 'drop_recipes', label: '配方書 / 講義 / 文片', link: null },
+        { key: 'drop_materials', label: '材料類', link: null },
+        { key: 'drop_other', label: '其他類', link: null }
+    ];
+
+    dropFields.forEach(field => {
+        const val = matchedTier[field.key];
+        if (val && val.trim() !== '') {
+            // 透過你原本寫好的 formatTieredContent 進行美化與超連結轉換
+            const formattedVal = formatTieredContent(val, false, field.link);
+            html += `
+                <p class="align-row">
+                    <strong>◢ ${field.label}：</strong> <span>${formattedVal}</span>
+                </p>
+            `;
+        }
+    });
+
+    container.innerHTML = html !== '' ? html : `<p style="color: #94a3b8;">此等級區間尚無填寫掉落物</p>`;
+}
+
+
 function initTableSearch() {
   const searchInput = document.getElementById("searchInput");
   const clearBtn = document.getElementById('clearFilters');
