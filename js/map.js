@@ -1095,6 +1095,7 @@ function renderWorldDropContent(mapLv) {
         drop_card_passive: [],
         drop_card_hero: [],
         drop_recipes: [],
+        drop_texts: [],
         drop_materials: [],
         drop_other: []
     };
@@ -1117,7 +1118,8 @@ function renderWorldDropContent(mapLv) {
         { key: 'drop_card_active', label: '主動技能卡', link: 'skill' },
         { key: 'drop_card_passive', label: '被動技能卡', link: 'skill' },
         { key: 'drop_card_hero', label: '英雄卡', link: 'hero' },
-        { key: 'drop_recipes', label: '配方書 / 文片', link: null },
+        { key: 'drop_recipes', label: '配方書', link: null },
+        { key: 'drop_texts', label: '文片', link: null },
         { key: 'drop_materials', label: '材料類', link: null },
         { key: 'drop_other', label: '其他類', link: null }
     ];
