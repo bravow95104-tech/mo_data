@@ -817,7 +817,7 @@ if (resources.length > 0 || item) {
 
   showModal();
   renderWorldDropContent(item.maplv);
-  
+
   setTimeout(() => {
     if (typeof loadModalZoneButtons === "function") {
         loadModalZoneButtons(
@@ -1055,34 +1055,62 @@ function renderWorldDropContent(mapLv) {
     const container = document.getElementById('world-drop-content-area');
     if (!container) return;
 
-    // 如果地圖等級是空字串或格式不對，顯示提示
-    if (!mapLv) {
+    if (!mapLv || mapLv === "-") {
         container.innerHTML = `<p style="color: #94a3b8;">此地圖無怪物等級資料</p>`;
         return;
     }
 
-    // 解析地圖等級（例如 "34-44" 取出最小等級或平均等級來比對，或者用 min_lv / max_lv 區間涵蓋）
-    // 假設 maplv 格式可能是 "34-44" 或單一數字 "35"
-    let lvNum = parseInt(mapLv); 
-    if (isNaN(lvNum)) {
-        const nums = mapLv.match(/\d+/g);
-        if (nums) lvNum = parseInt(nums[0]);
+    // 1. 解析地圖的等級範圍（支援 "7-13" 或單一數字 "10"）
+    let mapMin = 0;
+    let mapMax = 0;
+    
+    const nums = mapLv.match(/\d+/g);
+    if (nums) {
+        mapMin = parseInt(nums[0]);
+        // 如果像 "7-13" 有兩個數字，max 取第二個；如果是單一數字，min 和 max 相同
+        mapMax = nums.length > 1 ? parseInt(nums[1]) : mapMin;
+    } else {
+        container.innerHTML = `<p style="color: #94a3b8;">此地圖等級格式無法解析</p>`;
+        return;
     }
 
-    // 從全域變數 worldDropTiersData 中尋找符合 min_lv <= lvNum <= max_lv 的區間資料
-    const matchedTier = worldDropTiersData.find(tier => {
-        return lvNum >= parseInt(tier.min_lv) && lvNum <= parseInt(tier.max_lv);
+    // 2. 🚀 核心升級：尋找「所有」與該地圖等級區間有交集的 world_drop_tiers 紀錄
+    // 區間重疊條件：地圖最小值 <= 區間最大值 且 地圖最大值 >= 區間最小值
+    const matchedTiers = worldDropTiersData.filter(tier => {
+        const tierMin = parseInt(tier.min_lv);
+        const tierMax = parseInt(tier.max_lv);
+        return mapMin <= tierMax && mapMax >= tierMin;
     });
 
-    if (!matchedTier) {
+    if (matchedTiers.length === 0) {
         container.innerHTML = `<p style="color: #94a3b8;">此等級區間無世界掉落資料</p>`;
         return;
     }
 
-    // 依據我們剛才拆分好的新表欄位，逐一檢查並組裝 HTML
+    // 3. 如果有多個區間（例如 7-13 跨越 1-10 與 11-20），將它們各自欄位的內容進行合併去重
+    const mergedData = {
+        drop_transform: [],
+        drop_card_equip: [],
+        drop_card_active: [],
+        drop_card_passive: [],
+        drop_card_hero: [],
+        drop_recipes: [],
+        drop_materials: [],
+        drop_other: []
+    };
+
+    matchedTiers.forEach(tier => {
+        Object.keys(mergedData).forEach(key => {
+            if (tier[key]) {
+                // 用頓號或逗號切割，並加入陣列
+                const items = tier[key].split(/[,，、\s]+/).map(i => i.trim()).filter(i => i);
+                mergedData[key] = mergedData[key].concat(items);
+            }
+        });
+    });
+
+    // 4. 對合併後的每個分類進行陣列去重 (Array.from(new Set(...)))
     let html = '';
-    
-    // 定義要顯示的欄位與其對應的標題、連結類型
     const dropFields = [
         { key: 'drop_transform', label: '變身劑 / 還我漂漂水', link: null },
         { key: 'drop_card_equip', label: '裝備卡', link: 'equip' },
@@ -1095,10 +1123,10 @@ function renderWorldDropContent(mapLv) {
     ];
 
     dropFields.forEach(field => {
-        const val = matchedTier[field.key];
-        if (val && val.trim() !== '') {
-            // 透過你原本寫好的 formatTieredContent 進行美化與超連結轉換
-            const formattedVal = formatTieredContent(val, false, field.link);
+        const uniqueItems = Array.from(new Set(mergedData[field.key]));
+        if (uniqueItems.length > 0) {
+            const combinedStr = uniqueItems.join('、');
+            const formattedVal = formatTieredContent(combinedStr, false, field.link);
             html += `
                 <p class="align-row">
                     <strong>◢ ${field.label}：</strong> <span>${formattedVal}</span>
