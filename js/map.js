@@ -781,7 +781,7 @@ if (resources.length > 0 || item) {
 
       <!-- 🚀 容器 B：世界掉落（預設隱藏，切換過去時顯示） -->
         <div id="world-drop-container" style="display: none;">
-          <p><strong>世界掉落 (依等級區間)：</strong></p>
+          <p><strong>世界掉落 (依等級區間、資料尚未檢查)：</strong></p>
           <div id="world-drop-content-area">
             <!-- 這裡會透過 JS 動態填入該等級區間對應的變身劑、各類卡片、配方書、材料等細分內容 -->
           </div>
@@ -1117,7 +1117,7 @@ function renderWorldDropContent(mapLv) {
         { key: 'drop_card_active', label: '主動技能卡', link: 'skill' },
         { key: 'drop_card_passive', label: '被動技能卡', link: 'skill' },
         { key: 'drop_card_hero', label: '英雄卡', link: 'hero' },
-        { key: 'drop_recipes', label: '配方書 / 講義 / 文片', link: null },
+        { key: 'drop_recipes', label: '配方書 / 文片', link: null },
         { key: 'drop_materials', label: '材料類', link: null },
         { key: 'drop_other', label: '其他類', link: null }
     ];
@@ -1127,10 +1127,11 @@ function renderWorldDropContent(mapLv) {
         if (uniqueItems.length > 0) {
             const combinedStr = uniqueItems.join('、');
             const formattedVal = formatTieredContent(combinedStr, false, field.link);
-            html += `
-                <p class="align-row">
-                    <strong>◢ ${field.label}：</strong> <span>${formattedVal}</span>
-                </p>
+           html += `
+                <div class="world-drop-category-item" style="margin-bottom: 12px; background: rgba(255, 255, 255, 0.03); padding: 8px 12px; border-radius: 6px; border-left: 3px solid #3b82f6;">
+                    <div style="font-weight: bold; color: #60a5fa; margin-bottom: 4px;">◢ ${field.label}</div>
+                    <div style="line-height: 1.6; word-break: break-all; color: #e2e8f0;">${formattedVal}</div>
+                </div>
             `;
         }
     });
