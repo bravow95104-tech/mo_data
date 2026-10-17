@@ -951,6 +951,43 @@ async function loadData() {
 
     let result = { ...map };
 
+    // 🎯 智慧計算該地圖對應的世界掉落內容（供大表格欄位顯示與關鍵字搜尋使用）
+    let mapMin = 0, mapMax = 0;
+    if (map.maplv) {
+        const nums = String(map.maplv).match(/\d+/g);
+        if (nums) {
+            mapMin = parseInt(nums[0]);
+            mapMax = nums.length > 1 ? parseInt(nums[1]) : mapMin;
+        }
+    }
+
+    const matchedTiers = worldDropTiersData.filter(tier => {
+        const tierMin = parseInt(tier.min_lv);
+        const tierMax = parseInt(tier.max_lv);
+        return mapMin <= tierMax && mapMax >= tierMin;
+    });
+
+    const getMergedWorldDrop = (colKey) => {
+        let items = [];
+        matchedTiers.forEach(tier => {
+            if (tier[colKey]) {
+                const splitItems = tier[colKey].split(/[,，、\s]+/).map(i => i.trim()).filter(i => i);
+                items = items.concat(splitItems);
+            }
+        });
+        return Array.from(new Set(items)).join('、');
+    };
+
+    result.world_drop_transform   = getMergedWorldDrop('drop_transform');
+    result.world_drop_card_equip  = getMergedWorldDrop('drop_card_equip');
+    result.world_drop_card_active = getMergedWorldDrop('drop_card_active');
+    result.world_drop_card_passive= getMergedWorldDrop('drop_card_passive');
+    result.world_drop_card_hero   = getMergedWorldDrop('drop_card_hero');
+    result.world_drop_recipes     = getMergedWorldDrop('drop_recipes');
+    result.world_drop_texts       = getMergedWorldDrop('drop_texts');
+    result.world_drop_materials   = getMergedWorldDrop('drop_materials');
+    result.world_drop_other       = getMergedWorldDrop('drop_other');
+
     // 🚀 八大欄位智慧注入 mapData 物件中，讓表格與搜尋直接對接！
     const mergeColumn = (colName) => {
         if (globalDrop && globalDrop[colName]) {
@@ -1183,6 +1220,15 @@ function applyFilters(keyword) {
       (item.drop_combo_old && item.drop_combo_old.includes(keyword)) ||
       (item.drop_combo_new && item.drop_combo_new.includes(keyword)) ||
       (item.drop_other && item.drop_other.includes(keyword)) ||     // 🚀 新增：支援新表「其他」欄位關鍵字搜尋
+      (item.drop_glory_high && item.drop_glory_high.includes(keyword)) ||
+      (item.world_drop_transform && item.world_drop_transform.includes(keyword)) ||
+      (item.world_drop_card_active && item.world_drop_card_active.includes(keyword)) ||
+      (item.world_drop_card_passive && item.world_drop_card_passive.includes(keyword)) ||
+      (item.world_drop_card_hero && item.world_drop_card_hero.includes(keyword)) ||
+      (item.world_drop_recipes && item.world_drop_recipes.includes(keyword)) ||
+      (item.world_drop_texts && item.world_drop_texts.includes(keyword)) ||
+      (item.world_drop_materials && item.world_drop_materials.includes(keyword)) ||
+      (item.world_drop_other && item.world_drop_other.includes(keyword)) ||
       (item.drop_glory_high && item.drop_glory_high.includes(keyword)) ||
       (item.maplv && String(item.maplv).includes(keyword))
     );
