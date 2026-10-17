@@ -790,7 +790,7 @@ if (resources.length > 0 || item) {
 
       <!-- 🚀 容器 B：世界掉落（預設隱藏，切換過去時顯示） -->
         <div id="world-drop-container" style="display: none;">
-          <p><strong>世界掉落 (依等級區間、資料尚未檢查)：</strong></p>
+          <p><strong>世界掉落 (依等級區間)：</strong></p>
           <div id="world-drop-content-area">
             <!-- 這裡會透過 JS 動態填入該等級區間對應的變身劑、各類卡片、配方書、材料等細分內容 -->
           </div>
