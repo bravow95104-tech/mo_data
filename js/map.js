@@ -5,12 +5,11 @@ const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
 
 // === 1. 全域變數與全域函數公開 ===
 let mapData = [];
-let resourceData = []; // 🚀 新增：儲存所有資源點位
+let resourceData = [];
 let heroGloryMap = {}; 
 let worldDropTiersData = [];
 
-// 定義所有可能的欄位
-// 定義所有可能的欄位
+// 定義所有可能的欄位(詳細地圖使用的欄位顯示)
 const ALL_COLUMNS = [
   { id: 'mapid', label: '地圖名稱', default: true },
   { id: 'drop_equidcard', label: '裝備卡', default: true },
@@ -24,7 +23,17 @@ const ALL_COLUMNS = [
   { id: 'dodge', label: '閃避', default: false },
   { id: 'drop_combo_old', label: '舊文片', default: false },
   { id: 'drop_combo_new', label: '新文片', default: false },
-  { id: 'drop_other', label: '其他掉落', default: false }
+  { id: 'drop_other', label: '其他掉落', default: false },
+
+  // 🚀 新增：將世界掉落各細分欄位加入可選欄位中 (預設設為 false 避免表格太寬)
+  { id: 'world_drop_transform', label: '【世界】變身劑', default: false },
+  { id: 'world_drop_card_active', label: '【世界】主動技能卡', default: false },
+  { id: 'world_drop_card_passive', label: '【世界】被動技能卡', default: false },
+  { id: 'world_drop_card_hero', label: '【世界】英雄卡', default: false },
+  { id: 'world_drop_recipes', label: '【世界】配方書', default: false },
+  { id: 'world_drop_texts', label: '【世界】文片', default: false },
+  { id: 'world_drop_materials', label: '【世界】材料類', default: false },
+  { id: 'world_drop_other', label: '【世界】其他類', default: false }
 ];
 
 let activeColumns = [];
