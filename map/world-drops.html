@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>世界掉落一覽 | MoData</title>
+
+    <link rel="stylesheet" href="/mo_data/css/styles.css" />
+    <link rel="stylesheet" href="/mo_data/css/nav.css" />
+    <link rel="stylesheet" href="/mo_data/css/heromeal.css" />
+    <link rel="stylesheet" href="/mo_data/css/table-rwd.css" />
+    <style>
+      html { scroll-behavior: smooth; }
+    </style>
+  </head>
+  <body>
+    <div id="nav-container"></div>
+
+    <!-- 快速連結按鈕區（會由 JS 根據等級區間動態生成） -->
+    <div class="quick-links" id="quick-links-container"></div>
+
+    <!-- 世界掉落卡片動態載入容器 -->
+    <div id="world-drops-wrapper"></div>
+
+    <div id="footer-container"></div>
+    <script src="/mo_data/js/componentsLoader.js"></script>
+    <!-- 引入我們專屬載入世界掉寶的 JS -->
+    <script type="module" src="/mo_data/js/world-drops.js"></script>
+    <button id="backToTop" title="回到頂部">▲</button>
+  </body>
+</html>
