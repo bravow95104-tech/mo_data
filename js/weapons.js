@@ -328,6 +328,13 @@ document.addEventListener("DOMContentLoaded", () => {
   // === Modal 邏輯 ===
   function showDetailModal(equip) {
     if (!modalContent) return;
+    const itemName = equip.item || '-';
+    const itemIconHTML = equip.item
+      ? `<div class="modal-item-icon-wrap">
+           <img class="modal-item-icon" src="/mo_data/pic/weapons/${equip.item}.png" alt="${itemName}" onerror="this.parentElement.classList.add('is-empty'); this.remove();">
+           <span class="modal-item-icon-fallback">無圖示</span>
+         </div>`
+      : '';
     const materialsHTML = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
       .map(num => (equip[`material${num}`] && equip[`material${num}`] !== null) ? `<p><strong>材料 ${num}：</strong>${equip[`material${num}`]}</p>` : '')
       .join('');
@@ -347,7 +354,10 @@ document.addEventListener("DOMContentLoaded", () => {
       : "";
 
     modalContent.innerHTML = `
-      <h2 class="hero-name">${equip.item || '-'}</h2>
+      <div class="modal-item-header">
+        ${itemIconHTML}
+        <h2 class="hero-name">${itemName}</h2>
+      </div>
       <div class="hero-details-container">
         <div class="hero-column-base hero-column">
         <h3 class="modal-sub-title">基礎數值</h3>

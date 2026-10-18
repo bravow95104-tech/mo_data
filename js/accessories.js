@@ -341,6 +341,13 @@ document.addEventListener("DOMContentLoaded", async () => {
   // === Modal 1: 完整資訊 (手機版點擊卡片 或 電腦版點擊行) ===
   function showDetailModal(equip, titleName) {
     if (!modalContent) return;
+    const itemName = getVal(titleName);
+    const itemIconHTML = equip.item
+      ? `<div class="modal-item-icon-wrap">
+           <img class="modal-item-icon" src="/mo_data/pic/accessories/${equip.item}.png" alt="${itemName}" onerror="this.parentElement.classList.add('is-empty'); this.remove();">
+           <span class="modal-item-icon-fallback">無圖示</span>
+         </div>`
+      : '';
 
     // 製作材料 HTML
     const materialsHTML = [1, 2, 3, 4, 5]
@@ -367,7 +374,10 @@ document.addEventListener("DOMContentLoaded", async () => {
       : "";
 
     modalContent.innerHTML = `
-      <h2 class="hero-name">${getVal(titleName)}</h2>
+      <div class="modal-item-header">
+        ${itemIconHTML}
+        <h2 class="hero-name">${itemName}</h2>
+      </div>
       <div class="hero-details-container">
         <div class="hero-column-base hero-column">
           <h3 class="modal-sub-title">基礎數值</h3>

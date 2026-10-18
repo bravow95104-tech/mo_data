@@ -27,6 +27,69 @@
   transition: background 0.3s;
 }
 
+/* 道具明細 modal 標題區：圖示放在名稱左側，三個裝備頁面共用 */
+.modal-item-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.modal-item-header .hero-name {
+  flex: 1;
+  margin: 0;
+}
+
+.modal-item-icon-wrap {
+  width: 72px;
+  height: 72px;
+  flex: 0 0 72px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(77, 163, 255, 0.45);
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.18);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+}
+
+.modal-item-icon {
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+}
+
+.modal-item-icon-fallback {
+  display: none;
+  color: var(--text-muted);
+  font-size: 12px;
+}
+
+.modal-item-icon-wrap.is-empty .modal-item-icon-fallback {
+  display: block;
+}
+
+[data-theme="light"] .modal-item-icon-wrap {
+  background: rgba(255, 255, 255, 0.8);
+  border-color: rgba(0, 102, 204, 0.35);
+}
+
+@media (max-width: 768px) {
+  .modal-item-icon-wrap {
+    width: 60px;
+    height: 60px;
+    flex-basis: 60px;
+  }
+
+  .modal-item-icon {
+    width: 54px;
+    height: 54px;
+  }
+}
+
 .accordion-header:hover {
   background: rgba(255, 255, 255, 0.05);
 }
