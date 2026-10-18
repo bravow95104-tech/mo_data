@@ -745,7 +745,7 @@ if (resources.length > 0 || item) {
       <div class="hero-column-details section-gap">
 
       <!-- 🚀 切換按鈕 -->
-        <div class="drop-switch-tabs" style="display: flex; gap: 10px; margin-bottom: 15px;">
+        <div class="drop-switch-tabs">
           <button class="resource-btn drop-tab-btn active" onclick="switchDropTab('local')" id="btn-drop-local">區域掉落</button>
           <button class="resource-btn drop-tab-btn" onclick="switchDropTab('world')" id="btn-drop-world">世界掉落</button>
         </div>

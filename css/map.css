@@ -684,6 +684,59 @@ tbody tr:hover td {
   color: #000;
 }
 
+/* 區域掉落／世界掉落：改成瀏覽器頁籤風格 */
+.drop-switch-tabs {
+  display: flex;
+  align-items: flex-end;
+  gap: 4px;
+  margin-bottom: 0;
+  padding: 0 10px;
+  border-bottom: 1px solid var(--glass-border);
+}
+
+.drop-switch-tabs .drop-tab-btn {
+  margin: 0;
+  padding: 9px 18px;
+  min-height: 40px;
+  border: 1px solid var(--glass-border);
+  border-bottom: none;
+  border-radius: 10px 10px 0 0;
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text-muted) !important;
+  box-shadow: none;
+  transform: none;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.drop-switch-tabs .drop-tab-btn:hover {
+  background: rgba(77, 163, 255, 0.12);
+  color: var(--primary-blue) !important;
+  transform: none;
+}
+
+.drop-switch-tabs .drop-tab-btn.active {
+  position: relative;
+  z-index: 1;
+  margin-bottom: -1px;
+  background: var(--nav-bg-1);
+  color: var(--primary-blue) !important;
+  border-color: var(--primary-blue);
+  border-bottom: 1px solid var(--nav-bg-1);
+  font-weight: 700;
+}
+
+[data-theme="light"] .drop-switch-tabs .drop-tab-btn {
+  background: rgba(0, 0, 0, 0.035);
+  color: #64748b !important;
+}
+
+[data-theme="light"] .drop-switch-tabs .drop-tab-btn.active {
+  background: #fff;
+  color: #0066cc !important;
+  border-color: #0066cc;
+  border-bottom-color: #fff;
+}
+
 .zone-group-title {
   font-size: 14px;
   color: var(--primary-blue);
