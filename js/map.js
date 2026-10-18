@@ -1177,8 +1177,8 @@ function renderWorldDropContent(mapLv) {
             const formattedVal = formatTieredContent(combinedStr, false, field.link);
            html += `
                 <div class="world-drop-category-item" style="margin-bottom: 12px; background: rgba(255, 255, 255, 0.03); padding: 8px 12px; border-radius: 6px; border-left: 3px solid #3b82f6;">
-                    <div style="font-weight: bold; color: #60a5fa; margin-bottom: 4px;">◢ ${field.label}</div>
-                    <div style="line-height: 1.6; word-break: break-all; color: #e2e8f0;">${formattedVal}</div>
+                    <div class="world-drop-category-label">◢ ${field.label}</div>
+                    <div class="world-drop-category-value">${formattedVal}</div>
                 </div>
             `;
         }

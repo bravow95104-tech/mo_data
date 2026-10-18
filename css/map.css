@@ -666,6 +666,24 @@ tbody tr:hover td {
   gap: 6px;
 }
 
+/* 世界掉落：深色模式沿用原本的淺色文字，白天模式改為黑色提高對比 */
+.world-drop-category-label {
+  font-weight: bold;
+  color: #60a5fa;
+  margin-bottom: 4px;
+}
+
+.world-drop-category-value {
+  line-height: 1.6;
+  word-break: break-all;
+  color: #e2e8f0;
+}
+
+[data-theme="light"] #world-drop-container .world-drop-category-label,
+[data-theme="light"] #world-drop-container .world-drop-category-value {
+  color: #000;
+}
+
 .zone-group-title {
   font-size: 14px;
   color: var(--primary-blue);
