@@ -365,7 +365,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     `;
 
     const gainHTML = (equip.gain && String(equip.gain).trim() !== "")
-      ? `<div class="hero-column-base hero-column-details" style="grid-column: span 2; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 10px;">
+      ? `<div class="hero-column-base hero-column-details" style="grid-column: span 2; border-top: 1px solid var(--border-separator); padding-top: 10px;">
            <h3 class="modal-sub-title">詳細效果</h3>
            <p style="font-size: 16px; line-height: 1.8;">
              ${String(equip.gain).replace(/\n/g, "<br>")}
