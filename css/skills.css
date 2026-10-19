@@ -535,3 +535,37 @@
   color: #aaa;
   margin-left: 4px;
 }
+
+/* 白天模式：補齊點數輸入與技能節點控制列的對比 */
+[data-theme="light"] .simulator-container {
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.12);
+}
+
+[data-theme="light"] .simulator-container #tabsContainer {
+  scrollbar-color: var(--border-gold) transparent;
+}
+
+[data-theme="light"] .simulator-container .point-number-input {
+  background-color: #ffffff;
+  border-color: #cbd5e1;
+  color: #2d3748;
+}
+
+[data-theme="light"] .simulator-container .unit-text {
+  color: #64748b;
+}
+
+[data-theme="light"] .simulator-container .node-icon-box {
+  background: #fff7ed;
+  box-shadow: 0 4px 10px rgba(15, 23, 42, 0.14);
+}
+
+[data-theme="light"] .simulator-container .btn-step:not(.btn-minus) {
+  background: #fbbf24;
+  color: #7c2d12;
+  border-color: #d97706;
+}
+
+[data-theme="light"] .simulator-container .btn-step:hover:not(.disabled) {
+  background: #fef3c7;
+}
