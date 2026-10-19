@@ -419,3 +419,28 @@
     flex: 1 1 calc(50% - 10px);
   }
 }
+
+/* 白天模式：任務卡片與步驟區塊提高層次與 hover 對比 */
+[data-theme="light"] .mission-card {
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+}
+
+[data-theme="light"] .mission-card:hover {
+  background: #ffffff;
+  border-color: rgba(0, 102, 204, 0.35);
+  box-shadow: 0 15px 35px rgba(15, 23, 42, 0.14);
+}
+
+[data-theme="light"] .mission-header {
+  background: linear-gradient(180deg, #f8fbff, #edf5ff);
+}
+
+[data-theme="light"] .info-grid {
+  background: rgba(0, 102, 204, 0.06);
+}
+
+[data-theme="light"] .filter-btn:hover,
+[data-theme="light"] .accordion-header:hover {
+  background: rgba(0, 102, 204, 0.1);
+}

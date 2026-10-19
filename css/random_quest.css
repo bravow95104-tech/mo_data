@@ -314,6 +314,22 @@ body.light-mode .random-quest-card .reward-item-tag,
   border: 1px solid #e5e7eb !important;
   color: #1f2937 !important;
 }
+
+/* 白天模式：補齊卡片外框、縮圖與展開區域的層次 */
+[data-theme="light"] .random-quest-card {
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+}
+
+[data-theme="light"] .random-quest-card:hover,
+[data-theme="light"] .random-quest-card.active {
+  background: #ffffff;
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.14);
+}
+
+[data-theme="light"] .quest-main-pic {
+  background: #f8fafc;
+}
 /* 🗺️ 地圖定位按鈕基礎樣式（黑夜） */
 .map-location-btn {
   background: linear-gradient(135deg, #0284c7, #0369a1);

@@ -26,7 +26,7 @@
 
 /* 滑鼠移上去時的藍色高亮 */
 .system-sidebar .sidebar-list li:hover {
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(77, 163, 255, 0.1);
     color: var(--text-main);
     border-color: rgba(77, 163, 255, 0.2);
     transform: translateX(5px);
@@ -37,6 +37,11 @@
     color: white;
     border-color: var(--primary-blue);
     box-shadow: 0 4px 15px rgba(77, 163, 255, 0.3);
+}
+
+[data-theme="light"] .system-sidebar .sidebar-list li:hover {
+    background: rgba(0, 102, 204, 0.1);
+    border-color: rgba(0, 102, 204, 0.25);
 }
 
 /* === RWD 手機版優化 === */
@@ -56,11 +61,15 @@
     }
 
     .sidebar {
-        background: rgba(10, 20, 35, 0.95) !important;
+        background: var(--glass-bg) !important;
         backdrop-filter: blur(10px);
         border: 1px solid var(--glass-border) !important;
         border-radius: 16px !important;
         padding: 0 !important;
+    }
+
+    [data-theme="light"] .sidebar {
+        background: rgba(255, 255, 255, 0.94) !important;
     }
 
     .sidebar h2 {
@@ -156,7 +165,7 @@ table {
     border-collapse: separate;
     border-spacing: 0;
     margin: 25px 0;
-    background: rgba(255, 255, 255, 0.02);
+    background: var(--glass-bg);
     border: 1px solid var(--glass-border);
     border-radius: 16px;
     overflow: hidden;
@@ -173,7 +182,7 @@ table th {
 
 table td {
     padding: 12px 15px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid var(--border-separator);
     text-align: center;
     color: var(--text-muted);
     font-size: 0.95rem;
@@ -184,7 +193,7 @@ table tr:last-child td {
 }
 
 table tbody tr:hover {
-    background: rgba(255, 255, 255, 0.04);
+    background: rgba(77, 163, 255, 0.1);
 }
 
 table tbody tr:hover td {
@@ -200,7 +209,7 @@ table tbody tr:hover td {
     border: 1px solid var(--glass-border);
     border-radius: 16px;
     padding: 8px;
-    background: rgba(0, 0, 0, 0.2);
+    background: var(--glass-bg);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
 }
 
@@ -213,7 +222,7 @@ table tbody tr:hover td {
 }
 
 #dynamic-content a:hover {
-    color: white;
+    color: var(--text-main);
     border-bottom-style: solid;
     text-shadow: 0 0 8px rgba(77, 163, 255, 0.5);
 }
@@ -243,4 +252,18 @@ figcaption {
     font-size: 0.85rem;
     color: var(--text-muted);
     margin-top: 10px;
+}
+
+[data-theme="light"] #system-search-input {
+    background: #ffffff !important;
+    border-color: var(--glass-border) !important;
+    color: var(--text-main) !important;
+}
+
+[data-theme="light"] table tbody tr:hover {
+    background: rgba(0, 102, 204, 0.08);
+}
+
+[data-theme="light"] .system-img {
+    box-shadow: 0 10px 25px rgba(15, 23, 42, 0.12);
 }

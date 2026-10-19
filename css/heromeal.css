@@ -179,6 +179,11 @@ h1 {
   background: rgba(0, 102, 204, 0.04);
 }
 
+[data-theme="light"] .card-table-container {
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+}
+
 .table-description {
   background: rgba(77, 163, 255, 0.05);
   color: var(--highlight-yellow);

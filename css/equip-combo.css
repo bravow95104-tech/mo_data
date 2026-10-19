@@ -261,3 +261,23 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* 白天模式：組合卡片與篩選區維持清楚的層次 */
+[data-theme="light"] .accordion-header {
+  background: rgba(0, 102, 204, 0.035);
+}
+
+[data-theme="light"] .accordion-header:hover {
+  background: rgba(0, 102, 204, 0.1);
+}
+
+[data-theme="light"] .combo-card {
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+}
+
+[data-theme="light"] .combo-card:hover {
+  background: #ffffff;
+  border-color: rgba(0, 102, 204, 0.35);
+  box-shadow: 0 15px 35px rgba(15, 23, 42, 0.14);
+}
