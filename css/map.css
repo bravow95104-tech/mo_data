@@ -450,7 +450,7 @@ tbody tr:hover td {
 
 .hero-name {
   color: var(--primary-blue) !important;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-bottom: 1px solid var(--border-separator) !important;
   font-size: 24px;
   font-weight: 800;
   text-align: center;
@@ -503,7 +503,7 @@ tbody tr:hover td {
   max-width: 100%;
   height: auto;
   border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--glass-border);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
   display: block;
   margin: 0 auto 20px auto;
@@ -514,7 +514,7 @@ tbody tr:hover td {
   top: 15px;
   right: 20px;
   font-size: 30px;
-  color: rgba(255, 255, 255, 0.5);
+  color: var(--text-muted);
   cursor: pointer;
   transition: all 0.2s;
 }
@@ -527,7 +527,7 @@ tbody tr:hover td {
 /* 7. 其他標籤 */
 .section-gap {
   margin-top: 20px !important;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  border-top: 1px solid var(--border-separator);
   padding-top: 15px;
 }
 
@@ -602,7 +602,7 @@ tbody tr:hover td {
   height: auto;
   display: block;
   border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--glass-border);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
   margin: 0 !important;
   box-sizing: border-box; /* 🚀 確保邊框包含在寬度內 */

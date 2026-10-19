@@ -211,6 +211,18 @@ tbody tr:hover td {
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
 }
 
+#modalBox .skill-card-modal-image {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+#modalBox .skill-card-modal-image .hero-image {
+  width: auto;
+  margin: 0 auto;
+}
+
 .hero-column p {
   margin: 8px 0;
   font-size: 15px;

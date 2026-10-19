@@ -687,12 +687,12 @@ if (resources.length > 0 || item) {
     <div id="zone-section" class="resource-group section-gap" style="display: none; margin-top: 10px;">
   
   <div class="zone-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
-    <div class="zone-group-title" style="font-weight: bold; color: var(--text-color); margin-bottom: 0;">
+    <div class="zone-group-title" style="font-weight: bold; color: var(--text-main); margin-bottom: 0;">
       <i class="fas fa-layer-group"></i> 區域範圍顯示 (點擊查看範圍)
     </div>
     
     <button class="resource-btn" 
-            style="margin: 0; padding: 2px 8px; font-size: 12px; border-color: #888; color: #888; background: transparent;"
+            style="margin: 0; padding: 2px 8px; font-size: 12px; border-color: var(--glass-border); color: var(--text-muted); background: transparent;"
             onclick="resetZoneSelection()">
       <i class="fas fa-eraser"></i> 清除範圍
     </button>
@@ -1102,7 +1102,7 @@ function renderWorldDropContent(mapLv) {
     if (!container) return;
 
     if (!mapLv || mapLv === "-") {
-        container.innerHTML = `<p style="color: #94a3b8;">此地圖無怪物等級資料</p>`;
+        container.innerHTML = `<p style="color: var(--text-muted);">此地圖無怪物等級資料</p>`;
         return;
     }
 
@@ -1116,7 +1116,7 @@ function renderWorldDropContent(mapLv) {
         // 如果像 "7-13" 有兩個數字，max 取第二個；如果是單一數字，min 和 max 相同
         mapMax = nums.length > 1 ? parseInt(nums[1]) : mapMin;
     } else {
-        container.innerHTML = `<p style="color: #94a3b8;">此地圖等級格式無法解析</p>`;
+        container.innerHTML = `<p style="color: var(--text-muted);">此地圖等級格式無法解析</p>`;
         return;
     }
 
@@ -1129,7 +1129,7 @@ function renderWorldDropContent(mapLv) {
     });
 
     if (matchedTiers.length === 0) {
-        container.innerHTML = `<p style="color: #94a3b8;">此等級區間無世界掉落資料</p>`;
+        container.innerHTML = `<p style="color: var(--text-muted);">此等級區間無世界掉落資料</p>`;
         return;
     }
 
@@ -1184,7 +1184,7 @@ function renderWorldDropContent(mapLv) {
         }
     });
 
-    container.innerHTML = html !== '' ? html : `<p style="color: #94a3b8;">此等級區間尚無填寫掉落物</p>`;
+    container.innerHTML = html !== '' ? html : `<p style="color: var(--text-muted);">此等級區間尚無填寫掉落物</p>`;
 }
 
 

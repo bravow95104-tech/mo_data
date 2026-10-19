@@ -369,7 +369,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     modalContent.innerHTML = `
       <h2 class="hero-name">${item.card_id}</h2>
-      <div id="modal-img-col" style="text-align: center; margin-bottom: 15px;"></div>
+      <div id="modal-img-col" class="skill-card-modal-image" style="margin-bottom: 15px;"></div>
       ${isMobile ? `
       <div class="hero-column right">
         <p><strong>掉落地圖：</strong><br>${formatMapLinks(displayDrop)}</p>
