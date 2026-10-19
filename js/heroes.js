@@ -475,7 +475,7 @@ const oldEquipAttr = [oldEquipInfo.card_property,"+", oldEquipInfo.card_data]
           <p><strong>素質：</strong>${getVal(hero.traits)}</p>
           <p><strong>個性：</strong>${getVal(hero.personality)}</p>
           <p><strong>屬性：</strong>${getVal(hero.element)}</p>
-          <hr style="margin: 20px 0; border: 0; border-top: 1px solid rgba(255,255,255,0.1);">
+          <hr style="margin: 20px 0; border: 0; border-top: 1px solid var(--border-separator);">
           <p><strong>力量：</strong>${getVal(hero.str)}</p>
           <p><strong>智慧：</strong>${getVal(hero.int)}</p>
           <p><strong>體質：</strong>${getVal(hero.vit)}</p>
@@ -485,14 +485,14 @@ const oldEquipAttr = [oldEquipInfo.card_property,"+", oldEquipInfo.card_data]
         <div class="hero-column-base hero-column">
           <p><strong>積極度(生變前)：</strong>${getVal(hero.aggression_before)}</p>
           <p><strong>積極度(生變後)：</strong>${getVal(hero.aggression_after)}</p>
-          <hr style="margin: 20px 0; border: 0; border-top: 1px solid rgba(255,255,255,0.1);">
+          <hr style="margin: 20px 0; border: 0; border-top: 1px solid var(--border-separator);">
           <p><strong>裝備卡(新專)：</strong>${getVal(hero.equipment_new)}</p>
           <p><strong>新專數值：</strong>${newEquipAttr || "-"}</p>
 <p><strong>新專倍率：</strong>${newMultiplierVal || "-"}</p>
-          <hr style="margin: 20px 0; border: 0; border-top: 1px solid rgba(255,255,255,0.1);">
+          <hr style="margin: 20px 0; border: 0; border-top: 1px solid var(--border-separator);">
           <p><strong>裝備卡(舊專)：</strong>${getVal(hero.equipment_old)}</p>
 <p><strong>舊專數值：</strong>${oldEquipAttr || "-"}</p>
-          <hr style="margin: 20px 0; border: 0; border-top: 1px solid rgba(255,255,255,0.1);">
+          <hr style="margin: 20px 0; border: 0; border-top: 1px solid var(--border-separator);">
           <p><strong>天生技：</strong>${getVal(hero.innate_skill)}</p>
           <p><strong>生變技能：</strong>${getVal(hero.transformation_skill)}</p>
         </div>

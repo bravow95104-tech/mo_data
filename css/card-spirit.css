@@ -193,11 +193,22 @@ tbody tr:hover td {
 }
 
 .hero-column {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid var(--border-separator);
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
   padding: 18px;
   border-radius: 16px;
   margin-bottom: 10px;
+}
+
+#modalBox .hero-image {
+  display: block;
+  max-width: 100%;
+  max-height: 300px;
+  object-fit: contain;
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+  background: var(--glass-bg);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
 }
 
 .hero-column p {
@@ -216,7 +227,7 @@ tbody tr:hover td {
   position: absolute;
   top: 15px; right: 20px;
   font-size: 32px;
-  color: rgba(255, 255, 255, 0.5);
+  color: var(--text-muted);
   cursor: pointer;
   transition: all 0.2s;
 }
@@ -224,6 +235,14 @@ tbody tr:hover td {
 .close-btn:hover {
   color: var(--primary-blue);
   transform: rotate(90deg);
+}
+
+[data-theme="light"] #modalBox {
+  box-shadow: 0 20px 45px rgba(15, 23, 42, 0.18);
+}
+
+[data-theme="light"] #modalBox .hero-image {
+  box-shadow: 0 8px 18px rgba(15, 23, 42, 0.12);
 }
 
 @media (max-width: 768px) {
