@@ -327,12 +327,37 @@ th.sorted-desc .arrow-down {
 #modalBox .hero-image {
   display: block;
   max-width: 100%;
-  max-height: 300px;
+  max-height: 360px;
   object-fit: contain;
   border: 1px solid var(--glass-border);
   border-radius: 12px;
   background: var(--glass-bg);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+}
+
+/* 裝備卡：維持左圖右資料，圖片完整填滿左側欄位但不裁切 */
+#modalBox .equipment-card-modal-image {
+  width: 100%;
+}
+
+#modalBox .equipment-card-modal-image .hero-image {
+  width: 100% !important;
+  height: auto !important;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+/* 主動／被動技能卡：圖片獨立置中顯示 */
+#modalBox .skill-card-modal-image {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+#modalBox .skill-card-modal-image .hero-image {
+  width: auto;
+  margin: 0 auto;
 }
 
 .hero-column.left {

@@ -325,7 +325,7 @@ function showDetailModal(item) {
     // 手機版：標題 + 圖片 (移除 DIV) + 僅顯示掉落地圖
     contentDiv.innerHTML = `
       <h2 class="hero-name">${item.card_id}</h2>
-      <div id="modal-img-col" style="text-align: center; margin-bottom: 20px;"></div>
+      <div id="modal-img-col" class="equipment-card-modal-image" style="margin-bottom: 20px;"></div>
       <div class="hero-column right" style="flex: 1 1 100%;">
         <p><strong>掉落地圖：</strong><br>${formatMapLinks(displayDrop)}</p>
       </div>
@@ -335,7 +335,7 @@ function showDetailModal(item) {
     contentDiv.innerHTML = `
       <h2 class="hero-name">${item.card_id}</h2>
       <div class="hero-details-container" style="display: flex; gap: 30px; align-items: flex-start;">
-        <div id="modal-img-col" style="flex: 0 0 240px; display: flex; justify-content: center;"></div>
+        <div id="modal-img-col" class="equipment-card-modal-image" style="flex: 0 0 240px; display: flex; justify-content: center;"></div>
         <div class="hero-column right" style="flex: 1; margin-top: 0;">
           <p><strong>專卡名稱：</strong>${item.card_id}</p>
           <p><strong>等級：</strong>${item.card_lv}</p>
