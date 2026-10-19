@@ -371,7 +371,7 @@ hr {
   padding: 6px 10px;
   width: 100%;
   font-size: 14px;
-  border: 1px solid #ccc;
+  border: 1px solid var(--glass-border);
   border-radius: 4px;
   box-sizing: border-box;
 }
@@ -483,4 +483,46 @@ hr {
     display: flex;
     justify-content: center;
   }
+}
+
+/* 白天模式：計算器／精煉頁面只調整視覺，不影響計算邏輯 */
+[data-theme="light"] .hero-card {
+  background: rgba(255, 255, 255, 0.94);
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.1);
+}
+
+[data-theme="light"] .hero-card:hover {
+  box-shadow: 0 16px 36px rgba(15, 23, 42, 0.14);
+}
+
+[data-theme="light"] .switch-toggle-item,
+[data-theme="light"] .equip-group-box {
+  background: rgba(255, 255, 255, 0.8);
+}
+
+[data-theme="light"] .slider {
+  background: #e2e8f0;
+}
+
+[data-theme="light"] .switch-toggle input:checked + .slider {
+  background: #bfdbfe;
+}
+
+[data-theme="light"] .custom-dropdown {
+  background: #ffffff;
+  box-shadow: 0 8px 18px rgba(15, 23, 42, 0.14);
+}
+
+[data-theme="light"] .result-highlight {
+  background: rgba(255, 216, 107, 0.12);
+  border-left-color: #d97706;
+}
+
+[data-theme="light"] .hero-card .attribute-item[style*="background"] {
+  background: #f8fbff !important;
+  border-color: #dbeafe !important;
+}
+
+[data-theme="light"] .hero-card .attribute-item[style*="background"] label {
+  color: #475569 !important;
 }
