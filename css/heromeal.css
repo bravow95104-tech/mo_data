@@ -92,6 +92,55 @@ h1 {
   scroll-margin-top: 100px; /* 避免跳轉時被導航列擋住 */
 }
 
+/* --- 世界掉落快速搜尋 --- */
+#world-search-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  max-width: 900px;
+  margin: 24px auto 0;
+  padding: 15px 20px;
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+}
+
+#world-search-container .quick-search-label {
+  flex-shrink: 0;
+  font-weight: 600;
+  color: var(--primary-blue);
+  font-size: 16px;
+}
+
+#world-search-input {
+  width: 100%;
+  max-width: 360px;
+  padding: 10px 16px;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 10px;
+  color: var(--text-main);
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+#world-search-input:focus {
+  outline: none;
+  border-color: var(--primary-blue);
+  box-shadow: 0 0 10px rgba(77, 163, 255, 0.3);
+}
+
+.world-drop-highlight {
+  background-color: rgba(255, 216, 107, 0.3);
+  color: var(--highlight-yellow);
+  font-weight: bold;
+  border-radius: 4px;
+  padding: 2px 4px;
+  text-shadow: 0 0 8px rgba(255, 216, 107, 0.4);
+}
+
 /* --- 快速連結按鈕 --- */
 .quick-links {
   display: flex;
@@ -130,6 +179,17 @@ h1 {
 }
 
 @media (max-width: 768px) {
+  #world-search-container {
+    align-items: stretch;
+    flex-direction: column;
+    margin: 20px 12px 0;
+    padding: 14px;
+  }
+
+  #world-search-input {
+    max-width: none;
+  }
+
   .quick-links {
     gap: 8px;
     margin: 20px auto 0 auto;
