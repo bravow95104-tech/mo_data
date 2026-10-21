@@ -34,6 +34,7 @@ function highlightText(value, keyword) {
 async function loadWorldDropsData() {
   const wrapper = document.getElementById('world-drops-wrapper');
   const searchInput = document.getElementById('world-search-input');
+  const clearSearchButton = document.getElementById('clear-world-search');
   if (!wrapper) return;
 
   try {
@@ -56,6 +57,12 @@ async function loadWorldDropsData() {
       searchInput.addEventListener('input', () => {
         clearTimeout(searchDebounceTimer);
         searchDebounceTimer = setTimeout(() => renderWorldDrops(searchInput.value.trim()), 250);
+      });
+
+      clearSearchButton?.addEventListener('click', () => {
+        searchInput.value = '';
+        renderWorldDrops('');
+        searchInput.focus();
       });
     }
   } catch (err) {

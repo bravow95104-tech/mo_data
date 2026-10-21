@@ -132,6 +132,23 @@ h1 {
   box-shadow: 0 0 10px rgba(77, 163, 255, 0.3);
 }
 
+.world-search-clear {
+  flex-shrink: 0;
+  padding: 10px 16px;
+  border: 1px solid var(--glass-border);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--text-main);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.world-search-clear:hover {
+  background: var(--primary-blue);
+  border-color: var(--primary-blue);
+  color: #fff;
+}
+
 .world-drop-highlight {
   background-color: rgba(255, 216, 107, 0.3);
   color: var(--highlight-yellow);
@@ -188,6 +205,10 @@ h1 {
 
   #world-search-input {
     max-width: none;
+  }
+
+  .world-search-clear {
+    width: 100%;
   }
 
   .quick-links {
