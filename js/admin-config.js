@@ -388,6 +388,24 @@ export const TABLE_CONFIGS = {
             { id: 'gain', label: '特殊效果說明(modelbox)', type: 'textarea', grid: 3 },
         ]
     },
+
+    equipment_model_photos: {
+        title: '防具角色實穿照片對照表',
+        tableName: 'equipment_model_photos',
+        tableCols: ['名稱','職業類型', '等級', '說明', '操作'],
+        displayFields: ['set_key','job', 'lv', 'illustrate'],
+        fields: [
+            { id: 'id', label: 'UUID', type: 'number', grid: 1 },
+            { id: 'sort_id', label: '顯示順序', type: 'number', grid: 1 },
+            { id: 'set_key', label: '套裝名稱', type: 'text', grid: 1 , group: '材料'},
+            { id: 'job', label: '職業', type: 'text', grid: 1 , group: '材料'},
+            { id: 'gender', label: '男女male / female', type: 'text', grid: 1 , group: '材料'},
+            { id: 'photo_path', label: '照片路徑', type: 'text', grid: 1 , group: '材料'},
+            { id: 'title', label: '照片標題', type: 'text', grid: 1 , group: '材料'}
+        ]
+    },
+
+
     detailed_map: {
         title: '地圖資訊',
         tableName: 'detailed_map',
