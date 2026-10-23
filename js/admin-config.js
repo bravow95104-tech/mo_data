@@ -367,6 +367,7 @@ export const TABLE_CONFIGS = {
             { id: 'class', label: '分類', type: 'select', options: ['防具'], grid: 1 , group: '分類'},
             { id: 'sort', label: '部位', type: 'text', grid: 1 , group: '分類'},
             { id: 'job', label: '職業類型', type: 'select', options: ['基礎職業','進階職業','極限裝備','新城寨裝備'], grid: 1 , group: '分類'},
+            { id: 'set_key', label: '套裝分類', type: 'text', grid: 1 , group: '分類'},
             { id: 'pic', label: '無作用', type: 'text', grid: 1 },
             { id: 'lv', label: '等級☆', type: 'text', grid: 1 },
             { id: 'property1', label: '屬性1(防禦/攻擊)', type: 'text', grid: 1 },
