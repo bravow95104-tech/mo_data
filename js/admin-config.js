@@ -399,9 +399,7 @@ export const TABLE_CONFIGS = {
             { id: 'sort_id', label: '顯示順序', type: 'number', grid: 1 },
             { id: 'set_key', label: '套裝名稱', type: 'text', grid: 1 , group: '材料'},
             { id: 'job', label: '職業', type: 'text', grid: 1 , group: '材料'},
-            { id: 'gender', label: '男女male / female', type: 'text', grid: 1 , group: '材料'},
-            { id: 'photo_path', label: '照片路徑', type: 'text', grid: 1 , group: '材料'},
-            { id: 'title', label: '照片標題', type: 'text', grid: 1 , group: '材料'}
+            { id: 'gender', label: '男女male / female', type: 'select', options: ['male','female'], grid: 1 , group: '材料'},
         ]
     },
 
