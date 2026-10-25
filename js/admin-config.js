@@ -392,8 +392,8 @@ export const TABLE_CONFIGS = {
     equipment_model_photos: {
         title: '防具角色實穿照片對照表',
         tableName: 'equipment_model_photos',
-        tableCols: ['名稱','職業類型', '等級', '說明', '操作'],
-        displayFields: ['set_key','job', 'lv', 'illustrate'],
+        tableCols: ['名稱','職業類型', '職業', '男女', '操作'],
+        displayFields: ['set_key','job','gender', 'gender'],
         fields: [
             { id: 'id', label: 'UUID', type: 'number', grid: 1 },
             { id: 'sort_id', label: '顯示順序', type: 'number', grid: 1 },
