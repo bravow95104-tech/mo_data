@@ -403,7 +403,6 @@ export const TABLE_CONFIGS = {
         ]
     },
 
-
     detailed_map: {
         title: '地圖資訊',
         tableName: 'detailed_map',
