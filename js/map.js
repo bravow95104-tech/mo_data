@@ -99,16 +99,15 @@ const formatTieredContent = (text, isCompact = false, linkType = null) => {
     }).join('、');
   };
 
-  // 🚀 升級版正則：同時支援「第X層：」、「第X關：」、「X區：」或「A區:」
-  // 匹配：第數字層、第數字關，或者是 任何中英文字母/數字+區
-  // 🚀 核心修正：拿掉這裡的 g 修飾符，避免 lastIndex 指針殘留導致後面行數失效
-  const tierRegex = /(第\d+[層關]|[A-Za-z0-9\u4e00-\u9fa5]+區)[：:]/;
+  // 🚀 關卡標籤同時支援「第X層：」、「第X關：」、「X區：」與副本格式「1-1：」
+  // 例如：寒冰洞可用「第1層：」，琉璃塔可用「1-1：」到「7-3：」。
+  const tierRegex = /(第\d+[層關]|\d+-\d+|[A-Za-z0-9\u4e00-\u9fa5]+區)[：:]/;
 
   if (tierRegex.test(str)) {
     const lines = str.split(/\n|<br>/i);
     return lines.map(line => {
       // 每一行都建立一個乾淨的局部正則進行精準比對
-      const match = line.match(/(第\d+[層關]|[A-Za-z0-9\u4e00-\u9fa5]+區)[：:](.*)/);
+      const match = line.match(/(第\d+[層關]|\d+-\d+|[A-Za-z0-9\u4e00-\u9fa5]+區)[：:](.*)/);
       if (match) {
         const tier = match[1]; // 這裡會拿到「1區」、「2區」等
         const names = wrapLinks(match[2].trim());
@@ -311,7 +310,7 @@ async function loadModalZoneButtons(mapName, maxX, maxY, mainRubbish, mainProduc
         .order('sort_id', { ascending: true }),
       supabase.from('map_zone_drops')
         // 🚀 核心修正：把新舊所有的掉落物與數值欄位全部撈出來！
-        .select('zone_name, drop_rubbish, drop_product, drop_heroes, drop_other, def, dodge, element, drop_equidcard, drop_skillcard, drop_combo_old, drop_combo_new')
+        .select('zone_name, sort_id, drop_rubbish, drop_product, drop_heroes, drop_other, def, dodge, element, drop_equidcard, drop_skillcard, drop_combo_old, drop_combo_new')
         .eq('map_id', mapName)
         .order('sort_id', { ascending: true })
     ]);
@@ -367,15 +366,26 @@ async function loadModalZoneButtons(mapName, maxX, maxY, mainRubbish, mainProduc
         }
     }
 
-    // 🚀 核心優化：所有掉落物欄位全面對接新表（主表參數留空，全部用 drops.map 撈出新表資料做初始化去重）
-    setupDynamicRow('dynamic-drop-rubbish',   'dynamic-drop-rubbish-row',   "", drops.map(d => d.drop_rubbish).filter(x => x), false);
-    setupDynamicRow('dynamic-drop-product',   'dynamic-drop-product-row',   "", drops.map(d => d.drop_product).filter(x => x), false);
-    setupDynamicRow('dynamic-drop-equidcard', 'dynamic-drop-equidcard-row', "", drops.map(d => d.drop_equidcard).filter(x => x), true, 'equip');
-    setupDynamicRow('dynamic-drop-skillcard', 'dynamic-drop-skillcard-row', "", drops.map(d => d.drop_skillcard).filter(x => x), true, 'skill');
-    setupDynamicRow('dynamic-drop-hero',      'dynamic-drop-hero-row',      "", drops.map(d => d.drop_heroes).filter(x => x), true, 'hero');
-    setupDynamicRow('dynamic-drop-combo_old', 'dynamic-drop-combo_old-row', "", drops.map(d => d.drop_combo_old).filter(x => x), false);
-    setupDynamicRow('dynamic-drop-combo_new', 'dynamic-drop-combo_new-row', "", drops.map(d => d.drop_combo_new).filter(x => x), false);
-    setupDynamicRow('dynamic-drop-other',     'dynamic-drop-other-row',     "", drops.map(d => d.drop_other).filter(x => x), false);
+    // 沒有在內容中手動寫「1-1：」時，摘要仍自動用關卡名稱分組，避免琉璃塔被攤平成一大串文字。
+    const getZoneDropValues = (field) => drops
+      .filter(d => d[field])
+      .map(d => {
+        const value = String(d[field]).trim();
+        const hasLabel = /(第\d+[層關]|\d+-\d+|[A-Za-z0-9\u4e00-\u9fa5]+區)[：:]/.test(value);
+        return d.zone_name && d.zone_name !== '全區' && !hasLabel
+          ? `${d.zone_name}：${value}`
+          : value;
+      });
+
+    // 🚀 核心優化：所有掉落物欄位全面對接新表（主表參數留空，全部用 drops.map 撈取）
+    setupDynamicRow('dynamic-drop-rubbish',   'dynamic-drop-rubbish-row',   "", getZoneDropValues('drop_rubbish'), false);
+    setupDynamicRow('dynamic-drop-product',   'dynamic-drop-product-row',   "", getZoneDropValues('drop_product'), false);
+    setupDynamicRow('dynamic-drop-equidcard', 'dynamic-drop-equidcard-row', "", getZoneDropValues('drop_equidcard'), true, 'equip');
+    setupDynamicRow('dynamic-drop-skillcard', 'dynamic-drop-skillcard-row', "", getZoneDropValues('drop_skillcard'), true, 'skill');
+    setupDynamicRow('dynamic-drop-hero',      'dynamic-drop-hero-row',      "", getZoneDropValues('drop_heroes'), true, 'hero');
+    setupDynamicRow('dynamic-drop-combo_old', 'dynamic-drop-combo_old-row', "", getZoneDropValues('drop_combo_old'), false);
+    setupDynamicRow('dynamic-drop-combo_new', 'dynamic-drop-combo_new-row', "", getZoneDropValues('drop_combo_new'), false);
+    setupDynamicRow('dynamic-drop-other',     'dynamic-drop-other-row',     "", getZoneDropValues('drop_other'), false);
 
 // =======================================================================
     // 🚀 免 item 修正版（對接 map_zone_drops 升級版）
@@ -428,19 +438,39 @@ async function loadModalZoneButtons(mapName, maxX, maxY, mainRubbish, mainProduc
 
     // =======================================================================
     // 4. 動態生成區域按鈕
-    // 4. 動態生成區域按鈕
-    if (zones.length > 0) {
-        const groupedZones = {};
-        zones.forEach(zone => {
-          if (zone.zone_name === '全區') return;
-          if (!groupedZones[zone.zone_name]) { groupedZones[zone.zone_name] = []; }
-          groupedZones[zone.zone_name].push(zone.points);
-        });
+    // 4. 動態生成區域／副本關卡按鈕
+    //    有多邊形時照舊顯示範圍；沒有多邊形時，直接用掉落表的 zone_name
+    //    產生純資料型關卡按鈕，適用於琉璃塔這類「1-1～7-3」副本。
+    const groupedZones = {};
+    zones.forEach(zone => {
+      if (zone.zone_name === '全區') return;
+      if (!groupedZones[zone.zone_name]) {
+        groupedZones[zone.zone_name] = { points: [], sortId: zone.sort_id };
+      }
+      if (zone.points) groupedZones[zone.zone_name].points.push(zone.points);
+      if (groupedZones[zone.zone_name].sortId == null) groupedZones[zone.zone_name].sortId = zone.sort_id;
+    });
+    drops.forEach(drop => {
+      if (drop.zone_name === '全區' || !drop.zone_name) return;
+      if (!groupedZones[drop.zone_name]) {
+        groupedZones[drop.zone_name] = { points: [], sortId: drop.sort_id };
+      }
+      if (groupedZones[drop.zone_name].sortId == null) groupedZones[drop.zone_name].sortId = drop.sort_id;
+    });
+
+    const zoneEntries = Object.entries(groupedZones).sort(([nameA, zoneA], [nameB, zoneB]) => {
+      const sortA = Number(zoneA.sortId);
+      const sortB = Number(zoneB.sortId);
+      if (Number.isFinite(sortA) && Number.isFinite(sortB) && sortA !== sortB) return sortA - sortB;
+      return nameA.localeCompare(nameB, 'zh-Hant', { numeric: true });
+    });
+
+    if (zoneEntries.length > 0) {
 
         const globalDrop = drops.find(d => d.zone_name === '全區') || {};
 
-        zoneContainer.innerHTML = Object.keys(groupedZones).map((zoneName, index) => {
-          const multiPointsStr = JSON.stringify(groupedZones[zoneName]);
+        zoneContainer.innerHTML = zoneEntries.map(([zoneName, zoneInfo], index) => {
+          const multiPointsStr = JSON.stringify(zoneInfo.points);
           const d = drops.find(d => d.zone_name === zoneName) || {};
 
           // === 🚀 修改後：點選分區時，只保留該分區自己的掉落物 (移除全區合併) ===
