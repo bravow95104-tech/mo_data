@@ -57,8 +57,8 @@
 }
 
 .modal-item-icon {
-  width: 64px;
-  height: 64px;
+  width: 40px;
+  height: 40px;
   object-fit: contain;
 }
 
@@ -79,14 +79,14 @@
 
 @media (max-width: 768px) {
   .modal-item-icon-wrap {
-    width: 60px;
-    height: 60px;
-    flex-basis: 60px;
+    width: 40px;
+    height: 40px;
+    flex-basis: 40px;
   }
 
   .modal-item-icon {
-    width: 54px;
-    height: 54px;
+    width: 40px;
+    height: 40px;
   }
 }
 
