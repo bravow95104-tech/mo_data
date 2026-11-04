@@ -368,7 +368,7 @@ document.addEventListener("DOMContentLoaded", () => {
           <p><strong>耐用度：</strong>${equip.durability || '-'}</p>
         </div>
         <div class="hero-column-base hero-column">
-        <h3 class="modal-sub-title">製作材料</h3>
+        <h3 class="modal-sub-title">製作材料(需配方書)</h3>
         ${materialsHTML}
         </div>
         ${illustrateHTML}
