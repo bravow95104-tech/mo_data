@@ -152,7 +152,7 @@ export const TABLE_CONFIGS = {
             { id: 'card_id', label: '卡片ID', type: 'text', grid: 1 },
             { id: 'card_property', label: '卡片屬性', type: 'select', options: ['金','木','水','火','土','無',''], grid: 1 },
             { id: 'card_lv', label: '卡片等級', type: 'text', grid: 1 },
-            { id: 'card_class', label: '拜官', type: 'select', options: ['武者','響馬','仙士','策士','工匠','通用',''], grid: 1 },
+            { id: 'card_class', label: '拜官', type: 'select', options: [,'','武者','響馬','仙士','策士','工匠','通用','全職'], grid: 1 },
             { id: 'directions', label: '說明', type: 'textarea', grid: 3 },
             { id: 'drop', label: '掉落', type: 'text', grid: 1 },
             { id: 'player', label: '玩家', type: 'text', grid: 1 }
