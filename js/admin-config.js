@@ -478,7 +478,7 @@ export const TABLE_CONFIGS = {
         displayFields: ['map_id', 'zone_name', 'sort_id'],
         fields: [
             { id: 'map_id', label: '所屬地圖 (完全對應)', type: 'text', required: true, grid: 1 },
-            { id: 'sort_id', label: '排序（例：101、102；琉璃塔可用 101～703）', type: 'text', required: true, grid: 1 },
+            { id: 'sort_id', label: '排序', type: 'text', required: true, grid: 1 },
             { id: 'zone_name', label: '區域／關卡名稱（例：全區、1-1、1-2）', type: 'text', grid: 2 },
             { id: 'def', label: '防禦力', type: 'text', grid: 1 , group: '基礎' },
             { id: 'dodge', label: '閃避', type: 'text', grid: 1 , group: '基礎' },
@@ -637,7 +637,7 @@ export const TABLE_CONFIGS = {
 },
 
 world_drop_tiers: {
-    title: '世界掉落',
+    title: '世界掉落(官方提供)',
     tableName: 'world_drop_tiers',
     tableCols: ['排序', '最低等級', '最高等級', '裝備卡', '主動技能卡', '英雄卡', '操作'],
     displayFields: [ 'sort_id', 'min_lv', 'max_lv', 'drop_card_equip', 'drop_card_active', 'drop_card_hero'],
