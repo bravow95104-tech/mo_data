@@ -776,11 +776,7 @@ tbody tr:hover td {
 /* 地圖資訊、採集資源、掉落、光輝四個主頁籤 */
 .map-detail-shell {
   margin-top: 20px;
-  overflow: hidden;
-  background: rgba(255, 255, 255, 0.035);
-  border: 1px solid var(--glass-border);
-  border-radius: 16px;
-  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.16);
+  overflow: visible;
 }
 
 .map-detail-tabs {
@@ -788,8 +784,8 @@ tbody tr:hover td {
   gap: 4px;
   margin-top: 0;
   padding: 0 10px;
-  background: rgba(15, 35, 65, 0.34);
-  border-bottom: 1px solid var(--glass-border);
+  background: transparent;
+  border-bottom: none;
   overflow-x: auto;
   scrollbar-width: none;
 }
@@ -832,6 +828,9 @@ tbody tr:hover td {
   min-height: 120px;
   padding: 0 18px 18px;
   background: rgba(0, 0, 0, 0.08);
+  border: 1px solid var(--glass-border);
+  border-radius: 0 16px 16px 16px;
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.16);
 }
 
 .map-detail-panel {
