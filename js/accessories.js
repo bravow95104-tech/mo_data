@@ -356,7 +356,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       .join('');
 
     const illustrateHTML = `
-      <div class="hero-column-base hero-column">
+      <div class="hero-column-base hero-column-details accessory-description-panel">
         <h3 class="modal-sub-title">完整說明</h3>
         <p style="font-size: 16px; line-height: 1.6;">
           ${getVal(equip.illustrate).replace(/\^&|&\^/g, "").replace(/\n/g, "<br>")}
