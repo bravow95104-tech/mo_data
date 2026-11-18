@@ -723,6 +723,7 @@ window.openMapDetail = function (mapId) {
   const approachA = item.approach_a || "";
   const isTown = approachA.includes("城鎮");
   const isCave = approachA.includes("洞窟");
+  const isInstance = approachA.includes("副本");
   const showApproach = approachA.includes("洞窟") || approachA.includes("要"); // 控制是否顯示走法
   const showExplain = approachA.includes("說明");
   
@@ -878,7 +879,7 @@ const zoneSectionHTML = `
         <div class="map-detail-shell">
           <div class="map-detail-tabs" role="tablist" aria-label="地圖詳細資訊">
             <button class="map-detail-tab active" role="tab" aria-selected="true" data-map-tab="map-info" onclick="switchMapTab('map-info')">地圖資訊</button>
-            <button class="map-detail-tab" role="tab" aria-selected="false" data-map-tab="resources" onclick="switchMapTab('resources')">採集資源點</button>
+            ${!isInstance ? '<button class="map-detail-tab" role="tab" aria-selected="false" data-map-tab="resources" onclick="switchMapTab(\'resources\')">採集資源點</button>' : ''}
             <button class="map-detail-tab" role="tab" aria-selected="false" data-map-tab="drops" onclick="switchMapTab('drops')">掉落</button>
             <button class="map-detail-tab" role="tab" aria-selected="false" data-map-tab="glory" onclick="switchMapTab('glory')">光輝</button>
           </div>
@@ -887,9 +888,9 @@ const zoneSectionHTML = `
               ${(showApproach || showExplain) ? `<div class="hero-column-details section-gap">${detailsHTML}</div>` : ""}
               ${mapInfoPanelHTML || '<p class="map-empty-state">此地圖沒有額外的戰鬥資訊。</p>'}
             </section>
-            <section class="map-detail-panel" id="resources-panel" role="tabpanel" hidden>
+            ${!isInstance ? `<section class="map-detail-panel" id="resources-panel" role="tabpanel" hidden>
               ${resourcePanelHTML || '<p class="map-empty-state">此地圖沒有採集資源點。</p>'}
-            </section>
+            </section>` : ''}
             <section class="map-detail-panel" id="drops-panel" role="tabpanel" hidden>
               ${dropPanelHTML || '<p class="map-empty-state">此地圖沒有掉落資料。</p>'}
             </section>
