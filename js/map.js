@@ -863,26 +863,28 @@ const zoneSectionHTML = `
           </div>
         </div>
         ${zoneSectionHTML}
-        <div class="map-detail-tabs" role="tablist" aria-label="地圖詳細資訊">
-          <button class="map-detail-tab active" role="tab" aria-selected="true" data-map-tab="map-info" onclick="switchMapTab('map-info')">地圖資訊</button>
-          <button class="map-detail-tab" role="tab" aria-selected="false" data-map-tab="resources" onclick="switchMapTab('resources')">採集資源點</button>
-          <button class="map-detail-tab" role="tab" aria-selected="false" data-map-tab="drops" onclick="switchMapTab('drops')">掉落</button>
-          <button class="map-detail-tab" role="tab" aria-selected="false" data-map-tab="glory" onclick="switchMapTab('glory')">光輝</button>
-        </div>
-        <div class="map-detail-panels">
-          <section class="map-detail-panel active" id="map-info-panel" role="tabpanel">
-            ${(showApproach || showExplain) ? `<div class="hero-column-details section-gap">${detailsHTML}</div>` : ""}
-            ${mapInfoPanelHTML || '<p class="map-empty-state">此地圖沒有額外的戰鬥資訊。</p>'}
-          </section>
-          <section class="map-detail-panel" id="resources-panel" role="tabpanel" hidden>
-            ${resourcePanelHTML || '<p class="map-empty-state">此地圖沒有採集資源點。</p>'}
-          </section>
-          <section class="map-detail-panel" id="drops-panel" role="tabpanel" hidden>
-            ${dropPanelHTML || '<p class="map-empty-state">此地圖沒有掉落資料。</p>'}
-          </section>
-          <section class="map-detail-panel" id="glory-panel" role="tabpanel" hidden>
-            ${gloryPanelHTML || '<p class="map-empty-state">此地圖沒有光輝資料。</p>'}
-          </section>
+        <div class="map-detail-shell">
+          <div class="map-detail-tabs" role="tablist" aria-label="地圖詳細資訊">
+            <button class="map-detail-tab active" role="tab" aria-selected="true" data-map-tab="map-info" onclick="switchMapTab('map-info')">地圖資訊</button>
+            <button class="map-detail-tab" role="tab" aria-selected="false" data-map-tab="resources" onclick="switchMapTab('resources')">採集資源點</button>
+            <button class="map-detail-tab" role="tab" aria-selected="false" data-map-tab="drops" onclick="switchMapTab('drops')">掉落</button>
+            <button class="map-detail-tab" role="tab" aria-selected="false" data-map-tab="glory" onclick="switchMapTab('glory')">光輝</button>
+          </div>
+          <div class="map-detail-panels">
+            <section class="map-detail-panel active" id="map-info-panel" role="tabpanel">
+              ${(showApproach || showExplain) ? `<div class="hero-column-details section-gap">${detailsHTML}</div>` : ""}
+              ${mapInfoPanelHTML || '<p class="map-empty-state">此地圖沒有額外的戰鬥資訊。</p>'}
+            </section>
+            <section class="map-detail-panel" id="resources-panel" role="tabpanel" hidden>
+              ${resourcePanelHTML || '<p class="map-empty-state">此地圖沒有採集資源點。</p>'}
+            </section>
+            <section class="map-detail-panel" id="drops-panel" role="tabpanel" hidden>
+              ${dropPanelHTML || '<p class="map-empty-state">此地圖沒有掉落資料。</p>'}
+            </section>
+            <section class="map-detail-panel" id="glory-panel" role="tabpanel" hidden>
+              ${gloryPanelHTML || '<p class="map-empty-state">此地圖沒有光輝資料。</p>'}
+            </section>
+          </div>
         </div>
     `;
 

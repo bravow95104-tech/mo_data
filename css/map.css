@@ -774,11 +774,21 @@ tbody tr:hover td {
 }
 
 /* 地圖資訊、採集資源、掉落、光輝四個主頁籤 */
+.map-detail-shell {
+  margin-top: 20px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.16);
+}
+
 .map-detail-tabs {
   display: flex;
   gap: 4px;
-  margin-top: 20px;
+  margin-top: 0;
   padding: 0 10px;
+  background: rgba(15, 35, 65, 0.34);
   border-bottom: 1px solid var(--glass-border);
   overflow-x: auto;
   scrollbar-width: none;
@@ -820,11 +830,35 @@ tbody tr:hover td {
 
 .map-detail-panels {
   min-height: 120px;
+  padding: 0 18px 18px;
+  background: rgba(0, 0, 0, 0.08);
 }
 
 .map-detail-panel {
-  padding-top: 4px;
+  padding-top: 18px;
   animation: fadeIn 0.2s ease-out;
+}
+
+.map-detail-panel > .hero-column-details,
+.map-detail-panel > .resource-group {
+  margin-top: 0 !important;
+}
+
+/* 掉落大分類裡的區域／世界子頁籤，沿用同一套頁籤語言 */
+.map-detail-panel#drops-panel > .hero-column-details {
+  margin: -18px -18px 0 !important;
+  padding: 18px 18px 0;
+}
+
+.map-detail-panel#drops-panel .drop-switch-tabs {
+  margin: 0 0 16px;
+  padding: 0;
+}
+
+.map-detail-panel#drops-panel .drop-tab-btn {
+  padding: 8px 16px;
+  min-height: 38px;
+  font-size: 13px;
 }
 
 .map-detail-panel[hidden] {
@@ -873,6 +907,10 @@ tbody tr:hover td {
     padding: 0 4px;
   }
 
+  .map-detail-panels {
+    padding: 0 12px 14px;
+  }
+
   .map-detail-tab {
     padding: 9px 14px;
     font-size: 13px;
@@ -881,6 +919,13 @@ tbody tr:hover td {
   .map-zone-section .zone-header {
     align-items: flex-start;
     flex-direction: column;
+  }
+
+  .map-detail-panel#drops-panel > .hero-column-details {
+    margin-right: -12px !important;
+    margin-left: -12px !important;
+    padding-right: 12px;
+    padding-left: 12px;
   }
 }
 
