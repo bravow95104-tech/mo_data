@@ -747,6 +747,102 @@ tbody tr:hover td {
   gap: 6px;
 }
 
+/* 地圖詳細視窗：區域範圍獨立於內容頁籤之外 */
+.map-zone-section {
+  margin: 20px 0 0;
+}
+
+.map-zone-section .zone-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 5px;
+}
+
+.map-zone-section .zone-group-title {
+  margin-bottom: 0;
+}
+
+.map-zone-section .zone-clear-btn {
+  margin: 0;
+  padding: 4px 10px;
+  font-size: 12px;
+  border-color: var(--glass-border);
+  color: var(--text-muted);
+  background: transparent;
+}
+
+/* 地圖資訊、採集資源、掉落、光輝四個主頁籤 */
+.map-detail-tabs {
+  display: flex;
+  gap: 4px;
+  margin-top: 20px;
+  padding: 0 10px;
+  border-bottom: 1px solid var(--glass-border);
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.map-detail-tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.map-detail-tab {
+  flex: 0 0 auto;
+  min-height: 42px;
+  padding: 9px 18px;
+  border: 1px solid var(--glass-border);
+  border-bottom: none;
+  border-radius: 10px 10px 0 0;
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text-muted);
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.map-detail-tab:hover {
+  background: rgba(77, 163, 255, 0.12);
+  color: var(--primary-blue);
+}
+
+.map-detail-tab.active {
+  position: relative;
+  z-index: 1;
+  margin-bottom: -1px;
+  background: var(--nav-bg-1);
+  color: var(--primary-blue);
+  border-color: var(--primary-blue);
+  border-bottom: 1px solid var(--nav-bg-1);
+}
+
+.map-detail-panels {
+  min-height: 120px;
+}
+
+.map-detail-panel {
+  padding-top: 4px;
+  animation: fadeIn 0.2s ease-out;
+}
+
+.map-detail-panel[hidden] {
+  display: none !important;
+}
+
+.map-empty-state {
+  margin: 24px 0;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+[data-theme="light"] .map-detail-tab.active {
+  background: #fff;
+  color: #0066cc;
+  border-bottom-color: #fff;
+}
+
 /* 響應式微調 */
 @media (max-width: 768px) {
   .content-wrapper {
@@ -771,6 +867,20 @@ tbody tr:hover td {
     width: 95vw;
     padding: 20px 15px;
     max-height: 85vh;
+  }
+
+  .map-detail-tabs {
+    padding: 0 4px;
+  }
+
+  .map-detail-tab {
+    padding: 9px 14px;
+    font-size: 13px;
+  }
+
+  .map-zone-section .zone-header {
+    align-items: flex-start;
+    flex-direction: column;
   }
 }
 

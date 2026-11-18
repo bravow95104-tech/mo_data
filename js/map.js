@@ -628,6 +628,24 @@ window.switchDropTab = function(type) {//切換容器
   }
 };
 
+// 地圖詳細視窗主頁籤：區域範圍不在這裡切換，維持地圖下方獨立操作區。
+window.switchMapTab = function(type) {
+  const tabButtons = document.querySelectorAll('.map-detail-tab');
+  const panels = document.querySelectorAll('.map-detail-panel');
+
+  tabButtons.forEach(button => {
+    const isActive = button.dataset.mapTab === type;
+    button.classList.toggle('active', isActive);
+    button.setAttribute('aria-selected', String(isActive));
+  });
+
+  panels.forEach(panel => {
+    const isActive = panel.id === `${type}-panel`;
+    panel.classList.toggle('active', isActive);
+    panel.hidden = !isActive;
+  });
+};
+
 
 // 🚀 升級版：補上最後三個參數 zoneDef, zoneDodge, zoneElement，預設給空字串
 window.switchZoneDisplay = function(points, maxX, maxY, zoneRubbish, zoneProduct, zoneEquip, zoneSkill, zoneHero, zoneComboOld, zoneComboNew, zoneOther, zoneDef = "", zoneDodge = "", zoneElement = "") {
@@ -696,43 +714,37 @@ window.openMapDetail = function (mapId) {
   const showApproach = approachA.includes("洞窟") || approachA.includes("要"); // 控制是否顯示走法
   const showExplain = approachA.includes("說明");
   
-let resourceButtonsHTML = "";
+let resourcePanelHTML = "";
 
-// 只要有採集資源，或者是地圖物件存在，我們就初始化字串
-if (resources.length > 0 || item) {
-  resourceButtonsHTML = `
-    ${resources.length > 0 ? `
-      <div class="resource-group section-gap">
-        <div class="resource-group-title"><i class="fas fa-hammer"></i> 採集資源點 (點擊查看位置)</div>
-        <div class="resource-list">
-          ${resources.map(r => `
-            <button class="resource-btn" onclick="showResourceMarker(${r.x}, ${r.y}, '${r.resource_name}', ${item.game_max_x}, ${item.game_max_y})">
-              ${r.resource_name} ${r.game_coords ? `(${r.game_coords})` : ''}
-            </button>
-          `).join('')}
-        </div>
+if (resources.length > 0) {
+  resourcePanelHTML = `
+    <div class="resource-group">
+      <div class="resource-group-title"><i class="fas fa-hammer"></i> 採集資源點 (點擊查看位置)</div>
+      <div class="resource-list">
+        ${resources.map(r => `
+          <button class="resource-btn" onclick="showResourceMarker(${r.x}, ${r.y}, '${r.resource_name}', ${item.game_max_x}, ${item.game_max_y})">
+            ${r.resource_name} ${r.game_coords ? `(${r.game_coords})` : ''}
+          </button>
+        `).join('')}
       </div>
-    ` : ''}
-
-    <div id="zone-section" class="resource-group section-gap" style="display: none; margin-top: 10px;">
-  
-  <div class="zone-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
-    <div class="zone-group-title" style="font-weight: bold; color: var(--text-main); margin-bottom: 0;">
-      <i class="fas fa-layer-group"></i> 區域範圍顯示 (點擊查看範圍)
     </div>
-    
-    <button class="resource-btn" 
-            style="margin: 0; padding: 2px 8px; font-size: 12px; border-color: var(--glass-border); color: var(--text-muted); background: transparent;"
-            onclick="resetZoneSelection()">
-      <i class="fas fa-eraser"></i> 清除範圍
-    </button>
-  </div>
-
-  <div class="zone-list" id="modal-zone-list" style="margin-top: 5px;">
-    </div>
-</div>
   `;
 }
+
+// 區域範圍是地圖操作工具，獨立放在頁籤之外。
+const zoneSectionHTML = `
+  <div id="zone-section" class="resource-group map-zone-section" style="display: none;">
+    <div class="zone-header">
+      <div class="zone-group-title">
+        <i class="fas fa-layer-group"></i> 區域範圍顯示 (點擊查看範圍)
+      </div>
+      <button class="resource-btn zone-clear-btn" onclick="resetZoneSelection()">
+        <i class="fas fa-eraser"></i> 清除範圍
+      </button>
+    </div>
+    <div class="zone-list" id="modal-zone-list"></div>
+  </div>
+`;
 
   // 🚀 2. 將 approach 欄位的文字 (例如 "鬼煞洞") 轉成跳轉至 mapdescription.html 的連結
   const approachText = item.approach ? item.approach.trim() : "";
@@ -756,11 +768,13 @@ if (resources.length > 0 || item) {
     ${showExplain ? `<p style="margin-bottom: 0;"><strong>說明：</strong>${formatDescription(item.illustrate)}</p>` : ""}
   `.trim();
 
-  let combatAndDropHTML = '';
+  let mapInfoPanelHTML = '';
+  let dropPanelHTML = '';
+  let gloryPanelHTML = '';
   if (!isTown) {
     // 🚀 修正點：將舊的 drop_othrt 修正為新表的欄位名稱對照（雖然由新表接管後，這裡通常恆為 true 或直接渲染框架）
     const hasDrop = !!(item.drop_rubbish || item.drop_equidcard || item.drop_skillcard || item.drop_combo_old || item.drop_combo_new || item.drop_other);
-    combatAndDropHTML = `
+    mapInfoPanelHTML = `
       <div class="hero-defdodge section-gap">
         <p><strong>怪物等級：</strong>${item.maplv || "-"}</p>
         <p>
@@ -771,10 +785,11 @@ if (resources.length > 0 || item) {
           <strong>戰場五行：</strong><span id="dynamic-element" data-default="-">-</span>
         </p>
       </div>
-      
-      <div class="hero-column-details section-gap">
 
-      <!-- 🚀 切換按鈕 -->
+    `;
+
+    dropPanelHTML = `
+      <div class="hero-column-details">
         <div class="drop-switch-tabs">
           <button class="resource-btn drop-tab-btn active" onclick="switchDropTab('local')" id="btn-drop-local">區域掉落</button>
           <button class="resource-btn drop-tab-btn" onclick="switchDropTab('world')" id="btn-drop-world">世界掉落</button>
@@ -816,7 +831,6 @@ if (resources.length > 0 || item) {
           <strong>◢ 其他：</strong> <span id="dynamic-drop-other"></span>
         </p>
       </div>
-      </div>
 
       <!-- 🚀 容器 B：世界掉落（預設隱藏，切換過去時顯示） -->
         <div id="world-drop-container" style="display: none;">
@@ -826,8 +840,10 @@ if (resources.length > 0 || item) {
           </div>
         </div>
       </div>
+      `;
 
-      <div class="hero-column-details section-gap">
+    gloryPanelHTML = `
+      <div class="hero-column-details">
         <p><strong>光輝資訊：</strong></p>
         <p class="align-row"><strong>◢ 掉落較高：</strong><span>${formatGloryWithTooltip(item.drop_glory_high)}</span></p>
         <p class="align-row"><strong>◢ 掉落較低：</strong><span>${formatGloryWithTooltip(item.drop_glory_low)}</span></p>
@@ -846,12 +862,28 @@ if (resources.length > 0 || item) {
             </div>
           </div>
         </div>
-        ${resourceButtonsHTML}
-        ${(showApproach || showExplain) ?
-      `<div class="hero-column-details section-gap">${detailsHTML}</div>` :
-      ""
-    }
-        ${combatAndDropHTML}
+        ${zoneSectionHTML}
+        <div class="map-detail-tabs" role="tablist" aria-label="地圖詳細資訊">
+          <button class="map-detail-tab active" role="tab" aria-selected="true" data-map-tab="map-info" onclick="switchMapTab('map-info')">地圖資訊</button>
+          <button class="map-detail-tab" role="tab" aria-selected="false" data-map-tab="resources" onclick="switchMapTab('resources')">採集資源點</button>
+          <button class="map-detail-tab" role="tab" aria-selected="false" data-map-tab="drops" onclick="switchMapTab('drops')">掉落</button>
+          <button class="map-detail-tab" role="tab" aria-selected="false" data-map-tab="glory" onclick="switchMapTab('glory')">光輝</button>
+        </div>
+        <div class="map-detail-panels">
+          <section class="map-detail-panel active" id="map-info-panel" role="tabpanel">
+            ${(showApproach || showExplain) ? `<div class="hero-column-details section-gap">${detailsHTML}</div>` : ""}
+            ${mapInfoPanelHTML || '<p class="map-empty-state">此地圖沒有額外的戰鬥資訊。</p>'}
+          </section>
+          <section class="map-detail-panel" id="resources-panel" role="tabpanel" hidden>
+            ${resourcePanelHTML || '<p class="map-empty-state">此地圖沒有採集資源點。</p>'}
+          </section>
+          <section class="map-detail-panel" id="drops-panel" role="tabpanel" hidden>
+            ${dropPanelHTML || '<p class="map-empty-state">此地圖沒有掉落資料。</p>'}
+          </section>
+          <section class="map-detail-panel" id="glory-panel" role="tabpanel" hidden>
+            ${gloryPanelHTML || '<p class="map-empty-state">此地圖沒有光輝資料。</p>'}
+          </section>
+        </div>
     `;
 
   showModal();
