@@ -6,6 +6,7 @@ const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
 
 document.addEventListener("DOMContentLoaded", () => {
   let heroesData = [];
+  let modelPhotosData = [];
   let lastFilteredData = [];
   let searchTimer = null;
   let activeFilters = {
@@ -52,10 +53,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // === 從 Supabase 載入資料 ===
   async function loadData() {
-    const { data, error } = await supabase
-      .from('equipment')
-      .select('*')
-      .order('sort_id', { ascending: true });
+    const [equipmentResult, modelPhotosResult] = await Promise.all([
+      supabase
+        .from('equipment')
+        .select('*')
+        .order('sort_id', { ascending: true }),
+      supabase
+        .from('equipment_model_photos')
+        .select('set_key, job, gender, sort_id')
+        .order('sort_id', { ascending: true })
+    ]);
+
+    const { data, error } = equipmentResult;
 
     if (error) {
       console.error('載入防具資料錯誤:', error);
@@ -65,6 +74,12 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     heroesData = data || [];
+    if (modelPhotosResult.error) {
+      console.warn('載入防具實穿照片對照資料失敗，仍顯示基本資訊:', modelPhotosResult.error);
+      modelPhotosData = [];
+    } else {
+      modelPhotosData = modelPhotosResult.data || [];
+    }
     handleUrlSearch(); // 載入資料後，先檢查 URL 參數
     applyFilters();    // 再執行過濾
   }
@@ -330,6 +345,9 @@ document.addEventListener("DOMContentLoaded", () => {
   function showDetailModal(equip) {
     if (!modalContent) return;
     const itemName = equip.item || '-';
+    const modelPhotos = modelPhotosData
+      .filter(photo => String(photo.set_key || '').trim() === String(equip.set_key || '').trim())
+      .sort((a, b) => (Number(a.sort_id) || 0) - (Number(b.sort_id) || 0));
     const itemIconHTML = equip.item
       ? `<div class="modal-item-icon-wrap">
            <img class="modal-item-icon" src="/mo_data/pic/equipment/${equip.item}.png" alt="${itemName}" onerror="this.parentElement.classList.add('is-empty'); this.remove();">
@@ -354,27 +372,112 @@ document.addEventListener("DOMContentLoaded", () => {
          </div>`
       : "";
 
+    const genderLabel = {
+      male: '男',
+      female: '女'
+    };
+    const encodePathPart = value => encodeURIComponent(String(value || '').trim());
+    const buildModelImagePath = (photo, side) => {
+      const genderText = genderLabel[String(photo.gender || '').trim().toLowerCase()] || String(photo.gender || '').trim();
+      return `/mo_data/pic/model_photos/equipment/${encodePathPart(photo.set_key)}_${encodePathPart(photo.job)}_${encodePathPart(genderText)}_${side}.png`;
+    };
+
+    const modelPhotosHTML = modelPhotos.length > 0
+      ? `
+        <div class="equipment-photo-selector" role="tablist" aria-label="職業與性別">
+          ${modelPhotos.map((photo, index) => {
+            const genderText = genderLabel[String(photo.gender || '').trim().toLowerCase()] || photo.gender || '-';
+            return `<button type="button" class="equipment-photo-option${index === 0 ? ' active' : ''}" data-photo-index="${index}" role="tab" aria-selected="${index === 0}">${photo.job || '-'}・${genderText}</button>`;
+          }).join('')}
+        </div>
+        <div class="equipment-photo-pair" id="equipment-photo-pair">
+          <figure class="equipment-photo-card">
+            <figcaption>正面</figcaption>
+            <img data-photo-side="front" src="${buildModelImagePath(modelPhotos[0], '正')}" alt="${itemName} 實穿正面" onerror="this.style.display='none'; this.parentElement.classList.add('is-empty');">
+            <span class="equipment-photo-empty">尚未建立照片</span>
+          </figure>
+          <figure class="equipment-photo-card">
+            <figcaption>反面</figcaption>
+            <img data-photo-side="back" src="${buildModelImagePath(modelPhotos[0], '反')}" alt="${itemName} 實穿反面" onerror="this.style.display='none'; this.parentElement.classList.add('is-empty');">
+            <span class="equipment-photo-empty">尚未建立照片</span>
+          </figure>
+        </div>
+      `
+      : `<div class="equipment-photo-empty-state">此套裝目前沒有實穿照片資料。</div>`;
+
     modalContent.innerHTML = `
       <div class="modal-item-header">
         ${itemIconHTML}
         <h2 class="hero-name">${itemName}</h2>
       </div>
-      <div class="hero-details-container">
-        <div class="hero-column-base hero-column">
-        <h3 class="modal-sub-title">基礎數值</h3>
-          <p><strong>等級：</strong>${equip.lv || '-'}</p>
-          <p><strong>防禦：</strong>${equip.property1 || '-'}</p>
-          <p><strong>閃避：</strong>${equip.property2 || '-'}</p>
-          <p><strong>耐用度：</strong>${equip.durability || '-'}</p>
+      <div class="equipment-detail-shell">
+        <div class="equipment-detail-tabs" role="tablist" aria-label="防具詳細資訊">
+          <button type="button" class="equipment-detail-tab active" data-equipment-tab="basic" role="tab" aria-selected="true">基本資訊</button>
+          <button type="button" class="equipment-detail-tab" data-equipment-tab="model" role="tab" aria-selected="false">實穿外觀</button>
         </div>
-        <div class="hero-column-base hero-column">
-        <h3 class="modal-sub-title">製作材料(需配方書)</h3>
-        ${materialsHTML}
+        <div class="equipment-detail-panels">
+          <section class="equipment-detail-panel active" data-equipment-panel="basic" role="tabpanel">
+            <div class="hero-details-container">
+              <div class="hero-column-base hero-column">
+              <h3 class="modal-sub-title">基礎數值</h3>
+                <p><strong>等級：</strong>${equip.lv || '-'}</p>
+                <p><strong>防禦：</strong>${equip.property1 || '-'}</p>
+                <p><strong>閃避：</strong>${equip.property2 || '-'}</p>
+                <p><strong>耐用度：</strong>${equip.durability || '-'}</p>
+              </div>
+              <div class="hero-column-base hero-column">
+              <h3 class="modal-sub-title">製作材料(需配方書)</h3>
+              ${materialsHTML}
+              </div>
+              ${illustrateHTML}
+              ${gainHTML}
+            </div>
+          </section>
+          <section class="equipment-detail-panel" data-equipment-panel="model" role="tabpanel" hidden>
+            ${modelPhotosHTML}
+          </section>
         </div>
-        ${illustrateHTML}
-        ${gainHTML}
       </div>
     `;
+
+    const detailTabs = modalContent.querySelectorAll('[data-equipment-tab]');
+    const detailPanels = modalContent.querySelectorAll('[data-equipment-panel]');
+    detailTabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        const target = tab.dataset.equipmentTab;
+        detailTabs.forEach(button => {
+          const isActive = button === tab;
+          button.classList.toggle('active', isActive);
+          button.setAttribute('aria-selected', String(isActive));
+        });
+        detailPanels.forEach(panel => {
+          const isActive = panel.dataset.equipmentPanel === target;
+          panel.classList.toggle('active', isActive);
+          panel.hidden = !isActive;
+        });
+      });
+    });
+
+    const photoOptions = modalContent.querySelectorAll('.equipment-photo-option');
+    const frontImage = modalContent.querySelector('[data-photo-side="front"]');
+    const backImage = modalContent.querySelector('[data-photo-side="back"]');
+    photoOptions.forEach(option => {
+      option.addEventListener('click', () => {
+        const photo = modelPhotos[Number(option.dataset.photoIndex)];
+        if (!photo || !frontImage || !backImage) return;
+        photoOptions.forEach(button => {
+          const isActive = button === option;
+          button.classList.toggle('active', isActive);
+          button.setAttribute('aria-selected', String(isActive));
+        });
+        frontImage.src = buildModelImagePath(photo, '正');
+        backImage.src = buildModelImagePath(photo, '反');
+        frontImage.style.display = 'block';
+        backImage.style.display = 'block';
+        frontImage.parentElement.classList.remove('is-empty');
+        backImage.parentElement.classList.remove('is-empty');
+      });
+    });
     openModal();
   }
 

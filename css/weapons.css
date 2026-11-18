@@ -385,6 +385,143 @@ tbody tr:hover td {
   display: inline-block;
 }
 
+/* 防具 MODELBOX：基本資訊／實穿外觀分頁 */
+.equipment-detail-shell {
+  margin-top: 4px;
+}
+
+.equipment-detail-tabs {
+  display: flex;
+  gap: 4px;
+  padding: 0 10px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.equipment-detail-tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.equipment-detail-tab {
+  flex: 0 0 auto;
+  min-height: 42px;
+  padding: 9px 18px;
+  border: 1px solid var(--glass-border);
+  border-bottom: none;
+  border-radius: 10px 10px 0 0;
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text-muted);
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.equipment-detail-tab:hover,
+.equipment-detail-tab.active {
+  color: var(--primary-blue);
+  background: var(--nav-bg-1);
+  border-color: var(--primary-blue);
+}
+
+.equipment-detail-tab.active {
+  position: relative;
+  z-index: 1;
+  margin-bottom: -1px;
+  border-bottom: 1px solid var(--nav-bg-1);
+}
+
+.equipment-detail-panels {
+  padding: 18px;
+  background: rgba(0, 0, 0, 0.08);
+  border: 1px solid var(--glass-border);
+  border-radius: 0 16px 16px 16px;
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.16);
+}
+
+.equipment-detail-panel {
+  animation: fadeIn 0.2s ease-out;
+}
+
+.equipment-detail-panel[hidden] {
+  display: none !important;
+}
+
+.equipment-photo-selector {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+
+.equipment-photo-option {
+  padding: 8px 13px;
+  border: 1px solid var(--glass-border);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text-muted);
+  cursor: pointer;
+  font-size: 13px;
+  transition: all 0.2s ease;
+}
+
+.equipment-photo-option:hover,
+.equipment-photo-option.active {
+  color: #fff;
+  background: linear-gradient(135deg, var(--primary-blue), var(--primary-dark));
+  border-color: var(--primary-blue);
+}
+
+.equipment-photo-pair {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.equipment-photo-card {
+  min-width: 0;
+  margin: 0;
+  padding: 12px;
+  border: 1px solid var(--glass-border);
+  border-radius: 14px;
+  background: var(--glass-bg);
+  text-align: center;
+}
+
+.equipment-photo-card figcaption {
+  margin-bottom: 10px;
+  color: var(--primary-blue);
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.equipment-photo-card img {
+  display: block;
+  width: 100%;
+  max-height: 420px;
+  object-fit: contain;
+  border-radius: 10px;
+}
+
+.equipment-photo-empty {
+  display: none;
+  min-height: 120px;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+.equipment-photo-card.is-empty .equipment-photo-empty {
+  display: flex;
+}
+
+.equipment-photo-empty-state {
+  padding: 42px 16px;
+  color: var(--text-muted);
+  text-align: center;
+}
+
 .close-btn {
   position: absolute;
   top: 15px; right: 20px;
