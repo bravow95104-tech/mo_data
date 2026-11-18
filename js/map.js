@@ -59,12 +59,13 @@ window.executeZoneClick = function(btnElement) {
         const zoneDef = btnElement.getAttribute('data-def') || "";
         const zoneDodge = btnElement.getAttribute('data-dodge') || "";
         const zoneElement = btnElement.getAttribute('data-element') || "";
+        const zoneMonsterLevel = btnElement.getAttribute('data-monster-level') || "";
 
         if (typeof window.switchZoneDisplay === "function") {
             window.switchZoneDisplay(
                 points, maxX, maxY, 
                 rubbish, product, equip, skill, hero, comboOld, comboNew, other, 
-                zoneDef, zoneDodge, zoneElement
+                zoneDef, zoneDodge, zoneElement, zoneMonsterLevel
             );
         }
     } catch (err) {
@@ -310,7 +311,7 @@ async function loadModalZoneButtons(mapName, maxX, maxY, mainRubbish, mainProduc
         .order('sort_id', { ascending: true }),
       supabase.from('map_zone_drops')
         // 🚀 核心修正：把新舊所有的掉落物與數值欄位全部撈出來！
-        .select('zone_name, sort_id, drop_rubbish, drop_product, drop_heroes, drop_other, def, dodge, element, drop_equidcard, drop_skillcard, drop_combo_old, drop_combo_new')
+        .select('zone_name, sort_id, monster_level, drop_rubbish, drop_product, drop_heroes, drop_other, def, dodge, element, drop_equidcard, drop_skillcard, drop_combo_old, drop_combo_new')
         .eq('map_id', mapName)
         .order('sort_id', { ascending: true })
     ]);
@@ -486,6 +487,7 @@ const finalOther     = [d.drop_other].filter(x => x).join(',').replace(/[\r\n]+/
           const zoneDef     = d.def || "";
           const zoneDodge   = d.dodge || "";
           const zoneElement = d.element || "";
+          const zoneMonsterLevel = d.monster_level || "";
 
           const safePoints = multiPointsStr.replace(/"/g, '&quot;');
 
@@ -507,6 +509,7 @@ const finalOther     = [d.drop_other].filter(x => x).join(',').replace(/[\r\n]+/
                     data-def="${zoneDef}"
                     data-dodge="${zoneDodge}"
                     data-element="${zoneElement}"
+                    data-monster-level="${zoneMonsterLevel}"
                     onclick="window.executeZoneClick(this)">
               ${zoneName}
             </button>
@@ -647,8 +650,8 @@ window.switchMapTab = function(type) {
 };
 
 
-// 🚀 升級版：補上最後三個參數 zoneDef, zoneDodge, zoneElement，預設給空字串
-window.switchZoneDisplay = function(points, maxX, maxY, zoneRubbish, zoneProduct, zoneEquip, zoneSkill, zoneHero, zoneComboOld, zoneComboNew, zoneOther, zoneDef = "", zoneDodge = "", zoneElement = "") {
+// 🚀 升級版：分區資料可同步切換防禦、閃避、五行與怪物等級
+window.switchZoneDisplay = function(points, maxX, maxY, zoneRubbish, zoneProduct, zoneEquip, zoneSkill, zoneHero, zoneComboOld, zoneComboNew, zoneOther, zoneDef = "", zoneDodge = "", zoneElement = "", zoneMonsterLevel = "") {
     if (typeof showResourcePolyRange === "function") {
         showResourcePolyRange(points, maxX, maxY);
     }
@@ -695,6 +698,15 @@ window.switchZoneDisplay = function(points, maxX, maxY, zoneRubbish, zoneProduct
     if (defEl) { defEl.innerText = zoneDef.trim() !== "" ? zoneDef : defEl.getAttribute('data-default'); }
     if (dodgeEl) { dodgeEl.innerText = zoneDodge.trim() !== "" ? zoneDodge : dodgeEl.getAttribute('data-default'); }
     if (elementEl) { elementEl.innerText = zoneElement.trim() !== "" ? zoneElement : elementEl.getAttribute('data-default'); }
+
+    const levelEl = document.getElementById('dynamic-maplv');
+    const activeLevel = zoneMonsterLevel.trim() !== ""
+        ? zoneMonsterLevel
+        : (levelEl ? levelEl.getAttribute('data-default') : "-");
+    if (levelEl) levelEl.innerText = activeLevel || "-";
+    if (typeof renderWorldDropContent === "function") {
+        renderWorldDropContent(activeLevel || "-");
+    }
 };
 
 window.openMapDetail = function (mapId) {
@@ -776,7 +788,7 @@ const zoneSectionHTML = `
     const hasDrop = !!(item.drop_rubbish || item.drop_equidcard || item.drop_skillcard || item.drop_combo_old || item.drop_combo_new || item.drop_other);
     mapInfoPanelHTML = `
       <div class="hero-defdodge section-gap">
-        <p><strong>怪物等級：</strong>${item.maplv || "-"}</p>
+        <p><strong>怪物等級：</strong><span id="dynamic-maplv" data-default="${item.maplv || "-"}">${item.maplv || "-"}</span></p>
         <p>
           <strong>防禦：</strong><span id="dynamic-def" data-default="-">-</span> 
           <strong>閃避：</strong><span id="dynamic-dodge" data-default="-">-</span>
@@ -962,6 +974,13 @@ window.resetZoneSelection = function() {
     if (defEl && defEl.getAttribute('data-default')) { defEl.innerText = defEl.getAttribute('data-default'); }
     if (dodgeEl && dodgeEl.getAttribute('data-default')) { dodgeEl.innerText = dodgeEl.getAttribute('data-default'); }
     if (elementEl && elementEl.getAttribute('data-default')) { elementEl.innerText = elementEl.getAttribute('data-default'); }
+
+    const levelEl = document.getElementById('dynamic-maplv');
+    if (levelEl) {
+        const defaultLevel = levelEl.getAttribute('data-default') || "-";
+        levelEl.innerText = defaultLevel;
+        if (typeof renderWorldDropContent === "function") renderWorldDropContent(defaultLevel);
+    }
 };
 
 // === 3. 資料載入與對接 ===

@@ -415,7 +415,7 @@ export const TABLE_CONFIGS = {
             { id: 'monster', label: '主要怪物', type: 'text', grid: 1, group: '地圖數值' },
             { id: 'monster_atk', label: '怪物攻擊類型', type: 'text', grid: 1, group: '地圖數值' },
 
-            { id: 'approach_a', label: '特別顯示(洞窟暫無作用)', type: 'checkbox', options: ['要','城鎮','說明','洞窟'], grid: 1, group: '地圖導航' },
+            { id: 'approach_a', label: '特別顯示／地圖類型', type: 'checkbox', options: ['要','城鎮','說明','洞窟','副本'], grid: 1, group: '地圖導航' },
             { id: 'approach', label: '迷宮走法', type: 'textarea', grid: 3, group: '地圖導航' },
             { id: 'illustrate', label: '說明', type: 'text', grid: 2, group: '地圖導航' },
 
@@ -480,6 +480,7 @@ export const TABLE_CONFIGS = {
             { id: 'map_id', label: '所屬地圖 (完全對應)', type: 'text', required: true, grid: 1 },
             { id: 'sort_id', label: '排序', type: 'text', required: true, grid: 1 },
             { id: 'zone_name', label: '區域／關卡名稱（例：全區、1-1、1-2）', type: 'text', grid: 2 },
+            { id: 'monster_level', label: '怪物等級（例：41-51）', type: 'text', grid: 1, group: '基礎' },
             { id: 'def', label: '防禦力', type: 'text', grid: 1 , group: '基礎' },
             { id: 'dodge', label: '閃避', type: 'text', grid: 1 , group: '基礎' },
             { id: 'element', label: '戰場五行', type: 'text', grid: 1 , group: '基礎' },
