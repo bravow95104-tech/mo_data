@@ -353,27 +353,71 @@ document.addEventListener("DOMContentLoaded", () => {
          </div>`
       : "";
 
+    const encodePathPart = value => encodeURIComponent(String(value || '').trim());
+    const weaponPhotoHTML = equip.item
+      ? `
+        <div class="equipment-photo-single">
+          <figure class="equipment-photo-card">
+            <figcaption>角色實穿</figcaption>
+            <img src="/mo_data/pic/model_photos/weapons/${encodePathPart(equip.item)}_實穿.png" alt="${itemName} 角色實穿" onerror="this.style.display='none'; this.parentElement.classList.add('is-empty');">
+            <span class="equipment-photo-empty">尚未建立照片</span>
+          </figure>
+        </div>
+      `
+      : `<div class="equipment-photo-empty-state">此武器目前沒有實穿照片。</div>`;
+
     modalContent.innerHTML = `
       <div class="modal-item-header">
         ${itemIconHTML}
         <h2 class="hero-name">${itemName}</h2>
       </div>
-      <div class="hero-details-container">
-        <div class="hero-column-base hero-column">
-        <h3 class="modal-sub-title">基礎數值</h3>
-          <p><strong>等級：</strong>${equip.lv || '-'}</p>
-          <p><strong>攻擊：</strong>${equip.property1 || '-'}</p>
-          <p><strong>命中：</strong>${equip.property2 || '-'}</p>
-          <p><strong>耐用度：</strong>${equip.durability || '-'}</p>
+      <div class="equipment-detail-shell">
+        <div class="equipment-detail-tabs" role="tablist" aria-label="武器詳細資訊">
+          <button type="button" class="equipment-detail-tab active" data-weapon-tab="basic" role="tab" aria-selected="true">基本資訊</button>
+          <button type="button" class="equipment-detail-tab" data-weapon-tab="model" role="tab" aria-selected="false">實穿外觀</button>
         </div>
-        <div class="hero-column-base hero-column">
-        <h3 class="modal-sub-title">製作材料(需配方書)</h3>
-        ${materialsHTML}
+        <div class="equipment-detail-panels">
+          <section class="equipment-detail-panel active" data-weapon-panel="basic" role="tabpanel">
+            <div class="hero-details-container">
+              <div class="hero-column-base hero-column">
+              <h3 class="modal-sub-title">基礎數值</h3>
+                <p><strong>等級：</strong>${equip.lv || '-'}</p>
+                <p><strong>攻擊：</strong>${equip.property1 || '-'}</p>
+                <p><strong>命中：</strong>${equip.property2 || '-'}</p>
+                <p><strong>耐用度：</strong>${equip.durability || '-'}</p>
+              </div>
+              <div class="hero-column-base hero-column">
+              <h3 class="modal-sub-title">製作材料(需配方書)</h3>
+              ${materialsHTML}
+              </div>
+              ${illustrateHTML}
+              ${gainHTML}
+            </div>
+          </section>
+          <section class="equipment-detail-panel" data-weapon-panel="model" role="tabpanel" hidden>
+            ${weaponPhotoHTML}
+          </section>
         </div>
-        ${illustrateHTML}
-        ${gainHTML}
       </div>
     `;
+
+    const detailTabs = modalContent.querySelectorAll('[data-weapon-tab]');
+    const detailPanels = modalContent.querySelectorAll('[data-weapon-panel]');
+    detailTabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        const target = tab.dataset.weaponTab;
+        detailTabs.forEach(button => {
+          const isActive = button === tab;
+          button.classList.toggle('active', isActive);
+          button.setAttribute('aria-selected', String(isActive));
+        });
+        detailPanels.forEach(panel => {
+          const isActive = panel.dataset.weaponPanel === target;
+          panel.classList.toggle('active', isActive);
+          panel.hidden = !isActive;
+        });
+      });
+    });
     openModal();
   }
 
