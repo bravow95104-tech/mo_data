@@ -332,7 +332,10 @@ document.addEventListener("DOMContentLoaded", () => {
       });
 
       const hasMaterial = hero.material1 && String(hero.material1).trim() !== "" && hero.material1 !== null;
-      if (hasMaterial) {
+      const hasModelPhoto = modelPhotosData.some(photo =>
+        String(photo.set_key || '').trim() === String(hero.set_key || '').trim()
+      );
+      if (hasMaterial || hasModelPhoto) {
         tr.style.cursor = "pointer";
         tr.addEventListener('click', () => showDetailModal(hero));
       }

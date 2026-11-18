@@ -483,6 +483,20 @@ tbody tr:hover td {
   margin: 0 auto;
 }
 
+.accessory-photo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.accessory-photo-card {
+  display: none;
+}
+
+.accessory-photo-card.is-loaded {
+  display: block;
+}
+
 .equipment-photo-card {
   min-width: 0;
   margin: 0;
@@ -619,6 +633,10 @@ tbody tr:hover td {
 
   .hero-column {
     flex: 1 1 100%;
+  }
+
+  .accessory-photo-grid {
+    grid-template-columns: 1fr;
   }
 
   #searchContainer {

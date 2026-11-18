@@ -241,8 +241,8 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
         tr.appendChild(td);
       });
-      // 點擊行顯示詳情 (僅在有材料資訊時才可點開)
-      if (hero.material1 && String(hero.material1).trim() !== "" && hero.material1 !== null) {
+      // 飾品有名稱就允許開啟 MODELBOX，實穿照片不依賴製作材料欄位。
+      if (hero.item) {
           tr.style.cursor = 'pointer';
           tr.addEventListener('click', () => showDetailModal(hero, hero.item));
       }
@@ -309,8 +309,8 @@ document.addEventListener("DOMContentLoaded", async () => {
       const hasGain = hero.gain && String(hero.gain).trim() !== "";
       const hasMaterials = hero.material1 && String(hero.material1).trim() !== "" && hero.material1 !== null;
       
-      // 🚀 改為：只要有說明、效果或材料，就允許點開查看完整資訊
-      const shouldBeClickable = isLongDesc || hasGain || hasMaterials;
+      // 飾品有名稱就允許開啟 MODELBOX，讓沒有材料但有實穿照片的資料也能查看。
+      const shouldBeClickable = Boolean(hero.item) || isLongDesc || hasGain || hasMaterials;
 
       const cardBody = document.createElement('div');
       cardBody.className = 'card-body';
@@ -373,27 +373,91 @@ document.addEventListener("DOMContentLoaded", async () => {
          </div>`
       : "";
 
+    const photoItemName = equip.item || titleName || '';
+    const encodePathPart = value => encodeURIComponent(String(value || '').trim());
+    const accessoryPhotoHTML = photoItemName
+      ? `
+        <div class="accessory-photo-grid" id="accessory-photo-grid">
+          ${[1, 2, 3].map(index => `
+            <figure class="equipment-photo-card accessory-photo-card" data-photo-card="${index}">
+              <figcaption>照片 ${index}</figcaption>
+              <img data-accessory-photo="${index}" data-photo-src="/mo_data/pic/model_photos/accessories/${encodePathPart(photoItemName)}_實穿_${index}.png" alt="${itemName} 實穿照片 ${index}">
+            </figure>
+          `).join('')}
+        </div>
+        <div class="equipment-photo-empty-state" id="accessory-photo-empty">尚未建立實穿照片。</div>
+      `
+      : `<div class="equipment-photo-empty-state">尚未建立實穿照片。</div>`;
+
     modalContent.innerHTML = `
       <div class="modal-item-header">
         ${itemIconHTML}
         <h2 class="hero-name">${itemName}</h2>
       </div>
-      <div class="hero-details-container">
-        <div class="hero-column-base hero-column">
-          <h3 class="modal-sub-title">基礎數值</h3>
-          <p><strong>等級：</strong>${getVal(equip.lv)}</p>
-          <p><strong>防禦：</strong>${getVal(equip.property1)}</p>
-          <p><strong>閃避：</strong>${getVal(equip.property2)}</p>
-          <p><strong>耐用：</strong>${getVal(equip.durability)}</p>
+      <div class="equipment-detail-shell">
+        <div class="equipment-detail-tabs" role="tablist" aria-label="飾品詳細資訊">
+          <button type="button" class="equipment-detail-tab active" data-accessory-tab="basic" role="tab" aria-selected="true">基本資訊</button>
+          <button type="button" class="equipment-detail-tab" data-accessory-tab="model" role="tab" aria-selected="false">實穿外觀</button>
         </div>
-        <div class="hero-column-base hero-column">
-          <h3 class="modal-sub-title">製作材料(需配方書)</h3>
-          ${materialsHTML || '<p>暫無材料資訊</p>'}
+        <div class="equipment-detail-panels">
+          <section class="equipment-detail-panel active" data-accessory-panel="basic" role="tabpanel">
+            <div class="hero-details-container">
+              <div class="hero-column-base hero-column">
+                <h3 class="modal-sub-title">基礎數值</h3>
+                <p><strong>等級：</strong>${getVal(equip.lv)}</p>
+                <p><strong>防禦：</strong>${getVal(equip.property1)}</p>
+                <p><strong>閃避：</strong>${getVal(equip.property2)}</p>
+                <p><strong>耐用：</strong>${getVal(equip.durability)}</p>
+              </div>
+              <div class="hero-column-base hero-column">
+                <h3 class="modal-sub-title">製作材料(需配方書)</h3>
+                ${materialsHTML || '<p>暫無材料資訊</p>'}
+              </div>
+              ${illustrateHTML}
+              ${gainHTML}
+            </div>
+          </section>
+          <section class="equipment-detail-panel" data-accessory-panel="model" role="tabpanel" hidden>
+            ${accessoryPhotoHTML}
+          </section>
         </div>
-        ${illustrateHTML}
-        ${gainHTML}
       </div>
     `;
+
+    const detailTabs = modalContent.querySelectorAll('[data-accessory-tab]');
+    const detailPanels = modalContent.querySelectorAll('[data-accessory-panel]');
+    detailTabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        const target = tab.dataset.accessoryTab;
+        detailTabs.forEach(button => {
+          const isActive = button === tab;
+          button.classList.toggle('active', isActive);
+          button.setAttribute('aria-selected', String(isActive));
+        });
+        detailPanels.forEach(panel => {
+          const isActive = panel.dataset.accessoryPanel === target;
+          panel.classList.toggle('active', isActive);
+          panel.hidden = !isActive;
+        });
+      });
+    });
+
+    const photoGrid = modalContent.querySelector('#accessory-photo-grid');
+    const emptyPhotoState = modalContent.querySelector('#accessory-photo-empty');
+    const photoImages = modalContent.querySelectorAll('[data-accessory-photo]');
+    photoImages.forEach(image => {
+      image.addEventListener('load', () => {
+        image.closest('.accessory-photo-card')?.classList.add('is-loaded');
+        if (emptyPhotoState) emptyPhotoState.hidden = true;
+      });
+      image.addEventListener('error', () => {
+        image.closest('.accessory-photo-card')?.remove();
+        if (photoGrid && photoGrid.querySelector('[data-accessory-photo]') === null && emptyPhotoState) {
+          emptyPhotoState.hidden = false;
+        }
+      });
+      image.src = image.dataset.photoSrc;
+    });
     openModal();
   }
 
