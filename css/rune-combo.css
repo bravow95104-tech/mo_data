@@ -1,0 +1,55 @@
+/* 銘文組合：玩家數值參考區 */
+.player-reference-section {
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border-separator);
+}
+
+.player-reference-title {
+  margin: 0 0 12px;
+  color: var(--primary-blue);
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.player-reference-empty {
+  margin: 0;
+  padding: 12px 14px;
+  border: 1px dashed var(--glass-border);
+  border-radius: 10px;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+/* 之後加入圖片時可直接沿用這組版面 */
+.player-reference-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px;
+}
+
+.player-reference-item {
+  padding: 12px;
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+  background: var(--card-bg);
+}
+
+.player-reference-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+@media (max-width: 768px) {
+  .player-reference-section {
+    margin-top: 16px;
+    padding-top: 14px;
+  }
+
+  .player-reference-list {
+    grid-template-columns: 1fr;
+  }
+}

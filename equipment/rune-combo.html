@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="/mo_data/css/nav.css" />
     <link rel="stylesheet" href="/mo_data/css/heromeal.css" />
     <link rel="stylesheet" href="/mo_data/css/table-rwd.css" />
+    <link rel="stylesheet" href="/mo_data/css/rune-combo.css" />
     <style>
       html {
         scroll-behavior: smooth;
@@ -27,7 +28,7 @@
     </div>
 
     <!-- A 組合 -->
-    <div id="combo-a" class="card-table-container card-ui open">
+    <div id="combo-a" class="card-table-container card-ui open" data-combo-key="combo-a">
       <div class="card-header">
         <span class="card-title">A 組合</span>
         <button class="card-toggle" aria-label="收合/展開">
@@ -59,11 +60,15 @@
             </tr>
           </tbody>
         </table>
+        <section class="player-reference-section" aria-labelledby="combo-a-references-title">
+          <h3 id="combo-a-references-title" class="player-reference-title">玩家數值參考</h3>
+          <p class="player-reference-empty">尚未加入玩家提供的數值圖片。</p>
+        </section>
       </div>
     </div>
 
     <!-- B 組合 -->
-    <div id="combo-b" class="card-table-container card-ui open">
+    <div id="combo-b" class="card-table-container card-ui open" data-combo-key="combo-b">
       <div class="card-header">
         <span class="card-title">B 組合</span>
         <button class="card-toggle" aria-label="收合/展開">
@@ -95,11 +100,15 @@
             </tr>
           </tbody>
         </table>
+        <section class="player-reference-section" aria-labelledby="combo-b-references-title">
+          <h3 id="combo-b-references-title" class="player-reference-title">玩家數值參考</h3>
+          <p class="player-reference-empty">尚未加入玩家提供的數值圖片。</p>
+        </section>
       </div>
     </div>
 
     <!-- 20000+ HP 組合 -->
-    <div id="combo-hp" class="card-table-container card-ui open">
+    <div id="combo-hp" class="card-table-container card-ui open" data-combo-key="combo-hp">
       <div class="card-header">
         <span class="card-title">20000+ HP 組合(UShow提供)</span>
         <button class="card-toggle" aria-label="收合/展開">
@@ -131,12 +140,16 @@
             </tr>
           </tbody>
         </table>
+        <section class="player-reference-section" aria-labelledby="combo-hp-references-title">
+          <h3 id="combo-hp-references-title" class="player-reference-title">玩家數值參考</h3>
+          <p class="player-reference-empty">尚未加入玩家提供的數值圖片。</p>
+        </section>
       </div>
     </div>
 
 
         <!-- 高 HP 組合 -->
-    <div id="combo-hp" class="card-table-container card-ui open">
+    <div id="combo-hp-high" class="card-table-container card-ui open" data-combo-key="combo-hp-high">
       <div class="card-header">
         <span class="card-title">高 HP 組合</span>
         <button class="card-toggle" aria-label="收合/展開">
@@ -168,6 +181,10 @@
             </tr>
           </tbody>
         </table>
+        <section class="player-reference-section" aria-labelledby="combo-hp-high-references-title">
+          <h3 id="combo-hp-high-references-title" class="player-reference-title">玩家數值參考</h3>
+          <p class="player-reference-empty">尚未加入玩家提供的數值圖片。</p>
+        </section>
       </div>
     </div>
 
