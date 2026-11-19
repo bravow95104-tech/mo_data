@@ -459,6 +459,19 @@ th.sorted-desc .arrow-down {
   }
 }
 
+/* === 卡片列表：搜尋、按鈕與資料區統一全站內容寬度 === */
+@media (min-width: 769px) {
+  #searchContainer,
+  #card-equip-table-container,
+  #card-equip-container,
+  body > .filter-actions {
+    width: min(100%, var(--site-content-width));
+    max-width: var(--site-content-width);
+    margin-right: auto;
+    margin-left: auto;
+  }
+}
+
 /* 英雄/裝備連結樣式 (複用 map.js 風格) */
 .hero-link {
   color: var(--primary-blue);
