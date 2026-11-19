@@ -745,3 +745,33 @@ body.dark-theme #events-list a,
 [data-theme="light"] #events-list li:hover {
     background-color: rgba(0, 0, 0, 0.03) !important;
 }
+
+/* === 共用頁尾 === */
+#footer-container {
+    /* 讓分隔線延伸到視窗左右邊緣，抵銷 body 的水平留白 */
+    margin: 50px -40px -30px;
+}
+
+.footer {
+    border-top: 1px solid var(--border-separator);
+    padding: 24px 40px 10px;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    text-align: center;
+}
+
+.footer p {
+    margin: 0;
+}
+
+@media (max-width: 768px) {
+    #footer-container {
+        margin-right: -15px;
+        margin-left: -15px;
+    }
+
+    .footer {
+        padding-right: 15px;
+        padding-left: 15px;
+    }
+}
