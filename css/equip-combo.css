@@ -162,6 +162,10 @@
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
   gap: 20px;
   padding: 0 5px;
+  width: min(100%, var(--site-content-width));
+  max-width: var(--site-content-width);
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .combo-card {
@@ -225,6 +229,34 @@
   color: var(--primary-blue);
   display: inline-block;
   min-width: 80px;
+}
+
+/* === 文片組合：1200px 內維持四欄精簡卡片 === */
+@media (min-width: 1100px) {
+  .combo-list {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  .combo-card {
+    padding: 20px;
+  }
+
+  .combo-title {
+    font-size: 18px;
+  }
+
+  .combo-details p {
+    margin: 8px 0;
+    font-size: 13px;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1099px) {
+  .combo-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+  }
 }
 
 /* 搜尋字詞高亮 */

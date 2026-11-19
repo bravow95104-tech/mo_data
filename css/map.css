@@ -872,6 +872,12 @@ tbody tr:hover td {
 
 /* === 地圖頁面：統一桌面版內容寬度，不改地圖與資料互動 === */
 @media (min-width: 769px) {
+  body > .filter-actions {
+    width: min(100%, var(--site-content-width));
+    margin-right: auto;
+    margin-left: auto;
+  }
+
   #header-nav .tabs-container,
   .content-wrapper,
   #hero-table-container,
