@@ -120,6 +120,33 @@ tbody tr:hover td {
   color: var(--text-main);
 }
 
+/* 排序圖示：與英雄／裝備卡列表保持一致 */
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.sort-icon-container {
+  display: inline-flex;
+  flex-direction: column;
+  line-height: 0.7;
+}
+
+.sort-arrow {
+  color: rgba(255, 255, 255, 0.15);
+  font-size: 9px;
+  transition: all 0.2s ease;
+}
+
+th.sorted-asc .arrow-up,
+th.sorted-desc .arrow-down {
+  color: var(--primary-blue) !important;
+  text-shadow: 0 0 8px rgba(77, 163, 255, 0.6);
+  transform: scale(1.1);
+}
+
 /* 手機版卡片 */
 #card-equip-container {
   display: none;
@@ -263,6 +290,19 @@ tbody tr:hover td {
   }
   #card-equip-container {
     display: flex;
+  }
+}
+
+/* === 靈具卡：搜尋區與資料區統一全站內容寬度 === */
+@media (min-width: 769px) {
+  #quick-search-label,
+  #card-equip-table-container,
+  #card-equip-container,
+  body > .filter-actions {
+    width: min(100%, var(--site-content-width));
+    max-width: var(--site-content-width);
+    margin-right: auto;
+    margin-left: auto;
   }
 }
 
