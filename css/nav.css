@@ -39,13 +39,20 @@
 .nav-menu {
   display: flex;
   align-items: stretch;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 6px;
   width: 100%;
   max-width: 1440px;
   margin: 0 auto;
   padding: 10px clamp(12px, 2vw, 24px);
   box-sizing: border-box;
+}
+
+@media (min-width: 769px) {
+  /* 主選單靠左，主題與登入固定在右側 */
+  .nav-item-theme {
+    margin-left: auto;
+  }
 }
 
 #nav-container nav a,
@@ -365,6 +372,10 @@
     box-sizing: border-box;
     background: transparent;
     border-top: 1px solid var(--glass-border);
+  }
+
+  .nav-item-theme {
+    margin-left: 0;
   }
 
   .nav-menu.active {

@@ -6,6 +6,7 @@
 }
 
 :root {
+    --site-content-width: 1440px;
     --primary-blue: #4da3ff;
     --primary-dark: #1e4b8a;
     --glass-bg: rgba(255, 255, 255, 0.03);
@@ -103,6 +104,23 @@
     width: 100% !important;
     position: relative !important;
     z-index: 1990 !important;
+}
+
+/* === 全站內容寬度基準（第一階段：不改表格結構） === */
+@media (min-width: 769px) {
+    body > #searchContainer,
+    body > #filterContainer,
+    body > #world-search-container,
+    body > #hero-card-container,
+    body > #hero-table-container,
+    body > #card-equip-container,
+    body > #card-equip-table-container,
+    body > .content-wrapper,
+    body > .simulator-container {
+        width: min(100%, var(--site-content-width));
+        margin-left: auto;
+        margin-right: auto;
+    }
 }
 
 .dynamic-hint.hint-btn {
