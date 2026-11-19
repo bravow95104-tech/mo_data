@@ -42,7 +42,7 @@
   justify-content: flex-start;
   gap: 6px;
   width: 100%;
-  max-width: 1440px;
+  max-width: var(--site-content-width);
   margin: 0 auto;
   padding: 10px clamp(12px, 2vw, 24px);
   box-sizing: border-box;

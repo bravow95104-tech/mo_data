@@ -649,6 +649,23 @@ tbody tr:hover td {
   }
 }
 
+/* === 全站版面基準：大型生產表格只限制外層寬度 === */
+@media (min-width: 769px) {
+  #searchContainer,
+  #note,
+  #filterContainer,
+  #hero-card-container,
+  #hero-table-container {
+    width: min(100%, var(--site-content-width));
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  #hero-table-container {
+    max-width: var(--site-content-width) !important;
+  }
+}
+
 /* --- 製作清單彈窗相關樣式 (用於 works.html) --- */
 .production-category {
   margin-top: 20px;

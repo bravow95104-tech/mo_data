@@ -6,7 +6,7 @@
 }
 
 :root {
-    --site-content-width: 1440px;
+    --site-content-width: 1200px;
     --primary-blue: #4da3ff;
     --primary-dark: #1e4b8a;
     --glass-bg: rgba(255, 255, 255, 0.03);
@@ -355,7 +355,7 @@ body {
     flex-wrap: nowrap !important;
     align-items: flex-start;
     justify-content: center;
-    max-width: 1440px;
+    max-width: var(--site-content-width);
     width: 100% !important;
     margin: 30px auto 0 auto !important; /* 👈 第一個數字改成 30px 或 40px */
     padding: 0;
