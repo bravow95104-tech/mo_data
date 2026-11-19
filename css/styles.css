@@ -825,9 +825,13 @@ body.dark-theme #events-list a,
 }
 
 /* === 共用頁尾 === */
+.page-bottom-spacer {
+    height: 24px;
+}
+
 #footer-container {
     /* 讓分隔線延伸到視窗左右邊緣，抵銷 body 的水平留白 */
-    margin: 50px -40px -30px;
+    margin: 24px -40px -30px;
 }
 
 .footer {

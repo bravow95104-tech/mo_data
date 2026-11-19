@@ -563,7 +563,7 @@ th.sort-desc .caret-down {
 }
 
 .page-bottom-spacer {
-  height: 100px;
+  height: 24px;
 }
 /* 英雄/裝備連結樣式 (複用 map.js 風格) */
 .hero-link {
