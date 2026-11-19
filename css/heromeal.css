@@ -265,6 +265,15 @@ h1 {
   box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
 }
 
+/* === 裝備／符石卡片表格：桌面版沿用全站內容寬度 === */
+@media (min-width: 769px) {
+  .card-table-container,
+  .meal-table-container {
+    width: min(100%, var(--site-content-width));
+    max-width: var(--site-content-width);
+  }
+}
+
 .table-description {
   background: rgba(77, 163, 255, 0.05);
   color: var(--highlight-yellow);

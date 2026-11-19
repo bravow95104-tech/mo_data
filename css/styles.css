@@ -853,3 +853,16 @@ body.dark-theme #events-list a,
         padding-left: 15px;
     }
 }
+
+/* === 快速搜尋統一寬度 === */
+@media (min-width: 769px) {
+    body > #searchContainer,
+    body > #filterContainer,
+    body > #world-search-container,
+    body > #note {
+        width: 100% !important;
+        max-width: var(--site-content-width) !important;
+        margin-right: auto !important;
+        margin-left: auto !important;
+    }
+}
