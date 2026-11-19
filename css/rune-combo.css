@@ -1,7 +1,8 @@
 /* 銘文組合：玩家數值參考區 */
 .player-reference-section {
-  margin-top: 20px;
-  padding-top: 16px;
+  margin-top: 12px;
+  padding-top: 10px;
+  padding-left: 40px;
   border-top: 1px solid var(--border-separator);
 }
 
@@ -25,13 +26,13 @@
 /* 之後加入圖片時可直接沿用這組版面 */
 .player-reference-list {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 280px));
+  grid-template-columns: repeat(auto-fill, minmax(180px, 220px));
   justify-content: start;
-  gap: 14px;
+  gap: 10px;
 }
 
 .player-reference-item {
-  padding: 12px;
+  padding: 8px;
   border: 1px solid var(--glass-border);
   border-radius: 12px;
   background: var(--card-bg);
@@ -197,6 +198,7 @@
   .player-reference-section {
     margin-top: 16px;
     padding-top: 14px;
+    padding-left: 0;
   }
 
   .player-reference-list {
