@@ -746,6 +746,66 @@ body.dark-theme #events-list a,
     background-color: rgba(0, 0, 0, 0.03) !important;
 }
 
+/* === 首頁精緻化：降低卡片厚重感，保留原有內容與互動 === */
+#content-wrapper {
+    gap: 24px;
+    margin-top: 24px !important;
+}
+
+#content-wrapper > #changelog,
+#content-wrapper .sidebar {
+    border-radius: 18px !important;
+    padding: 28px !important;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 10px 26px rgba(0, 0, 0, 0.2) !important;
+}
+
+#content-wrapper #changelog h2,
+#content-wrapper .sidebar h2 {
+    font-size: 1.2rem;
+    margin-bottom: 18px;
+    padding-bottom: 10px;
+    border-bottom-width: 1px;
+    text-shadow: none;
+}
+
+#content-wrapper .changelog-list li,
+#content-wrapper .sidebar-list li {
+    padding: 12px 0;
+    font-size: 0.93rem;
+    line-height: 1.55;
+    border-radius: 6px;
+}
+
+#content-wrapper .changelog-list li:hover,
+#content-wrapper .sidebar-list li:hover {
+    transform: none;
+    box-shadow: none;
+}
+
+#content-wrapper .changelog-list .date,
+#content-wrapper .sidebar-list .date,
+#content-wrapper .sidebar-list .date2,
+#content-wrapper .changelog-list .tips,
+#content-wrapper .sidebar-list .tips {
+    font-size: 0.76rem !important;
+    padding: 3px 11px !important;
+}
+
+@media (max-width: 768px) {
+    #content-wrapper > #changelog,
+    #content-wrapper .sidebar {
+        padding: 22px 18px !important;
+        border-radius: 16px !important;
+    }
+
+    #content-wrapper .changelog-list li,
+    #content-wrapper .sidebar-list li {
+        font-size: 0.9rem;
+    }
+}
+
 /* === 共用頁尾 === */
 #footer-container {
     /* 讓分隔線延伸到視窗左右邊緣，抵銷 body 的水平留白 */
