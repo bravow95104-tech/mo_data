@@ -344,6 +344,13 @@ thead th {
 
 /* === 地圖清單：資料表與手機卡片共用全站內容寬度 === */
 @media (min-width: 769px) {
+  body > .filter-actions,
+  #filterContainer .filter-actions {
+    width: min(100%, var(--site-content-width));
+    margin-right: auto;
+    margin-left: auto;
+  }
+
   #hero-table-container,
   #hero-card-container {
     width: min(100%, var(--site-content-width));

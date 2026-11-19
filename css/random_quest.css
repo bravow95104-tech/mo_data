@@ -280,6 +280,25 @@ body.light-mode .random-quest-card .quest-reward-box,
   box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.02) !important;
 }
 
+/* === 隨機任務：統一搜尋、說明與任務卡片的桌面內容寬度 === */
+@media (min-width: 769px) {
+  #instructionsContainer,
+  #starContainer {
+    width: min(100%, var(--site-content-width));
+    max-width: var(--site-content-width);
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  #instructionsContainer {
+    margin-top: 20px;
+  }
+
+  #starContainer {
+    margin-top: 24px;
+  }
+}
+
 /* 3. 讓「目標怪物：」、「蒐集道具：」、「所需數量：」小標題在白天清晰好讀 */
 body.light-mode .random-quest-card .target-label,
 [data-theme="light"] .random-quest-card .target-label,
