@@ -870,6 +870,19 @@ tbody tr:hover td {
   text-align: center;
 }
 
+/* === 地圖頁面：統一桌面版內容寬度，不改地圖與資料互動 === */
+@media (min-width: 769px) {
+  #header-nav .tabs-container,
+  .content-wrapper,
+  #hero-table-container,
+  #hero-card-container {
+    width: min(100%, var(--site-content-width));
+    max-width: var(--site-content-width);
+    margin-right: auto;
+    margin-left: auto;
+  }
+}
+
 [data-theme="light"] .map-detail-tab.active {
   background: #fff;
   color: #0066cc;

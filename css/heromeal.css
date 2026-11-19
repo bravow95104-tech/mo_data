@@ -272,6 +272,11 @@ h1 {
     width: min(100%, var(--site-content-width));
     max-width: var(--site-content-width);
   }
+
+  .quick-links {
+    width: min(100%, var(--site-content-width));
+    max-width: var(--site-content-width);
+  }
 }
 
 .table-description {

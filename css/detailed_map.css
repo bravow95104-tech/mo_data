@@ -341,3 +341,14 @@ thead th {
   transform: scale(1.05);
   box-shadow: 0 4px 10px rgba(0,0,0,0.25);
 }
+
+/* === 地圖清單：資料表與手機卡片共用全站內容寬度 === */
+@media (min-width: 769px) {
+  #hero-table-container,
+  #hero-card-container {
+    width: min(100%, var(--site-content-width));
+    max-width: var(--site-content-width);
+    margin-right: auto;
+    margin-left: auto;
+  }
+}
