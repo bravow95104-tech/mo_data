@@ -94,6 +94,78 @@ export const TABLE_CONFIGS = {
             { id: 'material5', label: '材料5', type: 'text', grid: 1 , group: '材料'}
         ]
     },
+    'rune-combo-references': {
+        title: '銘文數值參考管理',
+        tableName: 'rune_combo_references',
+        tableCols: ['組合', '圖片檔名', '圖片標題', '提供者', '狀態', '排序', '操作'],
+        displayFields: ['combo_key', 'image_name', 'image_title', 'provider_name', 'status', 'sort_id'],
+        fields: [
+            {
+                id: 'combo_key',
+                label: '對應組合',
+                type: 'select',
+                options: ['combo-a', 'combo-b', 'combo-hp', 'combo-hp-high'],
+                required: true,
+                grid: 1,
+                group: '基本資料'
+            },
+            {
+                id: 'image_name',
+                label: '圖片檔名（放在 pic/rune_combo）',
+                type: 'text',
+                placeholder: '例如：b-01.png',
+                required: true,
+                grid: 2,
+                group: '基本資料'
+            },
+            {
+                id: 'image_title',
+                label: '圖片標題',
+                type: 'text',
+                placeholder: '例如：張三提供｜20000 HP 實測',
+                grid: 2,
+                group: '基本資料'
+            },
+            {
+                id: 'provider_name',
+                label: '資料提供者',
+                type: 'text',
+                grid: 1,
+                group: '玩家資料'
+            },
+            {
+                id: 'condition_text',
+                label: '使用條件',
+                type: 'textarea',
+                grid: 3,
+                group: '玩家資料'
+            },
+            {
+                id: 'note',
+                label: '備註',
+                type: 'textarea',
+                grid: 3,
+                group: '玩家資料'
+            },
+            {
+                id: 'status',
+                label: '發布狀態',
+                type: 'select',
+                options: ['pending', 'approved', 'rejected'],
+                required: true,
+                grid: 1,
+                group: '發布設定'
+            },
+            {
+                id: 'sort_id',
+                label: '顯示順序',
+                type: 'number',
+                required: true,
+                grid: 1,
+                group: '發布設定'
+            }
+        ]
+    },
     'card-equip': {
         title: '裝備卡管理',
         tableName: 'card_equip',
