@@ -25,7 +25,8 @@
 /* 之後加入圖片時可直接沿用這組版面 */
 .player-reference-list {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(220px, 280px));
+  justify-content: start;
   gap: 14px;
 }
 
@@ -39,8 +40,28 @@
 .player-reference-image {
   display: block;
   width: 100%;
-  height: auto;
+  height: 150px;
+  object-fit: cover;
   border-radius: 8px;
+}
+
+.player-reference-trigger {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  cursor: zoom-in;
+  overflow: hidden;
+}
+
+.player-reference-trigger:hover .player-reference-image {
+  transform: scale(1.03);
+}
+
+.player-reference-image {
+  transition: transform 0.2s ease;
 }
 
 .player-reference-caption {
@@ -64,6 +85,114 @@
   line-height: 1.5;
 }
 
+.rune-reference-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: rgba(2, 8, 23, 0.82);
+  backdrop-filter: blur(5px);
+}
+
+.rune-reference-overlay.is-open {
+  display: flex;
+}
+
+.rune-reference-modal {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: min(96vw, 1180px);
+  max-height: 92vh;
+  padding: 42px 64px 28px;
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  background: var(--card-bg);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.45);
+}
+
+.rune-reference-modal-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 100%;
+  max-height: calc(92vh - 70px);
+}
+
+#rune-reference-modal-image {
+  display: block;
+  max-width: 100%;
+  max-height: 70vh;
+  object-fit: contain;
+  border-radius: 10px;
+}
+
+.rune-reference-modal-caption {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  width: 100%;
+  margin-top: 12px;
+  color: var(--text-color, currentColor);
+  line-height: 1.5;
+  text-align: center;
+}
+
+.rune-reference-modal-caption span,
+.rune-reference-modal-counter {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+.rune-reference-modal-counter {
+  margin-top: 8px;
+}
+
+.rune-reference-close,
+.rune-reference-nav {
+  position: absolute;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--glass-border);
+  color: var(--text-color, #fff);
+  background: rgba(15, 23, 42, 0.8);
+  cursor: pointer;
+}
+
+.rune-reference-close {
+  top: 12px;
+  right: 16px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  font-size: 25px;
+  line-height: 1;
+}
+
+.rune-reference-nav {
+  top: 50%;
+  width: 42px;
+  height: 62px;
+  border-radius: 12px;
+  transform: translateY(-50%);
+  font-size: 42px;
+  line-height: 1;
+}
+
+.rune-reference-nav.prev { left: 14px; }
+.rune-reference-nav.next { right: 14px; }
+
+.rune-reference-close:hover,
+.rune-reference-nav:hover {
+  border-color: var(--primary-blue);
+  background: var(--primary-blue);
+}
+
 @media (max-width: 768px) {
   .player-reference-section {
     margin-top: 16px;
@@ -73,4 +202,25 @@
   .player-reference-list {
     grid-template-columns: 1fr;
   }
+
+  .player-reference-image {
+    height: 120px;
+  }
+
+  .rune-reference-overlay {
+    padding: 12px;
+  }
+
+  .rune-reference-modal {
+    width: 100%;
+    padding: 46px 48px 22px;
+  }
+
+  .rune-reference-nav {
+    width: 34px;
+    height: 52px;
+  }
+
+  .rune-reference-nav.prev { left: 8px; }
+  .rune-reference-nav.next { right: 8px; }
 }

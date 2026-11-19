@@ -3,6 +3,8 @@ import { SUPABASE_URL, SUPABASE_KEY } from './supabase-config.js';
 
 const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
 const IMAGE_BASE_PATH = '/mo_data/pic/rune_combo/';
+let activeReferences = [];
+let activeReferenceIndex = 0;
 
 const escapeHtml = (value) => String(value ?? '')
   .replaceAll('&', '&amp;')
@@ -29,8 +31,8 @@ function renderReferences(references) {
 
     const list = document.createElement('div');
     list.className = 'player-reference-list';
-    list.innerHTML = comboReferences.map((item) => {
-      const imageUrl = item.image_url || `${IMAGE_BASE_PATH}${encodeURIComponent(item.image_name || '')}`;
+    list.innerHTML = comboReferences.map((item, index) => {
+      const imageUrl = getImageUrl(item);
       const title = item.image_title || item.image_name || '玩家數值參考';
       const meta = [item.provider_name, item.condition_text]
         .filter(Boolean)
@@ -39,12 +41,12 @@ function renderReferences(references) {
 
       return `
         <figure class="player-reference-item">
-          <a href="${escapeHtml(imageUrl)}" target="_blank" rel="noopener">
+          <button type="button" class="player-reference-trigger" data-reference-index="${index}" aria-label="查看${escapeHtml(title)}">
             <img class="player-reference-image"
                  src="${escapeHtml(imageUrl)}"
                  alt="${escapeHtml(title)}"
                  loading="lazy">
-          </a>
+          </button>
           <figcaption class="player-reference-caption">
             <strong>${escapeHtml(title)}</strong>
             ${meta ? `<span>${meta}</span>` : ''}
@@ -56,10 +58,86 @@ function renderReferences(references) {
 
     section.querySelector('.player-reference-list')?.remove();
     section.appendChild(list);
+
+    list.addEventListener('click', (event) => {
+      const trigger = event.target.closest('.player-reference-trigger');
+      if (!trigger) return;
+      openLightbox(comboReferences, Number(trigger.dataset.referenceIndex));
+    });
+  });
+}
+
+function getImageUrl(item) {
+  return item.image_url || `${IMAGE_BASE_PATH}${encodeURIComponent(item.image_name || '')}`;
+}
+
+function updateLightbox() {
+  const overlay = document.getElementById('rune-reference-overlay');
+  const image = document.getElementById('rune-reference-modal-image');
+  const caption = document.getElementById('rune-reference-modal-caption');
+  const counter = document.getElementById('rune-reference-modal-counter');
+  if (!overlay || !image || !caption || !counter || !activeReferences.length) return;
+
+  const item = activeReferences[activeReferenceIndex];
+  const title = item.image_title || item.image_name || '玩家數值參考';
+  const meta = [item.provider_name, item.condition_text]
+    .filter(Boolean)
+    .map(escapeHtml)
+    .join('｜');
+
+  image.src = getImageUrl(item);
+  image.alt = title;
+  caption.innerHTML = `<strong>${escapeHtml(title)}</strong>${meta ? `<span>${meta}</span>` : ''}`;
+  counter.textContent = `${activeReferenceIndex + 1} / ${activeReferences.length}`;
+}
+
+function openLightbox(references, index) {
+  activeReferences = references;
+  activeReferenceIndex = index;
+  updateLightbox();
+
+  const overlay = document.getElementById('rune-reference-overlay');
+  if (!overlay) return;
+  overlay.classList.add('is-open');
+  overlay.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox() {
+  const overlay = document.getElementById('rune-reference-overlay');
+  if (!overlay) return;
+  overlay.classList.remove('is-open');
+  overlay.setAttribute('aria-hidden', 'true');
+  document.body.style.overflow = '';
+}
+
+function moveLightbox(step) {
+  if (!activeReferences.length) return;
+  activeReferenceIndex = (activeReferenceIndex + step + activeReferences.length) % activeReferences.length;
+  updateLightbox();
+}
+
+function initLightbox() {
+  const overlay = document.getElementById('rune-reference-overlay');
+  if (!overlay) return;
+
+  overlay.querySelector('.rune-reference-close')?.addEventListener('click', closeLightbox);
+  overlay.querySelector('.rune-reference-nav.prev')?.addEventListener('click', () => moveLightbox(-1));
+  overlay.querySelector('.rune-reference-nav.next')?.addEventListener('click', () => moveLightbox(1));
+  overlay.addEventListener('click', (event) => {
+    if (event.target === overlay) closeLightbox();
+  });
+  document.addEventListener('keydown', (event) => {
+    if (!overlay.classList.contains('is-open')) return;
+    if (event.key === 'Escape') closeLightbox();
+    if (event.key === 'ArrowLeft') moveLightbox(-1);
+    if (event.key === 'ArrowRight') moveLightbox(1);
   });
 }
 
 document.addEventListener('DOMContentLoaded', async () => {
+  initLightbox();
+
   const { data, error } = await supabase
     .from('rune_combo_references')
     .select('combo_key, image_name, image_url, image_title, provider_name, condition_text, note, sort_id')
