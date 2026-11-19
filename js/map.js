@@ -335,8 +335,8 @@ async function loadModalZoneButtons(mapName, maxX, maxY, mainRubbish, mainProduc
         const row = document.getElementById(rowId);
         if (!el || !row) return;
 
-        const hasTierFormat = /(第\d+[層關]|[A-Za-z0-9\u4e00-\u9fa5]+區)[：:]/.test(mainValue || "") || 
-                              zoneValuesArray.some(val => /(第\d+[層關]|[A-Za-z0-9\u4e00-\u9fa5]+區)[：:]/.test(val || ""));
+        const hasTierFormat = /(第\d+[層關]|\d+-\d+|[A-Za-z0-9\u4e00-\u9fa5]+區)[：:]/.test(mainValue || "") ||
+                              zoneValuesArray.some(val => /(第\d+[層關]|\d+-\d+|[A-Za-z0-9\u4e00-\u9fa5]+區)[：:]/.test(val || ""));
 
         let finalRenderStr = "";
 
