@@ -298,7 +298,7 @@ window.clearResourcePolyRange = function() {
 
 // --- 💡 核心關鍵：當 Modalbox 顯示完成後，呼叫這個函數去 Supabase 撈資料 ---
 // 🚀 請確保這裡的接收參數順序，跟你在 openMapDetail 傳進去的一模一樣！
-async function loadModalZoneButtons(mapName, maxX, maxY, mainRubbish, mainProduct, mainHero, mainOther) {
+async function loadModalZoneButtons(mapName, maxX, maxY, mainRubbish, mainProduct, mainHero, mainOther, isInstance = false) {
   const zoneContainer = document.getElementById('modal-zone-list');
   const zoneSection = document.getElementById('zone-section');
   if (!zoneContainer || !zoneSection || !mapName) return;
@@ -367,13 +367,13 @@ async function loadModalZoneButtons(mapName, maxX, maxY, mainRubbish, mainProduc
         }
     }
 
-    // 沒有在內容中手動寫「1-1：」時，摘要仍自動用關卡名稱分組，避免琉璃塔被攤平成一大串文字。
+    // 副本保留各階段分組；一般地圖則直接合併所有區域內容並去重。
     const getZoneDropValues = (field) => drops
       .filter(d => d[field])
       .map(d => {
         const value = String(d[field]).trim();
         const hasLabel = /(第\d+[層關]|\d+-\d+|[A-Za-z0-9\u4e00-\u9fa5]+區)[：:]/.test(value);
-        return d.zone_name && d.zone_name !== '全區' && !hasLabel
+        return isInstance && d.zone_name && d.zone_name !== '全區' && !hasLabel
           ? `${d.zone_name}：${value}`
           : value;
       });
@@ -913,7 +913,8 @@ const zoneSectionHTML = `
             "",                       // 🚀 把 item.drop_rubbish || "" 改成空字串(改新表)
             item.drop_product || "",   // 第 5 個參數 (🚀 新增)
             "",       // 參數 6 (刪除英雄)(改新表)
-            item.drop_other || ""       // 參數 9 (🚀 新增)
+            item.drop_other || "",       // 參數 9 (🚀 新增)
+            isInstance
         );
     }
 }, 150);
