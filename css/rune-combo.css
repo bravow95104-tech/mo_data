@@ -43,6 +43,27 @@
   border-radius: 8px;
 }
 
+.player-reference-caption {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 10px;
+  color: var(--text-color);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.player-reference-caption span,
+.player-reference-note {
+  color: var(--text-muted);
+  font-size: 0.82rem;
+}
+
+.player-reference-note {
+  margin: 8px 0 0;
+  line-height: 1.5;
+}
+
 @media (max-width: 768px) {
   .player-reference-section {
     margin-top: 16px;
