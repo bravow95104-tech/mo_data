@@ -688,8 +688,15 @@ th.sort-desc .caret-down {
   #runeresetTable {
     border: 1px solid var(--glass-border);
     border-radius: 18px;
-    overflow: hidden;
+    overflow: visible;
     background: var(--glass-bg);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  }
+
+  /* 重鑄表格沿用英雄表格的固定表頭，但不能被表格本身裁切 */
+  #runeresetTable thead th {
+    position: sticky;
+    top: var(--nav-height, 73px);
+    z-index: 100;
   }
 }
