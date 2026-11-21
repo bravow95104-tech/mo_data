@@ -810,7 +810,7 @@ const zoneSectionHTML = `
 
         <!-- 🚀 容器 A：區域掉落（預設顯示） -->
         <div id="local-drop-container" style="display: block;">
-        <p><strong>掉落物品：</strong></p>
+        <p><strong>掉落物品(玩家提供)：</strong></p>
         
         <p class="align-row" id="dynamic-drop-rubbish-row" style="display: none;">
           <strong>◢ 垃圾：</strong> <span id="dynamic-drop-rubbish"></span>
