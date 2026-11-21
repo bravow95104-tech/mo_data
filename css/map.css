@@ -773,6 +773,28 @@ tbody tr:hover td {
   background: transparent;
 }
 
+/* 區域按鈕沿用網站的藍色互動語言，避免紅色與地圖主題脫節。 */
+.map-zone-section .zone-btn {
+  background: rgba(77, 163, 255, 0.08);
+  border-color: rgba(96, 165, 250, 0.72);
+  color: #93c5fd;
+  box-shadow: inset 0 0 0 1px rgba(96, 165, 250, 0.08);
+}
+
+.map-zone-section .zone-btn:hover,
+.map-zone-section .zone-btn.active {
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
+  border-color: #93c5fd;
+  color: #fff !important;
+  box-shadow: 0 6px 16px rgba(37, 99, 235, 0.28);
+}
+
+[data-theme="light"] .map-zone-section .zone-btn {
+  background: rgba(37, 99, 235, 0.06);
+  border-color: rgba(37, 99, 235, 0.42);
+  color: #2563eb;
+}
+
 /* 地圖資訊、採集資源、掉落、光輝四個主頁籤 */
 .map-detail-shell {
   margin-top: 20px;

@@ -131,6 +131,18 @@ const formatTieredContent = (text, isCompact = false, linkType = null) => {
   return isCompact ? finalNames : finalNames.replace(/\n/g, '<br>');
 };
 
+// 副本的層數現在由上方的區域按鈕負責切換；顯示「全區」內容時，
+// 不再把舊資料中的「第 X 層：」當成內容標題。
+const stripTierLabels = (text) => {
+  if (!text) return "";
+  return String(text)
+    .replace(/([、,])\s*(第\d+[層關]|\d+-\d+|[A-Za-z0-9\u4e00-\u9fa5]+區)\s*[：:、]\s*/g, '$1')
+    .split(/\n|<br>/i)
+    .map(line => line.replace(/^\s*(第\d+[層關]|\d+-\d+|[A-Za-z0-9\u4e00-\u9fa5]+區)\s*[：:、]?\s*/, '').trim())
+    .filter(Boolean)
+    .join('、');
+};
+
 const formatGloryWithTooltip = (text) => {
   if (!text || text === "-") return "-";
   return text.split('、').map(glory => {
@@ -279,8 +291,8 @@ window.showResourcePolyRange = function(points, maxX, maxY) {
         polygon.setAttribute("points", convertedPoints);
         
         // 🎨 設定紅線範圍的樣式（已改為超清爽 0.15 透明度）
-        polygon.setAttribute("fill", "rgba(255, 77, 77, 0.15)");
-        polygon.setAttribute("stroke", "#ff4d4d");
+        polygon.setAttribute("fill", "rgba(77, 163, 255, 0.14)");
+        polygon.setAttribute("stroke", "#60a5fa");
         polygon.setAttribute("stroke-width", "1.5");
 
         svg.appendChild(polygon);
@@ -302,6 +314,7 @@ async function loadModalZoneButtons(mapName, maxX, maxY, mainRubbish, mainProduc
   const zoneContainer = document.getElementById('modal-zone-list');
   const zoneSection = document.getElementById('zone-section');
   if (!zoneContainer || !zoneSection || !mapName) return;
+  const hasSelectedZone = new URLSearchParams(window.location.search).has('zone');
 
   try {
     const [zonesRes, dropsRes] = await Promise.all([
@@ -371,9 +384,11 @@ async function loadModalZoneButtons(mapName, maxX, maxY, mainRubbish, mainProduc
     const getZoneDropValues = (field) => drops
       .filter(d => d[field])
       .map(d => {
-        const value = String(d[field]).trim();
+        const rawValue = String(d[field]).trim();
+        const value = isInstance ? stripTierLabels(rawValue) : rawValue;
+        if (!value) return '';
         const hasLabel = /(第\d+[層關]|\d+-\d+|[A-Za-z0-9\u4e00-\u9fa5]+區)[：:]/.test(value);
-        return isInstance && d.zone_name && d.zone_name !== '全區' && !hasLabel
+        return isInstance && hasSelectedZone && d.zone_name && d.zone_name !== '全區' && !hasLabel
           ? `${d.zone_name}：${value}`
           : value;
       });
@@ -475,14 +490,18 @@ async function loadModalZoneButtons(mapName, maxX, maxY, mainRubbish, mainProduc
           const d = drops.find(d => d.zone_name === zoneName) || {};
 
           // === 🚀 修改後：點選分區時，只保留該分區自己的掉落物 (移除全區合併) ===
-const finalRubbish   = [d.drop_rubbish].filter(x => x).join(',').replace(/[\r\n]+/g, '、');
-const finalProduct   = [d.drop_product].filter(x => x).join(',').replace(/[\r\n]+/g, '、');
-const finalEquip     = [d.drop_equidcard].filter(x => x).join(',').replace(/[\r\n]+/g, '、');
-const finalSkill     = [d.drop_skillcard].filter(x => x).join(',').replace(/[\r\n]+/g, '、');
-const finalHero      = [d.drop_heroes].filter(x => x).join(',').replace(/[\r\n]+/g, '、');
-const finalComboOld  = [d.drop_combo_old].filter(x => x).join(',').replace(/[\r\n]+/g, '、');
-const finalComboNew  = [d.drop_combo_new].filter(x => x).join(',').replace(/[\r\n]+/g, '、');
-const finalOther     = [d.drop_other].filter(x => x).join(',').replace(/[\r\n]+/g, '、');
+const cleanZoneValue = value => {
+  const normalized = [value].filter(x => x).join(',').replace(/[\r\n]+/g, '、');
+  return isInstance ? stripTierLabels(normalized) : normalized;
+};
+const finalRubbish   = cleanZoneValue(d.drop_rubbish);
+const finalProduct   = cleanZoneValue(d.drop_product);
+const finalEquip     = cleanZoneValue(d.drop_equidcard);
+const finalSkill     = cleanZoneValue(d.drop_skillcard);
+const finalHero      = cleanZoneValue(d.drop_heroes);
+const finalComboOld  = cleanZoneValue(d.drop_combo_old);
+const finalComboNew  = cleanZoneValue(d.drop_combo_new);
+const finalOther     = cleanZoneValue(d.drop_other);
 
           const zoneDef     = d.def || "";
           const zoneDodge   = d.dodge || "";
@@ -494,7 +513,6 @@ const finalOther     = [d.drop_other].filter(x => x).join(',').replace(/[\r\n]+/
           return `
             <button class="resource-btn zone-btn zone-click-btn"
                     id="zone-btn-${index}"
-                    style="border-color: #ff4d4d; color: #ff4d4d;"
                     data-points="${safePoints}"
                     data-maxx="${maxX}"
                     data-maxy="${maxY}"
@@ -723,7 +741,8 @@ window.openMapDetail = function (mapId) {
   const approachA = item.approach_a || "";
   const isTown = approachA.includes("城鎮");
   const isCave = approachA.includes("洞窟");
-  const isInstance = approachA.includes("副本");
+  // 寒冰洞的舊資料目前標記為「說明」，但它實際上是可分層切換的副本。
+  const isInstance = approachA.includes("副本") || item.mapid === "寒冰洞";
   const showApproach = approachA.includes("洞窟") || approachA.includes("要"); // 控制是否顯示走法
   const showExplain = approachA.includes("說明");
   
@@ -1367,7 +1386,12 @@ function renderTable(data, keyword = "") {
       
       // 🚀 優化點 2：擴大判定，除了 drop_ 開頭，防禦和閃避也納入 formatTieredContent 的排版優化範圍
       const isDropCol = colId.startsWith('drop_') || colId === 'def' || colId === 'dodge';
-      let content = formatTieredContent(val, isDropCol);
+      const tableValue = isDropCol && (
+        String(item.approach_a || '').includes('副本') || item.mapid === '寒冰洞'
+      )
+        ? stripTierLabels(val)
+        : val;
+      let content = formatTieredContent(tableValue, isDropCol);
 
       if (keyword && content !== "-" && content.toLowerCase().includes(keyword.toLowerCase())) {
         const regex = new RegExp(`(${keyword})`, 'gi');
