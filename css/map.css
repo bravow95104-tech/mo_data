@@ -648,15 +648,6 @@ tbody tr:hover td {
   box-shadow: 0 0 15px rgba(77, 163, 255, 0.4);
 }
 
-/* 點擊後保留勾選提示；hover 只提供預覽，active 才代表目前選取。 */
-.resource-list .resource-btn.active::before,
-.map-zone-section .zone-btn.active::before {
-  content: "✓";
-  font-size: 0.85em;
-  font-weight: 700;
-  line-height: 1;
-}
-
 .resource-group {
   margin-top: 20px;
   padding: 15px;
@@ -785,23 +776,23 @@ tbody tr:hover td {
 /* 區域按鈕沿用網站的藍色互動語言，避免紅色與地圖主題脫節。 */
 .map-zone-section .zone-btn {
   background: rgba(77, 163, 255, 0.08);
-  border-color: rgba(96, 165, 250, 0.72);
-  color: #93c5fd;
-  box-shadow: inset 0 0 0 1px rgba(96, 165, 250, 0.08);
+  border-color: var(--zone-color, #60a5fa);
+  color: var(--zone-color, #93c5fd);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--zone-color, #60a5fa) 18%, transparent);
 }
 
 .map-zone-section .zone-btn:hover,
 .map-zone-section .zone-btn.active {
-  background: linear-gradient(135deg, #3b82f6, #2563eb);
-  border-color: #93c5fd;
+  background: var(--zone-color, #3b82f6);
+  border-color: color-mix(in srgb, var(--zone-color, #60a5fa) 72%, white);
   color: #fff !important;
-  box-shadow: 0 6px 16px rgba(37, 99, 235, 0.28);
+  box-shadow: 0 6px 16px color-mix(in srgb, var(--zone-color, #60a5fa) 35%, transparent);
 }
 
 [data-theme="light"] .map-zone-section .zone-btn {
   background: rgba(37, 99, 235, 0.06);
-  border-color: rgba(37, 99, 235, 0.42);
-  color: #2563eb;
+  border-color: var(--zone-color, #2563eb);
+  color: var(--zone-color, #2563eb);
 }
 
 /* 地圖資訊、採集資源、掉落、光輝四個主頁籤 */

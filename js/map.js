@@ -9,6 +9,18 @@ let resourceData = [];
 let heroGloryMap = {}; 
 let worldDropTiersData = [];
 
+// 區域辨識色：刻意避開單一紅／藍，讓不同底圖上都能辨認範圍。
+const ZONE_COLORS = [
+  '#f59e0b', // 琥珀
+  '#22c55e', // 綠
+  '#a78bfa', // 紫
+  '#f97316', // 橘
+  '#06b6d4', // 青
+  '#ec4899', // 粉
+  '#84cc16', // 萊姆
+  '#e879f9'  // 桃紫
+];
+
 // 定義所有可能的欄位(詳細地圖使用的欄位顯示)
 const ALL_COLUMNS = [
   { id: 'mapid', label: '地圖名稱', default: true },
@@ -68,12 +80,13 @@ window.executeZoneClick = function(btnElement) {
         const zoneDodge = btnElement.getAttribute('data-dodge') || "";
         const zoneElement = btnElement.getAttribute('data-element') || "";
         const zoneMonsterLevel = btnElement.getAttribute('data-monster-level') || "";
+        const zoneColor = btnElement.getAttribute('data-zone-color') || '#60a5fa';
 
         if (typeof window.switchZoneDisplay === "function") {
             window.switchZoneDisplay(
                 points, maxX, maxY, 
                 rubbish, product, equip, skill, hero, comboOld, comboNew, other, 
-                zoneDef, zoneDodge, zoneElement, zoneMonsterLevel
+                zoneDef, zoneDodge, zoneElement, zoneMonsterLevel, zoneColor
             );
         }
     } catch (err) {
@@ -261,7 +274,7 @@ window.showResourceMarker = function(x, y, name, maxX, maxY, buttonElement = nul
 };
 
 // 🚀 新增：在畫布上繪製不規則範圍的函數
-window.showResourcePolyRange = function(points, maxX, maxY) {
+window.showResourcePolyRange = function(points, maxX, maxY, zoneColor = '#60a5fa') {
     // 1. 先清除舊的範圍線
     if (typeof clearResourcePolyRange === "function") clearResourcePolyRange();
 
@@ -308,9 +321,10 @@ window.showResourcePolyRange = function(points, maxX, maxY) {
         const polygon = document.createElementNS(svgNamespace, "polygon");
         polygon.setAttribute("points", convertedPoints);
         
-        // 🎨 設定紅線範圍的樣式（已改為超清爽 0.15 透明度）
-        polygon.setAttribute("fill", "rgba(77, 163, 255, 0.14)");
-        polygon.setAttribute("stroke", "#60a5fa");
+        // 🎨 每個區域使用自己的辨識色，填色維持低透明度避免遮住地圖。
+        polygon.setAttribute("fill", zoneColor);
+        polygon.setAttribute("fill-opacity", "0.18");
+        polygon.setAttribute("stroke", zoneColor);
         polygon.setAttribute("stroke-width", "1.5");
 
         svg.appendChild(polygon);
@@ -492,7 +506,7 @@ async function loadModalZoneButtons(mapName, maxX, maxY, mainRubbish, mainProduc
       if (groupedZones[drop.zone_name].sortId == null) groupedZones[drop.zone_name].sortId = drop.sort_id;
     });
 
-    const zoneEntries = Object.entries(groupedZones).sort(([nameA, zoneA], [nameB, zoneB]) => {
+const zoneEntries = Object.entries(groupedZones).sort(([nameA, zoneA], [nameB, zoneB]) => {
       const sortA = Number(zoneA.sortId);
       const sortB = Number(zoneB.sortId);
       if (Number.isFinite(sortA) && Number.isFinite(sortB) && sortA !== sortB) return sortA - sortB;
@@ -532,6 +546,8 @@ const finalOther     = cleanZoneValue(d.drop_other);
             <button class="resource-btn zone-btn zone-click-btn"
                     id="zone-btn-${index}"
                     aria-pressed="false"
+                    data-zone-color="${ZONE_COLORS[index % ZONE_COLORS.length]}"
+                    style="--zone-color: ${ZONE_COLORS[index % ZONE_COLORS.length]};"
                     data-points="${safePoints}"
                     data-maxx="${maxX}"
                     data-maxy="${maxY}"
@@ -630,12 +646,7 @@ const finalOther     = cleanZoneValue(d.drop_other);
             if (matchedBtn) {
                 console.log(`【自動導航】成功找到按鈕，準備點擊: [區域] ${targetZone}`);
                 
-                // 💡 修正點 2：先強制套用高亮視覺，防止 click 被其他非同步事件洗掉顏色
-                matchedBtn.style.backgroundColor = '#ff4d4d';
-                matchedBtn.style.color = '#ffffff';
-                matchedBtn.style.borderColor = '#ff4d4d';
-
-                // 🚀 執行模擬點擊（劃出紅線、切換掉落物文字）
+                // 🚀 執行模擬點擊（套用該區域顏色、劃出範圍並切換資料）
                 matchedBtn.click(); 
             } else {
                 console.warn(`【自動導航警告】網址要求點亮「${targetZone}」，但畫面上找不到對應的按鈕！`);
@@ -688,9 +699,9 @@ window.switchMapTab = function(type) {
 
 
 // 🚀 升級版：分區資料可同步切換防禦、閃避、五行與怪物等級
-window.switchZoneDisplay = function(points, maxX, maxY, zoneRubbish, zoneProduct, zoneEquip, zoneSkill, zoneHero, zoneComboOld, zoneComboNew, zoneOther, zoneDef = "", zoneDodge = "", zoneElement = "", zoneMonsterLevel = "") {
+window.switchZoneDisplay = function(points, maxX, maxY, zoneRubbish, zoneProduct, zoneEquip, zoneSkill, zoneHero, zoneComboOld, zoneComboNew, zoneOther, zoneDef = "", zoneDodge = "", zoneElement = "", zoneMonsterLevel = "", zoneColor = "#60a5fa") {
     if (typeof showResourcePolyRange === "function") {
-        showResourcePolyRange(points, maxX, maxY);
+        showResourcePolyRange(points, maxX, maxY, zoneColor);
     }
 
     function toggleRowValue(elementId, rowId, zoneValue, isCardType, cardTypeParam) {
