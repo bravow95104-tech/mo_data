@@ -648,6 +648,15 @@ tbody tr:hover td {
   box-shadow: 0 0 15px rgba(77, 163, 255, 0.4);
 }
 
+/* 點擊後保留勾選提示；hover 只提供預覽，active 才代表目前選取。 */
+.resource-list .resource-btn.active::before,
+.map-zone-section .zone-btn.active::before {
+  content: "✓";
+  font-size: 0.85em;
+  font-weight: 700;
+  line-height: 1;
+}
+
 .resource-group {
   margin-top: 20px;
   padding: 15px;

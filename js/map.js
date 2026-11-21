@@ -42,6 +42,14 @@ let activeColumns = [];
 window.executeZoneClick = function(btnElement) {
     console.log("【直球對決】成功點到分區按鈕，開始切換數據...");
     try {
+        // 保留目前選取的區域，讓使用者能清楚知道資料與範圍是屬於哪一區。
+        document.querySelectorAll('.zone-btn').forEach(button => {
+            button.classList.remove('active');
+            button.setAttribute('aria-pressed', 'false');
+        });
+        btnElement.classList.add('active');
+        btnElement.setAttribute('aria-pressed', 'true');
+
         const points = JSON.parse(btnElement.getAttribute('data-points'));
         const maxX = parseFloat(btnElement.getAttribute('data-maxx'));
         const maxY = parseFloat(btnElement.getAttribute('data-maxy'));
@@ -201,10 +209,20 @@ window.zoomWorldMap = function (src) {
 };
 
 // 🚀 核心功能：顯示資源標記
-window.showResourceMarker = function(x, y, name, maxX, maxY) {
+window.showResourceMarker = function(x, y, name, maxX, maxY, buttonElement = null) {
   const ping = document.getElementById('resource-ping');
   const img = document.querySelector('.map-image-relative-wrapper .hero-image');
   if (!ping || !img) return;
+
+  // 採集資源點同樣只保留一個目前選取項目。
+  document.querySelectorAll('.resource-list .resource-btn').forEach(button => {
+    button.classList.remove('active');
+    button.setAttribute('aria-pressed', 'false');
+  });
+  if (buttonElement) {
+    buttonElement.classList.add('active');
+    buttonElement.setAttribute('aria-pressed', 'true');
+  }
 
   // 💡 自動比例偵測邏輯
   const finalMaxX = (maxX && maxX > 1) ? maxX : img.naturalWidth;
@@ -513,6 +531,7 @@ const finalOther     = cleanZoneValue(d.drop_other);
           return `
             <button class="resource-btn zone-btn zone-click-btn"
                     id="zone-btn-${index}"
+                    aria-pressed="false"
                     data-points="${safePoints}"
                     data-maxx="${maxX}"
                     data-maxy="${maxY}"
@@ -754,7 +773,7 @@ if (resources.length > 0) {
       <div class="resource-group-title"><i class="fas fa-hammer"></i> 採集資源點 (點擊查看位置)</div>
       <div class="resource-list">
         ${resources.map(r => `
-          <button class="resource-btn" onclick="showResourceMarker(${r.x}, ${r.y}, '${r.resource_name}', ${item.game_max_x}, ${item.game_max_y})">
+          <button class="resource-btn" aria-pressed="false" onclick="showResourceMarker(${r.x}, ${r.y}, '${r.resource_name}', ${item.game_max_x}, ${item.game_max_y}, this)">
             ${r.resource_name} ${r.game_coords ? `(${r.game_coords})` : ''}
           </button>
         `).join('')}
@@ -956,7 +975,10 @@ window.resetZoneSelection = function() {
     }
 
     // 2. 拔掉所有區域按鈕的亮起狀態 (zone-btn)
-    document.querySelectorAll('.zone-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.zone-btn').forEach(b => {
+        b.classList.remove('active');
+        b.setAttribute('aria-pressed', 'false');
+    });
 
     // 3. 🎯 核心重設：直接抓取一開始在初始狀態存進格子的 `data-default`（也就是你 loadData 時大融合的全區基礎資料）
     function restoreRow(elementId, rowId, isCardType, cardTypeParam) {
