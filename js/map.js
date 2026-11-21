@@ -9,18 +9,6 @@ let resourceData = [];
 let heroGloryMap = {}; 
 let worldDropTiersData = [];
 
-// 區域辨識色：刻意避開單一紅／藍，讓不同底圖上都能辨認範圍。
-const ZONE_COLORS = [
-  '#f59e0b', // 琥珀
-  '#22c55e', // 綠
-  '#a78bfa', // 紫
-  '#f97316', // 橘
-  '#06b6d4', // 青
-  '#ec4899', // 粉
-  '#84cc16', // 萊姆
-  '#e879f9'  // 桃紫
-];
-
 // 定義所有可能的欄位(詳細地圖使用的欄位顯示)
 const ALL_COLUMNS = [
   { id: 'mapid', label: '地圖名稱', default: true },
@@ -80,13 +68,12 @@ window.executeZoneClick = function(btnElement) {
         const zoneDodge = btnElement.getAttribute('data-dodge') || "";
         const zoneElement = btnElement.getAttribute('data-element') || "";
         const zoneMonsterLevel = btnElement.getAttribute('data-monster-level') || "";
-        const zoneColor = btnElement.getAttribute('data-zone-color') || '#60a5fa';
 
         if (typeof window.switchZoneDisplay === "function") {
             window.switchZoneDisplay(
                 points, maxX, maxY, 
                 rubbish, product, equip, skill, hero, comboOld, comboNew, other, 
-                zoneDef, zoneDodge, zoneElement, zoneMonsterLevel, zoneColor
+                zoneDef, zoneDodge, zoneElement, zoneMonsterLevel
             );
         }
     } catch (err) {
@@ -274,7 +261,7 @@ window.showResourceMarker = function(x, y, name, maxX, maxY, buttonElement = nul
 };
 
 // 🚀 新增：在畫布上繪製不規則範圍的函數
-window.showResourcePolyRange = function(points, maxX, maxY, zoneColor = '#60a5fa') {
+window.showResourcePolyRange = function(points, maxX, maxY) {
     // 1. 先清除舊的範圍線
     if (typeof clearResourcePolyRange === "function") clearResourcePolyRange();
 
@@ -321,13 +308,21 @@ window.showResourcePolyRange = function(points, maxX, maxY, zoneColor = '#60a5fa
         const polygon = document.createElementNS(svgNamespace, "polygon");
         polygon.setAttribute("points", convertedPoints);
         
-        // 🎨 每個區域使用自己的辨識色，填色維持低透明度避免遮住地圖。
-        polygon.setAttribute("fill", zoneColor);
-        polygon.setAttribute("fill-opacity", "0.18");
-        polygon.setAttribute("stroke", zoneColor);
-        polygon.setAttribute("stroke-width", "1.5");
-
+        // 使用深色外框＋淡白內框，適應不同底色的地圖，且不增加彩色干擾。
+        polygon.setAttribute("fill", "#dbeafe");
+        polygon.setAttribute("fill-opacity", "0.08");
+        polygon.setAttribute("stroke", "#08111f");
+        polygon.setAttribute("stroke-opacity", "0.92");
+        polygon.setAttribute("stroke-width", "5");
+        polygon.setAttribute("vector-effect", "non-scaling-stroke");
         svg.appendChild(polygon);
+
+        const innerPolygon = polygon.cloneNode(false);
+        innerPolygon.setAttribute("fill", "none");
+        innerPolygon.setAttribute("stroke", "#e2e8f0");
+        innerPolygon.setAttribute("stroke-opacity", "0.95");
+        innerPolygon.setAttribute("stroke-width", "1.6");
+        svg.appendChild(innerPolygon);
     });
 
     // 6. 塞進畫面
@@ -546,8 +541,6 @@ const finalOther     = cleanZoneValue(d.drop_other);
             <button class="resource-btn zone-btn zone-click-btn"
                     id="zone-btn-${index}"
                     aria-pressed="false"
-                    data-zone-color="${ZONE_COLORS[index % ZONE_COLORS.length]}"
-                    style="--zone-color: ${ZONE_COLORS[index % ZONE_COLORS.length]};"
                     data-points="${safePoints}"
                     data-maxx="${maxX}"
                     data-maxy="${maxY}"
@@ -699,9 +692,9 @@ window.switchMapTab = function(type) {
 
 
 // 🚀 升級版：分區資料可同步切換防禦、閃避、五行與怪物等級
-window.switchZoneDisplay = function(points, maxX, maxY, zoneRubbish, zoneProduct, zoneEquip, zoneSkill, zoneHero, zoneComboOld, zoneComboNew, zoneOther, zoneDef = "", zoneDodge = "", zoneElement = "", zoneMonsterLevel = "", zoneColor = "#60a5fa") {
+window.switchZoneDisplay = function(points, maxX, maxY, zoneRubbish, zoneProduct, zoneEquip, zoneSkill, zoneHero, zoneComboOld, zoneComboNew, zoneOther, zoneDef = "", zoneDodge = "", zoneElement = "", zoneMonsterLevel = "") {
     if (typeof showResourcePolyRange === "function") {
-        showResourcePolyRange(points, maxX, maxY, zoneColor);
+        showResourcePolyRange(points, maxX, maxY);
     }
 
     function toggleRowValue(elementId, rowId, zoneValue, isCardType, cardTypeParam) {
